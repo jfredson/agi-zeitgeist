@@ -45,7 +45,11 @@ Cite a specific commit: the data changes as rows are added, and a commit pins th
 version you used. To cite a single statement, give its `statement_id`
 (e.g. `hinton-2023-02`) along with the commit.
 
-Licence: not chosen yet. Until one is added, ask before reusing.
+**Licence.** The data in `data/` is under Creative Commons Attribution 4.0 (CC BY 4.0,
+see [`LICENSE-DATA`](LICENSE-DATA)): reuse it freely, with credit. The scripts in
+`scripts/` are under the MIT licence (see [`LICENSE`](LICENSE)). When you reuse the
+data, cite it as above, with the commit you used and a link to the licence:
+"AGI Zeitgeist Tracker by John Fredrickson, CC BY 4.0".
 
 ## How to add a row
 
