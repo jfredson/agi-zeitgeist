@@ -174,3 +174,8 @@ Why: these were the open questions found while building the panel table and whil
 recoding the seed under version 2; recoders were applying 9 to 12 inconsistently.
 Rows recoded under rulings 9 to 12 carry `coder: claude-agent-v2.1` and a note naming
 the ruling.
+- *Agent interpretation of ruling 10 (2026-10-01), for John to confirm:* a firm, unhedged
+  first-person date that uses none of the listed words ("I set the date for the
+  Singularity as 2045", "I'm still saying 2029") is kept as `accepts`, because coding a
+  stated prediction as "no position" would misreport the source. The rows concerned
+  are listed in `docs/status-2026-10-01.md`.

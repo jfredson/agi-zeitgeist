@@ -115,7 +115,7 @@ field, `present_capability`.
 |---|---|
 | `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", a stated probability of 50% or more, a bet, or "decades away" (rulings 10 and 11) |
 | `rejects` | says it won't happen, ever or by the horizon given. "It isn't here yet" is **not** a rejection (ruling 9) |
-| `uncertain` | explicitly says they don't know, or gives even odds |
+| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10) |
 | `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
 | `unexpressed` | discusses it without taking a position |
 
@@ -248,7 +248,7 @@ Secondhand rows are usually `quoted`.
   with direct quotes by the outlet that did it). Secondhand = someone else's report or
   paraphrase, or a quote not traced to where it was said. Secondhand rows carry the
   `secondhand` tag and `coding_confidence: low`.
-- **`coder`**: `john`, `claude-agent` (version 1, retired), or `claude-agent-v2`.
+- **`coder`**: `john`, `claude-agent` (version 1, retired), `claude-agent-v2`, or `claude-agent-v2.1` (rows changed under the A14 rulings).
 
 ## 9. Notes tags
 

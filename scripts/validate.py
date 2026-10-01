@@ -58,7 +58,7 @@ AGENCY = {"can_influence", "cannot_influence", "unexpressed"}
 ELICITATION = {"unprompted", "interview", "survey", "quoted"}
 TIMELINE_TYPES = {"point_year", "range", "prob_by_year", "qualitative", "none"}
 CONFIDENCE = {"high", "medium", "low"}
-CODERS = {"john", "claude-agent", "claude-agent-v2"}
+CODERS = {"john", "claude-agent", "claude-agent-v2", "claude-agent-v2.1"}
 # Single-valued coded fields and their allowed values.
 CODED_FIELDS = {
     "target_capability": TARGETS, "frame_primary": FRAMES, "endorsement": ENDORSEMENT,
