@@ -77,3 +77,19 @@ Double-coding of a stratified subset with dates and identities hidden where prac
 - Replacing the question-frame scheme with a proximity and disruption matrix (Gemini): proximity (distant, medium, near, present) is derived at render from the timeline fields, so it needs no new code; disruption became `consequence_type` (A2).
 - Film box office as a measurement series (Gemini): kept as dated event annotations only (Her 2013, Transcendence and Ex Machina 2014, and so on), because a theme-tagged box-office series would need its own coding project.
 - A single numerical common axis: used only where the source gives a probability for a specified capability by a specified date, as GPT advised; "soon" is never converted to a number.
+
+## 2026-09-30: implementation decisions for version 2 (decided by: agent)
+
+Made while carrying out the version 2 migration. John can reverse any of them.
+
+- **`question_frame` retired.** `frame_primary` replaces it (A4 widened the same code),
+  so `statements.csv` drops `question_frame` along with `stance` rather than keeping two
+  competing frame codes. Version 1 codes remain in git history (commits up to `1508fde`).
+- **Endorsement anchor.** To enforce "silence is never coded as acceptance", every
+  `endorsement` other than `unexpressed` carries `basis: "<words>"` in notes, and
+  `scripts/validate.py` checks those words appear in the stored quote.
+- **"Not by year X" claims.** "AGI won't arrive by 2027" is not an arrival date. These
+  are coded `timeline_type: qualitative` with `timeline_year` blank and the year in a
+  `not_by: YYYY` notes tag, so charts can't plot them as forecasts.
+- **Lower bounds.** "At least 30 years" or "no sooner than 2070" fill `timeline_year`
+  with the bound and carry a `lower_bound` notes tag.
