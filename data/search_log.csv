@@ -387,3 +387,84 @@ marcus-105,marcus,,X account @GaryMarcus,not run,not run: x.com cannot be search
 marcus-106,marcus,,New York Times op-eds (incl. 2025 'The Fever Dream of Imminent Superintelligence Is Finally Breaking'),not run,not run: no search budget; nytimes.com not attempted,2026-09-30
 marcus-107,marcus,,"debates with LeCun, Bengio and others",not run,not run: session search budget exhausted,2026-09-30
 marcus-108,marcus,2023,"incidental: Senate Judiciary subcommittee hearing transcript 2023-05-16, found under altman-033; re-read by coordinator",techpolicy.press transcript,"marcus-2023-02 (incidental, from altman-033)",2026-09-30
+altman-001,altman,,"""Sam Altman"" AGI prediction",web search,leads: Reflections blog post (recorded as altman-2025-03 via own-outlet read altman-030); Y Combinator interview reported only in paraphrase (see altman-042),2026-09-30
+altman-002,altman,,"""Sam Altman"" ""artificial general intelligence""",web search,leads: 'AGI will probably get developed during' the Trump term (recorded as altman-2025-02 via altman-035); Reflections (altman-2025-03),2026-09-30
+altman-003,altman,,"""Sam Altman"" ""human-level"" AI when",web search,"leads: Die Welt interview via Fortune (altman-2025-07, see altman-040); Davos 2024 remark (altman-2024-01, see altman-041)",2026-09-30
+altman-004,altman,,"blog archive: all posts, index pages 1-13",blog.samaltman.com archive,index read; qualifying posts recorded through reads altman-024 to altman-030,2026-09-30
+altman-005,altman,2014,"follow-up: date of blog post ""AI"" (quote phrase search)",web search,date not found,2026-09-30
+altman-006,altman,2014,"follow-up: date of blog post ""AI"" (Hacker News phrase search)",web search,date not found,2026-09-30
+altman-007,altman,2014,follow-up: date of blog.samaltman.com/ai via Hacker News submission dates,hn.algolia.com API,first submission 2014-02-19; used for altman-2014-01,2026-09-30
+altman-008,altman,2015,follow-up: dates of Machine intelligence part 1 and 2 via Hacker News submission dates,hn.algolia.com API,"part 1 2015-02-25, part 2 2015-03-02; used for altman-2015-01 and altman-2015-02",2026-09-30
+altman-009,altman,2017,follow-up: date of The Merge via Hacker News submission dates,hn.algolia.com API,first submission 2017-12-07; used for altman-2017-01,2026-09-30
+altman-010,altman,2017,follow-up: date of E Pur Si Muove via Hacker News submission dates,hn.algolia.com API,2017-12-14; post is about free speech; nothing qualifying,2026-09-30
+altman-011,altman,2015,follow-up: date of The Software Revolution via Hacker News submission dates,hn.algolia.com API,2015-02-16; mentions AI only as a risk with no timing or possibility claim; nothing qualifying,2026-09-30
+altman-012,altman,2018,follow-up: date of Reinforcement Learning Progress via Hacker News submission dates,hn.algolia.com API,first submission 2018-06-25; used for altman-2018-01,2026-09-30
+altman-013,altman,,"follow-up: pre-blog years 2005-2012 (Loopt era), ""Sam Altman"" ""artificial intelligence"" Loopt",web search,nothing qualifying; no AI statements found before the blog began in 2013,2026-09-30
+altman-014,altman,2013,"""Sam Altman"" AGI 2013",web search,"nothing qualifying (only later recollections of 2014, e.g. 'how nonmainstream AGI was')",2026-09-30
+altman-015,altman,2013,"""Sam Altman"" ""human-level"" intelligence 2013",web search,nothing qualifying,2026-09-30
+altman-016,altman,2013,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2013",web search,nothing qualifying (results all 2025),2026-09-30
+altman-017,altman,2014,"""Sam Altman"" AGI 2014",web search,nothing new (2025 recollections of 2014 only); the 2014 blog post was found through the blog archive (altman-004),2026-09-30
+altman-018,altman,2014,"""Sam Altman"" ""human-level"" intelligence 2014",web search,nothing qualifying,2026-09-30
+altman-019,altman,2014,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2014",web search,nothing qualifying (results 2025-2026),2026-09-30
+altman-020,altman,2015,"""Sam Altman"" AGI 2015",web search,"nothing new: Machine intelligence posts already found via the blog archive; 2025 recollection that 'AGI sounded crazy' in 2015 (a 2025 remark, not recorded)",2026-09-30
+altman-021,altman,2015,"""Sam Altman"" ""human-level"" intelligence 2015",web search,"lead: 'totally random' AGI date of 2025 set around 2015, which is a recollection in the January 2025 Bloomberg interview (noted inside altman-2025-02)",2026-09-30
+altman-022,altman,2015,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2015",web search,nothing new (Machine intelligence part 2 already found),2026-09-30
+altman-023,altman,,"follow-up: compiled track record page listing Altman statements, used as a lead list only",longtermwiki.com/wiki/E645,"leads only: Bloomberg January 2025 interview (altman-2025-02), Intelligence Age (altman-2024-03), DealBook December 2024 (could not read a source)",2026-09-30
+altman-024,altman,2015,"follow-up: Backchannel (Steven Levy) interview with Altman and Musk on OpenAI launch, Dec 2015",not run,not run: session search budget exhausted; direct fetch of medium.com/backchannel copy returned 403 (could not read source),2026-09-30
+altman-025,altman,,own outlet: blog posts AI; What happened to innovation?; The Software Revolution; Technology and wealth inequality,blog.samaltman.com,"altman-2014-01 (AI); the other three mention AI only in passing, nothing qualifying",2026-09-30
+altman-026,altman,,"own outlet: blog posts Machine intelligence, part 1 and part 2",blog.samaltman.com,"altman-2015-01, altman-2015-02",2026-09-30
+altman-027,altman,,own outlet: blog posts The Merge; E Pur Si Muove; 2017 YC Annual Letter; Reinforcement Learning Progress,blog.samaltman.com,"altman-2017-01 (The Merge), altman-2018-01 (Reinforcement Learning Progress); YC letter only says 'about 2 years into the age of artificial intelligence' and speculates 600 years out, nothing qualifying",2026-09-30
+altman-028,altman,,own outlet: blog posts DALL-E 2 (2022); GPT-4o (2024); Jakub and Szymon (2025); Abundant Intelligence (2025); untitled post of 2026-04-10,blog.samaltman.com,"nothing qualifying: DALL-E 2 post says predictions about AI are hard and imagines an 'AI office worker' with no timing; 2026-04-10 post says 'Once you see AGI you can't unsee it' about its pull on people, not a claim it exists",2026-09-30
+altman-029,altman,,own outlet: essay The Intelligence Age (2024-09-23),ia.samaltman.com,altman-2024-03,2026-09-30
+altman-030,altman,,"own outlet: essay Moore's Law for Everything (2021-03-16); blog posts Reflections, Three Observations, The Gentle Singularity",moores.samaltman.com; blog.samaltman.com,"altman-2021-01, altman-2025-03, altman-2025-05, altman-2025-06",2026-09-30
+altman-031,altman,,own outlet: OpenAI posts Planning for AGI and beyond (2023-02) and Governance of superintelligence (2023-05),openai.com; r.jina.ai reader copy,"not recorded: could not read source (openai.com returns 403; reader copy incomplete, no byline or date, key passages missing)",2026-09-30
+altman-032,altman,,"own outlet: Lex Fridman podcast transcripts, episodes 367 (2023-03-25) and 419 (2024-03-18)",lexfridman.com,"altman-2024-02 (episode 419); episode 367 has no published transcript, not recorded",2026-09-30
+altman-033,altman,2023,own outlet: transcript of US Senate Judiciary subcommittee hearing on AI oversight (2023-05-16),techpolicy.press transcript,altman-2023-01; incidental Marcus statement written to incidental.txt,2026-09-30
+altman-034,altman,,"own outlet: X account @sama, individual posts fetched by known post id (the account cannot be searched without a search tool)",api.fxtwitter.com,"altman-2019-01, altman-2020-01, altman-2022-01, altman-2025-01, altman-2025-04, altman-2025-08; one guessed post id returned 404",2026-09-30
+altman-035,altman,2025,follow-up: Bloomberg interview with Altman by Josh Tyrangiel (2025-01-05),bloomberg.com (brp-prod-bcc mirror),altman-2025-02,2026-09-30
+altman-036,altman,2019,follow-up: compiled AGI timeline page (lead list) giving source links,projectflux.ai,lead: 2019-01-05 post on X (recorded as altman-2019-01 via altman-034),2026-09-30
+altman-037,altman,2026,follow-up: report that Altman said AI is now 'in the singularity' (July 2026),aljazeera.com,secondhand report; see altman-038,2026-09-30
+altman-038,altman,2026,"follow-up: trace 'in the singularity' remark to the original (Singularity Hub article link, Apple Podcasts episode page for Relentless)",singularityhub.com; podcasts.apple.com,"original is audio only, no transcript found; recorded as altman-2026-01 (secondhand)",2026-09-30
+altman-039,altman,2023,follow-up: TIME CEO of the Year 2023 profile and interview,time.com,altman-2023-02 (secondhand: the timeline is the reporters' paraphrase),2026-09-30
+altman-040,altman,2025,follow-up: Die Welt interview as reported by Fortune (originally 2025-09-26); original sought,fortune.com,altman-2025-07 (secondhand); Fortune gives no link to Die Welt and a search for the original could not be run (search budget exhausted),2026-09-30
+altman-041,altman,2024,follow-up: Davos 2024 remark reported by OODA Loop; original CNBC report sought,oodaloop.com; cnbc.com,altman-2024-01 (secondhand); CNBC page returned 403,2026-09-30
+altman-042,altman,2024,follow-up: Y Combinator interview with Garry Tan (November 2024) as reported by eWeek,eweek.com,not recorded: eWeek gives paraphrase only; original is a YouTube video with no transcript read,2026-09-30
+altman-043,altman,2019,follow-up: TechCrunch report of StrictlyVC interview (2019-05-18),techcrunch.com,"nothing qualifying: 'Once we build a generally intelligent system' and the size of the AGI opportunity, no timing or possibility claim",2026-09-30
+altman-044,altman,2022,follow-up: Greymatter podcast with Reid Hoffman (2022-09-13),greylock.com,nothing qualifying (no mention of AGI found in the transcript),2026-09-30
+altman-045,altman,2016,follow-up: New Yorker profile 'Sam Altman's Manifest Destiny' (2016-10),newyorker.com,not recorded: could not read source (site blocked to the fetch tool),2026-09-30
+altman-046,altman,2025,follow-up: CNBC report that Altman called AGI 'not a super useful term' (2025-08),cnbc.com,not recorded: could not read source (403),2026-09-30
+altman-047,altman,2024,follow-up: Bill Gates Unconfuse Me podcast transcript with Altman,gatesnotes.com,not recorded: could not read source (403),2026-09-30
+altman-048,altman,2023,follow-up: report of Altman's September 2023 Reddit post 'AGI has been achieved internally' and 'just memeing' edit,aol.com,not recorded: could not read source (404),2026-09-30
+altman-049,altman,2016,"""Sam Altman"" AGI 2016",not run,not run: session search budget exhausted,2026-09-30
+altman-050,altman,2016,"""Sam Altman"" ""human-level"" intelligence 2016",not run,not run: session search budget exhausted,2026-09-30
+altman-051,altman,2016,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2016",not run,not run: session search budget exhausted,2026-09-30
+altman-052,altman,2017,"""Sam Altman"" AGI 2017",not run,not run: session search budget exhausted,2026-09-30
+altman-053,altman,2017,"""Sam Altman"" ""human-level"" intelligence 2017",not run,not run: session search budget exhausted,2026-09-30
+altman-054,altman,2017,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2017",not run,not run: session search budget exhausted,2026-09-30
+altman-055,altman,2018,"""Sam Altman"" AGI 2018",not run,not run: session search budget exhausted,2026-09-30
+altman-056,altman,2018,"""Sam Altman"" ""human-level"" intelligence 2018",not run,not run: session search budget exhausted,2026-09-30
+altman-057,altman,2018,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2018",not run,not run: session search budget exhausted,2026-09-30
+altman-058,altman,2019,"""Sam Altman"" AGI 2019",not run,not run: session search budget exhausted,2026-09-30
+altman-059,altman,2019,"""Sam Altman"" ""human-level"" intelligence 2019",not run,not run: session search budget exhausted,2026-09-30
+altman-060,altman,2019,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2019",not run,not run: session search budget exhausted,2026-09-30
+altman-061,altman,2020,"""Sam Altman"" AGI 2020",not run,not run: session search budget exhausted,2026-09-30
+altman-062,altman,2020,"""Sam Altman"" ""human-level"" intelligence 2020",not run,not run: session search budget exhausted,2026-09-30
+altman-063,altman,2020,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2020",not run,not run: session search budget exhausted,2026-09-30
+altman-064,altman,2021,"""Sam Altman"" AGI 2021",not run,not run: session search budget exhausted,2026-09-30
+altman-065,altman,2021,"""Sam Altman"" ""human-level"" intelligence 2021",not run,not run: session search budget exhausted,2026-09-30
+altman-066,altman,2021,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2021",not run,not run: session search budget exhausted,2026-09-30
+altman-067,altman,2022,"""Sam Altman"" AGI 2022",not run,not run: session search budget exhausted,2026-09-30
+altman-068,altman,2022,"""Sam Altman"" ""human-level"" intelligence 2022",not run,not run: session search budget exhausted,2026-09-30
+altman-069,altman,2022,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2022",not run,not run: session search budget exhausted,2026-09-30
+altman-070,altman,2023,"""Sam Altman"" AGI 2023",not run,not run: session search budget exhausted,2026-09-30
+altman-071,altman,2023,"""Sam Altman"" ""human-level"" intelligence 2023",not run,not run: session search budget exhausted,2026-09-30
+altman-072,altman,2023,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2023",not run,not run: session search budget exhausted,2026-09-30
+altman-073,altman,2024,"""Sam Altman"" AGI 2024",not run,not run: session search budget exhausted,2026-09-30
+altman-074,altman,2024,"""Sam Altman"" ""human-level"" intelligence 2024",not run,not run: session search budget exhausted,2026-09-30
+altman-075,altman,2024,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2024",not run,not run: session search budget exhausted,2026-09-30
+altman-076,altman,2025,"""Sam Altman"" AGI 2025",not run,not run: session search budget exhausted,2026-09-30
+altman-077,altman,2025,"""Sam Altman"" ""human-level"" intelligence 2025",not run,not run: session search budget exhausted,2026-09-30
+altman-078,altman,2025,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2025",not run,not run: session search budget exhausted,2026-09-30
+altman-079,altman,2026,"""Sam Altman"" AGI 2026",not run,not run: session search budget exhausted,2026-09-30
+altman-080,altman,2026,"""Sam Altman"" ""human-level"" intelligence 2026",not run,not run: session search budget exhausted,2026-09-30
+altman-081,altman,2026,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2026",not run,not run: session search budget exhausted,2026-09-30
