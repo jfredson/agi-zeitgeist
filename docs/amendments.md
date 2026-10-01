@@ -115,3 +115,62 @@ Made while carrying out the version 2 migration. John can reverse any of them.
   source; `skeptic`, `non_us_uk` and `philosopher` sit alongside it. Each tag is blank
   or "<justification> (<date>, <url>)". Tags judged arguable are left blank and listed
   in `docs/panel-verification-2026-10.md` for John to rule on.
+
+## 2026-10-01: John's rulings on the fifteen open decisions
+
+Decided by: john. The decisions were listed in `docs/status-2026-10-01.md`; the
+rulings below were sent by John on 2026-10-01. Where an agent had to interpret a
+ruling to apply it, the interpretation is marked as such.
+
+### A14. Rulings on panel eligibility, the codebook, and process
+
+**Panel**
+
+1. Was: unclear whether a piece the person wrote counts as "naming" them for the
+   three-national-pieces test. Now: it counts, but for at most one of the three.
+2. Was: the skeptic tag needed statements "pre-2017". Now: "2017 or earlier",
+   matching the earliest-statement test (C1).
+3. Was: unclear whether co-written statements count for the 2024-or-later test (C2).
+   Now: they count when the person is a named author.
+4. Daniel Dennett is dropped from the core panel; his statements go to the wide list.
+5. `frontier_lab` is time-varying and applies if it was true at the time of any
+   statement in the record, with the dates in the justification. `philosopher` means
+   the person's primary role, so Hinton and Hassabis are not tagged. Chalmers is
+   `non_us_uk`. Suleyman is not a skeptic.
+6. For the 2020s cohort, the three-national-pieces test is information only, not a
+   condition.
+7. Archive checks for prominence cases blocked by unreachable news sites will run
+   later through the Guardian and New York Times APIs (application programming
+   interfaces: their official data services) once John has keys. Not attempted now.
+8. The wide list keeps all 184 names; its target is "whatever the rule yields", not 60
+   to 100.
+
+**Codebook**
+
+9. Endorsement is about whether the capability will exist, ever or by the horizon the
+   speaker names. Denying that it exists now is `present_capability: disputed`;
+   endorsement is then coded from what the speaker says about the future, or
+   `unexpressed` if they say nothing about it.
+10. "May", "might" or "could" with a date is `uncertain`, with the timeline fields
+    filled and the hedge kept in `timeline_text`. `accepts` requires "will", "expect",
+    "I think", a stated probability of 50% or more, or a bet.
+    *Agent interpretation:* when a hedge and an acceptance word govern the same date
+    ("I think it may be 20 years or less"), the hedge on the date decides and the code
+    is `uncertain`.
+11. "Decades away" is `accepts` with a qualitative timeline.
+12. "Takeoff" and "self-improvement" take the lowest self-improvement level the words
+    support, marked `ambiguous`, with any speed the speaker gives noted in
+    `timeline_text`. *Agent interpretation:* when the words say nothing about who does
+    the improving, the lowest level is `si_assist`.
+
+**Process**
+
+13. John double-codes a blind sample himself (`data/double-coding/`).
+14. John merges the branch himself.
+15. Licence: Creative Commons Attribution 4.0 (CC BY 4.0) for the data, MIT for the
+    scripts.
+
+Why: these were the open questions found while building the panel table and while
+recoding the seed under version 2; recoders were applying 9 to 12 inconsistently.
+Rows recoded under rulings 9 to 12 carry `coder: claude-agent-v2.1` and a note naming
+the ruling.

@@ -1,6 +1,6 @@
 # Codebook, version 2
 
-How each coded unit is coded. Written 2026-09-30 from `docs/methodology-v2.md`
+How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14) from `docs/methodology-v2.md`
 section 2, which is the authority; this file turns its rules into decisions with
 examples. Changes go in `docs/amendments.md` first.
 
@@ -51,9 +51,19 @@ unit leads with and record the other in `definition_note`.
    - Repeated rounds, each better system making the next, with little human role →
      `si_sustained`.
 
-When the words are loose ("AI will improve itself"), code the lowest level the words
-clearly support and set `ambiguous: yes`. "Recursive self-improvement" and
-"intelligence explosion" mean `si_sustained` unless the speaker narrows them.
+**"Takeoff" and loose self-improvement words (ruling 12, A14).** Code the lowest level
+the words support and set `ambiguous: yes`; put any speed the speaker gives ("slow",
+"fast", "gentle") in `timeline_text`. When the words don't say who does the improving
+(a bare "takeoff", "the AI will improve itself"), the lowest level is `si_assist`.
+Code `si_sustained` only when the words themselves describe repeated rounds with little
+human role ("each generation builds the next", "an intelligence explosion with no one
+in the loop"). The labels "recursive self-improvement" and "intelligence explosion"
+alone don't do that.
+
+- *Seed example, `altman-2023-04`:* Altman told the New York Times it would be a "very
+  slow takeoff". The words don't say who improves the systems or how, so
+  `target_capability: si_assist`, `ambiguous: yes`, `timeline_text: "very slow
+  takeoff"`.
 
 - *Constructed:* "Our engineers now write most of their code with model help." →
   `si_assist`.
@@ -95,12 +105,16 @@ claim still stands and is about whether it can be done, it's `possibility`.
 
 ---
 
-## 3. endorsement: does the speaker endorse that the target capability will exist (or exists)?
+## 3. endorsement: does the speaker endorse that the target capability will exist?
+
+Endorsement is about the **future**: whether the capability will exist, ever or by the
+horizon the speaker names (ruling 9, A14). Whether it exists **now** is a different
+field, `present_capability`.
 
 | code | meaning |
 |---|---|
-| `accepts` | says it will happen, or has happened |
-| `rejects` | says it won't happen (ever, or in the frame given) or hasn't happened |
+| `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", a stated probability of 50% or more, a bet, or "decades away" (rulings 10 and 11) |
+| `rejects` | says it won't happen, ever or by the horizon given. "It isn't here yet" is **not** a rejection (ruling 9) |
 | `uncertain` | explicitly says they don't know, or gives even odds |
 | `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
 | `unexpressed` | discusses it without taking a position |
@@ -112,23 +126,49 @@ in the stored quote that carry the position, recorded in notes as
 anchor appears in the quote. If you can't point to such words, the code is
 `unexpressed`.
 
+Rulings of 2026-10-01 (A14), with examples from the seed data:
+
+- **Not here yet (ruling 9).** Denying that the capability exists now is
+  `present_capability: disputed`. Endorsement then comes from what the speaker says
+  about the future, or is `unexpressed` if they say nothing about it.
+  *Seed example, `lecun-2017-02`:* "We're very far from having machines that can learn
+  the most basic things about the world in the way humans and animals can do." This
+  denies present capability and says nothing about whether such machines will come, so
+  `present_capability: disputed`, `endorsement: unexpressed` (it was `rejects` before
+  the ruling).
+- **Hedged dates (ruling 10).** "May", "might" or "could" with a date is `uncertain`.
+  Fill the timeline fields anyway and keep the hedge in `timeline_text`. When a hedge
+  and an acceptance word govern the same date, the hedge decides (agent interpretation,
+  noted in A14).
+  *Seed example, `hinton-2023-06`:* "Now, I think we may be much closer, maybe only five
+  years away from that." → `endorsement: uncertain` (basis `"maybe only five years
+  away"`), `timeline_type: qualitative`, `timeline_year: 2028` (`computed: 2023 + 5`),
+  `timeline_text: "maybe only five years away"`.
+- **"Decades away" (ruling 11)** is `accepts` with `timeline_type: qualitative`; leave
+  `timeline_year` blank unless a number of decades is given.
+  *Seed example, `marcus-2022-04`:* "we are still likely decades away from
+  general-purpose, human-level AI" → `endorsement: accepts` (basis `"still likely
+  decades away"`), `present_capability: disputed`, `timeline_type: qualitative`,
+  `timeline_text: "still likely decades away"`.
+- **Self-improvement words (ruling 12):** see section 1.
+
 Hard cases:
 
 - **Giving a date usually carries endorsement, but check the words.** "AGI by 2029"
-  anchors `accepts` with basis `"by 2029"`. "People say 2029; who knows" is
+  with "will" or "I think" anchors `accepts`. "People say 2029; who knows" is
   `uncertain` (basis `"who knows"`) or `unexpressed`.
 - **Worrying about something is not endorsing it.** "If superintelligence arrives it
   could end us" is `conditional` at most, and `unexpressed` if no arrival claim is
   made. Writing about regulation does not establish that the author accepts
   feasibility.
 - **Rejecting a near date is not rejecting the capability.** "Not by 2027" →
-  `rejects` for that frame only; record the year with the `not_by` tag (section 5)
+  `rejects` for that horizon only; record the year with the `not_by` tag (section 5)
   and say in notes whether the speaker accepts it eventually. If the same unit also
-  says "but it will come eventually", that leans `accepts` with the hedge in
-  `timeline_text`; pick the one the unit leads with, and set `ambiguous: yes` if they
-  are balanced.
-- **Probabilities.** 0.5 or wide spreads stated as such → `uncertain`. A stated
-  majority probability by a date → `accepts` with `timeline_prob` filled.
+  says "but it will come eventually", code `accepts` with the hedge in
+  `timeline_text`; set `ambiguous: yes` if the two are balanced.
+- **Probabilities.** A stated probability of 50% or more by a date → `accepts` with
+  `timeline_prob` filled (ruling 10). Below 50%, or a wide spread stated as such →
+  `uncertain`.
 - **Jokes and sarcasm** → `unexpressed` and `ambiguous: yes`, unless the speaker
   explains the joke.
 
