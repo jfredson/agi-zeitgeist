@@ -179,3 +179,37 @@ the ruling.
   Singularity as 2045", "I'm still saying 2029") is kept as `accepts`, because coding a
   stated prediction as "no position" would misreport the source. The rows concerned
   are listed in `docs/status-2026-10-01.md`.
+
+## 2026-10-01: John's rulings on the eight calls raised after A14
+
+Decided by: john. The eight calls were listed in `docs/status-2026-10-01.md` (section
+"New questions for John").
+
+### A15. Firm dates, routes, minimum years, split statements and time-varying tags
+
+1. **Firm, unhedged first-person dates** ("I'm still saying 2029") are `accepts`. Added
+   to the list of what `accepts` requires.
+2. **A hedge and an acceptance word on the same date:** the hedge decides (`uncertain`).
+   Confirmed.
+3. **A bare "takeoff"** is `si_assist`. Confirmed.
+4. Was: rejecting a route ("language models are not a road to AGI") kept as `rejects`.
+   Now: a route claim says nothing about whether the capability will exist, so
+   endorsement is `unexpressed`, with the route claim kept in `claim_summary` and notes.
+   Applies to LeCun's four route rows.
+5. Was: "at least a decade" and "at least thirty or fifty years" kept as `rejects` with a
+   minimum year. Now: they assert arrival with a minimum, so under A14 ruling 11 they
+   are `accepts`, `timeline_type: range` with the low bound filled, the high bound left
+   open, and "at least" kept in `timeline_text`.
+6. **"Predict", "almost certainly" and "going to"** count as acceptance words. Confirmed.
+7. **New ruling 13: one row per capability.** When one statement makes distinct claims
+   about distinct target capabilities, it gets one row per capability, with ids suffixed
+   `a`, `b`, and the shared quote and source. Applied to `marcus-2026-04` (split into a
+   `si_assist` row and a `si_sustained` row) and `altman-2025-06` (a self-improvement row
+   and a superintelligence row).
+8. **`frontier_lab` is time-varying** (A14 ruling 5), so Kurzweil, Chollet, Kai-Fu Lee
+   and Karnofsky are tagged, with the dates in the justification. Kokotajlo is not tagged
+   `philosopher`, since the tag means primary role.
+
+Why: these were the cases where applying A14 needed a reading John hadn't given.
+Validator changes that follow: statement ids may carry a one-letter suffix, and a
+`range` may leave the high bound open when the row carries the `lower_bound` tag.

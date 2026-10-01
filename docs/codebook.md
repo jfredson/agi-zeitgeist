@@ -113,7 +113,7 @@ field, `present_capability`.
 
 | code | meaning |
 |---|---|
-| `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", a stated probability of 50% or more, a bet, or "decades away" (rulings 10 and 11) |
+| `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", "predict", "going to", "almost certainly", a stated probability of 50% or more, a bet, "decades away", "at least N years", or a firm, unhedged first-person date ("I'm still saying 2029") (A14 rulings 10 and 11; A15 rulings 1, 5 and 6) |
 | `rejects` | says it won't happen, ever or by the horizon given. "It isn't here yet" is **not** a rejection (ruling 9) |
 | `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10) |
 | `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
@@ -166,11 +166,46 @@ Hard cases:
   and say in notes whether the speaker accepts it eventually. If the same unit also
   says "but it will come eventually", code `accepts` with the hedge in
   `timeline_text`; set `ambiguous: yes` if the two are balanced.
+- **Rejecting a route is not rejecting the capability (A15 ruling 4).** "Language models
+  are not a road to AGI" says nothing about whether AGI will exist. Code `unexpressed`,
+  and keep the route claim in `claim_summary` and notes.
+  *Seed example, `lecun-2024-02`:* "They're not a road towards what people call 'AGI.'"
+  → `endorsement: unexpressed`.
+- **Minimum years are acceptance (A15 ruling 5).** "At least a decade" or "at least
+  thirty or fifty years" asserts arrival with a minimum: `accepts`, `timeline_type:
+  range` with `timeline_year` set to the minimum, `timeline_year_high` left blank, the
+  `lower_bound` tag, and "at least" kept in `timeline_text`.
+  *Seed example, `marcus-2016-01`:* "aren't going to be for at least thirty or fifty
+  years" (2016) → `accepts`, `range`, `timeline_year: 2046`, high bound open.
 - **Probabilities.** A stated probability of 50% or more by a date → `accepts` with
   `timeline_prob` filled (ruling 10). Below 50%, or a wide spread stated as such →
   `uncertain`.
 - **Jokes and sarcasm** → `unexpressed` and `ambiguous: yes`, unless the speaker
   explains the joke.
+
+### One row per capability (A15 ruling 13)
+
+When one statement makes distinct claims about distinct target capabilities, it gets
+one row per capability. The rows share the quote, source and date; their ids carry a
+one-letter suffix (`marcus-2026-04a`, `marcus-2026-04b`); each row is coded for its own
+capability.
+
+*Seed example 1, `marcus-2026-04`:* "it's great for example at (some) code
+optimizations, but not even (as the blog makes clear) actual RSI, which remains
+speculative." Two claims:
+- `marcus-2026-04a`: AI helping build AI exists → `target_capability: si_assist`,
+  `present_capability: demonstrated`, `endorsement: accepts` (basis "it's great for
+  example at (some) code optimizations").
+- `marcus-2026-04b`: recursive self-improvement does not exist yet → `si_sustained`,
+  `present_capability: disputed`, `endorsement: unexpressed` (nothing said about the
+  future).
+
+*Seed example 2, `altman-2025-06`:* "We are past the event horizon; the takeoff has
+started. Humanity is close to building digital superintelligence…"
+- `altman-2025-06a`: "the takeoff has started" → the lowest self-improvement level the
+  words support (`si_assist`), `present_capability: claimed`, `ambiguous: yes`.
+- `altman-2025-06b`: superintelligence → `frame_primary: timeline`, `endorsement:
+  accepts`, `timeline_type: qualitative`, `timeline_text: "close"`.
 
 ## 4. present_capability: does it exist now, in the speaker's view?
 
@@ -200,7 +235,8 @@ As in version 1, with three tags (in notes) for claims that aren't arrival dates
   `timeline_type: qualitative`. These are not arrival dates and charts must not plot
   them as such.
 - **`lower_bound`** for "at least N years" or "no sooner than YYYY". Fill
-  `timeline_year` with the bound and add the tag.
+  `timeline_year` with the bound and add the tag. With `timeline_type: range`, the high
+  bound may be left blank (open-ended minimum, A15 ruling 5).
 - Proximity (distant, medium, near, present) is worked out when charts are drawn,
   never stored.
 

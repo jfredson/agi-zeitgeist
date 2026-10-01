@@ -59,13 +59,11 @@ as searched. Nothing thin is rounded up to a plain pass.
 4. **Dennett** is dropped from the core; he is added to the wide list.
 5. **Tags.** `frontier_lab` applies if true at the time of any statement in the record,
    with dates in the justification. `philosopher` means primary role: Hinton and
-   Hassabis are not tagged. Chalmers is `non_us_uk`. Suleyman is not a skeptic. Still
-   arguable and **not counted**, because the rulings don't settle whether the role
-   qualifies: frontier_lab for Kurzweil (Google engineering director from 2012), Chollet
-   (Google senior engineer 2015 to 2024), Kai-Fu Lee (01.AI from 2023), Karnofsky (OpenAI
-   board 2017 to 2021, Anthropic staff from 2025). *Agent reading of "primary role":*
-   Kokotajlo (trained in philosophy, works as an AI forecaster) is not tagged
-   `philosopher`.
+   Hassabis are not tagged. Chalmers is `non_us_uk`. Suleyman is not a skeptic. Under
+   A15 ruling 8, Kurzweil (Google engineering director from 2012), Chollet (Google senior
+   engineer 2015 to 2024), Kai-Fu Lee (01.AI from 2023) and Karnofsky (OpenAI board 2017
+   to 2021, Anthropic staff from 2025) are tagged `frontier_lab`. Kokotajlo (trained in
+   philosophy, works as an AI forecaster) is not tagged `philosopher` (A15 ruling 8).
 6. **Cohort prominence** is information only.
 
 Still open: archive checks through the Guardian and New York Times APIs (application
@@ -79,7 +77,7 @@ opened; "2nd" = secondhand.
 
 | Candidate | C1: statement 2017 or earlier | C2: statement 2024 or later | C3: three national pieces 2017 or earlier | Quota tags | Verdict |
 |---|---|---|---|---|---|
-| Ray Kurzweil (seed) | 2002, Long Bet 1 ([longbets.org](https://longbets.org/1/)); in window 2005 ([singularity.com](https://singularity.com/qanda.html)) | 2026-01 (`kurzweil-2026-01`, 2nd); 2025-03-12 primary ([TWiT](https://twit.tv/posts/transcripts/intelligent-machines-810-transcript)) | Time 2011-02-10 ([link](https://time.com/archive/6595274/2045-the-year-man-becomes-immortal/)); New Yorker 2015-11-23; NYT 2014-07-08 (search) | none (frontier_lab arguable) | PASS |
+| Ray Kurzweil (seed) | 2002, Long Bet 1 ([longbets.org](https://longbets.org/1/)); in window 2005 ([singularity.com](https://singularity.com/qanda.html)) | 2026-01 (`kurzweil-2026-01`, 2nd); 2025-03-12 primary ([TWiT](https://twit.tv/posts/transcripts/intelligent-machines-810-transcript)) | Time 2011-02-10 ([link](https://time.com/archive/6595274/2045-the-year-man-becomes-immortal/)); New Yorker 2015-11-23; NYT 2014-07-08 (search) | frontier_lab (Google engineering director from 2012-12; A15 ruling 8) | PASS |
 | Nick Bostrom | 1997 and 2008-03-12 ([nickbostrom.com](https://nickbostrom.com/superintelligence)) | 2026-02-13 working paper ([copy](https://www.greaterwrong.com/posts/ZeNRKhGFAhGB8WJ7s/nick-bostrom-optimal-timing-for-superintelligence)); no dated forecast | New Yorker 2015-11-23; Washington Post 2015-12-27 (search); MIT Technology Review 2015-12-15 ([link](https://www.technologyreview.com/2015/12/15/247302/what-will-it-take-to-build-a-virtuous-ai/)) | philosopher | PASS |
 | Eliezer Yudkowsky | 2008-12-01 ([LessWrong](https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement)) | 2024-02-18, 2nd ([Futurism](https://futurism.com/the-byte/ai-destroy-humankind-yudkowsky)) | New Yorker 2011-11-28 (Thiel profile); Slate 2014-07-17; Scientific American blog column 2016-03-01. Each weak on one point | none | UNCLEAR (C3) |
 | Robin Hanson | 2012-08-27, "at least a century" ([Overcoming Bias](https://www.overcomingbias.com/p/ai-progress-estimatehtml)) | 2025-04-15, about economic impact ([link](https://www.overcomingbias.com/p/ai-is-gpt-and-gpts-go-slow)) | Guardian 2016-06-15 (search); Reason 2016-06-03; Scientific American blog column 2016-06-21 | skeptic | PASS (thin): C2 is about economic impact; C3 relies on edge outlets |
@@ -95,7 +93,7 @@ opened; "2nd" = secondhand.
 | Rodney Brooks | 2008-06-01 ([IEEE Spectrum](https://spectrum.ieee.org/i-rodney-brooks-am-a-robot)); 2014-11-11 "centuries" ([Robohub](https://robohub.org/artificial-intelligence-is-a-tool-not-a-threat/)) | 2026-01-01 ([scorecard](https://rodneybrooks.com/predictions-scorecard-2026-january-01/)) | MIT Technology Review 2015-10-06 ([link](https://www.technologyreview.com/2015/10/06/165915/can-we-shape-the-robot-revolution/)); ABC Australia 2016-04-18; MIT Technology Review 2017-10-06 (his essay) | skeptic | PASS (one piece is his own essay, allowed by A14 ruling 1) |
 | Elon Musk | 2014-10, paraphrase (2nd); 2017-10-05 post, seen quoted | 2026-01-04 post, seen quoted ([copy](https://garymarcus.substack.com/p/sorry-sam-and-elon-we-have-not-reached)) | NBC News 2014-08-04 ([link](https://www.nbcnews.com/news/amp/wbna55795017)); Fortune 2014-10-27; NPR 2017-07-17 (search) | frontier_lab | PASS (thin): C1 and C2 are secondhand copies |
 | Ilya Sutskever | 2015-12-11, co-signed company post ([copy](https://tm.durusau.net/?p=66175)) | 2025-11-25 ([Dwarkesh](https://www.dwarkesh.com/p/ilya-sutskever-2)) | MIT Technology Review 2017-03-29 only; Wired 2016-04 and NYT 2015-12 seen, naming not confirmed | frontier_lab | FAIL (C3 as searched); checked for the cohort below |
-| François Chollet | 2017-07-18, possibility only ([Keras blog](https://blog.keras.io/the-future-of-deep-learning.html)) | 2026-03-27, 2nd ([OfficeChai](https://officechai.com/ai/agi-likely-by-early-2030s-when-arc-agi-6-or-7-will-be-released-arc-prizes-francois-chollet/)) | none found | none (frontier_lab arguable) | FAIL (C3); checked for the cohort below |
+| François Chollet | 2017-07-18, possibility only ([Keras blog](https://blog.keras.io/the-future-of-deep-learning.html)) | 2026-03-27, 2nd ([OfficeChai](https://officechai.com/ai/agi-likely-by-early-2030s-when-arc-agi-6-or-7-will-be-released-arc-prizes-francois-chollet/)) | none found | frontier_lab (Google senior engineer 2015 to 2024; A15 ruling 8) | FAIL (C3); checked for the cohort below |
 | Melanie Mitchell | not found (earliest dated item 2018) | 2025-09-15 ([newsletter](https://aiguide.substack.com/p/magical-thinking-on-ai)) | none found | philosopher likely, unsourced | FAIL (C1, C3) |
 | Oren Etzioni | 2014-12-16, reported speech in NYT; 2016-09-20 own piece ([MIT TR](https://www.technologyreview.com/2016/09/20/70131/no-the-experts-dont-think-superintelligent-ai-is-a-threat-to-humanity/)) | not found (GeekWire 2026 lead would not load) | MIT Technology Review 2015-12-15, 2016-09-01, 2016-11-02 (one outlet) | skeptic | FAIL (C2) |
 | Ernest Davis | 2014-10-23 preprint, published 2015 ([paper](https://cs.nyu.edu/~ed1/papers/Bostrom.pdf)) | 2025-07-22, co-wr. with Marcus ([post](https://garymarcus.substack.com/p/deepmind-and-openai-achieve-imo-gold)) | none about AI futures | skeptic | FAIL (C3). C2 now met on co-written items (A14 ruling 3) |
@@ -104,7 +102,7 @@ opened; "2nd" = secondhand.
 | Daniel Dennett | 1985 / 1998 essay; 2015 "urban legend" ([Edge](https://www.edge.org/response-detail/26035)) | 2024-04 last interview, published 2024-04-25 after his death ([Spectator](https://spectator.com/?p=485505)) | Time 1996-03-25 ([link](https://time.com/archive/6728762/can-machines-think/)); Time 2013-06-17; NPR blog column 2017-06-16 (search) | skeptic, philosopher | DROPPED (A14 ruling 4); moved to the wide list |
 | Erik Brynjolfsson | 2017-11-30, "a long way from" AGI ([MIT TR](https://www.technologyreview.com/2017/11/30/147363/progress-in-ai-isnt-as-impressive-as-you-might-think/)) | 2025-10, group-authored paper ([agidefinition.ai](https://www.agidefinition.ai/)) | MIT Technology Review 2013-06-12; Slate 2014-05-04; MIT Technology Review 2017-11-30. Two are about jobs | none | PASS (thin): C1 by one month; C3 mostly about jobs (C2 co-written, allowed by A14 ruling 3) |
 | Jürgen Schmidhuber | 2006, convergence "around 2040" ([own site](https://people.idsia.ch/~juergen/history.html)) | 2024-10, TED talk; quote is TED's description ([TED](https://www.ted.com/talks/juergen_schmidhuber_why_2042_will_be_a_big_year_for_ai)) | NYT 2016 (search, date unverified); Polish Press Agency 2017-11-20 ([link](https://scienceinpoland.pl/en/node/27249)); Guardian 2017 (search) | non_us_uk | PASS (thin): C2 is TED's paraphrase; two C3 items unopened |
-| Kai-Fu Lee | 2017-06-24 NYT op-ed, "hundreds of years, if ever" (read via repost) | 2025-10-02, "about five years" ([Kazinform](https://qazinform.com/amp/ai-will-surpass-90-of-people-in-five-years-2c7ca2/)) | CNBC 2017-04-27 (search); MIT Technology Review 2017-06-27 ([link](https://www.technologyreview.com/2017/06/27/150705/chinas-tech-moguls-warn-of-ais-troubling-trajectory/)); CNBC 2017-11-13 (search) | non_us_uk, skeptic (2017-06-24, A14 ruling 2); frontier_lab arguable, not counted | PASS (thin): two C3 items unopened |
+| Kai-Fu Lee | 2017-06-24 NYT op-ed, "hundreds of years, if ever" (read via repost) | 2025-10-02, "about five years" ([Kazinform](https://qazinform.com/amp/ai-will-surpass-90-of-people-in-five-years-2c7ca2/)) | CNBC 2017-04-27 (search); MIT Technology Review 2017-06-27 ([link](https://www.technologyreview.com/2017/06/27/150705/chinas-tech-moguls-warn-of-ais-troubling-trajectory/)); CNBC 2017-11-13 (search) | non_us_uk, skeptic (2017-06-24, A14 ruling 2); frontier_lab (01.AI founder from 2023-03; A15 ruling 8) | PASS (thin): two C3 items unopened |
 | Toby Walsh | 2016-02-20, "30 or 40 years away" ([arXiv](https://ar5iv.labs.arxiv.org/html/1602.06462)) | 2025-07-04 ([China Daily HK](https://www.chinadailyhk.com/article/615214)) | ABC Australia 2015-10-20 ([link](https://www.abc.net.au/news/2015-10-20/australian-ai-expert-calls-for-ban-on-killer-robots-at-un/6868834)) and 2017-08-21; CNN 2017-08-21 (search) | non_us_uk (not skeptic: 30 to 40 years is within decades) | PASS |
 | Murray Shanahan | 2014-07, "better than fifty-fifty" within 30 years (2nd, [KitGuru](https://www.kitguru.net/gaming/anton-shilov/ai-will-match-human-intelligence-in-the-next-30-years-robot-expert/)) | not found | BBC 2014-12-02, seen only as a Wikipedia citation | frontier_lab | FAIL (C2, C3). UK outlets blocked; worth an archive check |
 | Ben Goertzel | 2006 talk, "ten year time-frame or less" ([copy](https://www.thekurzweillibrary.com/we-could-get-to-the-singularity-in-ten-years)) | 2024-03-01, "three to eight years" ([Futurism](https://futurism.com/artificial-superintelligence-agi-2027-goertzel.md)) | none found | non_us_uk partly supported | FAIL (C3) |
@@ -114,7 +112,7 @@ opened; "2nd" = secondhand.
 | Luciano Floridi | 2016-05-09, "utterly implausible" ([Aeon](https://aeon.co/essays/true-ai-is-both-logically-possible-and-utterly-implausible)) | 2024-06-14, "no such thing coming" ([SciELO](https://scielo.br/j/fun/a/8xsLKmCytRX9w7p9q8jG6GF/?lang=en)) | none found (an FT piece by him, 2017, unconfirmed) | skeptic, philosopher | FAIL (C3) |
 | Mustafa Suleyman (from cohort list) | 2016-12-05, "20 years out or decades way" (2nd, [TechCrunch](https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off)) | 2025-11-14 ([transcript](https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/)) | Fortune 2016-10-10 ([link](https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/)); NPR 2016-09-28 (search); MIT Technology Review 2017-10-04 | frontier_lab (DeepMind 2010 to 2019, Inflection 2022, Microsoft AI from 2024); not skeptic (A14 ruling 5) | PASS. Fails the cohort rule (2016 timeline), so he belongs here |
 | Tyler Cowen (from cohort list) | 2005-09-21, skeptical of the Singularity ([Marginal Revolution](https://marginalrevolution.com/marginalrevolution/2005/09/the_singularity.html)) | 2025-04-16, "I think it is AGI, seriously" ([link](https://marginalrevolution.com/marginalrevolution/2025/04/o3-and-agi-is-april-16th-agi-day.html)) | Economist, WSJ and Daily Beast reviews of *Average Is Over*, 2013 (listed on Wikipedia, not opened; borderline topic) | skeptic near miss | UNCLEAR (C3 unopened and borderline) |
-| Holden Karnofsky (from cohort list) | 2016-05-16, "nontrivial likelihood of transformative AI within the next 20 years" ([mirror](https://forum.nunosempere.com/posts/zmBnKnpECErWsCiYq/some-background-on-open-philanthropy-s-views-regarding)) | 2025-08-28, about takeoff speed ([podcast](https://podcast.clearerthinking.org/episode/277/holden-karnofsky-the-most-important-century)) | none found | frontier_lab arguable | FAIL (C3). Also fails the cohort rule |
+| Holden Karnofsky (from cohort list) | 2016-05-16, "nontrivial likelihood of transformative AI within the next 20 years" ([mirror](https://forum.nunosempere.com/posts/zmBnKnpECErWsCiYq/some-background-on-open-philanthropy-s-views-regarding)) | 2025-08-28, about takeoff speed ([podcast](https://podcast.clearerthinking.org/episode/277/holden-karnofsky-the-most-important-century)) | none found | frontier_lab (OpenAI board 2017 to 2021, Anthropic staff from 2025-01; A15 ruling 8) | FAIL (C3). Also fails the cohort rule |
 
 ### Quota totals among core candidates who pass (as of 2026-09-30, superseded below)
 
@@ -152,7 +150,7 @@ and would mostly add skeptics.
 | Jensen Huang | earliest 2023-11-29 (2nd, [CNBC copy](https://nbcnewyork.com/news/business/money-report/nvidia-ceo-jensen-huang-says-ai-will-be-fairly-competitive-with-humans-in-5-years/4904935)) | 2026-03, "I think we've achieved AGI" (2nd, [TechSpot](https://www.techspot.com/news/111797-weve-achieved-agi-nvidia-ceo-but-own-examples.html)) | 3 (MIT TR 2017-05-12; Fortune 2016-09-28 and 2016-01-13) | none (frontier_lab near miss: chips, not models) | PASS (thin): both statements secondhand |
 | Jan Leike | earliest 2019-12-16, possibility ([FLI](https://futureoflife.org/?p=39550)) | 2024-05-17, no date given (2nd, [Decrypt](https://decrypt.co/231294/openai-exec-quit-safety-took-backseat-shiny-products)) | none | frontier_lab | PASS (thin): few timeline statements; a full trace may find little |
 | Ethan Mollick | earliest 2023-01-21 ([newsletter](https://www.oneusefulthing.org/p/becoming-strange-in-the-long-singularity)) | 2025-04-20, "Jagged AGI" ([newsletter](https://www.oneusefulthing.org/p/on-jagged-agi-o3-gemini-25-and-everything)) | none | none | PASS (thin): rarely gives a date |
-| François Chollet (failed core C3) | 2017-07-18 is about possibility; first timeline found 2025 | 2026-03-27 (2nd) | none | none (frontier_lab arguable) | PASS |
+| François Chollet (failed core C3) | 2017-07-18 is about possibility; first timeline found 2025 | 2026-03-27 (2nd) | none | frontier_lab (Google 2015 to 2024; A15 ruling 8) | PASS |
 | Ilya Sutskever (failed core C3) | 2015-12-11 co-signed post says "it's hard to predict when human-level AI might come within reach": a statement about timing, though not a date | 2025-11-25, "5 to 20" years | 1 confirmed | frontier_lab | UNCLEAR: does a co-signed "hard to predict when" count as a timeline statement? |
 | Mustafa Suleyman | 2016-12-05 timeline ("20 years out or decades way") | 2025-11-14 | 3 | frontier_lab | FAIL (pre-2018 timeline). Passes core instead |
 | Holden Karnofsky | 2016-05-16 timeline ("within the next 20 years") | 2025-08-28 | none | frontier_lab arguable | FAIL (pre-2018 timeline); also fails core C3 |
@@ -216,7 +214,7 @@ Musk, Chalmers, Brynjolfsson, Schmidhuber, Kai-Fu Lee, Tegmark.
 | skeptic | 6 | **7** | Hanson, Hinton, LeCun, Marcus, Ng (medium confidence: "far future"), Brooks, Kai-Fu Lee |
 | non_us_uk | 3 | **5** | Hinton, Chalmers, Schmidhuber, Kai-Fu Lee, Walsh |
 | philosopher | 2 | **3** | Bostrom, Marcus, Chalmers |
-| frontier_lab | 3 | **7** | Hinton, LeCun, Hassabis, Altman, Ng, Musk, Suleyman (arguable, not counted: Kurzweil, Kai-Fu Lee) |
+| frontier_lab | 3 | **9** | Hinton, LeCun, Hassabis, Altman, Ng, Musk, Suleyman, Kurzweil, Kai-Fu Lee (the last two tagged under A15 ruling 8) |
 
 All four minimums are met by the 19, the skeptic minimum with one to spare (two if Ng's
 medium-confidence tag holds). The core is six short of "about 25".
@@ -250,8 +248,8 @@ Pearl (C3), Karnofsky (C3; also fails the cohort rule), and Dennett, dropped by 
 
 Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick, Chollet. Unclear:
 Sutskever (whether a co-signed "hard to predict when" counts as a timeline statement;
-he is also on the core unclear list). Quota tags among the 8: frontier_lab 2 (Amodei,
-Leike); no others. The target is ten to twelve.
+he is also on the core unclear list). Quota tags among the 8: frontier_lab 3 (Amodei,
+Leike, Chollet); no others. The target is ten to twelve.
 
 ### Wide list
 

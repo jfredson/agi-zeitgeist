@@ -194,9 +194,10 @@ def check_statements(rows, speakers):
             err(f, i, f"invalid date_precision {r['date_precision']!r}")
         elif not valid_date(r["date"], r["date_precision"]):
             err(f, i, f"date {r['date']!r} is not a valid {r['date_precision']} date")
-        m = re.match(r"^(.+)-(\d{4})-(\d{2})$", sid or "")
+        # A one-letter suffix marks one row per capability of a split statement (A15).
+        m = re.match(r"^(.+)-(\d{4})-(\d{2})([a-z]?)$", sid or "")
         if not m:
-            err(f, i, f"statement_id {sid!r} is not <speaker>-<YYYY>-<NN>")
+            err(f, i, f"statement_id {sid!r} is not <speaker>-<YYYY>-<NN>[a-z]")
         else:
             if m.group(1) != r["speaker_id"]:
                 err(f, i, f"statement_id {sid!r} does not start with speaker_id")
@@ -293,8 +294,11 @@ def check_timeline(f, i, r):
     if tt == "prob_by_year" and not r["timeline_prob"]:
         err(f, i, "timeline_type prob_by_year needs timeline_prob")
     if tt == "range":
-        if not (low and high):
-            err(f, i, "timeline_type range needs timeline_year and timeline_year_high")
+        # An open-ended minimum ("at least a decade") leaves the high bound blank (A15).
+        open_ended = "lower_bound" in note_tags(r["notes"])
+        if not low or not (high or open_ended):
+            err(f, i, "timeline_type range needs timeline_year and timeline_year_high "
+                      "(or the lower_bound tag for an open-ended minimum)")
         elif as_int(low) and as_int(high) and as_int(high) < as_int(low):
             err(f, i, "timeline_year_high is earlier than timeline_year")
     elif high:
