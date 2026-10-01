@@ -12,7 +12,9 @@ improving themselves*? The method is built so the data can say no.
 
 **Status (2026-09-30):** seed phase. Five people traced (Ray Kurzweil, Geoffrey
 Hinton, Yann LeCun, Gary Marcus, Sam Altman), plus surveys, prediction markets,
-polls and dated events. The full panel is not frozen yet.
+polls and dated events. Coded under methodology version 2, adopted the same day after
+two outside reviews. The full panel is not frozen yet, and the public streams (surveys,
+published argument, online communities) have not started.
 
 ## What's here
 
@@ -23,8 +25,11 @@ polls and dated events. The full panel is not frozen yet.
 | `data/aggregates.csv` | survey results, prediction market readings and poll results |
 | `data/events.csv` | dated events (open letters, government actions, reports) for chart labels |
 | `data/search_log.csv` | every search run to build the record, and what it found |
-| `docs/methodology.md` | the method: what counts, how people are sampled, how searches run |
-| `docs/codebook.md` | how each statement is coded, with worked examples |
+| `docs/methodology-v2.md` | the method (version 2, 2026-09-30): four streams, coding scheme, panel rule, preregistered tests |
+| `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
+| `docs/codebook.md` | how each statement is coded under version 2, with decision rules and examples |
+| `docs/reviews/` | the two outside reviews behind version 2 |
+| `docs/panel-verification-2026-10.md` | evidence for each panel candidate, for John's freeze decision |
 | `docs/amendments.md` | dated changes to the panel or the codes |
 | `docs/2026-09-30-kickoff.md` | the original plan |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files |
@@ -44,13 +49,15 @@ Licence: not chosen yet. Until one is added, ask before reusing.
 
 ## How to add a row
 
-1. Read `docs/methodology.md` (especially the sampling rule) and `docs/codebook.md`.
+1. Read `docs/methodology-v2.md` (especially section 3) and `docs/codebook.md`.
 2. Log your search first: add a row to `data/search_log.csv` with the exact query,
    where you searched, and the date.
 3. Add the statement to `data/statements.csv`:
    - `statement_id` is `<speaker_id>-<year>-<NN>`, numbered in date order.
    - The quote is verbatim, 60 words or fewer, from the linked source.
-   - Code `question_frame`, `stance` and the timeline fields as the codebook says.
+   - Code the version 2 fields (target capability, frames, endorsement, affect, agency
+     and the rest) and the timeline fields as the codebook says. Endorsement needs a
+     `basis: "..."` note quoting the words that carry it; without them it is `unexpressed`.
    - If you only found someone else's report of the statement, tag `notes` with
      `secondhand` and set `coding_confidence` to `low`.
    - Put your name in `coder` (add it to `CODERS` in `scripts/validate.py`).

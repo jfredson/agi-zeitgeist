@@ -1,213 +1,231 @@
-# Codebook
+# Codebook, version 2
 
-How each statement in `data/statements.csv` is coded. Written from the kickoff plan
-(`docs/2026-09-30-kickoff.md`, 2026-09-30). Any change to a code or a rule goes in
-`docs/amendments.md` with a date and a reason.
+How each coded unit is coded. Written 2026-09-30 from `docs/methodology-v2.md`
+section 2, which is the authority; this file turns its rules into decisions with
+examples. Changes go in `docs/amendments.md` first.
 
-**About the worked examples.** The examples below are made up to show how a code is
-applied. They are not quotes from real people and must never be cited as quotes. Real
-examples drawn from the seed data can replace them once the seed has passed its check.
+Version 1 (the single `stance` code and the six-value `question_frame`) is retired.
+Rows coded under version 1 were recoded from their sources, not mapped (amendment A2).
 
----
-
-## 1. question_frame: which question is the speaker answering?
-
-One value per statement. When a statement touches several questions, code the one it
-**leads with**: the one the speaker is mainly answering, usually the one the
-interviewer asked or the one the headline claim is about. Write the others in `notes`
-as `also: timeline, post_agi`.
-
-### `possibility`: can AGI be built at all, in principle?
-
-The statement is about whether machines can ever match general human intelligence,
-not about when.
-
-- *Example A (constructed):* "There is nothing magic about the brain. It is a physical
-  system, and in principle we can build machines that do everything it does."
-  → `possibility`, stance `cautious` or `expectant` depending on what follows. No date,
-  so `timeline_type: none`.
-- *Example B (constructed):* "Computers manipulate symbols; they will never understand
-  anything, however fast they get."
-  → `possibility`, stance `dismissive`, `timeline_type: qualitative`,
-  `timeline_text: "never"`.
-
-Test: if you deleted every date from the statement, would the claim still be the
-whole point? If yes, and the claim is about whether it can be done at all, it is
-`possibility`.
-
-### `timeline`: when will it arrive?
-
-The statement's main content is a date, a range, a probability by a year, or a
-qualitative "soon" or "decades away".
-
-- *Example A (constructed):* "I'd put it at about a 50% chance by 2040."
-  → `timeline`, `timeline_type: prob_by_year`, `timeline_year: 2040`,
-  `timeline_prob: 0.5`.
-- *Example B (constructed, said in 2015):* "We're nowhere near it. Fifty years at the
-  very least, maybe never."
-  → `timeline`, `timeline_type: qualitative`, `timeline_year: 2065` (computed: 2015 + 50,
-  and say so in `notes`), `timeline_text: "Fifty years at the very least, maybe never"`,
-  stance `skeptical`.
-
-A statement that both gives a date and argues that the thing is possible is coded
-`timeline` if the date is the headline, `possibility` if the argument is.
-
-### `capability_now`: is the current system already AGI, or close to it?
-
-The statement is about a system that exists at the time of speaking.
-
-- *Example A (constructed):* "Honestly, this model is a weak form of AGI already. It
-  can do most office tasks I throw at it."
-  → `capability_now`, stance `expectant`. `definition_note: "most office tasks"`.
-- *Example B (constructed):* "These chatbots are autocomplete. They don't understand
-  the world and they're not on the road to general intelligence."
-  → `capability_now`, stance `dismissive` (or `skeptical` if the speaker allows that
-  a different approach could get there).
-
-Note: a statement that current systems are *not* close is still `capability_now`.
-The frame is the question, not the answer.
-
-### `self_improvement`: can the current system improve itself, or is it about to?
-
-The statement is about AI doing AI research, building its successor, or a fast
-feedback loop of self-improvement (often called an "intelligence explosion").
-
-- *Example A (constructed):* "Our models are already writing a large share of the code
-  for the next models. The loop is starting."
-  → `self_improvement`, stance `expectant` or `alarmed` depending on tone.
-- *Example B (constructed):* "The idea that a system will rewrite itself into a god
-  overnight is science fiction. Progress needs data and hardware, not just cleverness."
-  → `self_improvement`, stance `skeptical`.
-
-Only code `self_improvement` when the speaker is talking about current or imminent
-systems, or explicitly about the mechanism of self-improvement. A general warning
-that "superintelligence could be dangerous" without that mechanism is `post_agi`.
-
-### `post_agi`: what happens after, assuming it arrives?
-
-Risk, the economy, control, meaning. These statements are collected only when they
-also give a timeline or touch one of the collected questions (see the sampling rule
-in `methodology.md`), so this frame will be under-counted on purpose.
-
-- *Example A (constructed):* "When we get to superhuman AI, probably within 20 years,
-  the hard problem will be keeping it under control."
-  → `post_agi` if the control problem is the point, with `also: timeline` in notes and
-  the timeline fields filled (`range` or `point_year`, 20 years from the statement
-  date). Stance `alarmed`.
-- *Example B (constructed):* "AGI will make goods and services nearly free within a
-  generation of its arrival."
-  → `post_agi`, stance `expectant`, `timeline_type: none` unless an arrival date is given.
-
-### `definition`: what would even count as AGI?
-
-The statement is mainly arguing about the term itself.
-
-- *Example A (constructed):* "There's no such thing as general intelligence. Humans
-  are specialised too. The right goal is human-level AI in specific respects."
-  → `definition`, stance depends on the rest (often `skeptical`).
-  `definition_note: "rejects 'general'; prefers human-level"`.
-- *Example B (constructed):* "By AGI I mean a system that can do any job a remote
-  worker can do, at the same quality."
-  → `definition`, `definition_note: "any remote-worker job"`. If a date follows and
-  is the headline, code `timeline` instead and keep the definition in `definition_note`.
+**About the examples.** Examples marked *constructed* are invented to show a rule and
+must never be cited as quotes.
 
 ---
 
-## 2. stance: how is the speaker positioned toward the prospect?
+## 0. One unit, and how to read it
 
-Independent of the timeline. Two people who both say "2030" can hold opposite stances.
-Code the stance shown **in this statement**, not the speaker's reputation.
+A unit is one statement by one speaker on one occasion. Code **only what the quoted
+words and their immediate context say**. Don't use what the speaker is known for,
+what they said elsewhere, or what the article around the quote implies.
 
-### `dismissive`: AGI talk is hype or confusion
-
-- *Constructed:* "AGI is a marketing term. Nobody serious works on it."
-- *Constructed:* "Asking when AGI arrives is like asking when the perpetual motion
-  machine arrives."
-
-### `skeptical`: far off, or much harder than claimed
-
-The speaker takes the goal seriously but thinks it is distant or that current methods
-will not get there. Differs from `dismissive` in that the question is treated as real.
-
-- *Constructed:* "We'll get there eventually, but not with scaling up today's models.
-  Several breakthroughs are missing."
-- *Constructed:* "Not in my lifetime, and probably not in my children's."
-
-### `cautious`: plausible but uncertain, resists firm dates
-
-- *Constructed:* "It could be ten years or fifty. Anyone giving you a date is guessing."
-- *Constructed:* "I wouldn't rule out something like it this decade, but I wouldn't
-  bet on it either."
-
-### `expectant`: it is coming, and that is good
-
-- *Constructed:* "By the end of this decade we'll have systems smarter than us, and
-  they'll cure diseases we've struggled with for centuries."
-- *Constructed:* "We're on track. I'm excited about what it means for people."
-
-### `alarmed`: it is coming, and that is worrying
-
-- *Constructed:* "I think it's coming much sooner than I thought, and I don't think we
-  know how to control it."
-- *Constructed:* "There's a real chance this goes very badly, and soon."
-
-### `resigned`: it is coming whatever anyone wants
-
-The speaker treats arrival as inevitable and outside anyone's control, without a clear
-welcome or alarm, or with both cancelling out.
-
-- *Constructed:* "Whether we like it or not, someone is going to build it. The
-  incentives are too strong to stop."
-- *Constructed:* "You can't put this back in the box. It's going to happen; the only
-  question is who does it."
-
-**Ties between stances.** When a statement mixes welcome and worry (common for lab
-leaders), code the one given more weight and set `coding_confidence: medium`. Do not
-invent a blend.
+Read the source, not just the stored quote. The stored quote (60 words or fewer) is
+evidence for the codes. If a code depends on a sentence outside the stored quote,
+either change the quote to include it or code `unexpressed` / `ambiguous`.
 
 ---
 
-## 3. timeline fields
+## 1. target_capability: what capability is the unit about?
+
+| code | the capability | typical words |
+|---|---|---|
+| `conversation` | passes as human in conversation | Turing test, can't tell it from a person |
+| `narrow_task` | one specific task or domain | chess, driving, radiology, coding contests |
+| `broad_competence` | most economically valuable or intellectual work; "AGI", "human-level AI" when used this way | AGI, human-level, do any job a person can |
+| `superintelligence` | exceeds humans broadly | superintelligence, smarter than us at everything, the Singularity (when it means AI beyond humans) |
+| `si_assist` | AI helps **humans** build AI | AI speeds up our researchers, copilots for ML engineers |
+| `si_research` | AI does **parts** of AI research on its own | AI runs experiments, writes the training code, automated AI researcher for some tasks |
+| `si_modify` | AI changes **its own** code or weights | rewrites itself, modifies its own weights |
+| `si_sustained` | successive improvements with little human involvement | intelligence explosion, recursive self-improvement, "takeoff", each generation builds the next |
+| `none` | no capability is claimed | a statement about the word "AGI", about hype, about policy with no capability in view |
+
+**Choosing among them.** Pick the capability the speaker's claim is about. If they
+name two (for example "human-level by 2029, Singularity by 2045"), code the one the
+unit leads with and record the other in `definition_note`.
+
+**The four self-improvement levels.** Ask two questions in order:
+
+1. *Who does the improving?* Humans with AI help → `si_assist`. The AI itself → go on.
+2. *How far does it go?*
+   - A part of the research pipeline, with humans still steering → `si_research`.
+   - The system edits itself (its own code or weights) → `si_modify`.
+   - Repeated rounds, each better system making the next, with little human role →
+     `si_sustained`.
+
+When the words are loose ("AI will improve itself"), code the lowest level the words
+clearly support and set `ambiguous: yes`. "Recursive self-improvement" and
+"intelligence explosion" mean `si_sustained` unless the speaker narrows them.
+
+- *Constructed:* "Our engineers now write most of their code with model help." →
+  `si_assist`.
+- *Constructed:* "The model ran the ablation studies overnight without anyone." →
+  `si_research`.
+- *Constructed:* "Once a system can rewrite its own weights, all bets are off." →
+  `si_modify`, `present_capability: hypothetical`.
+- *Constructed:* "Each generation will design the next, faster than we can follow." →
+  `si_sustained`.
+
+---
+
+## 2. frame_primary and frames_present: which questions does the unit raise?
+
+| code | the question |
+|---|---|
+| `possibility` | Can it be built at all, in principle? |
+| `timeline` | When will it arrive? |
+| `capability_now` | Is a current system already it, or close? |
+| `self_improvement` | Can current or imminent systems improve themselves? |
+| `definition` | What would count? |
+| `consequences` | What happens if or when it arrives (risk, economy, society)? |
+| `governance` | What should be done about it (regulation, pauses, safety work, coordination)? |
+| `other_concern` | A different AI question leads: jobs, reliability, privacy, bias, misinformation, military, consciousness, ownership |
+
+- `frame_primary` is the question the unit **leads with**: what the speaker is mainly
+  answering, usually what they were asked or what the headline claim is about.
+- `frames_present` lists **every** question raised, separated by `;`, and always
+  includes `frame_primary`. A question counts as present when the unit raises it,
+  whatever answer is given ("it's not close" raises `capability_now`).
+- `concern_tag` is required when `other_concern` is present (one of `jobs`,
+  `reliability`, `privacy`, `bias`, `misinformation`, `military`, `consciousness`,
+  `ownership`, `other`), and blank otherwise.
+- A unit framed as self-improvement should normally have an `si_*` target; if it
+  doesn't, say why in notes.
+
+Test for `possibility` against `timeline`: delete every date from the unit. If the
+claim still stands and is about whether it can be done, it's `possibility`.
+
+---
+
+## 3. endorsement: does the speaker endorse that the target capability will exist (or exists)?
+
+| code | meaning |
+|---|---|
+| `accepts` | says it will happen, or has happened |
+| `rejects` | says it won't happen (ever, or in the frame given) or hasn't happened |
+| `uncertain` | explicitly says they don't know, or gives even odds |
+| `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
+| `unexpressed` | discusses it without taking a position |
+
+**Silence is never acceptance.** Endorsement is coded only from words the speaker
+actually said. Every code other than `unexpressed` needs an anchor: the exact words
+in the stored quote that carry the position, recorded in notes as
+`basis: "<words copied from the quote>"`. `scripts/validate.py` checks that the
+anchor appears in the quote. If you can't point to such words, the code is
+`unexpressed`.
+
+Hard cases:
+
+- **Giving a date usually carries endorsement, but check the words.** "AGI by 2029"
+  anchors `accepts` with basis `"by 2029"`. "People say 2029; who knows" is
+  `uncertain` (basis `"who knows"`) or `unexpressed`.
+- **Worrying about something is not endorsing it.** "If superintelligence arrives it
+  could end us" is `conditional` at most, and `unexpressed` if no arrival claim is
+  made. Writing about regulation does not establish that the author accepts
+  feasibility.
+- **Rejecting a near date is not rejecting the capability.** "Not by 2027" →
+  `rejects` for that frame only; record the year with the `not_by` tag (section 5)
+  and say in notes whether the speaker accepts it eventually. If the same unit also
+  says "but it will come eventually", that leans `accepts` with the hedge in
+  `timeline_text`; pick the one the unit leads with, and set `ambiguous: yes` if they
+  are balanced.
+- **Probabilities.** 0.5 or wide spreads stated as such → `uncertain`. A stated
+  majority probability by a date → `accepts` with `timeline_prob` filled.
+- **Jokes and sarcasm** → `unexpressed` and `ambiguous: yes`, unless the speaker
+  explains the joke.
+
+## 4. present_capability: does it exist now, in the speaker's view?
+
+| code | meaning |
+|---|---|
+| `demonstrated` | the speaker says it already exists and points to it |
+| `claimed` | the speaker says it exists, without pointing to evidence |
+| `disputed` | the speaker says current systems do **not** have it |
+| `hypothetical` | discussed as a future or possible capability |
+| `na` | no capability in view (target `none`) |
+
+`na` exactly when `target_capability` is `none`.
+
+## 5. Timeline fields
+
+As in version 1, with three tags (in notes) for claims that aren't arrival dates:
 
 | field | rule |
 |---|---|
-| `timeline_type` | `point_year` (one year), `range` (low and high year), `prob_by_year` (a probability by a year), `qualitative` (words only, e.g. "soon", "never", "decades"), `none` (no timing claim at all) |
-| `timeline_year` | an absolute year. When the speaker says "in 10 years", add it to the year of the statement and say so in `notes` (`computed: 2023 + 10`). For `qualitative`, fill it only when the words imply a number ("a decade" yes, "soon" no). |
-| `timeline_year_high` | only for `range`. |
-| `timeline_prob` | a number from 0 to 1. "Even odds" is 0.5. Leave blank if none given. |
-| `timeline_text` | the speaker's own words for the timing, short, verbatim. Always fill it when a hedge is present, even if the year fields are filled. |
+| `timeline_type` | `point_year`, `range`, `prob_by_year`, `qualitative`, `none` |
+| `timeline_year` | an absolute year; for "in 10 years" add it to the statement year and record `computed: 2023 + 10` in notes |
+| `timeline_year_high` | only for `range` |
+| `timeline_prob` | 0 to 1, only when the source gives a probability. "Soon" is never converted to a number |
+| `timeline_text` | the speaker's own words for the timing, always filled when a hedge is present |
 
-**Which arrival?** Record the timeline for the thing the speaker calls AGI, human-level
-AI, or equivalent. If they give a date for something else (passing a test,
-superintelligence, the Singularity), record it, and say exactly what in
-`definition_note`, e.g. "Turing test pass" or "Singularity, not AGI".
+- **`not_by: YYYY`** for "it won't happen by YYYY". Leave `timeline_year` blank and code
+  `timeline_type: qualitative`. These are not arrival dates and charts must not plot
+  them as such.
+- **`lower_bound`** for "at least N years" or "no sooner than YYYY". Fill
+  `timeline_year` with the bound and add the tag.
+- Proximity (distant, medium, near, present) is worked out when charts are drawn,
+  never stored.
 
----
+## 6. Consequences, affect and agency
 
-## 4. Other fields and conventions
+| field | codes | rule |
+|---|---|---|
+| `consequence_type` | `existential`, `economic`, `social`, `mixed`, `unspecified` | the kind of consequence the unit expects. `unspecified` when none is named |
+| `consequence_valence` | `beneficial`, `harmful`, `mixed`, `unspecified` | whether those consequences are good or bad in the speaker's words |
+| `affect` | `enthusiasm`, `fear`, `resignation`, `neutral`, `mixed`, `unexpressed` | emotional posture, **only from explicit cues** ("exciting", "scary", "I'm worried", "nothing we can do"). A plain forecast is `unexpressed`, not `neutral`; use `neutral` only when the speaker signals detachment ("I'm just reporting the trend") |
+| `agency` | `can_influence`, `cannot_influence`, `unexpressed` | does the speaker say the outcome can be shaped? "We must regulate" → `can_influence`; "it's coming whatever we do" → `cannot_influence` |
 
-- **`date`** is when the statement was made, if known; otherwise when it was published.
-  Its form must match `date_precision`: `YYYY-MM-DD` for `day`, `YYYY-MM` for `month`,
-  `YYYY` for `year`.
-- **`quote`** is verbatim, 60 words or fewer. Use "..." for cuts inside the quote.
-  Never stitch together sentences from different places.
-- **`definition_note`** records what the speaker seems to mean by AGI in this
-  statement, if they say. Leave blank rather than guess.
-- **`coding_confidence`** is `high` when the frame and stance are obvious and the
-  source is primary; `medium` when one of them needed judgment; `low` when both did,
-  or the source is secondhand.
-- **Primary and secondhand.** A source is *primary* when it carries the speaker's own
-  words in something they produced or took part in: their book, paper, blog, post, a
-  recorded talk, a transcript, or an interview with direct quotes. It is *secondhand*
-  when it is someone else's report or paraphrase ("Hinton reportedly believes"), or a
-  quote we could not trace back to where it was said. Secondhand rows must carry the
-  tag `secondhand` in `notes` and `coding_confidence: low`, and get replaced when the
-  primary source turns up. `scripts/validate.py` enforces this.
-- **`notes` tags.** Notes start with any of these tags, separated by `; `, followed by
-  free text:
-  - `secondhand`: see above.
-  - `incidental`: found while searching for a different speaker (sampling rule 4).
-  - `sampled`: kept under the every-third rule for a busy year (sampling rule 3).
-  - `also: <frame>, <frame>`: the other questions the statement touches.
-  - `computed: <working>`: how an absolute year was worked out from a relative one.
-- **`coder`** is `john` or `claude-agent`.
+These are separate on purpose. Someone who expects AGI in five years can be thrilled,
+frightened, resigned or organizing.
+
+- *Constructed:* "AGI by 2030, and frankly it terrifies me, but good policy can still
+  steer it." → `accepts` (basis `"AGI by 2030"`), `affect: fear`,
+  `agency: can_influence`.
+- *Constructed:* "It's coming whether we like it or not." → `accepts` (basis
+  `"It's coming"`), `affect: resignation`, `agency: cannot_influence`.
+
+## 7. elicitation: how did the statement come about?
+
+| code | meaning |
+|---|---|
+| `unprompted` | the speaker chose to say it: their own blog, post, book, essay, talk |
+| `interview` | answering a question in an interview, podcast or hearing |
+| `survey` | answering a survey item |
+| `quoted` | the unit is a claim quoted inside someone else's article, without the full exchange available |
+
+Secondhand rows are usually `quoted`.
+
+## 8. Other fields
+
+- **`definition_note`**: what the speaker means by AGI in this unit, if they say.
+- **`coding_confidence`**: `high` when the codes are clear and the source is primary;
+  `medium` when one needed judgment; `low` when several did, or the source is
+  secondhand.
+- **`ambiguous`**: `yes` when the words support two codes equally. Kept as a code,
+  never resolved by guessing. Say which field in notes.
+- **`date`** must match `date_precision`: `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
+- **`quote`**: verbatim, 60 words or fewer, "..." only within one passage.
+- **Primary and secondhand.** Primary = the speaker's own words in something they
+  produced or took part in (their writing, a transcript, a recorded talk, an interview
+  with direct quotes by the outlet that did it). Secondhand = someone else's report or
+  paraphrase, or a quote not traced to where it was said. Secondhand rows carry the
+  `secondhand` tag and `coding_confidence: low`.
+- **`coder`**: `john`, `claude-agent` (version 1, retired), or `claude-agent-v2`.
+
+## 9. Notes tags
+
+Notes start with any of these tags, separated by `; `, then free text:
+
+| tag | meaning |
+|---|---|
+| `secondhand` | see section 8 |
+| `incidental` | found while searching for a different speaker |
+| `sampled` | kept under the every-third rule for a busy year |
+| `computed: <working>` | how an absolute year was worked out |
+| `basis: "<words>"` | the words carrying the endorsement (required unless `unexpressed`) |
+| `not_by: YYYY` | "won't happen by YYYY" (section 5) |
+| `lower_bound` | the timeline year is a minimum (section 5) |
+
+## 10. Mapping to Fast and Horvitz 2017
+
+Methodology-v2 section 5 asks for the categories of Fast and Horvitz's 2017 study of
+New York Times AI coverage to be reconciled with these codes before the media stream
+starts. That reconciliation belongs to the media stream and has not been done yet.

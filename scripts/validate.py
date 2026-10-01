@@ -16,11 +16,15 @@ DATA = Path(__file__).resolve().parent.parent / "data"
 HEADERS = {
     "speakers.csv": ["speaker_id", "name", "speaker_type", "role_summary",
                      "frontier_lab_tie", "panel_tier", "inclusion_note"],
+    # Version 2 fields (docs/methodology-v2.md section 2).
     "statements.csv": ["statement_id", "speaker_id", "date", "date_precision",
                        "source_url", "source_type", "quote", "claim_summary",
-                       "question_frame", "timeline_type", "timeline_year",
-                       "timeline_year_high", "timeline_prob", "timeline_text",
-                       "definition_note", "stance", "coding_confidence", "coder",
+                       "target_capability", "frame_primary", "frames_present",
+                       "concern_tag", "endorsement", "present_capability",
+                       "timeline_type", "timeline_year", "timeline_year_high",
+                       "timeline_prob", "timeline_text", "consequence_type",
+                       "consequence_valence", "affect", "agency", "elicitation",
+                       "definition_note", "coding_confidence", "ambiguous", "coder",
                        "retrieved", "notes"],
     "aggregates.csv": ["aggregate_id", "speaker_id", "date", "measure", "value",
                        "unit", "n", "source_url", "notes"],
@@ -34,12 +38,29 @@ SPEAKER_TYPES = {"individual", "survey", "prediction_market", "institution", "po
 PANEL_TIERS = {"core", "cohort_2020s"}
 SOURCE_TYPES = {"interview", "talk", "paper", "blog", "podcast", "social_post",
                 "book", "survey_response", "testimony"}
+TARGETS = {"conversation", "narrow_task", "broad_competence", "superintelligence",
+           "si_assist", "si_research", "si_modify", "si_sustained", "none"}
 FRAMES = {"possibility", "timeline", "capability_now", "self_improvement",
-          "post_agi", "definition"}
+          "definition", "consequences", "governance", "other_concern"}
+CONCERN_TAGS = {"jobs", "reliability", "privacy", "bias", "misinformation", "military",
+                "consciousness", "ownership", "other"}
+ENDORSEMENT = {"accepts", "rejects", "uncertain", "conditional", "unexpressed"}
+PRESENT = {"demonstrated", "claimed", "disputed", "hypothetical", "na"}
+CONSEQUENCE_TYPES = {"existential", "economic", "social", "mixed", "unspecified"}
+VALENCE = {"beneficial", "harmful", "mixed", "unspecified"}
+AFFECT = {"enthusiasm", "fear", "resignation", "neutral", "mixed", "unexpressed"}
+AGENCY = {"can_influence", "cannot_influence", "unexpressed"}
+ELICITATION = {"unprompted", "interview", "survey", "quoted"}
 TIMELINE_TYPES = {"point_year", "range", "prob_by_year", "qualitative", "none"}
-STANCES = {"dismissive", "skeptical", "cautious", "expectant", "alarmed", "resigned"}
 CONFIDENCE = {"high", "medium", "low"}
-CODERS = {"john", "claude-agent"}
+CODERS = {"john", "claude-agent", "claude-agent-v2"}
+# Single-valued coded fields and their allowed values.
+CODED_FIELDS = {
+    "target_capability": TARGETS, "frame_primary": FRAMES, "endorsement": ENDORSEMENT,
+    "present_capability": PRESENT, "consequence_type": CONSEQUENCE_TYPES,
+    "consequence_valence": VALENCE, "affect": AFFECT, "agency": AGENCY,
+    "elicitation": ELICITATION, "coding_confidence": CONFIDENCE,
+}
 UNITS = {"year", "probability", "percent_of_respondents", "index"}
 EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report"}
 PRECISION_PATTERNS = {
@@ -47,16 +68,21 @@ PRECISION_PATTERNS = {
     "month": re.compile(r"^\d{4}-\d{2}$"),
     "year": re.compile(r"^\d{4}$"),
 }
-NOTE_TAGS = {"secondhand", "incidental", "sampled"}
+NOTE_TAGS = {"secondhand", "incidental", "sampled", "lower_bound"}
 # Books, papers and recorded talks may carry a full citation instead of a link.
 CITATION_TYPES = {"book", "paper", "talk"}
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
 
 errors = []
+warnings = []
 
 
 def err(file, row_num, msg):
     errors.append(f"{file} row {row_num}: {msg}")
+
+
+def warn(file, row_num, msg):
+    warnings.append(f"{file} row {row_num}: {msg}")
 
 
 def read(name):
@@ -180,12 +206,7 @@ def check_statements(rows, speakers):
             err(f, i, f"quote is {words} words; limit is 60")
         if not r["claim_summary"]:
             err(f, i, "claim_summary is blank")
-        if r["question_frame"] not in FRAMES:
-            err(f, i, f"invalid question_frame {r['question_frame']!r}")
-        if r["stance"] not in STANCES:
-            err(f, i, f"invalid stance {r['stance']!r}")
-        if r["coding_confidence"] not in CONFIDENCE:
-            err(f, i, f"invalid coding_confidence {r['coding_confidence']!r}")
+        check_codes(f, i, r)
         if r["coder"] not in CODERS:
             err(f, i, f"invalid coder {r['coder']!r}")
         if not valid_date(r["retrieved"], "day"):
@@ -193,6 +214,51 @@ def check_statements(rows, speakers):
         check_timeline(f, i, r)
         if "secondhand" in note_tags(r["notes"]) and r["coding_confidence"] != "low":
             err(f, i, "secondhand rows must have coding_confidence low")
+
+
+def normalise(text):
+    """Fold curly quotes, dashes and whitespace so a basis phrase matches its quote."""
+    table = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"',
+                           "–": "-", "—": "-", "…": "..."})
+    return " ".join((text or "").translate(table).lower().split())
+
+
+def check_codes(f, i, r):
+    """Version 2 coded fields (codebook sections 1 to 8)."""
+    for field, allowed in CODED_FIELDS.items():
+        if r[field] not in allowed:
+            err(f, i, f"invalid {field} {r[field]!r}")
+    if r["ambiguous"] not in {"yes", ""}:
+        err(f, i, f"ambiguous must be 'yes' or blank, got {r['ambiguous']!r}")
+
+    present = [p.strip() for p in (r["frames_present"] or "").split(";") if p.strip()]
+    for p in present:
+        if p not in FRAMES:
+            err(f, i, f"invalid frame {p!r} in frames_present")
+    if r["frame_primary"] and r["frame_primary"] not in present:
+        err(f, i, "frames_present must include frame_primary")
+    if "other_concern" in present:
+        if r["concern_tag"] not in CONCERN_TAGS:
+            err(f, i, f"other_concern needs a concern_tag, got {r['concern_tag']!r}")
+    elif r["concern_tag"]:
+        err(f, i, "concern_tag is only for units where other_concern is present")
+
+    if (r["target_capability"] == "none") != (r["present_capability"] == "na"):
+        err(f, i, "present_capability is 'na' exactly when target_capability is 'none'")
+
+    # Endorsement is never inferred from silence: anything but 'unexpressed' must be
+    # anchored to words the speaker actually said, recorded as basis: "..." in notes.
+    if r["endorsement"] and r["endorsement"] != "unexpressed":
+        if r["target_capability"] == "none":
+            err(f, i, "no capability is claimed (target none), so endorsement must be unexpressed")
+        m = re.search(r'basis:\s*"([^"]+)"', r["notes"] or "")
+        if not m:
+            err(f, i, f"endorsement {r['endorsement']!r} needs basis: \"<words from the quote>\" in notes")
+        elif normalise(m.group(1)) not in normalise(r["quote"]):
+            err(f, i, f"basis {m.group(1)!r} does not appear in the quote")
+
+    if r["frame_primary"] == "self_improvement" and not r["target_capability"].startswith("si_"):
+        warn(f, i, "self_improvement frame without an si_* target; notes should say why")
 
 
 def check_timeline(f, i, r):
@@ -226,6 +292,12 @@ def check_timeline(f, i, r):
         err(f, i, "timeline_year_high is only for timeline_type range")
     if tt == "qualitative" and not r["timeline_text"]:
         err(f, i, "timeline_type qualitative needs timeline_text")
+    # "Won't happen by YYYY" is not an arrival date (amendments, agent entry 2026-09-30).
+    if re.search(r"not_by:\s*\d{4}", r["notes"] or ""):
+        if tt != "qualitative" or low:
+            err(f, i, "not_by rows must be timeline_type qualitative with timeline_year blank")
+    if "lower_bound" in note_tags(r["notes"]) and not low:
+        err(f, i, "lower_bound rows need the bound in timeline_year")
 
 
 def check_aggregates(rows, speakers):
@@ -299,6 +371,8 @@ def main():
     for sp in sorted({r["speaker_id"] for r in tables["statements.csv"]} - searched):
         errors.append(f"statements.csv: speaker {sp!r} has statements but no searches in search_log.csv")
 
+    for w in warnings:
+        print("  warning: " + w)
     if errors:
         print(f"FAILED: {len(errors)} problem(s)")
         for e in errors:

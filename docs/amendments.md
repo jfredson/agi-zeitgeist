@@ -101,3 +101,10 @@ Made while carrying out the version 2 migration. John can reverse any of them.
   `not_by: YYYY` notes tag, so charts can't plot them as forecasts.
 - **Lower bounds.** "At least 30 years" or "no sooner than 2070" fill `timeline_year`
   with the bound and carry a `lower_bound` notes tag.
+- **"National outlet" for the prominence test (A5).** A national newspaper, broadcaster,
+  news agency or national magazine, including science and technology magazines such as
+  Wired, MIT Technology Review and New Scientist; not blogs, newsletters, trade press,
+  podcasts or the person's own outlets. Pieces count when their subject is where AI is
+  going and they name the person.
+- **Quiet years.** Logged in `data/search_log.csv` as one row per speaker and year with
+  what_found "quiet year: no qualifying statement found" (search_id `<speaker>-q<year>`, e.g. `hinton-q2017`).
