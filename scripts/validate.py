@@ -272,7 +272,8 @@ def check_search_log(rows, speakers):
     f = "search_log.csv"
     unique(f, rows, "search_id")
     for i, r in enumerate(rows, start=2):
-        if r["speaker_id"] not in speakers:
+        # Searches for dated events (events.csv) have no speaker; they use "events".
+        if r["speaker_id"] not in speakers and r["speaker_id"] != "events":
             err(f, i, f"speaker_id {r['speaker_id']!r} not in speakers.csv")
         if r["year"] and not (as_int(r["year"]) and 1990 <= as_int(r["year"]) <= 2100):
             err(f, i, f"year {r['year']!r} is not a year")

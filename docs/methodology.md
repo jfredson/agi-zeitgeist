@@ -87,7 +87,7 @@ don't fit the aggregate units.
 | field | meaning |
 |---|---|
 | search_id | `<speaker_id>-<NNN>`, numbered in the order the searches were run |
-| speaker_id | who or what the search was for |
+| speaker_id | who or what the search was for; `events` for searches behind `events.csv` |
 | year | the year being searched, or blank for searches across the whole span |
 | query | the exact query text |
 | where_searched | the tool or site, e.g. `web search`, `garymarcus.substack.com archive`, `archive.org` |
