@@ -70,6 +70,15 @@ Fast and Horvitz 2017 (New York Times coverage of AI, 1986 to 2016; its categori
 
 Double-coding of a stratified subset with dates and identities hidden where practical; disagreements and per-category agreement published; `ambiguous` and `unexpressed` kept as codes; any automated coding validated separately by era and source. Published with the data: sampling frames, queries, code, random seeds, source versions, retrieval dates, document identifiers, exclusions, missingness audits, and snapshots with checksums where the source permits.
 
+### A13. Expert panel expanded into three tiers with written quotas (John, 2026-09-30, after discussing panel size)
+
+Was: a core panel of 15 to 20 plus an unsized 2020s cohort.
+Now: three tiers.
+- Core panel, about 25, each meeting the dated rule in A5, frozen by John from the verification table. Minimum quotas, written so the panel cannot lean one way by construction: at least six sustained skeptics or critics (people whose pre-2017 statements reject or doubt AGI within decades); at least three based outside the United States and United Kingdom at the time of their pre-2017 statements; at least two philosophers or cognitive scientists; at least three with frontier-lab ties, so incentives are visible rather than screened out. Fully traced.
+- 2020s cohort, ten to twelve people prominent on AGI timelines only since 2020, fully traced, reported as its own series so its arrival is visible in the data.
+- Wide list, 60 to 100 names, built by an enumerable rule rather than by hand, with a light capture: one qualifying statement per person per era (2005 to 2015, 2016 to 2022, 2023 onward) found by a fixed query. Used only for composition and balance checks, never for within-person claims. Seed sources for the list: the public MIRI/AI Impacts dataset of dated AI timeline predictions (Armstrong and Sotala 2012 and its successors), the TIME100 AI lists 2023 to 2025, and every person quoted on AGI timelines in the stream M media sample.
+Why: with 15 to 20 people the expert frame share is driven by whoever spoke most, and the dated prominence rule rewards the people who were loud early, mostly singularitarians and lab founders, so the "whether" era would be answered only by people who had already decided. Collection is cheap (a full trace took the seed session about thirteen minutes with a helper); coding and double-coding are the cost, which is why the wide list is a light capture. Timing: the panel freezes before full collection and the verification table is being built now, so the expansion costs an afternoon this week rather than an amendment and re-sampling later.
+
 ### Declined, with reasons
 
 - Factiva and LexisNexis for non-US media (Gemini): paywalled, so not re-pullable by a reader. Guardian and Media Cloud's non-US collections instead; non-English corpora deferred until there is capacity for language-specific validation.
@@ -81,7 +90,6 @@ Double-coding of a stratified subset with dates and identities hidden where prac
 ## 2026-09-30: implementation decisions for version 2 (decided by: agent)
 
 Made while carrying out the version 2 migration. John can reverse any of them.
-
 - **`question_frame` retired.** `frame_primary` replaces it (A4 widened the same code),
   so `statements.csv` drops `question_frame` along with `stance` rather than keeping two
   competing frame codes. Version 1 codes remain in git history (commits up to `1508fde`).

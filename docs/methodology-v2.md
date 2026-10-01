@@ -46,7 +46,15 @@ Coding rules: code what was said, not what the speaker is known for. Require exp
 
 ## 3. Stream E: named experts
 
-Eligibility (position-independent, datable): at least one public statement on AGI possibility or timing dated 2017 or earlier; at least one dated 2024 or later; named in at least three distinct national-outlet pieces about AI futures dated 2017 or earlier. Candidates and the evidence for each criterion go in `docs/panel-verification-2026-10.md`. The panel is frozen by John before full collection; later changes need an amendment entry. A separate 2020s cohort holds people prominent only since 2020, reported apart.
+Three tiers (amendment A13).
+
+Core panel, about 25 people, fully traced. Eligibility (position-independent, datable): at least one public statement on AGI possibility or timing dated 2017 or earlier; at least one dated 2024 or later; named in at least three distinct national-outlet pieces about AI futures dated 2017 or earlier. Minimum quotas: six sustained skeptics or critics (pre-2017 statements reject or doubt AGI within decades); three based outside the United States and United Kingdom at the time of their pre-2017 statements; two philosophers or cognitive scientists; three with frontier-lab ties (recorded, not screened out). Candidates and the evidence for each criterion and quota go in `docs/panel-verification-2026-10.md`. The panel is frozen by John before full collection; later changes need an amendment entry.
+
+2020s cohort, ten to twelve people prominent on AGI timelines only since 2020 with no pre-2018 record, fully traced, reported as its own series.
+
+Wide list, 60 to 100 names, built by an enumerable rule: every person with a dated prediction in the public MIRI/AI Impacts timeline-predictions dataset, every person on the TIME100 AI lists 2023 to 2025, and every person quoted on AGI timelines in the stream M sample, de-duplicated against the other tiers. Light capture only: one qualifying statement per person per era (2005 to 2015, 2016 to 2022, 2023 onward) found by a fixed query logged in the search log, with `tier: wide` on the row. Used for composition and balance checks across eras, never for within-person claims.
+
+`speakers.csv` gains a `tier` field (`core`, `cohort_2020s`, `wide`) and quota tags (`skeptic`, `non_us_uk`, `philosopher`, `frontier_lab`), each with a one-line justification and a dated source.
 
 Collection: year-by-year search per person from first statement to present, queries logged in `data/search_log.csv`. Years with no statement found are logged as rows, so quiet years are visible. Where a person made more than ten qualifying statements in a year, all timeline-bearing statements are kept and the rest sampled at a fixed interval, logged. Within-person change (the same person's codes over time) is reported separately from composition change (who is speaking in a given year).
 
