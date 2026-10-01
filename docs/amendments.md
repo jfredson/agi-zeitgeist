@@ -1,12 +1,79 @@
 # Amendments
 
-Dated changes to the panel, the codes or the method, each with a reason. The method in
-`docs/methodology.md` is frozen as of 2026-09-30; anything that changes it is logged
-here first.
+Dated changes to the method, the panel or the codes, with the reason. Nothing in the method changes without an entry here. Reviews referred to below are saved verbatim in `docs/reviews/`.
 
-Format: `## YYYY-MM-DD: short title`, then what changed, why, who decided
-(`john`, `agent` or `mixed`), and which rows were recoded.
+## 2026-09-30: reconciliation of the two outside reviews (Gemini 3.1 Pro, GPT-6 Astra Medium)
 
----
+Both reviews were read against the kickoff plan (`docs/2026-09-30-kickoff.md`). The result is `docs/methodology-v2.md`, which supersedes the method sections of the kickoff plan. The kickoff plan stays as the record of where the project started. John ruled on 2026-09-30 that no third review would be sought and that these two would be worked with.
 
-_No amendments yet (file opened 2026-09-30)._
+### A1. The headline claim is replaced by three separately registered outcomes (GPT)
+
+Was: one claim, "the central public question moved from whether, to when, to now".
+Now: three outcomes measured and reported separately. What surveyed populations believed (surveys). What published outlets argued (news and opinion in fixed outlets). What specialist communities discussed (forums and the named expert panel). The whether, when, now story is tested in each, with a written failure condition, and the essay reports where the three agree and where they diverge.
+Why: "central public question" had no observable definition, no specified public, and no way for a different question (jobs, deepfakes, reliability) to win. GPT's point that the old structure would read changes in attention, vocabulary and membership as changes in opinion was correct. This also absorbs Gemini's "insider projection" objection, which becomes the expected divergence between the specialist and population outcomes rather than a flaw.
+
+### A2. The single stance code is split into endorsement, affect and agency (GPT; Gemini's disruption profile folded in)
+
+Was: `stance` with six values from dismissive to resigned.
+Now: `endorsement` (accepts, rejects, uncertain, conditional, unexpressed), `affect` (enthusiasm, fear, resignation, neutral, mixed, unexpressed), `agency` (can influence the outcome, cannot, unexpressed), `consequence_type` (existential, economic, social, mixed, unspecified).
+Why: the old scale mixed a judgment (dismissive) with an emotion plus a view about control (resigned). Someone who expects AGI in five years can be thrilled, frightened, resigned or organizing. Gemini's "disruption profile" (existential, economic, social) is the `consequence_type` field. Old seed codes are recoded, not mapped, because a mapping would launder the old scale's ambiguity into the new fields.
+
+### A3. A target-capability field is added, with self-improvement split four ways (GPT)
+
+Was: statements were about "AGI" as one thing.
+Now: `target_capability` says which capability the statement is about: passing as human in conversation, a specific task, broad competence at most economically valuable work, exceeding humans broadly, or one of four self-improvement levels (AI helps humans build AI; AI does parts of AI research on its own; AI changes its own code or weights; AI sustains successive improvements with little human involvement).
+Why: Pew found in 2010 that 81% of US adults expected a computer to converse indistinguishably from a human by 2050. That is early acceptance of one capability, not of AGI, and the old scheme could not keep the two apart. The four self-improvement levels get different answers from the same person.
+
+### A4. `question_frame` is kept but widened so other questions can win (GPT item 3; Gemini's capability-versus-impact test)
+
+Was: six frames, all about AGI itself.
+Now: the six remain, plus `consequences`, `governance` and `other_concern` with a sub-tag (jobs, reliability, privacy, bias, misinformation, military, consciousness, ownership, other). Each unit records the primary frame and every frame present. Question presence is coded separately from the answer given.
+Why: if jobs or deepfakes was the leading question in mainstream outlets after 2023, the data must be able to say so. Gemini's capability-versus-impact comparison is now a standing report, not a special test.
+
+### A5. Expert panel eligibility is made position-independent and datable (GPT)
+
+Was: statements before 2017 and after 2024, plus "prominent enough to have shaped public discussion".
+Now: statements before 2017 and after 2024, plus named in at least three distinct national-outlet pieces about AI futures dated 2017 or earlier (the prominence test is dated and checkable, not retrospective). Quiet years are recorded as rows in the search log. Within-person change is reported separately from change in who is speaking.
+Why: choosing today's prominent thinkers selects for the arguments that survived. The seed session's panel-verification step is amended to collect the three-piece evidence.
+
+### A6. Forum sampling: random samples for prevalence, top posts kept as a separate series (both reviews)
+
+Was: the 20 top-scoring r/singularity posts per quarter.
+Now: for each community and quarter, a seeded random sample of posts and, independently, of comments, with inclusion probabilities recorded, drawn without regard to score. The top-20 series is kept and labeled "what the community rewarded". Account concentration (share of sampled units from the ten most prolific accounts) is reported, and a stable-account subset is analyzed to separate changed speech from membership turnover. Communities are reported separately and never pooled as if they were independent samples of the public.
+Why: scores measure virality, and Arctic Shift changed how it captures score fields in November 2023, right on the proposed period boundary.
+
+### A7. Vocabulary: piloted across the whole period before freezing, with era terms (both reviews)
+
+Was: a list of current terms frozen before the pull.
+Now: a retrieval vocabulary built from a pilot sample spanning 2005 to 2026, including older terms (thinking machines, strong AI, human-level machine intelligence, machine intelligence, intelligence explosion, technological singularity, Skynet, robot uprising) alongside current ones. Version frozen before the main pull; precision and recall checked per era on a held-out sample; any later revision reruns every year. The 1% threshold in the vocabulary ledger is replaced by a published numerator, denominator, distinct-account count and single-thread share, with a minimum volume of 500 comments in the month and a persistence rule of three consecutive months.
+Why: a list chosen today would make it look as if nobody discussed this before 2015 because they used different words.
+
+### A8. Media sample: sized from the smallest change worth detecting, stratified, news and opinion coded separately (GPT; Gemini)
+
+Was: 15 opinion pieces per year.
+Now: outlets fixed to those with documented public archives (New York Times Archive API for metadata from 1851; Guardian Open Platform for full text from 1999; Media Cloud collections only after an outlet-by-month coverage audit). The eligible frame is enumerated per outlet and period before sampling. Periods are three years, not one. Sample size per outlet-period is set to distinguish a 20-point change in a share at 95% confidence (about 50 pieces); where fewer are eligible, all are taken. News and opinion are coded separately, and the author's own endorsement is coded separately from claims the piece quotes.
+Why: with 15 pieces the margin of error on a share near 50% is about 25 points, which cannot support an annual claim. Op-eds measure what editors chose to publish, so this outcome is labeled "published argument", never reader belief.
+
+### A9. Attention series kept as context only, never combined (GPT)
+
+Each series (Wikipedia page views from 2015-07 with the 2007 to 2015 legacy counts marked as a different measurement; Google Trends with export settings recorded; GDELT optional pending a retrieval pilot) is normalized within itself and shown separately. No composite "public acceptance" index. Google Books Ngram moves to the vocabulary appendix, unsmoothed, because Google drops phrases found in fewer than 40 books, which makes it unusable for first appearances.
+
+### A10. Surveys become the backbone of the population outcome, with specific early anchors (both reviews)
+
+Added: Pew/Smithsonian 2010 and 2014 (capability expectations), Eurobarometer 2012, 2014 and 2017 (robots, multi-country), Zhang and Dafoe 2018 (GovAI, high-level machine intelligence timelines), Lloyd's Register Foundation World Risk Poll 2019, 2021 and 2023, Pew's 2025 public-versus-expert comparison (parallel questions, the model for comparability), Monmouth 2015 and 2023, YouGov 2023 onward, Gallup, Ipsos with its own note that several national samples skew urban and educated. Every row dated by fieldwork, with publication date separate, exact wording, and a construct label (concern, feasibility, timeline, impact). The absence of a comparable population series for 2005 to 2015 is stated, not papered over.
+
+### A11. Prior work to build on, not redo (both reviews)
+
+Fast and Horvitz 2017 (New York Times coverage of AI, 1986 to 2016; its categories are the starting point for media coding), Zhang and Dafoe 2019, Pew 2025, the AI Impacts survey series, the Stanford AI Index public-opinion chapter, Gnambs and Appel on Eurobarometer waves, Gaffney and Matias 2018 on Reddit archive gaps (reason for the coverage audit), GCRI's survey of AGI projects.
+
+### A12. Reliability and reproducibility rules (GPT)
+
+Double-coding of a stratified subset with dates and identities hidden where practical; disagreements and per-category agreement published; `ambiguous` and `unexpressed` kept as codes; any automated coding validated separately by era and source. Published with the data: sampling frames, queries, code, random seeds, source versions, retrieval dates, document identifiers, exclusions, missingness audits, and snapshots with checksums where the source permits.
+
+### Declined, with reasons
+
+- Factiva and LexisNexis for non-US media (Gemini): paywalled, so not re-pullable by a reader. Guardian and Media Cloud's non-US collections instead; non-English corpora deferred until there is capacity for language-specific validation.
+- Dropping Google Books Ngram entirely (Gemini): demoted instead (A9); the astrophysics problem with "singularity" is avoided by using the two-word term "technological singularity".
+- Replacing the question-frame scheme with a proximity and disruption matrix (Gemini): proximity (distant, medium, near, present) is derived at render from the timeline fields, so it needs no new code; disruption became `consequence_type` (A2).
+- Film box office as a measurement series (Gemini): kept as dated event annotations only (Her 2013, Transcendence and Ex Machina 2014, and so on), because a theme-tagged box-office series would need its own coding project.
+- A single numerical common axis: used only where the source gives a probability for a specified capability by a specified date, as GPT advised; "soon" is never converted to a number.
