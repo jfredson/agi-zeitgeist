@@ -2,3 +2,6 @@
 __pycache__/
 .DS_Store
 .claude/
+*.env
+.agi-zeitgeist/
+# keys live outside the repo at ~/Documents/.agi-zeitgeist/credentials.env; never copy them in
