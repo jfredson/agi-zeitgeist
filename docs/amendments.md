@@ -108,3 +108,10 @@ Made while carrying out the version 2 migration. John can reverse any of them.
   going and they name the person.
 - **Quiet years.** Logged in `data/search_log.csv` as one row per speaker and year with
   what_found "quiet year: no qualifying statement found" (search_id `<speaker>-q<year>`, e.g. `hinton-q2017`).
+- **Tiers and quota tags in `speakers.csv` (A13).** `panel_tier` is renamed `tier`
+  (`core`, `cohort_2020s`, `wide`). Surveys, markets, polls and institutions get
+  `not_panel`, because every row must carry a tier. The yes/no `frontier_lab_tie`
+  column is replaced by the `frontier_lab` quota tag, which carries the role, years and
+  source; `skeptic`, `non_us_uk` and `philosopher` sit alongside it. Each tag is blank
+  or "<justification> (<date>, <url>)". Tags judged arguable are left blank and listed
+  in `docs/panel-verification-2026-10.md` for John to rule on.

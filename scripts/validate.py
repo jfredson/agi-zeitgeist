@@ -14,8 +14,10 @@ from pathlib import Path
 DATA = Path(__file__).resolve().parent.parent / "data"
 
 HEADERS = {
-    "speakers.csv": ["speaker_id", "name", "speaker_type", "role_summary",
-                     "frontier_lab_tie", "panel_tier", "inclusion_note"],
+    # Tier and quota tags from amendment A13 (methodology-v2 section 3).
+    "speakers.csv": ["speaker_id", "name", "speaker_type", "role_summary", "tier",
+                     "skeptic", "non_us_uk", "philosopher", "frontier_lab",
+                     "inclusion_note"],
     # Version 2 fields (docs/methodology-v2.md section 2).
     "statements.csv": ["statement_id", "speaker_id", "date", "date_precision",
                        "source_url", "source_type", "quote", "claim_summary",
@@ -35,7 +37,10 @@ HEADERS = {
 }
 
 SPEAKER_TYPES = {"individual", "survey", "prediction_market", "institution", "poll"}
-PANEL_TIERS = {"core", "cohort_2020s"}
+PANEL_TIERS = {"core", "cohort_2020s", "wide"}
+QUOTA_TAGS = ["skeptic", "non_us_uk", "philosopher", "frontier_lab"]
+# A quota tag is blank or "<justification> (<date>, <url>)": it needs a dated source.
+TAG_EVIDENCE = re.compile(r"\d{4}(-\d{2}){0,2}.*https?://\S+")
 SOURCE_TYPES = {"interview", "talk", "paper", "blog", "podcast", "social_post",
                 "book", "survey_response", "testimony"}
 TARGETS = {"conversation", "narrow_task", "broad_competence", "superintelligence",
@@ -161,15 +166,19 @@ def check_speakers(rows):
             err(f, i, "name is blank")
         if r["speaker_type"] not in SPEAKER_TYPES:
             err(f, i, f"invalid speaker_type {r['speaker_type']!r}")
-        if r["frontier_lab_tie"] not in {"yes", "no"}:
-            err(f, i, f"frontier_lab_tie must be yes or no, got {r['frontier_lab_tie']!r}")
+        # Every row carries a tier: panel tiers for people, not_panel for other sources.
         if r["speaker_type"] == "individual":
-            if r["panel_tier"] not in PANEL_TIERS:
-                err(f, i, f"individual needs panel_tier core or cohort_2020s, got {r['panel_tier']!r}")
+            if r["tier"] not in PANEL_TIERS:
+                err(f, i, f"individual needs tier core, cohort_2020s or wide, got {r['tier']!r}")
             if not r["inclusion_note"]:
                 err(f, i, "individual needs an inclusion_note")
-        elif r["panel_tier"]:
-            err(f, i, "panel_tier must be blank for non-individual sources")
+        elif r["tier"] != "not_panel":
+            err(f, i, f"non-individual sources need tier not_panel, got {r['tier']!r}")
+        for tag in QUOTA_TAGS:
+            if r[tag] and not TAG_EVIDENCE.search(r[tag]):
+                err(f, i, f"quota tag {tag} needs a justification with a date and a link")
+            if r[tag] and r["speaker_type"] != "individual":
+                err(f, i, f"quota tag {tag} is only for individuals")
         if not r["role_summary"]:
             err(f, i, "role_summary is blank")
 
