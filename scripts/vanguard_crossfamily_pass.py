@@ -25,6 +25,11 @@ Keys read at run time (GEMINI_API_KEY from the environment; OPENAI_API_KEY from
 
     python3 scripts/vanguard_crossfamily_pass.py --family gemini|gpt [--rules FILE] [--limit N] [--cached-only]
 
+--ids FILE codes the post ids listed in FILE (a CSV with post_id, quarter, sample columns,
+such as the full pilot sample) instead of the 140-post set, into a separate "-full" file.
+--max-new N stops after N new API requests, so a run fits a daily limit (Gemini allows
+250 requests per model per day on the project's tier); rerun the next day to continue.
+
 --cached-only writes the output from replies already saved, without calling the API, and
 skips posts with no saved reply (used when an API stopped answering partway through a run).
 """
@@ -55,11 +60,14 @@ F = FAMILIES[FAMILY]
 MODEL = F["model"]
 PINNED_VERSION = F["pin"]
 CODER = f"{MODEL}@{PINNED_VERSION}" if FAMILY == "gemini" else f"{MODEL}@created-{PINNED_VERSION}-effort-{F['effort']}"
-RUN_ID = F["run_id"] + ("-rules-trial" if RULES else "")
+IDS = Path(sys.argv[sys.argv.index("--ids") + 1]) if "--ids" in sys.argv else None
+RUN_ID = F["run_id"] + ("-rules-trial" if RULES else "") + ("-full" if IDS else "")
 ROOT = Path(__file__).resolve().parent.parent
 WORK = Path("/Users/john/.claude/jobs/f819dd6c/tmp/vanguard_pilot")
 RAW = WORK / (F["raw"] + ("_rules" if RULES else ""))
 OUT = ROOT / "data" / "vanguard" / (F["out"].replace(".csv", "-rules-trial.csv") if RULES else F["out"])
+if IDS:
+    OUT = OUT.with_name(OUT.name.replace(".csv", "-full.csv"))
 SUBSET = ROOT / "data" / "vanguard" / "second-coder-worksheet.csv"
 CODEBOOK = ROOT / "docs" / "vanguard" / "codebook.md"
 HEADER = ["run_id", "coder", "post_id", "quarter", "sample", "rank_or_draw", "post_type",
@@ -256,8 +264,10 @@ def main():
     if not cached_only:
         call = call_gemini if FAMILY == "gemini" else call_openai
     limit = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else None
-    with SUBSET.open(newline="") as f:
-        subset = [(r["post_id"], r["quarter"], r["sample"]) for r in csv.DictReader(f)]
+    with (IDS or SUBSET).open(newline="") as f:
+        subset = list(dict.fromkeys((r["post_id"], r["quarter"], r["sample"]) for r in csv.DictReader(f)))
+    max_new = int(sys.argv[sys.argv.index("--max-new") + 1]) if "--max-new" in sys.argv else None
+    new_calls = 0
     if limit:
         subset = subset[:limit]
     content = {p["post_id"]: p for p in json.loads((WORK / "posts.json").read_text())}
@@ -273,7 +283,7 @@ def main():
         raw_file = RAW / f"{pid}.json"
         if raw_file.exists():
             data = json.loads(raw_file.read_text())
-        elif cached_only:
+        elif cached_only or (max_new is not None and new_calls >= max_new):
             continue
         else:
             desc = [f"post_id: {pid}", f"post_type: {p['post_type']}", f"title: {p['title']}"]
@@ -295,6 +305,7 @@ def main():
                 else:
                     parts[0]["text"] += "\n(image file: unavailable)"
             data = call(parts, key)
+            new_calls += 1
             raw_file.write_text(json.dumps(data))
             time.sleep(1.0)
         versions.add(data.get("modelVersion") or data.get("model"))
