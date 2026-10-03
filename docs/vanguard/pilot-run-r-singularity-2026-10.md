@@ -74,3 +74,15 @@ instruction). Brief: John, 2026-10-03.
 2. Section 12 preconditions not yet met: venue inventory, X decision, cross-era sample.
    This pilot covers one venue and does not choose venues.
 3. Comment sample deferred (see above).
+
+## Changes during the run (recorded 2026-10-03, before the second pass)
+
+1. **Missing images, fixed.** The sampling script first saved images only for rewarded
+   ranks 1 to 40. Coders reached rank 41 or deeper in 2025Q1, 2025Q3 and 2026Q1 and
+   excluded ten image posts as "content unavailable" because no file existed. The script
+   now saves every sampled image (the sample itself is unchanged; checked byte for byte),
+   those posts were recoded from their images, and each quarter's cut-off was re-applied.
+2. **Removed-body text posts, made uniform.** Coders had handled text posts whose body was
+   removed or deleted in three ways. Rule applied to all: if the title survives, the post is
+   coded from the title with `title_only: yes` and `content_basis: text_title`. Galleries
+   and image files that no longer load stay excluded.

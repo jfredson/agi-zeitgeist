@@ -72,7 +72,7 @@ def main():
     for sample, n, prob, p, q, size in rows:
         kind = post_type(p)
         img = ""
-        if kind == "image" and (sample == "prevalence" or n <= 40):
+        if kind == "image":
             url = p.get("url") or ""
             ext = Path(url.split("?")[0]).suffix or ".jpg"
             dest = media / f"{p['id']}{ext}"

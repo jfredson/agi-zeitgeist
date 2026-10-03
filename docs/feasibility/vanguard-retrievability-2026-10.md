@@ -30,6 +30,16 @@ John ruled (2026-10-02) that video posts are coded from their title only, and as
 | **2024Q4 to 2026Q1 (six quarters)** | **120** | **68 (57%)** | **38** | **106 (88%)** | **9** | **5** |
 | **full pilot window, 2024Q4 to 2026Q3** | **160** | **88 (55%)** | **56** | **144 (90%)** | **9** | **7** |
 
+**Video's share of top posts, and what the title-only exclusion tracks** (added
+2026-10-03 at John's request). Video's share of the top 20 per quarter is 30, 15, 50, 35,
+15, 45, 55 and 35% (2024Q4 to 2026Q3); of the top 50, 38, 20, 50, 28, 32, 44, 54 and 24%.
+It does **not** rise steadily: it swings by quarter and falls again in 2026Q3. Comparing
+halves of the window, it edges up from 32.5% to 37.5% of the top 20 (34% to 38.5% of the
+top 50). Either way, how many rows are title-only depends on the format mix of each
+quarter, so the gap between the "with" and "without title-only" figures partly tracks
+changes in what kind of post gets voted up, not only a limit of title coding. Any trend
+in that gap should be read against this video-share series.
+
 "Lost" = image file deleted from Reddit's image host (HTTP 404). "Unverified" = galleries,
 whose content needs reddit.com, which refused the lookup. These are the top 20 per quarter;
 image loading was checked only for the top 20, so no comparable top-50 figure exists. The
