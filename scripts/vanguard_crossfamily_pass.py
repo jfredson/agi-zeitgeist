@@ -141,6 +141,7 @@ def call_gemini(parts, key):
     req = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
         data=body, headers={"Content-Type": "application/json", "x-goog-api-key": key})
+    last = ""
     for wait in (0, 60, 180):
         if wait:
             time.sleep(wait)
@@ -149,11 +150,13 @@ def call_gemini(parts, key):
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
             if e.code in (429, 500, 503):
+                last = f"HTTP {e.code}: {e.read().decode('utf-8', 'ignore')[:200]}"
                 continue
             raise SystemExit(f"stopped: HTTP {e.code} from the Gemini API")
-        except (urllib.error.URLError, TimeoutError, OSError):
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            last = f"connection problem: {e}"
             continue
-    raise SystemExit("stopped: the Gemini API kept refusing or timing out after two back-offs")
+    raise SystemExit(f"stopped: the Gemini API kept refusing or timing out after two back-offs (last: {last})")
 
 
 def strict(schema):
@@ -193,6 +196,7 @@ def call_openai(parts, key):
                                            "schema": strict(SCHEMA), "strict": True}}}).encode()
     req = urllib.request.Request("https://api.openai.com/v1/responses", data=body,
                                  headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    last = ""
     for wait in (0, 60, 180):
         if wait:
             time.sleep(wait)
@@ -201,12 +205,14 @@ def call_openai(parts, key):
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
             if e.code in (429, 500, 502, 503):
+                last = f"HTTP {e.code}: {e.read().decode('utf-8', 'ignore')[:200]}"
                 continue
             detail = e.read().decode("utf-8", "ignore")[:300]
             raise SystemExit(f"stopped: HTTP {e.code} from the OpenAI API: {detail}")
-        except (urllib.error.URLError, TimeoutError, OSError):
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            last = f"connection problem: {e}"
             continue
-    raise SystemExit("stopped: the OpenAI API kept refusing or timing out after two back-offs")
+    raise SystemExit(f"stopped: the OpenAI API kept refusing or timing out after two back-offs (last: {last})")
 
 
 def check_pin_openai(key):
