@@ -3,7 +3,8 @@
 Checked 2026-09-30 by claude-agent, under amendment A13 (three tiers with quotas) and
 methodology-v2 section 3. **Re-marked 2026-10-01 under John's rulings in amendment A14**
 (rulings 1 to 6); the section "Freeze candidates as of 2026-10-01" at the end is the
-current summary. **Nothing here changes the panel.** John freezes it; this is
+current summary, **re-marked again 2026-10-02 under amendment A16** (the looser
+newspaper rule; see "Re-marking under A16" below). **Nothing here changes the panel.** John freezes it; this is
 the evidence. `data/speakers.csv` holds only the five seed speakers and the survey,
 market and poll sources.
 
@@ -79,13 +80,13 @@ opened; "2nd" = secondhand.
 |---|---|---|---|---|---|
 | Ray Kurzweil (seed) | 2002, Long Bet 1 ([longbets.org](https://longbets.org/1/)); in window 2005 ([singularity.com](https://singularity.com/qanda.html)) | 2026-01 (`kurzweil-2026-01`, 2nd); 2025-03-12 primary ([TWiT](https://twit.tv/posts/transcripts/intelligent-machines-810-transcript)) | Time 2011-02-10 ([link](https://time.com/archive/6595274/2045-the-year-man-becomes-immortal/)); New Yorker 2015-11-23; NYT 2014-07-08 (search) | frontier_lab (Google engineering director from 2012-12; A15 ruling 8) | PASS |
 | Nick Bostrom | 1997 and 2008-03-12 ([nickbostrom.com](https://nickbostrom.com/superintelligence)) | 2026-02-13 working paper ([copy](https://www.greaterwrong.com/posts/ZeNRKhGFAhGB8WJ7s/nick-bostrom-optimal-timing-for-superintelligence)); no dated forecast | New Yorker 2015-11-23; Washington Post 2015-12-27 (search); MIT Technology Review 2015-12-15 ([link](https://www.technologyreview.com/2015/12/15/247302/what-will-it-take-to-build-a-virtuous-ai/)) | philosopher | PASS |
-| Eliezer Yudkowsky | 2008-12-01 ([LessWrong](https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement)) | 2024-02-18, 2nd ([Futurism](https://futurism.com/the-byte/ai-destroy-humankind-yudkowsky)) | New Yorker 2011-11-28 (Thiel profile); Slate 2014-07-17; Scientific American blog column 2016-03-01. Each weak on one point | none | UNCLEAR (C3). Guardian and NYT archive checks 2026-10-01: no piece naming him in headline or abstract |
+| Eliezer Yudkowsky | 2008-12-01 ([LessWrong](https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement)) | 2024-02-18, 2nd ([Futurism](https://futurism.com/the-byte/ai-destroy-humankind-yudkowsky)) | New Yorker 2011-11-28 (Thiel profile); Slate 2014-07-17; Scientific American blog column 2016-03-01. Each weak on one point | none | PASS (thin) under A16: Guardian 2009-12-14, "When robots have feelings" (Singer and Sagan), describes his intelligence-explosion view in the text; with Slate 2014 and the Scientific American column 2016 that makes three, two of them from edge outlets (the same footing as Hanson) |
 | Robin Hanson | 2012-08-27, "at least a century" ([Overcoming Bias](https://www.overcomingbias.com/p/ai-progress-estimatehtml)) | 2025-04-15, about economic impact ([link](https://www.overcomingbias.com/p/ai-is-gpt-and-gpts-go-slow)) | Guardian 2016-06-15 (search); Reason 2016-06-03; Scientific American blog column 2016-06-21 | skeptic | PASS (thin): C2 is about economic impact; C3 relies on edge outlets |
 | Geoffrey Hinton (seed) | 2015-05, "No sooner than 2070" (`hinton-2015-01`) | 2026-09 (`hinton-2026-02`, 2nd); 2024-12-06 Nobel interview primary | New Yorker 2015-11-23; Guardian 2015-05-21 (search); Fortune 2016-09-28 ([link](https://fortune.com/longform/ai-artificial-intelligence-deep-machine-learning/)) | skeptic, non_us_uk, frontier_lab (Google Brain 2013 to 2023) | PASS |
 | Yann LeCun (seed) | 2005 slide; 2015-02-18 (`lecun-2015-01`) | 2026-02-27 (`lecun-2026-04`) | MIT Technology Review 2015-08-06 ([link](https://www.technologyreview.com/2015/08/06/10909/teaching-machines-to-understand-us/)); Fortune 2016-09-28; Popular Science 2015-09-22 | skeptic (2015 and 2017 statements), frontier_lab (Facebook/Meta 2013 to 2025) | PASS. C3 now includes NYT 2015-03-26, "Facebook's Yann LeCun Discusses Digital Companions and Artificial Intelligence" (NYT archive check) |
-| Yoshua Bengio | 2016-01, about remaining science, not explicitly AGI (2nd, [excerpt](https://www.lesswrong.com/posts/4qPy8jwRxLg9qWLiG/yoshua-bengio-on-ai-progress-hype-and-risks)) | 2025-06-03 ([blog](https://yoshuabengio.org/en/blog/introducing-lawzero)) | MIT Technology Review 2016-01-29 ([link](https://www.technologyreview.com/2016/01/29/162084/will-machines-eliminate-us/)); Forbes contributor 2017-11-06 (search); Globe and Mail 2017-07-05 (co-wr., about policy) | non_us_uk | UNCLEAR (C1 not explicit; C3 needs the byline ruling) |
+| Yoshua Bengio | 2016-01, about remaining science, not explicitly AGI (2nd, [excerpt](https://www.lesswrong.com/posts/4qPy8jwRxLg9qWLiG/yoshua-bengio-on-ai-progress-hype-and-risks)) | 2025-06-03 ([blog](https://yoshuabengio.org/en/blog/introducing-lawzero)) | MIT Technology Review 2016-01-29 ([link](https://www.technologyreview.com/2016/01/29/162084/will-machines-eliminate-us/)); Forbes contributor 2017-11-06 (search); Globe and Mail 2017-07-05 (co-wr., about policy) | non_us_uk | UNCLEAR (C1 not explicit). C3 is met under A16: NYT 2016-07-17, 2017-04-09 and 2017-10-22 name him in the text of pieces about AI |
 | Demis Hassabis | 2010, talk titled "…building AGI" (title only, [video](https://www.youtube.com/watch?v=Qgd3OK5DZWI)) | 2026-05, Google I/O, 2nd ([Decoder](https://the-decoder.com/deepminds-hassabis-sees-humanity-in-the-foothills-of-the-singularity-while-lecun-says-current-ai-isnt-intelligent/)) | New Yorker 2015-11-23; Fortune 2016-09-28; Vanity Fair 2017-03 (search) | frontier_lab (DeepMind co-founder 2010 on) | PASS (thin): C1 is a talk title, not a sentence |
-| Shane Legg | 2009-12, "human level AGI in the year 2025" ([vetta.org](https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/)) | 2025-12-14, paraphrase only ([Decoder](https://the-decoder.com/deepmind-co-founder-shane-legg-sees-50-percent-chance-of-minimal-agi-by-2028/)) | none on the outlet list; HuffPost and Business Insider 2014 only | frontier_lab (non_us_uk possible) | FAIL (C3; C2 thin). Guardian and NYT archive checks 2026-10-01: 9 pre-2018 hits, none naming him in headline or abstract |
+| Shane Legg | 2009-12, "human level AGI in the year 2025" ([vetta.org](https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/)) | 2025-12-14, paraphrase only ([Decoder](https://the-decoder.com/deepmind-co-founder-shane-legg-sees-50-percent-chance-of-minimal-agi-by-2028/)) | none on the outlet list; HuffPost and Business Insider 2014 only | frontier_lab (non_us_uk possible) | PASS (thin) under A16: Guardian 2015-06-09 and 2016-02-16 and NYT 2017-08-13 name him in the text. In the Guardian pieces he is named as a DeepMind co-founder; only the 2016 piece gives a view of his (a 2011 remark on extinction). The NYT text was not read. C2 is a paraphrase |
 | Sam Altman (seed) | 2014-02 (`altman-2014-01`) | 2026-08-26 (`altman-2026-04`, 2nd); 2026-02-14 primary | Fortune 2015-12-11 ([link](https://fortune.com/2015/12/11/open-ai/)); MIT Technology Review 2015-12-15; New Yorker 2016-10-10 (search) | frontier_lab | PASS |
 | Gary Marcus (seed) | 2013, "smarter than us before the end of the century" (`marcus-2013-01`, 2nd); 2016-05-04 primary | 2026-09-10 (`marcus-2026-08`) | MIT Technology Review 2015-12-17 ([link](https://www.technologyreview.com/2015/12/17/164285/can-this-man-make-ai-more-human/)) and 2017-03-29; NYT op-ed 2017-07-29 (his own byline, search) | skeptic, philosopher | PASS (one of the three pieces is his own, allowed by A14 ruling 1) |
 | Andrew Ng | 2015-03-19, 2nd ([The Register](https://www.theregister.com/2015/03/19/andrew_ng_baidu_ai/)) | 2026-01-02 ([The Batch](https://www.deeplearning.ai/the-batch/issue-334/)) | Fortune 2016-03-09 ([link](https://www.fortune.com/2016/03/09/baidu-robots-ai)) and 2017-01-05; MIT Technology Review 2017-11-07 | skeptic (medium), frontier_lab | PASS (thin): C1 is secondhand; skeptic tag rests on "far future" |
@@ -95,23 +96,23 @@ opened; "2nd" = secondhand.
 | Ilya Sutskever | 2015-12-11, co-signed company post ([copy](https://tm.durusau.net/?p=66175)) | 2025-11-25 ([Dwarkesh](https://www.dwarkesh.com/p/ilya-sutskever-2)) | MIT Technology Review 2017-03-29 only; Wired 2016-04 and NYT 2015-12 seen, naming not confirmed | frontier_lab | FAIL (C3). Guardian and NYT archive checks 2026-10-01: 3 pre-2018 hits, none naming him in headline or abstract; checked for the cohort below |
 | François Chollet | 2017-07-18, possibility only ([Keras blog](https://blog.keras.io/the-future-of-deep-learning.html)) | 2026-03-27, 2nd ([OfficeChai](https://officechai.com/ai/agi-likely-by-early-2030s-when-arc-agi-6-or-7-will-be-released-arc-prizes-francois-chollet/)) | none found | frontier_lab (Google senior engineer 2015 to 2024; A15 ruling 8) | FAIL (C3); checked for the cohort below |
 | Melanie Mitchell | not found (earliest dated item 2018) | 2025-09-15 ([newsletter](https://aiguide.substack.com/p/magical-thinking-on-ai)) | none found | philosopher likely, unsourced | FAIL (C1, C3) |
-| Oren Etzioni | 2014-12-16, reported speech in NYT; 2016-09-20 own piece ([MIT TR](https://www.technologyreview.com/2016/09/20/70131/no-the-experts-dont-think-superintelligent-ai-is-a-threat-to-humanity/)) | not found (GeekWire 2026 lead would not load) | MIT Technology Review 2015-12-15, 2016-09-01, 2016-11-02 (one outlet) | skeptic | FAIL (C2). Guardian and NYT archive checks 2026-10-01: only 2024 lead is NYT 2024-04-02 on election deepfakes, not an AGI statement |
+| Oren Etzioni | 2014-12-16, reported speech in NYT; 2016-09-20 own piece ([MIT TR](https://www.technologyreview.com/2016/09/20/70131/no-the-experts-dont-think-superintelligent-ai-is-a-threat-to-humanity/)) | not found (GeekWire 2026 lead would not load) | MIT Technology Review 2015-12-15, 2016-09-01, 2016-11-02 (one outlet) | skeptic | FAIL (C2). C3 is met under A16 (ten NYT pieces 2014 to 2017 name him in the text). Only 2024 lead is NYT 2024-04-02 on election deepfakes, not an AGI statement |
 | Ernest Davis | 2014-10-23 preprint, published 2015 ([paper](https://cs.nyu.edu/~ed1/papers/Bostrom.pdf)) | 2025-07-22, co-wr. with Marcus ([post](https://garymarcus.substack.com/p/deepmind-and-openai-achieve-imo-gold)) | none about AI futures | skeptic | FAIL (C3). C2 now met on co-written items (A14 ruling 3) |
-| Steven Pinker | 2008-06-01, "not the slightest reason to believe in a coming singularity" ([IEEE Spectrum](https://spectrum.ieee.org/tech-luminaries-address-singularity)) | 2024-06-18 podcast, no verbatim quote; latest verbatim 2023-12-20 | IEEE Spectrum 2008 only (borderline) | skeptic, philosopher | FAIL (C3; C2 unclear). Guardian and NYT archive checks 2026-10-01: 27 pre-2018 hits, none naming him in headline or abstract |
+| Steven Pinker | 2008-06-01, "not the slightest reason to believe in a coming singularity" ([IEEE Spectrum](https://spectrum.ieee.org/tech-luminaries-address-singularity)) | 2024-06-18 podcast, no verbatim quote; latest verbatim 2023-12-20 | IEEE Spectrum 2008 only (borderline) | skeptic, philosopher | FAIL (C3; C2 unclear). Of 27 pre-2018 archive hits only two have a headline or abstract about AI (a 2000 robotics feature and a 2011 obituary), so A16 does not change this |
 | David Chalmers | 2010 paper, "would be surprised… within the next three decades" ([paper](https://consc.net/papers/singularity.pdf)) | 2026-07-10, about current models, not timing ([Berkeley](https://news.berkeley.edu/2026/07/10/berkeley-talks-when-we-talk-to-ai-what-are-we-talking-to/)) | Forbes 2009-10-02 ([link](https://www.forbes.com/2009/10/02/machine-intelligence-technology-breakthroughs-singularity.html)) and 2009-10-12; Scientific American 2010-12-22 | philosopher, non_us_uk (A14 ruling 5) | PASS (thin): C2 is about current capability |
 | Daniel Dennett | 1985 / 1998 essay; 2015 "urban legend" ([Edge](https://www.edge.org/response-detail/26035)) | 2024-04 last interview, published 2024-04-25 after his death ([Spectator](https://spectator.com/?p=485505)) | Time 1996-03-25 ([link](https://time.com/archive/6728762/can-machines-think/)); Time 2013-06-17; NPR blog column 2017-06-16 (search) | skeptic, philosopher | DROPPED (A14 ruling 4); moved to the wide list |
 | Erik Brynjolfsson | 2017-11-30, "a long way from" AGI ([MIT TR](https://www.technologyreview.com/2017/11/30/147363/progress-in-ai-isnt-as-impressive-as-you-might-think/)) | 2025-10, group-authored paper ([agidefinition.ai](https://www.agidefinition.ai/)) | MIT Technology Review 2013-06-12; Slate 2014-05-04; MIT Technology Review 2017-11-30. Two are about jobs | none | PASS (thin): C1 by one month; C3 mostly about jobs (C2 co-written, allowed by A14 ruling 3) |
 | Jürgen Schmidhuber | 2006, convergence "around 2040" ([own site](https://people.idsia.ch/~juergen/history.html)) | 2024-10, TED talk; quote is TED's description ([TED](https://www.ted.com/talks/juergen_schmidhuber_why_2042_will_be_a_big_year_for_ai)) | NYT 2016 (search, date unverified); Polish Press Agency 2017-11-20 ([link](https://scienceinpoland.pl/en/node/27249)); Guardian 2017 (search) | non_us_uk | PASS (thin): C2 is TED's paraphrase; two C3 items unopened |
 | Kai-Fu Lee | 2017-06-24 NYT op-ed, "hundreds of years, if ever" (read via repost) | 2025-10-02, "about five years" ([Kazinform](https://qazinform.com/amp/ai-will-surpass-90-of-people-in-five-years-2c7ca2/)) | CNBC 2017-04-27 (search); MIT Technology Review 2017-06-27 ([link](https://www.technologyreview.com/2017/06/27/150705/chinas-tech-moguls-warn-of-ais-troubling-trajectory/)); CNBC 2017-11-13 (search) | non_us_uk, skeptic (2017-06-24, A14 ruling 2); frontier_lab (01.AI founder from 2023-03; A15 ruling 8) | PASS (thin): two C3 items unopened |
 | Toby Walsh | 2016-02-20, "30 or 40 years away" ([arXiv](https://ar5iv.labs.arxiv.org/html/1602.06462)) | 2025-07-04 ([China Daily HK](https://www.chinadailyhk.com/article/615214)) | ABC Australia 2015-10-20 ([link](https://www.abc.net.au/news/2015-10-20/australian-ai-expert-calls-for-ban-on-killer-robots-at-un/6868834)) and 2017-08-21; CNN 2017-08-21 (search) | non_us_uk (not skeptic: 30 to 40 years is within decades) | PASS |
-| Murray Shanahan | 2014-07, "better than fifty-fifty" within 30 years (2nd, [KitGuru](https://www.kitguru.net/gaming/anton-shilov/ai-will-match-human-intelligence-in-the-next-30-years-robot-expert/)) | not found | BBC 2014-12-02, seen only as a Wikipedia citation | frontier_lab | FAIL (C2, C3). Guardian and NYT archive checks 2026-10-01: 14 pre-2018 Guardian pieces mention him in the text, none in headline or abstract |
+| Murray Shanahan | 2014-07, "better than fifty-fifty" within 30 years (2nd, [KitGuru](https://www.kitguru.net/gaming/anton-shilov/ai-will-match-human-intelligence-in-the-next-30-years-robot-expert/)) | not found | BBC 2014-12-02, seen only as a Wikipedia citation | frontier_lab | UNCLEAR (C2 only). C3 is met under A16: he is quoted on where AI is going in Guardian 2015-06-26 ("We really have no idea how to make a human level AI"; "possible but unlikely" between 2025 and 2050), 2015-12-27 and 2016-03-05, among 12 pieces. The 2015-06-26 quote is also a firmer C1. C2 leads, not opened: Machine Learning Street Talk 2024-07-14, Google DeepMind podcast 2025-04-24 |
 | Ben Goertzel | 2006 talk, "ten year time-frame or less" ([copy](https://www.thekurzweillibrary.com/we-could-get-to-the-singularity-in-ten-years)) | 2024-03-01, "three to eight years" ([Futurism](https://futurism.com/artificial-superintelligence-agi-2027-goertzel.md)) | none found | non_us_uk partly supported | FAIL (C3). Guardian and NYT archive checks 2026-10-01: one NYT hit (1999-02-08, a stock-picking program), not about AI futures |
 | Michael Wooldridge | 2017-10-10, about conscious machines (2nd, [Oxford](https://cs.ox.ac.uk/innovation/research-impact/case-AI.html)) | 2025-11-14 ([IMD](https://www.imd.org/ibyimd/videos/the-interview/real-story-of-ais-rise-from-winters-to-workplaces/)) | none found | skeptic probable (2017-10-10 statement now inside the window, but it is about conscious machines) | FAIL (C3; C1 ambiguous). Guardian and NYT archive checks 2026-10-01: no pre-2018 hit |
 | Judea Pearl | 2011-12-27, possibly a paraphrase ([JTA](https://jta.org/?p=442604)) | 2024-09-09 ([Globes](https://en.globes.co.il/en/article-1001488789)) | JTA 2011 only (specialist agency) | none | FAIL (C3). Guardian and NYT archive checks 2026-10-01: one NYT hit (2012-03-15, his Turing Award), about past work, not AI futures |
 | Max Tegmark | 2014-05-01 co-wr. op-ed (Independent) | 2025-06-03, implies nearness, no date ([repost](https://lifeboat.com/blog/2025/09/max-tegmark-can-we-prevent-ai-superintelligence-from-controlling-us)) | Independent 2014-05-01 (co-wr.); Christian Science Monitor 2015-01-16 ([link](https://csmonitor.com/Science/2015/0116/Elon-Musk-spends-10-million-to-stop-robot-uprising)); WSJ review 2017-08-29 (reviewer's reprint) | none | PASS (thin): C2 implies nearness without a date. The co-written op-ed counts for C1 (named author) and as his one allowed own piece |
-| Luciano Floridi | 2016-05-09, "utterly implausible" ([Aeon](https://aeon.co/essays/true-ai-is-both-logically-possible-and-utterly-implausible)) | 2024-06-14, "no such thing coming" ([SciELO](https://scielo.br/j/fun/a/8xsLKmCytRX9w7p9q8jG6GF/?lang=en)) | none found (an FT piece by him, 2017, unconfirmed) | skeptic, philosopher | FAIL (C3). Guardian and NYT archive checks 2026-10-01: 5 pre-2018 hits, none naming him in headline or abstract |
+| Luciano Floridi | 2016-05-09, "utterly implausible" ([Aeon](https://aeon.co/essays/true-ai-is-both-logically-possible-and-utterly-implausible)) | 2024-06-14, "no such thing coming" ([SciELO](https://scielo.br/j/fun/a/8xsLKmCytRX9w7p9q8jG6GF/?lang=en)) | none found (an FT piece by him, 2017, unconfirmed) | skeptic, philosopher | UNCLEAR (C3, one piece short). Under A16 two Guardian pieces count: 2016-03-18 "How much should we fear the rise of artificial intelligence?" and 2017-01-27 on an AI watchdog (his own report). A confirmed 2017 Financial Times piece by him would be the third |
 | Mustafa Suleyman (from cohort list) | 2016-12-05, "20 years out or decades way" (2nd, [TechCrunch](https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off)) | 2025-11-14 ([transcript](https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/)) | Fortune 2016-10-10 ([link](https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/)); NPR 2016-09-28 (search); MIT Technology Review 2017-10-04 | frontier_lab (DeepMind 2010 to 2019, Inflection 2022, Microsoft AI from 2024); not skeptic (A14 ruling 5) | PASS. Fails the cohort rule (2016 timeline), so he belongs here |
-| Tyler Cowen (from cohort list) | 2005-09-21, skeptical of the Singularity ([Marginal Revolution](https://marginalrevolution.com/marginalrevolution/2005/09/the_singularity.html)) | 2025-04-16, "I think it is AGI, seriously" ([link](https://marginalrevolution.com/marginalrevolution/2025/04/o3-and-agi-is-april-16th-agi-day.html)) | Economist, WSJ and Daily Beast reviews of *Average Is Over*, 2013 (listed on Wikipedia, not opened; borderline topic) | skeptic near miss | UNCLEAR (C3 unopened and borderline) |
+| Tyler Cowen (from cohort list) | 2005-09-21, skeptical of the Singularity ([Marginal Revolution](https://marginalrevolution.com/marginalrevolution/2005/09/the_singularity.html)) | 2025-04-16, "I think it is AGI, seriously" ([link](https://marginalrevolution.com/marginalrevolution/2025/04/o3-and-agi-is-april-16th-agi-day.html)) | Economist, WSJ and Daily Beast reviews of *Average Is Over*, 2013 (listed on Wikipedia, not opened; borderline topic) | skeptic near miss | PASS (thin) under A16: Guardian 2013-05-19, 2014-01-04 and 2017-02-26 discuss his views in the text. All three are about automation and jobs, the same footing as Brynjolfsson |
 | Holden Karnofsky (from cohort list) | 2016-05-16, "nontrivial likelihood of transformative AI within the next 20 years" ([mirror](https://forum.nunosempere.com/posts/zmBnKnpECErWsCiYq/some-background-on-open-philanthropy-s-views-regarding)) | 2025-08-28, about takeoff speed ([podcast](https://podcast.clearerthinking.org/episode/277/holden-karnofsky-the-most-important-century)) | none found | frontier_lab (OpenAI board 2017 to 2021, Anthropic staff from 2025-01; A15 ruling 8) | FAIL (C3). Also fails the cohort rule |
 
 ### Quota totals among core candidates who pass (as of 2026-09-30, superseded below)
@@ -266,46 +267,74 @@ gain archive pieces but were already passes.
 
 ---
 
-## Freeze candidates as of 2026-10-01
+## Re-marking under A16 (2026-10-02)
 
-For John's freeze. Nothing has been frozen. Updated 2026-10-01 after A15 and the archive
-checks.
+A16 (decided 2026-10-02): a piece counts toward the three national pieces if the person is
+named anywhere in its text and its headline or abstract shows the piece is about where AI
+is going. The strict rule (name in the headline or abstract) had excluded 1,037 of the
+1,184 archive hits.
 
-### Core: pass now (19)
+How it was applied: from `archive-checks.csv`, pre-2018 rows flagged `named_in_text_only`
+with an AI term in the headline or abstract; then each headline read, and business news,
+obituaries and pieces about something else left out. The Guardian pieces were opened
+through the Guardian's data service to confirm the name is in the text and to see how the
+person is used. New York Times text is not available that way, so NYT pieces rest on the
+archive's own full-text match.
+
+| candidate | pieces that now count | what else decides the verdict | verdict |
+|---|---|---|---|
+| Shane Legg | Guardian 2015-06-09, Guardian 2016-02-16, NYT 2017-08-13 (five more are news of Google buying DeepMind, not counted) | named mostly in passing as a co-founder | PASS (thin) |
+| Tyler Cowen | Guardian 2013-05-19, 2014-01-04, 2017-02-26 | all about automation and jobs | PASS (thin) |
+| Eliezer Yudkowsky | Guardian 2009-12-14, with Slate 2014 and Scientific American column 2016 | two of three from edge outlets | PASS (thin) |
+| Murray Shanahan | Guardian 2015-06-26, 2015-12-27, 2016-03-05 (and nine more) | no 2024-or-later statement found yet | UNCLEAR (C2) |
+| Yoshua Bengio | NYT 2016-07-17, 2017-04-09, 2017-10-22 | pre-2018 statement not explicitly about AGI | UNCLEAR (C1) |
+| Luciano Floridi | Guardian 2016-03-18, 2017-01-27 | one piece short | UNCLEAR (C3) |
+| Oren Etzioni | ten NYT pieces 2014 to 2017 | no 2024-or-later AGI statement | FAIL (C2) |
+| Pinker, Sutskever, Wooldridge, Goertzel, Davis, Pearl, Chollet, Mitchell, Karnofsky | fewer than three | | FAIL, unchanged |
+
+**Agent readings, for John to confirm or overturn:** counting Legg although he is named
+only in passing; counting jobs-and-automation pieces for Cowen as "where AI is going";
+passing Yudkowsky on two edge outlets. Each is marked thin.
+
+---
+
+## Freeze candidates as of 2026-10-02
+
+For John's freeze. Nothing has been frozen. Updated 2026-10-02 after A16.
+
+### Core: pass now (22)
 
 Kurzweil, Bostrom, Hanson, Hinton, LeCun, Hassabis, Altman, Marcus, Ng, Russell, Brooks,
-Musk, Chalmers, Brynjolfsson, Schmidhuber, Kai-Fu Lee, Walsh, Tegmark, Suleyman.
-Nine pass on thin evidence (named in the table): Hanson, Hassabis, Ng, Musk, Chalmers,
-Brynjolfsson, Schmidhuber, Kai-Fu Lee, Tegmark.
+Musk, Chalmers, Brynjolfsson, Schmidhuber, Kai-Fu Lee, Walsh, Tegmark, Suleyman, and under
+A16 **Legg, Cowen, Yudkowsky**.
+Twelve pass on thin evidence (named in the table): Hanson, Hassabis, Ng, Musk, Chalmers,
+Brynjolfsson, Schmidhuber, Kai-Fu Lee, Tegmark, Legg, Cowen, Yudkowsky.
 
-| quota | minimum | count among the 19 | who |
+| quota | minimum | count among the 22 | who |
 |---|---|---|---|
 | skeptic | 6 | **7** | Hanson, Hinton, LeCun, Marcus, Ng (medium confidence), Brooks, Kai-Fu Lee |
 | non_us_uk | 3 | **5** | Hinton, Chalmers, Schmidhuber, Kai-Fu Lee, Walsh |
 | philosopher | 2 | **3** | Bostrom, Marcus, Chalmers |
-| frontier_lab | 3 | **9** | Hinton, LeCun, Hassabis, Altman, Ng, Musk, Suleyman, Kurzweil, Kai-Fu Lee |
+| frontier_lab | 3 | **10** | Hinton, LeCun, Hassabis, Altman, Ng, Musk, Suleyman, Kurzweil, Kai-Fu Lee, Legg |
 
-All four minimums are met. The core is six short of "about 25".
+All four minimums are met. The core is three short of "about 25". The three added under
+A16 bring no skeptics: the skeptic candidates still fail or are unclear.
 
 ### Core: unclear (3)
 
 | candidate | what is missing | tags if they pass |
 |---|---|---|
-| Yudkowsky | C3: three pieces outside these archives, each weak on one point; archive check found none | none |
+| Shanahan | C2: a statement dated 2024 or later (two podcast leads, not opened) | frontier_lab |
 | Bengio | C1: the original 2016 MIT Technology Review interview (link dead) | non_us_uk |
-| Cowen | C3: 2013 reviews in the Economist, Wall Street Journal and Daily Beast, not in the archives checked and not yet opened | none |
+| Floridi | C3: a third piece (a 2017 Financial Times piece by him, unconfirmed) | skeptic, philosopher |
 
-If all three passed: 22 people; non_us_uk 6.
+If all three passed: 25 people; skeptic 8, non_us_uk 6, philosopher 4, frontier_lab 11.
 
-### Core: fail (14)
+### Core: fail (11)
 
-Waiting on the archives and found nothing that counts: Pinker, Floridi, Legg, Sutskever,
-Shanahan, Wooldridge, Goertzel. Failed earlier: Chollet (checked for the cohort instead),
-Mitchell (C1), Etzioni (C2), Davis (C3), Pearl (C3), Karnofsky (C3; also fails the cohort
-rule). Dropped by ruling: Dennett.
-
-The skeptic candidates are the ones the rule hits hardest: Pinker, Floridi, Wooldridge,
-Etzioni and Davis all fail on newspaper prominence or a recent statement.
+Pinker (C3), Sutskever (C3; unclear for the cohort), Wooldridge (C3), Goertzel (C3),
+Chollet (C3; passes the cohort), Mitchell (C1), Etzioni (C2), Davis (C3), Pearl (C3),
+Karnofsky (C3; also fails the cohort rule). Dropped by ruling: Dennett.
 
 ### 2020s cohort: pass now (8)
 

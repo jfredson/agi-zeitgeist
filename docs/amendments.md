@@ -215,3 +215,26 @@ Validator changes that follow: statement ids may carry a one-letter suffix, and 
 `range` may leave the high bound open when the row carries the `lower_bound` tag.
 
 - **2026-10-02, vanguard sub-series of stream F (accepted; decided by: john):** after the Gemini 3.1 Pro and GPT-6 Astra Medium reviews, John ruled: enthusiast venues only, plus an event-by-event comparison with skeptic venues once one exists, no monthly gap; claims coded on separate fields, six-rung proximity ladder as a display for AGI claims only; stream F's sampling reused; image posts with legible text included; GPT's caption on every figure and heading, "leading indicator" only in the essay as a hypothesis; shares only; folded into stream F as a labelled sub-series never pooled with F's other venues. Full text: `docs/amendments/2026-10-02-vanguard-stream.md`. Only the r/singularity retrievability check may run.
+
+## 2026-10-02: the newspaper-prominence rule loosened
+
+Decided by: mixed. The seed-phase agent raised the question on 2026-10-01 and offered the
+looser wording; John chose it on 2026-10-02 when asked in the management session.
+
+### A16. What counts as "named in" a national piece
+
+Was: an archive hit counted toward the three national pieces only if the person's name was
+in the headline or abstract (the agent's rule for the 2026-10-01 archive checks).
+Now: a piece counts if the person is named anywhere in its text and its headline or
+abstract shows the piece is about where AI is going. Business news, obituaries and pieces
+on other subjects do not count, on a reading of the headline and abstract.
+
+Why: the strict rule excluded 1,037 of 1,184 archive hits and moved seven candidates to
+fail, among them people quoted at length on AI's future (Shanahan in twelve Guardian
+pieces). Being quoted in the text is what "named in" meant in the original rule.
+
+Effect: Legg, Cowen and Yudkowsky pass (all thin); Shanahan, Bengio and Floridi are
+unclear, each on one remaining point; Pinker, Sutskever, Wooldridge and Goertzel still
+fail. Core passes go from 19 to 22. Details and the agent's three judgment calls are in
+`docs/panel-verification-2026-10.md`, section "Re-marking under A16".
+
