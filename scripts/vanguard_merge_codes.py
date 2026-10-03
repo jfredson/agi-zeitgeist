@@ -16,14 +16,16 @@ HEADER = ["run_id", "coder", "post_id", "quarter", "sample", "rank_or_draw", "po
           "content_basis", "title_only", "eligible", "exclusion_reason", "claim_n",
           "claim_target", "si_level", "temporal_status", "forecast_horizon", "stance",
           "epistemic_qualification", "rhetorical_mode", "development_preference",
-          "attribution", "frame_tags", "evidence_span", "notes"]
+          "attribution", "frame_tags", "extrapolates_to_horizon", "evidence_span", "notes"]
 ALLOWED = {
     "sample": {"rewarded", "prevalence"},
     "content_basis": {"text", "text_title", "image", "video_title", "link_page", "link_title", "gallery"},
     "title_only": {"yes", ""},
     "eligible": {"yes", "no"},
     "exclusion_reason": {"", "no_ai_claim", "content_unavailable", "image_no_text"},
-    "claim_target": {"", "specific_capability", "agi", "self_improvement", "pace_singularity", "consequence"},
+    "claim_target": {"", "specific_capability", "agi", "self_improvement", "pace_singularity", "consequence",
+                     "industry_governance"},
+    "extrapolates_to_horizon": {"", "yes", "no", "na"},
     "si_level": {"", "si_assist", "si_research", "si_modify", "si_sustained"},
     "temporal_status": {"", "achieved", "under_way", "forecast", "hypothetical", "unspecified"},
     "stance": {"", "affirms", "denies", "questions", "conditional", "neutral_relay", "unclear"},
@@ -53,6 +55,8 @@ def main():
             problems.append(f"{where}: video row without title_only yes")
         if r["eligible"] == "yes" and not r["claim_target"]:
             problems.append(f"{where}: eligible row without claim_target")
+        if r["eligible"] == "yes" and not r["extrapolates_to_horizon"]:
+            problems.append(f"{where}: eligible row without extrapolates_to_horizon")
         if r["eligible"] == "no" and not r["exclusion_reason"]:
             problems.append(f"{where}: ineligible row without exclusion_reason")
     if "--first" in sys.argv[0:1] or not any("second" in f for f in files):

@@ -1,65 +1,81 @@
-quarter,sample,claim,eligible_posts,affirming,disputing,eligible_posts_excl_title_only,affirming_excl_title_only
-2024Q4,rewarded,AGI already achieved,20,0,0,13,0
-2025Q1,rewarded,AGI already achieved,20,0,0,14,0
-2025Q2,rewarded,AGI already achieved,20,1,0,8,0
-2025Q3,rewarded,AGI already achieved,20,0,0,11,0
-2025Q4,rewarded,AGI already achieved,20,0,2,13,0
-2026Q1,rewarded,AGI already achieved,20,0,1,8,0
-2026Q2,rewarded,AGI already achieved,20,1,0,8,1
-2026Q3,rewarded,AGI already achieved,20,1,0,16,1
-2024Q4,rewarded,AGI within a stated horizon,20,0,0,13,0
-2025Q1,rewarded,AGI within a stated horizon,20,0,0,14,0
-2025Q2,rewarded,AGI within a stated horizon,20,0,0,8,0
-2025Q3,rewarded,AGI within a stated horizon,20,0,0,11,0
-2025Q4,rewarded,AGI within a stated horizon,20,0,0,13,0
-2026Q1,rewarded,AGI within a stated horizon,20,0,0,8,0
-2026Q2,rewarded,AGI within a stated horizon,20,0,0,8,0
-2026Q3,rewarded,AGI within a stated horizon,20,0,0,16,0
-2024Q4,rewarded,Self-improvement under way,20,0,0,13,0
-2025Q1,rewarded,Self-improvement under way,20,0,0,14,0
-2025Q2,rewarded,Self-improvement under way,20,0,0,8,0
-2025Q3,rewarded,Self-improvement under way,20,0,0,11,0
-2025Q4,rewarded,Self-improvement under way,20,0,0,13,0
-2026Q1,rewarded,Self-improvement under way,20,0,0,8,0
-2026Q2,rewarded,Self-improvement under way,20,0,0,8,0
-2026Q3,rewarded,Self-improvement under way,20,0,0,16,0
-2024Q4,rewarded,Singularity framing,20,1,0,13,0
-2025Q1,rewarded,Singularity framing,20,2,0,14,2
-2025Q2,rewarded,Singularity framing,20,0,0,8,0
-2025Q3,rewarded,Singularity framing,20,0,0,11,0
-2025Q4,rewarded,Singularity framing,20,3,0,13,3
-2026Q1,rewarded,Singularity framing,20,0,0,8,0
-2026Q2,rewarded,Singularity framing,20,0,0,8,0
-2026Q3,rewarded,Singularity framing,20,1,0,16,1
-2024Q4,prevalence,AGI already achieved,7,0,0,3,0
-2025Q1,prevalence,AGI already achieved,6,0,0,2,0
-2025Q2,prevalence,AGI already achieved,13,0,0,10,0
-2025Q3,prevalence,AGI already achieved,14,0,0,12,0
-2025Q4,prevalence,AGI already achieved,10,0,0,4,0
-2026Q1,prevalence,AGI already achieved,9,0,0,3,0
-2026Q2,prevalence,AGI already achieved,7,0,0,4,0
-2026Q3,prevalence,AGI already achieved,15,0,0,12,0
-2024Q4,prevalence,AGI within a stated horizon,7,0,1,3,0
-2025Q1,prevalence,AGI within a stated horizon,6,0,0,2,0
-2025Q2,prevalence,AGI within a stated horizon,13,0,0,10,0
-2025Q3,prevalence,AGI within a stated horizon,14,0,0,12,0
-2025Q4,prevalence,AGI within a stated horizon,10,0,0,4,0
-2026Q1,prevalence,AGI within a stated horizon,9,0,0,3,0
-2026Q2,prevalence,AGI within a stated horizon,7,0,0,4,0
-2026Q3,prevalence,AGI within a stated horizon,15,0,0,12,0
-2024Q4,prevalence,Self-improvement under way,7,0,0,3,0
-2025Q1,prevalence,Self-improvement under way,6,0,0,2,0
-2025Q2,prevalence,Self-improvement under way,13,0,0,10,0
-2025Q3,prevalence,Self-improvement under way,14,0,0,12,0
-2025Q4,prevalence,Self-improvement under way,10,0,0,4,0
-2026Q1,prevalence,Self-improvement under way,9,0,0,3,0
-2026Q2,prevalence,Self-improvement under way,7,0,0,4,0
-2026Q3,prevalence,Self-improvement under way,15,0,0,12,0
-2024Q4,prevalence,Singularity framing,7,0,0,3,0
-2025Q1,prevalence,Singularity framing,6,0,0,2,0
-2025Q2,prevalence,Singularity framing,13,0,0,10,0
-2025Q3,prevalence,Singularity framing,14,1,0,12,1
-2025Q4,prevalence,Singularity framing,10,0,0,4,0
-2026Q1,prevalence,Singularity framing,9,0,0,3,0
-2026Q2,prevalence,Singularity framing,7,0,0,4,0
-2026Q3,prevalence,Singularity framing,15,0,0,12,0
+quarter,sample,measure,denominator_posts,posts_meeting_measure,denominator_posts_excl_title_only,posts_meeting_measure_excl_title_only
+2024Q4,rewarded,Capability claims,20,12,13,7
+2025Q1,rewarded,Capability claims,20,8,15,6
+2025Q2,rewarded,Capability claims,20,11,11,3
+2025Q3,rewarded,Capability claims,20,9,14,3
+2025Q4,rewarded,Capability claims,20,13,12,5
+2026Q1,rewarded,Capability claims,20,5,9,0
+2026Q2,rewarded,Capability claims,20,13,9,4
+2026Q3,rewarded,Capability claims,20,9,15,4
+2024Q4,rewarded,Consequence claims,20,9,13,7
+2025Q1,rewarded,Consequence claims,20,1,15,1
+2025Q2,rewarded,Consequence claims,20,4,11,3
+2025Q3,rewarded,Consequence claims,20,3,14,3
+2025Q4,rewarded,Consequence claims,20,2,12,2
+2026Q1,rewarded,Consequence claims,20,5,9,2
+2026Q2,rewarded,Consequence claims,20,4,9,2
+2026Q3,rewarded,Consequence claims,20,3,15,3
+2024Q4,rewarded,Industry and governance claims,20,2,13,1
+2025Q1,rewarded,Industry and governance claims,20,13,15,10
+2025Q2,rewarded,Industry and governance claims,20,5,11,5
+2025Q3,rewarded,Industry and governance claims,20,7,14,7
+2025Q4,rewarded,Industry and governance claims,20,3,12,3
+2026Q1,rewarded,Industry and governance claims,20,10,9,8
+2026Q2,rewarded,Industry and governance claims,20,5,9,4
+2026Q3,rewarded,Industry and governance claims,20,5,15,5
+2024Q4,rewarded,Capability posts that extrapolate to a timeline or consequence,12,4,7,3
+2025Q1,rewarded,Capability posts that extrapolate to a timeline or consequence,8,1,6,1
+2025Q2,rewarded,Capability posts that extrapolate to a timeline or consequence,11,2,3,1
+2025Q3,rewarded,Capability posts that extrapolate to a timeline or consequence,9,0,3,0
+2025Q4,rewarded,Capability posts that extrapolate to a timeline or consequence,13,2,5,2
+2026Q1,rewarded,Capability posts that extrapolate to a timeline or consequence,5,0,0,0
+2026Q2,rewarded,Capability posts that extrapolate to a timeline or consequence,13,2,4,1
+2026Q3,rewarded,Capability posts that extrapolate to a timeline or consequence,9,0,4,0
+2024Q4,rewarded,Headline claims (any of the four),20,0,13,0
+2025Q1,rewarded,Headline claims (any of the four),20,0,15,0
+2025Q2,rewarded,Headline claims (any of the four),20,1,11,0
+2025Q3,rewarded,Headline claims (any of the four),20,0,14,0
+2025Q4,rewarded,Headline claims (any of the four),20,2,12,2
+2026Q1,rewarded,Headline claims (any of the four),20,0,9,0
+2026Q2,rewarded,Headline claims (any of the four),20,1,9,1
+2026Q3,rewarded,Headline claims (any of the four),20,2,15,2
+2024Q4,prevalence,Capability claims,9,3,6,1
+2025Q1,prevalence,Capability claims,9,6,4,2
+2025Q2,prevalence,Capability claims,15,6,11,4
+2025Q3,prevalence,Capability claims,14,8,12,6
+2025Q4,prevalence,Capability claims,11,6,4,2
+2026Q1,prevalence,Capability claims,11,6,3,3
+2026Q2,prevalence,Capability claims,10,8,4,3
+2026Q3,prevalence,Capability claims,15,3,12,3
+2024Q4,prevalence,Consequence claims,9,2,6,2
+2025Q1,prevalence,Consequence claims,9,1,4,1
+2025Q2,prevalence,Consequence claims,15,6,11,6
+2025Q3,prevalence,Consequence claims,14,4,12,4
+2025Q4,prevalence,Consequence claims,11,4,4,2
+2026Q1,prevalence,Consequence claims,11,2,3,0
+2026Q2,prevalence,Consequence claims,10,1,4,1
+2026Q3,prevalence,Consequence claims,15,3,12,1
+2024Q4,prevalence,Industry and governance claims,9,3,6,3
+2025Q1,prevalence,Industry and governance claims,9,4,4,3
+2025Q2,prevalence,Industry and governance claims,15,2,11,1
+2025Q3,prevalence,Industry and governance claims,14,1,12,1
+2025Q4,prevalence,Industry and governance claims,11,1,4,0
+2026Q1,prevalence,Industry and governance claims,11,2,3,0
+2026Q2,prevalence,Industry and governance claims,10,3,4,2
+2026Q3,prevalence,Industry and governance claims,15,6,12,5
+2024Q4,prevalence,Capability posts that extrapolate to a timeline or consequence,3,0,1,0
+2025Q1,prevalence,Capability posts that extrapolate to a timeline or consequence,6,2,2,2
+2025Q2,prevalence,Capability posts that extrapolate to a timeline or consequence,6,1,4,1
+2025Q3,prevalence,Capability posts that extrapolate to a timeline or consequence,8,1,6,1
+2025Q4,prevalence,Capability posts that extrapolate to a timeline or consequence,6,0,2,0
+2026Q1,prevalence,Capability posts that extrapolate to a timeline or consequence,6,0,3,0
+2026Q2,prevalence,Capability posts that extrapolate to a timeline or consequence,8,0,3,0
+2026Q3,prevalence,Capability posts that extrapolate to a timeline or consequence,3,0,3,0
+2024Q4,prevalence,Headline claims (any of the four),9,0,6,0
+2025Q1,prevalence,Headline claims (any of the four),9,0,4,0
+2025Q2,prevalence,Headline claims (any of the four),15,0,11,0
+2025Q3,prevalence,Headline claims (any of the four),14,1,12,1
+2025Q4,prevalence,Headline claims (any of the four),11,0,4,0
+2026Q1,prevalence,Headline claims (any of the four),11,0,3,0
+2026Q2,prevalence,Headline claims (any of the four),10,0,4,0
+2026Q3,prevalence,Headline claims (any of the four),15,0,12,0

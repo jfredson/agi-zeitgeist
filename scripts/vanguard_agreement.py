@@ -15,7 +15,8 @@ import sys
 from collections import Counter
 
 MAIN_FIELDS = ["claim_target", "temporal_status", "stance", "epistemic_qualification",
-               "rhetorical_mode", "development_preference", "attribution", "title_only"]
+               "rhetorical_mode", "development_preference", "attribution", "title_only",
+               "extrapolates_to_horizon"]
 
 
 def load(path):
@@ -59,7 +60,7 @@ def main():
         for i in both:
             a = next((c for c in first[i] if c["claim_n"] == "1"), first[i][0])
             b = next((c for c in second[i] if c["claim_n"] == "1"), second[i][0])
-            pairs.append((a[field].strip(), b[field].strip()))
+            pairs.append((a.get(field, "").strip(), b.get(field, "").strip()))
         results.append((f"main claim: {field}", pairs))
     ind_a = {i: indicators(first[i]) for i in both}
     ind_b = {i: indicators(second[i]) for i in both}

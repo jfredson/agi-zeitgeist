@@ -86,3 +86,24 @@ instruction). Brief: John, 2026-10-03.
    removed or deleted in three ways. Rule applied to all: if the title survives, the post is
    coded from the title with `title_only: yes` and `content_basis: text_title`. Galleries
    and image files that no longer load stay excluded.
+
+## Recode run, 2026-10-03 (after John's rulings on the pilot report)
+
+Same model, `claude-opus-5-5`, the same four first-pass coders (resumed, so their earlier
+judgments stay consistent). Applied to every screened post in the existing sample: the new
+`extrapolates_to_horizon` field and the codebook rulings of 2026-10-03
+(`docs/vanguard/codebook.md`): posts not mentioning AI ineligible, demo-only video titles
+eligible as capability claims, memes under the legible-text rule, company and policy drama
+coded `industry_governance`. The rewarded stopping rule (20 eligible per quarter) is
+re-applied, screening further down each quarter's existing ranked reserve where needed; no
+new posts are drawn. Changed rows carry the note `R2:` with old and new values. The second
+pass is not recoded, so the interim agreement figures predate these rulings.
+
+## Cross-family second pass, 2026-10-03
+
+Run under the revised section 9 (John, 2026-10-03). The models are named and pinned:
+
+- First pass: `claude-opus-5-5`, coder label `claude-opus-5-5-first`, recoded under the 2026-10-03 rulings (424 rows, 390 posts).
+- Second pass: `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026`. The script checks the version against the Gemini models endpoint before running and stops if it doesn't match. Run id `vanguard-pilot-rsing-2026-10-03-crossfamily`, script `scripts/vanguard_crossfamily_pass.py`. The model sees the full codebook and the same content as the first pass (image, link-page text, or title only), with structured output limited to the codebook's values. It saw no first-pass codes. 140 of 140 posts coded, 177 rows.
+- The same-family second pass (`r-singularity-pilot-codes-second.csv`) is superseded and was not recoded.
+- John's 40-post blind worksheet: `data/vanguard/john-vanguard-worksheet.csv`, seed 20261005, 24 top posts and 16 random posts, drawn from the 122 subset posts the recoded first pass still codes. Model codes are hidden.

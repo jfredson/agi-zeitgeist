@@ -127,13 +127,18 @@ share of top posts whose text is recoverable. Results go in
 
 ## 7. Coding: each post sampled, each claim coded
 
+The full instrument, with the eligibility rulings of 2026-10-03 (posts not mentioning AI
+are ineligible; video titles naming only a demo are eligible capability claims; memes
+follow the legible-text rule; company and policy drama is coded `industry_governance`),
+is `docs/vanguard/codebook.md`.
+
 The **post** is the sampling unit and the **claim** is the coding unit, weighted so long
 posts don't count more. **No single ladder**: each claim is coded on separate fields,
 mapped to the project codebook where one exists.
 
 | field | values | maps to |
 |---|---|---|
-| claim target | specific capability; AGI or general capability; autonomous research or self-improvement; pace of progress or singularity; social or economic consequence | `target_capability` (including the four self-improvement levels) |
+| claim target | specific capability; AGI or general capability; autonomous research or self-improvement; pace of progress or singularity; social or economic consequence; industry and governance (AI company and policy drama; ruling 2026-10-03) | `target_capability` (including the four self-improvement levels) |
 | temporal status | already achieved; under way; forecast; hypothetical; unspecified | `present_capability` plus timeline fields |
 | forecast horizon | the exact date, range or wording | `timeline_*` |
 | poster's stance | affirms; denies; questions; conditional; neutral relay; unclear | `endorsement` |
@@ -142,6 +147,7 @@ mapped to the project codebook where one exists.
 | development preference | supports; opposes; conditional; not expressed | new |
 | attribution | original; repost of a panel member; of a lab or company; of a news outlet | panel reposts are logged as reposting events, not as the panel member's view |
 | frame tags | "AGI", "singularity", "takeoff" and similar, as words used | lexical tags only; "math singularity" is not translated into "AGI achieved" |
+| extrapolates_to_horizon | post level: does the post infer a timeline or consequence from a capability? `yes`, `no`, `na` (no capability claim) | new; ruling 2026-10-03 |
 | title_only | `yes` when the post was coded from its title alone (video posts, section 6); blank otherwise | new; lets analysis exclude the hedge (epistemic qualification) and claim fields of these rows, or report them separately |
 
 Denials keep their target ("AGI is not imminent" = AGI, near-term, denied).
@@ -153,6 +159,11 @@ self-improvement under way). It is never applied to other claim targets and neve
 a coding field.
 
 ## 8. Outputs
+
+**Primary measures (ruling 2026-10-03):** the share of eligible posts making a capability
+claim and a consequence claim, and the share of capability posts that extrapolate to a
+timeline or consequence. The four claims below are kept and reported as near-absent where
+they are (the r/singularity pilot found them in under 5% of eligible posts).
 
 **Shares only.** Per venue and quarter, separately for the rewarded and prevalence samples:
 the share of eligible posts affirming each claim (AGI already achieved; AGI within a
@@ -166,19 +177,30 @@ would sit in a post's body or a video's narration are missing. Every share is th
 reported twice, with and without `title_only: yes` rows, and the hedge and claim fields of
 title-only rows are excluded from any claim about how hedged the venue's framing is.
 
-## 9. Reliability
+## 9. Reliability (revised by John, 2026-10-03)
 
-Two people independently code a preregistered pilot subset without seeing the model's
-labels, including ambiguous, ironic and older posts. Agreement and confusion tables by
-field; evidence spans recorded for each code; "unclear" allowed; prompts, model and
-codebook frozen per run; a fresh holdout sample after any revision. A category that stays
-unreliable is simplified or dropped. A model first pass is quality control, not a second
-coder.
+This is a single-researcher project, so the earlier requirement that two people code a
+subset blind is withdrawn. In its place:
+
+1. **A blind second pass by a model from a different family** than the first pass, on a
+   preregistered subset, with agreement and Cohen's kappa (agreement corrected for chance)
+   reported per field. Both models are named and pinned in the run record. In the
+   r/singularity pilot: first pass `claude-opus-5-5` (Anthropic); second pass
+   `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026` (Google).
+2. **A blind human subsample of 40 posts coded by John**, with the model codes hidden, and
+   his agreement with each model reported per field.
+3. **Disclosure, in plain language, in the methodology:** coding is model-assisted with one
+   human check. That is a disclosed limitation, not a second coder.
+
+Evidence spans recorded for each code; "unclear" allowed; prompts, models and codebook
+frozen per run; a category that stays unreliable is simplified or dropped.
 
 ## 10. Presentation
 
 - Every figure and section heading carries: **"Framing in sampled high-score posts from
   selected AI enthusiast venues; not representative of participants or the public."**
+- Until John's 40-post check is coded and reported, figures also carry **"interim,
+  model-coded"** (ruling 2026-10-03).
 - Its own figure; never pooled with stream F's other venues; never on the same axis as
   streams E, P or M.
 - Any sentence of the form "by 2023 people thought X" cites stream P, not this sub-series.
