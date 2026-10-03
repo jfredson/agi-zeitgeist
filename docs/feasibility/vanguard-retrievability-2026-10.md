@@ -4,19 +4,36 @@ Run 2026-10-02 under the accepted amendment `docs/amendments/2026-10-02-vanguard
 (section 5). Script: `scripts/retrievability_check.py`. Nothing was coded and no post text
 was stored; the output files hold post IDs, times, scores and status flags only.
 
-## Revised headline, after John's video ruling (2026-10-02)
+## Headline: two figures, always reported together
 
-John ruled that video posts are coded from their title only. All 120 titles are in the
-archive, so the 38 videos move from "not verifiable" to "recoverable":
+John ruled (2026-10-02) that video posts are coded from their title only, and asked
+(2026-10-03) that both figures be reported side by side:
 
-| status | posts | share |
-|---|---|---|
-| **Recoverable for coding** (3 text posts, 61 images that load, 4 links, 38 videos by title) | 106 | **88%** |
-| **Known lost** (image files deleted, HTTP 404) | 9 | **7.5%** |
-| **Not verifiable** (5 galleries; their content needs reddit.com, which refused the lookup) | 5 | **4%** |
+- **Fully recoverable**: text posts with their body, links with title and address, and
+  images that still load. **55% over the full pilot window** (88 of 160); 57% over the
+  first six quarters (68 of 120).
+- **Including video posts coded by title only**: **90% over the full pilot window** (144
+  of 160); 88% over the first six quarters (106 of 120). Title-only rows carry
+  `title_only: yes` in the coding scheme, because coding from a title alone likely
+  overstates unhedged claims (amendment sections 7 and 8).
 
-These are the top 20 per quarter. Image loading was checked only for the top 20, so no
-comparable figure exists for the top 50. The original headline, before the ruling, follows.
+| quarter | top posts | fully recoverable | video, coded by title only | recoverable incl. title-only | lost | unverified |
+|---|---|---|---|---|---|---|
+| 2024Q4 | 20 | 11 (55%) | 6 | 17 (85%) | 2 | 1 |
+| 2025Q1 | 20 | 14 (70%) | 3 | 17 (85%) | 2 | 1 |
+| 2025Q2 | 20 | 9 (45%) | 10 | 19 (95%) | 1 | 0 |
+| 2025Q3 | 20 | 12 (60%) | 7 | 19 (95%) | 0 | 1 |
+| 2025Q4 | 20 | 11 (55%) | 3 | 14 (70%) | 4 | 2 |
+| 2026Q1 | 20 | 11 (55%) | 9 | 20 (100%) | 0 | 0 |
+| 2026Q2 | 20 | 8 (40%) | 11 | 19 (95%) | 0 | 1 |
+| 2026Q3 | 20 | 12 (60%) | 7 | 19 (95%) | 0 | 1 |
+| **2024Q4 to 2026Q1 (six quarters)** | **120** | **68 (57%)** | **38** | **106 (88%)** | **9** | **5** |
+| **full pilot window, 2024Q4 to 2026Q3** | **160** | **88 (55%)** | **56** | **144 (90%)** | **9** | **7** |
+
+"Lost" = image file deleted from Reddit's image host (HTTP 404). "Unverified" = galleries,
+whose content needs reddit.com, which refused the lookup. These are the top 20 per quarter;
+image loading was checked only for the top 20, so no comparable top-50 figure exists. The
+headline written before the video ruling follows.
 
 ## Headline (before the video ruling)
 
@@ -42,7 +59,7 @@ and only 3 are text posts.
 | requirement | result |
 |---|---|
 | Reach the versioned source | Yes: the Arctic Shift archive API, `subreddit=singularity`, paged by post time, 100 posts per request |
-| List every post in the period | **Partly.** 43,700 posts listed from 2024-10-01 before the archive replied "Timeout. Maybe slow down a bit" (HTTP 422) at request 438, reaching 2026-06-09. Under the overnight rule the run stopped there. **Six complete quarters** (2024Q4 to 2026Q1, 40,454 posts) were analysed; 2026Q2 is partial and 2026Q3 is not listed. No gap longer than 24 hours within the listed period |
+| List every post in the period | **Yes, after a resumed run.** First run (2026-10-02): 43,700 posts listed from 2024-10-01 before the archive replied "Timeout. Maybe slow down a bit" (HTTP 422) at request 438, reaching 2026-06-09. Under the overnight rule the run stopped there. **Six complete quarters** (2024Q4 to 2026Q1, 40,454 posts) were analysed; 2026Q2 was partial and 2026Q3 not listed. Resumed run (2026-10-03, with back-off on throttling; none was needed): 10,090 more posts in 70 requests, to 2026-09-30 23:56 UTC. Full window: 50,544 posts, no gap longer than 24 hours. 2026Q2: 4,361 posts; 2026Q3: 5,729 |
 | Reproduce the ranking | Yes: every listed post's ID, time and recorded score is in `r-singularity-pilot-index.csv`; the top-50 per quarter, ranked by score then post time, is in `r-singularity-pilot-top-posts.csv` |
 | Retrieve the text needed to check the coding | Titles: 120 of 120. Content: see the headline |
 | Score observation time | **Unknown.** The archive's capture-time field (`retrieved_on`) equals the posting time for all top posts, so it records the first capture, not when the settled score was taken. Scores are clearly settled (top-20 minimums of 1,904 to 5,310 per quarter), but their observation time can't be stated. Coverage class for scores: **unknown** |
@@ -85,5 +102,8 @@ with legible text) will drop some and pull in lower-ranked posts.
 
 ## Not done
 
-The last two quarters of the pilot window (2026Q2, 2026Q3), the Reddit status lookup, and
-checks of video, gallery and linked-page availability. Nothing else was collected.
+The Reddit status lookup (refused on 2026-10-02, skipped on 2026-10-03), and checks of
+video, gallery and linked-page availability. Images in 2026Q2 and 2026Q3 were checked on
+2026-10-03, those in earlier quarters on 2026-10-02. Output for the last two quarters is in
+`r-singularity-pilot-index-2026q2-q3.csv` and `r-singularity-pilot-top-posts-2026q2-q3.csv`.
+Nothing else was collected.

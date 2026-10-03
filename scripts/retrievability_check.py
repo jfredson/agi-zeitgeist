@@ -44,12 +44,22 @@ class Stop(Exception):
     pass
 
 
+LAST_HEADERS = {}
+# Back-off waits (seconds) after the archive asks to slow down; the run stops after the last.
+BACKOFF = [60, 120, 300, 600, 900]
+PACE = 2.0  # seconds between archive requests
+
+
 def fetch(url, method="GET"):
     req = urllib.request.Request(url, headers={"User-Agent": UA}, method=method)
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
+            LAST_HEADERS.clear()
+            LAST_HEADERS.update({k.lower(): v for k, v in r.headers.items()})
             return r.status, r.read()
     except urllib.error.HTTPError as e:
+        LAST_HEADERS.clear()
+        LAST_HEADERS.update({k.lower(): v for k, v in (e.headers or {}).items()})
         return e.code, e.read()
     except (urllib.error.URLError, ConnectionError, TimeoutError, OSError) as e:
         raise Stop(f"connection problem with {urllib.parse.urlsplit(url).netloc}: {e}")
@@ -66,21 +76,34 @@ def list_posts(sub, start, end):
     after = (max(p["created_utc"] for p in posts)) if posts else start
     end_ts = int(datetime.fromisoformat(end).replace(tzinfo=timezone.utc).timestamp())
     seen = {p["id"] for p in posts}
-    requests = 0
+    requests, tries = 0, 0
     while True:
         q = urllib.parse.urlencode({"subreddit": sub, "after": after, "before": end, "sort": "asc",
                                     "limit": 100, "fields": FIELDS})
         status, body = fetch(f"{ARCHIVE}?{q}")
         requests += 1
-        if status in (401, 403, 429):
+        try:
+            data = json.loads(body or b"{}")
+        except ValueError:
+            data = {"error": "unreadable reply"}
+        if status in (401, 403):
             CACHE.write_text(json.dumps(posts))
-            raise Stop(f"archive refused (HTTP {status}) after {requests} requests; "
+            raise Stop(f"archive refused access (HTTP {status}) after {requests} requests; "
                        f"{len(posts)} posts listed so far, cached for resume")
-        data = json.loads(body or b"{}")
         if status != 200 or data.get("error"):
+            # Throttle ("Maybe slow down a bit", HTTP 422) or rate limit (429): back off, then resume.
             CACHE.write_text(json.dumps(posts))
-            raise Stop(f"archive error (HTTP {status}: {data.get('error')}) after {requests} requests; "
-                       f"{len(posts)} posts listed so far, cached for resume")
+            if tries >= len(BACKOFF):
+                raise Stop(f"archive still throttling after {tries} back-offs (HTTP {status}: "
+                           f"{data.get('error')}); {len(posts)} posts listed so far, cached for resume")
+            reset = LAST_HEADERS.get("x-ratelimit-reset", "")
+            wait = max(BACKOFF[tries], int(reset) if reset.isdigit() else 0)
+            print(f"  archive throttled (HTTP {status}: {data.get('error')}); waiting {wait}s "
+                  f"(back-off {tries + 1} of {len(BACKOFF)})", flush=True)
+            tries += 1
+            time.sleep(wait)
+            continue
+        tries = 0
         batch = [p for p in (data.get("data") or []) if p["id"] not in seen]
         if not batch:
             break
@@ -93,7 +116,7 @@ def list_posts(sub, start, end):
                   f"{datetime.fromtimestamp(after, timezone.utc):%Y-%m-%d}", flush=True)
         if after >= end_ts:
             break
-        time.sleep(1.0)
+        time.sleep(PACE)
     CACHE.write_text(json.dumps(posts))
     return posts, requests
 
@@ -163,8 +186,12 @@ def main():
     else:
         posts, requests = list_posts(sub, start, end)
     end_ts = int(datetime.fromisoformat(end).replace(tzinfo=timezone.utc).timestamp())
-    posts = [p for p in posts if p["created_utc"] < end_ts]
-    with (OUT / f"r-{sub}-pilot-index.csv").open("w", newline="") as f:
+    start_ts = int(datetime.fromisoformat(start).replace(tzinfo=timezone.utc).timestamp())
+    posts = [p for p in posts if start_ts <= p["created_utc"] < end_ts]
+    # --tag NAME writes r-<sub>-pilot-index-NAME.csv etc., so a later window does not
+    # overwrite an earlier one.
+    tag = ("-" + sys.argv[sys.argv.index("--tag") + 1]) if "--tag" in sys.argv else ""
+    with (OUT / f"r-{sub}-pilot-index{tag}.csv").open("w", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["id", "created_utc", "retrieved_on", "score", "num_comments"])
         for p in sorted(posts, key=lambda p: p["created_utc"]):
@@ -185,6 +212,8 @@ def main():
 
     ids = [p["id"] for _, rank, p in top]
     try:
+        if "--no-reddit" in sys.argv:
+            raise Stop("skipped (reddit.com refused this lookup on 2026-10-02)")
         live = reddit_status(ids)
         live_note = "checked"
     except Stop as e:
@@ -205,7 +234,7 @@ def main():
                      if p.get("retrieved_on") else "",
                      "post_type": kind, "archive_text": archive_text_status(p, kind),
                      "reddit_status": live.get(p["id"], ""), "media": ms})
-    with (OUT / f"r-{sub}-pilot-top-posts.csv").open("w", newline="") as f:
+    with (OUT / f"r-{sub}-pilot-top-posts{tag}.csv").open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)

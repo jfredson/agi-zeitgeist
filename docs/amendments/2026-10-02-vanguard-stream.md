@@ -95,7 +95,29 @@ share of top posts whose text is recoverable. Results go in
   timeline or consequence. **Image posts with legible text are included; image-only posts
   without text are excluded.** **Video posts are coded from their title only** (John,
   2026-10-02): the video itself is not watched or coded, and a video post is eligible only
-  if its title makes such a claim. Counts of each are reported.
+  if its title makes such a claim. Counts of each are reported. Rows coded from the title
+  alone carry `title_only: yes` (section 7).
+- **Retrievability in r/singularity** (stream F's top 20 per quarter; details in
+  `docs/feasibility/vanguard-retrievability-2026-10.md`). Two figures are always reported
+  together: **fully recoverable** (text, links, images that still load) and **including
+  video posts coded by title only**. Over the full pilot window, 2024Q4 to 2026Q3: **55%
+  and 90%**; over the first six quarters: 57% and 88%.
+
+  | quarter | top posts | fully recoverable | video, title only | incl. title-only | lost | unverified |
+  |---|---|---|---|---|---|---|
+  | 2024Q4 | 20 | 11 (55%) | 6 | 17 (85%) | 2 | 1 |
+  | 2025Q1 | 20 | 14 (70%) | 3 | 17 (85%) | 2 | 1 |
+  | 2025Q2 | 20 | 9 (45%) | 10 | 19 (95%) | 1 | 0 |
+  | 2025Q3 | 20 | 12 (60%) | 7 | 19 (95%) | 0 | 1 |
+  | 2025Q4 | 20 | 11 (55%) | 3 | 14 (70%) | 4 | 2 |
+  | 2026Q1 | 20 | 11 (55%) | 9 | 20 (100%) | 0 | 0 |
+  | 2026Q2 | 20 | 8 (40%) | 11 | 19 (95%) | 0 | 1 |
+  | 2026Q3 | 20 | 12 (60%) | 7 | 19 (95%) | 0 | 1 |
+  | **2024Q4 to 2026Q1 (six quarters)** | **120** | **68 (57%)** | **38** | **106 (88%)** | **9** | **5** |
+  | **full pilot window, 2024Q4 to 2026Q3** | **160** | **88 (55%)** | **56** | **144 (90%)** | **9** | **7** |
+
+  "Lost" = image file deleted (HTTP 404); "unverified" = galleries, whose content needs
+  reddit.com, which refused the lookup.
 - **Amplification:** posts reacting to the same announcement share an event identifier;
   results are reported with and without de-duplication.
 - **Pilot window:** the 24 complete calendar months before the freeze month, so
@@ -120,6 +142,7 @@ mapped to the project codebook where one exists.
 | development preference | supports; opposes; conditional; not expressed | new |
 | attribution | original; repost of a panel member; of a lab or company; of a news outlet | panel reposts are logged as reposting events, not as the panel member's view |
 | frame tags | "AGI", "singularity", "takeoff" and similar, as words used | lexical tags only; "math singularity" is not translated into "AGI achieved" |
+| title_only | `yes` when the post was coded from its title alone (video posts, section 6); blank otherwise | new; lets analysis exclude the hedge (epistemic qualification) and claim fields of these rows, or report them separately |
 
 Denials keep their target ("AGI is not imminent" = AGI, near-term, denied).
 
@@ -136,6 +159,12 @@ the share of eligible posts affirming each claim (AGI already achieved; AGI with
 stated horizon; self-improvement under way; singularity framing), the share disputing each,
 and the share unclear or ironic, with both denominators reported (all eligible posts, and
 posts on that target). **No medians, no quartiles, no subtraction between groups.**
+
+**Title-only rows.** Coding from a title alone likely **overstates unhedged claims**:
+titles are short and written to attract attention, and the hedges, caveats and irony that
+would sit in a post's body or a video's narration are missing. Every share is therefore
+reported twice, with and without `title_only: yes` rows, and the hedge and claim fields of
+title-only rows are excluded from any claim about how hedged the venue's framing is.
 
 ## 9. Reliability
 

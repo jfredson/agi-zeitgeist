@@ -239,3 +239,4 @@ fail. Core passes go from 19 to 22. Details and the agent's three judgment calls
 `docs/panel-verification-2026-10.md`, section "Re-marking under A16".
 
 - **2026-10-02, vanguard sub-series, video posts (decided by: john):** video posts are coded from their title only; the video is not watched or coded, and a video post is eligible only if its title makes a claim about AI capability, timeline or consequence. Written into section 6 of `docs/amendments/2026-10-02-vanguard-stream.md`.
+- **2026-10-03, vanguard sub-series, title-only rows (decided by: john):** retrievability is always reported as two figures (fully recoverable; including video posts coded by title only) with per-quarter counts; a `title_only` field marks rows coded from the title alone so their hedge and claim fields can be excluded; section 8 notes that title-only coding likely overstates unhedged claims.
