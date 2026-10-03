@@ -1,98 +1,178 @@
-# Amendment: Vanguard Sentiment Stream
+# Amendment: Vanguard Sentiment Stream (reconciled draft)
 
-Status: DRAFT, pending outside review (Gemini 3.1 Pro, GPT-6 Astra Medium) per the 2026-09-30 ruling. Not to be collected until the review gate below is cleared and John has accepted the reconciled version.
-Date: 2026-10-02
-Applies to: docs/methodology-v2.md (adds one evidence stream), docs/amendments.md (log entry)
-Destination: agi-zeitgeist/docs/amendments/2026-10-02-vanguard-stream.md
+Status: **RECONCILED DRAFT, not accepted.** Revised 2026-10-02 after two outside reviews,
+saved verbatim in `docs/reviews/vanguard-stream-review-gemini-3.1-pro-2026-10.md` and
+`docs/reviews/vanguard-stream-review-gpt-6-astra-2026-10.md` (prompt:
+`docs/reviews/vanguard-stream-review-prompt.md`). John's original draft is in git history
+(commit `d3a1e19`). **Nothing is collected until John rules on section 0 and accepts this
+version.**
+Applies to: `docs/methodology-v2.md` (a registered sub-study within stream F),
+`docs/amendments.md` (log entry).
+
+Where the two reviews agreed, their point is adopted below. Where they disagreed, both
+positions are set out in section 0 with a suggestion marked as the agent's, for John to
+rule.
+
+## 0. Rulings needed from John
+
+| # | question | Gemini 3.1 Pro | GPT-6 Astra Medium | agent suggestion |
+|---|---|---|---|---|
+| R1 | **Option A (paired skeptic stream) or B (enthusiast only)?** | A is mandatory; B would be dismissed as an "AI hype tracker"; the later start of skeptic venues is "a finding in itself" | B first; A only as a substantive comparison of how differently selected communities read the **same** events, never an unconditional gap; a pair "chosen for appearances" doesn't fix self-selection | B now, with a preregistered **event-conditional comparison** (A') added from the month the first qualifying skeptic venue exists: both sides coded on the same capability announcements, no monthly subtraction. This gives Gemini's pairing without GPT's objection to a manufactured opposition |
+| R2 | **Ladder: replace with one dimension, or drop?** | Replace with a strict one-dimensional "proximity" ladder (impossible → distant → needs breakthroughs → imminent by scaling → crossing the threshold now → self-improvement under way), with consequence coded separately | No single ladder: code each claim on separate fields and report proportions; an ordering is defensible only within one claim target (beyond a horizon → within a horizon → already achieved) | Code claims on separate fields (section 6). Derive Gemini's proximity scale **only within the AGI target** as a display, which is the limited ordering GPT accepts |
+| R3 | **Reddit sample: top 25 by score, or random 25 above a score threshold?** | Random 25 from posts above a score threshold, memes excluded first, seed stored | Top-N is acceptable if labelled as a "top-post" sample; make the ranking-then-exclusion order explicit | Keep a top-N "rewarded" series (as stream F already does, A6) **and** use stream F's existing random prevalence sample of the same venue rather than a second random design. No new sampling rule needed |
+| R4 | **Memes** | Exclude | May carry the rhetoric being measured; include interpretable image-text posts or restrict the scope openly | Include image-text posts where the text is legible; exclude pure images; report counts |
+| R5 | **"Leading indicator" wording** | Implicitly accepts the framing ("shifting Overton window") | Remove: an untested predictive claim; caption should say "framing in sampled high-score posts from selected AI enthusiast venues; not representative of participants or the public" | Adopt GPT's caption; keep "leading indicator" only as a hypothesis with a preregistered lead–lag test against the panel and survey streams |
+| R6 | **Summary statistics** | Measure the "spread" between the two vanguards | Drop medians, upper quartiles and any subtraction; report proportions with stated denominators | Follows R1 and R2: proportions per claim target; no subtraction |
+| R7 | **New stream or sub-study?** | (not addressed) | Sub-study within the existing online-community stream | Sub-study within stream F. Stream F already covers r/singularity with a random sample and a top-20 "rewarded" series per quarter (methodology-v2 section 6, A6), so a separate stream would duplicate it |
 
 ## 1. Purpose
 
-Add a separate evidence stream that tracks how the self-selected AI-acceleration community (r/accelerate, r/singularity, the enthusiast cluster on X) frames AGI progress over time. This community moves earlier and further than both the named-thinker panel and the general public. That makes it useful as a leading indicator of framing and useless as a measure of what people in general believe. The stream exists to capture the first property and is presented so it cannot be mistaken for the second.
+Record how highly ranked posts in a fixed set of AI-enthusiast venues frame AI progress
+over time: which capabilities are treated as already achieved, under way or near, and in
+what terms. The construct is **framing in selected venues**. It is not a measure of what
+people in general believe, nor of what the venues' members believe.
 
-Motivating observation (2026-10-02): an r/accelerate post titled "We are in the MATH singularity!!!!!" reposting Alexandr Wang's claim that mathematicians and an AI system solved six open problems. The signal in that post is not optimism level. It is which claim is treated as already settled. Twenty years ago the live question in these spaces was whether AGI was possible; today a solved-problems list is read as evidence that a singularity is in progress. The thing that moves is the milestone frame, and the coding scheme below is built to track that rather than mood.
+The working idea that these venues move "earlier and further" than the panel or the
+public is a **hypothesis**, not a design property. It can be tested later with a
+preregistered lead–lag comparison against stream E (named experts) and stream P
+(surveys). Results such as stable framing, recurring hype cycles or no historical shift
+are allowed outcomes.
 
-## 2. What this stream is and is not
+The motivating post (r/accelerate, "We are in the MATH singularity!!!!!", reposting a
+claim about six solved open problems) is an illustration of the question, not evidence.
+It enters the data only if the sampling rule selects it, and any description of it in
+the essay attributes the claim rather than presenting it as verified.
 
-Is:
-- A record of the furthest claim asserted without hedge by the most-engaged posts in a fixed set of enthusiast venues, sampled on a fixed rule, per month.
-- Re-pullable: every datapoint is a public post retrievable by ID with a stored query.
+## 2. Place in the method
 
-Is not:
-- A measure of public opinion. The venues are self-selected by belief; a spike here says nothing about the population.
-- A measure of expert opinion. Panel members who are reposted here are already counted in the panel stream; their appearance here is coded as a reposting event, not as their own view.
-- A truth claim about the underlying events. Whether six open problems were in fact solved is irrelevant to this stream; what is coded is that the community asserted it as a singularity marker.
+A registered sub-study within stream F (specialist discourse). It reuses stream F's
+coverage audit, its random prevalence sample and its "what the community rewarded"
+series where venues overlap, and adds claim-level coding (section 6) and the venue set in
+section 4. Never shown on the same axis as streams E, P or M.
 
-## 3. Even-handedness: the vanguard pair
+## 3. Scope: enthusiast venues, with an event-conditional comparison (pending R1)
 
-A stream that samples only accelerationists will drift upward by construction and reviewers will rightly call it cherry-picked. Two options, to be put to the outside reviewers as an open question:
+- **Primary (Option B):** enthusiast venues only, labelled as a purposive selection.
+- **Comparison (A', pending R1):** from the month the first qualifying skeptic venue
+  exists, a preregistered list of capability events (model releases, benchmark claims,
+  announced results) is coded in both enthusiast and skeptic venues with the same
+  instrument. Comparisons are made per event and claim type, never as a monthly
+  enthusiast-minus-skeptic gap. Skeptic coverage starts when skeptic venues start; it is
+  not backfilled from general forums (both reviews).
+- Capability expectations and development preferences are kept apart: believing AGI is
+  near is not the same as wanting it, and doubting a capability is not the same as
+  opposing AI (GPT).
 
-- Option A (recommended): collect a mirrored skeptic vanguard on the same rules, from venues self-selected by AI skepticism or deceleration (candidates: r/BetterOffline, r/artificial_intelligence critics threads, a fixed list of prominent critic accounts on X). Present both as a pair. The interesting quantity becomes the distance between the two vanguards over time, and whether it widens or narrows.
-- Option B: collect the enthusiast side only, label it unambiguously as one-sided, and rely on the panel and public streams for balance.
+## 4. Venues and accounts: frozen selection
 
-Option A costs roughly double the collection effort and the skeptic venues are smaller and younger, so the backfilled skeptic series will be thinner before 2023. That asymmetry must be stated in the essay if Option A is chosen. The default recommendation is A with the asymmetry disclosed, because the pair is the only presentation that does not read as advocacy.
+Before any pull, publish:
+- the candidate-venue inventory and how it was found; inclusion and exclusion criteria;
+  reasons for each venue chosen and each rejected; verified creation dates and usable
+  coverage dates; documented changes in purpose or moderation (GPT);
+- for the comparison, the same for skeptic venues. Whole venues are compared only with
+  whole venues, never with stance-filtered threads (GPT).
 
-## 4. Source set and inclusion rule
+**Enthusiast venues (proposed, to be confirmed by the inventory):** r/singularity
+(from 2008), r/accelerate (newer), r/artificial as a lower-intensity comparator.
 
-Named up front, frozen before collection, changes logged as amendments.
+**X accounts:** selected by a script, not by hand (both reviews): accounts whose bio
+contains a frozen keyword list, ranked by follower count on the freeze date, top K, with
+the script, the date, the account IDs and the qualifying bio text published before
+collection. Rules for renames, suspensions and inactivity frozen in advance; hashtag
+samples kept separate from account samples. Forward-only. **If the qualifying evidence and
+posts can't meet the public re-pull requirement, X is deferred** (GPT).
 
-Enthusiast venues:
-- Reddit: r/singularity (primary, exists since 2008, gives the longest series), r/accelerate (secondary, newer), r/artificial as a lower-intensity comparator.
-- X: a fixed account list of 20 to 30 accounts, chosen by a written rule (for example, accounts with over N followers whose bio or pinned post self-identifies with acceleration, e/acc or singularity framing as of the freeze date), plus a fixed hashtag set. The list is forward-only from the freeze date. No backfilled X series is claimed; X archive access is too poor to re-pull reliably.
+## 5. Feasibility gate before any historical series
 
-Skeptic venues (if Option A):
-- Reddit: r/BetterOffline, plus any skeptic-aligned subreddit meeting a minimum-size threshold on the freeze date.
-- X: mirrored account list built by the same rule with skeptic self-identification.
+A technical demonstration, for each venue, that a public reader can: reach the exact
+versioned source; enumerate a month's candidate posts; reproduce the eligibility
+filtering and ranking; and retrieve the text needed to check the coding (GPT). If the
+archive supports only "highest recorded-score posts among archived records", that is the
+label used, not "the month's top posts". Coverage per month is recorded as known
+incomplete, assessed, or unknown. Score observation timestamps are kept, and scores are
+not called endorsement. The November 2023 change in how the Arctic Shift archive captures
+scores is marked as a measurement break (as in stream F).
 
-Inclusion rule for a post: it must assert or dispute a claim about AI capability, timeline or consequence. Memes, meta, moderation and off-topic posts are excluded and the exclusion count is reported.
+## 6. Sampling (pending R3, R4)
 
-## 5. Sampling
+- **Rewarded series:** per venue and month, the top N eligible posts by recorded score
+  (N = 25), ranked after eligibility screening, with ties and low-volume months handled by
+  a written rule; candidate, screened, included and excluded counts reported.
+- **Prevalence:** stream F's seeded random sample for the same venue, so the rewarded
+  series can be compared with ordinary posts.
+- **Eligibility:** the post asserts, disputes or relays a claim about AI capability,
+  timeline or consequence. Image-text posts with legible text are eligible (pending R4).
+- **Amplification:** posts reacting to the same announcement share an event identifier;
+  results are reported with and without de-duplication (GPT).
+- **Pilot window:** the rule for choosing the 24-month pilot is frozen before any data is
+  inspected, plus a small preregistered sample from other eras to test whether the
+  codebook works on older posts (GPT).
 
-Reddit, backfilled: for each venue and each calendar month, the top N posts by score (N = 25 proposed), pulled via the Reddit API or a Pushshift-derived archive with the exact query, timestamp and archive snapshot ID stored alongside the data. Where the archive is incomplete for a month, the month is marked as such rather than filled from memory or browsing.
+## 7. Coding: one post sampled, each claim coded (pending R2)
 
-X, forward-only: for each account on the list, all posts in the month with over a stated engagement floor, pulled on a fixed day each month and stored by post ID.
+The **post** is the sampling unit and the **claim** is the coding unit, with weights so
+that long posts don't count more (GPT). Fields, mapped to the project codebook where one
+exists:
 
-Browsing, screenshots and "posts I noticed" are not data. The post that motivated this amendment enters the dataset only if it is captured by the top-N rule for October 2026.
+| field | values | maps to |
+|---|---|---|
+| claim target | specific capability; AGI or general capability; autonomous research or self-improvement; pace of progress or singularity; social or economic consequence | `target_capability` (including the four self-improvement levels) |
+| temporal status | already achieved; under way; forecast; hypothetical; unspecified | `present_capability` plus timeline fields |
+| forecast horizon | the exact date, range or wording | `timeline_*` |
+| poster's stance | affirms; denies; questions; conditional; neutral relay; unclear | `endorsement` |
+| epistemic qualification | unqualified; qualified; explicit probability; unclear | hedge rules (A14 ruling 10), with 5 to 10 worked examples of hedged and unhedged posts (Gemini) |
+| rhetorical mode | literal; ironic or sarcastic; mixed; unclear | new. Sarcasm is a mode, not a degree of uncertainty (GPT) |
+| development preference | supports; opposes; conditional; not expressed | new |
+| attribution | original; repost of a panel member; of a lab or company; of a news outlet | panel reposts are logged as reposting events, not as the panel member's view |
+| frame tags | "AGI", "singularity", "takeoff" and similar, as words used | lexical tags only. "Math singularity" is not translated into "AGI achieved" (GPT) |
 
-## 6. Coding scheme
+Denials keep their target ("AGI is not imminent" = AGI, near-term, denied). A display
+ordering (beyond a horizon → within a horizon → already achieved) is derived only within
+the AGI target (pending R2).
 
-Each included post is coded by two passes (model-assisted first pass, human spot-check on a stated fraction, disagreements logged) on:
+## 8. Outputs
 
-- Milestone frame: the furthest capability or consequence the post treats as already achieved or imminent without hedge. Ordinal ladder to be finalized with reviewers, roughly: AGI impossible or far off; narrow progress only; AGI plausible within career horizon; AGI imminent; recursive self-improvement under way; singularity in progress; post-singularity framing.
-- Hedge level: unhedged, hedged, ironic or sarcastic. Sarcasm is common in both vanguards and miscoding it inverts the signal, so this field is mandatory.
-- Claim source: original to the poster, repost of a panel member, repost of a lab or company announcement, repost of a news outlet. This separates what the community generates from what it amplifies.
-- Stance toward the claim: endorsing, contesting, neutral relay. Needed so skeptic-venue posts that quote enthusiast claims in order to mock them are not coded as enthusiast assertions.
-- Engagement: score and comment count at pull time, stored as-is.
+Per venue and month, separately for the rewarded and prevalence samples: the share of
+eligible posts affirming each claim (AGI already achieved; AGI within a stated horizon;
+self-improvement under way; singularity framing), the share disputing each, and the share
+unclear or ironic, with both denominators reported (all eligible posts, and posts on that
+target). No medians, quartiles or subtraction (pending R6).
 
-Time series reported: median and upper-quartile milestone frame per venue per month, share of unhedged posts, share of posts that are reposts of panel members, and the enthusiast-minus-skeptic gap if Option A.
+## 9. Reliability
 
-## 7. Presentation rules
+Two people independently code a preregistered pilot subset without seeing the model's
+labels, including ambiguous, ironic and older posts. Agreement and confusion tables by
+field; evidence spans recorded for each code; "unclear" allowed; prompts, model and
+codebook frozen per run; a fresh holdout sample after any revision (GPT). A category that
+stays unreliable is simplified or dropped. A model first pass is quality control, not a
+second coder.
 
-- Separate figure, separate section, never on the same axis as the panel or public streams.
-- Section heading and figure captions carry the phrase "leading indicator of framing, not a measure of belief" or equivalent plain-English wording, on every appearance.
-- Any sentence of the form "by 2023 people thought X" must cite the public stream, not this one.
-- The vanguard pair is shown together whenever both exist; the enthusiast series is never shown alone in the essay if Option A is adopted.
-- The post that motivated the amendment may be used as an illustrative example in the essay only if it also appears in the sampled dataset.
+## 10. Presentation
 
-## 8. Known validity threats, stated in the methodology
+- Separate section and figure. Caption on every appearance: "Framing in sampled
+  high-score posts from selected AI enthusiast venues; not representative of participants
+  or the public" (pending R5).
+- Any sentence of the form "by 2023 people thought X" cites stream P, not this one.
+- If the comparison (A') is adopted, it is shown per event, alongside the primary series,
+  never as a single gap line.
 
-- Self-selection: addressed by framing and the pair, not solvable.
-- Venue drift: r/singularity in 2012 and r/singularity in 2026 are different communities under the same name. Report subscriber counts per year alongside the series.
-- Survivorship: deleted or removed posts are missing from archives in ways that correlate with content. Report removal rates where the archive exposes them.
-- Platform change: Reddit API restrictions in 2023 and X access changes create discontinuities. Mark them on every time axis.
-- Coder drift: the model used for first-pass coding is fixed per collection run and named; a recode under a new model is a new run, not an overwrite.
-- Sarcasm and in-group irony: handled by the mandatory hedge field and a higher human spot-check fraction for this stream than for the panel.
+## 11. Validity threats (stated in the methodology)
 
-## 9. Review gate
+Self-selection (bounded by framing, not solvable); venue drift (membership composition
+unknown unless evidenced; subscriber counts are context, not a correction); survivorship
+and deletion (removal rates where exposed; availability re-audited; what happens when
+evidence disappears is defined in advance); platform changes (2023 Reddit API, X access,
+the 2023 Arctic Shift score break) marked on every time axis; unequal score-observation
+windows; amplification; coder drift (a recode under a new model is a new run); sarcasm
+(the rhetorical-mode field and a higher human check rate).
 
-Before any collection:
-1. Send this amendment to Gemini 3.1 Pro and GPT-6 Astra Medium with the same prompt used for the v1 review, asking specifically for (a) a ruling on Option A versus B, (b) critique of the milestone ladder, (c) any venue or sampling choice that would read as cherry-picking to a hostile reader.
-2. Save both reviews verbatim under docs/reviews/.
-3. Reconcile into a final version of this file and a one-line entry in docs/amendments.md.
-4. John accepts or amends the reconciled version. Only then does the seed-phase session begin collection.
+## 12. Acceptance criteria for the pilot
 
-## 10. Acceptance criteria for the seed run
-
-- Frozen source list and inclusion rule committed before the first pull.
-- One venue (r/singularity) backfilled for a 24-month pilot window, with stored queries, before scaling to the full span or other venues.
-- Inter-coder agreement on the pilot reported; the ladder revised if agreement is poor.
-- Pilot figure produced under the presentation rules above and reviewed by John before any other venue is collected.
+1. John's rulings on section 0 and acceptance of this version.
+2. Venue inventory, X selection script (or X deferred), eligibility rule and pilot-window
+   rule committed before the first pull.
+3. Feasibility gate (section 5) passed for r/singularity.
+4. 24-month pilot plus the cross-era sample coded; blind two-person agreement reported;
+   codebook revised if agreement is poor and checked on a fresh holdout.
+5. Pilot figure under the presentation rules reviewed by John before any other venue is
+   collected.

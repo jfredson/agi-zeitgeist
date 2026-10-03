@@ -213,3 +213,5 @@ Decided by: john. The eight calls were listed in `docs/status-2026-10-01.md` (se
 Why: these were the cases where applying A14 needed a reading John hadn't given.
 Validator changes that follow: statement ids may carry a one-letter suffix, and a
 `range` may leave the high bound open when the row carries the `lower_bound` tag.
+
+- **2026-10-02, vanguard stream (pending, decided by: nobody yet):** reconciled draft after the Gemini 3.1 Pro and GPT-6 Astra Medium reviews is in `docs/amendments/2026-10-02-vanguard-stream.md`; not accepted, seven rulings for John in its section 0, nothing collected.
