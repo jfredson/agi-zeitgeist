@@ -84,6 +84,8 @@ Communities, each reported separately and never pooled: r/singularity (Arctic Sh
 
 Coverage audit first: for each community, posts and comments per month in the archive against any independent count (Gaffney and Matias 2018 documents gaps in an earlier Reddit corpus). Arctic Shift's capture change in November 2023, after which score fields were re-captured at 36 hours, is marked as a measurement break.
 
+Vanguard sub-series (accepted 2026-10-02, `docs/amendments/2026-10-02-vanguard-stream.md`): selected AI-enthusiast venues (r/singularity, r/accelerate, r/artificial, to be confirmed by a published venue inventory), sampled with this stream's design, coded claim by claim, reported as shares in its own figure, never pooled with this stream's other venues, captioned "not representative of participants or the public"; an event-by-event comparison with skeptic venues starts when one exists.
+
 Prevalence sample: per community and quarter, a seeded random sample of posts and, independently, of comments, drawn without regard to score, inclusion probabilities recorded. Rewarded sample: the top 20 posts by score per quarter, kept as a separate series labeled "what the community rewarded". Reports include account concentration (share of sampled units from the ten most prolific accounts) and a stable-account subset (accounts active in both halves of the period) to separate changed speech from membership turnover.
 
 ## 7. Preregistered tests of the whether, when, now story
