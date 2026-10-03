@@ -27,6 +27,7 @@ request (HTTP 401, 403 or 429), the run stops at once and keeps what it has.
 
 import csv
 import json
+import os
 import re
 import sys
 import time
@@ -51,7 +52,8 @@ VARIANTS = {"Jürgen Schmidhuber": ["Juergen Schmidhuber", "Jurgen Schmidhuber"]
             "François Chollet": ["Francois Chollet"],
             "Kai-Fu Lee": ["Kai-fu Lee", "Kaifu Lee"],
             "Ilya Sutskever": [], "Andrew Ng": []}
-GUARDIAN_GAP, NYT_GAP = 1.1, 12.5
+# NYT_GAP can be raised from the environment; the Times dropped connections at 12.5 seconds.
+GUARDIAN_GAP, NYT_GAP = 1.1, float(os.environ.get("NYT_GAP", 12.5))
 
 
 class Refused(Exception):

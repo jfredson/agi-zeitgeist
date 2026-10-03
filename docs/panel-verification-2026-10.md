@@ -191,8 +191,8 @@ The target is now whatever the rule yields (A14 ruling 8). Daniel Dennett was ad
 
 ## Gaps to close before freezing
 
-Guardian and NYT archive checks were run on 2026-10-01 (see above); still open: the six
-people the stopped run didn't finish; a 2024-or-later
+Guardian and NYT archive checks were run on 2026-10-01 and finished on 2026-10-02 (see
+below); still open: a 2024-or-later
 statement from Etzioni (GeekWire 2026 lead) and Shanahan (2024 and 2025 podcasts); the
 original 2016 Bengio interview; a transcript of Hassabis's 2010 talk; opening the three
 Cowen reviews; the full TIME100 AI lists.
@@ -252,12 +252,19 @@ Pearl 2012, Ng 2017 resignation) and were not used.
 | Rodney Brooks | 33 | 2 | 1 | Guardian + New York Times |
 | Elon Musk | 70 | 8 | 23 | Guardian + New York Times |
 | David Chalmers | 5 | 0 | 0 | Guardian + New York Times |
-| Erik Brynjolfsson | 38 | 0 | 0 | Guardian + New York Times (NYT 2024-onward not run) |
-| Jürgen Schmidhuber | not checked (run stopped) | | | |
-| Kai-Fu Lee | not checked (run stopped) | | | |
-| Toby Walsh | not checked (run stopped) | | | |
-| Max Tegmark | not checked (run stopped) | | | |
-| Mustafa Suleyman | not checked (run stopped) | | | |
+| Erik Brynjolfsson | 38 | 0 (16 name him in the text of a piece about AI) | 0 | Guardian + New York Times (rerun in full 2026-10-02) |
+| Jürgen Schmidhuber | 2 | 2 (NYT 2016-11-28, Guardian 2017-04-18, both profiles of him) | 0 | Guardian + New York Times (2026-10-02) |
+| Kai-Fu Lee | 10 | 0 (none with a headline or abstract about AI) | 0 | Guardian + New York Times (2026-10-02) |
+| Toby Walsh | 12 | 1 (Guardian 2017-10-09; 10 more name him in the text) | 1 | Guardian + New York Times (2026-10-02) |
+| Max Tegmark | 10 | 3 (Guardian 2017-09-16, 09-22, 09-29, on his book *Life 3.0*) | 2 | Guardian + New York Times (2026-10-02) |
+| Mustafa Suleyman | 29 | 1 (Guardian 2017-08-20; 22 more name him in the text) | 2 | Guardian + New York Times (2026-10-02) |
+
+**Rerun, 2026-10-02.** The six people the stopped run missed were checked in full, with a
+20-second pause between New York Times requests; no connection was dropped. No verdict
+changes. Schmidhuber's two unopened newspaper pieces are now confirmed by the archives
+(his pass stays thin only on the 2024 statement); Tegmark no longer relies on his own
+op-ed for the three pieces; Kai-Fu Lee gains nothing from these two archives and still
+rests on CNBC and MIT Technology Review. The file now has 1,362 rows.
 
 **What changed:** LeCun moves from thin to full pass (NYT 2015 interview). Brooks no longer
 relies on his own essay (NYT 1999, 2002). Seven candidates who were waiting on these
