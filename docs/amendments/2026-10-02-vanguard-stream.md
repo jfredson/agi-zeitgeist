@@ -93,7 +93,9 @@ share of top posts whose text is recoverable. Results go in
 - No new sampling design is added for the vanguard sub-series.
 - **Eligibility:** the post asserts, disputes or relays a claim about AI capability,
   timeline or consequence. **Image posts with legible text are included; image-only posts
-  without text are excluded.** Counts of each are reported.
+  without text are excluded.** **Video posts are coded from their title only** (John,
+  2026-10-02): the video itself is not watched or coded, and a video post is eligible only
+  if its title makes such a claim. Counts of each are reported.
 - **Amplification:** posts reacting to the same announcement share an event identifier;
   results are reported with and without de-duplication.
 - **Pilot window:** the 24 complete calendar months before the freeze month, so

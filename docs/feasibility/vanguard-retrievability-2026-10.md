@@ -4,7 +4,21 @@ Run 2026-10-02 under the accepted amendment `docs/amendments/2026-10-02-vanguard
 (section 5). Script: `scripts/retrievability_check.py`. Nothing was coded and no post text
 was stored; the output files hold post IDs, times, scores and status flags only.
 
-## Headline
+## Revised headline, after John's video ruling (2026-10-02)
+
+John ruled that video posts are coded from their title only. All 120 titles are in the
+archive, so the 38 videos move from "not verifiable" to "recoverable":
+
+| status | posts | share |
+|---|---|---|
+| **Recoverable for coding** (3 text posts, 61 images that load, 4 links, 38 videos by title) | 106 | **88%** |
+| **Known lost** (image files deleted, HTTP 404) | 9 | **7.5%** |
+| **Not verifiable** (5 galleries; their content needs reddit.com, which refused the lookup) | 5 | **4%** |
+
+These are the top 20 per quarter. Image loading was checked only for the top 20, so no
+comparable figure exists for the top 50. The original headline, before the ruling, follows.
+
+## Headline (before the video ruling)
 
 Of the **120 top posts** (stream F's top 20 by recorded score per quarter, six complete
 quarters, 2024Q4 to 2026Q1):
@@ -56,7 +70,7 @@ with legible text) will drop some and pull in lower-ranked posts.
    image posts with legible text are coded; that requires the image, and about one in eight
    top images is already gone after one to two years. The loss will be larger for older
    periods.
-2. **Video posts have no rule yet.** 38 of 120 top posts are videos. The amendment covers
+2. **Video posts: settled.** John ruled on 2026-10-02 that they are coded from the title only (see the revised headline). Previously: 38 of 120 top posts are videos. The amendment covered
    image posts but not videos; a ruling is needed (code from the title only, code from the
    video, or exclude), and whichever is chosen decides most of the 36% unverified band.
 3. **Reddit's own status can't be checked by a public script** (HTTP 403), so removal and
