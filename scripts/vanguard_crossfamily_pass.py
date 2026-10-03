@@ -1,20 +1,32 @@
 #!/usr/bin/env python3
-"""Cross-family blind second pass for the r/singularity pilot (amendment section 9 as
-revised 2026-10-03): the same posts coded by a model from a different family than the
-first pass, with the codebook and the post content only (no first-pass codes).
+"""Blind passes by models from other families for the r/singularity pilot (amendment
+section 9 as revised 2026-10-03): the same 140 posts coded with the codebook and the post
+content only (no other coder's codes).
 
-Model: Gemini, `gemini-3.1-pro-preview`, pinned by the version string Google reports
-(PINNED_VERSION); every reply's reported version is recorded and checked. Default
-sampling settings; structured output with the codebook's allowed values.
+  --family gemini  `gemini-3.1-pro-preview`, pinned by the version string Google reports
+                   (3.1-pro-preview-01-2026); default sampling settings.
+  --family gpt     OpenAI `gpt-6-astra`, reasoning effort medium. OpenAI publishes no
+                   dated snapshot, so the pin is the model name plus the creation time
+                   OpenAI lists for it (1787853604, i.e. 2026-08-27 UTC); the run stops if
+                   that changes. The model each reply reports is recorded.
+  --rules FILE     add trial codebook rules (proposals awaiting John's ruling) after the
+                   codebook; writes a separate trial file and keeps separate raw replies.
+
+Both use structured output limited to the codebook's allowed values.
 
 Input: the post IDs in data/vanguard/second-coder-worksheet.csv; content from the pilot's
 scratch work file (titles, bodies, links, saved images). Link pages are fetched once and
 their text passed in; if a page can't be read, the post is coded from its title.
 
 Writes data/vanguard/r-singularity-pilot-codes-crossfamily.csv (codes schema) and keeps
-raw replies in the scratch folder. Key read from GEMINI_API_KEY at run time; never printed.
+raw replies in the scratch folder (GPT: ...-codes-gpt.csv; with --rules, ...-rules-trial.csv).
+Keys read at run time (GEMINI_API_KEY from the environment; OPENAI_API_KEY from
+~/Documents/.agi-zeitgeist/credentials.env); never printed or written anywhere.
 
-    python3 scripts/vanguard_crossfamily_pass.py
+    python3 scripts/vanguard_crossfamily_pass.py --family gemini|gpt [--rules FILE] [--limit N] [--cached-only]
+
+--cached-only writes the output from replies already saved, without calling the API, and
+skips posts with no saved reply (used when an API stopped answering partway through a run).
 """
 
 import base64
@@ -29,14 +41,25 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-MODEL = "gemini-3.1-pro-preview"
-PINNED_VERSION = "3.1-pro-preview-01-2026"
-CODER = f"{MODEL}@{PINNED_VERSION}"
-RUN_ID = "vanguard-pilot-rsing-2026-10-03-crossfamily"
+FAMILIES = {
+    "gemini": {"model": "gemini-3.1-pro-preview", "pin": "3.1-pro-preview-01-2026",
+               "run_id": "vanguard-pilot-rsing-2026-10-03-crossfamily", "raw": "crossfamily_raw",
+               "out": "r-singularity-pilot-codes-crossfamily.csv"},
+    "gpt": {"model": "gpt-6-astra", "pin": 1787853604, "effort": "medium",
+            "run_id": "vanguard-pilot-rsing-2026-10-03-gpt", "raw": "gpt_raw",
+            "out": "r-singularity-pilot-codes-gpt.csv"},
+}
+FAMILY = sys.argv[sys.argv.index("--family") + 1] if "--family" in sys.argv else "gemini"
+RULES = Path(sys.argv[sys.argv.index("--rules") + 1]) if "--rules" in sys.argv else None
+F = FAMILIES[FAMILY]
+MODEL = F["model"]
+PINNED_VERSION = F["pin"]
+CODER = f"{MODEL}@{PINNED_VERSION}" if FAMILY == "gemini" else f"{MODEL}@created-{PINNED_VERSION}-effort-{F['effort']}"
+RUN_ID = F["run_id"] + ("-rules-trial" if RULES else "")
 ROOT = Path(__file__).resolve().parent.parent
 WORK = Path("/Users/john/.claude/jobs/f819dd6c/tmp/vanguard_pilot")
-RAW = WORK / "crossfamily_raw"
-OUT = ROOT / "data" / "vanguard" / "r-singularity-pilot-codes-crossfamily.csv"
+RAW = WORK / (F["raw"] + ("_rules" if RULES else ""))
+OUT = ROOT / "data" / "vanguard" / (F["out"].replace(".csv", "-rules-trial.csv") if RULES else F["out"])
 SUBSET = ROOT / "data" / "vanguard" / "second-coder-worksheet.csv"
 CODEBOOK = ROOT / "docs" / "vanguard" / "codebook.md"
 HEADER = ["run_id", "coder", "post_id", "quarter", "sample", "rank_or_draw", "post_type",
@@ -133,6 +156,76 @@ def call_gemini(parts, key):
     raise SystemExit("stopped: the Gemini API kept refusing or timing out after two back-offs")
 
 
+def strict(schema):
+    """Gemini-style schema to the strict JSON Schema OpenAI requires (every key required)."""
+    t = schema["type"].lower()
+    out = {"type": t}
+    if "enum" in schema:
+        out["enum"] = schema["enum"]
+    if t == "object":
+        out["properties"] = {k: strict(v) for k, v in schema["properties"].items()}
+        out["required"] = list(schema["properties"])
+        out["additionalProperties"] = False
+    if t == "array":
+        out["items"] = strict(schema["items"])
+    return out
+
+
+def openai_key():
+    path = Path.home() / "Documents" / ".agi-zeitgeist" / "credentials.env"
+    for line in path.read_text().splitlines():
+        if line.startswith("OPENAI_API_KEY="):
+            return line.split("=", 1)[1].strip().strip('"').strip("'")
+    raise SystemExit("stopped: OPENAI_API_KEY not found in the credentials file")
+
+
+def call_openai(parts, key):
+    content = []
+    for x in parts:
+        if "text" in x:
+            content.append({"type": "input_text", "text": x["text"]})
+        else:
+            d = x["inline_data"]
+            content.append({"type": "input_image", "image_url": f"data:{d['mime_type']};base64,{d['data']}"})
+    body = json.dumps({"model": MODEL, "input": [{"role": "user", "content": content}],
+                       "reasoning": {"effort": F["effort"]},
+                       "text": {"format": {"type": "json_schema", "name": "post_codes",
+                                           "schema": strict(SCHEMA), "strict": True}}}).encode()
+    req = urllib.request.Request("https://api.openai.com/v1/responses", data=body,
+                                 headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    for wait in (0, 60, 180):
+        if wait:
+            time.sleep(wait)
+        try:
+            with urllib.request.urlopen(req, timeout=600) as r:
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503):
+                continue
+            detail = e.read().decode("utf-8", "ignore")[:300]
+            raise SystemExit(f"stopped: HTTP {e.code} from the OpenAI API: {detail}")
+        except (urllib.error.URLError, TimeoutError, OSError):
+            continue
+    raise SystemExit("stopped: the OpenAI API kept refusing or timing out after two back-offs")
+
+
+def check_pin_openai(key):
+    req = urllib.request.Request(f"https://api.openai.com/v1/models/{MODEL}",
+                                 headers={"Authorization": f"Bearer {key}"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        created = json.loads(r.read()).get("created")
+    if created != PINNED_VERSION:
+        raise SystemExit(f"stopped: {MODEL} now lists creation time {created!r}, not the pinned {PINNED_VERSION!r}")
+    print(f"pinned model confirmed: {MODEL} created {created}")
+
+
+def reply_text(data):
+    if FAMILY == "gemini":
+        return "".join(x.get("text", "") for x in data["candidates"][0]["content"]["parts"] if not x.get("thought"))
+    return "".join(c.get("text", "") for o in data["output"] if o.get("type") == "message"
+                   for c in o.get("content", []) if c.get("type") == "output_text")
+
+
 def check_pin(key):
     """Stop unless Google still reports the pinned version for this model."""
     req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}",
@@ -145,8 +238,17 @@ def check_pin(key):
 
 
 def main():
-    key = os.environ["GEMINI_API_KEY"]
-    check_pin(key)
+    cached_only = "--cached-only" in sys.argv
+    if cached_only:
+        key, call = None, None
+    elif FAMILY == "gemini":
+        key = os.environ["GEMINI_API_KEY"]
+        check_pin(key)
+    else:
+        key = openai_key()
+        check_pin_openai(key)
+    if not cached_only:
+        call = call_gemini if FAMILY == "gemini" else call_openai
     limit = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else None
     with SUBSET.open(newline="") as f:
         subset = [(r["post_id"], r["quarter"], r["sample"]) for r in csv.DictReader(f)]
@@ -154,6 +256,8 @@ def main():
         subset = subset[:limit]
     content = {p["post_id"]: p for p in json.loads((WORK / "posts.json").read_text())}
     codebook = CODEBOOK.read_text()
+    if RULES:
+        codebook += "\n\nADDITIONAL RULES (apply these; they take precedence over the codebook where they conflict):\n" + RULES.read_text()
     RAW.mkdir(parents=True, exist_ok=True)
     cache_path = WORK / "link_pages.json"
     cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
@@ -163,6 +267,8 @@ def main():
         raw_file = RAW / f"{pid}.json"
         if raw_file.exists():
             data = json.loads(raw_file.read_text())
+        elif cached_only:
+            continue
         else:
             desc = [f"post_id: {pid}", f"post_type: {p['post_type']}", f"title: {p['title']}"]
             if p["post_type"] == "text":
@@ -182,14 +288,12 @@ def main():
                                                   "data": base64.b64encode(Path(img).read_bytes()).decode()}})
                 else:
                     parts[0]["text"] += "\n(image file: unavailable)"
-            data = call_gemini(parts, key)
+            data = call(parts, key)
             raw_file.write_text(json.dumps(data))
             time.sleep(1.0)
-        versions.add(data.get("modelVersion"))
+        versions.add(data.get("modelVersion") or data.get("model"))
         try:
-            text = "".join(x.get("text", "") for x in data["candidates"][0]["content"]["parts"]
-                           if not x.get("thought"))
-            out = json.loads(text)
+            out = json.loads(reply_text(data))
         except (KeyError, IndexError, ValueError):
             out = {"eligible": "no", "exclusion_reason": "", "content_basis": "", "title_only": "",
                    "extrapolates_to_horizon": "", "claims": [], "notes": "unparseable reply"}
@@ -216,8 +320,8 @@ def main():
         w = csv.DictWriter(f, fieldnames=HEADER, lineterminator="\n", extrasaction="ignore")
         w.writeheader()
         w.writerows({k: r.get(k, "") for k in HEADER} for r in rows)
-    print(f"{len(subset)} posts coded by {CODER}; reported versions: {sorted(v for v in versions if v)}")
-    if any(v and v != MODEL for v in versions):
+    print(f"{len({r['post_id'] for r in rows})} of {len(subset)} posts coded by {CODER}; reported versions: {sorted(v for v in versions if v)}")
+    if any(v and not v.startswith(MODEL) for v in versions):
         print("  note: a reply reported a model version other than", MODEL)
 
 

@@ -1,25 +1,38 @@
 # Pilot report: r/singularity, vanguard sub-series, 2024Q4 to 2026Q3
 
-**Interim, model-coded.** Updated 2026-10-03 after John's rulings on the first version of
-this report and his revision of the reliability design (amendment section 9, log entries of
-2026-10-03). Run record: `docs/vanguard/pilot-run-r-singularity-2026-10.md`; codebook:
+**Model-coded, no human coder.** Updated 2026-10-03 after John's rulings: first on the
+first version of this report, then on the reliability design, which he revised twice that
+day. Coding is now fully model-based (amendment section 9; log entries of 2026-10-03). Run
+record: `docs/vanguard/pilot-run-r-singularity-2026-10.md`; codebook:
 `docs/vanguard/codebook.md`.
 
-**How coding was checked.** Coding is model-assisted with one human check, a disclosed
-limitation, not a second coder. First pass: `claude-opus-5-5` (Anthropic). Blind second
-pass on a 140-post subset: `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026`
-(Google), confirmed against the pinned version before the run. Human check: a 40-post blind
-worksheet for John (`data/vanguard/john-vanguard-worksheet.csv`), **not yet coded**.
+**How coding was checked.** Three models from different companies coded the same 140-post
+set blind:
+- `claude-opus-5-5` (Anthropic), the first pass;
+- `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026` (Google);
+- `gpt-6-astra`, reasoning effort medium (OpenAI). OpenAI publishes no dated snapshot, so it
+  is pinned by the creation time OpenAI lists for it (1787853604, which is 2026-08-27 UTC).
+
+The final code for each field is the majority vote
+(`data/vanguard/r-singularity-pilot-codes-majority.csv`). Models from different companies can
+still share blind spots; this is a disclosed limitation.
 
 ## Figure
 
 `site/vanguard-pilot-r-singularity.png` (counts in `site/vanguard-pilot-r-singularity.csv`),
-labelled "Interim, model-coded" and captioned "Framing in sampled high-score posts from
+labelled "model-coded" and captioned "Framing in sampled high-score posts from
 selected AI enthusiast venues; not representative of participants or the public."
 
 ![pilot figure](../../site/vanguard-pilot-r-singularity.png)
 
 ## Results (first pass, recoded under the 2026-10-03 rulings)
+
+These shares come from Claude's first pass over the whole sample, because the three-model
+majority code exists only for the 140-post set. **Caution:** on those 140 posts Claude is the
+odd one out (see Agreement). Against the majority, it codes more main claims as consequence
+claims (13 against 6 of the 88 posts the majority finds eligible) and fewer as capability
+claims (37 against 48). So the consequence shares below are probably too high and the
+capability shares too low. Company-and-policy shares match (25 and 25).
 
 **Primary measures.** Share of eligible posts making each kind of claim, all quarters
 together:
@@ -52,50 +65,88 @@ to 32), and posts that don't mention AI dropped out.
 
 ## Agreement
 
-### Cross-family (current check): Claude first pass against Gemini blind pass
+### Three models, the main codes (all 140 posts)
 
-122 posts of the 140-post subset are still in the first pass after the recode; main-claim
-fields compare the 69 posts both models found eligible.
+Cohen's kappa (agreement corrected for chance) for each pair of models. "Whether the post
+counts" is compared on all 140 posts; the other fields on the posts both models in the pair
+found eligible (78 to 85). "Unresolved" is the share of the 88 posts the majority finds
+eligible where no two models agree. Full table: `data/vanguard/three-model-reliability.csv`.
 
-| field | posts | agreement | Cohen's kappa |
-|---|---|---|---|
-| eligible or not | 122 | 91% | 0.81 |
-| main claim: target | 69 | 72% | 0.55 |
-| main claim: temporal status | 69 | 83% | 0.67 |
-| main claim: stance | 69 | 67% | 0.39 |
-| main claim: epistemic qualification (hedging) | 69 | 87% | 0.26 |
-| main claim: rhetorical mode (irony) | 69 | 90% | 0.64 |
-| main claim: development preference | 69 | 90% | 0.55 |
-| main claim: attribution | 69 | 80% | 0.67 |
-| main claim: title only | 69 | 99% | 0.97 |
-| extrapolates to a timeline or consequence | 69 | 81% | 0.68 |
+| field | Claude–Gemini | Claude–GPT | Gemini–GPT | unresolved | verdict |
+|---|---|---|---|---|---|
+| whether the post counts | 0.82 | 0.82 | 0.91 | 0% | reliable |
+| what the main claim is about | 0.57 | 0.62 | 0.75 | 6% (5 posts) | reliable |
+| forecast or already happened | 0.66 | 0.66 | 0.77 | 5% | reliable |
+| whether the poster agrees | 0.38 | 0.36 | 0.69 | 1% | reliable |
+| hedging | 0.22 | 0.18 | 0.56 | 2% | **unreliable** |
+| irony | 0.60 (0.595) | 0.57 | 0.58 | 3% | **unreliable** |
+| whether the poster wants AI sped up or slowed down | 0.55 | 0.43 | 0.65 | 0% | reliable |
+| whose claim it is | 0.67 | 0.64 | 0.78 | 1% | reliable |
+| coded from the title only | 0.97 | 0.97 | 1.00 | 0% | reliable |
+| draws a timeline or consequence from a capability | 0.71 | 0.64 | 0.65 | 0% | reliable |
 
-The four headline-claim rows (99 to 100%) are left out: almost no post makes those claims,
-so agreeing on "no" doesn't test anything.
+Under John's test (unresolved on more than 15% of posts, or every pairwise kappa below 0.6),
+**hedging and irony are unreliable** and are kept out of figures. No measure in the current
+figure depends on either, so the figure keeps all five panels. No field comes close to the
+15% unresolved limit.
 
-**Where the two models disagree, and what would fix it:**
-1. **Stance on reposts:** 17 of 23 stance disagreements are Claude coding "passes it on
-   without taking a side" where Gemini codes "affirms". The codebook doesn't say how to code
-   a bare repost with no comment. A rule here would likely lift stance agreement the most.
-2. **Target:** the new boundary between `industry_governance` and `specific_capability`
-   (9 posts, both directions), then `consequence` against `specific_capability` (4).
-3. **Hedging:** Claude marks 9 of 69 main claims as qualified, Gemini 3. Qualified claims are
-   rare, so the kappa (0.26) is low despite 87% agreement.
-4. **Eligibility:** Gemini found 9 posts eligible that Claude excluded, and 2 the other way:
-   Gemini is more inclusive.
+**Claude is the outlier.** Gemini and GPT agree with each other more than either agrees with
+Claude on almost every field. Whether the poster agrees passes only because the Gemini–GPT
+pair reaches 0.69, and what the main claim is about passes because two pairs reach 0.6. The
+same-family check (two copies of Claude, before the rulings: kappa 0.87 on what the claim is
+about) badly overstated reliability.
 
-### Same-family (superseded): Claude against Claude, before the 2026-10-03 rulings
+### Proposed codebook rules, before and after (awaiting John's ruling)
 
-On the same 140 posts, a second Claude instance agreed far more often (target kappa 0.87,
-stance 0.64, hedging 0.81, attribution 0.95). The gap to the cross-family figures is the
-reason for the revised design: two copies of one model share blind spots and overstate
-reliability. File kept as `data/vanguard/r-singularity-pilot-codes-second.csv`.
+The rules are in `docs/vanguard/proposed-rules-2026-10-03.md`:
+- **R1, posts passed on without comment:** these are "passes it on without taking a side"
+  unless the poster adds words endorsing or rejecting the claim, and the claim is attributed
+  to its source.
+- **R2, company and policy news or capability:** the target is decided by the subject of the
+  main claim (a model or system, a company or government, or people and society), not by
+  which company is named.
+- **R3, hedging:** "qualified" only if the words stating the claim contain a hedge word from a
+  set list.
 
-### Human check (pending)
+All three models recoded the 140 posts with the three rules added. Each rule targets a
+different field, so they were tested together. The OpenAI API stopped answering after 86
+posts, and Gemini's after 112. Each run was resumed once after a 10-minute pause, failed
+again, and was stopped. Kappa before and after on the same 86 posts:
 
-`python3 scripts/vanguard_human_agreement.py` reports John's agreement with each model once
-`data/vanguard/john-vanguard-worksheet.csv` is coded. Until then, figures stay labelled
-"interim, model-coded".
+| field | rule | Claude–Gemini | Claude–GPT | Gemini–GPT |
+|---|---|---|---|---|
+| what the main claim is about | R2 | 0.58 → 0.80 | 0.59 → 0.90 | 0.70 → 0.81 |
+| whether the poster agrees | R1 | 0.41 → 0.81 | 0.29 → 0.79 | 0.69 → 0.69 |
+| hedging | R3 | 0.27 → 0.88 | 0.22 → 0.74 | 0.55 → 0.72 |
+| whose claim it is | (R1 side effect) | 0.72 → 0.76 | 0.69 → 0.90 | 0.79 → 0.63 |
+| whether the poster wants AI sped up or slowed down | (none targeted) | 0.52 → 0.57 | 0.32 → 0.55 | 0.64 → 0.51 |
+| irony | (none targeted) | 0.61 → 0.65 | 0.50 → 0.66 | 0.43 → 0.60 |
+| forecast or already happened | (none targeted) | 0.69 → 0.82 | 0.71 → 0.87 | 0.76 → 0.81 |
+
+With the rules, hedging passes the test. Whether the poster wants AI sped up or slowed down
+would fail (every pair below 0.6).
+
+**How to read this:**
+1. **The Gemini–GPT column is the cleanest test.** Between Gemini's and GPT's two runs only
+   the rules changed. The Claude trial codes came from fresh coders, so the Claude pairs mix
+   the rules' effect with the change of coder.
+2. **R2 and R3 help in every pair**, including Gemini–GPT (0.70 → 0.81; 0.55 → 0.72).
+3. **R1 brings Claude into line but doesn't help Gemini–GPT** (0.69 → 0.69). It also lowered
+   their agreement on whose claim it is (0.79 → 0.63). The trial coders found that R1 has no
+   default when a post names no source, and no answer for a model's own output in a
+   screenshot. Refinement for John to consider: when no source is named, attribution =
+   original; a model's output = lab_or_company.
+4. **Optimistic by construction.** The rules were written from disagreements on these same
+   posts, so they will look better here than on new posts. Any rule John adopts is checked
+   again on a fresh sample (section 9).
+5. **Other refinements the trial coders raised:**
+   - R3: an "if" that sets a condition is not a hedge.
+   - R2: a launch or release decision is the company's act, but what the product does is a
+     capability claim. When a title makes both claims, the main claim needs a tie-break.
+   - R1: "denies" means rejecting that the claim is true. Disliking what is reported goes in
+     development preference.
+
+The trial codes (`*-rules-trial.csv`) aren't used in any figure or count.
 
 ## Edge calls still open
 
@@ -107,7 +158,15 @@ reliability. File kept as `data/vanguard/r-singularity-pilot-codes-second.csv`.
   satire about labs, and government action not aimed at an AI company (the DOGE intern post,
   kept ineligible).
 
+## Decisions for John
+
+1. **Rules R1 to R3:** adopt, refine or reject each (evidence above).
+2. **Where the figure's numbers come from.** Recommended: once the rules are settled and the
+   APIs answer again, extend the Gemini and GPT passes to the whole sample (390 posts), so the
+   figure can use majority codes instead of Claude's, which are the outlier.
+
 ## Not done
 
-John's 40-post human check; the cross-era sample and the comment sample (deferred); section 12
-preconditions (venue inventory, X decision). No other venue collected.
+Gemini's and GPT's trial runs are incomplete: the APIs stopped answering at 112 and 86 of 140
+posts. Also not done: the cross-era sample and the comment sample (deferred), and the section
+12 preconditions (venue inventory, X decision). No other venue was collected.

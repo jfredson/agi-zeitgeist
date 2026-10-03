@@ -106,4 +106,28 @@ Run under the revised section 9 (John, 2026-10-03). The models are named and pin
 - First pass: `claude-opus-5-5`, coder label `claude-opus-5-5-first`, recoded under the 2026-10-03 rulings (424 rows, 390 posts).
 - Second pass: `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026`. The script checks the version against the Gemini models endpoint before running and stops if it doesn't match. Run id `vanguard-pilot-rsing-2026-10-03-crossfamily`, script `scripts/vanguard_crossfamily_pass.py`. The model sees the full codebook and the same content as the first pass (image, link-page text, or title only), with structured output limited to the codebook's values. It saw no first-pass codes. 140 of 140 posts coded, 177 rows.
 - The same-family second pass (`r-singularity-pilot-codes-second.csv`) is superseded and was not recoded.
-- John's 40-post blind worksheet: `data/vanguard/john-vanguard-worksheet.csv`, seed 20261005, 24 top posts and 16 random posts, drawn from the 122 subset posts the recoded first pass still codes. Model codes are hidden.
+- John's 40-post blind worksheet (seed 20261005) was drawn, then withdrawn the same day by his ruling removing the human step; the worksheet and its scripts were deleted.
+
+## Three-model coding, 2026-10-03
+
+Run under section 9 as ruled by John later the same day: no human coder, three models from
+different companies, final code by majority vote.
+
+- **GPT pass:** `gpt-6-astra`, reasoning effort medium. OpenAI publishes no dated snapshot, so
+  the script checks the model's listed creation time (1787853604, 2026-08-27 UTC) before
+  running and stops if it changes. Script `scripts/vanguard_crossfamily_pass.py --family gpt`,
+  run id `vanguard-pilot-rsing-2026-10-03-gpt`. Same codebook, instructions, content and
+  structured output as the Gemini pass. All 140 posts coded.
+- **Claude supplement:** 18 posts in the 140-post set fell past the recoded first pass's
+  cut-off ranks. A fresh `claude-opus-5-5` coder, blind to every other file, coded them under
+  the current codebook (`r-singularity-pilot-codes-claude-subset-supplement.csv`). These rows
+  are used only for the three-model check, not for the figure.
+- **Majority and reliability:** `scripts/vanguard_three_way.py` writes
+  `r-singularity-pilot-codes-majority.csv` and `three-model-reliability.csv`.
+- **Rules trial:** proposed rules R1 to R3 (`docs/vanguard/proposed-rules-2026-10-03.md`) were
+  added to the codebook. Claude coded with them through two fresh blind coders, 70 posts each.
+  Gemini and GPT used the script with `--rules`. Both APIs stopped answering partway through
+  (Gemini at 112 posts, GPT at 86). Each was resumed once after a 10-minute pause, failed again
+  without coding another post, and was stopped. Their trial files were written from the
+  replies already saved (`--cached-only`). The comparison uses the 86 posts all three coded
+  (`vanguard_three_way.py --compare`).

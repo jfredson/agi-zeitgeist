@@ -115,13 +115,14 @@ Shown separately, each normalized within itself; never combined into an index. W
 ## 10. Reliability and reproducibility
 
 **How coding is checked (plain-language note, John, 2026-10-03).** This is a one-person
-project. Statements, posts and articles are coded with the help of AI models, and the
-results are checked in two ways: a second, independent model from a different company codes
-a sample without seeing the first model's codes, and John codes a smaller blind sample
-himself. Agreement between all three is published. This is **one human check on
-model-assisted coding, not a second human coder**, and readers should treat it as a
-disclosed limitation. It replaces the two-person double-coding described below wherever
-the two conflict.
+project, and coding is fully model-based: no human codes the posts. Three AI models from
+different companies (Anthropic, Google and OpenAI) code the same sample independently,
+without seeing each other's codes. The final code for each field is the one at least two of
+them agree on; where none agree, it is marked unresolved. Agreement between each pair is
+published, and any field the models can't code consistently is left out of the figures and
+listed as unreliable. Models from different companies can still share blind spots, so this
+is a disclosed limitation: there is no human coder. It replaces the two-person double-coding
+described below wherever the two conflict.
 
 A stratified subset of every coded stream is double-coded with dates and identities hidden where practical; disagreements and per-category agreement are published. Automated coding, if used, is validated separately by era and by source. Published with the data: sampling frames, queries, code, random seeds, source versions, retrieval dates, document identifiers, exclusions, coverage and missingness audits, and snapshots with checksums where the source permits. The README states, per table, whether a reader can reproduce it from public pages or needs the archived microdata.
 

@@ -177,30 +177,36 @@ would sit in a post's body or a video's narration are missing. Every share is th
 reported twice, with and without `title_only: yes` rows, and the hedge and claim fields of
 title-only rows are excluded from any claim about how hedged the venue's framing is.
 
-## 9. Reliability (revised by John, 2026-10-03)
+## 9. Reliability (revised by John, 2026-10-03; human step removed the same day)
 
-This is a single-researcher project, so the earlier requirement that two people code a
-subset blind is withdrawn. In its place:
+Coding is fully model-based. There is no human coder: the earlier requirement that two
+people code a subset blind, and the later plan for a 40-post check by John, are both
+withdrawn.
 
-1. **A blind second pass by a model from a different family** than the first pass, on a
-   preregistered subset, with agreement and Cohen's kappa (agreement corrected for chance)
-   reported per field. Both models are named and pinned in the run record. In the
-   r/singularity pilot: first pass `claude-opus-5-5` (Anthropic); second pass
-   `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026` (Google).
-2. **A blind human subsample of 40 posts coded by John**, with the model codes hidden, and
-   his agreement with each model reported per field.
-3. **Disclosure, in plain language, in the methodology:** coding is model-assisted with one
-   human check. That is a disclosed limitation, not a second coder.
+1. **Three models from different companies code the same preregistered subset blind**, each
+   seeing only the codebook and the post. In the r/singularity pilot (140 posts):
+   `claude-opus-5-5` (Anthropic); `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026`
+   (Google); `gpt-6-astra`, reasoning effort medium, pinned by the creation time OpenAI lists
+   (1787853604; OpenAI publishes no dated snapshot) (OpenAI).
+2. **Final code by majority vote per field.** A value needs at least two of the three models
+   to give it. Where no two agree, the field is marked unresolved for that post.
+3. **Cohen's kappa (agreement corrected for chance) for all three pairs of models, per field.**
+4. **Reliability test.** A field unresolved on more than 15% of posts, or with every pairwise
+   kappa below 0.6, is excluded from figures and listed as unreliable.
+5. **Recurring disagreements** get a proposed codebook rule, tested by recoding the subset
+   with the rule and comparing kappa before and after. John rules on each rule. A rule tested
+   on the posts it was written from will look better than it is, so an adopted rule is
+   checked again on a fresh sample.
 
 Evidence spans recorded for each code; "unclear" allowed; prompts, models and codebook
-frozen per run; a category that stays unreliable is simplified or dropped.
+frozen per run.
 
 ## 10. Presentation
 
 - Every figure and section heading carries: **"Framing in sampled high-score posts from
   selected AI enthusiast venues; not representative of participants or the public."**
-- Until John's 40-post check is coded and reported, figures also carry **"interim,
-  model-coded"** (ruling 2026-10-03).
+- Figures also carry **"model-coded"**, and show only fields that pass the section 9
+  reliability test (ruling 2026-10-03).
 - Its own figure; never pooled with stream F's other venues; never on the same axis as
   streams E, P or M.
 - Any sentence of the form "by 2023 people thought X" cites stream P, not this sub-series.
@@ -214,7 +220,8 @@ and deletion (removal rates where exposed; availability re-audited; what happens
 evidence disappears defined in advance); platform changes (2023 Reddit API, X access, the
 2023 Arctic Shift score break) marked on every time axis; unequal score-observation
 windows; amplification; coder drift (a recode under a new model is a new run); sarcasm (the
-rhetorical-mode field and a higher human check rate).
+rhetorical-mode field; it failed the three-model reliability test in the pilot, so it is
+kept out of figures).
 
 ## 12. Acceptance criteria for the pilot
 
