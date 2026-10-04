@@ -131,3 +131,32 @@ different companies, final code by majority vote.
   without coding another post, and was stopped. Their trial files were written from the
   replies already saved (`--cached-only`). The comparison uses the 86 posts all three coded
   (`vanguard_three_way.py --compare`).
+
+## Handover, end of 2026-10-03
+
+Working files (post text, images, saved model replies, fetched link pages, archive cache)
+moved from the session scratch folder to `~/Documents/.agi-zeitgeist/work/` (outside the
+repository, because they hold post content). The scripts now point there.
+
+**Still to run, after Gemini's daily limit resets (about 17:05 Pacific, 2026-10-04),** from the
+repository root, in this order:
+
+```
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --rules docs/vanguard/proposed-rules-2026-10-03.md --codebook docs/vanguard/codebook-frozen-2026-10-03-before-rules.md
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/r1-split-trial-posts.csv --rules docs/vanguard/trial-rule-r1a-2026-10-03.md --tag r1a-trial
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/r1-split-trial-posts.csv --rules docs/vanguard/trial-rule-r1b-2026-10-03.md --tag r1b-trial
+python3 scripts/vanguard_three_way.py --compare     # first trial, now on up to 140 posts
+python3 scripts/vanguard_three_way.py --r1-split    # R1a and R1b, all three pairs
+```
+
+That is 252 Gemini requests against a limit of 250 a day; if the last R1b posts are refused,
+rerun the third command the next evening. Then update the pilot report and send John the R1a
+and R1b kappas for all three pairs. Claude and GPT codes for both trials are already committed.
+Interim Claude–GPT result: R1a raises stance agreement (0.50 without, 0.74 with); R1b doesn't
+help attribution (0.75 without, 0.72 with). The trial coders found that both rules need to say
+how a bare reaction or joke title ("WTF") is treated.
+
+**Waiting on John:** a ruling on R1a and R1b; about $15 more OpenAI credit. Then the full-sample
+run: all 390 posts by Gemini and GPT under the final codebook, with Gemini capped at about 240
+new requests a day (`--ids data/vanguard/r-singularity-pilot-sample.csv` style list, `--max-new 240`,
+a fresh `--tag` so earlier replies aren't reused).

@@ -69,7 +69,7 @@ IDS = Path(sys.argv[sys.argv.index("--ids") + 1]) if "--ids" in sys.argv else No
 TAG = sys.argv[sys.argv.index("--tag") + 1] if "--tag" in sys.argv else None
 RUN_ID = F["run_id"] + (f"-{TAG}" if TAG else ("-rules-trial" if RULES else "") + ("-full" if IDS else ""))
 ROOT = Path(__file__).resolve().parent.parent
-WORK = Path("/Users/john/.claude/jobs/f819dd6c/tmp/vanguard_pilot")
+WORK = Path.home() / "Documents" / ".agi-zeitgeist" / "work" / "vanguard_pilot"
 RAW = WORK / (F["raw"] + (f"_{TAG}" if TAG else ("_rules" if RULES else "")))
 OUT = ROOT / "data" / "vanguard" / (F["out"].replace(".csv", "-rules-trial.csv") if RULES else F["out"])
 if TAG:

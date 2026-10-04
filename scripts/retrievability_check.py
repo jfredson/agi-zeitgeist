@@ -37,7 +37,7 @@ UA = "agi-zeitgeist retrievability check (public research dataset)"
 TOP_N, ROBUST_N = 20, 50
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "feasibility"
-CACHE = Path("/Users/john/.claude/jobs/f819dd6c/tmp/retrievability_cache.json")
+CACHE = Path.home() / "Documents" / ".agi-zeitgeist" / "work" / "retrievability_cache.json"
 
 
 class Stop(Exception):

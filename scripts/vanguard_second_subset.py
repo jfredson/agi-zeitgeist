@@ -22,7 +22,7 @@ FRACTION = 0.30
 ROOT = Path(__file__).resolve().parent.parent
 CODES = ROOT / "data" / "vanguard" / "r-singularity-pilot-codes.csv"
 SHEET = ROOT / "data" / "vanguard" / "second-coder-worksheet.csv"
-WORK = Path("/Users/john/.claude/jobs/f819dd6c/tmp/vanguard_pilot")
+WORK = Path.home() / "Documents" / ".agi-zeitgeist" / "work" / "vanguard_pilot"
 FIELDS = ["eligible", "exclusion_reason", "claim_target", "si_level", "temporal_status",
           "forecast_horizon", "stance", "epistemic_qualification", "rhetorical_mode",
           "development_preference", "attribution", "frame_tags", "title_only"]

@@ -28,8 +28,8 @@ RANDOM_N = 20
 RESERVE = 60
 START, END = "2024-10-01", "2026-10-01"
 ROOT = Path(__file__).resolve().parent.parent
-CACHE = Path("/Users/john/.claude/jobs/f819dd6c/tmp/retrievability_cache.json")
-WORK = Path("/Users/john/.claude/jobs/f819dd6c/tmp/vanguard_pilot")
+CACHE = Path.home() / "Documents" / ".agi-zeitgeist" / "work" / "retrievability_cache.json"
+WORK = Path.home() / "Documents" / ".agi-zeitgeist" / "work" / "vanguard_pilot"
 OUT = ROOT / "data" / "vanguard" / "r-singularity-pilot-sample.csv"
 
 import sys
