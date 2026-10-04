@@ -1,6 +1,8 @@
 # Cost quote: Gemini paid tier for vanguard coding (for John's approval)
 
-Prepared 2026-10-03, before the full-sample run, as John asked.
+Prepared 2026-10-03, before the full-sample run, as John asked. **Approved by John, 2026-10-03:**
+up to $15 for the first month (the full run plus the first monthly runs), then up to $5 a
+month for three venues.
 
 ## Basis
 
