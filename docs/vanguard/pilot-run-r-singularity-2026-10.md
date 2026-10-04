@@ -160,3 +160,29 @@ how a bare reaction or joke title ("WTF") is treated.
 run: all 390 posts by Gemini and GPT under the final codebook, with Gemini capped at about 240
 new requests a day (`--ids data/vanguard/r-singularity-pilot-sample.csv` style list, `--max-new 240`,
 a fresh `--tag` so earlier replies aren't reused).
+
+## Gemini runs, 2026-10-04
+
+Run from the handover's commands, in its order, starting 12:15 Pacific. The handover expected
+the daily limit to clear about 17:05; a single test request (`--max-new 1`) at 12:15 was
+accepted, so the runs went ahead then. All 252 requests were accepted the same day, none
+refused, so the "250 a day" figure did not bind as expected. Plan the full-sample run on 240
+a day anyway until the limit is understood.
+
+- **First trial, last 28 posts:** frozen pre-rules codebook plus R1 to R3, as before. 140 of
+  140 posts now coded by all three models.
+- **R1a trial and R1b trial:** 112 of 112 posts each, today's codebook plus one rule.
+- **Pin:** the script confirmed `gemini-3.1-pro-preview` version `3.1-pro-preview-01-2026`
+  before each run.
+- **Cost:** $6.28 for 252 requests, from the token counts Google returns with each reply,
+  priced at the quoted rates ($0.62 for the 28, $2.77 for R1a, $2.89 for R1b). The approved
+  quote put this work at about $6.30.
+- **Comparisons:** `vanguard_three_way.py --compare` (first trial, 140 posts) and
+  `--r1-split` (R1a and R1b), plus `scripts/vanguard_r1_bootstrap.py`, new today, which
+  resamples the 112 posts 2,000 times (seed 20261004) to give a 90% range for each kappa and
+  for the change each rule makes.
+- **Results:** in the pilot report; recommendation in
+  `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md`.
+
+**Waiting on John:** a ruling on R1a and R1b; about $15 more OpenAI credit. Then the
+full-sample run as described in the handover above.
