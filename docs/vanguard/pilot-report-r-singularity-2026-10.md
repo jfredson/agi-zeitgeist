@@ -109,33 +109,36 @@ The rules are in `docs/vanguard/proposed-rules-2026-10-03.md`:
   set list.
 
 All three models recoded the 140 posts with the three rules added. Each rule targets a
-different field, so they were tested together. The OpenAI API stopped answering after 86
-posts, and Gemini's after 112. Each run was resumed once after a 10-minute pause, failed
-again, and was stopped. Kappa before and after on the same 86 posts:
+different field, so they were tested together. Claude and GPT coded all 140 posts. Gemini
+coded 112: its project allows 250 requests per model per day, and today's main pass and
+trial used them all. The last 28 posts can run after the limit clears, about 17:00 Pacific
+on 2026-10-04. (Earlier stops were also money: the OpenAI account ran out of credit and was
+topped up.) Kappa before and after on the same 112 posts:
 
 | field | rule | Claude–Gemini | Claude–GPT | Gemini–GPT |
 |---|---|---|---|---|
-| what the main claim is about | R2 | 0.58 → 0.80 | 0.59 → 0.90 | 0.70 → 0.81 |
-| whether the poster agrees | R1 | 0.41 → 0.81 | 0.29 → 0.79 | 0.69 → 0.69 |
-| hedging | R3 | 0.27 → 0.88 | 0.22 → 0.74 | 0.55 → 0.72 |
-| whose claim it is | (R1 side effect) | 0.72 → 0.76 | 0.69 → 0.90 | 0.79 → 0.63 |
-| whether the poster wants AI sped up or slowed down | (none targeted) | 0.52 → 0.57 | 0.32 → 0.55 | 0.64 → 0.51 |
-| irony | (none targeted) | 0.61 → 0.65 | 0.50 → 0.66 | 0.43 → 0.60 |
-| forecast or already happened | (none targeted) | 0.69 → 0.82 | 0.71 → 0.87 | 0.76 → 0.81 |
+| what the main claim is about | R2 | 0.55 → 0.81 | 0.58 → 0.87 | 0.73 → 0.82 |
+| whether the poster agrees | R1 | 0.42 → 0.80 | 0.35 → 0.78 | 0.71 → 0.65 |
+| hedging | R3 | 0.22 → 0.86 | 0.18 → 0.62 | 0.55 → 0.62 |
+| whose claim it is | (R1 side effect) | 0.72 → 0.75 | 0.66 → 0.86 | 0.80 → 0.62 |
+| whether the poster wants AI sped up or slowed down | (none targeted) | 0.53 → 0.58 | 0.33 → 0.55 | 0.65 → 0.52 |
+| irony | (none targeted) | 0.59 → 0.71 | 0.46 → 0.72 | 0.52 → 0.69 |
+| forecast or already happened | (none targeted) | 0.63 → 0.78 | 0.63 → 0.80 | 0.73 → 0.73 |
 
-With the rules, hedging passes the test. Whether the poster wants AI sped up or slowed down
-would fail (every pair below 0.6).
+With the rules, hedging and irony pass the test. Whether the poster wants AI sped up or
+slowed down would fail (every pair below 0.6).
 
 **How to read this:**
 1. **The Gemini–GPT column is the cleanest test.** Between Gemini's and GPT's two runs only
    the rules changed. The Claude trial codes came from fresh coders, so the Claude pairs mix
    the rules' effect with the change of coder.
-2. **R2 and R3 help in every pair**, including Gemini–GPT (0.70 → 0.81; 0.55 → 0.72).
-3. **R1 brings Claude into line but doesn't help Gemini–GPT** (0.69 → 0.69). It also lowered
-   their agreement on whose claim it is (0.79 → 0.63). The trial coders found that R1 has no
-   default when a post names no source, and no answer for a model's own output in a
-   screenshot. Refinement for John to consider: when no source is named, attribution =
-   original; a model's output = lab_or_company.
+2. **R2 helps in every pair**, including Gemini–GPT (0.73 → 0.82). **R3 helps a lot in the
+   Claude pairs, and modestly between Gemini and GPT** (0.55 → 0.62, just over the bar).
+3. **R1 brings Claude into line but slightly lowers Gemini–GPT agreement**, both on whether
+   the poster agrees (0.71 → 0.65) and on whose claim it is (0.80 → 0.62). The trial coders
+   found that R1 has no default when a post names no source, and no answer for a model's own
+   output in a screenshot. Refinement for John to consider: when no source is named,
+   attribution = original; a model's output = lab_or_company.
 4. **Optimistic by construction.** The rules were written from disagreements on these same
    posts, so they will look better here than on new posts. Any rule John adopts is checked
    again on a fresh sample (section 9).
@@ -161,12 +164,14 @@ The trial codes (`*-rules-trial.csv`) aren't used in any figure or count.
 ## Decisions for John
 
 1. **Rules R1 to R3:** adopt, refine or reject each (evidence above).
-2. **Where the figure's numbers come from.** Recommended: once the rules are settled and the
-   APIs answer again, extend the Gemini and GPT passes to the whole sample (390 posts), so the
-   figure can use majority codes instead of Claude's, which are the outlier.
+2. **Where the figure's numbers come from.** John agreed (2026-10-03) to extend the Gemini
+   and GPT passes to the whole sample (390 posts), with Gemini's share split over two days
+   because of its daily limit, so the figure can use majority codes instead of Claude's,
+   which are the outlier. Timing is not yet settled: the plan is to run after the ruling on
+   R1 to R3, so the posts are coded once under the final codebook.
 
 ## Not done
 
-Gemini's and GPT's trial runs are incomplete: the APIs stopped answering at 112 and 86 of 140
-posts. Also not done: the cross-era sample and the comment sample (deferred), and the section
+Gemini's trial run is incomplete at 112 of 140 posts (its daily request limit); the rest can
+run after about 17:00 Pacific on 2026-10-04. Also not done: the cross-era sample and the comment sample (deferred), and the section
 12 preconditions (venue inventory, X decision). No other venue was collected.
