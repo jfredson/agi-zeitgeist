@@ -18,6 +18,11 @@ are voted only for posts the majority finds eligible; otherwise the field is unr
     python3 scripts/vanguard_three_way.py --rules-trial   # the codes made with trial rules
     python3 scripts/vanguard_three_way.py --compare       # before and after the trial rules,
                                                           # on the posts all three trial runs coded
+    python3 scripts/vanguard_three_way.py --r1-split      # rules R1a (stance) and R1b (attribution),
+                                                          # each trialled alone on the 112 posts
+
+"Whether the poster wants AI sped up or slowed down" (development_preference) is listed as
+unreliable by John's ruling of 2026-10-03, whatever its kappas.
 
 Writes data/vanguard/r-singularity-pilot-codes-majority.csv and
 data/vanguard/three-model-reliability.csv (main codes only).
@@ -43,6 +48,11 @@ FIELDS = ["claim_target", "temporal_status", "stance", "epistemic_qualification"
           "development_preference", "attribution", "title_only", "extrapolates_to_horizon"]
 PAIRS = [("claude", "gemini"), ("claude", "gpt"), ("gemini", "gpt")]
 UNRESOLVED_LIMIT, KAPPA_FLOOR = 0.15, 0.6
+RULED_UNRELIABLE = {"development_preference": "ruled unreliable by John, 2026-10-03"}
+R1_POSTS = D / "r1-split-trial-posts.csv"
+SPLIT = {tag: {"claude": [D / f"r-singularity-pilot-codes-claude-{tag}.csv"],
+               "gemini": [D / f"r-singularity-pilot-codes-crossfamily-{tag}.csv"],
+               "gpt": [D / f"r-singularity-pilot-codes-gpt-{tag}.csv"]} for tag in ("r1a-trial", "r1b-trial")}
 
 
 def subset_ids():
@@ -112,6 +122,8 @@ def verdicts(res, final):
             reasons.append(f"unresolved on {unresolved:.0%} of posts")
         if ks and all(k < KAPPA_FLOOR for k in ks):
             reasons.append("every pairwise kappa below 0.6")
+        if field in RULED_UNRELIABLE:
+            reasons.append(RULED_UNRELIABLE[field])
         out[field] = (unresolved, len(pool), "unreliable: " + "; ".join(reasons) if reasons else "reliable")
     return out
 
@@ -156,7 +168,22 @@ def report(label, codes, ids, write=False):
 def main():
     ids = subset_ids()
     idset = set(ids)
-    if "--compare" in sys.argv:
+    if "--r1-split" in sys.argv:
+        with R1_POSTS.open(newline="") as f:
+            r1ids = [r["post_id"] for r in csv.DictReader(f)]
+        sets = {"before": MAIN, **SPLIT}
+        loaded = {k: {m: load([q for q in p if q.exists()], set(r1ids)) for m, p in v.items()} for k, v in sets.items()}
+        common = [i for i in r1ids if all(i in loaded[k][m] for k in loaded for m in loaded[k])]
+        res = {k: report(f"{k} ({len(common)} posts)", {m: {i: c[i] for i in common} for m, c in v.items()}, common)[0]
+               for k, v in loaded.items()}
+        for rule, field, control in (("R1a", "stance", "r1b-trial"), ("R1b", "attribution", "r1a-trial")):
+            tag = "r1a-trial" if rule == "R1a" else "r1b-trial"
+            print(f"\n{rule} on {field}, {len(common)} posts: before (original codebook) / without {rule} "
+                  f"(same codebook, other split's run) / with {rule}")
+            for pair in PAIRS:
+                k = [res[x][field][pair][2] for x in ("before", control, tag)]
+                print(f"  {pair[0]}-{pair[1]}: " + " / ".join(f"{v:.2f}" if v is not None else "-" for v in k))
+    elif "--compare" in sys.argv:
         trial = {m: load(p, idset) for m, p in TRIAL.items()}
         common = [i for i in ids if all(i in trial[m] for m in trial)]
         before = report("Before (main codes)", {m: load(p, set(common)) for m, p in MAIN.items()}, common)[0]

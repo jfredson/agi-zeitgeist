@@ -63,6 +63,34 @@ claim first. An ineligible post gets one row with `claim_n` 0 and the claim fiel
 
 Denials keep their target ("AGI is not imminent" = agi, forecast, denies).
 
+### Decision rules adopted by John, 2026-10-03
+
+**R2: company and policy news, or capability.**
+
+Decide the main claim's target by the subject of the main claim, not by which company is
+named. Ask: who or what does the thing the claim is about?
+- A model, robot or AI system (what it can or can't do, how it behaved, a new model or
+  product with what it does, benchmark scores, a demo, a deployment such as robots now
+  patrolling a stadium): specific_capability. This includes a model's own output shown in a
+  screenshot, even when the output is about its owner.
+- A company, executive, investor or government (deals, funding, hiring, firing, lawsuits,
+  feuds, regulation, pricing, access, release or withholding decisions, leaks, advertising,
+  spending): industry_governance.
+- People, jobs, society or the economy (effects of AI on them): consequence.
+If the post makes claims of more than one kind, code each as its own claim. The main claim
+is the one stated in the title; if the title states none, the one the post spends most words
+on.
+
+**R3: hedging.**
+
+Code epistemic_qualification from the words that state the main claim: the title, plus any
+body, image or page text that states the same claim, including a quoted source's own words.
+Code qualified only if those words contain a hedge that limits certainty: may, might, could,
+probably, likely, possibly, perhaps, I think, I suspect, I believe, seems, appears, suggests,
+early signs, if, or an equivalent phrase. Otherwise unqualified. Code explicit_probability
+only for a stated number or odds. Code unclear only when no claim is stated in words at all
+(a title that just names a topic, such as "X's thoughts on AI").
+
 ## 4. Measures (amendment section 8, as revised 2026-10-03)
 
 - **Primary:** share of eligible posts making a **capability** claim (`specific_capability`)
@@ -72,3 +100,5 @@ Denials keep their target ("AGI is not imminent" = agi, forecast, denies).
 - **Headline claims, reported as near-absent:** AGI already achieved; AGI within a stated
   horizon; self-improvement under way; singularity framing (poster affirms each).
 - Every share is reported with and without `title_only` rows.
+- **Not reported:** whether the poster wants AI sped up or slowed down
+  (`development_preference`). Ruled unreliable by John, 2026-10-03; still coded.

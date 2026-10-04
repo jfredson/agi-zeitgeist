@@ -165,6 +165,9 @@ claim and a consequence claim, and the share of capability posts that extrapolat
 timeline or consequence. The four claims below are kept and reported as near-absent where
 they are (the r/singularity pilot found them in under 5% of eligible posts).
 
+**Not reported (ruling 2026-10-03):** whether the poster wants AI sped up or slowed down
+(`development_preference`) is still coded but listed as unreliable and kept out of results.
+
 **Shares only.** Per venue and quarter, separately for the rewarded and prevalence samples:
 the share of eligible posts affirming each claim (AGI already achieved; AGI within a
 stated horizon; self-improvement under way; singularity framing), the share disputing each,

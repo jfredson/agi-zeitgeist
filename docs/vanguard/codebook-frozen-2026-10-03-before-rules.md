@@ -1,0 +1,75 @@
+<!-- Frozen copy of docs/vanguard/codebook.md as of commit c9a9ac0, before rules R2 and R3 were adopted. Used only so the remaining posts of the 2026-10-03 rules trial are coded under the same codebook as the rest of that run. -->
+# Codebook: vanguard sub-series (stream F)
+
+How posts in the vanguard sub-series are coded. Written 2026-10-03 from section 7 of the
+accepted amendment `docs/amendments/2026-10-02-vanguard-stream.md`, the rules applied in the
+r/singularity pilot, and John's rulings of 2026-10-03 on the pilot report. Changes go in
+`docs/amendments.md` first. (Statements by named experts, stream E, use `docs/codebook.md`.)
+
+Code what the post says, not what you know about the topic or the poster. Don't check
+whether claims are true.
+
+## 1. Content basis
+
+| post type | coded from | `title_only` |
+|---|---|---|
+| text | title and body | blank; `yes` if the body was removed or deleted and only the title survives (`content_basis: text_title`) |
+| image | title and the image. Coded if the image has legible text or a legible chart or screenshot; otherwise not eligible (`image_no_text`). A dead image file: not eligible (`content_unavailable`) | blank |
+| meme | as an image: **the legible-text rule applies** (ruling 2026-10-03) | blank |
+| video | **title only** (ruling 2026-10-02) | `yes` |
+| link | title plus the linked page if it opens; title only if it doesn't | `yes` only if title only |
+| gallery | not eligible (`content_unavailable`); content needs reddit.com | blank |
+
+A post whose title itself reads "[ Removed by moderator ]" is not eligible
+(`content_unavailable`).
+
+## 2. Eligibility
+
+**Eligible** = the post asserts, disputes or relays a claim about AI capability, timeline,
+consequence, or the AI industry and its governance.
+
+Rulings of 2026-10-03:
+- **Posts that don't mention AI are not eligible** (`no_ai_claim`), even when the
+  subreddit makes an AI reading likely. The post itself (title, body, legible image text or
+  opened link) must refer to AI, a model, a lab, a robot or an AI product.
+- **Video titles that only name a demo** ("Atlas does a backflip", "Will Smith eating
+  spaghetti in Veo 3.1") **are eligible capability claims** (`specific_capability`,
+  `temporal_status: achieved`).
+- **AI company and policy drama** (disputes between labs, executives' public fights, a
+  model's political answers as a news item, government action on AI companies) is eligible
+  under the target `industry_governance`.
+- Pure questions with no claim, slogans, off-topic posts and meta are not eligible
+  (`no_ai_claim`).
+
+## 3. Claims
+
+The post is the sampling unit; each distinct claim is a row (`claim_n` 1, 2, ...), main
+claim first. An ineligible post gets one row with `claim_n` 0 and the claim fields blank.
+
+| field | codes |
+|---|---|
+| `claim_target` | `specific_capability` (a named task, model, benchmark, robot or demo); `agi` (AGI, human-level or general capability); `self_improvement` (AI doing AI research or improving itself, with `si_level`); `pace_singularity` (pace of progress, takeoff, "singularity"); `consequence` (social or economic effects of AI); `industry_governance` (AI companies, executives, labs' conduct and disputes, regulation and policy, government action on AI) |
+| `si_level` | only for self_improvement: `si_assist`, `si_research`, `si_modify`, `si_sustained`; the lowest level the words support |
+| `temporal_status` | `achieved`, `under_way`, `forecast`, `hypothetical`, `unspecified` |
+| `forecast_horizon` | the exact date, range or words of a forecast; else blank |
+| `stance` | `affirms`, `denies`, `questions`, `conditional`, `neutral_relay`, `unclear` |
+| `epistemic_qualification` | `unqualified`, `qualified`, `explicit_probability`, `unclear` |
+| `rhetorical_mode` | `literal`, `ironic`, `mixed`, `unclear` |
+| `development_preference` | `supports`, `opposes`, `conditional`, `not_expressed` |
+| `attribution` | `original`, `panel_member`, `lab_or_company`, `news_outlet`, `other_person` |
+| `frame_tags` | words actually used, `;`-separated: agi, asi, superintelligence, singularity, takeoff, rsi, recursive, feel_the_agi, accelerate, e_acc, doom, hype, bubble, other. A benchmark or product name containing a word (ARC-AGI) is not a tag; a pun on a word ("singularity of sight") is not a tag |
+| `extrapolates_to_horizon` | post level, repeated on each of the post's rows: **does the post infer a timeline or a consequence from a capability?** `yes` (e.g. "it solved six open problems, so the singularity is near"; "this robot will take warehouse jobs"); `no` (a capability is claimed but nothing is inferred from it); `na` (no capability claim in the post). Blank on ineligible rows. Ruling 2026-10-03 |
+| `title_only` | `yes` when coded from the title alone |
+| `evidence_span` | 25 words or fewer, verbatim, from the title, body or image text |
+
+Denials keep their target ("AGI is not imminent" = agi, forecast, denies).
+
+## 4. Measures (amendment section 8, as revised 2026-10-03)
+
+- **Primary:** share of eligible posts making a **capability** claim (`specific_capability`)
+  and a **consequence** claim (`consequence`), and the share of capability posts that
+  **extrapolate** to a timeline or consequence.
+- **Also reported:** `industry_governance` claims.
+- **Headline claims, reported as near-absent:** AGI already achieved; AGI within a stated
+  horizon; self-improvement under way; singularity framing (poster affirms each).
+- Every share is reported with and without `title_only` rows.

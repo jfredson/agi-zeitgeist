@@ -30,6 +30,11 @@ such as the full pilot sample) instead of the 140-post set, into a separate "-fu
 --max-new N stops after N new API requests, so a run fits a daily limit (Gemini allows
 250 requests per model per day on the project's tier); rerun the next day to continue.
 
+--codebook FILE sends that codebook instead of docs/vanguard/codebook.md (a frozen copy keeps
+a run on the codebook it started with).
+--tag TAG names a separate trial: replies saved in their own folder, output
+...-TAG.csv, run id ...-TAG. Use one tag per rule being trialled.
+
 --cached-only writes the output from replies already saved, without calling the API, and
 skips posts with no saved reply (used when an API stopped answering partway through a run).
 """
@@ -61,15 +66,19 @@ MODEL = F["model"]
 PINNED_VERSION = F["pin"]
 CODER = f"{MODEL}@{PINNED_VERSION}" if FAMILY == "gemini" else f"{MODEL}@created-{PINNED_VERSION}-effort-{F['effort']}"
 IDS = Path(sys.argv[sys.argv.index("--ids") + 1]) if "--ids" in sys.argv else None
-RUN_ID = F["run_id"] + ("-rules-trial" if RULES else "") + ("-full" if IDS else "")
+TAG = sys.argv[sys.argv.index("--tag") + 1] if "--tag" in sys.argv else None
+RUN_ID = F["run_id"] + (f"-{TAG}" if TAG else ("-rules-trial" if RULES else "") + ("-full" if IDS else ""))
 ROOT = Path(__file__).resolve().parent.parent
 WORK = Path("/Users/john/.claude/jobs/f819dd6c/tmp/vanguard_pilot")
-RAW = WORK / (F["raw"] + ("_rules" if RULES else ""))
+RAW = WORK / (F["raw"] + (f"_{TAG}" if TAG else ("_rules" if RULES else "")))
 OUT = ROOT / "data" / "vanguard" / (F["out"].replace(".csv", "-rules-trial.csv") if RULES else F["out"])
-if IDS:
+if TAG:
+    OUT = ROOT / "data" / "vanguard" / F["out"].replace(".csv", f"-{TAG}.csv")
+elif IDS:
     OUT = OUT.with_name(OUT.name.replace(".csv", "-full.csv"))
 SUBSET = ROOT / "data" / "vanguard" / "second-coder-worksheet.csv"
-CODEBOOK = ROOT / "docs" / "vanguard" / "codebook.md"
+CODEBOOK = Path(sys.argv[sys.argv.index("--codebook") + 1]) if "--codebook" in sys.argv else \
+    ROOT / "docs" / "vanguard" / "codebook.md"
 HEADER = ["run_id", "coder", "post_id", "quarter", "sample", "rank_or_draw", "post_type",
           "content_basis", "title_only", "eligible", "exclusion_reason", "claim_n",
           "claim_target", "si_level", "temporal_status", "forecast_horizon", "stance",
