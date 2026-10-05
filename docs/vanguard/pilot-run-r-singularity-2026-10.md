@@ -189,3 +189,24 @@ codebook (`docs/vanguard/codebook.md`) is now final for the full-sample run.
 
 **Waiting on John:** about $15 more OpenAI credit. Then the full-sample run as described in
 the handover above, on today's codebook with a fresh `--tag`.
+
+## Full-sample run, started 2026-10-04
+
+John topped up the OpenAI credit and started the run the evening of 2026-10-04. Final codebook
+(`docs/vanguard/codebook.md`: R2 and R3 adopted 2026-10-03, R1a adopted 2026-10-04). Posts:
+the 390 screened in the first pass, listed in `data/vanguard/full-run-posts.csv` (230 top-ranked,
+160 random; built from `r-singularity-pilot-codes.csv`). Label `--tag full-final`, so no earlier
+reply is reused.
+
+- **GPT:** 390 of 390 posts coded (`r-singularity-pilot-codes-gpt-full-final.csv`), pin
+  confirmed. 1.41 million input and 158,000 output tokens; about $21 at the quote's $0.054 a
+  post (the exact charge is on OpenAI's billing page).
+- **Gemini:** 2 posts coded ($0.05), then refused with "exceeded your current quota". The
+  afternoon's 252 trial requests had used the day's allowance, so the daily limit is real; it
+  was not yet clear at 18:40 Pacific. To resume once it clears (saved replies are reused):
+
+```
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 240
+```
+
+  Run it twice, on two days; 388 posts remain.
