@@ -102,7 +102,8 @@ about) badly overstated reliability.
 **Where things stand (2026-10-04).** John adopted R2 and R3 on 2026-10-03 (now in
 `docs/vanguard/codebook.md`) and split R1 into two rules to be trialled separately: R1a for
 whether the poster agrees and R1b for whose claim it is. Their results are in the next
-section; R1a and R1b await his ruling. The first trial below is now complete on all 140
+section. On 2026-10-04 he adopted R1a, with a sentence on jokes and reaction titles added, and
+rejected R1b. The first trial below is now complete on all 140
 posts.
 
 The rules are in `docs/vanguard/proposed-rules-2026-10-03.md`:
@@ -162,7 +163,7 @@ was 0.55 → 0.62 and is now 0.56 → 0.56, and whose claim it is between Gemini
 
 The trial codes (`*-rules-trial.csv`) aren't used in any figure or count.
 
-### R1a and R1b, each tried alone (awaiting John's ruling)
+### R1a and R1b, each tried alone (ruled 2026-10-04: R1a adopted with the reactions sentence, R1b rejected)
 
 Run 2026-10-03 (Claude, GPT) and 2026-10-04 (Gemini) on the same 112 posts
 (`data/vanguard/r1-split-trial-posts.csv`), with today's codebook (R2 and R3 adopted) plus one
@@ -185,14 +186,14 @@ The 90% ranges come from resampling the posts 2,000 times (`scripts/vanguard_r1_
   are a reaction or joke ("HOLY SHIT", "This… could be something…"). The original R1 had a
   sentence for this that the split dropped.
 
-Decision packet with the recommendation (refine and adopt R1a; reject R1b):
+Decision packet (recommendation followed by John's ruling: refine and adopt R1a; reject R1b):
 `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md`. The split-trial codes
 (`*-r1a-trial.csv`, `*-r1b-trial.csv`) aren't used in any figure or count.
 
 ## Edge calls still open
 
-- **Reposts without comment:** affirms or neutral relay, and whose claim they are (R1a and
-  R1b above; awaiting John).
+- **Reposts without comment:** settled 2026-10-04 by R1a (stance, including reactions and
+  jokes); attribution follows the field definition.
 - **"Capability" for the extrapolation field:** two first-pass coders counted AGI and
   self-improvement claims as capability claims; the figure measures extrapolation among posts
   with a `specific_capability` claim only.
@@ -202,17 +203,17 @@ Decision packet with the recommendation (refine and adopt R1a; reject R1b):
 
 ## Decisions for John
 
-1. **Rules R1a and R1b:** adopt, refine or reject each. Packet:
-   `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md`. (R2 and R3 adopted 2026-10-03.)
+1. ~~Rules R1a and R1b~~ ruled 2026-10-04: R1a adopted with the reactions sentence, R1b
+   rejected. (R2 and R3 adopted 2026-10-03.)
 2. **Where the figure's numbers come from.** John agreed (2026-10-03) to extend the Gemini
    and GPT passes to the whole sample (390 posts), with Gemini's share split over two days
    because of its daily limit, so the figure can use majority codes instead of Claude's,
    which are the outlier. Timing is not yet settled: the plan is to run after the ruling on
-   R1a and R1b, so the posts are coded once under the final codebook, and after the OpenAI
-   account has about $15 more credit.
+   R1a and R1b (now made), so the posts are coded once under the final codebook. Still
+   waiting on about $15 more OpenAI credit.
 
 ## Not done
 
 All trial runs are complete (Gemini finished on 2026-10-04). Not done: the full-sample run
-(waiting on the R1a and R1b ruling), the cross-era sample and the comment sample (deferred),
+(waiting on about $15 more OpenAI credit), the cross-era sample and the comment sample (deferred),
 and the section 12 preconditions (venue inventory, X decision). No other venue was collected.

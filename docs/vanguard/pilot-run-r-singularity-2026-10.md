@@ -184,5 +184,8 @@ a day anyway until the limit is understood.
 - **Results:** in the pilot report; recommendation in
   `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md`.
 
-**Waiting on John:** a ruling on R1a and R1b; about $15 more OpenAI credit. Then the
-full-sample run as described in the handover above.
+**Ruled by John, 2026-10-04:** R1a adopted with the reactions sentence; R1b rejected. The
+codebook (`docs/vanguard/codebook.md`) is now final for the full-sample run.
+
+**Waiting on John:** about $15 more OpenAI credit. Then the full-sample run as described in
+the handover above, on today's codebook with a fresh `--tag`.
