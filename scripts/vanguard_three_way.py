@@ -20,12 +20,15 @@ are voted only for posts the majority finds eligible; otherwise the field is unr
                                                           # on the posts all three trial runs coded
     python3 scripts/vanguard_three_way.py --r1-split      # rules R1a (stance) and R1b (attribution),
                                                           # each trialled alone on the 112 posts
+    python3 scripts/vanguard_three_way.py --full          # the full-sample run: all 390 posts, each
+                                                          # model coding under the final codebook
 
 "Whether the poster wants AI sped up or slowed down" (development_preference) is listed as
 unreliable by John's ruling of 2026-10-03, whatever its kappas.
 
 Writes data/vanguard/r-singularity-pilot-codes-majority.csv and
-data/vanguard/three-model-reliability.csv (main codes only).
+data/vanguard/three-model-reliability.csv (main codes), or the same names ending -full-final
+(--full).
 """
 
 import csv
@@ -50,6 +53,9 @@ PAIRS = [("claude", "gemini"), ("claude", "gpt"), ("gemini", "gpt")]
 UNRESOLVED_LIMIT, KAPPA_FLOOR = 0.15, 0.6
 RULED_UNRELIABLE = {"development_preference": "ruled unreliable by John, 2026-10-03"}
 R1_POSTS = D / "r1-split-trial-posts.csv"
+FULL_POSTS = D / "full-run-posts.csv"
+FULL = {m: [D / f"r-singularity-pilot-codes-{name}-full-final.csv"]
+        for m, name in (("claude", "claude"), ("gemini", "crossfamily"), ("gpt", "gpt"))}
 SPLIT = {tag: {"claude": [D / f"r-singularity-pilot-codes-claude-{tag}.csv"],
                "gemini": [D / f"r-singularity-pilot-codes-crossfamily-{tag}.csv"],
                "gpt": [D / f"r-singularity-pilot-codes-gpt-{tag}.csv"]} for tag in ("r1a-trial", "r1b-trial")}
@@ -128,7 +134,8 @@ def verdicts(res, final):
     return out
 
 
-def report(label, codes, ids, write=False):
+def report(label, codes, ids, write=None):
+    """write: None, or (reliability file, majority file, post list giving quarter and sample)."""
     res = pairwise(codes, ids)
     final = majority(codes, ids)
     ver = verdicts(res, final)
@@ -148,19 +155,21 @@ def report(label, codes, ids, write=False):
                      round(res[field][pair][2], 3) if res[field][pair][2] is not None else "")]
                     + [pool, round(unresolved, 3), verdict])
     if write:
-        with (D / "three-model-reliability.csv").open("w", newline="") as f:
+        rel_path, maj_path, meta_path = write
+        with rel_path.open("w", newline="") as f:
             w = csv.writer(f, lineterminator="\n")
             w.writerow(["field"] + [f"{a}_{b}_{x}" for a, b in PAIRS for x in ("n", "agreement", "kappa")]
                        + ["posts_voted", "unresolved_share", "verdict"])
             w.writerows(rows)
-        with SUBSET.open(newline="") as f:
+        with meta_path.open(newline="") as f:
             meta = {r["post_id"]: r for r in csv.DictReader(f)}
-        with (D / "r-singularity-pilot-codes-majority.csv").open("w", newline="") as f:
+        types = {i: r["post_type"] for c in codes.values() for i, r in c.items()}
+        with maj_path.open("w", newline="") as f:
             w = csv.writer(f, lineterminator="\n")
             w.writerow(["post_id", "quarter", "sample", "post_type", "eligible"] + FIELDS)
             for i in ids:
                 m = meta[i]
-                w.writerow([i, m["quarter"], m["sample"], m["post_type"], final[i]["eligible"]]
+                w.writerow([i, m["quarter"], m["sample"], m.get("post_type") or types.get(i, ""), final[i]["eligible"]]
                            + [final[i][fl] for fl in FIELDS])
     return res, final, ver
 
@@ -196,10 +205,24 @@ def main():
                 kb, ka = before[field][pair][2], after[field][pair][2]
                 cells.append(f"{kb:.2f} -> {ka:.2f}" if kb is not None and ka is not None else "-")
             print(f"{field:26} " + "    ".join(cells))
+    elif "--full" in sys.argv:
+        missing = [str(p) for ps in FULL.values() for p in ps if not p.exists()]
+        if missing:
+            raise SystemExit("stopped: not all three models have coded the full sample yet: " + ", ".join(missing))
+        with FULL_POSTS.open(newline="") as f:
+            fids = [r["post_id"] for r in csv.DictReader(f)]
+        codes = {m: load(p, set(fids)) for m, p in FULL.items()}
+        short = {m: len(fids) - len(c) for m, c in codes.items() if len(c) < len(fids)}
+        if short:
+            print(f"note: posts not yet coded: {short}; the comparison uses the posts each pair shares")
+        report("Full sample, final codebook", codes, fids,
+               write=(D / "three-model-reliability-full-final.csv",
+                      D / "r-singularity-pilot-codes-majority-full-final.csv", FULL_POSTS))
     elif "--rules-trial" in sys.argv:
         report("Trial rules", {m: load(p, idset) for m, p in TRIAL.items()}, ids)
     else:
-        report("Main codes", {m: load(p, idset) for m, p in MAIN.items()}, ids, write=True)
+        report("Main codes", {m: load(p, idset) for m, p in MAIN.items()}, ids,
+               write=(D / "three-model-reliability.csv", D / "r-singularity-pilot-codes-majority.csv", SUBSET))
 
 
 if __name__ == "__main__":

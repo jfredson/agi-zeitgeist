@@ -210,3 +210,23 @@ python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard
 ```
 
   Run it twice, on two days; 388 posts remain.
+
+**Claude, recoded under the final codebook (John, 2026-10-04).** Claude's earlier codes for
+these posts predate R2, R3 and R1a, so a three-way majority would have mixed codebooks. Six
+fresh `claude-opus-5-5` coders, 65 posts each (posts dealt out in turn, so each part mixes
+quarters and post types), coded all 390 blind. They got the same instructions, codebook and
+content as Gemini and GPT (brief: `docs/vanguard/claude-coding-brief-full-final.md`; link
+pages from the same cache, so the 13 unreadable ones are coded from the title). Output:
+`r-singularity-pilot-codes-claude-full-final.csv`, 507 rows, 265 posts eligible.
+
+- Merge check (`vanguard_merge_codes.py`): 37 rows for galleries and dead images had no
+  content source; it was filled from the post type and each row's notes say so. One code
+  outside the codebook (a timing of "conditional") went back to its coder, who changed it to
+  forecast and, under R3's explicit "if", set hedging to qualified.
+- Each quarter's top-ranked posts no longer come to exactly 20 eligible (18 to 22). That is
+  expected: the cut-off is re-applied from the majority codes when the figure is redrawn.
+- Interim Claude–GPT kappas on 390 posts: whether the post counts 0.91; what the claim is
+  about 0.83; whether the poster agrees 0.63 (0.36 on the old codes); hedging 0.66; whose
+  claim it is 0.71; every field at 0.59 or above.
+- `vanguard_three_way.py --full` builds the majority and the three-pair table once Gemini's
+  file exists.
