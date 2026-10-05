@@ -166,8 +166,8 @@ a fresh `--tag` so earlier replies aren't reused).
 Run from the handover's commands, in its order, starting 12:15 Pacific. The handover expected
 the daily limit to clear about 17:05; a single test request (`--max-new 1`) at 12:15 was
 accepted, so the runs went ahead then. All 252 requests were accepted the same day, none
-refused, so the "250 a day" figure did not bind as expected. Plan the full-sample run on 240
-a day anyway until the limit is understood.
+refused. (Correction, same evening: the limit does apply. The full-sample run was refused
+after 2 more requests, so 254 in a day was the ceiling here. Plan on 240 a day.)
 
 - **First trial, last 28 posts:** frozen pre-rules codebook plus R1 to R3, as before. 140 of
   140 posts now coded by all three models.
