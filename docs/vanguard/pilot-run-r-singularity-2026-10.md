@@ -230,3 +230,43 @@ pages from the same cache, so the 13 unreadable ones are coded from the title). 
   claim it is 0.71; every field at 0.59 or above.
 - `vanguard_three_way.py --full` builds the majority and the three-pair table once Gemini's
   file exists.
+
+## Gemini, 2026-10-06: stopped at 219 of 390, waiting on John over the cost limit
+
+The daily limit had reset: a one-request test at 09:14 Pacific was accepted and the pin was
+confirmed (`gemini-3.1-pro-preview` version `3.1-pro-preview-01-2026`). The run went ahead with
+the command from the section above, capped at 240 requests for the day.
+
+- **Stopped by hand at 10:16 Pacific**, just after a reply was saved, so no request was cut off
+  partway. It stopped because the October spending limit was found to be already passed (below),
+  not because of the daily limit. No request was refused.
+- **Where it stopped:** 217 new requests today, plus the 2 from 2026-10-04: **219 of 390 posts
+  coded**, the first 219 in the order of `data/vanguard/full-run-posts.csv`, with no gaps. The
+  next post is `1ojx1hr` (position 220); **171 remain**.
+  `r-singularity-pilot-codes-crossfamily-full-final.csv` was written from the saved replies with
+  `--cached-only` and holds those 219 posts.
+- **Cost of today's coding:** $5.58 for 217 requests (689,343 input and 350,375 output tokens,
+  thinking counted as output, at $2 and $12 per million). The full run so far: $5.63 for 219 posts,
+  $0.0257 a post.
+
+**Against the approved quote.** John approved up to $15 for October (the full run plus the first
+monthly runs), with the full run itself quoted at $9.80.
+- Google's billing page showed $12.25 for October before today's coding (about $5.90 on
+  2026-10-03 and $6.30 on 2026-10-04, the rules trials). The quote listed the 2026-10-04 trial
+  work as "already committed" beside the $15 rather than inside it, but the billing account
+  counts it all in one month.
+- With today's $5.58, October is about **$17.83, already over the $15**.
+- Finishing the full run needs about $4.40 more (171 posts at $0.0257), taking the full run to
+  about $10.03 (just over its own $9.80 line) and October to about **$22.20**.
+- So **finishing would exceed the approved $15**. It is not resumed without John's go. A $25
+  monthly budget alert is now set on the billing account.
+
+**To resume once John approves** (saved replies are reused; at most about 240 requests a day):
+
+```
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 171
+python3 scripts/vanguard_three_way.py --full
+```
+
+Then re-apply the 20-eligible cut-off per quarter from the majority codes, redraw the figure
+from the majority codes, and check that "AGI already achieved" counts leave out ironic posts.
