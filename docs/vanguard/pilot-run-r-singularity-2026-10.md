@@ -276,3 +276,30 @@ TimeAssembler decision): "approve finishing the Gemini coding, go with the recom
 That is about $4.40 more, about $22.20 for October; the limit is now about $22.50 for October
 without asking again. The approval is also noted under the quote in
 `model-cost-quote-2026-10-03.md`. The run resumed straight after.
+
+### Resumed 2026-10-06 after the approval: stopped at the daily limit, 254 of 390
+
+- The resumed run coded **35 more posts** (positions 220 to 254). The 36th request was refused
+  with "exceeded your current quota" at about 10:30 Pacific, after two waits. That is the daily
+  limit, not the money: 252 requests were accepted today, the same ceiling as 2026-10-04 (254).
+  The refused request was not saved and is not charged.
+- **Where it stopped:** **254 of 390 posts coded**, the first 254 in `full-run-posts.csv`, with no
+  gaps. The next post is `1rgdt31` (position 255); **136 remain**. The output file holds the 254
+  posts, written from the saved replies with `--cached-only`.
+- **Cost:** $6.37 today (252 requests). The full run so far is $6.42 for 254 posts ($0.0253 a post).
+  October is about **$18.62** ($12.25 before today, plus today).
+- **To finish:** 136 posts at about $0.0253 is about $3.45 more. That takes the full run to about
+  $9.87 and October to about **$22.07**, inside John's 2026-10-06 limit of about $22.50.
+
+**Resume after midnight Pacific (2026-10-07 or later)**, when the daily limit resets. It fits in
+one day's allowance:
+
+```
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 136
+python3 scripts/vanguard_three_way.py --full
+```
+
+Then re-apply the 20-eligible cut-off per quarter from the majority codes, redraw the figure
+from the majority codes, and check that "AGI already achieved" counts leave out ironic posts. If
+the per-post cost runs higher than expected, stop before October passes about $22.50 (full run
+about $10.30) and ask John again.
