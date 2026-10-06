@@ -270,3 +270,9 @@ python3 scripts/vanguard_three_way.py --full
 
 Then re-apply the 20-eligible cut-off per quarter from the majority codes, redraw the figure
 from the majority codes, and check that "AGI already achieved" counts leave out ironic posts.
+
+**Approved by John, 2026-10-06, about 10:20 Pacific** (in the planning session; recorded as a
+TimeAssembler decision): "approve finishing the Gemini coding, go with the recommendation."
+That is about $4.40 more, about $22.20 for October; the limit is now about $22.50 for October
+without asking again. The approval is also noted under the quote in
+`model-cost-quote-2026-10-03.md`. The run resumed straight after.
