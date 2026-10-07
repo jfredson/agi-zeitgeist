@@ -1,0 +1,11 @@
+field,claude_gemini_n,claude_gemini_agreement,claude_gemini_kappa,claude_gpt_n,claude_gpt_agreement,claude_gpt_kappa,gemini_gpt_n,gemini_gpt_agreement,gemini_gpt_kappa,posts_voted,unresolved_share,verdict
+eligible,390,0.962,0.911,390,0.959,0.907,390,0.972,0.936,390,0.0,reliable
+claim_target,259,0.857,0.768,254,0.894,0.829,258,0.853,0.759,265,0.015,reliable
+temporal_status,259,0.819,0.652,254,0.799,0.627,258,0.798,0.63,265,0.045,reliable
+stance,259,0.873,0.751,254,0.839,0.628,258,0.787,0.56,265,0.026,reliable
+epistemic_qualification,259,0.942,0.728,254,0.925,0.665,258,0.907,0.541,265,0.0,reliable
+rhetorical_mode,259,0.903,0.735,254,0.909,0.754,258,0.926,0.787,265,0.004,reliable
+development_preference,259,0.946,0.465,254,0.976,0.592,258,0.946,0.447,265,0.0,"unreliable: every pairwise kappa below 0.6; ruled unreliable by John, 2026-10-03"
+attribution,259,0.811,0.72,254,0.795,0.705,258,0.806,0.712,265,0.011,reliable
+title_only,259,0.996,0.992,254,0.996,0.991,258,1.0,1.0,265,0.0,reliable
+extrapolates_to_horizon,259,0.857,0.748,254,0.839,0.72,258,0.845,0.728,265,0.008,reliable

@@ -303,3 +303,51 @@ Then re-apply the 20-eligible cut-off per quarter from the majority codes, redra
 from the majority codes, and check that "AGI already achieved" counts leave out ironic posts. If
 the per-post cost runs higher than expected, stop before October passes about $22.50 (full run
 about $10.30) and ask John again.
+
+## Gemini, 2026-10-07: finished, 390 of 390, and the three-way comparison
+
+Scheduled run, started 09:34 Pacific, with the command from the section above. The daily limit
+had reset and no request was refused. It ran in three batches (40, 50, 46) so the cost could be
+checked between them against John's 2026-10-06 limit of about $22.50 for October; it never came
+close to it.
+
+- **Posts coded:** the remaining **136** (positions 255 to 390). **All 390 of 390 are now coded**,
+  in the order of `data/vanguard/full-run-posts.csv`, with no gaps. Every reply reported
+  `gemini-3.1-pro-preview` with the pinned version `3.1-pro-preview-01-2026`. Finished about
+  10:20 Pacific. `r-singularity-pilot-codes-crossfamily-full-final.csv` now holds all 390 posts.
+- **Cost of today's coding:** $3.41 for 136 requests (420,078 input and 213,923 output tokens,
+  thinking counted as output, at $2 and $12 per million), $0.0251 a post.
+- **The full run:** $9.83 for 390 posts ($0.0252 a post), under its $9.80 quote by nothing much
+  and under the $10.30 stopping line.
+- **October so far:** about **$22.03** ($12.25 before 2026-10-06, $6.37 on 2026-10-06, $3.41
+  today), inside the approved $22.50. The figures are worked out from the saved token counts;
+  Google's billing page has the exact charge and may lag by a day.
+
+**Three-way comparison** (`python3 scripts/vanguard_three_way.py --full`). Claude, Gemini and GPT
+each coded all 390 posts under the final codebook. A post counts by majority: **265 eligible**.
+Output: `r-singularity-pilot-codes-majority-full-final.csv` (the majority codes) and
+`three-model-reliability-full-final.csv` (the table below). The numbers are kappa, a measure of
+how often two coders agree beyond what chance would give (1 is perfect, 0.6 is the usual floor
+for "good enough"); n is the number of posts both coders counted. "No majority" is the share of
+posts where all three gave a different answer.
+
+| What is coded | Claude–Gemini | Claude–GPT | Gemini–GPT | No majority | Script's verdict |
+|---|---|---|---|---|---|
+| Whether the post counts | 0.91 (390) | 0.91 (390) | 0.94 (390) | 0% | reliable |
+| What the claim is about | 0.77 (259) | 0.83 (254) | 0.76 (258) | 2% | reliable |
+| Timing (already here, forecast, …) | 0.65 (259) | 0.63 (254) | 0.63 (258) | 5% | reliable |
+| Whether the poster agrees | 0.75 (259) | 0.63 (254) | 0.56 (258) | 3% | reliable |
+| Hedging | 0.73 (259) | 0.66 (254) | 0.54 (258) | 0% | reliable |
+| Tone of the post | 0.74 (259) | 0.75 (254) | 0.79 (258) | 0% | reliable |
+| Whether the poster wants it faster or slower | 0.46 (259) | 0.59 (254) | 0.45 (258) | 0% | unreliable (every pair below 0.6; ruled unreliable by John, 2026-10-03) |
+| Whose claim it is | 0.72 (259) | 0.71 (254) | 0.71 (258) | 1% | reliable |
+| Coded from the title alone | 0.99 (259) | 0.99 (254) | 1.00 (258) | 0% | reliable |
+| Projects to a time horizon | 0.75 (259) | 0.72 (254) | 0.73 (258) | 1% | reliable |
+
+Worth a look in the working session: Gemini and GPT agree less with each other than either does
+with Claude on whether the poster agrees (0.56) and on hedging (0.54). The script still calls both
+fields reliable because the other two pairs clear 0.6.
+
+**Not done yet (left for a working session, as planned):** re-apply the 20-eligible cut-off per
+quarter from the majority codes, redraw the figure from the majority codes, and check that
+"AGI already achieved" counts leave out ironic posts.
