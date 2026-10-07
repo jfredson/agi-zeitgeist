@@ -13,8 +13,10 @@ improving themselves*? The method is built so the data can say no.
 **Status (2026-09-30):** seed phase. Five people traced (Ray Kurzweil, Geoffrey
 Hinton, Yann LeCun, Gary Marcus, Sam Altman), plus surveys, prediction markets,
 polls and dated events. Coded under methodology version 2, adopted the same day after
-two outside reviews. The full panel is not frozen yet, and the public streams (surveys,
-published argument, online communities) have not started.
+two outside reviews. **The expert panel was frozen on 2026-10-06** (amendment A18): 25
+core members and a 2020s cohort of 12 in `data/speakers.csv`, and a wide list of 308 in
+`data/wide_list_candidates.csv`. Full collection for the panel is next; the public
+streams (surveys, published argument, online communities) have not started.
 
 ## What's here
 

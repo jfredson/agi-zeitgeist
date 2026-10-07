@@ -7,9 +7,10 @@ current summary, **re-marked again 2026-10-02 under amendment A16** (the looser
 newspaper rule; see "Re-marking under A16" below), and **re-marked 2026-10-06** after John's
 rulings of that day and the closing of the three unclear core cases (see "Closing the three
 unclear cases (2026-10-06)" and "Freeze candidates as of 2026-10-06" at the end, which is
-now the current summary). **Nothing here changes the panel.** John freezes it; this is
-the evidence. `data/speakers.csv` holds only the five seed speakers and the survey,
-market and poll sources.
+now the current summary). **The panel was frozen by John on 2026-10-06 (amendment A18,
+"Freeze and merge")** from the 2026-10-06 summary; this document is the evidence behind
+it. The frozen tiers and quota tags are in `data/speakers.csv` (25 core, 12 cohort); the
+wide list is `data/wide_list_candidates.csv` (308).
 
 Full evidence (quotes, every link, every query run) is in
 [`panel-evidence-2026-10/`](panel-evidence-2026-10/). The tables below give one link per
@@ -159,8 +160,8 @@ and would mostly add skeptics.
 | Mustafa Suleyman | 2016-12-05 timeline ("20 years out or decades way") | 2025-11-14 | 3 | frontier_lab | FAIL (pre-2018 timeline). Passes core instead |
 | Holden Karnofsky | 2016-05-16 timeline ("within the next 20 years") | 2025-08-28 | none | frontier_lab arguable | FAIL (pre-2018 timeline); also fails core C3 |
 | Tyler Cowen | 2005-09-21 skeptical of a Singularity timeline | 2025-04-16 | 2013 book reviews | skeptic near miss | FAIL (pre-2018 timeline). Core UNCLEAR |
-| Liang Wenfeng (added 2026-10-06) | none found; High-Flyer fund from 2015, DeepSeek from 2023 | 2024-07, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (Waves/36Kr interview, ChinaTalk translation, [link](https://www.chinatalk.media/p/deepseek-ceo-interview-with-chinas)) | widely profiled from 2025 | non_us_uk; frontier_lab (DeepSeek from 2023; arguable) | PASS (thin): read in translation |
-| Arthur Mensch (added 2026-10-06) | none found; doctoral student 2015 to 2018 | 2024-04, "So I don't believe in AGI" (to the New York Times; read in Fortune, [link](https://fortune.com/europe/2024/04/12/millennial-boss-french-openai-challenger-tech-ceos-obsession-ai-outsmarting-humans-very-religious-fascination-agi/)) | not checked | non_us_uk; frontier_lab arguable (DeepMind research scientist 2020 to 2023, Mistral from 2023); skeptic in outlook, tag not applicable | PASS (thin): whether, not when; secondhand |
+| Liang Wenfeng (added 2026-10-06) | none found; High-Flyer fund from 2015, DeepSeek from 2023 | 2024-07, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (Waves/36Kr interview, ChinaTalk translation, [link](https://www.chinatalk.media/p/deepseek-ceo-interview-with-chinas)) | widely profiled from 2025 | non_us_uk; frontier_lab (DeepSeek from 2023; confirmed A18) | PASS (thin): read in translation |
+| Arthur Mensch (added 2026-10-06) | none found; doctoral student 2015 to 2018 | 2024-04, "So I don't believe in AGI" (to the New York Times; read in Fortune, [link](https://fortune.com/europe/2024/04/12/millennial-boss-french-openai-challenger-tech-ceos-obsession-ai-outsmarting-humans-very-religious-fascination-agi/)) | not checked | non_us_uk; not frontier_lab (A18); skeptic in outlook, tag not applicable | PASS (thin): whether, not when; secondhand. Statement counted by John (A18) |
 | Arvind Narayanan (added 2026-10-06) | none found | 2025-04-15, co-wr. with Sayash Kapoor: AGI's "goalpost [...] will continually move further away"; impacts "on the timescale of decades" ([essay](https://knightcolumbia.org/content/ai-as-normal-technology)) | TIME100 AI 2023 | none (skeptic in outlook, tag not applicable; academic, no AI company role) | PASS (thin): co-written, no arrival date |
 
 **Cohort count:** 8 pass (Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike,
@@ -442,8 +443,8 @@ or later), preferring people who broaden the cohort. Full evidence:
 
 | candidate | 2024-or-later statement | before 2018 | tags | verdict |
 |---|---|---|---|---|
-| Liang Wenfeng (DeepSeek, China) | July 2024, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (ChinaTalk translation) | none found | non_us_uk; frontier_lab arguable | PASS (thin): translation |
-| Arthur Mensch (Mistral, France) | April 2024, "So I don't believe in AGI" (to the New York Times, read in Fortune) | none found | non_us_uk; frontier_lab arguable | PASS (thin): whether, not when; secondhand |
+| Liang Wenfeng (DeepSeek, China) | July 2024, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (ChinaTalk translation) | none found | non_us_uk; frontier_lab (confirmed at the freeze, A18) | PASS (thin): translation |
+| Arthur Mensch (Mistral, France) | April 2024, "So I don't believe in AGI" (to the New York Times, read in Fortune) | none found | non_us_uk; not frontier_lab (A18) | PASS (thin): whether, not when; secondhand |
 | Arvind Narayanan (Princeton) | 2025-04-15, co-written essay: AGI's "goalpost [...] will continually move further away" | none found | none as defined; academic skeptic | PASS (thin): co-written, no arrival date |
 
 Near misses: Sayash Kapoor (meets the rule on the same co-written essay, but adds no
@@ -460,8 +461,10 @@ by its rule, not by who was considered.
 
 ## Freeze candidates as of 2026-10-06
 
-For John's freeze. **Nothing has been frozen**; the freeze is drafted as proposed
-amendment A18. This replaces the 2026-10-02 summary.
+**Frozen by John on 2026-10-06 (amendment A18, "Freeze and merge")** exactly as listed
+here, with three readings chosen at the freeze: Liang tagged `frontier_lab` and Mensch
+not; Mensch's "I don't believe in AGI" counts as his 2024-or-later statement; Narayanan,
+not Kapoor. This replaces the 2026-10-02 summary.
 
 ### Core: pass now (25)
 
@@ -503,7 +506,7 @@ Six are thin: Huang, Leike, Mollick, Liang, Mensch, Narayanan.
 
 | tag | count among the 12 | who |
 |---|---|---|
-| frontier_lab | 5, or 6 with Mensch | Amodei, Leike, Chollet, Sutskever, Liang (arguable); Mensch arguable |
+| frontier_lab | 5 | Amodei, Leike, Chollet, Sutskever, Liang (Mensch not tagged, A18) |
 | non_us_uk | 2 | Liang (China), Mensch (France) |
 | skeptic | 0 as defined | the tag rests on statements from 2017 or earlier, which cohort members by definition lack; Mensch and Narayanan are skeptics in outlook |
 | philosopher | 0 | |

@@ -132,3 +132,10 @@ Cohort 9 to **12**, the top of its range. The three added bring the cohort's fir
 based outside the United States and United Kingdom (Liang, Mensch), its first skeptics in
 outlook (Mensch, Narayanan), and its first academic not tied to an AI company (Narayanan).
 All three are thin, for the reasons given.
+
+### Resolved at the freeze (2026-10-06, amendment A18)
+
+John froze the panel the same day ("Freeze and merge") and chose three readings,
+recommended by Claude: Liang is tagged `frontier_lab`, Mensch is not; Mensch's April 2024
+"I don't believe in AGI" counts as his 2024-or-later statement; Narayanan is taken, not
+Kapoor, and Kapoor stays on the wide list.

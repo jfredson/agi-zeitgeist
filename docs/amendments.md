@@ -279,8 +279,8 @@ the coordinating session.
    cohort members at no cost, with the same method and the rules exactly as written,
    drawing on the wide list and other prominent voices of the 2020s, preferring people who
    broaden the cohort. Done the same day: Liang Wenfeng, Arthur Mensch and Arvind
-   Narayanan pass (all thin), taking the cohort to 12. The freeze is drafted below as A18,
-   marked PROPOSED.
+   Narayanan pass (all thin), taking the cohort to 12. The freeze was drafted as A18 and
+   first marked PROPOSED; John then said "Freeze and merge" (A18, below).
 
 Why: these were the last open points before the freeze. Effect: core passes 22 to 25;
 cohort 8 to 12; the three new cohort members leave the wide list (308 names). Details in
@@ -289,17 +289,18 @@ cohort 8 to 12; the three new cohort members leave the wide list (308 names). De
 evidence in `docs/panel-evidence-2026-10/gaps-2026-10-06.md` and
 `docs/panel-evidence-2026-10/cohort-search-2026-10-06.md`.
 
-## PROPOSED, not in force: freezing the expert panel
+## 2026-10-06: the expert panel is frozen
 
-Decided by: **not yet decided; awaiting John's yes.** Drafted by claude-agent on
-2026-10-06 under A17 rulings 3 and 5. Nothing below is in force, and `data/speakers.csv`
-has not been changed. If John agrees, this entry is re-headed with the date of his yes and
-"Decided by: john", and the tiers are written into `data/speakers.csv`.
+Decided by: john ("Freeze and merge", 2026-10-06). The three readings under "Readings
+chosen at the freeze" are decided by: mixed (recommended by Claude, chosen by John).
+Drafted by claude-agent on 2026-10-06 under A17 rulings 3 and 5 and first recorded as a
+proposal; John's yes was relayed to this branch by the coordinating session the same day.
+The tiers and quota tags are written into `data/speakers.csv`.
 
-### A18. The panel is frozen (PROPOSED)
+### A18. The panel is frozen
 
 Was: candidates checked in `docs/panel-verification-2026-10.md`; no one frozen.
-Now (proposed): the three tiers below are fixed for full collection. Any later addition,
+Now: the three tiers below are fixed for full collection. Any later addition,
 removal or tag change needs its own amendment entry (methodology-v2 section 3).
 
 **Core panel (25).** Kurzweil, Bostrom, Hanson, Hinton, LeCun, Hassabis, Altman, Marcus,
@@ -320,10 +321,10 @@ Quota tags (minimums met, all four):
 **2020s cohort (12).** Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick,
 Chollet, Sutskever, Liang Wenfeng, Arthur Mensch, Arvind Narayanan. At the top of the
 ten-to-twelve range. Six pass thin (Huang, Leike, Mollick, Liang, Mensch, Narayanan).
-Tags: `frontier_lab` 5 (Amodei, Leike, Chollet, Sutskever, Liang), plus Mensch if John
-counts his DeepMind and Mistral roles; `non_us_uk` 2 (Liang, Mensch). No cohort member
-can carry `skeptic` as defined, since the tag rests on statements from 2017 or earlier;
-Mensch and Narayanan are skeptics in outlook and that is recorded in their rows.
+Tags: `frontier_lab` 5 (Amodei, Leike, Chollet, Sutskever, Liang); `non_us_uk` 2 (Liang,
+Mensch). No cohort member can carry `skeptic` as defined, since the tag rests on
+statements from 2017 or earlier; Mensch and Narayanan are skeptics in outlook and that is
+recorded in their rows.
 
 **Wide list (308).** Every name in `data/wide_list_candidates.csv` as of 2026-10-06: the
 MIRI and AI Impacts predictions dataset and the full TIME100 AI lists 2023 to 2025, less
@@ -338,12 +339,25 @@ with Narayanan, not added: no independent statement, and the cohort would exceed
 Abeba Birhane and Katja Grace (near misses; on the wide list). A later find that would
 pass one of them is recorded, not acted on, unless John amends the panel.
 
-**What John is asked to confirm before saying yes:**
-1. Two `frontier_lab` readings in the cohort: Liang (DeepSeek) and Mensch (DeepMind
-   research scientist 2020 to 2023, Mistral from 2023).
-2. Mensch's 2024 "I don't believe in AGI" counted as a timeline statement (a rejection
-   with no date, on the same footing as Leike's undated 2024 statement).
-3. Narayanan rather than Kapoor for the essay they wrote together.
+**Readings chosen at the freeze** (decided by: mixed, recommended by Claude, chosen by
+John, 2026-10-06):
+1. **`frontier_lab`: Liang yes, Mensch no.** DeepSeek counts as a company building the
+   most capable models of its time; Mensch's research-scientist role at DeepMind
+   (2020 to 2023) and Mistral do not meet the tag.
+2. **Mensch's April 2024 "I don't believe in AGI" counts** as his 2024-or-later statement,
+   consistent with the Shanahan reading in A17 ruling 4 (a statement on whether AGI
+   arrives, with no date, counts).
+3. **Narayanan, not Kapoor**, for the essay they wrote together. Kapoor stays on the wide
+   list.
 
 Why: A17 rulings 3 and 5 asked for the freeze once the three gaps were closed and the
-cohort search was done; both are done.
+cohort search was done; both were done, and John said "Freeze and merge".
+
+Effect: `data/speakers.csv` gains 32 rows (20 core, 12 cohort) beside the five seed
+speakers, each with `tier`, quota tags (justification, date, link) and an inclusion note
+naming the evidence and any reason the pass is thin. The wide list's frozen record is
+`data/wide_list_candidates.csv`; methodology-v2 section 3 puts `tier: wide` on the
+light-capture rows, so wide-list people enter `data/speakers.csv` when their statement is
+collected, not before (many are listed by surname only in the MIRI dataset, so a speaker
+row could not yet be filled in honestly). Next step: full collection for the 37 core and
+cohort members.
