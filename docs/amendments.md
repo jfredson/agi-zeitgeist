@@ -245,3 +245,89 @@ fail. Core passes go from 19 to 22. Details and the agent's three judgment calls
 - **2026-10-03, reliability design, second revision (decided by: john):** the human coding step is removed. John's 40-post blind check (part (b) of the earlier ruling the same day) is withdrawn, with its worksheet and agreement script. Coding is fully model-based: Claude, Gemini and GPT-6 Astra code the same 140-post set blind; the final code is the majority vote per field, unresolved where no two agree; pairwise kappa is reported for all three pairs. A field unresolved on more than 15% of posts, or with every pairwise kappa below 0.6, is excluded from figures and listed as unreliable. Recurring disagreements get a proposed codebook rule with kappa before and after, for John to rule on. **This departs from both outside reviews**, which asked for independent human double-coding, and goes further than the earlier revision, which kept one human check.
 - **2026-10-03, vanguard codebook rules (decided by: john):** R2 (target decided by the subject of the main claim: a model or system, a company or government, or people and society) and R3 (hedging coded only from hedge words in the words stating the claim) adopted into `docs/vanguard/codebook.md`. R1 not adopted as written; split into R1a (a post passed on without comment has no stated stance) and R1b (such a post attributes the claim to the linked source), each trialled separately on the 112 posts all three models coded in the first trial. "Whether the poster wants AI sped up or slowed down" is dropped from reported measures and listed as unreliable. A monthly cost quote for Gemini's paid tier is required before the full-sample run. The codebook as it stood before R2 and R3 is kept as `docs/vanguard/codebook-frozen-2026-10-03-before-rules.md`, so the first trial's remaining Gemini posts are coded on the same codebook as the rest of that run.
 - **2026-10-03, Gemini spending (decided by: john):** the cost quote in `docs/vanguard/model-cost-quote-2026-10-03.md` is approved: up to $15 for the first month (the full-sample run, about $9.80, plus the first monthly runs), then up to $5 a month for three venues. The full-sample run waits for the ruling on rules R1a and R1b, so the 390 posts are coded once under the final codebook.
+
+## 2026-10-06: John's rulings on the A16 readings, Sutskever and the freeze
+
+Decided by: john. Sent by John on 2026-10-06 in the management session, in answer to the
+open points in `docs/panel-verification-2026-10.md` ("Re-marking under A16" and "Freeze
+candidates as of 2026-10-02").
+
+### A17. Three panel rulings
+
+1. **Legg, Cowen and Yudkowsky stay in the core.** John confirmed the verifier's three
+   judgement calls: "Legg named in passing, Cowen on jobs-and-automation pieces, and
+   Yudkowsky on two edge outlets". They stay marked thin.
+2. **Sutskever's co-signed "hard to predict when" counts as a timeline statement, so he
+   passes the 2020s cohort** (cohort becomes 9). His cohort C2 was checked against the
+   record: the 2025-11-25 Dwarkesh Patel interview, "I think like 5 to 20" (years), in his
+   own words.
+   *Agent note, for John to confirm:* the cohort's first test is "no public AGI timeline
+   statement found before 2018". Read literally, counting the 2015 line as a timeline
+   statement would fail that test, as it did for Suleyman and Karnofsky. The outcome John
+   chose (Sutskever passes) follows if the 2015 line is read as *not* a timeline
+   statement, because it gives no date and says timing cannot be predicted. The outcome is
+   applied as ruled; only the wording of the reason is open.
+3. **Freeze after the three gaps are closed. Don't freeze now.** The three unclear core
+   cases (Shanahan, Bengio, Floridi) were closed the same day; all three pass thin. The
+   freeze is drafted below as A18, marked PROPOSED.
+
+Why: these were the last open points before the freeze. Effect: core passes 22 to 25 once
+the gaps closed; cohort 8 to 9. Details in `docs/panel-verification-2026-10.md`, sections
+"Closing the three unclear cases (2026-10-06)" and "Freeze candidates as of 2026-10-06";
+evidence in `docs/panel-evidence-2026-10/gaps-2026-10-06.md`.
+
+## PROPOSED, not in force: freezing the expert panel
+
+Decided by: **not yet decided; awaiting John's yes.** Drafted by claude-agent on
+2026-10-06 under A17 ruling 3. Nothing below is in force, and `data/speakers.csv` has not
+been changed. If John agrees, this entry is re-headed with the date of his yes and
+"Decided by: john", and the tiers are written into `data/speakers.csv`.
+
+### A18. The panel is frozen (PROPOSED)
+
+Was: candidates checked in `docs/panel-verification-2026-10.md`; no one frozen.
+Now (proposed): the three tiers below are fixed for full collection. Any later addition,
+removal or tag change needs its own amendment entry (methodology-v2 section 3).
+
+**Core panel (25).** Kurzweil, Bostrom, Hanson, Hinton, LeCun, Hassabis, Altman, Marcus,
+Ng, Russell, Brooks, Musk, Chalmers, Brynjolfsson, Schmidhuber, Kai-Fu Lee, Walsh,
+Tegmark, Suleyman, Legg, Cowen, Yudkowsky, Shanahan, Bengio, Floridi. Fifteen of them pass
+on thin evidence, named in the verification table; thin passes are frozen as thin and the
+reason travels with the row.
+
+Quota tags (minimums met, all four):
+
+| quota | minimum | count | who |
+|---|---|---|---|
+| `skeptic` | 6 | 8 | Hanson, Hinton, LeCun, Marcus, Ng (medium confidence), Brooks, Kai-Fu Lee, Floridi |
+| `non_us_uk` | 3 | 6 | Hinton, Chalmers, Schmidhuber, Kai-Fu Lee, Walsh, Bengio |
+| `philosopher` | 2 | 4 | Bostrom, Marcus, Chalmers, Floridi |
+| `frontier_lab` | 3 | 11 | Hinton, LeCun, Hassabis, Altman, Ng, Musk, Suleyman, Kurzweil, Kai-Fu Lee, Legg, Shanahan |
+
+**2020s cohort (9).** Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick,
+Chollet, Sutskever. One short of the ten-to-twelve target. Proposed: freeze at 9 and
+report the shortfall rather than search for a tenth, since adding names after seeing who
+qualifies is what the dated rules were written to prevent. John may prefer one more
+search under the same rule before freezing.
+
+**Wide list (311).** Every name in `data/wide_list_candidates.csv` as of 2026-10-06: the
+MIRI and AI Impacts predictions dataset and the full TIME100 AI lists 2023 to 2025, less
+core and cohort candidates, plus Dennett (A14 ruling 4). Names quoted on AGI timelines in
+the stream M media sample are added by rule when that stream runs, without a new
+amendment, because the rule already names that source.
+
+**Not on the panel:** Pinker, Wooldridge, Goertzel, Mitchell, Etzioni, Davis, Pearl and
+Karnofsky (each fails a core test as searched); Dennett (dropped, A14 ruling 4; on the
+wide list). A later archive find that would pass one of them is recorded, not acted on,
+unless John amends the panel.
+
+**What John is asked to confirm before saying yes:**
+1. The wording behind A17 ruling 2 (whether the 2015 Sutskever line is or is not a
+   timeline statement), since the literal wording would put him out of the cohort.
+2. Two readings in the 2026-10-06 passes: a podcast remark that it is hard to tell
+   "whether we really are on the road" to human-level general intelligence counts as a
+   statement on whether AGI arrives (Shanahan); a Financial Times headline about legal
+   rights for robots counts as "about where AI is going" (Floridi).
+3. Freezing the cohort at 9.
+
+Why: A17 ruling 3 asked for the freeze once the three gaps were closed, and they are.
