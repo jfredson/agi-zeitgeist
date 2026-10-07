@@ -317,7 +317,7 @@ close to it.
   10:20 Pacific. `r-singularity-pilot-codes-crossfamily-full-final.csv` now holds all 390 posts.
 - **Cost of today's coding:** $3.41 for 136 requests (420,078 input and 213,923 output tokens,
   thinking counted as output, at $2 and $12 per million), $0.0251 a post.
-- **The full run:** $9.83 for 390 posts ($0.0252 a post), under its $9.80 quote by nothing much
+- **The full run:** $9.83 for 390 posts ($0.0252 a post), 3 cents over its $9.80 quote
   and under the $10.30 stopping line.
 - **October so far:** about **$22.03** ($12.25 before 2026-10-06, $6.37 on 2026-10-06, $3.41
   today), inside the approved $22.50. The figures are worked out from the saved token counts;
