@@ -155,14 +155,19 @@ and would mostly add skeptics.
 | Jan Leike | earliest 2019-12-16, possibility ([FLI](https://futureoflife.org/?p=39550)) | 2024-05-17, no date given (2nd, [Decrypt](https://decrypt.co/231294/openai-exec-quit-safety-took-backseat-shiny-products)) | none | frontier_lab | PASS (thin): few timeline statements; a full trace may find little |
 | Ethan Mollick | earliest 2023-01-21 ([newsletter](https://www.oneusefulthing.org/p/becoming-strange-in-the-long-singularity)) | 2025-04-20, "Jagged AGI" ([newsletter](https://www.oneusefulthing.org/p/on-jagged-agi-o3-gemini-25-and-everything)) | none | none | PASS (thin): rarely gives a date |
 | François Chollet (failed core C3) | 2017-07-18 is about possibility; first timeline found 2025 | 2026-03-27 (2nd) | none | frontier_lab (Google 2015 to 2024; A15 ruling 8) | PASS |
-| Ilya Sutskever (failed core C3) | 2015-12-11 co-signed post says "it's hard to predict when human-level AI might come within reach": a statement about timing, though not a date | 2025-11-25, "5 to 20" years | 1 confirmed | frontier_lab | **PASS by John's ruling, 2026-10-06** (cohort C2 rechecked: 2025-11-25, "I think like 5 to 20" years, primary). See the note under "Closing the three unclear cases": the ruling's stated reason, if taken literally, would fail C1. Earlier: UNCLEAR |
+| Ilya Sutskever (failed core C3) | 2015-12-11 co-signed post says "it's hard to predict when human-level AI might come within reach": a statement about timing, though not a date | 2025-11-25, "5 to 20" years | 1 confirmed | frontier_lab | **PASS, 2026-10-06** (John's corrected ruling, A17: the 2015 line is "Not a timeline statement"). Cohort C2 rechecked: 2025-11-25, "I think like 5 to 20" years, primary. Earlier: UNCLEAR |
 | Mustafa Suleyman | 2016-12-05 timeline ("20 years out or decades way") | 2025-11-14 | 3 | frontier_lab | FAIL (pre-2018 timeline). Passes core instead |
 | Holden Karnofsky | 2016-05-16 timeline ("within the next 20 years") | 2025-08-28 | none | frontier_lab arguable | FAIL (pre-2018 timeline); also fails core C3 |
 | Tyler Cowen | 2005-09-21 skeptical of a Singularity timeline | 2025-04-16 | 2013 book reviews | skeptic near miss | FAIL (pre-2018 timeline). Core UNCLEAR |
+| Liang Wenfeng (added 2026-10-06) | none found; High-Flyer fund from 2015, DeepSeek from 2023 | 2024-07, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (Waves/36Kr interview, ChinaTalk translation, [link](https://www.chinatalk.media/p/deepseek-ceo-interview-with-chinas)) | widely profiled from 2025 | non_us_uk; frontier_lab (DeepSeek from 2023; arguable) | PASS (thin): read in translation |
+| Arthur Mensch (added 2026-10-06) | none found; doctoral student 2015 to 2018 | 2024-04, "So I don't believe in AGI" (to the New York Times; read in Fortune, [link](https://fortune.com/europe/2024/04/12/millennial-boss-french-openai-challenger-tech-ceos-obsession-ai-outsmarting-humans-very-religious-fascination-agi/)) | not checked | non_us_uk; frontier_lab arguable (DeepMind research scientist 2020 to 2023, Mistral from 2023); skeptic in outlook, tag not applicable | PASS (thin): whether, not when; secondhand |
+| Arvind Narayanan (added 2026-10-06) | none found | 2025-04-15, co-wr. with Sayash Kapoor: AGI's "goalpost [...] will continually move further away"; impacts "on the timescale of decades" ([essay](https://knightcolumbia.org/content/ai-as-normal-technology)) | TIME100 AI 2023 | none (skeptic in outlook, tag not applicable; academic, no AI company role) | PASS (thin): co-written, no arrival date |
 
 **Cohort count:** 8 pass (Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike,
 Mollick, Chollet) and Sutskever is unclear, against a target of 10 to 12. Three of the
-passes are thin.
+passes are thin. **Updated 2026-10-06:** 12 pass (Sutskever by John's corrected ruling;
+Liang, Mensch and Narayanan from the search John asked for). See "Freeze candidates as of
+2026-10-06".
 
 **Note on C3 for the cohort.** Information only, confirmed by John (A14 ruling 6).
 
@@ -181,7 +186,7 @@ candidates, plus Dennett (A14 ruling 4): 185.
 | TIME100 AI 2023 | 43 (2026-09-30) | partial: the page-reading tool returned 50 of 100 entries. **Full list read 2026-10-06** from a Wayback Machine copy |
 | TIME100 AI 2024 | 43 (2026-09-30) | partial: 50 entries returned. **Full list read 2026-10-06** |
 | TIME100 AI 2025 | 46 (2026-09-30) | partial: 51 entries returned. **Full list read 2026-10-06** |
-| all three lists, 2026-10-06 | +126 | the rest of the three lists, less 21 core or cohort candidates; 3 existing rows gained a second list. File now 311 names |
+| all three lists, 2026-10-06 | +126 | the rest of the three lists, less 21 core or cohort candidates; 3 existing rows gained a second list. File now 311 names (308 after three moved to the cohort the same day) |
 | stream M media sample | not yet | added when the media stream runs |
 
 time.com refuses scripted requests, so the TIME lists could only be read through a
@@ -385,17 +390,21 @@ Machine, and YouTube's caption files; no paid services). Full quotes, links and 
    agent readings listed under "Re-marking under A16": Legg counted although named only in
    passing; jobs-and-automation pieces counted for Cowen; Yudkowsky passed on two pieces
    from edge outlets.
-2. **Sutskever passes the 2020s cohort.** John ruled that the co-signed 2015 "hard to
-   predict when" counts as a timeline statement, and that Sutskever passes. Cohort C2
-   checked: the 2025-11-25 Dwarkesh Patel interview gives "I think like 5 to 20" (years)
-   for a system that learns as well as a human, in his own words, so he meets C2 as
-   recorded. **Needs John's confirmation of the reason, not the outcome:** the cohort's
-   first test is "no public AGI timeline statement found before 2018". If the 2015 line
-   is a timeline statement, it is one from before 2018, and Suleyman and Karnofsky failed
-   the cohort on exactly that. The pass follows only if the 2015 line is read as *not* a
-   timeline statement (it says timing cannot be predicted and gives no date). The pass is
-   applied here as ruled.
-3. **Freeze after the three gaps are closed, not before.** They are now closed; the
+2. **Sutskever passes the 2020s cohort: "Not a timeline statement".** John's corrected
+   ruling: the co-signed 2015 "hard to predict when" is not a timeline statement from
+   before 2018, so he meets the cohort's first test. An earlier answer that day said the
+   opposite; it was given to a question the coordinating session had framed backwards, and
+   this is John's ruling on the question framed correctly. Cohort C2 checked: the
+   2025-11-25 Dwarkesh Patel interview gives "I think like 5 to 20" (years) for a system
+   that learns as well as a human, in his own words.
+3. **Freeze after the three gaps are closed, not before.** They are now closed.
+4. **Both thin readings count** (on the coordinating session's recommendation): Shanahan's
+   2025 remark on "whether we really are on the road" to human-level general intelligence
+   is his 2024-or-later statement on whether AGI arrives, and Floridi's 2017 Financial
+   Times column on robot rights is a piece about where AI is going under A16. Both stay
+   thin. The core stays at 25.
+5. **"Search first, then freeze":** before freezing, search for one to three more cohort
+   members at no cost, with the rules exactly as written. Done the same day (below); the
    freeze is drafted as a proposed amendment (A18 in `docs/amendments.md`) for John's yes.
    Nothing has been frozen and `data/speakers.csv` is unchanged.
 
@@ -419,8 +428,33 @@ not meet "reject or doubt AGI within decades" as written. He stays a near miss.
   "genius machines" guiding our lives, which strengthens his pass; the Wall Street Journal
   and Economist reviews could not be opened.
 - **TIME100 AI lists: closed.** Full lists read from Wayback Machine copies; 126 names
-  added to the wide list, which now has 311 names.
+  added to the wide list, which then had 311 names (308 after the cohort search below).
 - **Hassabis's 2010 talk transcript:** not attempted (it would not change his thin pass).
+
+---
+
+## Cohort search (2026-10-06)
+
+John asked for one to three more cohort members before the freeze, found at no cost with
+the rules as written (no public AGI timeline statement found before 2018; one dated 2024
+or later), preferring people who broaden the cohort. Full evidence:
+[`panel-evidence-2026-10/cohort-search-2026-10-06.md`](panel-evidence-2026-10/cohort-search-2026-10-06.md).
+
+| candidate | 2024-or-later statement | before 2018 | tags | verdict |
+|---|---|---|---|---|
+| Liang Wenfeng (DeepSeek, China) | July 2024, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (ChinaTalk translation) | none found | non_us_uk; frontier_lab arguable | PASS (thin): translation |
+| Arthur Mensch (Mistral, France) | April 2024, "So I don't believe in AGI" (to the New York Times, read in Fortune) | none found | non_us_uk; frontier_lab arguable | PASS (thin): whether, not when; secondhand |
+| Arvind Narayanan (Princeton) | 2025-04-15, co-written essay: AGI's "goalpost [...] will continually move further away" | none found | none as defined; academic skeptic | PASS (thin): co-written, no arrival date |
+
+Near misses: Sayash Kapoor (meets the rule on the same co-written essay, but adds no
+independent statement and would take the cohort to 13); Abeba Birhane (no 2024-or-later
+statement on AGI found, only criticism of hype); Katja Grace (probably fails the
+before-2018 test through the 2017 expert survey she led). Not checked: Yi Zeng, Andrew
+Yao, Xue Lan, Emily M. Bender.
+
+The three new members were taken off the wide list, as the rule requires. The near misses
+stay on it: they were looked at only in a search for additions, and the wide list is built
+by its rule, not by who was considered.
 
 ---
 
@@ -460,17 +494,22 @@ Pinker (C3), Sutskever (C3; passes the cohort), Wooldridge (C3), Goertzel (C3), 
 (C3; passes the cohort), Mitchell (C1), Etzioni (C2), Davis (C3), Pearl (C3), Karnofsky
 (C3; also fails the cohort rule). Dropped by ruling: Dennett.
 
-### 2020s cohort: pass now (9)
+### 2020s cohort: pass now (12)
 
-Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick, Chollet, and by John's
-ruling of 2026-10-06 **Sutskever** (see the note on the reason above). Four are thin:
-Huang, Leike, Mollick, and Sutskever's pass rests on a ruling. Quota tags among the 9:
-`frontier_lab` 4 (Amodei, Leike, Chollet, Sutskever). The target is ten to twelve, so the
-cohort is **one short of its range**. If the reason in ruling 2 is read literally (the
-2015 line *is* a timeline statement), Sutskever fails the cohort and it is 8, two short.
+Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick, Chollet, **Sutskever**
+(John's corrected ruling, 2026-10-06), and from the search of 2026-10-06 **Liang Wenfeng,
+Arthur Mensch, Arvind Narayanan**. The cohort is at the top of its range of ten to twelve.
+Six are thin: Huang, Leike, Mollick, Liang, Mensch, Narayanan.
+
+| tag | count among the 12 | who |
+|---|---|---|
+| frontier_lab | 5, or 6 with Mensch | Amodei, Leike, Chollet, Sutskever, Liang (arguable); Mensch arguable |
+| non_us_uk | 2 | Liang (China), Mensch (France) |
+| skeptic | 0 as defined | the tag rests on statements from 2017 or earlier, which cohort members by definition lack; Mensch and Narayanan are skeptics in outlook |
+| philosopher | 0 | |
 
 ### Wide list
 
-311 names: 310 by the rule (the MIRI and AI Impacts predictions dataset and the full
-TIME100 AI lists 2023 to 2025, less core and cohort candidates), plus Dennett. The stream M
+308 names: 307 by the rule (the MIRI and AI Impacts predictions dataset and the full
+TIME100 AI lists 2023 to 2025, less core and cohort members), plus Dennett. The stream M
 media sample has not run, so names quoted there are not yet added.
