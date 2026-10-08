@@ -59,12 +59,18 @@
 .land .ctas { margin-bottom: 8px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
 .card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-.card .big { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .big { font-family: var(--serif); font-size: 56px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
 .card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
 .card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
 .card .trend div { flex: 1; }
 .card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
 .card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
+.card .ladder > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--text); line-height: 1.1; }
+.card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.card .ladder span b { color: var(--text-soft); font-weight: 600; }
+.card .what b { color: var(--text); }
 .card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
 .card .foot a { text-decoration: none; }
 @media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
@@ -127,11 +133,14 @@ details p { color: var(--text-soft); }
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
 </div>
 <aside class="card">
-<p class="ch">What the experts expect</p>
-<p class="big">2047</p>
-<p class="what">The year by which AI researchers think it is as likely as not that machines will do every task better and cheaper than people, from the <a href="https://arxiv.org/html/2401.02843">latest large survey of them</a> (2023, 1,714 researchers asked).</p>
-<div class="trend"><div><b>2061</b><span>2016 survey</span></div><div><b>2059</b><span>2022 survey</span></div><div><b>2047</b><span>2023 survey</span></div></div>
-<p class="foot">The date has come 14 years closer since 2016. On Manifold, a website where people bet on future events, the odds of human-level AI being announced before 2030 stand at <a href="https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC">53%</a> (as of 30 September 2026). <a href="#belief">The full record is below.</a></p>
+<p class="ch">When? It depends what you mean</p>
+<p class="big">about 2030</p>
+<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates given by the 5 experts this site has traced so far, for AGI as each defines it (2026 to 2036). On Manifold, a website where people bet on future events, the odds of an AGI announcement before 2030 stand at <a href="https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC">53%</a> (as of 30 September 2026).</p>
+<div class="ladder">
+<div><b>2047</b><span><b>Every task, better and cheaper than a human worker</b>, even odds. 1,714 researchers asked in the <a href="https://arxiv.org/html/2401.02843">latest large survey</a> (2023); the same people gave one-in-ten odds by 2027. This even-odds year has come 14 years closer since 2016.</span></div>
+<div><b>2116</b><span><b>All human work fully automated</b>, even odds, from the same survey. Factories, hospitals and building sites move far more slowly than software.</span></div>
+</div>
+<p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>
 </section>
 <div class="with-rail"><div>
@@ -345,14 +354,14 @@ details p { color: var(--text-soft); }
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 65ab4fd. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on 8 October 2026; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 1d5574e. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on 8 October 2026; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
 </div>
 <aside class="rail">
 <h4>On this page</h4>
 <nav class="toc"><a href="#belief" class="">The current zeitgeist</a><a href="#singularity" class="">Are we in the singularity?</a><a href="#leg-a" class="d3">A. The pace</a><a href="#leg-b" class="d3">B. Forecasts</a><a href="#leg-c" class="d3">C. AI doing research</a><a href="#leg-d" class="d3">D. The economy</a><a href="#owed" class="d3">What the test still owes</a><a href="#method" class="">Method and data</a></nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version 65ab4fd</p>
+<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version 1d5574e</p>
 </aside>
 </div>
 
@@ -361,7 +370,7 @@ details p { color: var(--text-soft); }
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 65ab4fd) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 1d5574e) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>

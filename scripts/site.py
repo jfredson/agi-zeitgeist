@@ -412,12 +412,18 @@ SITE_CSS = """
 .land .ctas { margin-bottom: 8px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
 .card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-.card .big { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .big { font-family: var(--serif); font-size: 56px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
 .card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
 .card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
 .card .trend div { flex: 1; }
 .card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
 .card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
+.card .ladder > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--text); line-height: 1.1; }
+.card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.card .ladder span b { color: var(--text-soft); font-weight: 600; }
+.card .what b { color: var(--text); }
 .card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
 .card .foot a { text-decoration: none; }
 @media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
@@ -631,7 +637,26 @@ def gauge_bar(g):
     return f'<div class="bar"><i style="width:{g*100:.0f}%"></i><span>{g*100:.0f}% of the way to its line</span></div>'
 
 
-def landing(sc, b_pts, mani, built, commit):
+def expert_dates():
+    """Each traced expert's latest dated statement giving a year for AGI (a machine matching people at
+    thinking work: target broad_competence), where the statement accepts, hedges or conditions it.
+    Returns (median year, low, high, [(name, year, date, url)])."""
+    speakers = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
+    latest = {}
+    for r in read("statements.csv"):
+        if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
+            continue
+        if r["endorsement"] not in ("accepts", "uncertain", "conditional"):
+            continue
+        if r["speaker_id"] not in latest or r["date"] > latest[r["speaker_id"]]["date"]:
+            latest[r["speaker_id"]] = r
+    rows = sorted(((speakers.get(k, k), int(v["timeline_year"]), v["date"], v["source_url"]) for k, v in latest.items()), key=lambda x: x[1])
+    years = [y for _, y, _, _ in rows]
+    med = (years[len(years) // 2] if len(years) % 2 else round((years[len(years) // 2 - 1] + years[len(years) // 2]) / 2))
+    return med, years[0], years[-1], rows
+
+
+def landing(sc, b_pts, mani, aggregates, built, commit):
     """The first screen: the answer, the four conditions, the experts' date."""
     A, C, D = sc["A"], sc["C"], sc["D"]
     answer = {"not entered": "Not yet.", "approaching": "Getting close.",
@@ -648,9 +673,11 @@ def landing(sc, b_pts, mani, built, commit):
     ]
     rows = "".join(f'<div class="cond"><span class="k">{k}</span><span class="n">{esc(n)}</span>{gauge_bar(g)}<span class="d">{esc(d)}</span></div>' for k, n, g, d in conds)
     latest = b_pts[-1]
-    trend = "".join(f'<div><b>{int(p["m"])}</b><span>{p["date"].year} survey</span></div>' for p in b_pts)
+    med, lo, hi, ex_rows = expert_dates()
+    hlmi10 = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-hlmi10"), "")
+    faol = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-faol50"), "")
     m = mani[-1] if mani else None
-    market = (f' On Manifold, a website where people bet on future events, the odds of human-level AI being announced before 2030 stand at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> (as of {long_date(m["date"])}).' if m else "")
+    market = (f' On Manifold, a website where people bet on future events, the odds of an AGI announcement before 2030 stand at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> (as of {long_date(m["date"])}).' if m else "")
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
@@ -662,11 +689,14 @@ def landing(sc, b_pts, mani, built, commit):
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
 </div>
 <aside class="card">
-<p class="ch">What the experts expect</p>
-<p class="big">{int(latest['m'])}</p>
-<p class="what">The year by which AI researchers think it is as likely as not that machines will do every task better and cheaper than people, from the <a href="{esc(latest['url'])}">latest large survey of them</a> ({latest['date'].year}{(", " + latest['n']) if latest['n'] else ""}).</p>
-<div class="trend">{trend}</div>
-<p class="foot">The date has come {int(b_pts[0]['m']) - int(latest['m'])} years closer since {b_pts[0]['date'].year}.{market} <a href="#belief">The full record is below.</a></p>
+<p class="ch">When? It depends what you mean</p>
+<p class="big">about {med}</p>
+<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates given by the {len(ex_rows)} experts this site has traced so far, for AGI as each defines it ({lo} to {hi}).{market}</p>
+<div class="ladder">
+<div><b>{int(latest['m'])}</b><span><b>Every task, better and cheaper than a human worker</b>, even odds. {latest['n'] or 'AI researchers'} in the <a href="{esc(latest['url'])}">latest large survey</a> ({latest['date'].year}); the same people gave one-in-ten odds by {hlmi10}. This even-odds year has come {int(b_pts[0]['m']) - int(latest['m'])} years closer since {b_pts[0]['date'].year}.</span></div>
+<div><b>{faol}</b><span><b>All human work fully automated</b>, even odds, from the same survey. Factories, hospitals and building sites move far more slowly than software.</span></div>
+</div>
+<p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>
 </section>"""
 
@@ -718,7 +748,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         "mark crossed, under persistence test": "Mark crossed; the four-quarter persistence count is running.",
     }[sc["status"]]
 
-    body = f"""{landing(sc, b_pts, mani, built, commit)}
+    body = f"""{landing(sc, b_pts, mani, _AGG, built, commit)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
@@ -825,6 +855,7 @@ def main():
     c_pts = leg_c(world)
     d_pts = leg_d(world)
     sc = score(load_thresholds(), a_series, c_pts, d_pts)
+    globals()["_AGG"] = aggregates
     built = date.today().isoformat()
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
     (SITE / "status.json").write_text(json.dumps({
