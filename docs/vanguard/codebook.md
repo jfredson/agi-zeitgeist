@@ -91,6 +91,21 @@ early signs, if, or an equivalent phrase. Otherwise unqualified. Code explicit_p
 only for a stated number or odds. Code unclear only when no claim is stated in words at all
 (a title that just names a topic, such as "X's thoughts on AI").
 
+### Decision rule adopted by John, 2026-10-04
+
+**R1a: stance of posts passed on without comment.**
+
+When the poster passes on a news item, announcement, demo video, product launch or screenshot
+of someone else's words, and adds no words of their own about whether the claim is true, the
+post has no stated stance: code stance = neutral_relay. A title that only restates, names or
+describes the item counts as no comment, even when the poster wrote it. Code affirms or
+denies only when the poster adds words of their own that accept or reject the claim as true.
+Jokes and reaction titles ("WTF", "Shots fired!", an emoji) are not endorsements; code the
+passed-on claim as neutral_relay and record the tone in rhetorical_mode.
+
+Attribution of such posts follows the field definition above; the proposed rule R1b was
+rejected.
+
 ## 4. Measures (amendment section 8, as revised 2026-10-03)
 
 - **Primary:** share of eligible posts making a **capability** claim (`specific_capability`)
