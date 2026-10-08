@@ -1,6 +1,6 @@
 # A measurable definition of "entering the singularity"
 
-**Status: adopted 2026-10-08 (amendment A17 in `docs/amendments.md`), with four legs.**
+**Status: adopted 2026-10-08 (amendment A19 in `docs/amendments.md`), with four legs.**
 The frozen values are in `docs/singularity-entry-thresholds.json`; the page at
 agizeitgeist.com scores the gauges from that file. The draft this grew from
 is kept unchanged as `docs/singularity-entry-definition-draft-2026-10-07.md`. Changing any

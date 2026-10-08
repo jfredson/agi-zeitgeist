@@ -7,7 +7,7 @@ The page has two halves that are deliberately kept apart:
 - what the world is doing (data/world_measures.csv), shown under the draft definition
   of "entering the singularity" in docs/singularity-entry-definition-draft-2026-10-07.md.
 
-The definition was adopted on 2026-10-08 (amendment A17) with four legs, and its frozen
+The definition was adopted on 2026-10-08 (amendment A19) with four legs, and its frozen
 values live in docs/singularity-entry-thresholds.json. `score()` turns the readings into
 the four gauges, the progress number (the smallest gauge) and the status. Leg B has no
 ledger yet and is shown as not yet measurable.
@@ -602,7 +602,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 <p>Belief measures and world measures live in separate files and are never combined. <a href="data/statements.csv">statements.csv</a>, <a href="data/aggregates.csv">aggregates.csv</a> and the <a href="data/vanguard/">community samples</a> hold what people said and believed. <a href="data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="data/search_log.csv">search_log.csv</a>. The <a href="docs/methodology-v2.html">method</a>, the <a href="docs/codebook.html">codebook</a>, the <a href="docs/singularity-entry-definition.html">definition</a> and every <a href="docs/amendments.html">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
 <p>Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT.</p>
 
-<footer>Built {built} from commit {esc(commit)}. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen {sc['adopted']} in <a href="docs/singularity-entry-definition.html#record-of-the-rulings-2026-10-08">amendment A17</a>.</footer>
+<footer>Built {built} from commit {esc(commit)}. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen {sc['adopted']} in <a href="docs/singularity-entry-definition.html#record-of-the-rulings-2026-10-08">amendment A19</a>.</footer>
 </main>
 </body>
 </html>

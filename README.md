@@ -15,12 +15,13 @@ status, rebuilt from this repository).
 
 **Status (2026-10-08):** seed phase complete; five people traced (Ray Kurzweil, Geoffrey
 Hinton, Yann LeCun, Gary Marcus, Sam Altman), plus surveys, prediction markets, polls and
-dated events, coded under methodology version 2. The expert panel is frozen (core 25,
-2020s cohort 12; amendment A16 era rulings), and the r/singularity pilot of the online
-communities stream is model-coded by three model families on all 390 sampled posts. The
-four-leg definition of entering the singularity was adopted on 2026-10-08 (amendment A17)
-and the page scores it from frozen thresholds. Full panel traces and the other public
-streams have not started.
+dated events, coded under methodology version 2. **The expert panel was frozen on
+2026-10-06** (amendment A18): 25 core members and a 2020s cohort of 12 in
+`data/speakers.csv`, and a wide list of 308 in `data/wide_list_candidates.csv`. The
+r/singularity pilot of the online communities stream is model-coded by three model families
+on all 390 sampled posts. The four-leg definition of entering the singularity was adopted
+on 2026-10-08 (amendment A19) and the page scores it from frozen thresholds. Full
+collection for the panel is next; the other public streams have not started.
 
 ## What's here
 
