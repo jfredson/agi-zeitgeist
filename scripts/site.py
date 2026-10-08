@@ -339,12 +339,12 @@ def load_thresholds():
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
 # shared stylesheet site/deep-field.css (copied unchanged, version in its header), the top bar with
 # two tiers and the theme toggle, the cosmic backdrop on the home page only, and the five-line
-# footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson, with Claude. provenance. licence."
+# footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson. provenance. licence."
+# (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
 TAGLINE = ("A dated record of what people expect from artificial general intelligence, with every quote linked to its source, "
            "and a test of whether the singularity has begun.")
-WITH_CLAUDE = "https://sentient-horizons.com/with-claude/"
 # Labels ruled by John, 2026-10-08.
 NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
 NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
@@ -540,7 +540,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <span class="footer-brand">{SITE_TITLE}</span>
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
-<p class="footer-meta">© {year} John Fredrickson, <a class="with-claude" href="{WITH_CLAUDE}">with Claude</a>. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© {year} John Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
@@ -848,6 +848,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
+<p>The searching and the sorting of statements were done by Claude, an AI model made by Anthropic, following those written rules; every rule, and every finishing line of the test, was decided by John Fredrickson. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
 <p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
 </div>
