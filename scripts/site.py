@@ -155,7 +155,8 @@ def leg_b(aggregates):
     pts = []
     for r in ai:
         d = parse_date(r["date"])
-        pts.append(dict(id=r["aggregate_id"], date=d, t=year_frac(d), m=float(r["value"]), url=r["source_url"]))
+        pts.append(dict(id=r["aggregate_id"], date=d, t=year_frac(d), m=float(r["value"]), url=r["source_url"],
+                        n=(f"{int(r['n']):,} researchers asked" if r.get("n") else "")))
     for p in pts:
         p["remaining"] = p["m"] - p["t"]
     steps = []
@@ -656,7 +657,7 @@ def landing(sc, b_pts, mani, built, commit):
 <aside class="card">
 <p class="ch">What the experts expect</p>
 <p class="big">{int(latest['m'])}</p>
-<p class="what">The year AI researchers give even odds of machines doing every task better and cheaper than people, in the latest large survey ({latest['date'].year}, {esc(latest['id'])}).</p>
+<p class="what">The year AI researchers give even odds of machines doing every task better and cheaper than people, in the <a href="{esc(latest['url'])}">latest large survey of them</a> ({latest['date'].year}{(", " + latest['n']) if latest['n'] else ""}).</p>
 <div class="trend">{trend}</div>
 <p class="foot">The date has come {int(b_pts[0]['m']) - int(latest['m'])} years closer since {b_pts[0]['date'].year}.{market} <a href="#belief">The full record is below.</a></p>
 </aside>
