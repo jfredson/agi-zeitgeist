@@ -338,11 +338,12 @@ def load_thresholds():
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
 TAGLINE = ("A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, "
-           "beside a preregistered test of whether the world has entered the singularity.")
+           "beside a test, with its rules fixed in advance, of whether the world has entered the singularity.")
+WITH_CLAUDE = "https://sentient-horizons.com/with-claude/"
 NAV_PRIMARY = [("/#belief", "What people believe"), ("/#singularity", "Singularity status"), ("/#method", "Method and data")]
-NAV_SECONDARY = [("/docs/README", "About the data"), ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes")]
-FOOTER_LINKS = [("/data/", "Download the data"), ("/docs/methodology-v2", "Method"), ("/docs/codebook", "Codebook"),
-                ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes")]
+NAV_SECONDARY = [("/docs/README", "About the data"), ("/docs/singularity-entry-definition", "What counts as the singularity"), ("/docs/amendments", "Every change, dated")]
+FOOTER_LINKS = [("/data/", "Download the data"), ("/docs/methodology-v2", "How it is done"), ("/docs/codebook", "How statements are labelled"),
+                ("/docs/singularity-entry-definition", "What counts as the singularity"), ("/docs/amendments", "Every change, dated")]
 
 THEME_SCRIPT = """<script>
 (function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
@@ -420,13 +421,19 @@ def starfield(seed=20261008, count=150):
     return '<div class="starfield" aria-hidden="true">' + "".join(out) + "</div>"
 
 
+def long_date(iso):
+    d = date.fromisoformat(iso)
+    return f"{d.day} {d:%B %Y}"
+
+
 def provenance(built, commit):
+    """The plain-language provenance clause of the attribution line (design standard, section 8)."""
     n_statements = len(read("statements.csv"))
     n_world = len(read("world_measures.csv"))
     posts = DATA / "vanguard" / "full-run-posts.csv"
     n_posts = (sum(1 for _ in posts.open(encoding="utf-8")) - 1) if posts.exists() else 0
-    return (f"Built {built} from commit {esc(commit)}: {n_statements} statements, {n_world} world measures, "
-            f"{n_posts} community posts coded.")
+    return (f"Last built {long_date(built)} (version {esc(commit)}) from {n_statements} expert statements, "
+            f"{n_world} readings of the world and {n_posts} community posts.")
 
 
 def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None):
@@ -475,7 +482,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <span class="footer-brand">{SITE_TITLE}</span>
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
-<p class="footer-meta">© {year} John Fredrickson, with Claude. {provenance(built, commit)} Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+<p class="footer-meta">© {year} John Fredrickson, <a href="{WITH_CLAUDE}">with Claude</a>. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
@@ -691,7 +698,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 </section>
 """
     return shell(SITE_TITLE, TAGLINE, body, built, commit, backdrop=True, eyebrow="A dated record and a scored test",
-                 h1=SITE_TITLE, lede="The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a preregistered test of whether the world has entered the singularity. Every number on this page links to the row it came from.")
+                 h1=SITE_TITLE, lede="The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity. Every number on this page links to the row it came from.")
 
 
 def main():
