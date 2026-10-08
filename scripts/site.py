@@ -692,20 +692,21 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{answer}</p>
-<h1>Four things would all have to hold for a year. Today none of them does.</h1>
-<p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started.</p>
+<h1>Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
+<p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
 <div class="conds">{rows}</div>
+<p class="fresh">Each bar shows how far that measure has come since {sc['reference_year']} toward the line where it would count.</p>
 <p class="fresh">Scored {long_date(built)} from public numbers. <a href="/docs/amendments">Track the changes here.</a></p>
 </div>
 <aside class="card">
 <p class="ch-big">When?</p>
-<p class="ch">It depends what you mean</p>
+<p class="ch">It depends what you mean by AGI</p>
 <p class="big">about {med}</p>
 <p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates from the {len(ex_rows)} experts traced so far ({lo} to {hi}).{market}</p>
 <div class="ladder">
 <div><b>{int(latest['m'])}</b><span><b>Every task, better and cheaper than a human worker.</b> Even odds, from {latest['n'] or 'AI researchers'} in the <a href="{esc(latest['url'])}">largest survey</a> ({latest['date'].year}); one-in-ten odds by {hlmi10}. {int(b_pts[0]['m']) - int(latest['m'])} years closer than the {b_pts[0]['date'].year} survey said.</span></div>
-<div><b>{faol}</b><span><b>All human work automated.</b> Even odds, same survey. Factories and hospitals move far more slowly than software.</span></div>
+<div><b>{faol}</b><span><b>All human work could be automated.</b> Even odds, same survey. Factories and hospitals move far more slowly than software.</span></div>
 </div>
 <p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>
@@ -763,7 +764,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
-<p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about artificial general intelligence, or AGI for short: a machine that can do most of the thinking work a person can. Every quote carries its date and a link to where it was said.</p>
+<p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about AGI. Every quote carries its date and a link to where it was said.</p>
 <p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
@@ -786,6 +787,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
 <p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
+<p>Expecting it soon is not the same as it happening. Whether the singularity has actually begun is the test below.</p>
 </section>
 
 <section class="section prose" id="singularity">
