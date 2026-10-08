@@ -35,6 +35,8 @@ matplotlib.use("Agg")
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 
+import chart_style as cs
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 SITE = ROOT / "site"
@@ -107,37 +109,50 @@ def leg_a(world):
             series.append(dict(date=p["date"], days=math.log(2) / slope * 365.25, n=len(win),
                                over16=any(q["over16"] for q in win)))
 
-    fig, (ax, ax2) = plt.subplots(2, 1, figsize=(8, 7), sharex=True, gridspec_kw={"height_ratios": [3, 2]})
+    t_star = json.loads(THRESHOLDS.read_text())["leg_a"]["doubling_time_threshold_days"]
+    fig, (ax, ax2) = cs.figure(10, 8.2, nrows=2, gridspec_kw={"height_ratios": [3, 2], "hspace": 0.45})
+    fig.subplots_adjust(left=0.1, right=0.97, top=0.89, bottom=0.08)
+    blue, orange = cs.PALETTE[0], cs.PALETTE[1]
     for p in pts:
-        ax.plot([p["date"], p["date"]], [p["lo"], p["hi"]], color=BLUE, alpha=0.35, linewidth=1.5)
-        ax.plot(p["date"], p["value"], "o", ms=6, color=BLUE if p["frontier"] else "white",
-                markeredgecolor=BLUE, markeredgewidth=1.5)
-    ax.axhline(960, color=MUTED, linestyle=":", linewidth=1)
-    ax.text(pts[0]["date"], 960 * 1.15, "16 hours: beyond this METR's tests are not reliable", color=MUTED, fontsize=8)
+        ax.plot([p["date"], p["date"]], [p["lo"], p["hi"]], color=blue, alpha=0.3, linewidth=1.5)
+        ax.plot(p["date"], p["value"], "o", ms=6, color=blue if p["frontier"] else cs.SURFACE,
+                markeredgecolor=blue, markeredgewidth=1.5)
+    ax.axhline(960, color=cs.INK_2, linestyle=":", linewidth=1)
+    ax.text(pts[0]["date"], 960 * 1.25, "16 hours: METR's tests cannot measure reliably beyond this", color=cs.INK_2, fontsize=8)
     ax.set_yscale("log")
     ax.set_yticks([0.1, 1, 10, 60, 480, 2400])
-    ax.set_yticklabels(["6 s", "1 min", "10 min", "1 h", "8 h", "40 h"])
-    ax.set_ylabel("longest job it gets right half the time")
-    ax.set_title("Condition A. How long a job the best AI can finish, by the day each system came out", loc="left", color=INK)
-    ax.plot([], [], "o", color=BLUE, label="the best system at the time")
-    ax.plot([], [], "o", color="white", markeredgecolor=BLUE, label="not the best at the time")
-    ax.legend(loc="lower right", frameon=False, fontsize=8)
+    ax.set_yticklabels(["6 seconds", "1 minute", "10 minutes", "1 hour", "8 hours", "40 hours"])
+    ax.minorticks_off()
+    ax.grid(axis="x", visible=False)
+    ax.grid(axis="y", color=cs.GRID, lw=0.8)
+    ax.set_title("The longest programming job each new AI system gets right half the time", loc="left", fontsize=10, color=cs.INK)
+    ax.plot([], [], "o", color=blue, label="the best system at the time")
+    ax.plot([], [], "o", color=cs.SURFACE, markeredgecolor=blue, label="not the best at the time")
+    ax.legend(loc="lower right", frameon=False, fontsize=8.5, labelcolor=cs.INK)
     for p in frontier[-1:]:
-        ax.annotate(p["name"], (p["date"], p["value"]), textcoords="offset points", xytext=(-6, 6), ha="right", fontsize=8, color=INK)
+        ax.annotate(p["name"], (p["date"], p["value"]), textcoords="offset points", xytext=(-8, 4), ha="right", fontsize=8, color=cs.INK)
+    ax.xaxis.set_major_locator(mdates.YearLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
     for s in series:
-        ax2.plot(s["date"], s["days"], "o", ms=6, color=ORANGE if not s["over16"] else "white", markeredgecolor=ORANGE, markeredgewidth=1.5)
-    ax2.plot([s["date"] for s in series], [s["days"] for s in series], color=ORANGE, linewidth=1.5, alpha=0.6)
-    ax2.set_ylabel("days it took to double")
-    ax2.set_ylim(0, max([s["days"] for s in series] + [300]) * 1.1)
-    ax2.set_title("How long the best system's job length took to double, over the previous twelve months (lower is faster)", loc="left", color=INK, fontsize=10)
-    ax2.plot([], [], "o", color="white", markeredgecolor=ORANGE, label="includes a reading past 16 hours (not scored)")
-    ax2.legend(loc="upper right", frameon=False, fontsize=8)
-    ax2.xaxis.set_major_locator(mdates.YearLocator())
-    ax2.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
-    fig.text(0.01, 0.005, "Source: METR's published results (Time Horizon 1.1), in the site's world_measures table. The thin lines are METR's range of likely values.", fontsize=7, color=MUTED)
-    fig.tight_layout(rect=(0, 0.02, 1, 1))
-    fig.savefig(SITE / "leg-a-time-horizon.png")
+        ax2.plot(s["date"], s["days"], "o", ms=6, color=orange if not s["over16"] else cs.SURFACE,
+                 markeredgecolor=orange, markeredgewidth=1.5, zorder=3)
+    ax2.plot([s["date"] for s in series], [s["days"] for s in series], color=orange, linewidth=1.5, alpha=0.6)
+    ax2.axhline(t_star, color=cs.INK, linestyle="--", linewidth=1.2)
+    ax2.text(series[0]["date"], t_star + 6, f"it would count here: doubling every {t_star:.0f} days, and still getting quicker",
+             fontsize=8.5, color=cs.INK)
+    ax2.set_ylim(0, max(s["days"] for s in series) * 1.2)
+    ax2.set_ylabel("days to double", fontsize=9, color=cs.INK_2)
+    ax2.grid(axis="x", visible=False)
+    ax2.grid(axis="y", color=cs.GRID, lw=0.8)
+    ax2.set_title("How many days the job length took to double, over the year before each point", loc="left", fontsize=10, color=cs.INK)
+    ax2.plot([], [], "o", color=cs.SURFACE, markeredgecolor=orange, label="includes a reading past 16 hours (not scored)")
+    ax2.legend(loc="upper right", frameon=False, fontsize=8.5, labelcolor=cs.INK)
+    ax2.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1, 7]))
+    ax2.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
+    cs.titles(fig, "AI's job length doubles about every four months, not yet every month", None,
+              "Source: METR, a research group that tests AI systems; thin lines are its range of likely values. agizeitgeist.com/data")
+    fig.savefig(SITE / "leg-a-time-horizon.png", facecolor=cs.SURFACE)
     plt.close(fig)
     with (SITE / "leg-a-doubling-time.csv").open("w", newline="") as f:
         w = csv.writer(f)
@@ -168,27 +183,6 @@ def leg_b(aggregates):
     mb = [r for r in aggregates if r["aggregate_id"] == "mullerbostrom-2013-hlmi50"]
     mani = sorted([r for r in aggregates if r["aggregate_id"].startswith("manifold-agi2030-")], key=lambda r: r["date"])
 
-    fig, ax = plt.subplots(figsize=(8, 4.2))
-    xs = [p["t"] for p in pts]
-    ax.plot(xs, [p["remaining"] for p in pts], "-o", color=BLUE, ms=7, linewidth=2, label="surveys of AI researchers: years until the even-odds year for human-level AI")
-    # Reference: if the forecast date stood still, remaining years fall one per year.
-    ax.plot([xs[0], xs[-1] + 1], [pts[0]["remaining"], pts[0]["remaining"] - (xs[-1] + 1 - xs[0])], "--", color=MUTED, linewidth=1,
-            label="if the expected year stood still (one year closer per year)")
-    for p in pts:
-        ax.annotate(f"{int(p['m'])}", (p["t"], p["remaining"]), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=8, color=INK)
-    if mb:
-        r = mb[0]
-        t = year_frac(parse_date(r["date"]))
-        ax.plot(t, float(r["value"]) - t, "s", color="white", markeredgecolor=GREEN, markeredgewidth=1.5, ms=7,
-                label="a 2013 survey that asked differently, shown for comparison")
-    ax.set_ylim(0, 55)
-    ax.set_ylabel("years away at the time of the survey")
-    ax.set_title("Condition B, stand-in. The experts' arrival date keeps moving closer", loc="left", color=INK)
-    ax.legend(loc="lower left", frameon=False, fontsize=8)
-    fig.text(0.01, 0.005, "The label on each dot is the expected year. Source: the surveys, in the site's aggregates table.", fontsize=7, color=MUTED)
-    fig.tight_layout(rect=(0, 0.03, 1, 1))
-    fig.savefig(SITE / "leg-b-pull-in.png")
-    plt.close(fig)
     with (SITE / "leg-b-pull-in.csv").open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["from_survey", "to_survey", "calendar_years_between", "change_in_years_remaining", "excess_pull_in_per_year"])
@@ -205,29 +199,32 @@ def leg_c(world):
         bound = "upper bound" if "upper bound" in r["notes"] else "lower bound" if "lower bound" in r["notes"] else ""
         pts.append(dict(id=r["aggregate_id"], date=parse_date(r["date"]), value=float(r["value"]), measure=r["measure"],
                         url=r["source_url"], bound=bound, who=r["speaker_id"]))
-    fig, ax = plt.subplots(figsize=(8, 4))
-    labels = {"google-2026-04-code-share": "Google, Apr 2026:\nnew code AI-generated and approved\n(all code, not research work)",
-              "anthropic_institute-2026-02-rd-leads": "Anthropic, Feb 2026:\nAI research work Claude leads\n(reported as under 1%)",
-              "anthropic_institute-2026-08-rd-leads": "Anthropic, Aug 2026:\nAI research work Claude leads",
-              "anthropic_institute-2026-08-rd-collaborates": "Anthropic, Aug 2026:\nAI research work at or above\n'collaborates' (reported as above 90%)"}
-    order = [p for p in pts]
-    for i, p in enumerate(order):
-        color = GREEN if p["who"] == "anthropic_institute" else YELLOW
-        ax.barh(i, p["value"], color=color, height=0.55)
-        ax.text(p["value"] + 1, i, f"{int(p['value'])}%" + (f" ({p['bound']})" if p["bound"] else ""), va="center", fontsize=8, color=INK)
-    ax.set_yticks(range(len(order)))
-    ax.set_yticklabels([labels.get(p["id"], p["id"]) for p in order], fontsize=8)
-    ax.set_xlim(0, 122)
+    # Only the scored figure is drawn: Anthropic's share of its AI research its AI leads. Google's
+    # code share and Anthropic's "collaborates" share measure other things and stay in the table.
+    leads = [p for p in pts if p["id"].endswith("-rd-leads")]
+    line = json.loads(THRESHOLDS.read_text())["leg_c"]["share_threshold"] * 100
+    fig, ax = cs.figure(10, 3.8)
+    fig.subplots_adjust(left=0.16, right=0.95, top=0.72, bottom=0.2)
+    green = cs.PALETTE[2]
+    for i, p in enumerate(leads):
+        y = len(leads) - 1 - i
+        ax.barh(y, p["value"], color=green, height=0.5)
+        shown = "under 1%" if p["bound"] == "upper bound" else f"{int(p['value'])}%"
+        ax.text(p["value"] + 1.2, y, shown, va="center", fontsize=11, fontweight="bold", color=green)
+        ax.text(-2, y, p["date"].strftime("%B %Y"), ha="right", va="center", fontsize=10, color=cs.INK)
+    ax.axvline(line, color=cs.INK, linestyle="--", linewidth=1.2)
+    ax.text(line + 1, len(leads) - 0.45, f"it would count at {line:.0f}%", fontsize=9, color=cs.INK)
+    ax.set_xlim(0, 100)
+    ax.set_ylim(-0.6, len(leads) - 0.3)
+    ax.set_yticks([])
     ax.set_xticks([0, 25, 50, 75, 100])
-    ax.set_xlabel("percent of the company's own work, by its own count (the measures differ)")
-    ax.axvline(50, color=MUTED, linestyle=":", linewidth=1)
-    ax.text(51, -0.75, "one half: the finishing line (scored on the 'leads' figure)", fontsize=7, color=MUTED, va="center")
-    ax.set_ylim(len(order) - 0.5, -1)
-    ax.set_title("Condition C. What the companies say AI does of their own work", loc="left", color=INK)
-    ax.grid(axis="y", visible=False)
-    fig.text(0.01, 0.005, "Source: the companies' own statements, in the site's world_measures table. The Anthropic figure is judged by its AI itself.", fontsize=7, color=MUTED)
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
-    fig.savefig(SITE / "leg-c-self-reports.png")
+    ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"])
+    ax.grid(axis="x", color=cs.GRID, lw=0.8)
+    ax.set_axisbelow(True)
+    cs.titles(fig, "Anthropic says its AI went from leading under 1% of its research to 26% in six months",
+              "Share of Anthropic's AI research work led by its own AI, by the company's own count.",
+              "Source: Anthropic's own statements, judged by its AI itself; nobody outside the company can check them. agizeitgeist.com/data")
+    fig.savefig(SITE / "leg-c-self-reports.png", facecolor=cs.SURFACE)
     plt.close(fig)
     return pts
 
@@ -241,18 +238,22 @@ def leg_d(world):
         g = float(r["value"])
         pts.append(dict(id=r["aggregate_id"], year=int(r["date"]), growth=g, url=r["source_url"],
                         doubling=(math.log(2) / math.log(1 + g / 100)) if g > 0 else None))
-    fig, ax = plt.subplots(figsize=(8, 4))
-    ax.bar([p["year"] for p in pts], [p["growth"] for p in pts], color=GREEN, width=0.8)
-    ax.axhline(30, color=ORANGE, linestyle="--", linewidth=1.2)
-    ax.text(pts[0]["year"], 30.8, "30% in a year: the finishing line (Tom Davidson's 'explosive growth' line)", fontsize=8, color=ORANGE)
-    ax.axhline(0, color=MUTED, linewidth=0.8)
-    ax.set_ylim(-5, 34)
-    ax.set_ylabel("world output growth, % over the previous year")
-    ax.set_title("Condition D. World output growth, 1961 to " + str(pts[-1]["year"]), loc="left", color=INK)
+    fig, ax = cs.figure(10, 4.6)
+    fig.subplots_adjust(left=0.07, right=0.97, top=0.8, bottom=0.12)
+    ax.bar([p["year"] for p in pts], [p["growth"] for p in pts], color=cs.PALETTE[2], width=0.8)
+    ax.axhline(30, color=cs.INK, linestyle="--", linewidth=1.2)
+    ax.text(pts[0]["year"], 31, "it would count here: 30% in a year", fontsize=9, color=cs.INK)
+    ax.axhline(0, color=cs.INK_2, linewidth=0.8)
+    ax.set_ylim(-5, 35)
+    ax.set_yticks([0, 10, 20, 30])
+    ax.set_yticklabels(["0%", "10%", "20%", "30%"])
     ax.grid(axis="x", visible=False)
-    fig.text(0.01, 0.005, "Source: the World Bank's yearly count of world output, adjusted for prices, in the site's world_measures table.", fontsize=7, color=MUTED)
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
-    fig.savefig(SITE / "leg-d-world-growth.png")
+    ax.grid(axis="y", color=cs.GRID, lw=0.8)
+    ax.set_axisbelow(True)
+    cs.titles(fig, "The world's economy grows about 3% a year; it would count at 30%",
+              f"Growth of everything the world produces, after prices, each year from {pts[0]['year']} to {pts[-1]['year']}.",
+              "Source: the World Bank. agizeitgeist.com/data")
+    fig.savefig(SITE / "leg-d-world-growth.png", facecolor=cs.SURFACE)
     plt.close(fig)
     with (SITE / "leg-d-world-growth.csv").open("w", newline="") as f:
         w = csv.writer(f)
@@ -724,7 +725,7 @@ def rail(sc, built, commit):
     progress = ("at most " if sc["progress_is_upper_bound"] else "") + f"{sc['progress']:.2f}"
     toc = [("#belief", "The current zeitgeist", ""), ("#singularity", "Are we in the singularity?", ""),
            ("#leg-a", "A. The pace", "d3"), ("#leg-b", "B. Forecasts", "d3"), ("#leg-c", "C. AI doing research", "d3"), ("#leg-d", "D. The economy", "d3"),
-           ("#owed", "What the test still owes", "d3"), ("#method", "Method and data", "")]
+           ("#owed", "Not finished yet", "d3"), ("#method", "Method and data", "")]
     toc_html = "".join(f'<a href="{h}" class="{c}">{esc(t)}</a>' for h, t, c in toc)
     return f"""<aside class="rail">
 <h4>On this page</h4>
@@ -792,44 +793,21 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <section class="section prose" id="singularity">
 <h2>Are we in the singularity?</h2>
-<p>"Any prediction made now about the next five years will look stupid in retrospect." That line, from a post on an online forum, is one of three classic ways of saying what the singularity is. The other two: machines getting better faster and faster, and machines doing the work of making machines better. Each of the three, on its own, gives false alarms. A fast decade in any industry looks like the first; every new technology makes old forecasts look foolish, so the second trips on the internet too; and a company's claim that its AI does its research cannot be checked from outside. So this test requires all three at once, plus a fourth that is measured by people outside the AI world: whether the economy has changed gear. Each condition has a finishing line, fixed before anyone looked at the numbers, and a bar showing how far it has come toward that line since {sc['reference_year']}. The shortest bar is how far we are from the mark. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
+<p>The answer at the top of the page comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
 
-<div class="legs">
-<div class="leg"><b>A. The pace is accelerating</b>
-<div class="g">The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</div>
-<div class="num">{A['reading']:.0f} days</div>
-<div class="g">to double, measured over the year to {A['date'].strftime('%B %Y')}. It would count at {A['t_star']:.0f} days and still falling. In {sc['reference_year']} it was {A['t_ref']:.0f}.</div>
-{gauge_bar(A['gauge'])}</div>
-<div class="leg"><b>B. Forecasts have stopped working</b>
-<div class="g">The idea, from the writer Vernor Vinge: past some point nobody can predict what comes next. It can only be confirmed after the fact.</div>
-<div class="num">{last_step['pull_in']:.1f} years</div>
-<div class="g">closer, for every year that passed: that is how fast the experts' expected year for human-level AI moved between {last_step['frm']['date'].year} and {last_step['to']['date'].year}. A stand-in only. The real score needs a record of old predictions set against what happened, which does not exist yet.</div>
-{gauge_bar(None)}</div>
-<div class="leg"><b>C. AI is improving AI</b>
-<div class="g">The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</div>
-<div class="num">{int(lead['value'])}%</div>
-<div class="g">of Anthropic's AI research work is led by its own AI, as of {lead['date'].strftime('%B %Y')}, by the company's own count. It would count at half. One company, checked by nobody else.</div>
-{gauge_bar(C['gauge'])}</div>
-<div class="leg"><b>D. The economy has changed gear</b>
-<div class="g">The idea, from the economist Robin Hanson: each new era of history has made the world's economy double about a hundred times faster than the one before.</div>
-<div class="num">{D['reading']:.1f}% a year</div>
-<div class="g">growth of the world's economy in {D['year']}, which means it doubles every {D['doubling']:.0f} years. It would count at {D['g_star']:.0f}% in a year, a doubling every {D['t_star']:.1f} years. Since 1961 it has averaged {D['g_ref']:.1f}%.</div>
-{gauge_bar(D['gauge'])}</div>
-</div>
-
-<h3 id="leg-a">Condition A. How long a task the best AI can finish</h3>
-<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system a set of computer-programming jobs of known length, from seconds to days of a skilled person's time, and records the longest it can get right half the time. That measure was chosen because it keeps rising, while most tests of AI get maxed out within a year or two. The upper chart shows each system on the day it came out. The lower chart is the number this condition is about: how long it took that job length to double, measured over the previous twelve months. A flat line would mean steady, fast growth, which is remarkable but not a singularity; a falling line, doubling times getting shorter, is what this condition looks for. The score uses the latest twelve-month window with no reading past 16 hours, because METR says its tests cannot measure beyond that reliably. The condition also requires the doubling time to have fallen two windows in a row, which today it {"has" if A['falling'] else "has not"}.</p>
-<figure class="fig"><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
-<figcaption>Filled dots were the best system available on the day they came out; hollow dots were not. The dotted line at 16 hours is where METR says its tests stop being reliable; the hollow dots in the lower chart are windows that include such a reading, and they are not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers behind the lower chart are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
+<h3 id="leg-a">A. Is AI getting better faster and faster?</h3>
+<p><em>The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</em></p>
+<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}.</p>
+<figure class="fig"><img src="leg-a-time-horizon.png" alt="The longest programming job each AI system gets right half the time, from 2019 to 2026, and how many days that length took to double">
+<figcaption>Filled dots were the best system on the day they came out; hollow dots were not. METR says its tests cannot measure reliably beyond 16 hours, so a year that includes such a reading is drawn hollow in the lower chart and not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
 <details><summary>Every system measured ({len(a_pts)}) and every twelve-month window</summary>
 {table(["came out", "system", "longest job it gets right half the time", "likely range", "best at the time", "", "source"], a_rows)}
 {table(["window ends", "days to double", "systems in the window", "includes a reading past 16 hours"], dt_rows)}
 </details>
 
-<h3 id="leg-b">Condition B. Are forecasts holding up?</h3>
-<p>The real test would take old predictions of the measure above, compare them with what then happened, and ask how far ahead the predictions still beat the simplest guess, which is that the trend continues. Nobody has built that record yet, and it can only be scored once the predicted dates have passed, so this condition cannot be scored today. What exists now is a stand-in: the year AI researchers expect machines to match people at every task. If the researchers had the trend right, that year would stand still, and the number of years left until it would fall by one every year, the dashed line in the chart. Instead the three surveys show the years left collapsing: between 2022 and 2023, about {abs(last_step['change']):.0f} years of expected waiting disappeared in {last_step['years']:.1f} years of real time. That is predictions failing in one direction, too slow, which is the direction this condition records.</p>
-<figure class="fig"><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
-<figcaption>Each dot is a survey of AI researchers, placed by how many years away they then put the even-odds year for machines matching people at every task. A 2013 survey is shown but not joined up, because it asked a different question in a different way. The steps between surveys are in <a href="leg-b-pull-in.csv">a table</a>.</figcaption></figure>
+<h3 id="leg-b">B. Has AI become impossible to predict?</h3>
+<p><em>The idea, from the writer Vernor Vinge: past some point nobody can predict what comes next, and it can only be confirmed after the fact. A post on an online forum put it this way: "Any prediction made now about the next five years will look stupid in retrospect."</em></p>
+<p>This part cannot be scored yet. Scoring it needs old predictions of the measure in part A set against what then happened, to see how far ahead forecasts still beat the simplest guess, that the trend carries on. Nobody has collected that record, and it can only be scored once the predicted dates have passed. The nearest evidence is the surveys of AI researchers in the section above. If their forecasts had been right, the year they expect would have stood still while time passed. Instead it jumped closer: between {last_step['frm']['date'].year} and {last_step['to']['date'].year}, about {abs(last_step['change']):.0f} years of expected waiting disappeared in {last_step['years']:.1f} years. Forecasts that keep being wrong in the same direction, too slow, are what this part looks for, but surveys about a distant year are only a hint, not the score.</p>
 <details><summary>The surveys, the steps between them, and the betting odds for comparison</summary>
 {table(["survey", "even-odds year", "years away at the time", "source"], b_rows)}
 {table(["step", "years of real time", "change in years away", "years closer per year, beyond the passage of time"], step_rows)}
@@ -837,27 +815,30 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {table(["date", "odds", "source"], mani_rows)}
 </details>
 
-<h3 id="leg-c">Condition C. Is AI doing the work of improving AI?</h3>
-<p>This condition asks how much of the work of making the best AI better is now done by AI. Nobody outside the AI companies can measure that, so what exists is what the companies say about themselves. Two kinds are recorded. Google says what share of all its new computer code is written by AI; that is a rough stand-in at best, and it is shown but not scored. Anthropic measures what share of its own AI research its AI leads; that is closer to the question but is judged by the AI itself, and it is the figure scored. The two do not measure the same thing and should not be compared.</p>
-<figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
-<figcaption>Every bar is a company's statement about itself. Anthropic's February 2026 figure was given as "under 1%" and is drawn as 1; its "above 90%" figure is drawn as 90.</figcaption></figure>
+<h3 id="leg-c">C. Is AI doing the work of improving AI?</h3>
+<p><em>The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</em></p>
+<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it.</p>
+<figure class="fig"><img src="leg-c-self-reports.png" alt="The share of Anthropic's AI research work led by its own AI: under 1% in February 2026 and 26% in August 2026, against a line at one half">
+<figcaption>Anthropic gave its February figure as "under 1%". Every statement, including Google's, is in the table below.</figcaption></figure>
 <details><summary>What the companies said</summary>
 {table(["date", "what was measured", "figure", "source"], c_rows)}
 </details>
 
-<h3 id="leg-d">Condition D. Has the economy changed gear?</h3>
-<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each era the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This condition asks whether that has started, using the World Bank's yearly count of everything the world produces. The finishing line, growth of 30 percent in a year, comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, so the number is not this project's own invention. It is far above anything in the modern record, where the best year since 1961 was {max(q['growth'] for q in d_pts):.1f} percent, and well short of Hanson's "days, not years". This is the one condition measured by people outside the AI world, which is why it is in the test. The cost is that the economy reacts years after the technology does, so it will usually be the furthest behind.</p>
-<figure class="fig"><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
-<figcaption>One bar per year. Countries revise their figures for years afterwards; if a revision pulls a year back below the line, the clock on this condition starts again. How many years each rate takes to double the economy is in <a href="leg-d-world-growth.csv">a table</a>.</figcaption></figure>
+<h3 id="leg-d">D. Has the economy changed gear?</h3>
+<p><em>The idea, from the economist Robin Hanson: each new era of history has made the world's economy double about a hundred times faster than the one before.</em></p>
+<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each, the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This part asks whether that has started, using the World Bank's yearly count of everything the world produces. In {D['year']} it grew {D['reading']:.1f} percent, a pace that doubles it every {D['doubling']:.0f} years; since 1961 it has averaged {D['g_ref']:.1f} percent. The line, 30 percent in a year, would double it every {D['t_star']:.1f} years. It comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, not from this project, and it is far above the best year since 1961, {max(q['growth'] for q in d_pts):.1f} percent. This is the one part measured by people outside the AI world, which is why it is in the test; the cost is that the economy reacts years after the technology, so it will usually be the furthest behind.</p>
+<figure class="fig"><img src="leg-d-world-growth.png" alt="Growth of the world's economy each year since 1961, between about minus 3 and 7 percent, with the line at 30 percent far above">
+<figcaption>One bar per year. Countries revise their figures for years afterwards; if a revision pulls a year back below the line, the clock on this part starts again. How many years each rate takes to double the economy is in <a href="leg-d-world-growth.csv">a table</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
 {table(["year", "growth", "years to double at that rate", "source"], d_rows)}
 </details>
 
-<h3 id="owed">What the test still owes</h3>
+<h3 id="owed">Not finished yet</h3>
+<p>Three pieces the test needs before it is complete.</p>
 <ol>
-<li><b>A trial run on the past.</b> Run on the years 1995 to 2019, the test must say "not yet". The internet boom should trip only condition B, and the years when today's AI methods took off should trip only condition A. The measures do not reach back that far yet, so this has not been done. The test was adopted without it, and that gap is stated here so nobody can say it was hidden. If the trial later trips on those years, the finishing lines are wrong and will be changed, with the change written down.</li>
-<li><b>The record of old predictions, for condition B.</b> Predictions of the measure in condition A, starting with the dates researchers gave in a 2016 survey, set against what then happened. Until it exists, condition B cannot be scored.</li>
-<li><b>A second source for condition C</b> that is not a company talking about itself.</li>
+<li><b>A trial run on the past.</b> Run on the years 1995 to 2019, the test must say "not yet". The internet boom should trip only part B, and the years when today's AI methods took off should trip only part A. The measures do not reach back that far yet, so this has not been done. The test was adopted without it. If the trial later trips on those years, the lines are wrong and will be changed, with the change written down.</li>
+<li><b>The record of old predictions, for part B.</b> Predictions of the measure in part A, starting with the dates researchers gave in a 2016 survey, set against what then happened. Until it exists, part B cannot be scored.</li>
+<li><b>A second source for part C</b> that is not a company talking about itself.</li>
 </ol>
 </section>
 
