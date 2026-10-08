@@ -244,8 +244,8 @@ def main():
     fig.suptitle(f"What r/singularity talks about: top posts and a random sample, late 2024 to 2026 ({LABEL})",
                  x=0.04, y=0.995, ha="left", fontsize=12, fontweight="bold", color=INK)
     fig.text(0.04, 0.962, CAPTION, fontsize=9, color=INK_2, ha="left")
-    fig.text(0.04, 0.946, "Share of posts each quarter whose main claim is of that kind (fourth row: share of capability posts). "
-             "posts with a capability main claim). Unit: one post.", fontsize=7.5, color=INK_2, ha="left")
+    fig.text(0.04, 0.946, "Share of posts each quarter whose main claim is of that kind; the fourth row is a share of the capability posts only. "
+             "Unit: one post.", fontsize=7.5, color=INK_2, ha="left")
     excluded = "; ".join(EXCLUDED) if EXCLUDED else "none"
     fig.text(0.04, 0.008, "Model-coded, no human coder. Shares are majority codes from three model families, each coding "
              "all 390 posts blind under the final codebook:\nclaude-opus-5-5 (Anthropic); gemini-3.1-pro-preview, "
