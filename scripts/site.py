@@ -330,28 +330,167 @@ def load_thresholds():
     return json.loads(THRESHOLDS.read_text())
 
 
-# ----------------------------------------------------------------------------- docs and data
-DOC_CSS = """
-body { margin: 0; background: #fbfbfa; color: #1f2933; font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-@media (prefers-color-scheme: dark) { body { background: #14181d; color: #e6e9ed; } a { color: #6fa8ea; } th, td { border-color: #2b323a; } code, pre { background: #1b2026; border-color: #2b323a; } }
-main { max-width: 820px; margin: 0 auto; padding: 24px 16px 64px; }
-a { color: #2a78d6; } p, li { max-width: 75ch; }
-table { border-collapse: collapse; font-size: 0.9rem; display: block; overflow-x: auto; }
-th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #e3e8ee; vertical-align: top; }
-code, pre { background: #fff; border: 1px solid #e3e8ee; border-radius: 3px; font-size: 0.9em; }
-pre { padding: 8px; overflow-x: auto; } code { padding: 0 3px; } pre code { border: 0; padding: 0; }
-nav.top { font-size: 0.9rem; margin-bottom: 20px; } nav.top a { margin-right: 14px; }
-h1 { line-height: 1.2; }
+# ----------------------------------------------------------------------------- shell
+# The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
+# shared stylesheet site/deep-field.css (copied unchanged, version in its header), the top bar with
+# two tiers and the theme toggle, the cosmic backdrop on the home page only, and the four-line
+# footer with the attribution line "© year John Fredrickson, with Claude. provenance. licence."
+SITE_NAME = "AGI Zeitgeist"
+SITE_TITLE = "AGI Zeitgeist Tracker"
+TAGLINE = ("A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, "
+           "beside a preregistered test of whether the world has entered the singularity.")
+NAV_PRIMARY = [("/#belief", "What people believe"), ("/#singularity", "Singularity status"), ("/#method", "Method and data")]
+NAV_SECONDARY = [("/docs/README", "About the data"), ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes")]
+FOOTER_LINKS = [("/data/", "Download the data"), ("/docs/methodology-v2", "Method"), ("/docs/codebook", "Codebook"),
+                ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes"),
+                ("https://sentient-horizons.com", "Sentient Horizons")]
+
+THEME_SCRIPT = """<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>"""
+
+SHELL_SCRIPT = """<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>"""
+
+ICON_MENU = ('<svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>'
+             '<svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>')
+ICON_THEME = ('<svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>'
+              '<svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>')
+
+# Styles of this site only, on top of the shared file. Tokens only; no new colours.
+SITE_CSS = """
+.hero { padding: 56px 0 8px; max-width: 760px; }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
 """
 
 
-def render_docs():
-    """Render every Markdown document to site/docs/ with pandoc, rewriting links between them."""
+def starfield(seed=20261008, count=150):
+    rng = __import__("random").Random(seed)
+    out = []
+    for _ in range(count):
+        x, y = rng.random() * 100, rng.random() * 100
+        size = 1 if rng.random() < 0.85 else 2
+        op = 0.1 + rng.random() * 0.7
+        tw = rng.random() < 0.38
+        anim = f"animation:twk {2.5 + rng.random() * 4.5:.2f}s ease-in-out {rng.random() * 6:.2f}s infinite" if tw else ""
+        out.append(f'<span style="left:{x:.2f}%;top:{y:.2f}%;width:{size}px;height:{size}px;opacity:{op:.2f};{anim}"></span>')
+    return '<div class="starfield" aria-hidden="true">' + "".join(out) + "</div>"
+
+
+def provenance(built, commit):
+    n_statements = len(read("statements.csv"))
+    n_world = len(read("world_measures.csv"))
+    posts = DATA / "vanguard" / "full-run-posts.csv"
+    n_posts = (sum(1 for _ in posts.open(encoding="utf-8")) - 1) if posts.exists() else 0
+    return (f"Built {built} from commit {esc(commit)}: {n_statements} statements, {n_world} world measures, "
+            f"{n_posts} community posts coded.")
+
+
+def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None):
+    nav1 = "".join(f'<a href="{esc(h)}" class="nav-primary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_PRIMARY)
+    nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_SECONDARY)
+    links = "".join(f'<a href="{esc(h)}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in FOOTER_LINKS)
+    hero = ""
+    if h1:
+        hero = (f'<section class="hero">{f"<p class=eyebrow>{esc(eyebrow)}</p>" if eyebrow else ""}<h1>{esc(h1)}</h1>'
+                f'{f"<p class=lede>{lede}</p>" if lede else ""}</section>')
+    bg = f'<div class="space-bg" aria-hidden="true"><div class="galaxy"></div><div class="core"></div>{starfield()}</div>' if backdrop else ""
+    year = built[:4]
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{THEME_SCRIPT}
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(description)}">
+<meta name="author" content="John Fredrickson">
+<link rel="canonical" href="{SITE_URL}{esc(canonical_path)}">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{SITE_TITLE}">
+<meta property="og:url" content="{SITE_URL}{esc(canonical_path)}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(description)}">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
+<style>{SITE_CSS}</style>
+</head>
+<body>
+{bg}
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">{SITE_NAME}</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">{ICON_MENU}</button>
+<nav class="navlinks" id="site-nav">{nav1}<span class="nav-divider" aria-hidden="true"></span>{nav2}<button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">{ICON_THEME}</button></nav>
+</div></header>
+<main class="container">
+{hero}
+{body}
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">{SITE_TITLE}</span>
+<p class="footer-tag">{TAGLINE}</p>
+<p class="footer-links">{links}</p>
+<p class="footer-meta">© {year} John Fredrickson, with Claude. {provenance(built, commit)} Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+</div></div></footer>
+{SHELL_SCRIPT}
+</body>
+</html>
+"""
+
+
+# ----------------------------------------------------------------------------- docs and data
+def render_docs(built, commit):
+    """Render every Markdown document to site/docs/ with pandoc, in the shared shell, rewriting links between them."""
     out_root = SITE / "docs"
     if out_root.exists():
         shutil.rmtree(out_root)
     out_root.mkdir()
-    (out_root / "doc.css").write_text(DOC_CSS, encoding="utf-8")
     sources = sorted(DOCS.rglob("*.md")) + [ROOT / "README.md"]
     n = 0
     for src in sources:
@@ -362,7 +501,6 @@ def render_docs():
         depth = len(rel.parts) - 1
         up = "../" * depth
         body = subprocess.check_output(["pandoc", "-f", "gfm", "-t", "html5", str(src)], text=True)
-        # links between documents: .md -> .html; repo-root paths -> site paths
         body = re.sub(r'href="([^"#]*?)\.md(#[^"]*)?"', lambda m: f'href="{m.group(1)}.html{m.group(2) or ""}"', body)
         body = re.sub(r'href="(?:\.\./)*docs/', f'href="{up}', body)
         body = re.sub(r'href="(?:\.\./)*data/', f'href="{up}../data/', body)
@@ -372,12 +510,11 @@ def render_docs():
         body = re.sub(r'href="LICENSE(-DATA)?"', lambda m: f'href="{up}../data/LICENSE{m.group(1) or ""}.txt"', body)
         title = re.search(r"<h1[^>]*>(.*?)</h1>", body, re.S)
         title = re.sub("<[^>]+>", "", title.group(1)) if title else rel.stem
-        page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="{up}doc.css"></head><body><main>
-<nav class="top"><a href="{up}../">AGI Zeitgeist Tracker</a> <a href="{up}README.html">About the data</a> <a href="{up}methodology-v2.html">Method</a> <a href="{up}singularity-entry-definition.html">Singularity definition</a> <a href="{up}amendments.html">Changes</a></nav>
-{body}
-<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code>. Data CC BY 4.0, scripts MIT.</p>
-</main></body></html>"""
+        folder = {"vanguard": "Online communities pilot", "reviews": "Outside review", "amendments": "Amendment",
+                  "panel-evidence-2026-10": "Panel evidence", "feasibility": "Feasibility check"}.get(rel.parts[0] if depth else "", "Document")
+        note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at commit {esc(commit)}.</p>'
+        page = shell(f"{title} | {SITE_TITLE}", f"{title}: a document of the {SITE_TITLE}.", f'<div class="prose narrow document">{body}{note}</div>',
+                     built, commit, canonical_path=f"/docs/{rel.with_suffix('').as_posix()}", eyebrow=folder, h1=title)
         dst.write_text(page, encoding="utf-8")
         n += 1
     for src in DOCS.rglob("*.csv"):  # evidence tables the documents link to
@@ -392,15 +529,20 @@ def copy_data():
     out = SITE / "data"
     if out.exists():
         shutil.rmtree(out)
-    n = 0
-    for src in sorted(DATA.rglob("*.csv")):
+    files = sorted(DATA.rglob("*.csv"))
+    for src in files:
         dst = out / src.relative_to(DATA)
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
-        n += 1
     for lic in ("LICENSE-DATA", "LICENSE"):
         shutil.copy2(ROOT / lic, out / (lic + ".txt"))
-    return n
+    # an index page, since the asset host does not list folders
+    items = "".join(f'<li><a href="{esc(f.relative_to(DATA).as_posix())}">{esc(f.relative_to(DATA).as_posix())}</a> ({f.stat().st_size // 1024 + 1} KB)</li>' for f in files)
+    body = (f'<div class="prose narrow"><p>Every table behind the site, as it stands at this build. Each row carries its source. '
+            f'Licensed <a href="LICENSE-DATA.txt">CC BY 4.0</a>; cite as on the <a href="/#method">home page</a>. How each file is laid out: <a href="/docs/README">about the data</a>.</p><ul>{items}</ul></div>')
+    (out / "index.html").write_text(shell(f"Download the data | {SITE_TITLE}", "Every CSV table behind the AGI Zeitgeist Tracker, under CC BY 4.0.", body,
+                                          date.today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
+    return len(files)
 
 
 # ----------------------------------------------------------------------------- html
@@ -409,7 +551,7 @@ def esc(s):
 
 
 def table(headers, rows):
-    out = ["<table><thead><tr>" + "".join(f"<th>{esc(h)}</th>" for h in headers) + "</tr></thead><tbody>"]
+    out = ['<table class="data"><thead><tr>' + "".join(f"<th>{esc(h)}</th>" for h in headers) + "</tr></thead><tbody>"]
     for r in rows:
         out.append("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>")
     out.append("</tbody></table>")
@@ -452,85 +594,28 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         "mark crossed, under persistence test": "Mark crossed; the four-quarter persistence count is running.",
     }[sc["status"]]
 
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AGI Zeitgeist Tracker</title>
-<meta name="description" content="A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, and a preregistered four-part test for whether the world has entered the singularity, scored from public data.">
-<link rel="canonical" href="{SITE_URL}/">
-<style>
-:root {{
-  --bg: #fbfbfa; --card: #ffffff; --ink: #1f2933; --muted: #6b7785; --line: #e3e8ee; --accent: #2a78d6; --fill: #2a78d6;
-  --warn-bg: #fff6e0; --warn-ink: #6b4b00; --warn-line: #eda100;
-}}
-@media (prefers-color-scheme: dark) {{
-  :root:not([data-theme="light"]) {{
-    --bg: #14181d; --card: #1b2026; --ink: #e6e9ed; --muted: #98a2ae; --line: #2b323a; --accent: #6fa8ea; --fill: #6fa8ea;
-    --warn-bg: #2a2410; --warn-ink: #f0d58a; --warn-line: #c98a00;
-  }}
-}}
-:root[data-theme="dark"] {{
-  --bg: #14181d; --card: #1b2026; --ink: #e6e9ed; --muted: #98a2ae; --line: #2b323a; --accent: #6fa8ea; --fill: #6fa8ea;
-  --warn-bg: #2a2410; --warn-ink: #f0d58a; --warn-line: #c98a00;
-}}
-* {{ box-sizing: border-box; }}
-body {{ margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }}
-main {{ max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }}
-h1 {{ font-size: 1.9rem; line-height: 1.2; margin: 0 0 4px; }}
-h2 {{ font-size: 1.35rem; margin: 48px 0 8px; padding-top: 16px; border-top: 1px solid var(--line); }}
-h3 {{ font-size: 1.05rem; margin: 28px 0 6px; }}
-p, li {{ max-width: 70ch; }}
-a {{ color: var(--accent); }}
-nav.top {{ font-size: 0.9rem; color: var(--muted); margin: 0 0 18px; }} nav.top a {{ margin-right: 14px; }}
-.sub {{ color: var(--muted); margin: 0 0 16px; }}
-.status {{ background: var(--warn-bg); color: var(--warn-ink); border-left: 4px solid var(--warn-line); padding: 12px 14px; border-radius: 6px; margin: 20px 0; }}
-.status strong {{ display: block; margin-bottom: 2px; font-size: 1.1rem; }}
-figure {{ margin: 16px 0; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }}
-figure img {{ width: 100%; height: auto; display: block; border-radius: 4px; background: #fff; }}
-figcaption {{ color: var(--muted); font-size: 0.85rem; padding: 8px 6px 2px; }}
-table {{ border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 10px 0 4px; display: block; overflow-x: auto; }}
-th, td {{ text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }}
-td:nth-child(2) {{ white-space: normal; min-width: 14ch; }}
-th {{ color: var(--muted); font-weight: 600; }}
-details {{ margin: 8px 0 18px; }}
-summary {{ cursor: pointer; color: var(--accent); }}
-.legs {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 16px 0; }}
-.leg {{ background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }}
-.leg b {{ display: block; margin-bottom: 4px; }}
-.leg .g {{ color: var(--muted); font-size: 0.85rem; }}
-.num {{ font-size: 1.6rem; font-weight: 600; line-height: 1.1; margin: 4px 0; }}
-.bar {{ position: relative; height: 22px; background: var(--line); border-radius: 4px; margin: 8px 0 4px; overflow: hidden; }}
-.bar i {{ position: absolute; left: 0; top: 0; bottom: 0; background: var(--fill); }}
-.bar span {{ position: absolute; left: 8px; top: 0; line-height: 22px; font-size: 0.8rem; font-weight: 600; color: var(--ink); mix-blend-mode: difference; filter: invert(1) grayscale(1) contrast(9); }}
-.bar.none span {{ mix-blend-mode: normal; filter: none; color: var(--muted); font-weight: 400; }}
-footer {{ color: var(--muted); font-size: 0.85rem; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 12px; }}
-code {{ font-size: 0.9em; background: var(--card); border: 1px solid var(--line); padding: 0 4px; border-radius: 3px; }}
-</style>
-</head>
-<body>
-<main>
-<nav class="top"><a href="#belief">What people believe</a> <a href="#singularity">Singularity status</a> <a href="#method">Method and data</a> <a href="docs/README.html">About the data</a> <a href="docs/amendments.html">Changes</a></nav>
-<h1>AGI Zeitgeist Tracker</h1>
-<p class="sub">The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a preregistered test of whether the world has entered the singularity. Every number on this page links to the row it came from.</p>
-
+    body = f"""
+<div class="intro prose">
 <p>AGI here means AI that can do most intellectual work a person can. The working question: did the main public argument move from <em>whether</em> it is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. The seed phase is complete and the expert panel is frozen; the full panel traces and the public streams have not started.</p>
+</div>
 
 <div class="status"><strong>Singularity entry status: {status_line}</strong>
 Scored on {built} under the definition adopted {sc['adopted']}, with its thresholds frozen before any gauge was published. Progress toward the mark is <b>{progress_word}{sc['progress']:.2f}</b> on a scale of 0 to 1, set by the weakest leg ({sc['bottleneck']}). Leg B cannot be scored until its forecast ledger exists, so the number is an upper bound. Entry requires all four gauges at 1 for {sc['persistence']} consecutive quarters.</div>
 
-<h2 id="belief">What people believe</h2>
-<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="docs/methodology-v2.html">methodology version 2</a>.</p>
+<section class="section prose" id="belief">
+<h2>What people believe</h2>
+<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="/docs/methodology-v2">methodology version 2</a>.</p>
 
-<figure><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
+<figure class="fig"><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
 <figcaption>Seed phase: what each statement was mainly about, by year, for five traced people (Kurzweil, Hinton, LeCun, Marcus, Altman). Counts in <a href="chart-1-frames.csv">chart-1-frames.csv</a>. Five people are not a panel; this chart exists to test the pipeline.</figcaption></figure>
 
-<figure><img src="vanguard-pilot-r-singularity.png" alt="Framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3, model-coded">
-<figcaption>Pilot, model-coded: framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3. Not representative of participants or the public. Three models from different companies (Claude, Gemini and GPT) each coded all 390 sampled posts blind under the final codebook, and the majority vote is the final code; where no two agree, the post is left out of the affected measure. Counts in <a href="vanguard-pilot-r-singularity.csv">vanguard-pilot-r-singularity.csv</a>; <a href="docs/vanguard/pilot-report-r-singularity-2026-10.html">pilot report</a>.</figcaption></figure>
+<figure class="fig"><img src="vanguard-pilot-r-singularity.png" alt="Framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3, model-coded">
+<figcaption>Pilot, model-coded: framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3. Not representative of participants or the public. Three models from different companies (Claude, Gemini and GPT) each coded all 390 sampled posts blind under the final codebook, and the majority vote is the final code; where no two agree, the post is left out of the affected measure. Counts in <a href="vanguard-pilot-r-singularity.csv">vanguard-pilot-r-singularity.csv</a>; <a href="/docs/vanguard/pilot-report-r-singularity-2026-10">pilot report</a>.</figcaption></figure>
+</section>
 
-<h2 id="singularity">Entering the singularity: the test and the score</h2>
-<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. The <a href="docs/singularity-entry-definition.html">adopted definition</a> requires four things to be true at once, for four consecutive quarters. Each gauge runs from 0 (the {sc['reference_year']} reference) to 1 (the frozen threshold); the smallest gauge is the honest distance remaining.</p>
+<section class="section prose" id="singularity">
+<h2>Entering the singularity: the test and the score</h2>
+<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. The <a href="/docs/singularity-entry-definition">adopted definition</a> requires four things to be true at once, for four consecutive quarters. Each gauge runs from 0 (the {sc['reference_year']} reference) to 1 (the frozen threshold); the smallest gauge is the honest distance remaining.</p>
 
 <div class="legs">
 <div class="leg"><b>A. The pace is accelerating</b>
@@ -557,7 +642,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 
 <h3>Leg A. How long a task the best AI can finish</h3>
 <p>The anchor measure is METR's time horizon: the length of software task, in minutes an expert needs for it, that a model finishes half the time. It is chosen because it has not yet saturated the way benchmarks do. The lower panel is the definition's quantity: the doubling time of the frontier over a trailing twelve months. A flat line would mean steady exponential growth, which is Kurzweil's world but not yet a singularity; a falling line is the signature the definition looks for. The gauge is scored on the last window with no reading past 16 hours, and the threshold also requires the doubling time to have fallen over the last two windows ({"met" if A['falling'] else "not met"} today).</p>
-<figure><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
+<figure class="fig"><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
 <figcaption>Hollow points were not the frontier at release. METR treats estimates past 16 hours as beyond its task suite's reliable range, and its own doubling-time fit excludes them; windows that include such a reading are hollow in the lower panel and are not scored. The latest frontier reading is {esc(latest['name'])} at {latest['value']/60:.0f} hours on {latest['date'].isoformat()}. Doubling-time series in <a href="leg-a-doubling-time.csv">leg-a-doubling-time.csv</a>.</figcaption></figure>
 <details><summary>Every reading ({len(a_pts)} models) and every doubling-time window</summary>
 {table(["release", "model", "50% horizon", "95% range", "frontier", "", "row"], a_rows)}
@@ -566,7 +651,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 
 <h3>Leg B. Are forecasts holding up?</h3>
 <p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed, so leg B is shown as not yet measurable and the progress number above is an upper bound. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about {abs(last_step['change']):.0f} years of distance in {last_step['years']:.1f} calendar years. That is forecasts failing in the slow direction, which is the direction the definition records.</p>
-<figure><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
+<figure class="fig"><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
 <figcaption>Surveys use different definitions and aggregation, so the 2013 survey is shown but not joined to the series. Steps in <a href="leg-b-pull-in.csv">leg-b-pull-in.csv</a>.</figcaption></figure>
 <details><summary>The survey readings, the steps between them, and the market reading for context</summary>
 {table(["survey", "50% year", "years remaining", "row"], b_rows)}
@@ -577,7 +662,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 
 <h3>Leg C. Is AI doing the improving?</h3>
 <p>The definition wants the share of inputs to frontier AI progress supplied by AI. Nobody outside the labs can measure that, so what exists is self-report. Two kinds are recorded: a company's share of all new code written by AI, which is a proxy at best and is shown but not scored, and Anthropic's self-measured share of its own AI research work that its model "leads", which is closer to the definition's measure but is judged by the model itself and is the figure scored. The figures do not measure the same thing and should not be compared with each other.</p>
-<figure><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
+<figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
 <figcaption>Every bar is a company statement about itself. Anthropic's row for February 2026 is "under 1%", recorded as 1. Its "above 90%" row is recorded as 90.</figcaption></figure>
 <details><summary>The self-reports</summary>
 {table(["date", "measure", "value", "row"], c_rows)}
@@ -585,7 +670,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 
 <h3>Leg D. Has the economy changed mode?</h3>
 <p>Robin Hanson's reading of the long record is that the world economy has had three growth modes, hunting, farming and industry, each doubling output about a hundred times faster than the one before: roughly 230,000 years, 860 years and 15 years per doubling. A new mode would double output in years or less. Leg D asks whether that has started, using world real output growth from the World Bank. The threshold, 30 percent a year, is Tom Davidson's published line for "explosive growth" (Open Philanthropy, 2021), chosen so the number is not this project's own invention: far above anything in the modern record, well short of Hanson's "days, not years". This leg is measured by people outside the AI field, which is why it is in the definition; the cost is that output lags capability by years, so it will usually be the weakest leg.</p>
-<figure><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
+<figure class="fig"><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
 <figcaption>Annual readings; the series is revised as countries revise their accounts, and a revision that pulls a year back below the line resets the persistence count. Doubling times in <a href="leg-d-world-growth.csv">leg-d-world-growth.csv</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
 {table(["year", "growth", "doubling time (years)", "row"], d_rows)}
@@ -597,16 +682,16 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 <li><b>The leg B ledger.</b> Old forecasts of the anchor measure (starting from the 2016 expert survey's milestone dates) scored against what happened, by lead time. Until it exists, leg B is unmeasured.</li>
 <li><b>A second source for leg C</b> that is not a company's report on itself.</li>
 </ol>
+</section>
 
-<h2 id="method">Method and data</h2>
-<p>Belief measures and world measures live in separate files and are never combined. <a href="data/statements.csv">statements.csv</a>, <a href="data/aggregates.csv">aggregates.csv</a> and the <a href="data/vanguard/">community samples</a> hold what people said and believed. <a href="data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="data/search_log.csv">search_log.csv</a>. The <a href="docs/methodology-v2.html">method</a>, the <a href="docs/codebook.html">codebook</a>, the <a href="docs/singularity-entry-definition.html">definition</a> and every <a href="docs/amendments.html">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
-<p>Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT.</p>
-
-<footer>Built {built} from commit {esc(commit)}. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen {sc['adopted']} in <a href="docs/singularity-entry-definition.html#record-of-the-rulings-2026-10-08">amendment A19</a>.</footer>
-</main>
-</body>
-</html>
+<section class="section prose" id="method">
+<h2>Method and data</h2>
+<p>Belief measures and world measures live in separate files and are never combined. <a href="/data/statements.csv">statements.csv</a>, <a href="/data/aggregates.csv">aggregates.csv</a> and the <a href="/data/">community samples</a> hold what people said and believed. <a href="/data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="/data/search_log.csv">search_log.csv</a>. The <a href="/docs/methodology-v2">method</a>, the <a href="/docs/codebook">codebook</a>, the <a href="/docs/singularity-entry-definition">definition</a> and every <a href="/docs/amendments">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen {sc['adopted']} in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
+</section>
 """
+    return shell(SITE_TITLE, TAGLINE, body, built, commit, backdrop=True, eyebrow="A dated record and a scored test",
+                 h1=SITE_TITLE, lede="The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a preregistered test of whether the world has entered the singularity. Every number on this page links to the row it came from.")
 
 
 def main():
@@ -625,7 +710,7 @@ def main():
         "progress_is_upper_bound": sc["progress_is_upper_bound"], "bottleneck": sc["bottleneck"],
         "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
         "unmeasured": sc["unmeasured"], "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
-    n_docs = render_docs()
+    n_docs = render_docs(built, git_commit())
     n_data = copy_data()
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "

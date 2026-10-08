@@ -3,80 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
 <title>AGI Zeitgeist Tracker</title>
-<meta name="description" content="A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, and a preregistered four-part test for whether the world has entered the singularity, scored from public data.">
+<meta name="description" content="A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a preregistered test of whether the world has entered the singularity.">
+<meta name="author" content="John Fredrickson">
 <link rel="canonical" href="https://agizeitgeist.com/">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AGI Zeitgeist Tracker">
+<meta property="og:url" content="https://agizeitgeist.com/">
+<meta property="og:title" content="AGI Zeitgeist Tracker">
+<meta property="og:description" content="A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a preregistered test of whether the world has entered the singularity.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
 <style>
-:root {
-  --bg: #fbfbfa; --card: #ffffff; --ink: #1f2933; --muted: #6b7785; --line: #e3e8ee; --accent: #2a78d6; --fill: #2a78d6;
-  --warn-bg: #fff6e0; --warn-ink: #6b4b00; --warn-line: #eda100;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14181d; --card: #1b2026; --ink: #e6e9ed; --muted: #98a2ae; --line: #2b323a; --accent: #6fa8ea; --fill: #6fa8ea;
-    --warn-bg: #2a2410; --warn-ink: #f0d58a; --warn-line: #c98a00;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #14181d; --card: #1b2026; --ink: #e6e9ed; --muted: #98a2ae; --line: #2b323a; --accent: #6fa8ea; --fill: #6fa8ea;
-  --warn-bg: #2a2410; --warn-ink: #f0d58a; --warn-line: #c98a00;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
-h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 4px; }
-h2 { font-size: 1.35rem; margin: 48px 0 8px; padding-top: 16px; border-top: 1px solid var(--line); }
-h3 { font-size: 1.05rem; margin: 28px 0 6px; }
-p, li { max-width: 70ch; }
-a { color: var(--accent); }
-nav.top { font-size: 0.9rem; color: var(--muted); margin: 0 0 18px; } nav.top a { margin-right: 14px; }
-.sub { color: var(--muted); margin: 0 0 16px; }
-.status { background: var(--warn-bg); color: var(--warn-ink); border-left: 4px solid var(--warn-line); padding: 12px 14px; border-radius: 6px; margin: 20px 0; }
-.status strong { display: block; margin-bottom: 2px; font-size: 1.1rem; }
-figure { margin: 16px 0; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
-figure img { width: 100%; height: auto; display: block; border-radius: 4px; background: #fff; }
-figcaption { color: var(--muted); font-size: 0.85rem; padding: 8px 6px 2px; }
-table { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 10px 0 4px; display: block; overflow-x: auto; }
-th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
-td:nth-child(2) { white-space: normal; min-width: 14ch; }
-th { color: var(--muted); font-weight: 600; }
-details { margin: 8px 0 18px; }
+.hero { padding: 56px 0 8px; max-width: 760px; }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
 summary { cursor: pointer; color: var(--accent); }
-.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 16px 0; }
-.leg { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
-.leg b { display: block; margin-bottom: 4px; }
-.leg .g { color: var(--muted); font-size: 0.85rem; }
-.num { font-size: 1.6rem; font-weight: 600; line-height: 1.1; margin: 4px 0; }
-.bar { position: relative; height: 22px; background: var(--line); border-radius: 4px; margin: 8px 0 4px; overflow: hidden; }
-.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--fill); }
-.bar span { position: absolute; left: 8px; top: 0; line-height: 22px; font-size: 0.8rem; font-weight: 600; color: var(--ink); mix-blend-mode: difference; filter: invert(1) grayscale(1) contrast(9); }
-.bar.none span { mix-blend-mode: normal; filter: none; color: var(--muted); font-weight: 400; }
-footer { color: var(--muted); font-size: 0.85rem; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 12px; }
-code { font-size: 0.9em; background: var(--card); border: 1px solid var(--line); padding: 0 4px; border-radius: 3px; }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
 </style>
 </head>
 <body>
-<main>
-<nav class="top"><a href="#belief">What people believe</a> <a href="#singularity">Singularity status</a> <a href="#method">Method and data</a> <a href="docs/README.html">About the data</a> <a href="docs/amendments.html">Changes</a></nav>
-<h1>AGI Zeitgeist Tracker</h1>
-<p class="sub">The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a preregistered test of whether the world has entered the singularity. Every number on this page links to the row it came from.</p>
+<div class="space-bg" aria-hidden="true"><div class="galaxy"></div><div class="core"></div><div class="starfield" aria-hidden="true"><span style="left:29.22%;top:43.86%;width:2px;height:2px;opacity:0.30;animation:twk 5.72s ease-in-out 1.86s infinite"></span><span style="left:67.49%;top:21.86%;width:1px;height:1px;opacity:0.62;animation:twk 4.14s ease-in-out 1.42s infinite"></span><span style="left:99.81%;top:5.99%;width:1px;height:1px;opacity:0.67;animation:twk 5.46s ease-in-out 2.96s infinite"></span><span style="left:98.80%;top:5.82%;width:1px;height:1px;opacity:0.15;"></span><span style="left:32.91%;top:57.85%;width:1px;height:1px;opacity:0.32;animation:twk 2.74s ease-in-out 4.42s infinite"></span><span style="left:66.51%;top:29.37%;width:2px;height:2px;opacity:0.65;animation:twk 3.73s ease-in-out 0.03s infinite"></span><span style="left:77.82%;top:1.74%;width:1px;height:1px;opacity:0.12;"></span><span style="left:76.62%;top:8.30%;width:1px;height:1px;opacity:0.13;"></span><span style="left:74.92%;top:69.57%;width:1px;height:1px;opacity:0.64;animation:twk 6.45s ease-in-out 0.69s infinite"></span><span style="left:76.77%;top:36.29%;width:1px;height:1px;opacity:0.64;"></span><span style="left:46.54%;top:26.77%;width:1px;height:1px;opacity:0.77;animation:twk 5.00s ease-in-out 1.60s infinite"></span><span style="left:46.69%;top:73.53%;width:1px;height:1px;opacity:0.69;"></span><span style="left:53.21%;top:30.64%;width:1px;height:1px;opacity:0.30;"></span><span style="left:3.89%;top:9.97%;width:1px;height:1px;opacity:0.39;animation:twk 4.17s ease-in-out 0.87s infinite"></span><span style="left:98.01%;top:21.01%;width:2px;height:2px;opacity:0.79;"></span><span style="left:41.06%;top:97.07%;width:1px;height:1px;opacity:0.62;"></span><span style="left:89.16%;top:13.94%;width:1px;height:1px;opacity:0.68;"></span><span style="left:63.83%;top:35.95%;width:1px;height:1px;opacity:0.56;animation:twk 3.74s ease-in-out 3.84s infinite"></span><span style="left:17.71%;top:6.76%;width:1px;height:1px;opacity:0.10;"></span><span style="left:84.58%;top:61.92%;width:1px;height:1px;opacity:0.74;"></span><span style="left:26.75%;top:46.70%;width:1px;height:1px;opacity:0.22;"></span><span style="left:32.78%;top:97.44%;width:1px;height:1px;opacity:0.74;"></span><span style="left:75.69%;top:46.43%;width:1px;height:1px;opacity:0.60;"></span><span style="left:67.32%;top:69.91%;width:1px;height:1px;opacity:0.75;"></span><span style="left:62.51%;top:33.53%;width:1px;height:1px;opacity:0.60;animation:twk 5.22s ease-in-out 5.09s infinite"></span><span style="left:98.34%;top:92.55%;width:1px;height:1px;opacity:0.34;animation:twk 6.47s ease-in-out 0.50s infinite"></span><span style="left:28.42%;top:93.51%;width:1px;height:1px;opacity:0.29;"></span><span style="left:91.78%;top:96.26%;width:1px;height:1px;opacity:0.41;"></span><span style="left:27.95%;top:41.17%;width:1px;height:1px;opacity:0.37;animation:twk 4.30s ease-in-out 2.70s infinite"></span><span style="left:69.33%;top:45.74%;width:2px;height:2px;opacity:0.58;animation:twk 3.68s ease-in-out 2.43s infinite"></span><span style="left:63.98%;top:59.98%;width:1px;height:1px;opacity:0.29;"></span><span style="left:64.15%;top:73.28%;width:1px;height:1px;opacity:0.61;"></span><span style="left:41.96%;top:39.34%;width:1px;height:1px;opacity:0.40;"></span><span style="left:4.43%;top:94.78%;width:1px;height:1px;opacity:0.29;animation:twk 5.37s ease-in-out 4.35s infinite"></span><span style="left:61.90%;top:19.27%;width:1px;height:1px;opacity:0.38;animation:twk 6.49s ease-in-out 1.23s infinite"></span><span style="left:11.39%;top:59.58%;width:1px;height:1px;opacity:0.18;animation:twk 5.26s ease-in-out 2.34s infinite"></span><span style="left:48.14%;top:6.71%;width:1px;height:1px;opacity:0.68;animation:twk 3.65s ease-in-out 5.68s infinite"></span><span style="left:4.50%;top:61.36%;width:1px;height:1px;opacity:0.75;"></span><span style="left:18.45%;top:78.54%;width:1px;height:1px;opacity:0.14;"></span><span style="left:77.11%;top:51.06%;width:1px;height:1px;opacity:0.76;"></span><span style="left:85.13%;top:4.73%;width:1px;height:1px;opacity:0.52;"></span><span style="left:25.76%;top:22.97%;width:1px;height:1px;opacity:0.44;animation:twk 6.21s ease-in-out 1.55s infinite"></span><span style="left:22.22%;top:21.69%;width:2px;height:2px;opacity:0.77;"></span><span style="left:90.50%;top:76.49%;width:1px;height:1px;opacity:0.43;"></span><span style="left:16.27%;top:35.03%;width:1px;height:1px;opacity:0.68;"></span><span style="left:23.05%;top:62.19%;width:1px;height:1px;opacity:0.47;"></span><span style="left:57.68%;top:65.98%;width:1px;height:1px;opacity:0.69;animation:twk 2.94s ease-in-out 5.39s infinite"></span><span style="left:27.04%;top:10.53%;width:2px;height:2px;opacity:0.48;animation:twk 4.20s ease-in-out 2.49s infinite"></span><span style="left:44.96%;top:12.59%;width:1px;height:1px;opacity:0.43;animation:twk 2.89s ease-in-out 1.93s infinite"></span><span style="left:21.56%;top:64.19%;width:1px;height:1px;opacity:0.73;"></span><span style="left:9.84%;top:23.31%;width:2px;height:2px;opacity:0.26;animation:twk 5.94s ease-in-out 3.40s infinite"></span><span style="left:37.68%;top:68.35%;width:2px;height:2px;opacity:0.37;"></span><span style="left:83.29%;top:0.69%;width:1px;height:1px;opacity:0.73;"></span><span style="left:46.39%;top:80.86%;width:1px;height:1px;opacity:0.16;"></span><span style="left:32.82%;top:72.28%;width:1px;height:1px;opacity:0.74;"></span><span style="left:88.12%;top:76.05%;width:1px;height:1px;opacity:0.50;"></span><span style="left:70.53%;top:60.90%;width:1px;height:1px;opacity:0.28;animation:twk 3.15s ease-in-out 5.78s infinite"></span><span style="left:21.86%;top:12.83%;width:1px;height:1px;opacity:0.20;"></span><span style="left:48.84%;top:15.26%;width:1px;height:1px;opacity:0.63;"></span><span style="left:73.57%;top:7.40%;width:1px;height:1px;opacity:0.19;"></span><span style="left:77.04%;top:47.37%;width:1px;height:1px;opacity:0.27;animation:twk 4.57s ease-in-out 2.72s infinite"></span><span style="left:15.04%;top:38.59%;width:1px;height:1px;opacity:0.43;animation:twk 5.03s ease-in-out 3.64s infinite"></span><span style="left:71.33%;top:89.42%;width:1px;height:1px;opacity:0.15;"></span><span style="left:55.20%;top:41.17%;width:2px;height:2px;opacity:0.35;"></span><span style="left:24.53%;top:67.66%;width:1px;height:1px;opacity:0.56;animation:twk 4.12s ease-in-out 5.17s infinite"></span><span style="left:51.93%;top:21.10%;width:2px;height:2px;opacity:0.34;animation:twk 3.17s ease-in-out 3.60s infinite"></span><span style="left:75.02%;top:18.06%;width:1px;height:1px;opacity:0.75;"></span><span style="left:11.33%;top:82.50%;width:1px;height:1px;opacity:0.70;"></span><span style="left:68.77%;top:13.93%;width:1px;height:1px;opacity:0.26;"></span><span style="left:96.66%;top:25.07%;width:1px;height:1px;opacity:0.19;animation:twk 5.39s ease-in-out 4.88s infinite"></span><span style="left:8.88%;top:55.67%;width:1px;height:1px;opacity:0.79;animation:twk 2.99s ease-in-out 0.03s infinite"></span><span style="left:5.96%;top:80.01%;width:1px;height:1px;opacity:0.16;"></span><span style="left:26.05%;top:9.43%;width:1px;height:1px;opacity:0.68;"></span><span style="left:53.29%;top:45.35%;width:2px;height:2px;opacity:0.32;"></span><span style="left:84.44%;top:3.13%;width:2px;height:2px;opacity:0.50;"></span><span style="left:29.61%;top:26.25%;width:1px;height:1px;opacity:0.52;animation:twk 4.47s ease-in-out 5.82s infinite"></span><span style="left:85.50%;top:47.60%;width:1px;height:1px;opacity:0.68;"></span><span style="left:20.12%;top:68.75%;width:1px;height:1px;opacity:0.32;"></span><span style="left:12.68%;top:6.73%;width:1px;height:1px;opacity:0.52;"></span><span style="left:56.79%;top:79.57%;width:1px;height:1px;opacity:0.70;"></span><span style="left:37.18%;top:30.09%;width:1px;height:1px;opacity:0.13;"></span><span style="left:87.16%;top:39.19%;width:1px;height:1px;opacity:0.33;"></span><span style="left:0.65%;top:59.56%;width:1px;height:1px;opacity:0.14;"></span><span style="left:6.57%;top:70.64%;width:2px;height:2px;opacity:0.13;"></span><span style="left:71.67%;top:4.46%;width:2px;height:2px;opacity:0.26;"></span><span style="left:15.05%;top:99.21%;width:1px;height:1px;opacity:0.26;animation:twk 6.91s ease-in-out 5.19s infinite"></span><span style="left:61.95%;top:89.94%;width:1px;height:1px;opacity:0.28;"></span><span style="left:47.89%;top:61.87%;width:1px;height:1px;opacity:0.77;"></span><span style="left:27.44%;top:76.87%;width:1px;height:1px;opacity:0.34;animation:twk 6.02s ease-in-out 5.34s infinite"></span><span style="left:25.90%;top:16.31%;width:1px;height:1px;opacity:0.43;"></span><span style="left:59.66%;top:39.23%;width:1px;height:1px;opacity:0.22;animation:twk 6.20s ease-in-out 4.09s infinite"></span><span style="left:3.98%;top:34.64%;width:2px;height:2px;opacity:0.25;"></span><span style="left:6.58%;top:9.63%;width:1px;height:1px;opacity:0.13;"></span><span style="left:85.54%;top:19.29%;width:1px;height:1px;opacity:0.66;animation:twk 4.32s ease-in-out 5.12s infinite"></span><span style="left:65.61%;top:20.24%;width:1px;height:1px;opacity:0.26;animation:twk 5.76s ease-in-out 4.63s infinite"></span><span style="left:78.03%;top:21.40%;width:1px;height:1px;opacity:0.41;"></span><span style="left:44.29%;top:96.37%;width:1px;height:1px;opacity:0.29;"></span><span style="left:38.08%;top:32.12%;width:1px;height:1px;opacity:0.50;animation:twk 3.97s ease-in-out 2.58s infinite"></span><span style="left:29.18%;top:65.41%;width:1px;height:1px;opacity:0.61;"></span><span style="left:38.05%;top:89.57%;width:1px;height:1px;opacity:0.55;"></span><span style="left:96.11%;top:74.80%;width:1px;height:1px;opacity:0.23;"></span><span style="left:75.65%;top:52.50%;width:1px;height:1px;opacity:0.60;"></span><span style="left:53.41%;top:54.81%;width:2px;height:2px;opacity:0.44;"></span><span style="left:16.61%;top:14.48%;width:1px;height:1px;opacity:0.48;animation:twk 6.25s ease-in-out 5.30s infinite"></span><span style="left:54.56%;top:5.98%;width:1px;height:1px;opacity:0.47;"></span><span style="left:81.14%;top:83.11%;width:1px;height:1px;opacity:0.15;animation:twk 6.36s ease-in-out 0.65s infinite"></span><span style="left:9.61%;top:14.33%;width:2px;height:2px;opacity:0.48;"></span><span style="left:41.44%;top:37.99%;width:1px;height:1px;opacity:0.68;"></span><span style="left:11.10%;top:86.50%;width:1px;height:1px;opacity:0.24;"></span><span style="left:85.14%;top:37.31%;width:2px;height:2px;opacity:0.68;"></span><span style="left:26.75%;top:15.62%;width:1px;height:1px;opacity:0.73;"></span><span style="left:73.91%;top:97.52%;width:2px;height:2px;opacity:0.79;"></span><span style="left:10.61%;top:28.83%;width:2px;height:2px;opacity:0.53;"></span><span style="left:6.40%;top:2.10%;width:1px;height:1px;opacity:0.37;"></span><span style="left:88.03%;top:82.62%;width:2px;height:2px;opacity:0.26;"></span><span style="left:98.22%;top:43.88%;width:1px;height:1px;opacity:0.20;"></span><span style="left:32.05%;top:84.75%;width:1px;height:1px;opacity:0.39;animation:twk 4.42s ease-in-out 1.94s infinite"></span><span style="left:1.96%;top:66.03%;width:2px;height:2px;opacity:0.39;animation:twk 6.58s ease-in-out 0.36s infinite"></span><span style="left:7.98%;top:38.11%;width:1px;height:1px;opacity:0.39;animation:twk 5.29s ease-in-out 5.98s infinite"></span><span style="left:35.79%;top:89.96%;width:1px;height:1px;opacity:0.43;"></span><span style="left:64.60%;top:34.13%;width:1px;height:1px;opacity:0.23;animation:twk 3.07s ease-in-out 5.90s infinite"></span><span style="left:5.75%;top:29.70%;width:2px;height:2px;opacity:0.77;animation:twk 4.74s ease-in-out 3.56s infinite"></span><span style="left:7.20%;top:90.95%;width:1px;height:1px;opacity:0.30;"></span><span style="left:34.51%;top:17.59%;width:1px;height:1px;opacity:0.73;"></span><span style="left:43.11%;top:85.80%;width:1px;height:1px;opacity:0.67;"></span><span style="left:14.48%;top:89.73%;width:1px;height:1px;opacity:0.16;animation:twk 5.60s ease-in-out 0.29s infinite"></span><span style="left:11.80%;top:66.61%;width:1px;height:1px;opacity:0.60;"></span><span style="left:11.05%;top:55.73%;width:1px;height:1px;opacity:0.61;animation:twk 6.92s ease-in-out 5.94s infinite"></span><span style="left:11.14%;top:70.47%;width:1px;height:1px;opacity:0.47;"></span><span style="left:76.28%;top:56.14%;width:1px;height:1px;opacity:0.21;animation:twk 5.68s ease-in-out 2.31s infinite"></span><span style="left:42.64%;top:73.53%;width:1px;height:1px;opacity:0.56;"></span><span style="left:77.59%;top:26.76%;width:1px;height:1px;opacity:0.21;"></span><span style="left:17.19%;top:26.05%;width:2px;height:2px;opacity:0.16;"></span><span style="left:47.76%;top:16.68%;width:1px;height:1px;opacity:0.25;animation:twk 5.76s ease-in-out 0.56s infinite"></span><span style="left:23.93%;top:33.41%;width:1px;height:1px;opacity:0.53;animation:twk 2.69s ease-in-out 3.16s infinite"></span><span style="left:6.07%;top:41.00%;width:2px;height:2px;opacity:0.11;"></span><span style="left:29.18%;top:89.18%;width:1px;height:1px;opacity:0.34;animation:twk 2.59s ease-in-out 3.13s infinite"></span><span style="left:3.00%;top:15.66%;width:2px;height:2px;opacity:0.18;"></span><span style="left:10.40%;top:92.97%;width:1px;height:1px;opacity:0.78;animation:twk 2.87s ease-in-out 2.25s infinite"></span><span style="left:19.62%;top:29.82%;width:1px;height:1px;opacity:0.10;animation:twk 2.96s ease-in-out 1.20s infinite"></span><span style="left:11.19%;top:23.55%;width:1px;height:1px;opacity:0.63;"></span><span style="left:93.15%;top:80.79%;width:1px;height:1px;opacity:0.45;"></span><span style="left:89.70%;top:84.37%;width:1px;height:1px;opacity:0.64;"></span><span style="left:92.18%;top:12.65%;width:2px;height:2px;opacity:0.41;"></span><span style="left:29.66%;top:59.29%;width:1px;height:1px;opacity:0.80;animation:twk 5.77s ease-in-out 5.73s infinite"></span><span style="left:62.82%;top:62.06%;width:1px;height:1px;opacity:0.63;animation:twk 4.93s ease-in-out 1.88s infinite"></span><span style="left:10.51%;top:36.96%;width:1px;height:1px;opacity:0.33;animation:twk 3.86s ease-in-out 1.26s infinite"></span><span style="left:48.30%;top:94.39%;width:1px;height:1px;opacity:0.60;"></span><span style="left:51.09%;top:80.25%;width:1px;height:1px;opacity:0.42;"></span><span style="left:70.44%;top:36.78%;width:1px;height:1px;opacity:0.78;"></span></div></div>
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">AGI Zeitgeist</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">What people believe</a><a href="/#singularity" class="nav-primary">Singularity status</a><a href="/#method" class="nav-primary">Method and data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/README" class="nav-secondary">About the data</a><a href="/docs/singularity-entry-definition" class="nav-secondary">The definition</a><a href="/docs/amendments" class="nav-secondary">Changes</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+</div></header>
+<main class="container">
+<section class="hero"><p class=eyebrow>A dated record and a scored test</p><h1>AGI Zeitgeist Tracker</h1><p class=lede>The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a preregistered test of whether the world has entered the singularity. Every number on this page links to the row it came from.</p></section>
 
+<div class="intro prose">
 <p>AGI here means AI that can do most intellectual work a person can. The working question: did the main public argument move from <em>whether</em> it is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. The seed phase is complete and the expert panel is frozen; the full panel traces and the public streams have not started.</p>
+</div>
 
 <div class="status"><strong>Singularity entry status: Not entered.</strong>
 Scored on 2026-10-08 under the definition adopted 2026-10-08, with its thresholds frozen before any gauge was published. Progress toward the mark is <b>at most 0.00</b> on a scale of 0 to 1, set by the weakest leg (D). Leg B cannot be scored until its forecast ledger exists, so the number is an upper bound. Entry requires all four gauges at 1 for 4 consecutive quarters.</div>
 
-<h2 id="belief">What people believe</h2>
-<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="docs/methodology-v2.html">methodology version 2</a>.</p>
+<section class="section prose" id="belief">
+<h2>What people believe</h2>
+<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="/docs/methodology-v2">methodology version 2</a>.</p>
 
-<figure><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
+<figure class="fig"><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
 <figcaption>Seed phase: what each statement was mainly about, by year, for five traced people (Kurzweil, Hinton, LeCun, Marcus, Altman). Counts in <a href="chart-1-frames.csv">chart-1-frames.csv</a>. Five people are not a panel; this chart exists to test the pipeline.</figcaption></figure>
 
-<figure><img src="vanguard-pilot-r-singularity.png" alt="Framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3, model-coded">
-<figcaption>Pilot, model-coded: framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3. Not representative of participants or the public. Three models from different companies (Claude, Gemini and GPT) each coded all 390 sampled posts blind under the final codebook, and the majority vote is the final code; where no two agree, the post is left out of the affected measure. Counts in <a href="vanguard-pilot-r-singularity.csv">vanguard-pilot-r-singularity.csv</a>; <a href="docs/vanguard/pilot-report-r-singularity-2026-10.html">pilot report</a>.</figcaption></figure>
+<figure class="fig"><img src="vanguard-pilot-r-singularity.png" alt="Framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3, model-coded">
+<figcaption>Pilot, model-coded: framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3. Not representative of participants or the public. Three models from different companies (Claude, Gemini and GPT) each coded all 390 sampled posts blind under the final codebook, and the majority vote is the final code; where no two agree, the post is left out of the affected measure. Counts in <a href="vanguard-pilot-r-singularity.csv">vanguard-pilot-r-singularity.csv</a>; <a href="/docs/vanguard/pilot-report-r-singularity-2026-10">pilot report</a>.</figcaption></figure>
+</section>
 
-<h2 id="singularity">Entering the singularity: the test and the score</h2>
-<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. The <a href="docs/singularity-entry-definition.html">adopted definition</a> requires four things to be true at once, for four consecutive quarters. Each gauge runs from 0 (the 2019 reference) to 1 (the frozen threshold); the smallest gauge is the honest distance remaining.</p>
+<section class="section prose" id="singularity">
+<h2>Entering the singularity: the test and the score</h2>
+<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. The <a href="/docs/singularity-entry-definition">adopted definition</a> requires four things to be true at once, for four consecutive quarters. Each gauge runs from 0 (the 2019 reference) to 1 (the frozen threshold); the smallest gauge is the honest distance remaining.</p>
 
 <div class="legs">
 <div class="leg"><b>A. The pace is accelerating</b>
@@ -103,10 +117,10 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 
 <h3>Leg A. How long a task the best AI can finish</h3>
 <p>The anchor measure is METR's time horizon: the length of software task, in minutes an expert needs for it, that a model finishes half the time. It is chosen because it has not yet saturated the way benchmarks do. The lower panel is the definition's quantity: the doubling time of the frontier over a trailing twelve months. A flat line would mean steady exponential growth, which is Kurzweil's world but not yet a singularity; a falling line is the signature the definition looks for. The gauge is scored on the last window with no reading past 16 hours, and the threshold also requires the doubling time to have fallen over the last two windows (not met today).</p>
-<figure><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
+<figure class="fig"><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
 <figcaption>Hollow points were not the frontier at release. METR treats estimates past 16 hours as beyond its task suite's reliable range, and its own doubling-time fit excludes them; windows that include such a reading are hollow in the lower panel and are not scored. The latest frontier reading is Claude Mythos (early preview) at 17 hours on 2026-04-07. Doubling-time series in <a href="leg-a-doubling-time.csv">leg-a-doubling-time.csv</a>.</figcaption></figure>
 <details><summary>Every reading (26 models) and every doubling-time window</summary>
-<table><thead><tr><th>release</th><th>model</th><th>50% horizon</th><th>95% range</th><th>frontier</th><th></th><th>row</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>release</th><th>model</th><th>50% horizon</th><th>95% range</th><th>frontier</th><th></th><th>row</th></tr></thead><tbody>
 <tr><td>2019-02-14</td><td>GPT-2</td><td>0.1 min</td><td>0.0 to 0.1 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt2</a></td></tr>
 <tr><td>2020-05-28</td><td>davinci-002</td><td>0.1 min</td><td>0.1 to 0.2 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-davinci-002</a></td></tr>
 <tr><td>2022-03-15</td><td>GPT-3.5 Turbo Instruct</td><td>0.6 min</td><td>0.3 to 1.1 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-3-5-turbo-instruct</a></td></tr>
@@ -134,7 +148,7 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 <tr><td>2026-03-05</td><td>GPT-5.4</td><td>5.7 h</td><td>3.1 to 12.8 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-5-4</a></td></tr>
 <tr><td>2026-04-07</td><td>Claude Mythos (early preview)</td><td>17.4 h</td><td>8.5 to 55.1 h</td><td>yes</td><td>past 16 h</td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-mythos-preview-early</a></td></tr>
 </tbody></table>
-<table><thead><tr><th>window end</th><th>days per doubling</th><th>frontier points</th><th>includes a reading past 16 h</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>window end</th><th>days per doubling</th><th>frontier points</th><th>includes a reading past 16 h</th></tr></thead><tbody>
 <tr><td>2024-06-20</td><td>172</td><td>3</td><td></td></tr>
 <tr><td>2024-09-12</td><td>138</td><td>4</td><td></td></tr>
 <tr><td>2024-10-22</td><td>140</td><td>5</td><td></td></tr>
@@ -152,20 +166,20 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 
 <h3>Leg B. Are forecasts holding up?</h3>
 <p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed, so leg B is shown as not yet measurable and the progress number above is an upper bound. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about 14 years of distance in 1.7 calendar years. That is forecasts failing in the slow direction, which is the direction the definition records.</p>
-<figure><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
+<figure class="fig"><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
 <figcaption>Surveys use different definitions and aggregation, so the 2013 survey is shown but not joined to the series. Steps in <a href="leg-b-pull-in.csv">leg-b-pull-in.csv</a>.</figcaption></figure>
 <details><summary>The survey readings, the steps between them, and the market reading for context</summary>
-<table><thead><tr><th>survey</th><th>50% year</th><th>years remaining</th><th>row</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>survey</th><th>50% year</th><th>years remaining</th><th>row</th></tr></thead><tbody>
 <tr><td>2016-01-01</td><td>2061</td><td>45.0</td><td><a href="https://ar5iv.labs.arxiv.org/html/1705.08807">aiimpacts-2016-hlmi50</a></td></tr>
 <tr><td>2022-01-01</td><td>2059</td><td>37.0</td><td><a href="https://aiimpacts.org/2022-expert-survey-on-progress-in-ai/">aiimpacts-2022-hlmi50</a></td></tr>
 <tr><td>2023-10-01</td><td>2047</td><td>23.3</td><td><a href="https://arxiv.org/html/2401.02843">aiimpacts-2023-hlmi50</a></td></tr>
 </tbody></table>
-<table><thead><tr><th>step</th><th>calendar years</th><th>change in years remaining</th><th>excess pull-in per year</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>step</th><th>calendar years</th><th>change in years remaining</th><th>excess pull-in per year</th></tr></thead><tbody>
 <tr><td>2016 to 2022-01-01</td><td>6.0</td><td>-8.0</td><td>+0.3</td></tr>
 <tr><td>2022 to 2023-10-01</td><td>1.7</td><td>-13.7</td><td>+6.9</td></tr>
 </tbody></table>
 <p>Manifold market, "AGI created and publicly announced before 2030", for context only (a market price, not a survey):</p>
-<table><thead><tr><th>date</th><th>probability</th><th>row</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>date</th><th>probability</th><th>row</th></tr></thead><tbody>
 <tr><td>2024-01-07</td><td>36%</td><td><a href="https://api.manifold.markets/v0/bets?contractId=hh2bXhwKDTioZ7KtGKfC&amp;limit=2&amp;order=asc&amp;afterTime=1704585600000">manifold-agi2030-2024-01-07</a></td></tr>
 <tr><td>2024-12-07</td><td>47%</td><td><a href="https://api.manifold.markets/v0/bets?contractId=hh2bXhwKDTioZ7KtGKfC&amp;limit=3&amp;order=asc&amp;afterTime=1733529600000">manifold-agi2030-2024-12-07</a></td></tr>
 <tr><td>2025-12-07</td><td>36%</td><td><a href="https://api.manifold.markets/v0/bets?contractId=hh2bXhwKDTioZ7KtGKfC&amp;limit=2&amp;order=asc&amp;afterTime=1765065600000">manifold-agi2030-2025-12-07</a></td></tr>
@@ -175,10 +189,10 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 
 <h3>Leg C. Is AI doing the improving?</h3>
 <p>The definition wants the share of inputs to frontier AI progress supplied by AI. Nobody outside the labs can measure that, so what exists is self-report. Two kinds are recorded: a company's share of all new code written by AI, which is a proxy at best and is shown but not scored, and Anthropic's self-measured share of its own AI research work that its model "leads", which is closer to the definition's measure but is judged by the model itself and is the figure scored. The figures do not measure the same thing and should not be compared with each other.</p>
-<figure><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
+<figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
 <figcaption>Every bar is a company statement about itself. Anthropic's row for February 2026 is "under 1%", recorded as 1. Its "above 90%" row is recorded as 90.</figcaption></figure>
 <details><summary>The self-reports</summary>
-<table><thead><tr><th>date</th><th>measure</th><th>value</th><th>row</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>date</th><th>measure</th><th>value</th><th>row</th></tr></thead><tbody>
 <tr><td>2026-02-01</td><td>share of Anthropic&#x27;s AI research and development work that Claude &#x27;leads&#x27; (R&amp;D Automation Index, prototype)</td><td>1% (upper bound)</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">anthropic_institute-2026-02-rd-leads</a></td></tr>
 <tr><td>2026-04-24</td><td>share of Google&#x27;s new code that is AI-generated and approved by engineers (company self-report)</td><td>75%</td><td><a href="https://www.semafor.com/article/04/24/2026/google-ceo-says-75-of-companys-new-code-is-ai-generated">google-2026-04-code-share</a></td></tr>
 <tr><td>2026-08-01</td><td>share of Anthropic&#x27;s AI research and development work that Claude &#x27;leads&#x27; (R&amp;D Automation Index, prototype)</td><td>26%</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">anthropic_institute-2026-08-rd-leads</a></td></tr>
@@ -188,10 +202,10 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 
 <h3>Leg D. Has the economy changed mode?</h3>
 <p>Robin Hanson's reading of the long record is that the world economy has had three growth modes, hunting, farming and industry, each doubling output about a hundred times faster than the one before: roughly 230,000 years, 860 years and 15 years per doubling. A new mode would double output in years or less. Leg D asks whether that has started, using world real output growth from the World Bank. The threshold, 30 percent a year, is Tom Davidson's published line for "explosive growth" (Open Philanthropy, 2021), chosen so the number is not this project's own invention: far above anything in the modern record, well short of Hanson's "days, not years". This leg is measured by people outside the AI field, which is why it is in the definition; the cost is that output lags capability by years, so it will usually be the weakest leg.</p>
-<figure><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
+<figure class="fig"><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
 <figcaption>Annual readings; the series is revised as countries revise their accounts, and a revision that pulls a year back below the line resets the persistence count. Doubling times in <a href="leg-d-world-growth.csv">leg-d-world-growth.csv</a>.</figcaption></figure>
 <details><summary>Every year (65 readings)</summary>
-<table><thead><tr><th>year</th><th>growth</th><th>doubling time (years)</th><th>row</th></tr></thead><tbody>
+<table class="data"><thead><tr><th>year</th><th>growth</th><th>doubling time (years)</th><th>row</th></tr></thead><tbody>
 <tr><td>2025</td><td>2.92%</td><td>24.1</td><td><a href="https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&amp;per_page=100&amp;date=1961:2026">worldbank-gdp-growth-2025</a></td></tr>
 <tr><td>2024</td><td>2.90%</td><td>24.2</td><td><a href="https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&amp;per_page=100&amp;date=1961:2026">worldbank-gdp-growth-2024</a></td></tr>
 <tr><td>2023</td><td>2.86%</td><td>24.6</td><td><a href="https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&amp;per_page=100&amp;date=1961:2026">worldbank-gdp-growth-2023</a></td></tr>
@@ -266,12 +280,30 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 <li><b>The leg B ledger.</b> Old forecasts of the anchor measure (starting from the 2016 expert survey's milestone dates) scored against what happened, by lead time. Until it exists, leg B is unmeasured.</li>
 <li><b>A second source for leg C</b> that is not a company's report on itself.</li>
 </ol>
+</section>
 
-<h2 id="method">Method and data</h2>
-<p>Belief measures and world measures live in separate files and are never combined. <a href="data/statements.csv">statements.csv</a>, <a href="data/aggregates.csv">aggregates.csv</a> and the <a href="data/vanguard/">community samples</a> hold what people said and believed. <a href="data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="data/search_log.csv">search_log.csv</a>. The <a href="docs/methodology-v2.html">method</a>, the <a href="docs/codebook.html">codebook</a>, the <a href="docs/singularity-entry-definition.html">definition</a> and every <a href="docs/amendments.html">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
-<p>Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 8b0d14d. https://agizeitgeist.com. Data under <a href="data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT.</p>
+<section class="section prose" id="method">
+<h2>Method and data</h2>
+<p>Belief measures and world measures live in separate files and are never combined. <a href="/data/statements.csv">statements.csv</a>, <a href="/data/aggregates.csv">aggregates.csv</a> and the <a href="/data/">community samples</a> hold what people said and believed. <a href="/data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="/data/search_log.csv">search_log.csv</a>. The <a href="/docs/methodology-v2">method</a>, the <a href="/docs/codebook">codebook</a>, the <a href="/docs/singularity-entry-definition">definition</a> and every <a href="/docs/amendments">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 80de80b. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen 2026-10-08 in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
+</section>
 
-<footer>Built 2026-10-08 from commit 8b0d14d. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen 2026-10-08 in <a href="docs/singularity-entry-definition.html#record-of-the-rulings-2026-10-08">amendment A19</a>.</footer>
 </main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">AGI Zeitgeist Tracker</span>
+<p class="footer-tag">A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a preregistered test of whether the world has entered the singularity.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/docs/methodology-v2">Method</a><a href="/docs/codebook">Codebook</a><a href="/docs/singularity-entry-definition">The definition</a><a href="/docs/amendments">Changes</a><a href="https://sentient-horizons.com" rel="noopener">Sentient Horizons</a></p>
+<p class="footer-meta">© 2026 John Fredrickson, with Claude. Built 2026-10-08 from commit 80de80b: 159 statements, 97 world measures, 390 community posts coded. Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+</div></div></footer>
+<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>
 </body>
 </html>

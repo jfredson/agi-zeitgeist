@@ -1,8 +1,80 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
 <title>A
-measurable definition of &quot;entering the singularity&quot; | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
-<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
-<h1 id="a-measurable-definition-of-entering-the-singularity">A
+measurable definition of &quot;entering the singularity&quot; | AGI Zeitgeist Tracker</title>
+<meta name="description" content="A
+measurable definition of &quot;entering the singularity&quot;: a document of the AGI Zeitgeist Tracker.">
+<meta name="author" content="John Fredrickson">
+<link rel="canonical" href="https://agizeitgeist.com/docs/singularity-entry-definition">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AGI Zeitgeist Tracker">
+<meta property="og:url" content="https://agizeitgeist.com/docs/singularity-entry-definition">
+<meta property="og:title" content="A
+measurable definition of &quot;entering the singularity&quot; | AGI Zeitgeist Tracker">
+<meta property="og:description" content="A
+measurable definition of &quot;entering the singularity&quot;: a document of the AGI Zeitgeist Tracker.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
+<style>
+.hero { padding: 56px 0 8px; max-width: 760px; }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">AGI Zeitgeist</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">What people believe</a><a href="/#singularity" class="nav-primary">Singularity status</a><a href="/#method" class="nav-primary">Method and data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/README" class="nav-secondary">About the data</a><a href="/docs/singularity-entry-definition" class="nav-secondary">The definition</a><a href="/docs/amendments" class="nav-secondary">Changes</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+</div></header>
+<main class="container">
+<section class="hero"><p class=eyebrow>Document</p><h1>A
+measurable definition of &quot;entering the singularity&quot;</h1></section>
+<div class="prose narrow document"><h1 id="a-measurable-definition-of-entering-the-singularity">A
 measurable definition of "entering the singularity"</h1>
 <p><strong>Status: adopted 2026-10-08 (amendment A19 in
 <code>docs/amendments.md</code>), with four legs.</strong> The frozen
@@ -299,6 +371,23 @@ mean</td>
 </tr>
 </tbody>
 </table>
-
-<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/singularity-entry-definition.md</code>. Data CC BY 4.0, scripts MIT.</p>
-</main></body></html>
+<p class="cite">Rendered from <code>docs/singularity-entry-definition.md</code> at commit 80de80b.</p></div>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">AGI Zeitgeist Tracker</span>
+<p class="footer-tag">A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a preregistered test of whether the world has entered the singularity.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/docs/methodology-v2">Method</a><a href="/docs/codebook">Codebook</a><a href="/docs/singularity-entry-definition">The definition</a><a href="/docs/amendments">Changes</a><a href="https://sentient-horizons.com" rel="noopener">Sentient Horizons</a></p>
+<p class="footer-meta">© 2026 John Fredrickson, with Claude. Built 2026-10-08 from commit 80de80b: 159 statements, 97 world measures, 390 community posts coded. Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+</div></div></footer>
+<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>
+</body>
+</html>
