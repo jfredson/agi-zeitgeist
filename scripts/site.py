@@ -332,14 +332,18 @@ def load_thresholds():
 
 
 # ----------------------------------------------------------------------------- shell
+# Writing rule (John, 2026-10-08; design standard section 1a): the public pages use none of the
+# project's internal language and build every idea from scratch, assuming only what a five-year-old
+# knows plus what the page has already said. The working documents are published as written, each
+# with a preface saying what it is; the plain account lives on the home page.
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
 # shared stylesheet site/deep-field.css (copied unchanged, version in its header), the top bar with
 # two tiers and the theme toggle, the cosmic backdrop on the home page only, and the five-line
 # footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson, with Claude. provenance. licence."
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
-TAGLINE = ("A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, "
-           "beside a test, with its rules fixed in advance, of whether the world has entered the singularity.")
+TAGLINE = ("A dated record of what people expect from artificial general intelligence, with every quote linked to its source, "
+           "and a test of whether the singularity has begun.")
 WITH_CLAUDE = "https://sentient-horizons.com/with-claude/"
 # Labels ruled by John, 2026-10-08.
 NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
@@ -569,7 +573,9 @@ def render_docs(built, commit):
         folder = {"vanguard": "Online communities pilot", "reviews": "Outside review", "amendments": "Amendment",
                   "panel-evidence-2026-10": "Panel evidence", "feasibility": "Feasibility check"}.get(rel.parts[0] if depth else "", "Document")
         note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at commit {esc(commit)}.</p>'
-        page = shell(f"{title} | {SITE_TITLE}", f"{title}: a document of the {SITE_TITLE}.", f'<div class="prose narrow document">{body}{note}</div>',
+        preface = ('<div class="status"><strong>A working document.</strong> This is one of the documents the site is built from, published as it is written, in the project\'s own terms, '
+                   'for anyone checking the work. It assumes the reader knows the method. The plain account of the same material is on the <a href="/">home page</a>.</div>')
+        page = shell(f"{title} | {SITE_TITLE}", f"{title}: a document of the {SITE_TITLE}.", f'{preface}<div class="prose narrow document">{body}{note}</div>',
                      built, commit, canonical_path=f"/docs/{rel.with_suffix('').as_posix()}", eyebrow=folder, h1=title)
         dst.write_text(page, encoding="utf-8")
         n += 1
@@ -630,34 +636,34 @@ def landing(sc, b_pts, mani, built, commit):
     answer = {"not entered": "Not yet.", "approaching": "Getting close.",
               "mark crossed, under persistence test": "Crossing now.", "entered": "Yes."}[sc["status"]]
     conds = [
-        ("A", "AI capability is doubling faster and faster", A.get("gauge"),
-         f"The best AI's task horizon doubles every {A['reading']:.0f} days; the line is {A['t_star']:.0f} days, and it also has to be falling."),
-        ("B", "Forecasts of AI progress have stopped working", None,
-         "Not measurable yet: the record of past forecasts against what happened has not been built."),
-        ("C", "AI does most of the research that improves AI", C.get("gauge"),
-         f"Anthropic says its model leads {C['reading']*100:.0f}% of its AI research work, by its own count; the line is half."),
-        ("D", "The world economy grows ten times faster than ever", D.get("gauge"),
-         f"World output grew {D['reading']:.1f}% in {D['year']}; the line is {D['g_star']:.0f}% a year."),
+        ("A", "AI is getting better faster and faster", A.get("gauge"),
+         f"How long a job the best AI can do by itself has been doubling every {A['reading']:.0f} days. It would count at {A['t_star']:.0f} days and still speeding up."),
+        ("B", "Nobody can predict AI progress any more", None,
+         "Cannot be scored yet: that needs a record of old predictions set against what actually happened, and it has not been built."),
+        ("C", "AI now does most of the work of improving AI", C.get("gauge"),
+         f"Anthropic, an AI company, says its own AI leads {C['reading']*100:.0f}% of its AI research. It would count at half. Only the company can check that."),
+        ("D", "The world's economy grows ten times faster than it ever has", D.get("gauge"),
+         f"The world's economy grew {D['reading']:.1f}% in {D['year']}. It would count at {D['g_star']:.0f}% in a year."),
     ]
     rows = "".join(f'<div class="cond"><span class="k">{k}</span><span class="n">{esc(n)}</span>{gauge_bar(g)}<span class="d">{esc(d)}</span></div>' for k, n, g, d in conds)
     latest = b_pts[-1]
     trend = "".join(f'<div><b>{int(p["m"])}</b><span>{p["date"].year} survey</span></div>' for p in b_pts)
     m = mani[-1] if mani else None
-    market = (f' The betting market Manifold puts <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> on AGI being announced before 2030 (as of {esc(m["date"])}).' if m else "")
+    market = (f' On Manifold, a website where people bet on future events, the odds of human-level AI being announced before 2030 stand at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> (as of {esc(m["date"])}).' if m else "")
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{answer}</p>
 <h1>Four things would all have to hold for a year. Today none of them does.</h1>
-<p class="lede">Each bar shows how close one condition is to counting as met. The finishing lines were set before the scoring began, so the answer could not be shaped to fit. The economy is furthest from its line.</p>
+<p class="lede">"The singularity" is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started. Each bar below shows how close one condition is to counting as met. The finishing lines were set before anyone looked at the numbers, so the answer could not be shaped to fit. The economy is furthest from its line.</p>
 <div class="conds">{rows}</div>
-<p class="fresh">Scored {long_date(built)} from public data. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is logged</a>.</p>
+<p class="fresh">Scored {long_date(built)} from public numbers. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is written down with the date and the reason</a>.</p>
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
 </div>
 <aside class="card">
 <p class="ch">What the experts expect</p>
 <p class="big">{int(latest['m'])}</p>
-<p class="what">The year AI researchers give even odds of machines doing every task better and cheaper than people, in the <a href="{esc(latest['url'])}">latest large survey of them</a> ({latest['date'].year}{(", " + latest['n']) if latest['n'] else ""}).</p>
+<p class="what">The year by which AI researchers think it is as likely as not that machines will do every task better and cheaper than people, from the <a href="{esc(latest['url'])}">latest large survey of them</a> ({latest['date'].year}{(", " + latest['n']) if latest['n'] else ""}).</p>
 <div class="trend">{trend}</div>
 <p class="foot">The date has come {int(b_pts[0]['m']) - int(latest['m'])} years closer since {b_pts[0]['date'].year}.{market} <a href="#belief">The full record is below.</a></p>
 </aside>
@@ -681,7 +687,7 @@ def rail(sc, built, commit):
 <h4>On this page</h4>
 <nav class="toc">{toc_html}</nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (CC BY 4.0) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version {esc(commit)}</p>
+<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version {esc(commit)}</p>
 </aside>"""
 
 
@@ -715,90 +721,92 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
-<p>AGI here means AI that can do most intellectual work a person can. The record asks one question of twenty years of public argument: did it move from <em>whether</em> AGI is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. So far the record covers five people in depth, three expert surveys, the polls and markets, and a sample of one online community; the full panel of 37 named experts, the newspapers and the other communities are still to come. One row per public statement, survey result, market reading or poll, labelled under <a href="/docs/methodology-v2">a written method</a>.</p>
+<p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about artificial general intelligence, or AGI for short: a machine that can do most of the thinking work a person can. Every quote carries its date and a link to where it was said.</p>
+<p>The record asks one question of twenty years of argument. Has it moved from <em>whether</em> such a machine is possible, to <em>when</em> it will arrive, to <em>whether today's machines are already close, or are already making themselves smarter</em>? The record is built so that the answer can be no.</p>
+<p>So far it covers five well-known people in depth (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets, and one online forum. The full list of 37 experts, the newspapers and the other forums are still to come. How each statement is sorted is written down in <a href="/docs/methodology-v2">the method</a>, a working document.</p>
 
 <figure class="fig"><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
-<figcaption>Seed phase: what each statement was mainly about, by year, for five traced people (Kurzweil, Hinton, LeCun, Marcus, Altman). Counts in <a href="chart-1-frames.csv">chart-1-frames.csv</a>. Five people are not a panel; this chart exists to test the pipeline.</figcaption></figure>
+<figcaption>Each public statement by the five people was sorted by the question it mainly answers: can it be built, when will it arrive, is today's machine already close, and so on. The chart shows the mix by year. The small numbers along the top say how many statements each year rests on; years with few swing widely. Five people are not the whole picture; this chart shows the method working. The numbers behind it are in <a href="chart-1-frames.csv">a table</a>.</figcaption></figure>
 
 <figure class="fig"><img src="vanguard-pilot-r-singularity.png" alt="Framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3, model-coded">
-<figcaption>Pilot, model-coded: framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3. Not representative of participants or the public. Three models from different companies (Claude, Gemini and GPT) each coded all 390 sampled posts blind under the final codebook, and the majority vote is the final code; where no two agree, the post is left out of the affected measure. Counts in <a href="vanguard-pilot-r-singularity.csv">vanguard-pilot-r-singularity.csv</a>; <a href="/docs/vanguard/pilot-report-r-singularity-2026-10">pilot report</a>.</figcaption></figure>
+<figcaption>r/singularity is an online forum for people who expect the singularity. For each three-month stretch since late 2024, its twenty highest-rated posts and a random handful of its other posts were sorted by what they mainly claim. The sorting was done by three AI models from three different companies, with the majority deciding; where no two agreed, the post is left out. Even here, posts saying AGI or the singularity has already arrived are almost absent. A sample of one forum is not the forum's members, and not the public. The numbers behind the chart are in <a href="vanguard-pilot-r-singularity.csv">a table</a>, and the full account is in <a href="/docs/vanguard/pilot-report-r-singularity-2026-10">a working document</a>.</figcaption></figure>
 </section>
 
 <section class="section prose" id="singularity">
 <h2>Are we in the singularity?</h2>
-<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. So the <a href="/docs/singularity-entry-definition">adopted test</a> needs four things to be true at once, and to stay true for a year. Each one has a line, fixed in advance, and a bar showing how far it has come toward that line since {sc['reference_year']}. The shortest bar is how far we are from the mark.</p>
+<p>"Any prediction made now about the next five years will look stupid in retrospect." That line, from a post on an online forum, is one of three classic ways of saying what the singularity is. The other two: machines getting better faster and faster, and machines doing the work of making machines better. Each of the three, on its own, gives false alarms. A fast decade in any industry looks like the first; every new technology makes old forecasts look foolish, so the second trips on the internet too; and a company's claim that its AI does its research cannot be checked from outside. So this test requires all three at once, plus a fourth that is measured by people outside the AI world: whether the economy has changed gear. Each condition has a finishing line, fixed before anyone looked at the numbers, and a bar showing how far it has come toward that line since {sc['reference_year']}. The shortest bar is how far we are from the mark. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
 
 <div class="legs">
 <div class="leg"><b>A. The pace is accelerating</b>
-<div class="g">Progress is speeding up on itself (Kurzweil's idea): the time it takes AI capability to double is itself shrinking.</div>
+<div class="g">The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</div>
 <div class="num">{A['reading']:.0f} days</div>
-<div class="g">per doubling, trailing twelve months to {A['date'].isoformat()}. Threshold: {A['t_star']:.0f} days and still falling. Reference: {A['t_ref']:.0f} days.</div>
+<div class="g">to double, measured over the year to {A['date'].strftime('%B %Y')}. It would count at {A['t_star']:.0f} days and still falling. In {sc['reference_year']} it was {A['t_ref']:.0f}.</div>
 {gauge_bar(A['gauge'])}</div>
 <div class="leg"><b>B. Forecasts have stopped working</b>
-<div class="g">Forecasts stop working (Vinge's idea): how far ahead anyone can predict AI progress is collapsing. Confirmed only after the fact.</div>
+<div class="g">The idea, from the writer Vernor Vinge: past some point nobody can predict what comes next. It can only be confirmed after the fact.</div>
 <div class="num">{last_step['pull_in']:+.1f} yr/yr</div>
-<div class="g">stand-in only: excess pull-in of the expert consensus date, {last_step['frm']['date'].year} to {last_step['to']['date'].isoformat()}. The gauge needs a forecast ledger that is not built yet. Threshold: a one-year horizon.</div>
+<div class="g">stand-in only: between {last_step['frm']['date'].year} and {last_step['to']['date'].year} the experts' expected year for human-level AI moved {last_step['pull_in']:.1f} years closer for every year that passed. The real score needs a record of old predictions set against what happened, which does not exist yet.</div>
 {gauge_bar(None)}</div>
 <div class="leg"><b>C. AI is doing the improving</b>
-<div class="g">AI improves AI (Good's idea): the share of the work behind frontier AI progress that AI itself does.</div>
+<div class="g">The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</div>
 <div class="num">{int(lead['value'])}%</div>
-<div class="g">of Anthropic's AI research work "led" by its own model, {lead['date'].strftime('%B %Y')}, by its own measurement. Threshold: one half. One company, self-reported.</div>
+<div class="g">of Anthropic's AI research work is led by its own AI, as of {lead['date'].strftime('%B %Y')}, by the company's own count. It would count at half. One company, checked by nobody else.</div>
 {gauge_bar(C['gauge'])}</div>
 <div class="leg"><b>D. The economy has changed gear</b>
-<div class="g">The economy changes gear (Hanson's idea): each new era has doubled world output about a hundred times faster than the one before.</div>
+<div class="g">The idea, from the economist Robin Hanson: each new era of history has made the world's economy double about a hundred times faster than the one before.</div>
 <div class="num">{D['reading']:.1f}% a year</div>
-<div class="g">world output growth in {D['year']}, doubling every {D['doubling']:.0f} years. Threshold: {D['g_star']:.0f}% a year ({D['t_star']:.1f}-year doubling). Reference: {D['g_ref']:.1f}% ({D['t_ref']:.0f}-year doubling).</div>
+<div class="g">growth of the world's economy in {D['year']}, which means it doubles every {D['doubling']:.0f} years. It would count at {D['g_star']:.0f}% in a year, a doubling every {D['t_star']:.1f} years. Since 1961 it has averaged {D['g_ref']:.1f}%.</div>
 {gauge_bar(D['gauge'])}</div>
 </div>
 
 <h3 id="leg-a">Condition A. How long a task the best AI can finish</h3>
-<p>The anchor measure is METR's time horizon: the length of software task, in minutes an expert needs for it, that a model finishes half the time. It is chosen because it has not yet saturated the way benchmarks do. The lower panel is the definition's quantity: the doubling time of the frontier over a trailing twelve months. A flat line would mean steady exponential growth, which is Kurzweil's world but not yet a singularity; a falling line is the signature the definition looks for. The gauge is scored on the last window with no reading past 16 hours, and the threshold also requires the doubling time to have fallen over the last two windows ({"met" if A['falling'] else "not met"} today).</p>
+<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system a set of computer-programming jobs of known length, from seconds to days of a skilled person's time, and records the longest it can get right half the time. That measure was chosen because it keeps rising, while most tests of AI get maxed out within a year or two. The upper chart shows each system on the day it came out. The lower chart is the number this condition is about: how long it took that job length to double, measured over the previous twelve months. A flat line would mean steady, fast growth, which is remarkable but not a singularity; a falling line, doubling times getting shorter, is what this condition looks for. The score uses the latest twelve-month window with no reading past 16 hours, because METR says its tests cannot measure beyond that reliably. The condition also requires the doubling time to have fallen two windows in a row, which today it {"has" if A['falling'] else "has not"}.</p>
 <figure class="fig"><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
-<figcaption>Hollow points were not the frontier at release. METR treats estimates past 16 hours as beyond its task suite's reliable range, and its own doubling-time fit excludes them; windows that include such a reading are hollow in the lower panel and are not scored. The latest frontier reading is {esc(latest['name'])} at {latest['value']/60:.0f} hours on {latest['date'].isoformat()}. Doubling-time series in <a href="leg-a-doubling-time.csv">leg-a-doubling-time.csv</a>.</figcaption></figure>
-<details><summary>Every reading ({len(a_pts)} models) and every doubling-time window</summary>
-{table(["release", "model", "50% horizon", "95% range", "frontier", "", "row"], a_rows)}
-{table(["window end", "days per doubling", "frontier points", "includes a reading past 16 h"], dt_rows)}
+<figcaption>Filled dots were the best system available on the day they came out; hollow dots were not. The dotted line at 16 hours is where METR says its tests stop being reliable; the hollow dots in the lower chart are windows that include such a reading, and they are not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers behind the lower chart are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
+<details><summary>Every system measured ({len(a_pts)}) and every twelve-month window</summary>
+{table(["came out", "system", "longest job it gets right half the time", "likely range", "best at the time", "", "source"], a_rows)}
+{table(["window ends", "days to double", "systems in the window", "includes a reading past 16 hours"], dt_rows)}
 </details>
 
 <h3 id="leg-b">Condition B. Are forecasts holding up?</h3>
-<p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed, so condition B is shown as not yet measurable. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about {abs(last_step['change']):.0f} years of distance in {last_step['years']:.1f} calendar years. That is forecasts failing in the slow direction, which is the direction the definition records.</p>
+<p>The real test would take old predictions of the measure above, compare them with what then happened, and ask how far ahead the predictions still beat the simplest guess, which is that the trend continues. Nobody has built that record yet, and it can only be scored once the predicted dates have passed, so this condition cannot be scored today. What exists now is a stand-in: the year AI researchers expect machines to match people at every task. If the researchers had the trend right, that year would stand still, and the number of years left until it would fall by one every year, the dashed line in the chart. Instead the three surveys show the years left collapsing: between 2022 and 2023, about {abs(last_step['change']):.0f} years of expected waiting disappeared in {last_step['years']:.1f} years of real time. That is predictions failing in one direction, too slow, which is the direction this condition records.</p>
 <figure class="fig"><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
-<figcaption>Surveys use different definitions and aggregation, so the 2013 survey is shown but not joined to the series. Steps in <a href="leg-b-pull-in.csv">leg-b-pull-in.csv</a>.</figcaption></figure>
-<details><summary>The survey readings, the steps between them, and the market reading for context</summary>
-{table(["survey", "50% year", "years remaining", "row"], b_rows)}
-{table(["step", "calendar years", "change in years remaining", "excess pull-in per year"], step_rows)}
-<p>Manifold market, "AGI created and publicly announced before 2030", for context only (a market price, not a survey):</p>
-{table(["date", "probability", "row"], mani_rows)}
+<figcaption>Each dot is a survey of AI researchers, placed by how many years away they then put the even-odds year for machines matching people at every task. A 2013 survey is shown but not joined up, because it asked a different question in a different way. The steps between surveys are in <a href="leg-b-pull-in.csv">a table</a>.</figcaption></figure>
+<details><summary>The surveys, the steps between them, and the betting odds for comparison</summary>
+{table(["survey", "even-odds year", "years away at the time", "source"], b_rows)}
+{table(["step", "years of real time", "change in years away", "years closer per year, beyond the passage of time"], step_rows)}
+<p>Betting odds on Manifold for "AGI created and publicly announced before 2030", for comparison only (a price people bet at, not a survey):</p>
+{table(["date", "odds", "source"], mani_rows)}
 </details>
 
 <h3 id="leg-c">Condition C. Is AI doing the improving?</h3>
-<p>The definition wants the share of inputs to frontier AI progress supplied by AI. Nobody outside the labs can measure that, so what exists is self-report. Two kinds are recorded: a company's share of all new code written by AI, which is a proxy at best and is shown but not scored, and Anthropic's self-measured share of its own AI research work that its model "leads", which is closer to the definition's measure but is judged by the model itself and is the figure scored. The figures do not measure the same thing and should not be compared with each other.</p>
+<p>This condition asks how much of the work of making the best AI better is now done by AI. Nobody outside the AI companies can measure that, so what exists is what the companies say about themselves. Two kinds are recorded. Google says what share of all its new computer code is written by AI; that is a rough stand-in at best, and it is shown but not scored. Anthropic measures what share of its own AI research its AI leads; that is closer to the question but is judged by the AI itself, and it is the figure scored. The two do not measure the same thing and should not be compared.</p>
 <figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
-<figcaption>Every bar is a company statement about itself. Anthropic's row for February 2026 is "under 1%", recorded as 1. Its "above 90%" row is recorded as 90.</figcaption></figure>
-<details><summary>The self-reports</summary>
-{table(["date", "measure", "value", "row"], c_rows)}
+<figcaption>Every bar is a company's statement about itself. Anthropic's February 2026 figure was given as "under 1%" and is drawn as 1; its "above 90%" figure is drawn as 90.</figcaption></figure>
+<details><summary>What the companies said</summary>
+{table(["date", "what was measured", "figure", "source"], c_rows)}
 </details>
 
 <h3 id="leg-d">Condition D. Has the economy changed gear?</h3>
-<p>Robin Hanson's reading of the long record is that the world economy has had three eras of growth, hunting, farming and industry, each doubling output about a hundred times faster than the one before: roughly 230,000 years, 860 years and 15 years per doubling. A new era would double output in years or less. Leg D asks whether that has started, using world real output growth from the World Bank. The threshold, 30 percent a year, is Tom Davidson's published line for "explosive growth" (Open Philanthropy, 2021), chosen so the number is not this project's own invention: far above anything in the modern record, well short of Hanson's "days, not years". This condition is measured by people outside the AI field, which is why it is in the definition; the cost is that output lags capability by years, so it will usually be the furthest behind.</p>
+<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each era the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This condition asks whether that has started, using the World Bank's yearly count of everything the world produces. The finishing line, growth of 30 percent in a year, comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, so the number is not this project's own invention. It is far above anything in the modern record, where the best year since 1961 was {max(q['growth'] for q in d_pts):.1f} percent, and well short of Hanson's "days, not years". This is the one condition measured by people outside the AI world, which is why it is in the test. The cost is that the economy reacts years after the technology does, so it will usually be the furthest behind.</p>
 <figure class="fig"><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
-<figcaption>Annual readings; the series is revised as countries revise their accounts, and a revision that pulls a year back below the line resets the persistence count. Doubling times in <a href="leg-d-world-growth.csv">leg-d-world-growth.csv</a>.</figcaption></figure>
+<figcaption>One bar per year. Countries revise their figures for years afterwards; if a revision pulls a year back below the line, the clock on this condition starts again. How many years each rate takes to double the economy is in <a href="leg-d-world-growth.csv">a table</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
-{table(["year", "growth", "doubling time (years)", "row"], d_rows)}
+{table(["year", "growth", "years to double at that rate", "source"], d_rows)}
 </details>
 
-<h3 id="owed">What the definition still owes</h3>
+<h3 id="owed">What the test still owes</h3>
 <ol>
-<li><b>The backward test.</b> Run on 1995 to 2019 the definition must return "not entered", with the internet years meeting only condition B and the deep-learning years only condition A. The leg A series starts in 2019 and leg C in 2026, so the test cannot run yet. The definition was adopted without it, with this gap stated here; if the test later fires on those years, the thresholds are amended in the open.</li>
-<li><b>The record of past forecasts, for condition B.</b> Old forecasts of the anchor measure (starting from the 2016 expert survey's milestone dates) scored against what happened, by lead time. Until it exists, condition B cannot be scored.</li>
-<li><b>A second source for condition C</b> that is not a company's report on itself.</li>
+<li><b>A trial run on the past.</b> Run on the years 1995 to 2019, the test must say "not yet". The internet boom should trip only condition B, and the years when today's AI methods took off should trip only condition A. The measures do not reach back that far yet, so this has not been done. The test was adopted without it, and that gap is stated here so nobody can say it was hidden. If the trial later trips on those years, the finishing lines are wrong and will be changed, with the change written down.</li>
+<li><b>The record of old predictions, for condition B.</b> Predictions of the measure in condition A, starting with the dates researchers gave in a 2016 survey, set against what then happened. Until it exists, condition B cannot be scored.</li>
+<li><b>A second source for condition C</b> that is not a company talking about itself.</li>
 </ol>
 </section>
 
 <section class="section prose" id="method">
 <h2>Method and data</h2>
-<p>Belief measures and world measures live in separate files and are never combined. <a href="/data/statements.csv">statements.csv</a>, <a href="/data/aggregates.csv">aggregates.csv</a> and the <a href="/data/">community samples</a> hold what people said and believed. <a href="/data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="/data/search_log.csv">search_log.csv</a>. The <a href="/docs/methodology-v2">method</a>, the <a href="/docs/codebook">codebook</a>, the <a href="/docs/singularity-entry-definition">definition</a> and every <a href="/docs/amendments">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen {sc['adopted']} in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
+<p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
 </div>
 {rail(sc, built, commit)}

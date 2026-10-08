@@ -45,7 +45,7 @@ collection for the panel is next; the other public streams have not started.
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files |
 | `scripts/charts.py` | builds the charts from the CSV files |
-| `scripts/site.py` | builds `site/index.html`, the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |
+| `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |
 | `site/` | the static site; serve locally with `python3 -m http.server 8765 --directory site` |
 | `wrangler.jsonc`, `worker/` | how the site is published: a Cloudflare Worker serving `site/` at agizeitgeist.com (`npx wrangler deploy`) |
 
