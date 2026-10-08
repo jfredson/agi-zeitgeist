@@ -30,6 +30,11 @@ HEADERS = {
                        "retrieved", "notes"],
     "aggregates.csv": ["aggregate_id", "speaker_id", "date", "measure", "value",
                        "unit", "n", "source_url", "notes"],
+    # World measures (capability readings, self-reported automation shares) for the
+    # singularity-entry draft: same columns as aggregates.csv, kept in a separate file
+    # so belief measures and world measures are never mixed.
+    "world_measures.csv": ["aggregate_id", "speaker_id", "date", "measure", "value",
+                           "unit", "n", "source_url", "notes"],
     "events.csv": ["event_id", "date", "date_precision", "event_type", "title",
                    "description", "source_url", "notes"],
     "search_log.csv": ["search_id", "speaker_id", "year", "query",
@@ -66,7 +71,9 @@ CODED_FIELDS = {
     "consequence_valence": VALENCE, "affect": AFFECT, "agency": AGENCY,
     "elicitation": ELICITATION, "coding_confidence": CONFIDENCE,
 }
-UNITS = {"year", "probability", "percent_of_respondents", "index"}
+UNITS = {"year", "probability", "percent_of_respondents", "index",
+         # world_measures.csv only
+         "minutes", "days", "percent"}
 EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report"}
 PRECISION_PATTERNS = {
     "day": re.compile(r"^\d{4}-\d{2}-\d{2}$"),
@@ -313,8 +320,7 @@ def check_timeline(f, i, r):
         err(f, i, "lower_bound rows need the bound in timeline_year")
 
 
-def check_aggregates(rows, speakers):
-    f = "aggregates.csv"
+def check_aggregates(rows, speakers, f="aggregates.csv"):
     unique(f, rows, "aggregate_id")
     for i, r in enumerate(rows, start=2):
         if r["speaker_id"] not in speakers:
@@ -376,6 +382,7 @@ def main():
     check_speakers(tables["speakers.csv"])
     check_statements(tables["statements.csv"], speakers)
     check_aggregates(tables["aggregates.csv"], speakers)
+    check_aggregates(tables["world_measures.csv"], speakers, "world_measures.csv")
     check_events(tables["events.csv"])
     check_search_log(tables["search_log.csv"], speakers)
 

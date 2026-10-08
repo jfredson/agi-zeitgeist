@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGI Zeitgeist Tracker</title>
+<meta name="description" content="A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, and a draft measurable definition of entering the singularity.">
+<style>
+:root {
+  --bg: #fbfbfa; --card: #ffffff; --ink: #1f2933; --muted: #6b7785; --line: #e3e8ee; --accent: #2a78d6;
+  --warn-bg: #fff6e0; --warn-ink: #6b4b00; --warn-line: #eda100;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14181d; --card: #1b2026; --ink: #e6e9ed; --muted: #98a2ae; --line: #2b323a; --accent: #6fa8ea;
+    --warn-bg: #2a2410; --warn-ink: #f0d58a; --warn-line: #c98a00;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14181d; --card: #1b2026; --ink: #e6e9ed; --muted: #98a2ae; --line: #2b323a; --accent: #6fa8ea;
+  --warn-bg: #2a2410; --warn-ink: #f0d58a; --warn-line: #c98a00;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 4px; }
+h2 { font-size: 1.35rem; margin: 48px 0 8px; padding-top: 16px; border-top: 1px solid var(--line); }
+h3 { font-size: 1.05rem; margin: 28px 0 6px; }
+p, li { max-width: 70ch; }
+a { color: var(--accent); }
+.sub { color: var(--muted); margin: 0 0 16px; }
+.status { background: var(--warn-bg); color: var(--warn-ink); border-left: 4px solid var(--warn-line); padding: 12px 14px; border-radius: 6px; margin: 20px 0; }
+.status strong { display: block; margin-bottom: 2px; }
+figure { margin: 16px 0; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+figure img { width: 100%; height: auto; display: block; border-radius: 4px; background: #fff; }
+figcaption { color: var(--muted); font-size: 0.85rem; padding: 8px 6px 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 10px 0 4px; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+td:nth-child(2) { white-space: normal; min-width: 14ch; }
+th { color: var(--muted); font-weight: 600; }
+details { margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--accent); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 16px 0; }
+.leg { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.leg b { display: block; margin-bottom: 4px; }
+.leg .g { color: var(--muted); font-size: 0.85rem; }
+.num { font-size: 1.6rem; font-weight: 600; line-height: 1.1; margin: 4px 0; }
+footer { color: var(--muted); font-size: 0.85rem; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 12px; }
+code { font-size: 0.9em; background: var(--card); border: 1px solid var(--line); padding: 0 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<main>
+<h1>AGI Zeitgeist Tracker</h1>
+<p class="sub">A dated, sourced record of how expert and public opinion about artificial general intelligence has moved since 2005. Every number on this page links to the row it came from.</p>
+
+<p>AGI here means AI that can do most intellectual work a person can. The working question: did the main public argument move from <em>whether</em> it is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. The seed phase is complete; the full panel and the public streams have not started.</p>
+
+<div class="status"><strong>Singularity entry status: not scored.</strong>
+The three-leg definition below is a draft under review. Its thresholds are not frozen, so this page shows the readings and nothing derived from a threshold. No gauge and no status will be published until the definition is adopted, by the draft's own rule.</div>
+
+<h2 id="belief">What people believe</h2>
+<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="https://github.com/jfredson/agi-zeitgeist/blob/main/docs/methodology-v2.md">methodology version 2</a>.</p>
+
+<figure><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
+<figcaption>Seed phase: what each statement was mainly about, by year, for five traced people (Kurzweil, Hinton, LeCun, Marcus, Altman). Counts in <a href="chart-1-frames.csv">chart-1-frames.csv</a>. Five people are not a panel; this chart exists to test the pipeline.</figcaption></figure>
+
+<figure><img src="vanguard-pilot-r-singularity.png" alt="Framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3, model-coded">
+<figcaption>Pilot, model-coded: framing in sampled high-score posts from r/singularity, 2024Q4 to 2026Q3. Not representative of participants or the public. Three models from different companies coded a 140-post subset blind and the majority vote is the final code; <a href="https://github.com/jfredson/agi-zeitgeist/blob/main/docs/vanguard/pilot-report-r-singularity-2026-10.md">pilot report</a>.</figcaption></figure>
+
+<h2 id="singularity">Entering the singularity: a definition under review</h2>
+<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of three standard definitions of the singularity, and each one alone has a known false alarm. The <a href="https://github.com/jfredson/agi-zeitgeist/blob/main/docs/singularity-entry-definition-draft-2026-10-07.md">draft definition</a> requires all three to be true at once, for four consecutive quarters:</p>
+
+<div class="legs">
+<div class="leg"><b>A. The pace is accelerating</b>
+<div class="g">Kurzweil's school. The doubling time of a frozen capability measure is itself shrinking.</div>
+<div class="num">121 days</div>
+<div class="g">per doubling, trailing twelve months to 2026-02-05 (last window without a reading past 16 h). Gauge: not scored.</div></div>
+<div class="leg"><b>B. Forecasts have stopped working</b>
+<div class="g">Vinge's school. The horizon over which forecasts beat the trend is collapsing. Confirmed only in arrears; the live stand-in is how fast the consensus date is being pulled in.</div>
+<div class="num">+6.9 yr/yr</div>
+<div class="g">excess pull-in of the expert consensus date, 2022 to 2023-10-01. Zero means the date stood still. Gauge: not scored.</div></div>
+<div class="leg"><b>C. AI is doing the improving</b>
+<div class="g">Good's school. The share of the work that produces frontier progress that is supplied by AI.</div>
+<div class="num">26%</div>
+<div class="g">of Anthropic's AI research work "led" by its own model, August 2026, by its own measurement. Gauge: not scored.</div></div>
+</div>
+
+<h3>Leg A. How long a task the best AI can finish</h3>
+<p>The anchor measure is METR's time horizon: the length of software task, in minutes an expert needs for it, that a model finishes half the time. It is chosen because it has not yet saturated the way benchmarks do. The lower panel is the draft's quantity: the doubling time of the frontier over a trailing twelve months. A flat line would mean steady exponential growth, which is Kurzweil's world but not yet a singularity; a falling line is the signature the draft looks for.</p>
+<figure><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
+<figcaption>Hollow points were not the frontier at release. METR treats estimates past 16 hours as beyond its task suite's reliable range, and its own doubling-time fit excludes them; windows that include such a reading are hollow in the lower panel. The latest frontier reading is Claude Mythos (early preview) at 17 hours on 2026-04-07. Doubling-time series in <a href="leg-a-doubling-time.csv">leg-a-doubling-time.csv</a>.</figcaption></figure>
+<details><summary>Every reading (26 models) and every doubling-time window</summary>
+<table><thead><tr><th>release</th><th>model</th><th>50% horizon</th><th>95% range</th><th>frontier</th><th></th><th>row</th></tr></thead><tbody>
+<tr><td>2019-02-14</td><td>GPT-2</td><td>0.1 min</td><td>0.0 to 0.1 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt2</a></td></tr>
+<tr><td>2020-05-28</td><td>davinci-002</td><td>0.1 min</td><td>0.1 to 0.2 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-davinci-002</a></td></tr>
+<tr><td>2022-03-15</td><td>GPT-3.5 Turbo Instruct</td><td>0.6 min</td><td>0.3 to 1.1 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-3-5-turbo-instruct</a></td></tr>
+<tr><td>2023-03-14</td><td>GPT-4 (0314)</td><td>4.0 min</td><td>1.9 to 8.0 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-4</a></td></tr>
+<tr><td>2023-11-06</td><td>GPT-4 (1106)</td><td>4.0 min</td><td>1.9 to 8.4 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-4-1106</a></td></tr>
+<tr><td>2024-03-04</td><td>Claude 3 Opus</td><td>4.0 min</td><td>1.7 to 8.8 min</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-3-opus</a></td></tr>
+<tr><td>2024-04-09</td><td>GPT-4 Turbo</td><td>3.7 min</td><td>2.0 to 6.7 min</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-4-turbo</a></td></tr>
+<tr><td>2024-05-13</td><td>GPT-4o</td><td>7.0 min</td><td>4.0 to 12.9 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-4o</a></td></tr>
+<tr><td>2024-06-20</td><td>Claude 3.5 Sonnet (June 2024)</td><td>11.4 min</td><td>5.5 to 22.4 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-3-5-sonnet-20240620</a></td></tr>
+<tr><td>2024-09-12</td><td>o1-preview</td><td>20.3 min</td><td>11.7 to 33.4 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-o1-preview</a></td></tr>
+<tr><td>2024-10-22</td><td>Claude 3.5 Sonnet (October 2024)</td><td>20.5 min</td><td>10.1 to 40.8 min</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-3-5-sonnet-20241022</a></td></tr>
+<tr><td>2024-12-05</td><td>o1</td><td>38.8 min</td><td>0.4 to 1.1 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-o1</a></td></tr>
+<tr><td>2025-02-24</td><td>Claude 3.7 Sonnet</td><td>1.0 h</td><td>0.6 to 1.7 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-3-7-sonnet</a></td></tr>
+<tr><td>2025-04-16</td><td>o3</td><td>2.0 h</td><td>1.2 to 3.2 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-o3</a></td></tr>
+<tr><td>2025-05-22</td><td>Claude Opus 4</td><td>1.7 h</td><td>1.0 to 2.7 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-4-opus</a></td></tr>
+<tr><td>2025-08-05</td><td>Claude Opus 4.1</td><td>1.7 h</td><td>1.0 to 2.7 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-4-1-opus</a></td></tr>
+<tr><td>2025-08-07</td><td>GPT-5</td><td>3.4 h</td><td>1.9 to 6.8 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-5-2025-08-07</a></td></tr>
+<tr><td>2025-11-18</td><td>Gemini 3 Pro</td><td>3.7 h</td><td>2.3 to 6.3 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gemini-3-pro</a></td></tr>
+<tr><td>2025-11-19</td><td>GPT-5.1-Codex-Max</td><td>3.7 h</td><td>2.2 to 6.6 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-5-1-codex-max</a></td></tr>
+<tr><td>2025-11-24</td><td>Claude Opus 4.5</td><td>4.9 h</td><td>2.7 to 10.4 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-opus-4-5</a></td></tr>
+<tr><td>2025-12-11</td><td>GPT-5.2</td><td>5.9 h</td><td>3.3 to 13.6 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-5-2</a></td></tr>
+<tr><td>2026-02-05</td><td>Claude Opus 4.6</td><td>12.0 h</td><td>5.3 to 60.6 h</td><td>yes</td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-opus-4-6</a></td></tr>
+<tr><td>2026-02-05</td><td>GPT-5.3-Codex</td><td>5.8 h</td><td>3.2 to 13.6 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-5-3-codex</a></td></tr>
+<tr><td>2026-02-19</td><td>Gemini 3.1 Pro</td><td>6.4 h</td><td>3.9 to 11.6 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gemini-3-1-pro</a></td></tr>
+<tr><td>2026-03-05</td><td>GPT-5.4</td><td>5.7 h</td><td>3.1 to 12.8 h</td><td></td><td></td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-gpt-5-4</a></td></tr>
+<tr><td>2026-04-07</td><td>Claude Mythos (early preview)</td><td>17.4 h</td><td>8.5 to 55.1 h</td><td>yes</td><td>past 16 h</td><td><a href="https://metr.org/assets/benchmark_results_1_1.yaml">metr-th11-claude-mythos-preview-early</a></td></tr>
+</tbody></table>
+<table><thead><tr><th>window end</th><th>days per doubling</th><th>frontier points</th><th>includes a reading past 16 h</th></tr></thead><tbody>
+<tr><td>2024-06-20</td><td>172</td><td>3</td><td></td></tr>
+<tr><td>2024-09-12</td><td>138</td><td>4</td><td></td></tr>
+<tr><td>2024-10-22</td><td>140</td><td>5</td><td></td></tr>
+<tr><td>2024-12-05</td><td>93</td><td>5</td><td></td></tr>
+<tr><td>2025-02-24</td><td>95</td><td>6</td><td></td></tr>
+<tr><td>2025-04-16</td><td>89</td><td>7</td><td></td></tr>
+<tr><td>2025-08-07</td><td>91</td><td>6</td><td></td></tr>
+<tr><td>2025-11-18</td><td>131</td><td>5</td><td></td></tr>
+<tr><td>2025-11-24</td><td>131</td><td>6</td><td></td></tr>
+<tr><td>2025-12-11</td><td>139</td><td>6</td><td></td></tr>
+<tr><td>2026-02-05</td><td>121</td><td>7</td><td></td></tr>
+<tr><td>2026-04-07</td><td>117</td><td>7</td><td>yes</td></tr>
+</tbody></table>
+</details>
+
+<h3>Leg B. Are forecasts holding up?</h3>
+<p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about 14 years of distance in 1.7 calendar years. That is forecasts failing in the slow direction, which is the direction the draft records.</p>
+<figure><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
+<figcaption>Surveys use different definitions and aggregation, so the 2013 survey is shown but not joined to the series. Steps in <a href="leg-b-pull-in.csv">leg-b-pull-in.csv</a>.</figcaption></figure>
+<details><summary>The survey readings, the steps between them, and the market reading for context</summary>
+<table><thead><tr><th>survey</th><th>50% year</th><th>years remaining</th><th>row</th></tr></thead><tbody>
+<tr><td>2016-01-01</td><td>2061</td><td>45.0</td><td><a href="https://ar5iv.labs.arxiv.org/html/1705.08807">aiimpacts-2016-hlmi50</a></td></tr>
+<tr><td>2022-01-01</td><td>2059</td><td>37.0</td><td><a href="https://aiimpacts.org/2022-expert-survey-on-progress-in-ai/">aiimpacts-2022-hlmi50</a></td></tr>
+<tr><td>2023-10-01</td><td>2047</td><td>23.3</td><td><a href="https://arxiv.org/html/2401.02843">aiimpacts-2023-hlmi50</a></td></tr>
+</tbody></table>
+<table><thead><tr><th>step</th><th>calendar years</th><th>change in years remaining</th><th>excess pull-in per year</th></tr></thead><tbody>
+<tr><td>2016 to 2022-01-01</td><td>6.0</td><td>-8.0</td><td>+0.3</td></tr>
+<tr><td>2022 to 2023-10-01</td><td>1.7</td><td>-13.7</td><td>+6.9</td></tr>
+</tbody></table>
+<p>Manifold market, "AGI created and publicly announced before 2030", for context only (a market price, not a survey):</p>
+<table><thead><tr><th>date</th><th>probability</th><th>row</th></tr></thead><tbody>
+<tr><td>2024-01-07</td><td>36%</td><td><a href="https://api.manifold.markets/v0/bets?contractId=hh2bXhwKDTioZ7KtGKfC&amp;limit=2&amp;order=asc&amp;afterTime=1704585600000">manifold-agi2030-2024-01-07</a></td></tr>
+<tr><td>2024-12-07</td><td>47%</td><td><a href="https://api.manifold.markets/v0/bets?contractId=hh2bXhwKDTioZ7KtGKfC&amp;limit=3&amp;order=asc&amp;afterTime=1733529600000">manifold-agi2030-2024-12-07</a></td></tr>
+<tr><td>2025-12-07</td><td>36%</td><td><a href="https://api.manifold.markets/v0/bets?contractId=hh2bXhwKDTioZ7KtGKfC&amp;limit=2&amp;order=asc&amp;afterTime=1765065600000">manifold-agi2030-2025-12-07</a></td></tr>
+<tr><td>2026-09-30</td><td>53%</td><td><a href="https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC">manifold-agi2030-2026-09-30</a></td></tr>
+</tbody></table>
+</details>
+
+<h3>Leg C. Is AI doing the improving?</h3>
+<p>The draft wants the share of inputs to frontier AI progress supplied by AI. Nobody outside the labs can measure that, so what exists is self-report. Two kinds are recorded: a company's share of all new code written by AI, which is a proxy at best, and Anthropic's self-measured share of its own AI research work that its model "leads", which is closer to the draft's measure but is judged by the model itself. The figures do not measure the same thing and should not be compared with each other.</p>
+<figure><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the draft's one-half placeholder marked">
+<figcaption>Every bar is a company statement about itself. Anthropic's row for February 2026 is "under 1%", recorded as 1. Its "above 90%" row is recorded as 90.</figcaption></figure>
+<details><summary>The self-reports</summary>
+<table><thead><tr><th>date</th><th>measure</th><th>value</th><th>row</th></tr></thead><tbody>
+<tr><td>2026-02-01</td><td>share of Anthropic&#x27;s AI research and development work that Claude &#x27;leads&#x27; (R&amp;D Automation Index, prototype)</td><td>1% (upper bound)</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">anthropic_institute-2026-02-rd-leads</a></td></tr>
+<tr><td>2026-04-24</td><td>share of Google&#x27;s new code that is AI-generated and approved by engineers (company self-report)</td><td>75%</td><td><a href="https://www.semafor.com/article/04/24/2026/google-ceo-says-75-of-companys-new-code-is-ai-generated">google-2026-04-code-share</a></td></tr>
+<tr><td>2026-08-01</td><td>share of Anthropic&#x27;s AI research and development work that Claude &#x27;leads&#x27; (R&amp;D Automation Index, prototype)</td><td>26%</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">anthropic_institute-2026-08-rd-leads</a></td></tr>
+<tr><td>2026-08-01</td><td>share of Anthropic&#x27;s AI research and development work at or above the level where Claude &#x27;collaborates&#x27; (R&amp;D Automation Index, prototype)</td><td>90% (lower bound)</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">anthropic_institute-2026-08-rd-collaborates</a></td></tr>
+</tbody></table>
+</details>
+
+<h3>What has to happen before a gauge appears</h3>
+<ol>
+<li>John adopts the definition and freezes the anchor measure, the reference year, the thresholds and the persistence window, with a one-line reason for each. Until then the page shows readings only.</li>
+<li>The backward test: run on 1995 to 2019 the definition must return "not entered", with the internet years firing only leg B and the deep-learning years firing only leg A. The leg A series starts in 2019 and leg C in 2026, so this test cannot run yet and needs older series to be built.</li>
+<li>The leg B forecast-versus-outcome ledger, starting from the 2016 expert survey's milestone dates and what actually happened.</li>
+</ol>
+
+<h2 id="method">Method and sources</h2>
+<p>Belief measures and world measures live in separate files and are never combined. <code>data/statements.csv</code>, <code>data/aggregates.csv</code> and the community samples hold what people said and believed. <code>data/world_measures.csv</code> holds capability readings and company self-reports, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <code>data/search_log.csv</code>. The scripts <code>scripts/validate.py</code>, <code>scripts/charts.py</code> and <code>scripts/site.py</code> rebuild everything on this page from those files.</p>
+<p>Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-07, commit 6726831. https://github.com/jfredson/agi-zeitgeist. Data under CC BY 4.0; scripts under MIT.</p>
+
+<footer>Built 2026-10-07 from commit 6726831. Figures are static images; the CSV beside each one holds the plotted numbers.</footer>
+</main>
+</body>
+</html>

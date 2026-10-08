@@ -156,7 +156,7 @@ Interim Claude–GPT result: R1a raises stance agreement (0.50 without, 0.74 wit
 help attribution (0.75 without, 0.72 with). The trial coders found that both rules need to say
 how a bare reaction or joke title ("WTF") is treated.
 
-**Waiting on John:** a ruling on R1a and R1b; about $15 more OpenAI credit. Then the full-sample
+**Waiting on John:** a ruling on R1a and R1b. (John added $25 OpenAI credit on 2026-10-03, so GPT's share is covered.) Then the full-sample
 run: all 390 posts by Gemini and GPT under the final codebook, with Gemini capped at about 240
 new requests a day (`--ids data/vanguard/r-singularity-pilot-sample.csv` style list, `--max-new 240`,
 a fresh `--tag` so earlier replies aren't reused).

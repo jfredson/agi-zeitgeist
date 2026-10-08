@@ -24,6 +24,7 @@ published argument, online communities) have not started.
 | `data/statements.csv` | one row per public statement, with a verbatim quote, link and codes |
 | `data/aggregates.csv` | survey results, prediction market readings and poll results |
 | `data/events.csv` | dated events (open letters, government actions, reports) for chart labels |
+| `data/world_measures.csv` | world measures, kept apart from belief: capability readings (METR time horizon) and company self-reports of AI-done work, for the singularity-entry draft |
 | `data/search_log.csv` | every search run to build the record, and what it found |
 | `docs/methodology-v2.md` | the method (version 2, 2026-09-30): four streams, coding scheme, panel rule, preregistered tests |
 | `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
@@ -32,9 +33,11 @@ published argument, online communities) have not started.
 | `docs/panel-verification-2026-10.md` | evidence for each panel candidate, for John's freeze decision |
 | `docs/amendments.md` | dated changes to the panel or the codes |
 | `docs/2026-09-30-kickoff.md` | the original plan |
+| `docs/singularity-entry-definition-draft-2026-10-07.md` | draft, not adopted: a three-leg measurable definition of entering the singularity, with gauges and a mark |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files |
 | `scripts/charts.py` | builds the charts from the CSV files |
-| `site/` | chart images, and later a static page |
+| `scripts/site.py` | builds `site/index.html` and the leg A, B and C figures from the CSV files |
+| `site/` | the static page (`index.html`) and its figures; serve locally with `python3 -m http.server 8765 --directory site` |
 
 ## How to cite
 
