@@ -128,17 +128,17 @@ def chart_frames(statements, events, window=WINDOW):
     for side in ax.spines.values():
         side.set_visible(False)
 
-    fig.suptitle("Stream E, named experts: which question did they lead with?", x=0.06, y=0.975, ha="left",
+    fig.suptitle("Named experts: which question did they lead with?", x=0.06, y=0.975, ha="left",
                  fontsize=14, color=INK, fontweight="bold")
-    ax.set_title(f"Share of coded statements by question. Each year pooled with its "
-                 f"neighbours ({window}-year window); n = statements behind each point.\n"
-                 f"Unit: one public statement. Seed panel of five speakers, {len(statements)} statements. "
+    ax.set_title(f"Share of public statements by the question they lead with. Each year is pooled with its "
+                 f"neighbours ({window}-year window); the small numbers along the top are how many statements sit behind each point.\n"
+                 f"Five people so far (Kurzweil, Hinton, LeCun, Marcus, Altman), {len(statements)} statements. "
                  f"Dotted lines: open letters and government actions.",
                  loc="left", fontsize=9, color=INK_2, pad=18)
     ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1), frameon=False, fontsize=9,
               labelcolor=INK, reverse=True)
-    fig.text(0.06, 0.015, "Rough seed-phase chart. Years with few statements swing widely. "
-             "Source: AGI Zeitgeist Tracker, data/statements.csv.",
+    fig.text(0.06, 0.015, "An early chart from five people, not yet the full panel. Years with few statements swing widely. "
+             "Source: statements.csv at agizeitgeist.com/data/.",
              fontsize=7.5, color=INK_2)
     fig.tight_layout(rect=(0, 0.03, 1, 0.97))
     out = SITE / "chart-1-frames.png"
