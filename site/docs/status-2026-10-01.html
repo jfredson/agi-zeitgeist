@@ -1,0 +1,462 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status, 2026-10-01 | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="status-2026-10-01">Status, 2026-10-01</h1>
+<p>Branch <code>worktree-seed-phase</code> (not yet in
+<code>main</code>; John merges). Everything below is committed on that
+branch.</p>
+<h2
+id="update-2026-10-01-later-amendment-a15-and-the-newspaper-archive-checks">Update,
+2026-10-01 (later): amendment A15 and the newspaper archive checks</h2>
+<p><strong>A15 applied</strong> (commit <code>2fad7d4</code>). John's
+rulings on the eight calls are in <code>amendments.md</code> as A15 and
+in the codebook (new ruling 13, one row per capability, with the two
+splits as its worked example; the accepts list now includes firm
+unhedged first-person dates, "predict", "going to", "almost certainly"
+and minimum years). Data changes: LeCun's four "not a road to AGI" rows
+<code>rejects</code> → <code>unexpressed</code>;
+<code>marcus-2016-01</code> and <code>marcus-2026-03</code>
+<code>rejects</code> → <code>accepts</code> with open-ended ranges (from
+2046 and 2036); <code>marcus-2026-04</code> and
+<code>altman-2025-06</code> split into <code>a</code>/<code>b</code>
+rows, so the dataset now has <strong>159 statements</strong>. Kurzweil,
+Chollet, Kai-Fu Lee and Karnofsky tagged <code>frontier_lab</code> with
+dates. None of the changed rows is in John's blind sample.</p>
+<p><strong>Archive checks</strong> (commit <code>a9757ef</code>).
+<code>scripts/archive_check.py</code> searched the Guardian and the New
+York Times for 30 of the 35 core candidates and recorded 1,184 hits in
+<code>docs/panel-evidence-2026-10/archive-checks.csv</code>. Keys are
+read at run time from
+<code>~/Documents/.agi-zeitgeist/credentials.env</code>; a scan found no
+key in any repo file; <code>.gitignore</code> now excludes
+<code>*.env</code> and <code>.agi-zeitgeist/</code>.</p>
+<ul>
+<li><strong>Stopped early.</strong> The New York Times closed the
+connection twice, inside its rate limit. After the first, the run was
+resumed once; after the second it was stopped under the overnight rule.
+<strong>Not checked:</strong> Schmidhuber, Kai-Fu Lee, Walsh, Tegmark,
+Suleyman, and Brynjolfsson's NYT 2024-onward search. All six already
+pass, so nothing can fall, but their newspaper evidence isn't on the
+same footing yet. Rerun with:
+<code>python3 scripts/archive_check.py "Erik Brynjolfsson" "Jürgen Schmidhuber" "Kai-Fu Lee" "Toby Walsh" "Max Tegmark" "Mustafa Suleyman"</code>
+(first delete Brynjolfsson's partial rows from the CSV).</li>
+<li><strong>What counted.</strong> Only 1 hit in 10 named the person in
+a headline or abstract; 1,037 named them only in the article text and
+were recorded but not counted, as ruled. Counted pre-2018 pieces:
+Kurzweil 8, Musk 8, Hassabis 6, Bostrom 4, Brooks 2, Hinton 1, LeCun 1,
+Ng 1 (plus Goertzel 1 and Pearl 1, both not about AI futures).</li>
+<li><strong>Verdicts changed.</strong> LeCun becomes a full pass (NYT
+2015 interview). Brooks no longer relies on his own essay. <strong>Seven
+move from pending to fail:</strong> Pinker, Floridi, Legg, Sutskever,
+Shanahan, Wooldridge, Goertzel. Etzioni's only recent lead (NYT 2024 on
+election deepfakes) isn't an AGI statement, so he still fails C2.</li>
+</ul>
+<p><strong>Freeze candidates now:</strong> 19 core passes (skeptic 7,
+outside the US and UK 5, philosopher 3, frontier lab 9: all minimums
+met), 3 unclear (Yudkowsky, Bengio, Cowen), 14 fail; 8 cohort passes
+plus Sutskever unclear.</p>
+<h3 id="for-john">For John</h3>
+<ol type="1">
+<li><strong>The headline-or-abstract rule is strict.</strong> It
+excluded 14 pre-2018 Guardian pieces about AI that quote Shanahan, 27
+for Pinker and 21 for Etzioni, and it moves five skeptic candidates to
+fail. If that's not the intent, a looser rule ("named in the text of a
+piece whose headline or abstract is about AI futures") would bring
+several back; the CSV has what's needed to re-mark.</li>
+<li><strong>My reading of "headline-only match":</strong> name in the
+headline but no abstract to show the piece is about AI. Recorded with
+the flag <code>headline_only</code>, not counted (3 hits). Correct me if
+you meant something else.</li>
+<li><strong>The NYT dropped connections twice</strong> at about 25
+requests each time. If it happens again, a longer pause than five a
+minute may help.</li>
+<li>The core is at 19, six short of "about 25"; the three unclear cases
+would take it to 22.</li>
+</ol>
+<p>Not started, as instructed: public streams, wide-list collection,
+full-panel collection.</p>
+<hr />
+<h2 id="update-2026-10-01-after-johns-rulings-amendment-a14">Update,
+2026-10-01: after John's rulings (amendment A14)</h2>
+<p>John ruled on all fifteen decisions listed further down. All seven
+steps of his 2026-10-01 brief are done:</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>result</th>
+<th>commit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Rulings written in</td>
+<td>A14 in <code>amendments.md</code>; methodology-v2 section 3 updated
+(wide list target, one self-written piece allowed, skeptic window,
+time-varying frontier-lab tag); codebook rulings 9 to 12, each with a
+seed example</td>
+<td><code>9fd9e78</code></td>
+</tr>
+<tr>
+<td>2. Recode</td>
+<td>129 rows flagged, sources re-read; <strong>45 rows changed</strong>
+(coder <code>claude-agent-v2.1</code>): ruling 9: 21 rows, ruling 10:
+20, ruling 11: 1, ruling 12: 3 (some rows under more than one). By
+speaker: Kurzweil 4, Hinton 9, LeCun 9, Marcus 15, Altman 8.
+<code>rejects</code> fell from 39 to 16</td>
+<td><code>a1f7626</code></td>
+</tr>
+<tr>
+<td>3. Panel re-marked</td>
+<td>Marcus, Russell, Brooks now pass; Kai-Fu Lee tagged skeptic; Dennett
+dropped and moved to the wide list (185 names); new section "Freeze
+candidates as of 2026-10-01"</td>
+<td><code>abdbd74</code></td>
+</tr>
+<tr>
+<td>4. Double-coding sample</td>
+<td><code>data/double-coding/john-sample.csv</code> (30 statements:
+Hinton 1/3/11 and Marcus 1/4/10 by era, seed 20261001),
+<code>agent-codes.csv</code>, <code>scripts/agreement.py</code></td>
+<td><code>118bb4b</code></td>
+</tr>
+<tr>
+<td>5. Licences</td>
+<td><code>LICENSE</code> (MIT, scripts), <code>LICENSE-DATA</code> (CC
+BY 4.0, data), citation line in the README</td>
+<td><code>1fafa0c</code></td>
+</tr>
+<tr>
+<td>6. Worklog</td>
+<td>TimeAssembler entry <code>11f9ece9</code> under the AGI Zeitgeist
+project</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>7. This update</td>
+<td></td>
+<td>this commit</td>
+</tr>
+</tbody>
+</table>
+<p><code>scripts/validate.py</code> runs clean. The chart is unchanged:
+no lead-frame codes changed in the recode.</p>
+<h3
+id="panel-freeze-candidates-details-in-docspanel-verification-2026-10md">Panel
+freeze candidates (details in
+<code>docs/panel-verification-2026-10.md</code>)</h3>
+<ul>
+<li><strong>Core, pass now (19):</strong> Kurzweil, Bostrom, Hanson,
+Hinton, LeCun, Hassabis, Altman, Marcus, Ng, Russell, Brooks, Musk,
+Chalmers, Brynjolfsson, Schmidhuber, Kai-Fu Lee, Walsh, Tegmark,
+Suleyman. Quotas: skeptic 7, outside the US and UK 5, philosopher 3,
+frontier lab 7. <strong>All four minimums are met.</strong></li>
+<li><strong>Core, unclear (10),</strong> mostly waiting on the newspaper
+archive checks: Yudkowsky, Bengio, Cowen, Pinker, Floridi, Legg,
+Sutskever, Shanahan, Wooldridge, Goertzel.</li>
+<li><strong>Cohort, pass (8):</strong> Amodei, Aschenbrenner, Kokotajlo,
+Cotra, Huang, Leike, Mollick, Chollet; Sutskever unclear.</li>
+</ul>
+<h3 id="new-questions-for-john-raised-while-applying-the-rulings">New
+questions for John (raised while applying the rulings)</h3>
+<ol type="1">
+<li><strong>Firm dates without a listed word.</strong> "I set the date
+for the Singularity as 2045", "I'm still saying 2029", "I've stuck with
+my 2029 prediction", "put the date at 2029" (Kurzweil 2005, 2014, 2016,
+2024) and Altman's "by 2030 … I'd be very surprised" and "Humanity is
+close to building digital superintelligence" were kept as
+<code>accepts</code>. Coding them "no position" would misreport the
+speaker. Confirm, or rule them out.</li>
+<li><strong>A hedge and an acceptance word on the same date</strong> ("I
+think it may be 20 years or less") coded <code>uncertain</code>, the
+hedge deciding. Confirm.</li>
+<li><strong>Bare "takeoff"</strong> coded <code>si_assist</code>, since
+the words don't say who improves the systems. Confirm.</li>
+<li><strong>Rejecting a route, not the capability.</strong> LeCun's
+"LLMs are not a road towards AGI" (four rows) stays
+<code>rejects</code>. Under a strict reading of ruling 9 these would be
+<code>unexpressed</code>.</li>
+<li><strong>"At least a decade" / "at least thirty or fifty
+years"</strong> (Marcus 2016, 2026) stay <code>rejects</code> with a
+minimum year. Ruling 11's reasoning could make them
+<code>accepts</code>.</li>
+<li><strong>Words that may count as acceptance:</strong> "predict"
+(Hinton 2023, kept <code>uncertain</code> because of "without much
+confidence"), "almost certainly" (Marcus 2026, read as above 50%),
+"going to" (several rows, read as "will").</li>
+<li><strong>Two rows worth a human look:</strong>
+<code>marcus-2026-04</code> (now <code>si_assist</code>, but Marcus says
+that kind of tool exists, so <code>disputed</code> fits poorly) and
+<code>altman-2025-06</code> ("the takeoff has started", target kept as
+superintelligence, marked ambiguous).</li>
+<li><strong>Arguable tags still not counted:</strong> frontier lab for
+Kurzweil, Chollet, Kai-Fu Lee and Karnofsky; Kokotajlo not tagged
+philosopher (trained in philosophy, works as a forecaster).</li>
+</ol>
+<h3 id="still-waiting-on-john">Still waiting on John</h3>
+<p>Code the 30-statement sample
+(<code>python3 scripts/agreement.py</code> compares); freeze the panel;
+Guardian and New York Times API keys for the archive checks; merge the
+branch. Not started, as instructed: archive checks, public streams,
+wide-list collection, full-panel collection.</p>
+<hr />
+<p><em>The rest of this file is the status as written on 2026-09-30. The
+fifteen decisions at the end were ruled on 2026-10-01 in amendment
+A14.</em></p>
+<h2 id="what-was-completed">What was completed</h2>
+<p><strong>Your first brief (seed phase), all five steps</strong>, then
+<strong>the version 2 brief, all six steps</strong>, then
+<strong>amendment A13 (three-tier panel)</strong>, steps 5a to 5e.</p>
+<table>
+<thead>
+<tr>
+<th>step</th>
+<th>result</th>
+<th>commit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repo skeleton</td>
+<td>five data files, method, codebook, validator</td>
+<td><code>e9bd3d2</code></td>
+</tr>
+<tr>
+<td>Aggregate anchors</td>
+<td>200 figures: four expert surveys checked against the papers, one
+Manifold market, Pew, YouGov, Monmouth and Ipsos polls with exact
+wording, Google Trends 2005 to 2026; 9 dated events</td>
+<td><code>d242ba6</code></td>
+</tr>
+<tr>
+<td>Version 2 documents</td>
+<td>your <code>methodology-v2.md</code>, <code>amendments.md</code>, the
+reviews and the updated kickoff plan</td>
+<td><code>1508fde</code></td>
+</tr>
+<tr>
+<td>1. Migrate</td>
+<td><code>statements.csv</code> moved to the version 2 fields;
+<code>stance</code> and <code>question_frame</code> dropped</td>
+<td><code>06c7b34</code></td>
+</tr>
+<tr>
+<td>2. Recode</td>
+<td>all 157 statements recoded from their sources by helpers who never
+saw the old stance code</td>
+<td><code>4c3ca6e</code></td>
+</tr>
+<tr>
+<td>3. Codebook, method, validator</td>
+<td>codebook rewritten with decision rules and examples;
+<code>methodology.md</code> points to version 2; validator enforces
+every version 2 rule, including that endorsement is never inferred from
+silence</td>
+<td><code>294b4e8</code></td>
+</tr>
+<tr>
+<td>4. Collection</td>
+<td>all five traces complete under the fixed queries; 45 quiet years
+logged</td>
+<td><code>9c3fa58</code></td>
+</tr>
+<tr>
+<td>A13 documents</td>
+<td>your amendment A13 and revised section 3</td>
+<td><code>1c9a472</code></td>
+</tr>
+<tr>
+<td>5c. Wide list</td>
+<td><code>data/wide_list_candidates.csv</code>, 184 names</td>
+<td><code>7a62957</code></td>
+</tr>
+<tr>
+<td>5d, 5e. Panel verification; tiers</td>
+<td><code>docs/panel-verification-2026-10.md</code> (three tables, quota
+totals); <code>speakers.csv</code> has <code>tier</code> and four
+quota-tag columns</td>
+<td><code>8f8644b</code></td>
+</tr>
+<tr>
+<td>6. Chart</td>
+<td><code>site/chart-1-frames.png</code>, frame_primary share by
+year</td>
+<td><code>bd8f935</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>scripts/validate.py</code> runs clean: 14 sources, 157
+statements, 200 figures, 9 events, 740 search-log rows.</p>
+<h3 id="the-seed-in-numbers">The seed in numbers</h3>
+<table>
+<thead>
+<tr>
+<th>speaker</th>
+<th>statements</th>
+<th>primary</th>
+<th>secondhand</th>
+<th>years with the full fixed queries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ray Kurzweil</td>
+<td>24</td>
+<td>17</td>
+<td>7</td>
+<td>2005 to 2026</td>
+</tr>
+<tr>
+<td>Geoffrey Hinton</td>
+<td>22</td>
+<td>18</td>
+<td>4</td>
+<td>2005 to 2026</td>
+</tr>
+<tr>
+<td>Yann LeCun</td>
+<td>33</td>
+<td>22</td>
+<td>11</td>
+<td>2005 to 2026</td>
+</tr>
+<tr>
+<td>Gary Marcus</td>
+<td>39</td>
+<td>33</td>
+<td>6</td>
+<td>2005 to 2026</td>
+</tr>
+<tr>
+<td>Sam Altman</td>
+<td>39</td>
+<td>29</td>
+<td>10</td>
+<td>2013 to 2026 (one search for 2005 to 2012)</td>
+</tr>
+<tr>
+<td><strong>total</strong></td>
+<td><strong>157</strong></td>
+<td><strong>119</strong></td>
+<td><strong>38</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Pass check (methodology-v2 section 12): <strong>at least 60
+statements with working sources: met</strong> (157; every link
+reachable, six sites refuse scripted checks but were read by
+page-reading tool). <strong>Codes spread across buckets: met.</strong>
+<strong>Double-coding agreement on two speakers: not yet done</strong>
+(see decisions).</p>
+<h3 id="what-the-seed-shows-so-far-five-people-only-not-a-finding">What
+the seed shows so far (five people only, not a finding)</h3>
+<p>The "whether, then when, then now" story does not show up in these
+five. "When will it arrive?" leads in every era: 14 of 21 statements in
+2005 to 2015, 14 of 36 in 2016 to 2022, 49 of 100 since 2023. "Is
+today's system close?" rises from 2016, not 2023 (14 statements in 2016
+to 2022). "Can it improve itself?" leads only 5 statements, all since
+2023. The clearest change is dates moving closer (Hinton: 2070 in 2015,
+then 5 to 20 years, then "close to AGI" in 2026), not a change of
+question.</p>
+<h2 id="what-was-skipped-and-why">What was skipped, and why</h2>
+<ul>
+<li><strong>Metaculus history</strong>: not retrieved. The site refused
+every request (403) and the Internet Archive was offline; every attempt
+is in the search log.</li>
+<li><strong>The full TIME100 AI lists</strong>: only about half of each
+list could be read (time.com refuses scripted requests). The wide list
+records the gap; missing names were not filled in.</li>
+<li><strong>Several panel checks</strong>: news sites the tools could
+not reach (New York Times, Guardian, New Yorker, Wired, BBC and others)
+left some prominence checks unresolved; those are marked "fails as
+searched" or "unclear", never rounded up.</li>
+<li><strong>No public streams, no wide-list collection, no full-panel
+collection</strong>, as instructed. Population survey items stay in
+<code>aggregates.csv</code>; moving them to
+<code>data/surveys.csv</code> belongs to the population stream.</li>
+<li><strong>Corrections found while recoding</strong> (fixed, listed for
+the record): two spliced quotes (<code>altman-2017-01</code>,
+<code>lecun-2025-05</code>); the 2026 Hinton briefing row ("maybe a
+year" was the window for lawmakers, not a superintelligence date); an
+Altman quote moved from Davos 2024 to StrictlyVC 2023; several
+non-arrival years removed from timeline fields.</li>
+</ul>
+<h2 id="what-needs-your-decision">What needs your decision</h2>
+<p><strong>Panel freeze</strong> (details in
+<code>docs/panel-verification-2026-10.md</code>):</p>
+<ol type="1">
+<li><strong>Bylines.</strong> Does a piece the person wrote count as
+"naming" them? This decides whether the <strong>skeptic quota of six is
+reachable</strong>: without it, 4 of the 16 core passes are skeptics;
+with it, 6 (adding Marcus and Brooks), two of them at medium
+confidence.</li>
+<li><strong>"Pre-2017" for the skeptic tag</strong>: strictly before
+2017, or 2017 and earlier? (Kai-Fu Lee, LeCun, Dennett.)</li>
+<li><strong>Co-written statements</strong> for the 2024-or-later check
+(Ernest Davis).</li>
+<li><strong>Dennett</strong> died on 2024-04-19. Keep or drop?</li>
+<li><strong>Arguable quota tags</strong> (frontier lab: Kurzweil,
+Chollet, Kai-Fu Lee, Karnofsky; philosopher: Hinton, Hassabis;
+non-US/UK: Chalmers, Legg; skeptic: Suleyman).</li>
+<li><strong>Cohort prominence check</strong>: the A13 brief read
+literally asks the cohort for three national pieces from 2017 or
+earlier, which contradicts the cohort's definition. I treated it as
+information only. Confirm?</li>
+<li><strong>Archive checks</strong> for the C3 failures that are
+probably the tools (Pinker, Shanahan, Wooldridge, Goertzel, Floridi,
+Legg, Sutskever). They would mostly add skeptics.</li>
+<li><strong>Wide list size</strong>: 184 names against a target of 60 to
+100, because the rule takes every name. Trim by a rule, or keep?</li>
+</ol>
+<p><strong>Codebook rulings</strong> (the recoders hit the same
+questions independently):</p>
+<ol start="9" type="1">
+<li><strong>"Not here yet" coded as <code>rejects</code>.</strong> Most
+of Marcus's 23 and LeCun's 13 <code>rejects</code> reject AGI existing
+now or by a near date, not ever. A chart of "rejects" would mislead.
+Options: restrict <code>rejects</code> to "never / not in the frame
+given" and use <code>present_capability: disputed</code> for "not yet",
+or add an explicit rule.</li>
+<li><strong>Hedged words.</strong> "May", "might", "could" next to a
+date: one recoder coded them <code>uncertain</code>, another
+<code>accepts</code>. This is the most likely point of disagreement in
+the double-coding check; the codebook should settle it before that
+check.</li>
+<li><strong>Distance as acceptance.</strong> "Decades away" read as
+accepting it arrives eventually (Marcus, LeCun): fine, or
+<code>unexpressed</code>?</li>
+<li><strong>"Takeoff" and "recursive self-improvement"</strong> map to
+<code>si_sustained</code> by the codebook, but speakers often narrow
+them ("very slow takeoff", "a larval version"). Only 5 statements have a
+self-improvement target, so the four levels were rarely tested.</li>
+</ol>
+<p><strong>Process:</strong></p>
+<ol start="13" type="1">
+<li><strong>Double-coding for the pass check.</strong> Who codes two of
+the five independently: you, or a second agent pass? Ruling the codebook
+questions first would raise agreement.</li>
+<li><strong>Merging the branch.</strong> The work is on
+<code>worktree-seed-phase</code>; <code>main</code> is still at the
+skeleton commit. Your main checkout holds uncommitted copies of files
+the branch also contains: <code>scripts/validate.py</code> and
+<code>docs/methodology.md</code> (my edits from early in the session),
+and <code>docs/amendments.md</code>,
+<code>docs/methodology-v2.md</code>,
+<code>docs/2026-09-30-kickoff.md</code> and <code>docs/reviews/</code>
+(from the planning session). The branch has all of them, with
+<code>amendments.md</code> also carrying the agent-decision entry, so a
+fast-forward merge will refuse until the main-checkout copies are set
+aside. If nothing else changed there since: in
+<code>~/Code/agi-zeitgeist</code>, run
+<code>git stash push -u -m pre-seed-merge</code>, then
+<code>git merge --ff-only worktree-seed-phase</code>, then check the
+stash is redundant before dropping it
+(<code>git stash show -p stash@{0}</code>). Or open a pull request once
+the repo has a GitHub remote.</li>
+<li><strong>Licence</strong> (open decision 4 in the kickoff plan) is
+still unset.</li>
+</ol>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/status-2026-10-01.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

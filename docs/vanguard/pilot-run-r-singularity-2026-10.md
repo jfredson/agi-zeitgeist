@@ -351,3 +351,76 @@ fields reliable because the other two pairs clear 0.6.
 **Not done yet (left for a working session, as planned):** re-apply the 20-eligible cut-off per
 quarter from the majority codes, redraw the figure from the majority codes, and check that
 "AGI already achieved" counts leave out ironic posts.
+
+## Figure redrawn from the majority codes, 2026-10-08
+
+The three items left over from 2026-10-07 are done. `scripts/vanguard_figure.py` now reads
+the majority codes (`r-singularity-pilot-codes-majority-full-final.csv`) and the full-sample
+reliability table (`three-model-reliability-full-final.csv`) instead of Claude's first pass and
+the 140-post table. The figure, its counts table and the pilot report's Results and Agreement
+sections are rewritten from them. No model was run and nothing was spent.
+
+**What the majority file holds, and how it is read.** One row per post: whether the post
+counts, the main claim's fields and the post-level fields; "unresolved" where no two models
+agree. It carries no secondary claims, no forecast horizon text and no frame tags. So:
+- The claim-kind shares (capability, consequence, industry and governance) count what the
+  **main claim** is about. Secondary claims were never compared across the models. Each model
+  finds a consequence claim somewhere in about twice as many posts as have one as the main
+  claim (Claude 50 against 30, Gemini 55 against 29, GPT 63 against 29), which is why the
+  consequence shares are lower than the first-pass figure's. *Agent decision; John can rule
+  otherwise.*
+- A post with an unresolved value in any field a measure uses is left out of that measure
+  (it cannot be put on either side). Across the counted posts: what the claim is about is
+  unresolved for 3 top posts and 1 random post (so the three claim-kind measures leave those
+  out); the extrapolation measure leaves out 3 top and 3 random posts (an unresolved target
+  or an unresolved extrapolation code); the headline measure, which uses four fields, leaves
+  out 13 top posts and 8 random posts. Timing is the field most often unresolved (12 of the
+  265 eligible posts). Per quarter: the counts table, column `posts_left_out_unresolved`.
+- Two yes-or-no things the headline measure needs are voted in the figure script from the
+  three models' main-claim rows, with the same rule (two models must agree): whether a
+  forecast states a horizon, and whether "singularity" is among the words used. Neither is
+  unresolved for any counted post.
+
+**Top-post cut-off, re-applied from the majority codes.** Per quarter, down the ranked list
+until 20 posts are eligible by majority; eligible posts below that rank are left out.
+
+| quarter | ranks the models coded | eligible by majority | cut-off rank | counted | eligible left out below the cut-off |
+|---|---|---|---|---|---|
+| 2024Q4 | 1 to 27 | 21 | 26 | 20 | 1 |
+| 2025Q1 | 1 to 29 | 19 | none reached | 19 | 0 |
+| 2025Q2 | 1 to 26 | 20 | 26 | 20 | 0 |
+| 2025Q3 | 1 to 27 | 20 | 27 | 20 | 0 |
+| 2025Q4 | 1 to 32 | 19 | none reached | 19 | 0 |
+| 2026Q1 | 1 to 32 | 22 | 30 | 20 | 2 |
+| 2026Q2 | 1 to 31 | 22 | 28 | 20 | 2 |
+| 2026Q3 | 1 to 26 | 18 | none reached | 18 | 0 |
+
+156 top posts counted (161 eligible by majority among the 230 screened, less 5 below a
+cut-off). Three quarters fall short of 20 because the majority finds fewer eligible posts than
+Claude's first pass did among the ranks that were screened; reaching 20 there needs all three
+models to code the next posts down the ranked reserve (ranks 30 and on in 2025Q1, 33 and on
+in 2025Q4, 27 and on in 2026Q3). Not done; it costs money and is John's call. The random
+sample has no cut-off: 160 drawn, 104 eligible by majority, all counted.
+
+**Irony and the headline claims.** The codebook (section 3, `rhetorical_mode`, and rule R1a)
+says to record irony in `rhetorical_mode` but does not say whether an ironic post can affirm
+a headline claim; the measures section says only "poster affirms each". So the figure script
+now leaves posts coded `ironic` by majority out of the headline count, and still counts
+`mixed` and `unclear` (*agent decision*, stated in the script's docstring). It changes the
+top-post count from 3 to 0: the three posts are "AGI 🚀" (2026Q2), "AGI achieved" (2026Q3) and
+"Post-Singularity Free Healthcare" (2025Q2), each affirmed and ironic by majority. No post
+coded `mixed` affirms a headline claim, so requiring `literal` would give the same count. One
+more "AGI achieved" top post (2025Q2) has no majority on whether the poster agrees and is
+left out as unresolved. The headline measure now depends on tone, which passes the
+reliability test on the full sample (kappa 0.74, 0.75, 0.79).
+
+**Headline numbers, all quarters together** (top posts; random posts): main claim a
+capability 89 of 153 (58%); 52 of 103 (50%). Consequence 14 of 153 (9%); 16 of 103 (16%).
+Industry and governance 43 of 153 (28%); 28 of 103 (27%). Capability posts that extrapolate
+7 of 89 (8%); 8 of 51 (16%). Headline claims 0 of 143; 1 of 96. Full table and the
+title-only split in the pilot report.
+
+**Files changed:** `scripts/vanguard_figure.py`, `site/vanguard-pilot-r-singularity.png`,
+`site/vanguard-pilot-r-singularity.csv` (new column `posts_left_out_unresolved`),
+`docs/vanguard/pilot-report-r-singularity-2026-10.md`, and this record. The web page's
+caption still says a 140-post subset; it is updated separately.

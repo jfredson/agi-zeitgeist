@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codebook: vanguard
+sub-series (stream F) | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="../doc.css"></head><body><main>
+<nav class="top"><a href="../../">AGI Zeitgeist Tracker</a> <a href="../README.html">About the data</a> <a href="../methodology-v2.html">Method</a> <a href="../singularity-entry-definition.html">Singularity definition</a> <a href="../amendments.html">Changes</a></nav>
+<!-- Frozen copy of docs/vanguard/codebook.md as of commit c9a9ac0, before rules R2 and R3 were adopted. Used only so the remaining posts of the 2026-10-03 rules trial are coded under the same codebook as the rest of that run. -->
+
+<h1 id="codebook-vanguard-sub-series-stream-f">Codebook: vanguard
+sub-series (stream F)</h1>
+<p>How posts in the vanguard sub-series are coded. Written 2026-10-03
+from section 7 of the accepted amendment
+<code>docs/amendments/2026-10-02-vanguard-stream.md</code>, the rules
+applied in the r/singularity pilot, and John's rulings of 2026-10-03 on
+the pilot report. Changes go in <code>docs/amendments.md</code> first.
+(Statements by named experts, stream E, use
+<code>docs/codebook.md</code>.)</p>
+<p>Code what the post says, not what you know about the topic or the
+poster. Don't check whether claims are true.</p>
+<h2 id="1-content-basis">1. Content basis</h2>
+<table>
+<thead>
+<tr>
+<th>post type</th>
+<th>coded from</th>
+<th><code>title_only</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>title and body</td>
+<td>blank; <code>yes</code> if the body was removed or deleted and only
+the title survives (<code>content_basis: text_title</code>)</td>
+</tr>
+<tr>
+<td>image</td>
+<td>title and the image. Coded if the image has legible text or a
+legible chart or screenshot; otherwise not eligible
+(<code>image_no_text</code>). A dead image file: not eligible
+(<code>content_unavailable</code>)</td>
+<td>blank</td>
+</tr>
+<tr>
+<td>meme</td>
+<td>as an image: <strong>the legible-text rule applies</strong> (ruling
+2026-10-03)</td>
+<td>blank</td>
+</tr>
+<tr>
+<td>video</td>
+<td><strong>title only</strong> (ruling 2026-10-02)</td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td>link</td>
+<td>title plus the linked page if it opens; title only if it
+doesn't</td>
+<td><code>yes</code> only if title only</td>
+</tr>
+<tr>
+<td>gallery</td>
+<td>not eligible (<code>content_unavailable</code>); content needs
+reddit.com</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<p>A post whose title itself reads "[ Removed by moderator ]" is not
+eligible (<code>content_unavailable</code>).</p>
+<h2 id="2-eligibility">2. Eligibility</h2>
+<p><strong>Eligible</strong> = the post asserts, disputes or relays a
+claim about AI capability, timeline, consequence, or the AI industry and
+its governance.</p>
+<p>Rulings of 2026-10-03:</p>
+<ul>
+<li><strong>Posts that don't mention AI are not eligible</strong>
+(<code>no_ai_claim</code>), even when the subreddit makes an AI reading
+likely. The post itself (title, body, legible image text or opened link)
+must refer to AI, a model, a lab, a robot or an AI product.</li>
+<li><strong>Video titles that only name a demo</strong> ("Atlas does a
+backflip", "Will Smith eating spaghetti in Veo 3.1") <strong>are
+eligible capability claims</strong> (<code>specific_capability</code>,
+<code>temporal_status: achieved</code>).</li>
+<li><strong>AI company and policy drama</strong> (disputes between labs,
+executives' public fights, a model's political answers as a news item,
+government action on AI companies) is eligible under the target
+<code>industry_governance</code>.</li>
+<li>Pure questions with no claim, slogans, off-topic posts and meta are
+not eligible (<code>no_ai_claim</code>).</li>
+</ul>
+<h2 id="3-claims">3. Claims</h2>
+<p>The post is the sampling unit; each distinct claim is a row
+(<code>claim_n</code> 1, 2, ...), main claim first. An ineligible post
+gets one row with <code>claim_n</code> 0 and the claim fields blank.</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>codes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claim_target</code></td>
+<td><code>specific_capability</code> (a named task, model, benchmark,
+robot or demo); <code>agi</code> (AGI, human-level or general
+capability); <code>self_improvement</code> (AI doing AI research or
+improving itself, with <code>si_level</code>);
+<code>pace_singularity</code> (pace of progress, takeoff,
+"singularity"); <code>consequence</code> (social or economic effects of
+AI); <code>industry_governance</code> (AI companies, executives, labs'
+conduct and disputes, regulation and policy, government action on
+AI)</td>
+</tr>
+<tr>
+<td><code>si_level</code></td>
+<td>only for self_improvement: <code>si_assist</code>,
+<code>si_research</code>, <code>si_modify</code>,
+<code>si_sustained</code>; the lowest level the words support</td>
+</tr>
+<tr>
+<td><code>temporal_status</code></td>
+<td><code>achieved</code>, <code>under_way</code>,
+<code>forecast</code>, <code>hypothetical</code>,
+<code>unspecified</code></td>
+</tr>
+<tr>
+<td><code>forecast_horizon</code></td>
+<td>the exact date, range or words of a forecast; else blank</td>
+</tr>
+<tr>
+<td><code>stance</code></td>
+<td><code>affirms</code>, <code>denies</code>, <code>questions</code>,
+<code>conditional</code>, <code>neutral_relay</code>,
+<code>unclear</code></td>
+</tr>
+<tr>
+<td><code>epistemic_qualification</code></td>
+<td><code>unqualified</code>, <code>qualified</code>,
+<code>explicit_probability</code>, <code>unclear</code></td>
+</tr>
+<tr>
+<td><code>rhetorical_mode</code></td>
+<td><code>literal</code>, <code>ironic</code>, <code>mixed</code>,
+<code>unclear</code></td>
+</tr>
+<tr>
+<td><code>development_preference</code></td>
+<td><code>supports</code>, <code>opposes</code>,
+<code>conditional</code>, <code>not_expressed</code></td>
+</tr>
+<tr>
+<td><code>attribution</code></td>
+<td><code>original</code>, <code>panel_member</code>,
+<code>lab_or_company</code>, <code>news_outlet</code>,
+<code>other_person</code></td>
+</tr>
+<tr>
+<td><code>frame_tags</code></td>
+<td>words actually used, <code>;</code>-separated: agi, asi,
+superintelligence, singularity, takeoff, rsi, recursive, feel_the_agi,
+accelerate, e_acc, doom, hype, bubble, other. A benchmark or product
+name containing a word (ARC-AGI) is not a tag; a pun on a word
+("singularity of sight") is not a tag</td>
+</tr>
+<tr>
+<td><code>extrapolates_to_horizon</code></td>
+<td>post level, repeated on each of the post's rows: <strong>does the
+post infer a timeline or a consequence from a capability?</strong>
+<code>yes</code> (e.g. "it solved six open problems, so the singularity
+is near"; "this robot will take warehouse jobs"); <code>no</code> (a
+capability is claimed but nothing is inferred from it); <code>na</code>
+(no capability claim in the post). Blank on ineligible rows. Ruling
+2026-10-03</td>
+</tr>
+<tr>
+<td><code>title_only</code></td>
+<td><code>yes</code> when coded from the title alone</td>
+</tr>
+<tr>
+<td><code>evidence_span</code></td>
+<td>25 words or fewer, verbatim, from the title, body or image text</td>
+</tr>
+</tbody>
+</table>
+<p>Denials keep their target ("AGI is not imminent" = agi, forecast,
+denies).</p>
+<h2 id="4-measures-amendment-section-8-as-revised-2026-10-03">4.
+Measures (amendment section 8, as revised 2026-10-03)</h2>
+<ul>
+<li><strong>Primary:</strong> share of eligible posts making a
+<strong>capability</strong> claim (<code>specific_capability</code>) and
+a <strong>consequence</strong> claim (<code>consequence</code>), and the
+share of capability posts that <strong>extrapolate</strong> to a
+timeline or consequence.</li>
+<li><strong>Also reported:</strong> <code>industry_governance</code>
+claims.</li>
+<li><strong>Headline claims, reported as near-absent:</strong> AGI
+already achieved; AGI within a stated horizon; self-improvement under
+way; singularity framing (poster affirms each).</li>
+<li>Every share is reported with and without <code>title_only</code>
+rows.</li>
+</ul>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/vanguard/codebook-frozen-2026-10-03-before-rules.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

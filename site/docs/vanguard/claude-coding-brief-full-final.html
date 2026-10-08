@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coding
+brief: Claude&#x27;s pass over the 390 pilot posts, final codebook
+(2026-10-04) | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="../doc.css"></head><body><main>
+<nav class="top"><a href="../../">AGI Zeitgeist Tracker</a> <a href="../README.html">About the data</a> <a href="../methodology-v2.html">Method</a> <a href="../singularity-entry-definition.html">Singularity definition</a> <a href="../amendments.html">Changes</a></nav>
+<h1
+id="coding-brief-claudes-pass-over-the-390-pilot-posts-final-codebook-2026-10-04">Coding
+brief: Claude's pass over the 390 pilot posts, final codebook
+(2026-10-04)</h1>
+<p>Given to six fresh <code>claude-opus-5-5</code> coders, 65 posts
+each, for the full-sample run. They get the same instructions, codebook
+and post content that <code>scripts/vanguard_crossfamily_pass.py</code>
+sends Gemini and GPT; only the output format differs (a CSV file instead
+of structured output). Each coder is blind: it sees no other coder's or
+model's codes.</p>
+<hr />
+<p>You are coding Reddit posts from r/singularity for a research
+dataset, following the codebook exactly. The codebook is
+<code>docs/vanguard/codebook.md</code> in
+<code>/Users/john/Code/agi-zeitgeist/.claude/worktrees/happy-nobel-b75d37/</code>.
+Read all of it first, including the decision rules adopted on 2026-10-03
+(R2, R3) and 2026-10-04 (R1a).</p>
+<p><strong>Stay blind.</strong> Do not open any file under
+<code>data/</code>, any other <code>docs/</code> file, or any other file
+in the work folder except your own input file, the image files it names,
+and your own output file. Don't search the web or fetch links: linked
+page text, where it could be read, is already in your input. Code what
+the post says; don't check whether claims are true.</p>
+<p>Rules to apply:</p>
+<ul>
+<li>Video posts: code from the title only; title_only = yes;
+content_basis = video_title.</li>
+<li>Galleries, dead image files ("(image file: unavailable)"), or a
+title that reads "[ Removed by moderator ]": not eligible,
+content_unavailable.</li>
+<li>Image posts: open <code>image_file</code> with the Read tool. Code
+from the image only if it has legible text or a legible chart or
+screenshot; otherwise not eligible, image_no_text.</li>
+<li>Text posts whose body was removed or deleted: code from the title,
+title_only = yes, content_basis = text_title.</li>
+<li>Link posts: if <code>linked_page_text</code> is given, content_basis
+= link_page; if it says "(could not be read)", link_title and title_only
+= yes.</li>
+<li>Posts that don't mention AI are not eligible (no_ai_claim).
+Demo-only video titles are eligible specific_capability claims
+(temporal_status achieved).</li>
+<li>Eligible posts: list each distinct claim, the main claim first;
+extrapolates_to_horizon is yes/no/na for the post, repeated on each of
+its rows.</li>
+<li>attribution panel_member means the claim relays one of: Kurzweil,
+Bostrom, Yudkowsky, Hanson, Hinton, LeCun, Bengio, Hassabis, Legg,
+Altman, Marcus, Ng, Russell, Brooks, Musk, Sutskever, Chollet, Chalmers,
+Brynjolfsson, Schmidhuber, Kai-Fu Lee, Walsh, Tegmark, Suleyman, Amodei,
+Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick, Cowen.</li>
+<li>evidence_span: 25 words or fewer, copied verbatim from the title,
+body, page or image text.</li>
+<li>frame_tags: words actually used, <code>;</code>-separated, from the
+codebook list; blank if none.</li>
+</ul>
+<p><strong>Output:</strong> a CSV with exactly this header, one row per
+claim:</p>
+<pre><code>run_id,coder,post_id,quarter,sample,rank_or_draw,post_type,content_basis,title_only,eligible,exclusion_reason,claim_n,claim_target,si_level,temporal_status,forecast_horizon,stance,epistemic_qualification,rhetorical_mode,development_preference,attribution,frame_tags,extrapolates_to_horizon,evidence_span,notes</code></pre>
+<ul>
+<li><code>run_id</code> =
+<code>vanguard-pilot-rsing-2026-10-04-claude-full-final</code>;
+<code>coder</code> = <code>claude-opus-5-5-full-final-pN</code> (N =
+your part number). <code>post_id</code>, <code>quarter</code>,
+<code>sample</code>, <code>rank_or_draw</code>, <code>post_type</code>
+copied from the input.</li>
+<li>An ineligible post is one row: <code>claim_n</code> 0,
+<code>eligible</code> no, <code>exclusion_reason</code> set, claim
+fields and <code>extrapolates_to_horizon</code> blank.</li>
+<li>Eligible claims are numbered 1, 2, ... Empty values are blank (never
+"none"); <code>title_only</code> is <code>yes</code> or blank.</li>
+<li><code>notes</code>: a short reason for any hard call, especially
+under R1a, R2 and R3.</li>
+<li>Every one of your posts gets at least one row. Quote fields
+containing commas.</li>
+</ul>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/vanguard/claude-coding-brief-full-final.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

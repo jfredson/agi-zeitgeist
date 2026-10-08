@@ -1,0 +1,418 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology, version 2 | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="methodology-version-2">Methodology, version 2</h1>
+<p>Date: 2026-09-30 Supersedes: the method sections of
+<code>docs/2026-09-30-kickoff.md</code>. Reasons for every change are in
+<code>docs/amendments.md</code> under the 2026-09-30 entry. Status:
+frozen for the seed phase. Changes require an amendment entry.</p>
+<h2 id="1-what-the-project-measures">1. What the project measures</h2>
+<p>Four streams of evidence about artificial general intelligence (AGI,
+meaning AI that can do most intellectual work a person can), 2005 to the
+present, each with its own unit and its own population, reported
+separately and compared only with units visible:</p>
+<table>
+<thead>
+<tr>
+<th>stream</th>
+<th>population</th>
+<th>unit</th>
+<th>what a share means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E, named experts</td>
+<td>a fixed panel of individuals chosen by a dated rule</td>
+<td>one public statement</td>
+<td>share of statements by panel members</td>
+</tr>
+<tr>
+<td>P, population beliefs</td>
+<td>the respondents of named surveys</td>
+<td>one survey item</td>
+<td>share of respondents</td>
+</tr>
+<tr>
+<td>M, published argument</td>
+<td>a fixed set of national outlets with public archives</td>
+<td>one article or opinion piece</td>
+<td>share of published pieces</td>
+</tr>
+<tr>
+<td>F, specialist discourse</td>
+<td>named online communities</td>
+<td>one post or comment</td>
+<td>share of sampled units in that community</td>
+</tr>
+</tbody>
+</table>
+<p>The story John set out to test (the leading question moved from
+whether AGI is possible, to when it arrives, to whether current systems
+can already improve themselves) is tested inside each stream under
+section 7. The essay reports where the streams agree and where they
+diverge. Divergence between F and P is an expected finding, not a
+failure.</p>
+<h2
+id="2-coding-scheme-applies-to-e-m-and-f-p-items-are-mapped-where-the-wording-allows">2.
+Coding scheme (applies to E, M and F; P items are mapped where the
+wording allows)</h2>
+<p>One row per coded unit. Fields in addition to source, date, date
+precision, quote, retrieval date and coder:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>values</th>
+<th>rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target_capability</td>
+<td><code>conversation</code> (passes as human in conversation),
+<code>narrow_task</code>, <code>broad_competence</code> (most
+economically valuable work), <code>superintelligence</code> (exceeds
+humans broadly), <code>si_assist</code> (AI helps humans build AI),
+<code>si_research</code> (AI does parts of AI research on its own),
+<code>si_modify</code> (AI changes its own code or weights),
+<code>si_sustained</code> (successive improvements with little human
+involvement), <code>none</code></td>
+<td>which capability the unit is about; <code>none</code> when no
+capability is claimed</td>
+</tr>
+<tr>
+<td>frame_primary</td>
+<td><code>possibility</code>, <code>timeline</code>,
+<code>capability_now</code>, <code>self_improvement</code>,
+<code>definition</code>, <code>consequences</code>,
+<code>governance</code>, <code>other_concern</code></td>
+<td>the question the unit leads with</td>
+</tr>
+<tr>
+<td>frames_present</td>
+<td>any of the above, semicolon separated</td>
+<td>every question raised, so presence is coded apart from the
+answer</td>
+</tr>
+<tr>
+<td>concern_tag</td>
+<td><code>jobs</code>, <code>reliability</code>, <code>privacy</code>,
+<code>bias</code>, <code>misinformation</code>, <code>military</code>,
+<code>consciousness</code>, <code>ownership</code>, <code>other</code>,
+blank</td>
+<td>required when <code>other_concern</code> is present</td>
+</tr>
+<tr>
+<td>endorsement</td>
+<td><code>accepts</code>, <code>rejects</code>, <code>uncertain</code>,
+<code>conditional</code>, <code>unexpressed</code></td>
+<td>whether the speaker endorses the proposition that the target
+capability will exist (or exists); <code>unexpressed</code> when the
+unit discusses it without taking a position. Silence is never coded as
+acceptance</td>
+</tr>
+<tr>
+<td>present_capability</td>
+<td><code>demonstrated</code>, <code>claimed</code>,
+<code>disputed</code>, <code>hypothetical</code>, <code>na</code></td>
+<td>the speaker's view of whether the capability exists now</td>
+</tr>
+<tr>
+<td>timeline_type</td>
+<td><code>point_year</code>, <code>range</code>,
+<code>prob_by_year</code>, <code>qualitative</code>,
+<code>none</code></td>
+<td>as in version 1</td>
+</tr>
+<tr>
+<td>timeline_year, timeline_year_high, timeline_prob, timeline_text</td>
+<td>as in version 1</td>
+<td>probability only when the source gives one; "soon" stays text</td>
+</tr>
+<tr>
+<td>consequence_type</td>
+<td><code>existential</code>, <code>economic</code>,
+<code>social</code>, <code>mixed</code>, <code>unspecified</code></td>
+<td>the kind of consequence the unit expects</td>
+</tr>
+<tr>
+<td>consequence_valence</td>
+<td><code>beneficial</code>, <code>harmful</code>, <code>mixed</code>,
+<code>unspecified</code></td>
+<td></td>
+</tr>
+<tr>
+<td>affect</td>
+<td><code>enthusiasm</code>, <code>fear</code>,
+<code>resignation</code>, <code>neutral</code>, <code>mixed</code>,
+<code>unexpressed</code></td>
+<td>emotional posture, coded only from explicit cues</td>
+</tr>
+<tr>
+<td>agency</td>
+<td><code>can_influence</code>, <code>cannot_influence</code>,
+<code>unexpressed</code></td>
+<td>whether the speaker thinks the outcome can be shaped</td>
+</tr>
+<tr>
+<td>elicitation</td>
+<td><code>unprompted</code>, <code>interview</code>,
+<code>survey</code>, <code>quoted</code></td>
+<td>how the statement came about; a quoted claim inside an article is
+coded as its own unit with <code>quoted</code></td>
+</tr>
+<tr>
+<td>definition_note</td>
+<td>free text</td>
+<td>what the speaker means by AGI if they say</td>
+</tr>
+<tr>
+<td>coding_confidence</td>
+<td><code>high</code>, <code>medium</code>, <code>low</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ambiguous</td>
+<td><code>yes</code>, blank</td>
+<td>kept as a code, never resolved by guessing</td>
+</tr>
+</tbody>
+</table>
+<p>Derived at render, never stored: proximity (distant: more than 30
+years or never; medium: 10 to 30; near: under 10; present:
+<code>capability_now</code> with <code>demonstrated</code> or
+<code>claimed</code>).</p>
+<p>Coding rules: code what was said, not what the speaker is known for.
+Require explicit endorsement before assigning a belief. An article about
+regulation does not establish that its author accepts feasibility. When
+a unit gives both a date and a hedge, record both. Secondhand reports
+are <code>coding_confidence: low</code> until replaced by the primary
+source.</p>
+<h2 id="3-stream-e-named-experts">3. Stream E: named experts</h2>
+<p>Three tiers (amendment A13).</p>
+<p>Core panel, about 25 people, fully traced. Eligibility
+(position-independent, datable): at least one public statement on AGI
+possibility or timing dated 2017 or earlier; at least one dated 2024 or
+later; named in at least three distinct national-outlet pieces about AI
+futures dated 2017 or earlier. A piece the person wrote or co-wrote
+counts toward the three, but for at most one of them (A14). A piece
+counts when the person is named anywhere in its text and its headline or
+abstract shows the piece is about where AI is going (A16). Co-written
+statements count for the earliest and latest tests when the person is a
+named author (A14). Minimum quotas: six sustained skeptics or critics
+(statements dated 2017 or earlier reject or doubt AGI within decades;
+A14); three based outside the United States and United Kingdom at the
+time of their pre-2017 statements; two philosophers or cognitive
+scientists; three with frontier-lab ties (recorded, not screened out;
+time-varying, so the tag applies if true at the time of any statement in
+the record, with dates in the justification; A14).
+<code>philosopher</code> means the person's primary role (A14).
+Candidates and the evidence for each criterion and quota go in
+<code>docs/panel-verification-2026-10.md</code>. The panel is frozen by
+John before full collection; later changes need an amendment entry.</p>
+<p>2020s cohort, ten to twelve people prominent on AGI timelines only
+since 2020 with no public AGI timeline statement before 2018 and at
+least one dated 2024 or later, fully traced, reported as its own series.
+National-outlet prominence is recorded for the cohort as information
+only (A14).</p>
+<p>Wide list, as many names as the rule yields (A14; 184 at 2026-10-01),
+built by an enumerable rule: every person with a dated prediction in the
+public MIRI/AI Impacts timeline-predictions dataset, every person on the
+TIME100 AI lists 2023 to 2025, and every person quoted on AGI timelines
+in the stream M sample, de-duplicated against the other tiers. Light
+capture only: one qualifying statement per person per era (2005 to 2015,
+2016 to 2022, 2023 onward) found by a fixed query logged in the search
+log, with <code>tier: wide</code> on the row. Used for composition and
+balance checks across eras, never for within-person claims.</p>
+<p><code>speakers.csv</code> gains a <code>tier</code> field
+(<code>core</code>, <code>cohort_2020s</code>, <code>wide</code>) and
+quota tags (<code>skeptic</code>, <code>non_us_uk</code>,
+<code>philosopher</code>, <code>frontier_lab</code>), each with a
+one-line justification and a dated source.</p>
+<p>Collection: year-by-year search per person from first statement to
+present, queries logged in <code>data/search_log.csv</code>. Years with
+no statement found are logged as rows, so quiet years are visible. Where
+a person made more than ten qualifying statements in a year, all
+timeline-bearing statements are kept and the rest sampled at a fixed
+interval, logged. Within-person change (the same person's codes over
+time) is reported separately from composition change (who is speaking in
+a given year).</p>
+<p>Benchmarks alongside the panel: the AI Impacts expert surveys (2016,
+2022, 2023), Müller and Bostrom 2014, Pew's 2025 expert sample, with
+question framing and respondent composition recorded before any
+comparison.</p>
+<h2 id="4-stream-p-population-beliefs">4. Stream P: population
+beliefs</h2>
+<p>One row per survey item in <code>data/surveys.csv</code>: survey,
+fieldwork dates (publication date separate), population, sample size,
+mode, exact wording, construct label (<code>concern</code>,
+<code>feasibility</code>, <code>timeline</code>, <code>impact</code>,
+<code>capability_expectation</code>), target capability where the
+wording names one, result, source link, comparability notes.</p>
+<p>Backbone series and anchors: Pew/Smithsonian 2010 (81% of US adults
+expected a computer that converses indistinguishably from a human by
+2050) and 2014; Monmouth 2015 and 2023; Zhang and Dafoe 2018 (GovAI,
+high-level machine intelligence timelines and governance); Pew's
+concerned-versus-excited series 2021 onward; Pew 2025
+public-versus-expert comparison (parallel questions, the model for
+section 7); Eurobarometer 2012, 2014, 2017 (multi-country, robots);
+Lloyd's Register Foundation World Risk Poll 2019, 2021, 2023; YouGov
+2023 onward; Gallup; Ipsos AI Monitor with its own caveat that several
+national samples skew urban and educated.</p>
+<p>Stated gap: no continuous, comparable population series on AGI exists
+for 2005 to 2015. The essay says so.</p>
+<h2 id="5-stream-m-published-argument">5. Stream M: published
+argument</h2>
+<p>Outlets: those with documented public archives. New York Times
+(Archive API, metadata from 1851; headline and abstract searches labeled
+as such), the Guardian (Open Platform, full text from 1999), and Media
+Cloud collections only after an outlet-by-month coverage audit shows
+stable coverage for the period claimed. Non-English corpora
+deferred.</p>
+<p>Frame: for each outlet and three-year period, enumerate every piece
+matching the frozen retrieval vocabulary (section 8); record the count.
+Sample: a seeded random sample sized to distinguish a 20-point change in
+a share at 95% confidence (about 50 pieces per outlet-period); census
+where fewer are eligible. Stratify by outlet and period. Code news and
+opinion separately. The author's own endorsement is coded separately
+from claims the piece quotes (each quoted speaker is its own unit with
+<code>elicitation: quoted</code>).</p>
+<p>Starting categories for media framing: Fast and Horvitz 2017, which
+coded New York Times AI coverage from 1986 to 2016; its categories are
+reconciled to section 2 in the codebook so results can be compared.</p>
+<p>This stream measures what editors published. It is never reported as
+reader belief.</p>
+<h2 id="6-stream-f-specialist-discourse">6. Stream F: specialist
+discourse</h2>
+<p>Communities, each reported separately and never pooled: r/singularity
+(Arctic Shift archive, 2008 onward), r/artificial, Hacker News (public
+search API, 2007 onward), LessWrong, Slashdot (2005 onward, after an
+archive audit).</p>
+<p>Coverage audit first: for each community, posts and comments per
+month in the archive against any independent count (Gaffney and Matias
+2018 documents gaps in an earlier Reddit corpus). Arctic Shift's capture
+change in November 2023, after which score fields were re-captured at 36
+hours, is marked as a measurement break.</p>
+<p>Vanguard sub-series (accepted 2026-10-02,
+<code>docs/amendments/2026-10-02-vanguard-stream.md</code>): selected
+AI-enthusiast venues (r/singularity, r/accelerate, r/artificial, to be
+confirmed by a published venue inventory), sampled with this stream's
+design, coded claim by claim, reported as shares in its own figure,
+never pooled with this stream's other venues, captioned "not
+representative of participants or the public"; an event-by-event
+comparison with skeptic venues starts when one exists.</p>
+<p>Prevalence sample: per community and quarter, a seeded random sample
+of posts and, independently, of comments, drawn without regard to score,
+inclusion probabilities recorded. Rewarded sample: the top 20 posts by
+score per quarter, kept as a separate series labeled "what the community
+rewarded". Reports include account concentration (share of sampled units
+from the ten most prolific accounts) and a stable-account subset
+(accounts active in both halves of the period) to separate changed
+speech from membership turnover.</p>
+<h2 id="7-preregistered-tests-of-the-whether-when-now-story">7.
+Preregistered tests of the whether, when, now story</h2>
+<p>The claimed periods: whether, 2005 to 2015; when, 2016 to 2022; now
+(capability_now or self_improvement), 2023 onward.</p>
+<p>T-F (specialist discourse): in r/singularity and Hacker News
+separately, the claimed leading frame ranks first by
+<code>frame_primary</code> share in each claimed period under the random
+prevalence sample, and the ordering holds in the comment-weighted,
+post-weighted and stable-account subsets. The periods are compared
+against a no-change model, a gradual-trend model, and break dates moved
+two years either way.</p>
+<p>T-M (published argument): the same test on the media sample, with
+<code>other_concern</code> tags allowed to win. The
+capability-versus-impact report (share of pieces whose primary frame
+concerns capability against share concerning jobs, reliability,
+misinformation and so on) is published for every period.</p>
+<p>T-P (population beliefs): matched survey items show a rising share
+accepting feasibility or near-term timelines over the period where
+comparable items exist. The 2010 Pew result is recorded as evidence that
+the population did not treat conversational capability as impossible
+even in the claimed whether period.</p>
+<p>Failure condition: the story fails for a stream when the claimed
+leading frame does not rank first in any claimed period under the
+primary weights, or when the ordering does not survive the sensitivity
+checks. A failure in one stream is reported as such; it does not
+overturn another stream.</p>
+<p>The two post-2023 claims are kept apart: "what do we do about
+demonstrated capabilities" (frames <code>consequences</code>,
+<code>governance</code>) is broader than "can systems already improve
+themselves" (<code>self_improvement</code> with <code>si_*</code>
+targets). Success for the first does not establish the second.</p>
+<h2 id="8-retrieval-vocabulary">8. Retrieval vocabulary</h2>
+<p>Built from a pilot: random units from each era are read and every
+expression for the concept listed. Starting list: thinking machines,
+strong AI, human-level AI, human-level machine intelligence, machine
+intelligence, intelligence explosion, technological singularity, the
+singularity (AI sense, disambiguated by context), Skynet, robot
+uprising, artificial general intelligence, AGI, superintelligence, ASI,
+takeoff, recursive self-improvement, self-improving AI, alignment (AI
+sense), doom, p(doom), timelines (AI sense), feel the AGI, AI slop.
+Version frozen before the main pull; precision and recall measured per
+era on a held-out sample; any revision reruns all years.</p>
+<p>Vocabulary ledger (<code>data/vocabulary.csv</code>): per term,
+earliest verified occurrence in each corpus with the corpus's coverage
+limits stated, and the first month it exceeded a stated share of
+r/singularity comments, published with numerator, denominator,
+distinct-account count and single-thread share, under a minimum of 500
+comments in the month and a persistence rule of three consecutive
+months.</p>
+<h2 id="9-attention-series-context-only">9. Attention series (context
+only)</h2>
+<p>Shown separately, each normalized within itself; never combined into
+an index. Wikipedia monthly page views for the AGI, Technological
+singularity, Superintelligence, Existential risk from AI and AI takeover
+articles from 2015-07, with 2007-12 to 2015-06 legacy counts shown as a
+separate series because counting methods differ; titles and redirects
+documented. Google Trends with geography, query or topic, category,
+window and export date recorded, early zeros noted as low volume. GDELT
+optional, used only if a retrieval pilot reproduces a historical count
+for the exact query. Google Books Ngram appears only in the vocabulary
+appendix, unsmoothed, corpus version recorded.</p>
+<h2 id="10-reliability-and-reproducibility">10. Reliability and
+reproducibility</h2>
+<p><strong>How coding is checked (plain-language note, John,
+2026-10-03).</strong> This is a one-person project, and coding is fully
+model-based: no human codes the posts. Three AI models from different
+companies (Anthropic, Google and OpenAI) code the same sample
+independently, without seeing each other's codes. The final code for
+each field is the one at least two of them agree on; where none agree,
+it is marked unresolved. Agreement between each pair is published, and
+any field the models can't code consistently is left out of the figures
+and listed as unreliable. Models from different companies can still
+share blind spots, so this is a disclosed limitation: there is no human
+coder. It replaces the two-person double-coding described below wherever
+the two conflict.</p>
+<p>A stratified subset of every coded stream is double-coded with dates
+and identities hidden where practical; disagreements and per-category
+agreement are published. Automated coding, if used, is validated
+separately by era and by source. Published with the data: sampling
+frames, queries, code, random seeds, source versions, retrieval dates,
+document identifiers, exclusions, coverage and missingness audits, and
+snapshots with checksums where the source permits. The README states,
+per table, whether a reader can reproduce it from public pages or needs
+the archived microdata.</p>
+<h2 id="11-charts-final-set-decided-after-the-seed">11. Charts (final
+set decided after the seed)</h2>
+<p>Each chart carries its stream letter and unit in the title.
+Candidates: frame share by period for F and M side by side; panel
+members' timeline estimates over time against survey medians (E and P);
+capability-versus-impact shares in M; endorsement and affect mix over
+time in E; attention series as a context strip under the others.</p>
+<h2 id="12-seed-phase-under-version-2">12. Seed phase under version
+2</h2>
+<p>Same five people (Kurzweil, Hinton, LeCun, Marcus, Altman); collected
+rows are kept and recoded under section 2, not mapped from the old
+stance code. Panel verification collects the three-piece prominence
+evidence from section 3. Pass check before scaling: at least 60
+statements with working sources across the five; double-coding of two
+speakers agrees on <code>frame_primary</code>, <code>endorsement</code>
+and <code>target_capability</code> at least 80% of the time; codes
+spread across more than one bucket. Public streams begin with the
+coverage audits (section 6) and the vocabulary pilot (section 8), both
+of which must finish before any prevalence sample is drawn.</p>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/methodology-v2.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

@@ -1,0 +1,304 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A
+measurable definition of &quot;entering the singularity&quot; | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="a-measurable-definition-of-entering-the-singularity">A
+measurable definition of "entering the singularity"</h1>
+<p><strong>Status: adopted 2026-10-08 (amendment A17 in
+<code>docs/amendments.md</code>), with four legs.</strong> The frozen
+values are in <code>docs/singularity-entry-thresholds.json</code>; the
+page at agizeitgeist.com scores the gauges from that file. The draft
+this grew from is kept unchanged as
+<code>docs/singularity-entry-definition-draft-2026-10-07.md</code>.
+Changing any frozen value is an amendment entry, never a quiet edit.</p>
+<p>It began when John noticed that a top comment on r/accelerate ("any
+prediction made right now about the next 5 years is gonna look stupid in
+retrospect") matches one of the standard definitions of the singularity,
+and asked whether the idea could be made into a definition, a progress
+measure and a mark to cross.</p>
+<h2 id="1-the-problem-with-the-existing-definitions">1. The problem with
+the existing definitions</h2>
+<p>Three definitions have been in use since the 1990s (Yudkowsky's 2007
+"three schools"), and a fourth, economic one sits beside them:</p>
+<table>
+<thead>
+<tr>
+<th>school</th>
+<th>source</th>
+<th>claim</th>
+<th>what it measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accelerating change</td>
+<td>Kurzweil, 2005</td>
+<td>progress is super-exponential and predictable</td>
+<td>pace of capability growth</td>
+</tr>
+<tr>
+<td>event horizon</td>
+<td>Vinge, 1993</td>
+<td>past some point our models stop working</td>
+<td>how far ahead forecasts work</td>
+</tr>
+<tr>
+<td>intelligence explosion</td>
+<td>I. J. Good, 1965</td>
+<td>AI improves AI, so progress feeds on itself</td>
+<td>share of progress produced by AI</td>
+</tr>
+<tr>
+<td>growth mode</td>
+<td>Hanson, 2000</td>
+<td>each new mode of the economy doubles output a hundred times faster
+than the last</td>
+<td>doubling time of world output</td>
+</tr>
+</tbody>
+</table>
+<p>Each one, used alone, has a known false positive:</p>
+<ul>
+<li><strong>Accelerating change alone</strong> fires on any sector
+having a fast decade. Moore's law was a steady exponential for fifty
+years and nobody called it a singularity.</li>
+<li><strong>Event horizon alone</strong> fires in every technological
+revolution as felt from inside. Five-year forecasts about the internet
+made in 1995 look stupid in retrospect too. It is also a claim about the
+forecasters, not about the world.</li>
+<li><strong>Intelligence explosion alone</strong> cannot be measured
+from outside the labs, and a high share of AI-written code in a
+slow-moving field would not be a singularity.</li>
+<li><strong>Growth mode alone</strong> lags everything else by years and
+cannot say what caused it.</li>
+</ul>
+<p>The definition: entry means all four being true at once, and staying
+true.</p>
+<h2 id="2-the-four-legs">2. The four legs</h2>
+<p>One capability measure, chosen and frozen, anchors legs A and B: the
+length of software task (in minutes an expert human needs for it) that
+the best public AI system finishes half the time, as published by METR.
+It is chosen because it has not saturated the way benchmarks do.
+Successor rule: when it stops moving, a replacement measure is named
+before that happens, the overlap period is published, and the switch is
+an amendment.</p>
+<p>Let C(t) be that measure at time t. The reference year for every leg
+is 2019.</p>
+<h3 id="leg-a-pace-is-accelerating">Leg A: pace is accelerating</h3>
+<p>Doubling time T(t) is how long C takes to double, estimated over a
+trailing window of twelve months with at least three frontier readings
+in it:</p>
+<pre><code>T(t) = ln 2 / (slope of ln C over the trailing twelve months)</code></pre>
+<p>A steady exponential has constant T. The singularity signature is T
+falling over time. Windows that include a reading past 16 hours are not
+scored, because METR treats estimates past 16 hours as beyond its task
+suite's reliable range and excludes them from its own fit.</p>
+<ul>
+<li><strong>Threshold:</strong> T(t) at or below one month (30.44 days)
+and still falling over the last two windows.</li>
+<li><strong>Gauge (0 to 1):</strong> g_A(t) = clip((T_ref − T(t)) /
+(T_ref − T*), 0, 1), where T_ref is the doubling time anchored at the
+reference year. The trailing-window series cannot be computed in 2019
+itself (one reading), so T_ref is METR's own fit over all frontier
+models from 2019 to early 2026, 187.8 days (agent decision,
+2026-10-08).</li>
+</ul>
+<h3 id="leg-b-forecasts-have-stopped-working">Leg B: forecasts have
+stopped working</h3>
+<p>For forecasts of C made at time s with lead d (that is, about C(s +
+d)), the skill score against the trend-extrapolation baseline is</p>
+<pre><code>S(s, d) = 1 − (mean squared error of the forecasts, log scale)
+            / (mean squared error of extrapolating the trend as of s, log scale)</code></pre>
+<p>The baseline is trend extrapolation, not "no change". In a world of
+steady fast progress, "no change" loses badly but the trend wins, and
+that world is Kurzweil's, not Vinge's. The event horizon is the point
+where even the trend breaks.</p>
+<p>The forecast horizon H(s) is the largest lead d at which S(s, d) is
+still above zero.</p>
+<ul>
+<li><p><strong>Threshold:</strong> H(t) at or below one year.</p></li>
+<li><p><strong>Gauge:</strong> g_B(t) = clip((H_ref − H(t)) / (H_ref − 1
+year), 0, 1), with H_ref the horizon in the reference year.</p></li>
+<li><p><strong>Direction is recorded, not just size.</strong> Were the
+forecasts too slow or too fast? Milestones from the 2016 Grace survey
+mostly arrived early. "Consistently too slow" is a claim about the
+world; "unpredictable" hides it.</p></li>
+<li><p><strong>Lag.</strong> H(t) can only be computed once t + d has
+passed, so leg B is confirmed in arrears. The real-time stand-in is
+revision velocity: with M(t) the consensus arrival date for human-level
+AI (surveys, Metaculus, Manifold, all already in
+<code>data/aggregates.csv</code>), let D(t) = M(t) − t be the years
+remaining. If M is constant, D falls one year per year. Excess pull-in
+is</p>
+<pre><code>  v(t) = −dD/dt − 1</code></pre>
+<p>which is zero when the date is standing still and positive when the
+date is being pulled in faster than time passes. Sustained positive v is
+the leading indicator that forecasts are failing in the slow direction.
+It is reported beside g_B, never substituted for it.</p></li>
+<li><p><strong>Not yet measurable.</strong> The forecast-versus-outcome
+ledger is not built, so neither H(t) nor H_ref exists today. The gauge
+is shown as "not yet measurable" until it is.</p></li>
+</ul>
+<h3 id="leg-c-ai-is-doing-the-improving">Leg C: AI is doing the
+improving</h3>
+<p>Let f(t) be the share of inputs to frontier AI progress (code,
+experiments, research ideas) supplied by AI systems rather than people,
+from the best measurement available. Candidate sources: lab self-reports
+of AI-written code share, surveys of frontier researchers on time saved,
+and the AI-contribution disclosures that some venues now require on
+papers.</p>
+<ul>
+<li><strong>Threshold:</strong> f(t) at or above one half.</li>
+<li><strong>Gauge:</strong> g_C(t) = clip(f(t) / 0.5, 0, 1).</li>
+<li><strong>This is the weakest-measured leg.</strong> Today f is
+Anthropic's self-measured share of its own AI research work that its
+model "leads": one company, judged by the model itself. A company's
+share of all new code written by AI is a proxy at best and is shown but
+not scored. Every f value carries its source and whether it is a
+self-report.</li>
+</ul>
+<h3 id="leg-d-the-economy-has-changed-mode">Leg D: the economy has
+changed mode</h3>
+<p>Let G(t) be world real output growth over the previous year (World
+Bank, world aggregate, constant 2015 US dollars). Its doubling time is
+T_D(t) = ln 2 / ln(1 + G(t)).</p>
+<p>Hanson's finding is that the world economy has had three growth modes
+(hunting, farming, industry), each doubling output about a hundred times
+faster than the one before: about 230,000 years, 860 years and 15 years
+per doubling. A new mode would double output in years or less. Leg D
+asks whether that has started.</p>
+<ul>
+<li><strong>Threshold:</strong> G(t) at or above 30 percent a year,
+which is a doubling time of about 2.6 years or less. This is Davidson's
+published line for "explosive growth" (Open Philanthropy, 2021), chosen
+so the number is not the project's own invention. It is far above
+anything in the modern record (the series peaks near 6.5 percent) and
+well short of Hanson's "days, not years", so it fires early in a new
+mode without firing on a boom.</li>
+<li><strong>Gauge:</strong> g_D(t) = clip((T_ref − T_D(t)) / (T_ref −
+T_D*), 0, 1), with T_ref the doubling time at the mean growth rate from
+1961 to the reference year 2019 (about 20 years) and T_D* the threshold
+doubling time.</li>
+<li><strong>Timing.</strong> World output is reported once a year and
+revised. One calendar year whose growth crosses the line counts as all
+four of its quarters holding; persistence is met by one full year above
+the line, confirmed when the following year's first estimate is
+published. A revision that pulls a year back below the line resets the
+count.</li>
+<li><strong>Why a fourth leg.</strong> John's ruling (2026-10-08),
+against the agent's recommendation to publish it beside the mark rather
+than inside it: it is the only leg measured by people outside the AI
+field, so it guards against a singularity on paper, where benchmarks and
+lab self-reports fire and nothing in the world changes. The cost,
+accepted knowingly: output lags capability by years, so this leg will
+usually be the bottleneck, and the progress number below will track the
+economy until it moves.</li>
+</ul>
+<h2 id="3-the-mark">3. The mark</h2>
+<p><strong>We have entered the singularity, as defined here, when all
+four gauges equal one for four consecutive quarters.</strong> Any leg
+dropping back below its threshold resets the count. This is the same
+shape as the three-month persistence rule in the vocabulary ledger
+(methodology section 8).</p>
+<p>The status at any date is one of: not entered; approaching (all four
+gauges above one half); mark crossed, under persistence test (count in
+progress); entered (count complete, with the quarter it completed). A
+leg that is not yet measurable cannot be at its threshold, so the status
+can only be "not entered" while any leg is unmeasured.</p>
+<h2 id="4-progress-toward-it">4. Progress toward it</h2>
+<p>The four gauges are published separately, each in its own panel. If a
+single number is wanted:</p>
+<pre><code>P(t) = min(g_A(t), g_B(t), g_C(t), g_D(t))</code></pre>
+<p>The smallest gauge, not the average. The definition requires all
+four, so the weakest leg is the honest distance remaining. An average
+would let one runaway leg hide stalled ones. This also keeps methodology
+section 9's rule: series are never combined into an index. A minimum is
+not an index; it is the definition's own bottleneck. While a leg is not
+yet measurable, P(t) is reported as "at most" the minimum of the
+measured legs, since the missing one can only lower it.</p>
+<h2 id="5-tests-the-definition-owes">5. Tests the definition owes</h2>
+<ol type="1">
+<li><strong>Backward test, owed.</strong> Run on every year from 1995 to
+2019 with the best data available, the definition must return "not
+entered". Specifically, 1995 to 2000 (internet) should fire leg B and
+nothing else; 2012 to 2017 (deep learning) should fire leg A weakly and
+nothing else. The leg A series starts in 2019 and leg C in 2026, so the
+test cannot run yet. <strong>Adopted without it, by John's ruling of
+2026-10-08, with this gap stated on the page.</strong> Older capability
+series must be built before it can run; if it then fires on those
+periods, the thresholds are wrong and get amended.</li>
+<li><strong>Preregistration.</strong> The capability measure, the
+reference year, the four thresholds and the persistence window were
+frozen on 2026-10-08, before any gauge was published. Changing any of
+them afterwards is an amendment entry.</li>
+<li><strong>Self-reference.</strong> If leg B is true, forecasts of
+<em>when the mark will be crossed</em> are themselves unreliable. The
+mark is therefore observed, never forecast. The project publishes
+status, not an arrival date.</li>
+<li><strong>What it does and does not claim.</strong> Crossing the mark
+establishes that the singularity <em>as defined here</em> has been
+entered. It does not settle which school was right, and it does not
+establish that the world is now unknowable. It establishes that four
+stated measurements crossed four stated lines and stayed there.</li>
+</ol>
+<h2 id="6-relation-to-the-tracker">6. Relation to the tracker</h2>
+<p>The Zeitgeist tracker measures what people believe. This definition
+measures the world. They are kept apart on purpose, and the interesting
+chart is the two side by side: the share of statements claiming we are
+in or near the singularity (streams E, F and the vanguard sub-series)
+against P(t). Divergence in either direction is a finding. The hedging
+rule (R3) in the vanguard codebook already gives a proxy for a
+community's sense of its own forecast horizon, and can be charted
+against g_B.</p>
+<h2 id="7-record-of-the-rulings-2026-10-08">7. Record of the rulings
+(2026-10-08)</h2>
+<p>Proposed by the agent, approved by John unless marked otherwise:</p>
+<table>
+<thead>
+<tr>
+<th>question</th>
+<th>ruling</th>
+<th>reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchor for legs A and B</td>
+<td>METR 50% time horizon, with the successor rule above</td>
+<td>the one capability series that has not saturated</td>
+</tr>
+<tr>
+<td>thresholds</td>
+<td>the draft's placeholders as written: one month, one year, one half,
+reference year 2019, four quarters</td>
+<td>preregistered before any gauge; placeholders had been published in
+the draft a day earlier</td>
+</tr>
+<tr>
+<td>backward test</td>
+<td>adopt without it, gap stated</td>
+<td>the data to run it does not exist yet; waiting would mean never
+publishing</td>
+</tr>
+<tr>
+<td>economic leg</td>
+<td><strong>added as leg D (decided by John, against the agent's
+recommendation)</strong></td>
+<td>the only leg measured outside the AI field</td>
+</tr>
+<tr>
+<td>leg D line</td>
+<td>30 percent a year (Davidson 2021); reference the 1961 to 2019
+mean</td>
+<td>a published line, not an invented one</td>
+</tr>
+<tr>
+<td>leg D timing</td>
+<td>one annual reading covers its four quarters; revisions reset</td>
+<td>the series is annual and revised</td>
+</tr>
+</tbody>
+</table>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/singularity-entry-definition.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

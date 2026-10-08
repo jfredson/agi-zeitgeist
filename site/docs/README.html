@@ -1,0 +1,168 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGI Zeitgeist Tracker | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="agi-zeitgeist-tracker">AGI Zeitgeist Tracker</h1>
+<p>A dated, sourced record of how expert and public opinion about
+artificial general intelligence (AGI: AI that can do most intellectual
+work a person can) has moved from 2005 to the present. Every row links
+to where it came from, every search that produced a row is logged, and
+the coding rules are written down, so anyone can check the record or
+extend it.</p>
+<p>The working question: did the main public argument move from
+<em>whether</em> AGI is possible, to <em>when</em> it arrives, to
+<em>whether today's systems are already close or improving
+themselves</em>? The method is built so the data can say no.</p>
+<p><strong>Status (2026-09-30):</strong> seed phase. Five people traced
+(Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus, Sam Altman),
+plus surveys, prediction markets, polls and dated events. Coded under
+methodology version 2, adopted the same day after two outside reviews.
+The full panel is not frozen yet, and the public streams (surveys,
+published argument, online communities) have not started.</p>
+<h2 id="whats-here">What's here</h2>
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>what it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data/speakers.csv</code></td>
+<td>one row per person, survey, market, pollster or institution</td>
+</tr>
+<tr>
+<td><code>data/statements.csv</code></td>
+<td>one row per public statement, with a verbatim quote, link and
+codes</td>
+</tr>
+<tr>
+<td><code>data/aggregates.csv</code></td>
+<td>survey results, prediction market readings and poll results</td>
+</tr>
+<tr>
+<td><code>data/events.csv</code></td>
+<td>dated events (open letters, government actions, reports) for chart
+labels</td>
+</tr>
+<tr>
+<td><code>data/world_measures.csv</code></td>
+<td>world measures, kept apart from belief: capability readings (METR
+time horizon) and company self-reports of AI-done work, for the
+singularity-entry draft</td>
+</tr>
+<tr>
+<td><code>data/search_log.csv</code></td>
+<td>every search run to build the record, and what it found</td>
+</tr>
+<tr>
+<td><code>docs/methodology-v2.md</code></td>
+<td>the method (version 2, 2026-09-30): four streams, coding scheme,
+panel rule, preregistered tests</td>
+</tr>
+<tr>
+<td><code>docs/methodology.md</code></td>
+<td>pointer to version 2, plus details carried over from version 1</td>
+</tr>
+<tr>
+<td><code>docs/codebook.md</code></td>
+<td>how each statement is coded under version 2, with decision rules and
+examples</td>
+</tr>
+<tr>
+<td><code>docs/reviews/</code></td>
+<td>the two outside reviews behind version 2</td>
+</tr>
+<tr>
+<td><code>docs/panel-verification-2026-10.md</code></td>
+<td>evidence for each panel candidate, for John's freeze decision</td>
+</tr>
+<tr>
+<td><code>docs/amendments.md</code></td>
+<td>dated changes to the panel or the codes</td>
+</tr>
+<tr>
+<td><code>docs/2026-09-30-kickoff.md</code></td>
+<td>the original plan</td>
+</tr>
+<tr>
+<td><code>docs/singularity-entry-definition-draft-2026-10-07.md</code></td>
+<td>draft, not adopted: a three-leg measurable definition of entering
+the singularity, with gauges and a mark</td>
+</tr>
+<tr>
+<td><code>scripts/validate.py</code></td>
+<td>checks every row: codes, dates, sources, links between files</td>
+</tr>
+<tr>
+<td><code>scripts/charts.py</code></td>
+<td>builds the charts from the CSV files</td>
+</tr>
+<tr>
+<td><code>scripts/site.py</code></td>
+<td>builds <code>site/index.html</code> and the leg A, B and C figures
+from the CSV files</td>
+</tr>
+<tr>
+<td><code>site/</code></td>
+<td>the static page (<code>index.html</code>) and its figures; serve
+locally with
+<code>python3 -m http.server 8765 --directory site</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-cite">How to cite</h2>
+<blockquote>
+<p>Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset].
+Version of <commit date>, commit <short hash>. <a
+href="https://github.com/">https://github.com/</a><to be published></p>
+</blockquote>
+<p>Cite a specific commit: the data changes as rows are added, and a
+commit pins the version you used. To cite a single statement, give its
+<code>statement_id</code> (e.g. <code>hinton-2023-02</code>) along with
+the commit.</p>
+<p><strong>Licence.</strong> The data in <code>data/</code> is under
+Creative Commons Attribution 4.0 (CC BY 4.0, see <a
+href="../data/LICENSE-DATA.txt"><code>LICENSE-DATA</code></a>): reuse it freely,
+with credit. The scripts in <code>scripts/</code> are under the MIT
+licence (see <a href="../data/LICENSE.txt"><code>LICENSE</code></a>). When you reuse
+the data, cite it as above, with the commit you used and a link to the
+licence: "AGI Zeitgeist Tracker by John Fredrickson, CC BY 4.0".</p>
+<h2 id="how-to-add-a-row">How to add a row</h2>
+<ol type="1">
+<li><p>Read <code>docs/methodology-v2.md</code> (especially section 3)
+and <code>docs/codebook.md</code>.</p></li>
+<li><p>Log your search first: add a row to
+<code>data/search_log.csv</code> with the exact query, where you
+searched, and the date.</p></li>
+<li><p>Add the statement to <code>data/statements.csv</code>:</p>
+<ul>
+<li><code>statement_id</code> is
+<code>&lt;speaker_id&gt;-&lt;year&gt;-&lt;NN&gt;</code>, numbered in
+date order.</li>
+<li>The quote is verbatim, 60 words or fewer, from the linked
+source.</li>
+<li>Code the version 2 fields (target capability, frames, endorsement,
+affect, agency and the rest) and the timeline fields as the codebook
+says. Endorsement needs a <code>basis: "..."</code> note quoting the
+words that carry it; without them it is <code>unexpressed</code>.</li>
+<li>If you only found someone else's report of the statement, tag
+<code>notes</code> with <code>secondhand</code> and set
+<code>coding_confidence</code> to <code>low</code>.</li>
+<li>Put your name in <code>coder</code> (add it to <code>CODERS</code>
+in <code>scripts/validate.py</code>).</li>
+</ul></li>
+<li><p>Go back to the search log row and fill <code>what_found</code>
+with the new statement id.</p></li>
+<li><p>Run the checks and fix anything they report:</p>
+<pre><code>python3 scripts/validate.py</code></pre></li>
+<li><p>New people can't be added without a dated entry in
+<code>docs/amendments.md</code> saying why: the panel is fixed so that
+it can't drift toward the story.</p></li>
+</ol>
+<h2 id="building-the-charts">Building the charts</h2>
+<pre><code>python3 -m venv .venv &amp;&amp; .venv/bin/pip install matplotlib
+.venv/bin/python scripts/charts.py</code></pre>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>README.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

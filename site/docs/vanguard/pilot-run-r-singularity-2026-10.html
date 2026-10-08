@@ -1,0 +1,721 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run record:
+r/singularity pilot, vanguard sub-series | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="../doc.css"></head><body><main>
+<nav class="top"><a href="../../">AGI Zeitgeist Tracker</a> <a href="../README.html">About the data</a> <a href="../methodology-v2.html">Method</a> <a href="../singularity-entry-definition.html">Singularity definition</a> <a href="../amendments.html">Changes</a></nav>
+<h1 id="run-record-rsingularity-pilot-vanguard-sub-series">Run record:
+r/singularity pilot, vanguard sub-series</h1>
+<p>Run id: <code>vanguard-pilot-rsing-2026-10-03</code>. Written and
+committed <strong>before</strong> any sample was drawn or any post
+coded. Governs:
+<code>docs/amendments/2026-10-02-vanguard-stream.md</code> (accepted
+2026-10-02, with the 2026-10-02 video ruling and the 2026-10-03
+title-only instruction). Brief: John, 2026-10-03.</p>
+<h2 id="window-and-source">Window and source</h2>
+<ul>
+<li>r/singularity, 2024Q4 to 2026Q3 (2024-10-01 to 2026-09-30 UTC), from
+the Arctic Shift archive listing saved by
+<code>scripts/retrievability_check.py</code> (50,544 posts).</li>
+<li>Scores are the archive's recorded scores; their observation time is
+unknown, so the rewarded series is "highest recorded-score posts among
+archived records".</li>
+</ul>
+<h2 id="samples-stream-f-design">Samples (stream F design)</h2>
+<ul>
+<li><strong>Rewarded:</strong> per quarter, posts ranked by recorded
+score (ties: earlier post first), screened in rank order until
+<strong>20 eligible posts</strong> are coded. Ineligible posts passed on
+the way are recorded with the reason.</li>
+<li><strong>Prevalence:</strong> per quarter, a random sample of
+<strong>20 posts</strong>, seed <strong>20261003</strong> (Python
+<code>random.Random</code>, posts sorted by ID before drawing),
+inclusion probability 20 divided by posts in the quarter. All 20 are
+screened; shares use the eligible ones. <em>Size set by the agent;
+stream F gives none.</em></li>
+<li><strong>Comment sample: deferred.</strong> Stream F also asks for a
+random sample of comments. Listing every r/singularity comment through
+the archive API isn't feasible; it needs the archive's monthly dump
+files. Not part of this pilot.</li>
+<li><strong>Cross-era sample (amendment section 6): deferred</strong> to
+the next step, not in the brief.</li>
+</ul>
+<h2 id="eligibility-and-content-basis">Eligibility and content
+basis</h2>
+<ul>
+<li>Eligible: the post asserts, disputes or relays a claim about AI
+capability, timeline or consequence.</li>
+<li>Text posts: title and body. Image posts: coded from the image if it
+has legible text (the coder views the image); image-only without legible
+text is excluded; an image file that no longer loads is excluded as
+"content unavailable". Video posts: <strong>title only</strong>,
+<code>title_only: yes</code>. Link posts: title plus the linked page if
+it can be read; title only (<code>title_only: yes</code>) if not.
+Galleries: content needs reddit.com, which refuses scripted access, so
+they are excluded as "content unavailable". <em>Gallery and link
+handling set by the agent.</em></li>
+</ul>
+<h2 id="coding">Coding</h2>
+<ul>
+<li><strong>First pass:</strong> model-assisted, model
+<strong><code>claude-opus-5-5</code></strong> (Claude Code subagents,
+model inherited from the session; no other model used). Coders see the
+post content only, not score or rank labels beyond what is needed to
+work down the list.</li>
+<li><strong>Instrument:</strong> amendment section 7. Post = sampling
+unit; claim = coding unit; the post's main claim is listed first.
+Fields: <code>claim_target</code> (specific_capability, agi,
+self_improvement with an <code>si_level</code>, pace_singularity,
+consequence), <code>temporal_status</code>,
+<code>forecast_horizon</code>, <code>stance</code>,
+<code>epistemic_qualification</code>, <code>rhetorical_mode</code>,
+<code>development_preference</code>, <code>attribution</code>,
+<code>frame_tags</code>, <code>title_only</code>, plus an evidence span
+(25 words or fewer, verbatim, from the title, body or image text).</li>
+<li><strong>Second pass (interim):</strong> a fresh model instance of
+the same model, <strong>blind</strong> to the first pass, codes a
+stratified <strong>30% subset</strong> of screened posts (rounded up,
+per quarter and sample, seed <strong>20261004</strong>). Its agreement
+with the first pass is reported as <strong>model–model
+agreement</strong>, which does <strong>not</strong> meet amendment
+section 9 (two people, blind to the model). A blind worksheet for the
+same subset is produced for human coders. <em>Fraction set by the agent;
+section 9 gives none.</em></li>
+</ul>
+<h2 id="outputs">Outputs</h2>
+<ul>
+<li>Codes: <code>data/vanguard/r-singularity-pilot-codes.csv</code>
+(first pass) and
+<code>data/vanguard/r-singularity-pilot-codes-second.csv</code> (second
+pass). No post text beyond the short evidence spans.</li>
+<li>Agreement: per field, percentage and Cohen's kappa (agreement
+corrected for chance).</li>
+<li>Figure: shares of eligible posts by quarter for the section 8 claims
+(AGI already achieved; AGI within a stated horizon; self-improvement
+under way; singularity framing), rewarded and prevalence samples
+separately, each with and without <code>title_only</code> rows,
+captioned "Framing in sampled high-score posts from selected AI
+enthusiast venues; not representative of participants or the
+public."</li>
+</ul>
+<h2 id="departures-from-the-amendment-stated-up-front">Departures from
+the amendment, stated up front</h2>
+<ol type="1">
+<li>The second coder is a model, not two people (section 9). Reported as
+interim.</li>
+<li>Section 12 preconditions not yet met: venue inventory, X decision,
+cross-era sample. This pilot covers one venue and does not choose
+venues.</li>
+<li>Comment sample deferred (see above).</li>
+</ol>
+<h2
+id="changes-during-the-run-recorded-2026-10-03-before-the-second-pass">Changes
+during the run (recorded 2026-10-03, before the second pass)</h2>
+<ol type="1">
+<li><strong>Missing images, fixed.</strong> The sampling script first
+saved images only for rewarded ranks 1 to 40. Coders reached rank 41 or
+deeper in 2025Q1, 2025Q3 and 2026Q1 and excluded ten image posts as
+"content unavailable" because no file existed. The script now saves
+every sampled image (the sample itself is unchanged; checked byte for
+byte), those posts were recoded from their images, and each quarter's
+cut-off was re-applied.</li>
+<li><strong>Removed-body text posts, made uniform.</strong> Coders had
+handled text posts whose body was removed or deleted in three ways. Rule
+applied to all: if the title survives, the post is coded from the title
+with <code>title_only: yes</code> and
+<code>content_basis: text_title</code>. Galleries and image files that
+no longer load stay excluded.</li>
+</ol>
+<h2
+id="recode-run-2026-10-03-after-johns-rulings-on-the-pilot-report">Recode
+run, 2026-10-03 (after John's rulings on the pilot report)</h2>
+<p>Same model, <code>claude-opus-5-5</code>, the same four first-pass
+coders (resumed, so their earlier judgments stay consistent). Applied to
+every screened post in the existing sample: the new
+<code>extrapolates_to_horizon</code> field and the codebook rulings of
+2026-10-03 (<code>docs/vanguard/codebook.md</code>): posts not
+mentioning AI ineligible, demo-only video titles eligible as capability
+claims, memes under the legible-text rule, company and policy drama
+coded <code>industry_governance</code>. The rewarded stopping rule (20
+eligible per quarter) is re-applied, screening further down each
+quarter's existing ranked reserve where needed; no new posts are drawn.
+Changed rows carry the note <code>R2:</code> with old and new values.
+The second pass is not recoded, so the interim agreement figures predate
+these rulings.</p>
+<h2 id="cross-family-second-pass-2026-10-03">Cross-family second pass,
+2026-10-03</h2>
+<p>Run under the revised section 9 (John, 2026-10-03). The models are
+named and pinned:</p>
+<ul>
+<li>First pass: <code>claude-opus-5-5</code>, coder label
+<code>claude-opus-5-5-first</code>, recoded under the 2026-10-03 rulings
+(424 rows, 390 posts).</li>
+<li>Second pass: <code>gemini-3.1-pro-preview</code>, version
+<code>3.1-pro-preview-01-2026</code>. The script checks the version
+against the Gemini models endpoint before running and stops if it
+doesn't match. Run id
+<code>vanguard-pilot-rsing-2026-10-03-crossfamily</code>, script
+<code>scripts/vanguard_crossfamily_pass.py</code>. The model sees the
+full codebook and the same content as the first pass (image, link-page
+text, or title only), with structured output limited to the codebook's
+values. It saw no first-pass codes. 140 of 140 posts coded, 177
+rows.</li>
+<li>The same-family second pass
+(<code>r-singularity-pilot-codes-second.csv</code>) is superseded and
+was not recoded.</li>
+<li>John's 40-post blind worksheet (seed 20261005) was drawn, then
+withdrawn the same day by his ruling removing the human step; the
+worksheet and its scripts were deleted.</li>
+</ul>
+<h2 id="three-model-coding-2026-10-03">Three-model coding,
+2026-10-03</h2>
+<p>Run under section 9 as ruled by John later the same day: no human
+coder, three models from different companies, final code by majority
+vote.</p>
+<ul>
+<li><strong>GPT pass:</strong> <code>gpt-6-astra</code>, reasoning
+effort medium. OpenAI publishes no dated snapshot, so the script checks
+the model's listed creation time (1787853604, 2026-08-27 UTC) before
+running and stops if it changes. Script
+<code>scripts/vanguard_crossfamily_pass.py --family gpt</code>, run id
+<code>vanguard-pilot-rsing-2026-10-03-gpt</code>. Same codebook,
+instructions, content and structured output as the Gemini pass. All 140
+posts coded.</li>
+<li><strong>Claude supplement:</strong> 18 posts in the 140-post set
+fell past the recoded first pass's cut-off ranks. A fresh
+<code>claude-opus-5-5</code> coder, blind to every other file, coded
+them under the current codebook
+(<code>r-singularity-pilot-codes-claude-subset-supplement.csv</code>).
+These rows are used only for the three-model check, not for the
+figure.</li>
+<li><strong>Majority and reliability:</strong>
+<code>scripts/vanguard_three_way.py</code> writes
+<code>r-singularity-pilot-codes-majority.csv</code> and
+<code>three-model-reliability.csv</code>.</li>
+<li><strong>Rules trial:</strong> proposed rules R1 to R3
+(<code>docs/vanguard/proposed-rules-2026-10-03.md</code>) were added to
+the codebook. Claude coded with them through two fresh blind coders, 70
+posts each. Gemini and GPT used the script with <code>--rules</code>.
+Both APIs stopped answering partway through (Gemini at 112 posts, GPT at
+86). Each was resumed once after a 10-minute pause, failed again without
+coding another post, and was stopped. Their trial files were written
+from the replies already saved (<code>--cached-only</code>). The
+comparison uses the 86 posts all three coded
+(<code>vanguard_three_way.py --compare</code>).</li>
+</ul>
+<h2 id="handover-end-of-2026-10-03">Handover, end of 2026-10-03</h2>
+<p>Working files (post text, images, saved model replies, fetched link
+pages, archive cache) moved from the session scratch folder to
+<code>~/Documents/.agi-zeitgeist/work/</code> (outside the repository,
+because they hold post content). The scripts now point there.</p>
+<p><strong>Still to run, after Gemini's daily limit resets (about 17:05
+Pacific, 2026-10-04),</strong> from the repository root, in this
+order:</p>
+<pre><code>python3 scripts/vanguard_crossfamily_pass.py --family gemini --rules docs/vanguard/proposed-rules-2026-10-03.md --codebook docs/vanguard/codebook-frozen-2026-10-03-before-rules.md
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/r1-split-trial-posts.csv --rules docs/vanguard/trial-rule-r1a-2026-10-03.md --tag r1a-trial
+python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/r1-split-trial-posts.csv --rules docs/vanguard/trial-rule-r1b-2026-10-03.md --tag r1b-trial
+python3 scripts/vanguard_three_way.py --compare     # first trial, now on up to 140 posts
+python3 scripts/vanguard_three_way.py --r1-split    # R1a and R1b, all three pairs</code></pre>
+<p>That is 252 Gemini requests against a limit of 250 a day; if the last
+R1b posts are refused, rerun the third command the next evening. Then
+update the pilot report and send John the R1a and R1b kappas for all
+three pairs. Claude and GPT codes for both trials are already committed.
+Interim Claude–GPT result: R1a raises stance agreement (0.50 without,
+0.74 with); R1b doesn't help attribution (0.75 without, 0.72 with). The
+trial coders found that both rules need to say how a bare reaction or
+joke title ("WTF") is treated.</p>
+<p><strong>Waiting on John:</strong> a ruling on R1a and R1b. (John
+added $25 OpenAI credit on 2026-10-03, so GPT's share is covered.) Then
+the full-sample run: all 390 posts by Gemini and GPT under the final
+codebook, with Gemini capped at about 240 new requests a day
+(<code>--ids data/vanguard/r-singularity-pilot-sample.csv</code> style
+list, <code>--max-new 240</code>, a fresh <code>--tag</code> so earlier
+replies aren't reused).</p>
+<h2 id="gemini-runs-2026-10-04">Gemini runs, 2026-10-04</h2>
+<p>Run from the handover's commands, in its order, starting 12:15
+Pacific. The handover expected the daily limit to clear about 17:05; a
+single test request (<code>--max-new 1</code>) at 12:15 was accepted, so
+the runs went ahead then. All 252 requests were accepted the same day,
+none refused. (Correction, same evening: the limit does apply. The
+full-sample run was refused after 2 more requests, so 254 in a day was
+the ceiling here. Plan on 240 a day.)</p>
+<ul>
+<li><strong>First trial, last 28 posts:</strong> frozen pre-rules
+codebook plus R1 to R3, as before. 140 of 140 posts now coded by all
+three models.</li>
+<li><strong>R1a trial and R1b trial:</strong> 112 of 112 posts each,
+today's codebook plus one rule.</li>
+<li><strong>Pin:</strong> the script confirmed
+<code>gemini-3.1-pro-preview</code> version
+<code>3.1-pro-preview-01-2026</code> before each run.</li>
+<li><strong>Cost:</strong> <span
+class="math inline">6.28<em>f</em><em>o</em><em>r</em>252<em>r</em><em>e</em><em>q</em><em>u</em><em>e</em><em>s</em><em>t</em><em>s</em>, <em>f</em><em>r</em><em>o</em><em>m</em><em>t</em><em>h</em><em>e</em><em>t</em><em>o</em><em>k</em><em>e</em><em>n</em><em>c</em><em>o</em><em>u</em><em>n</em><em>t</em><em>s</em><em>G</em><em>o</em><em>o</em><em>g</em><em>l</em><em>e</em><em>r</em><em>e</em><em>t</em><em>u</em><em>r</em><em>n</em><em>s</em><em>w</em><em>i</em><em>t</em><em>h</em><em>e</em><em>a</em><em>c</em><em>h</em><em>r</em><em>e</em><em>p</em><em>l</em><em>y</em>, <em>p</em><em>r</em><em>i</em><em>c</em><em>e</em><em>d</em><em>a</em><em>t</em><em>t</em><em>h</em><em>e</em><em>q</em><em>u</em><em>o</em><em>t</em><em>e</em><em>d</em><em>r</em><em>a</em><em>t</em><em>e</em><em>s</em>(</span>0.62
+for the 28, $2.77 for R1a, $2.89 for R1b). The approved quote put this
+work at about $6.30.</li>
+<li><strong>Comparisons:</strong>
+<code>vanguard_three_way.py --compare</code> (first trial, 140 posts)
+and <code>--r1-split</code> (R1a and R1b), plus
+<code>scripts/vanguard_r1_bootstrap.py</code>, new today, which
+resamples the 112 posts 2,000 times (seed 20261004) to give a 90% range
+for each kappa and for the change each rule makes.</li>
+<li><strong>Results:</strong> in the pilot report; recommendation in
+<code>docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md</code>.</li>
+</ul>
+<p><strong>Ruled by John, 2026-10-04:</strong> R1a adopted with the
+reactions sentence; R1b rejected. The codebook
+(<code>docs/vanguard/codebook.md</code>) is now final for the
+full-sample run.</p>
+<p><strong>Waiting on John:</strong> about $15 more OpenAI credit. Then
+the full-sample run as described in the handover above, on today's
+codebook with a fresh <code>--tag</code>.</p>
+<h2 id="full-sample-run-started-2026-10-04">Full-sample run, started
+2026-10-04</h2>
+<p>John topped up the OpenAI credit and started the run the evening of
+2026-10-04. Final codebook (<code>docs/vanguard/codebook.md</code>: R2
+and R3 adopted 2026-10-03, R1a adopted 2026-10-04). Posts: the 390
+screened in the first pass, listed in
+<code>data/vanguard/full-run-posts.csv</code> (230 top-ranked, 160
+random; built from <code>r-singularity-pilot-codes.csv</code>). Label
+<code>--tag full-final</code>, so no earlier reply is reused.</p>
+<ul>
+<li><strong>GPT:</strong> 390 of 390 posts coded
+(<code>r-singularity-pilot-codes-gpt-full-final.csv</code>), pin
+confirmed. 1.41 million input and 158,000 output tokens; about $21 at
+the quote's $0.054 a post (the exact charge is on OpenAI's billing
+page).</li>
+<li><strong>Gemini:</strong> 2 posts coded ($0.05), then refused with
+"exceeded your current quota". The afternoon's 252 trial requests had
+used the day's allowance, so the daily limit is real; it was not yet
+clear at 18:40 Pacific. To resume once it clears (saved replies are
+reused):</li>
+</ul>
+<pre><code>python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 240</code></pre>
+<p>Run it twice, on two days; 388 posts remain.</p>
+<p><strong>Claude, recoded under the final codebook (John,
+2026-10-04).</strong> Claude's earlier codes for these posts predate R2,
+R3 and R1a, so a three-way majority would have mixed codebooks. Six
+fresh <code>claude-opus-5-5</code> coders, 65 posts each (posts dealt
+out in turn, so each part mixes quarters and post types), coded all 390
+blind. They got the same instructions, codebook and content as Gemini
+and GPT (brief:
+<code>docs/vanguard/claude-coding-brief-full-final.md</code>; link pages
+from the same cache, so the 13 unreadable ones are coded from the
+title). Output:
+<code>r-singularity-pilot-codes-claude-full-final.csv</code>, 507 rows,
+265 posts eligible.</p>
+<ul>
+<li>Merge check (<code>vanguard_merge_codes.py</code>): 37 rows for
+galleries and dead images had no content source; it was filled from the
+post type and each row's notes say so. One code outside the codebook (a
+timing of "conditional") went back to its coder, who changed it to
+forecast and, under R3's explicit "if", set hedging to qualified.</li>
+<li>Each quarter's top-ranked posts no longer come to exactly 20
+eligible (18 to 22). That is expected: the cut-off is re-applied from
+the majority codes when the figure is redrawn.</li>
+<li>Interim Claude–GPT kappas on 390 posts: whether the post counts
+0.91; what the claim is about 0.83; whether the poster agrees 0.63 (0.36
+on the old codes); hedging 0.66; whose claim it is 0.71; every field at
+0.59 or above.</li>
+<li><code>vanguard_three_way.py --full</code> builds the majority and
+the three-pair table once Gemini's file exists.</li>
+</ul>
+<h2
+id="gemini-2026-10-06-stopped-at-219-of-390-waiting-on-john-over-the-cost-limit">Gemini,
+2026-10-06: stopped at 219 of 390, waiting on John over the cost
+limit</h2>
+<p>The daily limit had reset: a one-request test at 09:14 Pacific was
+accepted and the pin was confirmed (<code>gemini-3.1-pro-preview</code>
+version <code>3.1-pro-preview-01-2026</code>). The run went ahead with
+the command from the section above, capped at 240 requests for the
+day.</p>
+<ul>
+<li><strong>Stopped by hand at 10:16 Pacific</strong>, just after a
+reply was saved, so no request was cut off partway. It stopped because
+the October spending limit was found to be already passed (below), not
+because of the daily limit. No request was refused.</li>
+<li><strong>Where it stopped:</strong> 217 new requests today, plus the
+2 from 2026-10-04: <strong>219 of 390 posts coded</strong>, the first
+219 in the order of <code>data/vanguard/full-run-posts.csv</code>, with
+no gaps. The next post is <code>1ojx1hr</code> (position 220);
+<strong>171 remain</strong>.
+<code>r-singularity-pilot-codes-crossfamily-full-final.csv</code> was
+written from the saved replies with <code>--cached-only</code> and holds
+those 219 posts.</li>
+<li><strong>Cost of today's coding:</strong> $5.58 for 217 requests
+(689,343 input and 350,375 output tokens, thinking counted as output, at
+$2 and $12 per million). The full run so far: $5.63 for 219 posts,
+$0.0257 a post.</li>
+</ul>
+<p><strong>Against the approved quote.</strong> John approved up to $15
+for October (the full run plus the first monthly runs), with the full
+run itself quoted at $9.80.</p>
+<ul>
+<li>Google's billing page showed $12.25 for October before today's
+coding (about $5.90 on 2026-10-03 and $6.30 on 2026-10-04, the rules
+trials). The quote listed the 2026-10-04 trial work as "already
+committed" beside the $15 rather than inside it, but the billing account
+counts it all in one month.</li>
+<li>With today's <span
+class="math inline">5.58, <em>O</em><em>c</em><em>t</em><em>o</em><em>b</em><em>e</em><em>r</em><em>i</em><em>s</em><em>a</em><em>b</em><em>o</em><em>u</em><em>t</em> * *</span>17.83,
+already over the $15**.</li>
+<li>Finishing the full run needs about $4.40 more (171 posts at
+$0.0257), taking the full run to about $10.03 (just over its own <span
+class="math inline">9.80<em>l</em><em>i</em><em>n</em><em>e</em>)<em>a</em><em>n</em><em>d</em><em>O</em><em>c</em><em>t</em><em>o</em><em>b</em><em>e</em><em>r</em><em>t</em><em>o</em><em>a</em><em>b</em><em>o</em><em>u</em><em>t</em> * *</span>22.20**.</li>
+<li>So <strong>finishing would exceed the approved $15</strong>. It is
+not resumed without John's go. A $25 monthly budget alert is now set on
+the billing account.</li>
+</ul>
+<p><strong>To resume once John approves</strong> (saved replies are
+reused; at most about 240 requests a day):</p>
+<pre><code>python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 171
+python3 scripts/vanguard_three_way.py --full</code></pre>
+<p>Then re-apply the 20-eligible cut-off per quarter from the majority
+codes, redraw the figure from the majority codes, and check that "AGI
+already achieved" counts leave out ironic posts.</p>
+<p><strong>Approved by John, 2026-10-06, about 10:20 Pacific</strong>
+(in the planning session; recorded as a TimeAssembler decision):
+"approve finishing the Gemini coding, go with the recommendation." That
+is about $4.40 more, about $22.20 for October; the limit is now about
+$22.50 for October without asking again. The approval is also noted
+under the quote in <code>model-cost-quote-2026-10-03.md</code>. The run
+resumed straight after.</p>
+<h3
+id="resumed-2026-10-06-after-the-approval-stopped-at-the-daily-limit-254-of-390">Resumed
+2026-10-06 after the approval: stopped at the daily limit, 254 of
+390</h3>
+<ul>
+<li>The resumed run coded <strong>35 more posts</strong> (positions 220
+to 254). The 36th request was refused with "exceeded your current quota"
+at about 10:30 Pacific, after two waits. That is the daily limit, not
+the money: 252 requests were accepted today, the same ceiling as
+2026-10-04 (254). The refused request was not saved and is not
+charged.</li>
+<li><strong>Where it stopped:</strong> <strong>254 of 390 posts
+coded</strong>, the first 254 in <code>full-run-posts.csv</code>, with
+no gaps. The next post is <code>1rgdt31</code> (position 255);
+<strong>136 remain</strong>. The output file holds the 254 posts,
+written from the saved replies with <code>--cached-only</code>.</li>
+<li><strong>Cost:</strong> $6.37 today (252 requests). The full run so
+far is <span
+class="math inline">6.42<em>f</em><em>o</em><em>r</em>254<em>p</em><em>o</em><em>s</em><em>t</em><em>s</em>(</span>0.0253
+a post). October is about **<span
+class="math inline">18.62 * *(</span>12.25 before today, plus
+today).</li>
+<li><strong>To finish:</strong> 136 posts at about $0.0253 is about
+$3.45 more. That takes the full run to about <span
+class="math inline">9.87<em>a</em><em>n</em><em>d</em><em>O</em><em>c</em><em>t</em><em>o</em><em>b</em><em>e</em><em>r</em><em>t</em><em>o</em><em>a</em><em>b</em><em>o</em><em>u</em><em>t</em> * *</span>22.07**,
+inside John's 2026-10-06 limit of about $22.50.</li>
+</ul>
+<p><strong>Resume after midnight Pacific (2026-10-07 or later)</strong>,
+when the daily limit resets. It fits in one day's allowance:</p>
+<pre><code>python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 136
+python3 scripts/vanguard_three_way.py --full</code></pre>
+<p>Then re-apply the 20-eligible cut-off per quarter from the majority
+codes, redraw the figure from the majority codes, and check that "AGI
+already achieved" counts leave out ironic posts. If the per-post cost
+runs higher than expected, stop before October passes about $22.50 (full
+run about $10.30) and ask John again.</p>
+<h2
+id="gemini-2026-10-07-finished-390-of-390-and-the-three-way-comparison">Gemini,
+2026-10-07: finished, 390 of 390, and the three-way comparison</h2>
+<p>Scheduled run, started 09:34 Pacific, with the command from the
+section above. The daily limit had reset and no request was refused. It
+ran in three batches (40, 50, 46) so the cost could be checked between
+them against John's 2026-10-06 limit of about $22.50 for October; it
+never came close to it.</p>
+<ul>
+<li><strong>Posts coded:</strong> the remaining <strong>136</strong>
+(positions 255 to 390). <strong>All 390 of 390 are now coded</strong>,
+in the order of <code>data/vanguard/full-run-posts.csv</code>, with no
+gaps. Every reply reported <code>gemini-3.1-pro-preview</code> with the
+pinned version <code>3.1-pro-preview-01-2026</code>. Finished about
+10:20 Pacific.
+<code>r-singularity-pilot-codes-crossfamily-full-final.csv</code> now
+holds all 390 posts.</li>
+<li><strong>Cost of today's coding:</strong> $3.41 for 136 requests
+(420,078 input and 213,923 output tokens, thinking counted as output, at
+$2 and $12 per million), $0.0251 a post.</li>
+<li><strong>The full run:</strong> <span
+class="math inline">9.83<em>f</em><em>o</em><em>r</em>390<em>p</em><em>o</em><em>s</em><em>t</em><em>s</em>(</span>0.0252
+a post), 3 cents over its $9.80 quote and under the $10.30 stopping
+line.</li>
+<li><strong>October so far:</strong> about **<span
+class="math inline">22.03 * *(</span>12.25 before 2026-10-06, $6.37 on
+2026-10-06, $3.41 today), inside the approved $22.50. The figures are
+worked out from the saved token counts; Google's billing page has the
+exact charge and may lag by a day.</li>
+</ul>
+<p><strong>Three-way comparison</strong>
+(<code>python3 scripts/vanguard_three_way.py --full</code>). Claude,
+Gemini and GPT each coded all 390 posts under the final codebook. A post
+counts by majority: <strong>265 eligible</strong>. Output:
+<code>r-singularity-pilot-codes-majority-full-final.csv</code> (the
+majority codes) and <code>three-model-reliability-full-final.csv</code>
+(the table below). The numbers are kappa, a measure of how often two
+coders agree beyond what chance would give (1 is perfect, 0.6 is the
+usual floor for "good enough"); n is the number of posts both coders
+counted. "No majority" is the share of posts where all three gave a
+different answer.</p>
+<table>
+<thead>
+<tr>
+<th>What is coded</th>
+<th>Claude–Gemini</th>
+<th>Claude–GPT</th>
+<th>Gemini–GPT</th>
+<th>No majority</th>
+<th>Script's verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whether the post counts</td>
+<td>0.91 (390)</td>
+<td>0.91 (390)</td>
+<td>0.94 (390)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>What the claim is about</td>
+<td>0.77 (259)</td>
+<td>0.83 (254)</td>
+<td>0.76 (258)</td>
+<td>2%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Timing (already here, forecast, …)</td>
+<td>0.65 (259)</td>
+<td>0.63 (254)</td>
+<td>0.63 (258)</td>
+<td>5%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Whether the poster agrees</td>
+<td>0.75 (259)</td>
+<td>0.63 (254)</td>
+<td>0.56 (258)</td>
+<td>3%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Hedging</td>
+<td>0.73 (259)</td>
+<td>0.66 (254)</td>
+<td>0.54 (258)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Tone of the post</td>
+<td>0.74 (259)</td>
+<td>0.75 (254)</td>
+<td>0.79 (258)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Whether the poster wants it faster or slower</td>
+<td>0.46 (259)</td>
+<td>0.59 (254)</td>
+<td>0.45 (258)</td>
+<td>0%</td>
+<td>unreliable (every pair below 0.6; ruled unreliable by John,
+2026-10-03)</td>
+</tr>
+<tr>
+<td>Whose claim it is</td>
+<td>0.72 (259)</td>
+<td>0.71 (254)</td>
+<td>0.71 (258)</td>
+<td>1%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Coded from the title alone</td>
+<td>0.99 (259)</td>
+<td>0.99 (254)</td>
+<td>1.00 (258)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Projects to a time horizon</td>
+<td>0.75 (259)</td>
+<td>0.72 (254)</td>
+<td>0.73 (258)</td>
+<td>1%</td>
+<td>reliable</td>
+</tr>
+</tbody>
+</table>
+<p>Worth a look in the working session: Gemini and GPT agree less with
+each other than either does with Claude on whether the poster agrees
+(0.56) and on hedging (0.54). The script still calls both fields
+reliable because the other two pairs clear 0.6.</p>
+<p><strong>Not done yet (left for a working session, as
+planned):</strong> re-apply the 20-eligible cut-off per quarter from the
+majority codes, redraw the figure from the majority codes, and check
+that "AGI already achieved" counts leave out ironic posts.</p>
+<h2 id="figure-redrawn-from-the-majority-codes-2026-10-08">Figure
+redrawn from the majority codes, 2026-10-08</h2>
+<p>The three items left over from 2026-10-07 are done.
+<code>scripts/vanguard_figure.py</code> now reads the majority codes
+(<code>r-singularity-pilot-codes-majority-full-final.csv</code>) and the
+full-sample reliability table
+(<code>three-model-reliability-full-final.csv</code>) instead of
+Claude's first pass and the 140-post table. The figure, its counts table
+and the pilot report's Results and Agreement sections are rewritten from
+them. No model was run and nothing was spent.</p>
+<p><strong>What the majority file holds, and how it is read.</strong>
+One row per post: whether the post counts, the main claim's fields and
+the post-level fields; "unresolved" where no two models agree. It
+carries no secondary claims, no forecast horizon text and no frame tags.
+So:</p>
+<ul>
+<li>The claim-kind shares (capability, consequence, industry and
+governance) count what the <strong>main claim</strong> is about.
+Secondary claims were never compared across the models. Each model finds
+a consequence claim somewhere in about twice as many posts as have one
+as the main claim (Claude 50 against 30, Gemini 55 against 29, GPT 63
+against 29), which is why the consequence shares are lower than the
+first-pass figure's. <em>Agent decision; John can rule
+otherwise.</em></li>
+<li>A post with an unresolved value in any field a measure uses is left
+out of that measure (it cannot be put on either side). Across the
+counted posts: what the claim is about is unresolved for 3 top posts and
+1 random post (so the three claim-kind measures leave those out); the
+extrapolation measure leaves out 3 top and 3 random posts (an unresolved
+target or an unresolved extrapolation code); the headline measure, which
+uses four fields, leaves out 13 top posts and 8 random posts. Timing is
+the field most often unresolved (12 of the 265 eligible posts). Per
+quarter: the counts table, column
+<code>posts_left_out_unresolved</code>.</li>
+<li>Two yes-or-no things the headline measure needs are voted in the
+figure script from the three models' main-claim rows, with the same rule
+(two models must agree): whether a forecast states a horizon, and
+whether "singularity" is among the words used. Neither is unresolved for
+any counted post.</li>
+</ul>
+<p><strong>Top-post cut-off, re-applied from the majority
+codes.</strong> Per quarter, down the ranked list until 20 posts are
+eligible by majority; eligible posts below that rank are left out.</p>
+<table>
+<thead>
+<tr>
+<th>quarter</th>
+<th>ranks the models coded</th>
+<th>eligible by majority</th>
+<th>cut-off rank</th>
+<th>counted</th>
+<th>eligible left out below the cut-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024Q4</td>
+<td>1 to 27</td>
+<td>21</td>
+<td>26</td>
+<td>20</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2025Q1</td>
+<td>1 to 29</td>
+<td>19</td>
+<td>none reached</td>
+<td>19</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2025Q2</td>
+<td>1 to 26</td>
+<td>20</td>
+<td>26</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2025Q3</td>
+<td>1 to 27</td>
+<td>20</td>
+<td>27</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2025Q4</td>
+<td>1 to 32</td>
+<td>19</td>
+<td>none reached</td>
+<td>19</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026Q1</td>
+<td>1 to 32</td>
+<td>22</td>
+<td>30</td>
+<td>20</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2026Q2</td>
+<td>1 to 31</td>
+<td>22</td>
+<td>28</td>
+<td>20</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2026Q3</td>
+<td>1 to 26</td>
+<td>18</td>
+<td>none reached</td>
+<td>18</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>156 top posts counted (161 eligible by majority among the 230
+screened, less 5 below a cut-off). Three quarters fall short of 20
+because the majority finds fewer eligible posts than Claude's first pass
+did among the ranks that were screened; reaching 20 there needs all
+three models to code the next posts down the ranked reserve (ranks 30
+and on in 2025Q1, 33 and on in 2025Q4, 27 and on in 2026Q3). Not done;
+it costs money and is John's call. The random sample has no cut-off: 160
+drawn, 104 eligible by majority, all counted.</p>
+<p><strong>Irony and the headline claims.</strong> The codebook (section
+3, <code>rhetorical_mode</code>, and rule R1a) says to record irony in
+<code>rhetorical_mode</code> but does not say whether an ironic post can
+affirm a headline claim; the measures section says only "poster affirms
+each". So the figure script now leaves posts coded <code>ironic</code>
+by majority out of the headline count, and still counts
+<code>mixed</code> and <code>unclear</code> (<em>agent decision</em>,
+stated in the script's docstring). It changes the top-post count from 3
+to 0: the three posts are "AGI 🚀" (2026Q2), "AGI achieved" (2026Q3) and
+"Post-Singularity Free Healthcare" (2025Q2), each affirmed and ironic by
+majority. No post coded <code>mixed</code> affirms a headline claim, so
+requiring <code>literal</code> would give the same count. One more "AGI
+achieved" top post (2025Q2) has no majority on whether the poster agrees
+and is left out as unresolved. The headline measure now depends on tone,
+which passes the reliability test on the full sample (kappa 0.74, 0.75,
+0.79).</p>
+<p><strong>Headline numbers, all quarters together</strong> (top posts;
+random posts): main claim a capability 89 of 153 (58%); 52 of 103 (50%).
+Consequence 14 of 153 (9%); 16 of 103 (16%). Industry and governance 43
+of 153 (28%); 28 of 103 (27%). Capability posts that extrapolate 7 of 89
+(8%); 8 of 51 (16%). Headline claims 0 of 143; 1 of 96. Full table and
+the title-only split in the pilot report.</p>
+<p><strong>Files changed:</strong>
+<code>scripts/vanguard_figure.py</code>,
+<code>site/vanguard-pilot-r-singularity.png</code>,
+<code>site/vanguard-pilot-r-singularity.csv</code> (new column
+<code>posts_left_out_unresolved</code>),
+<code>docs/vanguard/pilot-report-r-singularity-2026-10.md</code>, and
+this record. The web page's caption still says a 140-post subset; it is
+updated separately.</p>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/vanguard/pilot-run-r-singularity-2026-10.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

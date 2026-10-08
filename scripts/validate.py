@@ -73,7 +73,7 @@ CODED_FIELDS = {
 }
 UNITS = {"year", "probability", "percent_of_respondents", "index",
          # world_measures.csv only
-         "minutes", "days", "percent"}
+         "minutes", "days", "percent", "percent_growth"}
 EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report"}
 PRECISION_PATTERNS = {
     "day": re.compile(r"^\d{4}-\d{2}-\d{2}$"),
@@ -114,8 +114,10 @@ def read(name):
     return rows
 
 
-def valid_date(value, precision=None):
-    """True if value is a real date in the form precision asks for (any form if None)."""
+def valid_date(value, precision=None, floor=date(1990, 1, 1)):
+    """True if value is a real date in the form precision asks for (any form if None).
+    Belief records start in 2005, so 1990 is a safe floor; world measures (the economic
+    series back to 1961) pass their own floor."""
     forms = [precision] if precision else ["day", "month", "year"]
     for form in forms:
         pattern = PRECISION_PATTERNS.get(form)
@@ -125,7 +127,7 @@ def valid_date(value, precision=None):
                 d = date(parts[0], parts[1], parts[2])
             except ValueError:
                 return False
-            return date(1990, 1, 1) <= d <= date.today()
+            return floor <= d <= date.today()
     return False
 
 
@@ -322,10 +324,11 @@ def check_timeline(f, i, r):
 
 def check_aggregates(rows, speakers, f="aggregates.csv"):
     unique(f, rows, "aggregate_id")
+    floor = date(1960, 1, 1) if f == "world_measures.csv" else date(1990, 1, 1)
     for i, r in enumerate(rows, start=2):
         if r["speaker_id"] not in speakers:
             err(f, i, f"speaker_id {r['speaker_id']!r} not in speakers.csv")
-        if not valid_date(r["date"]):
+        if not valid_date(r["date"], floor=floor):
             err(f, i, f"date {r['date']!r} is not YYYY, YYYY-MM or YYYY-MM-DD")
         if not r["measure"]:
             err(f, i, "measure is blank")

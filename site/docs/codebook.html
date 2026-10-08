@@ -1,0 +1,627 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codebook, version 2 | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="codebook-version-2">Codebook, version 2</h1>
+<p>How each coded unit is coded. Written 2026-09-30 and revised
+2026-10-01 (amendment A14) from <code>docs/methodology-v2.md</code>
+section 2, which is the authority; this file turns its rules into
+decisions with examples. Changes go in <code>docs/amendments.md</code>
+first.</p>
+<p>Version 1 (the single <code>stance</code> code and the six-value
+<code>question_frame</code>) is retired. Rows coded under version 1 were
+recoded from their sources, not mapped (amendment A2).</p>
+<p><strong>About the examples.</strong> Examples marked
+<em>constructed</em> are invented to show a rule and must never be cited
+as quotes.</p>
+<hr />
+<h2 id="0-one-unit-and-how-to-read-it">0. One unit, and how to read
+it</h2>
+<p>A unit is one statement by one speaker on one occasion. Code
+<strong>only what the quoted words and their immediate context
+say</strong>. Don't use what the speaker is known for, what they said
+elsewhere, or what the article around the quote implies.</p>
+<p>Read the source, not just the stored quote. The stored quote (60
+words or fewer) is evidence for the codes. If a code depends on a
+sentence outside the stored quote, either change the quote to include it
+or code <code>unexpressed</code> / <code>ambiguous</code>.</p>
+<hr />
+<h2 id="1-target_capability-what-capability-is-the-unit-about">1.
+target_capability: what capability is the unit about?</h2>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>the capability</th>
+<th>typical words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conversation</code></td>
+<td>passes as human in conversation</td>
+<td>Turing test, can't tell it from a person</td>
+</tr>
+<tr>
+<td><code>narrow_task</code></td>
+<td>one specific task or domain</td>
+<td>chess, driving, radiology, coding contests</td>
+</tr>
+<tr>
+<td><code>broad_competence</code></td>
+<td>most economically valuable or intellectual work; "AGI", "human-level
+AI" when used this way</td>
+<td>AGI, human-level, do any job a person can</td>
+</tr>
+<tr>
+<td><code>superintelligence</code></td>
+<td>exceeds humans broadly</td>
+<td>superintelligence, smarter than us at everything, the Singularity
+(when it means AI beyond humans)</td>
+</tr>
+<tr>
+<td><code>si_assist</code></td>
+<td>AI helps <strong>humans</strong> build AI</td>
+<td>AI speeds up our researchers, copilots for ML engineers</td>
+</tr>
+<tr>
+<td><code>si_research</code></td>
+<td>AI does <strong>parts</strong> of AI research on its own</td>
+<td>AI runs experiments, writes the training code, automated AI
+researcher for some tasks</td>
+</tr>
+<tr>
+<td><code>si_modify</code></td>
+<td>AI changes <strong>its own</strong> code or weights</td>
+<td>rewrites itself, modifies its own weights</td>
+</tr>
+<tr>
+<td><code>si_sustained</code></td>
+<td>successive improvements with little human involvement</td>
+<td>intelligence explosion, recursive self-improvement, "takeoff", each
+generation builds the next</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>no capability is claimed</td>
+<td>a statement about the word "AGI", about hype, about policy with no
+capability in view</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Choosing among them.</strong> Pick the capability the
+speaker's claim is about. If they name two (for example "human-level by
+2029, Singularity by 2045"), code the one the unit leads with and record
+the other in <code>definition_note</code>.</p>
+<p><strong>The four self-improvement levels.</strong> Ask two questions
+in order:</p>
+<ol type="1">
+<li><em>Who does the improving?</em> Humans with AI help →
+<code>si_assist</code>. The AI itself → go on.</li>
+<li><em>How far does it go?</em>
+<ul>
+<li>A part of the research pipeline, with humans still steering →
+<code>si_research</code>.</li>
+<li>The system edits itself (its own code or weights) →
+<code>si_modify</code>.</li>
+<li>Repeated rounds, each better system making the next, with little
+human role → <code>si_sustained</code>.</li>
+</ul></li>
+</ol>
+<p><strong>"Takeoff" and loose self-improvement words (ruling 12,
+A14).</strong> Code the lowest level the words support and set
+<code>ambiguous: yes</code>; put any speed the speaker gives ("slow",
+"fast", "gentle") in <code>timeline_text</code>. When the words don't
+say who does the improving (a bare "takeoff", "the AI will improve
+itself"), the lowest level is <code>si_assist</code>. Code
+<code>si_sustained</code> only when the words themselves describe
+repeated rounds with little human role ("each generation builds the
+next", "an intelligence explosion with no one in the loop"). The labels
+"recursive self-improvement" and "intelligence explosion" alone don't do
+that.</p>
+<ul>
+<li><p><em>Seed example, <code>altman-2023-04</code>:</em> Altman told
+the New York Times it would be a "very slow takeoff". The words don't
+say who improves the systems or how, so
+<code>target_capability: si_assist</code>, <code>ambiguous: yes</code>,
+<code>timeline_text: "very slow takeoff"</code>.</p></li>
+<li><p><em>Constructed:</em> "Our engineers now write most of their code
+with model help." → <code>si_assist</code>.</p></li>
+<li><p><em>Constructed:</em> "The model ran the ablation studies
+overnight without anyone." → <code>si_research</code>.</p></li>
+<li><p><em>Constructed:</em> "Once a system can rewrite its own weights,
+all bets are off." → <code>si_modify</code>,
+<code>present_capability: hypothetical</code>.</p></li>
+<li><p><em>Constructed:</em> "Each generation will design the next,
+faster than we can follow." → <code>si_sustained</code>.</p></li>
+</ul>
+<hr />
+<h2
+id="2-frame_primary-and-frames_present-which-questions-does-the-unit-raise">2.
+frame_primary and frames_present: which questions does the unit
+raise?</h2>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>the question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>possibility</code></td>
+<td>Can it be built at all, in principle?</td>
+</tr>
+<tr>
+<td><code>timeline</code></td>
+<td>When will it arrive?</td>
+</tr>
+<tr>
+<td><code>capability_now</code></td>
+<td>Is a current system already it, or close?</td>
+</tr>
+<tr>
+<td><code>self_improvement</code></td>
+<td>Can current or imminent systems improve themselves?</td>
+</tr>
+<tr>
+<td><code>definition</code></td>
+<td>What would count?</td>
+</tr>
+<tr>
+<td><code>consequences</code></td>
+<td>What happens if or when it arrives (risk, economy, society)?</td>
+</tr>
+<tr>
+<td><code>governance</code></td>
+<td>What should be done about it (regulation, pauses, safety work,
+coordination)?</td>
+</tr>
+<tr>
+<td><code>other_concern</code></td>
+<td>A different AI question leads: jobs, reliability, privacy, bias,
+misinformation, military, consciousness, ownership</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>frame_primary</code> is the question the unit <strong>leads
+with</strong>: what the speaker is mainly answering, usually what they
+were asked or what the headline claim is about.</li>
+<li><code>frames_present</code> lists <strong>every</strong> question
+raised, separated by <code>;</code>, and always includes
+<code>frame_primary</code>. A question counts as present when the unit
+raises it, whatever answer is given ("it's not close" raises
+<code>capability_now</code>).</li>
+<li><code>concern_tag</code> is required when <code>other_concern</code>
+is present (one of <code>jobs</code>, <code>reliability</code>,
+<code>privacy</code>, <code>bias</code>, <code>misinformation</code>,
+<code>military</code>, <code>consciousness</code>,
+<code>ownership</code>, <code>other</code>), and blank otherwise.</li>
+<li>A unit framed as self-improvement should normally have an
+<code>si_*</code> target; if it doesn't, say why in notes.</li>
+</ul>
+<p>Test for <code>possibility</code> against <code>timeline</code>:
+delete every date from the unit. If the claim still stands and is about
+whether it can be done, it's <code>possibility</code>.</p>
+<hr />
+<h2
+id="3-endorsement-does-the-speaker-endorse-that-the-target-capability-will-exist">3.
+endorsement: does the speaker endorse that the target capability will
+exist?</h2>
+<p>Endorsement is about the <strong>future</strong>: whether the
+capability will exist, ever or by the horizon the speaker names (ruling
+9, A14). Whether it exists <strong>now</strong> is a different field,
+<code>present_capability</code>.</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accepts</code></td>
+<td>says it will happen (or has already happened). Needs "will",
+"expect", "I think", "predict", "going to", "almost certainly", a stated
+probability of 50% or more, a bet, "decades away", "at least N years",
+or a firm, unhedged first-person date ("I'm still saying 2029") (A14
+rulings 10 and 11; A15 rulings 1, 5 and 6)</td>
+</tr>
+<tr>
+<td><code>rejects</code></td>
+<td>says it won't happen, ever or by the horizon given. "It isn't here
+yet" is <strong>not</strong> a rejection (ruling 9)</td>
+</tr>
+<tr>
+<td><code>uncertain</code></td>
+<td>explicitly says they don't know, gives a probability below 50%, or
+hedges the date with "may", "might" or "could" (ruling 10)</td>
+</tr>
+<tr>
+<td><code>conditional</code></td>
+<td>endorses it only if a stated condition holds ("if scaling
+continues", "if we solve X")</td>
+</tr>
+<tr>
+<td><code>unexpressed</code></td>
+<td>discusses it without taking a position</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Silence is never acceptance.</strong> Endorsement is coded
+only from words the speaker actually said. Every code other than
+<code>unexpressed</code> needs an anchor: the exact words in the stored
+quote that carry the position, recorded in notes as
+<code>basis: "&lt;words copied from the quote&gt;"</code>.
+<code>scripts/validate.py</code> checks that the anchor appears in the
+quote. If you can't point to such words, the code is
+<code>unexpressed</code>.</p>
+<p>Rulings of 2026-10-01 (A14), with examples from the seed data:</p>
+<ul>
+<li><strong>Not here yet (ruling 9).</strong> Denying that the
+capability exists now is <code>present_capability: disputed</code>.
+Endorsement then comes from what the speaker says about the future, or
+is <code>unexpressed</code> if they say nothing about it. <em>Seed
+example, <code>lecun-2017-02</code>:</em> "We're very far from having
+machines that can learn the most basic things about the world in the way
+humans and animals can do." This denies present capability and says
+nothing about whether such machines will come, so
+<code>present_capability: disputed</code>,
+<code>endorsement: unexpressed</code> (it was <code>rejects</code>
+before the ruling).</li>
+<li><strong>Hedged dates (ruling 10).</strong> "May", "might" or "could"
+with a date is <code>uncertain</code>. Fill the timeline fields anyway
+and keep the hedge in <code>timeline_text</code>. When a hedge and an
+acceptance word govern the same date, the hedge decides (agent
+interpretation, noted in A14). <em>Seed example,
+<code>hinton-2023-06</code>:</em> "Now, I think we may be much closer,
+maybe only five years away from that." →
+<code>endorsement: uncertain</code> (basis
+<code>"maybe only five years away"</code>),
+<code>timeline_type: qualitative</code>,
+<code>timeline_year: 2028</code> (<code>computed: 2023 + 5</code>),
+<code>timeline_text: "maybe only five years away"</code>.</li>
+<li><strong>"Decades away" (ruling 11)</strong> is <code>accepts</code>
+with <code>timeline_type: qualitative</code>; leave
+<code>timeline_year</code> blank unless a number of decades is given.
+<em>Seed example, <code>marcus-2022-04</code>:</em> "we are still likely
+decades away from general-purpose, human-level AI" →
+<code>endorsement: accepts</code> (basis
+<code>"still likely decades away"</code>),
+<code>present_capability: disputed</code>,
+<code>timeline_type: qualitative</code>,
+<code>timeline_text: "still likely decades away"</code>.</li>
+<li><strong>Self-improvement words (ruling 12):</strong> see section
+1.</li>
+</ul>
+<p>Hard cases:</p>
+<ul>
+<li><strong>Giving a date usually carries endorsement, but check the
+words.</strong> "AGI by 2029" with "will" or "I think" anchors
+<code>accepts</code>. "People say 2029; who knows" is
+<code>uncertain</code> (basis <code>"who knows"</code>) or
+<code>unexpressed</code>.</li>
+<li><strong>Worrying about something is not endorsing it.</strong> "If
+superintelligence arrives it could end us" is <code>conditional</code>
+at most, and <code>unexpressed</code> if no arrival claim is made.
+Writing about regulation does not establish that the author accepts
+feasibility.</li>
+<li><strong>Rejecting a near date is not rejecting the
+capability.</strong> "Not by 2027" → <code>rejects</code> for that
+horizon only; record the year with the <code>not_by</code> tag (section
+5) and say in notes whether the speaker accepts it eventually. If the
+same unit also says "but it will come eventually", code
+<code>accepts</code> with the hedge in <code>timeline_text</code>; set
+<code>ambiguous: yes</code> if the two are balanced.</li>
+<li><strong>Rejecting a route is not rejecting the capability (A15
+ruling 4).</strong> "Language models are not a road to AGI" says nothing
+about whether AGI will exist. Code <code>unexpressed</code>, and keep
+the route claim in <code>claim_summary</code> and notes. <em>Seed
+example, <code>lecun-2024-02</code>:</em> "They're not a road towards
+what people call 'AGI.'" → <code>endorsement: unexpressed</code>.</li>
+<li><strong>Minimum years are acceptance (A15 ruling 5).</strong> "At
+least a decade" or "at least thirty or fifty years" asserts arrival with
+a minimum: <code>accepts</code>, <code>timeline_type: range</code> with
+<code>timeline_year</code> set to the minimum,
+<code>timeline_year_high</code> left blank, the <code>lower_bound</code>
+tag, and "at least" kept in <code>timeline_text</code>. <em>Seed
+example, <code>marcus-2016-01</code>:</em> "aren't going to be for at
+least thirty or fifty years" (2016) → <code>accepts</code>,
+<code>range</code>, <code>timeline_year: 2046</code>, high bound
+open.</li>
+<li><strong>Probabilities.</strong> A stated probability of 50% or more
+by a date → <code>accepts</code> with <code>timeline_prob</code> filled
+(ruling 10). Below 50%, or a wide spread stated as such →
+<code>uncertain</code>.</li>
+<li><strong>Jokes and sarcasm</strong> → <code>unexpressed</code> and
+<code>ambiguous: yes</code>, unless the speaker explains the joke.</li>
+</ul>
+<h3 id="one-row-per-capability-a15-ruling-13">One row per capability
+(A15 ruling 13)</h3>
+<p>When one statement makes distinct claims about distinct target
+capabilities, it gets one row per capability. The rows share the quote,
+source and date; their ids carry a one-letter suffix
+(<code>marcus-2026-04a</code>, <code>marcus-2026-04b</code>); each row
+is coded for its own capability.</p>
+<p><em>Seed example 1, <code>marcus-2026-04</code>:</em> "it's great for
+example at (some) code optimizations, but not even (as the blog makes
+clear) actual RSI, which remains speculative." Two claims:</p>
+<ul>
+<li><code>marcus-2026-04a</code>: AI helping build AI exists →
+<code>target_capability: si_assist</code>,
+<code>present_capability: demonstrated</code>,
+<code>endorsement: accepts</code> (basis "it's great for example at
+(some) code optimizations").</li>
+<li><code>marcus-2026-04b</code>: recursive self-improvement does not
+exist yet → <code>si_sustained</code>,
+<code>present_capability: disputed</code>,
+<code>endorsement: unexpressed</code> (nothing said about the
+future).</li>
+</ul>
+<p><em>Seed example 2, <code>altman-2025-06</code>:</em> "We are past
+the event horizon; the takeoff has started. Humanity is close to
+building digital superintelligence…"</p>
+<ul>
+<li><code>altman-2025-06a</code>: "the takeoff has started" → the lowest
+self-improvement level the words support (<code>si_assist</code>),
+<code>present_capability: claimed</code>,
+<code>ambiguous: yes</code>.</li>
+<li><code>altman-2025-06b</code>: superintelligence →
+<code>frame_primary: timeline</code>, <code>endorsement: accepts</code>,
+<code>timeline_type: qualitative</code>,
+<code>timeline_text: "close"</code>.</li>
+</ul>
+<h2 id="4-present_capability-does-it-exist-now-in-the-speakers-view">4.
+present_capability: does it exist now, in the speaker's view?</h2>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>demonstrated</code></td>
+<td>the speaker says it already exists and points to it</td>
+</tr>
+<tr>
+<td><code>claimed</code></td>
+<td>the speaker says it exists, without pointing to evidence</td>
+</tr>
+<tr>
+<td><code>disputed</code></td>
+<td>the speaker says current systems do <strong>not</strong> have
+it</td>
+</tr>
+<tr>
+<td><code>hypothetical</code></td>
+<td>discussed as a future or possible capability</td>
+</tr>
+<tr>
+<td><code>na</code></td>
+<td>no capability in view (target <code>none</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><code>na</code> exactly when <code>target_capability</code> is
+<code>none</code>.</p>
+<h2 id="5-timeline-fields">5. Timeline fields</h2>
+<p>As in version 1, with three tags (in notes) for claims that aren't
+arrival dates:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timeline_type</code></td>
+<td><code>point_year</code>, <code>range</code>,
+<code>prob_by_year</code>, <code>qualitative</code>,
+<code>none</code></td>
+</tr>
+<tr>
+<td><code>timeline_year</code></td>
+<td>an absolute year; for "in 10 years" add it to the statement year and
+record <code>computed: 2023 + 10</code> in notes</td>
+</tr>
+<tr>
+<td><code>timeline_year_high</code></td>
+<td>only for <code>range</code></td>
+</tr>
+<tr>
+<td><code>timeline_prob</code></td>
+<td>0 to 1, only when the source gives a probability. "Soon" is never
+converted to a number</td>
+</tr>
+<tr>
+<td><code>timeline_text</code></td>
+<td>the speaker's own words for the timing, always filled when a hedge
+is present</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><code>not_by: YYYY</code></strong> for "it won't happen by
+YYYY". Leave <code>timeline_year</code> blank and code
+<code>timeline_type: qualitative</code>. These are not arrival dates and
+charts must not plot them as such.</li>
+<li><strong><code>lower_bound</code></strong> for "at least N years" or
+"no sooner than YYYY". Fill <code>timeline_year</code> with the bound
+and add the tag. With <code>timeline_type: range</code>, the high bound
+may be left blank (open-ended minimum, A15 ruling 5).</li>
+<li>Proximity (distant, medium, near, present) is worked out when charts
+are drawn, never stored.</li>
+</ul>
+<h2 id="6-consequences-affect-and-agency">6. Consequences, affect and
+agency</h2>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>codes</th>
+<th>rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>consequence_type</code></td>
+<td><code>existential</code>, <code>economic</code>,
+<code>social</code>, <code>mixed</code>, <code>unspecified</code></td>
+<td>the kind of consequence the unit expects. <code>unspecified</code>
+when none is named</td>
+</tr>
+<tr>
+<td><code>consequence_valence</code></td>
+<td><code>beneficial</code>, <code>harmful</code>, <code>mixed</code>,
+<code>unspecified</code></td>
+<td>whether those consequences are good or bad in the speaker's
+words</td>
+</tr>
+<tr>
+<td><code>affect</code></td>
+<td><code>enthusiasm</code>, <code>fear</code>,
+<code>resignation</code>, <code>neutral</code>, <code>mixed</code>,
+<code>unexpressed</code></td>
+<td>emotional posture, <strong>only from explicit cues</strong>
+("exciting", "scary", "I'm worried", "nothing we can do"). A plain
+forecast is <code>unexpressed</code>, not <code>neutral</code>; use
+<code>neutral</code> only when the speaker signals detachment ("I'm just
+reporting the trend")</td>
+</tr>
+<tr>
+<td><code>agency</code></td>
+<td><code>can_influence</code>, <code>cannot_influence</code>,
+<code>unexpressed</code></td>
+<td>does the speaker say the outcome can be shaped? "We must regulate" →
+<code>can_influence</code>; "it's coming whatever we do" →
+<code>cannot_influence</code></td>
+</tr>
+</tbody>
+</table>
+<p>These are separate on purpose. Someone who expects AGI in five years
+can be thrilled, frightened, resigned or organizing.</p>
+<ul>
+<li><em>Constructed:</em> "AGI by 2030, and frankly it terrifies me, but
+good policy can still steer it." → <code>accepts</code> (basis
+<code>"AGI by 2030"</code>), <code>affect: fear</code>,
+<code>agency: can_influence</code>.</li>
+<li><em>Constructed:</em> "It's coming whether we like it or not." →
+<code>accepts</code> (basis <code>"It's coming"</code>),
+<code>affect: resignation</code>,
+<code>agency: cannot_influence</code>.</li>
+</ul>
+<h2 id="7-elicitation-how-did-the-statement-come-about">7. elicitation:
+how did the statement come about?</h2>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unprompted</code></td>
+<td>the speaker chose to say it: their own blog, post, book, essay,
+talk</td>
+</tr>
+<tr>
+<td><code>interview</code></td>
+<td>answering a question in an interview, podcast or hearing</td>
+</tr>
+<tr>
+<td><code>survey</code></td>
+<td>answering a survey item</td>
+</tr>
+<tr>
+<td><code>quoted</code></td>
+<td>the unit is a claim quoted inside someone else's article, without
+the full exchange available</td>
+</tr>
+</tbody>
+</table>
+<p>Secondhand rows are usually <code>quoted</code>.</p>
+<h2 id="8-other-fields">8. Other fields</h2>
+<ul>
+<li><strong><code>definition_note</code></strong>: what the speaker
+means by AGI in this unit, if they say.</li>
+<li><strong><code>coding_confidence</code></strong>: <code>high</code>
+when the codes are clear and the source is primary; <code>medium</code>
+when one needed judgment; <code>low</code> when several did, or the
+source is secondhand.</li>
+<li><strong><code>ambiguous</code></strong>: <code>yes</code> when the
+words support two codes equally. Kept as a code, never resolved by
+guessing. Say which field in notes.</li>
+<li><strong><code>date</code></strong> must match
+<code>date_precision</code>: <code>YYYY-MM-DD</code>,
+<code>YYYY-MM</code> or <code>YYYY</code>.</li>
+<li><strong><code>quote</code></strong>: verbatim, 60 words or fewer,
+"..." only within one passage.</li>
+<li><strong>Primary and secondhand.</strong> Primary = the speaker's own
+words in something they produced or took part in (their writing, a
+transcript, a recorded talk, an interview with direct quotes by the
+outlet that did it). Secondhand = someone else's report or paraphrase,
+or a quote not traced to where it was said. Secondhand rows carry the
+<code>secondhand</code> tag and
+<code>coding_confidence: low</code>.</li>
+<li><strong><code>coder</code></strong>: <code>john</code>,
+<code>claude-agent</code> (version 1, retired),
+<code>claude-agent-v2</code>, or <code>claude-agent-v2.1</code> (rows
+changed under the A14 rulings).</li>
+</ul>
+<h2 id="9-notes-tags">9. Notes tags</h2>
+<p>Notes start with any of these tags, separated by <code>; </code>,
+then free text:</p>
+<table>
+<thead>
+<tr>
+<th>tag</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>secondhand</code></td>
+<td>see section 8</td>
+</tr>
+<tr>
+<td><code>incidental</code></td>
+<td>found while searching for a different speaker</td>
+</tr>
+<tr>
+<td><code>sampled</code></td>
+<td>kept under the every-third rule for a busy year</td>
+</tr>
+<tr>
+<td><code>computed: &lt;working&gt;</code></td>
+<td>how an absolute year was worked out</td>
+</tr>
+<tr>
+<td><code>basis: "&lt;words&gt;"</code></td>
+<td>the words carrying the endorsement (required unless
+<code>unexpressed</code>)</td>
+</tr>
+<tr>
+<td><code>not_by: YYYY</code></td>
+<td>"won't happen by YYYY" (section 5)</td>
+</tr>
+<tr>
+<td><code>lower_bound</code></td>
+<td>the timeline year is a minimum (section 5)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-mapping-to-fast-and-horvitz-2017">10. Mapping to Fast and
+Horvitz 2017</h2>
+<p>Methodology-v2 section 5 asks for the categories of Fast and
+Horvitz's 2017 study of New York Times AI coverage to be reconciled with
+these codes before the media stream starts. That reconciliation belongs
+to the media stream and has not been done yet.</p>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/codebook.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

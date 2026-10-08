@@ -1,0 +1,638 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGI Zeitgeist Tracker:
+kickoff plan | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="agi-zeitgeist-tracker-kickoff-plan">AGI Zeitgeist Tracker:
+kickoff plan</h1>
+<p>Note added 2026-09-30, later the same day: the method sections of
+this plan (data model, coding scheme, sampling rule, panel rule, public
+track) are superseded by <code>docs/methodology-v2.md</code> after two
+outside reviews. Reasons for each change are in
+<code>docs/amendments.md</code>. This file is kept as the record of
+where the project started.</p>
+<p>Date: 2026-09-30 Status: plan agreed in conversation, nothing
+collected yet Repo: <code>~/Code/agi-zeitgeist</code> (new, standalone)
+Related: Sentient Horizons essay to follow once the seed phase passes
+its check</p>
+<h2 id="what-this-is">What this is</h2>
+<p>A dated, sourced record of how expert and public opinion about
+artificial general intelligence (AGI, meaning AI that can do most
+intellectual work a person can) has moved from 2005 to the present,
+built so the movement can be shown in charts and described in writing.
+Two outputs come from one dataset:</p>
+<ol type="1">
+<li>A citable dataset other people can check and extend: a repo with
+plain CSV files, a written method, and a log of what was searched.</li>
+<li>A public Sentient Horizons essay with charts, using the dataset as
+its evidence.</li>
+</ol>
+<p>The dataset comes first. The essay is written only from what the
+dataset can support.</p>
+<h2 id="the-claim-we-want-to-be-able-to-test">The claim we want to be
+able to test</h2>
+<p>John's working impression: the central public question has moved in
+three steps. Around 2005 to 2015 it was whether AGI is possible at all.
+Around 2016 to 2022 it was when it will arrive. Since roughly 2023 it
+has become whether the current model is already capable of improving
+itself (recursive self-improvement, meaning an AI making the next,
+better AI with little human help), and even cautious thinkers now treat
+AGI as reachable.</p>
+<p>This is a hypothesis, not a conclusion. The method below is designed
+so the data could contradict it. If the record shows the shift was
+smaller, earlier, or confined to one group, the essay says that.</p>
+<h2 id="data-model">Data model</h2>
+<p>Three tables, all plain CSV so anyone can open them.</p>
+<h3 id="speakerscsv-one-row-per-person-or-source">speakers.csv (one row
+per person or source)</h3>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>speaker_id</td>
+<td>short slug, e.g. <code>hinton</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>full name</td>
+</tr>
+<tr>
+<td>speaker_type</td>
+<td><code>individual</code>, <code>survey</code>,
+<code>prediction_market</code>, <code>institution</code>,
+<code>poll</code></td>
+</tr>
+<tr>
+<td>role_summary</td>
+<td>what they do, in one line</td>
+</tr>
+<tr>
+<td>frontier_lab_tie</td>
+<td><code>yes</code> if they lead or run a company building frontier
+models at the time of the statement; recorded because the audience will
+ask about incentives</td>
+</tr>
+<tr>
+<td>panel_tier</td>
+<td><code>core</code> (meets the inclusion rule below) or
+<code>cohort_2020s</code> (prominent since 2020, no early record)</td>
+</tr>
+<tr>
+<td>inclusion_note</td>
+<td>why they are in, with the earliest and latest documented statement
+dates</td>
+</tr>
+</tbody>
+</table>
+<h3 id="statementscsv-one-row-per-public-statement">statements.csv (one
+row per public statement)</h3>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statement_id</td>
+<td><code>spk-YYYY-NN</code>, e.g. <code>hinton-2023-02</code></td>
+</tr>
+<tr>
+<td>speaker_id</td>
+<td>links to speakers.csv</td>
+</tr>
+<tr>
+<td>date</td>
+<td>ISO date</td>
+</tr>
+<tr>
+<td>date_precision</td>
+<td><code>day</code>, <code>month</code> or <code>year</code>, since
+many sources only give a year</td>
+</tr>
+<tr>
+<td>source_url</td>
+<td>link to the primary source where one exists</td>
+</tr>
+<tr>
+<td>source_type</td>
+<td><code>interview</code>, <code>talk</code>, <code>paper</code>,
+<code>blog</code>, <code>podcast</code>, <code>social_post</code>,
+<code>book</code>, <code>survey_response</code>,
+<code>testimony</code></td>
+</tr>
+<tr>
+<td>quote</td>
+<td>verbatim, 60 words or fewer</td>
+</tr>
+<tr>
+<td>claim_summary</td>
+<td>one plain sentence saying what was claimed</td>
+</tr>
+<tr>
+<td>question_frame</td>
+<td>which question the statement is answering (see coding scheme)</td>
+</tr>
+<tr>
+<td>timeline_type</td>
+<td><code>point_year</code>, <code>range</code>,
+<code>prob_by_year</code>, <code>qualitative</code>,
+<code>none</code></td>
+</tr>
+<tr>
+<td>timeline_year</td>
+<td>the single year or the low end of a range</td>
+</tr>
+<tr>
+<td>timeline_year_high</td>
+<td>high end of a range, if any</td>
+</tr>
+<tr>
+<td>timeline_prob</td>
+<td>probability given, if any, as 0 to 1</td>
+</tr>
+<tr>
+<td>timeline_text</td>
+<td>the speaker's own words for the timeline, e.g. "decades away",
+"never"</td>
+</tr>
+<tr>
+<td>definition_note</td>
+<td>what the speaker seems to mean by AGI in this statement, if they
+say; definitions drift and that drift is part of the story</td>
+</tr>
+<tr>
+<td>stance</td>
+<td>see coding scheme</td>
+</tr>
+<tr>
+<td>coding_confidence</td>
+<td><code>high</code>, <code>medium</code>, <code>low</code></td>
+</tr>
+<tr>
+<td>coder</td>
+<td>who coded it (<code>john</code>, <code>claude-agent</code>)</td>
+</tr>
+<tr>
+<td>retrieved</td>
+<td>date the source was retrieved</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>anything else</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="aggregatescsv-one-row-per-survey-result-market-reading-or-poll">aggregates.csv
+(one row per survey result, market reading or poll)</h3>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aggregate_id</td>
+<td>e.g. <code>aiimpacts-2023</code></td>
+</tr>
+<tr>
+<td>speaker_id</td>
+<td>links to speakers.csv</td>
+</tr>
+<tr>
+<td>date</td>
+<td>when the survey ran or the market was read</td>
+</tr>
+<tr>
+<td>measure</td>
+<td>what was measured, in plain words, e.g. "median year respondents
+gave 50% chance of high-level machine intelligence"</td>
+</tr>
+<tr>
+<td>value</td>
+<td>the number</td>
+</tr>
+<tr>
+<td>unit</td>
+<td><code>year</code>, <code>probability</code>,
+<code>percent_of_respondents</code>, <code>index</code></td>
+</tr>
+<tr>
+<td>n</td>
+<td>sample size if any</td>
+</tr>
+<tr>
+<td>source_url</td>
+<td>link</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>definition used, response rate, anything that affects
+comparability</td>
+</tr>
+</tbody>
+</table>
+<h2 id="coding-scheme">Coding scheme</h2>
+<h3 id="question_frame">question_frame</h3>
+<p>Which question is the speaker actually answering? One value per
+statement.</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>the question being answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>possibility</code></td>
+<td>Can AGI be built at all, in principle?</td>
+</tr>
+<tr>
+<td><code>timeline</code></td>
+<td>When will it arrive?</td>
+</tr>
+<tr>
+<td><code>capability_now</code></td>
+<td>Is the current system already AGI, or close to it?</td>
+</tr>
+<tr>
+<td><code>self_improvement</code></td>
+<td>Is the current system able to improve itself, or about to be?</td>
+</tr>
+<tr>
+<td><code>post_agi</code></td>
+<td>What happens after? (risk, economy, control), assuming it
+arrives</td>
+</tr>
+<tr>
+<td><code>definition</code></td>
+<td>What would even count as AGI?</td>
+</tr>
+</tbody>
+</table>
+<p>A statement can touch several; code the one it leads with, and note
+others in <code>notes</code>. The frame distribution by year is the main
+evidence for the "whether, when, now" claim.</p>
+<h3 id="stance">stance</h3>
+<p>How the speaker is positioned toward the prospect, independent of
+their timeline.</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dismissive</code></td>
+<td>treats AGI talk as hype or confusion</td>
+</tr>
+<tr>
+<td><code>skeptical</code></td>
+<td>thinks it is far off or much harder than claimed</td>
+</tr>
+<tr>
+<td><code>cautious</code></td>
+<td>thinks it is plausible but uncertain, resists firm dates</td>
+</tr>
+<tr>
+<td><code>expectant</code></td>
+<td>thinks it is coming and welcomes it</td>
+</tr>
+<tr>
+<td><code>alarmed</code></td>
+<td>thinks it is coming and is worried</td>
+</tr>
+<tr>
+<td><code>resigned</code></td>
+<td>thinks it is coming regardless of what anyone wants</td>
+</tr>
+</tbody>
+</table>
+<p>Stance and timeline are kept separate on purpose: two people can both
+say "2030" and mean very different things.</p>
+<h3 id="coding-rules">Coding rules</h3>
+<ul>
+<li>Code what the speaker said, not what they are known for. A LeCun
+statement that gives a date gets a date.</li>
+<li>When a speaker gives both a date and a hedge, record both: the date
+in the timeline fields, the hedge in <code>timeline_text</code>.</li>
+<li>Secondhand reports ("Hinton reportedly believes...") get
+<code>coding_confidence: low</code> and a note, and are replaced by the
+primary source when found.</li>
+<li>Every statement needs a working link or a full citation to a book,
+paper or recorded talk.</li>
+</ul>
+<h2 id="sampling-rule-the-defense-against-cherry-picking">Sampling rule
+(the defense against cherry-picking)</h2>
+<p>The failure mode is collecting the quotes that fit the story. The
+rule:</p>
+<ol type="1">
+<li>For each panel member, search year by year from their first
+documented statement to the present, using a fixed set of queries
+recorded in <code>data/search_log.csv</code> (speaker, year, query,
+where searched, what was found, date searched).</li>
+<li>Collect every statement that gives a timeline or answers the
+possibility, capability_now or self_improvement question. Do not skip
+ones that cut against the pattern.</li>
+<li>Where a speaker made more than ten qualifying statements in one
+year, keep all that give a timeline, and sample the rest at a fixed
+interval (every third by date), noting the sampling in the search
+log.</li>
+<li>Statements found incidentally while searching for someone else are
+still recorded, flagged <code>incidental</code> in notes, so coverage
+stays auditable.</li>
+<li>Panel membership is frozen before collection starts. Adding or
+removing someone later requires a dated amendment in
+<code>docs/amendments.md</code> saying why.</li>
+</ol>
+<h2 id="panel-inclusion-rule">Panel inclusion rule</h2>
+<p>Core panel: a named individual with sustained public commentary on
+whether or when AGI arrives, with at least one documented statement on
+or before 2017 and at least one in 2024 or later, prominent enough that
+their view shaped public discussion (not just expert circles). Target 15
+to 20 people, balanced across optimists, skeptics and safety-focused
+thinkers so the panel does not lean one way by construction.</p>
+<p>2020s cohort: people who became central after 2020 and have no early
+record. Tracked separately so their arrival is itself visible in the
+data rather than smeared into the core series.</p>
+<h3
+id="candidate-panel-to-confirm-and-freeze-before-collection">Candidate
+panel (to confirm and freeze before collection)</h3>
+<p>Core candidates, pending verification that each clears the 2017 and
+2024 bar:</p>
+<p>Ray Kurzweil, Nick Bostrom, Eliezer Yudkowsky, Robin Hanson, Geoffrey
+Hinton, Yann LeCun, Yoshua Bengio, Demis Hassabis, Shane Legg, Sam
+Altman, Gary Marcus, Andrew Ng, Stuart Russell, Rodney Brooks, Elon
+Musk, Ilya Sutskever, François Chollet.</p>
+<p>Verify specifically: Chollet and Sutskever may not have a public
+timeline statement before 2018; if not, they move to the 2020s
+cohort.</p>
+<p>2020s cohort candidates: Dario Amodei (unless a pre-2018 statement is
+found), Leopold Aschenbrenner, Daniel Kokotajlo, Ajeya Cotra, Jensen
+Huang, Mustafa Suleyman.</p>
+<p>Note on balance: the core list above has more people who expect AGI
+than who doubt it. Before freezing, look for one or two more sustained
+skeptics with a pre-2017 record (candidates: Melanie Mitchell, Ernest
+Davis, Hubert Dreyfus's successors in the philosophical critique, Oren
+Etzioni).</p>
+<h2
+id="aggregate-anchors-verify-every-figure-at-collection-these-are-from-memory-and-may-be-off">Aggregate
+anchors (verify every figure at collection; these are from memory and
+may be off)</h2>
+<ul>
+<li>Müller and Bostrom expert survey, run 2012 to 2013, published 2014:
+median 50% year for high-level machine intelligence around 2040.</li>
+<li>AI Impacts surveys of machine learning researchers: 2016 (median 50%
+year about 2061), 2022 (about 2060), 2023 (about 2047). The 2023 drop is
+the single most cited aggregate shift.</li>
+<li>Metaculus "when will the first general AI system be devised"
+question: community median over time, retrievable as a series.</li>
+<li>Manifold and other markets where a history is available.</li>
+<li>Epoch AI compute and capability trend reports, as context rather
+than opinion.</li>
+<li>Public opinion: Pew Research and YouGov polls on AI, Monmouth,
+Ipsos. Record the exact question wording, since "worried about AI" is
+not "expects AGI".</li>
+<li>Attention measures: Google Trends for "AGI", "artificial general
+intelligence", "singularity", "superintelligence", yearly from
+2005.</li>
+<li>Institutional moments: the 2015 Future of Life open letter, the
+March 2023 pause letter, the May 2023 Center for AI Safety one-sentence
+statement, government statements (UK AI Safety Summit 2023, US executive
+order 2023). These are dated events rather than opinions, kept in a
+separate <code>events.csv</code> for chart annotations.</li>
+</ul>
+<h2 id="seed-phase-first-unit-of-work">Seed phase (first unit of
+work)</h2>
+<p>Scope:</p>
+<ol type="1">
+<li>Repo skeleton, the three CSVs with headers, a small script that
+checks every row has valid codes and a source, and
+<code>docs/methodology.md</code> built from this plan.</li>
+<li>All aggregate anchors above, verified and entered.</li>
+<li>Five core panel members traced in full, chosen to include a constant
+optimist, a mind-changer, a skeptic, a critic, and a lab leader: Ray
+Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus, Sam Altman.</li>
+<li>A first rough chart of question_frame by year from the seed data, to
+see whether the codes separate.</li>
+</ol>
+<p>Pass check before scaling to the full panel: the five traces produce
+at least 60 statements with working sources; coding two of the five
+independently (John and an agent) agrees on <code>question_frame</code>
+and <code>stance</code> at least 80% of the time; and the codes are not
+all landing in one bucket. If agreement is low, the codebook gets
+revised and the five are recoded before anyone else is collected.</p>
+<h2
+id="visualizations-built-after-the-seed-finalized-after-full-collection">Visualizations
+(built after the seed, finalized after full collection)</h2>
+<ol type="1">
+<li>Which question was being argued, by year: a stacked area chart of
+<code>question_frame</code> shares, 2005 to 2026, with institutional
+events marked on the time axis. This is the direct picture of the
+"whether, when, now" claim.</li>
+<li>Where each person put the date, over time: one line per core panel
+member, x is the date they spoke, y is the year they predicted, so a
+line sloping down shows someone pulling their estimate closer. Aggregate
+survey medians drawn on the same axes for comparison.</li>
+<li>Stance distribution by year: a small-multiples or ridge chart
+showing the mix of dismissive through resigned shifting.</li>
+<li>Public attention versus expert timelines: Google Trends and poll
+series against the aggregate medians, to see which leads.</li>
+</ol>
+<p>Chart conventions follow the dataviz skill when built; keep them
+readable on a phone since the essay will be read there.</p>
+<h2 id="essay-plan-sentient-horizons-after-the-pass-check">Essay plan
+(Sentient Horizons, after the pass check)</h2>
+<p>Working angle: a personal record John wishes he had kept, now
+reconstructed from the public one, told through the three questions and
+the people who moved between them. Lead with the strongest single
+picture (likely chart 1 or 2), state what the data does and does not
+show, name the people who changed their minds and the ones who did not,
+and be explicit about the panel's limits. Essay conventions: dates in
+month day, year form; plain words over technical ones; the dataset
+linked at the end as the thing to go check.</p>
+<h2 id="repo-layout">Repo layout</h2>
+<pre><code>agi-zeitgeist/
+  README.md             what this is, how to cite, how to add a row
+  data/
+    speakers.csv
+    statements.csv
+    aggregates.csv
+    events.csv
+    search_log.csv
+  docs/
+    2026-09-30-kickoff.md   this document
+    methodology.md          the frozen method, written from this plan
+    codebook.md             the coding scheme with worked examples
+    amendments.md           dated changes to panel or codes
+  scripts/
+    validate.py           checks codes, dates and sources on every row
+    charts.py             builds the four charts from the CSVs
+  site/                   static page for the charts, later</code></pre>
+<h2
+id="public-track-added-2026-09-30-after-the-expert-track-was-handed-off">Public
+track (added 2026-09-30, after the expert track was handed off)</h2>
+<p>Purpose: capture what the general public, not the named experts, was
+saying and assuming about AI, AGI, superintelligence (ASI) and
+self-improving AI, and how that moved, using only records anyone can
+re-pull. No personal recollection goes in the data; John ruled that out
+so the record stands on its own.</p>
+<p>Every source below was probed on 2026-09-30 from a shell and returned
+data unless marked otherwise. Each pull is saved as a dated CSV in
+<code>data/public/</code> with the exact query in
+<code>data/public/pulls.csv</code> (source, query, date range, retrieval
+date, script), so a reader can re-run it.</p>
+<h3 id="layer-1-attention-how-much-people-were-looking">Layer 1:
+attention (how much people were looking)</h3>
+<table>
+<thead>
+<tr>
+<th>series</th>
+<th>coverage</th>
+<th>status</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wikipedia monthly page views for Artificial general intelligence,
+Technological singularity, Superintelligence, Existential risk from AI,
+AI takeover</td>
+<td>2015-07 to present</td>
+<td>confirmed via the Wikimedia REST API</td>
+<td>AGI article: roughly 15,000 views a month in 2016, 50,000 in 2023,
+114,000 in January 2025. Pre-2015 views exist in the hourly
+pagecounts-raw dumps (2007-12 onward); aggregating them is an agent
+job</td>
+</tr>
+<tr>
+<td>Google Books Ngram yearly frequency for the same terms</td>
+<td>1800 to 2022</td>
+<td>confirmed via the JSON endpoint</td>
+<td>books lag speech by a year or two; good for 2005 to 2022</td>
+</tr>
+<tr>
+<td>GDELT global news volume for fixed queries</td>
+<td>2015 to present</td>
+<td>confirmed via the GDELT doc API</td>
+<td>daily share of monitored news mentioning the term</td>
+</tr>
+<tr>
+<td>Google Trends search interest</td>
+<td>2004 to present</td>
+<td>API rate-limited; export by hand from the site</td>
+<td>save the CSV export with retrieval date; anyone can repeat the
+export</td>
+</tr>
+<tr>
+<td>New York Times article counts per year for "artificial
+intelligence", "singularity", "superintelligence"</td>
+<td>1851 to present</td>
+<td>needs a free developer key</td>
+<td>counts only, no coding</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="layer-2-the-public-forum-what-ordinary-enthusiasts-were-actually-writing">Layer
+2: the public forum (what ordinary enthusiasts were actually
+writing)</h3>
+<p>The Arctic Shift archive holds r/singularity in full from 2008-03 to
+the present (about 127,000 posts and 3.8 million comments, confirmed)
+and r/artificial likewise. Hacker News has a public search API with full
+text from 2007. LessWrong has a public API. From these:</p>
+<ul>
+<li>posts and comments per month per community</li>
+<li>monthly share of comments containing each term in a fixed vocabulary
+list (singularity, AGI, ASI, superintelligence, takeoff, recursive
+self-improvement, alignment, doom, p(doom), timelines, "feel the AGI",
+"AI slop"), frozen before the pull</li>
+<li>a coded sample: the 20 highest-scoring r/singularity posts per
+quarter, coded with the same <code>question_frame</code> and
+<code>stance</code> scheme as the experts, so the two tracks share one
+axis</li>
+</ul>
+<p>Stated limitation: Reddit and Hacker News are young, male, technical
+and English-speaking. They are a proxy for the engaged public, not the
+public. The polls in layer 3 are the check on that.</p>
+<h3 id="layer-3-default-assumptions-polls-with-exact-wording">Layer 3:
+default assumptions (polls with exact wording)</h3>
+<p>Pew Research "more concerned than excited about AI" series, 2021 to
+2025 (37% in 2021, 52% in 2023, around half since); Monmouth 2015 versus
+2023 on whether AI is a threat; YouGov repeated items on AI ending
+humanity and on when AI becomes smarter than people (2023 onward); Ipsos
+global AI monitor 2021 onward; Gallup 2024 onward. Each row carries the
+exact question wording and sample size, because "worried about AI" is
+not "expects AGI".</p>
+<h3 id="layer-4-the-mainstream-argument-what-an-op-ed-assumed">Layer 4:
+the mainstream argument (what an op-ed assumed)</h3>
+<p>Media Cloud (free account, open archive from about 2010) gives
+article counts over time across a fixed collection of US and UK national
+outlets. From the same query, a coded sample: 15 opinion pieces per
+year, chosen by a fixed rule (highest social-share count where
+available, otherwise first 15 by date), coded with
+<code>question_frame</code> and <code>stance</code>. This is the layer
+most likely to show the "relax, it can't" to "what now" turn John
+describes.</p>
+<h3 id="layer-5-vocabulary-ledger">Layer 5: vocabulary ledger</h3>
+<p>One row per term or phrase: first appearance in Ngram, first
+appearance in a national outlet (with link), first month it exceeded 1%
+of r/singularity comments. Includes slang, because slang arriving in a
+national outlet is a clean marker of a concept going public.</p>
+<h3 id="charts-the-public-track-adds">Charts the public track adds</h3>
+<ol start="5" type="1">
+<li>Public attention against expert timelines: Wikipedia views and poll
+series on one axis, survey medians on the other, with the same event
+annotations as chart 1.</li>
+<li>Forum question-frame share by quarter beside expert question-frame
+share by year, to show which moved first.</li>
+</ol>
+<h3 id="outside-review-before-collection">Outside review before
+collection</h3>
+<p>The public-track method is less settled than the expert track, so
+before anything is pulled it goes to two or three other frontier models
+for critique and alternative approaches. The review prompt is
+<code>docs/reviews/public-track-review-prompt.md</code>; each reply is
+saved verbatim as
+<code>docs/reviews/public-track-review-&lt;model&gt;-2026-10.md</code>.
+Changes adopted from the reviews are logged in
+<code>docs/amendments.md</code> with the reason, so the method's history
+is visible.</p>
+<h3 id="going-forward">Going forward</h3>
+<p><code>scripts/pull_public.py</code> re-pulls layers 1 and 2 and
+appends a dated row, so the next five years are recorded as they happen
+rather than reconstructed. Run monthly from an agent session.</p>
+<h2 id="open-decisions-for-john">Open decisions for John</h2>
+<ol type="1">
+<li>Confirm or edit the candidate panel before it is frozen (especially
+the skeptic balance).</li>
+<li>Whether to include Elon Musk: very prominent, long record, but his
+statements are hard to code as considered predictions. Suggested:
+include, flag <code>frontier_lab_tie: yes</code>.</li>
+<li>Whether John codes one or two of the seed speakers himself for the
+agreement check, or whether two separate agent passes stand in for
+that.</li>
+<li>License for the dataset (suggested: CC BY 4.0 for data, MIT for
+scripts).</li>
+</ol>
+<h2 id="status-log">Status log</h2>
+<ul>
+<li>2026-09-30: plan written in Cowork after agreeing scope (standalone
+repo, fixed panel, seed before scaling). Repo folder created at
+<code>~/Code/agi-zeitgeist/docs/</code>. Next: Claude Agents session
+builds the skeleton and runs the seed phase.</li>
+</ul>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/2026-09-30-kickoff.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

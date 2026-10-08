@@ -1,0 +1,39 @@
+{
+  "_what": "Frozen values for the singularity-entry definition (docs/singularity-entry-definition.md). scripts/site.py scores the gauges from this file. Changing any value is an amendment entry in docs/amendments.md.",
+  "adopted": "2026-10-08",
+  "decided_by": "john",
+  "amendment": "A17",
+  "reference_year": 2019,
+  "persistence_quarters": 4,
+  "leg_a": {
+    "anchor": "METR 50% task-completion time horizon (Time Horizon 1.1), frontier models only (METR's is_sota flag)",
+    "rows": "metr-th11-* in data/world_measures.csv",
+    "window_months": 12,
+    "minimum_points_in_window": 3,
+    "exclude_windows_with_readings_over_16_hours": true,
+    "doubling_time_threshold_days": 30.44,
+    "reference_doubling_time_days": 187.8,
+    "reference_source": "metr-th11-doubling-all: METR's own fit over all frontier models 2019 to early 2026. The trailing-window series cannot be computed in 2019 itself (one reading), so the longest fit anchored at the reference year stands in. Agent decision, 2026-10-08.",
+    "successor_rule": "When the anchor stops moving (saturates), a replacement measure is named before that happens, the overlap period is published, and the switch is an amendment."
+  },
+  "leg_b": {
+    "measure": "forecast horizon H(t): the longest lead at which forecasts of the anchor still beat trend extrapolation",
+    "horizon_threshold_years": 1,
+    "reference_horizon_years": null,
+    "status": "not yet measurable: the forecast-versus-outcome ledger is not built, so H(t) and the reference horizon do not exist. The stand-in (excess pull-in of the consensus date) is reported beside the gauge and never substituted for it."
+  },
+  "leg_c": {
+    "measure": "share of the work that produces frontier AI progress that is supplied by AI systems",
+    "rows": "the latest anthropic_institute-*-rd-leads row (self-report, one company; the Google code-share row is a proxy and is not scored)",
+    "share_threshold": 0.5
+  },
+  "leg_d": {
+    "measure": "doubling time of world output, from annual world real GDP growth (World Bank)",
+    "rows": "worldbank-gdp-growth-* in data/world_measures.csv",
+    "growth_threshold_percent_per_year": 30,
+    "threshold_source": "Davidson 2021, 'explosive growth' is more than 30 percent a year (search world_bank-davidson-001)",
+    "reference": "mean world growth 1961 to the reference year 2019, from the same series",
+    "one_annual_reading_covers_its_four_quarters": true,
+    "revisions_reset_the_count": true
+  }
+}

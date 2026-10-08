@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="doc.css"></head><body><main>
+<nav class="top"><a href="../">AGI Zeitgeist Tracker</a> <a href="README.html">About the data</a> <a href="methodology-v2.html">Method</a> <a href="singularity-entry-definition.html">Singularity definition</a> <a href="amendments.html">Changes</a></nav>
+<h1 id="methodology">Methodology</h1>
+<p><strong>The method is now <a
+href="methodology-v2.html"><code>methodology-v2.md</code></a></strong>
+(2026-09-30), adopted after two outside reviews. The reasons for every
+change are in <a href="amendments.html"><code>amendments.md</code></a>;
+the coding rules with examples are in <a
+href="codebook.html"><code>codebook.md</code></a>.</p>
+<p>The version 1 method (one <code>stance</code> code, six question
+frames, the "prominent enough" panel rule) was written from the kickoff
+plan the same day and is retired. It remains readable in git history
+(this file at commit <code>1508fde</code>) and in the method sections of
+<a
+href="2026-09-30-kickoff.html"><code>2026-09-30-kickoff.md</code></a>.</p>
+<h2 id="points-of-detail-not-spelled-out-in-version-2">Points of detail
+not spelled out in version 2</h2>
+<p>These come from version 1 and still apply; the agent implementation
+entry in <code>amendments.md</code> lists the rest.</p>
+<ul>
+<li><strong>Dataset window:</strong> statements from 2005-01-01
+onward.</li>
+<li><strong>Fixed query set for each panel member</strong> (logged in
+<code>data/search_log.csv</code>): discovery queries D1
+<code>"&lt;name&gt;" AGI prediction</code>, D2
+<code>"&lt;name&gt;" "artificial general intelligence"</code>, D3
+<code>"&lt;name&gt;" "human-level" AI when</code>; then for every year
+from the first documented year to the present, Y1
+<code>"&lt;name&gt;" AGI &lt;year&gt;</code>, Y2
+<code>"&lt;name&gt;" "human-level" intelligence &lt;year&gt;</code>, Y3
+<code>"&lt;name&gt;" superintelligence OR singularity OR "self-improving" &lt;year&gt;</code>;
+plus the person's own outlets. Quiet years are logged as rows with
+what_found "quiet year: no qualifying statement found".</li>
+<li><strong>Busy years:</strong> more than ten qualifying statements →
+keep every timeline-bearing one, sample the rest at every third by date,
+tag <code>sampled</code>, log the sampling.</li>
+<li><strong>events.csv</strong> fields: event_id, date, date_precision,
+event_type (<code>open_letter</code>, <code>public_statement</code>,
+<code>government_action</code>, <code>report</code>), title,
+description, source_url, notes. Epoch AI reports are <code>report</code>
+events. Searches behind it use speaker_id <code>events</code> in the
+search log.</li>
+<li><strong>aggregates.csv</strong> holds the survey, market and poll
+rows collected in the seed. Under version 2 section 4, population survey
+items move to <code>data/surveys.csv</code> when the population stream
+starts; that move has not been made yet.</li>
+<li><strong>National outlet</strong> (for the panel prominence test): a
+national newspaper, broadcaster, news agency or national magazine,
+including science and technology magazines such as Wired and New
+Scientist; not blogs, newsletters, trade press or the person's own
+outlets.</li>
+<li><strong>Frontier lab tie:</strong> <code>frontier_lab_tie</code> is
+<code>yes</code> when the person led or ran a company building the most
+capable models of the time during any statement in the record; the years
+are given in <code>role_summary</code>.</li>
+</ul>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/methodology.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

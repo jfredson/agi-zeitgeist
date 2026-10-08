@@ -1,0 +1,607 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pilot
+report: r/singularity, vanguard sub-series, 2024Q4 to 2026Q3 | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="../doc.css"></head><body><main>
+<nav class="top"><a href="../../">AGI Zeitgeist Tracker</a> <a href="../README.html">About the data</a> <a href="../methodology-v2.html">Method</a> <a href="../singularity-entry-definition.html">Singularity definition</a> <a href="../amendments.html">Changes</a></nav>
+<h1
+id="pilot-report-rsingularity-vanguard-sub-series-2024q4-to-2026q3">Pilot
+report: r/singularity, vanguard sub-series, 2024Q4 to 2026Q3</h1>
+<p><strong>Model-coded, no human coder.</strong> Updated 2026-10-08: the
+figure and the results now come from the majority codes of the
+full-sample run (all 390 posts, three models, final codebook). Updated
+2026-10-04 with Gemini's trial results (all three models complete on
+both trials). Updated 2026-10-03 after John's rulings: first on the
+first version of this report, then on the reliability design, which he
+revised twice that day. Coding is fully model-based (amendment section
+9; log entries of 2026-10-03). Run record:
+<code>docs/vanguard/pilot-run-r-singularity-2026-10.md</code>; codebook:
+<code>docs/vanguard/codebook.md</code>.</p>
+<p><strong>How coding was checked.</strong> Three models from different
+companies each coded all 390 screened posts blind, under the final
+codebook (rules R2 and R3 adopted 2026-10-03, R1a adopted
+2026-10-04):</p>
+<ul>
+<li><code>claude-opus-5-5</code> (Anthropic), six fresh coders, 65 posts
+each;</li>
+<li><code>gemini-3.1-pro-preview</code>, version
+<code>3.1-pro-preview-01-2026</code> (Google);</li>
+<li><code>gpt-6-astra</code>, reasoning effort medium (OpenAI). OpenAI
+publishes no dated snapshot, so it is pinned by the creation time OpenAI
+lists for it (1787853604, which is 2026-08-27 UTC).</li>
+</ul>
+<p>The final code for each field is the majority vote: the value at
+least two models gave
+(<code>data/vanguard/r-singularity-pilot-codes-majority-full-final.csv</code>);
+where no two agree the field is "unresolved". Models from different
+companies can still share blind spots; this is a disclosed limitation.
+An earlier check on a 140-post subset, under the codebook before the
+rules, is kept under Agreement for the record.</p>
+<h2 id="figure">Figure</h2>
+<p><code>site/vanguard-pilot-r-singularity.png</code> (counts in
+<code>site/vanguard-pilot-r-singularity.csv</code>), labelled
+"model-coded" and captioned "Framing in sampled high-score posts from
+selected AI enthusiast venues; not representative of participants or the
+public."</p>
+<p><img src="../../vanguard-pilot-r-singularity.png"
+alt="pilot figure" /></p>
+<h2 id="results-majority-codes-all-390-posts-final-codebook">Results
+(majority codes, all 390 posts, final codebook)</h2>
+<p>Written 2026-10-08. The figure is now drawn from the majority codes
+(<code>scripts/vanguard_figure.py</code>), not from Claude's first pass.
+Three things about how the numbers are counted:</p>
+<ul>
+<li><strong>Main claim only.</strong> The majority file holds one row
+per post: the main claim (the one the title states) and the post-level
+fields. Secondary claims were never compared across the models, so the
+claim-kind shares say what the post's main claim is about. A post whose
+main claim is a capability but which also makes a consequence claim
+counts as a capability post. Earlier versions of this report counted any
+claim in the post from Claude's first pass, which is the main reason the
+consequence shares are lower here (each model finds a consequence claim
+somewhere in about twice as many posts as have one as the main
+claim).</li>
+<li><strong>Unresolved fields.</strong> Where no two models agree on a
+field, the post is left out of every measure that uses that field (it
+cannot be put on either side). Per quarter the counts are in the
+figure's table (<code>posts_left_out_unresolved</code>); all quarters
+together, 3 top posts and 1 random post have no majority on what the
+main claim is about, and the headline measure, which uses four fields,
+leaves out 13 top posts and 8 random posts.</li>
+<li><strong>Irony.</strong> The codebook records irony
+(<code>rhetorical_mode</code>) but does not say whether an ironic post
+can affirm a headline claim. The figure leaves posts coded ironic out of
+the headline count (an agent reading, not a ruling; see the run record,
+2026-10-08).</li>
+</ul>
+<p><strong>Primary measures.</strong> Share of eligible posts by what
+the main claim is about, all quarters together. Denominators differ
+because of the unresolved posts above; 156 top posts and 104 random
+posts are counted in all.</p>
+<table>
+<thead>
+<tr>
+<th>measure</th>
+<th>top posts</th>
+<th>random posts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>main claim is a specific capability (a model, benchmark, robot or
+demo)</td>
+<td>89 of 153 (58%)</td>
+<td>52 of 103 (50%)</td>
+</tr>
+<tr>
+<td>main claim is a consequence (jobs, society, the economy)</td>
+<td>14 of 153 (9%)</td>
+<td>16 of 103 (16%)</td>
+</tr>
+<tr>
+<td>main claim is industry and governance (AI company and policy
+drama)</td>
+<td>43 of 153 (28%)</td>
+<td>28 of 103 (27%)</td>
+</tr>
+<tr>
+<td>capability posts that extrapolate to a timeline or consequence</td>
+<td>7 of 89 (8%)</td>
+<td>8 of 51 (16%)</td>
+</tr>
+<tr>
+<td>headline claims (poster affirms; ironic posts left out)</td>
+<td>0 of 143 (0%)</td>
+<td>1 of 96 (1%)</td>
+</tr>
+</tbody>
+</table>
+<p>Leaving out posts coded from the title alone (59 of the 156 top
+posts, 37 of the 104 random posts): capability 40% and 42%; consequence
+13% and 20%; industry and governance 41% and 32%; extrapolation 8% and
+30%; headline claims 0 and 0.</p>
+<p>By quarter, capability main claims range from 39% (2025Q1) to about
+80% (2025Q3, 2025Q4) of top posts, and industry-and-governance claims
+peak in 2025Q1 (11 of 18; DeepSeek, Stargate, the Musk–Altman fight) and
+2026Q1 (10 of 20; Anthropic and the Pentagon). Extrapolation from a
+capability to a timeline or consequence is uncommon throughout: at most
+3 of 11 capability posts in any quarter of top posts.</p>
+<p><strong>Headline claims, near-absent</strong> (poster affirms; any of
+AGI already achieved, AGI by a stated horizon, self-improvement under
+way, singularity framing): no top post in the whole window and 1 random
+post (2024Q4, an AGI forecast with a stated horizon). Three top posts
+affirm "AGI achieved" or singularity framing by majority but are coded
+ironic by majority (the titles "AGI 🚀", "AGI achieved" and
+"Post-Singularity Free Healthcare"), so they are left out; counting them
+would give 3 of 143 (2%). One more "AGI achieved" top post (2025Q2) has
+no majority on whether the poster agrees. AGI main claims of any kind
+are 4% of top posts (6 of 156) and 6% of random posts (6 of 104);
+self-improvement main claims 0 and 1.</p>
+<p><strong>Samples.</strong> Top posts: the 230 posts screened in the
+first pass were coded by all three models; 161 are eligible by majority.
+The 20-eligible cut-off was re-applied per quarter from the majority
+codes: rank 26 in 2024Q4, 26 in 2025Q2, 27 in 2025Q3, 30 in 2026Q1 and
+28 in 2026Q2, leaving 5 eligible posts below those ranks out. Three
+quarters fall short of 20: 2025Q1 has 19 eligible among ranks 1 to 29,
+2025Q4 has 19 among ranks 1 to 32 and 2026Q3 has 18 among ranks 1 to 26;
+every screened post counts there, and reaching 20 would need the three
+models to code further down each quarter's ranked reserve. 156 top posts
+are counted. Random posts: 160 screened, 104 eligible by majority, all
+counted. Exclusion reasons are each model's own and are not voted; the
+majority file records only whether the post counts.</p>
+<h2 id="agreement">Agreement</h2>
+<h3 id="three-models-all-390-posts-final-codebook-2026-10-07">Three
+models, all 390 posts, final codebook (2026-10-07)</h3>
+<p>This is the check the figure rests on. Cohen's kappa (agreement
+corrected for chance) for each pair of models; n is the number of posts
+both coders counted. "Whether the post counts" is compared on all 390
+posts; the other fields on the posts both models in the pair found
+eligible. "No majority" is the share of the 265 posts the majority finds
+eligible where all three gave a different answer. Full table:
+<code>data/vanguard/three-model-reliability-full-final.csv</code>.</p>
+<table>
+<thead>
+<tr>
+<th>What is coded</th>
+<th>Claude–Gemini</th>
+<th>Claude–GPT</th>
+<th>Gemini–GPT</th>
+<th>No majority</th>
+<th>Script's verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whether the post counts</td>
+<td>0.91 (390)</td>
+<td>0.91 (390)</td>
+<td>0.94 (390)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>What the claim is about</td>
+<td>0.77 (259)</td>
+<td>0.83 (254)</td>
+<td>0.76 (258)</td>
+<td>2%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Timing (already here, forecast, …)</td>
+<td>0.65 (259)</td>
+<td>0.63 (254)</td>
+<td>0.63 (258)</td>
+<td>5%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Whether the poster agrees</td>
+<td>0.75 (259)</td>
+<td>0.63 (254)</td>
+<td>0.56 (258)</td>
+<td>3%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Hedging</td>
+<td>0.73 (259)</td>
+<td>0.66 (254)</td>
+<td>0.54 (258)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Tone of the post</td>
+<td>0.74 (259)</td>
+<td>0.75 (254)</td>
+<td>0.79 (258)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Whether the poster wants it faster or slower</td>
+<td>0.46 (259)</td>
+<td>0.59 (254)</td>
+<td>0.45 (258)</td>
+<td>0%</td>
+<td>unreliable (every pair below 0.6; ruled unreliable by John,
+2026-10-03)</td>
+</tr>
+<tr>
+<td>Whose claim it is</td>
+<td>0.72 (259)</td>
+<td>0.71 (254)</td>
+<td>0.71 (258)</td>
+<td>1%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Coded from the title alone</td>
+<td>0.99 (259)</td>
+<td>0.99 (254)</td>
+<td>1.00 (258)</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>Projects to a time horizon</td>
+<td>0.75 (259)</td>
+<td>0.72 (254)</td>
+<td>0.73 (258)</td>
+<td>1%</td>
+<td>reliable</td>
+</tr>
+</tbody>
+</table>
+<p>Under John's test (unresolved on more than 15% of posts, or every
+pairwise kappa below 0.6), every field passes except whether the poster
+wants AI sped up or slowed down, which is kept out of figures. The
+figure's five measures use whether the post counts, what the claim is
+about, timing, whether the poster agrees, tone (for the irony
+exclusion), projects to a time horizon and coded from the title alone;
+all pass, so all five panels are drawn. Gemini and GPT agree less with
+each other than either does with Claude on whether the poster agrees
+(0.56) and on hedging (0.54); both fields still pass because the other
+two pairs clear 0.6.</p>
+<h3
+id="earlier-check-the-140-post-subset-before-the-rules-2026-10-03">Earlier
+check: the 140-post subset, before the rules (2026-10-03)</h3>
+<p>Kept for the record; superseded by the table above. Cohen's kappa for
+each pair of models. "Whether the post counts" is compared on all 140
+posts; the other fields on the posts both models in the pair found
+eligible (78 to 85). "Unresolved" is the share of the 88 posts the
+majority finds eligible where no two models agree. Full table:
+<code>data/vanguard/three-model-reliability.csv</code>.</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>Claude–Gemini</th>
+<th>Claude–GPT</th>
+<th>Gemini–GPT</th>
+<th>unresolved</th>
+<th>verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>whether the post counts</td>
+<td>0.82</td>
+<td>0.82</td>
+<td>0.91</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>what the main claim is about</td>
+<td>0.57</td>
+<td>0.62</td>
+<td>0.75</td>
+<td>6% (5 posts)</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>forecast or already happened</td>
+<td>0.66</td>
+<td>0.66</td>
+<td>0.77</td>
+<td>5%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>whether the poster agrees</td>
+<td>0.38</td>
+<td>0.36</td>
+<td>0.69</td>
+<td>1%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>hedging</td>
+<td>0.22</td>
+<td>0.18</td>
+<td>0.56</td>
+<td>2%</td>
+<td><strong>unreliable</strong></td>
+</tr>
+<tr>
+<td>irony</td>
+<td>0.60 (0.595)</td>
+<td>0.57</td>
+<td>0.58</td>
+<td>3%</td>
+<td><strong>unreliable</strong></td>
+</tr>
+<tr>
+<td>whether the poster wants AI sped up or slowed down</td>
+<td>0.55</td>
+<td>0.43</td>
+<td>0.65</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>whose claim it is</td>
+<td>0.67</td>
+<td>0.64</td>
+<td>0.78</td>
+<td>1%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>coded from the title only</td>
+<td>0.97</td>
+<td>0.97</td>
+<td>1.00</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>draws a timeline or consequence from a capability</td>
+<td>0.71</td>
+<td>0.64</td>
+<td>0.65</td>
+<td>0%</td>
+<td>reliable</td>
+</tr>
+</tbody>
+</table>
+<p>On this subset, under John's test, <strong>hedging and irony were
+unreliable</strong>. Both pass on the full sample under the final
+codebook (table above). No field came close to the 15% unresolved
+limit.</p>
+<p><strong>Claude was the outlier on this subset.</strong> Gemini and
+GPT agreed with each other more than either agreed with Claude on almost
+every field. Whether the poster agrees passes only because the
+Gemini–GPT pair reaches 0.69, and what the main claim is about passes
+because two pairs reach 0.6. The same-family check (two copies of
+Claude, before the rulings: kappa 0.87 on what the claim is about) badly
+overstated reliability.</p>
+<h3 id="codebook-rules-r1-to-r3-before-and-after">Codebook rules R1 to
+R3, before and after</h3>
+<p><strong>Where things stand (2026-10-04).</strong> John adopted R2 and
+R3 on 2026-10-03 (now in <code>docs/vanguard/codebook.md</code>) and
+split R1 into two rules to be trialled separately: R1a for whether the
+poster agrees and R1b for whose claim it is. Their results are in the
+next section. On 2026-10-04 he adopted R1a, with a sentence on jokes and
+reaction titles added, and rejected R1b. The first trial below is now
+complete on all 140 posts.</p>
+<p>The rules are in
+<code>docs/vanguard/proposed-rules-2026-10-03.md</code>:</p>
+<ul>
+<li><strong>R1, posts passed on without comment:</strong> these are
+"passes it on without taking a side" unless the poster adds words
+endorsing or rejecting the claim, and the claim is attributed to its
+source.</li>
+<li><strong>R2, company and policy news or capability:</strong> the
+target is decided by the subject of the main claim (a model or system, a
+company or government, or people and society), not by which company is
+named.</li>
+<li><strong>R3, hedging:</strong> "qualified" only if the words stating
+the claim contain a hedge word from a set list.</li>
+</ul>
+<p>All three models recoded the 140 posts with the three rules added.
+Each rule targets a different field, so they were tested together.
+Claude and GPT coded all 140 posts on 2026-10-03. Gemini coded 112 that
+day, when its daily request limit ran out, and the last 28 on 2026-10-04
+under the same frozen codebook
+(<code>docs/vanguard/codebook-frozen-2026-10-03-before-rules.md</code>).
+Kappa before and after on all 140 posts:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>rule</th>
+<th>Claude–Gemini</th>
+<th>Claude–GPT</th>
+<th>Gemini–GPT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>what the main claim is about</td>
+<td>R2</td>
+<td>0.57 → 0.82</td>
+<td>0.62 → 0.85</td>
+<td>0.75 → 0.79</td>
+</tr>
+<tr>
+<td>whether the poster agrees</td>
+<td>R1</td>
+<td>0.38 → 0.75</td>
+<td>0.36 → 0.74</td>
+<td>0.68 → 0.63</td>
+</tr>
+<tr>
+<td>hedging</td>
+<td>R3</td>
+<td>0.21 → 0.77</td>
+<td>0.18 → 0.53</td>
+<td>0.56 → 0.56</td>
+</tr>
+<tr>
+<td>whose claim it is</td>
+<td>(R1 side effect)</td>
+<td>0.66 → 0.69</td>
+<td>0.64 → 0.81</td>
+<td>0.78 → 0.57</td>
+</tr>
+<tr>
+<td>whether the poster wants AI sped up or slowed down</td>
+<td>(none targeted)</td>
+<td>0.55 → 0.52</td>
+<td>0.43 → 0.65</td>
+<td>0.65 → 0.47</td>
+</tr>
+<tr>
+<td>irony</td>
+<td>(none targeted)</td>
+<td>0.60 → 0.71</td>
+<td>0.57 → 0.75</td>
+<td>0.58 → 0.74</td>
+</tr>
+<tr>
+<td>forecast or already happened</td>
+<td>(none targeted)</td>
+<td>0.66 → 0.75</td>
+<td>0.65 → 0.74</td>
+<td>0.77 → 0.71</td>
+</tr>
+</tbody>
+</table>
+<p>With the rules, hedging and irony pass the test. On the first 112
+posts (the figures John ruled on) the rows read much the same, with two
+exceptions: hedging between Gemini and GPT was 0.55 → 0.62 and is now
+0.56 → 0.56, and whose claim it is between Gemini and GPT was 0.80 →
+0.62 and is now 0.78 → 0.57.</p>
+<p><strong>How to read this:</strong></p>
+<ol type="1">
+<li><strong>The Gemini–GPT column is the cleanest test.</strong> Between
+Gemini's and GPT's two runs only the rules changed. The Claude trial
+codes came from fresh coders, so the Claude pairs mix the rules' effect
+with the change of coder.</li>
+<li><strong>R2 helps in every pair</strong>, including Gemini–GPT (0.75
+→ 0.79). <strong>R3 helps a lot in the Claude pairs but not between
+Gemini and GPT</strong> (0.56 → 0.56 on all 140 posts). Hedging still
+passes the test through Claude–Gemini (0.77); the fresh-sample check
+should look at it closely.</li>
+<li><strong>R1 brings Claude into line but slightly lowers Gemini–GPT
+agreement</strong>, both on whether the poster agrees (0.68 → 0.63) and
+on whose claim it is (0.78 → 0.57). The trial coders found that R1 has
+no default when a post names no source, and no answer for a model's own
+output in a screenshot. Refinement for John to consider: when no source
+is named, attribution = original; a model's output =
+lab_or_company.</li>
+<li><strong>Optimistic by construction.</strong> The rules were written
+from disagreements on these same posts, so they will look better here
+than on new posts. Any rule John adopts is checked again on a fresh
+sample (section 9).</li>
+<li><strong>Other refinements the trial coders raised:</strong>
+<ul>
+<li>R3: an "if" that sets a condition is not a hedge.</li>
+<li>R2: a launch or release decision is the company's act, but what the
+product does is a capability claim. When a title makes both claims, the
+main claim needs a tie-break.</li>
+<li>R1: "denies" means rejecting that the claim is true. Disliking what
+is reported goes in development preference.</li>
+</ul></li>
+</ol>
+<p>The trial codes (<code>*-rules-trial.csv</code>) aren't used in any
+figure or count.</p>
+<h3
+id="r1a-and-r1b-each-tried-alone-ruled-2026-10-04-r1a-adopted-with-the-reactions-sentence-r1b-rejected">R1a
+and R1b, each tried alone (ruled 2026-10-04: R1a adopted with the
+reactions sentence, R1b rejected)</h3>
+<p>Run 2026-10-03 (Claude, GPT) and 2026-10-04 (Gemini) on the same 112
+posts (<code>data/vanguard/r1-split-trial-posts.csv</code>), with
+today's codebook (R2 and R3 adopted) plus one rule each. Each run serves
+as the other's comparison, so "without" means the same codebook, day and
+models with only the rule under test missing
+(<code>vanguard_three_way.py --r1-split</code>). The 90% ranges come
+from resampling the posts 2,000 times
+(<code>scripts/vanguard_r1_bootstrap.py</code>).</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>rule</th>
+<th>Claude–Gemini</th>
+<th>Claude–GPT</th>
+<th>Gemini–GPT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>whether the poster agrees</td>
+<td>R1a</td>
+<td>0.45 → 0.78</td>
+<td>0.50 → 0.74</td>
+<td>0.53 → 0.65</td>
+</tr>
+<tr>
+<td>whose claim it is</td>
+<td>R1b</td>
+<td>0.77 → 0.83</td>
+<td>0.75 → 0.72</td>
+<td>0.78 → 0.75</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>R1a decides whether the field is usable.</strong> Without it
+every pair is below 0.6, so whether the poster agrees fails John's test;
+with it every pair passes. The gain is clear in both Claude pairs (+0.13
+to +0.51 and +0.05 to +0.44) and likely between Gemini and GPT (−0.11 to
++0.37; R1a higher in 82% of resamples).</li>
+<li><strong>R1b makes no measurable difference</strong> (every range
+spans zero), and the field passes without it.</li>
+<li><strong>What's left:</strong> most remaining stance disagreements
+under R1a are posts whose only words are a reaction or joke ("HOLY
+SHIT", "This… could be something…"). The original R1 had a sentence for
+this that the split dropped.</li>
+</ul>
+<p>Decision packet (recommendation followed by John's ruling: refine and
+adopt R1a; reject R1b):
+<code>docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md</code>. The
+split-trial codes (<code>*-r1a-trial.csv</code>,
+<code>*-r1b-trial.csv</code>) aren't used in any figure or count.</p>
+<h2 id="edge-calls-still-open">Edge calls still open</h2>
+<ul>
+<li><strong>Reposts without comment:</strong> settled 2026-10-04 by R1a
+(stance, including reactions and jokes); attribution follows the field
+definition.</li>
+<li><strong>"Capability" for the extrapolation field:</strong> two
+first-pass coders counted AGI and self-improvement claims as capability
+claims; the figure measures extrapolation among posts with a
+<code>specific_capability</code> claim only.</li>
+<li><strong>Drama borderlines:</strong> celebrity use of a product (Katy
+Perry subscribing to Claude), satire about labs, and government action
+not aimed at an AI company (the DOGE intern post, kept ineligible).</li>
+</ul>
+<h2 id="decisions-for-john">Decisions for John</h2>
+<ol type="1">
+<li><del>Rules R1a and R1b</del> ruled 2026-10-04: R1a adopted with the
+reactions sentence, R1b rejected. (R2 and R3 adopted 2026-10-03.)</li>
+<li><del>Where the figure's numbers come from</del> done 2026-10-08: the
+full-sample run finished on 2026-10-07 and the figure is drawn from the
+majority codes (Results above).</li>
+<li><strong>Two agent readings to confirm or overrule</strong> (made
+2026-10-08 while redrawing the figure; run record of that date): posts
+coded ironic do not count as affirming a headline claim (3 top posts
+affected); and the claim-kind shares count the main claim only, because
+secondary claims were never compared across the models.</li>
+<li><strong>The three short quarters.</strong> 2025Q1, 2025Q4 and 2026Q3
+have 19, 19 and 18 eligible top posts by majority, not 20. Reaching 20
+means having all three models code the next few posts down each
+quarter's ranked reserve (a handful of posts, a few cents each for
+Gemini and GPT); or the shortfall can stand and be disclosed, as it is
+now.</li>
+</ol>
+<h2 id="not-done">Not done</h2>
+<p>The full-sample run is complete (2026-10-07) and the figure uses it
+(2026-10-08). Not done: the three short quarters above; the cross-era
+sample and the comment sample (deferred); and the section 12
+preconditions (venue inventory, X decision). No other venue was
+collected.</p>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/vanguard/pilot-report-r-singularity-2026-10.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

@@ -1,0 +1,455 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public track review:
+GPT-6 Astra Medium | AGI Zeitgeist Tracker</title><link rel="stylesheet" href="../doc.css"></head><body><main>
+<nav class="top"><a href="../../">AGI Zeitgeist Tracker</a> <a href="../README.html">About the data</a> <a href="../methodology-v2.html">Method</a> <a href="../singularity-entry-definition.html">Singularity definition</a> <a href="../amendments.html">Changes</a></nav>
+<h1 id="public-track-review-gpt-6-astra-medium">Public track review:
+GPT-6 Astra Medium</h1>
+<p>Received 2026-09-30 (Pacific). Prompt:
+<code>docs/reviews/public-track-review-prompt.md</code>. Reply saved
+verbatim below; reconciliation goes in <code>docs/amendments.md</code>,
+not here. Links are as the model supplied them and have not yet been
+checked.</p>
+<hr />
+<p><strong>I would redesign this before collecting.</strong> The project
+can support a strong history of AGI discourse alongside a more limited
+history of public beliefs. Its present structure would make it too easy
+to interpret changes in attention, vocabulary, community membership, and
+editorial selection as changes in opinion.</p>
+<p>The largest problem is the headline's phrase <strong>"the central
+public question."</strong> You need an observable definition of
+<em>central</em>, a specified public, and a sampling frame that allows
+other questions to win.</p>
+<p><strong>1. What each layer can actually measure</strong></p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Defensible interpretation</th>
+<th>Main failure</th>
+<th>Recommended change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attention</td>
+<td>Relative visibility within a particular medium</td>
+<td>Searches, page views, books, and news counts have different
+denominators. None establishes agreement or belief.</td>
+<td>Keep separate series, normalized within each source. Avoid a
+composite "public acceptance" index.</td>
+</tr>
+<tr>
+<td>Forums</td>
+<td>Expressed discourse among participating accounts</td>
+<td>Participation changes over time; prolific users dominate; specialist
+communities select for interest in advanced AI.</td>
+<td>Report community-specific trends, with separate comment-, thread-,
+and account-weighted analyses.</td>
+</tr>
+<tr>
+<td>Polls</td>
+<td>Responses to specified questions in specified populations</td>
+<td>General AI concern, AGI feasibility, and expectations about
+automation are different constructs. Prompted answers provide limited
+evidence of spontaneous salience.</td>
+<td>Make matched survey questions the backbone of claims about
+population beliefs.</td>
+</tr>
+<tr>
+<td>Mainstream argument</td>
+<td>Published editorial framing</td>
+<td>Editors and contributors select the arguments. Op-eds cannot
+establish what readers believe.</td>
+<td>Treat this as an editorial agenda series; separately code news
+reporting and quoted speakers.</td>
+</tr>
+<tr>
+<td>Vocabulary ledger</td>
+<td>Recorded lexical diffusion within bounded corpora</td>
+<td>Earliest retrieved occurrence depends on coverage, indexing,
+spelling, and archive survival.</td>
+<td>Record "earliest verified occurrence in this corpus," with explicit
+coverage limits.</td>
+</tr>
+</tbody>
+</table>
+<p>Three failures cut across all five layers.</p>
+<p>First, <strong>AI, AGI, superintelligence, conversational competence,
+and recursive self-improvement require separate target codes</strong>.
+Someone can believe current systems write useful software, doubt that
+they possess general intelligence, and expect transformative automation.
+Your scheme must preserve that combination.</p>
+<p>Second, <strong>"dismissive through resigned" is not a defensible
+ordinal scale</strong>. Dismissal describes a judgment or rhetorical
+posture; resignation combines expectation with emotion and perceived
+agency. A person expecting imminent AGI could be enthusiastic,
+terrified, resigned, or politically mobilized. Separate those
+dimensions.</p>
+<p>Third, <strong>silence is missing information</strong>. An article
+about regulation does not establish that its author accepts AGI's
+feasibility. A commenter asking about timelines might be entertaining a
+hypothetical. Require explicit endorsement before assigning a
+belief.</p>
+<p>Your named expert panel has an analogous problem: it measures the
+public statements of selected people. Choosing today's prominent
+thinkers retrospectively can select for people whose arguments survived
+or became fashionable. Define eligibility independently of their
+eventual positions, retain quiet years, and distinguish within-person
+changes from changes in who is speaking.</p>
+<p><strong>2. What I would keep, demote, drop, and add</strong></p>
+<p>I would prioritize repeated polls, a small audited media corpus, and
+probability samples from clearly labeled specialist communities. Five
+overlapping attention sources will add less value than careful
+validation of those three components.</p>
+<p>Specific source decisions:</p>
+<ul>
+<li><strong>Wikipedia: keep as attention context.</strong> The modern
+pageviews series begins in July 2015; legacy raw counts extend to
+December 2007. The legacy data have different counting and bot/mobile
+coverage characteristics. Mark the measurement break, document titles
+and redirects, and leave 2005–2007 unavailable. <a
+href="https://meta.wikimedia.org/wiki/Research%3ATimeline_of_Wikimedia_analytics">Meta-Wiki</a></li>
+<li><strong>Google Trends: keep, with reproducibility limits.</strong>
+Google describes sampled, normalized search data, scaled to 0–100.
+Preserve geography, query/topic choice, category, time window, download
+date, and exports. Early zeros can reflect insufficient volume. Repeated
+pulls need not yield identical estimates. <a
+href="https://support.google.com/trends/answer/4365533?hl=en">Trends
+Help</a></li>
+<li><strong>Google Books Ngram: demote to the vocabulary
+appendix.</strong> It measures text frequency in a book corpus, without
+weighting for readership. Google also excludes n-grams occurring in
+fewer than 40 books, which makes it unsuitable for establishing first
+appearances. Preserve corpus version and use unsmoothed values for
+timing claims. <a
+href="https://books.google.com/ngrams/info">books.google.com</a></li>
+<li><strong>GDELT: make optional.</strong> "GDELT coverage since 2015"
+does not specify a reproducible full-text counting method. Its datasets
+and search APIs have different coverage and capabilities. Require a
+successful historical retrieval pilot for your exact query and
+denominator before committing. <a
+href="https://gdeltproject.org/data.html">gdeltproject.org</a></li>
+<li><strong>Media Cloud: keep conditionally.</strong> Its current
+documentation says searchable dates change as historical data are
+ingested. A fixed outlet list therefore does not ensure fixed historical
+coverage. Audit outlet-by-month coverage before interpreting counts. <a
+href="https://www.mediacloud.org/documentation/search-tool-guide">mediacloud.org</a></li>
+<li><strong>NYT: keep as one outlet series.</strong> The Archive API
+supplies monthly article metadata going back to 1851. Metadata
+availability and access to the text needed for coding are separate
+requirements. Label headline/abstract searches accordingly. <a
+href="https://github.com/NYTimes/public_api_specs/blob/master/archive_api/archive_api.json">GitHub</a></li>
+<li><strong>Reddit, HN, LessWrong: keep as specialist
+discourse.</strong> Analyze them separately. Their agreement would not
+constitute three independent samples of the public.</li>
+<li><strong>Drop "full archives" as an assumption.</strong> Establish
+what each archive actually captured and what remains retrievable.</li>
+</ul>
+<p>The strongest additions I found are these:</p>
+<table>
+<thead>
+<tr>
+<th>Addition</th>
+<th>What it contributes</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pew/Smithsonian, 2010</strong></td>
+<td>An early population-level expectation about humanlike machine
+conversation</td>
+<td>A specific capability forecast</td>
+</tr>
+<tr>
+<td><strong>Pew/Smithsonian, 2014</strong></td>
+<td>Expectations about computer-generated art and other
+technologies</td>
+<td>Broader technology expectations</td>
+</tr>
+<tr>
+<td><strong>Eurobarometer 382, fielded 2012</strong></td>
+<td>Multicountry survey data reaching beyond English-speaking technical
+communities</td>
+<td>Attitudes toward robots</td>
+</tr>
+<tr>
+<td><strong>Guardian Open Platform</strong></td>
+<td>A documented archive extending back to 1999</td>
+<td>Another editorial institution</td>
+</tr>
+<tr>
+<td><strong>Slashdot</strong></td>
+<td>Publicly accessible technical discussion during the early
+period</td>
+<td>Adds historical depth with similar demographic selection</td>
+</tr>
+<tr>
+<td><strong>GovAI's 2018 U.S. survey</strong></td>
+<td>Explicit high-level machine intelligence expectations and governance
+attitudes</td>
+<td>One survey instrument and population</td>
+</tr>
+</tbody>
+</table>
+<p>The 2010 Pew result is especially relevant: <strong>81% expected that
+by 2050 a computer would probably or definitely converse
+indistinguishably from a human</strong>. That establishes substantial
+early acceptance of one ambitious capability and makes a blanket "the
+public was still asking whether it was possible" framing harder to
+sustain. <a
+href="https://www.pewresearch.org/politics/2010/06/22/section-1-science-technology-and-the-environment/">Pew
+Research Center</a></p>
+<p>In 2014, 51% expected human-indistinguishable computer-created art
+within 50 years. Eurobarometer's 2012 robotics survey has publicly
+documented data and questionnaires. Keep both as adjacent constructs
+with their own labels. <a
+href="https://www.pewresearch.org/internet/2014/04/17/us-views-of-technology-and-the-future/">Pew
+Research Center</a></p>
+<p>The Guardian documents archive coverage from 1999. Slashdot has
+surviving 2005 discussions of Kurzweil and the singularity, although
+complete historical sampling would still require an archive audit. <a
+href="https://open-platform.theguardian.com/">Open Platform</a></p>
+<p>For demographic and geographic breadth, <strong>put resources into
+national surveys and country-specific analysis</strong>. Ipsos is
+useful, but its methodology notes that samples in several countries are
+more urban, educated, or affluent than the population. A multinational
+online survey cannot automatically support a world-population estimate.
+<a
+href="https://www.ipsos.com/sites/default/files/ct/publication/documents/2025-06/Ipsos-AI-Monitor-2025.pdf">ipsos.com</a></p>
+<p>Adding translated media corpora can broaden the history of discourse.
+It requires locally validated terminology, language-specific coding
+checks, and separate country results. Another forum alone will do little
+to solve population representativeness.</p>
+<p>I found useful early anchors, but this review did not establish a
+continuous, comparable public-AGI survey series for 2005–2015. Preserve
+those gaps.</p>
+<p><strong>3. A better basis for comparing public and expert
+opinion</strong></p>
+<p>Use <strong>matched propositions with separate dimensions</strong>. A
+shared coding manual helps, but it cannot make an unsolicited essay
+equivalent to a prompted survey response.</p>
+<p>For each statement or survey item, record:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target capability</td>
+<td>Conversational imitation; broad economically useful competence;
+autonomous AI research</td>
+</tr>
+<tr>
+<td>Proposition</td>
+<td>"Systems meeting definition X will exist by year Y"</td>
+</tr>
+<tr>
+<td>Endorsement</td>
+<td>Accepts; rejects; uncertain; conditional; unexpressed</td>
+</tr>
+<tr>
+<td>Probability and horizon</td>
+<td>Explicit probability, date or interval, and original wording</td>
+</tr>
+<tr>
+<td>Present capability</td>
+<td>Already demonstrated; claimed; disputed; hypothetical</td>
+</tr>
+<tr>
+<td>Expected consequences</td>
+<td>Beneficial, harmful, mixed, unspecified</td>
+</tr>
+<tr>
+<td>Affect and agency</td>
+<td>Excitement, fear, resignation; perceived ability to influence
+outcomes</td>
+</tr>
+<tr>
+<td>Elicitation</td>
+<td>Unprompted statement, interview question, survey prompt,
+quotation</td>
+</tr>
+</tbody>
+</table>
+<p>For self-improvement, distinguish at least:</p>
+<ul>
+<li>Helping humans develop AI.</li>
+<li>Autonomously conducting parts of AI research.</li>
+<li>Modifying a system's own code or weights.</li>
+<li>Sustaining successive improvements with reduced human
+involvement.</li>
+</ul>
+<p>Those propositions can receive different answers from the same
+person.</p>
+<p>If you want a numerical common axis, <strong>probability of a
+specified capability by a specified horizon</strong> is the strongest
+candidate. Use it only where the source supports it. "AGI soon" cannot
+responsibly become a numerical forecast, and accepting eventual
+possibility does not imply a probability above 50% within ten years.</p>
+<p>Pew's 2025 public/expert comparison is an excellent methodological
+anchor. It surveyed 5,410 U.S. adults and 1,013 U.S. AI experts during
+2024, with parallel questions. Pew explicitly limits the expert findings
+to respondents, whose responses were unweighted. Date your observations
+by fieldwork, preserving publication date separately. <a
+href="https://www.pewresearch.org/internet/2025/04/03/how-the-us-public-and-ai-experts-view-artificial-intelligence/">Pew
+Research Center</a></p>
+<p>For historical text, compare <strong>shares of sampled statements
+explicitly endorsing matched propositions</strong>. For surveys, compare
+<strong>shares of respondents</strong>. Put these in adjacent panels
+with their units visible.</p>
+<p><strong>4. The strongest objection to the headline, and a fair
+test</strong></p>
+<p>A skeptical reader's strongest objection would be:</p>
+<blockquote>
+<p>Your chronology may be produced by changing vocabulary, changing
+participants, and a retrospective category scheme. The sources may show
+a specialist conversation becoming more visible while the broader public
+continues to care about employment, reliability, control, and everyday
+consequences.</p>
+</blockquote>
+<p>There are already reasons to take that objection seriously.</p>
+<p>The early Pew findings complicate the feasibility era. Recursive
+self-improvement also appears in Yudkowsky's 2008 discussion of AI risk.
+That establishes an earlier intellectual lineage; its historical
+prevalence still needs measurement. <a
+href="https://intelligence.org/files/AIPosNegFactor.pdf">intelligence.org</a></p>
+<p>Monmouth supplies a particularly useful mixed result: several impact
+attitudes were largely stable between 2015 and 2023, while concern about
+a possible threat to humanity's existence increased from 44% to 55%.
+Your method should be able to preserve that combination of continuity
+and movement. <a
+href="https://www.monmouth.edu/polling-institute/reports/monmouthpoll_US_021523/">Monmouth
+University</a></p>
+<p>To test the headline fairly:</p>
+<ol type="1">
+<li><strong>Specify the population.</strong> For example, U.S. adults,
+selected national media, or participants in named forums. Report each
+separately.</li>
+<li><strong>Define "central."</strong> Largest share of articles?
+Largest share of primary questions? Most commonly volunteered concern?
+These require different evidence.</li>
+<li><strong>Allow competing questions to win.</strong> Include jobs,
+reliability, privacy, bias, ownership, regulation, military uses,
+consciousness, and "other." Sample broadly enough to retrieve them.</li>
+<li><strong>Keep all your proposed categories available in every
+year.</strong> Code question presence separately from the answer
+given.</li>
+<li><strong>Estimate timing without forcing your preferred
+breaks.</strong> Compare the proposed eras against stable mixtures,
+gradual trends, and alternative break dates.</li>
+<li><strong>Test stable-source and stable-participant subsets.</strong>
+A within-account analysis helps distinguish changed speech from
+membership turnover, while requiring its own attrition caveat.</li>
+<li><strong>Preregister a failure condition.</strong> For example: the
+proposed leading question must rank first within each claimed period
+under the primary sampling weights, and the ordering must survive
+specified sensitivity analyses.</li>
+</ol>
+<p>Evidence capable of supporting the <strong>population</strong> claim
+would include repeated comparable surveys measuring question priority,
+preferably with unprompted responses. Agreement across media and forums
+could support a claim about public discourse. It would leave
+population-level salience uncertain where survey evidence is absent.</p>
+<p>Also separate your two proposed post-2023 developments. "What should
+we do about demonstrated capabilities?" is much broader than "Can
+systems already improve themselves?" Success for the first does not
+establish the second.</p>
+<p><strong>5. Existing work worth building on</strong></p>
+<p>These are the highest-value starting points:</p>
+<ul>
+<li><strong>Fast and Horvitz, "Long-Term Trends in the Public Perception
+of Artificial Intelligence" (2017).</strong> Direct precedent for
+longitudinal NYT analysis, covering 1986–2016. Build on its categories
+and findings, while keeping the measured object, newspaper discourse,
+explicit. <a
+href="https://ojs.aaai.org/index.php/AAAI/article/view/10635">ojs.aaai.org</a></li>
+<li><strong>Zhang and Dafoe, <em>Artificial Intelligence: American
+Attitudes and Trends</em> (2019; fieldwork 2018).</strong> Includes a
+defined high-level machine intelligence question, timelines, governance,
+and demographic differences. Its preregistration and instrument are
+particularly useful. <a
+href="https://governanceai.github.io/US-Public-Opinion-Report-Jan-2019/">governanceai.github.io</a></li>
+<li><strong>Pew's 2025 public/expert comparison.</strong> The clearest
+bridge for your comparability problem. <a
+href="https://www.pewresearch.org/internet/2025/04/03/how-the-us-public-and-ai-experts-view-artificial-intelligence/">Pew
+Research Center</a></li>
+<li><strong>AI Impacts' Expert Survey on Progress in AI series.</strong>
+The 2016, 2022, and 2023 surveys contain largely repeated questions.
+They provide a benchmark alongside your named panel; inspect question
+framing and respondent composition before interpreting differences. <a
+href="https://wiki.aiimpacts.org/ai_timelines/predictions_of_human-level_ai_timelines/ai_timeline_surveys/2023_expert_survey_on_progress_in_ai">wiki.aiimpacts.org</a></li>
+<li><strong>Eurobarometer robotics surveys and Gnambs and Appel's "Are
+robots becoming unpopular?"</strong> Existing cross-national work using
+2012, 2014, and 2017 waves. Useful for broader technology attitudes and
+longitudinal survey practice. <a
+href="https://www.gesis.org/en/eurobarometer-data-service/data-and-documentation/standard-special-eb/study-overview/eurobarometer-771-za-5597-feb-mar-2012">gesis.org</a></li>
+<li><strong>Gaffney and Matias, "Caveat Emptor, Computational Social
+Science" (2018).</strong> Documents missingness in an earlier widely
+used Reddit corpus. It supplies reasons to audit coverage, without
+establishing the missingness of your particular Arctic Shift extract. <a
+href="https://arxiv.org/abs/1803.05046">arxiv.org</a></li>
+</ul>
+<p><strong>6. Your sampling rules need substantial changes</strong></p>
+<p><strong>Twenty top-scoring posts per quarter selects for rewarded
+visibility.</strong> It can describe what each community promoted. It
+cannot estimate the distribution of expressed views across all posts or
+participants. Scores also reward humor, outrage, timing, and format, and
+historical scores may have been captured at different ages.</p>
+<p>There is a concrete archive issue here: Arctic Shift documents a
+collection change beginning in November 2023, when content was retrieved
+again after 36 hours and score-related fields were updated. Your
+proposed period boundary overlaps a change in measurement. <a
+href="https://github.com/ArthurHeitmann/arctic_shift/blob/master/file_content_explanations.html">GitHub</a></p>
+<p>Keep the top-20 series as a separate "highly rewarded discourse"
+sample. For prevalence, draw a reproducible random sample within
+community and quarter, retain inclusion probabilities, and sample
+comments independently of post popularity. Report account concentration
+and sensitivity to prolific contributors.</p>
+<p><strong>Fifteen op-eds per year is enough for illustrative close
+reading, with weak precision for annual proportions.</strong> Even under
+simple random sampling, a proportion near 50% with n=15 has an
+approximate 95% margin of error of ±25 percentage points. Clustering by
+author, event, and outlet further complicates uncertainty.</p>
+<p>Choose sample size from the smallest change you want to distinguish.
+Stratify by outlet and period; enumerate the eligible frame before
+drawing. If sparse years contain fewer eligible pieces, take the census.
+Keep news and opinion genres identifiable, and distinguish the author's
+stance from quoted claims.</p>
+<p><strong>A frozen vocabulary prevents one kind of discretion while
+preserving another.</strong> A list chosen today can systematically miss
+earlier expressions such as "thinking machines," "strong AI,"
+"human-level intelligence," and "intelligence explosion." Generic terms
+such as "alignment," "doom," and "timelines" require contextual
+disambiguation.</p>
+<p>Use a broad retrieval vocabulary developed on a pilot spanning the
+entire period. Freeze its version before the main analysis, validate
+precision and recall separately by era, and maintain a held-out sample
+for checking omissions. Any later vocabulary revision should trigger a
+rerun across all years.</p>
+<p><strong>The 1% threshold needs denominator and persistence
+rules.</strong> One thread can drive a crossing in a small month.
+Publish numerator, denominator, distinct-account count, and
+single-thread concentration. Predefine minimum volume and a persistence
+rule. Treat alternative thresholds as sensitivity checks.</p>
+<p>Finally, double-code a stratified subset, hide dates and identities
+where practical, and publish disagreements and category-specific
+reliability. Preserve "ambiguous" and "unexpressed" codes. If automated
+coding is used, validate it separately across eras and sources.</p>
+<p>For reproducibility, publish the sampling frames, queries, code,
+random seeds, source versions, retrieval dates, document IDs,
+exclusions, and missingness audits. State whether a reader can reproduce
+an aggregate from public tables or needs accessible microdata. A working
+URL today does not guarantee an identical future retrieval; preserve
+permissible snapshots and checksums.</p>
+<p><strong>My recommendation is to preregister three distinct outcomes:
+population beliefs, published argument, and specialist
+discourse.</strong> Let the headline emerge from their agreement or
+divergence. That structure gives the project room to discover something
+more informative than a single sequence of eras.</p>
+
+<p style="color:#6b7785;font-size:0.85rem;margin-top:40px">Rendered from <code>docs/reviews/public-track-review-gpt-6-astra-2026-10.md</code>. Data CC BY 4.0, scripts MIT.</p>
+</main></body></html>

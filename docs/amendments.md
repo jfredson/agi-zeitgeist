@@ -246,3 +246,46 @@ fail. Core passes go from 19 to 22. Details and the agent's three judgment calls
 - **2026-10-03, vanguard codebook rules (decided by: john):** R2 (target decided by the subject of the main claim: a model or system, a company or government, or people and society) and R3 (hedging coded only from hedge words in the words stating the claim) adopted into `docs/vanguard/codebook.md`. R1 not adopted as written; split into R1a (a post passed on without comment has no stated stance) and R1b (such a post attributes the claim to the linked source), each trialled separately on the 112 posts all three models coded in the first trial. "Whether the poster wants AI sped up or slowed down" is dropped from reported measures and listed as unreliable. A monthly cost quote for Gemini's paid tier is required before the full-sample run. The codebook as it stood before R2 and R3 is kept as `docs/vanguard/codebook-frozen-2026-10-03-before-rules.md`, so the first trial's remaining Gemini posts are coded on the same codebook as the rest of that run.
 - **2026-10-03, Gemini spending (decided by: john):** the cost quote in `docs/vanguard/model-cost-quote-2026-10-03.md` is approved: up to $15 for the first month (the full-sample run, about $9.80, plus the first monthly runs), then up to $5 a month for three venues. The full-sample run waits for the ruling on rules R1a and R1b, so the 390 posts are coded once under the final codebook.
 - **2026-10-04, vanguard codebook rules R1a and R1b (decided by: john):** R1a adopted with one sentence added: jokes and reaction titles ("WTF", "Shots fired!", an emoji) are not endorsements, so the passed-on claim is coded neutral_relay and the tone goes in rhetorical_mode. The sentence was part of the original R1 and was dropped when R1 was split. R1b rejected: attribution of posts passed on without comment follows the codebook's field definition. Evidence: `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md` (R1a: stance kappas 0.45 / 0.50 / 0.53 without, 0.78 / 0.74 / 0.65 with; R1b: no measurable effect). The added sentence was not trialled on its own; it is checked with R1a on the fresh sample section 9 requires. The codebook is now final for the full-sample run.
+
+## 2026-10-08: the singularity-entry definition adopted, with a fourth leg
+
+Decided by: john, on four questions the agent put to him with recommendations; John
+followed the recommendation on the anchor, the thresholds and the backward test, and
+overruled it on the economic leg. Full text: `docs/singularity-entry-definition.md`; frozen
+values: `docs/singularity-entry-thresholds.json`.
+
+### A17. Singularity entry: anchor, thresholds, leg D, and publication
+
+Was: a draft (`docs/singularity-entry-definition-draft-2026-10-07.md`) with three legs
+(pace accelerating; forecasts failing; AI doing the improving), placeholder thresholds and
+no gauge published.
+Now:
+1. **Anchor.** METR's 50% task-completion time horizon anchors legs A and B. A successor
+   must be named before it saturates, with the overlap published.
+2. **Thresholds frozen as the draft wrote them:** doubling time at or below one month;
+   forecast horizon at or below one year; AI share of frontier research work at or above
+   one half; reference year 2019; four consecutive quarters to count as entered.
+3. **Backward test owed, not met.** The definition must return "not entered" for 1995 to
+   2019; the series to run it do not exist yet. Adopted anyway, with the gap stated on the
+   page. If the test later fires on those years, the thresholds are amended.
+4. **Leg D, the economy, added (John's ruling against the agent's recommendation).** World
+   output doubling time from World Bank annual world growth. Threshold: growth at or above
+   30 percent a year, Davidson's published "explosive growth" line (2021). Reference: the
+   1961 to 2019 mean of the same series. One annual reading covers its four quarters;
+   revisions reset the count. The agent had recommended publishing the economic reading
+   beside the mark, not inside it, because output lags capability by years and the
+   progress number (the smallest gauge) will track the economy until it moves. John
+   accepted that cost for the sake of a leg measured outside the AI field.
+5. **Gauges and status are published** at agizeitgeist.com from the frozen
+   file. Leg B is shown as not yet measurable until the forecast-versus-outcome ledger
+   exists; progress is then reported as "at most" the smallest measured gauge.
+
+Agent decisions inside the adoption (John can reverse any):
+- T_ref for leg A is METR's own whole-series fit (187.8 days, row `metr-th11-doubling-all`,
+  the fit over all frontier models since 2019), because the trailing-window series cannot
+  be computed in 2019 itself. Windows that include a reading past 16 hours are not scored,
+  following METR's own exclusion.
+- Leg C is scored from Anthropic's "leads" share only; the Google code-share row is a proxy
+  and is shown unscored.
+- The World Bank series is stored in `data/world_measures.csv` as one row per year (unit
+  `percent_growth`), and the validator's date floor for that file is 1960.
