@@ -394,7 +394,7 @@ SITE_CSS = """
 .land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
 .land .eyebrow { margin-bottom: 18px; }
 .land .answer { font-size: clamp(64px, 10vw, 112px); line-height: 0.95; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 22px; }
-.land h1 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.15; margin: 0 0 14px; }
+.land h1 { font-size: clamp(20px, 2.3vw, 27px); line-height: 1.3; font-weight: 600; margin: 0 0 12px; }
 .land .lede { font-style: normal; font-size: 18px; line-height: 1.5; color: var(--text-soft); margin: 0 0 22px; max-width: 640px; }
 .conds { display: grid; gap: 10px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 2.2em 1fr; gap: 2px 12px; align-items: center; font-family: var(--sans); }
