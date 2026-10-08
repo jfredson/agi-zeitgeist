@@ -29,6 +29,25 @@ has moved, 2005 to 2026: a document of the AGI Zeitgeist Tracker.">
 <link rel="stylesheet" href="/deep-field.css">
 <style>
 .brand { white-space: nowrap; }
+.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
+.rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
+.rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rail h4 + h4, .rail .rail-sec { margin-top: 18px; }
+.rail .rstatus { font-size: 13px; color: var(--text-soft); margin: 0 0 10px; line-height: 1.45; }
+.rail .rstatus b { color: var(--text); }
+.rail .mini { display: grid; grid-template-columns: 1.1em 1fr; gap: 6px 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.rail .mini .bar { margin: 0; height: 12px; }
+.rail .mini .bar span { display: none; }
+.rail .mini .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.rail .mini .k { color: var(--text-soft); font-weight: 600; }
+.rail .mini .v { grid-column: 2; margin: -4px 0 4px; font-size: 11px; }
+.rail .toc { display: flex; flex-direction: column; }
+.rail .toc a { padding: 5px 0; line-height: 1.35; color: var(--text-soft); text-decoration: none; font-size: 13.5px; }
+.rail .toc a:hover { color: var(--accent); }
+.rail .toc a.d3 { font-size: 12.5px; color: var(--muted); padding-left: 12px; }
+.rail .use { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.rail .use a { text-decoration: none; }
+@media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
 .hero h1 { margin-bottom: 10px; }
 .hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
@@ -314,13 +333,13 @@ how would you close each gap before collection?</li>
 </ol>
 <p>Please be direct. I would rather hear that the stream is
 unsalvageable now than after it is collected.</p>
-<p class="cite">Rendered from <code>docs/reviews/vanguard-stream-review-prompt.md</code> at commit 5ea2774.</p></div>
+<p class="cite">Rendered from <code>docs/reviews/vanguard-stream-review-prompt.md</code> at commit 41654ad.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 5ea2774) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 41654ad) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>

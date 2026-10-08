@@ -369,6 +369,25 @@ ICON_THEME = ('<svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" 
 # Styles of this site only, on top of the shared file. Tokens only; no new colours.
 SITE_CSS = """
 .brand { white-space: nowrap; }
+.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
+.rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
+.rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rail h4 + h4, .rail .rail-sec { margin-top: 18px; }
+.rail .rstatus { font-size: 13px; color: var(--text-soft); margin: 0 0 10px; line-height: 1.45; }
+.rail .rstatus b { color: var(--text); }
+.rail .mini { display: grid; grid-template-columns: 1.1em 1fr; gap: 6px 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.rail .mini .bar { margin: 0; height: 12px; }
+.rail .mini .bar span { display: none; }
+.rail .mini .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.rail .mini .k { color: var(--text-soft); font-weight: 600; }
+.rail .mini .v { grid-column: 2; margin: -4px 0 4px; font-size: 11px; }
+.rail .toc { display: flex; flex-direction: column; }
+.rail .toc a { padding: 5px 0; line-height: 1.35; color: var(--text-soft); text-decoration: none; font-size: 13.5px; }
+.rail .toc a:hover { color: var(--accent); }
+.rail .toc a.d3 { font-size: 12.5px; color: var(--muted); padding-left: 12px; }
+.rail .use { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.rail .use a { text-decoration: none; }
+@media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
 .hero h1 { margin-bottom: 10px; }
 .hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
@@ -577,6 +596,30 @@ def gauge_bar(g):
     return f'<div class="bar"><i style="width:{g*100:.0f}%"></i><span>{g:.2f}</span></div>'
 
 
+def rail(sc, built, commit):
+    names = {"A": "Pace", "B": "Forecasts", "C": "AI doing research", "D": "Economy"}
+    rows = []
+    for k in "ABCD":
+        g = sc[k].get("gauge") if sc[k].get("measurable") else None
+        bar = gauge_bar(g)
+        val = "not yet measurable" if g is None else f"{g:.2f} of 1"
+        rows.append(f'<span class="k">{k}</span>{bar}<span class="v">{esc(names[k])}: {val}</span>')
+    progress = ("at most " if sc["progress_is_upper_bound"] else "") + f"{sc['progress']:.2f}"
+    toc = [("#belief", "The current zeitgeist", ""), ("#singularity", "Are we in the singularity?", ""),
+           ("#leg-a", "A. The pace", "d3"), ("#leg-b", "B. Forecasts", "d3"), ("#leg-c", "C. AI doing research", "d3"), ("#leg-d", "D. The economy", "d3"),
+           ("#owed", "What the test still owes", "d3"), ("#method", "Method and data", "")]
+    toc_html = "".join(f'<a href="{h}" class="{c}">{esc(t)}</a>' for h, t, c in toc)
+    return f"""<aside class="rail">
+<h4>Status at a glance</h4>
+<p class="rstatus"><b>Singularity: {esc(sc['status'])}.</b> Progress {progress} on a scale of 0 to 1, as of {long_date(built)}.</p>
+<div class="mini">{"".join(rows)}</div>
+<h4 class="rail-sec">On this page</h4>
+<nav class="toc">{toc_html}</nav>
+<h4 class="rail-sec">Use the data</h4>
+<p class="use"><a href="/data/">Download every table</a> (CC BY 4.0) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version {esc(commit)}</p>
+</aside>"""
+
+
 def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, commit):
     frontier = [p for p in a_pts if p["frontier"]]
     latest = frontier[-1]
@@ -603,7 +646,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         "mark crossed, under persistence test": "Mark crossed; the four-quarter persistence count is running.",
     }[sc["status"]]
 
-    body = f"""
+    body = f"""<div class="with-rail"><div>
 <div class="intro prose">
 <p>AGI here means AI that can do most intellectual work a person can. The working question: did the main public argument move from <em>whether</em> it is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. The seed phase is complete and the expert panel is frozen; the full panel traces and the public streams have not started.</p>
 </div>
@@ -649,7 +692,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 {gauge_bar(D['gauge'])}</div>
 </div>
 
-<h3>Leg A. How long a task the best AI can finish</h3>
+<h3 id="leg-a">Leg A. How long a task the best AI can finish</h3>
 <p>The anchor measure is METR's time horizon: the length of software task, in minutes an expert needs for it, that a model finishes half the time. It is chosen because it has not yet saturated the way benchmarks do. The lower panel is the definition's quantity: the doubling time of the frontier over a trailing twelve months. A flat line would mean steady exponential growth, which is Kurzweil's world but not yet a singularity; a falling line is the signature the definition looks for. The gauge is scored on the last window with no reading past 16 hours, and the threshold also requires the doubling time to have fallen over the last two windows ({"met" if A['falling'] else "not met"} today).</p>
 <figure class="fig"><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
 <figcaption>Hollow points were not the frontier at release. METR treats estimates past 16 hours as beyond its task suite's reliable range, and its own doubling-time fit excludes them; windows that include such a reading are hollow in the lower panel and are not scored. The latest frontier reading is {esc(latest['name'])} at {latest['value']/60:.0f} hours on {latest['date'].isoformat()}. Doubling-time series in <a href="leg-a-doubling-time.csv">leg-a-doubling-time.csv</a>.</figcaption></figure>
@@ -658,7 +701,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 {table(["window end", "days per doubling", "frontier points", "includes a reading past 16 h"], dt_rows)}
 </details>
 
-<h3>Leg B. Are forecasts holding up?</h3>
+<h3 id="leg-b">Leg B. Are forecasts holding up?</h3>
 <p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed, so leg B is shown as not yet measurable and the progress number above is an upper bound. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about {abs(last_step['change']):.0f} years of distance in {last_step['years']:.1f} calendar years. That is forecasts failing in the slow direction, which is the direction the definition records.</p>
 <figure class="fig"><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
 <figcaption>Surveys use different definitions and aggregation, so the 2013 survey is shown but not joined to the series. Steps in <a href="leg-b-pull-in.csv">leg-b-pull-in.csv</a>.</figcaption></figure>
@@ -669,7 +712,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 {table(["date", "probability", "row"], mani_rows)}
 </details>
 
-<h3>Leg C. Is AI doing the improving?</h3>
+<h3 id="leg-c">Leg C. Is AI doing the improving?</h3>
 <p>The definition wants the share of inputs to frontier AI progress supplied by AI. Nobody outside the labs can measure that, so what exists is self-report. Two kinds are recorded: a company's share of all new code written by AI, which is a proxy at best and is shown but not scored, and Anthropic's self-measured share of its own AI research work that its model "leads", which is closer to the definition's measure but is judged by the model itself and is the figure scored. The figures do not measure the same thing and should not be compared with each other.</p>
 <figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
 <figcaption>Every bar is a company statement about itself. Anthropic's row for February 2026 is "under 1%", recorded as 1. Its "above 90%" row is recorded as 90.</figcaption></figure>
@@ -677,7 +720,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 {table(["date", "measure", "value", "row"], c_rows)}
 </details>
 
-<h3>Leg D. Has the economy changed mode?</h3>
+<h3 id="leg-d">Leg D. Has the economy changed mode?</h3>
 <p>Robin Hanson's reading of the long record is that the world economy has had three growth modes, hunting, farming and industry, each doubling output about a hundred times faster than the one before: roughly 230,000 years, 860 years and 15 years per doubling. A new mode would double output in years or less. Leg D asks whether that has started, using world real output growth from the World Bank. The threshold, 30 percent a year, is Tom Davidson's published line for "explosive growth" (Open Philanthropy, 2021), chosen so the number is not this project's own invention: far above anything in the modern record, well short of Hanson's "days, not years". This leg is measured by people outside the AI field, which is why it is in the definition; the cost is that output lags capability by years, so it will usually be the weakest leg.</p>
 <figure class="fig"><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
 <figcaption>Annual readings; the series is revised as countries revise their accounts, and a revision that pulls a year back below the line resets the persistence count. Doubling times in <a href="leg-d-world-growth.csv">leg-d-world-growth.csv</a>.</figcaption></figure>
@@ -685,7 +728,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 {table(["year", "growth", "doubling time (years)", "row"], d_rows)}
 </details>
 
-<h3>What the definition still owes</h3>
+<h3 id="owed">What the definition still owes</h3>
 <ol>
 <li><b>The backward test.</b> Run on 1995 to 2019 the definition must return "not entered", with the internet years firing only leg B and the deep-learning years firing only leg A. The leg A series starts in 2019 and leg C in 2026, so the test cannot run yet. The definition was adopted without it, with this gap stated here; if the test later fires on those years, the thresholds are amended in the open.</li>
 <li><b>The leg B ledger.</b> Old forecasts of the anchor measure (starting from the 2016 expert survey's milestone dates) scored against what happened, by lead time. Until it exists, leg B is unmeasured.</li>
@@ -698,6 +741,9 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 <p>Belief measures and world measures live in separate files and are never combined. <a href="/data/statements.csv">statements.csv</a>, <a href="/data/aggregates.csv">aggregates.csv</a> and the <a href="/data/">community samples</a> hold what people said and believed. <a href="/data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="/data/search_log.csv">search_log.csv</a>. The <a href="/docs/methodology-v2">method</a>, the <a href="/docs/codebook">codebook</a>, the <a href="/docs/singularity-entry-definition">definition</a> and every <a href="/docs/amendments">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
 <p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen {sc['adopted']} in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
 </section>
+</div>
+{rail(sc, built, commit)}
+</div>
 """
     return shell(SITE_TITLE, TAGLINE, body, built, commit, backdrop=True, eyebrow="A dated record and a scored test",
                  h1=SITE_TITLE, lede="The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity. Every number on this page links to the row it came from.")
