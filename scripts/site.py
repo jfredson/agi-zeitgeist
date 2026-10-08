@@ -394,37 +394,35 @@ SITE_CSS = """
 .rail .use a { text-decoration: none; }
 @media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
-/* the landing hero: the answer on the left, the four conditions beneath it, the experts' date on the right */
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' dates on the right.
+   Type roles follow The Belt Equation's hero: sans for the answer and claims, mono with tabular figures for
+   numbers, serif only for the explanatory line. */
 .land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
 .land .eyebrow { margin-bottom: 18px; }
-.land .answer { font-size: clamp(64px, 10vw, 112px); line-height: 0.95; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 22px; }
-.land h1 { font-size: clamp(20px, 2.3vw, 27px); line-height: 1.3; font-weight: 600; margin: 0 0 12px; }
-.land .lede { font-style: normal; font-size: 18px; line-height: 1.5; color: var(--text-soft); margin: 0 0 22px; max-width: 640px; }
-.conds { display: grid; gap: 10px; margin: 0 0 22px; max-width: 640px; }
-.cond { display: grid; grid-template-columns: 2.2em 1fr; gap: 2px 12px; align-items: center; font-family: var(--sans); }
-.cond .k { font-size: 22px; font-weight: 600; color: var(--text); grid-row: span 2; align-self: center; }
-.cond .n { font-size: 14px; color: var(--text); }
-.cond .bar { margin: 4px 0 0; height: 10px; }
+.land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
+.land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
+.cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
+.cond .n { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.cond .bar { margin: 5px 0 0; height: 7px; border-radius: 3px; }
 .cond .bar span { display: none; }
 .cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
-.cond .d { grid-column: 2; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
-.fresh { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
 .land .ctas { margin-bottom: 8px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
-.card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-.card .big { font-family: var(--serif); font-size: 56px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
-.card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
-.card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
-.card .trend div { flex: 1; }
-.card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
-.card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
+.card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+.card .what b { color: var(--text); font-weight: 600; }
 .card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
-.card .ladder > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
-.card .ladder > div > b { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--text); line-height: 1.1; }
+.card .ladder > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.1; }
 .card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
 .card .ladder span b { color: var(--text-soft); font-weight: 600; }
-.card .what b { color: var(--text); }
-.card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; }
 .card .foot a { text-decoration: none; }
 @media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
 .hero h1 { margin-bottom: 10px; }
@@ -677,13 +675,13 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
     hlmi10 = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-hlmi10"), "")
     faol = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-faol50"), "")
     m = mani[-1] if mani else None
-    market = (f' On Manifold, a website where people bet on future events, the odds of an AGI announcement before 2030 stand at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> (as of {long_date(m["date"])}).' if m else "")
+    market = (f' People betting on Manifold put the odds of AGI before 2030 at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a>.' if m else "")
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{answer}</p>
 <h1>Four things would all have to hold for a year. Today none of them does.</h1>
-<p class="lede">"The singularity" is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started. Each bar below shows how close one condition is to counting as met.</p>
+<p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started.</p>
 <div class="conds">{rows}</div>
 <p class="fresh">Scored {long_date(built)} from public numbers. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is written down with the date and the reason</a>.</p>
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
@@ -691,10 +689,10 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
 <aside class="card">
 <p class="ch">When? It depends what you mean</p>
 <p class="big">about {med}</p>
-<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates given by the {len(ex_rows)} experts this site has traced so far, for AGI as each defines it ({lo} to {hi}).{market}</p>
+<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates from the {len(ex_rows)} experts traced so far ({lo} to {hi}).{market}</p>
 <div class="ladder">
-<div><b>{int(latest['m'])}</b><span><b>Every task, better and cheaper than a human worker</b>, even odds. {latest['n'] or 'AI researchers'} in the <a href="{esc(latest['url'])}">latest large survey</a> ({latest['date'].year}); the same people gave one-in-ten odds by {hlmi10}. This even-odds year has come {int(b_pts[0]['m']) - int(latest['m'])} years closer since {b_pts[0]['date'].year}.</span></div>
-<div><b>{faol}</b><span><b>All human work fully automated</b>, even odds, from the same survey. Factories, hospitals and building sites move far more slowly than software.</span></div>
+<div><b>{int(latest['m'])}</b><span><b>Every task, better and cheaper than a human worker.</b> Even odds, from {latest['n'] or 'AI researchers'} in the <a href="{esc(latest['url'])}">largest survey</a> ({latest['date'].year}); one-in-ten odds by {hlmi10}. {int(b_pts[0]['m']) - int(latest['m'])} years closer than the {b_pts[0]['date'].year} survey said.</span></div>
+<div><b>{faol}</b><span><b>All human work automated.</b> Even odds, same survey. Factories and hospitals move far more slowly than software.</span></div>
 </div>
 <p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>

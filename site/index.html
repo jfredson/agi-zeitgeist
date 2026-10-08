@@ -41,37 +41,35 @@
 .rail .use a { text-decoration: none; }
 @media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
-/* the landing hero: the answer on the left, the four conditions beneath it, the experts' date on the right */
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' dates on the right.
+   Type roles follow The Belt Equation's hero: sans for the answer and claims, mono with tabular figures for
+   numbers, serif only for the explanatory line. */
 .land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
 .land .eyebrow { margin-bottom: 18px; }
-.land .answer { font-size: clamp(64px, 10vw, 112px); line-height: 0.95; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 22px; }
-.land h1 { font-size: clamp(20px, 2.3vw, 27px); line-height: 1.3; font-weight: 600; margin: 0 0 12px; }
-.land .lede { font-style: normal; font-size: 18px; line-height: 1.5; color: var(--text-soft); margin: 0 0 22px; max-width: 640px; }
-.conds { display: grid; gap: 10px; margin: 0 0 22px; max-width: 640px; }
-.cond { display: grid; grid-template-columns: 2.2em 1fr; gap: 2px 12px; align-items: center; font-family: var(--sans); }
-.cond .k { font-size: 22px; font-weight: 600; color: var(--text); grid-row: span 2; align-self: center; }
-.cond .n { font-size: 14px; color: var(--text); }
-.cond .bar { margin: 4px 0 0; height: 10px; }
+.land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
+.land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
+.cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
+.cond .n { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.cond .bar { margin: 5px 0 0; height: 7px; border-radius: 3px; }
 .cond .bar span { display: none; }
 .cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
-.cond .d { grid-column: 2; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
-.fresh { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
 .land .ctas { margin-bottom: 8px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
-.card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-.card .big { font-family: var(--serif); font-size: 56px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
-.card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
-.card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
-.card .trend div { flex: 1; }
-.card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
-.card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
+.card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+.card .what b { color: var(--text); font-weight: 600; }
 .card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
-.card .ladder > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
-.card .ladder > div > b { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--text); line-height: 1.1; }
+.card .ladder > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.1; }
 .card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
 .card .ladder span b { color: var(--text-soft); font-weight: 600; }
-.card .what b { color: var(--text); }
-.card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; }
 .card .foot a { text-decoration: none; }
 @media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
 .hero h1 { margin-bottom: 10px; }
@@ -127,7 +125,7 @@ details p { color: var(--text-soft); }
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">Not yet.</p>
 <h1>Four things would all have to hold for a year. Today none of them does.</h1>
-<p class="lede">"The singularity" is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started. Each bar below shows how close one condition is to counting as met.</p>
+<p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started.</p>
 <div class="conds"><div class="cond"><span class="k">A</span><span class="n">AI is getting better faster and faster</span><div class="bar"><i style="width:43%"></i><span>43% of the way to its line</span></div><span class="d">How long a job the best AI can do by itself has been doubling every 121 days. It would count at 30 days and still speeding up.</span></div><div class="cond"><span class="k">B</span><span class="n">Nobody can predict AI progress any more</span><div class="bar none"><span>not yet measurable</span></div><span class="d">Cannot be scored yet: that needs a record of old predictions set against what actually happened, and it has not been built.</span></div><div class="cond"><span class="k">C</span><span class="n">AI now does most of the work of improving AI</span><div class="bar"><i style="width:52%"></i><span>52% of the way to its line</span></div><span class="d">Anthropic, an AI company, says its own AI leads 26% of its AI research. It would count at half. Only the company can check that.</span></div><div class="cond"><span class="k">D</span><span class="n">The world&#x27;s economy grows ten times faster than it ever has</span><div class="bar"><i style="width:0%"></i><span>0% of the way to its line</span></div><span class="d">The world&#x27;s economy grew 2.9% in 2025. It would count at 30% in a year.</span></div></div>
 <p class="fresh">Scored 8 October 2026 from public numbers. The rules were fixed on 8 October 2026; <a href="/docs/amendments">any change to them is written down with the date and the reason</a>.</p>
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
@@ -135,10 +133,10 @@ details p { color: var(--text-soft); }
 <aside class="card">
 <p class="ch">When? It depends what you mean</p>
 <p class="big">about 2030</p>
-<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates given by the 5 experts this site has traced so far, for AGI as each defines it (2026 to 2036). On Manifold, a website where people bet on future events, the odds of an AGI announcement before 2030 stand at <a href="https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC">53%</a> (as of 30 September 2026).</p>
+<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates from the 5 experts traced so far (2026 to 2036). People betting on Manifold put the odds of AGI before 2030 at <a href="https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC">53%</a>.</p>
 <div class="ladder">
-<div><b>2047</b><span><b>Every task, better and cheaper than a human worker</b>, even odds. 1,714 researchers asked in the <a href="https://arxiv.org/html/2401.02843">latest large survey</a> (2023); the same people gave one-in-ten odds by 2027. This even-odds year has come 14 years closer since 2016.</span></div>
-<div><b>2116</b><span><b>All human work fully automated</b>, even odds, from the same survey. Factories, hospitals and building sites move far more slowly than software.</span></div>
+<div><b>2047</b><span><b>Every task, better and cheaper than a human worker.</b> Even odds, from 1,714 researchers asked in the <a href="https://arxiv.org/html/2401.02843">largest survey</a> (2023); one-in-ten odds by 2027. 14 years closer than the 2016 survey said.</span></div>
+<div><b>2116</b><span><b>All human work automated.</b> Even odds, same survey. Factories and hospitals move far more slowly than software.</span></div>
 </div>
 <p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>
@@ -354,14 +352,14 @@ details p { color: var(--text-soft); }
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 1d5574e. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on 8 October 2026; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 2daa066. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on 8 October 2026; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
 </div>
 <aside class="rail">
 <h4>On this page</h4>
 <nav class="toc"><a href="#belief" class="">The current zeitgeist</a><a href="#singularity" class="">Are we in the singularity?</a><a href="#leg-a" class="d3">A. The pace</a><a href="#leg-b" class="d3">B. Forecasts</a><a href="#leg-c" class="d3">C. AI doing research</a><a href="#leg-d" class="d3">D. The economy</a><a href="#owed" class="d3">What the test still owes</a><a href="#method" class="">Method and data</a></nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version 1d5574e</p>
+<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version 2daa066</p>
 </aside>
 </div>
 
@@ -370,7 +368,7 @@ details p { color: var(--text-soft); }
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 1d5574e) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 2daa066) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
