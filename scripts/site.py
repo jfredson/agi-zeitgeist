@@ -389,6 +389,33 @@ SITE_CSS = """
 .rail .use a { text-decoration: none; }
 @media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' date on the right */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-size: clamp(64px, 10vw, 112px); line-height: 0.95; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.15; margin: 0 0 14px; }
+.land .lede { font-style: normal; font-size: 18px; line-height: 1.5; color: var(--text-soft); margin: 0 0 22px; max-width: 640px; }
+.conds { display: grid; gap: 10px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 2.2em 1fr; gap: 2px 12px; align-items: center; font-family: var(--sans); }
+.cond .k { font-size: 22px; font-weight: 600; color: var(--text); grid-row: span 2; align-self: center; }
+.cond .n { font-size: 14px; color: var(--text); }
+.cond .bar { margin: 4px 0 0; height: 10px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+.fresh { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.land .ctas { margin-bottom: 8px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.card .big { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
+.card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
+.card .trend div { flex: 1; }
+.card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
+.card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
 .hero h1 { margin-bottom: 10px; }
 .hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
 .intro { max-width: 760px; }
@@ -596,6 +623,46 @@ def gauge_bar(g):
     return f'<div class="bar"><i style="width:{g*100:.0f}%"></i><span>{g:.2f}</span></div>'
 
 
+def landing(sc, b_pts, mani, built, commit):
+    """The first screen: the answer, the four conditions, the experts' date."""
+    A, C, D = sc["A"], sc["C"], sc["D"]
+    answer = {"not entered": "Not yet.", "approaching": "Getting close.",
+              "mark crossed, under persistence test": "Crossing now.", "entered": "Yes."}[sc["status"]]
+    conds = [
+        ("A", "AI capability is doubling faster and faster", A.get("gauge"),
+         f"The best AI's task horizon doubles every {A['reading']:.0f} days; the line is {A['t_star']:.0f} days, and it also has to be falling."),
+        ("B", "Forecasts of AI progress have stopped working", None,
+         "Not measurable yet: the record of past forecasts against what happened has not been built."),
+        ("C", "AI does most of the research that improves AI", C.get("gauge"),
+         f"Anthropic says its model leads {C['reading']*100:.0f}% of its AI research work, by its own count; the line is half."),
+        ("D", "The world economy grows ten times faster than ever", D.get("gauge"),
+         f"World output grew {D['reading']:.1f}% in {D['year']}; the line is {D['g_star']:.0f}% a year."),
+    ]
+    rows = "".join(f'<div class="cond"><span class="k">{k}</span><span class="n">{esc(n)}</span>{gauge_bar(g)}<span class="d">{esc(d)}</span></div>' for k, n, g, d in conds)
+    latest = b_pts[-1]
+    trend = "".join(f'<div><b>{int(p["m"])}</b><span>{p["date"].year} survey</span></div>' for p in b_pts)
+    m = mani[-1] if mani else None
+    market = (f' The betting market Manifold puts <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> on AGI being announced before 2030 (as of {esc(m["date"])}).' if m else "")
+    return f"""<section class="land">
+<div>
+<p class="eyebrow">Are we in the singularity?</p>
+<p class="answer">{answer}</p>
+<h1>Four things would all have to hold for a year. Today none of them does.</h1>
+<p class="lede">The lines were fixed before any score was published, and the furthest from its line is the economy. Each bar shows how far a condition has come from where it stood in {sc['reference_year']} toward its line.</p>
+<div class="conds">{rows}</div>
+<p class="fresh">Scored {long_date(built)} from public data. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is logged</a>.</p>
+<div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
+</div>
+<aside class="card">
+<p class="ch">What the experts expect</p>
+<p class="big">{int(latest['m'])}</p>
+<p class="what">The year AI researchers give even odds of machines doing every task better and cheaper than people, in the latest large survey ({latest['date'].year}, {esc(latest['id'])}).</p>
+<div class="trend">{trend}</div>
+<p class="foot">The date has come {int(b_pts[0]['m']) - int(latest['m'])} years closer since {b_pts[0]['date'].year}.{market} <a href="#belief">The full record is below.</a></p>
+</aside>
+</section>"""
+
+
 def rail(sc, built, commit):
     names = {"A": "Pace", "B": "Forecasts", "C": "AI doing research", "D": "Economy"}
     rows = []
@@ -610,10 +677,7 @@ def rail(sc, built, commit):
            ("#owed", "What the test still owes", "d3"), ("#method", "Method and data", "")]
     toc_html = "".join(f'<a href="{h}" class="{c}">{esc(t)}</a>' for h, t, c in toc)
     return f"""<aside class="rail">
-<h4>Status at a glance</h4>
-<p class="rstatus"><b>Singularity: {esc(sc['status'])}.</b> Progress {progress} on a scale of 0 to 1, as of {long_date(built)}.</p>
-<div class="mini">{"".join(rows)}</div>
-<h4 class="rail-sec">On this page</h4>
+<h4>On this page</h4>
 <nav class="toc">{toc_html}</nav>
 <h4 class="rail-sec">Use the data</h4>
 <p class="use"><a href="/data/">Download every table</a> (CC BY 4.0) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version {esc(commit)}</p>
@@ -646,17 +710,11 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         "mark crossed, under persistence test": "Mark crossed; the four-quarter persistence count is running.",
     }[sc["status"]]
 
-    body = f"""<div class="with-rail"><div>
-<div class="intro prose">
-<p>AGI here means AI that can do most intellectual work a person can. The working question: did the main public argument move from <em>whether</em> it is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. The seed phase is complete and the expert panel is frozen; the full panel traces and the public streams have not started.</p>
-</div>
-
-<div class="status"><strong>Singularity entry status: {status_line}</strong>
-Scored on {built} under the definition adopted {sc['adopted']}, with its thresholds frozen before any gauge was published. Progress toward the mark is <b>{progress_word}{sc['progress']:.2f}</b> on a scale of 0 to 1, set by the weakest leg ({sc['bottleneck']}). Leg B cannot be scored until its forecast ledger exists, so the number is an upper bound. Entry requires all four gauges at 1 for {sc['persistence']} consecutive quarters.</div>
-
+    body = f"""{landing(sc, b_pts, mani, built, commit)}
+<div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
-<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="/docs/methodology-v2">methodology version 2</a>.</p>
+<p>AGI here means AI that can do most intellectual work a person can. The record asks one question of twenty years of public argument: did it move from <em>whether</em> AGI is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. So far the record covers five people in depth, three expert surveys, the polls and markets, and a sample of one online community; the full panel of 37 named experts, the newspapers and the other communities are still to come. One row per public statement, survey result, market reading or poll, labelled under <a href="/docs/methodology-v2">a written method</a>.</p>
 
 <figure class="fig"><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
 <figcaption>Seed phase: what each statement was mainly about, by year, for five traced people (Kurzweil, Hinton, LeCun, Marcus, Altman). Counts in <a href="chart-1-frames.csv">chart-1-frames.csv</a>. Five people are not a panel; this chart exists to test the pipeline.</figcaption></figure>
@@ -745,8 +803,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 {rail(sc, built, commit)}
 </div>
 """
-    return shell(SITE_TITLE, TAGLINE, body, built, commit, backdrop=True, eyebrow="A dated record and a scored test",
-                 h1=SITE_TITLE, lede="The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity. Every number on this page links to the row it came from.")
+    return shell(SITE_TITLE, TAGLINE, body, built, commit, backdrop=True)
 
 
 def main():

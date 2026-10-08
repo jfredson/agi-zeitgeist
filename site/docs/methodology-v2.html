@@ -41,6 +41,33 @@
 .rail .use a { text-decoration: none; }
 @media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' date on the right */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-size: clamp(64px, 10vw, 112px); line-height: 0.95; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.15; margin: 0 0 14px; }
+.land .lede { font-style: normal; font-size: 18px; line-height: 1.5; color: var(--text-soft); margin: 0 0 22px; max-width: 640px; }
+.conds { display: grid; gap: 10px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 2.2em 1fr; gap: 2px 12px; align-items: center; font-family: var(--sans); }
+.cond .k { font-size: 22px; font-weight: 600; color: var(--text); grid-row: span 2; align-self: center; }
+.cond .n { font-size: 14px; color: var(--text); }
+.cond .bar { margin: 4px 0 0; height: 10px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+.fresh { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.land .ctas { margin-bottom: 8px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.card .big { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
+.card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
+.card .trend div { flex: 1; }
+.card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
+.card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
 .hero h1 { margin-bottom: 10px; }
 .hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
 .intro { max-width: 760px; }
@@ -501,13 +528,13 @@ and <code>target_capability</code> at least 80% of the time; codes
 spread across more than one bucket. Public streams begin with the
 coverage audits (section 6) and the vocabulary pilot (section 8), both
 of which must finish before any prevalence sample is drawn.</p>
-<p class="cite">Rendered from <code>docs/methodology-v2.md</code> at commit 41654ad.</p></div>
+<p class="cite">Rendered from <code>docs/methodology-v2.md</code> at commit 60794fd.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 41654ad) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 60794fd) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>

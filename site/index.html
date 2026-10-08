@@ -41,6 +41,33 @@
 .rail .use a { text-decoration: none; }
 @media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
 .hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' date on the right */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-size: clamp(64px, 10vw, 112px); line-height: 0.95; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.15; margin: 0 0 14px; }
+.land .lede { font-style: normal; font-size: 18px; line-height: 1.5; color: var(--text-soft); margin: 0 0 22px; max-width: 640px; }
+.conds { display: grid; gap: 10px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 2.2em 1fr; gap: 2px 12px; align-items: center; font-family: var(--sans); }
+.cond .k { font-size: 22px; font-weight: 600; color: var(--text); grid-row: span 2; align-self: center; }
+.cond .n { font-size: 14px; color: var(--text); }
+.cond .bar { margin: 4px 0 0; height: 10px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+.fresh { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.land .ctas { margin-bottom: 8px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.card .big { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .what { font-size: 14px; color: var(--text-soft); line-height: 1.5; margin: 0 0 16px; }
+.card .trend { display: flex; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 14px; }
+.card .trend div { flex: 1; }
+.card .trend b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--text); }
+.card .trend span { font-size: 11.5px; color: var(--muted); }
+.card .foot { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
 .hero h1 { margin-bottom: 10px; }
 .hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
 .intro { max-width: 760px; }
@@ -88,18 +115,29 @@ details p { color: var(--text-soft); }
 <nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
 </div></header>
 <main class="container">
-<section class="hero"><p class=eyebrow>A dated record and a scored test</p><h1>AGI Zeitgeist Tracker</h1><p class=lede>The spirit of the age about artificial general intelligence, as a dated and sourced record since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity. Every number on this page links to the row it came from.</p></section>
-<div class="with-rail"><div>
-<div class="intro prose">
-<p>AGI here means AI that can do most intellectual work a person can. The working question: did the main public argument move from <em>whether</em> it is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. The seed phase is complete and the expert panel is frozen; the full panel traces and the public streams have not started.</p>
+
+<section class="land">
+<div>
+<p class="eyebrow">Are we in the singularity?</p>
+<p class="answer">Not yet.</p>
+<h1>Four things would all have to hold for a year. Today none of them does.</h1>
+<p class="lede">The lines were fixed before any score was published, and the furthest from its line is the economy. Each bar shows how far a condition has come from where it stood in 2019 toward its line.</p>
+<div class="conds"><div class="cond"><span class="k">A</span><span class="n">AI capability is doubling faster and faster</span><div class="bar"><i style="width:43%"></i><span>0.43</span></div><span class="d">The best AI&#x27;s task horizon doubles every 121 days; the line is 30 days, and it also has to be falling.</span></div><div class="cond"><span class="k">B</span><span class="n">Forecasts of AI progress have stopped working</span><div class="bar none"><span>not yet measurable</span></div><span class="d">Not measurable yet: the record of past forecasts against what happened has not been built.</span></div><div class="cond"><span class="k">C</span><span class="n">AI does most of the research that improves AI</span><div class="bar"><i style="width:52%"></i><span>0.52</span></div><span class="d">Anthropic says its model leads 26% of its AI research work, by its own count; the line is half.</span></div><div class="cond"><span class="k">D</span><span class="n">The world economy grows ten times faster than ever</span><div class="bar"><i style="width:0%"></i><span>0.00</span></div><span class="d">World output grew 2.9% in 2025; the line is 30% a year.</span></div></div>
+<p class="fresh">Scored 8 October 2026 from public data. The rules were fixed on 8 October 2026; <a href="/docs/amendments">any change to them is logged</a>.</p>
+<div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
 </div>
-
-<div class="status"><strong>Singularity entry status: Not entered.</strong>
-Scored on 2026-10-08 under the definition adopted 2026-10-08, with its thresholds frozen before any gauge was published. Progress toward the mark is <b>at most 0.00</b> on a scale of 0 to 1, set by the weakest leg (D). Leg B cannot be scored until its forecast ledger exists, so the number is an upper bound. Entry requires all four gauges at 1 for 4 consecutive quarters.</div>
-
+<aside class="card">
+<p class="ch">What the experts expect</p>
+<p class="big">2047</p>
+<p class="what">The year AI researchers give even odds of machines doing every task better and cheaper than people, in the latest large survey (2023, aiimpacts-2023-hlmi50).</p>
+<div class="trend"><div><b>2061</b><span>2016 survey</span></div><div><b>2059</b><span>2022 survey</span></div><div><b>2047</b><span>2023 survey</span></div></div>
+<p class="foot">The date has come 14 years closer since 2016. The betting market Manifold puts <a href="https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC">53%</a> on AGI being announced before 2030 (as of 2026-09-30). <a href="#belief">The full record is below.</a></p>
+</aside>
+</section>
+<div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
-<p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="/docs/methodology-v2">methodology version 2</a>.</p>
+<p>AGI here means AI that can do most intellectual work a person can. The record asks one question of twenty years of public argument: did it move from <em>whether</em> AGI is possible, to <em>when</em> it arrives, to <em>whether today's systems are already close or improving themselves</em>? The method is built so the data can say no. So far the record covers five people in depth, three expert surveys, the polls and markets, and a sample of one online community; the full panel of 37 named experts, the newspapers and the other communities are still to come. One row per public statement, survey result, market reading or poll, labelled under <a href="/docs/methodology-v2">a written method</a>.</p>
 
 <figure class="fig"><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
 <figcaption>Seed phase: what each statement was mainly about, by year, for five traced people (Kurzweil, Hinton, LeCun, Marcus, Altman). Counts in <a href="chart-1-frames.csv">chart-1-frames.csv</a>. Five people are not a panel; this chart exists to test the pipeline.</figcaption></figure>
@@ -305,17 +343,14 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Belief measures and world measures live in separate files and are never combined. <a href="/data/statements.csv">statements.csv</a>, <a href="/data/aggregates.csv">aggregates.csv</a> and the <a href="/data/">community samples</a> hold what people said and believed. <a href="/data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="/data/search_log.csv">search_log.csv</a>. The <a href="/docs/methodology-v2">method</a>, the <a href="/docs/codebook">codebook</a>, the <a href="/docs/singularity-entry-definition">definition</a> and every <a href="/docs/amendments">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 41654ad. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen 2026-10-08 in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 60794fd. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen 2026-10-08 in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
 </section>
 </div>
 <aside class="rail">
-<h4>Status at a glance</h4>
-<p class="rstatus"><b>Singularity: not entered.</b> Progress at most 0.00 on a scale of 0 to 1, as of 8 October 2026.</p>
-<div class="mini"><span class="k">A</span><div class="bar"><i style="width:43%"></i><span>0.43</span></div><span class="v">Pace: 0.43 of 1</span><span class="k">B</span><div class="bar none"><span>not yet measurable</span></div><span class="v">Forecasts: not yet measurable</span><span class="k">C</span><div class="bar"><i style="width:52%"></i><span>0.52</span></div><span class="v">AI doing research: 0.52 of 1</span><span class="k">D</span><div class="bar"><i style="width:0%"></i><span>0.00</span></div><span class="v">Economy: 0.00 of 1</span></div>
-<h4 class="rail-sec">On this page</h4>
+<h4>On this page</h4>
 <nav class="toc"><a href="#belief" class="">The current zeitgeist</a><a href="#singularity" class="">Are we in the singularity?</a><a href="#leg-a" class="d3">A. The pace</a><a href="#leg-b" class="d3">B. Forecasts</a><a href="#leg-c" class="d3">C. AI doing research</a><a href="#leg-d" class="d3">D. The economy</a><a href="#owed" class="d3">What the test still owes</a><a href="#method" class="">Method and data</a></nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (CC BY 4.0) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version 41654ad</p>
+<p class="use"><a href="/data/">Download every table</a> (CC BY 4.0) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version 60794fd</p>
 </aside>
 </div>
 
@@ -324,7 +359,7 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a test, with its rules fixed in advance, of whether the world has entered the singularity.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 41654ad) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson, <a class="with-claude" href="https://sentient-horizons.com/with-claude/">with Claude</a>. Last built 8 October 2026 (version 60794fd) from 159 expert statements, 97 readings of the world and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
