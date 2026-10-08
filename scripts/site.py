@@ -492,7 +492,7 @@ def provenance(built, commit):
     posts = DATA / "vanguard" / "full-run-posts.csv"
     n_posts = (sum(1 for _ in posts.open(encoding="utf-8")) - 1) if posts.exists() else 0
     return (f"Last built {long_date(built)} (version {esc(commit)}) from {n_statements} expert statements, "
-            f"{n_world} readings of the world and {n_posts} community posts.")
+            f"{n_world} measurements of AI and the economy and {n_posts} community posts.")
 
 
 def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None):
@@ -551,13 +551,28 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 
 
 # ----------------------------------------------------------------------------- docs and data
+# One plain line saying what each document the site links to is, shown in its preface.
+DOC_PURPOSE = {
+    "singularity-entry-definition": "The rules that decide whether the singularity has started, and the record of how they were fixed.",
+    "singularity-entry-definition-draft-2026-10-07": "The first draft of the rules for the singularity test, kept unchanged; the adopted rules are in a separate document.",
+    "amendments": "Every change to how the record is kept, with its date and the reason for it.",
+    "methodology-v2": "How the record is kept: who is tracked, what is collected, and how it is sorted.",
+    "methodology": "The first version of how the record is kept, replaced by version 2 and kept as the record of where the project started.",
+    "codebook": "The rules for sorting each statement by what it says, with examples.",
+    "README": "An overview of the project and of every file in it, written for people working on it.",
+    "2026-09-30-kickoff": "The plan the project started from.",
+}
+
+
 def render_docs(built, commit):
     """Render every Markdown document to site/docs/ with pandoc, in the shared shell, rewriting links between them."""
     out_root = SITE / "docs"
     if out_root.exists():
         shutil.rmtree(out_root)
     out_root.mkdir()
-    sources = sorted(DOCS.rglob("*.md")) + [ROOT / "README.md"]
+    # Session handoff notes are instructions from one working session to the next, not part of
+    # the record, so they stay in the repository and off the public site (John, 2026-10-08).
+    sources = sorted(p for p in DOCS.rglob("*.md") if not p.name.startswith("handoff-")) + [ROOT / "README.md"]
     n = 0
     for src in sources:
         rel = src.relative_to(ROOT) if src.name != "README.md" else Path("docs/README.md")
@@ -578,9 +593,11 @@ def render_docs(built, commit):
         title = re.sub("<[^>]+>", "", title.group(1)) if title else rel.stem
         folder = {"vanguard": "Online communities pilot", "reviews": "Outside review", "amendments": "Amendment",
                   "panel-evidence-2026-10": "Panel evidence", "feasibility": "Feasibility check"}.get(rel.parts[0] if depth else "", "Document")
-        note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at commit {esc(commit)}.</p>'
-        preface = ('<div class="status"><strong>A working document.</strong> This is one of the documents the site is built from, published as it is written, in the project\'s own terms, '
-                   'for anyone checking the work. It assumes the reader knows the method. The plain account of the same material is on the <a href="/">home page</a>.</div>')
+        note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at version {esc(commit)}.</p>'
+        what = DOC_PURPOSE.get(rel.with_suffix("").as_posix(), "")
+        preface = ('<div class="status"><strong>A working document.</strong> ' + (what + ' ' if what else '') +
+                   'It is one of the documents the site is built from, published as it is written for anyone checking the work, '
+                   'and it uses the project\'s own shorthand. The plain account of the same material is on the <a href="/">home page</a>.</div>')
         page = shell(f"{title} | {SITE_TITLE}", f"{title}: a document of the {SITE_TITLE}.", f'{preface}<div class="prose narrow document">{body}{note}</div>',
                      built, commit, canonical_path=f"/docs/{rel.with_suffix('').as_posix()}", eyebrow=folder, h1=title)
         dst.write_text(page, encoding="utf-8")
@@ -604,10 +621,27 @@ def copy_data():
         shutil.copy2(src, dst)
     for lic in ("LICENSE-DATA", "LICENSE"):
         shutil.copy2(ROOT / lic, out / (lic + ".txt"))
-    # an index page, since the asset host does not list folders
-    items = "".join(f'<li><a href="{esc(f.relative_to(DATA).as_posix())}">{esc(f.relative_to(DATA).as_posix())}</a> ({f.stat().st_size // 1024 + 1} KB)</li>' for f in files)
+    # an index page, since the asset host does not list folders: the main tables first, each said
+    # in a line, then the working files from the forum trial runs and the double-checking.
+    main = {"statements.csv": "every statement by the experts traced so far, with its date, its words and a link to where it was said",
+            "speakers.csv": "who each person is, and why they are on the list",
+            "aggregates.csv": "the surveys of researchers, the opinion polls, the betting odds and the Google search figures",
+            "world_measures.csv": "how good AI actually got, what the AI companies reported about themselves, and how the world's economy grew",
+            "events.csv": "dated events such as open letters and government actions",
+            "search_log.csv": "every search that was run to find a statement, so that someone else can run it again",
+            "wide_list_candidates.csv": "the wider list of well-known people the experts were chosen from, and where each name came from"}
+    size = lambda f: f"{f.stat().st_size // 1024 + 1} KB"  # noqa: E731
+    li = lambda f, what="": (f'<li><a href="{esc(f.relative_to(DATA).as_posix())}">{esc(f.relative_to(DATA).as_posix())}</a> ({size(f)})'  # noqa: E731
+                             + (f': {esc(what)}' if what else "") + "</li>")
+    first = [f for f in files if f.relative_to(DATA).as_posix() in main]
+    first.sort(key=lambda f: list(main).index(f.relative_to(DATA).as_posix()))
+    rest = [f for f in files if f not in first]
     body = (f'<div class="prose narrow"><p>Every table behind the site, as it stood when the site was last built. Each row carries a link to where its number came from. '
-            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>); how to cite is on the <a href="/#method">home page</a>. What each file holds is explained in <a href="/docs/README">a working document</a>.</p><ul>{items}</ul></div>')
+            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>); how to cite is on the <a href="/#method">home page</a>.</p>'
+            f'<h2>The main tables</h2><ul>{"".join(li(f, main[f.relative_to(DATA).as_posix()]) for f in first)}</ul>'
+            f'<h2>Working files</h2><p>The rest are working files: the forum posts and how each of three AI systems sorted them in each trial run, '
+            f'and the samples used to double-check the sorting of statements. They are kept so that every step can be checked; the plain account is on the <a href="/">home page</a>.</p>'
+            f'<ul>{"".join(li(f) for f in rest)}</ul></div>')
     (out / "index.html").write_text(shell(f"Download the data | {SITE_TITLE}", "Every CSV table behind the AGI Zeitgeist Tracker, under CC BY 4.0.", body,
                                           date.today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
     return len(files)
@@ -731,7 +765,7 @@ def rail(sc, built, commit):
 <h4>On this page</h4>
 <nav class="toc">{toc_html}</nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/docs/README">What each file holds</a> · version {esc(commit)}</p>
+<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/data/">What each file holds</a> · version {esc(commit)}</p>
 </aside>"""
 
 
@@ -769,22 +803,22 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
-<figure class="fig"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work">
+<figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
 <p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
-<figure class="fig"><img src="zeitgeist-researchers.png" alt="AI researchers' even-chance year for machines doing every task and every job, in surveys from 2016, 2022 and 2023">
+<figure class="fig"><a href="zeitgeist-researchers.png" title="Open the chart full size"><img src="zeitgeist-researchers.png" alt="AI researchers' even-chance year for machines doing every task and every job, in surveys from 2016, 2022 and 2023"></a>
 <figcaption>Two different groups of researchers answered the two questions in each survey. The numbers are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
 <p>Third, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
 
-<figure class="fig"><img src="zeitgeist-search.png" alt="Worldwide Google searches for artificial general intelligence and for the singularity, each year from 2005 to 2026">
+<figure class="fig"><a href="zeitgeist-search.png" title="Open the chart full size"><img src="zeitgeist-search.png" alt="Worldwide Google searches for artificial general intelligence and for the singularity, each year from 2005 to 2026"></a>
 <figcaption>Google reports searches on its own scale rather than as counts. The numbers, and the polls, are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
 <p>Fourth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
 
-<figure class="fig"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says">
+<figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
 <p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
@@ -798,7 +832,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <h3 id="leg-a">A. Is AI getting better faster and faster?</h3>
 <p><em>The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</em></p>
 <p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}.</p>
-<figure class="fig"><img src="leg-a-time-horizon.png" alt="The longest programming job each AI system gets right half the time, from 2019 to 2026, and how many days that length took to double">
+<figure class="fig"><a href="leg-a-time-horizon.png" title="Open the chart full size"><img src="leg-a-time-horizon.png" alt="The longest programming job each AI system gets right half the time, from 2019 to 2026, and how many days that length took to double"></a>
 <figcaption>Filled dots were the best system on the day they came out; hollow dots were not. METR says its tests cannot measure reliably beyond 16 hours, so a year that includes such a reading is drawn hollow in the lower chart and not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
 <details><summary>Every system measured ({len(a_pts)}) and every twelve-month window</summary>
 {table(["came out", "system", "longest job it gets right half the time", "likely range", "best at the time", "", "source"], a_rows)}
@@ -818,7 +852,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <h3 id="leg-c">C. Is AI doing the work of improving AI?</h3>
 <p><em>The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</em></p>
 <p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it.</p>
-<figure class="fig"><img src="leg-c-self-reports.png" alt="The share of Anthropic's AI research work led by its own AI: under 1% in February 2026 and 26% in August 2026, against a line at one half">
+<figure class="fig"><a href="leg-c-self-reports.png" title="Open the chart full size"><img src="leg-c-self-reports.png" alt="The share of Anthropic's AI research work led by its own AI: under 1% in February 2026 and 26% in August 2026, against a line at one half"></a>
 <figcaption>Anthropic gave its February figure as "under 1%". Every statement, including Google's, is in the table below.</figcaption></figure>
 <details><summary>What the companies said</summary>
 {table(["date", "what was measured", "figure", "source"], c_rows)}
@@ -827,7 +861,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <h3 id="leg-d">D. Has the economy changed gear?</h3>
 <p><em>The idea, from the economist Robin Hanson: each new era of history has made the world's economy double about a hundred times faster than the one before.</em></p>
 <p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each, the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This part asks whether that has started, using the World Bank's yearly count of everything the world produces. In {D['year']} it grew {D['reading']:.1f} percent, a pace that doubles it every {D['doubling']:.0f} years; since 1961 it has averaged {D['g_ref']:.1f} percent. The line, 30 percent in a year, would double it every {D['t_star']:.1f} years. It comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, not from this project, and it is far above the best year since 1961, {max(q['growth'] for q in d_pts):.1f} percent. This is the one part measured by people outside the AI world, which is why it is in the test; the cost is that the economy reacts years after the technology, so it will usually be the furthest behind.</p>
-<figure class="fig"><img src="leg-d-world-growth.png" alt="Growth of the world's economy each year since 1961, between about minus 3 and 7 percent, with the line at 30 percent far above">
+<figure class="fig"><a href="leg-d-world-growth.png" title="Open the chart full size"><img src="leg-d-world-growth.png" alt="Growth of the world's economy each year since 1961, between about minus 3 and 7 percent, with the line at 30 percent far above"></a>
 <figcaption>One bar per year. Countries revise their figures for years afterwards; if a revision pulls a year back below the line, the clock on this part starts again. How many years each rate takes to double the economy is in <a href="leg-d-world-growth.csv">a table</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
 {table(["year", "growth", "years to double at that rate", "source"], d_rows)}
@@ -845,8 +879,8 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
-<p>The searching and the sorting of statements were done by Claude, an AI model made by Anthropic, following those written rules; every rule, and every finishing line of the test, was decided by John Fredrickson. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built}, commit {esc(commit)}. {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's finishing lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+<p>The searching and the sorting of statements were done by Claude, an AI model made by Anthropic, following those written rules; every rule, and every line of the test, was decided by John Fredrickson. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
 </div>
 {rail(sc, built, commit)}
