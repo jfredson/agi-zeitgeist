@@ -414,7 +414,8 @@ SITE_CSS = """
 .fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
 .land .ctas { margin-bottom: 8px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
-.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
 .card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
 .card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
 .card .what b { color: var(--text); font-weight: 600; }
@@ -700,7 +701,8 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
 </div>
 <aside class="card">
-<p class="ch">When? It depends what you mean</p>
+<p class="ch-big">When?</p>
+<p class="ch">It depends what you mean</p>
 <p class="big">about {med}</p>
 <p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates from the {len(ex_rows)} experts traced so far ({lo} to {hi}).{market}</p>
 <div class="ladder">
