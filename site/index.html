@@ -58,6 +58,9 @@ details p { color: var(--text-soft); }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+.footer-parent { margin: 0.6rem 0 0; font-size: 12px; }
+.footer-parent a { color: var(--text-soft); }
+.footer-parent a:hover { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -285,15 +288,16 @@ Scored on 2026-10-08 under the definition adopted 2026-10-08, with its threshold
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Belief measures and world measures live in separate files and are never combined. <a href="/data/statements.csv">statements.csv</a>, <a href="/data/aggregates.csv">aggregates.csv</a> and the <a href="/data/">community samples</a> hold what people said and believed. <a href="/data/world_measures.csv">world_measures.csv</a> holds capability readings, company self-reports and world output, with the same columns and the same rule that every row carries its source and the question wording. Every search that produced a row is in <a href="/data/search_log.csv">search_log.csv</a>. The <a href="/docs/methodology-v2">method</a>, the <a href="/docs/codebook">codebook</a>, the <a href="/docs/singularity-entry-definition">definition</a> and every <a href="/docs/amendments">dated change</a> are published here; the scripts that rebuild this page from the data are in the source repository.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 80de80b. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen 2026-10-08 in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-08, commit 6dec7a9. https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. Figures are static images; the CSV beside each one holds the plotted numbers. Thresholds frozen 2026-10-08 in <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">amendment A19</a>.</p>
 </section>
 
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, beside a preregistered test of whether the world has entered the singularity.</p>
-<p class="footer-links"><a href="/data/">Download the data</a><a href="/docs/methodology-v2">Method</a><a href="/docs/codebook">Codebook</a><a href="/docs/singularity-entry-definition">The definition</a><a href="/docs/amendments">Changes</a><a href="https://sentient-horizons.com" rel="noopener">Sentient Horizons</a></p>
-<p class="footer-meta">© 2026 John Fredrickson, with Claude. Built 2026-10-08 from commit 80de80b: 159 statements, 97 world measures, 390 community posts coded. Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/docs/methodology-v2">Method</a><a href="/docs/codebook">Codebook</a><a href="/docs/singularity-entry-definition">The definition</a><a href="/docs/amendments">Changes</a></p>
+<p class="footer-meta">© 2026 John Fredrickson, with Claude. Built 2026-10-08 from commit 6dec7a9: 159 statements, 97 world measures, 390 community posts coded. Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
 (function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');

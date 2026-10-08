@@ -333,8 +333,8 @@ def load_thresholds():
 # ----------------------------------------------------------------------------- shell
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
 # shared stylesheet site/deep-field.css (copied unchanged, version in its header), the top bar with
-# two tiers and the theme toggle, the cosmic backdrop on the home page only, and the four-line
-# footer with the attribution line "© year John Fredrickson, with Claude. provenance. licence."
+# two tiers and the theme toggle, the cosmic backdrop on the home page only, and the five-line
+# footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson, with Claude. provenance. licence."
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
 TAGLINE = ("A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, "
@@ -342,8 +342,7 @@ TAGLINE = ("A dated, sourced record of how opinion about artificial general inte
 NAV_PRIMARY = [("/#belief", "What people believe"), ("/#singularity", "Singularity status"), ("/#method", "Method and data")]
 NAV_SECONDARY = [("/docs/README", "About the data"), ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes")]
 FOOTER_LINKS = [("/data/", "Download the data"), ("/docs/methodology-v2", "Method"), ("/docs/codebook", "Codebook"),
-                ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes"),
-                ("https://sentient-horizons.com", "Sentient Horizons")]
+                ("/docs/singularity-entry-definition", "The definition"), ("/docs/amendments", "Changes")]
 
 THEME_SCRIPT = """<script>
 (function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
@@ -405,6 +404,9 @@ details p { color: var(--text-soft); }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+.footer-parent { margin: 0.6rem 0 0; font-size: 12px; }
+.footer-parent a { color: var(--text-soft); }
+.footer-parent a:hover { color: var(--accent); }
 """
 
 
@@ -477,6 +479,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Fredrickson, with Claude. {provenance(built, commit)} Data <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>, code MIT.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
