@@ -402,6 +402,7 @@ SITE_CSS = """
 .land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.land .kicker { margin: 0 0 12px; }
 .conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
 .cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
@@ -635,6 +636,17 @@ def gauge_bar(g):
     return f'<div class="bar"><i style="width:{g*100:.0f}%"></i><span>{g*100:.0f}% of the way to its line</span></div>'
 
 
+MARKET_PAGES = {"hh2bXhwKDTioZ7KtGKfC": "https://manifold.markets/RemNi/will-we-get-agi-before-2030"}
+
+
+def market_page(api_url):
+    """The reader-facing page for a betting market whose number was read from its API."""
+    for cid, page in MARKET_PAGES.items():
+        if cid in api_url:
+            return page
+    return api_url
+
+
 def expert_dates():
     """Each traced expert's latest dated statement giving a year for AGI (a machine matching people at
     thinking work: target broad_competence), where the statement accepts, hedges or conditions it.
@@ -675,13 +687,14 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
     hlmi10 = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-hlmi10"), "")
     faol = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-faol50"), "")
     m = mani[-1] if mani else None
-    market = (f' People betting on Manifold put the odds of AGI before 2030 at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a>.' if m else "")
+    market = (f' People betting on Manifold put the odds of AGI before 2030 at <a href="{esc(market_page(m["source_url"]))}">{float(m["value"])*100:.0f}%</a>.' if m else "")
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{answer}</p>
 <h1>Four things would all have to hold for a year. Today none of them does.</h1>
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started.</p>
+<p class="kicker">The four pillars of the singularity</p>
 <div class="conds">{rows}</div>
 <p class="fresh">Scored {long_date(built)} from public numbers. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is written down with the date and the reason</a>.</p>
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
@@ -735,7 +748,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     dt_rows = [[s["date"].isoformat(), f"{s['days']:.0f}", s["n"], "yes" if s["over16"] else ""] for s in a_series]
     b_rows = [[p["date"].isoformat(), int(p["m"]), f"{p['remaining']:.1f}", link(p["url"], p["id"])] for p in b_pts]
     step_rows = [[f"{s['frm']['date'].year} to {s['to']['date'].isoformat()}", f"{s['years']:.1f}", f"{s['change']:+.1f}", f"{s['pull_in']:+.1f}"] for s in b_steps]
-    mani_rows = [[r["date"], f"{float(r['value'])*100:.0f}%", link(r["source_url"], r["aggregate_id"])] for r in mani]
+    mani_rows = [[r["date"], f"{float(r['value'])*100:.0f}%", link(market_page(r["source_url"]), r["aggregate_id"])] for r in mani]
     c_rows = [[p["date"].isoformat(), esc(p["measure"]), f"{int(p['value'])}%" + (f" ({p['bound']})" if p["bound"] else ""), link(p["url"], p["id"])] for p in c_pts]
     d_rows = [[q["year"], f"{q['growth']:.2f}%", f"{q['doubling']:.1f}" if q["doubling"] else "none (output fell)", link(q["url"], q["id"])] for q in reversed(d_pts)]
 
