@@ -656,7 +656,7 @@ def landing(sc, b_pts, mani, built, commit):
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{answer}</p>
 <h1>Four things would all have to hold for a year. Today none of them does.</h1>
-<p class="lede">"The singularity" is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started. Each bar below shows how close one condition is to counting as met. The finishing lines were set before anyone looked at the numbers, so the answer could not be shaped to fit. The economy is furthest from its line.</p>
+<p class="lede">"The singularity" is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started. Each bar below shows how close one condition is to counting as met.</p>
 <div class="conds">{rows}</div>
 <p class="fresh">Scored {long_date(built)} from public numbers. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is written down with the date and the reason</a>.</p>
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
