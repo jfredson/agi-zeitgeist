@@ -118,7 +118,7 @@ def leg_a(world):
     ax.set_yticks([0.1, 1, 10, 60, 480, 2400])
     ax.set_yticklabels(["6 s", "1 min", "10 min", "1 h", "8 h", "40 h"])
     ax.set_ylabel("task length finished at 50% success")
-    ax.set_title("Leg A. How long a task the best AI can finish, by model release", loc="left", color=INK)
+    ax.set_title("Condition A. How long a task the best AI can finish, by model release", loc="left", color=INK)
     ax.plot([], [], "o", color=BLUE, label="frontier at release")
     ax.plot([], [], "o", color="white", markeredgecolor=BLUE, label="not the frontier")
     ax.legend(loc="lower right", frameon=False, fontsize=8)
@@ -183,7 +183,7 @@ def leg_b(aggregates):
                 label="Müller and Bostrom 2013 (different aggregation, shown for context)")
     ax.set_ylim(0, 55)
     ax.set_ylabel("years remaining at the time of the survey")
-    ax.set_title("Leg B stand-in. The consensus arrival date is being pulled in", loc="left", color=INK)
+    ax.set_title("Condition B, stand-in. The experts' arrival date keeps moving closer", loc="left", color=INK)
     ax.legend(loc="lower left", frameon=False, fontsize=8)
     fig.text(0.01, 0.005, "Labels are the forecast year. Source: data/aggregates.csv (aiimpacts-*-hlmi50, mullerbostrom-2013-hlmi50).", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
@@ -223,7 +223,7 @@ def leg_c(world):
     ax.axvline(50, color=MUTED, linestyle=":", linewidth=1)
     ax.text(51, -0.75, "one half: the frozen threshold (scored on the 'leads' rows)", fontsize=7, color=MUTED, va="center")
     ax.set_ylim(len(order) - 0.5, -1)
-    ax.set_title("Leg C. What the companies say AI does of their own work", loc="left", color=INK)
+    ax.set_title("Condition C. What the companies say AI does of their own work", loc="left", color=INK)
     ax.grid(axis="y", visible=False)
     fig.text(0.01, 0.005, "Source: data/world_measures.csv (google-*, anthropic_institute-* rows). Self-reported; the Anthropic figure is judged by Claude itself.", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
@@ -248,7 +248,7 @@ def leg_d(world):
     ax.axhline(0, color=MUTED, linewidth=0.8)
     ax.set_ylim(-5, 34)
     ax.set_ylabel("world output growth, % over the previous year")
-    ax.set_title("Leg D. World output growth, 1961 to " + str(pts[-1]["year"]), loc="left", color=INK)
+    ax.set_title("Condition D. World output growth, 1961 to " + str(pts[-1]["year"]), loc="left", color=INK)
     ax.grid(axis="x", visible=False)
     fig.text(0.01, 0.005, "Source: World Bank World Development Indicators, world GDP growth at constant 2015 US$ (data/world_measures.csv, worldbank-gdp-growth-* rows).", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
@@ -649,7 +649,7 @@ def landing(sc, b_pts, mani, built, commit):
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{answer}</p>
 <h1>Four things would all have to hold for a year. Today none of them does.</h1>
-<p class="lede">The lines were fixed before any score was published, and the furthest from its line is the economy. Each bar shows how far a condition has come from where it stood in {sc['reference_year']} toward its line.</p>
+<p class="lede">Each bar shows how close one condition is to counting as met. The finishing lines were set before the scoring began, so the answer could not be shaped to fit. The economy is furthest from its line.</p>
 <div class="conds">{rows}</div>
 <p class="fresh">Scored {long_date(built)} from public data. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is logged</a>.</p>
 <div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
@@ -726,32 +726,32 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <section class="section prose" id="singularity">
 <h2>Are we in the singularity?</h2>
-<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. The <a href="/docs/singularity-entry-definition">adopted definition</a> requires four things to be true at once, for four consecutive quarters. Each gauge runs from 0 (the {sc['reference_year']} reference) to 1 (the frozen threshold); the smallest gauge is the honest distance remaining.</p>
+<p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. So the <a href="/docs/singularity-entry-definition">adopted test</a> needs four things to be true at once, and to stay true for a year. Each one has a line, fixed in advance, and a bar showing how far it has come toward that line since {sc['reference_year']}. The shortest bar is how far we are from the mark.</p>
 
 <div class="legs">
 <div class="leg"><b>A. The pace is accelerating</b>
-<div class="g">Kurzweil's school. The doubling time of a frozen capability measure is itself shrinking.</div>
+<div class="g">Progress is speeding up on itself (Kurzweil's idea): the time it takes AI capability to double is itself shrinking.</div>
 <div class="num">{A['reading']:.0f} days</div>
 <div class="g">per doubling, trailing twelve months to {A['date'].isoformat()}. Threshold: {A['t_star']:.0f} days and still falling. Reference: {A['t_ref']:.0f} days.</div>
 {gauge_bar(A['gauge'])}</div>
 <div class="leg"><b>B. Forecasts have stopped working</b>
-<div class="g">Vinge's school. The horizon over which forecasts beat the trend is collapsing. Confirmed only in arrears.</div>
+<div class="g">Forecasts stop working (Vinge's idea): how far ahead anyone can predict AI progress is collapsing. Confirmed only after the fact.</div>
 <div class="num">{last_step['pull_in']:+.1f} yr/yr</div>
 <div class="g">stand-in only: excess pull-in of the expert consensus date, {last_step['frm']['date'].year} to {last_step['to']['date'].isoformat()}. The gauge needs a forecast ledger that is not built yet. Threshold: a one-year horizon.</div>
 {gauge_bar(None)}</div>
 <div class="leg"><b>C. AI is doing the improving</b>
-<div class="g">Good's school. The share of the work that produces frontier progress that is supplied by AI.</div>
+<div class="g">AI improves AI (Good's idea): the share of the work behind frontier AI progress that AI itself does.</div>
 <div class="num">{int(lead['value'])}%</div>
 <div class="g">of Anthropic's AI research work "led" by its own model, {lead['date'].strftime('%B %Y')}, by its own measurement. Threshold: one half. One company, self-reported.</div>
 {gauge_bar(C['gauge'])}</div>
 <div class="leg"><b>D. The economy has changed mode</b>
-<div class="g">Hanson's school. A new growth mode doubles world output a hundred times faster than the last.</div>
+<div class="g">The economy changes gear (Hanson's idea): each new era has doubled world output about a hundred times faster than the one before.</div>
 <div class="num">{D['reading']:.1f}% a year</div>
 <div class="g">world output growth in {D['year']}, doubling every {D['doubling']:.0f} years. Threshold: {D['g_star']:.0f}% a year ({D['t_star']:.1f}-year doubling). Reference: {D['g_ref']:.1f}% ({D['t_ref']:.0f}-year doubling).</div>
 {gauge_bar(D['gauge'])}</div>
 </div>
 
-<h3 id="leg-a">Leg A. How long a task the best AI can finish</h3>
+<h3 id="leg-a">Condition A. How long a task the best AI can finish</h3>
 <p>The anchor measure is METR's time horizon: the length of software task, in minutes an expert needs for it, that a model finishes half the time. It is chosen because it has not yet saturated the way benchmarks do. The lower panel is the definition's quantity: the doubling time of the frontier over a trailing twelve months. A flat line would mean steady exponential growth, which is Kurzweil's world but not yet a singularity; a falling line is the signature the definition looks for. The gauge is scored on the last window with no reading past 16 hours, and the threshold also requires the doubling time to have fallen over the last two windows ({"met" if A['falling'] else "not met"} today).</p>
 <figure class="fig"><img src="leg-a-time-horizon.png" alt="METR 50% time horizon by model release date on a log scale, with the trailing twelve-month doubling time of the frontier below">
 <figcaption>Hollow points were not the frontier at release. METR treats estimates past 16 hours as beyond its task suite's reliable range, and its own doubling-time fit excludes them; windows that include such a reading are hollow in the lower panel and are not scored. The latest frontier reading is {esc(latest['name'])} at {latest['value']/60:.0f} hours on {latest['date'].isoformat()}. Doubling-time series in <a href="leg-a-doubling-time.csv">leg-a-doubling-time.csv</a>.</figcaption></figure>
@@ -760,8 +760,8 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {table(["window end", "days per doubling", "frontier points", "includes a reading past 16 h"], dt_rows)}
 </details>
 
-<h3 id="leg-b">Leg B. Are forecasts holding up?</h3>
-<p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed, so leg B is shown as not yet measurable and the progress number above is an upper bound. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about {abs(last_step['change']):.0f} years of distance in {last_step['years']:.1f} calendar years. That is forecasts failing in the slow direction, which is the direction the definition records.</p>
+<h3 id="leg-b">Condition B. Are forecasts holding up?</h3>
+<p>The real test scores old forecasts of the measure above against simple trend extrapolation and asks how far ahead they still win. That ledger does not exist yet and can only be scored once the forecast period has passed, so condition B is shown as not yet measurable. The stand-in, available now, is the expert consensus date for human-level AI. If forecasters had the trend right, the date would stand still and the years remaining would fall by one each year, the dashed line. Instead the three AI Impacts surveys show the remaining distance collapsing: the step from 2022 to 2023 removed about {abs(last_step['change']):.0f} years of distance in {last_step['years']:.1f} calendar years. That is forecasts failing in the slow direction, which is the direction the definition records.</p>
 <figure class="fig"><img src="leg-b-pull-in.png" alt="Years remaining until the surveyed 50% date for human-level AI, by survey year, against a one-year-per-year reference line">
 <figcaption>Surveys use different definitions and aggregation, so the 2013 survey is shown but not joined to the series. Steps in <a href="leg-b-pull-in.csv">leg-b-pull-in.csv</a>.</figcaption></figure>
 <details><summary>The survey readings, the steps between them, and the market reading for context</summary>
@@ -771,7 +771,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {table(["date", "probability", "row"], mani_rows)}
 </details>
 
-<h3 id="leg-c">Leg C. Is AI doing the improving?</h3>
+<h3 id="leg-c">Condition C. Is AI doing the improving?</h3>
 <p>The definition wants the share of inputs to frontier AI progress supplied by AI. Nobody outside the labs can measure that, so what exists is self-report. Two kinds are recorded: a company's share of all new code written by AI, which is a proxy at best and is shown but not scored, and Anthropic's self-measured share of its own AI research work that its model "leads", which is closer to the definition's measure but is judged by the model itself and is the figure scored. The figures do not measure the same thing and should not be compared with each other.</p>
 <figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
 <figcaption>Every bar is a company statement about itself. Anthropic's row for February 2026 is "under 1%", recorded as 1. Its "above 90%" row is recorded as 90.</figcaption></figure>
@@ -779,8 +779,8 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {table(["date", "measure", "value", "row"], c_rows)}
 </details>
 
-<h3 id="leg-d">Leg D. Has the economy changed mode?</h3>
-<p>Robin Hanson's reading of the long record is that the world economy has had three growth modes, hunting, farming and industry, each doubling output about a hundred times faster than the one before: roughly 230,000 years, 860 years and 15 years per doubling. A new mode would double output in years or less. Leg D asks whether that has started, using world real output growth from the World Bank. The threshold, 30 percent a year, is Tom Davidson's published line for "explosive growth" (Open Philanthropy, 2021), chosen so the number is not this project's own invention: far above anything in the modern record, well short of Hanson's "days, not years". This leg is measured by people outside the AI field, which is why it is in the definition; the cost is that output lags capability by years, so it will usually be the weakest leg.</p>
+<h3 id="leg-d">Condition D. Has the economy changed gear?</h3>
+<p>Robin Hanson's reading of the long record is that the world economy has had three eras of growth, hunting, farming and industry, each doubling output about a hundred times faster than the one before: roughly 230,000 years, 860 years and 15 years per doubling. A new era would double output in years or less. Leg D asks whether that has started, using world real output growth from the World Bank. The threshold, 30 percent a year, is Tom Davidson's published line for "explosive growth" (Open Philanthropy, 2021), chosen so the number is not this project's own invention: far above anything in the modern record, well short of Hanson's "days, not years". This condition is measured by people outside the AI field, which is why it is in the definition; the cost is that output lags capability by years, so it will usually be the furthest behind.</p>
 <figure class="fig"><img src="leg-d-world-growth.png" alt="World output growth by year since 1961, with the 30 percent threshold line far above the series">
 <figcaption>Annual readings; the series is revised as countries revise their accounts, and a revision that pulls a year back below the line resets the persistence count. Doubling times in <a href="leg-d-world-growth.csv">leg-d-world-growth.csv</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
@@ -789,9 +789,9 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <h3 id="owed">What the definition still owes</h3>
 <ol>
-<li><b>The backward test.</b> Run on 1995 to 2019 the definition must return "not entered", with the internet years firing only leg B and the deep-learning years firing only leg A. The leg A series starts in 2019 and leg C in 2026, so the test cannot run yet. The definition was adopted without it, with this gap stated here; if the test later fires on those years, the thresholds are amended in the open.</li>
-<li><b>The leg B ledger.</b> Old forecasts of the anchor measure (starting from the 2016 expert survey's milestone dates) scored against what happened, by lead time. Until it exists, leg B is unmeasured.</li>
-<li><b>A second source for leg C</b> that is not a company's report on itself.</li>
+<li><b>The backward test.</b> Run on 1995 to 2019 the definition must return "not entered", with the internet years meeting only condition B and the deep-learning years only condition A. The leg A series starts in 2019 and leg C in 2026, so the test cannot run yet. The definition was adopted without it, with this gap stated here; if the test later fires on those years, the thresholds are amended in the open.</li>
+<li><b>The record of past forecasts, for condition B.</b> Old forecasts of the anchor measure (starting from the 2016 expert survey's milestone dates) scored against what happened, by lead time. Until it exists, condition B cannot be scored.</li>
+<li><b>A second source for condition C</b> that is not a company's report on itself.</li>
 </ol>
 </section>
 

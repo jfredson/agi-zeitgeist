@@ -98,12 +98,12 @@ def headline(p):
 # (label, filter for the denominator posts, test for the numerator, fields it depends on)
 HEADLINE_FIELDS = ["claim_target", "temporal_status", "stance", "rhetorical_mode", "horizon_stated", "singularity_tag"]
 ALL_MEASURES = [
-    ("Capability claims\n(main claim)", lambda p: True, has("specific_capability"), ["claim_target"]),
-    ("Consequence claims\n(main claim)", lambda p: True, has("consequence"), ["claim_target"]),
-    ("Industry and\ngovernance claims\n(main claim)", lambda p: True, has("industry_governance"), ["claim_target"]),
-    ("Capability posts that\nextrapolate to a\ntimeline or consequence", has("specific_capability"),
+    ("Posts about a specific\nAI capability", lambda p: True, has("specific_capability"), ["claim_target"]),
+    ("Posts about consequences\n(jobs, society)", lambda p: True, has("consequence"), ["claim_target"]),
+    ("Posts about AI companies\nand policy", lambda p: True, has("industry_governance"), ["claim_target"]),
+    ("Capability posts that go on\nto predict a timeline\nor an effect", has("specific_capability"),
      lambda p: p["extrapolates_to_horizon"] == "yes", ["claim_target", "extrapolates_to_horizon"]),
-    ("Headline claims\n(any of the four;\nironic posts left out)", lambda p: True, headline, HEADLINE_FIELDS),
+    ("Posts claiming AGI or the\nsingularity is here\n(ironic posts left out)", lambda p: True, headline, HEADLINE_FIELDS),
 ]
 # The two voted-here fields are built from forecast_horizon and frame_tags, which the
 # reliability table does not cover; the test is applied to the table's fields.
@@ -124,7 +124,7 @@ PLAIN = {"eligible": "eligibility", "claim_target": "what the claim is about", "
          "stance": "whether the poster agrees", "epistemic_qualification": "hedging", "rhetorical_mode": "irony",
          "development_preference": "speed up or slow down", "attribution": "whose claim",
          "title_only": "title-only coding", "extrapolates_to_horizon": "extrapolation"}
-SAMPLES = {"rewarded": "Top posts (stream F rewarded series)", "prevalence": "Random posts (stream F prevalence sample)"}
+SAMPLES = {"rewarded": "Top-scoring posts", "prevalence": "Random posts"}
 BLUE, ORANGE = "#2a78d6", "#eb6834"  # dataviz reference palette, slots 1 and 2
 SURFACE, INK, INK_2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 
@@ -241,10 +241,10 @@ def main():
     handles, labels = axes[0][0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper left", bbox_to_anchor=(0.04, 0.94), frameon=False,
                fontsize=9, ncol=2, labelcolor=INK)
-    fig.suptitle(f"Vanguard sub-series (stream F), r/singularity pilot, 2024Q4 to 2026Q3 ({LABEL})",
+    fig.suptitle(f"What r/singularity talks about: top posts and a random sample, late 2024 to 2026 ({LABEL})",
                  x=0.04, y=0.995, ha="left", fontsize=12, fontweight="bold", color=INK)
     fig.text(0.04, 0.962, CAPTION, fontsize=9, color=INK_2, ha="left")
-    fig.text(0.04, 0.946, "Share of eligible posts per quarter, by the post's main claim (extrapolation: share of "
+    fig.text(0.04, 0.946, "Share of posts each quarter whose main claim is of that kind (fourth row: share of capability posts). "
              "posts with a capability main claim). Unit: one post.", fontsize=7.5, color=INK_2, ha="left")
     excluded = "; ".join(EXCLUDED) if EXCLUDED else "none"
     fig.text(0.04, 0.008, "Model-coded, no human coder. Shares are majority codes from three model families, each coding "
