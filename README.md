@@ -95,5 +95,6 @@ python3 -m venv .venv && .venv/bin/pip install matplotlib
 .venv/bin/python scripts/charts.py
 .venv/bin/python scripts/vanguard_figure.py
 .venv/bin/python scripts/site.py        # needs pandoc on the path
-npx wrangler deploy                      # publishes site/ to agizeitgeist.com
+npx wrangler deploy                      # publishes site/ to agizeitgeist.com by hand;
+                                         # every push to main also deploys through .github/workflows/deploy.yml
 ```

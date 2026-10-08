@@ -1,0 +1,52 @@
+# Deploys agizeitgeist.com on every push to main that could change the site, the same way
+# The Belt Equation and Minimum Viable Mind deploy. Added 2026-10-08. Needs two repository
+# secrets: CLOUDFLARE_API_TOKEN (Workers Scripts: Edit, plus Workers Routes: Edit on the
+# agizeitgeist.com and sentient-horizons.com zones, for the custom domains) and
+# CLOUDFLARE_ACCOUNT_ID. Until they exist the workflow fails at the deploy step and the
+# site simply stays as it was.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "docs/**"
+      - "scripts/**"
+      - "site/**"
+      - "README.md"
+      - "LICENSE*"
+      - "wrangler.jsonc"
+      - "worker/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pandoc and matplotlib
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q pandoc
+          pip install -q matplotlib
+      - name: Check every data row
+        run: python3 scripts/validate.py
+      - name: Draw the charts and build the site
+        run: |
+          python3 scripts/charts.py
+          python3 scripts/vanguard_figure.py
+          python3 scripts/site.py
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
