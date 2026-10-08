@@ -404,9 +404,6 @@ details p { color: var(--text-soft); }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
-.footer-parent { margin: 0.6rem 0 0; font-size: 12px; }
-.footer-parent a { color: var(--text-soft); }
-.footer-parent a:hover { color: var(--accent); }
 """
 
 
