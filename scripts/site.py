@@ -620,8 +620,9 @@ def table(headers, rows):
     return "\n".join(out)
 
 
-def link(url, text):
-    return f'<a href="{esc(url)}">{esc(text)}</a>'
+def link(url, row_id):
+    """A source link in a table: the word "source", with the data row's id kept in the hover text."""
+    return f'<a href="{esc(url)}" title="row {esc(row_id)}">source</a>'
 
 
 def gauge_bar(g):
