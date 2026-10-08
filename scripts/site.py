@@ -745,8 +745,8 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {gauge_bar(A['gauge'])}</div>
 <div class="leg"><b>B. Forecasts have stopped working</b>
 <div class="g">The idea, from the writer Vernor Vinge: past some point nobody can predict what comes next. It can only be confirmed after the fact.</div>
-<div class="num">{last_step['pull_in']:.1f} years closer per year</div>
-<div class="g">stand-in only: between {last_step['frm']['date'].year} and {last_step['to']['date'].year} the experts' expected year for human-level AI moved {last_step['pull_in']:.1f} years closer for every year that passed. The real score needs a record of old predictions set against what happened, which does not exist yet.</div>
+<div class="num">{last_step['pull_in']:.1f} years</div>
+<div class="g">closer, for every year that passed: that is how fast the experts' expected year for human-level AI moved between {last_step['frm']['date'].year} and {last_step['to']['date'].year}. A stand-in only. The real score needs a record of old predictions set against what happened, which does not exist yet.</div>
 {gauge_bar(None)}</div>
 <div class="leg"><b>C. AI is improving AI</b>
 <div class="g">The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</div>
