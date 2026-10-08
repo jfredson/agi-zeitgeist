@@ -1,151 +1,210 @@
 #!/usr/bin/env python3
-"""Build the charts from data/*.csv into site/.
+"""Draw the charts for "The current zeitgeist" from data/*.csv into site/.
 
-Only chart 1 exists so far (seed phase): the share of statements by frame_primary
-(version 2 codes), by year. The final chart set is decided after the seed (methodology-v2 section 11).
+Four charts, one point each, in the order the section tells it:
+  zeitgeist-experts.png      the doubters' dates have come decades closer; Kurzweil's has not moved
+  zeitgeist-researchers.png  researchers' year for "every task" against "every job", survey by survey
+  zeitgeist-search.png       searches for AGI were flat for fifteen years, then climbed
+  zeitgeist-forum.png        almost no popular r/singularity post says AGI has arrived
 
     .venv/bin/python scripts/charts.py
 """
 
-import csv
-from collections import Counter
+import sys
 from pathlib import Path
 
-import matplotlib
+from matplotlib.patches import Rectangle
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from chart_style import GRID, INK, INK_2, PALETTE, PEOPLE, SURFACE, figure, read, save, titles  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
-SITE = ROOT / "site"
-
-# Version 2 frame_primary codes, bottom to top in the order of the story being
-# tested (whether, when, now), then the wider questions version 2 lets win.
-FRAMES = ["possibility", "definition", "timeline", "capability_now",
-          "self_improvement", "consequences", "governance", "other_concern"]
-FRAME_LABELS = {
-    "possibility": "Can it be built?",
-    "definition": "What counts as AGI?",
-    "timeline": "When will it arrive?",
-    "capability_now": "Is today's machine close?",
-    "self_improvement": "Can it make itself smarter?",
-    "consequences": "What happens if it does?",
-    "governance": "What should be done?",
-    "other_concern": "Another AI concern",
-}
-# Reference palette from the dataviz skill, categorical slots 1-8 in fixed order
-# (validated for adjacent pairs in light mode). Colour follows the frame, never rank.
-COLORS = dict(zip(FRAMES, ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
-                           "#e87ba4", "#008300", "#4a3aa7", "#e34948"]))
-SURFACE = "#fcfcfb"
-INK = "#0b0b0b"
-INK_2 = "#52514e"
-GRID = "#e4e3df"
-FIRST_YEAR, LAST_YEAR = 2005, 2026
-WINDOW = 3  # years pooled per point in chart 1
-THIN_UNTIL = 2013  # years before this rest on five or fewer statements each
-# Reports are context, not turning points; only these event types are marked on the axis.
-MARKED_EVENTS = {"open_letter", "public_statement", "government_action"}
+# Each person's earliest and latest guess at when machines will match people at most thinking work
+# (target_capability broad_competence), chosen by hand from the quotes so the choice can be checked.
+# One rule for both points: the person's own words, not a reporter's or organiser's summary (that
+# leaves out Altman's 2023 and August 2026 dates and Marcus's 2026 "at least a decade"). A floor
+# ("no sooner than") or a ceiling ("within ten years") counts and is labelled as one.
+EXPERT_POINTS = [
+    ("kurzweil", "kurzweil-2006-02", "kurzweil-2026-01"),
+    ("altman", "altman-2024-02", "altman-2026-02"),
+    ("lecun", "lecun-2024-07", "lecun-2025-05"),
+    ("hinton", "hinton-2015-01", "hinton-2025-03"),
+    ("marcus", "marcus-2016-01", "marcus-2025-06"),
+]
+FLOORS = {"hinton-2015-01", "marcus-2016-01"}   # "no sooner than 2070"; "at least thirty or fifty years"
+CEILINGS = {"altman-2024-02", "lecun-2025-05"}  # "by the end of this decade"; "within the next ten years"
 
 
-def read(name):
-    with (DATA / name).open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+def chart_experts():
+    by_id = {s["statement_id"]: s for s in read("statements.csv")}
+
+    def point(sid):
+        s = by_id[sid]
+        lo = int(s["timeline_year"])
+        hi = int(s["timeline_year_high"] or lo)
+        words = (f"at least {lo}" if sid in FLOORS else f"by {lo}" if sid in CEILINGS
+                 else f"{lo}–{hi}" if hi != lo else f"{lo}")
+        return s["date"][:4], lo, hi, (lo + hi) / 2, words
+
+    fig, ax = figure(10, 5.8)
+    fig.subplots_adjust(left=0.19, right=0.97, top=0.82, bottom=0.14)
+    for i, (pid, first_id, last_id) in enumerate(EXPERT_POINTS):
+        name, col = PEOPLE[pid]
+        y = len(EXPERT_POINTS) - 1 - i
+        fy, _, _, fmid, fwords = point(first_id)
+        ly, llo, lhi, lmid, lwords = point(last_id)
+        same = fwords == lwords
+        ax.plot([fmid, lmid], [y, y], color=col, lw=1.5, alpha=0.5, zorder=2)
+        if lhi != llo:
+            ax.plot([llo, lhi], [y, y], color=col, lw=8, alpha=0.25, solid_capstyle="round", zorder=1)
+        if not same:
+            ax.plot(fmid, y, "o", ms=10, mfc=SURFACE, mec=col, mew=2, zorder=4)
+            ax.text(fmid, y + 0.2, f"{fwords}, said in {fy}", ha="center", va="bottom", fontsize=8, color=INK_2)
+        ax.plot(lmid, y, "o", ms=10, color=col, zorder=5)
+        when = f"said in {fy} and still in {ly}" if same else f"said in {ly}"
+        ax.text(lmid, y - 0.2, f"{lwords}, {when}", ha="center", va="top", fontsize=8.5, color=col,
+                fontweight="bold")
+        ax.text(2019.5, y, name, ha="right", va="center", fontsize=10, color=col, fontweight="bold")
+    ax.set_xlim(2020, 2076)
+    ax.set_ylim(-0.6, len(EXPERT_POINTS) - 0.4)
+    ax.set_yticks([])
+    ax.set_xticks(range(2025, 2076, 10))
+    ax.grid(axis="x", color=GRID, lw=0.8)
+    ax.set_axisbelow(True)
+    ax.set_xlabel("The year they said machines would match people at most thinking work", fontsize=9, color=INK_2)
+    titles(fig, "Hinton's and Marcus's dates have come closer; Kurzweil's has not moved",
+           "Each person's earliest dated guess (open circle, label above) and their latest (filled, label below). "
+           "A shaded bar is a range.",
+           "Guesses in the person's own words only; earliest means the earliest collected so far. "
+           "Source: agizeitgeist.com/data")
+    return save(fig, "zeitgeist-experts.png")
 
 
-def frame_counts(statements):
-    counts = {y: Counter() for y in range(FIRST_YEAR, LAST_YEAR + 1)}
-    for s in statements:
-        year = int(s["date"][:4])
-        if year in counts:
-            counts[year][s["frame_primary"]] += 1
-    return counts
+def chart_researchers():
+    rows = {r["aggregate_id"]: r for r in read("aggregates.csv")}
+    year = lambda k: int(rows[k]["value"])  # noqa: E731
+    TASK, JOB = PALETTE[0], PALETTE[1]
+    BG = dict(facecolor=SURFACE, edgecolor="none", pad=1)
+
+    fig, ax = figure(10, 4.6)
+    fig.subplots_adjust(left=0.13, right=0.97, top=0.74, bottom=0.17)
+    surveys = [("2016", "aiimpacts-2016"), ("2022", "aiimpacts-2022"), ("2023", "aiimpacts-2023")]
+    for i, (label, key) in enumerate(surveys):
+        y = len(surveys) - i
+        t50, j50 = year(f"{key}-hlmi50"), year(f"{key}-faol50")
+        ax.plot([t50, j50], [y, y], color=GRID, lw=2, zorder=1, solid_capstyle="round")
+        ax.scatter([t50], [y], s=110, color=TASK, zorder=4)
+        ax.scatter([j50], [y], s=110, color=JOB, zorder=4)
+        ax.text(t50, y - 0.2, str(t50), ha="center", va="top", fontsize=10, fontweight="bold", color=TASK, bbox=BG)
+        ax.text(j50, y - 0.2, str(j50), ha="center", va="top", fontsize=10, fontweight="bold", color=JOB, bbox=BG)
+        ax.text(2019, y, f"{label} survey", ha="right", va="center", fontsize=10.5, fontweight="bold", color=INK)
+    top = len(surveys)
+    ax.text(year("aiimpacts-2016-hlmi50"), top + 0.25, "machines could do\nevery task", ha="center",
+            va="bottom", fontsize=8.5, color=TASK)
+    ax.text(year("aiimpacts-2016-faol50"), top + 0.25, "machines could do\nevery job", ha="center",
+            va="bottom", fontsize=8.5, color=JOB)
+    ax.axvline(2026, color=INK_2, lw=0.8, ls=(0, (2, 3)), zorder=0)
+    ax.text(2026, 0.42, "today", ha="center", va="bottom", fontsize=8, color=INK_2)
+    ax.set_xlim(2020, 2172)
+    ax.set_ylim(0.4, top + 0.85)
+    ax.set_yticks([])
+    ax.set_xticks(range(2025, 2171, 25))
+    ax.grid(axis="x", color=GRID, lw=0.6)
+    ax.set_axisbelow(True)
+    n_task, n_job = rows["aiimpacts-2023-hlmi50"]["n"], rows["aiimpacts-2023-faol50"]["n"]
+    titles(fig, "AI researchers say 2047 for every task, but 2116 for every job",
+           "The year by which researchers, taken together, give an even chance that machines could do it "
+           "better and more cheaply than people.",
+           f"Source: AI Impacts surveys of researchers who publish at major AI conferences; in 2023, "
+           f"{int(n_task):,} answered the task question and {n_job} the job question. agizeitgeist.com/data")
+    return save(fig, "zeitgeist-researchers.png")
 
 
-def chart_frames(statements, events, window=WINDOW):
-    counts = frame_counts(statements)
-    years = list(counts)
+def chart_search():
+    rows = read("aggregates.csv")
 
-    # Table view alongside the image (relief for the low-contrast colours): raw yearly counts.
-    with (SITE / "chart-1-frames.csv").open("w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
-        w.writerow(["year", "statements"] + FRAMES)
-        for y in years:
-            w.writerow([y, sum(counts[y].values())] + [counts[y][f] for f in FRAMES])
+    def series(key):
+        return sorted((int(a["date"]), float(a["value"])) for a in rows if key in a["measure"])
 
-    # Most years hold only a handful of statements, so each point pools the year with
-    # its neighbours (a centred moving window) before shares are taken.
-    half = window // 2
-    pooled = {y: sum((counts[z] for z in range(y - half, y + half + 1) if z in counts),
-                     Counter()) for y in years}
-    totals = [sum(pooled[y].values()) for y in years]
-    shares = {f: [(pooled[y][f] / t * 100) if t else 0 for y, t in zip(years, totals)]
-              for f in FRAMES}
+    fig, ax = figure(10, 4.8)
+    fig.subplots_adjust(left=0.06, right=0.8, top=0.78, bottom=0.12)
+    for key, col, label in [("topic 'Artificial general intelligence'", PALETTE[0], "Artificial general\nintelligence"),
+                            ("topic 'Technological singularity'", "#8a8780", "The singularity")]:
+        data = series(key)
+        xs, ys = [d[0] for d in data], [d[1] for d in data]
+        ax.plot(xs, ys, color=col, lw=2.5, marker="o", ms=4)
+        ax.annotate(label, (xs[-1], ys[-1]), xytext=(10, 0), textcoords="offset points", va="center",
+                    fontsize=10, color=col, fontweight="bold")
+    ax.set_xlim(2004.5, 2026.5)
+    ax.set_ylim(0, 60)
+    ax.set_xticks(range(2005, 2027, 3))
+    ax.set_yticks([0, 20, 40, 60])
+    ax.grid(axis="y", color=GRID, lw=0.8)
+    titles(fig, "Around 2023, people started searching for AGI",
+           "Worldwide Google searches, average for each year. Google gives no counts: 100 is the busiest\n"
+           "single month for any of the related searches compared. 2026 is January to September.",
+           "Source: Google Trends; agizeitgeist.com/data")
+    return save(fig, "zeitgeist-search.png")
 
-    fig, ax = plt.subplots(figsize=(10, 6.2), dpi=160)
-    fig.patch.set_facecolor(SURFACE)
-    ax.set_facecolor(SURFACE)
 
-    stacks = ax.stackplot(years, [shares[f] for f in FRAMES],
-                          colors=[COLORS[f] for f in FRAMES],
-                          edgecolor=SURFACE, linewidth=2)
-    for poly, f in zip(stacks, FRAMES):
-        poly.set_label(FRAME_LABELS[f])
+def chart_forum():
+    """r/singularity's most popular posts as squares, one per post, counted exactly as
+    vanguard_figure.py counts them (imported, not copied)."""
+    import vanguard_figure as v
 
-    # Direct labels inside bands wide enough to hold them (identity is never colour alone).
-    bottoms = [0] * len(years)
-    for f in FRAMES:
-        vals = shares[f]
-        # Inner years only, so a label never spills past the plot edge or over the axis.
-        best = max(range(2, len(years) - 2),
-                   key=lambda i: vals[i] if totals[i] >= 8 else -1)
-        if vals[best] >= 14 and totals[best] >= 8:
-            ax.text(years[best], bottoms[best] + vals[best] / 2, FRAME_LABELS[f],
-                    ha="center", va="center", fontsize=8, color=INK, zorder=5,
-                    bbox=dict(boxstyle="round,pad=0.2", fc=SURFACE, ec="none", alpha=0.85))
-        bottoms = [b + v for b, v in zip(bottoms, vals)]
+    posts = v.load_posts()
+    quarters = sorted(v.apply_cutoff(posts))
+    months = {"Q1": "Jan–Mar", "Q2": "Apr–Jun", "Q3": "Jul–Sep", "Q4": "Oct–Dec"}
+    cats = [("What AI can do now", {"specific_capability"}, PALETTE[0]),
+            ("AI companies and the law", {"industry_governance"}, PALETTE[6]),
+            ("Jobs and society", {"consequence"}, PALETTE[1]),
+            ("AGI or the singularity in general", {"agi", "pace_singularity", "self_improvement"}, PALETTE[3]),
+            ("The three AI systems disagreed", {v.UNRESOLVED}, GRID)]
+    cat_of = lambda p: next(i for i, (_, keys, _) in enumerate(cats) if p["claim_target"] in keys)  # noqa: E731
 
-    # Statement counts per year, so thin years are visibly thin.
-    for y, t in zip(years, totals):
-        ax.text(y, 101.5, str(t), ha="center", va="bottom", fontsize=7, color=INK_2)
+    def arrival(sample):
+        xs = [p for p in posts.values() if p["sample"] == sample
+              and all(p[f] != v.UNRESOLVED for f in v.HEADLINE_FIELDS)]
+        return sum(map(v.headline, xs)), len(xs)
 
-    # Years resting on too few statements are veiled so they do not read as a finding.
-    ax.axvspan(FIRST_YEAR, THIN_UNTIL, color=SURFACE, alpha=0.72, zorder=3, linewidth=0)
-    ax.text((FIRST_YEAR + THIN_UNTIL) / 2, 50, "Too few statements\nto read much into",
-            ha="center", va="center", fontsize=9, color=INK_2, zorder=4)
+    top = {q: sorted(cat_of(p) for p in posts.values() if p["quarter"] == q and p["sample"] == "rewarded")
+           for q in quarters}
+    totals = [sum(1 for c in top.values() for x in c if x == i) for i in range(len(cats))]
+    arr_top, dec_top = arrival("rewarded")
+    arr_rand, dec_rand = arrival("prevalence")
 
-    ax.set_xlim(FIRST_YEAR, LAST_YEAR)
-    ax.set_ylim(0, 100)
-    ax.set_xticks(range(FIRST_YEAR, LAST_YEAR + 1, 3))
-    ax.set_yticks([0, 25, 50, 75, 100])
-    ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"])
-    ax.tick_params(colors=INK_2, labelsize=9, length=0)
-    ax.grid(axis="y", color=GRID, linewidth=0.8)
-    for side in ax.spines.values():
-        side.set_visible(False)
-
-    fig.suptitle("What five experts mainly talked about, 2005 to 2026", x=0.06, y=0.975, ha="left",
-                 fontsize=14, color=INK, fontweight="bold")
-    ax.set_title(f"Share of each year's public statements, by the question each one mainly answers. "
-                 f"Kurzweil, Hinton, LeCun, Marcus and Altman, {len(statements)} statements.\n"
-                 f"Each year is blended with the years either side. The small numbers along the top are how many statements each point rests on.",
-                 loc="left", fontsize=9, color=INK_2, pad=18)
-    ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1), frameon=False, fontsize=9,
-              labelcolor=INK, reverse=True)
-    fig.text(0.06, 0.015, "Source: agizeitgeist.com/data", fontsize=7.5, color=INK_2)
-    fig.tight_layout(rect=(0, 0.03, 1, 0.97))
-    out = SITE / "chart-1-frames.png"
-    fig.savefig(out, facecolor=SURFACE)
-    plt.close(fig)
-    return out
+    fig, ax = figure(10, 4.4)
+    cols, size, gap, block_gap = 4, 1.0, 0.18, 1.6
+    block_w = cols * size + (cols - 1) * gap
+    edge = lambda c: "#b9b8b3" if c == len(cats) - 1 else cats[c][2]  # noqa: E731
+    for b, q in enumerate(quarters):
+        x0 = b * (block_w + block_gap)
+        for k, c in enumerate(top[q]):
+            ax.add_patch(Rectangle((x0 + (k % cols) * (size + gap), (k // cols) * (size + gap)), size, size,
+                                   facecolor=cats[c][2], edgecolor=edge(c), lw=0.8))
+        ax.text(x0 + block_w / 2, -0.45, f"{months[q[4:]]}\n{q[:4]}", ha="center", va="top", fontsize=9, color=INK_2)
+    ax.set_xlim(-0.1, len(quarters) * (block_w + block_gap) - block_gap + 0.1)
+    ax.set_ylim(-2.0, 5.6)
+    ax.set_aspect("equal")
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_position([0.04, 0.27, 0.94, 0.45])
+    handles = [Rectangle((0, 0), 1, 1, facecolor=c, edgecolor=edge(i)) for i, (_, _, c) in enumerate(cats)]
+    fig.legend(handles, [f"{n} ({t})" for (n, _, _), t in zip(cats, totals)], loc="upper left",
+               bbox_to_anchor=(0.03, 0.865), ncol=3, frameon=False, fontsize=8.5, labelcolor=INK,
+               handlelength=1.1, handleheight=1.1, columnspacing=1.4)
+    titles(fig, "Almost no post on r/singularity says AGI has already arrived",
+           "Each square is one of the most popular posts, about 20 every three months, coloured by what it "
+           "mainly says.",
+           "Three AI systems from different companies sorted every post; a post counts only where two agreed. "
+           "Source: agizeitgeist.com/data")
+    fig.text(0.04, 0.17, f"Popular posts saying AGI or the singularity is already here: {arr_top} of {dec_top}. "
+             f"Among {dec_rand} randomly picked posts: {arr_rand}.", fontsize=10, color=INK, fontweight="bold")
+    return save(fig, "zeitgeist-forum.png")
 
 
 def main():
-    SITE.mkdir(exist_ok=True)
-    statements = read("statements.csv")
-    events = read("events.csv")
-    print(chart_frames(statements, events))
+    for chart in (chart_experts, chart_researchers, chart_search, chart_forum):
+        print(chart())
 
 
 if __name__ == "__main__":

@@ -764,14 +764,28 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
 <p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about artificial general intelligence, or AGI for short: a machine that can do most of the thinking work a person can. Every quote carries its date and a link to where it was said.</p>
-<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there, or already making themselves smarter</em>? Among the five people traced so far, it has moved, but not all the way. "When will it arrive?" is still what they have talked about most in recent years. "Is today's machine close?" grew from nothing in 2012 to more than half of what they said around 2019, and so far in 2026 it has overtaken "when?" again. "Can it make itself smarter?" first shows up in 2023. And even on the online forum most eager for it, almost no one says it has arrived.</p>
+<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
+<p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
+
+<figure class="fig"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work">
+<figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+
+<p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
+
+<figure class="fig"><img src="zeitgeist-researchers.png" alt="AI researchers' even-chance year for machines doing every task and every job, in surveys from 2016, 2022 and 2023">
+<figcaption>Two different groups of researchers answered the two questions in each survey. The numbers are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
+
+<p>Third, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
+
+<figure class="fig"><img src="zeitgeist-search.png" alt="Worldwide Google searches for artificial general intelligence and for the singularity, each year from 2005 to 2026">
+<figcaption>Google reports searches on its own scale rather than as counts. The numbers, and the polls, are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
+
+<p>Fourth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
+
+<figure class="fig"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says">
+<figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
+
 <p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
-
-<figure class="fig"><img src="chart-1-frames.png" alt="What five experts mainly talked about each year, 2005 to 2026, as shares of their public statements">
-<figcaption>What the five people mainly talked about, year by year, from {len(read('statements.csv'))} public statements. Each year is blended with the years either side, to smooth out years with very few statements. The small numbers along the top show how many statements each point rests on; before 2013 there are too few to read much into. The numbers are in <a href="chart-1-frames.csv">a table</a>.</figcaption></figure>
-
-<figure class="fig"><img src="vanguard-pilot-r-singularity.png" alt="What posts on the r/singularity forum mainly claimed, every three months from late 2024 to 2026">
-<figcaption>r/singularity is a forum on the website Reddit where people who expect the singularity gather. Every three months since late 2024, its most popular posts and a random handful of others were sorted by what each one mainly claims. Three AI systems from three different companies did the sorting separately, and a post counted only where at least two of them agreed. Even here, almost no post says AGI or the singularity has already arrived. This is one forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 </section>
 
 <section class="section prose" id="singularity">
