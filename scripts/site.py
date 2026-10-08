@@ -113,14 +113,14 @@ def leg_a(world):
         ax.plot(p["date"], p["value"], "o", ms=6, color=BLUE if p["frontier"] else "white",
                 markeredgecolor=BLUE, markeredgewidth=1.5)
     ax.axhline(960, color=MUTED, linestyle=":", linewidth=1)
-    ax.text(pts[0]["date"], 960 * 1.15, "16 hours: METR's reliable range ends here", color=MUTED, fontsize=8)
+    ax.text(pts[0]["date"], 960 * 1.15, "16 hours: beyond this METR's tests are not reliable", color=MUTED, fontsize=8)
     ax.set_yscale("log")
     ax.set_yticks([0.1, 1, 10, 60, 480, 2400])
     ax.set_yticklabels(["6 s", "1 min", "10 min", "1 h", "8 h", "40 h"])
-    ax.set_ylabel("task length finished at 50% success")
-    ax.set_title("Condition A. How long a task the best AI can finish, by model release", loc="left", color=INK)
-    ax.plot([], [], "o", color=BLUE, label="frontier at release")
-    ax.plot([], [], "o", color="white", markeredgecolor=BLUE, label="not the frontier")
+    ax.set_ylabel("longest job it gets right half the time")
+    ax.set_title("Condition A. How long a job the best AI can finish, by the day each system came out", loc="left", color=INK)
+    ax.plot([], [], "o", color=BLUE, label="the best system at the time")
+    ax.plot([], [], "o", color="white", markeredgecolor=BLUE, label="not the best at the time")
     ax.legend(loc="lower right", frameon=False, fontsize=8)
     for p in frontier[-1:]:
         ax.annotate(p["name"], (p["date"], p["value"]), textcoords="offset points", xytext=(-6, 6), ha="right", fontsize=8, color=INK)
@@ -128,14 +128,14 @@ def leg_a(world):
     for s in series:
         ax2.plot(s["date"], s["days"], "o", ms=6, color=ORANGE if not s["over16"] else "white", markeredgecolor=ORANGE, markeredgewidth=1.5)
     ax2.plot([s["date"] for s in series], [s["days"] for s in series], color=ORANGE, linewidth=1.5, alpha=0.6)
-    ax2.set_ylabel("days per doubling")
+    ax2.set_ylabel("days it took to double")
     ax2.set_ylim(0, max([s["days"] for s in series] + [300]) * 1.1)
-    ax2.set_title("Doubling time of the frontier, trailing twelve months (shorter is faster)", loc="left", color=INK, fontsize=10)
-    ax2.plot([], [], "o", color="white", markeredgecolor=ORANGE, label="window includes a reading past 16 h")
+    ax2.set_title("How long the best system's job length took to double, over the previous twelve months (lower is faster)", loc="left", color=INK, fontsize=10)
+    ax2.plot([], [], "o", color="white", markeredgecolor=ORANGE, label="includes a reading past 16 hours (not scored)")
     ax2.legend(loc="upper right", frameon=False, fontsize=8)
     ax2.xaxis.set_major_locator(mdates.YearLocator())
     ax2.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
-    fig.text(0.01, 0.005, "Source: METR Time Horizon 1.1 results file (data/world_measures.csv, metr-th11-* rows). Bars are METR's 95% ranges.", fontsize=7, color=MUTED)
+    fig.text(0.01, 0.005, "Source: METR's published results (Time Horizon 1.1), in the site's world_measures table. The thin lines are METR's range of likely values.", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.02, 1, 1))
     fig.savefig(SITE / "leg-a-time-horizon.png")
     plt.close(fig)
@@ -170,22 +170,22 @@ def leg_b(aggregates):
 
     fig, ax = plt.subplots(figsize=(8, 4.2))
     xs = [p["t"] for p in pts]
-    ax.plot(xs, [p["remaining"] for p in pts], "-o", color=BLUE, ms=7, linewidth=2, label="AI Impacts surveys: years until a 50% chance of human-level AI")
+    ax.plot(xs, [p["remaining"] for p in pts], "-o", color=BLUE, ms=7, linewidth=2, label="surveys of AI researchers: years until the even-odds year for human-level AI")
     # Reference: if the forecast date stood still, remaining years fall one per year.
     ax.plot([xs[0], xs[-1] + 1], [pts[0]["remaining"], pts[0]["remaining"] - (xs[-1] + 1 - xs[0])], "--", color=MUTED, linewidth=1,
-            label="if the forecast date stood still (one year per year)")
+            label="if the expected year stood still (one year closer per year)")
     for p in pts:
         ax.annotate(f"{int(p['m'])}", (p["t"], p["remaining"]), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=8, color=INK)
     if mb:
         r = mb[0]
         t = year_frac(parse_date(r["date"]))
         ax.plot(t, float(r["value"]) - t, "s", color="white", markeredgecolor=GREEN, markeredgewidth=1.5, ms=7,
-                label="Müller and Bostrom 2013 (different aggregation, shown for context)")
+                label="a 2013 survey that asked differently, shown for comparison")
     ax.set_ylim(0, 55)
-    ax.set_ylabel("years remaining at the time of the survey")
+    ax.set_ylabel("years away at the time of the survey")
     ax.set_title("Condition B, stand-in. The experts' arrival date keeps moving closer", loc="left", color=INK)
     ax.legend(loc="lower left", frameon=False, fontsize=8)
-    fig.text(0.01, 0.005, "Labels are the forecast year. Source: data/aggregates.csv (aiimpacts-*-hlmi50, mullerbostrom-2013-hlmi50).", fontsize=7, color=MUTED)
+    fig.text(0.01, 0.005, "The label on each dot is the expected year. Source: the surveys, in the site's aggregates table.", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
     fig.savefig(SITE / "leg-b-pull-in.png")
     plt.close(fig)
@@ -219,13 +219,13 @@ def leg_c(world):
     ax.set_yticklabels([labels.get(p["id"], p["id"]) for p in order], fontsize=8)
     ax.set_xlim(0, 122)
     ax.set_xticks([0, 25, 50, 75, 100])
-    ax.set_xlabel("percent of the company's own work (self-reports; the measures differ)")
+    ax.set_xlabel("percent of the company's own work, by its own count (the measures differ)")
     ax.axvline(50, color=MUTED, linestyle=":", linewidth=1)
-    ax.text(51, -0.75, "one half: the frozen threshold (scored on the 'leads' rows)", fontsize=7, color=MUTED, va="center")
+    ax.text(51, -0.75, "one half: the finishing line (scored on the 'leads' figure)", fontsize=7, color=MUTED, va="center")
     ax.set_ylim(len(order) - 0.5, -1)
     ax.set_title("Condition C. What the companies say AI does of their own work", loc="left", color=INK)
     ax.grid(axis="y", visible=False)
-    fig.text(0.01, 0.005, "Source: data/world_measures.csv (google-*, anthropic_institute-* rows). Self-reported; the Anthropic figure is judged by Claude itself.", fontsize=7, color=MUTED)
+    fig.text(0.01, 0.005, "Source: the companies' own statements, in the site's world_measures table. The Anthropic figure is judged by its AI itself.", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(SITE / "leg-c-self-reports.png")
     plt.close(fig)
@@ -244,13 +244,13 @@ def leg_d(world):
     fig, ax = plt.subplots(figsize=(8, 4))
     ax.bar([p["year"] for p in pts], [p["growth"] for p in pts], color=GREEN, width=0.8)
     ax.axhline(30, color=ORANGE, linestyle="--", linewidth=1.2)
-    ax.text(pts[0]["year"], 30.8, "30% a year: the frozen threshold (Davidson's 'explosive growth' line)", fontsize=8, color=ORANGE)
+    ax.text(pts[0]["year"], 30.8, "30% in a year: the finishing line (Tom Davidson's 'explosive growth' line)", fontsize=8, color=ORANGE)
     ax.axhline(0, color=MUTED, linewidth=0.8)
     ax.set_ylim(-5, 34)
     ax.set_ylabel("world output growth, % over the previous year")
     ax.set_title("Condition D. World output growth, 1961 to " + str(pts[-1]["year"]), loc="left", color=INK)
     ax.grid(axis="x", visible=False)
-    fig.text(0.01, 0.005, "Source: World Bank World Development Indicators, world GDP growth at constant 2015 US$ (data/world_measures.csv, worldbank-gdp-growth-* rows).", fontsize=7, color=MUTED)
+    fig.text(0.01, 0.005, "Source: the World Bank's yearly count of world output, adjusted for prices, in the site's world_measures table.", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(SITE / "leg-d-world-growth.png")
     plt.close(fig)
@@ -600,8 +600,8 @@ def copy_data():
         shutil.copy2(ROOT / lic, out / (lic + ".txt"))
     # an index page, since the asset host does not list folders
     items = "".join(f'<li><a href="{esc(f.relative_to(DATA).as_posix())}">{esc(f.relative_to(DATA).as_posix())}</a> ({f.stat().st_size // 1024 + 1} KB)</li>' for f in files)
-    body = (f'<div class="prose narrow"><p>Every table behind the site, as it stands at this build. Each row carries its source. '
-            f'Licensed <a href="LICENSE-DATA.txt">CC BY 4.0</a>; cite as on the <a href="/#method">home page</a>. How each file is laid out: <a href="/docs/README">about the data</a>.</p><ul>{items}</ul></div>')
+    body = (f'<div class="prose narrow"><p>Every table behind the site, as it stood when the site was last built. Each row carries a link to where its number came from. '
+            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>); how to cite is on the <a href="/#method">home page</a>. What each file holds is explained in <a href="/docs/README">a working document</a>.</p><ul>{items}</ul></div>')
     (out / "index.html").write_text(shell(f"Download the data | {SITE_TITLE}", "Every CSV table behind the AGI Zeitgeist Tracker, under CC BY 4.0.", body,
                                           date.today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
     return len(files)
@@ -628,7 +628,7 @@ def link(url, row_id):
 def gauge_bar(g):
     if g is None:
         return '<div class="bar none"><span>not yet measurable</span></div>'
-    return f'<div class="bar"><i style="width:{g*100:.0f}%"></i><span>{g:.2f}</span></div>'
+    return f'<div class="bar"><i style="width:{g*100:.0f}%"></i><span>{g*100:.0f}% of the way to its line</span></div>'
 
 
 def landing(sc, b_pts, mani, built, commit):
@@ -650,7 +650,7 @@ def landing(sc, b_pts, mani, built, commit):
     latest = b_pts[-1]
     trend = "".join(f'<div><b>{int(p["m"])}</b><span>{p["date"].year} survey</span></div>' for p in b_pts)
     m = mani[-1] if mani else None
-    market = (f' On Manifold, a website where people bet on future events, the odds of human-level AI being announced before 2030 stand at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> (as of {esc(m["date"])}).' if m else "")
+    market = (f' On Manifold, a website where people bet on future events, the odds of human-level AI being announced before 2030 stand at <a href="{esc(m["source_url"])}">{float(m["value"])*100:.0f}%</a> (as of {long_date(m["date"])}).' if m else "")
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
@@ -745,10 +745,10 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {gauge_bar(A['gauge'])}</div>
 <div class="leg"><b>B. Forecasts have stopped working</b>
 <div class="g">The idea, from the writer Vernor Vinge: past some point nobody can predict what comes next. It can only be confirmed after the fact.</div>
-<div class="num">{last_step['pull_in']:+.1f} yr/yr</div>
+<div class="num">{last_step['pull_in']:.1f} years closer per year</div>
 <div class="g">stand-in only: between {last_step['frm']['date'].year} and {last_step['to']['date'].year} the experts' expected year for human-level AI moved {last_step['pull_in']:.1f} years closer for every year that passed. The real score needs a record of old predictions set against what happened, which does not exist yet.</div>
 {gauge_bar(None)}</div>
-<div class="leg"><b>C. AI is doing the improving</b>
+<div class="leg"><b>C. AI is improving AI</b>
 <div class="g">The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</div>
 <div class="num">{int(lead['value'])}%</div>
 <div class="g">of Anthropic's AI research work is led by its own AI, as of {lead['date'].strftime('%B %Y')}, by the company's own count. It would count at half. One company, checked by nobody else.</div>
@@ -780,7 +780,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 {table(["date", "odds", "source"], mani_rows)}
 </details>
 
-<h3 id="leg-c">Condition C. Is AI doing the improving?</h3>
+<h3 id="leg-c">Condition C. Is AI doing the work of improving AI?</h3>
 <p>This condition asks how much of the work of making the best AI better is now done by AI. Nobody outside the AI companies can measure that, so what exists is what the companies say about themselves. Two kinds are recorded. Google says what share of all its new computer code is written by AI; that is a rough stand-in at best, and it is shown but not scored. Anthropic measures what share of its own AI research its AI leads; that is closer to the question but is judged by the AI itself, and it is the figure scored. The two do not measure the same thing and should not be compared.</p>
 <figure class="fig"><img src="leg-c-self-reports.png" alt="Bar chart of company self-reported shares of AI-done work, with the one-half threshold marked">
 <figcaption>Every bar is a company's statement about itself. Anthropic's February 2026 figure was given as "under 1%" and is drawn as 1; its "above 90%" figure is drawn as 90.</figcaption></figure>
