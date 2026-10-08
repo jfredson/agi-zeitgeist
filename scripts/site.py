@@ -412,7 +412,6 @@ SITE_CSS = """
 .cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
 .cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
 .fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
-.land .ctas { margin-bottom: 8px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
 .card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
 .card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
@@ -697,8 +696,7 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. This site checks whether that has started.</p>
 <p class="kicker">The four pillars of the singularity</p>
 <div class="conds">{rows}</div>
-<p class="fresh">Scored {long_date(built)} from public numbers. The rules were fixed on {long_date(sc['adopted'])}; <a href="/docs/amendments">any change to them is written down with the date and the reason</a>.</p>
-<div class="ctas"><a class="btn" href="#singularity">What would it take?</a><a class="btn ghost" href="#belief">What do people believe?</a></div>
+<p class="fresh">Scored {long_date(built)} from public numbers. <a href="/docs/amendments">Track the changes here.</a></p>
 </div>
 <aside class="card">
 <p class="ch-big">When?</p>
