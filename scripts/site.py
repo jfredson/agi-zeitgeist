@@ -340,10 +340,11 @@ SITE_TITLE = "AGI Zeitgeist Tracker"
 TAGLINE = ("A dated, sourced record of how opinion about artificial general intelligence has moved since 2005, "
            "beside a test, with its rules fixed in advance, of whether the world has entered the singularity.")
 WITH_CLAUDE = "https://sentient-horizons.com/with-claude/"
-NAV_PRIMARY = [("/#belief", "What people believe"), ("/#singularity", "Singularity status"), ("/#method", "Method and data")]
-NAV_SECONDARY = [("/docs/README", "About the data"), ("/docs/singularity-entry-definition", "What counts as the singularity"), ("/docs/amendments", "Every change, dated")]
-FOOTER_LINKS = [("/data/", "Download the data"), ("/docs/methodology-v2", "How it is done"), ("/docs/codebook", "How statements are labelled"),
-                ("/docs/singularity-entry-definition", "What counts as the singularity"), ("/docs/amendments", "Every change, dated")]
+# Labels ruled by John, 2026-10-08.
+NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
+NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
+FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"),
+                ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
 THEME_SCRIPT = """<script>
 (function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
@@ -367,6 +368,7 @@ ICON_THEME = ('<svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" 
 
 # Styles of this site only, on top of the shared file. Tokens only; no new colours.
 SITE_CSS = """
+.brand { white-space: nowrap; }
 .hero { padding: 56px 0 8px; max-width: 760px; }
 .hero h1 { margin-bottom: 10px; }
 .hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
@@ -610,7 +612,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 Scored on {built} under the definition adopted {sc['adopted']}, with its thresholds frozen before any gauge was published. Progress toward the mark is <b>{progress_word}{sc['progress']:.2f}</b> on a scale of 0 to 1, set by the weakest leg ({sc['bottleneck']}). Leg B cannot be scored until its forecast ledger exists, so the number is an upper bound. Entry requires all four gauges at 1 for {sc['persistence']} consecutive quarters.</div>
 
 <section class="section prose" id="belief">
-<h2>What people believe</h2>
+<h2>The current zeitgeist</h2>
 <p>The tracker proper. One row per public statement, survey result, market reading or poll, coded under <a href="/docs/methodology-v2">methodology version 2</a>.</p>
 
 <figure class="fig"><img src="chart-1-frames.png" alt="Share of coded statements by primary frame, by year, seed panel of five people">
@@ -621,7 +623,7 @@ Scored on {built} under the definition adopted {sc['adopted']}, with its thresho
 </section>
 
 <section class="section prose" id="singularity">
-<h2>Entering the singularity: the test and the score</h2>
+<h2>Are we in the singularity?</h2>
 <p>"Any prediction made now about the next five years will look stupid in retrospect" is one of the standard definitions of the singularity, and each definition alone has a known false alarm. The <a href="/docs/singularity-entry-definition">adopted definition</a> requires four things to be true at once, for four consecutive quarters. Each gauge runs from 0 (the {sc['reference_year']} reference) to 1 (the frozen threshold); the smallest gauge is the honest distance remaining.</p>
 
 <div class="legs">
