@@ -119,12 +119,20 @@ VERDICT = reliability()
 UNRELIABLE = sorted(f for f, v in VERDICT.items() if v != "reliable")
 MEASURES = [m[:3] for m in ALL_MEASURES if all(VERDICT.get(f) == "reliable" for f in TESTED(m[3]) + ["eligible"])]
 EXCLUDED = [m[0].replace("\n", " ") for m in ALL_MEASURES if m[:3] not in MEASURES]
-SHOW_TITLE_ONLY_LINE = VERDICT.get("title_only") == "reliable"
+SHOW_TITLE_ONLY_LINE = False  # one line per panel on the public page; both are in the table
+# Rows drawn on the public page, in plain words; the extrapolation row stays in the table only.
+PLOT_LABELS = {
+    "Posts about a specific\nAI capability": "About what AI\ncan do now",
+    "Posts about consequences\n(jobs, society)": "About jobs\nand society",
+    "Posts about AI companies\nand policy": "About AI companies\nand the law",
+    "Posts claiming AGI or the\nsingularity is here\n(ironic posts left out)": "Saying AGI or the\nsingularity\nhas arrived",
+}
+MONTHS = {"Q1": "Jan–Mar", "Q2": "Apr–Jun", "Q3": "Jul–Sep", "Q4": "Oct–Dec"}
 PLAIN = {"eligible": "eligibility", "claim_target": "what the claim is about", "temporal_status": "forecast or achieved",
          "stance": "whether the poster agrees", "epistemic_qualification": "hedging", "rhetorical_mode": "irony",
          "development_preference": "speed up or slow down", "attribution": "whose claim",
          "title_only": "title-only coding", "extrapolates_to_horizon": "extrapolation"}
-SAMPLES = {"rewarded": "Top-scoring posts", "prevalence": "Random posts"}
+SAMPLES = {"rewarded": "Most popular posts", "prevalence": "Random posts"}
 BLUE, ORANGE = "#2a78d6", "#eb6834"  # dataviz reference palette, slots 1 and 2
 SURFACE, INK, INK_2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 
@@ -210,6 +218,7 @@ def main():
 
     if not MEASURES:
         raise SystemExit("no measure passed the reliability test; no figure drawn")
+    MEASURES[:] = [m for m in MEASURES if m[0] in PLOT_LABELS]
     fig, axes = plt.subplots(len(MEASURES), len(SAMPLES), figsize=(10, 2.3 * len(MEASURES) + 2), dpi=160,
                              sharex=True, sharey=True, squeeze=False)
     fig.patch.set_facecolor(SURFACE)
@@ -235,26 +244,16 @@ def main():
             if row == 0:
                 ax.set_title(SAMPLES[s], fontsize=10, color=INK, loc="left")
             if col == 0:
-                ax.set_ylabel(label, fontsize=8.5, color=INK)
+                ax.set_ylabel(PLOT_LABELS[label], fontsize=8.5, color=INK)
             ax.set_xticks(x)
-            ax.set_xticklabels([q.replace("20", "", 1) for q in quarters], fontsize=7)
-    handles, labels = axes[0][0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper left", bbox_to_anchor=(0.04, 0.94), frameon=False,
-               fontsize=9, ncol=2, labelcolor=INK)
-    fig.suptitle(f"What r/singularity talks about: top posts and a random sample, late 2024 to 2026 ({LABEL})",
-                 x=0.04, y=0.995, ha="left", fontsize=12, fontweight="bold", color=INK)
-    fig.text(0.04, 0.962, CAPTION, fontsize=9, color=INK_2, ha="left")
-    fig.text(0.04, 0.946, "Share of posts each quarter whose main claim is of that kind; the fourth row is a share of the capability posts only. "
-             "Unit: one post.", fontsize=7.5, color=INK_2, ha="left")
-    excluded = "; ".join(EXCLUDED) if EXCLUDED else "none"
-    fig.text(0.04, 0.008, "Model-coded, no human coder. Shares are majority codes from three model families, each coding "
-             "all 390 posts blind under the final codebook:\nclaude-opus-5-5 (Anthropic); gemini-3.1-pro-preview, "
-             "version 3.1-pro-preview-01-2026 (Google); gpt-6-astra (OpenAI; pinned by its listed creation time "
-             "1787853604,\nreasoning effort medium). A post where no two models agree on a field is left out of the "
-             "measures using that field. Counts in site/vanguard-pilot-r-singularity.csv.\nUnreliable fields (left out): "
-             f"{', '.join(PLAIN.get(f, f) for f in UNRELIABLE) or 'none'}. Measures left out: {excluded}. "
-             "Random-post shares rest on few eligible posts per quarter.", fontsize=7, color=INK_2)
-    fig.tight_layout(rect=(0, 0.05, 1, 0.925))
+            ax.set_xticklabels([f"{MONTHS[q[4:]]}\n{q[:4]}" for q in quarters], fontsize=6.5)
+    fig.suptitle("What r/singularity's posts mainly claim, late 2024 to 2026",
+                 x=0.04, y=0.99, ha="left", fontsize=12, fontweight="bold", color=INK)
+    fig.text(0.04, 0.955, "Share of posts every three months whose main claim is of each kind. One forum, not the public.",
+             fontsize=9, color=INK_2, ha="left")
+    fig.text(0.04, 0.012, "Sorted by three AI systems; posts they disagreed on are left out. "
+             "Only a few random posts in each three months, so that column jumps around.", fontsize=7.5, color=INK_2)
+    fig.tight_layout(rect=(0, 0.03, 1, 0.955))
     fig.subplots_adjust(hspace=0.3)
     fig.savefig(PNG, facecolor=SURFACE)
     print(PNG)

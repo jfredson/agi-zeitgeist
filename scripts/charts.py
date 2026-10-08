@@ -28,8 +28,8 @@ FRAME_LABELS = {
     "possibility": "Can it be built?",
     "definition": "What counts as AGI?",
     "timeline": "When will it arrive?",
-    "capability_now": "Is today's system close?",
-    "self_improvement": "Can it improve itself?",
+    "capability_now": "Is today's machine close?",
+    "self_improvement": "Can it make itself smarter?",
     "consequences": "What happens if it does?",
     "governance": "What should be done?",
     "other_concern": "Another AI concern",
@@ -44,6 +44,7 @@ INK_2 = "#52514e"
 GRID = "#e4e3df"
 FIRST_YEAR, LAST_YEAR = 2005, 2026
 WINDOW = 3  # years pooled per point in chart 1
+THIN_UNTIL = 2013  # years before this rest on five or fewer statements each
 # Reports are context, not turning points; only these event types are marked on the axis.
 MARKED_EVENTS = {"open_letter", "public_statement", "government_action"}
 
@@ -101,22 +102,18 @@ def chart_frames(statements, events, window=WINDOW):
                    key=lambda i: vals[i] if totals[i] >= 8 else -1)
         if vals[best] >= 14 and totals[best] >= 8:
             ax.text(years[best], bottoms[best] + vals[best] / 2, FRAME_LABELS[f],
-                    ha="center", va="center", fontsize=8, color=INK,
+                    ha="center", va="center", fontsize=8, color=INK, zorder=5,
                     bbox=dict(boxstyle="round,pad=0.2", fc=SURFACE, ec="none", alpha=0.85))
         bottoms = [b + v for b, v in zip(bottoms, vals)]
 
     # Statement counts per year, so thin years are visibly thin.
     for y, t in zip(years, totals):
         ax.text(y, 101.5, str(t), ha="center", va="bottom", fontsize=7, color=INK_2)
-    ax.text(FIRST_YEAR - 0.6, 101.5, "n =", ha="right", va="bottom", fontsize=7, color=INK_2)
 
-    # Dated events as thin markers on the time axis.
-    for e in events:
-        yr = int(e["date"][:4])
-        if FIRST_YEAR <= yr <= LAST_YEAR and e["event_type"] in MARKED_EVENTS:
-            x = yr + (int(e["date"][5:7]) - 0.5) / 12 if len(e["date"]) >= 7 else yr
-            x = min(max(x, FIRST_YEAR), LAST_YEAR)
-            ax.axvline(x, color=INK_2, linewidth=0.8, linestyle=(0, (2, 2)), alpha=0.6)
+    # Years resting on too few statements are veiled so they do not read as a finding.
+    ax.axvspan(FIRST_YEAR, THIN_UNTIL, color=SURFACE, alpha=0.72, zorder=3, linewidth=0)
+    ax.text((FIRST_YEAR + THIN_UNTIL) / 2, 50, "Too few statements\nto read much into",
+            ha="center", va="center", fontsize=9, color=INK_2, zorder=4)
 
     ax.set_xlim(FIRST_YEAR, LAST_YEAR)
     ax.set_ylim(0, 100)
@@ -128,18 +125,15 @@ def chart_frames(statements, events, window=WINDOW):
     for side in ax.spines.values():
         side.set_visible(False)
 
-    fig.suptitle("Named experts: which question did they lead with?", x=0.06, y=0.975, ha="left",
+    fig.suptitle("What five experts mainly talked about, 2005 to 2026", x=0.06, y=0.975, ha="left",
                  fontsize=14, color=INK, fontweight="bold")
-    ax.set_title(f"Share of public statements by the question they lead with. Each year is pooled with its "
-                 f"neighbours ({window}-year window); the small numbers along the top are how many statements sit behind each point.\n"
-                 f"Five people so far (Kurzweil, Hinton, LeCun, Marcus, Altman), {len(statements)} statements. "
-                 f"Dotted lines: open letters and government actions.",
+    ax.set_title(f"Share of each year's public statements, by the question each one mainly answers. "
+                 f"Kurzweil, Hinton, LeCun, Marcus and Altman, {len(statements)} statements.\n"
+                 f"Each year is blended with the years either side. The small numbers along the top are how many statements each point rests on.",
                  loc="left", fontsize=9, color=INK_2, pad=18)
     ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1), frameon=False, fontsize=9,
               labelcolor=INK, reverse=True)
-    fig.text(0.06, 0.015, "An early chart from five people, not yet the full panel. Years with few statements swing widely. "
-             "Source: statements.csv at agizeitgeist.com/data/.",
-             fontsize=7.5, color=INK_2)
+    fig.text(0.06, 0.015, "Source: agizeitgeist.com/data", fontsize=7.5, color=INK_2)
     fig.tight_layout(rect=(0, 0.03, 1, 0.97))
     out = SITE / "chart-1-frames.png"
     fig.savefig(out, facecolor=SURFACE)
