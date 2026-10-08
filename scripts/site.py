@@ -744,7 +744,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <div class="num">{int(lead['value'])}%</div>
 <div class="g">of Anthropic's AI research work "led" by its own model, {lead['date'].strftime('%B %Y')}, by its own measurement. Threshold: one half. One company, self-reported.</div>
 {gauge_bar(C['gauge'])}</div>
-<div class="leg"><b>D. The economy has changed mode</b>
+<div class="leg"><b>D. The economy has changed gear</b>
 <div class="g">The economy changes gear (Hanson's idea): each new era has doubled world output about a hundred times faster than the one before.</div>
 <div class="num">{D['reading']:.1f}% a year</div>
 <div class="g">world output growth in {D['year']}, doubling every {D['doubling']:.0f} years. Threshold: {D['g_star']:.0f}% a year ({D['t_star']:.1f}-year doubling). Reference: {D['g_ref']:.1f}% ({D['t_ref']:.0f}-year doubling).</div>
