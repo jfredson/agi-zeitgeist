@@ -482,7 +482,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <span class="footer-brand">{SITE_TITLE}</span>
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
-<p class="footer-meta">© {year} John Fredrickson, <a href="{WITH_CLAUDE}">with Claude</a>. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© {year} John Fredrickson, <a class="with-claude" href="{WITH_CLAUDE}">with Claude</a>. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
