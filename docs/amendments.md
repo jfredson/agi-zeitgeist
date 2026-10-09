@@ -404,3 +404,22 @@ Agent decisions inside the adoption (John can reverse any):
   and is shown unscored.
 - The World Bank series is stored in `data/world_measures.csv` as one row per year (unit
   `percent_growth`), and the validator's date floor for that file is 1960.
+
+## 2026-10-08: the 2022 survey's even-odds year recorded as 2060
+
+Decided by: mixed. The agent re-read both sources and recommended the change; John approved
+("make it 2060").
+
+### A20. aiimpacts-2022-hlmi50 changed from 2059 to 2060
+
+The 2022 survey page reported the aggregate 50% year for high-level machine intelligence as
+2059. The 2023 paper (arXiv 2401.02843) restates it as 2060, footnoted "Reported as 2059 in
+2022; small code changes and improvements to data cleaning between surveys shifted the
+aggregate slightly." The two other 2022 figures in `data/aggregates.csv` (the 10% year,
+2029, and the full-automation year, 2164) already came from that recomputation, so the row
+mixed two calculations, and the site's chart of the researcher surveys showed 2059 beside
+2164 as if from one. The row now holds 2060 with the 2023 paper as its source; 2059 and the
+original page stay quoted in its notes. One reading on the page moves with it: the forecasts
+part now says about 15 years of expected waiting disappeared between the 2022 and 2023
+surveys, where it said about 14. The card's comparison with the 2016 survey does not use the
+2022 figure and is unchanged.
