@@ -119,6 +119,27 @@ def chart_researchers():
     return save(fig, "zeitgeist-researchers.png")
 
 
+# AI releases marked on the charts with a time axis, read from data/events.csv by id so the
+# dates have one source. Only releases: with 31 events, marking them all would bury the charts.
+RELEASES = [("alphago-lee-sedol-2016", "AlphaGo"), ("gpt-2-2019", "GPT-2"), ("gpt-3-2020", "GPT-3"),
+            ("chatgpt-2022", "ChatGPT"), ("gpt-4-2023", "GPT-4"), ("deepseek-r1-2025", "DeepSeek-R1"),
+            ("gpt-5-2025", "GPT-5")]
+
+
+def releases(start=None, end=None):
+    """[(fractional year, label, iso date)] for the marked releases, optionally within [start, end)."""
+    rows = {e["event_id"]: e for e in read("events.csv")}
+    out = []
+    for eid, label in RELEASES:
+        d = rows[eid]["date"]
+        y, m = int(d[:4]), int(d[5:7]) if len(d) >= 7 else 7
+        day = int(d[8:10]) if len(d) >= 10 else 15
+        x = y + (m - 1 + (day - 1) / 31) / 12
+        if (start is None or d >= start) and (end is None or d < end):
+            out.append((x, label, d))
+    return out
+
+
 def chart_search():
     rows = read("aggregates.csv")
 
@@ -134,6 +155,13 @@ def chart_search():
         ax.plot(xs, ys, color=col, lw=2.5, marker="o", ms=4)
         ax.annotate(label, (xs[-1], ys[-1]), xytext=(10, 0), textcoords="offset points", va="center",
                     fontsize=10, color=col, fontweight="bold")
+    marks = releases()
+    for i, (x, label, _) in enumerate(marks):
+        ax.axvline(x, color=INK_2, lw=0.8, ls=(0, (2, 3)), zorder=0)
+        # When the next release is under half a year away, this label goes on the left of its line.
+        left = i + 1 < len(marks) and marks[i + 1][0] - x < 0.5
+        ax.text(x - 0.12 if left else x + 0.12, 58.5, label, rotation=90, ha="right" if left else "left",
+                va="top", fontsize=7.5, color=INK_2)
     ax.set_xlim(2004.5, 2026.5)
     ax.set_ylim(0, 60)
     ax.set_xticks(range(2005, 2027, 3))
@@ -141,7 +169,7 @@ def chart_search():
     ax.grid(axis="y", color=GRID, lw=0.8)
     titles(fig, "Around 2023, people started searching for AGI",
            "Worldwide Google searches, average for each year. Google gives no counts: 100 is the busiest\n"
-           "single month for any of the related searches compared. 2026 is January to September.",
+           "single month for any of the related searches compared. 2026 is January to September. Dotted lines: AI releases.",
            "Source: Google Trends; agizeitgeist.com/data")
     return save(fig, "zeitgeist-search.png")
 
@@ -182,8 +210,16 @@ def chart_forum():
             ax.add_patch(Rectangle((x0 + (k % cols) * (size + gap), (k // cols) * (size + gap)), size, size,
                                    facecolor=cats[c][2], edgecolor=edge(c), lw=0.8))
         ax.text(x0 + block_w / 2, -0.45, f"{months[q[4:]]}\n{q[:4]}", ha="center", va="top", fontsize=9, color=INK_2)
+    for _, label, d in releases(start=f"{quarters[0][:4]}-{int(quarters[0][5]) * 3 - 2:02d}"):
+        q = f"{d[:4]}Q{(int(d[5:7]) - 1) // 3 + 1}"
+        if q in quarters:
+            b = quarters.index(q)
+            ax.text(b * (block_w + block_gap) + block_w / 2, 6.45, f"{label} released", ha="center", va="bottom",
+                    fontsize=8, color=INK, fontweight="bold")
+            ax.annotate("", (b * (block_w + block_gap) + block_w / 2, 5.95), (b * (block_w + block_gap) + block_w / 2, 6.4),
+                        arrowprops=dict(arrowstyle="-|>", color=INK_2, lw=1, mutation_scale=8))
     ax.set_xlim(-0.1, len(quarters) * (block_w + block_gap) - block_gap + 0.1)
-    ax.set_ylim(-2.0, 5.6)
+    ax.set_ylim(-2.0, 7.0)
     ax.set_aspect("equal")
     ax.set_xticks([])
     ax.set_yticks([])
