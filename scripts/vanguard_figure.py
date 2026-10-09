@@ -5,7 +5,8 @@ John's rulings of 2026-10-03 and 2026-10-04).
 Shares come from the majority codes of the full-sample run: three models from different
 companies (claude-opus-5-5; gemini-3.1-pro-preview, version 3.1-pro-preview-01-2026;
 gpt-6-astra, pinned by its listed creation time 1787853604, reasoning effort medium) each
-coded all 390 posts blind under the final codebook, and the final code for each field is the
+coded all 390 posts blind under the final codebook (395 after the five ranked-reserve posts
+added 2026-10-09), and the final code for each field is the
 value at least two of them gave (data/vanguard/r-singularity-pilot-codes-majority-full-final.csv,
 written by scripts/vanguard_three_way.py --full). Where no two models agree the file says
 "unresolved".

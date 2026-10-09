@@ -424,3 +424,75 @@ title-only split in the pilot report.
 `site/vanguard-pilot-r-singularity.csv` (new column `posts_left_out_unresolved`),
 `docs/vanguard/pilot-report-r-singularity-2026-10.md`, and this record. The web page's
 caption still says a 140-post subset; it is updated separately.
+
+## Reserve posts coded, 2026-10-09: every quarter now has 20 eligible top posts
+
+Approved by John, 2026-10-09 ("Go."), for this purpose only, with a hard cap of $8 across the
+three models. Same method and scripts as the full-sample run: the final codebook, unchanged
+since 2026-10-04; each reserve post coded blind by all three models; majority by
+`vanguard_three_way.py --full`; figure by `vanguard_figure.py`. No new posts were drawn: the
+reserve is the ranked list of 60 per quarter already in `r-singularity-pilot-sample.csv`, with
+its content and images saved on 2026-10-03. There is no separate screening step: as in every
+earlier pass, a post is screened by coding it, and it counts if the majority finds it eligible.
+
+**Estimate, written before any paid call.** Short quarters: 2025Q1 needed 1 more (19 of 29
+screened eligible, 66%), 2025Q4 1 more (19 of 32, 59%), 2026Q3 2 more (18 of 26, 69%).
+Expected about 7 posts, ceiling about 14. Per post: Gemini $0.0253 (full-run average), GPT
+$0.054 (the quote), Claude no separate charge (it runs inside the Claude Code session). About
+$0.56 expected, $1.11 at the ceiling. Accounts: Gemini's October was about $22.03 against the
+earlier $22.50 line, so 14 posts (about $0.35) would still fit under it; the OpenAI credit
+left was not recorded (about $4 if John's 2026-10-04 top-up was the $15 asked for), and there
+is no way to read the balance through the API, so a refusal would have been the signal.
+
+**How it ran.** One post per short quarter at a time, all three models, then the majority
+rebuilt and each quarter checked; a quarter stopped as soon as it reached 20.
+- Round 1: 2025Q1 rank 30 (video), 2025Q4 rank 33 (image), 2026Q3 rank 27 (image). All three
+  eligible by majority. 2025Q1 and 2025Q4 reach 20 and stop.
+- Round 2: 2026Q3 rank 28 (image). Not eligible: all three models found no legible text in the
+  image.
+- Round 3: 2026Q3 rank 29 (image). Eligible by majority. 2026Q3 reaches 20.
+
+5 posts coded in all: 1 in 2025Q1, 1 in 2025Q4, 3 in 2026Q3. Cut-off ranks now 30, 33 and 29.
+The posts were appended to `data/vanguard/full-run-posts.csv` (which `--full` reads), so the
+model files, the majority file and the reliability table now cover 395 posts. Gemini and GPT
+were run with the full run's command and `--max-new` set to the round's size; both confirmed
+their pins before each round (`gemini-3.1-pro-preview` version `3.1-pro-preview-01-2026`;
+`gpt-6-astra` created 1787853604). Claude: three fresh blind `claude-opus-5-5` coders with the
+full run's brief (`claude-coding-brief-full-final.md`), parts 7, 8 and 9 (coder labels
+`claude-opus-5-5-full-final-p7` to `-p9`), merged into the Claude file with
+`vanguard_merge_codes.py` (its only complaints are the per-quarter "expected 20" counts it
+always gives for a file with both samples). No request was refused.
+
+**Raw replies kept** in `~/Documents/.agi-zeitgeist/work/vanguard_pilot/` as before: Gemini in
+`crossfamily_raw_full-final/`, GPT in `gpt_raw_full-final/` (one file per post id: `1ikq4lv`,
+`1pmfpka`, `1wgok3w`, `1vghb3m`, `1ulizqk`), Claude's inputs and outputs as
+`claude_full_part7` to `part9` (`.json` in, `.csv` out). Rerunning `vanguard_three_way.py
+--full` and then `vanguard_figure.py` from the committed files reproduces the committed
+majority, table and figure without calling any model.
+
+**Spend, from the token counts each reply returns:**
+
+| model | posts | input tokens | output tokens (thinking included) | cost |
+|---|---|---|---|---|
+| Gemini | 5 | 17,723 | 7,029 | $0.12 (at $2 and $12 per million) |
+| GPT | 5 | 18,838 | 1,933 | about $0.27 (5 at the quote's $0.054; tokens per post close to the full run's average). Exact charge on OpenAI's billing page |
+| Claude | 5 | not metered separately | | no separate charge |
+| **total** | | | | **about $0.39**, against the $8 cap |
+
+Gemini's October is now about **$22.15**, still under the earlier $22.50 line.
+
+**What changed in the results.** Reliability barely moved (every kappa within 0.02 of the
+2026-10-07 table, every verdict the same). The random sample is untouched. Top posts counted:
+156 to 160. Main claim a capability 89 of 153 (58%) to 91 of 157 (58%); consequence 14 of 153
+(9%) to 14 of 157 (9%); industry and governance 43 of 153 (28%) to 44 of 157 (28%);
+capability posts that extrapolate 7 of 89 (8%) to 7 of 91 (8%). Headline claims among top
+posts: 0 of 143 to **1 of 147** (1%). The one is the 2025Q4 reserve post at rank 33, an image
+titled "Crazy true", which two models code as literal singularity framing (the poster agrees,
+under way) and Gemini codes as ironic, so by majority it is literal and counts. 2026Q3's rank
+27 post is coded ironic by all three, which the irony reading (2026-10-08) keeps out of the
+headline count in any case.
+
+**Files changed:** `data/vanguard/full-run-posts.csv`, the three `*-full-final.csv` model files,
+`r-singularity-pilot-codes-majority-full-final.csv`, `three-model-reliability-full-final.csv`,
+`site/vanguard-pilot-r-singularity.png` and `.csv`, the pilot report (Results, Agreement and
+the to-do list), the figure script's docstring (post count only), and this record.
