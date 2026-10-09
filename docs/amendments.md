@@ -445,3 +445,34 @@ page or the paper that introduced the system (`events-017` to `events-021`). Alp
 is at month precision because no source read gave the match dates; GPT-3 is dated by its
 paper (28 May 2020), since the API announcement of 11 June 2020 does not name it. As the
 statement record grows, releases its statements name are added under the same rule.
+
+## 2026-10-08: institutional events since November 2023 added
+
+Decided by: john ("add the post-2024 institutional events too"). The inclusion rule below is
+the agent's, written to match the events already listed; John can change it.
+
+### A22. Fifteen institutional events, May 2024 to September 2026
+
+The events list stopped at November 2023. It now runs to September 2026, under the founding
+plan's own description of these rows ("institutional moments"), made explicit:
+
+1. Open letters and statements signed by many leading AI researchers, heads of AI companies
+   or AI-company employees.
+2. International AI summits and the declarations they end with.
+3. Government actions that set or replace national or EU policy on advanced AI as a whole,
+   and California's actions on the largest AI models, since most leading AI companies are
+   based there. US executive orders that only touch on AI, or set up a programme (the
+   Genesis Mission, Executive Order 14363), are left out.
+4. Reports written for governments jointly, such as the International AI Safety Report.
+
+Added: the Seoul summit and declaration (2024-05-21); A Right to Warn about Advanced AI
+(2024-06-04); the EU AI Act's entry into force (2024-08-01); California's veto of SB 1047
+(2024-09-29); Executive Order 14179 (2025-01-23); the International AI Safety Report
+(2025-01-29); the Paris summit statement (2025-02-11); America's AI Action Plan
+(2025-07-23); California's SB 53 (2025-09-29); the Statement on Superintelligence
+(2025-10-22); Executive Order 14365 on state AI laws (2025-12-11); the New Delhi summit
+declaration (February 2026); Executive Order 14409 (2026-06-02); Pacing the Frontier (July
+2026); and Executive Order 14434, "Inaugurating the Era of Super Intelligence" (2026-09-29).
+Each date was read from the primary page (search log `events-022` to `events-027`). Two are
+at month precision because their own pages give no day: the New Delhi declaration and Pacing
+the Frontier.
