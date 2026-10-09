@@ -423,3 +423,25 @@ original page stay quoted in its notes. One reading on the page moves with it: t
 part now says about 15 years of expected waiting disappeared between the 2022 and 2023
 surveys, where it said about 14. The card's comparison with the 2016 survey does not use the
 2022 figure and is unchanged.
+
+## 2026-10-08: AI releases added to the events list
+
+Decided by: john ("add the product launches to the events list"). The inclusion rule below
+is the agent's, made so that the list is not chosen by taste; John can change it.
+
+### A21. A new kind of event, `ai_release`, and seven releases
+
+The events list (`data/events.csv`) held only institutional moments: open letters, public
+statements, government actions and reports. It had no AI releases, so the record could not
+be read against the launches people were reacting to (ChatGPT, GPT-4). It now has a fifth
+kind, `ai_release`: the public release of an AI system, or a public demonstration such as a
+match.
+
+Inclusion rule: a release is listed when the system is named in at least one statement in
+`data/statements.csv` (quote or claim summary). The scan (search log `events-016`) found
+seven: AlphaGo (the 2016 match with Lee Sedol), GPT-2 (2019), GPT-3 (2020), ChatGPT (2022),
+GPT-4 (2023), DeepSeek-R1 (2025) and GPT-5 (2025). Each date was read from the maker's own
+page or the paper that introduced the system (`events-017` to `events-021`). AlphaGo's row
+is at month precision because no source read gave the match dates; GPT-3 is dated by its
+paper (28 May 2020), since the API announcement of 11 June 2020 does not name it. As the
+statement record grows, releases its statements name are added under the same rule.

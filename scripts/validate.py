@@ -74,7 +74,7 @@ CODED_FIELDS = {
 UNITS = {"year", "probability", "percent_of_respondents", "index",
          # world_measures.csv only
          "minutes", "days", "percent", "percent_growth"}
-EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report"}
+EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report", "ai_release"}  # ai_release: amendment A21
 PRECISION_PATTERNS = {
     "day": re.compile(r"^\d{4}-\d{2}-\d{2}$"),
     "month": re.compile(r"^\d{4}-\d{2}$"),

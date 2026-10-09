@@ -884,13 +884,37 @@ forecasts part now says about 15 years of expected waiting disappeared
 between the 2022 and 2023 surveys, where it said about 14. The card's
 comparison with the 2016 survey does not use the 2022 figure and is
 unchanged.</p>
-<p class="cite">Rendered from <code>docs/amendments.md</code> at version 5e31772.</p></div>
+<h2 id="2026-10-08-ai-releases-added-to-the-events-list">2026-10-08: AI
+releases added to the events list</h2>
+<p>Decided by: john ("add the product launches to the events list"). The
+inclusion rule below is the agent's, made so that the list is not chosen
+by taste; John can change it.</p>
+<h3 id="a21-a-new-kind-of-event-ai_release-and-seven-releases">A21. A
+new kind of event, <code>ai_release</code>, and seven releases</h3>
+<p>The events list (<code>data/events.csv</code>) held only
+institutional moments: open letters, public statements, government
+actions and reports. It had no AI releases, so the record could not be
+read against the launches people were reacting to (ChatGPT, GPT-4). It
+now has a fifth kind, <code>ai_release</code>: the public release of an
+AI system, or a public demonstration such as a match.</p>
+<p>Inclusion rule: a release is listed when the system is named in at
+least one statement in <code>data/statements.csv</code> (quote or claim
+summary). The scan (search log <code>events-016</code>) found seven:
+AlphaGo (the 2016 match with Lee Sedol), GPT-2 (2019), GPT-3 (2020),
+ChatGPT (2022), GPT-4 (2023), DeepSeek-R1 (2025) and GPT-5 (2025). Each
+date was read from the maker's own page or the paper that introduced the
+system (<code>events-017</code> to <code>events-021</code>). AlphaGo's
+row is at month precision because no source read gave the match dates;
+GPT-3 is dated by its paper (28 May 2020), since the API announcement of
+11 June 2020 does not name it. As the statement record grows, releases
+its statements name are added under the same rule.</p>
+<p class="cite">Rendered from <code>docs/amendments.md</code> at version 0fa2ee1.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 8 October 2026 (version 5e31772) from 159 expert statements, 97 measurements of AI and the economy and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 8 October 2026 (version 0fa2ee1) from 159 expert statements, 97 measurements of AI and the economy and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
