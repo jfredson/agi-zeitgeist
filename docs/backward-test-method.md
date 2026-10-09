@@ -112,3 +112,38 @@ verdict is "entered" if any quarter in it is "entered".
 - `data/backward-test/epoch-notable-models-1990-2020.csv`: the saved compute extract.
 - `data/backward-test/results-by-quarter.csv` and `results-by-year.csv`: the outputs.
 - `data/backward-test/leg-a-windows.csv`: every twelve-month window and its doubling time.
+
+## Result of the first run (2026-10-09)
+
+Written after the run; nothing above this section was changed after seeing the result.
+Reproduce with `python3 scripts/backward_test.py`.
+
+**Pass: "not entered" in every quarter from 1995 to 2019**, and it holds on the measured
+legs alone (with legs B and C assumed met, the answer is the same). What carries it is leg
+D: world growth peaked at 4.57 percent (2000) in the period, against a line of 30 percent.
+Leg D's gauge peaks at 0.26 (2000), on a scale where 1 is the line.
+
+The internet years (1995 to 2000): leg A cannot be scored (only two record-setting systems
+in Epoch's list fall in those six years, LSTM in 1997 and a neural language model in 2000,
+so no twelve-month window holds three); legs B and C are not measurable; leg D is far below
+its line. The expected pattern ("leg B and nothing else") is **untested**, because leg B has
+no series for those years.
+
+The deep-learning years (2012 to 2017) do **not** match the expected pattern of leg A
+"firing weakly". Four record-setting systems came within six months in 2014 (SPPNet, VGG16,
+Seq2Seq LSTM, SNM-skip), and the twelve-month doubling time of training compute came in at
+26.5 days and then 25.8 days, below the 30.44-day line. The gauge reads 1.00 from late 2014
+to mid-2016. Leg A was not met only because the rule also asks for three windows in a row
+each quicker than the last, and there were only two windows before the record-setting
+stopped for a while. The same thing happens in late 2019 (24.3 days, from Megatron-BERT,
+T5 and AlphaStar within six weeks). Two cautions on reading this: the series measures what
+went into AI systems, not what they could do; and with only three or four systems in a
+window, one large system can swing the fitted doubling time a long way.
+
+What this means for the thresholds is a question for John, not for this run. The pass does
+not depend on leg A: it rests entirely on leg D. On this stand-in series, the pace line on
+its own would have been crossed in 2014, and the "getting quicker" part of the rule plus
+the three-system minimum are what held it.
+
+Files written: `data/backward-test/leg-a-windows.csv` (6 scored windows from 21
+record-setting systems), `results-by-quarter.csv` (100 quarters), `results-by-year.csv`.
