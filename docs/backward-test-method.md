@@ -147,3 +147,47 @@ the three-system minimum are what held it.
 
 Files written: `data/backward-test/leg-a-windows.csv` (6 scored windows from 21
 record-setting systems), `results-by-quarter.csv` (100 quarters), `results-by-year.csv`.
+
+## Corrections after the independent check (2026-10-09)
+
+An independent session reproduced the run and passed it with conditions (its comment is on
+the pull request). Three points are added here; nothing above this section was changed,
+the frozen thresholds were not touched, and the verdict is the same.
+
+**1. The pace rule can be read two ways.** The frozen wording is "still falling over the
+last two windows". The live site, and the run above, read that as three windows in a row,
+each quicker than the one before. It can also be read as one drop: the latest window
+quicker than the one before it. The two readings give different answers here:
+
+- Three quicker windows in a row (the live site's reading): the pace condition is never met
+  from 1995 to 2019. In 2014 only two windows existed (26.5 days, then 25.8 days).
+- One drop: the pace condition is met from the fourth quarter of 2014 to the second quarter
+  of 2016 (seven quarters, more than the four in a row the mark needs), and again in the
+  fourth quarter of 2019 (92.5 days, then 24.3 days).
+
+The test passes on either reading, because world growth never came near 30 percent: "not
+entered" in every quarter, also with the forecasting and AI-doing-the-improving conditions
+assumed met. Which reading the rule means is for John to settle. The results files now carry
+both (`leg_a_looser_reading` and the `looser_pace_reading` verdict columns). The "held back
+only by the getting-quicker rule" sentence above is true of the stricter reading only.
+
+A smaller point from the same check: the 25.8-day window stays the latest one for seven
+quarters because no new record-setting system arrived until the third quarter of 2016, and
+the rule keeps the latest window until a new one arrives. That is how the live rule works
+too, and it is part of why the pace gauge sits at 1.00 for so long.
+
+**2. The 25.8-day figure rests on an uncertain estimate.** The window ending in December
+2014 includes SNM-skip (a Google language model), whose training compute Epoch grades
+"Speculative", its least certain grade. The 26.5-day window just before it does not include
+SNM-skip and is also under the line.
+
+**3. What "record-setting" means here.** The method says a system counts if it beats
+"every earlier system in the dataset". The code compares only within the saved 1990 to 2020
+rows. Chosen: keep the code as it is and read "the dataset" as the saved rows, because
+the saved extract is what makes the run reproducible without the live file, and the choice
+makes no difference to the test. Checked with
+`python3 scripts/backward_test.py --check-pre1990 FILE` (FILE being a full copy of Epoch's
+file): counting the systems from before 1990 removes two 1990 systems from the record list
+(NETtalk reimplementation and SexNet compression; 21 becomes 19), and no window from 1995
+to 2019 changes. The re-run after these corrections left `leg-a-windows.csv` byte for byte
+the same.
