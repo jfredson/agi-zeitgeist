@@ -455,8 +455,8 @@ rebuilt and each quarter checked; a quarter stopped as soon as it reached 20.
 5 posts coded in all: 1 in 2025Q1, 1 in 2025Q4, 3 in 2026Q3. Cut-off ranks now 30, 33 and 29.
 The posts were appended to `data/vanguard/full-run-posts.csv` (which `--full` reads), so the
 model files, the majority file and the reliability table now cover 395 posts. Gemini and GPT
-were run with the full run's command and `--max-new` set to the round's size; both confirmed
-their pins before each round (`gemini-3.1-pro-preview` version `3.1-pro-preview-01-2026`;
+were run with the full run's command and `--max-new` set to the round's size; before each round both
+scripts checked that the model versions were still the fixed ones used in the full run (`gemini-3.1-pro-preview` version `3.1-pro-preview-01-2026`;
 `gpt-6-astra` created 1787853604). Claude: three fresh blind `claude-opus-5-5` coders with the
 full run's brief (`claude-coding-brief-full-final.md`), parts 7, 8 and 9 (coder labels
 `claude-opus-5-5-full-final-p7` to `-p9`), merged into the Claude file with
@@ -464,8 +464,11 @@ full run's brief (`claude-coding-brief-full-final.md`), parts 7, 8 and 9 (coder 
 always gives for a file with both samples). No request was refused.
 
 **Raw replies kept** in `~/Documents/.agi-zeitgeist/work/vanguard_pilot/` as before: Gemini in
-`crossfamily_raw_full-final/`, GPT in `gpt_raw_full-final/` (one file per post id: `1ikq4lv`,
-`1pmfpka`, `1wgok3w`, `1vghb3m`, `1ulizqk`), Claude's inputs and outputs as
+`crossfamily_raw_full-final/`, GPT in `gpt_raw_full-final/` (one file per post id: `1ikq4lv`, 2025Q1 rank 30, the Pika
+"Additions" video; `1pmfpka`, 2025Q4 rank 33, the image titled "Crazy true"; `1wgok3w`,
+2026Q3 rank 27, the Japanese comic "From Japanese twitter"; `1vghb3m`, 2026Q3 rank 28, the
+Hassabis photo, an image with no legible text; `1ulizqk`, 2026Q3 rank 29, the screenshot
+titled "Anthropic guardrails does it again"), Claude's inputs and outputs as
 `claude_full_part7` to `part9` (`.json` in, `.csv` out). Rerunning `vanguard_three_way.py
 --full` and then `vanguard_figure.py` from the committed files reproduces the committed
 majority, table and figure without calling any model.

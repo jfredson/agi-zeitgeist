@@ -11,8 +11,9 @@ the reliability design, which he revised twice that day. Coding is fully model-b
 `docs/vanguard/pilot-run-r-singularity-2026-10.md`; codebook: `docs/vanguard/codebook.md`.
 
 **How coding was checked.** Three models from different companies each coded all 395
-screened posts blind (the 390 of the full-sample run and 5 reserve posts added 2026-10-09), under the final codebook (rules R2 and R3 adopted 2026-10-03, R1a
-adopted 2026-10-04):
+screened posts blind (the 390 of the full-sample run and 5 reserve posts added 2026-10-09), under the final codebook (rules adopted 2026-10-03: R2, telling company and policy news apart
+from capability claims, and R3, on what counts as hedging; adopted 2026-10-04: R1a, how to
+code whether the poster agrees when a post passes something on without comment):
 - `claude-opus-5-5` (Anthropic), six fresh coders, 65 posts each, and three more fresh coders
   for the 5 reserve posts;
 - `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026` (Google);
@@ -71,8 +72,8 @@ Leaving out posts coded from the title alone (60 of the 160 top posts, 37 of the
 posts): capability 40% and 42%; consequence 12% and 20%; industry and governance 41% and
 32%; extrapolation 8% and 30%; headline claims 1 and 0.
 
-By quarter, capability main claims range from 39% (2025Q1) to about 80% (2025Q3, 2025Q4) of
-top posts, and industry-and-governance claims peak in 2025Q1 (11 of 19; DeepSeek, Stargate,
+By quarter, capability main claims range from 40% (2026Q1, 8 of 20) and 42% (2025Q1, 8 of 19)
+to 79% (2025Q3, 15 of 19) and 75% (2025Q4, 15 of 20) of top posts, and industry-and-governance claims peak in 2025Q1 (11 of 19; DeepSeek, Stargate,
 the Musk–Altman fight) and 2026Q1 (10 of 20; Anthropic and the Pentagon). Extrapolation
 from a capability to a timeline or consequence is uncommon throughout: at most 3 of 11
 capability posts in any quarter of top posts.
@@ -114,7 +115,7 @@ three gave a different answer. Full table:
 |---|---|---|---|---|---|
 | Whether the post counts | 0.91 (395) | 0.91 (395) | 0.94 (395) | 0% | reliable |
 | What the claim is about | 0.77 (263) | 0.83 (258) | 0.76 (262) | 2% | reliable |
-| Timing (already here, forecast, …) | 0.64 (263) | 0.64 (258) | 0.62 (262) | 5% | reliable |
+| Timing (already here, forecast, …) | 0.64 (263) | 0.63 (258) | 0.62 (262) | 5% | reliable |
 | Whether the poster agrees | 0.75 (263) | 0.63 (258) | 0.55 (262) | 3% | reliable |
 | Hedging | 0.73 (263) | 0.67 (258) | 0.54 (262) | 0% | reliable |
 | Tone of the post | 0.72 (263) | 0.76 (258) | 0.77 (262) | 0% | reliable |
