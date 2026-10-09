@@ -9,3 +9,8 @@ then removed from here.
 Each folder holds the member's statement rows, search rows, any statements by other
 panel members found along the way (`incidental.csv`), and the tracer's report, which
 says which years are fully searched and which leads are still unread.
+
+A folder that holds only `incidental.csv` belongs to a member whose own trace is already
+merged: those rows are statements by *other* panel members found along the way, held
+here until that other member's trace is merged too, then added to their rows (and
+dropped if their own trace already has the same statement).
