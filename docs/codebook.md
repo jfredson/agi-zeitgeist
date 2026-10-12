@@ -133,7 +133,7 @@ field, `present_capability`.
 |---|---|
 | `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", "predict", "going to", "almost certainly", a stated probability of 50% or more, a bet, "decades away", "at least N years", or a firm, unhedged first-person date ("I'm still saying 2029") (A14 rulings 10 and 11; A15 rulings 1, 5 and 6) |
 | `rejects` | says it won't happen, ever or by the horizon given. "It isn't here yet" is **not** a rejection (ruling 9) |
-| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10) |
+| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10). "Probably", "likely" and "perhaps" are not hedges of this kind: see the A23 rule below |
 | `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
 | `unexpressed` | discusses it without taking a position |
 
@@ -167,8 +167,22 @@ Rulings of 2026-10-01 (A14), with examples from the seed data:
   *Seed example, `marcus-2022-04`:* "we are still likely decades away from
   general-purpose, human-level AI" → `endorsement: accepts` (basis `"still likely
   decades away"`), `present_capability: disputed`, `timeline_type: qualitative`,
-  `timeline_text: "still likely decades away"`.
+  `timeline_text: "still likely decades away"`, and `ambiguous: yes` for the "likely"
+  (A23).
 - **Self-improvement words (ruling 12):** see section 1.
+- **"Probably", "likely" and "perhaps" (A23, ruled by John 2026-10-12).** A position
+  resting on one of these words is `accepts` with `ambiguous: yes` (field:
+  endorsement), whether the word governs the arrival claim ("it's likely that machines
+  will be smarter than us") or its timing ("still probably decades away", "likely
+  before too long"). If "may", "might" or "could" governs the same claim, ruling 10
+  wins and the code is `uncertain`. *Agent reading (2026-10-12):* the rule covers a
+  positive position; a negative one ("unlikely", "perhaps we are just not smart enough")
+  is not an acceptance and keeps its own code (`rejects` or `uncertain`), and a word
+  that governs something other than the claim ("algorithms, likely yet to be invented")
+  does not trigger the rule.
+  *Seed example, `marcus-2013-01`:* "It's likely that machines will be smarter than us
+  before the end of the century" → `endorsement: accepts` (basis `"It's likely that
+  machines will be smarter than us before the end of the century"`), `ambiguous: yes`.
 
 Hard cases:
 
