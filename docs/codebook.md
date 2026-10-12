@@ -1,6 +1,7 @@
 # Codebook, version 2
 
-How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14) from `docs/methodology-v2.md`
+How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14)
+and 2026-10-12 (amendment A23) from `docs/methodology-v2.md`
 section 2, which is the authority; this file turns its rules into decisions with
 examples. Changes go in `docs/amendments.md` first.
 
@@ -53,12 +54,29 @@ unit leads with and record the other in `definition_note`.
 
 **"Takeoff" and loose self-improvement words (ruling 12, A14).** Code the lowest level
 the words support and set `ambiguous: yes`; put any speed the speaker gives ("slow",
-"fast", "gentle") in `timeline_text`. When the words don't say who does the improving
-(a bare "takeoff", "the AI will improve itself"), the lowest level is `si_assist`.
-Code `si_sustained` only when the words themselves describe repeated rounds with little
-human role ("each generation builds the next", "an intelligence explosion with no one
-in the loop"). The labels "recursive self-improvement" and "intelligence explosion"
-alone don't do that.
+"fast", "gentle") in `timeline_text`. The lowest level depends on the answer to
+question 1 above:
+
+- When the words **don't say who does the improving** (a bare "takeoff" or "hard
+  takeoff", "FOOM", "large jumps in intelligence"), the lowest level is `si_assist`
+  (A15 ruling 3 confirms this for a bare "takeoff").
+- When the words **do say the AI improves itself** ("the AI will improve itself", "a
+  machine improves itself", "a self-improving system", "improve their own
+  capabilities", "recursive self-improvement"), question 1 is answered and the lowest
+  level those words support is `si_modify`. Ruled by John 2026-10-12 (A23): an earlier
+  version of this paragraph listed "the AI will improve itself" among the words that
+  don't say who improves, which contradicted question 1.
+- Code `si_sustained` only when the words themselves describe repeated rounds with
+  little human role ("each generation builds the next", "an intelligence explosion with
+  no one in the loop", "reprogram itself to be smarter and iterate ... 24 hours a day").
+  The labels "recursive self-improvement" and "intelligence explosion" alone don't do
+  that: they say the system improves itself, so `si_modify`.
+- **Rejections and doubts.** When the speaker rejects or doubts runaway growth ("there
+  will not be the run away exponential growth", "intelligence explosion is impossible",
+  "a hard takeoff scenario is very unlikely"), keep the level the speaker is rejecting
+  (the words describe it) rather than the lowest level. Coding `si_assist` would turn a
+  rejection of runaway growth into a rejection of AI helping people build AI, which
+  the speaker never said. Ruled by John 2026-10-12 (A23).
 
 - *Seed example, `altman-2023-04`:* Altman told the New York Times it would be a "very
   slow takeoff". The words don't say who improves the systems or how, so
