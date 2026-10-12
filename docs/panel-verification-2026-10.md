@@ -519,7 +519,7 @@ media sample has not run, so names quoted there are not yet added.
 
 ---
 
-## Notes after the full collection (2026-10-12, ruled by John; amendment A23)
+## Notes after the full collection (2026-10-12, ruled by John; amendment A24)
 
 The full collection (pull request 4) read each member year by year and found earlier
 statements than this record had. None changes a verdict or a tier. Recorded here so the

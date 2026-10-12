@@ -485,7 +485,7 @@ and "Places the method is silent". The recommendations were the session's; John 
 2026-10-12, in his words, "all as recommended". The rulings are recorded on the pull
 request as a comment of 2026-10-12 and applied by the commits that follow it.
 
-### A23. Self-improvement levels, hedge words, the silent points, and the panel record
+### A24. Self-improvement levels, hedge words, the silent points, and the panel record
 
 1. **The self-improvement level: amendment A14 ruling 12 governs, with its agent
    reading.** "The lowest level the words support" applies when the words say nothing

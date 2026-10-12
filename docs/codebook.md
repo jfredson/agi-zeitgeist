@@ -1,7 +1,7 @@
 # Codebook, version 2
 
 How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14)
-and 2026-10-12 (amendment A23) from `docs/methodology-v2.md`
+and 2026-10-12 (amendment A24) from `docs/methodology-v2.md`
 section 2, which is the authority; this file turns its rules into decisions with
 examples. Changes go in `docs/amendments.md` first.
 
@@ -63,7 +63,7 @@ question 1 above:
 - When the words **do say the AI improves itself** ("the AI will improve itself", "a
   machine improves itself", "a self-improving system", "improve their own
   capabilities", "recursive self-improvement"), question 1 is answered and the lowest
-  level those words support is `si_modify`. Ruled by John 2026-10-12 (A23): an earlier
+  level those words support is `si_modify`. Ruled by John 2026-10-12 (A24): an earlier
   version of this paragraph listed "the AI will improve itself" among the words that
   don't say who improves, which contradicted question 1.
 - Code `si_sustained` only when the words themselves describe repeated rounds with
@@ -76,7 +76,7 @@ question 1 above:
   "a hard takeoff scenario is very unlikely"), keep the level the speaker is rejecting
   (the words describe it) rather than the lowest level. Coding `si_assist` would turn a
   rejection of runaway growth into a rejection of AI helping people build AI, which
-  the speaker never said. Ruled by John 2026-10-12 (A23).
+  the speaker never said. Ruled by John 2026-10-12 (A24).
 
 - *Seed example, `altman-2023-04`:* Altman told the New York Times it would be a "very
   slow takeoff". The words don't say who improves the systems or how, so
@@ -133,7 +133,7 @@ field, `present_capability`.
 |---|---|
 | `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", "predict", "going to", "almost certainly", a stated probability of 50% or more, a bet, "decades away", "at least N years", or a firm, unhedged first-person date ("I'm still saying 2029") (A14 rulings 10 and 11; A15 rulings 1, 5 and 6) |
 | `rejects` | says it won't happen, ever or by the horizon given. "It isn't here yet" is **not** a rejection (ruling 9) |
-| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10). "Probably", "likely" and "perhaps" are not hedges of this kind: see the A23 rule below |
+| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10). "Probably", "likely" and "perhaps" are not hedges of this kind: see the A24 rule below |
 | `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
 | `unexpressed` | discusses it without taking a position |
 
@@ -168,9 +168,9 @@ Rulings of 2026-10-01 (A14), with examples from the seed data:
   general-purpose, human-level AI" → `endorsement: accepts` (basis `"still likely
   decades away"`), `present_capability: disputed`, `timeline_type: qualitative`,
   `timeline_text: "still likely decades away"`, and `ambiguous: yes` for the "likely"
-  (A23).
+  (A24).
 - **Self-improvement words (ruling 12):** see section 1.
-- **"Probably", "likely" and "perhaps" (A23, ruled by John 2026-10-12).** A position
+- **"Probably", "likely" and "perhaps" (A24, ruled by John 2026-10-12).** A position
   resting on one of these words is `accepts` with `ambiguous: yes` (field:
   endorsement), whether the word governs the arrival claim ("it's likely that machines
   will be smarter than us") or its timing ("still probably decades away", "likely
