@@ -1,0 +1,7 @@
+window_end,record_setting_system,days_per_doubling,systems_in_window,systems,at_or_below_line
+2014-09-10,Seq2Seq LSTM,26.5,3,SPPNet; VGG16; Seq2Seq LSTM,yes
+2014-12-03,SNM-skip,25.8,4,SPPNet; VGG16; Seq2Seq LSTM; SNM-skip,yes
+2016-09-26,GNMT,92.5,3,AlphaGo Fan; AlphaGo Lee; GNMT,no
+2019-10-30,AlphaStar,24.3,3,Megatron-BERT; T5-11B; AlphaStar,yes
+2020-01-28,Meena,62.1,4,Megatron-BERT; T5-11B; AlphaStar; Meena,no
+2020-05-28,GPT-3 175B (davinci),74.7,5,Megatron-BERT; T5-11B; AlphaStar; Meena; GPT-3 175B (davinci),no

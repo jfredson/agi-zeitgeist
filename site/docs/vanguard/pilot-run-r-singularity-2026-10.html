@@ -840,13 +840,150 @@ the title-only split in the pilot report.</p>
 <code>docs/vanguard/pilot-report-r-singularity-2026-10.md</code>, and
 this record. The web page's caption still says a 140-post subset; it is
 updated separately.</p>
-<p class="cite">Rendered from <code>docs/vanguard/pilot-run-r-singularity-2026-10.md</code> at version e8ac957.</p></div>
+<h2
+id="reserve-posts-coded-2026-10-09-every-quarter-now-has-20-eligible-top-posts">Reserve
+posts coded, 2026-10-09: every quarter now has 20 eligible top
+posts</h2>
+<p>Approved by John, 2026-10-09 ("Go."), for this purpose only, with a
+hard cap of $8 across the three models. Same method and scripts as the
+full-sample run: the final codebook, unchanged since 2026-10-04; each
+reserve post coded blind by all three models; majority by
+<code>vanguard_three_way.py --full</code>; figure by
+<code>vanguard_figure.py</code>. No new posts were drawn: the reserve is
+the ranked list of 60 per quarter already in
+<code>r-singularity-pilot-sample.csv</code>, with its content and images
+saved on 2026-10-03. There is no separate screening step: as in every
+earlier pass, a post is screened by coding it, and it counts if the
+majority finds it eligible.</p>
+<p><strong>Estimate, written before any paid call.</strong> Short
+quarters: 2025Q1 needed 1 more (19 of 29 screened eligible, 66%), 2025Q4
+1 more (19 of 32, 59%), 2026Q3 2 more (18 of 26, 69%). Expected about 7
+posts, ceiling about 14. Per post: Gemini $0.0253 (full-run average),
+GPT $0.054 (the quote), Claude no separate charge (it runs inside the
+Claude Code session). About $0.56 expected, $1.11 at the ceiling.
+Accounts: Gemini's October was about $22.03 against the earlier $22.50
+line, so 14 posts (about $0.35) would still fit under it; the OpenAI
+credit left was not recorded (about $4 if John's 2026-10-04 top-up was
+the $15 asked for), and there is no way to read the balance through the
+API, so a refusal would have been the signal.</p>
+<p><strong>How it ran.</strong> One post per short quarter at a time,
+all three models, then the majority rebuilt and each quarter checked; a
+quarter stopped as soon as it reached 20.</p>
+<ul>
+<li>Round 1: 2025Q1 rank 30 (video), 2025Q4 rank 33 (image), 2026Q3 rank
+27 (image). All three eligible by majority. 2025Q1 and 2025Q4 reach 20
+and stop.</li>
+<li>Round 2: 2026Q3 rank 28 (image). Not eligible: all three models
+found no legible text in the image.</li>
+<li>Round 3: 2026Q3 rank 29 (image). Eligible by majority. 2026Q3
+reaches 20.</li>
+</ul>
+<p>5 posts coded in all: 1 in 2025Q1, 1 in 2025Q4, 3 in 2026Q3. Cut-off
+ranks now 30, 33 and 29. The posts were appended to
+<code>data/vanguard/full-run-posts.csv</code> (which <code>--full</code>
+reads), so the model files, the majority file and the reliability table
+now cover 395 posts. Gemini and GPT were run with the full run's command
+and <code>--max-new</code> set to the round's size; before each round
+both scripts checked that the model versions were still the fixed ones
+used in the full run (<code>gemini-3.1-pro-preview</code> version
+<code>3.1-pro-preview-01-2026</code>; <code>gpt-6-astra</code> created
+1787853604). Claude: three fresh blind <code>claude-opus-5-5</code>
+coders with the full run's brief
+(<code>claude-coding-brief-full-final.md</code>), parts 7, 8 and 9
+(coder labels <code>claude-opus-5-5-full-final-p7</code> to
+<code>-p9</code>), merged into the Claude file with
+<code>vanguard_merge_codes.py</code> (its only complaints are the
+per-quarter "expected 20" counts it always gives for a file with both
+samples). No request was refused.</p>
+<p><strong>Raw replies kept</strong> in
+<code>~/Documents/.agi-zeitgeist/work/vanguard_pilot/</code> as before:
+Gemini in <code>crossfamily_raw_full-final/</code>, GPT in
+<code>gpt_raw_full-final/</code> (one file per post id:
+<code>1ikq4lv</code>, 2025Q1 rank 30, the Pika "Additions" video;
+<code>1pmfpka</code>, 2025Q4 rank 33, the image titled "Crazy true";
+<code>1wgok3w</code>, 2026Q3 rank 27, the Japanese comic "From Japanese
+twitter"; <code>1vghb3m</code>, 2026Q3 rank 28, the Hassabis photo, an
+image with no legible text; <code>1ulizqk</code>, 2026Q3 rank 29, the
+screenshot titled "Anthropic guardrails does it again"), Claude's inputs
+and outputs as <code>claude_full_part7</code> to <code>part9</code>
+(<code>.json</code> in, <code>.csv</code> out). Rerunning
+<code>vanguard_three_way.py --full</code> and then
+<code>vanguard_figure.py</code> from the committed files reproduces the
+committed majority, table and figure without calling any model.</p>
+<p><strong>Spend, from the token counts each reply returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>model</th>
+<th>posts</th>
+<th>input tokens</th>
+<th>output tokens (thinking included)</th>
+<th>cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemini</td>
+<td>5</td>
+<td>17,723</td>
+<td>7,029</td>
+<td>$0.12 (at $2 and $12 per million)</td>
+</tr>
+<tr>
+<td>GPT</td>
+<td>5</td>
+<td>18,838</td>
+<td>1,933</td>
+<td>about $0.27 (5 at the quote's $0.054; tokens per post close to the
+full run's average). Exact charge on OpenAI's billing page</td>
+</tr>
+<tr>
+<td>Claude</td>
+<td>5</td>
+<td>not metered separately</td>
+<td></td>
+<td>no separate charge</td>
+</tr>
+<tr>
+<td><strong>total</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>about $0.39</strong>, against the $8 cap</td>
+</tr>
+</tbody>
+</table>
+<p>Gemini's October is now about <strong>$22.15</strong>, still under
+the earlier $22.50 line.</p>
+<p><strong>What changed in the results.</strong> Reliability barely
+moved (every kappa within 0.02 of the 2026-10-07 table, every verdict
+the same). The random sample is untouched. Top posts counted: 156 to
+160. Main claim a capability 89 of 153 (58%) to 91 of 157 (58%);
+consequence 14 of 153 (9%) to 14 of 157 (9%); industry and governance 43
+of 153 (28%) to 44 of 157 (28%); capability posts that extrapolate 7 of
+89 (8%) to 7 of 91 (8%). Headline claims among top posts: 0 of 143 to
+<strong>1 of 147</strong> (1%). The one is the 2025Q4 reserve post at
+rank 33, an image titled "Crazy true", which two models code as literal
+singularity framing (the poster agrees, under way) and Gemini codes as
+ironic, so by majority it is literal and counts. 2026Q3's rank 27 post
+is coded ironic by all three, which the irony reading (2026-10-08) keeps
+out of the headline count in any case.</p>
+<p><strong>Files changed:</strong>
+<code>data/vanguard/full-run-posts.csv</code>, the three
+<code>*-full-final.csv</code> model files,
+<code>r-singularity-pilot-codes-majority-full-final.csv</code>,
+<code>three-model-reliability-full-final.csv</code>,
+<code>site/vanguard-pilot-r-singularity.png</code> and
+<code>.csv</code>, the pilot report (Results, Agreement and the to-do
+list), the figure script's docstring (post count only), and this
+record.</p>
+<p class="cite">Rendered from <code>docs/vanguard/pilot-run-r-singularity-2026-10.md</code> at version d5a0837.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 8 October 2026 (version e8ac957) from 159 expert statements, 97 measurements of AI and the economy and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>

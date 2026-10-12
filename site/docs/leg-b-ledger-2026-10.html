@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<title>Leg B ledger: first
+reading, 9 October 2026 | AGI Zeitgeist Tracker</title>
+<meta name="description" content="Leg B ledger: first
+reading, 9 October 2026: a document of the AGI Zeitgeist Tracker.">
+<meta name="author" content="John Fredrickson">
+<link rel="canonical" href="https://agizeitgeist.com/docs/leg-b-ledger-2026-10">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AGI Zeitgeist Tracker">
+<meta property="og:url" content="https://agizeitgeist.com/docs/leg-b-ledger-2026-10">
+<meta property="og:title" content="Leg B ledger: first
+reading, 9 October 2026 | AGI Zeitgeist Tracker">
+<meta property="og:description" content="Leg B ledger: first
+reading, 9 October 2026: a document of the AGI Zeitgeist Tracker.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
+<style>
+.brand { white-space: nowrap; }
+.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
+.rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
+.rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rail h4 + h4, .rail .rail-sec { margin-top: 18px; }
+.rail .rstatus { font-size: 13px; color: var(--text-soft); margin: 0 0 10px; line-height: 1.45; }
+.rail .rstatus b { color: var(--text); }
+.rail .mini { display: grid; grid-template-columns: 1.1em 1fr; gap: 6px 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.rail .mini .bar { margin: 0; height: 12px; }
+.rail .mini .bar span { display: none; }
+.rail .mini .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.rail .mini .k { color: var(--text-soft); font-weight: 600; }
+.rail .mini .v { grid-column: 2; margin: -4px 0 4px; font-size: 11px; }
+.rail .toc { display: flex; flex-direction: column; }
+.rail .toc a { padding: 5px 0; line-height: 1.35; color: var(--text-soft); text-decoration: none; font-size: 13.5px; }
+.rail .toc a:hover { color: var(--accent); }
+.rail .toc a.d3 { font-size: 12.5px; color: var(--muted); padding-left: 12px; }
+.rail .use { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.rail .use a { text-decoration: none; }
+@media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
+.hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' dates on the right.
+   Type roles follow The Belt Equation's hero: sans for the answer and claims, mono with tabular figures for
+   numbers, serif only for the explanatory line. */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
+.land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.land .kicker { margin: 0 0 12px; }
+.conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
+.cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
+.cond .n { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.cond .bar { margin: 5px 0 0; height: 7px; border-radius: 3px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
+.card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+.card .what b { color: var(--text); font-weight: 600; }
+.card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
+.card .ladder > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.1; }
+.card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.card .ladder span b { color: var(--text-soft); font-weight: 600; }
+.card .foot { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">AGI Zeitgeist</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+</div></header>
+<main class="container">
+<section class="hero"><p class=eyebrow>Document</p><h1>Leg B ledger: first
+reading, 9 October 2026</h1></section>
+<div class="status"><strong>A working document.</strong> It is one of the documents the site is built from, published as it is written for anyone checking the work, and it uses the project's own shorthand. The plain account of the same material is on the <a href="/">home page</a>.</div><div class="prose narrow document"><h1 id="leg-b-ledger-first-reading-9-october-2026">Leg B ledger: first
+reading, 9 October 2026</h1>
+<p>Method: <code>docs/leg-b-ledger-method.md</code> (committed before
+any row was built). Rows: <code>data/leg_b_ledger.csv</code>. Numbers:
+<code>python3 scripts/leg_b_ledger.py</code>. Every verdict is the
+agent's judgement; the rows record the evidence and the gap so John can
+overrule any one. Revised the same day after an independent check of the
+pull request, and closed by John's rulings of 12 October 2026 (both at
+the end).</p>
+<h2 id="the-answer">The answer</h2>
+<p>The singularity definition said the 2016 survey's milestones "mostly
+arrived early". The ledger does not support that as written. Every
+milestone that has arrived came early, but more milestones are past
+their forecast date and still not here than have arrived at all. (The
+sentence was amended on 12 October 2026, amendment A23 in
+<code>docs/amendments.md</code>; see the rulings at the end.)</p>
+<table>
+<thead>
+<tr>
+<th>verdict</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arrived (every stated condition met)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>arguably arrived (main capability met, exactly one condition unmet
+or untested)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>not arrived</td>
+<td>22</td>
+</tr>
+<tr>
+<td>no bar (the description sets nothing a demonstration could be
+checked against)</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Of the 22 not arrived, 11 are past their forecast date, so they are
+already late, and 11 are not yet due.</p>
+<p>Counting the 5 "arguably arrived" milestones as arrived, 17 forecasts
+can be judged so far: <strong>6 came early and 11 are late</strong>, and
+all 11 late ones are milestones that are overdue and have not arrived.
+Counting only the one clean arrival, 1 came early and 16 are late. So
+the totals tip late only because overdue milestones count as late. Of
+the arrivals alone, all came early.</p>
+<p>The split is by kind of task:</p>
+<ul>
+<li><strong>Early:</strong> transcribing speech, reading text aloud,
+writing simple code, answering open-ended questions from the internet,
+poker and Atari. Four arrived in about half to four-fifths of the
+forecast time (ratios 0.56 to 0.80). Two came far earlier: all Atari
+games (3.8 years against a forecast of 8.8) and poker (0.6 years against
+3.6).</li>
+<li><strong>Late:</strong> robots in the physical world (folding
+laundry, assembling LEGO), beating the best people at particular games
+(StarCraft, Angry Birds), learning a game from very little play, phone
+banking, translation, recognising an object from one picture, and two
+that have demonstrations with more than one gap (the high-school essay
+and answering factual questions from the internet). Angry Birds was
+forecast for 2019 and is at least seven years late.</li>
+</ul>
+<p>So the experts were too slow on what speech and language models went
+on to do, and too fast on robots and on narrow game-playing goals that
+the field stopped chasing.</p>
+<h2 id="what-the-headline-rests-on">What the headline rests on</h2>
+<p>Four rows were "arguably arrived" in the first draft and are now "not
+arrived", because each names more than one unmet or untested condition
+and the method allows only one: video from a new viewpoint, the Putnam
+maths competition, the high-school essay, and answering factual
+questions from the internet. Two of them (video and Putnam) are not yet
+due, so moving them changes no early-or-late count. The other two are
+overdue either way unless their dates count.</p>
+<p>The factual-questions row matters most. Its only demonstration is
+from April 2025, and the agent found nothing earlier that compares a
+system with people who had internet access on simple factual questions.
+Its forecast date is 9 September 2023. If John counts it as arrived and
+an earlier demonstration dated before about September 2023 turns up, it
+moves from late to early: 7 early and 10 late. If all four rows were
+counted with their current dates, the totals go back to the first
+draft's 9 early and 10 late. Either way, the milestones that arrived
+mostly came early, and the overdue ones are what tip the totals.</p>
+<h2 id="scored-by-lead-time">Scored by lead time</h2>
+<p>The ratio is actual time divided by forecast time; under 1 is
+early.</p>
+<table>
+<thead>
+<tr>
+<th>forecast lead</th>
+<th>early</th>
+<th>late, arrived</th>
+<th>overdue, not arrived</th>
+<th>not yet due</th>
+<th>not scored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>under 5 years</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5 to 10 years</td>
+<td>5</td>
+<td>0</td>
+<td>9</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10 years or more</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>11</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>(Generous reading. Four of the six arrivals came within a factor of
+two of their forecast; the two outside it, Atari and poker, both came
+far earlier.)</p>
+<p>The forecasts of five to ten years ahead are the ones that can be
+checked now: 5 arrived, all early, and 9 are overdue. Most longer
+forecasts are not yet due. There are too few yes-or-no events to find a
+lead beyond which the forecasts stop working, so this ledger records
+which way the forecasts missed. It does not give a forecast horizon.</p>
+<h2 id="where-the-agents-judgement-matters-most">Where the agent's
+judgement matters most</h2>
+<ul>
+<li><strong>Every arrival date means "no later than".</strong> The
+survey asked when a milestone would be <em>feasible</em> for a top lab
+within a year, and only demonstrations can be seen. This leans every row
+towards "late".</li>
+<li><strong>The one-condition rule decides four rows.</strong> A row
+whose demonstration meets the main capability but has two or three gaps
+fits none of the method's four verdicts exactly: "arguably arrived"
+allows one gap, and "not arrived" is written for no demonstration of the
+main capability. The agent put these rows under "not arrived", with the
+demonstration recorded as the nearest. That is the strict reading of the
+method, and the method text is unchanged.</li>
+<li><strong>Which gaps count is itself a judgement.</strong> Things the
+milestone does not state (for example, that a code model learned from
+public code including sorting routines) are noted in the rows but not
+counted as gaps.</li>
+<li><strong>Earlier demonstrations that did not qualify.</strong>
+Microsoft's speech system matched professional transcribers on telephone
+conversations in October 2016, but leaves both noise and a variety of
+accents untested, so Whisper (September 2022) still sets the date.
+Microsoft's March 2018 translation system beat non-professional
+translators, the milestone's own bar, but for Chinese news only, so
+translation stays not arrived.</li>
+<li><strong>Three weak "not arrived" verdicts</strong> (translation,
+phone banking, recognising an object from one picture) rest on not
+finding a published comparison with people, not on evidence the
+capability is missing.</li>
+<li><strong>Atari disagrees with the 2023 scoring</strong> for AI
+Impacts, which said not met. The agent read "all Atari games" as the
+standard 57-game test set; Agent57 (March 2020) beat the professional
+games tester's scores on all 57. The 2023 page gives no reason, and that
+reading may be the difference.</li>
+</ul>
+<h2 id="rulings-2026-10-12">Rulings (2026-10-12)</h2>
+<p>These were the open questions put to John on 9 October. He ruled on
+12 October 2026, in his words "all as recommended": each answer below
+was the session's recommendation and John approved it, so the authorship
+is mixed. The questions are kept as they were asked.</p>
+<ol type="1">
+<li><p>The four milestones left unscored (sorting long lists without the
+form of the solution, grouping unseen objects, answering questions with
+no definite answer, explaining game moves): give each a bar, or keep
+them out.</p>
+<p><strong>Ruling:</strong> keep them out. They stay out of the scores
+and their verdict is recorded as "no bar" (it was "left for John" until
+this ruling). A bar set now would be chosen after seeing the answers,
+which is the thing the method was written to avoid.</p></li>
+<li><p>The five "arguably arrived" rows: which count as arrived?</p>
+<p><strong>Ruling:</strong> none is promoted. The five rows stay
+"arguably arrived", and the strict total (only clean arrivals count) and
+the generous total (arguably arrived counts too) both keep being
+reported, as the method says.</p></li>
+<li><p>The one-condition rule: should the method get a fifth verdict
+(for example "partly arrived") for a demonstration of the main
+capability with more than one gap, or allow more than one gap under
+"arguably arrived"? Either is an amendment, and either would bring back
+the four rows moved on 9 October.</p>
+<p><strong>Ruling:</strong> no fifth verdict. The one-condition rule
+stays as written, and the four rows moved on 9 October (video from a new
+viewpoint, the Putnam, the high-school essay, answering factual
+questions from the internet) stay "not arrived" with their nearest
+demonstration recorded.</p></li>
+<li><p>The singularity definition's sentence "Milestones from the 2016
+Grace survey mostly arrived early" holds for the milestones that
+arrived, but not for the survey as a whole. Reword it (an amendment), or
+wait for the rulings above?</p>
+<p><strong>Ruling:</strong> amend it now, dated. The sentence now says
+that the milestones that arrived came early, that most of the survey's
+milestones have not arrived, and that eleven are overdue. Recorded as
+amendment A23 in <code>docs/amendments.md</code>, citing this
+ledger.</p></li>
+<li><p>Leg B's gauge is defined on forecasts of METR's task-length
+measure, which this ledger cannot supply. Is this ledger the record of
+which way forecasts missed and nothing more, or should it feed the gauge
+somehow?</p>
+<p><strong>Ruling:</strong> the record of which way forecasts missed,
+and nothing more. Leg B's gauge stays defined on the task-length
+measure, and this ledger does not feed it.</p></li>
+</ol>
+<h2 id="revisions-after-the-independent-check-9-october-2026">Revisions
+after the independent check (9 October 2026)</h2>
+<ul>
+<li>Poker re-dated to Libratus, whose match against four top heads-up
+professionals ended 30 January 2017 (Carnegie Mellon's news release;
+Science paper). Pluribus (July 2019) is kept in the row as the later,
+broader result.</li>
+<li>Speech transcription checked against Microsoft's October 2016
+human-parity paper and left on Whisper, because the Microsoft result
+leaves two conditions untested.</li>
+<li>Four rows moved from "arguably arrived" to "not arrived" under the
+one-condition rule.</li>
+<li>Translation now records Microsoft's March 2018 Chinese-to-English
+result as its nearest demonstration.</li>
+<li>Atari now states the 57-game reading.</li>
+<li>Putnam: the "top human score was 90" figure is the maker's
+comparison, found only in news coverage; the agent could not open the
+competition organiser's results page.</li>
+</ul>
+<p class="cite">Rendered from <code>docs/leg-b-ledger-2026-10.md</code> at version d5a0837.</p></div>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">AGI Zeitgeist Tracker</span>
+<p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+</div></div></footer>
+<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>
+</body>
+</html>

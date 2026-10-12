@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<title>Leg
+B ledger: method for scoring the 2016 survey&#x27;s milestone forecasts | AGI Zeitgeist Tracker</title>
+<meta name="description" content="Leg
+B ledger: method for scoring the 2016 survey&#x27;s milestone forecasts: a document of the AGI Zeitgeist Tracker.">
+<meta name="author" content="John Fredrickson">
+<link rel="canonical" href="https://agizeitgeist.com/docs/leg-b-ledger-method">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AGI Zeitgeist Tracker">
+<meta property="og:url" content="https://agizeitgeist.com/docs/leg-b-ledger-method">
+<meta property="og:title" content="Leg
+B ledger: method for scoring the 2016 survey&#x27;s milestone forecasts | AGI Zeitgeist Tracker">
+<meta property="og:description" content="Leg
+B ledger: method for scoring the 2016 survey&#x27;s milestone forecasts: a document of the AGI Zeitgeist Tracker.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
+<style>
+.brand { white-space: nowrap; }
+.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
+.rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
+.rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rail h4 + h4, .rail .rail-sec { margin-top: 18px; }
+.rail .rstatus { font-size: 13px; color: var(--text-soft); margin: 0 0 10px; line-height: 1.45; }
+.rail .rstatus b { color: var(--text); }
+.rail .mini { display: grid; grid-template-columns: 1.1em 1fr; gap: 6px 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.rail .mini .bar { margin: 0; height: 12px; }
+.rail .mini .bar span { display: none; }
+.rail .mini .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.rail .mini .k { color: var(--text-soft); font-weight: 600; }
+.rail .mini .v { grid-column: 2; margin: -4px 0 4px; font-size: 11px; }
+.rail .toc { display: flex; flex-direction: column; }
+.rail .toc a { padding: 5px 0; line-height: 1.35; color: var(--text-soft); text-decoration: none; font-size: 13.5px; }
+.rail .toc a:hover { color: var(--accent); }
+.rail .toc a.d3 { font-size: 12.5px; color: var(--muted); padding-left: 12px; }
+.rail .use { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.rail .use a { text-decoration: none; }
+@media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
+.hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' dates on the right.
+   Type roles follow The Belt Equation's hero: sans for the answer and claims, mono with tabular figures for
+   numbers, serif only for the explanatory line. */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
+.land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.land .kicker { margin: 0 0 12px; }
+.conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
+.cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
+.cond .n { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.cond .bar { margin: 5px 0 0; height: 7px; border-radius: 3px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
+.card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+.card .what b { color: var(--text); font-weight: 600; }
+.card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
+.card .ladder > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.1; }
+.card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.card .ladder span b { color: var(--text-soft); font-weight: 600; }
+.card .foot { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">AGI Zeitgeist</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+</div></header>
+<main class="container">
+<section class="hero"><p class=eyebrow>Document</p><h1>Leg
+B ledger: method for scoring the 2016 survey&#x27;s milestone forecasts</h1></section>
+<div class="status"><strong>A working document.</strong> It is one of the documents the site is built from, published as it is written for anyone checking the work, and it uses the project's own shorthand. The plain account of the same material is on the <a href="/">home page</a>.</div><div class="prose narrow document"><h1
+id="leg-b-ledger-method-for-scoring-the-2016-surveys-milestone-forecasts">Leg
+B ledger: method for scoring the 2016 survey's milestone forecasts</h1>
+<p><strong>Status: method written 2026-10-09 by the agent, before any
+ledger row was built. Every choice below is the agent's own and John can
+reverse any of them. Changing a rule after the ledger is built is an
+amendment entry, never a quiet edit.</strong></p>
+<h2 id="what-this-ledger-is-for">What this ledger is for</h2>
+<p>The singularity-entry definition
+(<code>docs/singularity-entry-definition.md</code>, leg B) says that
+when forecasts were wrong we should record which way: did things come
+sooner or later than predicted? It also says, without a source, that
+"milestones from the 2016 Grace survey mostly arrived early". This
+ledger checks that sentence (which was amended on 2026-10-12, amendment
+A23, after the ledger's first reading). It takes every milestone date
+the 2016 survey of machine learning researchers published, finds when
+each milestone actually arrived, and scores each forecast by how far
+ahead it looked and how far off it was.</p>
+<p>It does not compute the leg B gauge. That gauge is defined on
+forecasts of one number (the length of software task an AI can finish,
+as measured by METR) and compares them with simply extending the trend.
+The survey's milestones are yes-or-no events with no trend to extend, so
+they cannot fill that formula. Whether this ledger should feed the gauge
+at all, and how, is a question for John.</p>
+<h2 id="sources">Sources</h2>
+<p><strong>The forecasts.</strong> Grace, Salvatier, Dafoe, Zhang and
+Evans, "When Will AI Exceed Human Performance? Evidence from AI
+Experts", arXiv 1705.08807, version 3 (May 2018; the version published
+in the Journal of Artificial Intelligence Research). Table S5 lists 32
+milestones, each with its full description, how many people answered it,
+and a median in years from 2016. That median is the year by which the
+combined answers give an even chance, averaged over the survey's two
+ways of asking. The table is read from the paper's own source files on
+arXiv, not retyped from a summary. AI Impacts' survey page gives
+different medians because it reports only one of the two ways of asking;
+the paper's table is the published figure and is the one used.</p>
+<p><strong>When each milestone arrived.</strong> A dated public
+demonstration: the paper, the maker's own announcement, or the official
+result of a competition, read at its source. News coverage and blog
+round-ups can point to a demonstration but are never the evidence for
+it. Each row records the source, its date, and how that date was
+established.</p>
+<p><strong>A comparison, not a source.</strong> Patrick Levermore's
+scoring for AI Impacts (1 March 2023) judged which milestones had been
+met by early 2023. His yes-or-no verdicts are recorded beside ours so
+that disagreements show. They are never used to decide a row.</p>
+<h2 id="the-forecast-date-and-the-lead-time">The forecast date and the
+lead time</h2>
+<ul>
+<li><strong>When the forecast was made:</strong> 28 June 2016, the day
+the survey closed (answers came in between 3 May and 28 June 2016).
+Using the middle of that window instead would move every number below by
+about a month.</li>
+<li><strong>Forecast lead:</strong> the Table S5 median, in years.</li>
+<li><strong>Forecast date for the milestone:</strong> 28 June 2016 plus
+the forecast lead.</li>
+<li><strong>Actual lead:</strong> the time from 28 June 2016 to the
+arrival date, in years (days divided by 365.25).</li>
+</ul>
+<h2 id="how-arrived-is-decided">How "arrived" is decided</h2>
+<p>The survey asked when each milestone would be
+<strong>feasible</strong>, meaning "one of the best resourced labs could
+implement it in less than a year if they chose to". Nobody can observe
+feasibility from outside. What can be observed is the first public
+demonstration, which can only come at or after feasibility. So every
+arrival date here means "no later than", and the true lead times may be
+shorter, never longer. This leans every score towards "arrived
+late".</p>
+<p>Each milestone's full description in Table S5 is split into its
+stated conditions (for example, StarCraft: beat the best human players,
+at least half the time, given only a video of the screen). Each row then
+gets one of four verdicts:</p>
+<ol type="1">
+<li><strong>Arrived.</strong> A dated public demonstration meets every
+stated condition.</li>
+<li><strong>Arguably arrived.</strong> A demonstration meets the main
+capability, but one stated condition was not tested or was only nearly
+met (for example, judged by ordinary listeners where the milestone says
+expert listeners). The row names the gap.</li>
+<li><strong>Not arrived.</strong> No public demonstration meeting the
+main capability was found by 9 October 2026. The nearest demonstration
+found is recorded, if there is one.</li>
+<li><strong>No bar.</strong> The description sets no bar a demonstration
+could be checked against (for example, "give good answers"), so the
+agent cannot decide it without inventing one. (Called "left for John"
+until 2026-10-12, when John ruled that these rows stay out of the scores
+rather than being given a bar after the fact; the verdict's meaning is
+unchanged.)</li>
+</ol>
+<p>When more than one demonstration qualifies, the earliest found is
+used. Because the search cannot prove nothing earlier exists, a later
+find can only move a date earlier.</p>
+<h2 id="how-each-forecast-is-scored">How each forecast is scored</h2>
+<p>For each milestone that arrived or arguably arrived:</p>
+<ul>
+<li><strong>Years early or late:</strong> actual lead minus forecast
+lead. Below zero means it came sooner than forecast.</li>
+<li><strong>Ratio:</strong> actual lead divided by forecast lead. A
+ratio of 0.5 means it came in half the forecast time; 2 means it took
+twice as long. The ratio is the main score, because a two-year miss on a
+three-year forecast is worse than a two-year miss on a thirty-year
+one.</li>
+<li><strong>Within a factor of two:</strong> whether the ratio is
+between 0.5 and 2.</li>
+</ul>
+<p>For a milestone that has not arrived, the actual lead is only known
+to be longer than the time elapsed so far (10.28 years at 9 October
+2026):</p>
+<ul>
+<li>If its forecast date has passed, it is <strong>late</strong>, by at
+least the elapsed time minus the forecast lead, and its ratio is at
+least elapsed divided by forecast.</li>
+<li>If its forecast date has not passed, it is <strong>not yet
+due</strong> and is not scored either way.</li>
+</ul>
+<p>Rows with no bar are listed but not scored.</p>
+<h2 id="what-is-reported">What is reported</h2>
+<ul>
+<li>Every row: milestone, the survey's forecast, the verdict, the
+demonstration and its date, the gap if arguably arrived, the scores, and
+the 2023 comparison verdict.</li>
+<li>Counts of early, late and not yet due, twice: once counting only
+"arrived" as arrived (the strict reading) and once also counting
+"arguably arrived" (the generous reading). The two are always shown
+together, because the agent's judgement sits between them.</li>
+<li>The same counts split by forecast lead: under five years, five to
+ten years, and ten years or more. A forecast horizon in the definition's
+sense would show up as forecasts going wrong past some lead. With 32
+yes-or-no events this is a description, not a measurement.</li>
+</ul>
+<h2 id="files">Files</h2>
+<ul>
+<li><code>data/leg_b_ledger.csv</code>: one row per milestone, with
+every source and date.</li>
+<li><code>scripts/leg_b_ledger.py</code>: checks the rows against this
+method and prints the scores.</li>
+<li><code>docs/leg-b-ledger-2026-10.md</code>: the first reading and the
+questions it leaves for John.</li>
+</ul>
+<p class="cite">Rendered from <code>docs/leg-b-ledger-method.md</code> at version d5a0837.</p></div>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">AGI Zeitgeist Tracker</span>
+<p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+</div></div></footer>
+<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>
+</body>
+</html>
