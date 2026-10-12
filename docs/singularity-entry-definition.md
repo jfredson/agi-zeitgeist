@@ -1,6 +1,7 @@
 # A measurable definition of "entering the singularity"
 
-**Status: adopted 2026-10-08 (amendment A19 in `docs/amendments.md`), with four legs.**
+**Status: adopted 2026-10-08 (amendment A19 in `docs/amendments.md`), with four legs;
+one sentence in leg B amended 2026-10-12 (A23, section 8).**
 The frozen values are in `docs/singularity-entry-thresholds.json`; the page at
 agizeitgeist.com scores the gauges from that file. The draft this grew from
 is kept unchanged as `docs/singularity-entry-definition-draft-2026-10-07.md`. Changing any
@@ -82,8 +83,11 @@ The forecast horizon H(s) is the largest lead d at which S(s, d) is still above 
 - **Gauge:** g_B(t) = clip((H_ref − H(t)) / (H_ref − 1 year), 0, 1), with H_ref the
   horizon in the reference year.
 - **Direction is recorded, not just size.** Were the forecasts too slow or too fast?
-  Milestones from the 2016 Grace survey mostly arrived early. "Consistently too slow"
-  is a claim about the world; "unpredictable" hides it.
+  Of the 2016 Grace survey's 32 milestones, every one that has arrived came early, but most
+  have not arrived, and eleven are past their forecast date (ledger of 9 October 2026,
+  `docs/leg-b-ledger-2026-10.md`; this sentence was amended on 2026-10-12, amendment A23,
+  from "Milestones from the 2016 Grace survey mostly arrived early"). "Consistently too
+  slow" is a claim about the world; "unpredictable" hides it.
 - **Lag.** H(t) can only be computed once t + d has passed, so leg B is confirmed in
   arrears. The real-time stand-in is revision velocity: with M(t) the consensus
   arrival date for human-level AI (surveys, Metaculus, Manifold, all already in
@@ -210,3 +214,17 @@ Proposed by the agent, approved by John unless marked otherwise:
 | economic leg | **added as leg D (decided by John, against the agent's recommendation)** | the only leg measured outside the AI field |
 | leg D line | 30 percent a year (Davidson 2021); reference the 1961 to 2019 mean | a published line, not an invented one |
 | leg D timing | one annual reading covers its four quarters; revisions reset | the series is annual and revised |
+
+## 8. Record of the rulings (2026-10-12)
+
+Proposed by the agent after the first forecast ledger (`docs/leg-b-ledger-2026-10.md`) and
+the first backward test (`docs/backward-test-method.md`); approved by John ("all as
+recommended"). Only the first changes this document.
+
+| question | ruling | reason |
+|---|---|---|
+| "Milestones from the 2016 Grace survey mostly arrived early" (leg B, direction) | **amended** (A23): the milestones that arrived came early; most have not arrived; eleven are overdue | the ledger supports the sentence for the arrivals only, and the overdue milestones outnumber them |
+| what the forecast ledger is for | the record of which way forecasts missed, and nothing more; the gauge stays defined on the task-length measure | the survey's milestones are yes-or-no events and cannot fill the gauge's formula |
+| the ledger's four milestones with no bar, and its five "arguably arrived" rows | kept out of the scores as "no bar"; none promoted; strict and generous totals both reported | a bar set now would be chosen after seeing the answers |
+| the ledger's one-condition rule | unchanged, no fifth verdict | the strict reading is already written down and leaves the judgement visible |
+| leg A's pace rule ("still falling over the last two windows") | unchanged, read as the live site reads it: the last three windows each quicker than the one before | the 2014 and 2019 near-firings are noise in the training-compute stand-in (it measures inputs, and windows of three or four systems swing a lot), not a flaw in the rule |

@@ -14,7 +14,8 @@ from pathlib import Path
 
 LEDGER = Path(__file__).resolve().parent.parent / "data" / "leg_b_ledger.csv"
 SURVEY_CLOSED = date(2016, 6, 28)  # the forecast date (method: "The forecast date")
-VERDICTS = {"arrived", "arguably arrived", "not arrived", "left for John"}
+# "no bar" was "left for John" until John ruled on 2026-10-12 that those rows stay unscored.
+VERDICTS = {"arrived", "arguably arrived", "not arrived", "no bar"}
 BANDS = [("under 5 years", 0, 5), ("5 to 10 years", 5, 10), ("10 years or more", 10, 1e9)]
 
 
@@ -49,7 +50,7 @@ def score(r, as_of, generous):
     f = float(r["forecast_years"])
     v = r["verdict"]
     counted = v == "arrived" or (generous and v == "arguably arrived")
-    if v == "left for John":
+    if v == "no bar":
         return "not scored", None, None
     if counted:
         a = years(date.fromisoformat(r["demonstration_date"]))
