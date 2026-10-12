@@ -129,23 +129,28 @@ report: r/singularity, vanguard sub-series, 2024Q4 to 2026Q3</h1></section>
 <div class="status"><strong>A working document.</strong> It is one of the documents the site is built from, published as it is written for anyone checking the work, and it uses the project's own shorthand. The plain account of the same material is on the <a href="/">home page</a>.</div><div class="prose narrow document"><h1
 id="pilot-report-rsingularity-vanguard-sub-series-2024q4-to-2026q3">Pilot
 report: r/singularity, vanguard sub-series, 2024Q4 to 2026Q3</h1>
-<p><strong>Model-coded, no human coder.</strong> Updated 2026-10-08: the
-figure and the results now come from the majority codes of the
-full-sample run (all 390 posts, three models, final codebook). Updated
-2026-10-04 with Gemini's trial results (all three models complete on
-both trials). Updated 2026-10-03 after John's rulings: first on the
-first version of this report, then on the reliability design, which he
-revised twice that day. Coding is fully model-based (amendment section
-9; log entries of 2026-10-03). Run record:
-<code>docs/vanguard/pilot-run-r-singularity-2026-10.md</code>; codebook:
-<code>docs/vanguard/codebook.md</code>.</p>
+<p><strong>Model-coded, no human coder.</strong> Updated 2026-10-09:
+five more top posts from the ranked reserve were coded by all three
+models, so every quarter now has 20 eligible top posts (run record,
+2026-10-09). Updated 2026-10-08: the figure and the results now come
+from the majority codes of the full-sample run (all 390 posts, three
+models, final codebook). Updated 2026-10-04 with Gemini's trial results
+(all three models complete on both trials). Updated 2026-10-03 after
+John's rulings: first on the first version of this report, then on the
+reliability design, which he revised twice that day. Coding is fully
+model-based (amendment section 9; log entries of 2026-10-03). Run
+record: <code>docs/vanguard/pilot-run-r-singularity-2026-10.md</code>;
+codebook: <code>docs/vanguard/codebook.md</code>.</p>
 <p><strong>How coding was checked.</strong> Three models from different
-companies each coded all 390 screened posts blind, under the final
-codebook (rules R2 and R3 adopted 2026-10-03, R1a adopted
-2026-10-04):</p>
+companies each coded all 395 screened posts blind (the 390 of the
+full-sample run and 5 reserve posts added 2026-10-09), under the final
+codebook (rules adopted 2026-10-03: R2, telling company and policy news
+apart from capability claims, and R3, on what counts as hedging; adopted
+2026-10-04: R1a, how to code whether the poster agrees when a post
+passes something on without comment):</p>
 <ul>
 <li><code>claude-opus-5-5</code> (Anthropic), six fresh coders, 65 posts
-each;</li>
+each, and three more fresh coders for the 5 reserve posts;</li>
 <li><code>gemini-3.1-pro-preview</code>, version
 <code>3.1-pro-preview-01-2026</code> (Google);</li>
 <li><code>gpt-6-astra</code>, reasoning effort medium (OpenAI). OpenAI
@@ -167,9 +172,10 @@ selected AI enthusiast venues; not representative of participants or the
 public."</p>
 <p><img src="../../vanguard-pilot-r-singularity.png"
 alt="pilot figure" /></p>
-<h2 id="results-majority-codes-all-390-posts-final-codebook">Results
-(majority codes, all 390 posts, final codebook)</h2>
-<p>Written 2026-10-08. The figure is now drawn from the majority codes
+<h2 id="results-majority-codes-all-395-posts-final-codebook">Results
+(majority codes, all 395 posts, final codebook)</h2>
+<p>Written 2026-10-08; numbers updated 2026-10-09 after the reserve
+posts were coded. The figure is now drawn from the majority codes
 (<code>scripts/vanguard_figure.py</code>), not from Claude's first pass.
 Three things about how the numbers are counted:</p>
 <ul>
@@ -198,7 +204,7 @@ the headline count (an agent reading, not a ruling; see the run record,
 </ul>
 <p><strong>Primary measures.</strong> Share of eligible posts by what
 the main claim is about, all quarters together. Denominators differ
-because of the unresolved posts above; 156 top posts and 104 random
+because of the unresolved posts above; 160 top posts and 104 random
 posts are counted in all.</p>
 <table>
 <thead>
@@ -212,74 +218,81 @@ posts are counted in all.</p>
 <tr>
 <td>main claim is a specific capability (a model, benchmark, robot or
 demo)</td>
-<td>89 of 153 (58%)</td>
+<td>91 of 157 (58%)</td>
 <td>52 of 103 (50%)</td>
 </tr>
 <tr>
 <td>main claim is a consequence (jobs, society, the economy)</td>
-<td>14 of 153 (9%)</td>
+<td>14 of 157 (9%)</td>
 <td>16 of 103 (16%)</td>
 </tr>
 <tr>
 <td>main claim is industry and governance (AI company and policy
 drama)</td>
-<td>43 of 153 (28%)</td>
+<td>44 of 157 (28%)</td>
 <td>28 of 103 (27%)</td>
 </tr>
 <tr>
 <td>capability posts that extrapolate to a timeline or consequence</td>
-<td>7 of 89 (8%)</td>
+<td>7 of 91 (8%)</td>
 <td>8 of 51 (16%)</td>
 </tr>
 <tr>
 <td>headline claims (poster affirms; ironic posts left out)</td>
-<td>0 of 143 (0%)</td>
+<td>1 of 147 (1%)</td>
 <td>1 of 96 (1%)</td>
 </tr>
 </tbody>
 </table>
-<p>Leaving out posts coded from the title alone (59 of the 156 top
+<p>Leaving out posts coded from the title alone (60 of the 160 top
 posts, 37 of the 104 random posts): capability 40% and 42%; consequence
-13% and 20%; industry and governance 41% and 32%; extrapolation 8% and
-30%; headline claims 0 and 0.</p>
-<p>By quarter, capability main claims range from 39% (2025Q1) to about
-80% (2025Q3, 2025Q4) of top posts, and industry-and-governance claims
-peak in 2025Q1 (11 of 18; DeepSeek, Stargate, the Musk–Altman fight) and
-2026Q1 (10 of 20; Anthropic and the Pentagon). Extrapolation from a
-capability to a timeline or consequence is uncommon throughout: at most
-3 of 11 capability posts in any quarter of top posts.</p>
+12% and 20%; industry and governance 41% and 32%; extrapolation 8% and
+30%; headline claims 1 and 0.</p>
+<p>By quarter, capability main claims range from 40% (2026Q1, 8 of 20)
+and 42% (2025Q1, 8 of 19) to 79% (2025Q3, 15 of 19) and 75% (2025Q4, 15
+of 20) of top posts, and industry-and-governance claims peak in 2025Q1
+(11 of 19; DeepSeek, Stargate, the Musk–Altman fight) and 2026Q1 (10 of
+20; Anthropic and the Pentagon). Extrapolation from a capability to a
+timeline or consequence is uncommon throughout: at most 3 of 11
+capability posts in any quarter of top posts.</p>
 <p><strong>Headline claims, near-absent</strong> (poster affirms; any of
 AGI already achieved, AGI by a stated horizon, self-improvement under
-way, singularity framing): no top post in the whole window and 1 random
-post (2024Q4, an AGI forecast with a stated horizon). Three top posts
-affirm "AGI achieved" or singularity framing by majority but are coded
-ironic by majority (the titles "AGI 🚀", "AGI achieved" and
+way, singularity framing): 1 top post in the whole window (2025Q4,
+reserve rank 33, an image post titled "Crazy true" that two of the three
+models read as literal singularity framing; the third read it as ironic)
+and 1 random post (2024Q4, an AGI forecast with a stated horizon).
+Before the reserve posts were coded the top-post count was 0. Three top
+posts affirm "AGI achieved" or singularity framing by majority but are
+coded ironic by majority (the titles "AGI 🚀", "AGI achieved" and
 "Post-Singularity Free Healthcare"), so they are left out; counting them
-would give 3 of 143 (2%). One more "AGI achieved" top post (2025Q2) has
+would give 4 of 147 (3%). One more "AGI achieved" top post (2025Q2) has
 no majority on whether the poster agrees. AGI main claims of any kind
-are 4% of top posts (6 of 156) and 6% of random posts (6 of 104);
+are 4% of top posts (6 of 160) and 6% of random posts (6 of 104);
 self-improvement main claims 0 and 1.</p>
 <p><strong>Samples.</strong> Top posts: the 230 posts screened in the
-first pass were coded by all three models; 161 are eligible by majority.
-The 20-eligible cut-off was re-applied per quarter from the majority
-codes: rank 26 in 2024Q4, 26 in 2025Q2, 27 in 2025Q3, 30 in 2026Q1 and
-28 in 2026Q2, leaving 5 eligible posts below those ranks out. Three
-quarters fall short of 20: 2025Q1 has 19 eligible among ranks 1 to 29,
-2025Q4 has 19 among ranks 1 to 32 and 2026Q3 has 18 among ranks 1 to 26;
-every screened post counts there, and reaching 20 would need the three
-models to code further down each quarter's ranked reserve. 156 top posts
-are counted. Random posts: 160 screened, 104 eligible by majority, all
+first pass, plus 5 reserve posts added 2026-10-09, were coded by all
+three models; 165 are eligible by majority. The 20-eligible cut-off was
+re-applied per quarter from the majority codes: rank 26 in 2024Q4, 26 in
+2025Q2, 27 in 2025Q3, 30 in 2026Q1 and 28 in 2026Q2, leaving 5 eligible
+posts below those ranks out. The three quarters that were short now
+reach 20 from the reserve: 2025Q1 at rank 30, 2025Q4 at rank 33 and
+2026Q3 at rank 29 (rank 28 there is an image with no legible text,
+ineligible by all three). 160 top posts are counted, 20 in every
+quarter. Random posts: 160 screened, 104 eligible by majority, all
 counted. Exclusion reasons are each model's own and are not voted; the
 majority file records only whether the post counts.</p>
 <h2 id="agreement">Agreement</h2>
-<h3 id="three-models-all-390-posts-final-codebook-2026-10-07">Three
-models, all 390 posts, final codebook (2026-10-07)</h3>
+<h3
+id="three-models-all-395-posts-final-codebook-2026-10-07-updated-2026-10-09">Three
+models, all 395 posts, final codebook (2026-10-07, updated
+2026-10-09)</h3>
 <p>This is the check the figure rests on. Cohen's kappa (agreement
 corrected for chance) for each pair of models; n is the number of posts
-both coders counted. "Whether the post counts" is compared on all 390
-posts; the other fields on the posts both models in the pair found
-eligible. "No majority" is the share of the 265 posts the majority finds
-eligible where all three gave a different answer. Full table:
+both coders counted. "Whether the post counts" is compared on all 395
+posts (the 390 of the full run and the 5 reserve posts); the other
+fields on the posts both models in the pair found eligible. "No
+majority" is the share of the 269 posts the majority finds eligible
+where all three gave a different answer. Full table:
 <code>data/vanguard/three-model-reliability-full-final.csv</code>.</p>
 <table>
 <thead>
@@ -295,82 +308,82 @@ eligible where all three gave a different answer. Full table:
 <tbody>
 <tr>
 <td>Whether the post counts</td>
-<td>0.91 (390)</td>
-<td>0.91 (390)</td>
-<td>0.94 (390)</td>
+<td>0.91 (395)</td>
+<td>0.91 (395)</td>
+<td>0.94 (395)</td>
 <td>0%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>What the claim is about</td>
-<td>0.77 (259)</td>
-<td>0.83 (254)</td>
-<td>0.76 (258)</td>
+<td>0.77 (263)</td>
+<td>0.83 (258)</td>
+<td>0.76 (262)</td>
 <td>2%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Timing (already here, forecast, …)</td>
-<td>0.65 (259)</td>
-<td>0.63 (254)</td>
+<td>0.64 (263)</td>
 <td>0.63 (258)</td>
+<td>0.62 (262)</td>
 <td>5%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Whether the poster agrees</td>
-<td>0.75 (259)</td>
-<td>0.63 (254)</td>
-<td>0.56 (258)</td>
+<td>0.75 (263)</td>
+<td>0.63 (258)</td>
+<td>0.55 (262)</td>
 <td>3%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Hedging</td>
-<td>0.73 (259)</td>
-<td>0.66 (254)</td>
-<td>0.54 (258)</td>
+<td>0.73 (263)</td>
+<td>0.67 (258)</td>
+<td>0.54 (262)</td>
 <td>0%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Tone of the post</td>
-<td>0.74 (259)</td>
-<td>0.75 (254)</td>
-<td>0.79 (258)</td>
+<td>0.72 (263)</td>
+<td>0.76 (258)</td>
+<td>0.77 (262)</td>
 <td>0%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Whether the poster wants it faster or slower</td>
-<td>0.46 (259)</td>
-<td>0.59 (254)</td>
-<td>0.45 (258)</td>
+<td>0.47 (263)</td>
+<td>0.59 (258)</td>
+<td>0.45 (262)</td>
 <td>0%</td>
 <td>unreliable (every pair below 0.6; ruled unreliable by John,
 2026-10-03)</td>
 </tr>
 <tr>
 <td>Whose claim it is</td>
-<td>0.72 (259)</td>
-<td>0.71 (254)</td>
+<td>0.71 (263)</td>
 <td>0.71 (258)</td>
+<td>0.71 (262)</td>
 <td>1%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Coded from the title alone</td>
-<td>0.99 (259)</td>
-<td>0.99 (254)</td>
-<td>1.00 (258)</td>
+<td>0.99 (263)</td>
+<td>0.99 (258)</td>
+<td>1.00 (262)</td>
 <td>0%</td>
 <td>reliable</td>
 </tr>
 <tr>
 <td>Projects to a time horizon</td>
-<td>0.75 (259)</td>
-<td>0.72 (254)</td>
-<td>0.73 (258)</td>
+<td>0.75 (263)</td>
+<td>0.72 (258)</td>
+<td>0.73 (262)</td>
 <td>1%</td>
 <td>reliable</td>
 </tr>
@@ -384,7 +397,7 @@ about, timing, whether the poster agrees, tone (for the irony
 exclusion), projects to a time horizon and coded from the title alone;
 all pass, so all five panels are drawn. Gemini and GPT agree less with
 each other than either does with Claude on whether the poster agrees
-(0.56) and on hedging (0.54); both fields still pass because the other
+(0.55) and on hedging (0.54); both fields still pass because the other
 two pairs clear 0.6.</p>
 <h3
 id="earlier-check-the-140-post-subset-before-the-rules-2026-10-03">Earlier
@@ -713,26 +726,22 @@ majority codes (Results above).</li>
 coded ironic do not count as affirming a headline claim (3 top posts
 affected); and the claim-kind shares count the main claim only, because
 secondary claims were never compared across the models.</li>
-<li><strong>The three short quarters.</strong> 2025Q1, 2025Q4 and 2026Q3
-have 19, 19 and 18 eligible top posts by majority, not 20. Reaching 20
-means having all three models code the next few posts down each
-quarter's ranked reserve (a handful of posts, a few cents each for
-Gemini and GPT); or the shortfall can stand and be disclosed, as it is
-now.</li>
+<li><del>The three short quarters</del> done 2026-10-09: 5 reserve posts
+coded by all three models (about $0.39), and every quarter now has 20
+eligible top posts.</li>
 </ol>
 <h2 id="not-done">Not done</h2>
 <p>The full-sample run is complete (2026-10-07) and the figure uses it
-(2026-10-08). Not done: the three short quarters above; the cross-era
-sample and the comment sample (deferred); and the section 12
-preconditions (venue inventory, X decision). No other venue was
-collected.</p>
-<p class="cite">Rendered from <code>docs/vanguard/pilot-report-r-singularity-2026-10.md</code> at version e8ac957.</p></div>
+(2026-10-08). Not done: the cross-era sample and the comment sample
+(deferred); and the section 12 preconditions (venue inventory, X
+decision). No other venue was collected.</p>
+<p class="cite">Rendered from <code>docs/vanguard/pilot-report-r-singularity-2026-10.md</code> at version d5a0837.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 8 October 2026 (version e8ac957) from 159 expert statements, 97 measurements of AI and the economy and 390 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>

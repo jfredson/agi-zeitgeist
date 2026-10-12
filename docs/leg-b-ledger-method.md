@@ -9,7 +9,8 @@ ledger is built is an amendment entry, never a quiet edit.**
 The singularity-entry definition (`docs/singularity-entry-definition.md`, leg B) says
 that when forecasts were wrong we should record which way: did things come sooner or later
 than predicted? It also says, without a source, that "milestones from the 2016 Grace survey
-mostly arrived early". This ledger checks that sentence. It takes every milestone date the
+mostly arrived early". This ledger checks that sentence (which was amended on 2026-10-12,
+amendment A23, after the ledger's first reading). It takes every milestone date the
 2016 survey of machine learning researchers published, finds when each milestone actually
 arrived, and scores each forecast by how far ahead it looked and how far off it was.
 
@@ -68,8 +69,11 @@ of the screen). Each row then gets one of four verdicts:
    listeners where the milestone says expert listeners). The row names the gap.
 3. **Not arrived.** No public demonstration meeting the main capability was found by
    9 October 2026. The nearest demonstration found is recorded, if there is one.
-4. **Left for John.** The description sets no bar a demonstration could be checked against
-   (for example, "give good answers"), so the agent cannot decide it without inventing one.
+4. **No bar.** The description sets no bar a demonstration could be checked against (for
+   example, "give good answers"), so the agent cannot decide it without inventing one.
+   (Called "left for John" until 2026-10-12, when John ruled that these rows stay out of
+   the scores rather than being given a bar after the fact; the verdict's meaning is
+   unchanged.)
 
 When more than one demonstration qualifies, the earliest found is used. Because the search
 cannot prove nothing earlier exists, a later find can only move a date earlier.
@@ -92,7 +96,7 @@ time elapsed so far (10.28 years at 9 October 2026):
   forecast lead, and its ratio is at least elapsed divided by forecast.
 - If its forecast date has not passed, it is **not yet due** and is not scored either way.
 
-Rows left for John are listed but not scored.
+Rows with no bar are listed but not scored.
 
 ## What is reported
 

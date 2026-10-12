@@ -191,3 +191,18 @@ file): counting the systems from before 1990 removes two 1990 systems from the r
 (NETtalk reimplementation and SexNet compression; 21 becomes 19), and no window from 1995
 to 2019 changes. The re-run after these corrections left `leg-a-windows.csv` byte for byte
 the same.
+
+## Ruling (2026-10-12)
+
+John ruled on 12 October 2026, in his words "all as recommended"; the recommendation was the
+session's and John approved it, so the authorship is mixed. Nothing above this section was
+changed, and the frozen thresholds were not touched.
+
+The pace rule stays as written, read the way the live site reads it: the last three
+twelve-month windows must each be quicker than the one before. The near-firings in late 2014
+(26.5 then 25.8 days) and late 2019 (24.3 days), with training compute standing in for the
+task-length measure, are recorded as noise in the stand-in, not as a flaw in the rule. The
+stand-in measures what went into AI systems, not what they could do, and a window holding
+only three or four systems swings a long way when one large system lands in it. The finding
+stays in the record above; the definition is not changed for it. The looser one-drop reading
+stays in the results files as a column, for comparison only.

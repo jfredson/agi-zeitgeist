@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<title>How the backward test
+is run (1995 to 2019) | AGI Zeitgeist Tracker</title>
+<meta name="description" content="How the backward test
+is run (1995 to 2019): a document of the AGI Zeitgeist Tracker.">
+<meta name="author" content="John Fredrickson">
+<link rel="canonical" href="https://agizeitgeist.com/docs/backward-test-method">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AGI Zeitgeist Tracker">
+<meta property="og:url" content="https://agizeitgeist.com/docs/backward-test-method">
+<meta property="og:title" content="How the backward test
+is run (1995 to 2019) | AGI Zeitgeist Tracker">
+<meta property="og:description" content="How the backward test
+is run (1995 to 2019): a document of the AGI Zeitgeist Tracker.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
+<style>
+.brand { white-space: nowrap; }
+.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
+.rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
+.rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rail h4 + h4, .rail .rail-sec { margin-top: 18px; }
+.rail .rstatus { font-size: 13px; color: var(--text-soft); margin: 0 0 10px; line-height: 1.45; }
+.rail .rstatus b { color: var(--text); }
+.rail .mini { display: grid; grid-template-columns: 1.1em 1fr; gap: 6px 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.rail .mini .bar { margin: 0; height: 12px; }
+.rail .mini .bar span { display: none; }
+.rail .mini .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.rail .mini .k { color: var(--text-soft); font-weight: 600; }
+.rail .mini .v { grid-column: 2; margin: -4px 0 4px; font-size: 11px; }
+.rail .toc { display: flex; flex-direction: column; }
+.rail .toc a { padding: 5px 0; line-height: 1.35; color: var(--text-soft); text-decoration: none; font-size: 13.5px; }
+.rail .toc a:hover { color: var(--accent); }
+.rail .toc a.d3 { font-size: 12.5px; color: var(--muted); padding-left: 12px; }
+.rail .use { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.rail .use a { text-decoration: none; }
+@media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
+.hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' dates on the right.
+   Type roles follow The Belt Equation's hero: sans for the answer and claims, mono with tabular figures for
+   numbers, serif only for the explanatory line. */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
+.land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.land .kicker { margin: 0 0 12px; }
+.conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
+.cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
+.cond .n { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.cond .bar { margin: 5px 0 0; height: 7px; border-radius: 3px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
+.card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+.card .what b { color: var(--text); font-weight: 600; }
+.card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
+.card .ladder > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.1; }
+.card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.card .ladder span b { color: var(--text-soft); font-weight: 600; }
+.card .foot { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">AGI Zeitgeist</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+</div></header>
+<main class="container">
+<section class="hero"><p class=eyebrow>Document</p><h1>How the backward test
+is run (1995 to 2019)</h1></section>
+<div class="status"><strong>A working document.</strong> It is one of the documents the site is built from, published as it is written for anyone checking the work, and it uses the project's own shorthand. The plain account of the same material is on the <a href="/">home page</a>.</div><div class="prose narrow document"><h1 id="how-the-backward-test-is-run-1995-to-2019">How the backward test
+is run (1995 to 2019)</h1>
+<p>Written 2026-10-09, before any series was built, by an agent session
+working on John's four-day weekend list. This file says how the test
+owed by <code>docs/singularity-entry-definition.md</code> section 5,
+item 1, is run. The definition says what the test must return ("not
+entered" for every year from 1995 to 2019) and what pattern it expects
+(the internet years, 1995 to 2000, light up the forecasting condition
+and nothing else; the deep-learning years, 2012 to 2017, light up the
+pace condition weakly and nothing else). It does not say how to measure
+the conditions before 2019, so this file does.</p>
+<p>The test uses the frozen values in
+<code>docs/singularity-entry-thresholds.json</code> exactly as they
+stand. Nothing in that file is changed by this work, whatever the
+result. If the test returns "entered" for any year, that is reported as
+a failure of the thresholds, which the definition says is settled by an
+amendment, not by this session.</p>
+<h2 id="the-four-conditions-one-per-leg">The four conditions, one per
+leg</h2>
+<p>The definition calls its four conditions legs A to D. Each needs a
+series that reaches back to 1995.</p>
+<h3 id="leg-a-the-pace-of-progress-getting-faster">Leg A, the pace of
+progress getting faster</h3>
+<p>The frozen measure, METR's task-length measure, starts in 2019 (its
+first reading is GPT-2), so it cannot be used. The stand-in is
+<strong>the training compute of record-setting AI systems</strong>: the
+amount of computing used to train each AI system that used more than any
+system before it.</p>
+<ul>
+<li>Source: Epoch AI's "Notable AI Models" dataset,
+<code>https://epoch.ai/data/notable_ai_models.csv</code> (published
+under a Creative Commons attribution licence). The rows from 1990 to
+2020 that carry a training compute figure are saved in the repo as
+<code>data/backward-test/epoch-notable-models-1990-2020.csv</code>, with
+the retrieval date, so the run does not depend on the live file.</li>
+<li>Why this series: it is the only published series that covers AI
+systems continuously from the 1990s to 2019 on a scale where "doubling"
+means something. Its weakness, stated plainly: it measures what went
+into AI systems, not what they can do. A doubling of training compute is
+not a doubling of capability. So this leg's backward result is a check
+on whether the pace rule fires on a fast-growing AI series, not a
+reading of the frozen measure.</li>
+<li>"Record-setting" stands in for METR's "best at release" flag: a
+system counts if its training compute is larger than that of every
+earlier system in the dataset.</li>
+<li>The doubling time is computed exactly as
+<code>scripts/site.py</code> computes it for the live measure: for each
+record-setting system, take every record-setting system released in the
+365 days up to and including it; if there are at least three, fit a
+straight line to the logarithm of compute against time and turn the
+slope into days per doubling.</li>
+<li>The condition is met at a date when the latest such window is at or
+below 30.44 days and the last three windows each came in quicker than
+the one before (the live rule). The 16-hour exclusion is specific to
+METR's measure and has no counterpart here.</li>
+<li>The gauge uses the frozen reference doubling time (187.8 days) and
+the frozen line (30.44 days). The reference was fitted on METR's
+measure, not on compute, so the gauge values are shown for the record
+but carry less weight than the yes-or-no against the line.</li>
+<li>Also reported, as a stricter check: whether any single window
+anywhere in a year comes in at or below 30.44 days, even if the "getting
+quicker" part fails.</li>
+</ul>
+<h3 id="leg-b-forecasts-having-stopped-working">Leg B, forecasts having
+stopped working</h3>
+<p>This leg needs forecasts of the capability measure made at past dates
+with known lead times, scored against what happened and against
+extrapolating the trend. No such ledger exists for 1995 to 2019 for any
+AI capability series, and building one from scratch is outside this
+session (another session is building the ledger for the live measure).
+So:</p>
+<ul>
+<li>Leg B is recorded as <strong>not measurable</strong> for every year
+from 1995 to 2019.</li>
+<li>Under the definition's own rule (section 3), a leg that cannot be
+measured cannot be at its line, so the status can only be "not entered".
+The report says separately whether the verdict would still hold with leg
+B assumed to be at its line, so that the verdict does not rest on a
+missing leg.</li>
+<li>The expected pattern "the internet years light up leg B" therefore
+cannot be checked, and is reported as untested, not as passed.</li>
+</ul>
+<h3 id="leg-c-ai-doing-the-improving">Leg C, AI doing the improving</h3>
+<p>No measurement of the share of AI research work done by AI systems
+exists for any year before 2025. The record for 1995 to 2019 is
+therefore <strong>not measurable</strong>, with the supporting context
+written down: the first widely released AI tool that wrote code (GitHub
+Copilot, technical preview announced 2021-06-29) came after the test
+period, and the main pre-2020 case of AI designing AI systems (automated
+design of network shapes, Zoph and Le, 2016) covered a narrow part of
+the work. Nothing is estimated or interpolated for this leg. As with leg
+B, the report also checks the verdict with leg C assumed met.</p>
+<h3 id="leg-d-the-economy-changing-gear">Leg D, the economy changing
+gear</h3>
+<p>The series is already in the repo: World Bank world real output
+growth, one row a year, <code>worldbank-gdp-growth-*</code> in
+<code>data/world_measures.csv</code>. It is used exactly as the live
+page uses it: the condition is met in a year whose growth is at or above
+30 percent, and one annual reading covers that year's four quarters. The
+gauge uses the frozen reference (the mean growth from 1961 to 2019
+turned into a doubling time).</p>
+<h2 id="turning-legs-into-a-verdict">Turning legs into a verdict</h2>
+<p>For each quarter from the first quarter of 1995 to the last quarter
+of 2019, each leg is "met", "not met" or "not measurable" as of the last
+day of the quarter. The status for the quarter is "entered" only after
+four consecutive quarters with all four legs met. A year's verdict is
+"entered" if any quarter in it is "entered".</p>
+<h2 id="what-a-pass-and-a-fail-look-like">What a pass and a fail look
+like</h2>
+<ul>
+<li><strong>Pass:</strong> "not entered" for every quarter from 1995 to
+2019. The report also says whether the pass holds on the measured legs
+alone (that is, with legs B and C assumed met), which is the stronger
+form.</li>
+<li><strong>Fail:</strong> "entered" for any quarter. Reported plainly
+as a failure, with the leg and quarter that caused it. No threshold,
+window, series choice or rule in this file is changed afterwards to make
+a fail go away.</li>
+<li><strong>Pattern check (secondary):</strong> for 1995 to 2000, which
+legs are met (the definition expects leg B only); for 2012 to 2017,
+whether leg A's gauge is above zero but its line is not crossed (the
+definition's "weakly"). A mismatch here is reported as a finding, not a
+fail.</li>
+</ul>
+<h2 id="files">Files</h2>
+<ul>
+<li><code>scripts/backward_test.py</code>: the whole run, standard
+library only. With no arguments it reads the saved extract and writes
+the results. With <code>--refresh PATH</code> it rebuilds the extract
+from a full copy of Epoch's file.</li>
+<li><code>data/backward-test/epoch-notable-models-1990-2020.csv</code>:
+the saved compute extract.</li>
+<li><code>data/backward-test/results-by-quarter.csv</code> and
+<code>results-by-year.csv</code>: the outputs.</li>
+<li><code>data/backward-test/leg-a-windows.csv</code>: every
+twelve-month window and its doubling time.</li>
+</ul>
+<h2 id="result-of-the-first-run-2026-10-09">Result of the first run
+(2026-10-09)</h2>
+<p>Written after the run; nothing above this section was changed after
+seeing the result. Reproduce with
+<code>python3 scripts/backward_test.py</code>.</p>
+<p><strong>Pass: "not entered" in every quarter from 1995 to
+2019</strong>, and it holds on the measured legs alone (with legs B and
+C assumed met, the answer is the same). What carries it is leg D: world
+growth peaked at 4.57 percent (2000) in the period, against a line of 30
+percent. Leg D's gauge peaks at 0.26 (2000), on a scale where 1 is the
+line.</p>
+<p>The internet years (1995 to 2000): leg A cannot be scored (only two
+record-setting systems in Epoch's list fall in those six years, LSTM in
+1997 and a neural language model in 2000, so no twelve-month window
+holds three); legs B and C are not measurable; leg D is far below its
+line. The expected pattern ("leg B and nothing else") is
+<strong>untested</strong>, because leg B has no series for those
+years.</p>
+<p>The deep-learning years (2012 to 2017) do <strong>not</strong> match
+the expected pattern of leg A "firing weakly". Four record-setting
+systems came within six months in 2014 (SPPNet, VGG16, Seq2Seq LSTM,
+SNM-skip), and the twelve-month doubling time of training compute came
+in at 26.5 days and then 25.8 days, below the 30.44-day line. The gauge
+reads 1.00 from late 2014 to mid-2016. Leg A was not met only because
+the rule also asks for three windows in a row each quicker than the
+last, and there were only two windows before the record-setting stopped
+for a while. The same thing happens in late 2019 (24.3 days, from
+Megatron-BERT, T5 and AlphaStar within six weeks). Two cautions on
+reading this: the series measures what went into AI systems, not what
+they could do; and with only three or four systems in a window, one
+large system can swing the fitted doubling time a long way.</p>
+<p>What this means for the thresholds is a question for John, not for
+this run. The pass does not depend on leg A: it rests entirely on leg D.
+On this stand-in series, the pace line on its own would have been
+crossed in 2014, and the "getting quicker" part of the rule plus the
+three-system minimum are what held it.</p>
+<p>Files written: <code>data/backward-test/leg-a-windows.csv</code> (6
+scored windows from 21 record-setting systems),
+<code>results-by-quarter.csv</code> (100 quarters),
+<code>results-by-year.csv</code>.</p>
+<h2 id="corrections-after-the-independent-check-2026-10-09">Corrections
+after the independent check (2026-10-09)</h2>
+<p>An independent session reproduced the run and passed it with
+conditions (its comment is on the pull request). Three points are added
+here; nothing above this section was changed, the frozen thresholds were
+not touched, and the verdict is the same.</p>
+<p><strong>1. The pace rule can be read two ways.</strong> The frozen
+wording is "still falling over the last two windows". The live site, and
+the run above, read that as three windows in a row, each quicker than
+the one before. It can also be read as one drop: the latest window
+quicker than the one before it. The two readings give different answers
+here:</p>
+<ul>
+<li>Three quicker windows in a row (the live site's reading): the pace
+condition is never met from 1995 to 2019. In 2014 only two windows
+existed (26.5 days, then 25.8 days).</li>
+<li>One drop: the pace condition is met from the fourth quarter of 2014
+to the second quarter of 2016 (seven quarters, more than the four in a
+row the mark needs), and again in the fourth quarter of 2019 (92.5 days,
+then 24.3 days).</li>
+</ul>
+<p>The test passes on either reading, because world growth never came
+near 30 percent: "not entered" in every quarter, also with the
+forecasting and AI-doing-the-improving conditions assumed met. Which
+reading the rule means is for John to settle. The results files now
+carry both (<code>leg_a_looser_reading</code> and the
+<code>looser_pace_reading</code> verdict columns). The "held back only
+by the getting-quicker rule" sentence above is true of the stricter
+reading only.</p>
+<p>A smaller point from the same check: the 25.8-day window stays the
+latest one for seven quarters because no new record-setting system
+arrived until the third quarter of 2016, and the rule keeps the latest
+window until a new one arrives. That is how the live rule works too, and
+it is part of why the pace gauge sits at 1.00 for so long.</p>
+<p><strong>2. The 25.8-day figure rests on an uncertain
+estimate.</strong> The window ending in December 2014 includes SNM-skip
+(a Google language model), whose training compute Epoch grades
+"Speculative", its least certain grade. The 26.5-day window just before
+it does not include SNM-skip and is also under the line.</p>
+<p><strong>3. What "record-setting" means here.</strong> The method says
+a system counts if it beats "every earlier system in the dataset". The
+code compares only within the saved 1990 to 2020 rows. Chosen: keep the
+code as it is and read "the dataset" as the saved rows, because the
+saved extract is what makes the run reproducible without the live file,
+and the choice makes no difference to the test. Checked with
+<code>python3 scripts/backward_test.py --check-pre1990 FILE</code> (FILE
+being a full copy of Epoch's file): counting the systems from before
+1990 removes two 1990 systems from the record list (NETtalk
+reimplementation and SexNet compression; 21 becomes 19), and no window
+from 1995 to 2019 changes. The re-run after these corrections left
+<code>leg-a-windows.csv</code> byte for byte the same.</p>
+<h2 id="ruling-2026-10-12">Ruling (2026-10-12)</h2>
+<p>John ruled on 12 October 2026, in his words "all as recommended"; the
+recommendation was the session's and John approved it, so the authorship
+is mixed. Nothing above this section was changed, and the frozen
+thresholds were not touched.</p>
+<p>The pace rule stays as written, read the way the live site reads it:
+the last three twelve-month windows must each be quicker than the one
+before. The near-firings in late 2014 (26.5 then 25.8 days) and late
+2019 (24.3 days), with training compute standing in for the task-length
+measure, are recorded as noise in the stand-in, not as a flaw in the
+rule. The stand-in measures what went into AI systems, not what they
+could do, and a window holding only three or four systems swings a long
+way when one large system lands in it. The finding stays in the record
+above; the definition is not changed for it. The looser one-drop reading
+stays in the results files as a column, for comparison only.</p>
+<p class="cite">Rendered from <code>docs/backward-test-method.md</code> at version d5a0837.</p></div>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">AGI Zeitgeist Tracker</span>
+<p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+</div></div></footer>
+<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>
+</body>
+</html>

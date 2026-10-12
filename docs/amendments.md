@@ -476,3 +476,44 @@ declaration (February 2026); Executive Order 14409 (2026-06-02); Pacing the Fron
 Each date was read from the primary page (search log `events-022` to `events-027`). Two are
 at month precision because their own pages give no day: the New Delhi declaration and Pacing
 the Frontier.
+
+## 2026-10-12: rulings on the forecast ledger and the backward test
+
+Decided by: mixed. The agent put five questions from the forecast ledger
+(`docs/leg-b-ledger-2026-10.md`) and one from the backward test (`docs/backward-test-method.md`)
+to John with recommendations; John approved all of them ("all as recommended"). Only the first
+changes a document's wording; the rest are recorded here so that no later session reopens
+them without knowing they were settled. Each ruling is also recorded in the document it bears
+on, and in section 8 of the definition.
+
+### A23. The definition's "mostly arrived early" sentence replaced by what the ledger shows
+
+Was (leg B, "Direction is recorded"): "Milestones from the 2016 Grace survey mostly arrived
+early."
+Now: of the survey's 32 milestones, every one that has arrived came early, but most have not
+arrived, and eleven are past their forecast date. The sentence cites the ledger.
+Why: the sentence had no source. The ledger built on 2026-10-09 checked it against the
+survey's own table: 1 milestone has clearly arrived and 5 arguably, all 6 early; 22 have not
+arrived, of which 11 are already past their forecast date and 11 are not yet due; 4 set no
+bar to check against. So "mostly arrived early" is true of the arrivals and false of the
+survey as a whole. The frozen thresholds are untouched; the gauge's definition is untouched.
+
+Rulings that changed no wording:
+
+- **The ledger is the record of which way forecasts missed, and nothing more.** Leg B's
+  gauge stays defined on forecasts of METR's task-length measure. The survey's milestones
+  are yes-or-no events with no trend to extend, so they cannot fill that formula.
+- **The ledger's four milestones with no bar stay out of the scores.** Their verdict is
+  recorded as "no bar" (it was "left for John" in the ledger's data, script and method
+  until this ruling; the meaning is the same). A bar set now would be chosen after seeing
+  the answers.
+- **None of the five "arguably arrived" milestones is promoted to arrived.** Both the strict
+  total and the generous one keep being reported.
+- **No fifth verdict.** The ledger's one-condition rule stays as written, and the four rows
+  moved to "not arrived" on 9 October stay there with their nearest demonstration recorded.
+- **The pace rule stays as written and is read the stricter way:** the last three
+  twelve-month windows must each be quicker than the one before. The backward test's
+  near-firings in late 2014 and late 2019, with training compute standing in for the
+  task-length measure, are noise in the stand-in (it measures what went into systems, not
+  what they could do, and windows of three or four systems swing a lot), not a flaw in the
+  rule. The definition is not changed for it.
