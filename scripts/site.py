@@ -462,7 +462,7 @@ TAGLINE = ("A dated record of what people expect from artificial general intelli
 NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
 NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
-FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"),
+FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Disagree with something"),
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
 THEME_SCRIPT = """<script>
@@ -726,6 +726,42 @@ def render_docs(built, commit):
     return n
 
 
+def issue_url(template, title):
+    from urllib.parse import urlencode
+    return f"{REPO}/issues/new?{urlencode({'template': template, 'title': title})}"
+
+
+def disagree_page(built, commit):
+    """A short disagree page with a repository link (tracker pattern decision 12; lessons review
+    2026-10-17, lesson 24). Three kinds of disagreement, each opening a prefilled issue."""
+    kinds = [
+        ("A statement is miscoded, misdated or misquoted",
+         "A row in the statements table that says something its source does not, carries the wrong date, or is coded wrongly: who it endorses AGI for, the year it names, which question it raises. Give the row's id or the person and the date, what is wrong, and the source where the words are.",
+         issue_url("statement-miscoded.md", "Statement: "), "Report a statement"),
+        ("A measure, a line or a reading should be different",
+         "One of the four parts of the singularity test rests on a measure and a line fixed in advance, and on readings of that measure. If the measure is the wrong one, the line is in the wrong place, or a reading is wrong, say what you would change it to and point at the published source that supports it; a line moves on a source and a dated reason, never on a feeling.",
+         issue_url("argue-a-measure.md", "Measure: "), "Argue a measure"),
+        ("An error on a page",
+         "A number, a date, a name or a claim on any page that is wrong. Say which page, what it says, and what it should say, with a source where there is one.",
+         issue_url("error-on-a-page.md", "Error on a page: "), "Point out an error"),
+    ]
+    cards = "".join(f'<h3>{esc(h)}</h3><p>{esc(t)}</p><p><a class="button" href="{esc(u)}" rel="noopener">{esc(b)}</a></p>' for h, t, u, b in kinds)
+    body = f"""<section class="section prose">
+<p>The point of publishing every row with its source is that you can argue with one. Three kinds of disagreement move this record: a statement that is wrongly recorded, a measure or a line in the singularity test that should be different, and an error on a page. Each is welcome, and each leaves a trace that the change can cite.</p>
+<h2>The three forms</h2>
+{cards}
+<p>Each form opens an issue in the public repository with the right questions already in it. Issues are used because they are durable and quotable, and folding one into the record is a change that can cite it. Or write a plain issue: the page or the row, what you would change, and why is exactly enough.</p>
+<h2>What happens to it</h2>
+<p>John Fredrickson rules on it. Some disagreements change the record; some are answered and left as they are. Either way the issue records the ruling and the reason.</p>
+<p>A corrected statement gets a dated note in its row that cites the issue; the search that found it stays in the search log. A changed measure, line or rule is a dated amendment with its reason, never a quiet edit, because the test's lines were fixed before the numbers were looked at. A new reading is a row added with its source. The expert panel is fixed, so that it cannot drift toward the story; adding or removing a person is an amendment too.</p>
+<p>The repository is at <a href="{REPO}" rel="noopener">github.com/jfredson/agi-zeitgeist</a>. The data is free to reuse with credit (CC BY 4.0) and the scripts are under the MIT licence; <a href="/data/">how to cite</a> is on the data page.</p>
+</section>"""
+    out = SITE / "disagree"
+    out.mkdir(exist_ok=True)
+    (out / "index.html").write_text(shell(f"Disagree with something | {SITE_TITLE}", "How to report a wrongly recorded statement, argue a measure or a line with a source, or point out an error, and what happens to each.",
+                                          body, built, commit, canonical_path="/disagree/", eyebrow="Disagree", h1="Disagree with something"), encoding="utf-8")
+
+
 def copy_data():
     """Publish the CSV data beside the page so the dataset is downloadable under CC BY 4.0."""
     out = SITE / "data"
@@ -954,7 +990,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <h3 id="leg-a">A. Is AI getting better faster and faster?</h3>
 <p><em>The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</em></p>
-<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}. {esc(ytl.get("A", ""))}</p>
+<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}. {esc(ytl.get("A", ""))} Since September 2026 METR has stopped updating this series, and its tests cannot measure past 16 hours, which the best system has already passed; the rules say a replacement measure must be named with an overlap before the series stops, and that question is open (<a href="/docs/amendments">amendment A24</a>).</p>
 <figure class="fig"><a href="leg-a-time-horizon.png" title="Open the chart full size"><img src="leg-a-time-horizon.png" alt="The longest programming job each AI system gets right half the time, from 2019 to 2026, and how many days that length took to double"></a>
 <figcaption>Filled dots were the best system on the day they came out; hollow dots were not. METR says its tests cannot measure reliably beyond 16 hours, so a year that includes such a reading is drawn hollow in the lower chart and not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
 <details><summary>Every system measured ({len(a_pts)}) and every twelve-month window</summary>
@@ -1025,8 +1061,17 @@ def main():
     globals()["_AGG"] = aggregates
     built = date.today().isoformat()
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
+    last_reading = max((p.stem for p in (ROOT / "data" / "readings").glob("*.json")), default=None)
+    newest_measurement = max((r["date"] for r in world if r["speaker_id"] in ("metr", "anthropic_institute", "world_bank") and r["aggregate_id"] != "metr-th11-doubling-all"), default=None)
+    headline = {"headline": sc["headline"], "headline_label": sc["headline_label"], "crossing_sentence": ytl["_sentence"],
+                "verdict": "Not yet." if sc["status"] == "not entered" else sc["status"], "status": sc["status"],
+                "average_share": round(sc["average_share"], 3), "progress": round(sc["progress"], 3), "bottleneck": sc["bottleneck"],
+                "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
+                "computed_on": built, "last_reading": last_reading, "newest_measurement": newest_measurement, "version": git_commit(),
+                "definition": f"{SITE_URL}/docs/singularity-entry-definition", "status_file": f"{SITE_URL}/status.json"}
     (SITE / "status.json").write_text(json.dumps({
-        "built": built, "status": sc["status"], "progress": round(sc["progress"], 3),
+        "built": built, "version": git_commit(), "last_reading": last_reading, "newest_measurement": newest_measurement,
+        "status": sc["status"], "progress": round(sc["progress"], 3),
         "progress_is_upper_bound": sc["progress_is_upper_bound"], "bottleneck": sc["bottleneck"],
         "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
         "unmeasured": sc["unmeasured"],
@@ -1037,6 +1082,8 @@ def main():
         "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
     n_docs = render_docs(built, git_commit())
     n_data = copy_data()
+    (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
+    disagree_page(built, git_commit())
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "
