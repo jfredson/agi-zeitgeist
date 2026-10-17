@@ -464,6 +464,14 @@ details p { color: var(--text-soft); }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+/* Light-theme button text (2026-10-16). The standard's rule that colours links in the light theme
+   (:root[data-theme='light'] a) outranks the button rule, so a solid button's text took the link
+   colour on the button's own background and was unreadable on every site in the family; found on
+   theupgradetree.com on 2026-10-16. This page has no such button today; the lines stand in so the
+   next one is readable, until deep-field.css is next copied from the standard (fixed there in 2.0.1). */
+:root[data-theme='light'] a.btn { color: var(--on-accent); }
+:root[data-theme='light'] a.btn.ghost { color: var(--accent); }
+:root[data-theme='light'] a.btn.ghost:hover { color: var(--on-accent); }
 """
 
 

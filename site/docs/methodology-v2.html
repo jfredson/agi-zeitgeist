@@ -110,6 +110,14 @@ details p { color: var(--text-soft); }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+/* Light-theme button text (2026-10-16). The standard's rule that colours links in the light theme
+   (:root[data-theme='light'] a) outranks the button rule, so a solid button's text took the link
+   colour on the button's own background and was unreadable on every site in the family; found on
+   theupgradetree.com on 2026-10-16. This page has no such button today; the lines stand in so the
+   next one is readable, until deep-field.css is next copied from the standard (fixed there in 2.0.1). */
+:root[data-theme='light'] a.btn { color: var(--on-accent); }
+:root[data-theme='light'] a.btn.ghost { color: var(--accent); }
+:root[data-theme='light'] a.btn.ghost:hover { color: var(--on-accent); }
 </style>
 </head>
 <body>
@@ -533,13 +541,13 @@ and <code>target_capability</code> at least 80% of the time; codes
 spread across more than one bucket. Public streams begin with the
 coverage audits (section 6) and the vocabulary pilot (section 8), both
 of which must finish before any prevalence sample is drawn.</p>
-<p class="cite">Rendered from <code>docs/methodology-v2.md</code> at version d5a0837.</p></div>
+<p class="cite">Rendered from <code>docs/methodology-v2.md</code> at version 8bea5a9.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 16 October 2026 (version 8bea5a9) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
