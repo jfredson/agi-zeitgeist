@@ -317,6 +317,17 @@ def score(th, a_series, c_pts, d_pts):
     out["progress_is_upper_bound"] = bool(unmeasured)
     out["bottleneck"] = min(measured, key=measured.get)
     out["unmeasured"] = unmeasured
+    # The headline (ruled 2026-10-17, docs/headline-proposal-2026-10-17.md): how many of the four
+    # parts are past one half, with each part's share as the words. It reports the gauges; it
+    # does not combine them, so section 4's P(t) above stays the one progress number.
+    names = {"A": "pace", "B": "forecasts", "C": "AI doing the research", "D": "economy"}
+    out["parts_past_half"] = sum(1 for g in measured.values() if g > 0.5)
+    at_line = sum(1 for k in measured if out[k]["at_threshold"])
+    out["headline"] = f'{out["parts_past_half"]} of 4'
+    shares = ", ".join(f"{names[k]} {round(measured[k] * 100)}%" if k in measured else f"{names[k]} unmeasured" for k in "ABCD")
+    out["shares_text"] = shares
+    out["headline_label"] = (f'parts of the test past halfway, {"none" if at_line == 0 else at_line} at its line; {shares}'
+                             if at_line <= 1 else f'parts of the test past halfway, {at_line} at their lines; {shares}')
     if unmeasured:
         out["status"] = "not entered"
     elif all(out[k]["at_threshold"] for k in "ABCD"):
@@ -325,6 +336,52 @@ def score(th, a_series, c_pts, d_pts):
         out["status"] = "approaching"
     else:
         out["status"] = "not entered"
+    return out
+
+
+def years_to_line(a_series, c_pts, d_pts, sc):
+    """Years to each leg's line if its recent trend continued, as sentences with their range
+    (ruled 2026-10-17: shown only inside each leg's panel, never as the headline)."""
+    out = {}
+    clean = [w for w in a_series if not w["over16"]]
+    if len(clean) >= 4:
+        t_star = sc["A"]["t_star"]
+        xs = [(w["date"] - clean[0]["date"]).days / 365.25 for w in clean]
+        ys = [math.log(w["days"]) for w in clean]
+        n = len(xs); mx = sum(xs) / n; my = sum(ys) / n
+        b = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)
+        cur = clean[-1]["days"]
+        fast = math.log(cur / t_star, 2)  # years if the doubling time halved every year
+        if b < 0:
+            slow = (math.log(t_star) - math.log(cur)) / b
+            out["A"] = (f"Extending the trend gives a range, not a date: over all the twelve-month windows since {clean[0]['date'].year} the "
+                        f"doubling time has fallen about {abs(100 * (math.exp(b) - 1)):.0f} percent a year, which would reach {t_star:.0f} days in "
+                        f"about {slow:.0f} years; if it halved every year or two, as it did between 2024 and 2025, {fast:.0f} to {2 * fast:.0f} years; "
+                        f"and over the latest year it has not fallen at all.")
+        else:
+            out["A"] = (f"Extending the trend gives no date: the doubling time has not fallen over the windows since {clean[0]['date'].year}. "
+                        f"If it halved every year or two, as it did between 2024 and 2025, the line would be {fast:.0f} to {2 * fast:.0f} years away.")
+    leads = sorted([p for p in c_pts if p["id"].endswith("-rd-leads")], key=lambda p: p["date"])
+    if len(leads) >= 2 and leads[-1]["value"] > leads[-2]["value"] > 0:
+        f0, f1 = leads[-2]["value"] / 100, leads[-1]["value"] / 100
+        dt = (leads[-1]["date"] - leads[-2]["date"]).days / 365.25
+        thr = sc["C"]["threshold"]
+        if f1 < thr:
+            lin = (thr - f1) / ((f1 - f0) / dt)
+            exp_ = math.log(thr / f1) / (math.log(f1 / f0) / dt)
+            out["C"] = (f"At the pace of its first {dt * 12:.0f} months ({leads[-2]['value']:.0f}% to {leads[-1]['value']:.0f}%), the share would reach half in "
+                        f"about {lin * 12:.0f} months if it rose steadily, and in about {max(exp_ * 12, 1):.0f} {'month' if max(exp_ * 12, 1) < 1.5 else 'months'} if it kept multiplying; two readings are a thin "
+                        f"basis for either.")
+    recent = [q for q in d_pts if int(q["year"]) >= 2010]
+    if len(recent) >= 5:
+        xs = [int(q["year"]) for q in recent]; gs = [q["growth"] for q in recent]
+        n = len(xs); mx = sum(xs) / n; mg = sum(gs) / n
+        b = sum((x - mx) * (g - mg) for x, g in zip(xs, gs)) / sum((x - mx) ** 2 for x in xs)
+        if b <= 0:
+            out["D"] = (f"Extending the trend gives no date: since 2010 growth has been flat to falling ({b:+.2f} points a year), "
+                        f"and the line is {sc['D']['g_star'] / max(q['growth'] for q in d_pts):.0f} times the best year on record.")
+        else:
+            out["D"] = f"At the trend since 2010 ({b:+.2f} points a year) the line would be about {(sc['D']['g_star'] - gs[-1]) / b:.0f} years away."
     return out
 
 
@@ -404,6 +461,8 @@ SITE_CSS = """
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
 .land .kicker { margin: 0 0 12px; }
+.land .shares { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(--text); margin: 0 0 22px; }
+.land h1 .verdict { font-weight: 700; }
 .conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
 .cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
@@ -725,6 +784,8 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
          f"The world's economy grew {D['reading']:.1f}% in {D['year']}. It would count at {D['g_star']:.0f}% in a year."),
     ]
     rows = "".join(f'<div class="cond"><span class="k">{k}</span><span class="n">{esc(n)}</span>{gauge_bar(g)}<span class="d">{esc(d)}</span></div>' for k, n, g, d in conds)
+    share_names = {"A": "Pace", "B": "Forecasts", "C": "AI doing the research", "D": "Economy"}
+    share_rows = [(share_names[k], f"{round(sc[k]['gauge'] * 100)}%" if sc[k].get("measurable") else "unmeasured") for k in "ABCD"]
     latest = b_pts[-1]
     med, lo, hi, ex_rows = expert_dates()
     hlmi10 = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-hlmi10"), "")
@@ -734,8 +795,10 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
-<p class="answer">{answer}</p>
-<h1>Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
+<p class="answer">{esc(sc["headline"])}</p>
+<p class="kicker">{esc(sc["headline_label"].split("; ")[0])}</p>
+<p class="shares">{" · ".join(f"{esc(n)} {v}" for n, v in share_rows)}</p>
+<h1><span class="verdict">{answer}</span> Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
 <div class="conds">{rows}</div>
@@ -803,6 +866,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         "mark crossed, under persistence test": "Mark crossed; the four-quarter persistence count is running.",
     }[sc["status"]]
 
+    ytl = years_to_line(a_series, c_pts, d_pts, sc)
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
@@ -835,11 +899,11 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <section class="section prose" id="singularity">
 <h2>Are we in the singularity?</h2>
-<p>The answer at the top of the page comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
+<p>The number at the top of the page counts how many of the test's four parts are past halfway to their lines, and the words beneath it give each part's share of the way; the test's own single progress number is the weakest part's share, today {"at most " if sc["progress_is_upper_bound"] else ""}{round(sc["progress"] * 100)}% (the {({"A": "pace", "B": "forecasts", "C": "AI-research share", "D": "economy"})[sc["bottleneck"]]}). The answer itself comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
 
 <h3 id="leg-a">A. Is AI getting better faster and faster?</h3>
 <p><em>The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</em></p>
-<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}.</p>
+<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}. {esc(ytl.get("A", ""))}</p>
 <figure class="fig"><a href="leg-a-time-horizon.png" title="Open the chart full size"><img src="leg-a-time-horizon.png" alt="The longest programming job each AI system gets right half the time, from 2019 to 2026, and how many days that length took to double"></a>
 <figcaption>Filled dots were the best system on the day they came out; hollow dots were not. METR says its tests cannot measure reliably beyond 16 hours, so a year that includes such a reading is drawn hollow in the lower chart and not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
 <details><summary>Every system measured ({len(a_pts)}) and every twelve-month window</summary>
@@ -859,7 +923,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <h3 id="leg-c">C. Is AI doing the work of improving AI?</h3>
 <p><em>The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</em></p>
-<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it.</p>
+<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it. {esc(ytl.get("C", ""))}</p>
 <figure class="fig"><a href="leg-c-self-reports.png" title="Open the chart full size"><img src="leg-c-self-reports.png" alt="The share of Anthropic's AI research work led by its own AI: under 1% in February 2026 and 26% in August 2026, against a line at one half"></a>
 <figcaption>Anthropic gave its February figure as "under 1%". Every statement, including Google's, is in the table below.</figcaption></figure>
 <details><summary>What the companies said</summary>
@@ -868,7 +932,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <h3 id="leg-d">D. Has the economy changed gear?</h3>
 <p><em>The idea, from the economist Robin Hanson: each new era of history has made the world's economy double about a hundred times faster than the one before.</em></p>
-<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each, the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This part asks whether that has started, using the World Bank's yearly count of everything the world produces. In {D['year']} it grew {D['reading']:.1f} percent, a pace that doubles it every {D['doubling']:.0f} years; since 1961 it has averaged {D['g_ref']:.1f} percent. The line, 30 percent in a year, would double it every {D['t_star']:.1f} years. It comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, not from this project, and it is far above the best year since 1961, {max(q['growth'] for q in d_pts):.1f} percent. This is the one part measured by people outside the AI world, which is why it is in the test; the cost is that the economy reacts years after the technology, so it will usually be the furthest behind.</p>
+<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each, the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This part asks whether that has started, using the World Bank's yearly count of everything the world produces. In {D['year']} it grew {D['reading']:.1f} percent, a pace that doubles it every {D['doubling']:.0f} years; since 1961 it has averaged {D['g_ref']:.1f} percent. The line, 30 percent in a year, would double it every {D['t_star']:.1f} years. It comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, not from this project, and it is far above the best year since 1961, {max(q['growth'] for q in d_pts):.1f} percent. This is the one part measured by people outside the AI world, which is why it is in the test; the cost is that the economy reacts years after the technology, so it will usually be the furthest behind. {esc(ytl.get("D", ""))}</p>
 <figure class="fig"><a href="leg-d-world-growth.png" title="Open the chart full size"><img src="leg-d-world-growth.png" alt="Growth of the world's economy each year since 1961, between about minus 3 and 7 percent, with the line at 30 percent far above"></a>
 <figcaption>One bar per year. Countries revise their figures for years afterwards; if a revision pulls a year back below the line, the clock on this part starts again. How many years each rate takes to double the economy is in <a href="leg-d-world-growth.csv">a table</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
@@ -913,7 +977,9 @@ def main():
         "built": built, "status": sc["status"], "progress": round(sc["progress"], 3),
         "progress_is_upper_bound": sc["progress_is_upper_bound"], "bottleneck": sc["bottleneck"],
         "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
-        "unmeasured": sc["unmeasured"], "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
+        "unmeasured": sc["unmeasured"],
+        "headline": sc["headline"], "headline_label": sc["headline_label"], "parts_past_half": sc["parts_past_half"],
+        "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
     n_docs = render_docs(built, git_commit())
     n_data = copy_data()
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "

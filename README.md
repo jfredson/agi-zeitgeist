@@ -11,7 +11,10 @@ possible, to *when* it arrives, to *whether today's systems are already close or
 improving themselves*? The method is built so the data can say no.
 
 **Live page:** https://agizeitgeist.com (the data, the documents and the singularity
-status, rebuilt from this repository).
+status, rebuilt from this repository). Its headline is the count of the test's four parts that
+are past halfway to their lines, with each part's share beneath and the verdict under that
+(ruled 2026-10-17; `docs/headline-proposal-2026-10-17.md`); `site/status.json` carries it as
+`headline`, `headline_label` and `parts_past_half`.
 
 **Status (2026-10-08):** seed phase complete; five people traced (Ray Kurzweil, Geoffrey
 Hinton, Yann LeCun, Gary Marcus, Sam Altman), plus surveys, prediction markets, polls and
@@ -46,6 +49,7 @@ collection for the panel is next; the other public streams have not started.
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
 | `docs/leg-c-second-source-2026-10.md` | reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read as a candidate outside-the-company measure for leg C; found to be context, not a second source |
+| `docs/headline-proposal-2026-10-17.md` | the headline proposal (2026-10-17, ruled the same day): why "Not yet" became "1 of 4" with the shares beneath, the two alternatives, and what each would have shown |
 | `docs/leg-c-second-source-2026-10-17.md` | reading note (2026-10-17): the wider search for a leg C second source (venue disclosure statistics, researcher surveys, independent measurements); 26 candidates judged, none qualifies, no row added; three near misses and the questions they raise are set out for John |
 | `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files, and every reading record in `data/readings/` |

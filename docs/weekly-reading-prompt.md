@@ -174,6 +174,10 @@ nothing there. The commit message is the log.
 
 ## 8. Publish
 
+The site rebuild recomputes the headline (the count of parts past halfway, with each part's share)
+from the rows, so nothing is written for it by hand; a leg crossing one half changes the count and
+is a line in the report (ruled 2026-10-17; `docs/headline-proposal-2026-10-17.md`).
+
 One commit, one push:
 
     python3 scripts/validate.py && git add -A && git commit -m "YYYY-MM-DD: weekly reading, N read, M rows appended, F flagged" -m "<one line per row appended, by id; or 'No rows appended.'>" -m "<the attribution lines this session was given>" && git push origin main

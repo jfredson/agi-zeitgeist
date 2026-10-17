@@ -203,6 +203,16 @@ minimum is not an index; it is the definition's own bottleneck. While a leg is n
 measurable, P(t) is reported as "at most" the minimum of the measured legs, since the
 missing one can only lower it.
 
+**Note of 2026-10-17 (how it is published; ruled by John on the agent's proposal,
+`docs/headline-proposal-2026-10-17.md`; a note, not an amendment, since nothing above changes).**
+The page's headline number is the count of legs whose gauge is above one half ("1 of 4" on
+2026-10-17), with each leg's gauge printed beneath as a percentage of the way and the verdict
+("Not yet.") kept beneath that as the answer to this test. The count reports the gauges; it does
+not combine them, so P(t) stays the one progress number, written out in the test section and
+published in `status.json` as `progress`. `status.json` also carries `headline`,
+`headline_label` and `parts_past_half`. Years to each leg's line, extended from its recent
+trend, are shown only inside that leg's panel, as a sentence with its range, never as a headline.
+
 ## 5. Tests the definition owes
 
 1. **Backward test, owed.** Run on every year from 1995 to 2019 with the best data
