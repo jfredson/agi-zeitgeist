@@ -46,6 +46,7 @@ collection for the panel is next; the other public streams have not started.
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
 | `docs/leg-c-second-source-2026-10.md` | reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read as a candidate outside-the-company measure for leg C; found to be context, not a second source |
+| `docs/leg-c-second-source-2026-10-17.md` | reading note (2026-10-17): the wider search for a leg C second source (venue disclosure statistics, researcher surveys, independent measurements); 26 candidates judged, none qualifies, no row added; three near misses and the questions they raise are set out for John |
 | `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files, and every reading record in `data/readings/` |
 | `scripts/charts.py` | builds the charts from the CSV files |
