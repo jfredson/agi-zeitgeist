@@ -545,8 +545,8 @@ an overlap period published, and the switch recorded here as an amendment.
 
 What happens next:
 1. John asks METR whether a Time Horizon 1.2 or 2.0 is planned, whether it will overlap the
-   1.1 series, and if not which public series they would point to (note drafted 2026-10-17;
-   sent by John from his own address).
+   1.1 series, and if not which public series they would point to (note drafted and sent by
+   John from his own address on 2026-10-17).
 2. On METR's answer, or after a stated wait if none comes, candidate successors are proposed
    with pictures of the overlap, and the switch is ruled as A25 or later.
 3. Until then the page says the gauge's source has stopped updating, with this entry linked.
