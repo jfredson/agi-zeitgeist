@@ -452,7 +452,7 @@ def load_thresholds():
 # site's skin site/skin.css ("Gazette", ruled by John 2026-10-17: newsprint, ink, one red for the mark
 # and for links, a blue-grey for the gauge bars; light by default), the top bar with two tiers and the
 # theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
-# footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson. provenance. licence."
+# footer ending "A Sentient Horizons project." (linking to the family's Projects page, John 2026-10-17) with the attribution line "© year John Fredrickson. provenance. licence."
 # (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
@@ -658,7 +658,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
