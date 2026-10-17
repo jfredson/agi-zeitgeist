@@ -144,6 +144,11 @@ in the window, or one fetch of the source's own database where the record was bu
 - a source that has stopped publishing, closed, or changed its method is `flagged`, since
   what to do about its row is John's.
 
+Sources John has ruled closed are not read at all, on any scope: Monmouth University's polling
+institute (ceased operations 2025-07-01; ruled 2026-10-17). Metaculus is read only if a search
+finds a public reading, since its question cannot be fetched without an account token (ruled
+2026-10-17: the row stays with no series).
+
 Series that are read yearly (Google Trends' yearly means, read in January) and one-off
 surveys that will not recur (Müller and Bostrom's 2012 to 2013 questionnaire) are read on the
 monthly scope only, and may be `quiet` with that reason and no search.
@@ -412,3 +417,32 @@ ruled yet unless the line says so.
 - **Fetching sources by API beyond the three already built that way** (METR's file,
   Manifold's market, the World Bank's indicator): add a fetch only once a reading has
   demonstrably missed something a fetch would have caught.
+
+## Rulings on flagged items
+
+Each reading's flagged items are John's to rule on. The rulings are recorded here, dated, so a
+later reading can tell a settled question from an open one and does not flag it again.
+
+**2026-10-17, on the first reading (2026-10-16), John ruling on the agent's recommendations:**
+
+- *METR's time-horizon series has stopped updating (leg A anchor).* Open. John asked what METR
+  is and whether the project must deal with it; the successor is an amendment and is not ruled.
+- *26% by the R&D Automation Index against 51% by the staff poll (leg C).* The index keeps
+  scoring; the poll stays beside the gauge, unscored. Recorded under leg C in the definition.
+- *Venue AI-disclosure audits as a second source for leg C.* Read the ICLR 2026 audit's results
+  before deciding whether it is a second source or only context; a roadmap step, not a reading.
+- *Metaculus cannot be fetched without a token.* The row stays with no series; noted on the row.
+- *Monmouth's polling institute closed.* Confirmed on the university's own page (ceased
+  operations 2025-07-01). The series ends with the 2023 poll; the row says so; not read again.
+- *Ipsos AI Monitor 2026 has no public figures.* Read the full report by hand, as the 2024 and
+  2025 rows were, and append the rows; a roadmap step, not a reading.
+- *The OpenAI-led corporate letter on cyber defence (2026-08-27).* Not the record's kind of open
+  letter: a company pledge about defence, not a statement about where AI is going. No row.
+- *The White House Accord on Super Intelligence (2026-09-29).* Covered by the executive order's
+  row of the same day; a sentence on that row names it. No row of its own (agent's call under
+  the ruling).
+- *The State of AI Report 2026 (2026-10-08).* Not the record's kind of report: an annual
+  investor's survey of the field, not a research report. No row.
+
+Two of these set precedent for later readings: a corporate pledge is not an open letter of the
+record's kind, and an annual industry survey is not a report of the record's kind.

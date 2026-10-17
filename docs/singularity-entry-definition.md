@@ -136,6 +136,10 @@ self-report survey of one company's staff) in the same table as the scored row, 
 sits beside the gauge; it is not scored, and the thresholds file is unchanged. Whether a
 staff estimate or the index should score the leg is John's call and is not settled here.
 
+**Ruled 2026-10-17 (John, on the agent's recommendation).** The index keeps scoring the leg. The
+staff estimate stays beside the gauge, unscored: the index is a measurement of tasks completed,
+the poll is opinion with no definition of "does". The thresholds file is unchanged.
+
 ### Leg D: the economy has changed mode
 
 Let G(t) be world real output growth over the previous year (World Bank, world aggregate,

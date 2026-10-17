@@ -84,7 +84,9 @@ Read each leg's named source, and only that source counts as a reading of the ga
 ## 2. Part 2: every institution in the record
 
 For every speaker in the step 0 list, in file order, except METR, the Anthropic Institute and
-the World Bank (read in part 1):
+the World Bank (read in part 1) and except Monmouth (its polling institute closed on 2025-07-01;
+ruled 2026-10-17, see "Rulings on flagged items" in `docs/weekly-reading.md`, which also lists
+the kinds of document John has ruled out, so they are not flagged again):
 
 1. Compose one or two web searches for releases in the window, from the speaker's `name` and
    the `measure` text of its series in `data/aggregates.csv`; where the record was built by a
