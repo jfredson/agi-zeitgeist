@@ -13,8 +13,21 @@
   "unmeasured": [
     "B"
   ],
-  "headline": "1 of 4",
-  "headline_label": "parts of the test past halfway, none at its line; pace 43%, forecasts unmeasured, AI doing the research 52%, economy 0%",
+  "headline": "32%",
+  "headline_label": "of the way, averaged over the 3 parts that can be measured (forecasts unmeasured); all four must cross, and the slowest, the economy, is at 0%",
+  "average_share": 0.315,
   "parts_past_half": 1,
+  "crossing_sentence": "On current trends the economy does not cross its line, so the test is not met on current trends; the pace crosses between 2028 and 2048; the AI-research share crosses in 2027; forecasts unmeasured.",
+  "crossings": {
+    "A": [
+      2028,
+      2048
+    ],
+    "C": [
+      2027,
+      2027
+    ],
+    "D": null
+  },
   "definition": "https://agizeitgeist.com/docs/singularity-entry-definition.html"
 }

@@ -192,3 +192,14 @@ five-line change in `scripts/site.py`.
 4. README: the "Live page" line says what the headline is.
 5. A worklog decision entry naming the ruling and, if decision 5 goes the other way, an
    amendment entry.
+
+## 9. Ruled
+
+Ruled by John on 2026-10-17 as recommended (the count, "1 of 4"), and landed that afternoon.
+Revised by John the same evening after seeing it on the parent site's shelf: the number is now the
+average share of the way across the measured parts, with the slowest part named, and the words an
+on-current-trends crossing sentence, the trend method recorded as amendment A25. The variant this
+document set aside in section 4 ("the mean of the measured legs", 32%) is therefore the headline,
+with the safeguard A25 states: never printed without the slowest leg and its share, never used
+for the status, and P(t) unchanged as the definition's own progress number.
+

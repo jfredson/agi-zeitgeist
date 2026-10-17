@@ -322,12 +322,17 @@ def score(th, a_series, c_pts, d_pts):
     # does not combine them, so section 4's P(t) above stays the one progress number.
     names = {"A": "pace", "B": "forecasts", "C": "AI doing the research", "D": "economy"}
     out["parts_past_half"] = sum(1 for g in measured.values() if g > 0.5)
-    at_line = sum(1 for k in measured if out[k]["at_threshold"])
-    out["headline"] = f'{out["parts_past_half"]} of 4'
     shares = ", ".join(f"{names[k]} {round(measured[k] * 100)}%" if k in measured else f"{names[k]} unmeasured" for k in "ABCD")
     out["shares_text"] = shares
-    out["headline_label"] = (f'parts of the test past halfway, {"none" if at_line == 0 else at_line} at its line; {shares}'
-                             if at_line <= 1 else f'parts of the test past halfway, {at_line} at their lines; {shares}')
+    # Revised the same evening (amendment A25): the headline is the average share of the way
+    # across the measured parts, with the slowest part named. It is a reading aid printed
+    # beside P(t), never the status, and never the test's own progress number.
+    out["average_share"] = sum(measured.values()) / len(measured)
+    out["headline"] = f'{round(out["average_share"] * 100)}%'
+    slow = out["bottleneck"]
+    out["headline_label"] = (f'of the way, averaged over the {len(measured)} parts that can be measured'
+                             f'{" (" + ", ".join(names[k] for k in unmeasured) + " unmeasured)" if unmeasured else ""}; '
+                             f'all four must cross, and the slowest, the {names[slow]}, is at {round(measured[slow] * 100)}%')
     if unmeasured:
         out["status"] = "not entered"
     elif all(out[k]["at_threshold"] for k in "ABCD"):
@@ -340,9 +345,11 @@ def score(th, a_series, c_pts, d_pts):
 
 
 def years_to_line(a_series, c_pts, d_pts, sc):
-    """Years to each leg's line if its recent trend continued, as sentences with their range
-    (ruled 2026-10-17: shown only inside each leg's panel, never as the headline)."""
+    """Years to each leg's line if its recent trend continued (amendment A25): per-leg
+    sentences with their range for the panels, and the crossing years for the headline's
+    on-current-trends sentence. The method is written in docs/amendments.md under A25."""
     out = {}
+    cross = {}  # leg -> (earliest year, latest year) or None when the trend does not reach the line
     clean = [w for w in a_series if not w["over16"]]
     if len(clean) >= 4:
         t_star = sc["A"]["t_star"]
@@ -352,13 +359,16 @@ def years_to_line(a_series, c_pts, d_pts, sc):
         b = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)
         cur = clean[-1]["days"]
         fast = math.log(cur / t_star, 2)  # years if the doubling time halved every year
+        y0 = clean[-1]["date"].year + clean[-1]["date"].timetuple().tm_yday / 365.25
         if b < 0:
             slow = (math.log(t_star) - math.log(cur)) / b
+            cross["A"] = (round(y0 + fast), round(y0 + slow))
             out["A"] = (f"Extending the trend gives a range, not a date: over all the twelve-month windows since {clean[0]['date'].year} the "
                         f"doubling time has fallen about {abs(100 * (math.exp(b) - 1)):.0f} percent a year, which would reach {t_star:.0f} days in "
                         f"about {slow:.0f} years; if it halved every year or two, as it did between 2024 and 2025, {fast:.0f} to {2 * fast:.0f} years; "
                         f"and over the latest year it has not fallen at all.")
         else:
+            cross["A"] = (round(y0 + fast), None)
             out["A"] = (f"Extending the trend gives no date: the doubling time has not fallen over the windows since {clean[0]['date'].year}. "
                         f"If it halved every year or two, as it did between 2024 and 2025, the line would be {fast:.0f} to {2 * fast:.0f} years away.")
     leads = sorted([p for p in c_pts if p["id"].endswith("-rd-leads")], key=lambda p: p["date"])
@@ -369,6 +379,8 @@ def years_to_line(a_series, c_pts, d_pts, sc):
         if f1 < thr:
             lin = (thr - f1) / ((f1 - f0) / dt)
             exp_ = math.log(thr / f1) / (math.log(f1 / f0) / dt)
+            yc = leads[-1]["date"].year + leads[-1]["date"].timetuple().tm_yday / 365.25
+            cross["C"] = (round(yc + max(exp_, 1 / 12)), round(yc + lin))
             out["C"] = (f"At the pace of its first {dt * 12:.0f} months ({leads[-2]['value']:.0f}% to {leads[-1]['value']:.0f}%), the share would reach half in "
                         f"about {lin * 12:.0f} months if it rose steadily, and in about {max(exp_ * 12, 1):.0f} {'month' if max(exp_ * 12, 1) < 1.5 else 'months'} if it kept multiplying; two readings are a thin "
                         f"basis for either.")
@@ -377,12 +389,53 @@ def years_to_line(a_series, c_pts, d_pts, sc):
         xs = [int(q["year"]) for q in recent]; gs = [q["growth"] for q in recent]
         n = len(xs); mx = sum(xs) / n; mg = sum(gs) / n
         b = sum((x - mx) * (g - mg) for x, g in zip(xs, gs)) / sum((x - mx) ** 2 for x in xs)
-        if b <= 0:
+        if b <= 0 or (sc["D"]["g_star"] - gs[-1]) / b > 100:
+            cross["D"] = None
             out["D"] = (f"Extending the trend gives no date: since 2010 growth has been flat to falling ({b:+.2f} points a year), "
                         f"and the line is {sc['D']['g_star'] / max(q['growth'] for q in d_pts):.0f} times the best year on record.")
         else:
+            cross["D"] = (int(xs[-1] + (sc["D"]["g_star"] - gs[-1]) / b),) * 2
             out["D"] = f"At the trend since 2010 ({b:+.2f} points a year) the line would be about {(sc['D']['g_star'] - gs[-1]) / b:.0f} years away."
+    if sc["C"].get("measurable") and sc["C"]["at_threshold"]:
+        cross["C"] = ("crossed", "crossed")
+    out["_cross"] = cross
+    out["_sentence"] = crossing_sentence(cross, sc)
     return out
+
+
+def crossing_sentence(cross, sc):
+    """One sentence: on current trends, when each part crosses its line, and whether the test is met."""
+    names = {"A": "the pace", "B": "forecasts", "C": "the AI-research share", "D": "the economy"}
+    def span(v):
+        if v is None:
+            return "does not cross its line"
+        lo, hi = v
+        if lo == "crossed":
+            return "has crossed"
+        if hi is None:
+            return f"does not cross on the fitted trend, though it would by {lo} if its 2024-to-2025 halving resumed"
+        return f"crosses in {lo}" if lo == hi else f"crosses between {lo} and {hi}"
+    parts, misses = [], []
+    for k in "ACD":
+        if not sc[k].get("measurable") or k not in cross:
+            continue
+        v = cross[k]
+        if v is None or (v[1] is None):
+            misses.append(k)
+    order = misses + [k for k in "ACD" if k in cross and k not in misses]
+    parts = [f"{names[k]} {span(cross[k])}" for k in order]
+    unmeasured = [names[k] for k in "ABCD" if not sc[k].get("measurable")]
+    head = ("On current trends the test is not met: " if misses else "On current trends every measured part crosses: ")
+    tail = "; ".join(parts)
+    if misses:
+        tail = tail.replace("; ", ", so the test is not met on current trends; ", 1) if len(parts) > 1 else tail
+        head = "On current trends "
+    if unmeasured:
+        tail += f"; {' and '.join(unmeasured)} unmeasured"
+    if not misses:
+        latest = max(v[1] for k, v in cross.items() if v and v[1] not in (None, "crossed"))
+        head = f"On current trends every measured part has crossed by {latest}: "
+    return head + tail + "."
 
 
 def load_thresholds():
@@ -768,7 +821,7 @@ def expert_dates():
     return med, years[0], years[-1], rows
 
 
-def landing(sc, b_pts, mani, aggregates, built, commit):
+def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
     """The first screen: the answer, the four conditions, the experts' date."""
     A, C, D = sc["A"], sc["C"], sc["D"]
     answer = {"not entered": "Not yet.", "approaching": "Getting close.",
@@ -796,8 +849,9 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
 <p class="answer">{esc(sc["headline"])}</p>
-<p class="kicker">{esc(sc["headline_label"].split("; ")[0])}</p>
+<p class="kicker">{esc(sc["headline_label"])}</p>
 <p class="shares">{" · ".join(f"{esc(n)} {v}" for n, v in share_rows)}</p>
+<p class="shares">{esc(ytl["_sentence"])}</p>
 <h1><span class="verdict">{answer}</span> Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
@@ -867,7 +921,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     }[sc["status"]]
 
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
-    body = f"""{landing(sc, b_pts, mani, _AGG, built, commit)}
+    body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
@@ -899,7 +953,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <section class="section prose" id="singularity">
 <h2>Are we in the singularity?</h2>
-<p>The number at the top of the page counts how many of the test's four parts are past halfway to their lines, and the words beneath it give each part's share of the way; the test's own single progress number is the weakest part's share, today {"at most " if sc["progress_is_upper_bound"] else ""}{round(sc["progress"] * 100)}% (the {({"A": "pace", "B": "forecasts", "C": "AI-research share", "D": "economy"})[sc["bottleneck"]]}). The answer itself comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
+<p>The number at the top of the page is the average, across the parts that can be measured, of how far each is from its starting point toward its line, and the words beneath it give each part's share and when each would cross on its current trend; the test's own single progress number is stricter, the weakest part's share, today {"at most " if sc["progress_is_upper_bound"] else ""}{round(sc["progress"] * 100)}% (the {({"A": "pace", "B": "forecasts", "C": "AI-research share", "D": "economy"})[sc["bottleneck"]]}). The answer itself comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
 
 <h3 id="leg-a">A. Is AI getting better faster and faster?</h3>
 <p><em>The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</em></p>
@@ -970,6 +1024,7 @@ def main():
     c_pts = leg_c(world)
     d_pts = leg_d(world)
     sc = score(load_thresholds(), a_series, c_pts, d_pts)
+    ytl = years_to_line(a_series, c_pts, d_pts, sc)
     globals()["_AGG"] = aggregates
     built = date.today().isoformat()
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
@@ -978,7 +1033,10 @@ def main():
         "progress_is_upper_bound": sc["progress_is_upper_bound"], "bottleneck": sc["bottleneck"],
         "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
         "unmeasured": sc["unmeasured"],
-        "headline": sc["headline"], "headline_label": sc["headline_label"], "parts_past_half": sc["parts_past_half"],
+        "headline": sc["headline"], "headline_label": sc["headline_label"],
+        "average_share": round(sc["average_share"], 3), "parts_past_half": sc["parts_past_half"],
+        "crossing_sentence": ytl["_sentence"],
+        "crossings": {k: (list(v) if v else None) for k, v in ytl["_cross"].items()},
         "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
     n_docs = render_docs(built, git_commit())
     n_data = copy_data()

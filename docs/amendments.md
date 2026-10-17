@@ -553,3 +553,78 @@ What happens next:
    The weekly reading keeps checking METR's results file and adds "Time Horizon 2.0" to its
    search terms for the leg A item.
 
+## 2026-10-17: the headline becomes the average share of the way, with an on-current-trends crossing sentence
+
+Decided by: mixed. The agent's proposal of 2026-10-17 (`docs/headline-proposal-2026-10-17.md`)
+recommended a count of parts past halfway; John ruled it that afternoon and, after seeing "1 of
+4" on the parent site's shelf ("'1 in 4' is just not a very interesting headline"), revised it
+the same evening in his words: "Rule the AGI Zeitgeist headline as the average share of the way
+across the parts as the number, with the slowest part named, and an on-current-trends crossing
+sentence as the words, the trend method as a numbered amendment." The agent built it on his
+ruling.
+
+### A25. The headline average and the on-current-trends sentence
+
+**What changes.** Two things the page and `status.json` publish; nothing that is scored.
+
+1. **The number** is the average of the measured legs' gauges (each gauge is its leg's scored
+   measure against its reference value and frozen threshold, clipped to 0 to 1), written as a
+   percentage "of the way". An unmeasured leg is left out of the average and named as
+   unmeasured. The words beneath always name the slowest leg and its share ("all four must
+   cross, and the slowest, the economy, is at 0%"). On 2026-10-17 the number is 32% (pace 43%,
+   AI doing the research 52%, economy 0%; forecasts unmeasured).
+2. **The words** are one sentence saying, on current trends, when each measured leg crosses its
+   line, and whether the test is met on current trends. The method:
+   - *Pace (leg A).* A straight line fitted to the logarithm of the trailing twelve-month
+     doubling time against time, over every scorable window from the first (2024-06) to the
+     latest. The slow end of the range is the year that line reaches the threshold; the fast
+     end is the year reached if the doubling time halved every year from the latest scorable
+     window, the rate seen between 2024 and 2025. If the fitted line does not fall, the leg
+     "does not cross on the fitted trend", and the fast end is still stated. Today: 2028 to
+     2048.
+   - *AI doing the improving (leg C).* The last two readings of the scored series. The fast
+     end extends them proportionally (the same multiplying factor per year), the slow end in a
+     straight line; both floored at one month ahead. Today: 2027 on both. A leg already at its
+     threshold "has crossed".
+   - *The economy (leg D).* A straight line fitted to annual growth from 2010 to the latest
+     year. If its slope is zero or negative, or the crossing lies more than a hundred years
+     out, the leg "does not cross its line" and the sentence says the test is not met on
+     current trends. Today: does not cross (the slope is −0.04 points a year).
+   - *Forecasts (leg B).* Unmeasured; named as such until the ledger exists.
+   - Crossing years are calendar years, counted from the date of the latest reading used.
+     Where a leg's two ends differ the sentence gives both as a range; it never gives a single
+     year for a fit that is unstable.
+   - The same sentences, with their ranges and the thin-basis caveats, stay in each leg's panel
+     as landed on 2026-10-17.
+
+**What does not change.** The frozen thresholds, the reference year, the scored series, the
+persistence rule and the verdict's wording. The status words (not entered, approaching, mark
+crossed, entered) are still computed from the gauges as section 3 says, never from the average
+or the sentence. P(t) in section 4, the weakest leg's gauge, stays the definition's own progress
+number and is still published as `progress` and written out in the test section.
+
+**The argument section 4 makes against an average, and how it is kept.** Section 4 says an
+average would let one runaway leg hide stalled ones. That stands for P(t), which is why P(t)
+is not replaced. The headline average is a reading aid for the shelf, and the rule that keeps
+it honest is that it is never printed without the slowest leg and its share in the same
+breath, and never used to decide the status. Methodology section 9's rule that series are
+never combined into an index is read the same way: the gauges are combined only in this
+labelled headline, with the parts shown beside it, not in any series or score.
+
+**Published fields** (`site/status.json`): `headline` ("32%"), `headline_label` (the average
+sentence with the slowest leg), `average_share` (0.315), `crossing_sentence` (the
+on-current-trends sentence), `crossings` (per leg, the earliest and latest crossing year, or
+null where the leg does not cross), and `parts_past_half` (kept from the afternoon's ruling);
+`status`, `progress`, `progress_is_upper_bound`, `bottleneck`, `gauges` and `unmeasured` as
+before.
+
+**The weekly reading** recomputes the number and the sentence at every site rebuild; nothing
+is written for them by hand.
+
+**The next question, not built now.** John named a version two for a later day: a computed
+probability and a year on the siblings' pattern (The Belt Equation, The Quiet Galaxy), from a
+model that draws each leg's crossing year from a range and reports the chance the test is met
+by a given year and the middle year. It would need a stated distribution for each leg's
+crossing, a rule for the unmeasured leg, and a run record; it is logged here as the question
+that follows this amendment.
+

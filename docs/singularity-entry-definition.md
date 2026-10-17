@@ -205,13 +205,17 @@ missing one can only lower it.
 
 **Note of 2026-10-17 (how it is published; ruled by John on the agent's proposal,
 `docs/headline-proposal-2026-10-17.md`; a note, not an amendment, since nothing above changes).**
-The page's headline number is the count of legs whose gauge is above one half ("1 of 4" on
-2026-10-17), with each leg's gauge printed beneath as a percentage of the way and the verdict
-("Not yet.") kept beneath that as the answer to this test. The count reports the gauges; it does
-not combine them, so P(t) stays the one progress number, written out in the test section and
-published in `status.json` as `progress`. `status.json` also carries `headline`,
-`headline_label` and `parts_past_half`. Years to each leg's line, extended from its recent
-trend, are shown only inside that leg's panel, as a sentence with its range, never as a headline.
+The page's headline number was, for the afternoon of 2026-10-17, the count of legs whose
+gauge is above one half ("1 of 4"), with each leg's gauge printed beneath. **Revised the same
+evening by John, amendment A25:** the headline is the average of the measured legs' gauges,
+written as a percentage of the way (32% on 2026-10-17), always printed with the slowest leg and
+its share, and beneath it one sentence saying when each leg crosses its line on current trends
+and whether the test is met on current trends (the method is in A25). The verdict ("Not yet.")
+stays beneath that as the answer to this test. The argument above against an average stands for
+P(t), which remains the definition's own progress number, written out in the test section and
+published in `status.json` as `progress`; the headline average is a labelled reading aid and is
+never used for the status. `status.json` carries `headline`, `headline_label`, `average_share`,
+`crossing_sentence`, `crossings` and `parts_past_half`.
 
 ## 5. Tests the definition owes
 

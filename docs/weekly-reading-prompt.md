@@ -174,9 +174,10 @@ nothing there. The commit message is the log.
 
 ## 8. Publish
 
-The site rebuild recomputes the headline (the count of parts past halfway, with each part's share)
-from the rows, so nothing is written for it by hand; a leg crossing one half changes the count and
-is a line in the report (ruled 2026-10-17; `docs/headline-proposal-2026-10-17.md`).
+The site rebuild recomputes the headline (the average share of the way with the slowest part
+named, and the on-current-trends crossing sentence; amendment A25) from the rows, so nothing is
+written for them by hand. A new row that moves a leg's share by five points or more, or changes
+which leg is slowest, or changes a crossing year, is a line in the report.
 
 One commit, one push:
 
