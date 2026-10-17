@@ -53,8 +53,10 @@ Read each leg's named source, and only that source counts as a reading of the ga
    in minutes, and the notes follow the existing rows word for word (model key, 95% interval,
    frontier flag from `is_sota`, the standing definition sentence, retrieval date). Also fetch
    `https://metr.org/time-horizons/` and run one web search for a new release of the series or a
-   successor suite; a change to the series itself (a new version, the page retired, the
-   doubling-time fit changed) is `flagged`, since the successor rule is an amendment.
+   successor suite (search terms: "METR time horizon 2.0", "Time Horizon 1.2"; added 2026-10-17
+   under amendment A24, which records that the series has stopped updating, so do not flag that
+   fact again, only a new version, a retired page or a changed fit); a change to the series
+   itself is `flagged`, since the successor rule is an amendment.
 2. **Leg B (forecasts).** Two web searches for new forecast-versus-outcome material about AI
    progress (a scored set of forecasts, a retrospective on a timeline prediction, a change in a
    consensus arrival date). The leg is unmeasured until the forecast ledger exists, so the

@@ -425,8 +425,10 @@ later reading can tell a settled question from an open one and does not flag it 
 
 **2026-10-17, on the first reading (2026-10-16), John ruling on the agent's recommendations:**
 
-- *METR's time-horizon series has stopped updating (leg A anchor).* Open. John asked what METR
-  is and whether the project must deal with it; the successor is an amendment and is not ruled.
+- *METR's time-horizon series has stopped updating (leg A anchor).* Ruled 2026-10-17 after John
+  asked what METR is: ask METR whether a successor suite is planned, and record the question as
+  an open amendment (A24) so the page says the gauge is running out. The switch itself waits on
+  the answer and is a later amendment. The leg A item adds "Time Horizon 2.0" to its searches.
 - *26% by the R&D Automation Index against 51% by the staff poll (leg C).* The index keeps
   scoring; the poll stays beside the gauge, unscored. Recorded under leg C in the definition.
 - *Venue AI-disclosure audits as a second source for leg C.* Read the ICLR 2026 audit's results

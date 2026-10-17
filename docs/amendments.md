@@ -517,3 +517,39 @@ Rulings that changed no wording:
   task-length measure, are noise in the stand-in (it measures what went into systems, not
   what they could do, and windows of three or four systems swing a lot), not a flaw in the
   rule. The definition is not changed for it.
+
+## 2026-10-17: the pace gauge's anchor series has stopped updating; the successor question is opened
+
+Decided by: mixed. The first weekly reading (2026-10-16) flagged that METR's time-horizon
+page says it is no longer actively updated (last update 2026-09-08) and that METR's Frontier
+Risk Report of 2026-05-19 says the Time Horizon 1.1 suite cannot measure above 16 hours and
+the strongest agents have saturated it. The agent and the master session recommended asking
+METR whether a successor is coming and recording the question here as open, so the page says
+the gauge is running out rather than going quiet; John accepted ("ask METR and record the
+successor question as open", 2026-10-17, confirmed in the review session the same day after
+asking what METR is).
+
+### A24. Successor to the leg A anchor: question opened, nothing changed yet
+
+Status: **open.** No frozen value changes with this entry. `docs/singularity-entry-thresholds.json`
+is untouched; leg A keeps scoring from the METR rows already in `data/world_measures.csv`
+under the rules as written (windows holding a reading past 16 hours are not scored).
+
+What is true: the anchor series for leg A (and the reference series for leg B's ledger) has
+stopped moving. The record's top frontier reading (Claude Mythos Preview, early, 1,044.78
+minutes on 2026-04-07) is already past the 16-hour bar, so a trailing twelve-month window will
+soon hold no scorable frontier readings and the gauge will show no current value.
+
+What the successor rule requires (A19): a replacement measure named before the series stops,
+an overlap period published, and the switch recorded here as an amendment.
+
+What happens next:
+1. John asks METR whether a Time Horizon 1.2 or 2.0 is planned, whether it will overlap the
+   1.1 series, and if not which public series they would point to (note drafted 2026-10-17;
+   sent by John from his own address).
+2. On METR's answer, or after a stated wait if none comes, candidate successors are proposed
+   with pictures of the overlap, and the switch is ruled as A25 or later.
+3. Until then the page says the gauge's source has stopped updating, with this entry linked.
+   The weekly reading keeps checking METR's results file and adds "Time Horizon 2.0" to its
+   search terms for the leg A item.
+

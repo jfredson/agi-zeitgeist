@@ -65,6 +65,14 @@ past 16 hours as beyond its task suite's reliable range and excludes them from i
   computed in 2019 itself (one reading), so T_ref is METR's own fit over all frontier
   models from 2019 to early 2026, 187.8 days (agent decision, 2026-10-08).
 
+**Note of 2026-10-17 (amendment A24, open).** METR's time-horizons page says the series is no
+longer actively updated (last 2026-09-08), and METR's Frontier Risk Report of 2026-05-19 says the
+Time Horizon 1.1 suite cannot measure above 16 hours and the strongest agents have saturated
+it. The record's top frontier reading is already past the 16-hour bar, so this gauge will soon
+have no scorable window. The successor rule applies: a replacement is to be named with an
+overlap period, by amendment. John has asked METR whether a successor suite is planned; until
+the switch is ruled, nothing here changes and the gauge is scored as written.
+
 ### Leg B: forecasts have stopped working
 
 For forecasts of C made at time s with lead d (that is, about C(s + d)), the skill score
