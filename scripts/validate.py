@@ -6,12 +6,15 @@ Standard library only, so anyone can run it: python3 scripts/validate.py
 """
 
 import csv
+import json
 import re
 import sys
 from datetime import date
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "data"
+# One file per run of the weekly reading (docs/weekly-reading.md), never edited.
+READINGS = DATA / "readings"
 
 HEADERS = {
     # Tier and quota tags from amendment A13 (methodology-v2 section 3).
@@ -84,6 +87,21 @@ NOTE_TAGS = {"secondhand", "incidental", "sampled", "lower_bound"}
 # Books, papers and recorded talks may carry a full citation instead of a link.
 CITATION_TYPES = {"book", "paper", "talk"}
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+
+# The weekly reading (docs/weekly-reading.md, "The reading record").
+READING_NAME = re.compile(r"^(\d{4}-\d{2}-\d{2})(-\d+)?$")
+READING_FIELDS = ["date", "ran_at", "window_start", "window_end", "scope", "commit_before",
+                  "by", "items_read", "searches", "new_rows", "flagged"]
+READING_SCOPES = {"weekly", "monthly"}
+READING_BY = {"hand", "scheduled"}
+READING_PARTS = {"gauges", "institutions", "events"}
+VERDICTS = ["quiet", "noted", "new-row", "flagged"]
+# Searches that belong to no one speaker: "events" for data/events.csv (the existing rule),
+# "reading" for the weekly reading's searches about a leg rather than a speaker.
+SEARCH_SPEAKERS_RESERVED = {"events", "reading"}
+# A reading's search ids carry its date: reading-YYYY-MM-DD-NN.
+READING_SEARCH_ID = re.compile(r"^reading-(\d{4}-\d{2}-\d{2})-\d{2,}$")
+URL = re.compile(r"^https?://\S+$")
 
 errors = []
 warnings = []
@@ -366,8 +384,9 @@ def check_search_log(rows, speakers):
     f = "search_log.csv"
     unique(f, rows, "search_id")
     for i, r in enumerate(rows, start=2):
-        # Searches for dated events (events.csv) have no speaker; they use "events".
-        if r["speaker_id"] not in speakers and r["speaker_id"] != "events":
+        # Searches for dated events (events.csv) have no speaker; they use "events". The
+        # weekly reading's searches about a leg rather than a speaker use "reading".
+        if r["speaker_id"] not in speakers and r["speaker_id"] not in SEARCH_SPEAKERS_RESERVED:
             err(f, i, f"speaker_id {r['speaker_id']!r} not in speakers.csv")
         if r["year"] and not (as_int(r["year"]) and 1990 <= as_int(r["year"]) <= 2100):
             err(f, i, f"year {r['year']!r} is not a year")
@@ -379,6 +398,141 @@ def check_search_log(rows, speakers):
             err(f, i, f"date_searched {r['date_searched']!r} is not a valid YYYY-MM-DD date")
 
 
+def check_readings(tables, speakers):
+    """Every weekly reading record in data/readings/ (docs/weekly-reading.md): the file is the
+    date, every item has a verdict, two searches unless quiet with a reason, sources for every
+    verdict but quiet, a for_john on every flagged item, and every search id and every appended
+    row id exists. The other way round, every search-log row with a reading- prefix belongs to
+    an item of the reading dated in its id."""
+    search_ids = {r["search_id"] for r in tables["search_log.csv"]}
+    row_ids = ({r["aggregate_id"] for r in tables["aggregates.csv"]}
+               | {r["aggregate_id"] for r in tables["world_measures.csv"]}
+               | {r["event_id"] for r in tables["events.csv"]})
+    used_search_ids = set()
+    if not READINGS.exists():
+        return
+    for path in sorted(READINGS.glob("*.json")):
+        f = f"readings/{path.name}"
+        m = READING_NAME.match(path.stem)
+        if not m:
+            errors.append(f"{f}: file name must be the reading's date, YYYY-MM-DD.json, with -2 on a second reading the same day")
+            continue
+        name_date = m.group(1)
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            errors.append(f"{f}: cannot be read as JSON: {e}")
+            continue
+        head = raw.get("reading") if isinstance(raw, dict) else None
+        if not isinstance(head, dict):
+            errors.append(f"{f}: no 'reading' object, so the record says nothing about when it ran")
+            continue
+        for field in READING_FIELDS:
+            if field not in head or head[field] in (None, ""):
+                errors.append(f"{f}: the 'reading' object is missing '{field}'")
+        if head.get("date") != name_date:
+            errors.append(f"{f}: the date in the record ({head.get('date')!r}) is not the date in the file name ({name_date})")
+        for field in ("window_start", "window_end"):
+            if head.get(field) and not valid_date(str(head[field]), "day"):
+                errors.append(f"{f}: {field} {head[field]!r} is not a valid YYYY-MM-DD date")
+        if head.get("window_start") and head.get("window_end") and not (
+                str(head["window_start"]) <= str(head["window_end"]) <= name_date):
+            errors.append(f"{f}: the window must end on or before the reading's date and start before it ends")
+        if not re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$", str(head.get("ran_at", ""))):
+            errors.append(f"{f}: ran_at must be universal time, YYYY-MM-DDTHH:MM:SSZ")
+        if head.get("scope") not in READING_SCOPES:
+            errors.append(f"{f}: scope must be 'weekly' or 'monthly', not {head.get('scope')!r}")
+        if head.get("by") not in READING_BY:
+            errors.append(f"{f}: 'by' must be 'hand' or 'scheduled', not {head.get('by')!r}")
+        if not re.match(r"^[0-9a-f]{7,40}$", str(head.get("commit_before", ""))):
+            errors.append(f"{f}: commit_before must be the short hash of the commit the reading read")
+
+        items = raw.get("items")
+        if not isinstance(items, list) or not items:
+            errors.append(f"{f}: a reading record needs a non-empty 'items' list")
+            continue
+        if head.get("items_read") != len(items):
+            errors.append(f"{f}: the header says {head.get('items_read')} items were read and the record holds {len(items)}")
+        seen = set()
+        all_search_ids = set()
+        all_new_rows = []
+        flagged = 0
+        for i, item in enumerate(items, 1):
+            iid = item.get("id") if isinstance(item, dict) else None
+            where = f"{f} item {i} ({iid or 'no id'})"
+            if not isinstance(item, dict):
+                errors.append(f"{where}: every item is an object")
+                continue
+            if not iid or not SLUG.match(str(iid)):
+                errors.append(f"{where}: every item needs an 'id' that is a lowercase slug")
+            elif iid in seen:
+                errors.append(f"{where}: this id is used twice in the same reading")
+            seen.add(iid)
+            if item.get("part") not in READING_PARTS:
+                errors.append(f"{where}: 'part' must be gauges, institutions or events, not {item.get('part')!r}")
+            sp = item.get("speaker_id")
+            if sp is not None and sp not in speakers and sp not in SEARCH_SPEAKERS_RESERVED:
+                errors.append(f"{where}: speaker_id {sp!r} is not in speakers.csv (or 'events' or 'reading')")
+            verdict = item.get("verdict")
+            if verdict not in VERDICTS:
+                errors.append(f"{where}: the verdict must be one of {', '.join(VERDICTS)}, not {verdict!r}")
+            found = item.get("found")
+            if not isinstance(found, str) or not found.strip():
+                errors.append(f"{where}: 'found' says in plain words what the week held, and is required on every verdict")
+                found = ""
+            sids = item.get("search_ids")
+            if not isinstance(sids, list) or any(not isinstance(x, str) or not x.strip() for x in sids):
+                errors.append(f"{where}: 'search_ids' lists the search-log ids of the searches run, each a string")
+                sids = []
+            elif len(sids) < 2 and not (verdict == "quiet" and found):
+                errors.append(f"{where}: fewer than two searches is not enough to call a week; only a 'quiet' item may list fewer, and then 'found' has to say why")
+            for sid in sids:
+                sm = READING_SEARCH_ID.match(sid)
+                if not sm:
+                    errors.append(f"{where}: search id {sid!r} is not reading-YYYY-MM-DD-NN")
+                elif sm.group(1) != name_date:
+                    errors.append(f"{where}: search id {sid!r} carries a different date from the reading")
+                if sid not in search_ids:
+                    errors.append(f"{where}: search id {sid!r} is not in search_log.csv; every search is logged")
+            all_search_ids.update(sids)
+            sources = item.get("sources", [])
+            if not isinstance(sources, list) or any(not isinstance(x, str) or not URL.match(x.strip()) for x in sources):
+                errors.append(f"{where}: 'sources' must be a list of web addresses")
+            elif verdict in ("noted", "new-row", "flagged") and not sources:
+                errors.append(f"{where}: a verdict of '{verdict}' has to cite the record it read; only 'quiet' may go without a source")
+            new_rows = item.get("new_rows", [])
+            if not isinstance(new_rows, list) or any(not isinstance(x, str) for x in new_rows):
+                errors.append(f"{where}: 'new_rows' must be a list of row ids")
+                new_rows = []
+            if verdict == "new-row" and not new_rows:
+                errors.append(f"{where}: a 'new-row' item lists the ids of the rows it appended in 'new_rows'")
+            if verdict in ("quiet", "noted") and new_rows:
+                errors.append(f"{where}: a '{verdict}' item appended nothing, so 'new_rows' must be empty")
+            for rid in new_rows:
+                if rid not in row_ids:
+                    errors.append(f"{where}: appended row {rid!r} is not in aggregates.csv, world_measures.csv or events.csv")
+            all_new_rows += new_rows
+            fj = item.get("for_john")
+            if verdict == "flagged":
+                flagged += 1
+                if not isinstance(fj, str) or not fj.strip():
+                    errors.append(f"{where}: a flagged item needs 'for_john': what it would have done, the record, and why it stopped")
+        if head.get("searches") != len(all_search_ids):
+            errors.append(f"{f}: the header says {head.get('searches')} searches and the items name {len(all_search_ids)} distinct search ids")
+        if head.get("flagged") != flagged:
+            errors.append(f"{f}: the header says {head.get('flagged')} flagged and the items hold {flagged}")
+        if isinstance(head.get("new_rows"), list):
+            if sorted(head["new_rows"]) != sorted(all_new_rows):
+                errors.append(f"{f}: the header's new_rows do not match the rows the items appended")
+        else:
+            errors.append(f"{f}: the header's new_rows must be a list of row ids (empty if none)")
+        used_search_ids |= all_search_ids
+    # The other way round: a reading- search that no reading item names is unaccounted for.
+    for sid in sorted(search_ids):
+        if sid.startswith("reading-") and sid not in used_search_ids:
+            errors.append(f"search_log.csv: {sid!r} has the weekly reading's prefix but no reading item names it")
+
+
 def main():
     tables = {name: read(name) for name in HEADERS}
     speakers = {r["speaker_id"] for r in tables["speakers.csv"]}
@@ -388,6 +542,7 @@ def main():
     check_aggregates(tables["world_measures.csv"], speakers, "world_measures.csv")
     check_events(tables["events.csv"])
     check_search_log(tables["search_log.csv"], speakers)
+    check_readings(tables, speakers)
 
     # Every speaker with statements must have logged searches (sampling rule 1).
     searched = {r["speaker_id"] for r in tables["search_log.csv"]}
@@ -402,7 +557,8 @@ def main():
             print("  " + e)
         sys.exit(1)
     counts = ", ".join(f"{name} {len(rows)}" for name, rows in tables.items())
-    print(f"OK: {counts}")
+    n_readings = len(list(READINGS.glob("*.json"))) if READINGS.exists() else 0
+    print(f"OK: {counts}, readings {n_readings}")
 
 
 if __name__ == "__main__":

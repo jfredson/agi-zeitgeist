@@ -32,7 +32,8 @@ collection for the panel is next; the other public streams have not started.
 | `data/aggregates.csv` | survey results, prediction market readings and poll results |
 | `data/events.csv` | dated events (open letters, government actions, reports) for chart labels |
 | `data/world_measures.csv` | world measures, kept apart from belief: capability readings (METR time horizon), company self-reports of AI-done work, and world output growth (World Bank), for the singularity-entry definition |
-| `data/search_log.csv` | every search run to build the record, and what it found |
+| `data/search_log.csv` | every search run to build the record, and what it found; the weekly reading's searches carry ids starting `reading-` |
+| `data/readings/` | one file per run of the weekly reading (`YYYY-MM-DD.json`), never edited: what was searched, what was found, one verdict per source |
 | `docs/methodology-v2.md` | the method (version 2, 2026-09-30): four streams, coding scheme, panel rule, preregistered tests |
 | `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
 | `docs/codebook.md` | how each statement is coded under version 2, with decision rules and examples |
@@ -43,7 +44,9 @@ collection for the panel is next; the other public streams have not started.
 | `docs/singularity-entry-definition.md` | adopted 2026-10-08: the four-leg measurable definition of entering the singularity (pace, forecasts, AI doing the improving, the economy), with gauges and a mark |
 | `docs/singularity-entry-thresholds.json` | the frozen values the page scores from; any change is an amendment |
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
-| `scripts/validate.py` | checks every row: codes, dates, sources, links between files |
+| `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
+| `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
+| `scripts/validate.py` | checks every row: codes, dates, sources, links between files, and every reading record in `data/readings/` |
 | `scripts/charts.py` | builds the charts from the CSV files |
 | `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |
 | `site/` | the static site; serve locally with `python3 -m http.server 8765 --directory site` |

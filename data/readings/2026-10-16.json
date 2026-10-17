@@ -1,0 +1,313 @@
+{
+  "reading": {
+    "date": "2026-10-16",
+    "ran_at": "2026-10-17T05:27:53Z",
+    "window_start": "2026-10-10",
+    "window_end": "2026-10-16",
+    "scope": "monthly",
+    "commit_before": "c79a4d1",
+    "by": "hand",
+    "items_read": 20,
+    "searches": 47,
+    "new_rows": [
+      "manifold-agi2030-2026-10-16",
+      "ai-security-open-letter-2026"
+    ],
+    "flagged": 9,
+    "note": "The first reading, done by hand in a Claude Code session on 2026-10-16 to test the procedure in docs/weekly-reading.md while it was being written. Scope is monthly because no reading had run this calendar month, so leg D and the yearly and one-off series were read. Items older than the window are flagged rather than appended, as the first-reading rule says."
+  },
+  "items": [
+    {
+      "id": "leg-a-metr",
+      "part": "gauges",
+      "speaker_id": "metr",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-01",
+        "reading-2026-10-16-02",
+        "reading-2026-10-16-03",
+        "reading-2026-10-16-04"
+      ],
+      "found": "METR's results file holds 26 models, every one already in the record, with the doubling-time estimates unchanged, so no row was appended. METR's time-horizons page now says it is no longer actively updated and was last updated 2026-09-08, and METR's Frontier Risk Report of 2026-05-19 says the Time Horizon 1.1 suite cannot measure above 16 hours and that the strongest agents have saturated it. Nothing new in the window.",
+      "sources": [
+        "https://metr.org/assets/benchmark_results_1_1.yaml",
+        "https://metr.org/time-horizons/",
+        "https://metr.org/blog/2026-05-19-frontier-risk-report/"
+      ],
+      "for_john": "The anchor series for legs A and B has stopped being actively updated and its suite is saturated at 16 hours; the record's top frontier reading (Claude Mythos Preview, early, 1,044.78 minutes on 2026-04-07) is already past the 16-hour bar that leg A does not score, so a trailing twelve-month window will soon hold no scorable frontier readings. The definition's successor rule says a replacement measure is named before the series stops moving, with an overlap period published, by amendment. That is yours; the reading may not name one. Suggested first step: ask METR whether a Time Horizon 1.2 or 2.0 is coming, and add 'Time Horizon 2.0' as a search term for this item."
+    },
+    {
+      "id": "leg-b-forecasts",
+      "part": "gauges",
+      "speaker_id": "reading",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-16-05"
+      ],
+      "found": "One wide search was run, because the leg is unmeasured until the forecast ledger exists and there is no row to append; it found analyses of the time-horizon trend from 2025-11 and a NeurIPS 2026 paper, nothing dated in the window that scores AI forecasts against outcomes. The consensus-arrival-date stand-in the definition names is read through Metaculus and Manifold in part 2."
+    },
+    {
+      "id": "leg-c-rd-automation-index",
+      "part": "gauges",
+      "speaker_id": "anthropic_institute",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-16-08",
+        "reading-2026-10-16-11"
+      ],
+      "found": "No update to the R&D Automation Index: the page shows no figure after the August 2026 reading (Claude leads 26% of Anthropic's AI research work), which is the scored row, and the only coverage is of the 2026-09-17 release."
+    },
+    {
+      "id": "leg-c-institute-publications",
+      "part": "gauges",
+      "speaker_id": "anthropic_institute",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-09",
+        "reading-2026-10-16-10",
+        "reading-2026-10-16-12"
+      ],
+      "found": "The one Anthropic Institute publication in the window is 'The AI expectations gap' (2026-10-16), which gives a second measurement of leg C: a poll of 1,334 Anthropic staff (2026-08-09 to 2026-08-12) whose median estimate is that AI does 51% of the work of building an early-2026 frontier model, against the scored index figure of 26% for the same month. It was added to the record by hand the same day, before this reading existed: thirteen survey rows in data/aggregates.csv, the staff estimate as anthropic_institute-2026-08-staff-estimate-ai-share in data/world_measures.csv (not scored), and a dated note under leg C in the definition. No further row was appended.",
+      "sources": [
+        "https://www.anthropic.com/research/ai-expectations-gap",
+        "https://www.anthropic.com/institute/measuring-pace-of-ai-development"
+      ],
+      "for_john": "This is the case the rule is written for: the same company, the same month, 26% by the scored index and 51% by a staff poll. The reading would have appended the rows and stopped exactly where the hand-made entry stopped. Which figure should score leg C, if either, is yours; the thresholds file and the definition are untouched. One loose end from the hand-made entry is in data/speakers.csv, which the reading may not edit: the anthropic_institute row still says its rows live only in data/world_measures.csv, and it now has survey rows in data/aggregates.csv too."
+    },
+    {
+      "id": "leg-c-outside-measures",
+      "part": "gauges",
+      "speaker_id": "reading",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-13",
+        "reading-2026-10-16-14"
+      ],
+      "found": "No survey or disclosure statistic in the window measures AI's share of frontier research work. The nearest things are usage surveys (Nature's AI for Science 2026 report of over 10,000 researchers; the APPAM member survey of spring 2026), which ask how often researchers use AI, and an August 2026 audit of the AI-disclosure statements in 19,525 ICLR 2026 submissions (arXiv 2608.23271), which measures declared AI use in writing papers.",
+      "sources": [
+        "https://arxiv.org/pdf/2608.23271",
+        "https://www.nature.com/immersive/partnercontent/fudan/aiforscience/index.html",
+        "https://www.stateof.ai/2026-explore/answers/ai-building-better-ai"
+      ],
+      "for_john": "A candidate for the roadmap step 'Leg C second source': venue disclosure audits (the ICLR 2026 one is the first at scale) would give a yearly, outside-the-company measure, but of AI use in writing and reviewing papers, not of AI's share of the research itself. Worth reading the paper's results section before deciding whether it is the second source or only context. Nothing was appended."
+    },
+    {
+      "id": "leg-d-world-bank",
+      "part": "gauges",
+      "speaker_id": "world_bank",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-16-15",
+        "reading-2026-10-16-16",
+        "reading-2026-10-16-17"
+      ],
+      "found": "The World Bank's series was re-issued: the API's 'last updated' stamp is 2026-10-08 where the record's latest row says 2026-07-13, and the values for 2022 to 2025 (3.44, 2.86, 2.90, 2.92 percent) are unchanged at two decimals, so no revision row was appended. No 2026 value exists yet. The IMF's January 2026 update projects 3.3 percent for 2026; it is a forecast and not the leg's source.",
+      "sources": [
+        "https://api.worldbank.org/v2/country/WLD/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=10&date=2022:2026"
+      ]
+    },
+    {
+      "id": "mullerbostrom",
+      "part": "institutions",
+      "speaker_id": "mullerbostrom",
+      "verdict": "quiet",
+      "search_ids": [],
+      "found": "A one-off questionnaire run 2012 to 2013 and published 2014; it cannot recur, so it is read on the monthly scope only and no search was run."
+    },
+    {
+      "id": "aiimpacts",
+      "part": "institutions",
+      "speaker_id": "aiimpacts",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-16-28",
+        "reading-2026-10-16-29"
+      ],
+      "found": "No 2026 wave of the expert survey; the results give only the 2016, 2022 and 2023 waves already in the record."
+    },
+    {
+      "id": "metaculus",
+      "part": "institutions",
+      "speaker_id": "metaculus",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-06",
+        "reading-2026-10-16-07"
+      ],
+      "found": "Metaculus's API refused the fetch without an account token, and a web search gave no October 2026 community prediction for the first-general-AI question. The record holds no Metaculus readings either; the speaker row's inclusion note says none could be retrieved.",
+      "sources": [
+        "https://www.metaculus.com/questions/5121/"
+      ],
+      "for_john": "The reading cannot read Metaculus as it stands. Either a Metaculus account token goes into the Mac's credentials file (outside the repository) so the reading can fetch question 5121, or Metaculus is read by hand, or its row is left as it is with no series. Nothing was appended."
+    },
+    {
+      "id": "manifold",
+      "part": "institutions",
+      "speaker_id": "manifold",
+      "verdict": "new-row",
+      "search_ids": [
+        "reading-2026-10-16-30",
+        "reading-2026-10-16-31"
+      ],
+      "found": "The market 'Will we get AGI before 2030?' read 0.493 at retrieval, with 346 unique traders over its life and its last trade on 2026-10-12, down from 0.534 on 2026-09-30. Appended as manifold-agi2030-2026-10-16, the fifth reading of the series.",
+      "sources": [
+        "https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC"
+      ],
+      "new_rows": [
+        "manifold-agi2030-2026-10-16"
+      ]
+    },
+    {
+      "id": "pew",
+      "part": "institutions",
+      "speaker_id": "pew",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-16-18",
+        "reading-2026-10-16-19",
+        "reading-2026-10-16-20"
+      ],
+      "found": "Pew published two pieces in the window, 'The Gender Gap in AI' (2026-10-16) and one on chatbot non-users (2026-10-09), both from its survey of 5,119 US adults fielded 2026-02-17 to 2026-02-23. Neither repeats the 'more concerned than excited' item, and the June 2026 report of that survey does not contain it, so the series' latest reading stays 2025-06-09. Nothing was appended.",
+      "sources": [
+        "https://www.pewresearch.org/short-reads/2026/10/16/the-gender-gap-in-ai/",
+        "https://www.pewresearch.org/internet/2026/06/17/americans-and-ai-2026-chatbots-smart-devices-and-views-on-impact/"
+      ]
+    },
+    {
+      "id": "yougov",
+      "part": "institutions",
+      "speaker_id": "yougov",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-16-21",
+        "reading-2026-10-16-22"
+      ],
+      "found": "An Economist/YouGov poll fielded 2026-10-02 to 2026-10-05 (1,513 US adult citizens) found 71 percent saying AI is advancing too quickly and 62 percent wanting more government regulation. That is new wording, not one of the three YouGov series in the record, so it was noted and not added. No repeat of the end-of-the-human-race or more-intelligent-than-people items in the window.",
+      "sources": [
+        "https://yougov.com/en-us/articles/55700-democrats-8-point-lead-with-registered-voters-inflation-importance-hits-new-high-and-more-october-25-2026-economist-yougov-poll"
+      ]
+    },
+    {
+      "id": "monmouth",
+      "part": "institutions",
+      "speaker_id": "monmouth",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-23",
+        "reading-2026-10-16-24"
+      ],
+      "found": "No Monmouth poll since the 2023-02-15 release in the record. The Monmouth University Polling Institute closed in July 2025, with the closure announced on 2025-03-12, so its repeated 2015 and 2023 question on AI as a threat to the human race will not recur.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Monmouth_University_Polling_Institute"
+      ],
+      "for_john": "The source has closed; the reading found this from an encyclopaedia page and did not confirm it on the university's own site. The speaker row and its inclusion note in data/speakers.csv are yours to edit: say the series ended in 2023 with the institute's closure, or drop Monmouth from the part 2 list."
+    },
+    {
+      "id": "ipsos",
+      "part": "institutions",
+      "speaker_id": "ipsos",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-25",
+        "reading-2026-10-16-26",
+        "reading-2026-10-16-27"
+      ],
+      "found": "Ipsos's AI Monitor 2026, the fifth wave over 32 countries, was published before the window (the summary page carries no date) and repeats the 'nervous' and 'excited' items the record holds for 2021 to 2025, saying the two are now nearly equal. The public summary gives no percentages for those two items, no fieldwork dates and no sample size, so no row could be appended.",
+      "sources": [
+        "https://www.ipsos.com/en/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens"
+      ],
+      "for_john": "A repeat the record missed, older than the window, on the first reading: the 2026 nervous and excited shares exist in the full report, which the reading could not open. If you want the 2026 wave, the full report's country-average figures, fieldwork dates and sample size need reading by hand, as the 2024 and 2025 rows were."
+    },
+    {
+      "id": "googletrends",
+      "part": "institutions",
+      "speaker_id": "googletrends",
+      "verdict": "quiet",
+      "search_ids": [],
+      "found": "The series is a yearly mean of monthly index values, read in January on the monthly scope; no search was run."
+    },
+    {
+      "id": "google",
+      "part": "institutions",
+      "speaker_id": "google",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-16-32",
+        "reading-2026-10-16-33"
+      ],
+      "found": "No new statement by Google's chief executive on the share of new code written by AI since the 75 percent figure of 2026-04-24 already in the record; the next earnings call is expected about 2026-10-28."
+    },
+    {
+      "id": "events-open-letters",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-34",
+        "reading-2026-10-16-35",
+        "reading-2026-10-16-36",
+        "reading-2026-10-16-37"
+      ],
+      "found": "An Open Letter on AI and Cybersecurity from the Scientific Community went live on 2026-10-13 (its page says only 'October 2026'; the date is from organiser David Lie's own post), with 494 signatories at retrieval including Yoshua Bengio and Geoffrey Hinton, calling for air-gapped containment of cyber-capable models and an international body to record containment failures. Appended as ai-security-open-letter-2026. The searches also turned up a separate open letter on AI and cyber defence published by OpenAI on 2026-08-27 with more than 100 companies as signers, outside the window and not in the record.",
+      "sources": [
+        "https://ai-security-letter.org/",
+        "https://security.csl.toronto.edu/blog/2026/10/13/open-letter-on-ai-and-cybersecurity-posted/"
+      ],
+      "new_rows": [
+        "ai-security-open-letter-2026"
+      ],
+      "for_john": "The August 2026 corporate letter (OpenAI and over 100 companies, on collective cyber defence) is older than the window and of uncertain kind: a company pledge about defence rather than a statement about where AI is going. On the first reading it is left to you whether it is an open_letter row; the primary page was not read."
+    },
+    {
+      "id": "events-government-actions",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-38",
+        "reading-2026-10-16-39",
+        "reading-2026-10-16-40"
+      ],
+      "found": "No government action on AI dated in the window. Executive Order 14434 (2026-09-29, already in the record) was published in the Federal Register on 2026-10-02; a 'Federal Super Intelligence Force' was announced on 2026-10-04 according to a law-firm note, an announcement rather than an action; nothing from the EU, the UK or a summit.",
+      "sources": [
+        "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/",
+        "https://www.twobirds.com/en/insights/2026/frontier-ai-safety-on-both-sides-of-the-atlantic-the-white-house-accord-and-the-eu-ai-act"
+      ],
+      "for_john": "The White House Accord on Super Intelligence of 2026-09-29, a voluntary pledge on frontier-model controls signed by six company leaders and the president on the day of Executive Order 14434, is not in the record and is older than the window. Two readers could disagree whether it is a government_action (it is not binding) or a public_statement, and whether the executive order's row already covers it. Yours to decide; nothing was appended for it."
+    },
+    {
+      "id": "events-reports",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-16-43",
+        "reading-2026-10-16-44",
+        "reading-2026-10-16-45",
+        "reading-2026-10-16-46",
+        "reading-2026-10-16-47"
+      ],
+      "found": "No Epoch report and no International AI Safety Report item dated in the window (the safety report's second edition is from 2026-02-03). The State of AI Report 2026 (Nathan Benaich, ninth edition, 244 slides) was published on 2026-10-08, two days before the window, with sections on the three-lab frontier race and on recursive self-improvement.",
+      "sources": [
+        "https://www.stateof.ai/",
+        "https://internationalaisafetyreport.org/publications"
+      ],
+      "for_john": "The State of AI Report 2026 is older than the window and of uncertain kind: the record's report rows are research reports (Epoch, the International AI Safety Report), and this is an annual investor's survey of the field. Whether it belongs in data/events.csv is a judgment the reading does not make. Nothing was appended."
+    },
+    {
+      "id": "events-ai-releases",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-16-41",
+        "reading-2026-10-16-42"
+      ],
+      "found": "Two frontier releases in the window: Meta's Muse Wonder and Muse Wonder Full (2026-10-12, called by Meta its first frontier model) and the general availability of Google's Gemini 4 Argon (2026-10-13, announced 2026-09-30). Neither system is named in any statement in data/statements.csv, so neither qualifies under amendment A21's rule and nothing was appended. Claude Haiku 5.5 (2026-10-07) and Mistral Large 4 (2026-10-06) fall before the window.",
+      "sources": [
+        "https://research.meta.ai/blog/muse-wonder",
+        "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/"
+      ]
+    }
+  ]
+}
