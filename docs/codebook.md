@@ -284,7 +284,7 @@ Secondhand rows are usually `quoted`.
   with direct quotes by the outlet that did it). Secondhand = someone else's report or
   paraphrase, or a quote not traced to where it was said. Secondhand rows carry the
   `secondhand` tag and `coding_confidence: low`.
-- **`coder`**: `john`, `claude-agent` (version 1, retired), `claude-agent-v2`, or `claude-agent-v2.1` (rows changed under the A14 rulings).
+- **`coder`**: `john`, `claude-agent` (version 1, retired), `claude-agent-v2`, `claude-agent-v2.1` (rows changed under the A14 rulings), or `claude-session-frontier-traces-2026-10-17` (the traces of Musk, Amodei, Hassabis and Sutskever, coded under this codebook unchanged).
 
 ## 9. Notes tags
 
