@@ -95,3 +95,7 @@ in the record yet:
 
 Until one appears, the Anthropic index scores the leg alone, as John ruled on 2026-10-17, and the
 weekly reading's third leg C read keeps flagging candidates.
+
+**Later the same day.** The wider search for these three kinds of source, across venue
+statistics, researcher surveys and independent measurements, is `docs/leg-c-second-source-2026-10-17.md`:
+26 candidates judged, none qualifying, no row added.
