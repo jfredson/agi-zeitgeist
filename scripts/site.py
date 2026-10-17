@@ -460,7 +460,8 @@ TAGLINE = ("A dated record of what people expect from artificial general intelli
            "and a test of whether the singularity has begun.")
 # Labels ruled by John, 2026-10-08.
 NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
-NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
+# "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
+NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
 FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"),
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
@@ -611,7 +612,7 @@ def provenance(built, commit):
 
 def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None):
     nav1 = "".join(f'<a href="{esc(h)}" class="nav-primary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_PRIMARY)
-    nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_SECONDARY)
+    nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in NAV_SECONDARY)
     links = "".join(f'<a href="{esc(h)}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in FOOTER_LINKS)
     hero = ""
     if h1:
