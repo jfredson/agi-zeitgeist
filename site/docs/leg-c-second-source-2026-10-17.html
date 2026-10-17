@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
-(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();
 </script>
-<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>Leg C second
 source: the wider search, 2026-10-17 | AGI Zeitgeist Tracker</title>
 <meta name="description" content="Leg C second
@@ -22,7 +22,9 @@ source: the wider search, 2026-10-17 | AGI Zeitgeist Tracker">
 <meta property="og:description" content="Leg C second
 source: the wider search, 2026-10-17: a document of the AGI Zeitgeist Tracker.">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/deep-field.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/shell.css">
+<link rel="stylesheet" href="/skin.css">
 <style>
 .brand { white-space: nowrap; }
 .with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
@@ -54,6 +56,8 @@ source: the wider search, 2026-10-17: a document of the AGI Zeitgeist Tracker.">
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
 .land .kicker { margin: 0 0 12px; }
+.land .shares { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(--text); margin: 0 0 22px; }
+.land h1 .verdict { font-weight: 700; }
 .conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
 .cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
@@ -88,10 +92,9 @@ source: the wider search, 2026-10-17: a document of the AGI Zeitgeist Tracker.">
 .status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
 .status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
 .status b { color: var(--text); }
-figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig { margin: 18px 0; background: var(--figure-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
 figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
 figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
-:root[data-theme='light'] figure.fig { background: #fff; }
 table.data { font-size: 13px; }
 table.data th, table.data td { white-space: nowrap; }
 table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
@@ -110,18 +113,24 @@ details p { color: var(--text-soft); }
 .cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
 .document > h1 { display: none; }
 .document h2 { margin-top: 2em; }
-.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document img { max-width: 100%; height: auto; background: var(--figure-bg); border-radius: 4px; }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
-/* Light-theme button text (2026-10-16). The standard's rule that colours links in the light theme
-   (:root[data-theme='light'] a) outranks the button rule, so a solid button's text took the link
-   colour on the button's own background and was unreadable on every site in the family; found on
-   theupgradetree.com on 2026-10-16. This page has no such button today; the lines stand in so the
-   next one is readable, until deep-field.css is next copied from the standard (fixed there in 2.0.1). */
-:root[data-theme='light'] a.btn { color: var(--on-accent); }
-:root[data-theme='light'] a.btn.ghost { color: var(--accent); }
-:root[data-theme='light'] a.btn.ghost:hover { color: var(--on-accent); }
+/* ---- the Gazette's register (ruled 2026-10-17; the tokens and the backdrop are in site/skin.css) ----
+   The mark: each gauge's line is a red tick at the bar's right edge, grey where the part cannot be scored. */
+.cond .bar { overflow: visible; }
+.cond .bar::after { content: ""; position: absolute; right: 0; top: -4px; bottom: -4px; width: 2px; background: var(--accent); border-radius: 1px; }
+.cond .bar.none::after { background: var(--muted); }
+/* The serif leads the headline, the monospace the datelines. */
+.land .answer, .land h1 { font-family: var(--serif); }
+.land .answer { font-weight: 700; letter-spacing: -0.02em; }
+.land h1 { font-weight: 400; }
+.card .ch-big { font-family: var(--serif); }
+.eyebrow, .kicker, .fresh, .card .ch { font-family: var(--mono); text-transform: none; letter-spacing: 0.02em; }
+/* The When? box: a boxed item between double rules, no panel fill. */
+.card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
+figure.fig { border-radius: 0; }
 </style>
 </head>
 <body>
@@ -214,7 +223,7 @@ each measures, how, when, on what sample, and why it does or does not
 meet the bar.</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>#</th>
 <th>candidate</th>
 <th>kind</th>
@@ -223,28 +232,28 @@ meet the bar.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>NeurIPS 2026 Position Paper Track detector audit (2026-06-02)</td>
 <td>venue</td>
 <td>28.2% of submissions substantially AI-written</td>
 <td>share of work; prose only</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>NeurIPS 2025 authors' LLM-use survey</td>
 <td>venue</td>
 <td>no results published that the search could find</td>
 <td>nothing to read</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3</td>
 <td>ICML 2026 LLM policy and enforcement</td>
 <td>venue</td>
 <td>numbers about reviewers, none about authors' research use</td>
 <td>share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>4</td>
 <td>ACL and EMNLP checklist item on AI assistants (EMNLP 2025
 analysis)</td>
@@ -252,28 +261,28 @@ analysis)</td>
 <td>the AI-assistance item not broken out in the analysis found</td>
 <td>nothing to read</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>5</td>
 <td>Mohapatra and Pruthi, ICLR 2026 and EMNLP 2025 disclosure audit</td>
 <td>venue</td>
 <td>judged 2026-10-17 in the earlier note</td>
 <td>unchanged</td>
 </tr>
-<tr class="even">
+<tr>
 <td>6</td>
 <td>METR survey of 349 technical workers (2026-05-11)</td>
 <td>survey</td>
 <td>median value of work 1.4x to 2x with AI; speed 3x</td>
 <td>share of work; frontier sample; one wave</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>7</td>
 <td>METR Frontier Risk Report, February to March 2026 (2026-05-19)</td>
 <td>survey of companies</td>
 <td>company statements with no figure</td>
 <td>no number</td>
 </tr>
-<tr class="even">
+<tr>
 <td>8</td>
 <td>METR review of Anthropic's February 2026 risk report
 (2026-05-08)</td>
@@ -281,7 +290,7 @@ analysis)</td>
 <td>judges a self-report; no figure of its own</td>
 <td>no number</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>9</td>
 <td>Epoch AI, AI acknowledgments in mathematics preprints
 (2026-09-18)</td>
@@ -290,7 +299,7 @@ analysis)</td>
 a substantial research contribution</td>
 <td>frontier AI research; share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>10</td>
 <td>Epoch AI, OpenAI's public Codex codebase (late July 2026)</td>
 <td>independent measurement</td>
@@ -298,21 +307,21 @@ a substantial research contribution</td>
 8%</td>
 <td>share of work; not research</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>11</td>
 <td>Epoch AI, InnovationEval (2026-10-07)</td>
 <td>capability test</td>
 <td>best agent reached 15% of a human method's gain</td>
 <td>share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>12</td>
 <td>Epoch AI, OpenAI researchers' coding-agent usage (2026-10-05)</td>
 <td>company data re-read</td>
 <td>usage doubling about monthly</td>
 <td>company's own figures</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>13</td>
 <td>OpenAI, "Research acceleration: the view inside OpenAI"
 (2026-09-06)</td>
@@ -320,14 +329,14 @@ a substantial research contribution</td>
 <td>3.1 agent-workdays per human workday</td>
 <td>company's own report</td>
 </tr>
-<tr class="even">
+<tr>
 <td>14</td>
 <td>GovAI, "Measuring AI R&amp;D Automation" (March 2026)</td>
 <td>framework</td>
 <td>14 proposed metrics, no data</td>
 <td>not a measure</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>15</td>
 <td>Springer Nature and Fudan, "AI for Science 2026" (fieldwork March
 2026)</td>
@@ -335,14 +344,14 @@ a substantial research contribution</td>
 <td>frequent AI use per task, 10,480 researchers</td>
 <td>frontier AI research; share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16</td>
 <td>Wiley, ExplanAItions 2025 to 2026</td>
 <td>survey</td>
 <td>62% use AI for research or publication tasks</td>
 <td>frontier AI research; share of work</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>17</td>
 <td>Frontiers researcher survey (2025-12)</td>
 <td>survey</td>
@@ -350,14 +359,14 @@ a substantial research contribution</td>
 (secondary)</td>
 <td>frontier AI research; share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>18</td>
 <td>Google, "AI in Science: Early Insights" (September 2026)</td>
 <td>company-run survey</td>
 <td>637 researchers, US and UK</td>
 <td>company-run; not frontier AI research</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>19</td>
 <td>Nature's reports on the Wiley 2024 survey and its own 2023
 survey</td>
@@ -365,42 +374,42 @@ survey</td>
 <td>general adoption</td>
 <td>frontier AI research; share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>20</td>
 <td>Stanford AI Index 2026, science chapter</td>
 <td>report</td>
 <td>AI's share of publications by field</td>
 <td>not a share of work</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>21</td>
 <td>International AI Safety Report 2026 (2026-02-03)</td>
 <td>report</td>
 <td>"evidence is mixed"; benchmark results</td>
 <td>no share figure</td>
 </tr>
-<tr class="even">
+<tr>
 <td>22</td>
 <td>AI Impacts expert survey</td>
 <td>survey</td>
 <td>no 2025 or 2026 wave found</td>
 <td>nothing to read</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>23</td>
 <td>Survey of 868 scientists who program (arXiv 2512.19644)</td>
 <td>survey</td>
 <td>adoption and perceived productivity</td>
 <td>frontier AI research; share of work</td>
 </tr>
-<tr class="even">
+<tr>
 <td>24</td>
 <td>Detector studies of AI-written prose in papers and reviews</td>
 <td>independent measurement</td>
 <td>14% to 21% of papers; 21% of reviews</td>
 <td>prose only</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>25</td>
 <td>Daniotti, Wachs, Feng and Neffke, AI-written code on GitHub
 (Science)</td>
@@ -408,7 +417,7 @@ survey</td>
 <td>29% of Python functions by US developers</td>
 <td>not research</td>
 </tr>
-<tr class="even">
+<tr>
 <td>26</td>
 <td>Agents4Science 2025</td>
 <td>demonstration</td>
@@ -583,7 +592,7 @@ found. <em>Verdict: no.</em></p>
 Independent measurements of AI's contribution to research</h3>
 <p><strong>9. Epoch AI, "In August, 25% of math preprints acknowledged
 AI use, up from 4% in April"</strong> (data insight, 2026-09-18, <a
-href="https://epoch.ai/data-insights/math-preprints-disclosed-ai-use;">https://epoch.ai/data-insights/math-preprints-disclosed-ai-use;</a>
+href="https://epoch.ai/data-insights/math-preprints-disclosed-ai-use">https://epoch.ai/data-insights/math-preprints-disclosed-ai-use</a>;
 data and code at <a
 href="https://github.com/epoch-research/ai-math-arxiv">https://github.com/epoch-research/ai-math-arxiv</a>,
 updated 2026-10-06). Epoch, an independent research group, read every
@@ -774,13 +783,13 @@ with "preprints"; "LLM policy" with the conference name and year;
 leg C item may want them; that document is the reading's own and is not
 changed here.</li>
 </ul>
-<p class="cite">Rendered from <code>docs/leg-c-second-source-2026-10-17.md</code> at version 3218d92.</p></div>
+<p class="cite">Rendered from <code>docs/leg-c-second-source-2026-10-17.md</code> at version cb94b19.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version 3218d92) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version cb94b19) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
@@ -788,9 +797,9 @@ changed here.</li>
 if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
 b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
 window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
-var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
-function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
-sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#111214',light:'#f2f1ec'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.light);}
+sync(document.documentElement.dataset.theme==='dark'?'dark':'light');
 if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
 </script>
 </body>

@@ -448,8 +448,10 @@ def load_thresholds():
 # knows plus what the page has already said. The working documents are published as written, each
 # with a preface saying what it is; the plain account lives on the home page.
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
-# shared stylesheet site/deep-field.css (copied unchanged, version in its header), the top bar with
-# two tiers and the theme toggle, the cosmic backdrop on the home page only, and the five-line
+# the skeleton site/shell.css (copied unchanged from the standard, version in its header) and this
+# site's skin site/skin.css ("Gazette", ruled by John 2026-10-17: newsprint, ink, one red for the mark
+# and for links, a blue-grey for the gauge bars; light by default), the top bar with two tiers and the
+# theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
 # footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson. provenance. licence."
 # (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
 SITE_NAME = "AGI Zeitgeist"
@@ -463,7 +465,7 @@ FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data")
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
 THEME_SCRIPT = """<script>
-(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();
 </script>"""
 
 SHELL_SCRIPT = """<script>
@@ -471,9 +473,9 @@ SHELL_SCRIPT = """<script>
 if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
 b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
 window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
-var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
-function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
-sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#111214',light:'#f2f1ec'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.light);}
+sync(document.documentElement.dataset.theme==='dark'?'dark':'light');
 if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
 </script>"""
 
@@ -550,10 +552,9 @@ SITE_CSS = """
 .status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
 .status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
 .status b { color: var(--text); }
-figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig { margin: 18px 0; background: var(--figure-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
 figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
 figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
-:root[data-theme='light'] figure.fig { background: #fff; }
 table.data { font-size: 13px; }
 table.data th, table.data td { white-space: nowrap; }
 table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
@@ -572,32 +573,25 @@ details p { color: var(--text-soft); }
 .cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
 .document > h1 { display: none; }
 .document h2 { margin-top: 2em; }
-.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document img { max-width: 100%; height: auto; background: var(--figure-bg); border-radius: 4px; }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
-/* Light-theme button text (2026-10-16). The standard's rule that colours links in the light theme
-   (:root[data-theme='light'] a) outranks the button rule, so a solid button's text took the link
-   colour on the button's own background and was unreadable on every site in the family; found on
-   theupgradetree.com on 2026-10-16. This page has no such button today; the lines stand in so the
-   next one is readable, until deep-field.css is next copied from the standard (fixed there in 2.0.1). */
-:root[data-theme='light'] a.btn { color: var(--on-accent); }
-:root[data-theme='light'] a.btn.ghost { color: var(--accent); }
-:root[data-theme='light'] a.btn.ghost:hover { color: var(--on-accent); }
+/* ---- the Gazette's register (ruled 2026-10-17; the tokens and the backdrop are in site/skin.css) ----
+   The mark: each gauge's line is a red tick at the bar's right edge, grey where the part cannot be scored. */
+.cond .bar { overflow: visible; }
+.cond .bar::after { content: ""; position: absolute; right: 0; top: -4px; bottom: -4px; width: 2px; background: var(--accent); border-radius: 1px; }
+.cond .bar.none::after { background: var(--muted); }
+/* The serif leads the headline, the monospace the datelines. */
+.land .answer, .land h1 { font-family: var(--serif); }
+.land .answer { font-weight: 700; letter-spacing: -0.02em; }
+.land h1 { font-weight: 400; }
+.card .ch-big { font-family: var(--serif); }
+.eyebrow, .kicker, .fresh, .card .ch { font-family: var(--mono); text-transform: none; letter-spacing: 0.02em; }
+/* The When? box: a boxed item between double rules, no panel fill. */
+.card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
+figure.fig { border-radius: 0; }
 """
-
-
-def starfield(seed=20261008, count=150):
-    rng = __import__("random").Random(seed)
-    out = []
-    for _ in range(count):
-        x, y = rng.random() * 100, rng.random() * 100
-        size = 1 if rng.random() < 0.85 else 2
-        op = 0.1 + rng.random() * 0.7
-        tw = rng.random() < 0.38
-        anim = f"animation:twk {2.5 + rng.random() * 4.5:.2f}s ease-in-out {rng.random() * 6:.2f}s infinite" if tw else ""
-        out.append(f'<span style="left:{x:.2f}%;top:{y:.2f}%;width:{size}px;height:{size}px;opacity:{op:.2f};{anim}"></span>')
-    return '<div class="starfield" aria-hidden="true">' + "".join(out) + "</div>"
 
 
 def long_date(iso):
@@ -623,7 +617,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
     if h1:
         hero = (f'<section class="hero">{f"<p class=eyebrow>{esc(eyebrow)}</p>" if eyebrow else ""}<h1>{esc(h1)}</h1>'
                 f'{f"<p class=lede>{lede}</p>" if lede else ""}</section>')
-    bg = f'<div class="space-bg" aria-hidden="true"><div class="galaxy"></div><div class="core"></div>{starfield()}</div>' if backdrop else ""
+    bg = '<div class="space-bg" aria-hidden="true"></div>' if backdrop else ""
     year = built[:4]
     return f"""<!doctype html>
 <html lang="en">
@@ -631,7 +625,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {THEME_SCRIPT}
-<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta name="author" content="John Fredrickson">
@@ -643,7 +637,9 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/deep-field.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/shell.css">
+<link rel="stylesheet" href="/skin.css">
 <style>{SITE_CSS}</style>
 </head>
 <body>
