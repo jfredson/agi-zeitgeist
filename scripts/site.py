@@ -745,7 +745,7 @@ def disagree_page(built, commit):
          "A number, a date, a name or a claim on any page that is wrong. Say which page, what it says, and what it should say, with a source where there is one.",
          issue_url("error-on-a-page.md", "Error on a page: "), "Point out an error"),
     ]
-    cards = "".join(f'<h3>{esc(h)}</h3><p>{esc(t)}</p><p><a class="button" href="{esc(u)}" rel="noopener">{esc(b)}</a></p>' for h, t, u, b in kinds)
+    cards = "".join(f'<h3>{esc(h)}</h3><p>{esc(t)}</p><p><a class="btn ghost" href="{esc(u)}" rel="noopener">{esc(b)}</a></p>' for h, t, u, b in kinds)
     body = f"""<section class="section prose">
 <p>The point of publishing every row with its source is that you can argue with one. Three kinds of disagreement move this record: a statement that is wrongly recorded, a measure or a line in the singularity test that should be different, and an error on a page. Each is welcome, and each leaves a trace that the change can cite.</p>
 <h2>The three forms</h2>
