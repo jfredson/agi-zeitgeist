@@ -118,6 +118,24 @@ require on papers.
   A company's share of all new code written by AI is a proxy at best and is shown but not
   scored. Every f value carries its source and whether it is a self-report.
 
+**Note of 2026-10-16 (a record, not an amendment; written by the agent).** In the same
+month the same company gave two different numbers for how much of its frontier-model work
+its AI does. The R&D Automation Index, the row that scores this leg
+(`anthropic_institute-2026-08-rd-leads` in `data/world_measures.csv`), puts the share of
+Anthropic's AI research work that Claude "leads" at 26% for August 2026. An internal staff
+poll published 2026-10-16 in the Anthropic Institute report "The AI Expectations Gap"
+(1,334 employees, 2026-08-09 to 2026-08-12, unweighted) puts the median staff member's
+estimate of the share of the work of building an early-2026 frontier model that AI does
+today at 51%, with staff expecting 80% by the end of 2027 and 95% by the end of 2030. The
+two measure different things: the index counts tasks the model completes end-to-end under
+human supervision, judged by the model itself; the poll is the staff's own opinion of how
+much of the work AI does, with no definition of "does" and no task list. The report itself
+says the poll answers "are not a measurement by Anthropic or a company forecast". The 51%
+is recorded as its own row (`anthropic_institute-2026-08-staff-estimate-ai-share`, a
+self-report survey of one company's staff) in the same table as the scored row, so it
+sits beside the gauge; it is not scored, and the thresholds file is unchanged. Whether a
+staff estimate or the index should score the leg is John's call and is not settled here.
+
 ### Leg D: the economy has changed mode
 
 Let G(t) be world real output growth over the previous year (World Bank, world aggregate,
