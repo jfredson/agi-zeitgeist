@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<title>The
+weekly reading: how the record is checked against the news | AGI Zeitgeist Tracker</title>
+<meta name="description" content="The
+weekly reading: how the record is checked against the news: a document of the AGI Zeitgeist Tracker.">
+<meta name="author" content="John Fredrickson">
+<link rel="canonical" href="https://agizeitgeist.com/docs/weekly-reading">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AGI Zeitgeist Tracker">
+<meta property="og:url" content="https://agizeitgeist.com/docs/weekly-reading">
+<meta property="og:title" content="The
+weekly reading: how the record is checked against the news | AGI Zeitgeist Tracker">
+<meta property="og:description" content="The
+weekly reading: how the record is checked against the news: a document of the AGI Zeitgeist Tracker.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/deep-field.css">
+<style>
+.brand { white-space: nowrap; }
+.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
+.rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
+.rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rail h4 + h4, .rail .rail-sec { margin-top: 18px; }
+.rail .rstatus { font-size: 13px; color: var(--text-soft); margin: 0 0 10px; line-height: 1.45; }
+.rail .rstatus b { color: var(--text); }
+.rail .mini { display: grid; grid-template-columns: 1.1em 1fr; gap: 6px 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.rail .mini .bar { margin: 0; height: 12px; }
+.rail .mini .bar span { display: none; }
+.rail .mini .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.rail .mini .k { color: var(--text-soft); font-weight: 600; }
+.rail .mini .v { grid-column: 2; margin: -4px 0 4px; font-size: 11px; }
+.rail .toc { display: flex; flex-direction: column; }
+.rail .toc a { padding: 5px 0; line-height: 1.35; color: var(--text-soft); text-decoration: none; font-size: 13.5px; }
+.rail .toc a:hover { color: var(--accent); }
+.rail .toc a.d3 { font-size: 12.5px; color: var(--muted); padding-left: 12px; }
+.rail .use { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.rail .use a { text-decoration: none; }
+@media (max-width: 900px) { .with-rail { grid-template-columns: 1fr; } .rail { position: static; } }
+.hero { padding: 56px 0 8px; max-width: 760px; }
+/* the landing hero: the answer on the left, the four conditions beneath it, the experts' dates on the right.
+   Type roles follow The Belt Equation's hero: sans for the answer and claims, mono with tabular figures for
+   numbers, serif only for the explanatory line. */
+.land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
+.land .eyebrow { margin-bottom: 18px; }
+.land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
+.land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
+.land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.land .kicker { margin: 0 0 12px; }
+.conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
+.cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
+.cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
+.cond .n { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+.cond .bar { margin: 5px 0 0; height: 7px; border-radius: 3px; }
+.cond .bar span { display: none; }
+.cond .bar.none { background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); }
+.cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+.card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
+.card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
+.card .what { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+.card .what b { color: var(--text); font-weight: 600; }
+.card .ladder { border-top: 1px solid var(--line); margin: 4px 0 14px; }
+.card .ladder > div { display: grid; grid-template-columns: 60px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.card .ladder > div > b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text); line-height: 1.1; }
+.card .ladder span { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.card .ladder span b { color: var(--text-soft); font-weight: 600; }
+.card .foot { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+.card .foot a { text-decoration: none; }
+@media (max-width: 960px) { .land { grid-template-columns: 1fr; gap: 28px; } }
+.hero h1 { margin-bottom: 10px; }
+.hero .lede { font-style: normal; color: var(--text-soft); font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.intro { max-width: 760px; }
+.prose { max-width: 760px; }
+.prose p { max-width: 70ch; }
+.section { padding: 10px 0 0; }
+.section > h2 { font-size: 26px; font-weight: 600; line-height: 1.25; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+.section h3 { font-size: 20px; margin: 30px 0 8px; }
+.status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
+.status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+.status b { color: var(--text); }
+figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
+:root[data-theme='light'] figure.fig { background: #fff; }
+table.data { font-size: 13px; }
+table.data th, table.data td { white-space: nowrap; }
+table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
+details { margin: 8px 0 18px; font-family: var(--sans); font-size: 14px; }
+summary { cursor: pointer; color: var(--accent); }
+details p { color: var(--text-soft); }
+.legs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 18px 0 8px; }
+.leg { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.leg b { display: block; color: var(--text); margin-bottom: 4px; }
+.leg .g { font-family: var(--sans); font-size: 13px; line-height: 1.45; color: var(--muted); }
+.leg .num { font-size: 26px; font-weight: 600; line-height: 1.1; color: var(--text); margin: 6px 0 4px; }
+.bar { position: relative; height: 20px; background: var(--line); border-radius: 4px; margin: 10px 0 2px; overflow: hidden; font-family: var(--sans); }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-3); }
+.bar span { position: absolute; left: 8px; top: 0; line-height: 20px; font-size: 12px; font-weight: 600; color: var(--text); }
+.bar.none span { color: var(--muted); font-weight: 400; }
+.cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+.document > h1 { display: none; }
+.document h2 { margin-top: 2em; }
+.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.document pre code { border: 0; background: none; padding: 0; }
+.footer-meta a { color: inherit; }
+/* Light-theme button text (2026-10-16). The standard's rule that colours links in the light theme
+   (:root[data-theme='light'] a) outranks the button rule, so a solid button's text took the link
+   colour on the button's own background and was unreadable on every site in the family; found on
+   theupgradetree.com on 2026-10-16. This page has no such button today; the lines stand in so the
+   next one is readable, until deep-field.css is next copied from the standard (fixed there in 2.0.1). */
+:root[data-theme='light'] a.btn { color: var(--on-accent); }
+:root[data-theme='light'] a.btn.ghost { color: var(--accent); }
+:root[data-theme='light'] a.btn.ghost:hover { color: var(--on-accent); }
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="container nav">
+<a class="brand" href="/">AGI Zeitgeist</a>
+<button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+</div></header>
+<main class="container">
+<section class="hero"><p class=eyebrow>Document</p><h1>The
+weekly reading: how the record is checked against the news</h1></section>
+<div class="status"><strong>A working document.</strong> It is one of the documents the site is built from, published as it is written for anyone checking the work, and it uses the project's own shorthand. The plain account of the same material is on the <a href="/">home page</a>.</div><div class="prose narrow document"><h1
+id="the-weekly-reading-how-the-record-is-checked-against-the-news">The
+weekly reading: how the record is checked against the news</h1>
+<p>Written 2026-10-16, adapted from The Upgrade Tree's weekly reading
+(<code>docs/weekly-reading.md</code> and
+<code>docs/weekly-reading-prompt.md</code> in that repository, written
+the same day) and The Belt Equation's scan procedure
+(<code>docs/scan-procedure.md</code>, ruled by John 2026-09-19, audited
+2026-10-06). It answers a question John asked on 2026-10-16: how would a
+report like the Anthropic Institute's expectations-gap survey, published
+that day, be caught by future scans instead of by chance? The decisions
+at the end each carry a confidence and an alternative, as the siblings'
+do, and the schedule is a proposal until John rules on it.</p>
+<p>This is a working document, so it uses the project's own words (leg,
+gauge, row, verdict, scanner). The scanner is the fresh Claude session
+that follows <code>docs/weekly-reading-prompt.md</code> once a week.</p>
+<h2 id="the-idea-in-one-paragraph">The idea in one paragraph</h2>
+<p>The tracker is a dated record built from named sources: four world
+measures that score the singularity-entry definition, a fixed set of
+surveys, pollsters and prediction markets whose results sit in
+<code>data/aggregates.csv</code>, and a list of dated events. Once a
+week a fresh Claude session with no memory of earlier conversations
+reads each of those sources for what came out in the past week, and
+writes a reading record: for each source, what it searched, what it
+found, and one of four verdicts. Where a source has published a new
+reading of a series the record already holds, the scanner appends a row;
+where something new or unclear turned up, it writes the item up for
+John. It never changes anything that is already in the record, and it
+never changes what is scored. The record of each run is one file, never
+edited, and every search it ran is in the project's search log like
+every other search.</p>
+<p>The difference from the two siblings: The Belt Equation's scanner may
+move a probability, and The Upgrade Tree's may move a stage. This one
+moves nothing. It may only append rows and flag. The tracker's rules for
+what counts (the codebook, the frozen panel, the frozen thresholds) are
+deliberately hard to change, and a weekly automated pass is the wrong
+place to change them.</p>
+<h2 id="what-the-scanner-may-and-may-not-do">What the scanner may and
+may not do</h2>
+<p>It <strong>may</strong>:</p>
+<ul>
+<li>append a row to <code>data/world_measures.csv</code> when a named
+gauge source publishes a new reading of the series already in that file
+(a new METR model row, a new R&amp;D Automation Index figure, a new
+World Bank year or a revision of one);</li>
+<li>append a row to <code>data/aggregates.csv</code> when an institution
+already in <code>data/speakers.csv</code> publishes a repeat of an item
+already in that file, with wording comparable to the series'
+<code>measure</code> text, and with the sample size and fieldwork dates
+to go with it;</li>
+<li>append a row to <code>data/events.csv</code> for an event of a kind
+that file already defines (an open letter, a public statement, a
+government action, a report, or an AI release under the rule of
+amendment A21);</li>
+<li>append rows to <code>data/search_log.csv</code> for every search and
+every fetch it ran;</li>
+<li>write the reading record and the commit.</li>
+</ul>
+<p>It <strong>may not</strong>:</p>
+<ul>
+<li>edit or delete any existing row in any file;</li>
+<li>edit <code>docs/singularity-entry-thresholds.json</code>,
+<code>docs/singularity-entry-definition.md</code>,
+<code>docs/codebook.md</code>, <code>docs/methodology-v2.md</code>,
+<code>docs/amendments.md</code> or <code>data/speakers.csv</code>;</li>
+<li>swap a new measurement into the scoring in place of the series the
+definition names, or mark a row so that the site scores it (for leg C
+that means never ending an id in <code>-rd-leads</code> for a row that
+is not the R&amp;D Automation Index itself);</li>
+<li>add a row with new question wording as though it were a repeat of an
+existing series;</li>
+<li>add a speaker, a statement by a panel member, or an AI release that
+amendment A21's rule does not admit;</li>
+<li>change the window, the parts or the verdicts of the reading; those
+change by editing this document, which is John's.</li>
+</ul>
+<p>Anything it wants to do outside those limits becomes a
+<code>flagged</code> item: what it would have added, the record it rests
+on, and why it stopped. John rules after the fact.</p>
+<h2 id="the-rule-that-matters-most-a-measurement-is-not-the-series">The
+rule that matters most: a measurement is not the series</h2>
+<p>The definition scores each leg from one named series. The world keeps
+producing other measurements of the same thing, often from the same
+source, often more striking. The scanner records such a measurement as a
+row when it is a repeat of a series already in the file, and it
+<strong>always</strong> flags it for John, and it <strong>never</strong>
+swaps it into the scoring.</p>
+<p>The worked example is the week this document was written. Leg C (AI
+doing the improving) is scored from the Anthropic Institute's R&amp;D
+Automation Index: the share of Anthropic's AI research work that its
+model "leads", judged by the model itself. The scored row for August
+2026 says 26% (<code>anthropic_institute-2026-08-rd-leads</code>). On
+2026-10-16 the same Institute published "The AI expectations gap", in
+which a poll of 1,334 Anthropic staff gave a median estimate that AI
+does 51% of the work of building an early-2026 frontier model, for the
+same month. Both are the same company talking about the same month, and
+the numbers differ by half. They measure different things: the index
+counts tasks the model completes end to end under supervision; the poll
+is staff opinion with no task list and no definition of "does". The
+right handling, done by hand on 2026-10-16 before this reading existed,
+is what the scanner must do by rule: the 51% is recorded as its own row
+in <code>data/world_measures.csv</code>
+(<code>anthropic_institute-2026-08-staff-estimate-ai-share</code>,
+marked as a staff survey), its id does not end in
+<code>-rd-leads</code>, so the site's leg C gauge ignores it, the
+thresholds file is untouched, and a dated note under leg C says which
+should score is John's call. Had the reading found it, the item's
+verdict would have been <code>new-row</code> for the survey rows and
+<code>flagged</code> for the question of what scores, with both in the
+report.</p>
+<h2 id="the-three-parts-of-the-reading">The three parts of the
+reading</h2>
+<h3 id="part-1-the-four-gauges">Part 1: the four gauges</h3>
+<p>For each leg, the scanner reads the source the definition names, and
+only that source counts as a reading of the gauge. Anything else about
+the leg is noted or flagged.</p>
+<ul>
+<li><strong>Leg A, pace.</strong> METR's time-horizon series: fetch
+METR's results file
+(<code>https://metr.org/assets/benchmark_results_1_1.yaml</code>, the
+file every METR row in <code>data/world_measures.csv</code> cites) and
+compare its model list with the record's. A model in the file and not in
+the record is a <code>new-row</code> (date, 50% horizon in minutes,
+METR's interval and frontier flag, in the notes form the existing rows
+use). Also read METR's time-horizons page and search for a new release
+of the series (Time Horizon 1.2, a successor suite); any change to the
+series itself is <code>flagged</code>, because the definition's
+successor rule is an amendment.</li>
+<li><strong>Leg B, forecasts.</strong> Unmeasured until the forecast
+ledger exists, so there is no row to append. The scanner searches for
+new forecast-versus-outcome material (a scored set of AI forecasts, a
+retrospective on a timeline prediction, a new reading of a consensus
+arrival date) and notes it; the item is <code>noted</code> or
+<code>quiet</code>, never <code>new-row</code>, and anything that looks
+like a candidate measure for the ledger is <code>flagged</code>.</li>
+<li><strong>Leg C, AI doing the improving.</strong> Three reads. First,
+the Anthropic Institute's R&amp;D Automation Index page
+(<code>https://www.anthropic.com/institute/measuring-pace-of-ai-development</code>)
+for a new figure: a new month is a <code>new-row</code> on the scored
+series. Second, new Anthropic Institute publications that measure AI's
+share of AI work in any other way (a staff survey, a code-share figure):
+<code>new-row</code> if a repeat of a series in the file, and
+<code>flagged</code> in every case under the rule above. Third, measures
+from outside the company, which is what the roadmap step "Leg C second
+source" is waiting for: researcher surveys of AI's share of frontier
+research work, and the AI-contribution disclosures that venues (NeurIPS,
+ICLR, ICML, journals) now publish statistics on. Nothing from this third
+read is appended in the first version; a candidate second source is
+<code>flagged</code> with what it measures and how often.</li>
+<li><strong>Leg D, the economy.</strong> The World Bank's annual world
+growth series, read on the first reading of each calendar month only:
+fetch the API address the existing rows cite and compare the values for
+the last four years with the record's. A new year is a
+<code>new-row</code>; a revision of an existing year is a
+<code>new-row</code> with the revision said in the notes, since an
+existing row is never edited; a change in the API's "last updated" stamp
+with no change in the values is <code>noted</code>. The IMF's outlook
+and other forecasts are not the source and are at most
+<code>noted</code>.</li>
+</ul>
+<h3 id="part-2-every-institution-in-the-record">Part 2: every
+institution in the record</h3>
+<p>Every row in <code>data/speakers.csv</code> whose type is not
+<code>individual</code>: the surveys, the prediction markets, the
+pollsters and the institutions. The four gauge sources (METR, the
+Anthropic Institute, the World Bank, and Google's code-share statements,
+which are shown beside leg C but not scored) are read in part 1 and take
+their item there; Google gets its own item in part 2 because it is not a
+gauge. For each of the rest, one or two web searches for releases in the
+window, or one fetch of the source's own database where the record was
+built that way (Manifold's market endpoint, Metaculus's question page),
+and:</p>
+<ul>
+<li>a repeat of an item already in <code>data/aggregates.csv</code>,
+with wording comparable to the series' <code>measure</code> text, is
+appended as a <code>new-row</code> with the result, the sample size
+(<code>n</code>) and the fieldwork dates (in <code>date</code>, at the
+precision the source gives, and spelled out in the notes), in the notes
+form the existing rows of that series use;</li>
+<li>a release with new wording, or a repeat whose sample size or
+fieldwork dates the public page does not give, is <code>noted</code> or
+<code>flagged</code>, never added as though comparable;</li>
+<li>a source that has stopped publishing, closed, or changed its method
+is <code>flagged</code>, since what to do about its row is John's.</li>
+</ul>
+<p>Sources John has ruled closed are not read at all, on any scope:
+Monmouth University's polling institute (ceased operations 2025-07-01;
+ruled 2026-10-17). Metaculus is read only if a search finds a public
+reading, since its question cannot be fetched without an account token
+(ruled 2026-10-17: the row stays with no series).</p>
+<p>Series that are read yearly (Google Trends' yearly means, read in
+January) and one-off surveys that will not recur (Müller and Bostrom's
+2012 to 2013 questionnaire) are read on the monthly scope only, and may
+be <code>quiet</code> with that reason and no search.</p>
+<h3 id="part-3-events">Part 3: events</h3>
+<p>Events of the kinds <code>data/events.csv</code> already defines:
+open letters, public statements, government actions, reports, AI
+releases. Two or more searches per kind for the window, read against the
+primary record (the letter's own page, the government's own notice, the
+report itself, the maker's own release). An event of one of those kinds,
+dated inside the window on its own record, is a <code>new-row</code> in
+the form the existing rows use (the key sentence quoted, the count at
+retrieval, the primary page as source). An AI release is appended only
+under amendment A21's rule, that the system is named in at least one
+statement in <code>data/statements.csv</code>; a release not so named is
+<code>noted</code>, and a reading that later finds a statement naming it
+flags the release for adding. Whether a report or a statement is of the
+record's kind is read strictly: when two readers could disagree, it is
+<code>flagged</code>, not added.</p>
+<h3 id="deferred-the-frozen-panels-new-statements">Deferred: the frozen
+panel's new statements</h3>
+<p>The thirty-seven panel members (core and 2020s cohort) and the wide
+list are not read in the first version, for two reasons. Full collection
+for the panel is not done, so a weekly pass would be adding statements
+for 2026 to people whose 2017 to 2025 rows do not exist yet, and the
+series would be dense at one end for no reason but the reading's start
+date. And the codebook's quality bar is an agreement test (methodology
+section 10 and section 12: coding is model-based with three model
+families and a two-of-three rule, and the seed phase required 80%
+agreement on the main fields), which one session coding one statement a
+week cannot meet. When full collection is done, the panel becomes part
+4, and the reading's job for it is to find and log the statement and
+leave coding to the collection pipeline.</p>
+<h2 id="the-window-and-the-scope">The window and the scope</h2>
+<p>The window is the seven days ending on the reading's date, Pacific.
+The scope is <code>monthly</code> on the first reading of each calendar
+month (no file in <code>data/readings/</code> dated that month), and
+<code>weekly</code> otherwise. A monthly reading adds leg D and the
+yearly and one-off series; nothing else changes with scope.</p>
+<p>An item found that is older than the window but newer than the
+series' latest row (a poll from three weeks ago the record missed) is
+handled the same way as an in-window item, with "older than the window"
+said in <code>found</code>; the record exists to be complete, and the
+row carries its own dates. On the first reading, where the backlog is of
+unknown size, such items are <code>flagged</code> rather than appended,
+so John can decide the catch-up in one piece.</p>
+<h2 id="the-searches">The searches</h2>
+<p>Two is a floor for every item that is searched at all: at least one
+search or fetch aimed at the source's own pages and one at wider
+reporting, worded differently. A fetch of the source's own database
+counts as one. Only a <code>quiet</code> item may list fewer, and then
+<code>found</code> has to say why (a yearly series out of season, a
+one-off survey, a search tool that failed twice). No more than four per
+item, except where a source's own page has to be fetched to settle a
+candidate row.</p>
+<p>Every search and every fetch is a row in
+<code>data/search_log.csv</code>, the tracker's existing rule ("log your
+search first"), with these particulars: <code>search_id</code> is
+<code>reading-YYYY-MM-DD-NN</code> (the reading's date, then a two-digit
+counter in the order run); <code>speaker_id</code> is the speaker the
+search was for, <code>events</code> for part 3, or <code>reading</code>
+for a search that belongs to no one speaker (leg B's forecast material,
+leg C's outside measures; <code>reading</code> is a reserved value the
+validator accepts, like <code>events</code>); <code>year</code> is the
+year searched for, or blank; <code>query</code> is the search as typed
+or the address fetched; <code>where_searched</code> the engine or site;
+<code>what_found</code> the one-line result; <code>date_searched</code>
+the reading's date. The reading record's items point at these rows by
+id, and the validator refuses a reading whose search ids are not in the
+log, and a log row with a <code>reading-</code> prefix that no reading
+item uses.</p>
+<h2 id="reading-the-results">Reading the results</h2>
+<p>Read literally against the record. A measurement is a repeat only
+when its wording matches the series' <code>measure</code> text closely
+enough that the two would be plotted on one line; "AI will cause the end
+of the human race" and "AI is a threat to the human race" are two
+series. A number in a press report is not the record; the source's own
+page or file is, and the row's <code>source_url</code> is that page. A
+sample size and fieldwork dates that the public page does not give are a
+reason to flag, not to guess. A date the page does not give is taken
+from the organiser's own dated post, said in the notes, as the existing
+event rows do.</p>
+<h2 id="the-four-verdicts">The four verdicts</h2>
+<ul>
+<li><strong><code>quiet</code></strong>: nothing in the window from this
+source bears on the record. No source needed.</li>
+<li><strong><code>noted</code></strong>: something relevant was
+published and no row is appended: new wording, a publication that
+measures something adjacent, a release that A21's rule does not admit, a
+forecast that is not the source. <code>found</code> says what and why
+not; <code>sources</code> lists what was read.</li>
+<li><strong><code>new-row</code></strong>: one or more rows appended to
+<code>data/world_measures.csv</code>, <code>data/aggregates.csv</code>
+or <code>data/events.csv</code>. <code>new_rows</code> lists their ids;
+<code>sources</code> lists the record they came from; <code>found</code>
+says in a sentence what each row is.</li>
+<li><strong><code>flagged</code></strong>: anything the scanner may not
+do on its own, or anything two readers could disagree on: a measurement
+of a leg that is not the scored series (always, even when its rows were
+appended), a candidate second source for leg C, a change to a named
+series, a source that has closed or changed method, a new item older
+than the window on the first reading, a report or statement whose kind
+is unclear, a release that may qualify under A21, a validation error.
+<code>for_john</code> states what it would have done, the record, and
+why it stopped. A flagged item may also have appended rows; the flag is
+about what it did not do.</li>
+</ul>
+<h2 id="the-reading-record">The reading record</h2>
+<p>One file per run, <code>data/readings/YYYY-MM-DD.json</code>,
+appended to the folder and never edited; a second run on the same day is
+<code>YYYY-MM-DD-2.json</code>. JSON rather than CSV because an item
+holds lists (search ids, sources, new row ids) and CSV would force them
+into one cell; JSON rather than the siblings' TOML because this
+repository's habit is CSV for tables and JSON for the rest
+(<code>docs/singularity-entry-thresholds.json</code>,
+<code>site/status.json</code>), and because Python reads JSON without a
+version question. The site copies only CSV files to
+<code>site/data/</code>, so the readings are in the repository and not
+yet on the site; see decision 12.</p>
+<pre><code>{
+  &quot;reading&quot;: {
+    &quot;date&quot;: &quot;2026-10-16&quot;,              the Pacific date of the run; also the file name
+    &quot;ran_at&quot;: &quot;2026-10-17T05:40:00Z&quot;,  when it finished, universal time
+    &quot;window_start&quot;: &quot;2026-10-10&quot;,      the seven days ending on the date
+    &quot;window_end&quot;: &quot;2026-10-16&quot;,
+    &quot;scope&quot;: &quot;monthly&quot;,                &quot;weekly&quot;, or &quot;monthly&quot; on the first run of a month
+    &quot;commit_before&quot;: &quot;c79a4d1&quot;,        the record the reading read
+    &quot;by&quot;: &quot;hand&quot;,                      &quot;hand&quot; for a run done in a session, &quot;scheduled&quot;
+    &quot;items_read&quot;: 19,
+    &quot;searches&quot;: 44,                    distinct search ids across the items
+    &quot;new_rows&quot;: [&quot;...&quot;],               every row appended, by id
+    &quot;flagged&quot;: 6
+  },
+  &quot;items&quot;: [
+    {
+      &quot;id&quot;: &quot;leg-a-metr&quot;,              a slug, unique in the reading
+      &quot;part&quot;: &quot;gauges&quot;,                &quot;gauges&quot;, &quot;institutions&quot; or &quot;events&quot;
+      &quot;speaker_id&quot;: &quot;metr&quot;,            optional; a speaker, &quot;events&quot; or &quot;reading&quot;
+      &quot;verdict&quot;: &quot;flagged&quot;,            quiet, noted, new-row or flagged
+      &quot;search_ids&quot;: [&quot;reading-2026-10-16-01&quot;, &quot;reading-2026-10-16-02&quot;],
+      &quot;found&quot;: &quot;One to three plain sentences, absolute dates.&quot;,
+      &quot;sources&quot;: [&quot;https://...&quot;],      required for every verdict but quiet
+      &quot;new_rows&quot;: [&quot;...&quot;],             new-row only: the ids appended
+      &quot;for_john&quot;: &quot;...&quot;                flagged only: what it would have done, the
+                                       record, and why it stopped
+    }
+  ]
+}</code></pre>
+<p><code>scripts/validate.py</code> checks every file in the folder: the
+name is the date; every field above is present and well formed; every
+item has a verdict; at least two search ids unless <code>quiet</code>
+with a reason in <code>found</code>; sources for every verdict but
+<code>quiet</code>; every search id exists in
+<code>data/search_log.csv</code> and carries the reading's date; every
+<code>new_rows</code> id exists in one of the three data files;
+<code>for_john</code> on every flagged item; the counts in the header
+match the items; and, the other way, every search-log row whose id
+starts <code>reading-</code> belongs to an item in the reading of that
+date.</p>
+<h2 id="the-procedure-step-by-step">The procedure, step by step</h2>
+<p>The standalone instruction is
+<code>docs/weekly-reading-prompt.md</code>; the scheduled task's prompt,
+when one exists, only says to open the repository and follow that file.
+In brief:</p>
+<ol start="0" type="1">
+<li><strong>Orient.</strong> Pacific date; clean <code>main</code>
+brought up to date; <code>commit_before</code>; read this file, the
+definition, the headers of the data files and the latest rows of each
+series; decide the scope.</li>
+<li><strong>Part 1</strong>, the four gauges, in order A, B, C, D.</li>
+<li><strong>Part 2</strong>, every non-individual speaker, in file
+order.</li>
+<li><strong>Part 3</strong>, events, by kind.</li>
+<li><strong>Append rows</strong> for every <code>new-row</code>, in the
+form the file's existing rows use, and run
+<code>python3 scripts/validate.py</code> after each file; a row that
+fails is removed and the item becomes <code>flagged</code> with the
+error.</li>
+<li><strong>Log every search</strong> in
+<code>data/search_log.csv</code>.</li>
+<li><strong>Write the reading record.</strong>
+<code>python3 scripts/validate.py</code> must pass.</li>
+<li><strong>Changelog</strong>: this repository has none;
+<code>docs/amendments.md</code> is for changes to the method and the
+reading makes none, so nothing is written there. The commit message is
+the log.</li>
+<li><strong>Publish</strong>: one commit on <code>main</code>, one push;
+the push deploys the site through
+<code>.github/workflows/deploy.yml</code>. A refused push falls back to
+<code>claude/reading-YYYY-MM-DD</code>.</li>
+<li><strong>Report</strong> to John: flagged items first, then new rows,
+then counts. No prose.</li>
+</ol>
+<h2 id="the-schedule-a-proposal">The schedule: a proposal</h2>
+<p>The reading is meant to run once a week without John opening
+anything. Two slots in this family are taken: The Upgrade Tree's reading
+runs on this Mac at 18:00 Pacific on Sundays, and The Belt Equation's
+scan runs as a cloud routine (claude.ai/code/routines) on its own
+schedule. Running two readings on the Mac at the same hour would have
+them contend for the machine and land their reports together.</p>
+<p>Proposed: <strong>Monday 06:00 Pacific on this Mac</strong>, so the
+week's reading is in John's hands with the Monday digest and after the
+weekend's releases, and the Upgrade Tree's Sunday report has had the
+evening to itself. Alternatives: Sunday 20:00 Pacific on the Mac,
+directly after the Upgrade Tree's run, so both land on Sunday night; or
+a cloud routine with the repository attached, which runs whether or not
+the Mac is open (The Belt Equation moved to one on 2026-10-08 after a
+Mac-scheduled scan landed 39 hours late) but needs the Claude GitHub App
+on this repository and cannot be made from a Code session. The choice is
+John's; no task was created with this document.</p>
+<p><strong>Ruled 2026-10-16.</strong> John chose the proposed slot. The
+scheduled task <code>agi-zeitgeist-weekly-reading</code> (the tracker's
+weekly reading, on this Mac) was created the same day for Mondays at
+06:00 Pacific (the app adds a few minutes' delay), with its prompt
+pointing at <code>docs/weekly-reading-prompt.md</code>; its first
+unattended run is 2026-10-19. It runs while the Claude desktop app is
+open, and a run missed because the app was closed starts on the next
+launch.</p>
+<h2 id="decisions-with-confidence-and-alternatives">Decisions, with
+confidence and alternatives</h2>
+<p>Per the ground rule of 2026-09-08. All proposed by Claude on
+2026-10-16 while building; none ruled yet unless the line says so.</p>
+<ol type="1">
+<li><strong>Three parts, and the panel deferred.</strong> High
+confidence on the three; moderate on deferring the panel, for the two
+reasons under "Deferred". Alternative: read the panel's thirty-seven
+people weekly from the start, logging statements uncoded. Rejected
+because the collection pipeline would then inherit a partial,
+newest-first set.</li>
+<li><strong>Four verdicts: quiet, noted, new-row, flagged.</strong> High
+confidence. The siblings' moving verdicts (<code>moved</code>,
+<code>resolved</code>, <code>stage-change</code>) have no counterpart
+here because the scanner moves nothing; <code>new-row</code> is the one
+act it may take. Alternative: a fifth verdict <code>new-series</code>
+for a release with new wording. Rejected: new wording is John's to
+admit, so it is <code>flagged</code> or <code>noted</code>.</li>
+<li><strong>A measurement that is not the scored series is recorded if
+it repeats a series in the file, always flagged, never swapped
+in.</strong> High confidence; it is the hand-made handling of 2026-10-16
+written as a rule, and the definition says changing what scores is an
+amendment. Alternative: never record such measurements, flag only.
+Rejected because the record is also for readers who want to see the
+disagreement, and a row they can download is worth more than a line in a
+report.</li>
+<li><strong>A repeat is appended only with comparable wording, sample
+size and fieldwork dates.</strong> High confidence; it is what every
+existing <code>aggregates.csv</code> row carries, and a row without them
+cannot be compared. Alternative: append with what the page gives and
+leave <code>n</code> blank. Rejected: the validator allows a blank
+<code>n</code>, but a poll row without one is a press figure.</li>
+<li><strong>AI releases only under amendment A21's rule.</strong> High
+confidence; the rule exists and is mechanical (named in a statement).
+Alternative: append every frontier release. Rejected because "frontier"
+is a judgment and the record would fill with launches nobody in it
+reacted to.</li>
+<li><strong>Two searches as a floor, with a fetch of the source's
+database counting as one.</strong> High confidence; both siblings
+adopted the floor after their first audits found one-search items.
+Alternative: one fetch is enough for a database-built series. Rejected
+for the first version; the second search is cheap and catches a source
+announcing a change to its series.</li>
+<li><strong>Every search in <code>data/search_log.csv</code> with a
+<code>reading-</code> prefix and a reserved speaker
+<code>reading</code>.</strong> High confidence; the tracker's own rule
+is that every search is logged, and a second log would split the record.
+Alternative: a <code>searches</code> list inside the reading record, as
+the siblings do. Rejected because the siblings have no search log to
+join.</li>
+<li><strong>A JSON record per run, never edited.</strong> Moderate
+confidence; see "The reading record". Alternative: TOML as the siblings,
+so the three readings share a shape. Worth revisiting if a shared
+reading page across the family is ever built.</li>
+<li><strong>Append, never edit; a revision is a new row.</strong> High
+confidence; it is the tracker's existing habit (every row dated and
+sourced, amendments dated), and it keeps the scanner's work auditable by
+diff. Alternative: let the scanner correct a value it finds revised.
+Rejected: a corrected value with no trace is exactly what the record is
+built to prevent.</li>
+<li><strong>Monthly scope adds leg D and the yearly and one-off series,
+and nothing else.</strong> Moderate confidence. Alternative: no scope at
+all, read everything weekly. Costs a World Bank fetch and two pointless
+searches a week.</li>
+<li><strong>Older items found by chance are appended, except on the
+first reading.</strong> Moderate confidence; a judgment call made on the
+first reading, when the Ipsos AI Monitor 2026 and the State of AI Report
+2026 turned up outside the window. Alternative: The Upgrade Tree's rule
+that an older record is always flagged. Rejected because the tracker's
+rows carry their own dates, so there is nothing for the scanner to
+guess.</li>
+<li><strong>No site surface in the first version.</strong> Moderate
+confidence. The site is written under the public-writing rule (no
+project language) and every page is a design pass; the readings are in
+the repository, and the three-surface pattern (a strip on the home page,
+a "this week's reading" page, each series' last readings) is the next
+step once four readings exist and John has audited them. Alternative:
+publish the JSON beside the CSV files now by extending
+<code>copy_data</code> in <code>scripts/site.py</code>. One line; not
+done because an unexplained file on the download page is worse than
+none.</li>
+<li><strong>Monday 06:00 Pacific on the Mac, proposed.</strong> Low
+confidence; see "The schedule". The alternatives are in that section,
+and the choice is John's.</li>
+<li><strong>The scheduled run writes no worklog entry.</strong> Moderate
+confidence; The Upgrade Tree decided the same on 2026-10-16 (the record
+is the log, and the Monday digest reads it). Alternative: one
+<code>progress</code> entry per run in the AGI Zeitgeist project. Cheap,
+but fifty-two near-identical entries a year would bury the real
+ones.</li>
+<li><strong>A first audit after four readings</strong>, John reading
+every scanner item to date. High confidence; both siblings' first audits
+changed their procedures.</li>
+<li><strong>The scheduler commits on <code>main</code> and pushes, with
+a fallback branch.</strong> High confidence; the deploy workflow runs
+the validator before building, so a bad row cannot reach the site, and
+the siblings do the same. Alternative: a pull request per reading. Costs
+John a merge a week for rows the validator has already checked.</li>
+</ol>
+<h2 id="deferred-and-why">Deferred, and why</h2>
+<ul>
+<li><strong>The frozen panel's new statements</strong> (part 4):
+decision 1.</li>
+<li><strong>A site surface</strong>: decision 12.</li>
+<li><strong>Online communities, media outlets, Wikipedia and Google
+Trends monthly</strong>: the streams these belong to (methodology
+sections 5, 6 and 9) have not started, and their series are built by
+database pulls on their own schedule, not by a weekly news reading.</li>
+<li><strong>The scanner proposing new speakers or new series</strong>:
+it may flag a candidate (a pollster that has begun a repeated AGI item,
+a second source for leg C); adding one is an amendment.</li>
+<li><strong>Fetching sources by API beyond the three already built that
+way</strong> (METR's file, Manifold's market, the World Bank's
+indicator): add a fetch only once a reading has demonstrably missed
+something a fetch would have caught.</li>
+</ul>
+<h2 id="rulings-on-flagged-items">Rulings on flagged items</h2>
+<p>Each reading's flagged items are John's to rule on. The rulings are
+recorded here, dated, so a later reading can tell a settled question
+from an open one and does not flag it again.</p>
+<p><strong>2026-10-17, on the first reading (2026-10-16), John ruling on
+the agent's recommendations:</strong></p>
+<ul>
+<li><em>METR's time-horizon series has stopped updating (leg A
+anchor).</em> Ruled 2026-10-17 after John asked what METR is: ask METR
+whether a successor suite is planned, and record the question as an open
+amendment (A24) so the page says the gauge is running out. The switch
+itself waits on the answer and is a later amendment. The leg A item adds
+"Time Horizon 2.0" to its searches.</li>
+<li><em>26% by the R&amp;D Automation Index against 51% by the staff
+poll (leg C).</em> The index keeps scoring; the poll stays beside the
+gauge, unscored. Recorded under leg C in the definition.</li>
+<li><em>Venue AI-disclosure audits as a second source for leg C.</em>
+Read the ICLR 2026 audit's results before deciding whether it is a
+second source or only context; a roadmap step, not a reading.</li>
+<li><em>Metaculus cannot be fetched without a token.</em> The row stays
+with no series; noted on the row.</li>
+<li><em>Monmouth's polling institute closed.</em> Confirmed on the
+university's own page (ceased operations 2025-07-01). The series ends
+with the 2023 poll; the row says so; not read again.</li>
+<li><em>Ipsos AI Monitor 2026 has no public figures.</em> Read the full
+report by hand, as the 2024 and 2025 rows were, and append the rows; a
+roadmap step, not a reading.</li>
+<li><em>The OpenAI-led corporate letter on cyber defence
+(2026-08-27).</em> Not the record's kind of open letter: a company
+pledge about defence, not a statement about where AI is going. No
+row.</li>
+<li><em>The White House Accord on Super Intelligence (2026-09-29).</em>
+Covered by the executive order's row of the same day; a sentence on that
+row names it. No row of its own (agent's call under the ruling).</li>
+<li><em>The State of AI Report 2026 (2026-10-08).</em> Not the record's
+kind of report: an annual investor's survey of the field, not a research
+report. No row.</li>
+</ul>
+<p>Two of these set precedent for later readings: a corporate pledge is
+not an open letter of the record's kind, and an annual industry survey
+is not a report of the record's kind.</p>
+<p class="cite">Rendered from <code>docs/weekly-reading.md</code> at version 3218d92.</p></div>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div>
+<span class="footer-brand">AGI Zeitgeist Tracker</span>
+<p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version 3218d92) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+</div></div></footer>
+<script>
+(function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
+if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
+sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
+</script>
+</body>
+</html>

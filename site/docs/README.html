@@ -159,94 +159,127 @@ the other public streams have not started.</p>
 <h2 id="whats-here">What's here</h2>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>path</th>
 <th>what it is</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td><code>data/speakers.csv</code></td>
 <td>one row per person, survey, market, pollster or institution</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>data/statements.csv</code></td>
 <td>one row per public statement, with a verbatim quote, link and
 codes</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>data/aggregates.csv</code></td>
 <td>survey results, prediction market readings and poll results</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>data/events.csv</code></td>
 <td>dated events (open letters, government actions, reports) for chart
 labels</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>data/world_measures.csv</code></td>
 <td>world measures, kept apart from belief: capability readings (METR
 time horizon), company self-reports of AI-done work, and world output
 growth (World Bank), for the singularity-entry definition</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>data/search_log.csv</code></td>
-<td>every search run to build the record, and what it found</td>
+<td>every search run to build the record, and what it found; the weekly
+reading's searches carry ids starting <code>reading-</code></td>
 </tr>
-<tr>
+<tr class="odd">
+<td><code>data/readings/</code></td>
+<td>one file per run of the weekly reading
+(<code>YYYY-MM-DD.json</code>), never edited: what was searched, what
+was found, one verdict per source</td>
+</tr>
+<tr class="even">
 <td><code>docs/methodology-v2.md</code></td>
 <td>the method (version 2, 2026-09-30): four streams, coding scheme,
 panel rule, preregistered tests</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>docs/methodology.md</code></td>
 <td>pointer to version 2, plus details carried over from version 1</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>docs/codebook.md</code></td>
 <td>how each statement is coded under version 2, with decision rules and
 examples</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>docs/reviews/</code></td>
 <td>the two outside reviews behind version 2</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>docs/panel-verification-2026-10.md</code></td>
 <td>evidence for each panel candidate, for John's freeze decision</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>docs/amendments.md</code></td>
 <td>dated changes to the panel or the codes</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>docs/2026-09-30-kickoff.md</code></td>
 <td>the original plan</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>docs/singularity-entry-definition.md</code></td>
 <td>adopted 2026-10-08: the four-leg measurable definition of entering
 the singularity (pace, forecasts, AI doing the improving, the economy),
 with gauges and a mark</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>docs/singularity-entry-thresholds.json</code></td>
 <td>the frozen values the page scores from; any change is an
 amendment</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>docs/singularity-entry-definition-draft-2026-10-07.md</code></td>
 <td>the three-leg draft the definition grew from, kept unchanged</td>
 </tr>
-<tr>
-<td><code>scripts/validate.py</code></td>
-<td>checks every row: codes, dates, sources, links between files</td>
+<tr class="even">
+<td><code>docs/weekly-reading.md</code></td>
+<td>the weekly reading (2026-10-16): how the four gauges, every
+institution in the record and the events list are checked against the
+week's news; it may append rows and flag, never change what is
+scored</td>
 </tr>
-<tr>
+<tr class="odd">
+<td><code>docs/leg-c-second-source-2026-10.md</code></td>
+<td>reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read
+as a candidate outside-the-company measure for leg C; found to be
+context, not a second source</td>
+</tr>
+<tr class="even">
+<td><code>docs/leg-c-second-source-2026-10-17.md</code></td>
+<td>reading note (2026-10-17): the wider search for a leg C second
+source (venue disclosure statistics, researcher surveys, independent
+measurements); 26 candidates judged, none qualifies, no row added; three
+near misses and the questions they raise are set out for John</td>
+</tr>
+<tr class="odd">
+<td><code>docs/weekly-reading-prompt.md</code></td>
+<td>the standalone instruction a fresh session follows to run the
+reading</td>
+</tr>
+<tr class="even">
+<td><code>scripts/validate.py</code></td>
+<td>checks every row: codes, dates, sources, links between files, and
+every reading record in <code>data/readings/</code></td>
+</tr>
+<tr class="odd">
 <td><code>scripts/charts.py</code></td>
 <td>builds the charts from the CSV files</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>scripts/site.py</code></td>
 <td>builds <code>site/index.html</code> (public copy written under the
 public-writing rule: no project language, every idea built from scratch;
@@ -255,12 +288,12 @@ figures, <code>site/status.json</code>, the rendered documents
 (<code>site/docs/</code>, via pandoc) and the data copies
 (<code>site/data/</code>)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>site/</code></td>
 <td>the static site; serve locally with
 <code>python3 -m http.server 8765 --directory site</code></td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>wrangler.jsonc</code>, <code>worker/</code></td>
 <td>how the site is published: a Cloudflare Worker serving
 <code>site/</code> at agizeitgeist.com
@@ -325,13 +358,13 @@ site</h2>
 .venv/bin/python scripts/site.py        # needs pandoc on the path
 npx wrangler deploy                      # publishes site/ to agizeitgeist.com by hand;
                                          # every push to main also deploys through .github/workflows/deploy.yml</code></pre>
-<p class="cite">Rendered from <code>README.md</code> at version 8bea5a9.</p></div>
+<p class="cite">Rendered from <code>README.md</code> at version 3218d92.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 16 October 2026 (version 8bea5a9) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version 3218d92) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
