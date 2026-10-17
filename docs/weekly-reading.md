@@ -321,6 +321,13 @@ attached, which runs whether or not the Mac is open (The Belt Equation moved to 
 this repository and cannot be made from a Code session. The choice is John's; no task was
 created with this document.
 
+**Ruled 2026-10-16.** John chose the proposed slot. The scheduled task
+`agi-zeitgeist-weekly-reading` (the tracker's weekly reading, on this Mac) was created the same
+day for Mondays at 06:00 Pacific (the app adds a few minutes' delay), with its prompt pointing
+at `docs/weekly-reading-prompt.md`; its first unattended run is 2026-10-19. It runs while the
+Claude desktop app is open, and a run missed because the app was closed starts on the next
+launch.
+
 ## Decisions, with confidence and alternatives
 
 Per the ground rule of 2026-09-08. All proposed by Claude on 2026-10-16 while building; none
