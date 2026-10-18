@@ -707,6 +707,11 @@ request as a comment of 2026-10-12 and applied by the commits that follow it.
    not run. The three untraced members (Liang Wenfeng, Arthur Mensch, Arvind Narayanan)
    get their own session with web searches.
 
+*Status, 2026-10-17:* items 1 to 4 were applied on the collection branch between 2026-10-12 and
+2026-10-17; the three members named in item 5 were traced on 2026-10-17 in the same pull request
+(Liang Wenfeng 11 statements, Arthur Mensch 6, Arvind Narayanan 29), so the collection covers all
+32 members. The paid check stays deferred.
+
 Why: the second independent check of the collection (pull request 4, comment of
 2026-10-09) found that the codebook example conflicted with the ruling it illustrated,
 and that the method said nothing on ten points the collection had to decide. Recording
