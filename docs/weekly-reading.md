@@ -333,6 +333,19 @@ at `docs/weekly-reading-prompt.md`; its first unattended run is 2026-10-19. It r
 Claude desktop app is open, and a run missed because the app was closed starts on the next
 launch.
 
+**Moved to a cloud routine on John's ruling of 2026-10-18.** The reading now runs as the cloud
+routine "AGI Zeitgeist weekly reading" (routine id `trig_01P7b2icKe5hxxtBAmTpDTtq`, at
+claude.ai/code/routines), Mondays at 06:00 Pacific as before, with this repository attached; it
+runs whether or not the Mac is awake, and its prompt is the same as the Mac task's: open the
+repository and follow `docs/weekly-reading-prompt.md`. The Mac task
+`agi-zeitgeist-weekly-reading` is kept until the cloud routine's first reading has landed. The
+Mac task runs on 2026-10-19; the cloud routine was created switched off on 2026-10-18 so that it
+would not also fire that morning, and its first firing is Monday 2026-10-26 at 06:00 Pacific, so
+the two never fire in the same week. Once that reading has landed and its record is on `main`,
+the Mac task is switched off. As the paragraph above says, a cloud routine needs the Claude
+GitHub App on this repository; whether it is installed is shown only by that first run, and
+until then it is unconfirmed.
+
 ## Decisions, with confidence and alternatives
 
 Per the ground rule of 2026-09-08. All proposed by Claude on 2026-10-16 while building; none
@@ -393,7 +406,9 @@ ruled yet unless the line says so.
     files now by extending `copy_data` in `scripts/site.py`. One line; not done because an
     unexplained file on the download page is worse than none.
 13. **Monday 06:00 Pacific on the Mac, proposed.** Low confidence; see "The schedule". The
-    alternatives are in that section, and the choice is John's.
+    alternatives are in that section, and the choice is John's. *Ruled 2026-10-16 as proposed;
+    moved to a cloud routine in the same slot on John's ruling of 2026-10-18, first firing
+    2026-10-26 (see "The schedule").*
 14. **The scheduled run writes no worklog entry.** Moderate confidence; The Upgrade Tree
     decided the same on 2026-10-16 (the record is the log, and the Monday digest reads it).
     Alternative: one `progress` entry per run in the AGI Zeitgeist project. Cheap, but
