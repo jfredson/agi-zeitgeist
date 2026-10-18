@@ -1,0 +1,89 @@
+/* ---------------------------------------------------------------
+   AGI Zeitgeist Tracker · skin "Gazette", version 1.0.0 (2026-10-17)
+   A dated record of opinion in the register of a newspaper's archive: a
+   newsprint page with a broadsheet's faint column rules behind the first
+   screen, ink text, one red for the mark each part of the test must reach
+   and for links, a blue-grey for the gauge bars, the serif leading the
+   headline and the monospace the datelines. Proposed with pictures in
+   sentient-horizons/design/proposals/agi-zeitgeist-skin-2026-10-17.md and
+   ruled by John on 2026-10-17 as proposed ("Launch the gazette skin"):
+   light by default, the dark theme kept as the page's negative, no display
+   typeface. A skin supplies every token the skeleton (site/shell.css, a
+   copy of sentient-horizons/design/shell.css) names, for both themes, plus
+   the backdrop (design standard, section 3a). The register rules that
+   lean on this page's own markup sit in scripts/site.py below its marked
+   line.
+   --------------------------------------------------------------- */
+:root {
+  --bg: #111214;          /* ink-black: the page as a negative */
+  --bg-soft: #16171a;
+  --panel: #1a1b1f;
+  --text: #efece4;        /* newsprint cream */
+  --text-soft: #d2cfc6;
+  --muted: #8e8d87;
+  --line: rgba(239, 236, 228, 0.10);
+  --line-strong: rgba(239, 236, 228, 0.20);
+  --accent: #e07a70;      /* brick pink: the mark, links, the one action */
+  --accent-2: #c9a06a;    /* a second mark, sepia */
+  --accent-3: #8fa9c2;    /* data: the gauge bars */
+  --on-accent: #1a0c0a;
+  --accent-hover: #ea918a;
+  --link: #e07a70;
+  --link-hover: #ea918a;
+  --glow: rgba(224, 122, 112, 0.14);
+  --header-bg: rgba(17, 18, 20, 0.78);
+  --hover-bg: rgba(239, 236, 228, 0.06);
+  --active-bg: rgba(239, 236, 228, 0.09);
+  --chip-bg: rgba(239, 236, 228, 0.03);
+  --callout-bg: rgba(224, 122, 112, 0.10);
+  --ok: #7fc48a;
+  --no: #d98a7a;
+  --star: #efece4;
+  --figure-bg: #fff;      /* the paper the PNG figures are drawn on, in both themes (standard, section 9) */
+  --radius: 3px;
+  --maxw: 1080px;
+  --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+/* Light, the default: newsprint. */
+:root[data-theme='light'] {
+  --bg: #f2f1ec;          /* newsprint */
+  --bg-soft: #e9e7e0;
+  --panel: #faf9f6;
+  --text: #171614;        /* ink */
+  --text-soft: #363430;
+  --muted: #686661;
+  --line: rgba(23, 22, 20, 0.13);
+  --line-strong: rgba(23, 22, 20, 0.24);
+  --accent: #b8322a;      /* red: the mark, links, the one action */
+  --accent-2: #8a5a2b;    /* sepia */
+  --accent-3: #4f6d8a;    /* blue-grey */
+  --on-accent: #fbf6f4;
+  --accent-hover: #cc3f36;
+  --link: #b8322a;
+  --link-hover: #cc3f36;
+  --glow: rgba(184, 50, 42, 0.10);
+  --header-bg: rgba(242, 241, 236, 0.88);
+  --hover-bg: rgba(23, 22, 20, 0.05);
+  --active-bg: rgba(23, 22, 20, 0.08);
+  --chip-bg: transparent;
+  --callout-bg: rgba(184, 50, 42, 0.06);
+  --ok: #2f7c4a;
+  --no: #a5432f;
+  --star: #b9b7af;
+  --figure-bg: #fff;
+  --radius: 2px;
+}
+
+/* ---- the backdrop: a broadsheet's column rules ----
+   No sky. Behind the first screen, six faint vertical rules across the page, fading out by the
+   fold the way the family's backdrops do; on in both themes. */
+.space-bg {
+  position: absolute; top: 0; left: 0; right: 0; height: 760px; z-index: 0;
+  overflow: hidden; pointer-events: none; opacity: 0.9;
+  background-image: repeating-linear-gradient(to right, transparent 0 calc(100% / 6 - 1px), var(--line) calc(100% / 6 - 1px) calc(100% / 6));
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+}

@@ -40,7 +40,7 @@ These come from version 1 and still apply; the agent implementation entry in
   company building the most capable models of the time during any statement in the
   record; the years are given in `role_summary`.
 
-### Practices adopted after the panel collection (ruled by John 2026-10-12, amendment A24)
+### Practices adopted after the panel collection (ruled by John 2026-10-12, amendment A28)
 
 The full collection for the frozen panel (pull request 4, October 2026) had to decide ten
 points the method said nothing about, and departed from it on one. John ruled on

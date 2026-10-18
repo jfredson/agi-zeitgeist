@@ -65,6 +65,14 @@ past 16 hours as beyond its task suite's reliable range and excludes them from i
   computed in 2019 itself (one reading), so T_ref is METR's own fit over all frontier
   models from 2019 to early 2026, 187.8 days (agent decision, 2026-10-08).
 
+**Note of 2026-10-17 (amendment A24, open).** METR's time-horizons page says the series is no
+longer actively updated (last 2026-09-08), and METR's Frontier Risk Report of 2026-05-19 says the
+Time Horizon 1.1 suite cannot measure above 16 hours and the strongest agents have saturated
+it. The record's top frontier reading is already past the 16-hour bar, so this gauge will soon
+have no scorable window. The successor rule applies: a replacement is to be named with an
+overlap period, by amendment. John has asked METR whether a successor suite is planned; until
+the switch is ruled, nothing here changes and the gauge is scored as written.
+
 ### Leg B: forecasts have stopped working
 
 For forecasts of C made at time s with lead d (that is, about C(s + d)), the skill score
@@ -117,6 +125,28 @@ require on papers.
   own AI research work that its model "leads": one company, judged by the model itself.
   A company's share of all new code written by AI is a proxy at best and is shown but not
   scored. Every f value carries its source and whether it is a self-report.
+
+**Note of 2026-10-16 (a record, not an amendment; written by the agent).** In the same
+month the same company gave two different numbers for how much of its frontier-model work
+its AI does. The R&D Automation Index, the row that scores this leg
+(`anthropic_institute-2026-08-rd-leads` in `data/world_measures.csv`), puts the share of
+Anthropic's AI research work that Claude "leads" at 26% for August 2026. An internal staff
+poll published 2026-10-16 in the Anthropic Institute report "The AI Expectations Gap"
+(1,334 employees, 2026-08-09 to 2026-08-12, unweighted) puts the median staff member's
+estimate of the share of the work of building an early-2026 frontier model that AI does
+today at 51%, with staff expecting 80% by the end of 2027 and 95% by the end of 2030. The
+two measure different things: the index counts tasks the model completes end-to-end under
+human supervision, judged by the model itself; the poll is the staff's own opinion of how
+much of the work AI does, with no definition of "does" and no task list. The report itself
+says the poll answers "are not a measurement by Anthropic or a company forecast". The 51%
+is recorded as its own row (`anthropic_institute-2026-08-staff-estimate-ai-share`, a
+self-report survey of one company's staff) in the same table as the scored row, so it
+sits beside the gauge; it is not scored, and the thresholds file is unchanged. Whether a
+staff estimate or the index should score the leg is John's call and is not settled here.
+
+**Ruled 2026-10-17 (John, on the agent's recommendation).** The index keeps scoring the leg. The
+staff estimate stays beside the gauge, unscored: the index is a measurement of tasks completed,
+the poll is opinion with no definition of "does". The thresholds file is unchanged.
 
 ### Leg D: the economy has changed mode
 
@@ -172,6 +202,20 @@ This also keeps methodology section 9's rule: series are never combined into an 
 minimum is not an index; it is the definition's own bottleneck. While a leg is not yet
 measurable, P(t) is reported as "at most" the minimum of the measured legs, since the
 missing one can only lower it.
+
+**Note of 2026-10-17 (how it is published; ruled by John on the agent's proposal,
+`docs/headline-proposal-2026-10-17.md`; a note, not an amendment, since nothing above changes).**
+The page's headline number was, for the afternoon of 2026-10-17, the count of legs whose
+gauge is above one half ("1 of 4"), with each leg's gauge printed beneath. **Revised the same
+evening by John, amendment A25:** the headline is the average of the measured legs' gauges,
+written as a percentage of the way (32% on 2026-10-17), always printed with the slowest leg and
+its share, and beneath it one sentence saying when each leg crosses its line on current trends
+and whether the test is met on current trends (the method is in A25). The verdict ("Not yet.")
+stays beneath that as the answer to this test. The argument above against an average stands for
+P(t), which remains the definition's own progress number, written out in the test section and
+published in `status.json` as `progress`; the headline average is a labelled reading aid and is
+never used for the status. `status.json` carries `headline`, `headline_label`, `average_share`,
+`crossing_sentence`, `crossings` and `parts_past_half`.
 
 ## 5. Tests the definition owes
 

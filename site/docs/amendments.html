@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
-(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();
 </script>
-<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>Amendments | AGI Zeitgeist Tracker</title>
 <meta name="description" content="Amendments: a document of the AGI Zeitgeist Tracker.">
 <meta name="author" content="John Fredrickson">
@@ -18,7 +18,9 @@
 <meta property="og:title" content="Amendments | AGI Zeitgeist Tracker">
 <meta property="og:description" content="Amendments: a document of the AGI Zeitgeist Tracker.">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/deep-field.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/shell.css">
+<link rel="stylesheet" href="/skin.css">
 <style>
 .brand { white-space: nowrap; }
 .with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
@@ -50,6 +52,8 @@
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
 .land .kicker { margin: 0 0 12px; }
+.land .shares { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(--text); margin: 0 0 22px; }
+.land h1 .verdict { font-weight: 700; }
 .conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
 .cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
@@ -84,10 +88,9 @@
 .status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
 .status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
 .status b { color: var(--text); }
-figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig { margin: 18px 0; background: var(--figure-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
 figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
 figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
-:root[data-theme='light'] figure.fig { background: #fff; }
 table.data { font-size: 13px; }
 table.data th, table.data td { white-space: nowrap; }
 table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
@@ -106,10 +109,24 @@ details p { color: var(--text-soft); }
 .cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
 .document > h1 { display: none; }
 .document h2 { margin-top: 2em; }
-.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document img { max-width: 100%; height: auto; background: var(--figure-bg); border-radius: 4px; }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+/* ---- the Gazette's register (ruled 2026-10-17; the tokens and the backdrop are in site/skin.css) ----
+   The mark: each gauge's line is a red tick at the bar's right edge, grey where the part cannot be scored. */
+.cond .bar { overflow: visible; }
+.cond .bar::after { content: ""; position: absolute; right: 0; top: -4px; bottom: -4px; width: 2px; background: var(--accent); border-radius: 1px; }
+.cond .bar.none::after { background: var(--muted); }
+/* The serif leads the headline, the monospace the datelines. */
+.land .answer, .land h1 { font-family: var(--serif); }
+.land .answer { font-weight: 700; letter-spacing: -0.02em; }
+.land h1 { font-weight: 400; }
+.card .ch-big { font-family: var(--serif); }
+.eyebrow, .kicker, .fresh, .card .ch { font-family: var(--mono); text-transform: none; letter-spacing: 0.02em; }
+/* The When? box: a boxed item between double rules, no panel fill. */
+.card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
+figure.fig { border-radius: 0; }
 </style>
 </head>
 <body>
@@ -117,7 +134,7 @@ details p { color: var(--text-soft); }
 <header class="site-header"><div class="container nav">
 <a class="brand" href="/">AGI Zeitgeist</a>
 <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
-<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><a href="https://sentient-horizons.com/projects/" class="nav-secondary" rel="noopener">Family</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
 </div></header>
 <main class="container">
 <section class="hero"><p class=eyebrow>Document</p><h1>Amendments</h1></section>
@@ -997,23 +1014,165 @@ measure, are noise in the stand-in (it measures what went into systems,
 not what they could do, and windows of three or four systems swing a
 lot), not a flaw in the rule. The definition is not changed for it.</li>
 </ul>
-<p class="cite">Rendered from <code>docs/amendments.md</code> at version d5a0837.</p></div>
+<h2
+id="2026-10-17-the-pace-gauges-anchor-series-has-stopped-updating-the-successor-question-is-opened">2026-10-17:
+the pace gauge's anchor series has stopped updating; the successor
+question is opened</h2>
+<p>Decided by: mixed. The first weekly reading (2026-10-16) flagged that
+METR's time-horizon page says it is no longer actively updated (last
+update 2026-09-08) and that METR's Frontier Risk Report of 2026-05-19
+says the Time Horizon 1.1 suite cannot measure above 16 hours and the
+strongest agents have saturated it. The agent and the master session
+recommended asking METR whether a successor is coming and recording the
+question here as open, so the page says the gauge is running out rather
+than going quiet; John accepted ("ask METR and record the successor
+question as open", 2026-10-17, confirmed in the review session the same
+day after asking what METR is).</p>
+<h3
+id="a24-successor-to-the-leg-a-anchor-question-opened-nothing-changed-yet">A24.
+Successor to the leg A anchor: question opened, nothing changed yet</h3>
+<p>Status: <strong>open.</strong> No frozen value changes with this
+entry. <code>docs/singularity-entry-thresholds.json</code> is untouched;
+leg A keeps scoring from the METR rows already in
+<code>data/world_measures.csv</code> under the rules as written (windows
+holding a reading past 16 hours are not scored).</p>
+<p>What is true: the anchor series for leg A (and the reference series
+for leg B's ledger) has stopped moving. The record's top frontier
+reading (Claude Mythos Preview, early, 1,044.78 minutes on 2026-04-07)
+is already past the 16-hour bar, so a trailing twelve-month window will
+soon hold no scorable frontier readings and the gauge will show no
+current value.</p>
+<p>What the successor rule requires (A19): a replacement measure named
+before the series stops, an overlap period published, and the switch
+recorded here as an amendment.</p>
+<p>What happens next:</p>
+<ol type="1">
+<li>John asks METR whether a Time Horizon 1.2 or 2.0 is planned, whether
+it will overlap the 1.1 series, and if not which public series they
+would point to (note drafted and sent by John from his own address on
+2026-10-17).</li>
+<li>On METR's answer, or after a stated wait if none comes, candidate
+successors are proposed with pictures of the overlap, and the switch is
+ruled as A25 or later.</li>
+<li>Until then the page says the gauge's source has stopped updating,
+with this entry linked. The weekly reading keeps checking METR's results
+file and adds "Time Horizon 2.0" to its search terms for the leg A
+item.</li>
+</ol>
+<h2
+id="2026-10-17-the-headline-becomes-the-average-share-of-the-way-with-an-on-current-trends-crossing-sentence">2026-10-17:
+the headline becomes the average share of the way, with an
+on-current-trends crossing sentence</h2>
+<p>Decided by: mixed. The agent's proposal of 2026-10-17
+(<code>docs/headline-proposal-2026-10-17.md</code>) recommended a count
+of parts past halfway; John ruled it that afternoon and, after seeing "1
+of 4" on the parent site's shelf ("'1 in 4' is just not a very
+interesting headline"), revised it the same evening in his words: "Rule
+the AGI Zeitgeist headline as the average share of the way across the
+parts as the number, with the slowest part named, and an
+on-current-trends crossing sentence as the words, the trend method as a
+numbered amendment." The agent built it on his ruling.</p>
+<h3
+id="a25-the-headline-average-and-the-on-current-trends-sentence">A25.
+The headline average and the on-current-trends sentence</h3>
+<p><strong>What changes.</strong> Two things the page and
+<code>status.json</code> publish; nothing that is scored.</p>
+<ol type="1">
+<li><strong>The number</strong> is the average of the measured legs'
+gauges (each gauge is its leg's scored measure against its reference
+value and frozen threshold, clipped to 0 to 1), written as a percentage
+"of the way". An unmeasured leg is left out of the average and named as
+unmeasured. The words beneath always name the slowest leg and its share
+("all four must cross, and the slowest, the economy, is at 0%"). On
+2026-10-17 the number is 32% (pace 43%, AI doing the research 52%,
+economy 0%; forecasts unmeasured).</li>
+<li><strong>The words</strong> are one sentence saying, on current
+trends, when each measured leg crosses its line, and whether the test is
+met on current trends. The method:
+<ul>
+<li><em>Pace (leg A).</em> A straight line fitted to the logarithm of
+the trailing twelve-month doubling time against time, over every
+scorable window from the first (2024-06) to the latest. The slow end of
+the range is the year that line reaches the threshold; the fast end is
+the year reached if the doubling time halved every year from the latest
+scorable window, the rate seen between 2024 and 2025. If the fitted line
+does not fall, the leg "does not cross on the fitted trend", and the
+fast end is still stated. Today: 2028 to 2048.</li>
+<li><em>AI doing the improving (leg C).</em> The last two readings of
+the scored series. The fast end extends them proportionally (the same
+multiplying factor per year), the slow end in a straight line; both
+floored at one month ahead. Today: 2027 on both. A leg already at its
+threshold "has crossed".</li>
+<li><em>The economy (leg D).</em> A straight line fitted to annual
+growth from 2010 to the latest year. If its slope is zero or negative,
+or the crossing lies more than a hundred years out, the leg "does not
+cross its line" and the sentence says the test is not met on current
+trends. Today: does not cross (the slope is −0.04 points a year).</li>
+<li><em>Forecasts (leg B).</em> Unmeasured; named as such until the
+ledger exists.</li>
+<li>Crossing years are calendar years, counted from the date of the
+latest reading used. Where a leg's two ends differ the sentence gives
+both as a range; it never gives a single year for a fit that is
+unstable.</li>
+<li>The same sentences, with their ranges and the thin-basis caveats,
+stay in each leg's panel as landed on 2026-10-17.</li>
+</ul></li>
+</ol>
+<p><strong>What does not change.</strong> The frozen thresholds, the
+reference year, the scored series, the persistence rule and the
+verdict's wording. The status words (not entered, approaching, mark
+crossed, entered) are still computed from the gauges as section 3 says,
+never from the average or the sentence. P(t) in section 4, the weakest
+leg's gauge, stays the definition's own progress number and is still
+published as <code>progress</code> and written out in the test
+section.</p>
+<p><strong>The argument section 4 makes against an average, and how it
+is kept.</strong> Section 4 says an average would let one runaway leg
+hide stalled ones. That stands for P(t), which is why P(t) is not
+replaced. The headline average is a reading aid for the shelf, and the
+rule that keeps it honest is that it is never printed without the
+slowest leg and its share in the same breath, and never used to decide
+the status. Methodology section 9's rule that series are never combined
+into an index is read the same way: the gauges are combined only in this
+labelled headline, with the parts shown beside it, not in any series or
+score.</p>
+<p><strong>Published fields</strong> (<code>site/status.json</code>):
+<code>headline</code> ("32%"), <code>headline_label</code> (the average
+sentence with the slowest leg), <code>average_share</code> (0.315),
+<code>crossing_sentence</code> (the on-current-trends sentence),
+<code>crossings</code> (per leg, the earliest and latest crossing year,
+or null where the leg does not cross), and <code>parts_past_half</code>
+(kept from the afternoon's ruling); <code>status</code>,
+<code>progress</code>, <code>progress_is_upper_bound</code>,
+<code>bottleneck</code>, <code>gauges</code> and <code>unmeasured</code>
+as before.</p>
+<p><strong>The weekly reading</strong> recomputes the number and the
+sentence at every site rebuild; nothing is written for them by hand.</p>
+<p><strong>The next question, not built now.</strong> John named a
+version two for a later day: a computed probability and a year on the
+siblings' pattern (The Belt Equation, The Quiet Galaxy), from a model
+that draws each leg's crossing year from a range and reports the chance
+the test is met by a given year and the middle year. It would need a
+stated distribution for each leg's crossing, a rule for the unmeasured
+leg, and a run record; it is logged here as the question that follows
+this amendment.</p>
+<p class="cite">Rendered from <code>docs/amendments.md</code> at version 160e21d.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version 160e21d) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
 (function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
 if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
 b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
 window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
-var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
-function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
-sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#111214',light:'#f2f1ec'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.light);}
+sync(document.documentElement.dataset.theme==='dark'?'dark':'light');
 if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
 </script>
 </body>

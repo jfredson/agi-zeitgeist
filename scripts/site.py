@@ -317,6 +317,22 @@ def score(th, a_series, c_pts, d_pts):
     out["progress_is_upper_bound"] = bool(unmeasured)
     out["bottleneck"] = min(measured, key=measured.get)
     out["unmeasured"] = unmeasured
+    # The headline (ruled 2026-10-17, docs/headline-proposal-2026-10-17.md): how many of the four
+    # parts are past one half, with each part's share as the words. It reports the gauges; it
+    # does not combine them, so section 4's P(t) above stays the one progress number.
+    names = {"A": "pace", "B": "forecasts", "C": "AI doing the research", "D": "economy"}
+    out["parts_past_half"] = sum(1 for g in measured.values() if g > 0.5)
+    shares = ", ".join(f"{names[k]} {round(measured[k] * 100)}%" if k in measured else f"{names[k]} unmeasured" for k in "ABCD")
+    out["shares_text"] = shares
+    # Revised the same evening (amendment A25): the headline is the average share of the way
+    # across the measured parts, with the slowest part named. It is a reading aid printed
+    # beside P(t), never the status, and never the test's own progress number.
+    out["average_share"] = sum(measured.values()) / len(measured)
+    out["headline"] = f'{round(out["average_share"] * 100)}%'
+    slow = out["bottleneck"]
+    out["headline_label"] = (f'of the way, averaged over the {len(measured)} parts that can be measured'
+                             f'{" (" + ", ".join(names[k] for k in unmeasured) + " unmeasured)" if unmeasured else ""}; '
+                             f'all four must cross, and the slowest, the {names[slow]}, is at {round(measured[slow] * 100)}%')
     if unmeasured:
         out["status"] = "not entered"
     elif all(out[k]["at_threshold"] for k in "ABCD"):
@@ -326,6 +342,100 @@ def score(th, a_series, c_pts, d_pts):
     else:
         out["status"] = "not entered"
     return out
+
+
+def years_to_line(a_series, c_pts, d_pts, sc):
+    """Years to each leg's line if its recent trend continued (amendment A25): per-leg
+    sentences with their range for the panels, and the crossing years for the headline's
+    on-current-trends sentence. The method is written in docs/amendments.md under A25."""
+    out = {}
+    cross = {}  # leg -> (earliest year, latest year) or None when the trend does not reach the line
+    clean = [w for w in a_series if not w["over16"]]
+    if len(clean) >= 4:
+        t_star = sc["A"]["t_star"]
+        xs = [(w["date"] - clean[0]["date"]).days / 365.25 for w in clean]
+        ys = [math.log(w["days"]) for w in clean]
+        n = len(xs); mx = sum(xs) / n; my = sum(ys) / n
+        b = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)
+        cur = clean[-1]["days"]
+        fast = math.log(cur / t_star, 2)  # years if the doubling time halved every year
+        y0 = clean[-1]["date"].year + clean[-1]["date"].timetuple().tm_yday / 365.25
+        if b < 0:
+            slow = (math.log(t_star) - math.log(cur)) / b
+            cross["A"] = (round(y0 + fast), round(y0 + slow))
+            out["A"] = (f"Extending the trend gives a range, not a date: over all the twelve-month windows since {clean[0]['date'].year} the "
+                        f"doubling time has fallen about {abs(100 * (math.exp(b) - 1)):.0f} percent a year, which would reach {t_star:.0f} days in "
+                        f"about {slow:.0f} years; if it halved every year or two, as it did between 2024 and 2025, {fast:.0f} to {2 * fast:.0f} years; "
+                        f"and over the latest year it has not fallen at all.")
+        else:
+            cross["A"] = (round(y0 + fast), None)
+            out["A"] = (f"Extending the trend gives no date: the doubling time has not fallen over the windows since {clean[0]['date'].year}. "
+                        f"If it halved every year or two, as it did between 2024 and 2025, the line would be {fast:.0f} to {2 * fast:.0f} years away.")
+    leads = sorted([p for p in c_pts if p["id"].endswith("-rd-leads")], key=lambda p: p["date"])
+    if len(leads) >= 2 and leads[-1]["value"] > leads[-2]["value"] > 0:
+        f0, f1 = leads[-2]["value"] / 100, leads[-1]["value"] / 100
+        dt = (leads[-1]["date"] - leads[-2]["date"]).days / 365.25
+        thr = sc["C"]["threshold"]
+        if f1 < thr:
+            lin = (thr - f1) / ((f1 - f0) / dt)
+            exp_ = math.log(thr / f1) / (math.log(f1 / f0) / dt)
+            yc = leads[-1]["date"].year + leads[-1]["date"].timetuple().tm_yday / 365.25
+            cross["C"] = (round(yc + max(exp_, 1 / 12)), round(yc + lin))
+            out["C"] = (f"At the pace of its first {dt * 12:.0f} months ({leads[-2]['value']:.0f}% to {leads[-1]['value']:.0f}%), the share would reach half in "
+                        f"about {lin * 12:.0f} months if it rose steadily, and in about {max(exp_ * 12, 1):.0f} {'month' if max(exp_ * 12, 1) < 1.5 else 'months'} if it kept multiplying; two readings are a thin "
+                        f"basis for either.")
+    recent = [q for q in d_pts if int(q["year"]) >= 2010]
+    if len(recent) >= 5:
+        xs = [int(q["year"]) for q in recent]; gs = [q["growth"] for q in recent]
+        n = len(xs); mx = sum(xs) / n; mg = sum(gs) / n
+        b = sum((x - mx) * (g - mg) for x, g in zip(xs, gs)) / sum((x - mx) ** 2 for x in xs)
+        if b <= 0 or (sc["D"]["g_star"] - gs[-1]) / b > 100:
+            cross["D"] = None
+            out["D"] = (f"Extending the trend gives no date: since 2010 growth has been flat to falling ({b:+.2f} points a year), "
+                        f"and the line is {sc['D']['g_star'] / max(q['growth'] for q in d_pts):.0f} times the best year on record.")
+        else:
+            cross["D"] = (int(xs[-1] + (sc["D"]["g_star"] - gs[-1]) / b),) * 2
+            out["D"] = f"At the trend since 2010 ({b:+.2f} points a year) the line would be about {(sc['D']['g_star'] - gs[-1]) / b:.0f} years away."
+    if sc["C"].get("measurable") and sc["C"]["at_threshold"]:
+        cross["C"] = ("crossed", "crossed")
+    out["_cross"] = cross
+    out["_sentence"] = crossing_sentence(cross, sc)
+    return out
+
+
+def crossing_sentence(cross, sc):
+    """One sentence: on current trends, when each part crosses its line, and whether the test is met."""
+    names = {"A": "the pace", "B": "forecasts", "C": "the AI-research share", "D": "the economy"}
+    def span(v):
+        if v is None:
+            return "does not cross its line"
+        lo, hi = v
+        if lo == "crossed":
+            return "has crossed"
+        if hi is None:
+            return f"does not cross on the fitted trend, though it would by {lo} if its 2024-to-2025 halving resumed"
+        return f"crosses in {lo}" if lo == hi else f"crosses between {lo} and {hi}"
+    parts, misses = [], []
+    for k in "ACD":
+        if not sc[k].get("measurable") or k not in cross:
+            continue
+        v = cross[k]
+        if v is None or (v[1] is None):
+            misses.append(k)
+    order = misses + [k for k in "ACD" if k in cross and k not in misses]
+    parts = [f"{names[k]} {span(cross[k])}" for k in order]
+    unmeasured = [names[k] for k in "ABCD" if not sc[k].get("measurable")]
+    head = ("On current trends the test is not met: " if misses else "On current trends every measured part crosses: ")
+    tail = "; ".join(parts)
+    if misses:
+        tail = tail.replace("; ", ", so the test is not met on current trends; ", 1) if len(parts) > 1 else tail
+        head = "On current trends "
+    if unmeasured:
+        tail += f"; {' and '.join(unmeasured)} unmeasured"
+    if not misses:
+        latest = max(v[1] for k, v in cross.items() if v and v[1] not in (None, "crossed"))
+        head = f"On current trends every measured part has crossed by {latest}: "
+    return head + tail + "."
 
 
 def load_thresholds():
@@ -338,9 +448,11 @@ def load_thresholds():
 # knows plus what the page has already said. The working documents are published as written, each
 # with a preface saying what it is; the plain account lives on the home page.
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
-# shared stylesheet site/deep-field.css (copied unchanged, version in its header), the top bar with
-# two tiers and the theme toggle, the cosmic backdrop on the home page only, and the five-line
-# footer ending "A Sentient Horizons project." with the attribution line "© year John Fredrickson. provenance. licence."
+# the skeleton site/shell.css (copied unchanged from the standard, version in its header) and this
+# site's skin site/skin.css ("Gazette", ruled by John 2026-10-17: newsprint, ink, one red for the mark
+# and for links, a blue-grey for the gauge bars; light by default), the top bar with two tiers and the
+# theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
+# footer ending "A Sentient Horizons project." (linking to the family's Projects page, John 2026-10-17) with the attribution line "© year John Fredrickson. provenance. licence."
 # (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
@@ -348,12 +460,13 @@ TAGLINE = ("A dated record of what people expect from artificial general intelli
            "and a test of whether the singularity has begun.")
 # Labels ruled by John, 2026-10-08.
 NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
-NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
-FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"),
+# "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
+NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
+FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Disagree with something"),
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
 THEME_SCRIPT = """<script>
-(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();
 </script>"""
 
 SHELL_SCRIPT = """<script>
@@ -361,9 +474,9 @@ SHELL_SCRIPT = """<script>
 if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
 b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
 window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
-var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
-function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
-sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#111214',light:'#f2f1ec'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.light);}
+sync(document.documentElement.dataset.theme==='dark'?'dark':'light');
 if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
 </script>"""
 
@@ -404,6 +517,8 @@ SITE_CSS = """
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
 .land .kicker { margin: 0 0 12px; }
+.land .shares { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(--text); margin: 0 0 22px; }
+.land h1 .verdict { font-weight: 700; }
 .conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
 .cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
@@ -438,10 +553,9 @@ SITE_CSS = """
 .status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
 .status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
 .status b { color: var(--text); }
-figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig { margin: 18px 0; background: var(--figure-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
 figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
 figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
-:root[data-theme='light'] figure.fig { background: #fff; }
 table.data { font-size: 13px; }
 table.data th, table.data td { white-space: nowrap; }
 table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
@@ -460,24 +574,25 @@ details p { color: var(--text-soft); }
 .cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
 .document > h1 { display: none; }
 .document h2 { margin-top: 2em; }
-.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document img { max-width: 100%; height: auto; background: var(--figure-bg); border-radius: 4px; }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+/* ---- the Gazette's register (ruled 2026-10-17; the tokens and the backdrop are in site/skin.css) ----
+   The mark: each gauge's line is a red tick at the bar's right edge, grey where the part cannot be scored. */
+.cond .bar { overflow: visible; }
+.cond .bar::after { content: ""; position: absolute; right: 0; top: -4px; bottom: -4px; width: 2px; background: var(--accent); border-radius: 1px; }
+.cond .bar.none::after { background: var(--muted); }
+/* The serif leads the headline, the monospace the datelines. */
+.land .answer, .land h1 { font-family: var(--serif); }
+.land .answer { font-weight: 700; letter-spacing: -0.02em; }
+.land h1 { font-weight: 400; }
+.card .ch-big { font-family: var(--serif); }
+.eyebrow, .kicker, .fresh, .card .ch { font-family: var(--mono); text-transform: none; letter-spacing: 0.02em; }
+/* The When? box: a boxed item between double rules, no panel fill. */
+.card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
+figure.fig { border-radius: 0; }
 """
-
-
-def starfield(seed=20261008, count=150):
-    rng = __import__("random").Random(seed)
-    out = []
-    for _ in range(count):
-        x, y = rng.random() * 100, rng.random() * 100
-        size = 1 if rng.random() < 0.85 else 2
-        op = 0.1 + rng.random() * 0.7
-        tw = rng.random() < 0.38
-        anim = f"animation:twk {2.5 + rng.random() * 4.5:.2f}s ease-in-out {rng.random() * 6:.2f}s infinite" if tw else ""
-        out.append(f'<span style="left:{x:.2f}%;top:{y:.2f}%;width:{size}px;height:{size}px;opacity:{op:.2f};{anim}"></span>')
-    return '<div class="starfield" aria-hidden="true">' + "".join(out) + "</div>"
 
 
 def long_date(iso):
@@ -497,13 +612,13 @@ def provenance(built, commit):
 
 def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None):
     nav1 = "".join(f'<a href="{esc(h)}" class="nav-primary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_PRIMARY)
-    nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_SECONDARY)
+    nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in NAV_SECONDARY)
     links = "".join(f'<a href="{esc(h)}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in FOOTER_LINKS)
     hero = ""
     if h1:
         hero = (f'<section class="hero">{f"<p class=eyebrow>{esc(eyebrow)}</p>" if eyebrow else ""}<h1>{esc(h1)}</h1>'
                 f'{f"<p class=lede>{lede}</p>" if lede else ""}</section>')
-    bg = f'<div class="space-bg" aria-hidden="true"><div class="galaxy"></div><div class="core"></div>{starfield()}</div>' if backdrop else ""
+    bg = '<div class="space-bg" aria-hidden="true"></div>' if backdrop else ""
     year = built[:4]
     return f"""<!doctype html>
 <html lang="en">
@@ -511,7 +626,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {THEME_SCRIPT}
-<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta name="author" content="John Fredrickson">
@@ -523,7 +638,9 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/deep-field.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/shell.css">
+<link rel="stylesheet" href="/skin.css">
 <style>{SITE_CSS}</style>
 </head>
 <body>
@@ -542,7 +659,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
@@ -607,6 +724,42 @@ def render_docs(built, commit):
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
     return n
+
+
+def issue_url(template, title):
+    from urllib.parse import urlencode
+    return f"{REPO}/issues/new?{urlencode({'template': template, 'title': title})}"
+
+
+def disagree_page(built, commit):
+    """A short disagree page with a repository link (tracker pattern decision 12; lessons review
+    2026-10-17, lesson 24). Three kinds of disagreement, each opening a prefilled issue."""
+    kinds = [
+        ("A statement is miscoded, misdated or misquoted",
+         "A row in the statements table that says something its source does not, carries the wrong date, or is coded wrongly: who it endorses AGI for, the year it names, which question it raises. Give the row's id or the person and the date, what is wrong, and the source where the words are.",
+         issue_url("statement-miscoded.md", "Statement: "), "Report a statement"),
+        ("A measure, a line or a reading should be different",
+         "One of the four parts of the singularity test rests on a measure and a line fixed in advance, and on readings of that measure. If the measure is the wrong one, the line is in the wrong place, or a reading is wrong, say what you would change it to and point at the published source that supports it; a line moves on a source and a dated reason, never on a feeling.",
+         issue_url("argue-a-measure.md", "Measure: "), "Argue a measure"),
+        ("An error on a page",
+         "A number, a date, a name or a claim on any page that is wrong. Say which page, what it says, and what it should say, with a source where there is one.",
+         issue_url("error-on-a-page.md", "Error on a page: "), "Point out an error"),
+    ]
+    cards = "".join(f'<h3>{esc(h)}</h3><p>{esc(t)}</p><p><a class="btn ghost" href="{esc(u)}" rel="noopener">{esc(b)}</a></p>' for h, t, u, b in kinds)
+    body = f"""<section class="section prose">
+<p>The point of publishing every row with its source is that you can argue with one. Three kinds of disagreement move this record: a statement that is wrongly recorded, a measure or a line in the singularity test that should be different, and an error on a page. Each is welcome, and each leaves a trace that the change can cite.</p>
+<h2>The three forms</h2>
+{cards}
+<p>Each form opens an issue in the public repository with the right questions already in it. Issues are used because they are durable and quotable, and folding one into the record is a change that can cite it. Or write a plain issue: the page or the row, what you would change, and why is exactly enough.</p>
+<h2>What happens to it</h2>
+<p>John Fredrickson rules on it. Some disagreements change the record; some are answered and left as they are. Either way the issue records the ruling and the reason.</p>
+<p>A corrected statement gets a dated note in its row that cites the issue; the search that found it stays in the search log. A changed measure, line or rule is a dated amendment with its reason, never a quiet edit, because the test's lines were fixed before the numbers were looked at. A new reading is a row added with its source. The expert panel is fixed, so that it cannot drift toward the story; adding or removing a person is an amendment too.</p>
+<p>The repository is at <a href="{REPO}" rel="noopener">github.com/jfredson/agi-zeitgeist</a>. The data is free to reuse with credit (CC BY 4.0) and the scripts are under the MIT licence; <a href="/data/">how to cite</a> is on the data page.</p>
+</section>"""
+    out = SITE / "disagree"
+    out.mkdir(exist_ok=True)
+    (out / "index.html").write_text(shell(f"Disagree with something | {SITE_TITLE}", "How to report a wrongly recorded statement, argue a measure or a line with a source, or point out an error, and what happens to each.",
+                                          body, built, commit, canonical_path="/disagree/", eyebrow="Disagree", h1="Disagree with something"), encoding="utf-8")
 
 
 def copy_data():
@@ -701,7 +854,7 @@ def expert_dates():
     return med, years[0], years[-1], rows
 
 
-def landing(sc, b_pts, mani, aggregates, built, commit):
+def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
     """The first screen: the answer, the four conditions, the experts' date."""
     A, C, D = sc["A"], sc["C"], sc["D"]
     answer = {"not entered": "Not yet.", "approaching": "Getting close.",
@@ -717,6 +870,8 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
          f"The world's economy grew {D['reading']:.1f}% in {D['year']}. It would count at {D['g_star']:.0f}% in a year."),
     ]
     rows = "".join(f'<div class="cond"><span class="k">{k}</span><span class="n">{esc(n)}</span>{gauge_bar(g)}<span class="d">{esc(d)}</span></div>' for k, n, g, d in conds)
+    share_names = {"A": "Pace", "B": "Forecasts", "C": "AI doing the research", "D": "Economy"}
+    share_rows = [(share_names[k], f"{round(sc[k]['gauge'] * 100)}%" if sc[k].get("measurable") else "unmeasured") for k in "ABCD"]
     latest = b_pts[-1]
     med, lo, hi, ex_rows = expert_dates()
     hlmi10 = next((int(float(r["value"])) for r in aggregates if r["aggregate_id"] == f"aiimpacts-{latest['date'].year}-hlmi10"), "")
@@ -726,8 +881,11 @@ def landing(sc, b_pts, mani, aggregates, built, commit):
     return f"""<section class="land">
 <div>
 <p class="eyebrow">Are we in the singularity?</p>
-<p class="answer">{answer}</p>
-<h1>Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
+<p class="answer">{esc(sc["headline"])}</p>
+<p class="kicker">{esc(sc["headline_label"])}</p>
+<p class="shares">{" · ".join(f"{esc(n)} {v}" for n, v in share_rows)}</p>
+<p class="shares">{esc(ytl["_sentence"])}</p>
+<h1><span class="verdict">{answer}</span> Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
 <div class="conds">{rows}</div>
@@ -795,7 +953,8 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         "mark crossed, under persistence test": "Mark crossed; the four-quarter persistence count is running.",
     }[sc["status"]]
 
-    body = f"""{landing(sc, b_pts, mani, _AGG, built, commit)}
+    ytl = years_to_line(a_series, c_pts, d_pts, sc)
+    body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
@@ -827,11 +986,11 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <section class="section prose" id="singularity">
 <h2>Are we in the singularity?</h2>
-<p>The answer at the top of the page comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
+<p>The number at the top of the page is the average, across the parts that can be measured, of how far each is from its starting point toward its line, and the words beneath it give each part's share and when each would cross on its current trend; the test's own single progress number is stricter, the weakest part's share, today {"at most " if sc["progress_is_upper_bound"] else ""}{round(sc["progress"] * 100)}% (the {({"A": "pace", "B": "forecasts", "C": "AI-research share", "D": "economy"})[sc["bottleneck"]]}). The answer itself comes from a test with four parts. The singularity has been described in three classic ways: machines getting better faster and faster, machines doing the work of making machines better, and change so fast that nobody can predict what comes next. Each alone gives false alarms. A fast decade in any industry looks like the first; a company's claim that its AI does its own research cannot be checked from outside; and every new technology makes old forecasts look foolish, the internet included. So the test asks for all three at once, plus a fourth that people outside the AI world measure: whether the world's economy has changed gear. Each part has a line where it would count, fixed before anyone looked at the numbers. The full rules are in <a href="/docs/singularity-entry-definition">a working document</a>.</p>
 
 <h3 id="leg-a">A. Is AI getting better faster and faster?</h3>
 <p><em>The idea, from the inventor Ray Kurzweil: AI gets better faster and faster, so the time it takes to double is itself shrinking.</em></p>
-<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}.</p>
+<p>The measure is how long a job the best AI can finish on its own. METR, a research group that tests AI systems, gives each new system computer-programming jobs of known length, from seconds to days of a skilled person's time, and finds the longest it gets right half the time. Most tests of AI are maxed out within a year or two; this one keeps rising, which is why it was chosen. That length has been doubling every few months. Steady doubling is fast, but it is not a singularity: for this part to count, the doubling itself has to keep getting quicker, down to {A['t_star']:.0f} days. Over the year to {A['date'].strftime('%B %Y')} it took {A['reading']:.0f} days; in {sc['reference_year']} it took {A['t_ref']:.0f}. The rules also ask for it to have got quicker two readings in a row, which today it {"has" if A['falling'] else "has not"}. {esc(ytl.get("A", ""))} Since September 2026 METR has stopped updating this series, and its tests cannot measure past 16 hours, which the best system has already passed; the rules say a replacement measure must be named with an overlap before the series stops, and that question is open (<a href="/docs/amendments">amendment A24</a>).</p>
 <figure class="fig"><a href="leg-a-time-horizon.png" title="Open the chart full size"><img src="leg-a-time-horizon.png" alt="The longest programming job each AI system gets right half the time, from 2019 to 2026, and how many days that length took to double"></a>
 <figcaption>Filled dots were the best system on the day they came out; hollow dots were not. METR says its tests cannot measure reliably beyond 16 hours, so a year that includes such a reading is drawn hollow in the lower chart and not scored. The latest best system is {esc(latest['name'])}, at {latest['value']/60:.0f} hours, {latest['date'].strftime('%B %Y')}. The numbers are in <a href="leg-a-doubling-time.csv">a table</a>.</figcaption></figure>
 <details><summary>Every system measured ({len(a_pts)}) and every twelve-month window</summary>
@@ -851,7 +1010,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <h3 id="leg-c">C. Is AI doing the work of improving AI?</h3>
 <p><em>The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</em></p>
-<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it.</p>
+<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it. {esc(ytl.get("C", ""))}</p>
 <figure class="fig"><a href="leg-c-self-reports.png" title="Open the chart full size"><img src="leg-c-self-reports.png" alt="The share of Anthropic's AI research work led by its own AI: under 1% in February 2026 and 26% in August 2026, against a line at one half"></a>
 <figcaption>Anthropic gave its February figure as "under 1%". Every statement, including Google's, is in the table below.</figcaption></figure>
 <details><summary>What the companies said</summary>
@@ -860,7 +1019,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <h3 id="leg-d">D. Has the economy changed gear?</h3>
 <p><em>The idea, from the economist Robin Hanson: each new era of history has made the world's economy double about a hundred times faster than the one before.</em></p>
-<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each, the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This part asks whether that has started, using the World Bank's yearly count of everything the world produces. In {D['year']} it grew {D['reading']:.1f} percent, a pace that doubles it every {D['doubling']:.0f} years; since 1961 it has averaged {D['g_ref']:.1f} percent. The line, 30 percent in a year, would double it every {D['t_star']:.1f} years. It comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, not from this project, and it is far above the best year since 1961, {max(q['growth'] for q in d_pts):.1f} percent. This is the one part measured by people outside the AI world, which is why it is in the test; the cost is that the economy reacts years after the technology, so it will usually be the furthest behind.</p>
+<p>The economist Robin Hanson looked at the whole history of the world's economy and found three eras: hunting, farming and industry. In each, the amount the world produces doubled about a hundred times faster than in the era before: every 230,000 years, then every 860 years, then every 15 years. A fourth era would double it in a few years or less. This part asks whether that has started, using the World Bank's yearly count of everything the world produces. In {D['year']} it grew {D['reading']:.1f} percent, a pace that doubles it every {D['doubling']:.0f} years; since 1961 it has averaged {D['g_ref']:.1f} percent. The line, 30 percent in a year, would double it every {D['t_star']:.1f} years. It comes from a 2021 report by Tom Davidson for the research funder Open Philanthropy, not from this project, and it is far above the best year since 1961, {max(q['growth'] for q in d_pts):.1f} percent. This is the one part measured by people outside the AI world, which is why it is in the test; the cost is that the economy reacts years after the technology, so it will usually be the furthest behind. {esc(ytl.get("D", ""))}</p>
 <figure class="fig"><a href="leg-d-world-growth.png" title="Open the chart full size"><img src="leg-d-world-growth.png" alt="Growth of the world's economy each year since 1961, between about minus 3 and 7 percent, with the line at 30 percent far above"></a>
 <figcaption>One bar per year. Countries revise their figures for years afterwards; if a revision pulls a year back below the line, the clock on this part starts again. How many years each rate takes to double the economy is in <a href="leg-d-world-growth.csv">a table</a>.</figcaption></figure>
 <details><summary>Every year ({len(d_pts)} readings)</summary>
@@ -898,16 +1057,33 @@ def main():
     c_pts = leg_c(world)
     d_pts = leg_d(world)
     sc = score(load_thresholds(), a_series, c_pts, d_pts)
+    ytl = years_to_line(a_series, c_pts, d_pts, sc)
     globals()["_AGG"] = aggregates
     built = date.today().isoformat()
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
+    last_reading = max((p.stem for p in (ROOT / "data" / "readings").glob("*.json")), default=None)
+    newest_measurement = max((r["date"] for r in world if r["speaker_id"] in ("metr", "anthropic_institute", "world_bank") and r["aggregate_id"] != "metr-th11-doubling-all"), default=None)
+    headline = {"headline": sc["headline"], "headline_label": sc["headline_label"], "crossing_sentence": ytl["_sentence"],
+                "verdict": "Not yet." if sc["status"] == "not entered" else sc["status"], "status": sc["status"],
+                "average_share": round(sc["average_share"], 3), "progress": round(sc["progress"], 3), "bottleneck": sc["bottleneck"],
+                "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
+                "computed_on": built, "last_reading": last_reading, "newest_measurement": newest_measurement, "version": git_commit(),
+                "definition": f"{SITE_URL}/docs/singularity-entry-definition", "status_file": f"{SITE_URL}/status.json"}
     (SITE / "status.json").write_text(json.dumps({
-        "built": built, "status": sc["status"], "progress": round(sc["progress"], 3),
+        "built": built, "version": git_commit(), "last_reading": last_reading, "newest_measurement": newest_measurement,
+        "status": sc["status"], "progress": round(sc["progress"], 3),
         "progress_is_upper_bound": sc["progress_is_upper_bound"], "bottleneck": sc["bottleneck"],
         "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
-        "unmeasured": sc["unmeasured"], "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
+        "unmeasured": sc["unmeasured"],
+        "headline": sc["headline"], "headline_label": sc["headline_label"],
+        "average_share": round(sc["average_share"], 3), "parts_past_half": sc["parts_past_half"],
+        "crossing_sentence": ytl["_sentence"],
+        "crossings": {k: (list(v) if v else None) for k, v in ytl["_cross"].items()},
+        "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
     n_docs = render_docs(built, git_commit())
     n_data = copy_data()
+    (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
+    disagree_page(built, git_commit())
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "

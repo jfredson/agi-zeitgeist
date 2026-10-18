@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
-(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t;}catch(e){}})();
+(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}})();
 </script>
-<meta id="theme-color-meta" name="theme-color" content="#08070f">
+<meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>Vanguard stream review:
 Gemini 3.1 Pro | AGI Zeitgeist Tracker</title>
 <meta name="description" content="Vanguard stream review:
@@ -22,7 +22,9 @@ Gemini 3.1 Pro | AGI Zeitgeist Tracker">
 <meta property="og:description" content="Vanguard stream review:
 Gemini 3.1 Pro: a document of the AGI Zeitgeist Tracker.">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/deep-field.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/shell.css">
+<link rel="stylesheet" href="/skin.css">
 <style>
 .brand { white-space: nowrap; }
 .with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
@@ -54,6 +56,8 @@ Gemini 3.1 Pro: a document of the AGI Zeitgeist Tracker.">
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
 .land .kicker { margin: 0 0 12px; }
+.land .shares { font-family: var(--sans); font-size: 17px; line-height: 1.5; color: var(--text); margin: 0 0 22px; }
+.land h1 .verdict { font-weight: 700; }
 .conds { display: grid; gap: 14px; margin: 0 0 22px; max-width: 640px; }
 .cond { display: grid; grid-template-columns: 28px 1fr; gap: 2px 14px; align-items: center; font-family: var(--sans); }
 .cond .k { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); grid-row: span 3; align-self: start; padding-top: 2px; }
@@ -88,10 +92,9 @@ Gemini 3.1 Pro: a document of the AGI Zeitgeist Tracker.">
 .status { background: var(--callout-bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 15px 17px; margin: 20px 0 6px; max-width: 760px; color: var(--text-soft); }
 .status strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
 .status b { color: var(--text); }
-figure.fig { margin: 18px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+figure.fig { margin: 18px 0; background: var(--figure-bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
 figure.fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
 figure.fig figcaption { font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--muted); padding: 10px 6px 2px; }
-:root[data-theme='light'] figure.fig { background: #fff; }
 table.data { font-size: 13px; }
 table.data th, table.data td { white-space: nowrap; }
 table.data td:nth-child(2) { white-space: normal; min-width: 14ch; }
@@ -110,10 +113,24 @@ details p { color: var(--text-soft); }
 .cite { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
 .document > h1 { display: none; }
 .document h2 { margin-top: 2em; }
-.document img { max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+.document img { max-width: 100%; height: auto; background: var(--figure-bg); border-radius: 4px; }
 .document pre { font-family: var(--mono); font-size: 13px; background: var(--chip-bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
 .document pre code { border: 0; background: none; padding: 0; }
 .footer-meta a { color: inherit; }
+/* ---- the Gazette's register (ruled 2026-10-17; the tokens and the backdrop are in site/skin.css) ----
+   The mark: each gauge's line is a red tick at the bar's right edge, grey where the part cannot be scored. */
+.cond .bar { overflow: visible; }
+.cond .bar::after { content: ""; position: absolute; right: 0; top: -4px; bottom: -4px; width: 2px; background: var(--accent); border-radius: 1px; }
+.cond .bar.none::after { background: var(--muted); }
+/* The serif leads the headline, the monospace the datelines. */
+.land .answer, .land h1 { font-family: var(--serif); }
+.land .answer { font-weight: 700; letter-spacing: -0.02em; }
+.land h1 { font-weight: 400; }
+.card .ch-big { font-family: var(--serif); }
+.eyebrow, .kicker, .fresh, .card .ch { font-family: var(--mono); text-transform: none; letter-spacing: 0.02em; }
+/* The When? box: a boxed item between double rules, no panel fill. */
+.card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
+figure.fig { border-radius: 0; }
 </style>
 </head>
 <body>
@@ -121,7 +138,7 @@ details p { color: var(--text-soft); }
 <header class="site-header"><div class="container nav">
 <a class="brand" href="/">AGI Zeitgeist</a>
 <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
-<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><a href="https://sentient-horizons.com/projects/" class="nav-secondary" rel="noopener">Family</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
 </div></header>
 <main class="container">
 <section class="hero"><p class=eyebrow>Outside review</p><h1>Vanguard stream review:
@@ -293,23 +310,23 @@ follower-count pull.</li>
 score".</li>
 <li>Proceed to the seed-phase pilot.</li>
 </ol>
-<p class="cite">Rendered from <code>docs/reviews/vanguard-stream-review-gemini-3.1-pro-2026-10.md</code> at version d5a0837.</p></div>
+<p class="cite">Rendered from <code>docs/reviews/vanguard-stream-review-gemini-3.1-pro-2026-10.md</code> at version 160e21d.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
 <p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 12 October 2026 (version d5a0837) from 159 expert statements, 97 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version 160e21d) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 <script>
 (function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');
 if(b&&m){var so=function(o){h.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');};
 b.addEventListener('click',function(){so(!h.classList.contains('nav-open'));});m.addEventListener('click',function(e){if(e.target.closest('a'))so(false);});
 window.addEventListener('resize',function(){if(window.innerWidth>820)so(false);});}
-var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#08070f',light:'#faf9f7'};
-function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.dark);}
-sync(document.documentElement.dataset.theme==='light'?'light':'dark');
+var t=document.querySelector('.theme-toggle');var meta=document.getElementById('theme-color-meta');var C={dark:'#111214',light:'#f2f1ec'};
+function sync(x){document.documentElement.dataset.theme=x;if(meta)meta.setAttribute('content',C[x]||C.light);}
+sync(document.documentElement.dataset.theme==='dark'?'dark':'light');
 if(t)t.addEventListener('click',function(){var n=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('theme',n);}catch(e){}sync(n);});})();
 </script>
 </body>
