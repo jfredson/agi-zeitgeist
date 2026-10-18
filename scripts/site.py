@@ -704,7 +704,7 @@ def render_news(built, commit):
         body_html = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
         page = shell(f"{fm.get('title', p['slug'])} | {SITE_TITLE}", fm.get("summary", ""), body_html, built, commit,
                      canonical_path=f"/news/{p['slug']}/", eyebrow=f"News · {long_date(fm['date'])} · {kind}", h1=fm.get("title", p["slug"]),
-                     lede=esc(fm.get("summary", "")), active="/news/", image=card)
+                     lede=(None if fm.get("kind") == "start-here" else esc(fm.get("summary", ""))), active="/news/", image=card)
         (out_root / p["slug"]).mkdir(exist_ok=True)
         (out_root / p["slug"] / "index.html").write_text(page, encoding="utf-8")
     items = ""

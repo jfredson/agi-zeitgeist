@@ -17,7 +17,7 @@ sources:
 
 ## What happened
 
-Until 17 October 2026 the top of the home page said "Not yet." and nothing else, which is the test's verdict and was never going to say anything different until the day the singularity starts. John ruled twice that day. In the afternoon the headline became a count of the parts past halfway, "1 of 4" ([the changelog](/docs/amendments)). Seen that evening on the family's Projects page beside its siblings' numbers, the count read as nothing happening, so he revised it the same evening to the average share of the way across the parts that can be measured, 32 percent, with the slowest part named, and a sentence saying where current trends would take each part. [Amendment A25](/docs/amendments) records both rulings and the method.
+Until 17 October 2026 the top of the home page said "Not yet." and nothing else, which is the test's verdict and was never going to say anything different until the day the singularity starts. John ruled twice that day. In the afternoon the headline became a count of the parts past halfway, "1 of 4" ([the changelog](/docs/amendments)). Seen that evening on [the family's Projects page](https://sentient-horizons.com/projects/) beside its siblings' numbers, the count read as nothing happening, so he revised it the same evening to the average share of the way across the parts that can be measured, 32 percent, with the slowest part named, and a sentence saying where current trends would take each part. [Amendment A25](/docs/amendments) records both rulings and the method.
 
 ## What it changes here
 
