@@ -1,6 +1,6 @@
 # Tip intake: how a statement John comes across enters the record
 
-Written 2026-10-18. Status: **PROPOSED**, pending John's rulings on the three open decisions
+Written 2026-10-18. Status: **PROPOSED**, pending John's rulings on the four open decisions
 at the end and the amendment draft in `docs/amendments/2026-10-18-tip-intake.md`. Until he
 rules, nothing here changes what the collection or the weekly reading may do.
 
@@ -50,6 +50,18 @@ tracker", or a link to a panel member speaking about AI's future sent with a req
 - Machine captions are not quotes. Any quote taken from them is checked against the audio at
   its timestamp before it goes in a row. A quote that cannot be checked goes in with
   `coding_confidence` no higher than `medium` and the notes tag `asr_unverified`.
+- *Proposed reading, from the first run (2026-10-18), for John to rule on:* "checked against
+  the audio" means two automatic transcripts from separate programs agree on the quoted
+  words: the platform's own captions and a local Whisper transcription of the audio, compared
+  word for word with case, punctuation and filler sounds (uh, um) ignored. Nobody listens. This
+  is the rule John ruled for The Upgrade Tree on 2026-10-17 (`docs/upgrade-schema.md` in that
+  repository, "Checking quoted recordings"), and the Bostrom run applied it. A quote the two
+  transcripts disagree on, or that has no second transcript, carries `asr_unverified`. Where the
+  two differ only on a word inside a longer passage, the run quoted the words both carry and
+  marked the gap with "...", rather than choosing one reading. Neither the Whisper output nor the
+  audio is kept in the repository. On 2026-10-18 the yt-dlp installed on this Mac (version
+  2026.03.17) could not fetch YouTube audio; a current version in a throwaway environment
+  outside the repository could.
 
 ### 2. Who is speaking?
 
@@ -126,3 +138,15 @@ what he needs to rule on or post, and nothing else.
 3. **Where panel watch notes live.** Recommended: drafts here, in `docs/panel-watch/`, next to
    the rows they cite, with the posting record kept by the Outreach process once it is
    ratified. Alternative: draft them in the Outreach folder from the start. Confidence: medium.
+4. **Is the "would the rule have found it" test run again later?** Added 2026-10-18 after the
+   first run. Run on the day a tip arrives, step 3 measures how fast search engines index a
+   new source as much as how far the rule reaches: the Bostrom interview was two days old, and a
+   search for its exact title found nothing either (search log `bostrom-127`). Recommended:
+   yes. At the person's next full pass, run the same year queries again, log them, and lift
+   `tip_only` from the rows if the results now include the source or a report of the same
+   appearance, saying in the notes on what date and by which search it was lifted. The re-run
+   only ever lifts the tag, never adds it, and a row stays out of figures until it is lifted.
+   Alternative: the verdict on the day of intake stands for good, which is simpler but means the
+   sooner John sends a tip, the likelier it is to be left out. Confidence: medium; the
+   remaining question is whether "the next full pass" is soon enough, or whether a fixed wait
+   (for example 30 days after intake) is better.
