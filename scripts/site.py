@@ -637,7 +637,13 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta property="og:url" content="{SITE_URL}{esc(canonical_path)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{SITE_URL}/social-preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AGI Zeitgeist Tracker: Are we in the singularity?">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE_URL}/social-preview.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/shell.css">
 <link rel="stylesheet" href="/skin.css">
