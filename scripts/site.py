@@ -448,7 +448,9 @@ def load_thresholds():
 # knows plus what the page has already said. The working documents are published as written, each
 # with a preface saying what it is; the plain account lives on the home page.
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
-# the skeleton site/shell.css (copied unchanged from the standard, version in its header) and this
+# the icon set (favicon.svg is the source; the PNGs, the .ico and site.webmanifest are rendered from it by the
+# family's icons script, sentient-horizons/site/scripts/icons.mjs, pointed at site/), the skeleton site/shell.css
+# (copied unchanged from the standard, version in its header) and this
 # site's skin site/skin.css ("Gazette", ruled by John 2026-10-17: newsprint, ink, one red for the mark
 # and for links, a blue-grey for the gauge bars; light by default), the top bar with two tiers and the
 # theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
@@ -592,6 +594,8 @@ details p { color: var(--text-soft); }
 /* The When? box: a boxed item between double rules, no panel fill. */
 .card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
 figure.fig { border-radius: 0; }
+.footer-follow { margin: 4px 0 0; font-size: 12.5px; } .footer-follow a { color: var(--muted); }
+.news-follow { font-family: var(--sans); font-size: 13.5px; color: var(--muted); max-width: 760px; margin-top: 22px; border-top: 1px solid var(--line); padding-top: 10px; }
 /* ---- news (tracker pattern, rules 4.10 to 4.13; John 2026-10-18) ---- */
 .news-list { list-style: none; padding: 0; margin: 0; max-width: 760px; }
 .news-item { border-top: 1px solid var(--line); padding: 18px 0; }
@@ -696,7 +700,8 @@ def render_news(built, commit):
                            ('<p class="sources">Sources: %s.</p>' % src_html if srcs else "") +
                            "</section>")
         card = f"/news/{p['slug']}-card.png" if (out_root / f"{p['slug']}-card.png").exists() else None
-        body_html = f'<article class="post prose narrow">{p["html"]}{record_line}</article>'
+        follow = '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a>.</p>'
+        body_html = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
         page = shell(f"{fm.get('title', p['slug'])} | {SITE_TITLE}", fm.get("summary", ""), body_html, built, commit,
                      canonical_path=f"/news/{p['slug']}/", eyebrow=f"News · {long_date(fm['date'])} · {kind}", h1=fm.get("title", p["slug"]),
                      lede=esc(fm.get("summary", "")), active="/news/", image=card)
@@ -714,7 +719,7 @@ def render_news(built, commit):
     else:
         items += '<p class="empty">No post yet. The first is written the day something of note moves.</p>'
     foot = ('<p class="news-foot">Every change to the method and the record, including the ones no post explains, is in <a href="/docs/amendments">the changelog</a>. '
-            'The weekly readings are in <a href="https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings" rel="noopener">the public record</a>. Subscribe to the <a href="/news/feed.xml">feed</a>.</p>')
+            'The weekly readings are in <a href="https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings" rel="noopener">the public record</a>. </p>' + '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a>.</p>')
     lede = ("A post is written only when a weekly reading or a ruling changes something a reader would want explained: a new measurement on one of the four parts, "
             "the headline moving, a claim added to the ledger or settled, the method changed. Each post says what happened, where the record is, what it changes on this site, and what it does not mean.")
     page = shell(f"News | {SITE_TITLE}", "What moved the test, and why: one post for each change a reader would want explained.",
@@ -785,6 +790,11 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 {f'<meta property="og:image" content="{SITE_URL}{esc(image)}"><meta name="twitter:image" content="{SITE_URL}{esc(image)}">' if image else ""}
 <link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/shell.css">
 <link rel="stylesheet" href="/skin.css">
 <style>{SITE_CSS}</style>
@@ -805,7 +815,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
