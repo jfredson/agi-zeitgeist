@@ -1,8 +1,9 @@
 # Tip intake: how a statement John comes across enters the record
 
-Written 2026-10-18. Status: **PROPOSED**, pending John's rulings on the four open decisions
-at the end and the amendment draft in `docs/amendments/2026-10-18-tip-intake.md`. Until he
-rules, nothing here changes what the collection or the weekly reading may do.
+Written 2026-10-18. Status: **RULED**. John ruled on 2026-10-18, through the master session,
+"all as recommended": the four decisions at the end, the step 1 rule for quotes, and amendment
+A-NEXT in `docs/amendments.md`, which records the change to the method. The first case run
+under it is Nick Bostrom's interview on The Roman Forum (pull request 18).
 
 It answers a question John asked on 2026-10-18, after sending a link to Nick Bostrom's
 interview on The Roman Forum (published 2026-10-16): when a prominent figure is heard
@@ -50,18 +51,18 @@ tracker", or a link to a panel member speaking about AI's future sent with a req
 - Machine captions are not quotes. Any quote taken from them is checked against the audio at
   its timestamp before it goes in a row. A quote that cannot be checked goes in with
   `coding_confidence` no higher than `medium` and the notes tag `asr_unverified`.
-- *Proposed reading, from the first run (2026-10-18), for John to rule on:* "checked against
-  the audio" means two automatic transcripts from separate programs agree on the quoted
-  words: the platform's own captions and a local Whisper transcription of the audio, compared
-  word for word with case, punctuation and filler sounds (uh, um) ignored. Nobody listens. This
-  is the rule John ruled for The Upgrade Tree on 2026-10-17 (`docs/upgrade-schema.md` in that
-  repository, "Checking quoted recordings"), and the Bostrom run applied it. A quote the two
-  transcripts disagree on, or that has no second transcript, carries `asr_unverified`. Where the
-  two differ only on a word inside a longer passage, the run quoted the words both carry and
-  marked the gap with "...", rather than choosing one reading. Neither the Whisper output nor the
-  audio is kept in the repository. On 2026-10-18 the yt-dlp installed on this Mac (version
-  2026.03.17) could not fetch YouTube audio; a current version in a throwaway environment
-  outside the repository could.
+- **What "checked against the audio" means** (ruled by John 2026-10-18): two automatic
+  transcripts from separate programs agree on the quoted words, word for word, ignoring case,
+  punctuation and filler sounds (uh, um). The two are the platform's own captions and a local
+  Whisper transcription of the audio. Nobody listens by ear. This is the rule John ruled for
+  The Upgrade Tree on 2026-10-17 (`docs/upgrade-schema.md` in that repository, "Checking quoted
+  recordings"). A quote the two transcripts disagree on, or that has no second transcript,
+  carries `asr_unverified`.
+- Practice from the first run (2026-10-18): where the two transcripts differ on a word inside
+  a longer passage, quote the words both carry and mark the gap with "...", rather than choosing
+  one reading. Neither the Whisper output nor the audio is kept in the repository. That day
+  the yt-dlp installed on this Mac (version 2026.03.17) could not fetch YouTube audio; a current
+  version in a throwaway environment outside the repository could.
 
 ### 2. Who is speaking?
 
@@ -83,8 +84,11 @@ does. Log every search in `data/search_log.csv` with ids continuing the person's
 
 - **The rule finds it** (the source, or a report of the same appearance, is in the results):
   rows are ordinary rows. Notes start with `tip`.
-- **The rule does not find it:** rows go in with the notes tags `tip; tip_only`. Under open
-  decision 1 they are kept in the record but left out of every figure and every share.
+- **The rule does not find it:** rows go in with the notes tags `tip; tip_only`. They are
+  kept in the record but left out of every figure and every share (decision 1), and the site
+  lists them on its changelog page under "Noted, outside the measured record". At the person's
+  next full pass the same searches are run again and logged, and `tip_only` is lifted if they
+  then find the source (decision 4).
 
 ### 4. Extract the candidate statements
 
@@ -124,20 +128,27 @@ One commit (or pull request) per tip: the archived source line in the manifest, 
 log rows, the statement rows, and the draft note if any. The reply to John is a short list of
 what he needs to rule on or post, and nothing else.
 
-## Open decisions for John
+## Decisions (ruled by John 2026-10-18, all as recommended)
+
+Each decision keeps its alternative and its stated confidence for the record.
 
 1. **Rows the rule would not have found.** Recommended: keep them, tagged `tip_only`, left out
    of figures and shares, listed on the site's changelog as "noted, outside the measured
    record". Alternative: code them as ordinary rows. Confidence: high. Without the exclusion,
    John's own feed becomes a sampling frame, and it leans toward whatever the enthusiast
    venues are amplifying, which is the bias the vanguard sub-series is kept apart for.
+   **Ruled 2026-10-18, by John: as recommended.** `scripts/charts.py` and `scripts/site.py`
+   leave the rows out, and the validator rejects `tip_only` without `tip` (A-NEXT).
 2. **Archived transcripts in a public repository.** Recommended: keep the files local (add
    `sources/*/` to `.gitignore`) and commit only `sources/manifest.csv`, so a reader can see
    what was archived, when, and its checksum, without the repository republishing a full
    transcript of someone else's interview. Alternative: commit the files. Confidence: medium.
+   **Ruled 2026-10-18, by John: as recommended.**
 3. **Where panel watch notes live.** Recommended: drafts here, in `docs/panel-watch/`, next to
    the rows they cite, with the posting record kept by the Outreach process once it is
    ratified. Alternative: draft them in the Outreach folder from the start. Confidence: medium.
+   **Ruled 2026-10-18, by John: as recommended.** The first note (Bostrom, 2026-10-18) is not
+   one of the outreach trials; it goes to the first outreach review on 2026-10-24 as a proposal.
 4. **Is the "would the rule have found it" test run again later?** Added 2026-10-18 after the
    first run. Run on the day a tip arrives, step 3 measures how fast search engines index a
    new source as much as how far the rule reaches: the Bostrom interview was two days old, and a
@@ -149,4 +160,5 @@ what he needs to rule on or post, and nothing else.
    Alternative: the verdict on the day of intake stands for good, which is simpler but means the
    sooner John sends a tip, the likelier it is to be left out. Confidence: medium; the
    remaining question is whether "the next full pass" is soon enough, or whether a fixed wait
-   (for example 30 days after intake) is better.
+   (for example 30 days after intake) is better. **Ruled 2026-10-18, by John: as
+   recommended,** at the next full pass.

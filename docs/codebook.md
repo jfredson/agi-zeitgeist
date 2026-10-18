@@ -1,7 +1,7 @@
 # Codebook, version 2
 
-How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14)
-and 2026-10-12 (amendment A28) from `docs/methodology-v2.md`
+How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14),
+2026-10-12 (amendment A28) and 2026-10-18 (amendment A-NEXT, tip intake) from `docs/methodology-v2.md`
 section 2, which is the authority; this file turns its rules into decisions with
 examples. Changes go in `docs/amendments.md` first.
 
@@ -331,6 +331,9 @@ Notes start with any of these tags, separated by `; `, then free text:
 | `basis: "<words>"` | the words carrying the endorsement (required unless `unexpressed`) |
 | `not_by: YYYY` | "won't happen by YYYY" (section 5) |
 | `lower_bound` | the timeline year is a minimum (section 5) |
+| `tip` | entered through tip intake (`docs/tip-intake.md`), not found first by a full pass (A-NEXT) |
+| `tip_only` | a `tip` row the fixed searches did not find; kept in the record, left out of every figure and share until a later search finds the source (A-NEXT). Always with `tip` |
+| `asr_unverified` | the quote comes from machine captions and two automatic transcripts did not both carry it; `coding_confidence` no higher than `medium` (A-NEXT) |
 
 ## 10. Mapping to Fast and Horvitz 2017
 
