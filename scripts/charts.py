@@ -16,7 +16,7 @@ from pathlib import Path
 from matplotlib.patches import Rectangle
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from chart_style import GRID, INK, INK_2, PALETTE, PEOPLE, SURFACE, figure, read, save, titles  # noqa: E402
+from chart_style import GRID, INK, INK_2, PALETTE, PEOPLE, SURFACE, figure, measured, read, save, titles  # noqa: E402
 
 # Each person's earliest and latest guess at when machines will match people at most thinking work
 # (target_capability broad_competence), chosen by hand from the quotes so the choice can be checked.
@@ -35,7 +35,7 @@ CEILINGS = {"altman-2024-02", "lecun-2025-05"}  # "by the end of this decade"; "
 
 
 def chart_experts():
-    by_id = {s["statement_id"]: s for s in read("statements.csv")}
+    by_id = {s["statement_id"]: s for s in measured(read("statements.csv"))}  # tip_only rows never plotted
 
     def point(sid):
         s = by_id[sid]
