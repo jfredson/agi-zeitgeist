@@ -1,0 +1,24 @@
+[claim]
+id = "2019-04-22-musk-million-robotaxis-next-year"
+speaker_id = "musk"
+when = "2019-04-22"
+when_note = "Tesla's own upload of the event is dated 2019-04-22, the day of Tesla Autonomy Day."
+occasion = "Tesla Autonomy Day, an investor event on self-driving"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Ucp0TTmvqOE"
+source_locator = "3:13:58 to 3:14:12 into the video (the run-up from 3:13:36)"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "next year for sure we will have over a million Robo taxis on the road"
+prediction = "In 2020 Tesla would have more than a million robotaxis (self-driving cars carrying paying passengers with no driver) on the road. Just before, he said that from Tesla's standpoint it would be 'maybe a year, maybe a year in three months'; he also said regulators might not approve it everywhere."
+kind = "deployment"
+bar = "More than a million Tesla cars operating as driverless taxis for paying passengers during 2020, shown by Tesla's own count or a regulator's notice."
+due = 2020
+due_basis = "'next year', said 2019-04-22; judged at the end of 2020. His 'a year in three months' would be July 2020, inside the same year."
+status = "missed"
+verdict_on = 2025-01-29
+verdict_why = "No driverless taxi service of any size ran in 2020. On Tesla's own earnings call of 2025-01-29 Musk said the company would launch unsupervised full self-driving as a paid service in Austin in June 2025, its first, and on the call of 2026-01-28 he said the first paid rides with no safety monitor in the car had just happened in Austin. A million robotaxis has not come."
+verdict_source = "https://www.youtube.com/watch?v=Gub5qCTutZo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-003", "musk-claims-013", "musk-claims-016"]
+notes = "The same talk also said self-driving would be 'feature complete' during 2019 (2:46:00) and that the first robotaxis 'with no one in them' would operate in 2020 (3:05:34); those are separate claims not entered here."

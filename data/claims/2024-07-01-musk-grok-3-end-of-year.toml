@@ -1,0 +1,24 @@
+[claim]
+id = "2024-07-01-musk-grok-3-end-of-year"
+speaker_id = "musk"
+when = "2024-07-01"
+when_note = "The post's timestamp is 2024-07-01 05:13 UTC (the evening of 2024-06-30 in Pacific time)."
+occasion = "Reply on X to @beffjezos"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1807643760584708363"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Grok 3 end of year after training on 100k H100s should be really something special"
+prediction = "xAI's Grok 3 would come out at the end of 2024, after training on 100,000 of Nvidia's H100 chips."
+kind = "timing"
+bar = "A public release of Grok 3 by xAI by 2024-12-31, shown by xAI's own release. 'Really something special' has no measure and is not part of the bar."
+due = 2024
+due_basis = "'end of year', posted 2024-07-01; judged at 2024-12-31."
+status = "missed"
+verdict_on = 2025-02-19
+verdict_why = "xAI's own release page for Grok 3 is dated 2025-02-19, seven weeks after the end of 2024. It came later than said."
+verdict_source = "https://x.ai/news/grok-3"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-009", "musk-claims-011"]
+notes = "A later post of 2024-07-22 (not opened for this record) said of the 100,000-chip system that it would train 'the world's most powerful AI by every metric by December this year'."

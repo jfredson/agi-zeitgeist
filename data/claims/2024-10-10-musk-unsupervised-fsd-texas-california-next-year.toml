@@ -1,0 +1,24 @@
+[claim]
+id = "2024-10-10-musk-unsupervised-fsd-texas-california-next-year"
+speaker_id = "musk"
+when = "2024-10-10"
+when_note = "YouTube lists the live stream's start as 2024-10-10 18:00 Pacific time (2024-10-11 01:00 UTC)."
+occasion = "Tesla's 'We, Robot' event, unveiling the Cybercab robotaxi"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=6v6dbxPlsXs"
+source_locator = "11:34 to 11:52 into the video"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words. A '[Music]' tag falls between 'next' and 'year' in the captions and is left out of the quote."
+quote = "we do expect actually to to start uh fully autonomous unsupervised FSD uh in Texas and California next year"
+prediction = "Tesla expected to start fully driverless, unsupervised use of its Full Self-Driving software in Texas and California in 2025, on the Model 3 and Model Y."
+kind = "deployment"
+bar = "Tesla cars driving with nobody supervising, in both Texas and California, in use by the end of 2025, shown by Tesla's own word or a regulator's notice."
+due = 2025
+due_basis = "'next year', said 2024-10-10; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "Texas only, and late: on Tesla's call of 2025-10-22 the company said it was 'on track to remove the person from inside the car altogether, starting with Austin' and that in the Bay Area it 'still [had] a person in the driver's seat'; on the call of 2026-01-28 Musk said the first paid rides with no safety monitor had just happened in Austin. Nothing unsupervised in California by the end of 2025. The Texas half came after the date; the California half has not come, so the claim as made has not come."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-012", "musk-claims-015", "musk-claims-016"]
+notes = "In the same talk he said the Cybercab would be in production in 2026, 'before 2027', adding 'I tend to be a little optimistic with time frames'; not entered here."

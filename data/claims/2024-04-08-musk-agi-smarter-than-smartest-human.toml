@@ -1,0 +1,25 @@
+[claim]
+id = "2024-04-08-musk-agi-smarter-than-smartest-human"
+speaker_id = "musk"
+when = "2024-04-08"
+when_note = "The fund's upload says the conversation was live on X Spaces on Monday 2024-04-08; the video was uploaded 2024-04-09 UTC."
+occasion = "Live conversation with Nicolai Tangen, head of Norway's sovereign wealth fund, on X Spaces (recording published by Norges Bank Investment Management)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=_rQBZ3vKRA0"
+source_locator = "6:26 to 6:35 into the video; said again at 1:44"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "if you define AGI as smarter than the smartest human I think it's probably end of next year"
+prediction = "If AGI means AI smarter than the smartest human, it would probably arrive by the end of 2025, or, as he added, 'within two years' of April 2024."
+kind = "timing"
+bar = "His own definition: an AI smarter than the smartest human. No test of that exists, so the plainest reading is taken: a system its maker or an outside body shows to be better than the best human at thinking work across the board, or his own word that it has arrived."
+due = 2026
+due_early = 2025
+due_basis = "A range: 'end of next year' is 2025-12-31 and 'within two years' from 2024-04-08 is April 2026. The later end, 2026, is taken as the rule says; the earlier end is recorded."
+status = "withdrawn"
+verdict_on = 2026-01-22
+verdict_why = "He replaced the date himself. At the World Economic Forum on 2026-01-22 he said 'we might have AI that is smarter than any human by the end of this year and I would say no later than next year', moving the date from the end of 2025 (or April 2026) to the end of 2026 or 2027. Nobody has shown or announced an AI smarter than the smartest human. Counted as missed, as the rule says for a withdrawn claim."
+verdict_source = "https://www.youtube.com/watch?v=IgifEgm1-e0"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-007", "musk-claims-018"]
+notes = "A judgement call: there is no agreed test for 'smarter than the smartest human', so the record rests on his own later words moving the date, not on a benchmark. The 2026 restatement is its own record, 2026-01-22-musk-ai-smarter-than-any-human-end-of-year. The seed list of 2026-10-17 had this as missed; withdrawn is the status word the method gives a claim its maker replaced, and it counts the same."

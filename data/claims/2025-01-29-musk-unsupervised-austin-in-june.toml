@@ -1,0 +1,25 @@
+[claim]
+id = "2025-01-29-musk-unsupervised-austin-in-june"
+speaker_id = "musk"
+when = "2025-01-29"
+when_note = "Tesla's own upload of the call is dated 2025-01-29, the day of the call."
+occasion = "Tesla's fourth-quarter 2024 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Gub5qCTutZo"
+source_locator = "16:15 to 16:40 into the video"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "initial launch of unsupervised no one in the car full self driving in Austin in June"
+prediction = "Tesla would launch a paid, fully driverless service in Austin in June 2025, with no one in the car and no human supervising."
+kind = "deployment"
+bar = "A paid Tesla ride service in Austin with no one in the car, running by the end of June 2025, shown by Tesla's own word or a regulator's notice."
+due = 2025
+due_date = 2025-06-30
+due_basis = "'in June', said 2025-01-29; the words name a month, so the due date is 2025-06-30."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "The service launched in 2025 but with a person in the car. On 2025-10-22 Tesla said it was still 'on track to remove the person from inside the car altogether, starting with Austin'; on 2026-01-28 Musk said the company had just done 'our first rides with no safety monitor in the car in Austin', paid rides, with the chase car dropped 'as of maybe yesterday'. The 'no one in the car' condition came about seven months late."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-013", "musk-claims-015", "musk-claims-016"]
+notes = "Narrows the 2024-10-10 Texas-and-California claim to a city and a month."

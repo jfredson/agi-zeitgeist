@@ -1,0 +1,22 @@
+[claim]
+id = "2024-09-23-altman-superintelligence-few-thousand-days"
+speaker_id = "altman"
+when = "2024-09-23"
+when_note = "The essay is dated 'September 23, 2024' under its title."
+occasion = "Essay 'The Intelligence Age' on his own site"
+source_kind = "own_words"
+source_url = "https://ia.samaltman.com/"
+source_locator = "second paragraph"
+checked_how = "Read on the page on 2026-10-17 (curl); the date and the sentence were seen."
+quote = "It is possible that we will have superintelligence in a few thousand days (!); it may take longer, but I’m confident we’ll get there."
+statement_id = "altman-2024-03"
+prediction = "Superintelligence might arrive within a few thousand days of September 2024, though it may take longer."
+kind = "timing"
+bar = "None in the source: the essay does not say what superintelligence is or how anyone would know it had arrived, and no plain reading supplies a test."
+due = 2034
+due_early = 2030
+due_basis = "'A few thousand days' is a range. Taken as two to ten thousand days is too generous; taken as 2,000 to 3,650 days (ten years) from 2024-09-23 it runs from March 2030 to September 2034. The later end, 2034, is taken as the rule says, and the earlier end recorded."
+status = "unfalsifiable"
+verdict_why = "'Superintelligence' is not defined in the essay and has no agreed test, and the words are hedged twice ('it is possible', 'it may take longer'). Decided at entry under the bar rule; the ledger does not borrow the singularity test's lines to supply one."
+search_ids = ["altman-claims-005"]
+notes = "The seed list of 2026-10-17 had this as not yet due; the bar rule moves it. The statement row altman-2024-03 matches the page."

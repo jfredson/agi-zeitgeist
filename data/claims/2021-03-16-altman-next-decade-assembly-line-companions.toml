@@ -1,0 +1,21 @@
+[claim]
+id = "2021-03-16-altman-next-decade-assembly-line-companions"
+speaker_id = "altman"
+when = "2021-03-16"
+when_note = "The essay's byline reads 'by Sam Altman · March 16, 2021'."
+occasion = "Essay 'Moore's Law for Everything' on his own site"
+source_kind = "own_words"
+source_url = "https://moores.samaltman.com/"
+source_locator = "the same paragraph, second sentence"
+checked_how = "Read on the page on 2026-10-17 (curl)."
+quote = "In the next decade, they will do assembly-line work and maybe even become companions."
+statement_id = "altman-2021-01"
+prediction = "Within ten years of March 2021, so by March 2031, AI programs would do assembly-line work, and maybe become companions."
+kind = "deployment"
+bar = "AI-driven machines doing assembly-line work in a factory in ordinary use by 2031-03-16, shown by a maker's release or an outside report. The companions half is hedged with 'maybe' and is not part of the bar."
+due = 2031
+due_date = 2031-03-16
+due_basis = "'In the next decade' from 2021-03-16 runs to 2031-03-16."
+status = "not_yet_due"
+search_ids = ["altman-claims-002"]
+notes = "The next sentence, 'in the decades after that, they will do almost everything', has no date and is not a claim record."

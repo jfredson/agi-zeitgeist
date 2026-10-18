@@ -112,7 +112,7 @@ CLAIM_FIELDS = {
     "id": str, "speaker_id": str, "when": "when", "when_note": str, "occasion": str,
     "source_kind": str, "source_url": str, "source_locator": str, "checked_how": str,
     "quote": str, "reported_as": str, "statement_id": str, "prediction": str, "kind": str,
-    "bar": str, "due": int, "due_basis": str, "due_date": "date", "due_early": int,
+    "bar": str, "due": int, "due_basis": str, "due_date": "anydate", "due_early": int,
     "is_goal": bool, "has_probability": bool, "restates": str, "repeated_on": "dates",
     "status": str, "verdict_on": "date", "verdict_why": str, "verdict_source": str,
     "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
@@ -569,6 +569,8 @@ def claim_value_ok(kind, value):
         return isinstance(value, bool)
     if kind == "date":
         return isinstance(value, date) and value <= date.today()
+    if kind == "anydate":  # a due date may lie ahead
+        return isinstance(value, date)
     if kind == "when":
         return isinstance(value, str) and valid_date(value)
     if kind == "dates":
@@ -704,6 +706,12 @@ def check_claims(tables, speakers):
                     errors.append(f"{f}: statement {sid} is by {row['speaker_id']!r}, not {sp!r}")
                 if isinstance(when, str) and row["date"][:7] != when[:7]:
                     errors.append(f"{f}: statement {sid} is dated {row['date']}, not the same month as 'when' ({when})")
+                # The claim's words lie inside the row's quote, or the notes say why the span differs
+                # (claims-ledger method, "What it must never touch"; proposal section 4, rule 1).
+                q = c.get("quote")
+                if isinstance(q, str) and normalise(q.replace("...", "")).split(" ... ")[0] not in normalise(row["quote"]) \
+                        and "differs from the statement" not in (c.get("notes") or ""):
+                    errors.append(f"{f}: the quote is not inside statement {sid}'s quote, and notes do not say why the span differs")
         for field in ("search_ids",):
             for s_id in c.get(field) or []:
                 if s_id not in search_ids:

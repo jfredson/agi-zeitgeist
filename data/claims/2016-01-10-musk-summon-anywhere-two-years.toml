@@ -1,0 +1,24 @@
+[claim]
+id = "2016-01-10-musk-summon-anywhere-two-years"
+speaker_id = "musk"
+when = "2016-01-10"
+when_note = "The post's timestamp is 2016-01-10 20:11 UTC."
+occasion = "Post on X from @elonmusk"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/686279251293777920"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "In ~2 years, summon should work anywhere connected by land & not blocked by borders, eg you're in LA and the car is in NY"
+prediction = "In about two years, so by early 2018, Tesla's Summon feature (which moves a car to its owner with nobody driving) should work anywhere reachable by road, for example a car in New York coming to an owner in Los Angeles."
+kind = "deployment"
+bar = "Tesla's Summon feature, as released to owners, able to bring a car to its owner over any distance by road, shown by Tesla's own release or owner's manual."
+due = 2018
+due_basis = "'In ~2 years', posted 2016-01-10, runs to January 2018; judged at the end of 2018."
+status = "missed"
+verdict_on = 2025-04-04
+verdict_why = "Nothing of the kind shipped by 2018 or since. Tesla's own Model 3 owner's manual (Internet Archive copy of 2025-04-04) says the owner's phone must be within 279 feet (85 metres) of the car for Summon to work and that its successor, Actually Smart Summon, moves the car to the phone's location; cross-country operation is not offered. The thing has not come."
+verdict_source = "https://web.archive.org/web/20250404100830/https://www.tesla.com/ownersmanual/model3/en_us/GUID-7D207174-88CD-4795-8265-9162A72AA578.html"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-001", "musk-claims-002"]
+notes = "The evidence is Tesla's own manual, which here counts against the claim. The seed list of 2026-10-17 had read the range figure only from a search excerpt; the archived page was opened for this record. Coverage of the same day's press call (not opened) says he added 'I might be slightly optimistic on that'."

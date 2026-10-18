@@ -1,0 +1,20 @@
+[claim]
+id = "2025-06-10-altman-2026-systems-novel-insights"
+speaker_id = "altman"
+when = "2025-06-10"
+when_note = "The page prints no date; the blog's feed gives published 2025-06-10T21:12:47Z."
+occasion = "Blog post 'The Gentle Singularity' on his own site"
+source_kind = "own_words"
+source_url = "https://blog.samaltman.com/the-gentle-singularity"
+source_locator = "the paragraph beginning '2025 has seen the arrival of agents'"
+checked_how = "Read on the page on 2026-10-17 (curl); the date was taken from the feed."
+quote = "2026 will likely see the arrival of systems that can figure out novel insights."
+prediction = "In 2026 there would probably be AI systems that can work out new insights of their own."
+kind = "capability"
+bar = "A new, checked finding (a result in mathematics or science not previously known) produced by an AI system during 2026, confirmed by people outside the system's maker."
+due = 2026
+due_basis = "His words: '2026'; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["altman-claims-008", "altman-claims-016", "altman-claims-017"]
+notes = "Seen so far, to be weighed when the year ends: OpenAI's post says an internal model disproved the planar unit distance conjecture (Erdős, 1946) with the proof 'checked by a group of external mathematicians'; Scientific American (2026-05-21) names Timothy Gowers and Daniel Litt among those consulted and reports that people did substantial clean-up and that the tools used were not new. 'Novel insights' is not defined; a verified new mathematical result is the plain reading. Two statement rows (altman-2025-06a and -06b) code a different sentence of this post."
+verify = "The date of OpenAI's announcement (the copy read prints none; Scientific American's piece of 2026-05-21 puts it the day before)."

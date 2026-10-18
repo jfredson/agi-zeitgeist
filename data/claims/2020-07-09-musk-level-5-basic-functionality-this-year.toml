@@ -1,0 +1,25 @@
+[claim]
+id = "2020-07-09-musk-level-5-basic-functionality-this-year"
+speaker_id = "musk"
+when = "2020-07-09"
+when_note = "The news report is dated 2020-07-09, the opening day of the World Artificial Intelligence Conference in Shanghai, where he spoke by video."
+occasion = "Video speech at the opening of the World Artificial Intelligence Conference, Shanghai"
+source_kind = "coverage_only"
+source_url = "https://yicaiglobal.com/news/level-5-autonomous-driving-is-within-tesla-reach-elon-musk-tells-waic"
+source_locator = "second paragraph of the report"
+checked_how = "Read the Yicai Global report on 2026-10-17. No recording with captions was found, so the words are the report's quotation of him, not checked against a recording."
+reported_as = "Yicai Global (reporter Qian Tongxin) quotes him: 'I remain confident that we will have the basic functionality for level five autonomy complete this year'."
+prediction = "As reported, Tesla would have the basic functionality of level 5 autonomy, a car that drives itself anywhere with no human needed, complete during 2020."
+kind = "capability"
+bar = "A Tesla car driving itself anywhere a person could, with no human in the driving seat or supervising, demonstrated or released by the end of 2020."
+due = 2020
+due_basis = "'this year', said 2020-07-09, as reported; judged at the end of 2020."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "Nothing of the kind existed in 2020. Tesla's own earnings call of 2026-01-28 says the first paid rides with no safety monitor in the car had just happened, in Austin only, and that the roll-out was going city by city. Driving anywhere with no human has not come."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-004", "musk-claims-016"]
+notes = "'Basic functionality' has no exact meaning, so the bar is the plain one for level 5. A recording-based quote would replace the report if one is found."
+verify = "A recording of the speech with captions, to check the report's wording."

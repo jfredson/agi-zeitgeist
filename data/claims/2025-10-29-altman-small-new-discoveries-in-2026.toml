@@ -1,0 +1,21 @@
+[claim]
+id = "2025-10-29-altman-small-new-discoveries-in-2026"
+speaker_id = "altman"
+when = "2025-10-29"
+when_note = "The post's timestamp is 2025-10-29 17:19 UTC."
+occasion = "Post on X summarising OpenAI's livestream of 2025-10-28"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1983584366547829073"
+source_locator = "the last paragraph of the post"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "In 2026 we expect that our AI systems may be able to make small new discoveries; in 2028 we could be looking at big ones."
+statement_id = "altman-2025-09"
+prediction = "In 2026 OpenAI's AI systems might be able to make small new discoveries; the 2028 half of the sentence is a separate prediction, not entered here."
+kind = "capability"
+bar = "The same as the claim it restates: a new, checked finding produced by an OpenAI system during 2026, confirmed by people outside the company."
+due = 2026
+due_basis = "His words: 'In 2026'; judged at 2026-12-31."
+restates = "2025-06-10-altman-2026-systems-novel-insights"
+status = "not_yet_due"
+search_ids = ["altman-claims-010", "altman-claims-016", "altman-claims-017"]
+notes = "A restatement of the June 2025 sentence in narrower and more hedged words ('small new discoveries', 'may be able to'); the due year is the same, but the condition changed, so it is its own record. The same post is the source of the statement row altman-2025-09, whose quote is the intern sentence; this quote differs from the statement row's because it is a different sentence of the same post."
