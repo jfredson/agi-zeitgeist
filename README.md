@@ -43,6 +43,7 @@ hand). Next: the rest of the panel's traces, a frontier-voices chart, and the pu
 | `data/world_measures.csv` | world measures, kept apart from belief: capability readings (METR time horizon), company self-reports of AI-done work, and world output growth (World Bank), for the singularity-entry definition |
 | `data/search_log.csv` | every search run to build the record, and what it found; the weekly reading's searches carry ids starting `reading-` |
 | `data/readings/` | one file per run of the weekly reading (`YYYY-MM-DD.json`), never edited: what was searched, what was found, one verdict per source |
+| `data/claims/` | the claims ledger (amendment A27): one file per dated prediction by a panel member, with the words, the source, the test, the due year and the verdict; method in `docs/claims-ledger-method.md` |
 | `docs/methodology-v2.md` | the method (version 2, 2026-09-30): four streams, coding scheme, panel rule, preregistered tests |
 | `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
 | `docs/codebook.md` | how each statement is coded under version 2, with decision rules and examples |
@@ -58,7 +59,9 @@ hand). Next: the rest of the panel's traces, a frontier-voices chart, and the pu
 | `docs/headline-proposal-2026-10-17.md` | the headline proposal (2026-10-17): the three forms and what each showed that day; ruled as the count that afternoon and revised to the average with a crossing sentence that evening (amendment A25) |
 | `docs/leg-c-second-source-2026-10-17.md` | reading note (2026-10-17): the wider search for a leg C second source (venue disclosure statistics, researcher surveys, independent measurements); 26 candidates judged, none qualifies, no row added; three near misses and the questions they raise are set out for John |
 | `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
-| `scripts/validate.py` | checks every row: codes, dates, sources, links between files, and every reading record in `data/readings/` |
+| `docs/claims-ledger-method.md` | the claims ledger's method (2026-10-17): the record layout, the admission rule, the five status words, what counts as a hit, the due-year rule, restatements, the rate and its guards, and what the ledger never touches |
+| `docs/claims-ledger-proposal-2026-10-17.md` | the proposal the ledger was adopted from (amendment A27), with its decisions and John's rulings; the seed list of 79 claims is in `docs/claims-ledger-seed-2026-10-17.md` |
+| `scripts/validate.py` | checks every row: codes, dates, sources, links between files, every reading record in `data/readings/` and every claim file in `data/claims/` |
 | `scripts/charts.py` | builds the charts from the CSV files |
 | `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |
 | `site/` | the static site; serve locally with `python3 -m http.server 8765 --directory site` |
