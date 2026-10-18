@@ -181,7 +181,11 @@ Saying the same thing again is not a new prediction; changing the date is.
   The record of a finished trace is one row in the search log with the id
   `<speaker_id>-claims-traced`, whose `what_found` names the years covered; the site reads that
   row and allows the rate only when it exists. Until then the page shows the claims and the
-  counts under the plain label "seed only: not a rate".
+  counts under the plain label "seed only: not a rate". The panel's statement trace does not
+  count: it looks for statements under the statements rules (which sample busy years and keep
+  one row per source), not for every dated claim, and five of Altman's sixteen seed claims came
+  from sources his statement trace holds no row for. A claims trace is its own pass, and it may
+  start from the statement trace's logged sources.
 - **Both directions of selection are logged.** The searches that found each claim, and the
   claims looked for and not found, are written down in the search log, as
   `docs/panel-verification-2026-10.md` does for the panel.
