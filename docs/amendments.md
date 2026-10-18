@@ -680,7 +680,7 @@ request as a comment of 2026-10-12 and applied by the commits that follow it.
    `schmidhuber-2026-01a`, `schmidhuber-2026-01b`); 6 rejections or doubts of runaway
    growth keep their earlier codes (`walsh-2016-01b`, `walsh-2017-01b`, `chollet-2012-01`,
    `chollet-2017-02a`, `hanson-2016-01`, `hanson-2024-01`). Four rows the sweep had treated
-   unevenly get the same reading: `hassabis-2025-05` (a bare "hard takeoff") to the lowest
+   unevenly get the same reading: `hassabis-2025-08` (`hassabis-2025-05` when ruled) (a bare "hard takeoff") to the lowest
    level under A15 ruling 3; `musk-2015-01` ("recursive self improvement") to `si_modify`;
    `schmidhuber-2016-03` and `schmidhuber-2017-09` ("self-improve") stay at `si_modify`.
 2. **Statements by people not on the panel** found while tracing a panel member are kept
