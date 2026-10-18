@@ -39,3 +39,35 @@ These come from version 1 and still apply; the agent implementation entry in
 - **Frontier lab tie:** `frontier_lab_tie` is `yes` when the person led or ran a
   company building the most capable models of the time during any statement in the
   record; the years are given in `role_summary`.
+
+## Frontier voices: a derived reading (added 2026-10-17)
+
+Asked for by John on 2026-10-17 ("industry leaders who are regularly pushing the very frontend
+of the claims about AGI and ASI ... have both a vested interest in selling the best version of
+the story as well as are doing the actual work"). It is a reading of rows already coded, not a
+new stream, a new code or a scored measure, so it needs no amendment; this section says how it
+is drawn so that it can be checked.
+
+- **Rows.** Every statement in `data/statements.csv` whose `target_capability` is
+  `broad_competence`, whose `timeline_year` is set, and whose `endorsement` is `accepts`,
+  `uncertain` or `conditional`; a range uses the middle of `timeline_year` and
+  `timeline_year_high`. Only core and 2020s-cohort members; the wide list is composition
+  checking and stays out.
+- **Groups.** "People who build it" are the speakers with the `frontier_lab` tag in
+  `data/speakers.csv` (A14: the tag applies if true at the time of any statement in the record,
+  with dates in the justification); everyone else on the panel is "people who study it".
+  Version one uses the tag as a property of the person, not of the statement's date; a later
+  version may split a person's rows by the dates in the justification, and the chart says which
+  it does.
+- **Lines.** Each group's median guess for each year of saying with two or more guesses; years
+  with one guess show the dot only.
+- **The title** is computed from the rows: each group's median over guesses made in 2023 or
+  later, and the studiers' median over their earliest quarter of guesses; if either group has
+  fewer than ten guesses the title says the comparison cannot be made yet.
+- **What it does not do.** It does not weight people, does not remove repeated guesses by one
+  person, and does not say who is right; it shows whether the groups differ and whether the gap
+  moves. Both caveats are on the page.
+- **Chart and script.** `scripts/charts.py`, `chart_frontier()`, writing
+  `site/zeitgeist-frontier.png` in the family's chart style (`scripts/chart_style.py`); the
+  figure sits in the "current zeitgeist" section after the five-experts chart.
+

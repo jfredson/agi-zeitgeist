@@ -238,8 +238,98 @@ def chart_forum():
     return save(fig, "zeitgeist-forum.png")
 
 
+BUILDER, OTHER = PALETTE[7], PALETTE[0]
+TOP = 2100  # dates past this are drawn at the top edge with an arrow
+
+
+def frontier_rows(statements=None, speakers=None):
+    """The rows the frontier-voices chart reads: each statement that names a year for machines
+    matching people at most thinking work (target broad_competence) and accepts, hedges or
+    conditions it, with the speaker's frontier_lab tag as recorded in speakers.csv. A derived
+    reading of coded rows (2026-10-17); nothing scored."""
+    speakers = {r["speaker_id"]: r for r in (speakers or read("speakers.csv"))}
+    out = []
+    for r in (statements or read("statements.csv")):
+        if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
+            continue
+        if r["endorsement"] not in ("accepts", "uncertain", "conditional"):
+            continue
+        sp = speakers.get(r["speaker_id"])
+        if not sp or sp["tier"] not in ("core", "cohort_2020s"):
+            continue
+        lo = int(r["timeline_year"]); hi = int(r["timeline_year_high"] or lo)
+        out.append(dict(id=r["statement_id"], speaker=r["speaker_id"], name=sp["name"], said=int(r["date"][:4]),
+                        year=(lo + hi) / 2, builder=bool(sp["frontier_lab"])))
+    return out
+
+
+def chart_frontier(statements=None, speakers=None):
+    """The panel's dated guesses, with the people who build frontier systems drawn apart from
+    the people who study them, and each group's median by year."""
+    rows = frontier_rows(statements, speakers)
+    import statistics
+    groups = {True: [r for r in rows if r["builder"]], False: [r for r in rows if not r["builder"]]}
+
+    def medians(rs):
+        by = {}
+        for r in rs:
+            by.setdefault(r["said"], []).append(r["year"])
+        return {y: statistics.median(v) for y, v in by.items() if len(v) >= 2}
+
+    fig, ax = figure(10, 6.2)
+    fig.subplots_adjust(left=0.11, right=0.97, top=0.80, bottom=0.12)
+    for builder, col, label in ((False, OTHER, "People who study it"), (True, BUILDER, "People who build it")):
+        rs = groups[builder]
+        xs = [r["said"] + (0.15 if builder else -0.15) for r in rs]
+        ys = [min(r["year"], TOP) for r in rs]
+        ax.plot(xs, ys, "o", ms=5.5, color=col, alpha=0.45, mec="none", zorder=3, label=f"{label} ({len(rs)} guesses)")
+        for x, r in zip(xs, rs):
+            if r["year"] > TOP:
+                ax.annotate("", (x, TOP), (x, TOP - 4), arrowprops=dict(arrowstyle="-|>", color=col, lw=1, alpha=0.6), zorder=3)
+        med = medians(rs)
+        if med:
+            ks = sorted(med)
+            ax.plot(ks, [min(med[k], TOP) for k in ks], "-", color=col, lw=2.4, zorder=4)
+            ax.plot(ks, [min(med[k], TOP) for k in ks], "o", ms=4, color=col, zorder=5)
+    ax.plot([2020, 2027], [2020, 2027], color=GRID, lw=1, zorder=1)
+    ax.text(2020.2, 2021.2, "a guess for the same year it was said", fontsize=7.5, color=INK_2, ha="left", va="bottom")
+    ax.set_xlim(2004.5, 2027)
+    ax.set_ylim(2020, TOP + 3)
+    ax.set_xticks(range(2005, 2027, 3))
+    ax.set_yticks(range(2030, TOP + 1, 10))
+    ax.set_yticklabels([str(y) if y < TOP else f"{TOP} or later" for y in range(2030, TOP + 1, 10)])
+    ax.grid(axis="y", color=GRID, lw=0.8)
+    ax.set_axisbelow(True)
+    ax.set_xlabel("When the guess was made", fontsize=9, color=INK_2)
+    ax.set_ylabel("The year they said machines would match people at most thinking work", fontsize=9, color=INK_2)
+    ax.legend(loc="upper right", frameon=False, fontsize=9)
+
+    # The title states what the data shows, computed so it stays true as rows are added.
+    def recent(rs, years):
+        v = [r["year"] for r in rs if r["said"] >= years]
+        return statistics.median(v) if v else None
+    def early(rs):
+        v = sorted(rs, key=lambda r: r["said"])
+        v = [r["year"] for r in v[:max(3, len(v) // 4)]]
+        return statistics.median(v) if v else None
+    b_now, o_now, o_then = recent(groups[True], 2023), recent(groups[False], 2023), early(groups[False])
+    enough = len(groups[True]) >= 10 and len(groups[False]) >= 10
+    if enough and b_now and o_now and o_then:
+        gap = o_now - b_now
+        title = (f"The builders have said about {b_now:.0f} all along; the others have come down to meet them"
+                 if abs(gap) <= 3 else
+                 f"The builders say about {b_now:.0f}; the people who study it say about {o_now:.0f}")
+    else:
+        title = "Too few dated guesses on one side yet to compare the builders with the others"
+    titles(fig, title,
+           "Each dot is one dated guess by a panel member; the lines join each group's median for the years with two or more guesses. "
+           "A builder is anyone tagged as working at a frontier lab at any time (speakers.csv).",
+           "Guesses in the person's own words only, for machines matching people at most thinking work. Source: agizeitgeist.com/data")
+    return save(fig, "zeitgeist-frontier.png")
+
+
 def main():
-    for chart in (chart_experts, chart_researchers, chart_search, chart_forum):
+    for chart in (chart_experts, chart_researchers, chart_search, chart_forum, chart_frontier):
         print(chart())
 
 
