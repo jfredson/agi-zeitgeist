@@ -628,3 +628,31 @@ by a given year and the middle year. It would need a stated distribution for eac
 crossing, a rule for the unmeasured leg, and a run record; it is logged here as the question
 that follows this amendment.
 
+## 2026-10-17: the busy-year sampling rule keeps the "now" statements
+
+Decided by: mixed. The frontier-lab traces of 2026-10-17 (pull request 13) applied section
+3's busy-year rule as written, keeping every timeline-bearing statement and sampling the rest at
+every third item, and so dropped the statements closest to the project's third question, whether
+today's systems are already improving themselves: six of Dario Amodei's 2026 statements and four
+of Demis Hassabis's from 2025 to 2026. The managing session recommended keeping that frame in
+full; John ruled "as recommended" on 2026-10-17 through the master session.
+
+### A26. Statements on the "now" question are never sampled out
+
+Was (methodology version 2, section 3, "Collection"): where a person made more than ten
+qualifying statements in a year, all timeline-bearing statements are kept and the rest sampled
+at a fixed interval, logged.
+
+Now: all timeline-bearing statements are kept, and so are all statements that bear on the "now"
+question, meaning any whose `frame_primary` or `frames_present` includes `self_improvement`, or
+whose `present_capability` is coded `claimed`; the rest are sampled at a fixed interval, logged.
+
+Why: the project's story has three questions, whether, when and now, and the sampling rule
+protected only the second. Sampling the "now" frame biases the series exactly where the
+frontier-lab voices matter most, since a lab head's claim that his systems are already improving
+themselves is the kind of statement the vanguard and the self-improvement gauge are compared
+against. The ten rows dropped on 2026-10-17 are added under this rule when the full panel
+collection (pull request 4, reconciled with pull request 13) lands, with their searches already
+in the log; the rows carry a note naming this amendment. Nothing scored changes: statements never
+score a gauge.
+

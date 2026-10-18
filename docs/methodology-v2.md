@@ -56,7 +56,7 @@ Wide list, as many names as the rule yields (A14; 184 at 2026-10-01), built by a
 
 `speakers.csv` gains a `tier` field (`core`, `cohort_2020s`, `wide`) and quota tags (`skeptic`, `non_us_uk`, `philosopher`, `frontier_lab`), each with a one-line justification and a dated source.
 
-Collection: year-by-year search per person from first statement to present, queries logged in `data/search_log.csv`. Years with no statement found are logged as rows, so quiet years are visible. Where a person made more than ten qualifying statements in a year, all timeline-bearing statements are kept and the rest sampled at a fixed interval, logged. Within-person change (the same person's codes over time) is reported separately from composition change (who is speaking in a given year).
+Collection: year-by-year search per person from first statement to present, queries logged in `data/search_log.csv`. Years with no statement found are logged as rows, so quiet years are visible. Where a person made more than ten qualifying statements in a year, all timeline-bearing statements are kept, and so are all statements that bear on the "now" question (a `self_improvement` frame, or `present_capability` coded `claimed`; amendment A26, 2026-10-17); the rest are sampled at a fixed interval, logged. Within-person change (the same person's codes over time) is reported separately from composition change (who is speaking in a given year).
 
 Benchmarks alongside the panel: the AI Impacts expert surveys (2016, 2022, 2023), Müller and Bostrom 2014, Pew's 2025 expert sample, with question framing and respondent composition recorded before any comparison.
 
