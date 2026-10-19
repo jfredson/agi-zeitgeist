@@ -338,13 +338,11 @@ routine "AGI Zeitgeist weekly reading" (routine id `trig_01P7b2icKe5hxxtBAmTpDTt
 claude.ai/code/routines), Mondays at 06:00 Pacific as before, with this repository attached; it
 runs whether or not the Mac is awake, and its prompt is the same as the Mac task's: open the
 repository and follow `docs/weekly-reading-prompt.md`. The Mac task
-`agi-zeitgeist-weekly-reading` is kept until the cloud routine's first reading has landed. The
-Mac task runs on 2026-10-19; the cloud routine was created switched off on 2026-10-18 so that it
-would not also fire that morning, and its first firing is Monday 2026-10-26 at 06:00 Pacific, so
-the two never fire in the same week. Once that reading has landed and its record is on `main`,
-the Mac task is switched off. As the paragraph above says, a cloud routine needs the Claude
-GitHub App on this repository; whether it is installed is shown only by that first run, and
-until then it is unconfirmed.
+`agi-zeitgeist-weekly-reading` was switched off on 2026-10-18, the same day, and the cloud
+routine took over: its first run is Monday 2026-10-19 at 06:00 Pacific. A cloud routine needs the
+Claude GitHub App on this repository; whether it can push is shown only by that first run, and
+until it has run it is unconfirmed (on 2026-10-18 The Upgrade Tree's cloud routine pushed to its
+`main` directly, which settles the question for that repository only).
 
 ## Decisions, with confidence and alternatives
 
@@ -407,8 +405,8 @@ ruled yet unless the line says so.
     unexplained file on the download page is worse than none.
 13. **Monday 06:00 Pacific on the Mac, proposed.** Low confidence; see "The schedule". The
     alternatives are in that section, and the choice is John's. *Ruled 2026-10-16 as proposed;
-    moved to a cloud routine in the same slot on John's ruling of 2026-10-18, first firing
-    2026-10-26 (see "The schedule").*
+    moved to a cloud routine in the same slot on John's ruling of 2026-10-18, first run
+    2026-10-19 (see "The schedule").*
 14. **The scheduled run writes no worklog entry.** Moderate confidence; The Upgrade Tree
     decided the same on 2026-10-16 (the record is the log, and the Monday digest reads it).
     Alternative: one `progress` entry per run in the AGI Zeitgeist project. Cheap, but
