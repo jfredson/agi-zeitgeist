@@ -708,3 +708,72 @@ leg B's gauge, the verdict and the headline (A25), and the weekly reading's rule
 verdict is never a measure of the world and never enters the headline. The correction in the
 proposal's section 0 stands: Jensen Huang is already on the panel (2020s cohort, A18), so no
 panel amendment is needed to give him claims.
+
+## 2026-10-12: John's rulings on the open calls from the panel collection (numbered A28 when the collection landed on 2026-10-17, after A24 to A27)
+
+Decided by: mixed. The open calls were listed in the body of pull request 4 (the full
+collection for the 32 frozen panel members), under "Departures from the written method"
+and "Places the method is silent". The recommendations were the session's; John ruled on
+2026-10-12, in his words, "all as recommended". The rulings are recorded on the pull
+request as a comment of 2026-10-12 and applied by the commits that follow it.
+
+### A28. Self-improvement levels, hedge words, the silent points, and the panel record
+
+1. **The self-improvement level: amendment A14 ruling 12 governs, with its agent
+   reading.** "The lowest level the words support" applies when the words say nothing
+   about who does the improving. Codebook section 1 had listed "the AI will improve
+   itself" among the words that don't say who improves; that contradicted the codebook's
+   own first question ("The AI itself → go on") and is corrected. Of the 18 rows a sweep
+   on 2026-10-09 had moved down (the agent's own decision, later returned to their earlier
+   codes): 3 stay at the lowest level (`yudkowsky-2008-01` on large jumps in intelligence,
+   `yudkowsky-2008-02` on FOOM, `walsh-2020-01` on a bare "technological singularity",
+   which the codebook table lists under superintelligence); 9 go to `si_modify`, the level
+   where the system changes itself (`bengio-2016-01b`, `bengio-2026-01`, `musk-2014-02`,
+   `russell-2014-02b`, `schmidhuber-2017-01`, `schmidhuber-2017-06`, `schmidhuber-2024-03`,
+   `schmidhuber-2026-01a`, `schmidhuber-2026-01b`); 6 rejections or doubts of runaway
+   growth keep their earlier codes (`walsh-2016-01b`, `walsh-2017-01b`, `chollet-2012-01`,
+   `chollet-2017-02a`, `hanson-2016-01`, `hanson-2024-01`). Four rows the sweep had treated
+   unevenly get the same reading: `hassabis-2025-08` (`hassabis-2025-05` when ruled) (a bare "hard takeoff") to the lowest
+   level under A15 ruling 3; `musk-2015-01` ("recursive self improvement") to `si_modify`;
+   `schmidhuber-2016-03` and `schmidhuber-2017-09` ("self-improve") stay at `si_modify`.
+2. **Statements by people not on the panel** found while tracing a panel member are kept
+   as leads, not recorded. Accepted as the practice (kickoff rule 4 said "still
+   recorded", but a person outside the panel gets a `speakers.csv` row only through the
+   wide list's light capture).
+3. **The ten places the method was silent** are adopted as the practice stated in the
+   pull request body and added to `docs/methodology.md` under "Points of detail not
+   spelled out in version 2": the start year for the 2020s group; the coder label;
+   "probably"; a reporter's paraphrase in the reporter's own interview; reading through a
+   reader service or an archive; statements found later for a year already logged; where
+   the every-third count starts; the self-improvement level as ruled in item 1; the date
+   of an interview published later; co-written documents. The codebook's uncertain-words
+   rule gains "probably", "likely" and "perhaps": a position resting on them is coded
+   `accepts` with `ambiguous: yes`, unless "may", "might" or "could" governs the same
+   claim, which makes it `uncertain`. A later pass sweeps the "likely" and "perhaps" rows.
+   The departure that core members are searched from 2005, not from their first
+   documented year, is accepted.
+4. **Chollet's 2017 "timescales we can barely comprehend"** is not a public timeline
+   statement. Chollet stays in the 2020s group, with a note on the panel record. The
+   earlier first statements the collection found (Floridi 2015, Amodei 2023, Aschenbrenner
+   2021, Chollet 2012) go into the panel record.
+5. **The paid three-model reliability check** (methodology-v2 section 10) is deferred;
+   not run. The three untraced members (Liang Wenfeng, Arthur Mensch, Arvind Narayanan)
+   get their own session with web searches.
+
+*Status, 2026-10-17:* items 1 to 4 were applied on the collection branch between 2026-10-12 and
+2026-10-17; the three members named in item 5 were traced on 2026-10-17 in the same pull request
+(Liang Wenfeng 11 statements, Arthur Mensch 6, Arvind Narayanan 29), so the collection covers all
+32 members. The paid check stays deferred.
+
+*Ruled by John, 2026-10-18 (relayed by the master session; applied 2026-10-19):* what counts as
+one statement for the busy-year line, which the collection raised. The codebook said a unit is
+"one statement by one speaker on one occasion", while the whole record has always counted each
+distinct passage of an essay, talk or interview as its own row. John ruled the passage count, as
+recommended. Methodology version 2 section 3, `docs/methodology.md` ("Busy years") and the
+codebook's section 0 now say so. Nothing is re-sampled: the collection's busy-year counts were
+already made by passage.
+
+Why: the second independent check of the collection (pull request 4, comment of
+2026-10-09) found that the codebook example conflicted with the ruling it illustrated,
+and that the method said nothing on ten points the collection had to decide. Recording
+the practice makes the next trace follow the same rules.

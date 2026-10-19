@@ -10,7 +10,15 @@ import json
 import re
 import sys
 import tomllib
-from datetime import date
+from datetime import date, datetime
+
+from zoneinfo import ZoneInfo
+
+
+def pacific_today():
+    """Today in Pacific time, John's clock. A cloud workspace keeps universal time, so an evening
+    run would otherwise be stamped a day ahead (John's ruling, 2026-10-18)."""
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "data"
@@ -69,7 +77,9 @@ AGENCY = {"can_influence", "cannot_influence", "unexpressed"}
 ELICITATION = {"unprompted", "interview", "survey", "quoted"}
 TIMELINE_TYPES = {"point_year", "range", "prob_by_year", "qualitative", "none"}
 CONFIDENCE = {"high", "medium", "low"}
-CODERS = {"john", "claude-agent", "claude-agent-v2", "claude-agent-v2.1"}
+CODERS = {"john", "claude-agent", "claude-agent-v2", "claude-agent-v2.1",
+          # the frontier-lab traces of 2026-10-17 (Musk, Amodei, Hassabis, Sutskever; pull request 13)
+          "claude-session-frontier-traces-2026-10-17"}
 # Single-valued coded fields and their allowed values.
 CODED_FIELDS = {
     "target_capability": TARGETS, "frame_primary": FRAMES, "endorsement": ENDORSEMENT,
@@ -171,7 +181,7 @@ def valid_date(value, precision=None, floor=date(1990, 1, 1)):
                 d = date(parts[0], parts[1], parts[2])
             except ValueError:
                 return False
-            return floor <= d <= date.today()
+            return floor <= d <= pacific_today()
     return False
 
 
@@ -568,7 +578,7 @@ def claim_value_ok(kind, value):
     if kind is bool:
         return isinstance(value, bool)
     if kind == "date":
-        return isinstance(value, date) and value <= date.today()
+        return isinstance(value, date) and value <= pacific_today()
     if kind == "anydate":  # a due date may lie ahead
         return isinstance(value, date)
     if kind == "when":
@@ -688,13 +698,13 @@ def check_claims(tables, speakers):
                         errors.append(f"{f}: a not_yet_due claim has no '{field}' yet")
                 if isinstance(due, int) and not isinstance(due, bool):
                     end = c["due_date"] if isinstance(c.get("due_date"), date) else date(due, 12, 31)
-                    if end < date.today():
+                    if end < pacific_today():
                         errors.append(f"{f}: the due date {end} has passed, so the claim is no longer not_yet_due; enter its verdict")
             if status in ("hit", "missed") and isinstance(c.get("verdict_on"), date) and isinstance(due, int) and not isinstance(due, bool):
                 end = c["due_date"] if isinstance(c.get("due_date"), date) else date(due, 12, 31)
                 if status == "missed" and c["verdict_on"] < end:
                     errors.append(f"{f}: a miss is settled only after the due date ({end}); verdict_on is {c['verdict_on']}")
-                if status == "hit" and end < date.today() and c["verdict_on"] > end and c.get("direction") != "later":
+                if status == "hit" and end < pacific_today() and c["verdict_on"] > end and c.get("direction") != "later":
                     errors.append(f"{f}: a hit's verdict_on ({c['verdict_on']}) is after the due date ({end}); a thing that came after the date is a miss with direction 'later'")
         sid = c.get("statement_id")
         if isinstance(sid, str):

@@ -28,6 +28,14 @@ import shutil
 import subprocess
 import tomllib
 from datetime import date, datetime
+
+from zoneinfo import ZoneInfo
+
+
+def pacific_today():
+    """Today in Pacific time, John's clock. A cloud workspace keeps universal time, so an evening
+    run would otherwise be stamped a day ahead (John's ruling, 2026-10-18)."""
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
 import matplotlib
@@ -705,7 +713,7 @@ def render_news(built, commit):
         body_html = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
         page = shell(f"{fm.get('title', p['slug'])} | {SITE_TITLE}", fm.get("summary", ""), body_html, built, commit,
                      canonical_path=f"/news/{p['slug']}/", eyebrow=f"News · {long_date(fm['date'])} · {kind}", h1=fm.get("title", p["slug"]),
-                     lede=esc(fm.get("summary", "")), active="/news/", image=card)
+                     lede=(None if fm.get("kind") == "start-here" else esc(fm.get("summary", ""))), active="/news/", image=card)
         (out_root / p["slug"]).mkdir(exist_ok=True)
         (out_root / p["slug"] / "index.html").write_text(page, encoding="utf-8")
     items = ""
@@ -770,6 +778,10 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
                 f'{f"<p class=lede>{lede}</p>" if lede else ""}</section>')
     bg = '<div class="space-bg" aria-hidden="true"></div>' if backdrop else ""
     year = built[:4]
+    # The preview picture: a news post passes its own card; every other page carries the site's picture
+    # (site/social-preview.png, made by scripts/social-image.mjs). One set of image tags per page.
+    preview = image or "/social-preview.png"
+    preview_alt = esc(title) if image else "AGI Zeitgeist Tracker: Are we in the singularity?"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -787,8 +799,13 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta property="og:url" content="{SITE_URL}{esc(canonical_path)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
-<meta name="twitter:card" content="{"summary_large_image" if image else "summary"}">
-{f'<meta property="og:image" content="{SITE_URL}{esc(image)}"><meta name="twitter:image" content="{SITE_URL}{esc(image)}">' if image else ""}
+<meta property="og:image" content="{SITE_URL}{esc(preview)}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{preview_alt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE_URL}{esc(preview)}">
 <link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -957,7 +974,7 @@ def copy_data():
             f'and the samples used to double-check the sorting of statements. They are kept so that every step can be checked; the plain account is on the <a href="/">home page</a>.</p>'
             f'<ul>{"".join(li(f) for f in rest)}</ul></div>')
     (out / "index.html").write_text(shell(f"Download the data | {SITE_TITLE}", "Every CSV table behind the AGI Zeitgeist Tracker, under CC BY 4.0.", body,
-                                          date.today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
+                                          pacific_today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
     return len(files)
 
 
@@ -1285,6 +1302,9 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     }[sc["status"]]
 
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
+    _panel = {r["speaker_id"] for r in read("speakers.csv") if r["tier"] in ("core", "cohort_2020s")}
+    _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
+    n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
     cl = _CLAIMS
     claims_line = (f'Of the {cl["claims"]} predictions with a date that the people who run the AI companies have made, {cl["due"]} are now due, and {cl["hit"]} came true. '
                    f'Each is on <a href="/claims/">the claims page</a> in their own words, with its source and its verdict.') if cl["claims"] else ""
@@ -1298,6 +1318,11 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+
+<p>Fifth, and this is a reading of the same rows rather than a new measure: the people building these systems have named about the same year all along, and the people studying them have come down to meet it. The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems from the rest: the academics, the critics and the philosophers. A builder has a front-row seat and a product to sell; a critic has neither. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+
+<figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
+<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
 <p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
@@ -1314,7 +1339,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
-<p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
+<p>This rests on the {n_panel} people on the expert panel, each traced year by year from their first public statement on AGI ({n_statements} statements in all, every search written down), {len(b_pts)} waves of the largest survey of AI researchers, opinion polls, betting markets and one online forum. A weekly reading adds what is new.</p>
 <p>{claims_line}</p>
 <p>Expecting it soon is not the same as it happening. Whether the singularity has actually begun is the test below.</p>
 </section>
@@ -1394,7 +1419,7 @@ def main():
     sc = score(load_thresholds(), a_series, c_pts, d_pts)
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
     globals()["_AGG"] = aggregates
-    built = date.today().isoformat()
+    built = pacific_today().isoformat()
     claims = load_claims()
     globals()["_CLAIMS"] = claims_page(sc, claims, built, git_commit())
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")

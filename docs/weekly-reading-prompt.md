@@ -129,6 +129,16 @@ against the primary record. One item per kind.
 - Whether a report or statement is of the record's kind is read strictly. When two readers
   could disagree (an industry report, a corporate pledge, an announcement rather than an
   action), it is `flagged`, not added.
+- A `flagged` item opens the primary page that would settle it before it is written up (for a
+  bill, the legislature's own register, such as congress.gov; for an organisation's figure, its
+  own page), so the question put to John rests on the record, not on a news report. Added
+  2026-10-19 after the audit of the first cloud reading (`docs/readings/audit-2026-10-19.md`).
+- A bill counts as a `government_action` only when it has passed a chamber of a legislature or
+  become law, dated from the legislature's own record; an introduced bill is `noted` (ruled by
+  John 2026-10-19).
+- An aggregator page is never the cited source for a date. For an AI release or any dated
+  event, the date comes from the maker's or the institution's own announcement; an aggregator
+  may point the way. Added 2026-10-19, same audit.
 
 Search economy: no fewer than two searches per item that is searched, no more than four, plus
 the fetches a candidate row needs. If a search tool fails twice, mark the item `quiet` with

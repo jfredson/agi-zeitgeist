@@ -2,7 +2,7 @@
 title: "Where the AGI Zeitgeist stands, and what to watch"
 date: 2026-10-18
 kind: start-here
-summary: What the site asks and how the four-part test works, where the numbers stand as of 18 October 2026, how to follow them week by week, the most interesting news so far, and what to watch for.
+summary: Are we in the singularity? Not yet. As of 18 October 2026 the test is 32 percent of the way, averaged over the three parts that can be measured, with the slowest part, the economy, at zero.
 sources:
   - label: The status file, the numbers as they stand
     url: https://agizeitgeist.com/status.json
@@ -18,12 +18,12 @@ This is the start of the site's news section. When a weekly reading adds a new m
 
 ## Where the numbers stand
 
-[The verdict](/), as of 18 October 2026, is "Not yet." All four parts would have to cross their lines and stay across for a year, and today none of them has. The headline reads 32 percent of the way, an average over the three parts that can be measured, always shown beside the slowest part, the economy, at zero. The four parts:
+As of 18 October 2026 the headline is [32 percent of the way](/status.json): the average distance to their lines of the three parts that can be measured, always shown beside the slowest part, the economy, which is at zero. The test's own verdict is ["Not yet."](/): all four parts would have to cross their lines and stay across for a year, and today none of them has. The four parts:
 
-- **The pace** ([the four parts](/#singularity)), from the futurist Ray Kurzweil's idea that AI gets better faster and faster. It measures how long a job the best AI can finish by itself, as tested by METR, a research group that tests AI systems, and that length has been doubling every 121 days; the part would count at a doubling every 30 days, still speeding up. 43 percent of the way.
-- **Forecasts**, from the writer Vernor Vinge's idea that nobody can predict AI progress any more. It cannot be scored yet, because the record of old predictions set against what happened has not been built.
-- **AI doing the research**, from the mathematician I. J. Good's idea that AI ends up doing most of the work of improving AI. Anthropic, an AI company, says its own AI leads 26 percent of its AI research. It would count at half, and only the company can check the figure. 52 percent of the way.
-- **The economy**, from the economist Robin Hanson's idea that the world's economy grows ten times faster than it ever has. It grew 2.9 percent in 2025, and the part would count at 30 percent in a year. 0 percent of the way.
+- **The pace** ([the four parts](/#singularity)), from the futurist [Ray Kurzweil](https://en.wikipedia.org/wiki/Ray_Kurzweil)'s idea that AI gets better faster and faster. It measures how long a job the best AI can finish by itself, as tested by [METR](https://metr.org/), a research group that tests AI systems, and that length has been doubling every 121 days; the part would count at a doubling every 30 days, still speeding up. 43 percent of the way.
+- **Forecasts**, from the writer [Vernor Vinge](https://en.wikipedia.org/wiki/Vernor_Vinge)'s idea that nobody can predict AI progress any more. It cannot be scored yet, because the record of old predictions set against what happened has not been built.
+- **AI doing the research**, from the mathematician [I. J. Good](https://en.wikipedia.org/wiki/I._J._Good)'s idea that AI ends up doing most of the work of improving AI. [Anthropic](https://www.anthropic.com/), an AI company, says [its own AI leads 26 percent](https://www.anthropic.com/institute/measuring-pace-of-ai-development) of its AI research. It would count at half, and only the company can check the figure. 52 percent of the way.
+- **The economy**, from the economist [Robin Hanson](https://en.wikipedia.org/wiki/Robin_Hanson)'s idea that the world's economy grows ten times faster than it ever has. It grew [2.9 percent in 2025](https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG), and the part would count at 30 percent in a year. 0 percent of the way.
 
 [On current trends](/#singularity) the economy does not cross its line at all, the pace crosses somewhere between 2028 and 2048, and the research share crosses in 2027.
 
@@ -35,13 +35,13 @@ A reading page is planned once four readings exist and I have checked them; unti
 
 ## The most interesting news so far
 
-The pace part's source has stopped. [The first weekly reading](https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings), on 16 October 2026, found that METR's page of measurements now says it is no longer actively updated, as of 8 September 2026, and that METR says its tests cannot measure reliably beyond 16 hours. The best system has already passed that, so without a replacement the pace part will soon have no current reading. The rules say a replacement must be named, with a period where old and new overlap, before a series stops. On 17 October 2026 I wrote to METR to ask whether a new version that overlaps the old series is planned, and if not, which public series they would point to. No answer is on the record yet.
+The pace part's source has stopped. [The first weekly reading](https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings), on 16 October 2026, found that [METR's page of measurements](https://metr.org/time-horizons/) now says it is no longer actively updated, as of 8 September 2026, and that METR says its tests cannot measure reliably beyond 16 hours. The best system has already passed that, so without a replacement the pace part will soon have no current reading. The rules say a replacement must be named, with a period where old and new overlap, before a series stops. On 17 October 2026 I wrote to METR to ask whether a new version that overlaps the old series is planned, and if not, which public series they would point to. No answer is on the record yet.
 
-Anthropic's 26 percent comes from [its own index](/#singularity) for August 2026, but a poll of its staff taken the same month, published on 16 October 2026, put the median answer for the share of the work AI does at 51 percent. The two measure different things, the index tasks completed and the poll the staff's opinion, so on 17 October 2026 I ruled that the index keeps scoring the part and the poll stays beside it, unscored.
+Anthropic's 26 percent comes from [its own index](/#singularity) for August 2026, but [a poll of its staff](https://www.anthropic.com/research/ai-expectations-gap) taken the same month, published on 16 October 2026, put the median answer for the share of the work AI does at 51 percent. The two measure different things, the index tasks completed and the poll the staff's opinion, so on 17 October 2026 I ruled that the index keeps scoring the part and the poll stays beside it, unscored.
 
 [A trial run on the past](/docs/backward-test-method), using a stand-in for the pace measure, found the test would have said "not entered" in every quarter from 1995 to 2019. That pass leans entirely on the economy: on the stand-in, the pace line alone would have been crossed in 2014. I added the economy part on 8 October 2026, against the advice I was given, because it is the only one measured outside the AI field, so it guards against a singularity on paper.
 
-Arriving next is [the claims ledger](https://github.com/jfredson/agi-zeitgeist/pull/16), a log of the dated predictions of the people who run the AI companies, in their own words, scored against what happened. Its first thirty rows cover Sam Altman, chief executive of OpenAI, and Elon Musk, chief executive of Tesla and founder of xAI. Of Altman's 16, three came true, one did not, seven are not yet due and five cannot be tested. Of Musk's 14, two came true, ten did not (one of those he took back) and two are not yet due. A claim is admitted without looking at whether it came true, and no verdict enters the headline. The ledger goes up after the reading of 19 October 2026.
+Arriving next is [the claims ledger](https://github.com/jfredson/agi-zeitgeist/pull/16), a log of the dated predictions of the people who run the AI companies, in their own words, scored against what happened. Its first thirty rows cover [Sam Altman](https://en.wikipedia.org/wiki/Sam_Altman), chief executive of [OpenAI](https://en.wikipedia.org/wiki/OpenAI), and [Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk), chief executive of [Tesla](https://en.wikipedia.org/wiki/Tesla,_Inc.) and founder of [xAI](https://en.wikipedia.org/wiki/XAI_(company)). Of Altman's 16, three came true, one did not, seven are not yet due and five cannot be tested. Of Musk's 14, two came true, ten did not (one of those he took back) and two are not yet due. A claim is admitted without looking at whether it came true, and no verdict enters the headline. The ledger goes up after the reading of 19 October 2026.
 
 ## What to watch for
 
@@ -49,7 +49,7 @@ The biggest open question is METR's answer, or a new version of its series, whic
 
 The research share sits closest to its line, on only two readings, and the next figure from Anthropic's index will show whether it is still climbing towards half.
 
-For [the economy](/#singularity), the World Bank has published no figure for 2026 yet. The International Monetary Fund projects 3.3 percent growth for 2026, which is a forecast and not the part's source; the line is 30 percent.
+For [the economy](/#singularity), [the World Bank](https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG) has published no figure for 2026 yet. The International Monetary Fund projects 3.3 percent growth for 2026, which is a forecast and not the part's source; the line is 30 percent.
 
 The next claims in [the ledger](https://github.com/jfredson/agi-zeitgeist/pull/16) come due at the end of 2026, among them Altman's of June 2025 that "2026 will likely see the arrival of systems that can figure out novel insights" and Musk's of January 2026 that AI smarter than any human would come by the end of 2026, and no later than 2027.
 
