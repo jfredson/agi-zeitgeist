@@ -3,14 +3,16 @@
 **Status: method written 2026-10-17 by the agent, from the proposal John adopted the same day
 (`docs/claims-ledger-proposal-2026-10-17.md`, all ten rulings "as recommended"), before any
 claim row was built. Amendment A27 in `docs/amendments.md` records the adoption. Changing a
-rule here after rows exist is an amendment entry, never a quiet edit.**
+rule here after rows exist is an amendment entry, never a quiet edit. Amendment A30 (2026-10-19)
+widened the ledger from the panel to the industry's figureheads, with a ledger-only list for
+the three who are not on the panel.**
 
 ## What this ledger is for
 
 The people who run the frontier AI companies both sell the story and see further than anyone
 else. John's question of 2026-10-17 was whether each of them is a front-row seat or a salesman.
-This ledger answers one narrow part of that: **for each named person on the panel, of the
-predictions they made that have since come due, how many came true, how many did not, and
+This ledger answers one narrow part of that: **for each of the industry's figureheads (who
+they are is set out under the admission rule), of the predictions they made that have since come due, how many came true, how many did not, and
 which way the misses went.** Every claim is published in the person's own words, with the
 source, the test it will be judged by, and the evidence for the verdict.
 
@@ -39,7 +41,7 @@ Every file holds one `[claim]` table with these fields.
 | field | required | what it holds |
 |---|---|---|
 | `id` | yes | The file name without `.toml`. |
-| `speaker_id` | yes | A `speaker_id` in `data/speakers.csv`. The panel is frozen (amendment A18); a claim by anyone not in it is refused by the validator. |
+| `speaker_id` | yes | A `speaker_id` in `data/speakers.csv` whose tier is `core` or `cohort_2020s` (the frozen panel, amendment A18) or `claims_only` (the ledger-only list, amendment A30). The validator refuses a claim by anyone else. |
 | `when` | yes | When it was said: `YYYY-MM-DD`, or `YYYY-MM` or `YYYY` where the record settles nothing finer. |
 | `when_note` | if `when` is not a full date, else optional | How the date was settled (a post's timestamp, a page's date line, an event's date). |
 | `occasion` | yes | Where it was said: a post, an essay, a keynote, a named interview, a hearing, a filing. |
@@ -77,7 +79,14 @@ A worked example is in the proposal, section 2.
 
 A claim is admitted when all four are true. The test never looks at whether it came true.
 
-1. **The speaker is on the frozen panel** (`data/speakers.csv`).
+1. **The speaker is on the frozen panel or on the ledger-only list, and held a qualifying role
+   when the words were said** (`data/speakers.csv`; amendment A30). The ledger covers the
+   industry's figureheads: **a figurehead is the chief executive, founder-leader or chair of a
+   company that builds frontier AI models or the chips they are trained on, or that company's
+   named chief scientist speaking for it.** A claim counts only if it was made while the
+   person held that role. A claim made before or after it, or in a gap between two such roles,
+   is left out, and the search-log row that found it says why. Each claim's `notes` name the
+   role that applied. The fourteen figureheads are listed under "Order of work".
 2. **The words look forward**: they say AI will do, reach or ship something.
 3. **The words carry a date or a length of time**: a year ("by 2030"), a span counted from the
    day it was said ("in five years", "the next ten years", "this president's term"), or a stage
@@ -206,8 +215,15 @@ that is not there. Ids are `<speaker_id>-claims-NNN`, numbered in the order the 
 
 The ledger is a separate record kind beside the others. Talk and delivery are never mixed.
 
-- **The frozen panel** (`data/speakers.csv`, amendment A18). A claim by someone not in it is
-  refused. Adding anyone is an amendment to the panel first.
+- **The frozen panel** (`data/speakers.csv`, amendment A18). A claim by someone neither on it
+  nor on the ledger-only list is refused. Adding anyone to the panel is an amendment to the
+  panel first.
+- **The ledger-only list** (tier `claims_only` in `data/speakers.csv`, amendment A30): the
+  figureheads who are not on the panel, so that their claims can be scored without widening
+  it. These rows are never panel members. They never enter `data/statements.csv`, the opinion
+  charts, the experts' dates or the panel's counts, and they carry no panel quota tag; the
+  validator refuses each of these. Adding a name to the list, or taking one off, is itself an
+  amendment.
 - **The coded statements** (`data/statements.csv`). No row is edited, added or deleted because
   of a claim. A claim points at its row with `statement_id`; nothing is copied back.
 - **The scored series**: `data/world_measures.csv`, `data/aggregates.csv`, the leg B ledger's
@@ -238,4 +254,12 @@ checks every file.
 
 Ruled by John on 2026-10-17: Altman and Musk first, then Amodei, then Huang, then the other
 panel members tied to the frontier labs, then anyone else on the panel with a dated claim.
+
+Widened by John on 2026-10-19 (amendment A30) to the fourteen figureheads. On the frozen panel:
+Sam Altman, Elon Musk, Dario Amodei, Jensen Huang, Demis Hassabis, Mustafa Suleyman, Ilya
+Sutskever, Liang Wenfeng, Arthur Mensch, Shane Legg and Yann LeCun. On the ledger-only list:
+Mark Zuckerberg, Sundar Pichai and Satya Nadella. After Altman and Musk the order is Amodei and
+Huang, then Hassabis, Suleyman, Sutskever, Legg, LeCun, Liang Wenfeng, Mensch, Zuckerberg,
+Pichai and Nadella. Panel members who never held a qualifying role (Geoffrey Hinton, Ray
+Kurzweil) are not entered; any other name is added only by amendment.
 Kurzweil's 2029 date is entered once, with its repeats in `repeated_on`, when his turn comes.
