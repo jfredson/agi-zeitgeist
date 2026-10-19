@@ -30,7 +30,10 @@ These come from version 1 and still apply; the agent implementation entry in
 - **events.csv** fields: event_id, date, date_precision, event_type (`open_letter`,
   `public_statement`, `government_action`, `report`), title, description, source_url,
   notes. Epoch AI reports are `report` events. Searches behind it use speaker_id
-  `events` in the search log.
+  `events` in the search log. A bill is a `government_action` only when it passes a chamber
+  of a legislature or becomes law, dated from the legislature's own record; a bill that has
+  only been introduced is not recorded (ruled by John 2026-10-19, from the audit of the
+  weekly reading of that day).
 - **aggregates.csv** holds the survey, market and poll rows collected in the seed. Under
   version 2 section 4, population survey items move to `data/surveys.csv` when the
   population stream starts; that move has not been made yet.

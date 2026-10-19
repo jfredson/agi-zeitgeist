@@ -466,3 +466,15 @@ later reading can tell a settled question from an open one and does not flag it 
 
 Two of these set precedent for later readings: a corporate pledge is not an open letter of the
 record's kind, and an annual industry survey is not a report of the record's kind.
+
+**2026-10-19, on the first cloud reading (2026-10-19), John ruling on the audit's
+recommendations ("For the Zeitgeist audit, agreed on all"):**
+
+- *Anthropic's "more than 80% of the code we merge was authored by Claude" (May 2026).*
+  Recorded beside the "AI doing the improving" part, shown and not scored, in the same form as
+  Google's code-share row (`anthropic_institute-2026-05-code-share`). A later reading treats a
+  new figure from the same page as a repeat of that series.
+- *The Sanders and Casar bill to ban superintelligence (introduced September 2026).* Not a
+  government action: a bill enters the events list when it passes a chamber of a legislature or
+  becomes law, dated from the legislature's own record. An introduced bill is `noted`, never
+  `flagged` again for this reason.
