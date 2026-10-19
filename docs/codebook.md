@@ -1,6 +1,7 @@
 # Codebook, version 2
 
-How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14) from `docs/methodology-v2.md`
+How each coded unit is coded. Written 2026-09-30 and revised 2026-10-01 (amendment A14)
+and 2026-10-12 (amendment A28) from `docs/methodology-v2.md`
 section 2, which is the authority; this file turns its rules into decisions with
 examples. Changes go in `docs/amendments.md` first.
 
@@ -53,12 +54,29 @@ unit leads with and record the other in `definition_note`.
 
 **"Takeoff" and loose self-improvement words (ruling 12, A14).** Code the lowest level
 the words support and set `ambiguous: yes`; put any speed the speaker gives ("slow",
-"fast", "gentle") in `timeline_text`. When the words don't say who does the improving
-(a bare "takeoff", "the AI will improve itself"), the lowest level is `si_assist`.
-Code `si_sustained` only when the words themselves describe repeated rounds with little
-human role ("each generation builds the next", "an intelligence explosion with no one
-in the loop"). The labels "recursive self-improvement" and "intelligence explosion"
-alone don't do that.
+"fast", "gentle") in `timeline_text`. The lowest level depends on the answer to
+question 1 above:
+
+- When the words **don't say who does the improving** (a bare "takeoff" or "hard
+  takeoff", "FOOM", "large jumps in intelligence"), the lowest level is `si_assist`
+  (A15 ruling 3 confirms this for a bare "takeoff").
+- When the words **do say the AI improves itself** ("the AI will improve itself", "a
+  machine improves itself", "a self-improving system", "improve their own
+  capabilities", "recursive self-improvement"), question 1 is answered and the lowest
+  level those words support is `si_modify`. Ruled by John 2026-10-12 (A28): an earlier
+  version of this paragraph listed "the AI will improve itself" among the words that
+  don't say who improves, which contradicted question 1.
+- Code `si_sustained` only when the words themselves describe repeated rounds with
+  little human role ("each generation builds the next", "an intelligence explosion with
+  no one in the loop", "reprogram itself to be smarter and iterate ... 24 hours a day").
+  The labels "recursive self-improvement" and "intelligence explosion" alone don't do
+  that: they say the system improves itself, so `si_modify`.
+- **Rejections and doubts.** When the speaker rejects or doubts runaway growth ("there
+  will not be the run away exponential growth", "intelligence explosion is impossible",
+  "a hard takeoff scenario is very unlikely"), keep the level the speaker is rejecting
+  (the words describe it) rather than the lowest level. Coding `si_assist` would turn a
+  rejection of runaway growth into a rejection of AI helping people build AI, which
+  the speaker never said. Ruled by John 2026-10-12 (A28).
 
 - *Seed example, `altman-2023-04`:* Altman told the New York Times it would be a "very
   slow takeoff". The words don't say who improves the systems or how, so
@@ -115,7 +133,7 @@ field, `present_capability`.
 |---|---|
 | `accepts` | says it will happen (or has already happened). Needs "will", "expect", "I think", "predict", "going to", "almost certainly", a stated probability of 50% or more, a bet, "decades away", "at least N years", or a firm, unhedged first-person date ("I'm still saying 2029") (A14 rulings 10 and 11; A15 rulings 1, 5 and 6) |
 | `rejects` | says it won't happen, ever or by the horizon given. "It isn't here yet" is **not** a rejection (ruling 9) |
-| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10) |
+| `uncertain` | explicitly says they don't know, gives a probability below 50%, or hedges the date with "may", "might" or "could" (ruling 10). "Probably", "likely" and "perhaps" are not hedges of this kind: see the A28 rule below |
 | `conditional` | endorses it only if a stated condition holds ("if scaling continues", "if we solve X") |
 | `unexpressed` | discusses it without taking a position |
 
@@ -149,8 +167,22 @@ Rulings of 2026-10-01 (A14), with examples from the seed data:
   *Seed example, `marcus-2022-04`:* "we are still likely decades away from
   general-purpose, human-level AI" → `endorsement: accepts` (basis `"still likely
   decades away"`), `present_capability: disputed`, `timeline_type: qualitative`,
-  `timeline_text: "still likely decades away"`.
+  `timeline_text: "still likely decades away"`, and `ambiguous: yes` for the "likely"
+  (A28).
 - **Self-improvement words (ruling 12):** see section 1.
+- **"Probably", "likely" and "perhaps" (A28, ruled by John 2026-10-12).** A position
+  resting on one of these words is `accepts` with `ambiguous: yes` (field:
+  endorsement), whether the word governs the arrival claim ("it's likely that machines
+  will be smarter than us") or its timing ("still probably decades away", "likely
+  before too long"). If "may", "might" or "could" governs the same claim, ruling 10
+  wins and the code is `uncertain`. *Agent reading (2026-10-12):* the rule covers a
+  positive position; a negative one ("unlikely", "perhaps we are just not smart enough")
+  is not an acceptance and keeps its own code (`rejects` or `uncertain`), and a word
+  that governs something other than the claim ("algorithms, likely yet to be invented")
+  does not trigger the rule.
+  *Seed example, `marcus-2013-01`:* "It's likely that machines will be smarter than us
+  before the end of the century" → `endorsement: accepts` (basis `"It's likely that
+  machines will be smarter than us before the end of the century"`), `ambiguous: yes`.
 
 Hard cases:
 
@@ -284,7 +316,7 @@ Secondhand rows are usually `quoted`.
   with direct quotes by the outlet that did it). Secondhand = someone else's report or
   paraphrase, or a quote not traced to where it was said. Secondhand rows carry the
   `secondhand` tag and `coding_confidence: low`.
-- **`coder`**: `john`, `claude-agent` (version 1, retired), `claude-agent-v2`, or `claude-agent-v2.1` (rows changed under the A14 rulings).
+- **`coder`**: `john`, `claude-agent` (version 1, retired), `claude-agent-v2`, `claude-agent-v2.1` (rows coded or changed under the A14 rulings, including the full panel collection), or `claude-session-frontier-traces-2026-10-17` (the frontier-lab traces of Musk, Amodei, Hassabis and Sutskever folded in from pull request 13, coded under this codebook unchanged).
 
 ## 9. Notes tags
 

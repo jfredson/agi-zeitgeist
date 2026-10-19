@@ -516,3 +516,29 @@ Six are thin: Huang, Leike, Mollick, Liang, Mensch, Narayanan.
 308 names: 307 by the rule (the MIRI and AI Impacts predictions dataset and the full
 TIME100 AI lists 2023 to 2025, less core and cohort members), plus Dennett. The stream M
 media sample has not run, so names quoted there are not yet added.
+
+---
+
+## Notes after the full collection (2026-10-12, ruled by John; amendment A28)
+
+The full collection (pull request 4) read each member year by year and found earlier
+statements than this record had. None changes a verdict or a tier. Recorded here so the
+tables above are read with them.
+
+**Chollet's 2017 essay is not a public timeline statement.** His 2017-11-27 essay "The
+implausibility of intelligence explosion" (recorded as `chollet-2017-02b`) says
+civilization "will create superhuman AI ... over timescales we can barely comprehend".
+Ruled by John 2026-10-12: that is not a public AGI timeline statement, so the cohort's
+first test (no AGI timeline statement before 2018) still holds and Chollet stays in the
+2020s group. His first timeline statement remains the 2025 "five-ish" years remark.
+
+**Earlier first statements found** (the dates in the tables above stay as they were
+when the verdicts were given; the collection's rows are the record now):
+
+| member | first statement in this record | first statement found by the collection | bears on the rules? |
+|---|---|---|---|
+| Luciano Floridi | 2016-05-09, Aeon essay | 2015 (year precision), APA Newsletter on Philosophy and Computers: true AI "utterly implausible" (`floridi-2015-01a`, `floridi-2015-01b`) | No: a core member's statement 2017 or earlier was already shown; it moves the earliest date back one year |
+| Dario Amodei | first timeline 2024-10 (Machines of Loving Grace) | 2023-08-08, Dwarkesh Podcast: human-level depends on the threshold, and a model that talks for an hour like a well-educated human "could happen in two or three years" (`amodei-2023-02`) | No: after 2018, so the cohort's first test holds; his first timeline statement is 2023, not 2024 |
+| Leopold Aschenbrenner | 2023-03-29, blog post | 2021-06-23, Then Do Better podcast: a human-level language model plausible in 5 to 10 years (`aschenbrenner-2021-01a`) | No: after 2018, so the cohort's first test holds; his first timeline statement is 2021, not 2023 |
+| François Chollet | 2017-07-18, possibility only; first timeline 2025 | 2012-08-10, blog post "The Singularity is not coming": an intelligence explosion makes no sense (`chollet-2012-01`); no timing claim | No: a rejection of runaway self-improvement with no date is not a timeline statement; the 2017 essay is ruled above |
+

@@ -18,9 +18,11 @@ named, a sentence on when each part crosses on current trends, and the verdict u
 `site/status.json` carries it as `headline`, `headline_label`, `average_share`,
 `crossing_sentence`, `crossings` and `parts_past_half`.
 
-**Status (2026-10-17):** seed phase complete and nine people traced year by year (Ray Kurzweil,
-Geoffrey Hinton, Yann LeCun, Gary Marcus, Sam Altman, and, in pull request 13 awaiting merge,
-Elon Musk, Dario Amodei, Demis Hassabis and Ilya Sutskever), plus surveys, prediction markets,
+**Status (2026-10-17):** seed phase complete and the whole frozen expert panel traced year by year:
+the five people of the seed phase (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus, Sam
+Altman) and, in pull request 4, the other 32 members (596 statements in 636 rows, 3,225 logged
+searches, every quiet year recorded; the frontier-lab traces of pull request 13 are folded in and the
+ten statements they sampled out are restored under amendment A26), plus surveys, prediction markets,
 polls and dated events, coded under methodology version 2. **The expert panel was frozen on
 2026-10-06** (amendment A18): 25 core members and a 2020s cohort of 12 in `data/speakers.csv`,
 and a wide list of 308 in `data/wide_list_candidates.csv`. The r/singularity pilot of the online
@@ -30,7 +32,7 @@ it from frozen thresholds, and since 2026-10-17 its headline is the average shar
 the slowest part named (amendment A25). The pace gauge's source series stopped updating in
 September 2026 and its successor is an open question (amendment A24). A weekly reading checks
 the record against the news every Monday (`docs/weekly-reading.md`; first run 2026-10-16 by
-hand). Next: the rest of the panel's traces, a frontier-voices chart, and the public streams.
+hand). Next: a frontier-voices chart, the dated-claims ledger, and the public streams.
 
 ## What's here
 
