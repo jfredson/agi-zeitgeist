@@ -249,7 +249,7 @@ def frontier_rows(statements=None, speakers=None):
     reading of coded rows (2026-10-17); nothing scored."""
     speakers = {r["speaker_id"]: r for r in (speakers or read("speakers.csv"))}
     out = []
-    for r in (statements or read("statements.csv")):
+    for r in measured(statements or read("statements.csv")):  # tip_only rows stay out of every figure (A29)
         if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
             continue
         if r["endorsement"] not in ("accepts", "uncertain", "conditional"):
