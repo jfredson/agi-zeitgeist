@@ -9,7 +9,15 @@ import csv
 import json
 import re
 import sys
-from datetime import date
+from datetime import date, datetime
+
+from zoneinfo import ZoneInfo
+
+
+def pacific_today():
+    """Today in Pacific time, John's clock. A cloud workspace keeps universal time, so an evening
+    run would otherwise be stamped a day ahead (John's ruling, 2026-10-18)."""
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "data"
@@ -148,7 +156,7 @@ def valid_date(value, precision=None, floor=date(1990, 1, 1)):
                 d = date(parts[0], parts[1], parts[2])
             except ValueError:
                 return False
-            return floor <= d <= date.today()
+            return floor <= d <= pacific_today()
     return False
 
 

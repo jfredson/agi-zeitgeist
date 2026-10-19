@@ -712,12 +712,20 @@ request as a comment of 2026-10-12 and applied by the commits that follow it.
 (Liang Wenfeng 11 statements, Arthur Mensch 6, Arvind Narayanan 29), so the collection covers all
 32 members. The paid check stays deferred.
 
+*Ruled by John, 2026-10-18 (relayed by the master session; applied 2026-10-19):* what counts as
+one statement for the busy-year line, which the collection raised. The codebook said a unit is
+"one statement by one speaker on one occasion", while the whole record has always counted each
+distinct passage of an essay, talk or interview as its own row. John ruled the passage count, as
+recommended. Methodology version 2 section 3, `docs/methodology.md` ("Busy years") and the
+codebook's section 0 now say so. Nothing is re-sampled: the collection's busy-year counts were
+already made by passage.
+
 Why: the second independent check of the collection (pull request 4, comment of
 2026-10-09) found that the codebook example conflicted with the ruling it illustrated,
 and that the method said nothing on ten points the collection had to decide. Recording
 the practice makes the next trace follow the same rules.
 
-## 2026-10-18: tip intake, a way in for panel statements found between full passes (number A-NEXT assigned at merge)
+## 2026-10-18: tip intake, a way in for panel statements found between full passes
 
 Decided by: mixed. The procedure (`docs/tip-intake.md`) and this amendment were drafted on
 2026-10-18 after John sent a link to Nick Bostrom's interview on The Roman Forum; the first run
@@ -725,7 +733,7 @@ on that interview (pull request 18) added a fourth open decision and a reading o
 against the audio". John ruled on 2026-10-18, through the master session, "all as
 recommended": the four open decisions, the reading, and this amendment.
 
-### A-NEXT. Tip intake
+### A29. Tip intake
 
 Applies to: `docs/methodology-v2.md` section 3 (stream E, collection), `docs/weekly-reading.md`
 ("Deferred: the frozen panel's new statements") and codebook section 9. Procedure:

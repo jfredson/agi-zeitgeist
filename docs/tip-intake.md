@@ -2,7 +2,7 @@
 
 Written 2026-10-18. Status: **RULED**. John ruled on 2026-10-18, through the master session,
 "all as recommended": the four decisions at the end, the step 1 rule for quotes, and amendment
-A-NEXT in `docs/amendments.md`, which records the change to the method. The first case run
+A29 in `docs/amendments.md`, which records the change to the method. The first case run
 under it is Nick Bostrom's interview on The Roman Forum (pull request 18).
 
 It answers a question John asked on 2026-10-18, after sending a link to Nick Bostrom's
@@ -138,7 +138,7 @@ Each decision keeps its alternative and its stated confidence for the record.
    John's own feed becomes a sampling frame, and it leans toward whatever the enthusiast
    venues are amplifying, which is the bias the vanguard sub-series is kept apart for.
    **Ruled 2026-10-18, by John: as recommended.** `scripts/charts.py` and `scripts/site.py`
-   leave the rows out, and the validator rejects `tip_only` without `tip` (A-NEXT).
+   leave the rows out, and the validator rejects `tip_only` without `tip` (A29).
 2. **Archived transcripts in a public repository.** Recommended: keep the files local (add
    `sources/*/` to `.gitignore`) and commit only `sources/manifest.csv`, so a reader can see
    what was archived, when, and its checksum, without the repository republishing a full

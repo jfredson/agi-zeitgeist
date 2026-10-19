@@ -18,9 +18,9 @@ named, a sentence on when each part crosses on current trends, and the verdict u
 `site/status.json` carries it as `headline`, `headline_label`, `average_share`,
 `crossing_sentence`, `crossings` and `parts_past_half`.
 
-**Status (2026-10-17):** seed phase complete and the whole frozen expert panel traced year by year:
+**Status (2026-10-19):** seed phase complete and the whole frozen expert panel traced year by year:
 the five people of the seed phase (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus, Sam
-Altman) and, in pull request 4, the other 32 members (596 statements in 636 rows, 3,225 logged
+Altman) and, in pull request 4 (merged 2026-10-19), the other 32 members (596 statements in 636 rows, 3,225 logged
 searches, every quiet year recorded; the frontier-lab traces of pull request 13 are folded in and the
 ten statements they sampled out are restored under amendment A26), plus surveys, prediction markets,
 polls and dated events, coded under methodology version 2. **The expert panel was frozen on
@@ -31,8 +31,11 @@ definition of entering the singularity was adopted on 2026-10-08 (amendment A19)
 it from frozen thresholds, and since 2026-10-17 its headline is the average share of the way with
 the slowest part named (amendment A25). The pace gauge's source series stopped updating in
 September 2026 and its successor is an open question (amendment A24). A weekly reading checks
-the record against the news every Monday (`docs/weekly-reading.md`; first run 2026-10-16 by
-hand). Next: a frontier-voices chart, the dated-claims ledger, and the public streams.
+the record against the news every Monday as a cloud routine (`docs/weekly-reading.md`; first
+run 2026-10-16 by hand, first unattended run 2026-10-19, audited in `docs/readings/`). A
+frontier-voices chart draws the panel's dated guesses with the people who build frontier AI
+apart from the people who study it (2026-10-19). Next: the dated-claims ledger and the public
+streams.
 
 ## What's here
 
@@ -56,7 +59,7 @@ hand). Next: a frontier-voices chart, the dated-claims ledger, and the public st
 | `docs/singularity-entry-thresholds.json` | the frozen values the page scores from; any change is an amendment |
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
-| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A-NEXT): how a panel statement John comes across enters the record; rows the fixed searches did not find carry `tip_only` and stay out of every figure |
+| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A29): how a panel statement John comes across enters the record; rows the fixed searches did not find carry `tip_only` and stay out of every figure |
 | `docs/panel-watch/` | draft social notes on panel statements, beside the rows they cite; Claude drafts, John posts |
 | `sources/manifest.csv` | archived primary sources (address, dates, checksum); the archived files themselves stay on the maintainer's machine and are not in the repository |
 | `docs/leg-c-second-source-2026-10.md` | reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read as a candidate outside-the-company measure for leg C; found to be context, not a second source |
