@@ -1004,22 +1004,42 @@ def copy_data():
 
 
 # ----------------------------------------------------------------------------- claims ledger
-# One file per dated claim by a panel member (data/claims/*.toml; docs/claims-ledger-method.md;
-# amendment A27). The page shows the claims per person with their verdicts; it scores nothing
+# One file per dated claim by one of the industry's figureheads, on the panel or on the ledger-only
+# list (data/claims/*.toml; docs/claims-ledger-method.md; amendments A27 and A30). The page shows the claims per person with their verdicts; it scores nothing
 # the home page scores and feeds nothing into the headline.
 CLAIM_FIELDS = ["id", "speaker_id", "when", "when_note", "occasion", "source_kind", "source_url", "source_locator",
                 "checked_how", "quote", "reported_as", "statement_id", "prediction", "kind", "bar", "due", "due_early",
                 "due_date", "due_basis", "is_goal", "has_probability", "restates", "repeated_on", "status", "verdict_on",
                 "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify"]
-# The order John ruled on 2026-10-17: Altman and Musk, then Amodei, then Huang, then the rest of the panel.
-LEDGER_ORDER = ["altman", "musk", "amodei", "huang"]
+# The order John ruled: Altman and Musk (2026-10-17), then the twelve he added on 2026-10-19 (A30).
+LEDGER_ORDER = ["altman", "musk", "amodei", "huang", "hassabis", "suleyman", "sutskever", "legg", "lecun",
+                "liangwenfeng", "mensch", "zuckerberg", "pichai", "nadella"]
 STATUS_WORDS = {"not_yet_due": "not yet due", "hit": "came true", "missed": "did not", "withdrawn": "took it back",
                 "unfalsifiable": "cannot be tested"}
 STATUS_CHIP = {"hit": "chip ok", "missed": "chip no", "withdrawn": "chip no", "not_yet_due": "chip", "unfalsifiable": "chip"}
 DIRECTION_WORDS = {"later": "came later than said", "not_come": "has not come", "sooner": "came sooner than said", "on_time": "came on time"}
-# One plain line on who each person is, for the page; anyone not named here gets the first clause of their speaker row.
-WHO = {"altman": "Head of OpenAI since 2019.", "musk": "Head of Tesla, SpaceX and xAI; co-founded OpenAI in 2015 and left its board in 2018.",
-       "amodei": "Head of Anthropic, which he co-founded in 2021.", "huang": "Head of Nvidia, which makes the chips the AI companies train on."}
+# One plain line on who each person is, for the page, as written HTML with the companies linked at their
+# first mention (the link-what-you-name rule); anyone not named here gets the first clause of their speaker row.
+WHO = {"altman": 'Head of <a href="https://openai.com/">OpenAI</a> since 2019; its co-chair from 2015.',
+       "musk": 'Head of <a href="https://www.tesla.com/">Tesla</a> and <a href="https://www.spacex.com/">SpaceX</a>; co-founded OpenAI in 2015 and left its board in 2018; founded <a href="https://x.ai/">xAI</a> in 2023.',
+       "amodei": 'Head of <a href="https://www.anthropic.com/">Anthropic</a>, which he co-founded in 2021.',
+       "huang": 'Head of <a href="https://www.nvidia.com/">Nvidia</a>, which he co-founded in 1993 and which makes the chips the AI companies train on.',
+       "hassabis": 'Head of <a href="https://deepmind.google/">Google DeepMind</a>, which he co-founded as DeepMind in 2010.',
+       "suleyman": 'Co-founder of DeepMind in 2010; co-founder and head of <a href="https://inflection.ai/">Inflection AI</a> from 2022; head of <a href="https://microsoft.ai/">Microsoft AI</a> since 2024. His words from 2019 to early 2022, when he held none of these roles, are not counted.',
+       "sutskever": 'Co-founder and chief scientist of OpenAI from 2015 to 2024; co-founder of <a href="https://ssi.inc/">Safe Superintelligence</a> in 2024 and its head since 2025.',
+       "legg": 'Co-founder and chief scientist of DeepMind from 2010, now Chief AGI Scientist of Google DeepMind. His words from before DeepMind was founded are not counted.',
+       "lecun": 'Chief AI scientist of <a href="https://about.meta.com/">Meta</a> from 2018 to 2025; since then executive chairman of the start-up <a href="https://techcrunch.com/2025/12/19/yann-lecun-confirms-his-new-world-model-startup-reportedly-seeks-5b-valuation/">AMI Labs</a>. His words as head of Facebook\'s AI research lab, 2013 to 2018, are not counted.',
+       "liangwenfeng": 'Founder and head of <a href="https://www.deepseek.com/">DeepSeek</a> since 2023.',
+       "mensch": 'Co-founder and head of <a href="https://mistral.ai/">Mistral AI</a> since 2023.',
+       "zuckerberg": 'Founder and head of Facebook, now Meta. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).',
+       "pichai": 'Head of <a href="https://about.google/">Google</a> since 2015 and of its parent <a href="https://abc.xyz/">Alphabet</a> since 2019. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).',
+       "nadella": 'Head of <a href="https://www.microsoft.com/">Microsoft</a> since 2014 and its chair since 2021. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).'}
+# Each person's name links, at its first mention on the page (the counts table), to their Wikipedia article.
+WHO_LINK = {sp: f"https://en.wikipedia.org/wiki/{slug}" for sp, slug in {
+    "altman": "Sam_Altman", "musk": "Elon_Musk", "amodei": "Dario_Amodei", "huang": "Jensen_Huang",
+    "hassabis": "Demis_Hassabis", "suleyman": "Mustafa_Suleyman", "sutskever": "Ilya_Sutskever", "legg": "Shane_Legg",
+    "lecun": "Yann_LeCun", "liangwenfeng": "Liang_Wenfeng", "mensch": "Arthur_Mensch", "zuckerberg": "Mark_Zuckerberg",
+    "pichai": "Sundar_Pichai", "nadella": "Satya_Nadella"}.items()}
 
 
 def load_claims():
@@ -1101,8 +1121,11 @@ def claims_page(sc, claims, built, commit):
             misses.append(f"{p['later']} came later than said")
         if p["not_come"]:
             misses.append(f"{p['not_come']} {'has' if p['not_come'] == 1 else 'have'} not come")
-        rows.append([esc(speakers[sp]["name"]), p["n"], p["due"], p["hit"], p["missed"] + p["withdrawn"], p["not_yet_due"], p["unfalsifiable"],
-                     esc(p["rate_label"]), esc("; ".join(misses) or ""), f'{p["statements_ahead"]} ({p["statements_dated"]} with a year)'])
+        name = esc(speakers[sp]["name"])
+        rows.append([f'<a href="{WHO_LINK[sp]}">{name}</a>' if sp in WHO_LINK else name, p["n"], p["due"], p["hit"], p["missed"] + p["withdrawn"], p["not_yet_due"], p["unfalsifiable"],
+                     esc(p["rate_label"]), esc("; ".join(misses) or ""),
+                     "none recorded: not on the list of experts" if speakers[sp]["tier"] == "claims_only"
+                     else f'{p["statements_ahead"]} ({p["statements_dated"]} with a year)'])
     counts_table = table(["who", "claims", "due", "came true", "did not", "not yet due", "cannot be tested", "rate", "which way the misses went", "coded statements that look ahead"], rows)
 
     n_all = len(claims)
@@ -1143,7 +1166,7 @@ def claims_page(sc, claims, built, commit):
                          f'<span class="dim"><b>What it commits to:</b> {esc(c["prediction"])} <b>The test:</b> {esc(c["bar"])}</span>{verdict}</li>')
         who = speakers[sp]
         sections.append(f'<h2 id="{esc(sp)}">{esc(who["name"])}</h2>'
-                        f'<p class="dim">{esc(WHO.get(sp, who["role_summary"].split(";")[0] + "."))} {p["n"]} dated claims: {p["hit"]} came true, {p["missed"] + p["withdrawn"]} did not'
+                        f'<p class="dim">{WHO.get(sp) or esc(who["role_summary"].split(";")[0] + ".")} {p["n"]} dated claims: {p["hit"]} came true, {p["missed"] + p["withdrawn"]} did not'
                         f'{f" (of which {p['withdrawn']} taken back)" if p["withdrawn"] else ""}, {p["not_yet_due"]} not yet due, {p["unfalsifiable"]} cannot be tested. {esc(p["rate_label"].capitalize())}.</p>'
                         f'<ul>{"".join(items)}</ul>')
 
@@ -1154,7 +1177,8 @@ def claims_page(sc, claims, built, commit):
 
 <h2>What this page is</h2>
 <p>The people who run the AI companies both sell the story and see further than anyone else. This page keeps a plain account of their predictions: each one that carried a date, in the person's own words, with where it was said, the test it will be judged by, and, once the date has passed, whether it came true. It answers one narrow question, how often each person's dated predictions have come true so far, and which way the misses went. It does not say whether anyone is right about the future, whether they are sincere, or whether the technology is good or bad. A person with a poor record may be right next time; one with a good record may have been lucky.</p>
-<p>A prediction gets in only if the person is on the site's fixed list of experts, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Whether it came true is never looked at when deciding what gets in. A prediction with no date ("AGI is coming", "we are close") is not scored; the table says how many of each person's recorded statements look ahead and how many of those carry a year, so vagueness stays visible. The full rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
+<p>The people on this page are the industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Eleven of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
+<p>A prediction gets in only if the person is one of these figureheads at the time, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Whether it came true is never looked at when deciding what gets in. A prediction with no date ("AGI is coming", "we are close") is not scored; the table says how many of each person's recorded statements look ahead and how many of those carry a year, so vagueness stays visible. The full rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
 <p>So far: {n_all} dated predictions by {len(people)} people, {n_due} of them due, of which {n_hit} came true, {n_missed} did not and {n_unf} cannot be tested. The people here were traced for their best-known, checkable predictions first, so these counts measure which predictions were easy to find; no one gets a percentage until they have been traced year by year with every search written down, and never from fewer than five due predictions.</p>
 {counts_table}
 <p class="dim">"Did not" includes predictions the person later took back. "Cannot be tested" means the words carry a date but no test anyone outside could run, or the only judge is the speaker; such predictions are shown and counted apart, never scored. A stated chance ("a 50% chance") is kept and marked but left out of the rate.</p>
@@ -1213,8 +1237,11 @@ def expert_dates():
     thinking work: target broad_competence), where the statement accepts, hedges or conditions it.
     Returns (median year, low, high, [(name, year, date, url)])."""
     speakers = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
+    panel = cs.panel(read("speakers.csv"))  # the experts' dates come from the panel only, never the ledger-only list (A30)
     latest = {}
     for r in cs.measured(read("statements.csv")):  # tip_only rows stay out of every figure
+        if r["speaker_id"] not in panel:
+            continue
         if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
             continue
         if r["endorsement"] not in ("accepts", "uncertain", "conditional"):
@@ -1328,11 +1355,11 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     }[sc["status"]]
 
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
-    _panel = {r["speaker_id"] for r in read("speakers.csv") if r["tier"] in ("core", "cohort_2020s")}
+    _panel = cs.panel(read("speakers.csv"))  # the ledger-only list (A30) is never counted as the panel
     _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
     n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
     cl = _CLAIMS
-    claims_line = (f'Of the {cl["claims"]} predictions with a date that the people who run the AI companies have made, {cl["due"]} are now due, and {cl["hit"]} came true. '
+    claims_line = (f'Of the {cl["claims"]} predictions with a date recorded so far from {len(cl["people"])} of the people who run the AI companies, {cl["due"]} are now due, and {cl["hit"]} came true. '
                    f'Each is on <a href="/claims/">the claims page</a> in their own words, with its source and its verdict.') if cl["claims"] else ""
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
