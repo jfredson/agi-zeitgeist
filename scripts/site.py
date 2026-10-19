@@ -467,6 +467,9 @@ def load_thresholds():
 # (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
+# The question the headline number answers (John, 2026-10-18); "Are we in the singularity?" sits
+# directly above its own answer, the verdict.
+HEADLINE_QUESTION = "How far along the way are we?"
 TAGLINE = ("A dated record of what people expect from artificial general intelligence, with every quote linked to its source, "
            "and a test of whether the singularity has begun.")
 # Labels ruled by John, 2026-10-08.
@@ -524,6 +527,7 @@ SITE_CSS = """
    numbers, serif only for the explanatory line. */
 .land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
 .land .eyebrow { margin-bottom: 18px; }
+.land .eyebrow-verdict { margin: 30px 0 10px; }
 .land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
@@ -1247,11 +1251,12 @@ def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
     market = (f' People betting on Manifold put the odds of AGI before 2030 at <a href="{esc(market_page(m["source_url"]))}">{float(m["value"])*100:.0f}%</a>.' if m else "")
     return f"""<section class="land">
 <div>
-<p class="eyebrow">Are we in the singularity?</p>
+<p class="eyebrow">{esc(HEADLINE_QUESTION)}</p>
 <p class="answer">{esc(sc["headline"])}</p>
 <p class="kicker">{esc(sc["headline_label"])}</p>
 <p class="shares">{" · ".join(f"{esc(n)} {v}" for n, v in share_rows)}</p>
 <p class="shares">{esc(ytl["_sentence"])}</p>
+<p class="eyebrow eyebrow-verdict">Are we in the singularity?</p>
 <h1><span class="verdict">{answer}</span> Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
@@ -1444,7 +1449,7 @@ def main():
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
     last_reading = max((p.stem for p in (ROOT / "data" / "readings").glob("*.json")), default=None)
     newest_measurement = max((r["date"] for r in world if r["speaker_id"] in ("metr", "anthropic_institute", "world_bank") and r["aggregate_id"] != "metr-th11-doubling-all"), default=None)
-    headline = {"headline": sc["headline"], "headline_label": sc["headline_label"], "crossing_sentence": ytl["_sentence"],
+    headline = {"headline_question": HEADLINE_QUESTION, "headline": sc["headline"], "headline_label": sc["headline_label"], "crossing_sentence": ytl["_sentence"],
                 "verdict": "Not yet." if sc["status"] == "not entered" else sc["status"], "status": sc["status"],
                 "average_share": round(sc["average_share"], 3), "progress": round(sc["progress"], 3), "bottleneck": sc["bottleneck"],
                 "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
@@ -1456,7 +1461,7 @@ def main():
         "progress_is_upper_bound": sc["progress_is_upper_bound"], "bottleneck": sc["bottleneck"],
         "gauges": {k: (round(sc[k]["gauge"], 3) if sc[k].get("measurable") else None) for k in "ABCD"},
         "unmeasured": sc["unmeasured"],
-        "headline": sc["headline"], "headline_label": sc["headline_label"],
+        "headline_question": HEADLINE_QUESTION, "headline": sc["headline"], "headline_label": sc["headline_label"],
         "average_share": round(sc["average_share"], 3), "parts_past_half": sc["parts_past_half"],
         "crossing_sentence": ytl["_sentence"],
         "crossings": {k: (list(v) if v else None) for k, v in ytl["_cross"].items()},
