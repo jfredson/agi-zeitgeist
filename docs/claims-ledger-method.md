@@ -98,7 +98,7 @@ how many of those carry a year, so vagueness stays visible without being scored.
 | `not_yet_due` | The due date has not passed: 31 December of the due year, or `due_date` where the words name an earlier point. Shown, not scored. A claim stays `not_yet_due` until its date passes even where the thing has already happened; the notes may say what has been seen so far, and the verdict is entered when the date passes. |
 | `hit` | By the due date, every condition in `bar` was met, shown by a dated primary source. |
 | `missed` | The due date has passed and the bar was not met, or only part of it was. The record says which condition failed. A near miss is a miss with the gap named; there is no "partly". |
-| `withdrawn` | The speaker later said the claim no longer holds, or replaced it. **Counted as missed in every total.** The word is kept apart only so the page can show that they took it back, and when. |
+| `withdrawn` | The speaker later said the claim no longer holds: a retraction, not a new date. **Counted as missed in every total.** The word is kept apart only so the page can show that they took it back, and when. A claim the speaker re-dates is not withdrawn: it is a changed repeat (see Restatements), and the earlier claim keeps its own due date and gets its verdict then (ruled by John 2026-10-19). |
 | `unfalsifiable` | The claim has a date but no bar an outsider could test, or its only judge is the speaker ("we will have an internal system I would call AGI"). Decided at entry, when `bar` is written; shown and counted apart, left out of the rate, and a bar is never supplied after the fact. This is the rule the leg B ledger uses for its "no bar" rows. |
 
 Verdicts are entered by hand and dated. Nothing scores a claim automatically.
@@ -115,6 +115,11 @@ Verdicts are entered by hand and dated. Nothing scores a claim automatically.
 - **Timing** ("AGI by 2027", "superintelligence in a few thousand days", "Grok 3 by the end of
   the year"). For a named stage, the bar is the definition the speaker gives in the same source;
   with none, the claim is `unfalsifiable` unless the plainest reading supplies a bar at entry.
+  A named comparison gives a plain reading; a named stage does not. Musk's "smarter than the
+  smartest human" keeps a bar because it names a comparison that can be checked (better than
+  the best person at thinking work), while Altman's "superintelligence in a few thousand days"
+  is `unfalsifiable` because it names a stage he never defines in the source (ruled by John
+  2026-10-19).
   The ledger never borrows the singularity test's thresholds for this, because that would let
   the ledger move the test. For a named thing coming out, the bar is its release.
 - **Deployment** ("a robotaxi service by Y", "a billion users by Y"). The maker's own release, a

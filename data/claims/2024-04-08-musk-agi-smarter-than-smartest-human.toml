@@ -15,11 +15,6 @@ bar = "His own definition: an AI smarter than the smartest human. No test of tha
 due = 2026
 due_early = 2025
 due_basis = "A range: 'end of next year' is 2025-12-31 and 'within two years' from 2024-04-08 is April 2026. The later end, 2026, is taken as the rule says; the earlier end is recorded."
-status = "withdrawn"
-verdict_on = 2026-01-22
-verdict_why = "He replaced the date himself. At the World Economic Forum on 2026-01-22 he said 'we might have AI that is smarter than any human by the end of this year and I would say no later than next year', moving the date from the end of 2025 (or April 2026) to the end of 2026 or 2027. Nobody has shown or announced an AI smarter than the smartest human. Counted as missed, as the rule says for a withdrawn claim."
-verdict_source = "https://www.youtube.com/watch?v=IgifEgm1-e0"
-evidence_by = "maker"
-direction = "not_come"
+status = "not_yet_due"
 search_ids = ["musk-claims-007", "musk-claims-018"]
-notes = "A judgement call: there is no agreed test for 'smarter than the smartest human', so the record rests on his own later words moving the date, not on a benchmark. The 2026 restatement is its own record, 2026-01-22-musk-ai-smarter-than-any-human-end-of-year. The seed list of 2026-10-17 had this as missed; withdrawn is the status word the method gives a claim its maker replaced, and it counts the same."
+notes = "Restated with a later date at the World Economic Forum on 2026-01-22 (2026-01-22-musk-ai-smarter-than-any-human-end-of-year: 'smarter than any human by the end of this year ... no later than next year'). Under the restatement rule this claim keeps its own due date: not yet due until 2026-12-31, the later end of its range, and its verdict is given then. At entry on 2026-10-17 it was marked withdrawn, reading the Davos words as a replacement; John ruled on 2026-10-19 ('agreed on all') that a re-dated claim is a restatement, not a withdrawal. The bar is a plain reading because the claim names a comparison that can be checked (method, bar rule). As of 2026-10-19 nobody has shown or announced an AI smarter than the smartest human. The seed list of 2026-10-17 had this as missed by the earlier end, 2025."
