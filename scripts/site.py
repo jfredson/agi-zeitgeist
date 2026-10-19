@@ -1119,6 +1119,9 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     }[sc["status"]]
 
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
+    _panel = {r["speaker_id"] for r in read("speakers.csv") if r["tier"] in ("core", "cohort_2020s")}
+    _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
+    n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
@@ -1129,6 +1132,11 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+
+<p>Fifth, and this is a reading of the same rows rather than a new measure: the people building these systems have named about the same year all along, and the people studying them have come down to meet it. The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems from the rest: the academics, the critics and the philosophers. A builder has a front-row seat and a product to sell; a critic has neither. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+
+<figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
+<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
 <p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
@@ -1145,7 +1153,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
-<p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
+<p>This rests on the {n_panel} people on the expert panel, each traced year by year from their first public statement on AGI ({n_statements} statements in all, every search written down), {len(b_pts)} waves of the largest survey of AI researchers, opinion polls, betting markets and one online forum. A weekly reading adds what is new.</p>
 <p>Expecting it soon is not the same as it happening. Whether the singularity has actually begun is the test below.</p>
 </section>
 
