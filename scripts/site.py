@@ -769,6 +769,10 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
                 f'{f"<p class=lede>{lede}</p>" if lede else ""}</section>')
     bg = '<div class="space-bg" aria-hidden="true"></div>' if backdrop else ""
     year = built[:4]
+    # The preview picture: a news post passes its own card; every other page carries the site's picture
+    # (site/social-preview.png, made by scripts/social-image.mjs). One set of image tags per page.
+    preview = image or "/social-preview.png"
+    preview_alt = esc(title) if image else "AGI Zeitgeist Tracker: Are we in the singularity?"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -786,8 +790,13 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta property="og:url" content="{SITE_URL}{esc(canonical_path)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
-<meta name="twitter:card" content="{"summary_large_image" if image else "summary"}">
-{f'<meta property="og:image" content="{SITE_URL}{esc(image)}"><meta name="twitter:image" content="{SITE_URL}{esc(image)}">' if image else ""}
+<meta property="og:image" content="{SITE_URL}{esc(preview)}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{preview_alt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE_URL}{esc(preview)}">
 <link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
