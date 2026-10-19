@@ -473,7 +473,9 @@ HEADLINE_QUESTION = "How far along the way are we?"
 TAGLINE = ("A dated record of what people expect from artificial general intelligence, with every quote linked to its source, "
            "and a test of whether the singularity has begun.")
 # Labels ruled by John, 2026-10-08.
-NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/claims/", "Claims"), ("/#method", "Method and Data"), ("/news/", "News")]  # "Claims": amendment A27; News: tracker pattern rule 4.10, John 2026-10-18
+# Short handles (tracker pattern rule 4.7, ruled for this site by John on 2026-10-18): one word per page, so the
+# bar holds one row on laptop and tablet widths; the full names stay as the sections' own headings.
+NAV_PRIMARY = [("/#belief", "Zeitgeist"), ("/#singularity", "Singularity"), ("/claims/", "Claims"), ("/#method", "Method"), ("/news/", "News")]  # "Claims": amendment A27; News: tracker pattern rule 4.10, John 2026-10-18
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
 NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
 FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Disagree with something"),
