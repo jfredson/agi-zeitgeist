@@ -760,7 +760,7 @@ def long_date(iso):
 
 def provenance(built, commit):
     """The plain-language provenance clause of the attribution line (design standard, section 8)."""
-    n_statements = len(read("statements.csv"))
+    n_statements = len(cs.measured(read("statements.csv")))  # tip_only rows are noted, not counted
     n_world = len(read("world_measures.csv"))
     posts = DATA / "vanguard" / "full-run-posts.csv"
     n_posts = (sum(1 for _ in posts.open(encoding="utf-8")) - 1) if posts.exists() else 0
@@ -858,6 +858,23 @@ DOC_PURPOSE = {
 }
 
 
+def noted_outside_record():
+    """The changelog's list of tip_only statements: in the record, left out of every figure and share
+    (docs/tip-intake.md, open decision 1, ruled by John 2026-10-18). Written from statements.csv at build."""
+    rows = [r for r in read("statements.csv") if cs.tip_only(r)]
+    names = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
+    head = ('<h2 id="noted-outside-the-measured-record">Noted, outside the measured record</h2>'
+            '<p>Statements that came in by tip (<a href="tip-intake.html">tip intake</a>) and that the fixed searches '
+            'did not find. They are kept in <a href="../data/statements.csv">the statements table</a> and left out of '
+            'every figure and share until the searches find their source.</p>')
+    if not rows:
+        return head + "<p>None at present.</p>"
+    items = "".join(f'<li><code>{esc(r["statement_id"])}</code>, {esc(names.get(r["speaker_id"], r["speaker_id"]))}, '
+                    f'{esc(r["date"])}: {esc(r["claim_summary"])} <a href="{esc(r["source_url"])}">Source</a>.</li>'
+                    for r in sorted(rows, key=lambda r: (r["date"], r["statement_id"])))
+    return head + f"<ul>{items}</ul>"
+
+
 def render_docs(built, commit):
     """Render every Markdown document to site/docs/ with pandoc, in the shared shell, rewriting links between them."""
     out_root = SITE / "docs"
@@ -888,6 +905,8 @@ def render_docs(built, commit):
         folder = {"vanguard": "Online communities pilot", "reviews": "Outside review", "amendments": "Amendment",
                   "panel-evidence-2026-10": "Panel evidence", "feasibility": "Feasibility check"}.get(rel.parts[0] if depth else "", "Document")
         note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at version {esc(commit)}.</p>'
+        if rel.as_posix() == "amendments.md":
+            body += noted_outside_record()
         what = DOC_PURPOSE.get(rel.with_suffix("").as_posix(), "")
         preface = ('<div class="status"><strong>A working document.</strong> ' + (what + ' ' if what else '') +
                    'It is one of the documents the site is built from, published as it is written for anyone checking the work, '
@@ -1189,7 +1208,7 @@ def expert_dates():
     Returns (median year, low, high, [(name, year, date, url)])."""
     speakers = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
     latest = {}
-    for r in read("statements.csv"):
+    for r in cs.measured(read("statements.csv")):  # tip_only rows stay out of every figure
         if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
             continue
         if r["endorsement"] not in ("accepts", "uncertain", "conditional"):

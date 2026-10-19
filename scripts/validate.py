@@ -96,7 +96,8 @@ PRECISION_PATTERNS = {
     "month": re.compile(r"^\d{4}-\d{2}$"),
     "year": re.compile(r"^\d{4}$"),
 }
-NOTE_TAGS = {"secondhand", "incidental", "sampled", "lower_bound"}
+NOTE_TAGS = {"secondhand", "incidental", "sampled", "lower_bound",
+             "tip", "tip_only", "asr_unverified"}  # tip intake (docs/tip-intake.md), ruled by John 2026-10-18
 # Books, papers and recorded talks may carry a full citation instead of a link.
 CITATION_TYPES = {"book", "paper", "talk"}
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
@@ -287,6 +288,11 @@ def check_statements(rows, speakers):
         check_timeline(f, i, r)
         if "secondhand" in note_tags(r["notes"]) and r["coding_confidence"] != "low":
             err(f, i, "secondhand rows must have coding_confidence low")
+        tags = note_tags(r["notes"])
+        if "tip_only" in tags and "tip" not in tags:
+            err(f, i, "tip_only is only for rows that came in by tip; the notes must also carry tip")
+        if "asr_unverified" in tags and r["coding_confidence"] == "high":
+            err(f, i, "asr_unverified rows must have coding_confidence medium or low")
 
 
 def normalise(text):

@@ -777,3 +777,72 @@ Why: the second independent check of the collection (pull request 4, comment of
 2026-10-09) found that the codebook example conflicted with the ruling it illustrated,
 and that the method said nothing on ten points the collection had to decide. Recording
 the practice makes the next trace follow the same rules.
+
+## 2026-10-18: tip intake, a way in for panel statements found between full passes
+
+Decided by: mixed. The procedure (`docs/tip-intake.md`) and this amendment were drafted on
+2026-10-18 after John sent a link to Nick Bostrom's interview on The Roman Forum; the first run
+on that interview (pull request 18) added a fourth open decision and a reading of "checked
+against the audio". John ruled on 2026-10-18, through the master session, "all as
+recommended": the four open decisions, the reading, and this amendment.
+
+### A29. Tip intake
+
+Applies to: `docs/methodology-v2.md` section 3 (stream E, collection), `docs/weekly-reading.md`
+("Deferred: the frozen panel's new statements") and codebook section 9. Procedure:
+`docs/tip-intake.md`.
+
+Was: stream E rows come only from the year-by-year trace, run per person with fixed queries
+(methodology section 3; version 1 query set D1 to D3, Y1 to Y3). The weekly reading may not
+add a statement by a panel member; part 4, which will find and log the panel's new
+statements, is deferred until full collection lands. A statement John comes across has no
+defined way in.
+
+Now:
+
+1. **One way in.** A panel statement found outside a full pass (sent by John, or, once part 4
+   is live, found by the weekly reading) enters through `docs/tip-intake.md`: primary source
+   archived with a checksum in `sources/manifest.csv`; speaker checked against the frozen
+   tiers; the person's fixed year queries and own outlets searched and logged; candidate
+   statements coded under the codebook by the same procedure as the collection; notes tagged
+   `tip`, and `tip; tip_only` where the fixed searches do not find the source. People not on
+   any tier are not coded; they are listed in `docs/panel-candidates.md` for the next panel
+   review. Part 4 of the weekly reading, when it goes live, follows the same file.
+2. **`tip_only` rows are kept and not counted.** They stay in `data/statements.csv` and are
+   left out of every figure and share. The site lists them on the changelog page under "Noted,
+   outside the measured record", written from the table at each build. At the person's next
+   full pass the same searches are run again and logged, and `tip_only` is lifted from a row
+   if they then find the source or a report of the same appearance; the re-run only ever lifts
+   the tag.
+3. **Transcripts stay local.** Archived source files are kept out of the repository
+   (`sources/*/` in `.gitignore`); only `sources/manifest.csv` is committed, with each file's
+   address, dates and checksum.
+4. **Quotes from machine captions.** "Checked against the audio" means two automatic
+   transcripts from separate programs agree on the quoted words (the platform's captions and a
+   local Whisper transcription of the audio), word for word, ignoring case, punctuation and
+   filler sounds; nobody listens by ear. A quote they disagree on, or that has no second
+   transcript, carries `asr_unverified` and `coding_confidence` no higher than `medium`. This
+   is the rule John ruled for The Upgrade Tree on 2026-10-17.
+5. **Panel watch notes** are drafted in `docs/panel-watch/`, beside the rows they cite; Claude
+   drafts and John posts.
+6. **Codebook section 9** gains three notes tags: `tip`, `tip_only` and `asr_unverified`.
+7. **Enforcement.** `scripts/chart_style.py` gains `tip_only()` and `measured()`;
+   `scripts/charts.py` and `scripts/site.py` compute every figure and the site's statement
+   count from `measured()` rows only. `scripts/validate.py` knows the three tags, rejects
+   `tip_only` without `tip`, and rejects `asr_unverified` with `coding_confidence: high`.
+
+Why: prominent panel members now speak mostly in long interviews and podcasts, and those are
+where the "now" question gets answered. The trace already misses them when no transcript
+exists: Bostrom's Joe Rogan Experience appearance of 2026-07-14 is logged as "not recorded:
+summary writer's paraphrase only, no transcript" (search log `bostrom-120`). Tip intake
+supplies the transcript and the archive. The `tip_only` rule keeps the hand route from
+becoming a sampling frame: a tip can make the record faster, never different from what the
+rule would produce. The re-run in item 2 is there because a test run the day a tip arrives
+measures how fast search engines index a new source as much as the rule's reach; the first
+case, two days old, was not found even by a search for its exact title (`bostrom-127`).
+
+Effect on the first case: the nine Bostrom rows of 2026-10-16 (`bostrom-2026-02a` to
+`bostrom-2026-08`) are `tip_only` and change no figure. The draft panel watch note on them
+(`docs/panel-watch/2026-10-18-bostrom.md`) is not posted; John ruled it is not one of the
+Sentient Horizons outreach trials, and it goes to the first outreach review on 2026-10-24 as a
+proposal. Nothing scored changes: statements never score a gauge.

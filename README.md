@@ -60,6 +60,9 @@ streams.
 | `docs/singularity-entry-thresholds.json` | the frozen values the page scores from; any change is an amendment |
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
+| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A29): how a panel statement John comes across enters the record; rows the fixed searches did not find carry `tip_only` and stay out of every figure |
+| `docs/panel-watch/` | draft social notes on panel statements, beside the rows they cite; Claude drafts, John posts |
+| `sources/manifest.csv` | archived primary sources (address, dates, checksum); the archived files themselves stay on the maintainer's machine and are not in the repository |
 | `docs/leg-c-second-source-2026-10.md` | reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read as a candidate outside-the-company measure for leg C; found to be context, not a second source |
 | `docs/headline-proposal-2026-10-17.md` | the headline proposal (2026-10-17): the three forms and what each showed that day; ruled as the count that afternoon and revised to the average with a crossing sentence that evening (amendment A25) |
 | `docs/leg-c-second-source-2026-10-17.md` | reading note (2026-10-17): the wider search for a leg C second source (venue disclosure statistics, researcher surveys, independent measurements); 26 candidates judged, none qualifies, no row added; three near misses and the questions they raise are set out for John |

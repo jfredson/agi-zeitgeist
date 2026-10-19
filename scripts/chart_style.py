@@ -30,6 +30,17 @@ def read(name):
         return list(csv.DictReader(f))
 
 
+def tip_only(row):
+    """A statement that came in by tip and that the fixed searches did not find (docs/tip-intake.md).
+    It stays in the record and out of every figure and share (ruled by John 2026-10-18)."""
+    return any(part.strip().split(":")[0].strip() == "tip_only" for part in (row.get("notes") or "").split(";"))
+
+
+def measured(rows):
+    """The statements figures and shares are computed from: every row except tip_only rows."""
+    return [r for r in rows if not tip_only(r)]
+
+
 def figure(w=10, h=6, **kw):
     """A figure on the site's surface with quiet axes: no frame, no tick marks."""
     fig, ax = plt.subplots(figsize=(w, h), dpi=160, **kw)
