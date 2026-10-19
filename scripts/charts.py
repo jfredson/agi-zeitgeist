@@ -277,7 +277,7 @@ def chart_frontier(statements=None, speakers=None):
         return {y: statistics.median(v) for y, v in by.items() if len(v) >= 2}
 
     fig, ax = figure(10, 6.2)
-    fig.subplots_adjust(left=0.11, right=0.97, top=0.80, bottom=0.12)
+    fig.subplots_adjust(left=0.11, right=0.97, top=0.76, bottom=0.12)
     for builder, col, label in ((False, OTHER, "People who study it"), (True, BUILDER, "People who build it")):
         rs = groups[builder]
         xs = [r["said"] + (0.15 if builder else -0.15) for r in rs]
@@ -302,7 +302,7 @@ def chart_frontier(statements=None, speakers=None):
     ax.set_axisbelow(True)
     ax.set_xlabel("When the guess was made", fontsize=9, color=INK_2)
     ax.set_ylabel("The year they said machines would match people at most thinking work", fontsize=9, color=INK_2)
-    ax.legend(loc="upper right", frameon=False, fontsize=9)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=2, frameon=False, fontsize=9)
 
     # The title states what the data shows, computed so it stays true as rows are added.
     def recent(rs, years):
@@ -322,8 +322,8 @@ def chart_frontier(statements=None, speakers=None):
     else:
         title = "Too few dated guesses on one side yet to compare the builders with the others"
     titles(fig, title,
-           "Each dot is one dated guess by a panel member; the lines join each group's median for the years with two or more guesses. "
-           "A builder is anyone tagged as working at a frontier lab at any time (speakers.csv).",
+           "Each dot is one dated guess by a panel member; the lines join each group's median for the years with two or more guesses.\n"
+           "A builder is anyone on the panel who has worked at a company that builds frontier AI systems.",
            "Guesses in the person's own words only, for machines matching people at most thinking work. Source: agizeitgeist.com/data")
     return save(fig, "zeitgeist-frontier.png")
 

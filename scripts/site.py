@@ -448,7 +448,9 @@ def load_thresholds():
 # knows plus what the page has already said. The working documents are published as written, each
 # with a preface saying what it is; the plain account lives on the home page.
 # The page shell follows the Sentient Horizons design standard (sentient-horizons/design/README.md):
-# the skeleton site/shell.css (copied unchanged from the standard, version in its header) and this
+# the icon set (favicon.svg is the source; the PNGs, the .ico and site.webmanifest are rendered from it by the
+# family's icons script, sentient-horizons/site/scripts/icons.mjs, pointed at site/), the skeleton site/shell.css
+# (copied unchanged from the standard, version in its header) and this
 # site's skin site/skin.css ("Gazette", ruled by John 2026-10-17: newsprint, ink, one red for the mark
 # and for links, a blue-grey for the gauge bars; light by default), the top bar with two tiers and the
 # theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
@@ -459,7 +461,7 @@ SITE_TITLE = "AGI Zeitgeist Tracker"
 TAGLINE = ("A dated record of what people expect from artificial general intelligence, with every quote linked to its source, "
            "and a test of whether the singularity has begun.")
 # Labels ruled by John, 2026-10-08.
-NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data")]
+NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data"), ("/news/", "News")]  # News: tracker pattern rule 4.10, John 2026-10-18
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
 NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
 FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Disagree with something"),
@@ -592,7 +594,154 @@ details p { color: var(--text-soft); }
 /* The When? box: a boxed item between double rules, no panel fill. */
 .card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
 figure.fig { border-radius: 0; }
+.footer-follow { margin: 4px 0 0; font-size: 12.5px; } .footer-follow a { color: var(--muted); }
+.news-follow { font-family: var(--sans); font-size: 13.5px; color: var(--muted); max-width: 760px; margin-top: 22px; border-top: 1px solid var(--line); padding-top: 10px; }
+/* ---- news (tracker pattern, rules 4.10 to 4.13; John 2026-10-18) ---- */
+.news-list { list-style: none; padding: 0; margin: 0; max-width: 760px; }
+.news-item { border-top: 1px solid var(--line); padding: 18px 0; }
+.news-item time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.news-item .kind { font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-left: 10px; }
+.news-item h3 { margin: 4px 0 6px; font-size: 21px; line-height: 1.25; }
+.news-item h3 a { text-decoration: none; color: var(--text); }
+.news-item p { margin: 0; color: var(--text-soft); font-size: 15.5px; }
+.news-foot { font-family: var(--sans); font-size: 13.5px; color: var(--muted); max-width: 760px; border-top: 3px double var(--line-strong); padding-top: 12px; margin-top: 8px; }
+.opener { max-width: 760px; border: 1px solid var(--line-strong); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 18px 22px 14px; margin: 0 0 26px; background: var(--panel); }
+.opener .k { font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+.opener h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.25; }
+.opener h3 a { text-decoration: none; color: var(--text); }
+.opener p { margin: 0; color: var(--text-soft); font-size: 15.5px; }
+.opener .meta { margin-top: 8px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.post { max-width: 760px; }
+.post h2 { font-size: 20px; margin: 30px 0 8px; }
+.post p { font-size: 17px; line-height: 1.6; }
+.post table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14.5px; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); margin: 18px 0 22px; }
+.post td, .post th { text-align: left; padding: 8px 10px 8px 0; vertical-align: top; border-bottom: 1px solid var(--line); }
+.post th { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.post .stand-in { border: 1px dashed var(--line-strong); padding: 8px 12px; font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; }
+.post-record { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 12px; }
+.post-record .rec { font-family: var(--sans); font-size: 14px; color: var(--text-soft); margin: 0 0 8px; }
+.post-record .sources { font-family: var(--sans); font-size: 13.5px; color: var(--muted); margin: 0; }
+.section.news { padding-top: 0; }
+.in-the-news { border-left: 3px solid var(--accent); padding: 10px 14px; margin: 18px 0; background: var(--callout-bg); font-family: var(--sans); font-size: 14px; max-width: 760px; }
+.in-the-news .k { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
+
 """
+
+
+# ----------------------------------------------------------------------------- news
+# The news section (tracker pattern, rules 4.10 to 4.16; ruled by John 2026-10-18, the pattern built
+# first on Outrunning Ageing): one post per event of note in docs/news/YYYY-MM-DD-slug.md, rendered
+# through the same shell as the documents to site/news/<slug>/, with the list at site/news/ (the
+# opening post pinned at the top) and an RSS feed at site/news/feed.xml. A post's card,
+# site/news/<slug>-card.png, is drawn by scripts/news_cards.py when the post is written and
+# committed; scripts/check_news.py refuses a post that cannot be trusted. The records here are rows
+# and amendments, not pages, so a post names the amendment it explains and the page links the changelog.
+NEWS_KINDS = {"start-here": "start here", "rung-reached": "a line crossed", "estimate-revised": "a measure revised",
+              "flagged-item-ruled": "a flagged item ruled", "claim": "a claim added or settled",
+              "headline-moved": "the headline moved", "method-changed": "the method changed"}
+
+
+def news_frontmatter(text):
+    """The post's frontmatter: scalars, [a, b] lists, and lists of label/url tables."""
+    if not text.startswith("---\n"):
+        return {}, text
+    end = text.find("\n---", 4)
+    head, body = text[4:end], text[end + 4:]
+    data, key = {}, None
+    for raw in head.split("\n"):
+        if not raw.strip():
+            continue
+        if raw.lstrip().startswith("- ") and key is not None:
+            item = raw.lstrip()[2:].strip()
+            k, v = item.split(":", 1)
+            data.setdefault(key, []).append({k.strip(): v.strip().strip('"')})
+            continue
+        if raw.startswith("  ") and ":" in raw and key is not None and isinstance(data.get(key), list) and data[key] and isinstance(data[key][-1], dict):
+            k, v = raw.strip().split(":", 1)
+            data[key][-1][k.strip()] = v.strip().strip('"')
+            continue
+        m = re.match(r"^([A-Za-z_]+):\s*(.*)$", raw)
+        if not m:
+            continue
+        key, val = m.group(1), m.group(2).strip()
+        if val == "":
+            data[key] = []
+        elif val.startswith("[") and val.endswith("]"):
+            data[key] = [x.strip().strip('"') for x in val[1:-1].split(",") if x.strip()]
+        else:
+            data[key] = val.strip('"')
+    return data, body.lstrip("\n")
+
+
+def render_news(built, commit):
+    out_root = SITE / "news"
+    out_root.mkdir(exist_ok=True)
+    posts = []
+    for src in sorted((DOCS / "news").glob("*.md")):
+        fm, body = news_frontmatter(src.read_text(encoding="utf-8"))
+        html = subprocess.run(["pandoc", "-f", "gfm", "-t", "html5"], input=body, capture_output=True, text=True, check=True).stdout  # the body only
+        slug = src.stem
+        posts.append({"slug": slug, "fm": fm, "html": html, "words": len(body.split())})
+    posts.sort(key=lambda p: (p["fm"].get("date", ""), p["slug"]), reverse=True)
+    opener = next((p for p in posts if p["fm"].get("kind") == "start-here"), None)
+    dated = [p for p in posts if p["fm"].get("kind") != "start-here"]
+    for p in posts:
+        fm = p["fm"]
+        kind = NEWS_KINDS.get(fm.get("kind"), fm.get("kind", ""))
+        records = fm.get("records") or []
+        record_line = ""
+        if fm.get("kind") != "start-here":
+            parts = [f'<a href="/docs/amendments">amendment {esc(r)}</a>' if re.match(r"^A\d+$", r) else esc(r) for r in records]
+            srcs = fm.get("sources") or []
+            srcs = fm.get("sources") or []
+            src_html = " · ".join('<a href="%s" rel="noopener">%s</a>' % (esc(x.get("url", "")), esc(x.get("label", ""))) for x in srcs)
+            record_line = ('<section class="post-record">' +
+                           ('<p class="rec">The record: %s · <a href="/docs/amendments">the changelog</a>.</p>' % " · ".join(parts) if parts else "") +
+                           ('<p class="sources">Sources: %s.</p>' % src_html if srcs else "") +
+                           "</section>")
+        card = f"/news/{p['slug']}-card.png" if (out_root / f"{p['slug']}-card.png").exists() else None
+        follow = '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a>.</p>'
+        body_html = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
+        page = shell(f"{fm.get('title', p['slug'])} | {SITE_TITLE}", fm.get("summary", ""), body_html, built, commit,
+                     canonical_path=f"/news/{p['slug']}/", eyebrow=f"News · {long_date(fm['date'])} · {kind}", h1=fm.get("title", p["slug"]),
+                     lede=(None if fm.get("kind") == "start-here" else esc(fm.get("summary", ""))), active="/news/", image=card)
+        (out_root / p["slug"]).mkdir(exist_ok=True)
+        (out_root / p["slug"] / "index.html").write_text(page, encoding="utf-8")
+    items = ""
+    if opener:
+        fm = opener["fm"]
+        items += (f'<div class="opener"><span class="k">Start here</span><h3><a href="/news/{opener["slug"]}/">{esc(fm["title"])}</a></h3>'
+                  f'<p>{esc(fm.get("summary", ""))}</p><p class="meta">{long_date(fm["date"])} · about {round(opener["words"] / 100) * 100:,} words · <a href="/news/{opener["slug"]}/">read it</a></p></div>')
+    if dated:
+        items += '<ul class="news-list">' + "".join(
+            f'<li class="news-item"><time datetime="{p["fm"]["date"]}">{p["fm"]["date"]}</time><span class="kind">{esc(NEWS_KINDS.get(p["fm"].get("kind"), ""))}</span>'
+            f'<h3><a href="/news/{p["slug"]}/">{esc(p["fm"]["title"])}</a></h3><p>{esc(p["fm"].get("summary", ""))}</p></li>' for p in dated) + "</ul>"
+    else:
+        items += '<p class="empty">No post yet. The first is written the day something of note moves.</p>'
+    foot = ('<p class="news-foot">Every change to the method and the record, including the ones no post explains, is in <a href="/docs/amendments">the changelog</a>. '
+            'The weekly readings are in <a href="https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings" rel="noopener">the public record</a>. </p>' + '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a>.</p>')
+    lede = ("A post is written only when a weekly reading or a ruling changes something a reader would want explained: a new measurement on one of the four parts, "
+            "the headline moving, a claim added to the ledger or settled, the method changed. Each post says what happened, where the record is, what it changes on this site, and what it does not mean.")
+    page = shell(f"News | {SITE_TITLE}", "What moved the test, and why: one post for each change a reader would want explained.",
+                 f'<section class="section news">{items}{foot}</section>', built, commit, canonical_path="/news/", eyebrow="News", h1="What moved the test, and why", lede=lede, active="/news/")
+    (out_root / "index.html").write_text(page, encoding="utf-8")
+    # the feed: RSS, full text, the card as the picture
+    from email.utils import format_datetime
+    from datetime import datetime, timezone
+    rss_items = ""
+    for p in posts:
+        fm = p["fm"]
+        d = datetime.fromisoformat(fm["date"]).replace(hour=12, tzinfo=timezone.utc)
+        card = out_root / f"{p['slug']}-card.png"
+        enclosure = f'<enclosure url="{SITE_URL}/news/{p["slug"]}-card.png" length="{card.stat().st_size}" type="image/png"/>' if card.exists() else ""
+        rss_items += (f"<item><title>{esc(fm['title'])}</title><link>{SITE_URL}/news/{p['slug']}/</link><guid>{SITE_URL}/news/{p['slug']}/</guid>"
+                      f"<pubDate>{format_datetime(d)}</pubDate><description>{esc(fm.get('summary', ''))}</description>"
+                      f"<content:encoded><![CDATA[{p['html']}]]></content:encoded>{enclosure}</item>")
+    feed = (f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">'
+            f'<channel><title>{SITE_TITLE} · News</title><link>{SITE_URL}/news/</link><description>What moved the test, and why: one post for each change a reader would want explained.</description>'
+            f'<language>en-gb</language><atom:link href="{SITE_URL}/news/feed.xml" rel="self" type="application/rss+xml"/>{rss_items}</channel></rss>')
+    (out_root / "feed.xml").write_text(feed, encoding="utf-8")
+    return len(posts)
 
 
 def long_date(iso):
@@ -610,7 +759,7 @@ def provenance(built, commit):
             f"{n_world} measurements of AI and the economy and {n_posts} community posts.")
 
 
-def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None):
+def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None, image=None):
     nav1 = "".join(f'<a href="{esc(h)}" class="nav-primary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_PRIMARY)
     nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in NAV_SECONDARY)
     links = "".join(f'<a href="{esc(h)}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in FOOTER_LINKS)
@@ -620,6 +769,10 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
                 f'{f"<p class=lede>{lede}</p>" if lede else ""}</section>')
     bg = '<div class="space-bg" aria-hidden="true"></div>' if backdrop else ""
     year = built[:4]
+    # The preview picture: a news post passes its own card; every other page carries the site's picture
+    # (site/social-preview.png, made by scripts/social-image.mjs). One set of image tags per page.
+    preview = image or "/social-preview.png"
+    preview_alt = esc(title) if image else "AGI Zeitgeist Tracker: Are we in the singularity?"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -637,8 +790,20 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta property="og:url" content="{SITE_URL}{esc(canonical_path)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{SITE_URL}{esc(preview)}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{preview_alt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE_URL}{esc(preview)}">
+<link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/shell.css">
 <link rel="stylesheet" href="/skin.css">
 <style>{SITE_CSS}</style>
@@ -659,7 +824,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
@@ -689,7 +854,7 @@ def render_docs(built, commit):
     out_root.mkdir()
     # Session handoff notes are instructions from one working session to the next, not part of
     # the record, so they stay in the repository and off the public site (John, 2026-10-08).
-    sources = sorted(p for p in DOCS.rglob("*.md") if not p.name.startswith("handoff-")) + [ROOT / "README.md"]
+    sources = sorted(p for p in DOCS.rglob("*.md") if not p.name.startswith("handoff-") and "news" not in p.relative_to(DOCS).parts) + [ROOT / "README.md"]
     n = 0
     for src in sources:
         rel = src.relative_to(ROOT) if src.name != "README.md" else Path("docs/README.md")
@@ -954,6 +1119,9 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     }[sc["status"]]
 
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
+    _panel = {r["speaker_id"] for r in read("speakers.csv") if r["tier"] in ("core", "cohort_2020s")}
+    _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
+    n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
@@ -985,7 +1153,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
-<p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
+<p>This rests on the {n_panel} people on the expert panel, each traced year by year from their first public statement on AGI ({n_statements} statements in all, every search written down), {len(b_pts)} waves of the largest survey of AI researchers, opinion polls, betting markets and one online forum. A weekly reading adds what is new.</p>
 <p>Expecting it soon is not the same as it happening. Whether the singularity has actually begun is the test below.</p>
 </section>
 
@@ -1086,13 +1254,14 @@ def main():
         "crossings": {k: (list(v) if v else None) for k, v in ytl["_cross"].items()},
         "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
     n_docs = render_docs(built, git_commit())
+    n_news = render_news(built, git_commit())
     n_data = copy_data()
     (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
     disagree_page(built, git_commit())
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "
-          f"(A {sc['A']['gauge']:.2f}, B none, C {sc['C']['gauge']:.2f}, D {sc['D']['gauge']:.2f}); {n_docs} docs rendered, {n_data} data files copied")
+          f"(A {sc['A']['gauge']:.2f}, B none, C {sc['C']['gauge']:.2f}, D {sc['D']['gauge']:.2f}); {n_docs} docs rendered, {n_news} news posts, {n_data} data files copied")
 
 
 if __name__ == "__main__":

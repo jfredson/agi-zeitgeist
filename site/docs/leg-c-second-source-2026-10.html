@@ -22,7 +22,14 @@ C second source: the ICLR 2026 AI-disclosure audit, read 2026-10-17 | AGI Zeitge
 <meta property="og:description" content="Leg
 C second source: the ICLR 2026 AI-disclosure audit, read 2026-10-17: a document of the AGI Zeitgeist Tracker.">
 <meta name="twitter:card" content="summary">
+
+<link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/shell.css">
 <link rel="stylesheet" href="/skin.css">
 <style>
@@ -131,6 +138,37 @@ details p { color: var(--text-soft); }
 /* The When? box: a boxed item between double rules, no panel fill. */
 .card { border-radius: 0; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); border-left: 0; border-right: 0; background: transparent; padding: 18px 4px 14px; }
 figure.fig { border-radius: 0; }
+.footer-follow { margin: 4px 0 0; font-size: 12.5px; } .footer-follow a { color: var(--muted); }
+.news-follow { font-family: var(--sans); font-size: 13.5px; color: var(--muted); max-width: 760px; margin-top: 22px; border-top: 1px solid var(--line); padding-top: 10px; }
+/* ---- news (tracker pattern, rules 4.10 to 4.13; John 2026-10-18) ---- */
+.news-list { list-style: none; padding: 0; margin: 0; max-width: 760px; }
+.news-item { border-top: 1px solid var(--line); padding: 18px 0; }
+.news-item time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.news-item .kind { font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-left: 10px; }
+.news-item h3 { margin: 4px 0 6px; font-size: 21px; line-height: 1.25; }
+.news-item h3 a { text-decoration: none; color: var(--text); }
+.news-item p { margin: 0; color: var(--text-soft); font-size: 15.5px; }
+.news-foot { font-family: var(--sans); font-size: 13.5px; color: var(--muted); max-width: 760px; border-top: 3px double var(--line-strong); padding-top: 12px; margin-top: 8px; }
+.opener { max-width: 760px; border: 1px solid var(--line-strong); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 18px 22px 14px; margin: 0 0 26px; background: var(--panel); }
+.opener .k { font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+.opener h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.25; }
+.opener h3 a { text-decoration: none; color: var(--text); }
+.opener p { margin: 0; color: var(--text-soft); font-size: 15.5px; }
+.opener .meta { margin-top: 8px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.post { max-width: 760px; }
+.post h2 { font-size: 20px; margin: 30px 0 8px; }
+.post p { font-size: 17px; line-height: 1.6; }
+.post table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14.5px; border-top: 3px double var(--line-strong); border-bottom: 3px double var(--line-strong); margin: 18px 0 22px; }
+.post td, .post th { text-align: left; padding: 8px 10px 8px 0; vertical-align: top; border-bottom: 1px solid var(--line); }
+.post th { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.post .stand-in { border: 1px dashed var(--line-strong); padding: 8px 12px; font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0 0 18px; }
+.post-record { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 12px; }
+.post-record .rec { font-family: var(--sans); font-size: 14px; color: var(--text-soft); margin: 0 0 8px; }
+.post-record .sources { font-family: var(--sans); font-size: 13.5px; color: var(--muted); margin: 0; }
+.section.news { padding-top: 0; }
+.in-the-news { border-left: 3px solid var(--accent); padding: 10px 14px; margin: 18px 0; background: var(--callout-bg); font-family: var(--sans); font-size: 14px; max-width: 760px; }
+.in-the-news .k { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
+
 </style>
 </head>
 <body>
@@ -138,7 +176,7 @@ figure.fig { border-radius: 0; }
 <header class="site-header"><div class="container nav">
 <a class="brand" href="/">AGI Zeitgeist</a>
 <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
-<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><a href="https://sentient-horizons.com/projects/" class="nav-secondary" rel="noopener">Family</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><a href="/news/" class="nav-primary">News</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><a href="https://sentient-horizons.com/projects/" class="nav-secondary" rel="noopener">Family</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
 </div></header>
 <main class="container">
 <section class="hero"><p class=eyebrow>Document</p><h1>Leg
@@ -298,14 +336,14 @@ kinds of source, across venue statistics, researcher surveys and
 independent measurements, is
 <code>docs/leg-c-second-source-2026-10-17.md</code>: 26 candidates
 judged, none qualifying, no row added.</p>
-<p class="cite">Rendered from <code>docs/leg-c-second-source-2026-10.md</code> at version 160e21d.</p></div>
+<p class="cite">Rendered from <code>docs/leg-c-second-source-2026-10.md</code> at version 1877bbc.</p></div>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
-<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 17 October 2026 (version 160e21d) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/disagree/">Disagree with something</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 18 October 2026 (version 1877bbc) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a></p>
 </div></div></footer>
 <script>
 (function(){var h=document.querySelector('.site-header');var b=h&&h.querySelector('.nav-toggle');var m=document.getElementById('site-nav');

@@ -1,0 +1,265 @@
+{
+  "reading": {
+    "date": "2026-10-19",
+    "ran_at": "2026-10-19T13:04:27Z",
+    "window_start": "2026-10-13",
+    "window_end": "2026-10-19",
+    "scope": "weekly",
+    "commit_before": "28f06fc",
+    "by": "scheduled",
+    "items_read": 18,
+    "searches": 37,
+    "new_rows": [
+      "aiimpacts-2024-hlmi50",
+      "aiimpacts-2024-hlmi10",
+      "aiimpacts-2024-faol50",
+      "manifold-agi2030-2026-10-19",
+      "pew-2026-06-concerned"
+    ],
+    "flagged": 2
+  },
+  "items": [
+    {
+      "id": "leg-a-metr",
+      "part": "gauges",
+      "speaker_id": "metr",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-01",
+        "reading-2026-10-19-02",
+        "reading-2026-10-19-03"
+      ],
+      "found": "Every model in METR's results file is already in the record, and the time-horizons page still shows Time Horizon 1.1 as current, last updated 2026-09-08 and no longer actively updated. No Time Horizon 2.0 or 1.2 release found, only secondhand talk of a successor."
+    },
+    {
+      "id": "leg-b-forecasts",
+      "part": "gauges",
+      "speaker_id": "reading",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-19-04",
+        "reading-2026-10-19-05"
+      ],
+      "found": "Two retrospectives surfaced: a mid-2026 scorecard of the 'Situational Awareness' essay's predictions, and the AI Digest, AI Futures and Epoch review of how forecasters did on 2025 AI progress (accurate on benchmarks, off on revenue and public attention). Neither is a scored set of timeline forecasts that could enter the ledger, so nothing was added.",
+      "sources": [
+        "https://forum.effectivealtruism.org/posts/awAbNh3AnDwKjQtXR/situational-awareness-a-two-year-scorecard",
+        "https://theaidigest.org/2025-forecast-results"
+      ]
+    },
+    {
+      "id": "leg-c-rd-automation-index",
+      "part": "gauges",
+      "speaker_id": "anthropic_institute",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-06",
+        "reading-2026-10-19-07"
+      ],
+      "found": "The index page still shows two points, under 1 percent in February 2026 and 26 percent in August 2026. No newer month has been published."
+    },
+    {
+      "id": "leg-c-institute-publications",
+      "part": "gauges",
+      "speaker_id": "anthropic_institute",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-19-08",
+        "reading-2026-10-19-09",
+        "reading-2026-10-19-10"
+      ],
+      "found": "No Institute publication is dated inside the window. The Institute's 'When AI builds itself' page (update dated 2026-09-18, data to May 2026) gives other measures of AI's share of AI work: Claude authored over 80 percent of merged code as of May 2026, and a March 2026 survey of 130 staff put median output uplift at about 4 times. Nothing appended, since none repeats a series in the record.",
+      "sources": [
+        "https://www.anthropic.com/institute/recursive-self-improvement",
+        "https://www.anthropic.com/research/ai-expectations-gap"
+      ],
+      "for_john": "The Anthropic Institute's page 'When AI builds itself' (update dated 2026-09-18) reports Claude authoring over 80 percent of Anthropic's merged code as of May 2026, beside the scored R&D Automation Index figure of 26 percent of AI R&D work 'led' by Claude in August 2026, and the staff estimate of 51 percent. Three different company measures of AI's share of AI work now exist. I appended nothing and scored nothing, since the code share is not a series already in the record; whether to record it unscored beside leg C is your call."
+    },
+    {
+      "id": "leg-c-outside-measures",
+      "part": "gauges",
+      "speaker_id": "reading",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-19-11",
+        "reading-2026-10-19-12"
+      ],
+      "found": "No researcher survey of AI's share of frontier research work turned up. The venue disclosure audit of ICLR and EMNLP papers (arXiv 2608.23271, already known and ruled a roadmap step on 2026-10-17) and ICML 2026 reviewer-LLM figures measure declared AI use in writing and reviewing, not AI's share of research work.",
+      "sources": [
+        "https://arxiv.org/pdf/2608.23271",
+        "https://arxiv.org/pdf/2609.19420"
+      ]
+    },
+    {
+      "id": "mullerbostrom",
+      "part": "institutions",
+      "speaker_id": "mullerbostrom",
+      "verdict": "quiet",
+      "search_ids": [],
+      "found": "One-off 2012 to 2013 survey that will not recur; read on the monthly scope only, so no search this week."
+    },
+    {
+      "id": "aiimpacts",
+      "part": "institutions",
+      "speaker_id": "aiimpacts",
+      "verdict": "new-row",
+      "search_ids": [
+        "reading-2026-10-19-13",
+        "reading-2026-10-19-14",
+        "reading-2026-10-19-15"
+      ],
+      "found": "AI Impacts' report on its December 2024 survey (1,580 researchers, fielded 2024-12-09 to 2024-12-24) is dated September 2026, before the window, and the record had missed it. Three rows appended with the same wording as the 2023 rows: HLMI 10 percent in 2027, HLMI 50 percent in 2042, full automation of labour 50 percent in 2098.",
+      "sources": [
+        "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf"
+      ],
+      "new_rows": [
+        "aiimpacts-2024-hlmi50",
+        "aiimpacts-2024-hlmi10",
+        "aiimpacts-2024-faol50"
+      ]
+    },
+    {
+      "id": "metaculus",
+      "part": "institutions",
+      "speaker_id": "metaculus",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-16"
+      ],
+      "found": "Read only if a search finds a public reading (ruling of 2026-10-17); one search found none, only 2023 snapshots."
+    },
+    {
+      "id": "manifold",
+      "part": "institutions",
+      "speaker_id": "manifold",
+      "verdict": "new-row",
+      "search_ids": [
+        "reading-2026-10-19-17",
+        "reading-2026-10-19-18"
+      ],
+      "found": "Market 'Will we get AGI before 2030?' read at 0.500 with 347 unique traders, last trade 2026-10-18 15:47 UTC (0.493 on 2026-10-16). Appended as the week's reading.",
+      "sources": [
+        "https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC"
+      ],
+      "new_rows": [
+        "manifold-agi2030-2026-10-19"
+      ]
+    },
+    {
+      "id": "pew",
+      "part": "institutions",
+      "speaker_id": "pew",
+      "verdict": "new-row",
+      "search_ids": [
+        "reading-2026-10-19-19",
+        "reading-2026-10-19-20",
+        "reading-2026-10-19-21"
+      ],
+      "found": "Pew's short read of 2026-09-16 reports 52 percent of U.S. adults more concerned than excited about increased AI use in daily life (3,488 adults, fielded 2026-06-22 to 2026-06-28), the same question as the record's series. It is dated before the window and the record had missed it, so it was appended.",
+      "sources": [
+        "https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/"
+      ],
+      "new_rows": [
+        "pew-2026-06-concerned"
+      ]
+    },
+    {
+      "id": "yougov",
+      "part": "institutions",
+      "speaker_id": "yougov",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-22",
+        "reading-2026-10-19-23"
+      ],
+      "found": "Nothing new in the window. The latest end-of-the-human-race reading (September 2026, 50 percent concerned) is already in the record, and the early October Economist/YouGov poll was noted last week."
+    },
+    {
+      "id": "ipsos",
+      "part": "institutions",
+      "speaker_id": "ipsos",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-19-24",
+        "reading-2026-10-19-25"
+      ],
+      "found": "A Reuters/Ipsos poll fielded 2026-09-30 to 2026-10-05 (4,506 U.S. adults) asks new wording, including 51 percent saying AI is bad for humanity; it is before the window and not one of the record's Ipsos series. The AI Monitor 2026 summary still gives no percentages.",
+      "sources": [
+        "https://www.ipsos.com/en-us/reutersipsos-october-survey",
+        "https://www.ipsos.com/en-us/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens"
+      ]
+    },
+    {
+      "id": "googletrends",
+      "part": "institutions",
+      "speaker_id": "googletrends",
+      "verdict": "quiet",
+      "search_ids": [],
+      "found": "Yearly series read in January; read on the monthly scope only, so no search this week."
+    },
+    {
+      "id": "google",
+      "part": "institutions",
+      "speaker_id": "google",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-26",
+        "reading-2026-10-19-27"
+      ],
+      "found": "No new statement by Google's chief executive on the share of new code written by AI since the 75 percent figure of 2026-04-24; the next earnings call has not been held."
+    },
+    {
+      "id": "events-open-letters",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-28",
+        "reading-2026-10-19-29",
+        "reading-2026-10-19-30"
+      ],
+      "found": "No open letter or statement dated 2026-10-13 to 2026-10-19. A report of a letter signed by 1,367 frontier lab staff is the same letter as 'Pacing the Frontier' (July 2026), already in the record, with a later signer tally."
+    },
+    {
+      "id": "events-government-actions",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-10-19-31",
+        "reading-2026-10-19-32",
+        "reading-2026-10-19-33"
+      ],
+      "found": "No government action dated inside the window. The Sanders and Casar bill to ban superintelligence and create a Department of AI was introduced in September 2026 (secondary sources disagree on the day) and has not passed.",
+      "sources": [
+        "https://aljazeera.com/economy/2026/9/23/us-lawmakers-propose-sweeping-ai-restrictions-with-superintelligence-ban",
+        "https://thenextweb.com/news/sanders-casar-superintelligence-ban-department-of-ai"
+      ],
+      "for_john": "The Ban Artificial Superintelligence Act, introduced by Senator Bernie Sanders and Representative Greg Casar in September 2026, would permanently ban superintelligence and create a Department of AI. It is a proposed bill, older than the window, and I found no primary page (Senate or bill text) giving the introduction date. I did not add it: whether an introduced bill counts as a government action like the record's orders, laws and declarations is open, and a primary source is needed for the date."
+    },
+    {
+      "id": "events-reports",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-10-19-34",
+        "reading-2026-10-19-35"
+      ],
+      "found": "No Epoch report or International AI Safety Report item dated in the window; the safety report's second edition is from 2026-02-03, and one unreliable page claiming an October 2026 release could not be confirmed."
+    },
+    {
+      "id": "events-ai-releases",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-10-19-36",
+        "reading-2026-10-19-37"
+      ],
+      "found": "Releases reported in the window include xAI's Grok Voice 3.0 (2026-10-14) and Meta's Muse Spark (2026-10-15), per an aggregator. Neither system is named in any statement in data/statements.csv, so under amendment A21's rule nothing was appended.",
+      "sources": [
+        "https://af.net/realtime/confirmed-ai-model-releases-for-october-2026/"
+      ]
+    }
+  ]
+}
