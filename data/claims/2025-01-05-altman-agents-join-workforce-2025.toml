@@ -1,0 +1,21 @@
+[claim]
+id = "2025-01-05-altman-agents-join-workforce-2025"
+speaker_id = "altman"
+when = "2025-01-05"
+when_note = "The page prints no date; the blog's feed gives published 2025-01-06T01:37:29Z, which is 2025-01-05 in Pacific time. The statement row altman-2025-03 carries the UTC date 2025-01-06."
+occasion = "Blog post 'Reflections' on his own site"
+source_kind = "own_words"
+source_url = "https://blog.samaltman.com/reflections"
+source_locator = "the paragraph after 'We are now confident we know how to build AGI as we have traditionally understood it.'"
+checked_how = "Read on the page on 2026-10-17 (curl); the date was taken from the feed because the page prints none."
+quote = "in 2025, we may see the first AI agents “join the workforce” and materially change the output of companies."
+statement_id = "altman-2025-03"
+prediction = "During 2025 the first AI agents might 'join the workforce' and materially change what companies produce."
+kind = "deployment"
+bar = "Two conditions: AI agents sold or deployed to do paid work during 2025 (testable from makers' releases), and a material change in companies' output caused by them (no measure named, and none exists that an outsider could apply to 2025)."
+due = 2025
+due_basis = "His words: 'in 2025'; judged at 2025-12-31."
+status = "unfalsifiable"
+verdict_why = "A hit needs every condition, and the second, 'materially change the output of companies', has no test anyone could run; the words are also hedged with 'may'. For context only: agents doing paid work did ship in 2025, and he wrote on 2025-06-10 that '2025 has seen the arrival of agents that can do real cognitive work'."
+search_ids = ["altman-claims-006", "altman-claims-020"]
+notes = "The statement row's quote matches the page. The Remote Labor Index page was opened and gave no readable figure; it is not relied on."

@@ -1,0 +1,24 @@
+[claim]
+id = "2021-08-19-musk-tesla-bot-prototype-next-year"
+speaker_id = "musk"
+when = "2021-08-19"
+when_note = "YouTube lists the live stream's start as 2021-08-19 16:40 Pacific time (2021-08-19 23:40 UTC)."
+occasion = "Tesla AI Day 2021, announcing the Tesla Bot (later named Optimus), a humanoid robot"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=j0z4FweCy4M"
+source_locator = "2:07:48 to 2:07:57 into the video"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "we think we'll probably have a prototype sometime next year that basically looks like this"
+prediction = "Tesla would probably have a working prototype of its humanoid robot in 2022, looking like the design shown on stage."
+kind = "timing"
+bar = "A physical Tesla humanoid robot prototype shown in public by the end of 2022."
+due = 2022
+due_basis = "'sometime next year', said 2021-08-19; judged at the end of 2022."
+status = "hit"
+verdict_on = 2022-09-30
+verdict_why = "At Tesla AI Day on 2022-09-30 a Tesla humanoid robot walked on stage; the presenters said it was 'the first time we try this robot without any backup support. Cranes, mechanical mechanisms, no cables', and a second prototype was shown walking and dancing, which Musk called 'humble beginnings'. The claim was for a prototype, and a prototype was shown."
+verdict_source = "https://www.youtube.com/watch?v=ODSJsviD_SU"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["musk-claims-005", "musk-claims-006"]
+notes = "The demonstration was public and is on video, so the maker's mark here means the event was Tesla's own, not that the record rests on a statement."

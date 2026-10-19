@@ -1,0 +1,24 @@
+[claim]
+id = "2025-07-23-musk-robotaxi-half-us-population-end-of-year"
+speaker_id = "musk"
+when = "2025-07-23"
+when_note = "Tesla's own upload of the call is dated 2025-07-23, the day of the call."
+occasion = "Tesla's second-quarter 2025 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=pLjG7a-NX7U"
+source_locator = "7:15 to 7:24 into the video (the run-up from 6:52)"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "assuming we get regulatory approvals, it's probably addressing half the population of the US by the end of the year"
+prediction = "By the end of 2025, if regulators approved, Tesla's driverless ride-hailing would probably be available to about half the population of the United States. He called this 'at least our goal'."
+kind = "deployment"
+bar = "Tesla driverless ride-hailing available where about half of the US population lives by 2025-12-31, shown by Tesla's own word or an outside count. The regulatory condition is recorded, and the verdict says whether it held."
+due = 2025
+due_basis = "'by the end of the year', said 2025-07-23; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "On 2026-01-28 Musk reset the same goal to 'somewhere between a quarter and half of the United States by the end of the year' (2026), 'pending regulatory approval', and said the first rides with no safety monitor had just happened in Austin. Service reaching half the population has not come. Whether the regulatory condition failed is not shown either way in the record; he did not say approvals were refused."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-014", "musk-claims-016"]
+notes = "He tied it to regulatory approval, so a defender could say the condition failed rather than the forecast; the record keeps both and scores the date. The 2026 restatement will be entered as its own record when its turn comes."

@@ -1,0 +1,21 @@
+[claim]
+id = "2026-08-26-altman-internal-system-called-agi-by-end-of-year"
+speaker_id = "altman"
+when = "2026-08-26"
+when_note = "TIME's page metadata gives published 2026-08-26T11:00:04Z."
+occasion = "TIME profile 'Inside OpenAI's Reboot' by Alex Heath, a reporter's article, not a printed question-and-answer interview"
+source_kind = "coverage_only"
+source_url = "https://time.com/article/2026/08/26/openai-sam-altman-interview/"
+source_locator = "the paragraph beginning 'Amid all this, company leaders believe'"
+checked_how = "time.com refused the fetch; read the Internet Archive copy (snapshot 2026-10-13) on 2026-10-17. The sentence is the reporter's paraphrase; only 'not quite yet' is given as Altman's words."
+reported_as = "Alex Heath, TIME: 'Altman told me that OpenAI was \"not quite yet\" there, but that by the end of the year the company would have an internal system he would call AGI.'"
+statement_id = "altman-2026-04"
+prediction = "As reported, by the end of 2026 OpenAI would have an internal system that Altman would call AGI."
+kind = "timing"
+bar = "None an outsider could run: the test in the report is that Altman himself would call the system AGI, and the system is internal."
+due = 2026
+due_basis = "The reporter's words: 'by the end of the year' (2026); judged at 2026-12-31."
+status = "unfalsifiable"
+verdict_why = "The only judge named is the speaker, and the thing judged is a system nobody outside can see. That is the method's rule for 'unfalsifiable' in so many words. Decided at entry."
+search_ids = ["altman-claims-011"]
+notes = "The statement row altman-2026-04 quotes the reporter's sentence as if it were Altman's; it is not his own words, which is why this record is coverage only. The same article quotes him directly, undated, on a coming model: 'I expect this will be the first model where the model actually invents new things in a way that matters'."

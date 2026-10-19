@@ -1,0 +1,24 @@
+[claim]
+id = "2025-01-29-musk-several-thousand-optimus-this-year"
+speaker_id = "musk"
+when = "2025-01-29"
+when_note = "Tesla's own upload of the call is dated 2025-01-29, the day of the call."
+occasion = "Tesla's fourth-quarter 2024 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Gub5qCTutZo"
+source_locator = "19:54 to 20:21 into the video"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "will we succeed in making several thousand yes I think we will"
+prediction = "Tesla's internal plan was about 10,000 Optimus humanoid robots built in 2025; he said exactly 10,000 was 'probably not' likely, but that several thousand would be built and, he was confident, would be doing useful things by the end of the year."
+kind = "deployment"
+bar = "Several thousand Optimus robots built in 2025 and doing useful work by the end of it, shown by Tesla's own count or an outside one."
+due = 2025
+due_basis = "'this year', said 2025-01-29; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "On Tesla's call of 2026-01-28 Musk said Optimus was 'still very much at the early stages', 'still in the R&D phase', 'not in usage in our factories in a material way', and that no significant production volume was expected 'until probably the end of this year' (2026). No count of robots built in 2025 was given; the useful-work condition failed on his own words. Not come."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-013", "musk-claims-016"]
+notes = "A judgement call: no official count of robots built in 2025 was found, so the 'several thousand built' half is not directly refuted; the 'doing useful things' half is what his own words of 2026-01-28 contradict."

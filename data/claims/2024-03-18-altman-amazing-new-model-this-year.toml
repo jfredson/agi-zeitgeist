@@ -1,0 +1,24 @@
+[claim]
+id = "2024-03-18-altman-amazing-new-model-this-year"
+speaker_id = "altman"
+when = "2024-03-18"
+when_note = "Same transcript page and date as the claim above."
+occasion = "Lex Fridman Podcast episode 419, answering 'when is GPT-5 coming out again?'"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/sam-altman-2-transcript/"
+source_locator = "the GPT-5 section, 01:06:30"
+checked_how = "Read the transcript page on 2026-10-17 (curl) and read the exchange."
+quote = "We will release an amazing new model this year."
+prediction = "OpenAI would release a new model during 2024; he did not know what it would be called. 'Amazing' is his word and is not tested."
+kind = "deployment"
+bar = "A new OpenAI model released to the public during 2024, shown by OpenAI's own release."
+due = 2024
+due_basis = "'this year', said 2024-03-18; judged at 2024-12-31."
+status = "hit"
+verdict_on = 2024-09-12
+verdict_why = "OpenAI's own page dated 2024-09-12 introduces o1-preview, 'a new series of reasoning models', released in ChatGPT. The release is checkable; 'amazing' is a judgement word and is not scored."
+verdict_source = "https://openai.com/index/introducing-openai-o1-preview/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-004", "altman-claims-014"]
+notes = "He added 'I don't know what we'll call it' and, asked directly about GPT-5, 'I don't know. That's the honest answer.' Not in the statements table."

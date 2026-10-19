@@ -1,0 +1,19 @@
+[claim]
+id = "2025-06-10-altman-2027-robots-real-world-tasks"
+speaker_id = "altman"
+when = "2025-06-10"
+when_note = "The page prints no date; the blog's feed gives published 2025-06-10T21:12:47Z."
+occasion = "Blog post 'The Gentle Singularity' on his own site"
+source_kind = "own_words"
+source_url = "https://blog.samaltman.com/the-gentle-singularity"
+source_locator = "the same paragraph, next sentence"
+checked_how = "Read on the page on 2026-10-17 (curl); the date was taken from the feed."
+quote = "2027 may see the arrival of robots that can do tasks in the real world."
+prediction = "In 2027 there might be robots that can do tasks in the real world."
+kind = "capability"
+bar = "An AI-driven general-purpose robot doing a range of ordinary physical tasks outside a laboratory or a staged demonstration during 2027, shown by a maker's release or an outside report. Factory robots have done fixed tasks for decades, so the plain reading is a general-purpose one. Hedged: 'may'."
+due = 2027
+due_basis = "His words: '2027'; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["altman-claims-008"]
+notes = "'Tasks in the real world' names no difficulty or scale; the bar is the plain reading and is loose."

@@ -1,0 +1,26 @@
+[claim]
+id = "2025-10-14-altman-erotica-verified-adults-in-december"
+speaker_id = "altman"
+when = "2025-10-14"
+when_note = "The post's timestamp is 2025-10-14 16:02 UTC."
+occasion = "Post on X about relaxing ChatGPT's restrictions"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1978129344598827128"
+source_locator = "the last paragraph of the post"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "In December, as we roll out age-gating more fully ... we will allow even more, like erotica for verified adults."
+prediction = "In December 2025, as age checks rolled out more fully, ChatGPT would allow more content, including erotica, for age-verified adults."
+kind = "deployment"
+bar = "ChatGPT allowing erotica for age-verified adults, released by OpenAI during December 2025, shown by OpenAI's own release."
+due = 2025
+due_date = 2025-12-31
+due_basis = "'In December', posted 2025-10-14, means December 2025; the due date is 2025-12-31."
+status = "missed"
+verdict_on = 2026-03-26
+verdict_why = "It did not ship in December 2025 and had not shipped when, on 2026-03-26, the Financial Times reported, and OpenAI told it, that the company had 'indefinitely' paused its adult mode pending long-term research on sexually explicit chats and emotional attachment. Not come."
+verdict_source = "https://www.thurrott.com/a-i/334240/openai-is-no-longer-working-on-adult-mode-for-chatgpt"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["altman-claims-009", "altman-claims-018"]
+notes = "The quote's ellipsis stands for 'and as part of our \"treat adult users like adults\" principle,'. The verdict rests on press coverage citing the Financial Times and OpenAI's own statement to it; no OpenAI post on the pause was found."
+verify = "A primary OpenAI statement on the December slip and the later pause."

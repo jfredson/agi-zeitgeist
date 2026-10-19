@@ -26,6 +26,7 @@ import math
 import re
 import shutil
 import subprocess
+import tomllib
 from datetime import date, datetime
 
 from zoneinfo import ZoneInfo
@@ -469,7 +470,7 @@ SITE_TITLE = "AGI Zeitgeist Tracker"
 TAGLINE = ("A dated record of what people expect from artificial general intelligence, with every quote linked to its source, "
            "and a test of whether the singularity has begun.")
 # Labels ruled by John, 2026-10-08.
-NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/#method", "Method and Data"), ("/news/", "News")]  # News: tracker pattern rule 4.10, John 2026-10-18
+NAV_PRIMARY = [("/#belief", "Current Zeitgeist"), ("/#singularity", "Are We in the Singularity?"), ("/claims/", "Claims"), ("/#method", "Method and Data"), ("/news/", "News")]  # "Claims": amendment A27; News: tracker pattern rule 4.10, John 2026-10-18
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
 NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
 FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Disagree with something"),
@@ -851,6 +852,9 @@ DOC_PURPOSE = {
     "codebook": "The rules for sorting each statement by what it says, with examples.",
     "README": "An overview of the project and of every file in it, written for people working on it.",
     "2026-09-30-kickoff": "The plan the project started from.",
+    "claims-ledger-method": "The rules of the claims ledger: which of a person's predictions get in, the five status words, what counts as a hit, how the due year is set, and how the record is kept honest.",
+    "claims-ledger-proposal-2026-10-17": "The proposal the claims ledger was adopted from, with the decisions behind it and the rulings made on it.",
+    "claims-ledger-seed-2026-10-17": "The list of 79 dated claims found for the proposal, each with its source and a proposed verdict; a working list, not the record.",
 }
 
 
@@ -955,6 +959,7 @@ def copy_data():
             "world_measures.csv": "how good AI actually got, what the AI companies reported about themselves, and how the world's economy grew",
             "events.csv": "dated events such as open letters and government actions",
             "search_log.csv": "every search that was run to find a statement, so that someone else can run it again",
+            "claims.csv": "the claims ledger as one table: each dated prediction by a person on the list, in their words, with its test and its verdict",
             "wide_list_candidates.csv": "the wider list of well-known people the experts were chosen from, and where each name came from"}
     size = lambda f: f"{f.stat().st_size // 1024 + 1} KB"  # noqa: E731
     li = lambda f, what="": (f'<li><a href="{esc(f.relative_to(DATA).as_posix())}">{esc(f.relative_to(DATA).as_posix())}</a> ({size(f)})'  # noqa: E731
@@ -971,6 +976,176 @@ def copy_data():
     (out / "index.html").write_text(shell(f"Download the data | {SITE_TITLE}", "Every CSV table behind the AGI Zeitgeist Tracker, under CC BY 4.0.", body,
                                           pacific_today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
     return len(files)
+
+
+# ----------------------------------------------------------------------------- claims ledger
+# One file per dated claim by a panel member (data/claims/*.toml; docs/claims-ledger-method.md;
+# amendment A27). The page shows the claims per person with their verdicts; it scores nothing
+# the home page scores and feeds nothing into the headline.
+CLAIM_FIELDS = ["id", "speaker_id", "when", "when_note", "occasion", "source_kind", "source_url", "source_locator",
+                "checked_how", "quote", "reported_as", "statement_id", "prediction", "kind", "bar", "due", "due_early",
+                "due_date", "due_basis", "is_goal", "has_probability", "restates", "repeated_on", "status", "verdict_on",
+                "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify"]
+# The order John ruled on 2026-10-17: Altman and Musk, then Amodei, then Huang, then the rest of the panel.
+LEDGER_ORDER = ["altman", "musk", "amodei", "huang"]
+STATUS_WORDS = {"not_yet_due": "not yet due", "hit": "came true", "missed": "did not", "withdrawn": "took it back",
+                "unfalsifiable": "cannot be tested"}
+STATUS_CHIP = {"hit": "chip ok", "missed": "chip no", "withdrawn": "chip no", "not_yet_due": "chip", "unfalsifiable": "chip"}
+DIRECTION_WORDS = {"later": "came later than said", "not_come": "has not come", "sooner": "came sooner than said", "on_time": "came on time"}
+# One plain line on who each person is, for the page; anyone not named here gets the first clause of their speaker row.
+WHO = {"altman": "Head of OpenAI since 2019.", "musk": "Head of Tesla, SpaceX and xAI; co-founded OpenAI in 2015 and left its board in 2018.",
+       "amodei": "Head of Anthropic, which he co-founded in 2021.", "huang": "Head of Nvidia, which makes the chips the AI companies train on."}
+
+
+def load_claims():
+    folder = DATA / "claims"
+    if not folder.exists():
+        return []
+    out = []
+    for path in sorted(folder.glob("*.toml")):
+        out.append(tomllib.loads(path.read_text(encoding="utf-8"))["claim"])
+    out.sort(key=lambda c: (str(c["when"]), c["id"]))
+    return out
+
+
+def claims_csv(claims):
+    """The flat table of the ledger, one row per claim, for download beside the other tables."""
+    out = SITE / "data" / "claims.csv"
+    out.parent.mkdir(exist_ok=True)
+    with out.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(CLAIM_FIELDS)
+        for c in claims:
+            w.writerow(["; ".join(str(x) for x in c[k]) if isinstance(c.get(k), list) else ("" if k not in c else str(c[k]).lower() if isinstance(c[k], bool) else str(c[k])) for k in CLAIM_FIELDS])
+
+
+def claims_counts(claims, search_ids, statements):
+    """Per person: the counts the method asks for, the rate only where its guards allow, and the
+    direction of the misses. Withdrawn counts as missed everywhere; a numeric chance is kept out
+    of the plain count; no percentage before a trace or under five due claims."""
+    people = {}
+    for c in claims:
+        p = people.setdefault(c["speaker_id"], dict(hit=0, missed=0, not_yet_due=0, unfalsifiable=0, withdrawn=0,
+                                                   plain_hit=0, plain_missed=0, later=0, not_come=0, sooner=0, chance=0, goal=0, coverage=0, n=0))
+        p["n"] += 1
+        p[c["status"]] += 1
+        if c.get("has_probability"):
+            p["chance"] += 1
+        elif c["status"] == "hit":
+            p["plain_hit"] += 1
+        elif c["status"] in ("missed", "withdrawn"):
+            p["plain_missed"] += 1
+        if c["status"] in ("missed", "withdrawn") and c.get("direction") in ("later", "not_come"):
+            p[c["direction"]] += 1
+        if c["status"] == "hit" and c.get("direction") == "sooner":
+            p["sooner"] += 1
+        p["goal"] += bool(c.get("is_goal"))
+        p["coverage"] += c["source_kind"] == "coverage_only"
+    for sp, p in people.items():
+        p["due"] = p["hit"] + p["missed"] + p["withdrawn"] + p["unfalsifiable"]
+        p["plain_due"] = p["plain_hit"] + p["plain_missed"]
+        p["traced"] = f"{sp}-claims-traced" in search_ids
+        p["rate"] = None
+        if p["traced"] and p["plain_due"] >= 5:
+            p["rate"] = p["plain_hit"] / p["plain_due"]
+        p["rate_label"] = (f"{round(p['rate'] * 100)}% ({p['plain_hit']} of {p['plain_due']} due)" if p["rate"] is not None
+                           else "too few to rate" if p["traced"] else "seed only: not a rate")
+        # The coded statements that look ahead, and how many carry a year (the undated-claim rule).
+        ahead = [r for r in statements if r["speaker_id"] == sp and ({"timeline", "possibility"} & set(x.strip() for x in r["frames_present"].split(";")))]
+        p["statements_ahead"] = len(ahead)
+        p["statements_dated"] = sum(1 for r in ahead if r["timeline_year"])
+    return people
+
+
+def claims_page(sc, claims, built, commit):
+    speakers = {r["speaker_id"]: r for r in read("speakers.csv")}
+    statements = read("statements.csv")
+    search_ids = {r["search_id"] for r in read("search_log.csv")}
+    people = claims_counts(claims, search_ids, statements)
+    order = [sp for sp in LEDGER_ORDER if sp in people] + sorted((sp for sp in people if sp not in LEDGER_ORDER),
+                                                                  key=lambda sp: (not speakers[sp]["frontier_lab"], speakers[sp]["name"]))
+    # The four gauges' shares, drawn from the same figures as the home page: display only, linked to no claim (rule 6.4).
+    share_names = {"A": "Pace", "B": "Forecasts", "C": "AI doing the research", "D": "Economy"}
+    strip = "".join(f'<span class="chip">{esc(share_names[k])} {f"{round(sc[k]['gauge'] * 100)}% of the way" if sc[k].get("measurable") else "unmeasured"}</span>' for k in "ABCD")
+
+    rows = []
+    for sp in order:
+        p = people[sp]
+        misses = []
+        if p["later"]:
+            misses.append(f"{p['later']} came later than said")
+        if p["not_come"]:
+            misses.append(f"{p['not_come']} {'has' if p['not_come'] == 1 else 'have'} not come")
+        rows.append([esc(speakers[sp]["name"]), p["n"], p["due"], p["hit"], p["missed"] + p["withdrawn"], p["not_yet_due"], p["unfalsifiable"],
+                     esc(p["rate_label"]), esc("; ".join(misses) or ""), f'{p["statements_ahead"]} ({p["statements_dated"]} with a year)'])
+    counts_table = table(["who", "claims", "due", "came true", "did not", "not yet due", "cannot be tested", "rate", "which way the misses went", "coded statements that look ahead"], rows)
+
+    n_all = len(claims)
+    n_due = sum(p["due"] for p in people.values())
+    n_hit = sum(p["hit"] for p in people.values())
+    n_missed = sum(p["missed"] + p["withdrawn"] for p in people.values())
+    n_unf = sum(p["unfalsifiable"] for p in people.values())
+
+    sections = []
+    for sp in order:
+        p = people[sp]
+        items = []
+        for c in [c for c in claims if c["speaker_id"] == sp]:
+            when = str(c["when"])
+            chip = f'<span class="{STATUS_CHIP[c["status"]]}">{esc(STATUS_WORDS[c["status"]])}</span>'
+            marks = []
+            if c.get("is_goal"):
+                marks.append('<span class="chip">a stated goal</span>')
+            if c.get("has_probability"):
+                marks.append('<span class="chip">a stated chance, not counted</span>')
+            if c["source_kind"] == "coverage_only":
+                marks.append('<span class="chip">reported, not their own words</span>')
+            if c.get("evidence_by") == "maker":
+                marks.append('<span class="chip accent">on the company\'s own word</span>')
+            if c.get("restates"):
+                marks.append(f'<a class="chip" href="#{esc(c["restates"])}">restates an earlier claim</a>')
+            words = (f'&ldquo;{esc(c["quote"])}&rdquo;' if c.get("quote") else f'<span class="dim">{esc(c["reported_as"])}</span>')
+            due = f'due {c["due"]}' + (f' (by {c["due_date"].strftime("%-d %B %Y")})' if c.get("due_date") else "") + (f', or {c["due_early"]} at the early end' if c.get("due_early") else "")
+            verdict = ""
+            if c["status"] in ("hit", "missed", "withdrawn"):
+                verdict = (f'<br><span class="dim"><b>{esc(STATUS_WORDS[c["status"]].capitalize())}</b> ({c["verdict_on"].strftime("%-d %B %Y")}'
+                           f'{", " + esc(DIRECTION_WORDS[c["direction"]]) if c.get("direction") else ""}): {esc(c["verdict_why"])} '
+                           f'(<a href="{esc(c["verdict_source"])}">where this is shown</a>)</span>')
+            elif c["status"] == "unfalsifiable":
+                verdict = f'<br><span class="dim"><b>Cannot be tested:</b> {esc(c["verdict_why"])}</span>'
+            items.append(f'<li id="{esc(c["id"])}"><span class="mono">{esc(when)}</span> {chip} {" ".join(marks)}<br>'
+                         f'{words} (<a href="{esc(c["source_url"])}">the source</a>; {esc(c["occasion"])}) &middot; {esc(due)}<br>'
+                         f'<span class="dim"><b>What it commits to:</b> {esc(c["prediction"])} <b>The test:</b> {esc(c["bar"])}</span>{verdict}</li>')
+        who = speakers[sp]
+        sections.append(f'<h2 id="{esc(sp)}">{esc(who["name"])}</h2>'
+                        f'<p class="dim">{esc(WHO.get(sp, who["role_summary"].split(";")[0] + "."))} {p["n"]} dated claims: {p["hit"]} came true, {p["missed"] + p["withdrawn"]} did not'
+                        f'{f" (of which {p['withdrawn']} taken back)" if p["withdrawn"] else ""}, {p["not_yet_due"]} not yet due, {p["unfalsifiable"]} cannot be tested. {esc(p["rate_label"].capitalize())}.</p>'
+                        f'<ul>{"".join(items)}</ul>')
+
+    body = f"""<section class="section prose">
+<p class="kicker">Where the world is, on the same day</p>
+<div class="chips">{strip}</div>
+<p class="dim">The four parts of the singularity test on the <a href="/">home page</a>, each as its share of the way to its line. They are shown here so that what these people said can be read against what has actually happened; nothing on this page changes them.</p>
+
+<h2>What this page is</h2>
+<p>The people who run the AI companies both sell the story and see further than anyone else. This page keeps a plain account of their predictions: each one that carried a date, in the person's own words, with where it was said, the test it will be judged by, and, once the date has passed, whether it came true. It answers one narrow question, how often each person's dated predictions have come true so far, and which way the misses went. It does not say whether anyone is right about the future, whether they are sincere, or whether the technology is good or bad. A person with a poor record may be right next time; one with a good record may have been lucky.</p>
+<p>A prediction gets in only if the person is on the site's fixed list of experts, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Whether it came true is never looked at when deciding what gets in. A prediction with no date ("AGI is coming", "we are close") is not scored; the table says how many of each person's recorded statements look ahead and how many of those carry a year, so vagueness stays visible. The full rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
+<p>So far: {n_all} dated predictions by {len(people)} people, {n_due} of them due, of which {n_hit} came true, {n_missed} did not and {n_unf} cannot be tested. The people here were traced for their best-known, checkable predictions first, so these counts measure which predictions were easy to find; no one gets a percentage until they have been traced year by year with every search written down, and never from fewer than five due predictions.</p>
+{counts_table}
+<p class="dim">"Did not" includes predictions the person later took back. "Cannot be tested" means the words carry a date but no test anyone outside could run, or the only judge is the speaker; such predictions are shown and counted apart, never scored. A stated chance ("a 50% chance") is kept and marked but left out of the rate.</p>
+{"".join(sections)}
+<h2>How to read a verdict</h2>
+<p>A prediction counts as having come true only if every condition in its test was met by its date, shown by a dated public record: the maker's own release, an official result, a regulator's notice. Where the only evidence is the company's own word, the entry says so. A prediction that was only partly met, or met late, did not come true, and the entry says which part failed and whether the thing came later or has not come. The test is written when the prediction is entered and never changed afterwards. Every search that found a prediction or settled a verdict is in <a href="/data/search_log.csv">the search log</a>, and the whole ledger can be downloaded as <a href="/data/claims.csv">a table</a>. To argue with a verdict, use <a href="/disagree/">the disagree page</a>.</p>
+</section>"""
+    out = SITE / "claims"
+    out.mkdir(exist_ok=True)
+    (out / "index.html").write_text(shell(f"Claims | {SITE_TITLE}", "The dated predictions of the people who run the AI companies, in their own words, scored against what happened.",
+                                          body, built, commit, canonical_path="/claims/", eyebrow="Claims", active="/claims/",
+                                          h1="What the people who run the AI companies predicted, and what happened",
+                                          lede="Every prediction that carried a date, in their own words, with its source and its verdict."), encoding="utf-8")
+    claims_csv(claims)
+    return dict(people={sp: {k: people[sp][k] for k in ("n", "due", "hit", "missed", "withdrawn", "not_yet_due", "unfalsifiable", "later", "not_come", "traced", "rate")} for sp in order},
+                claims=n_all, due=n_due, hit=n_hit, missed=n_missed, unfalsifiable=n_unf, page=f"{SITE_URL}/claims/", table=f"{SITE_URL}/data/claims.csv")
 
 
 # ----------------------------------------------------------------------------- html
@@ -1130,6 +1305,9 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     _panel = {r["speaker_id"] for r in read("speakers.csv") if r["tier"] in ("core", "cohort_2020s")}
     _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
     n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
+    cl = _CLAIMS
+    claims_line = (f'Of the {cl["claims"]} predictions with a date that the people who run the AI companies have made, {cl["due"]} are now due, and {cl["hit"]} came true. '
+                   f'Each is on <a href="/claims/">the claims page</a> in their own words, with its source and its verdict.') if cl["claims"] else ""
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
@@ -1162,6 +1340,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
 <p>This rests on the {n_panel} people on the expert panel, each traced year by year from their first public statement on AGI ({n_statements} statements in all, every search written down), {len(b_pts)} waves of the largest survey of AI researchers, opinion polls, betting markets and one online forum. A weekly reading adds what is new.</p>
+<p>{claims_line}</p>
 <p>Expecting it soon is not the same as it happening. Whether the singularity has actually begun is the test below.</p>
 </section>
 
@@ -1241,6 +1420,8 @@ def main():
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
     globals()["_AGG"] = aggregates
     built = pacific_today().isoformat()
+    claims = load_claims()
+    globals()["_CLAIMS"] = claims_page(sc, claims, built, git_commit())
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
     last_reading = max((p.stem for p in (ROOT / "data" / "readings").glob("*.json")), default=None)
     newest_measurement = max((r["date"] for r in world if r["speaker_id"] in ("metr", "anthropic_institute", "world_bank") and r["aggregate_id"] != "metr-th11-doubling-all"), default=None)
@@ -1260,16 +1441,20 @@ def main():
         "average_share": round(sc["average_share"], 3), "parts_past_half": sc["parts_past_half"],
         "crossing_sentence": ytl["_sentence"],
         "crossings": {k: (list(v) if v else None) for k, v in ytl["_cross"].items()},
-        "definition": f"{SITE_URL}/docs/singularity-entry-definition.html"}, indent=2), encoding="utf-8")
+        "definition": f"{SITE_URL}/docs/singularity-entry-definition.html",
+        # The claims ledger's own block (amendment A27): counts only, never a field the headline could be mistaken for.
+        "claims_ledger": _CLAIMS}, indent=2), encoding="utf-8")
     n_docs = render_docs(built, git_commit())
     n_news = render_news(built, git_commit())
     n_data = copy_data()
+    claims_csv(claims)
     (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
     disagree_page(built, git_commit())
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "
-          f"(A {sc['A']['gauge']:.2f}, B none, C {sc['C']['gauge']:.2f}, D {sc['D']['gauge']:.2f}); {n_docs} docs rendered, {n_news} news posts, {n_data} data files copied")
+          f"(A {sc['A']['gauge']:.2f}, B none, C {sc['C']['gauge']:.2f}, D {sc['D']['gauge']:.2f}); {n_docs} docs rendered, {n_news} news posts, {n_data} data files copied; "
+          f"claims page: {len(claims)} claims by {len(_CLAIMS['people'])} people")
 
 
 if __name__ == "__main__":

@@ -656,6 +656,59 @@ collection (pull request 4, reconciled with pull request 13) lands, with their s
 in the log; the rows carry a note naming this amendment. Nothing scored changes: statements never
 score a gauge.
 
+
+## 2026-10-17: a dated-claims ledger per person, scored against delivery
+
+Decided by: mixed. John asked on 2026-10-17 for more from the industry leaders at the front of
+the AGI claims: are they a front-row seat or salesmen? The agent proposed a ledger of each
+person's dated claims scored against what happened, on the pattern of the sibling trackers'
+claims logs (`docs/claims-ledger-proposal-2026-10-17.md`, with the seed list in
+`docs/claims-ledger-seed-2026-10-17.md`), and John ruled "as recommended" on all ten of its
+rulings the same evening, through the master session. The method is
+`docs/claims-ledger-method.md`, written before any row.
+
+### A27. The claims ledger: a new record kind, its status words and its rules
+
+Was: the record held what people said (`data/statements.csv`, coded), what the world did
+(`data/world_measures.csv`), the surveys, polls and markets (`data/aggregates.csv`), and one
+scored set of forecasts, the 2016 researcher survey's milestones (`data/leg_b_ledger.csv`). No
+named person's dated prediction was set against what happened.
+
+Now: a claims ledger, one file per claim in `data/claims/<id>.toml`, for anyone on the frozen
+panel, built in the order Altman and Musk, then Amodei, then Huang, then the other members tied
+to the frontier labs. A claim is admitted when the speaker is on the panel, the words look
+forward, the words carry a date or a length of time, and there is a primary source (coverage
+alone enters as `coverage_only`, marked, with no quote). An undated claim is not a claim record
+and stays a coded statement; the page counts them. Five status words: `not_yet_due`, `hit`,
+`missed`, `withdrawn` (counted as missed in every total), `unfalsifiable` (a date but no bar an
+outsider could test, decided at entry; a bar is never supplied after the fact). A hit needs
+every condition of the bar; there is no "partly". The due year is the end of the named year, a
+span runs from the day it was said, a range takes its later end with the earlier recorded, a
+point year with a spread is scored at the point, a month or quarter in the words sets a due
+date within the year. A stated goal is admitted, marked and scored. A numeric chance is kept,
+flagged and left out of the plain count. An unchanged repeat is one claim with its repeat dates;
+a changed date is a new claim naming the one it restates. The rate is per person, never pooled,
+hits over hits plus missed, with the due count beside it, the misses' direction reported, no
+percentage under five due claims, and no percentage at all until the person has been traced
+year by year with the searches logged (a `<speaker_id>-claims-traced` row in the search log);
+until then the page says "seed only: not a rate". It shows at `/claims/` with one sentence on
+the home page, a "Claims" handle in the top bar's heavier tier, and the four gauges' shares
+repeated in a strip at the top of the page. `scripts/validate.py` checks every claim file.
+
+Why: the tracker records what these people said and already scores forecasts against outcomes
+in one place; what it lacked was the joint, a named person's own dated words set against what
+happened, one claim at a time, which is where a tracker earns trust (tracker pattern rule 6.4).
+The admission rule never looks at whether a claim came true, so the ledger cannot be built to
+flatter or to damn. The undated rule keeps "soon" and "close" out of the score and in view. The
+collection-pass rule keeps a rate from measuring which claims were easy to find.
+
+What does not change: the frozen panel (A18), the coded statements (no row is edited, added or
+deleted because of a claim), the scored series, the frozen thresholds, the definition including
+leg B's gauge, the verdict and the headline (A25), and the weekly reading's rule. A claim's
+verdict is never a measure of the world and never enters the headline. The correction in the
+proposal's section 0 stands: Jensen Huang is already on the panel (2020s cohort, A18), so no
+panel amendment is needed to give him claims.
+
 ## 2026-10-12: John's rulings on the open calls from the panel collection (numbered A28 when the collection landed on 2026-10-17, after A24 to A27)
 
 Decided by: mixed. The open calls were listed in the body of pull request 4 (the full

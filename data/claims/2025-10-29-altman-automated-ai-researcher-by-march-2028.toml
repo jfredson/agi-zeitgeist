@@ -1,0 +1,22 @@
+[claim]
+id = "2025-10-29-altman-automated-ai-researcher-by-march-2028"
+speaker_id = "altman"
+when = "2025-10-29"
+when_note = "The post's timestamp is 2025-10-29 17:19 UTC."
+occasion = "Post on X summarising OpenAI's livestream of 2025-10-28"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1983584366547829073"
+source_locator = "the first paragraph after 'TL;DR:', second half of the sentence"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "a true automated AI researcher by March of 2028. We may totally fail at this goal"
+statement_id = "altman-2025-09"
+prediction = "OpenAI's own goal: by March 2028, a true automated AI researcher."
+kind = "capability"
+bar = "An AI system that carries out AI research on its own, from choosing the question to the result, with people supervising rather than directing; OpenAI's own definition, if it gives one before the date, replaces this plain reading."
+due = 2028
+due_date = 2028-03-31
+due_basis = "'by March of 2028'; the due date is 2028-03-31."
+is_goal = true
+status = "not_yet_due"
+search_ids = ["altman-claims-010", "altman-claims-015"]
+notes = "OpenAI's post of 2026-09-06 says it is 'making strong progress toward creating an automated AI researcher by March of 2028'; that is the company's own statement, not a result."

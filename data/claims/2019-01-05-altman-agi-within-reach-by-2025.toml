@@ -1,0 +1,21 @@
+[claim]
+id = "2019-01-05-altman-agi-within-reach-by-2025"
+speaker_id = "altman"
+when = "2019-01-05"
+when_note = "The post's timestamp is 2019-01-05 16:12 UTC."
+occasion = "Post on X listing his predictions for the three most important technology developments by 2025"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1081584255510155264"
+source_locator = "item 2 of the three"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "AGI will feel within reach to many people in the industry"
+statement_id = "altman-2019-01"
+prediction = "By 2025, many people working in the AI industry would feel that AGI is within reach."
+kind = "timing"
+bar = "None an outsider could run: the claim is about how many people in an industry feel a thing, with no count, no survey and no threshold named."
+due = 2025
+due_basis = "The post's frame: 'developments that will happen by 2025'; judged at 2025-12-31."
+status = "unfalsifiable"
+verdict_why = "There is no count or threshold in the words, so the claim cannot be scored true or false from the record. For context only: Altman himself wrote on 2025-01-05 that OpenAI was 'now confident we know how to build AGI'."
+search_ids = ["altman-claims-001"]
+notes = "The same post predicted net-gain fusion at prototype scale and gene editing curing at least one major disease by 2025; outside this ledger's subject. The quote is a fragment of the statement row altman-2019-01, which holds the whole post with the other two items elided."

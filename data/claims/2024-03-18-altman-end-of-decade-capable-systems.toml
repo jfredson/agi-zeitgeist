@@ -1,0 +1,21 @@
+[claim]
+id = "2024-03-18-altman-end-of-decade-capable-systems"
+speaker_id = "altman"
+when = "2024-03-18"
+when_note = "The transcript page's metadata gives 2024-03-18 01:13 UTC (the evening of 2024-03-17 in US Eastern time); the statement row uses the UTC date."
+occasion = "Lex Fridman Podcast episode 419, interview with Altman"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/sam-altman-2-transcript/"
+source_locator = "opening remarks (00:00:00); said again in the AGI section at about 1:33"
+checked_how = "Read the transcript page on 2026-10-17 (curl) and found the sentence at the start and in the AGI section."
+quote = "I expect that by the end of this decade, and possibly somewhat sooner than that, we will have quite capable systems"
+statement_id = "altman-2024-02"
+prediction = "By the end of the 2020s, possibly sooner, there would be AI systems capable enough that 'we look at and say, Wow, that's really remarkable'."
+kind = "capability"
+bar = "None an outsider could run: the test in his words is that people look at the systems and say 'wow'. He frames it as a deliberate non-answer on AGI timing."
+due = 2030
+due_basis = "'by the end of this decade', said in 2024; his usage does not settle 2029 or 2030, so the later year is taken, as the rule says."
+status = "unfalsifiable"
+verdict_why = "'Quite capable systems that we look at and say wow' names no capability and no test; any system could be said to meet it or not. Decided at entry under the bar rule."
+search_ids = ["altman-claims-004"]
+notes = "The seed list of 2026-10-17 had this as not yet due; the method's bar rule, which decides unfalsifiable at entry, moves it. A firmer restatement with the year 2030 (Fortune, September 2025, statement row altman-2025-08) has not been opened at a primary source and is not entered."

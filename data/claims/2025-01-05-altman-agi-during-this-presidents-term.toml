@@ -1,0 +1,21 @@
+[claim]
+id = "2025-01-05-altman-agi-during-this-presidents-term"
+speaker_id = "altman"
+when = "2025-01-05"
+when_note = "The interview is dated 'January 5, 2025, Updated on January 6, 2025'."
+occasion = "Bloomberg Businessweek printed interview by Josh Tyrangiel, 'Sam Altman on ChatGPT's First Two Years, Elon Musk and AI Under Trump', edited for clarity and length"
+source_kind = "printed_qa"
+source_url = "https://brp-prod-bcc.bloomberg.com/features/2025-sam-altman-interview/"
+source_locator = "the answer about supporting the inauguration and working with the president"
+checked_how = "Read on the page on 2026-10-17 (curl); the address is a Bloomberg mirror host, carried over from the statement row."
+quote = "I think AGI will probably get developed during this president’s term, and getting that right seems really important."
+statement_id = "altman-2025-02"
+prediction = "AGI would probably be developed between January 2025 and the end of the presidential term that began on 2025-01-20."
+kind = "timing"
+bar = "The interview gives no definition. The plainest reading for the head of OpenAI is his company's published one, quoted by TIME on 2026-08-26 from OpenAI's charter: 'highly autonomous systems that outperform humans at most economically valuable work'; a hit needs a system shown by outside evidence to meet that, not the company's word alone. Hedged: 'probably'."
+due = 2029
+due_date = 2029-01-20
+due_basis = "'This president's term' began 2025-01-20 and ends 2029-01-20."
+status = "not_yet_due"
+search_ids = ["altman-claims-007", "altman-claims-011"]
+notes = "In the same interview he said he once thought 'we would do it in 2025, but it was a totally random number based off of 10 years from when we started'. The bar is supplied at entry from the company's own definition, which the method allows; whether that reading holds is for John."

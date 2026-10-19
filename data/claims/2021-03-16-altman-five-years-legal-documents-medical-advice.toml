@@ -1,0 +1,27 @@
+[claim]
+id = "2021-03-16-altman-five-years-legal-documents-medical-advice"
+speaker_id = "altman"
+when = "2021-03-16"
+when_note = "The essay's byline reads 'by Sam Altman · March 16, 2021'."
+occasion = "Essay 'Moore's Law for Everything' on his own site"
+source_kind = "own_words"
+source_url = "https://moores.samaltman.com/"
+source_locator = "the paragraph beginning 'In the next five years', near the end"
+checked_how = "Read on the page on 2026-10-17 (curl); the byline date and the sentence were seen."
+quote = "In the next five years, computer programs that can think will read legal documents and give medical advice."
+statement_id = "altman-2021-01"
+prediction = "Within five years of March 2021, so by March 2026, AI programs that 'can think' would read legal documents and give medical advice."
+kind = "capability"
+bar = "AI systems in public use that read legal documents and answer legal questions, and that give medical advice to people, by 2026-03-16, shown by a published test result or the maker's release. The words name no standard, so the bar is the plain one; 'can think' is not tested."
+due = 2026
+due_date = 2026-03-16
+due_basis = "'In the next five years' from 2021-03-16 runs to 2026-03-16."
+status = "hit"
+verdict_on = 2023-03-15
+verdict_why = "Legal documents: OpenAI's GPT-4 technical report, submitted 2023-03-15, reports the system passing a simulated bar exam, which consists of reading and answering legal questions, with a score around the top 10% of test takers. Medical advice: OpenAI's own ChatGPT Health page says over 230 million people a week ask ChatGPT health and wellness questions, while saying Health 'is not intended for diagnosis or treatment'; so 'medical advice' is met in the plain sense of answering people's health questions, not as a licensed service. The legal half came three years early; both rest on OpenAI's own reports."
+verdict_source = "https://arxiv.org/abs/2303.08774"
+evidence_by = "maker"
+direction = "sooner"
+search_ids = ["altman-claims-002", "altman-claims-012", "altman-claims-013"]
+notes = "A loose bar, named as such. The ChatGPT Health page's own publication date was not printed in the copy read; its update of 2026-07-23 says Health launched to US adults. The statement row altman-2021-01 codes this passage as a decades-away statement and does not carry the five-year point; the quote matches the page."
+verify = "The publication date of OpenAI's ChatGPT Health page (the seed list gives January 2026)."

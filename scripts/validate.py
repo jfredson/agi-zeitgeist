@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check every row in data/*.csv against the codebook and methodology.
+"""Check every row in data/*.csv, every reading record and every claim file against the codebook, the methodology and the claims ledger method.
 
 Exits 1 and lists every problem found, or exits 0 and prints row counts.
 Standard library only, so anyone can run it: python3 scripts/validate.py
@@ -9,6 +9,7 @@ import csv
 import json
 import re
 import sys
+import tomllib
 from datetime import date, datetime
 
 from zoneinfo import ZoneInfo
@@ -23,6 +24,8 @@ from pathlib import Path
 DATA = Path(__file__).resolve().parent.parent / "data"
 # One file per run of the weekly reading (docs/weekly-reading.md), never edited.
 READINGS = DATA / "readings"
+# One file per dated claim by a panel member (docs/claims-ledger-method.md, amendment A27).
+CLAIMS = DATA / "claims"
 
 HEADERS = {
     # Tier and quota tags from amendment A13 (methodology-v2 section 3).
@@ -112,6 +115,29 @@ SEARCH_SPEAKERS_RESERVED = {"events", "reading"}
 # A reading's search ids carry its date: reading-YYYY-MM-DD-NN.
 READING_SEARCH_ID = re.compile(r"^reading-(\d{4}-\d{2}-\d{2})-\d{2,}$")
 URL = re.compile(r"^https?://\S+$")
+
+# The claims ledger (docs/claims-ledger-method.md): the fields of a claim file, each with the
+# kind of value it holds. "date" is YYYY-MM-DD; "when" allows YYYY-MM and YYYY too.
+CLAIM_FIELDS = {
+    "id": str, "speaker_id": str, "when": "when", "when_note": str, "occasion": str,
+    "source_kind": str, "source_url": str, "source_locator": str, "checked_how": str,
+    "quote": str, "reported_as": str, "statement_id": str, "prediction": str, "kind": str,
+    "bar": str, "due": int, "due_basis": str, "due_date": "anydate", "due_early": int,
+    "is_goal": bool, "has_probability": bool, "restates": str, "repeated_on": "dates",
+    "status": str, "verdict_on": "date", "verdict_why": str, "verdict_source": str,
+    "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
+}
+CLAIM_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url",
+                  "source_locator", "checked_how", "prediction", "kind", "bar", "due",
+                  "due_basis", "status", "search_ids"]
+CLAIM_SOURCE_KINDS = {"own_words", "transcript", "printed_qa", "coverage_only"}
+CLAIM_KINDS = {"capability", "timing", "deployment"}
+CLAIM_STATUSES = {"not_yet_due", "hit", "missed", "withdrawn", "unfalsifiable"}
+CLAIM_SETTLED = {"hit", "missed", "withdrawn"}
+CLAIM_EVIDENCE = {"outside", "maker"}
+CLAIM_DIRECTIONS = {"later", "not_come", "sooner", "on_time"}
+CLAIM_ID = re.compile(r"^(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})-([a-z0-9_]+)-[a-z0-9-]+$")
+CLAIM_QUOTE_WORDS = 25
 
 errors = []
 warnings = []
@@ -543,6 +569,175 @@ def check_readings(tables, speakers):
             errors.append(f"search_log.csv: {sid!r} has the weekly reading's prefix but no reading item names it")
 
 
+def claim_value_ok(kind, value):
+    """True if value is of the kind CLAIM_FIELDS names."""
+    if kind is str:
+        return isinstance(value, str) and value.strip() != ""
+    if kind is int:
+        return isinstance(value, int) and not isinstance(value, bool)
+    if kind is bool:
+        return isinstance(value, bool)
+    if kind == "date":
+        return isinstance(value, date) and value <= pacific_today()
+    if kind == "anydate":  # a due date may lie ahead
+        return isinstance(value, date)
+    if kind == "when":
+        return isinstance(value, str) and valid_date(value)
+    if kind == "dates":
+        return isinstance(value, list) and value and all(isinstance(v, date) for v in value)
+    if kind == "strings":
+        return isinstance(value, list) and value and all(isinstance(v, str) and v.strip() for v in value)
+    return False
+
+
+def check_claims(tables, speakers):
+    """Every claim file in data/claims/ (docs/claims-ledger-method.md): it parses, holds one
+    [claim] table, every field is known and of the right kind, the required ones are there, the
+    id is the file name and names the speaker and the date, the speaker is on the panel, the
+    status is one of the five words, a settled claim carries its verdict record, an
+    unfalsifiable claim says why, a claim past its due date is not still not_yet_due, a quote is
+    short and absent on coverage_only, a cited statement row exists and matches, a restated
+    claim exists and is the same person's, no two files share an id, and every search id the
+    claim names is in the search log."""
+    if not CLAIMS.exists():
+        return 0
+    search_ids = {r["search_id"] for r in tables["search_log.csv"]}
+    statements = {r["statement_id"]: r for r in tables["statements.csv"]}
+    panel = {r["speaker_id"] for r in tables["speakers.csv"] if r["speaker_type"] == "individual"}
+    claims = {}
+    files = sorted(CLAIMS.glob("*.toml"))
+    for path in files:
+        f = f"claims/{path.name}"
+        try:
+            raw = tomllib.loads(path.read_text(encoding="utf-8"))
+        except (tomllib.TOMLDecodeError, UnicodeDecodeError) as e:
+            errors.append(f"{f}: cannot be read as TOML: {e}")
+            continue
+        c = raw.get("claim")
+        if not isinstance(c, dict) or set(raw) != {"claim"}:
+            errors.append(f"{f}: a claim file holds exactly one [claim] table")
+            continue
+        for field in CLAIM_REQUIRED:
+            if field not in c:
+                errors.append(f"{f}: missing the required field '{field}'")
+        for field, value in c.items():
+            if field not in CLAIM_FIELDS:
+                errors.append(f"{f}: unknown field '{field}'")
+            elif not claim_value_ok(CLAIM_FIELDS[field], value):
+                errors.append(f"{f}: '{field}' is not {getattr(CLAIM_FIELDS[field], '__name__', CLAIM_FIELDS[field])} (or is empty, or a date in the future)")
+        cid = c.get("id")
+        if isinstance(cid, str):
+            if cid != path.stem:
+                errors.append(f"{f}: the id {cid!r} is not the file name")
+            if cid in claims:
+                errors.append(f"{f}: the id {cid!r} is already used by another file")
+            claims[cid] = c
+            m = CLAIM_ID.match(cid)
+            if not m:
+                errors.append(f"{f}: the id must be <date>-<speaker_id>-<slug>")
+            else:
+                if m.group(1) != c.get("when"):
+                    errors.append(f"{f}: the date in the id ({m.group(1)}) is not 'when' ({c.get('when')!r})")
+                if m.group(2) != c.get("speaker_id"):
+                    errors.append(f"{f}: the speaker in the id ({m.group(2)}) is not 'speaker_id' ({c.get('speaker_id')!r})")
+        sp = c.get("speaker_id")
+        if sp not in panel:
+            errors.append(f"{f}: speaker_id {sp!r} is not a person on the frozen panel (speakers.csv); the panel changes only by amendment")
+        when = c.get("when")
+        if isinstance(when, str) and not PRECISION_PATTERNS["day"].match(when) and not c.get("when_note"):
+            errors.append(f"{f}: 'when' is not a full date, so 'when_note' must say how it was settled")
+        if c.get("source_kind") not in CLAIM_SOURCE_KINDS:
+            errors.append(f"{f}: source_kind must be one of {sorted(CLAIM_SOURCE_KINDS)}")
+        elif c["source_kind"] == "coverage_only":
+            if "quote" in c:
+                errors.append(f"{f}: a coverage_only claim carries no quote; it carries reported_as")
+            if not c.get("reported_as"):
+                errors.append(f"{f}: a coverage_only claim needs reported_as, naming the reporter")
+        else:
+            if not c.get("quote"):
+                errors.append(f"{f}: a claim from a primary source needs the words in 'quote'")
+            if "reported_as" in c:
+                errors.append(f"{f}: reported_as is only for coverage_only claims")
+        if isinstance(c.get("quote"), str) and len(c["quote"].split()) > CLAIM_QUOTE_WORDS:
+            errors.append(f"{f}: the quote is {len(c['quote'].split())} words; the limit is {CLAIM_QUOTE_WORDS}")
+        if isinstance(c.get("source_url"), str) and not URL.match(c["source_url"]):
+            errors.append(f"{f}: source_url is not a web address")
+        if c.get("kind") not in CLAIM_KINDS:
+            errors.append(f"{f}: kind must be one of {sorted(CLAIM_KINDS)}")
+        due = c.get("due")
+        if isinstance(due, int) and not isinstance(due, bool):
+            if not 2000 <= due <= 2200:
+                errors.append(f"{f}: due {due} is not a year between 2000 and 2200")
+            if isinstance(c.get("due_date"), date) and c["due_date"].year != due:
+                errors.append(f"{f}: due_date {c['due_date']} is not in the due year {due}")
+            if isinstance(c.get("due_early"), int) and c["due_early"] > due:
+                errors.append(f"{f}: due_early {c['due_early']} is later than due {due}")
+            if isinstance(when, str) and int(when[:4]) > due:
+                errors.append(f"{f}: due {due} is before the claim was made ({when})")
+        status = c.get("status")
+        if status not in CLAIM_STATUSES:
+            errors.append(f"{f}: status must be one of {sorted(CLAIM_STATUSES)}")
+        else:
+            if status in CLAIM_SETTLED:
+                for field in ("verdict_on", "verdict_why", "verdict_source", "evidence_by"):
+                    if not c.get(field):
+                        errors.append(f"{f}: a {status} claim needs '{field}'")
+                if isinstance(c.get("verdict_source"), str) and not URL.match(c["verdict_source"]):
+                    errors.append(f"{f}: verdict_source is not a web address")
+                if c.get("evidence_by") not in CLAIM_EVIDENCE:
+                    errors.append(f"{f}: evidence_by must be 'outside' or 'maker'")
+            if status == "missed" and c.get("direction") not in ("later", "not_come"):
+                errors.append(f"{f}: a missed claim needs direction 'later' or 'not_come'")
+            if "direction" in c and c["direction"] not in CLAIM_DIRECTIONS:
+                errors.append(f"{f}: direction must be one of {sorted(CLAIM_DIRECTIONS)}")
+            if status == "unfalsifiable" and not c.get("verdict_why"):
+                errors.append(f"{f}: an unfalsifiable claim says in verdict_why why no outsider could test it")
+            if status == "not_yet_due":
+                for field in ("verdict_on", "verdict_source", "evidence_by", "direction"):
+                    if field in c:
+                        errors.append(f"{f}: a not_yet_due claim has no '{field}' yet")
+                if isinstance(due, int) and not isinstance(due, bool):
+                    end = c["due_date"] if isinstance(c.get("due_date"), date) else date(due, 12, 31)
+                    if end < pacific_today():
+                        errors.append(f"{f}: the due date {end} has passed, so the claim is no longer not_yet_due; enter its verdict")
+            if status in ("hit", "missed") and isinstance(c.get("verdict_on"), date) and isinstance(due, int) and not isinstance(due, bool):
+                end = c["due_date"] if isinstance(c.get("due_date"), date) else date(due, 12, 31)
+                if status == "missed" and c["verdict_on"] < end:
+                    errors.append(f"{f}: a miss is settled only after the due date ({end}); verdict_on is {c['verdict_on']}")
+                if status == "hit" and end < pacific_today() and c["verdict_on"] > end and c.get("direction") != "later":
+                    errors.append(f"{f}: a hit's verdict_on ({c['verdict_on']}) is after the due date ({end}); a thing that came after the date is a miss with direction 'later'")
+        sid = c.get("statement_id")
+        if isinstance(sid, str):
+            row = statements.get(sid)
+            if row is None:
+                errors.append(f"{f}: statement_id {sid!r} is not a row in statements.csv")
+            else:
+                if row["speaker_id"] != sp:
+                    errors.append(f"{f}: statement {sid} is by {row['speaker_id']!r}, not {sp!r}")
+                if isinstance(when, str) and row["date"][:7] != when[:7]:
+                    errors.append(f"{f}: statement {sid} is dated {row['date']}, not the same month as 'when' ({when})")
+                # The claim's words lie inside the row's quote, or the notes say why the span differs
+                # (claims-ledger method, "What it must never touch"; proposal section 4, rule 1).
+                q = c.get("quote")
+                if isinstance(q, str) and normalise(q.replace("...", "")).split(" ... ")[0] not in normalise(row["quote"]) \
+                        and "differs from the statement" not in (c.get("notes") or ""):
+                    errors.append(f"{f}: the quote is not inside statement {sid}'s quote, and notes do not say why the span differs")
+        for field in ("search_ids",):
+            for s_id in c.get(field) or []:
+                if s_id not in search_ids:
+                    errors.append(f"{f}: search id {s_id!r} is not in search_log.csv; every search is logged before the claim")
+    for cid, c in claims.items():
+        r = c.get("restates")
+        if isinstance(r, str):
+            if r not in claims:
+                errors.append(f"claims/{cid}.toml: restates {r!r}, which is not a claim file")
+            elif claims[r].get("speaker_id") != c.get("speaker_id"):
+                errors.append(f"claims/{cid}.toml: restates a claim by someone else")
+            elif r == cid:
+                errors.append(f"claims/{cid}.toml: restates itself")
+    return len(files)
+
+
 def main():
     tables = {name: read(name) for name in HEADERS}
     speakers = {r["speaker_id"] for r in tables["speakers.csv"]}
@@ -553,6 +748,7 @@ def main():
     check_events(tables["events.csv"])
     check_search_log(tables["search_log.csv"], speakers)
     check_readings(tables, speakers)
+    n_claims = check_claims(tables, speakers)
 
     # Every speaker with statements must have logged searches (sampling rule 1).
     searched = {r["speaker_id"] for r in tables["search_log.csv"]}
@@ -568,7 +764,7 @@ def main():
         sys.exit(1)
     counts = ", ".join(f"{name} {len(rows)}" for name, rows in tables.items())
     n_readings = len(list(READINGS.glob("*.json"))) if READINGS.exists() else 0
-    print(f"OK: {counts}, readings {n_readings}")
+    print(f"OK: {counts}, readings {n_readings}, claims {n_claims}")
 
 
 if __name__ == "__main__":

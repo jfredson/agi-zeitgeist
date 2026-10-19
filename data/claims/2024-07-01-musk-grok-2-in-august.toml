@@ -1,0 +1,25 @@
+[claim]
+id = "2024-07-01-musk-grok-2-in-august"
+speaker_id = "musk"
+when = "2024-07-01"
+when_note = "The post's timestamp is 2024-07-01 04:47 UTC (the evening of 2024-06-30 in Pacific time)."
+occasion = "Reply on X to @beffjezos"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1807637096129241529"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-10-17 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Grok 2, which comes out in August, will be a giant improvement in this regard."
+prediction = "xAI's Grok 2 model would come out in August 2024, and would be much better at keeping AI-written text out of its training data."
+kind = "timing"
+bar = "A public release of Grok 2 by xAI during August 2024, shown by xAI's own release. The 'giant improvement' has no measure and is not part of the bar."
+due = 2024
+due_date = 2024-08-31
+due_basis = "'comes out in August', posted 2024-07-01; the words name a month, so the due date is 2024-08-31."
+status = "hit"
+verdict_on = 2024-08-13
+verdict_why = "xAI's own release page, dated 2024-08-13, announces 'an early preview of Grok-2' to X Premium and Premium+ subscribers. An early preview to paying users is a release."
+verdict_source = "https://x.ai/news/grok-2"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["musk-claims-008", "musk-claims-010"]
+notes = "A second post on 2024-07-09 said Grok 2 was 'probably ready to release next month' (not opened for this record)."
