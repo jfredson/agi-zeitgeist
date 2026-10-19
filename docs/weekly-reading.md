@@ -344,6 +344,11 @@ Claude GitHub App on this repository; whether it can push is shown only by that 
 until it has run it is unconfirmed (on 2026-10-18 The Upgrade Tree's cloud routine pushed to its
 `main` directly, which settles the question for that repository only).
 
+**The first cloud run, 2026-10-19.** It ran at 06:04 Pacific (13:04 universal time) and pushed
+straight to `main` as commit `3a99138`; no fallback branch was needed, so the routine can push to
+this repository. It read 18 items, appended 5 rows and flagged 2. The audit of that run is
+`docs/readings/audit-2026-10-19.md`.
+
 ## Decisions, with confidence and alternatives
 
 Per the ground rule of 2026-09-08. All proposed by Claude on 2026-10-16 while building; none
