@@ -34,7 +34,15 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import date
+from datetime import date, datetime
+
+from zoneinfo import ZoneInfo
+
+
+def pacific_today():
+    """Today in Pacific time, John's clock. A cloud workspace keeps universal time, so an evening
+    run would otherwise be stamped a day ahead (John's ruling, 2026-10-18)."""
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
 CREDENTIALS = Path.home() / "Documents" / ".agi-zeitgeist" / "credentials.env"
@@ -170,7 +178,7 @@ def main():
     secrets = [keys["GUARDIAN_API_KEY"], keys["NYT_API_KEY"]]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     new_file = not OUT.exists()
-    today = date.today().isoformat()
+    today = pacific_today().isoformat()
     with OUT.open("a", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
         if new_file:

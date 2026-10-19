@@ -27,6 +27,14 @@ import re
 import shutil
 import subprocess
 from datetime import date, datetime
+
+from zoneinfo import ZoneInfo
+
+
+def pacific_today():
+    """Today in Pacific time, John's clock. A cloud workspace keeps universal time, so an evening
+    run would otherwise be stamped a day ahead (John's ruling, 2026-10-18)."""
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
 import matplotlib
@@ -961,7 +969,7 @@ def copy_data():
             f'and the samples used to double-check the sorting of statements. They are kept so that every step can be checked; the plain account is on the <a href="/">home page</a>.</p>'
             f'<ul>{"".join(li(f) for f in rest)}</ul></div>')
     (out / "index.html").write_text(shell(f"Download the data | {SITE_TITLE}", "Every CSV table behind the AGI Zeitgeist Tracker, under CC BY 4.0.", body,
-                                          date.today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
+                                          pacific_today().isoformat(), git_commit(), canonical_path="/data/", eyebrow="Data", h1="Download the data"), encoding="utf-8")
     return len(files)
 
 
@@ -1232,7 +1240,7 @@ def main():
     sc = score(load_thresholds(), a_series, c_pts, d_pts)
     ytl = years_to_line(a_series, c_pts, d_pts, sc)
     globals()["_AGG"] = aggregates
-    built = date.today().isoformat()
+    built = pacific_today().isoformat()
     (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
     last_reading = max((p.stem for p in (ROOT / "data" / "readings").glob("*.json")), default=None)
     newest_measurement = max((r["date"] for r in world if r["speaker_id"] in ("metr", "anthropic_institute", "world_bank") and r["aggregate_id"] != "metr-th11-doubling-all"), default=None)
