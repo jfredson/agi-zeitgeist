@@ -23,8 +23,10 @@ These come from version 1 and still apply; the agent implementation entry in
   "human-level" intelligence <year>`, Y3 `"<name>" superintelligence OR singularity OR
   "self-improving" <year>`; plus the person's own outlets. Quiet years are logged as
   rows with what_found "quiet year: no qualifying statement found".
-- **Busy years:** more than ten qualifying statements → keep every timeline-bearing one,
-  sample the rest at every third by date, tag `sampled`, log the sampling.
+- **Busy years:** more than ten qualifying statements → keep every timeline-bearing one
+  and every one on the "now" question (A26), sample the rest at every third by date, tag
+  `sampled`, log the sampling. Statements are counted by passage: each distinct passage
+  of one essay, talk or interview is its own statement (ruled by John 2026-10-18, A28).
 - **events.csv** fields: event_id, date, date_precision, event_type (`open_letter`,
   `public_statement`, `government_action`, `report`), title, description, source_url,
   notes. Epoch AI reports are `report` events. Searches behind it use speaker_id

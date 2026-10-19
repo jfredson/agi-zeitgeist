@@ -712,6 +712,14 @@ request as a comment of 2026-10-12 and applied by the commits that follow it.
 (Liang Wenfeng 11 statements, Arthur Mensch 6, Arvind Narayanan 29), so the collection covers all
 32 members. The paid check stays deferred.
 
+*Ruled by John, 2026-10-18 (relayed by the master session; applied 2026-10-19):* what counts as
+one statement for the busy-year line, which the collection raised. The codebook said a unit is
+"one statement by one speaker on one occasion", while the whole record has always counted each
+distinct passage of an essay, talk or interview as its own row. John ruled the passage count, as
+recommended. Methodology version 2 section 3, `docs/methodology.md` ("Busy years") and the
+codebook's section 0 now say so. Nothing is re-sampled: the collection's busy-year counts were
+already made by passage.
+
 Why: the second independent check of the collection (pull request 4, comment of
 2026-10-09) found that the codebook example conflicted with the ruling it illustrated,
 and that the method said nothing on ten points the collection had to decide. Recording

@@ -15,7 +15,7 @@ must never be cited as quotes.
 
 ## 0. One unit, and how to read it
 
-A unit is one statement by one speaker on one occasion. Code **only what the quoted
+A unit is one statement by one speaker on one occasion; one occasion can give several units, since each distinct passage of an essay, talk or interview is its own row (ruled by John 2026-10-18; amendment A28). Code **only what the quoted
 words and their immediate context say**. Don't use what the speaker is known for,
 what they said elsewhere, or what the article around the quote implies.
 
