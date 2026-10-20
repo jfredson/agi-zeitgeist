@@ -1,0 +1,25 @@
+[claim]
+id = "2024-07-23-zuckerberg-meta-ai-most-used-by-end-of-year"
+speaker_id = "zuckerberg"
+when = "2024-07-23"
+occasion = "Interview with Rowan Cheung on the day Llama 3.1 was released"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Vy3OkbtUa5k"
+source_locator = "27:35 into the video"
+checked_how = "Read YouTube's automatic English captions (original-language track) of the interviewer's upload on 2026-10-19; the quote is a verbatim run of those caption words."
+quote = "my goal was for it to be the most used AI assistant in the world by the end of the year"
+prediction = "By the end of 2024 Meta AI would be the most used AI assistant in the world; he added that it would probably get there a few months early."
+kind = "deployment"
+bar = "Meta AI used by more people than any other AI assistant by the end of 2024, shown by user counts from Meta or outside counts."
+due = 2024
+due_basis = "'by the end of the year', said 2024-07-23; judged at 2024-12-31."
+is_goal = true
+repeated_on = [2024-07-31]
+status = "hit"
+verdict_on = 2024-12-31
+verdict_why = "Meta reported more than 500 million monthly users of Meta AI on 2024-10-30, and on 2025-01-29 he said 'Meta AI is already used by more people than any other assistant'. No rival reported a larger monthly figure for the end of 2024. The verdict rests on Meta's own count, which includes anyone who used Meta AI inside Facebook, Instagram, WhatsApp or Messenger; rivals mostly reported weekly users, so the comparison is loose."
+verdict_source = "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q4/META-Q4-2024-Earnings-Call-Transcript.pdf"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["zuckerberg-claims-062", "zuckerberg-claims-025", "zuckerberg-claims-026", "zuckerberg-claims-027"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Marked as a goal ('my goal was'). Repeated on the second-quarter 2024 earnings call (2024-07-31): 'on track to achieve our goal of becoming the most used AI assistant by the end of the year'. The verdict date is the due date because the record that states the outcome (2025-01-29) came after it."

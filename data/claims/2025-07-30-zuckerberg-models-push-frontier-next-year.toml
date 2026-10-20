@@ -1,0 +1,19 @@
+[claim]
+id = "2025-07-30-zuckerberg-models-push-frontier-next-year"
+speaker_id = "zuckerberg"
+when = "2025-07-30"
+occasion = "Meta's second-quarter 2025 earnings call, opening remarks"
+source_kind = "transcript"
+source_url = "https://s21.q4cdn.com/399680738/files/doc_financials/2025/q2/META-Q2-2025-Earnings-Call-Transcript.pdf"
+source_locator = "opening remarks, the paragraph on Meta Superintelligence Labs"
+checked_how = "Read on 2026-10-19 in Meta's own transcript of the call (PDF, read as text)."
+quote = "we're also working on our next generation of models that will push the frontier in the next year or so"
+prediction = "Within about a year of July 2025, Meta's next generation of models would push the frontier of AI."
+kind = "timing"
+bar = "A Meta model released by the end of 2026 that is at or beyond the best published models of other companies on the main outside comparisons (public leaderboards and benchmark tables)."
+due = 2026
+due_basis = "'in the next year or so', said 2025-07-30: about July 2026, judged at the end of 2026."
+repeated_on = [2026-01-28]
+status = "not_yet_due"
+search_ids = ["zuckerberg-claims-029", "zuckerberg-claims-031"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Repeated on the fourth-quarter 2025 earnings call (2026-01-28): 'I expect us to steadily push the frontier over the course of the year as we continue to release new models'. Meta released its first new model, Muse Spark, on 2026-04-08; whether any Meta model leads is for the verdict at the end of 2026."

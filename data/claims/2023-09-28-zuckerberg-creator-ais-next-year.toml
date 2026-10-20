@@ -1,0 +1,24 @@
+[claim]
+id = "2023-09-28-zuckerberg-creator-ais-next-year"
+speaker_id = "zuckerberg"
+when = "2023-09-28"
+occasion = "Lex Fridman Podcast (the interview recorded in the metaverse)"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/mark-zuckerberg-3-transcript/"
+source_locator = "about 00:42:59 in the transcript, on AIs for creators"
+checked_how = "Read on 2026-10-19 on the podcast's transcript page (curl); the page is dated 2023-09-28."
+quote = "So that one I think will probably start releasing sometime next year."
+prediction = "Meta would probably start releasing, during 2024, AIs that creators can set up as versions of themselves for their fans to talk to."
+kind = "deployment"
+bar = "A Meta product, released to the public during 2024, that lets creators make an AI of themselves for their audience to talk to."
+due = 2024
+due_basis = "'sometime next year', said 2023-09-28; judged at 2024-12-31."
+repeated_on = [2023-10-25]
+status = "hit"
+verdict_on = 2024-07-29
+verdict_why = "Meta's release of 2024-07-29 launches AI Studio in the United States, which 'allows creators to build an AI as an extension of themselves to reach more fans'."
+verdict_source = "https://about.fb.com/news/2024/07/create-your-own-custom-ai-with-ai-studio/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["zuckerberg-claims-036", "zuckerberg-claims-035", "zuckerberg-claims-069"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Repeated on the third-quarter 2023 earnings call: 'we let out the plan to launch creator AIs next year, so every creator can have an AI their fans can engage with'."

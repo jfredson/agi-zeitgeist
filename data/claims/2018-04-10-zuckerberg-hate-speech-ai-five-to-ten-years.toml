@@ -1,0 +1,19 @@
+[claim]
+id = "2018-04-10-zuckerberg-hate-speech-ai-five-to-ten-years"
+speaker_id = "zuckerberg"
+when = "2018-04-10"
+occasion = "Testimony to the US Senate Commerce and Judiciary committees"
+source_kind = "transcript"
+source_url = "https://www.govinfo.gov/content/pkg/CHRG-115shrg37801/html/CHRG-115shrg37801.htm"
+source_locator = "the answer on hate speech, early in the hearing"
+checked_how = "Read on 2026-10-19 in the official printed hearing record on govinfo.gov (curl)."
+quote = "Hate speech, I am optimistic that over a 5- to 10-year period we will have AI tools that can get into some of the nuances"
+prediction = "Within five to ten years of April 2018, Facebook would probably have AI tools that grasp enough of the linguistic nuances of hate speech, across languages, to flag it more accurately, so that hate speech enforcement is less reliant on people reporting it."
+kind = "capability"
+bar = "AI tools in use at Facebook (Meta) that flag hate speech more accurately than in 2018 by understanding its linguistic nuances, so that most hate speech is found by the systems rather than reported by people, shown by Meta's own enforcement reports or an outside audit by the end of 2028."
+due = 2028
+due_early = 2023
+due_basis = "A range of spans: five years from 2018-04-10 is 2023 and ten years is 2028. The later end is the due year; the earlier end is recorded."
+status = "not_yet_due"
+search_ids = ["zuckerberg-claims-034"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Hedged with 'I am optimistic'. In the same answer he said 99 percent of the ISIS and al-Qaida content Facebook removed was flagged by AI first, and that for hate speech 'today, we are just not there'. The bar's 'most hate speech is found by the systems' is a plain reading of his contrast between AI flagging and people flagging."

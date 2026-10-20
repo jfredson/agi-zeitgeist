@@ -1,0 +1,20 @@
+[claim]
+id = "2025-04-30-zuckerberg-coding-agents-substantial-ai-research-2026"
+speaker_id = "zuckerberg"
+when = "2025-04-30"
+occasion = "Meta's first-quarter 2025 earnings call, answering an analyst"
+source_kind = "transcript"
+source_url = "https://s21.q4cdn.com/399680738/files/doc_financials/2025/q1/Transcripts/META-Q1-2025-Earnings-Call-Transcript-1.pdf"
+source_locator = "question-and-answer session, the answer on AI engineering agents"
+checked_how = "Read on 2026-10-19 in Meta's own transcript of the call (PDF, read as text)."
+quote = "by the middle to end of next year, AI coding agents are going to be doing a substantial part of AI research and development"
+prediction = "By the middle to the end of 2026, AI coding agents would be doing a substantial part of AI research and development (at Meta)."
+kind = "capability"
+bar = "None an outsider can apply: 'a substantial part' sets no level, and the work is inside Meta, which alone could say how much of it agents did."
+due = 2026
+due_basis = "'by the middle to end of next year', said 2025-04-30: a range from mid-2026 to 2026-12-31; the later end is taken."
+due_date = 2026-12-31
+status = "unfalsifiable"
+verdict_why = "'A substantial part' has no threshold, and only Meta could see how much of its research the agents did. Decided at entry."
+search_ids = ["zuckerberg-claims-028"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). He opened with 'So I'd expect'. Compare the scored claim of the day before, that 'most of the code' in these efforts would be written by AI (2025-04-29-zuckerberg-most-ai-research-code-by-ai)."

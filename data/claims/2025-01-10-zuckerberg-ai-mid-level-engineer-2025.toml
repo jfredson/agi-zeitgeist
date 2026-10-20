@@ -1,0 +1,24 @@
+[claim]
+id = "2025-01-10-zuckerberg-ai-mid-level-engineer-2025"
+speaker_id = "zuckerberg"
+when = "2025-01-10"
+occasion = "The Joe Rogan Experience, episode 2255"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=7k1ehaE0bdU"
+source_locator = "2:08:16 into the video"
+checked_how = "Read YouTube's automatic English captions of the show's official upload on 2026-10-19 (no punctuation); the quote is a run of those caption words with one cut marked '...' ('as well as the other companies that are basically working on this')."
+quote = "this year probably in 2025 we at meta ... are going to have an AI that can effectively be a sort of midlevel engineer"
+prediction = "Probably during 2025, Meta and the other companies building AI would have an AI that can in effect be a mid-level software engineer at a company, writing code."
+kind = "capability"
+bar = "A named comparison, read plainly: by the end of 2025 an AI system, at Meta or another company, that can do the work of a mid-level software engineer, meaning carry out multi-day engineering tasks in a real codebase reliably without close supervision, shown by its maker or by an outside measurement."
+due = 2025
+due_basis = "'this year probably in 2025', said 2025-01-10; judged at 2025-12-31."
+repeated_on = [2025-01-29]
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "No company showed such a system by the end of 2025, Meta included. The outside measure closest to the question, METR's test of how long a software task an AI can finish, reported on 2025-12-21 its best result to date: about 4 hours 49 minutes at a 50 percent success rate and 27 minutes at 80 percent, far short of a mid-level engineer's dependable multi-day work. He himself softened the claim during the year (2025-04-30: 'starting to become possible sometime this year, scaling into next year')."
+verdict_source = "https://the-decoder.com/anthropics-claude-opus-4-5-can-tackle-some-tasks-lasting-nearly-five-hours/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["zuckerberg-claims-039", "zuckerberg-claims-027", "zuckerberg-claims-028", "zuckerberg-claims-072"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Hedged with 'probably'. Repeated on the fourth-quarter 2024 earnings call (2025-01-29): '2025 will be the year when it becomes possible to build an AI engineering agent that has coding and problem-solving abilities of around a good mid-level engineer'. Judgement call: the bar's 'multi-day tasks without close supervision' is the plain meaning of a mid-level engineer; a reader who counts late-2025 coding agents as mid-level engineers would score this differently."
