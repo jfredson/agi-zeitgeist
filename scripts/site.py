@@ -478,7 +478,7 @@ TAGLINE = ("A dated record of what people expect from artificial general intelli
 NAV_PRIMARY = [("/#belief", "Zeitgeist"), ("/#singularity", "Singularity"), ("/claims/", "Claims"), ("/#method", "Method"), ("/news/", "News")]  # "Claims": amendment A27; News: tracker pattern rule 4.10, John 2026-10-18
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
 NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
-FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Disagree with something"),
+FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Feedback"),
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
 THEME_SCRIPT = """<script>
@@ -949,7 +949,7 @@ def disagree_page(built, commit):
     ]
     cards = "".join(f'<h3>{esc(h)}</h3><p>{esc(t)}</p><p><a class="btn ghost" href="{esc(u)}" rel="noopener">{esc(b)}</a></p>' for h, t, u, b in kinds)
     body = f"""<section class="section prose">
-<p>The point of publishing every row with its source is that you can argue with one. Three kinds of disagreement move this record: a statement that is wrongly recorded, a measure or a line in the singularity test that should be different, and an error on a page. Each is welcome, and each leaves a trace that the change can cite.</p>
+<p>Every row is published with its source, so you can check it. Three kinds of disagreement move this record: a statement that is wrongly recorded, a measure or a line in the singularity test that should be different, and an error on a page. Each leaves a trace that the change can cite.</p>
 <h2>The three forms</h2>
 {cards}
 <p>Each form opens an issue in the public repository with the right questions already in it. Issues are used because they are durable and quotable, and folding one into the record is a change that can cite it. Or write a plain issue: the page or the row, what you would change, and why is exactly enough.</p>
@@ -960,8 +960,8 @@ def disagree_page(built, commit):
 </section>"""
     out = SITE / "disagree"
     out.mkdir(exist_ok=True)
-    (out / "index.html").write_text(shell(f"Disagree with something | {SITE_TITLE}", "How to report a wrongly recorded statement, argue a measure or a line with a source, or point out an error, and what happens to each.",
-                                          body, built, commit, canonical_path="/disagree/", eyebrow="Disagree", h1="Disagree with something"), encoding="utf-8")
+    (out / "index.html").write_text(shell(f"Feedback | {SITE_TITLE}", "How to report a wrongly recorded statement, argue a measure or a line with a source, or point out an error, and what happens to each.",
+                                          body, built, commit, canonical_path="/disagree/", eyebrow="Feedback", h1="Think something here is wrong?"), encoding="utf-8")
 
 
 def copy_data():
