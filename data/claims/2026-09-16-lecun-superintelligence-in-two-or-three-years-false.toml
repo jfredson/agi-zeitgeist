@@ -1,0 +1,23 @@
+[claim]
+id = "2026-09-16-lecun-superintelligence-in-two-or-three-years-false"
+speaker_id = "lecun"
+when = "2026-09-16"
+when_note = "The video's description gives the event as Wednesday 16 September 2026; Sciences Po's upload is dated 2026-09-17."
+occasion = "Sciences Po 'Grande Conférence', Paris, a public conversation moderated by Éric Hazan"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Y4s8NadbZfU"
+source_locator = "captions 01:00:36 to 01:00:45"
+checked_how = "Read the upload's French captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of those caption words."
+quote = "vont vous dire \"Oui, maintenant on pourra faire des systèmes super intelligents dans 2 ou 3 ans, donnez-nous euh 300 milliards.\" Mais c'est faux."
+prediction = "Superintelligent systems will not be built within two or three years of September 2026, whatever people in Silicon Valley say 'for financial and commercial reasons'; neither superintelligence nor human-level intelligence has yet been invented."
+kind = "timing"
+bar = "His own definition in the same talk: systems more intelligent than humans in every domain. The claim holds if no such system is shown, by its maker or an outside body, before 2029-09-16."
+due = 2029
+due_basis = "'2 ou 3 ans' (two or three years) from 2026-09-16: the later end, 2029-09-16, the generous one; judged at 2029-12-31."
+status = "not_yet_due"
+search_ids = ["lecun-claims-073"]
+notes = "Role at the time: founder and executive chairman of Advanced Machine Intelligence (AMI Labs), as the video's own description calls him; treated as a qualifying founder-leader or chair role, as for his other 2026 claims. The captions spell AMI Labs 'Mila Labs'. He gives the words as what others say ('vont vous dire', they will tell you) and calls them false, so the claim is the denial: not within two or three years. Entered on the independent check of 2026-10-19."
+arrives = "superintelligence"
+arrives_term = "superintelligent systems"
+form = "not_before"
+not_before_year = 2029

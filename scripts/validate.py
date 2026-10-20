@@ -132,6 +132,7 @@ CLAIM_FIELDS = {
     "is_goal": bool, "has_probability": bool, "restates": str, "repeated_on": "dates",
     "status": str, "verdict_on": "date", "verdict_why": str, "verdict_source": str,
     "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
+    "arrives": str, "arrives_term": str, "form": str, "not_before_year": int, "same_span": bool,
 }
 CLAIM_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url",
                   "source_locator", "checked_how", "prediction", "kind", "bar", "due",
@@ -144,6 +145,17 @@ CLAIM_EVIDENCE = {"outside", "maker"}
 CLAIM_DIRECTIONS = {"later", "not_come", "sooner", "on_time"}
 CLAIM_ID = re.compile(r"^(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})-([a-z0-9_]+)-[a-z0-9-]+$")
 CLAIM_QUOTE_WORDS = 25
+# What a timing claim says arrives, and the shape of its date (amendment A31): entered by hand on
+# every timing claim, never on another kind.
+CLAIM_ARRIVES = {"agi", "superintelligence", "beyond_people", "other"}
+CLAIM_FORMS = {"year", "range", "by", "not_before", "chance_tail"}
+# A leader's undated words on when (data/claims_undated/, amendment A31): words only, never charted.
+UNDATED = DATA / "claims_undated"
+WORDS_FIELDS = {"id": str, "speaker_id": str, "when": "when", "when_note": str, "occasion": str, "source_kind": str,
+                "source_url": str, "source_locator": str, "checked_how": str, "quote": str, "translation": str,
+                "statement_id": str, "arrives": str, "about": str, "search_ids": "strings", "notes": str}
+WORDS_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url", "source_locator",
+                  "checked_how", "quote", "arrives", "about", "search_ids"]
 
 errors = []
 warnings = []
@@ -737,6 +749,26 @@ def check_claims(tables, speakers):
                 if isinstance(q, str) and normalise(q.replace("...", "")).split(" ... ")[0] not in normalise(row["quote"]) \
                         and "differs from the statement" not in (c.get("notes") or ""):
                     errors.append(f"{f}: the quote is not inside statement {sid}'s quote, and notes do not say why the span differs")
+        if c.get("same_span") and not c.get("restates"):
+            errors.append(f"{f}: same_span marks a restatement with the same length of time, so it needs restates (A31)")
+        arrives, form = c.get("arrives"), c.get("form")
+        # A timing claim always says what arrives; a capability claim says so when it forecasts AGI or beyond.
+        if c.get("kind") == "timing" or (c.get("kind") == "capability" and arrives is not None):
+            if arrives not in CLAIM_ARRIVES:
+                errors.append(f"{f}: a timing claim says what arrives: 'arrives' is one of {sorted(CLAIM_ARRIVES)} (A31)")
+            elif arrives != "other":
+                if form not in CLAIM_FORMS:
+                    errors.append(f"{f}: 'form' is one of {sorted(CLAIM_FORMS)} (A31)")
+                if not c.get("arrives_term"):
+                    errors.append(f"{f}: 'arrives_term' gives what arrives in the person's own term (A31)")
+                if form == "range" and "due_early" not in c:
+                    errors.append(f"{f}: a range needs due_early")
+                if (form == "not_before") != isinstance(c.get("not_before_year"), int):
+                    errors.append(f"{f}: a 'not before' forecast, and only one, gives not_before_year, the first year its words leave open (A31)")
+            elif form or c.get("arrives_term"):
+                errors.append(f"{f}: 'form' and 'arrives_term' are only for a forecast of AGI or beyond (A31)")
+        elif arrives or form or c.get("arrives_term"):
+            errors.append(f"{f}: 'arrives', 'arrives_term' and 'form' are only for timing and capability claims (A31)")
         for field in ("search_ids",):
             for s_id in c.get(field) or []:
                 if s_id not in search_ids:
@@ -753,6 +785,61 @@ def check_claims(tables, speakers):
     return len(files)
 
 
+def check_words(tables):
+    """Every record in data/claims_undated/ (amendment A31): a leader's undated words on when AGI or
+    beyond arrives, from a primary source, by one of the people who may have claims, carrying no year
+    or length of time, every search logged."""
+    if not UNDATED.exists():
+        return 0
+    claimants = {r["speaker_id"] for r in tables["speakers.csv"]
+                 if r["speaker_type"] == "individual" and r["tier"] in CLAIMS_TIERS}
+    search_ids = {r["search_id"] for r in tables["search_log.csv"]}
+    statements = {r["statement_id"]: r for r in tables["statements.csv"]}
+    seen = set()
+    files = sorted(UNDATED.glob("*.toml"))
+    for path in files:
+        f = f"claims_undated/{path.name}"
+        try:
+            raw = tomllib.loads(path.read_text(encoding="utf-8"))
+        except tomllib.TOMLDecodeError as e:
+            errors.append(f"{f}: not valid TOML ({e})")
+            continue
+        w = raw.get("words")
+        if not isinstance(w, dict) or set(raw) != {"words"}:
+            errors.append(f"{f}: a file holds exactly one [words] table")
+            continue
+        for k, v in w.items():
+            if k not in WORDS_FIELDS:
+                errors.append(f"{f}: unknown field {k!r}")
+            elif not claim_value_ok(WORDS_FIELDS[k], v):
+                errors.append(f"{f}: {k} is not a valid value")
+        for k in WORDS_REQUIRED:
+            if k not in w:
+                errors.append(f"{f}: missing {k!r}")
+        if w.get("id") != path.stem:
+            errors.append(f"{f}: id must equal the file name")
+        if w.get("id") in seen:
+            errors.append(f"{f}: duplicate id")
+        seen.add(w.get("id"))
+        if w.get("speaker_id") not in claimants:
+            errors.append(f"{f}: speaker_id {w.get('speaker_id')!r} is not one who may have claims (A30)")
+        if w.get("source_kind") not in CLAIM_SOURCE_KINDS - {"coverage_only"}:
+            errors.append(f"{f}: undated words come from a primary source: source_kind is own_words, transcript or printed_qa")
+        if w.get("arrives") not in CLAIM_ARRIVES - {"other"}:
+            errors.append(f"{f}: 'arrives' is agi, superintelligence or beyond_people")
+        if isinstance(w.get("quote"), str) and len(w["quote"].split()) > CLAIM_QUOTE_WORDS:
+            errors.append(f"{f}: the quote runs past {CLAIM_QUOTE_WORDS} words; quote the core words and put the rest in notes")
+        if re.search(r"\b(19|20)\d\d\b", w.get("quote") or ""):
+            errors.append(f"{f}: the words name a year, so they are a dated claim, not undated words")
+        sid = w.get("statement_id")
+        if isinstance(sid, str) and sid not in statements:
+            errors.append(f"{f}: statement_id {sid!r} is not a row in statements.csv")
+        for s_id in w.get("search_ids") or []:
+            if s_id not in search_ids:
+                errors.append(f"{f}: search id {s_id!r} is not in search_log.csv")
+    return len(files)
+
+
 def main():
     tables = {name: read(name) for name in HEADERS}
     speakers = {r["speaker_id"] for r in tables["speakers.csv"]}
@@ -764,6 +851,7 @@ def main():
     check_search_log(tables["search_log.csv"], speakers)
     check_readings(tables, speakers)
     n_claims = check_claims(tables, speakers)
+    n_words = check_words(tables)
 
     # The ledger-only list never enters the opinion record (amendment A30).
     claims_only = {r["speaker_id"] for r in tables["speakers.csv"] if r["tier"] == CLAIMS_ONLY_TIER}
@@ -785,7 +873,7 @@ def main():
         sys.exit(1)
     counts = ", ".join(f"{name} {len(rows)}" for name, rows in tables.items())
     n_readings = len(list(READINGS.glob("*.json"))) if READINGS.exists() else 0
-    print(f"OK: {counts}, readings {n_readings}, claims {n_claims}")
+    print(f"OK: {counts}, readings {n_readings}, claims {n_claims}, undated words {n_words}")
 
 
 if __name__ == "__main__":

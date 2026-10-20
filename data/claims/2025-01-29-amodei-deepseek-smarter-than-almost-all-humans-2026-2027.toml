@@ -20,3 +20,6 @@ repeated_on = [2025-02-28]
 status = "not_yet_due"
 search_ids = ["amodei-claims-020", "amodei-claims-015", "amodei-claims-024"]
 notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The quote differs from the statement amodei-2025-01 by the words left out at the '...' ('will require millions of chips, tens of billions of dollars (at least), and'). Repeated unchanged on Hard Fork, 2025-02-28 ('a very large number of AI systems that are much smarter than humans at almost everything ... my guess is 2026 or 2027'). The seed list of 2026-10-17 had this record restating the 2024 essay; it is a different bar (a comparison, not 'powerful AI'), so it stands on its own."
+arrives = "beyond_people"
+arrives_term = "AI smarter than almost all humans at almost all things"
+form = "range"
