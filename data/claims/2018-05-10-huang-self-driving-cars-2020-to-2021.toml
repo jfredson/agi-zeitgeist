@@ -1,0 +1,25 @@
+[claim]
+id = "2018-05-10-huang-self-driving-cars-2020-to-2021"
+speaker_id = "huang"
+when = "2018-05-10"
+when_note = "The transcript gives the call as 2018-05-10, 5:00 p.m. ET."
+occasion = "Nvidia's first-quarter fiscal 2019 earnings call, answer to an analyst about self-driving cars"
+source_kind = "transcript"
+source_url = "https://www.fool.com/earnings/call-transcripts/2018/05/16/nvidia-corporation-nvda-q1-2019-earnings-conferenc.aspx"
+source_locator = "Huang's answer beginning 'Now, in the self-driving cars, the ASPs for Level 2'"
+checked_how = "Read the Motley Fool's printed transcript on 2026-10-19 through the r.jina.ai reader (fool.com refused direct requests after a rate limit)."
+quote = "I expect that driverless taxis will start going to market about 2019 and self-driving cars probably somewhere between 2020 and 2021."
+prediction = "Self-driving cars for ordinary buyers would probably arrive somewhere between 2020 and 2021, after driverless taxis."
+kind = "deployment"
+bar = "A car sold or leased to the public that drives itself with no one needing to watch the road, at least in some conditions (Level 3 or above), on the market by 2021-12-31. Driver-assistance systems that need the driver to watch the road (Level 2) do not count."
+due = 2021
+due_early = 2020
+due_basis = "A range of years, 'between 2020 and 2021': 2021 is due, 2020 the early end."
+status = "hit"
+verdict_on = 2021-03-05
+verdict_why = "Honda began lease sales in Japan on 2021-03-05 of the Legend with Traffic Jam Pilot, 'qualifying for Level 3 automated driving', in which the system drives instead of the driver in expressway traffic jams. A self-driving car, in limited conditions, was on the market inside the range."
+verdict_source = "https://global.honda/newsroom/news/2021/4210304eng-legend.html"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["huang-claims-063", "huang-claims-064", "huang-claims-071"]
+notes = "Qualifying role: chief executive of Nvidia. Judgement call: Honda leased only about 100 cars, and only in traffic jams on expressways. The bar takes the plain reading (a car that drives itself so the driver need not watch the road); a reader who takes 'self-driving cars' to mean cars that drive themselves everywhere would mark it missed. 'Probably' is kept as a hedge."

@@ -1,0 +1,24 @@
+[claim]
+id = "2022-03-22-huang-hyperion-8-in-mercedes-cars-2024"
+speaker_id = "huang"
+when = "2022-03-22"
+when_note = "GTC 2022 spring keynote, released on NVIDIA's channel on 2022-03-22."
+occasion = "GTC 2022 spring keynote (recorded)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=39ubNuxnrK8"
+source_locator = "1:08:36 to 1:08:54 into the video"
+checked_how = "Read the English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp); the captions are punctuated and read as a clean run of his words."
+quote = "Hyperion 8 will ship in Mercedes Benz cars starting in 2024, followed by Jaguar Land Rover in 2025."
+prediction = "Nvidia's Hyperion 8 self-driving platform, which he said 'can achieve full self-driving', would ship in Mercedes-Benz cars from 2024. The Jaguar Land Rover half is its own record."
+kind = "deployment"
+bar = "Mercedes-Benz cars with Nvidia's Hyperion 8 platform (its computers and its self-driving software) delivered to customers during 2024."
+due = 2024
+due_basis = "His words: 'starting in 2024'; judged at 2024-12-31."
+status = "missed"
+verdict_on = 2025-06-04
+verdict_why = "The first Mercedes on Nvidia's driving software was the new CLA, which Nvidia says 'introduces advanced driver-assistance features powered by NVIDIA's full-stack DRIVE AV software'. It went on order on 2025-04-29 and into series production by 2025-06-04, so it came in 2025, not 2024; the point-to-point driving feature was still not on US roads in January 2026."
+verdict_source = "https://www.electrive.com/2025/06/04/mercedes-benz-cla-enters-series-production"
+evidence_by = "outside"
+direction = "later"
+search_ids = ["huang-claims-018", "huang-claims-021", "huang-claims-090", "huang-claims-093", "huang-claims-094", "huang-claims-096"]
+notes = "Qualifying role: chief executive of Nvidia. On 2021-11-09 he had called Hyperion 8 'the architecture of 2024 models' with no car maker named; that line is folded in here. The Mercedes chain is re-dated four times: 2024-03-18, 2024-06-02, 2025-05-19 and 2026-01-05."

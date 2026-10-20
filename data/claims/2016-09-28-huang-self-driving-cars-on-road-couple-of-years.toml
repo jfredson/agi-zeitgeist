@@ -1,0 +1,25 @@
+[claim]
+id = "2016-09-28-huang-self-driving-cars-on-road-couple-of-years"
+speaker_id = "huang"
+when = "2016-09-28"
+when_note = "GTC Europe 2016 ran 2016-09-28 and 2016-09-29 in Amsterdam, and the keynote (where Xavier was announced) was on 2016-09-28; NVIDIA uploaded the video on 2016-09-29."
+occasion = "GTC Europe 2016 keynote, Amsterdam"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=npzRyTimcZo"
+source_locator = "1:52:56 to 1:53:09 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "we're going to see some self-driving cars get on the road here in the next next year or make no no more than next year"
+prediction = "Some self-driving cars would be on the road within the next year, or at most the next couple of years: by 2017, and no later than 2018. The captions run on: 'no more than next year and no more than the next couple of years'."
+kind = "deployment"
+bar = "Cars driving themselves with nobody at the wheel, operating on public roads by 2018-12-31. Test cars with a safety driver at the wheel were already on roads in 2016, so they do not meet it."
+due = 2018
+due_early = 2017
+due_basis = "A range: 'next year' said 2016-09-28 is 2017, and 'the next couple of years' runs to 2018. The later end, 2018, is due; 2017 is recorded as the early end."
+status = "hit"
+verdict_on = 2017-11-07
+verdict_why = "Waymo's post of 2017-11-07 says its 'fully self-driving vehicles ... are test-driving on public roads, without anyone in the driver's seat', in part of the Phoenix area. That meets the bar inside the early end of the range."
+verdict_source = "https://waymo.com/blog/2017/11/waymos-fully-self-driving-vehicles-are/"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["huang-claims-024", "huang-claims-072", "huang-claims-073", "huang-claims-074"]
+notes = "Qualifying role: co-founder and chief executive of Nvidia, which makes the chips AI models run on. The words are about self-driving cars in general, not only Nvidia-powered ones, so Waymo's cars count. The same talk announced the Xavier chip ('samples end of next year'), a hardware date that is not entered."

@@ -1,0 +1,20 @@
+[claim]
+id = "2023-11-29-huang-ai-passes-basic-intelligence-tests-five-years"
+speaker_id = "huang"
+when = "2023-11-29"
+when_note = "News reports of the New York Times DealBook Summit put his interview on Wednesday 2023-11-29; the video was uploaded 2023-11-30."
+occasion = "On-stage interview with Andrew Ross Sorkin at the New York Times DealBook Summit"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Pkj-BLHs6dE"
+source_locator = "7:21 to 8:07 into the video"
+checked_how = "Read YouTube's English captions of the New York Times Events upload on 2026-10-19 (yt-dlp; no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "within the next 5 years you're going to see um obviously uh AIS that can that can achieve those tests"
+statement_id = "huang-2023-01"
+prediction = "Asked whether artificial general intelligence (AGI) would exist in ten years, he said yes, depending on the definition: if AGI means software that passes a broad set of tests of basic intelligence with results 'fairly competitive to a normal human', AIs will do that within five years."
+kind = "capability"
+bar = "His own definition in the same answer: an AI that takes a whole set of tests reflecting basic intelligence and scores at about the level of an ordinary person across them. Shown by published results of AI systems on standard tests of reasoning, knowledge and problem-solving set against ordinary human scores."
+due = 2028
+due_basis = "'within the next 5 years', said 2023-11-29, runs to November 2028; judged at 2028-12-31."
+status = "not_yet_due"
+search_ids = ["huang-claims-001"]
+notes = "Qualifying role: chief executive of Nvidia. The quote differs from the statement row huang-2023-01, which quotes Business Insider's cleaned wording ('within the next five years, you're gonna see, obviously, AIs that can achieve those tests'); this is the caption run of the same sentence. The bar is a named comparison (an ordinary person on tests), so it keeps a plain reading under the bar rule. On 2026-03-23 and 2026-08-26 he said AGI had already been achieved on other definitions; those present-tense remarks are not claims."

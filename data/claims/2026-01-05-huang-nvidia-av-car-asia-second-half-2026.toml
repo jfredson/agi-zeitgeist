@@ -1,0 +1,19 @@
+[claim]
+id = "2026-01-05-huang-nvidia-av-car-asia-second-half-2026"
+speaker_id = "huang"
+when = "2026-01-05"
+when_note = "NVIDIA Live at CES 2026 keynote, released on NVIDIA's channel on 2026-01-05."
+occasion = "NVIDIA Live at CES 2026 keynote, Las Vegas"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=0NBILspM4c4"
+source_locator = "0:41:38 to 0:41:50 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "here in the United States in Q1, then Europe in Q2, and I think it's Asia in Q3 and Q4"
+prediction = "He thought the first car with Nvidia's full self-driving stack would reach Asia in the third and fourth quarters of 2026."
+kind = "deployment"
+bar = "Mercedes cars running Nvidia's full self-driving stack (not another company's software) in customers' hands in an Asian market by 2026-12-31."
+due = 2026
+due_basis = "'Q3 and Q4' of 2026, said 2026-01-05; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["huang-claims-011", "huang-claims-097"]
+notes = "Qualifying role: chief executive of Nvidia. 'I think' is kept as a hedge. In China, Mercedes' point-to-point system launched at the end of 2025 on Momenta's software, which does not meet the bar."

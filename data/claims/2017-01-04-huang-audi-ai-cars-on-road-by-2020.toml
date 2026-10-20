@@ -1,0 +1,24 @@
+[claim]
+id = "2017-01-04-huang-audi-ai-cars-on-road-by-2020"
+speaker_id = "huang"
+when = "2017-01-04"
+when_note = "CES 2017 opening keynote, given on the evening of 2017-01-04 in Las Vegas; NVIDIA uploaded the parts on 2017-01-05."
+occasion = "CES 2017 keynote, Las Vegas (part 7, \"AI Car Partners\")"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=NmvCj1vWK9A"
+source_locator = "4:06 to 4:21 into the part"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "the world's most advanced autonomous vehicles powered by nvidia's AI car computer we have cars on the road by 2020"
+prediction = "Audi and Nvidia would have Audi's most advanced self-driving cars, run by Nvidia's AI car computer, on the road by 2020. Audi's Scott Keogh, joining him on stage, added that by 2020 this would be in production at 'level four' automation."
+kind = "deployment"
+bar = "Audi cars that drive themselves at Level 4 (no driver needed within their area), powered by Nvidia's AI car computer, sold or in service on public roads by 2020-12-31. The level is taken from the Audi executive's words in the same exchange, which Huang introduced."
+due = 2020
+due_basis = "His words: 'by 2020'; judged at 2020-12-31."
+status = "missed"
+verdict_on = 2020-12-31
+verdict_why = "No Audi car with Level 4 automation reached customers or a public service by the end of 2020. In April 2020 Audi dropped even its Level 3 Traffic Jam Pilot for the A8: it 'will no longer add its Traffic Jam Pilot system to the A8 sedan in Europe or anywhere else in the world'."
+verdict_source = "https://www.motorauthority.com/news/1127984_audi-gives-up-on-level-3-autonomous-driver-assist-system-in-a8"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["huang-claims-029", "huang-claims-075", "huang-claims-076"]
+notes = "Qualifying role: chief executive of Nvidia. 'We have cars on the road by 2020' is read as a forecast ('we will have'), as the Audi executive's next words confirm. The report of 2020-04-28 is dated before the due date; nothing later shows a Level 4 Audi on sale by 2020-12-31. The full keynote on the CES channel has no captions, so the NVIDIA part upload was read."

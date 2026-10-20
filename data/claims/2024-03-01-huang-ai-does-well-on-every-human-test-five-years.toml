@@ -1,0 +1,21 @@
+[claim]
+id = "2024-03-01-huang-ai-does-well-on-every-human-test-five-years"
+speaker_id = "huang"
+when = "2024-03-01"
+when_note = "Reuters (2024-03-01) reports he spoke 'on Friday' at the Stanford forum, which is 2024-03-01; the video was uploaded 2024-03-07."
+occasion = "Keynote conversation with John Shoven at the 2024 Stanford Institute for Economic Policy Research (SIEPR) Economic Summit"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=cEg8cOx7UZk"
+source_locator = "31:40 to 33:06 into the video"
+checked_how = "Read YouTube's English captions of the SIEPR upload on 2026-10-19 (yt-dlp; no punctuation); the quote is a verbatim run of those caption words."
+quote = "I'm guessing in 5 years time we'll do well on every single one of them"
+statement_id = "huang-2024-01"
+prediction = "If every test you can imagine (maths, reasoning, history, biology, medical exams, bar exams, SATs, MCATs) were put in front of the computer science industry, AI would do well on every one of them in five years. If AGI means passing human tests, it is five years away; if it means human intelligence, 'we're not sure'."
+kind = "capability"
+bar = "His own list in the same answer: AI systems doing well (at or above a passing human score) on every standard human exam he names, maths, reasoning, history, biology, medical licensing, bar, SAT and MCAT, shown by published results."
+due = 2029
+due_basis = "'in 5 years time', said 2024-03-01, runs to March 2029; judged at 2029-12-31."
+restates = "2023-11-29-huang-ai-passes-basic-intelligence-tests-five-years"
+status = "not_yet_due"
+search_ids = ["huang-claims-002"]
+notes = "Qualifying role: chief executive of Nvidia. The quote differs from the statement row huang-2024-01, which quotes Reuters' wording ('in five years time, we'll do well on every single one'); this is the caption run. A changed repeat of the DealBook claim: the test list is wider and the five years start later. 'I'm guessing' is kept as a hedge."

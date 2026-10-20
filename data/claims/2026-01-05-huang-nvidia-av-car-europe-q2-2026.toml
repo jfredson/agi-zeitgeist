@@ -1,0 +1,25 @@
+[claim]
+id = "2026-01-05-huang-nvidia-av-car-europe-q2-2026"
+speaker_id = "huang"
+when = "2026-01-05"
+when_note = "NVIDIA Live at CES 2026 keynote, released on NVIDIA's channel on 2026-01-05."
+occasion = "NVIDIA Live at CES 2026 keynote, Las Vegas"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=0NBILspM4c4"
+source_locator = "0:41:35 to 0:41:46 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "the first AV car from NVIDIA is going to be on the road in Q1, and then it goes Europe in Q2"
+prediction = "The first car with Nvidia's full self-driving stack would reach European roads in the second quarter of 2026."
+kind = "deployment"
+bar = "Mercedes CLA cars running Nvidia's full self-driving stack, with its point-to-point assisted driving, in customers' hands on European roads by 2026-06-30."
+due = 2026
+due_basis = "'then it goes Europe in Q2', said 2026-01-05; the second quarter of 2026 ends 2026-06-30."
+due_date = 2026-06-30
+status = "missed"
+verdict_on = 2026-06-30
+verdict_why = "Mercedes said on 2026-05-26 that the system would 'become available in select German cities by the end of 2026 and will be rolled out nationwide in early 2027'. Nothing reached European customers by the end of June 2026."
+verdict_source = "https://www.electrive.com/2026/05/26/new-driving-assistant-from-mercedes-available-in-germany-from-late-2026/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["huang-claims-011", "huang-claims-095", "huang-claims-099"]
+notes = "Qualifying role: chief executive of Nvidia. The settling record, dated before the due date, gives Mercedes' plan for late 2026; no record of an earlier European launch was found."

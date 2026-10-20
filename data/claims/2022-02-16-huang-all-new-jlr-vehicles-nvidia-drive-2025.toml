@@ -1,0 +1,24 @@
+[claim]
+id = "2022-02-16-huang-all-new-jlr-vehicles-nvidia-drive-2025"
+speaker_id = "huang"
+when = "2022-02-16"
+when_note = "The transcript gives the call as 2022-02-16, 5:30 p.m. ET."
+occasion = "Nvidia's fourth-quarter fiscal 2022 earnings call, Huang's opening remarks"
+source_kind = "transcript"
+source_url = "https://www.fool.com/earnings/call-transcripts/2022/02/17/nvidia-nvda-q4-2022-earnings-call-transcript/"
+source_locator = "Huang's remarks beginning 'Earlier today, we announced a partnership with Jaguar Land Rover'"
+checked_how = "Read the Motley Fool's printed transcript on 2026-10-19 (curl)."
+quote = "Starting in 2025, all new Jaguar and Land Rover vehicles will have next-generation automated driving systems"
+prediction = "From 2025, every new Jaguar and Land Rover car would have next-generation automated driving systems, plus AI software and services, built on Nvidia's DRIVE platform."
+kind = "deployment"
+bar = "New Jaguar or Land Rover vehicles with automated driving built on Nvidia DRIVE delivered to customers from 2025, shown by JLR's or Nvidia's release or a delivery report. 'All new' vehicles is the condition; at least the first such vehicle must reach customers in 2025."
+due = 2025
+due_basis = "His words: 'Starting in 2025'; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "No Jaguar or Land Rover car on Nvidia DRIVE reached customers in 2025. JLR's new electric models, the first planned on the Nvidia platform, were delayed: deliveries 'originally planned for the end of 2025 will now not commence until 2026' (newmobility, 2025-07-22)."
+verdict_source = "https://newmobility.news/2025/07/22/jlr-postpones-market-launch-of-electric-models/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["huang-claims-061", "huang-claims-090", "huang-claims-091", "huang-claims-092"]
+notes = "Qualifying role: chief executive of Nvidia. Nvidia's release the same day says 'Starting in 2025, all new Jaguar and Land Rover vehicles will be built on the NVIDIA DRIVE software-defined platform'. Whether a JLR car on Nvidia DRIVE shipped in 2026 was not checked; the direction is as of the verdict."

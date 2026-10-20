@@ -1,0 +1,21 @@
+[claim]
+id = "2025-01-06-huang-general-robotics-breakthroughs-next-several-years"
+speaker_id = "huang"
+when = "2025-01-06"
+when_note = "CES 2025 keynote, given on the evening of 2025-01-06 in Las Vegas; NVIDIA's upload is dated 2025-01-07 (UTC)."
+occasion = "CES 2025 keynote, Las Vegas"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=k82RwXqZHY8"
+source_locator = "1:16:38 to 1:17:00 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "make it possible for us in the next several years to see very rapid break breakthroughs surprising breakthroughs in in general robotics"
+prediction = "'The ChatGPT moment for general robotics is just around the corner', and the technologies he had described would bring very rapid, surprising breakthroughs in general-purpose robots in the next several years."
+kind = "capability"
+bar = "None an outsider could run: 'very rapid ... surprising breakthroughs' names no robot ability or measure, and 'a ChatGPT moment' is not defined in the talk."
+due = 2032
+due_early = 2028
+due_basis = "'the next several years', said 2025-01-06: 'several' read as three to seven years, so 2028 to 2032; the later end is due."
+status = "unfalsifiable"
+verdict_why = "Whether a breakthrough is rapid or surprising is a judgement with no test, and the 'ChatGPT moment' is a named stage he does not define in the same talk. Decided at entry."
+search_ids = ["huang-claims-010"]
+notes = "Qualifying role: chief executive of Nvidia. The span is vague; it is admitted because it names a length of time, and marked unfalsifiable because the bar has no test."

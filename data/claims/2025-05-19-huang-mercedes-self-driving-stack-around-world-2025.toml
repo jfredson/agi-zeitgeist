@@ -1,0 +1,25 @@
+[claim]
+id = "2025-05-19-huang-mercedes-self-driving-stack-around-world-2025"
+speaker_id = "huang"
+when = "2025-05-19"
+when_note = "Computex 2025 keynote in Taipei, released on NVIDIA's channel on 2025-05-19."
+occasion = "Computex 2025 keynote, Taipei"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=TLzna9__DnI"
+source_locator = "1:21:50 to 1:21:58 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "this year we're deploying Mercedes around the world our self-driving car stack end to end stack"
+prediction = "During 2025 Nvidia's complete, end-to-end self-driving stack would be deployed in Mercedes cars around the world."
+kind = "deployment"
+bar = "Mercedes cars running Nvidia's end-to-end self-driving stack delivered to customers in more than one region of the world (for example Europe and North America) by 2025-12-31."
+due = 2025
+due_basis = "'this year', said 2025-05-19; judged at 2025-12-31."
+restates = "2024-06-02-huang-mercedes-self-driving-production-2025"
+status = "missed"
+verdict_on = 2026-01-05
+verdict_why = "In 2025 the CLA with Nvidia-powered driver assistance reached customers in Europe only, and the end-to-end point-to-point stack reached no customers anywhere: Nvidia's own blog of 2026-01-05 says it comes 'to U.S. roads, expected by end of this year' (2026). The one 2025 launch of that feature, in China, used Momenta's software, not Nvidia's."
+verdict_source = "https://blogs.nvidia.com/blog/drive-av-software-mercedes-benz-cla/"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["huang-claims-004", "huang-claims-095", "huang-claims-096", "huang-claims-097"]
+notes = "Qualifying role: chief executive of Nvidia. A changed repeat of the 2024-06-02 claim: the same year, with 'around the world' and 'end to end stack' added, so it is its own record."

@@ -1,0 +1,26 @@
+[claim]
+id = "2024-06-02-huang-mercedes-self-driving-production-2025"
+speaker_id = "huang"
+when = "2024-06-02"
+when_note = "Computex 2024 keynote in Taipei, released on NVIDIA's channel on 2024-06-02."
+occasion = "Computex 2024 keynote, Taipei"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=pKXDVsWZmUU"
+source_locator = "1:42:19 to 1:42:40 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "next year we're going to go to production with the Mercedes Fleet and after that in 2026 the jlr Fe Fleet"
+prediction = "In 2025 cars in the Mercedes fleet running Nvidia's self-driving stack ('Nvidia again builds the entire stack') would go into production. The Jaguar Land Rover half is its own record."
+kind = "deployment"
+bar = "Mercedes cars running Nvidia's self-driving (driver-assistance) software entering series production during 2025."
+due = 2025
+due_basis = "'next year', said 2024-06-02, is 2025; judged at 2025-12-31."
+restates = "2024-03-18-huang-self-driving-in-mercedes-end-2024-early-2025"
+repeated_on = [2025-01-06]
+status = "hit"
+verdict_on = 2025-06-04
+verdict_why = "Mercedes confirmed series production of the new CLA at Rastatt by 2025-06-04 (electrive), and Nvidia's blog says the CLA 'introduces advanced driver-assistance features powered by NVIDIA's full-stack DRIVE AV software'. Production in 2025 is met; the fuller point-to-point feature was still to come."
+verdict_source = "https://www.electrive.com/2025/06/04/mercedes-benz-cla-enters-series-production"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["huang-claims-014", "huang-claims-010", "huang-claims-093", "huang-claims-094", "huang-claims-096"]
+notes = "Qualifying role: chief executive of Nvidia. A changed repeat of the 2024-03-18 claim (from shipping by early 2025 to production during 2025). Repeated unchanged at CES on 2025-01-06: 'a fleet of cars coming with Nvidia starting this year going to production' (1:08:22 of https://www.youtube.com/watch?v=k82RwXqZHY8). That the production car runs Nvidia's software rests on Nvidia's own blog."

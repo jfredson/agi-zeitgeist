@@ -1,0 +1,25 @@
+[claim]
+id = "2022-03-22-huang-hyperion-8-in-jlr-cars-2025"
+speaker_id = "huang"
+when = "2022-03-22"
+when_note = "GTC 2022 spring keynote, released on NVIDIA's channel on 2022-03-22."
+occasion = "GTC 2022 spring keynote (recorded)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=39ubNuxnrK8"
+source_locator = "1:08:36 to 1:08:54 into the video"
+checked_how = "Read the English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp); the captions are punctuated and read as a clean run of his words."
+quote = "Hyperion 8 will ship in Mercedes Benz cars starting in 2024, followed by Jaguar Land Rover in 2025."
+prediction = "Nvidia's Hyperion 8 self-driving platform would ship in Jaguar Land Rover cars from 2025."
+kind = "deployment"
+bar = "Jaguar or Land Rover cars with Nvidia's Hyperion 8 platform delivered to customers during 2025."
+due = 2025
+due_basis = "His words: 'followed by Jaguar Land Rover in 2025'; judged at 2025-12-31."
+restates = "2022-02-16-huang-all-new-jlr-vehicles-nvidia-drive-2025"
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "No Jaguar Land Rover car on Nvidia's platform reached customers in 2025; JLR delayed its new electric models, with deliveries 'originally planned for the end of 2025' moved to 2026."
+verdict_source = "https://newmobility.news/2025/07/22/jlr-postpones-market-launch-of-electric-models/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["huang-claims-018", "huang-claims-090", "huang-claims-092"]
+notes = "Qualifying role: chief executive of Nvidia. A changed repeat of the 2022-02-16 claim: the same year, but 'ship in' Jaguar Land Rover cars rather than 'all new' vehicles, so it is its own record."
