@@ -6,7 +6,7 @@ Status: frozen for the seed phase. Changes require an amendment entry.
 
 ## 0. What the tracker is for
 
-*(Added under amendment A31, proposed 2026-10-19.)*
+*(Added under amendment A31, decided 2026-10-19.)*
 
 John's ruling of 2026-10-19, in his words: "The goal is to make a tracker of the Zeitgeist
 around AGI and the Singularity. We need to track both the traditional academics who have been

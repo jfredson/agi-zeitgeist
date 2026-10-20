@@ -5,13 +5,13 @@
 claim row was built. Amendment A27 in `docs/amendments.md` records the adoption. Changing a
 rule here after rows exist is an amendment entry, never a quiet edit. Amendment A30 (2026-10-19)
 widened the ledger from the panel to the industry's figureheads, with a ledger-only list for
-the three who are not on the panel. Amendment A31, PROPOSED 2026-10-19 and not yet ruled, turns the
+the three who are not on the panel. Amendment A31 (decided 2026-10-19) turns the
 ledger from a scorecard into a record of what the industry's leaders predict; the sections it
 changes are marked below.**
 
 ## What this ledger is for
 
-*(Rewritten under amendment A31, proposed 2026-10-19; the text it replaces is in that entry.)*
+*(Rewritten under amendment A31, decided 2026-10-19; the text it replaces is in that entry.)*
 
 John's ruling of 2026-10-19: "The goal is not to score people on their success at predicting the
 future, the goal is to track the zeitgeist of what these people are saying to get a feel for
@@ -87,6 +87,41 @@ Every file holds one `[claim]` table with these fields.
 
 A worked example is in the proposal, section 2.
 
+### What a timing claim says arrives (amendment A31)
+
+Every timing claim carries, entered by hand:
+
+- `arrives`: what the forecast says comes. `agi` (AGI or human-level AI, in whatever term the
+  person uses), `superintelligence`, `beyond_people` (AI better than people at most or all
+  things, smarter than any human, "a country of geniuses"), or `other` (a model, a product, a
+  robot, a feeling in the industry).
+- `arrives_term`: for anything but `other`, the person's own term, short ("minimal AGI",
+  "powerful AI").
+- `form`: for anything but `other`, the shape of the date: `year` (about a single year), `range`
+  (`due_early` to `due`), `by` (no later than `due`), `not_before` (not before `due`), or
+  `chance_tail` (the far end of a stated chance, such as a 10% or a 90% year, which marks the edge
+  of a spread rather than the forecast and is not drawn).
+
+Only forecasts with `arrives` other than `other` and `form` other than `chance_tail` are drawn.
+The validator refuses a timing claim without these fields, and any other kind of claim with
+them.
+
+### Undated words (amendment A31)
+
+A leader's words on when AGI or beyond arrives that carry no year and no length of time ("AGI is
+close", "we are nowhere near it") are not claims. Since 2026-10-19 they are kept, as words only,
+in `data/claims_undated/`, one file per passage, `[words]` table: `id` (the date said, the
+speaker and a slug, equal to the file name), `speaker_id`, `when`, `occasion`, `source_kind`
+(own words, a transcript or a printed Q&A; never news coverage), `source_url`,
+`source_locator`, `checked_how`, `quote` (and `translation` where the words are not in English),
+`arrives`, `about` (one plain sentence), `search_ids`, and optionally `when_note`,
+`statement_id` and `notes`. The same people and the same role-at-the-time rule apply as for
+claims. Each person's search for them runs back from the present to their latest dated forecast
+(or two years, for those with none), every search logged. The page shows a person's latest undated
+words when they are newer than their latest dated forecast, or the person has none, so that no
+one is shown as silent; they are never drawn and never scored. The validator refuses a passage
+that names a year.
+
 ## Which claims get in (the admission rule)
 
 A claim is admitted when all four are true. The test never looks at whether it came true.
@@ -121,9 +156,9 @@ A claim is admitted when all four are true. The test never looks at whether it c
 
 Anything else stays what it is, a coded statement: "AGI is coming", "still many years away",
 "we are close", "in a few years", "could be as little as two years away". **An undated claim is
-not a claim record.** The page says how many of each
-person's coded statements look forward (their frames include `timeline` or `possibility`) and
-how many of those carry a year, so vagueness stays visible without being scored.
+not a claim record.** Since amendment A31 a leader's latest undated words on when AGI or beyond
+arrives are kept as words only (above, "Undated words"), so vagueness stays visible without
+being dated or charted.
 
 ## Readings ruled by John
 
@@ -209,8 +244,9 @@ Verdicts are entered by hand and dated. Nothing scores a claim automatically.
 ## Numbers given as chances
 
 A claim that states a probability ("a 50% chance by 2035") cannot be scored by one outcome. It is
-entered, flagged `has_probability`, given its verdict like any other, and **kept out of the
-plain count**, listed for a later calibration check once a person has enough of them. Hedge
+entered, flagged `has_probability`, given its note like any other, and marked as a stated chance
+on the page. (Until amendment A31 such claims were kept out of the plain count behind a hit rate;
+there is no rate now.) Hedge
 words ("probably", "I'd be very surprised if not") are not probabilities: those claims are
 scored at face value with the hedge written in `prediction`.
 
@@ -228,10 +264,8 @@ Saying the same thing again is not a new prediction; changing the date is.
 
 ## Verdicts as small notes, and no rate
 
-*(Rewritten under amendment A31, proposed 2026-10-19; its verdict rule was ruled by John that
-day: "Sure, we can keep the verdicts as small notes, but they are not the point of the
-tracker." Until A31 is in force, the rules this replaces stand; they are kept below for the
-record.)*
+*(Rewritten under amendment A31, decided 2026-10-19. John's words that day: "Sure, we can keep the
+verdicts as small notes, but they are not the point of the tracker.")*
 
 - **Each claim keeps its verdict** (the five status words and the evidence, as above). On the
   page it is a small note on the claim: whether its date has passed, and what happened.
@@ -249,40 +283,6 @@ record.)*
   no longer unlocks anything.
 - **Both directions of selection are logged,** as before.
 
-<details><summary>The rules this section replaces (amendment A27)</summary>
-
-**The rate, and what stops it being gamed**
-
-- **Per person only, never pooled.** For each person: hits, missed (including withdrawn), not
-  yet due, unfalsifiable, with the number of due claims always printed beside any rate. The rate
-  is hits over hits plus missed, among claims in the plain count (so not those flagged
-  `has_probability`). A pooled rate would make three people answer for a fourth.
-- **Which way the misses went.** For each person, how many misses came later than said and how
-  many have not come, from `direction`. The rate alone hides this half of the question.
-- **When a claim is due.** A claim is due once its date has passed: 31 December of `due`, or
-  `due_date` where set. That holds for every status: a claim that cannot be tested counts among
-  the due only from its own date, not from the day it was entered (2026-10-19, amendment A30).
-  The page's "due" and the home-page sentence count this way.
-- **A floor.** A person with fewer than five due claims in the plain count shows "too few to
-  rate" and the counts, never a percentage.
-- **A collection pass before any rate.** A rate computed from the famous, easy-to-find claims
-  measures which claims were easy to find. No percentage is published for anyone until that
-  person has been traced year by year for dated claims, as the panel's collection traces
-  statements, with every search logged in `data/search_log.csv` and quiet years entered as rows.
-  The record of a finished trace is one row in the search log with the id
-  `<speaker_id>-claims-traced`, whose `what_found` names the years covered; the site reads that
-  row and allows the rate only when it exists. Until then the page shows the claims and the
-  counts under the plain label "seed only: not a rate". The panel's statement trace does not
-  count: it looks for statements under the statements rules (which sample busy years and keep
-  one row per source), not for every dated claim, and five of Altman's sixteen seed claims came
-  from sources his statement trace holds no row for. A claims trace is its own pass, and it may
-  start from the statement trace's logged sources.
-- **Both directions of selection are logged.** The searches that found each claim, and the
-  claims looked for and not found, are written down in the search log, as
-  `docs/panel-verification-2026-10.md` does for the panel.
-
-
-</details>
 
 ## Searches and the search log
 
@@ -299,7 +299,7 @@ The ledger is a separate record kind beside the others. Talk and delivery are ne
   nor on the ledger-only list is refused. Adding anyone to the panel is an amendment to the
   panel first.
 - **The ledger-only list** (tier `claims_only` in `data/speakers.csv`, amendment A30): the
-  figureheads who are not on the panel, so that their claims can be scored without widening
+  figureheads who are not on the panel, so that their claims can be recorded without widening
   it. These rows are never panel members. They never enter `data/statements.csv`, the opinion
   charts, the experts' dates or the panel's counts, and they carry no panel quota tag; the
   validator refuses each of these. Adding a name to the list, or taking one off, is itself an
@@ -320,46 +320,33 @@ The ledger is a separate record kind beside the others. Talk and delivery are ne
 
 ## Where it shows
 
-*(Rewritten under amendment A31, proposed 2026-10-19; the page is rebuilt only once John
-rules.)*
+*(Rewritten under amendment A31, decided 2026-10-19.)*
 
 A page of its own at `/claims/`, headed "What the industry's leaders predict", in this order:
 
-1. **What they say now.** Each person's latest dated forecast of AGI, superintelligence or AI
+1. **What they say now.** A figure (`site/claims-now.png`, drawn by `scripts/charts.py`) of each person's latest dated forecasts of AGI, superintelligence or AI
    better than people at most things, in their own term, on one shared timeline (a range, a
    year, or a forecast that it will not come before a date), set against a band for the middle
    half of the academics' dated guesses since 2023 (the frontier-voices rows), with the date it was said and a
-   mark where it comes from news reports rather than their own words. Beside it, their latest
-   dated prediction of any kind. The figure's title is computed, so it stays true as claims are
+   mark where it comes from news reports rather than their own words. Under it, a line per
+   person: those forecasts in their own terms; their latest undated words when newer than that
+   forecast or when they have none (words only, never drawn); and their latest dated prediction of
+   any kind. The figure's title and the home-page sentence are computed from the same figures
+   (`scripts/chart_style.py`, `leaders_now` and `academics_band`), so they stay true as claims are
    added.
-2. **How it has moved.** The same forecasts placed by the day they were said and the year they
-   named, one small panel per person, with a link to the frontier-voices chart on the home page.
+2. **How it has moved.** A figure (`site/claims-moved.png`) of every such forecast since 2023,
+   placed by the day it was said and the year it named, one small panel per person, with a link to the frontier-voices chart on the home page.
    The three on the ledger-only list appear here, never in that chart (A30).
 3. **Every claim,** by person, in date order: the words, the date, the occasion, the source, the
    test, and the verdict as a quiet note.
 
 One sentence on the home page, about the present (what the leaders who name a year say now,
 beside the academics), never a total of verdicts. `scripts/site.py` reads `data/claims/*.toml`, writes
-`site/claims/index.html` and `site/data/claims.csv`, and adds a `claims` block to
-`site/status.json` with the counts and a `now` block (each person's latest forecast);
+`site/claims/index.html` and `site/data/claims.csv`, and adds a `claims_ledger` block to
+`site/status.json` with the number of claims and people, the academics' band, and a `now` block
+(each person's latest forecasts and undated words), with no verdict counts;
 `scripts/validate.py` checks every file.
 
-<details><summary>The text this section replaces (amendment A27)</summary>
-
-**Where it shows**
-
-A page of its own at `/claims/`, with one sentence on the home page beside the experts' dates.
-The page opens with the four gauges' shares in a one-row strip, drawn from the same figures the
-home page uses, so the talk is seen against the delivery (the strip is display only and links
-to no claim); then the per-person table of counts; then each person's claims in date order, each
-with the words, the date, the due year, the status as a chip, the evidence and the marks
-(goal, maker's word, coverage only, restates). The top bar carries a "Claims" handle in its
-heavier tier. `scripts/site.py` reads `data/claims/*.toml`, writes `site/claims/index.html` and
-`site/data/claims.csv`, and adds the counts to `site/status.json`; `scripts/validate.py`
-checks every file.
-
-
-</details>
 
 ## Order of work
 

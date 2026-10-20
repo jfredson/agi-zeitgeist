@@ -1,10 +1,12 @@
 # Two voices of one zeitgeist: reframing the claims ledger
 
-**Status: a draft written on 2026-10-19 by the session that manages this tracker. It follows
-John's three rulings of that day (below); three smaller choices still wait on him (section 6).
-Nothing on the live site has changed. The changes to the method, the home page's wording and
-amendment A31 are on the same branch, marked as proposed. The claims page itself is rebuilt
-only once John rules on the rest.**
+**Status: ruled 2026-10-19.** John agreed the remaining choices ("Agreed on all", to the master
+session's recommendations): the page leads with AGI forecasts against the academics' band, and
+undated words are let in as words only (the alternative in choice 2 below, not the first
+recommendation). Amendment A31 records the decision. The Huang question (choice 3) was not part of
+that relay and is asked separately; until it is answered the home page's frontier-voices chart is
+unchanged. This file is kept as the record of what was proposed; the method and the page are
+built from A31.
 
 ## John's rulings, 2026-10-19
 
