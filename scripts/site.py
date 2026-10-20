@@ -1071,9 +1071,13 @@ def claims_counts(claims, search_ids, statements):
     people = {}
     for c in claims:
         p = people.setdefault(c["speaker_id"], dict(hit=0, missed=0, not_yet_due=0, unfalsifiable=0, withdrawn=0,
-                                                   plain_hit=0, plain_missed=0, later=0, not_come=0, sooner=0, chance=0, goal=0, coverage=0, n=0))
+                                                   plain_hit=0, plain_missed=0, later=0, not_come=0, sooner=0, chance=0, goal=0, coverage=0, n=0, unf_due=0))
         p["n"] += 1
         p[c["status"]] += 1
+        # A claim is due once its date has passed (31 December of the due year, or due_date); every settled
+        # claim has, and a "cannot be tested" claim counts as due only from its own date, not from entry.
+        end = c["due_date"] if isinstance(c.get("due_date"), date) else date(c["due"], 12, 31)
+        p["unf_due"] += c["status"] == "unfalsifiable" and end < pacific_today()
         if c.get("has_probability"):
             p["chance"] += 1
         elif c["status"] == "hit":
@@ -1087,7 +1091,7 @@ def claims_counts(claims, search_ids, statements):
         p["goal"] += bool(c.get("is_goal"))
         p["coverage"] += c["source_kind"] == "coverage_only"
     for sp, p in people.items():
-        p["due"] = p["hit"] + p["missed"] + p["withdrawn"] + p["unfalsifiable"]
+        p["due"] = p["hit"] + p["missed"] + p["withdrawn"] + p["unf_due"]
         p["plain_due"] = p["plain_hit"] + p["plain_missed"]
         p["traced"] = f"{sp}-claims-traced" in search_ids
         p["rate"] = None
@@ -1133,6 +1137,7 @@ def claims_page(sc, claims, built, commit):
     n_hit = sum(p["hit"] for p in people.values())
     n_missed = sum(p["missed"] + p["withdrawn"] for p in people.values())
     n_unf = sum(p["unfalsifiable"] for p in people.values())
+    n_unf_due = sum(p["unf_due"] for p in people.values())
 
     sections = []
     for sp in order:
@@ -1179,7 +1184,7 @@ def claims_page(sc, claims, built, commit):
 <p>The people who run the AI companies both sell the story and see further than anyone else. This page keeps a plain account of their predictions: each one that carried a date, in the person's own words, with where it was said, the test it will be judged by, and, once the date has passed, whether it came true. It answers one narrow question, how often each person's dated predictions have come true so far, and which way the misses went. It does not say whether anyone is right about the future, whether they are sincere, or whether the technology is good or bad. A person with a poor record may be right next time; one with a good record may have been lucky.</p>
 <p>The people on this page are the industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Eleven of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
 <p>A prediction gets in only if the person is one of these figureheads at the time, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Whether it came true is never looked at when deciding what gets in. A prediction with no date ("AGI is coming", "we are close") is not scored; the table says how many of each person's recorded statements look ahead and how many of those carry a year, so vagueness stays visible. The full rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
-<p>So far: {n_all} dated predictions by {len(people)} people, {n_due} of them due, of which {n_hit} came true, {n_missed} did not and {n_unf} cannot be tested. The people here were traced for their best-known, checkable predictions first, so these counts measure which predictions were easy to find; no one gets a percentage until they have been traced year by year with every search written down, and never from fewer than five due predictions.</p>
+<p>So far: {n_all} dated predictions by {len(people)} people. {n_due} are due, their dates passed: {n_hit} came true, {n_missed} did not and {n_unf_due} cannot be tested. Of those still ahead, {n_unf - n_unf_due} cannot be tested either, so will never be scored. The people here were traced for their best-known, checkable predictions first, so these counts measure which predictions were easy to find; no one gets a percentage until they have been traced year by year with every search written down, and never from fewer than five due predictions.</p>
 {counts_table}
 <p class="dim">"Did not" includes predictions the person later took back. "Cannot be tested" means the words carry a date but no test anyone outside could run, or the only judge is the speaker; such predictions are shown and counted apart, never scored. A stated chance ("a 50% chance") is kept and marked but left out of the rate.</p>
 {"".join(sections)}
