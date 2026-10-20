@@ -1,37 +1,38 @@
 ---
-title: The headline becomes a share of the way, with the slowest part named
+title: The home page now shows how far each part of the test has come, beside its answer
 date: 2026-10-18
 kind: headline-moved
-summary: The number at the top of the home page is now the average of the measured parts' distance to their lines, 32 percent of the way, always shown beside the slowest part, the economy, at zero, with one sentence saying where current trends would take each part. The test's own verdict is unchanged, "Not yet."
+summary: A bare "not yet" says nothing about whether anything is moving. The top of the home page now also shows how far each part of the test has come towards its line, always beside the part furthest behind, the economy, at zero. The answer itself has not changed.
 records: [A25]
-before: "Not yet. as the headline, then a count of parts past halfway, 1 of 4"
-after: "32 percent of the way; the economy at 0; the test still says Not yet."
+before: "Not yet, and nothing more"
+after: "Not yet, and 32 percent of the way, with the economy at 0"
 sources:
-  - label: Amendment A25, the headline average and the on-current-trends sentence
+  - label: The ruling and how the number is worked out
     url: https://agizeitgeist.com/docs/amendments
-  - label: The status file
+  - label: The numbers as they stand
     url: https://agizeitgeist.com/status.json
-  - label: The definition of entering the singularity
+  - label: The test's rules
     url: https://agizeitgeist.com/docs/singularity-entry-definition
 ---
 
-## What happened
+Ask whether we are in the singularity yet, and the honest answer today is no. But a bare "no" does not say whether nothing is happening or a great deal is. This site had that problem with its own headline.
 
-Until 17 October 2026 the top of the home page said "Not yet." and nothing else, which is the test's verdict and was never going to say anything different until the day the singularity starts. John ruled twice that day. In the afternoon the headline became a count of the parts past halfway, "1 of 4" ([the changelog](/docs/amendments)). Seen that evening on [the family's Projects page](https://sentient-horizons.com/projects/) beside its siblings' numbers, the count read as nothing happening, so he revised it the same evening to the average share of the way across the parts that can be measured, 32 percent, with the slowest part named, and a sentence saying where current trends would take each part. [Amendment A25](/docs/amendments) records both rulings and the method.
+I am John Fredrickson, and my site, the AGI Zeitgeist Tracker, asks whether we are in the singularity, the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. Its test has four parts: how fast AI is improving, whether anyone can still forecast it, how much of the work of improving AI is done by AI itself, and whether the world's economy has started growing far faster than it ever has. All four have to cross a line set in advance, and stay across for a year, before the test says yes ([the test's rules](/docs/singularity-entry-definition)).
 
-## What it changes here
+## A Headline That Could Only Say One Thing
 
-| what | before | after |
-|---|---|---|
-| The number at the top of the home page | "Not yet." alone; from the afternoon of 17 October, "1 of 4" | 32 percent of the way, averaged over the three parts that can be measured, with the economy at 0 named beside it |
-| The words under it | the count's label | one sentence on current trends: the economy does not cross its line, the pace crosses between 2028 and 2048, the AI-research share in 2027 |
-| The test's verdict | "Not yet." | "Not yet.", unchanged |
-| The status file | status, progress, the four gauges | the same, plus headline, headline_label, average_share, crossing_sentence and crossings |
+Until 17 October 2026, the top of the home page said "Not yet." and nothing else. That is [the test's answer](/), and it was right. But the test will give that answer every day until the day the singularity starts, so it told a visitor nothing about whether anything was moving.
 
-## Why
+## What the Top of the Page Says Now
 
-The test asks four things to be true at once and to stay true for a year, so its verdict is a yes or a not yet, and the definition argues against an average because one runaway part could hide three stalled ones ([the definition](/docs/singularity-entry-definition), section 4). The average is kept honest by one rule: it is never printed without the slowest part and its share in the same breath, and it never decides the status. The definition's own progress number, the weakest part's gauge, is still published as it was. The family's Projects page shows each site's headline on one shelf, and a headline that could only ever say "Not yet." told a visitor nothing about how far along the test is ([the status file](/status.json)).
+On 17 October 2026 I added a number under the answer ([the change and my reasons, in the site's changelog](/docs/amendments)). Each part has its own line to cross, and the number is the average of how far the parts have come towards their lines: [32 percent](/status.json). The pace of AI's improvement is 43 percent of the way to its line, the share of AI research done by AI is 52 percent, and the economy is at 0, because its growth is still below its own long-run average. The forecasts part cannot be scored yet, so the average is over the other three.
 
-## What it does not mean
+Under the number, one sentence says where each part would go if current trends simply continued: AI's share of the research would cross its line in 2027, the pace somewhere between 2028 and 2048, and the economy not at all. So on current trends the test is not met ([the home page](/)).
 
-Thirty-two percent of the way is not a 32 percent chance of anything, and it is not the test's answer: the test still says "Not yet.", and will until all four parts have crossed and stayed across for a year. It does not mean the economy part is about to move; on its current trend the economy does not cross its line at all, which is why the sentence says the test is not met on current trends. And the forecasts part is unmeasured, so the average is over three parts, not four, and the words say so ([the home page](/)).
+## Why the Economy Is Always Named Beside It
+
+An average can mislead. One part racing ahead could make the number look healthy while the others stand still, and [the rules I wrote for the test](/docs/singularity-entry-definition) warn against exactly that. So the number is never shown without the part furthest behind, and today that is the economy, at 0.
+
+That matters more than the average. The test passes only when all four parts cross their lines, so with one part not moving at all, the test has not begun to pass ([how the number is worked out](/docs/amendments)). The 32 percent is not a forecast. It shows which parts are moving and which are not.
+
+The number also decides nothing. The answer is still worked out from each part against its own line, and it still says "Not yet." It will stay that way until all four parts have crossed and stayed across for a year ([the numbers as they stand](/status.json)).
