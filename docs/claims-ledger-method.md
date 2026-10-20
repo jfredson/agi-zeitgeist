@@ -1,29 +1,37 @@
-# Claims ledger: method for scoring a named person's dated predictions
+# Claims ledger: a dated record of what the industry's leaders predict
 
 **Status: method written 2026-10-17 by the agent, from the proposal John adopted the same day
 (`docs/claims-ledger-proposal-2026-10-17.md`, all ten rulings "as recommended"), before any
 claim row was built. Amendment A27 in `docs/amendments.md` records the adoption. Changing a
 rule here after rows exist is an amendment entry, never a quiet edit. Amendment A30 (2026-10-19)
 widened the ledger from the panel to the industry's figureheads, with a ledger-only list for
-the three who are not on the panel.**
+the three who are not on the panel. Amendment A31, PROPOSED 2026-10-19 and not yet ruled, turns the
+ledger from a scorecard into a record of what the industry's leaders predict; the sections it
+changes are marked below.**
 
 ## What this ledger is for
 
-The people who run the frontier AI companies both sell the story and see further than anyone
-else. John's question of 2026-10-17 was whether each of them is a front-row seat or a salesman.
-This ledger answers one narrow part of that: **for each of the industry's figureheads (who
-they are is set out under the admission rule), of the predictions they made that have since come due, how many came true, how many did not, and
-which way the misses went.** Every claim is published in the person's own words, with the
-source, the test it will be judged by, and the evidence for the verdict.
+*(Rewritten under amendment A31, proposed 2026-10-19; the text it replaces is in that entry.)*
+
+John's ruling of 2026-10-19: "The goal is not to score people on their success at predicting the
+future, the goal is to track the zeitgeist of what these people are saying to get a feel for
+what the vanguard of the industry is predicting at any given time."
+
+So this is a dated record of what the people who lead the companies building frontier AI say
+the future holds: when they expect AI to match or pass people, and what they expect it to do
+along the way. Who they are is set out under the admission rule. Each prediction is in their own
+words, with the date, the occasion and the source. The record is read for what they are
+predicting now and how that has shifted. It is not a scorecard. Where a prediction's date has
+passed, a note on the claim says what happened, so each forecast can be seen in the light of
+events, but no one is given a score.
 
 It does not say whether a person is right about the future, whether they are sincere, or
-whether the technology is good or bad. A person with a poor record may be right next time; one
-with a good record may have been lucky. The page says so.
+whether the technology is good or bad.
 
 It sits beside two records that already exist. The coded statements (`data/statements.csv`)
-say what was said and sort it; the leg B ledger (`data/leg_b_ledger.csv`) scores the 2016
-researcher survey's 32 milestone forecasts against what happened. This ledger is the same
-operation as the leg B ledger, done on a named person's own words instead of a crowd's median.
+say what the frozen panel said and sort it, dated or not; the frontier-voices chart on the home
+page draws the panel's dated guesses. This ledger covers the industry's figureheads only, takes
+only predictions that carry a date, and keeps the verdict on each as context.
 
 ## The record: one file per claim
 
@@ -214,7 +222,29 @@ Saying the same thing again is not a new prediction; changing the date is.
   date whatever was said later. The page groups a chain and shows the due years in order, so a
   date that keeps sliding is visible as a slide.
 
-## The rate, and what stops it being gamed
+## Verdicts as context, and no rate
+
+*(Rewritten under amendment A31, proposed 2026-10-19. Until John rules, the rules this replaces
+stand; they are kept below for the record.)*
+
+- **Each claim keeps its verdict** (the five status words and the evidence, as above). On the
+  page it is a quiet note on the claim: whether its date has passed, and what happened. It is
+  never totalled in a headline, at the top of the claims page or on the home page. The counts
+  stay in the downloadable table and in `site/status.json` for anyone who wants them.
+- **When a claim is due.** A claim is due once its date has passed: 31 December of `due`, or
+  `due_date` where set. That holds for every status (2026-10-19, amendment A30).
+- **No hit rate,** per person or pooled (subject to John's choice 1 in
+  `docs/claims-ledger-reframe-proposal-2026-10-19.md`).
+- **The year-by-year search stays.** A person's latest forecast is only their latest if their
+  recent years have been searched, so each person is traced from their most recent year back,
+  with every search logged and quiet years entered as rows. The finished trace is still the row
+  `<speaker_id>-claims-traced` in the search log; it records that the search is complete and
+  no longer unlocks anything.
+- **Both directions of selection are logged,** as before.
+
+<details><summary>The rules this section replaces (amendment A27)</summary>
+
+**The rate, and what stops it being gamed**
 
 - **Per person only, never pooled.** For each person: hits, missed (including withdrawn), not
   yet due, unfalsifiable, with the number of due claims always printed beside any rate. The rate
@@ -243,6 +273,9 @@ Saying the same thing again is not a new prediction; changing the date is.
 - **Both directions of selection are logged.** The searches that found each claim, and the
   claims looked for and not found, are written down in the search log, as
   `docs/panel-verification-2026-10.md` does for the panel.
+
+
+</details>
 
 ## Searches and the search log
 
@@ -280,6 +313,33 @@ The ledger is a separate record kind beside the others. Talk and delivery are ne
 
 ## Where it shows
 
+*(Rewritten under amendment A31, proposed 2026-10-19; the page is rebuilt only once John
+rules.)*
+
+A page of its own at `/claims/`, headed "What the industry's leaders predict", in this order:
+
+1. **What they say now.** Each person's latest dated forecast of AGI, superintelligence or AI
+   better than people at most things, in their own term, on one shared timeline (a range, a
+   year, or a forecast that it will not come before a date), with the date it was said and a
+   mark where it comes from news reports rather than their own words. Beside it, their latest
+   dated prediction of any kind. The figure's title is computed, so it stays true as claims are
+   added.
+2. **How it has moved.** The same forecasts placed by the day they were said and the year they
+   named, one small panel per person, with a link to the frontier-voices chart on the home page.
+   The three on the ledger-only list appear here, never in that chart (A30).
+3. **Every claim,** by person, in date order: the words, the date, the occasion, the source, the
+   test, and the verdict as a quiet note.
+
+One sentence on the home page, about the present (what the leaders who name a year say now),
+never a total of verdicts. `scripts/site.py` reads `data/claims/*.toml`, writes
+`site/claims/index.html` and `site/data/claims.csv`, and adds a `claims` block to
+`site/status.json` with the counts and a `now` block (each person's latest forecast);
+`scripts/validate.py` checks every file.
+
+<details><summary>The text this section replaces (amendment A27)</summary>
+
+**Where it shows**
+
 A page of its own at `/claims/`, with one sentence on the home page beside the experts' dates.
 The page opens with the four gauges' shares in a one-row strip, drawn from the same figures the
 home page uses, so the talk is seen against the delivery (the strip is display only and links
@@ -289,6 +349,9 @@ with the words, the date, the due year, the status as a chip, the evidence and t
 heavier tier. `scripts/site.py` reads `data/claims/*.toml`, writes `site/claims/index.html` and
 `site/data/claims.csv`, and adds the counts to `site/status.json`; `scripts/validate.py`
 checks every file.
+
+
+</details>
 
 ## Order of work
 

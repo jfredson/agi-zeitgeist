@@ -967,3 +967,51 @@ chips (its driving chip was shown on 2019-04-22, and its own training chip, Dojo
 What does not change: the frozen panel's membership (A18), `data/statements.csv`, the scored
 series, the frozen thresholds, the definition, the verdict and the headline (A25), and every
 other rule of the ledger (A27 and John's rulings of 2026-10-19 in the method).
+
+## 2026-10-19: what the claims ledger is for (PROPOSED, not yet ruled)
+
+### A31. The claims ledger becomes a record of what the industry's leaders predict, not a scorecard (proposed)
+
+**Proposed 2026-10-19 by the managing session, on John's ruling of the same day; the choices in
+it wait on John, and nothing here is in force until he rules.** The full proposal, with draft
+pictures, is `docs/claims-ledger-reframe-proposal-2026-10-19.md`.
+
+Applies to: `docs/claims-ledger-method.md` (the title; "What this ledger is for"; "The rate, and
+what stops it being gamed"; "Where it shows"); `scripts/site.py` (the claims page, the home-page
+sentence, the `claims` block of `site/status.json`); `scripts/validate.py` (one new field on
+timing claims); `scripts/charts.py` (two new figures).
+
+Was: the ledger existed to score each figurehead's dated predictions once they came due. It
+asked how many came true, how many did not and which way the misses went. A per-person hit rate
+was to be printed once a person's claims had been searched year by year and five were due
+(amendment A27). The page led with a table of counts per person, and the home page gave the
+totals.
+
+Now (proposed):
+
+1. **The purpose,** in John's words of 2026-10-19: "to track the zeitgeist of what these people
+   are saying to get a feel for what the vanguard of the industry is predicting at any given
+   time." The ledger is a dated record of what the people leading the industry say the future
+   holds. It is read for what they predict now and how that has shifted, and it is not a
+   scorecard.
+2. **The page** leads with what each person says now: their latest dated forecast of AGI,
+   superintelligence or AI better than people at most things, in their own term, and their
+   latest dated prediction of any kind. Next it shows how their forecasts have moved, by the
+   date they were said. Then come all the claims, by person, in date order.
+3. **Verdicts stay as context.** Every claim keeps its status and evidence in the data. On the
+   page, the status is a quiet note on the claim (whether its date has passed, and what
+   happened). It is never totalled in a headline, on the page's top or on the home page.
+4. **No hit rates** (subject to John's choice 1 in the proposal). The floor of five due claims
+   and the "seed only: not a rate" label go with them. The year-by-year search and its "claims
+   traced" row stay, as the record that a person's latest forecast is really their latest.
+5. **One new field** on each timing claim, entered by hand and checked by the validator: what
+   the forecast says arrives, in the person's own term.
+
+Unchanged: who is in the ledger (A30), the admission rule, the five status words and what
+counts as a hit, the readings John ruled on 2026-10-19, and everything A27 and A30 say the
+ledger must never touch (the frozen panel, the coded statements, the scored series, the
+thresholds, the definition, the verdict and the headline).
+
+Why: John's ruling. A scorecard answers whether a person was right, which says little about
+where the industry's expectations stand. The record of what they say, read over time, is what
+the tracker exists to follow.
