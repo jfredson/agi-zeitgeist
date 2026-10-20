@@ -1,0 +1,22 @@
+[claim]
+id = "2024-07-22-liangwenfeng-agi-two-five-or-ten-years"
+speaker_id = "liangwenfeng"
+when = "2024-07-22"
+when_note = "The 36Kr original is dated 2024-07-22; ChinaTalk's English translation was published 2024-11-27."
+occasion = "Interview with Waves (暗涌), a section of the Chinese business site 36Kr, 'Unveiling DeepSeek: a more extreme story of Chinese technological idealism'"
+source_kind = "printed_qa"
+source_url = "https://www.chinatalk.media/p/deepseek-ceo-interview-with-chinas"
+source_locator = "the answer to 'How long until AGI is realized?'"
+checked_how = "Read ChinaTalk's published English translation (translator not named) on 2026-10-19 and checked it against the Chinese original at https://www.36kr.com/p/2872793466982535: '可能是2年、5年或者10年，总之会在我们有生之年实现'. The quote is ChinaTalk's English, verbatim."
+quote = "It could be two, five, or ten years–in any case, it will happen in our lifetimes."
+statement_id = "liangwenfeng-2024-01"
+prediction = "Artificial general intelligence (AGI) could arrive in two, five or ten years from July 2024; in any case it will happen within our lifetimes."
+kind = "timing"
+bar = "None in the source: the interview does not say what AGI is or how anyone would know it had arrived."
+due = 2034
+due_early = 2026
+due_basis = "Three spans from 2024-07-22: two years (2026), five (2029), ten (2034). The latest, 2034, is taken as the rule says, and the earliest recorded."
+status = "unfalsifiable"
+verdict_why = "'AGI' is a named stage he does not define in the interview, so under the bar rule (ruled by John 2026-10-19) no outsider could test it. The words are also hedged ('it could be') and give three different dates. Decided at entry."
+search_ids = ["liangwenfeng-claims-005", "liangwenfeng-claims-006"]
+notes = "Role at the time: founder and chief executive of DeepSeek (founded 2023-07-17). The English is ChinaTalk's translation of the Chinese interview, quoted as published. 'In our lifetimes' is a looser bound and not scored. In the same interview he calls mathematics and code 'natural AGI testing grounds', which is not a definition."
