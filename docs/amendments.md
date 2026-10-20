@@ -940,7 +940,8 @@ Now:
    in a year is its first quarter, by 31 March. (2) A forecast that something will not happen by
    a date is a claim, scored at that date: it came true if there is no public record of the
    thing by then, and did not if there is. (3) "A few years" and "as little as X" are undated,
-   so they are not claim records. (4) Bare "human level" with no comparison in the same source
+   so they are not claim records (the agent applied the same reading to "the next few months"
+   and "the coming months", which took out three Zuckerberg files, flagged for John). (4) Bare "human level" with no comparison in the same source
    is a named stage and cannot be tested; a stated comparison gives a plain test. Every claim
    file was passed again against them before merging.
 

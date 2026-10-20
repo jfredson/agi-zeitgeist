@@ -128,7 +128,9 @@ recommended (`docs/reviews/claims-ledger-check-2026-10-19.md`):
    The test names the thing in the speaker's words; `due` is the stated date.
 3. **"A few years" and "as little as X" are undated.** "A few years" names no length; "could be
    as little as two years away" names only the earliest the thing could come, so missing it
-   proves nothing. Neither is a claim record; each is left out and logged.
+   proves nothing. Neither is a claim record; each is left out and logged. The ledger applies the
+   same reading to "the next few months" and "the coming months", which name no length either
+   (an application by the agent on 2026-10-19, flagged for John).
 4. **Bare "human level" is a named stage.** With no comparison in the same source, "human-level
    AI" cannot be tested, like an undefined "AGI". A stated comparison ("better than humans at
    X", "smarter than the smartest human", "can do the cognitive tasks people can typically do")

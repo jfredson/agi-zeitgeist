@@ -1029,7 +1029,7 @@ WHO = {"altman": 'Head of <a href="https://openai.com/">OpenAI</a> since 2019; i
        "suleyman": 'Co-founder of DeepMind in 2010; co-founder and head of <a href="https://inflection.ai/">Inflection AI</a> from 2022; head of <a href="https://microsoft.ai/">Microsoft AI</a> since 2024. His words from 2019 to early 2022, when he held none of these roles, are not counted.',
        "sutskever": 'Co-founder and chief scientist of OpenAI from 2015 to 2024; co-founder of <a href="https://ssi.inc/">Safe Superintelligence</a> in 2024 and its head since 2025.',
        "legg": 'Co-founder and chief scientist of DeepMind from 2010, now Chief AGI Scientist of Google DeepMind. His words from before DeepMind was founded are not counted.',
-       "lecun": 'Chief AI scientist of <a href="https://about.meta.com/">Meta</a> from 2018 to 2025; since then executive chairman of the start-up <a href="https://techcrunch.com/2025/12/19/yann-lecun-confirms-his-new-world-model-startup-reportedly-seeks-5b-valuation/">AMI Labs</a>. His words as head of Facebook\'s AI research lab, 2013 to 2018, are not counted.',
+       "lecun": 'Chief AI scientist of <a href="https://about.meta.com/">Meta</a> from 2018 to 2025; since then chairman of the start-up <a href="https://amilabs.xyz/">AMI Labs</a>, which builds AI models of the world. His words as head of Facebook\'s AI research lab, 2013 to 2018, are not counted.',
        "liangwenfeng": 'Founder and head of <a href="https://www.deepseek.com/">DeepSeek</a> since 2023.',
        "mensch": 'Co-founder and head of <a href="https://mistral.ai/">Mistral AI</a> since 2023.',
        "zuckerberg": 'Founder and head of Facebook, now Meta. Not on the site\'s fixed list of experts: he is on this page only.',
