@@ -1,0 +1,21 @@
+[claim]
+id = "2025-01-23-lecun-llms-not-central-within-five-years"
+speaker_id = "lecun"
+when = "2025-01-23"
+when_note = "The World Economic Forum's upload of the session is dated 2025-01-23, the day of the town hall at its Annual Meeting in Davos."
+occasion = "'Debating Technology' town hall with Dava Newman, moderated by Ina Fried, World Economic Forum Annual Meeting 2025, Davos"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=MohMBV3cTbg"
+source_locator = "26:01 to 26:17 into the video, answering an audience question about five years from now"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words. The captions carry no speaker labels; the answer is his by its content ('my colleagues and I', the plan at Meta) and the session's three speakers."
+quote = "within five years nobody in the right mind would use them anymore at least not as kind of the central component of an AI system"
+prediction = "The current approach, large language models, has a short shelf life, 'probably 3 to five years'; within five years of January 2025 nobody sensible would use them as the central part of an AI system."
+kind = "capability"
+bar = "Plain reading: by the end of 2030, the leading AI systems in use (the main products of the leading AI companies) no longer have a large language model as their central component; a language model kept only as one part, such as the interface, is allowed by his own words."
+due = 2030
+due_early = 2028
+due_basis = "'within five years' from 2025-01-23 is January 2030, judged at 2030-12-31; the 'shelf life ... probably 3 to five years' gives an earlier end of 2028."
+repeated_on = [2025-10-27]
+status = "not_yet_due"
+search_ids = ["lecun-claims-003", "lecun-claims-030"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. 'Them' is large language models, named in the sentence before. Repeated unchanged on 2025-10-27 in his keynote at the Global AI Frontiers Symposium in Seoul: 'my prediction is that LLM will become obsolete within the next several years perhaps within five years or so'. Later coverage reworded it as 'nobody in their right mind will use autoregressive LLMs'; the caption words are used here. As of 2026-10-19 the main AI products are still built around large language models."

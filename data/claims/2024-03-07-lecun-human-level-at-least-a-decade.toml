@@ -1,0 +1,20 @@
+[claim]
+id = "2024-03-07-lecun-human-level-at-least-a-decade"
+speaker_id = "lecun"
+when = "2024-03-07"
+when_note = "The episode page and transcript page of the Lex Fridman Podcast give March 7, 2024."
+occasion = "Lex Fridman Podcast #416, 'Meta AI, Open Source, Limits of LLMs, AGI & the Future of AI'"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/yann-lecun-3-transcript/"
+source_locator = "the section headed AGI, his answer at 02:05:37"
+checked_how = "Read the podcast's own published transcript on 2026-10-19 (curl)."
+quote = "all of this is going to take at least a decade and probably much more"
+prediction = "Getting machines to learn how the world works from video at human scale, to remember, to reason and to plan in layers, all working together the way the human brain does, will take at least ten years from March 2024 and probably much longer."
+kind = "timing"
+bar = "None an outsider could run: 'all of this' is a list of abilities (learning from video, memory, reasoning, planning in layers, flexibility like the human brain) with no measure for when they are all working together, and the words only set a lower bound."
+due = 2034
+due_basis = "'at least a decade' from 2024-03-07 is 2034; judged at 2034-12-31."
+status = "unfalsifiable"
+verdict_why = "He is answering a question about artificial general intelligence (AGI), which he calls 'AGI or human-level AI or AMI, whatever you want to call it', and gives no test for when it has arrived. The words are also only a floor ('at least a decade and probably much more'), so the thing coming late would prove nothing. Decided at entry."
+search_ids = ["lecun-claims-020"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. The same answer says it is 'not going to be an event' but gradual progress. The coded statement row from this episode (lecun-2024-03) holds a different passage, so no statement is cited."

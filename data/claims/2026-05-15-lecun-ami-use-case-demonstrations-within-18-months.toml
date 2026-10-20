@@ -1,0 +1,20 @@
+[claim]
+id = "2026-05-15-lecun-ami-use-case-demonstrations-within-18-months"
+speaker_id = "lecun"
+when = "2026-05-15"
+when_note = "YouTube gives the upload date of the episode as 2026-05-15; the day of recording is not given."
+occasion = "Unsupervised Learning podcast with Jacob Effron, 'Yann LeCun on What Comes After LLMs'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=ngBraLDqzdI"
+source_locator = "25:50 to 26:40 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "And that should be within a year or two, 18 months."
+prediction = "Within a year or two (he settles on 18 months) of May 2026, AMI Labs will demonstrate that it can train world models, perhaps ones that take actions into account, to plan in a number of use cases: robotics, industrial process control, and perhaps health care, with partners."
+kind = "capability"
+bar = "Plain reading: by the end of 2028, AMI Labs shows, by its own release or a partner's, world models used to plan or control in at least two of the named kinds of use: robotics, industrial process control, health care."
+due = 2028
+due_early = 2027
+due_basis = "'within a year or two, 18 months' from 2026-05-15: May 2027 to May 2028, with 18 months giving November 2027. The later end, 2028, is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["lecun-claims-041"]
+notes = "Role at the time: founder and executive chairman of Advanced Machine Intelligence (AMI Labs), the Paris company he set up after leaving Meta at the end of 2025 to build AI models of the world; treated as a qualifying founder-leader or chair role, a judgement flagged for the lead. The sentence before is: 'we'll demonstrations that we can train world models, perhaps action-conditioned world models that allow us to plan for uh a number of different use cases'."

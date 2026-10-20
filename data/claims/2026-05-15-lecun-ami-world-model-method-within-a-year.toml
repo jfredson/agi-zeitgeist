@@ -1,0 +1,19 @@
+[claim]
+id = "2026-05-15-lecun-ami-world-model-method-within-a-year"
+speaker_id = "lecun"
+when = "2026-05-15"
+when_note = "YouTube gives the upload date of the episode as 2026-05-15; the day of recording is not given."
+occasion = "Unsupervised Learning podcast with Jacob Effron, 'Yann LeCun on What Comes After LLMs'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=ngBraLDqzdI"
+source_locator = "25:25 to 25:45 into the video, on AMI's interim steps"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "within a year or so, um we'll have I think a a general methodology to train hierarchical world models"
+prediction = "Within about a year of May 2026, AMI Labs will have a general method for training layered (hierarchical) world models on a very wide variety of kinds of data, scaled up to match the methods it is less happy with."
+kind = "capability"
+bar = "Plain reading: by the end of 2027, AMI Labs has published or shown a method for training hierarchical world models that works across many kinds of data (video and other industrial or sensor data), not only one."
+due = 2027
+due_basis = "'within a year or so' from 2026-05-15: May 2027; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["lecun-claims-041"]
+notes = "Role at the time: founder and executive chairman of Advanced Machine Intelligence (AMI Labs), the Paris company he set up after leaving Meta at the end of 2025 to build AI models of the world; treated as a qualifying founder-leader or chair role, a judgement flagged for the lead. A forecast of his own company's research, so evidence may be the maker's own paper or release."

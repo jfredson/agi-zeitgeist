@@ -1,0 +1,22 @@
+[claim]
+id = "2025-03-18-lecun-human-level-might-happen-within-a-decade"
+speaker_id = "lecun"
+when = "2025-03-18"
+when_note = "TechCrunch's guide to the conference week listed the conversation on the Tuesday of GTC 2025, which is 2025-03-18 (seen in a search result, not opened); Nvidia's upload is dated 2025-04-10."
+occasion = "'Frontiers of AI and Computing: A Conversation With Yann LeCun and Bill Dally', Nvidia's GTC developer conference 2025, San Jose"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=eyrDM3A_YFc"
+source_locator = "10:20 to 10:35 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "when I say very far it might happen within a decade or so it's not that far"
+prediction = "Overall human-level intelligence in machines is still 'very far', but that might mean within a decade or so of March 2025."
+kind = "timing"
+bar = "None in the source: in this answer human-level intelligence is named, not defined, and the words are hedged ('might', 'or so')."
+due = 2035
+due_basis = "'within a decade or so' from 2025-03-18: 2035."
+restates = "2024-10-lecun-human-level-within-the-decade-if-lucky"
+repeated_on = [2025-04-09, 2025-12-15]
+status = "unfalsifiable"
+verdict_why = "A named stage with no definition in the same source, hedged with 'might'. Decided at entry under the bar rule."
+search_ids = ["lecun-claims-027", "lecun-claims-003", "lecun-claims-032"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. Restates the October 2024 'within the decade' claim with the date moved to 2035. Repeated with the same due year on 2025-04-09 (AI Inside podcast: 'It may happen or happen to some degree within the next ten years', where he does define the stage, but 'to some degree' leaves no test) and in The Information Bottleneck podcast published 2025-12-15 ('the most optimistic view is that we'll have something that is close to a human intelligence or maybe dog intelligence within, you know, 5 to 10 years')."

@@ -1,0 +1,21 @@
+[claim]
+id = "2025-03-18-lecun-world-models-small-scale-three-to-five-years"
+speaker_id = "lecun"
+when = "2025-03-18"
+when_note = "TechCrunch's guide to the conference week listed the conversation on the Tuesday of GTC 2025, which is 2025-03-18 (seen in a search result, not opened); Nvidia's upload is dated 2025-04-10."
+occasion = "'Frontiers of AI and Computing: A Conversation With Yann LeCun and Bill Dally', Nvidia's GTC developer conference 2025, San Jose"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=eyrDM3A_YFc"
+source_locator = "9:00 to 9:20 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "probably going to have a good handle on getting this to work at least at a small scale within three years three to five years"
+prediction = "Systems that learn abstract mental models of the world and use them to reason and plan will probably be working, at least at a small scale, within three to five years; then it is a matter of scaling them up until human-level AI."
+kind = "capability"
+bar = "None an outsider could run: 'a good handle on getting this to work' is his own judgement, and 'at least at a small scale' sets no size or task."
+due = 2030
+due_early = 2028
+due_basis = "'within three years three to five years' from 2025-03-18: 2028 to 2030; the later end is taken."
+status = "unfalsifiable"
+verdict_why = "The test is whether he and his colleagues feel they have 'a good handle' on it, so the speaker is the judge, and the size of a 'small scale' success is not named. Decided at entry."
+search_ids = ["lecun-claims-027"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it."

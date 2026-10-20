@@ -1,0 +1,19 @@
+[claim]
+id = "2025-06-11-lecun-world-model-applications-within-five-years"
+speaker_id = "lecun"
+when = "2025-06-11"
+when_note = "Sky News uploaded its live coverage of the keynote conversation on 2025-06-11, the opening day of VivaTech 2025."
+occasion = "Keynote conversation at VivaTech, Paris, carried live by Sky News"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=EIo1YKEUac4"
+source_locator = "19:15 to 19:25 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "we're going to start seeing kind of the most the more tangible applications of this maybe within five years or so"
+prediction = "Tangible applications of this approach, AI that learns models of the world from video and uses them to plan, may start appearing within about five years of June 2025."
+kind = "deployment"
+bar = "Plain reading: by the end of 2030, products or services in real use (not research demonstrations) are built on world models of the kind he describes, systems that learn how the world works from video or sensor data and use that to plan."
+due = 2030
+due_basis = "'maybe within five years or so' from 2025-06-11: 2030."
+status = "not_yet_due"
+search_ids = ["lecun-claims-029"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. Hedged with 'maybe' and 'or so'; scored at face value. 'This' is the joint embedding predictive architecture (JEPA) approach to world models described just before."

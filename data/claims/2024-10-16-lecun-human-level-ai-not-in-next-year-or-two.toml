@@ -1,0 +1,22 @@
+[claim]
+id = "2024-10-16-lecun-human-level-ai-not-in-next-year-or-two"
+speaker_id = "lecun"
+when = "2024-10-16"
+when_note = "The post's timestamp is 2024-10-16 15:31 UTC."
+occasion = "Post on X answering why he disagrees with Sam Altman and Dario Amodei on timelines"
+source_kind = "own_words"
+source_url = "https://x.com/ylecun/status/1846574605894340950"
+source_locator = "the last line of the post"
+checked_how = "Read the post's text and timestamp on 2026-10-19 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "In any case, it's not going to be in the next year or two."
+statement_id = "lecun-2024-07"
+prediction = "Human-level AI will not arrive within a year or two of October 2024, that is, not before about October 2026."
+kind = "timing"
+bar = "None in the source: the post does not say what human-level AI is, so there is no test of whether it arrived before the date."
+due = 2026
+due_basis = "'the next year or two' from 2024-10-16 runs to about 2026-10-16; by the span rule it is judged at 2026-12-31."
+repeated_on = [2024-11-27]
+status = "unfalsifiable"
+verdict_why = "The claim is that a named stage, 'Human-Level AI', will not arrive by a date, and the post never says what the stage is. Under John's ruling of 2026-10-19 a named stage with no definition in the same source is unfalsifiable, whichever way the claim points. Decided at entry."
+search_ids = ["lecun-claims-002", "lecun-claims-026"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. This line differs from the statement: the row lecun-2024-07 quotes the post only up to 'the distribution has a long tail', and this is the post's last line. Repeated on 2024-11-27 with Nikhil Kamath ('it's not going to happen next year. It's not going to happen in two years'), the same due year. The lead asked whether this is a testable prediction: read as a comparison ('as smart as humans') it would be scored, and on the record as of 2026-10-19 it would be on course to hold, since no maker or outside body has shown such a system; read as he wrote it, a stage he leaves undefined, it is not. The seed list of 2026-10-17 had it as not yet due and 'likely to be a hit'; the 2026-10-19 bar rule moves it. He gave his own definition in other sources (2025-04-09 and 2026-04-01), which are entered separately."
