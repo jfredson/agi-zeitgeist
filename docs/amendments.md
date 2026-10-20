@@ -858,12 +858,17 @@ company heads who are not on the frozen panel he ruled: "Those three should be i
 whatever that means". This amendment records how they are included without touching the panel.
 Later the same day, reading the pull request that carried it, John ruled two of the questions it
 left open, in his words: "Yes Musk's claims from 2019-2021 should count", and "Sure, add Kai-Fu
-Lee." Both rulings are written into the items below.
+Lee." Both rulings are written into the items below. An independent check of the pull request
+(`docs/reviews/claims-ledger-check-2026-10-19.md`) then found the claim files read the same
+phrases in different ways; John ruled four readings the same day, each as the check
+recommended, and they are items 9 and 10 below.
 
 ### A30. The figureheads: who the claims ledger covers, and the ledger-only list
 
 Applies to: `docs/claims-ledger-method.md` (what the ledger is for, the `speaker_id` field, the
-admission rule's first condition, what the ledger must never touch, the order of work);
+admission rule's first and second conditions, the `bar` field, a new section "Readings ruled by
+John", the `hit` status word, when a claim is due, what the ledger must never touch, the order
+of work);
 `data/speakers.csv` (a new tier value); `scripts/validate.py`, `scripts/chart_style.py`,
 `scripts/charts.py` and `scripts/site.py` (the checks and the tier filters).
 
@@ -915,6 +920,28 @@ Now:
    `scripts/chart_style.py` defines the panel's two tiers once (`PANEL_TIERS`, `panel()`), and
    `scripts/charts.py` and `scripts/site.py` read the panel through them, so a `claims_only` row
    cannot reach a figure, the experts' dates or the panel count on the home page.
+8. **When a claim is due.** A claim counts as due once its date has passed (31 December of its
+   due year, or its `due_date`), whatever its status. A claim that cannot be tested used to
+   count as due from the day it was entered, so the page's "now due" included untestable claims
+   dated 2030 and later. `scripts/site.py` now counts this way (decided by the agent while
+   widening the page, 2026-10-19; the independent check found it right). It changes a published
+   number: for the first thirty claims, 17 are due, not the 20 the news post of 2026-10-19
+   gives (Altman 6, not 9).
+9. **What gets in, and what a hit needs** (given by the managing session on 2026-10-19 while
+   the ledger was widened). Only claims about AI: a company's spending, revenue, order book,
+   headcount, chip count, computing or data-centre build-out, training costs and labour-market
+   forecasts stay out, and so does a plain hardware date. A hypothetical ("let's imagine",
+   "suppose", "I could imagine", a date given only for an extrapolation the speaker disowns) is
+   not a prediction. A borderline case stays out. A hit needs a dated record of the event
+   itself, not an argument that it had become possible. A test uses the speaker's own words and
+   usage in the same source and is never shaped to fit a verdict.
+10. **Four readings, ruled by John on 2026-10-19, each as the check recommended.** (1) "Early"
+   in a year is its first quarter, by 31 March. (2) A forecast that something will not happen by
+   a date is a claim, scored at that date: it came true if there is no public record of the
+   thing by then, and did not if there is. (3) "A few years" and "as little as X" are undated,
+   so they are not claim records. (4) Bare "human level" with no comparison in the same source
+   is a named stage and cannot be tested; a stated comparison gives a plain test. Every claim
+   file was passed again against them before merging.
 
 Why: John asked for all the figureheads, not two. The rule makes the list checkable: anyone can
 see why a name is on it, and the role-at-the-time condition keeps a person's words from before
