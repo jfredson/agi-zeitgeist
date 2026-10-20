@@ -1,0 +1,22 @@
+[claim]
+id = "2026-06-02-hassabis-agi-2030-plus-or-minus-a-year"
+speaker_id = "hassabis"
+when = "2026-06-02"
+when_note = "Upload date of the recording; the event date is not given by the video or by the school's write-up of 2026-06-18."
+occasion = "Conversation with Stanford president Jonathan Levin, hosted by the Stanford Graduate School of Business and Stanford Medicine"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=DsewHeVbL-0"
+source_locator = "about 27:02 to 27:14"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I believe that we're only a few years away from that, maybe like 2030 plus or minus a year"
+prediction = "Artificial general intelligence (AGI) only a few years away, maybe around 2030, give or take a year."
+kind = "timing"
+bar = "None in the source: AGI is described only as 'this next version of really general artificial intelligence'."
+due = 2031
+due_early = 2029
+due_basis = "'2030 plus or minus a year': 2029 to 2031; the later end is the due year."
+restates = "2024-02-23-hassabis-agi-on-track-twenty-year-plan"
+status = "unfalsifiable"
+verdict_why = "Names a stage, artificial general intelligence (AGI), that he does not define anywhere in this source, so no outsider test exists (John's ruling of 2026-10-19). Decided at entry."
+search_ids = ["hassabis-claims-013", "hassabis-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). The school's write-up of 2026-06-18 prints it as 'maybe like 20, 30 plus or minus a year'. The coded statement hassabis-2026-09 dates it May 2026; it is not cited because this record is dated by the upload."

@@ -1,0 +1,25 @@
+[claim]
+id = "2025-05-20-hassabis-gemini-25-flash-generally-available-early-june"
+speaker_id = "hassabis"
+when = "2025-05-20"
+when_note = "Date of the Google I/O 2025 keynote."
+occasion = "Google I/O 2025 keynote, his segment on Gemini 2.5"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=o8NiE3XMPrM"
+source_locator = "about 20:21 to 20:25"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I'm excited to say that Flash will be generally available in early June with Pro soon after."
+prediction = "Gemini 2.5 Flash would be generally available in early June 2025, with 2.5 Pro soon after."
+kind = "deployment"
+bar = "Gemini 2.5 Flash generally available by the end of June 2025, with 2.5 Pro following."
+due = 2025
+due_date = 2025-06-30
+due_basis = "'in early June'; the month sets the due date, 2025-06-30."
+status = "hit"
+verdict_on = 2025-06-17
+verdict_why = "Google's post of 2025-06-17: 'Gemini 2.5 Flash and Pro are now generally available'. A judgement: 17 June is mid-month rather than 'early June'; under the month rule it is on time."
+verdict_source = "https://blog.google/products/gemini/gemini-2-5-model-family-expands/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["hassabis-claims-043", "hassabis-claims-044"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023)."

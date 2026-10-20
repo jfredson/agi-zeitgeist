@@ -1,0 +1,21 @@
+[claim]
+id = "2026-04-07-hassabis-drug-design-engine-five-to-ten-years"
+speaker_id = "hassabis"
+when = "2026-04-07"
+when_note = "Upload date; the recording date is not stated."
+occasion = "20VC podcast with Harry Stebbings"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=SSya123u9Yk"
+source_locator = "about 13:46 to 13:53"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I think we'll have that whole drug design engine ready in you know, the next 5 plus 5 to 10 years."
+prediction = "Isomorphic Labs' whole AI drug-design engine will be ready in about five to ten years."
+kind = "capability"
+bar = "None an outsider could apply: whether the engine is 'ready' is the company's own judgement, and no test is named."
+due = 2036
+due_early = 2031
+due_basis = "The captions read 'the next 5 plus 5 to 10 years', taken as five to ten years from 2026-04-07; the later end is the due year."
+status = "unfalsifiable"
+verdict_why = "Only the maker can say when its own engine is 'ready'; no outside test is named. Decided at entry."
+search_ids = ["hassabis-claims-010"]
+notes = "Role at the time: chief executive of Google DeepMind, the qualifying role, and also of Isomorphic Labs, Alphabet's drug-discovery company spun out of DeepMind, which the words are about."

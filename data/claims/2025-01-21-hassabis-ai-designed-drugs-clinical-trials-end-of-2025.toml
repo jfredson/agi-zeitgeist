@@ -1,0 +1,24 @@
+[claim]
+id = "2025-01-21-hassabis-ai-designed-drugs-clinical-trials-end-of-2025"
+speaker_id = "hassabis"
+when = "2025-01-21"
+when_note = "Date of the World Economic Forum session 'Folding Science' (dig.watch's listing; The Register says 'Tuesday', 2025-01-21)."
+occasion = "World Economic Forum Annual Meeting 2025, session 'Folding Science' with Ardem Patapoutian"
+source_kind = "transcript"
+source_url = "https://dig.watch/event/wef-2025-davos/folding-science-davos-2025"
+source_locator = "'Session Transcript', his opening remarks"
+checked_how = "Read on 2026-10-19 (curl) the machine transcript DiploAI made from the session's recording (marked 'not an official session record'); The Register of 2025-01-22 quotes the same words. No official video was found."
+quote = "our little spin out company Isomorphic I think we'll hopefully have some AI design drugs in the clinical trials by the end of the year."
+prediction = "Isomorphic Labs would hopefully have some AI-designed drugs in clinical trials by the end of 2025 ('That's the plan')."
+kind = "deployment"
+bar = "At least one drug designed by Isomorphic Labs with AI entering a human clinical trial (first participant dosed, or a trial registered as started) by 2025-12-31."
+due = 2025
+due_basis = "'by the end of the year', said 2025-01-21; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2026-05-19
+verdict_why = "No Isomorphic drug had entered a clinical trial by the end of 2025: at Google I/O on 2026-05-19 he said 'We're now in preclinical stage with multiple projects', and Fortune reported on 2026-05-27 that the company had not yet brought a drug into trials. At Davos in January 2026 he moved the date to the end of 2026 (a separate record)."
+verdict_source = "https://www.youtube.com/watch?v=wYSncx9zLIU"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["hassabis-claims-023", "hassabis-claims-024", "hassabis-claims-025", "hassabis-claims-026", "hassabis-claims-027", "hassabis-claims-028", "hassabis-claims-014"]
+notes = "Role at the time: chief executive of Google DeepMind, the qualifying role, and also of Isomorphic Labs, Alphabet's drug-discovery company spun out of DeepMind, which the words are about. Hedged with 'hopefully'; kept and scored at face value. Isomorphic repeated the aim when raising money in March 2025 (reported, not opened). The quotation uses the machine transcript's words ('AI design drugs')."

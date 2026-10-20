@@ -1,0 +1,23 @@
+[claim]
+id = "2025-05-23-hassabis-agi-most-mass-five-to-ten-years"
+speaker_id = "hassabis"
+when = "2025-05-23"
+when_note = "Upload date of the episode, recorded during Google I/O week (the keynote was 2025-05-20)."
+occasion = "Hard Fork podcast (New York Times), episode 137"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=KUzuQpMdQZo"
+source_locator = "about 31:47 to 32:29"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I actually have obviously a probability distribution of you know where the ma most mass of that is between five and 10 years from now"
+statement_id = "hassabis-2025-06"
+prediction = "Most of his probability for artificial general intelligence (AGI) lies five to ten years out, between 2030 and 2035; he puts himself 'just after' 2030."
+kind = "timing"
+bar = "His definition in the same answer: a system that 'should be able to do all of the things that the human brain can do', 'quite a high bar'. Met if such a system is shown by its maker or an outside body."
+due = 2035
+due_early = 2030
+due_basis = "'between five and 10 years from now', said 2025-05-23; the later end is the due year."
+has_probability = true
+restates = "2025-04-20-hassabis-agi-five-to-ten-years"
+status = "not_yet_due"
+search_ids = ["hassabis-claims-006"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). A changed repeat of the 60 Minutes range: here with his definition and stated as where most of his probability lies, which is a stated chance (more likely than not), so flagged and kept out of the plain count. The words 'if he's just before 2030 and I'm just after' (on Sergey Brin's date) come just before."

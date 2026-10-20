@@ -1,0 +1,21 @@
+[claim]
+id = "2023-07-10-hassabis-agi-like-not-surprised-next-decade"
+speaker_id = "hassabis"
+when = "2023-07-10"
+when_note = "The Verge's page is dated 2023-07-10."
+occasion = "Decoder podcast interview with Nilay Patel (The Verge), printed transcript"
+source_kind = "printed_qa"
+source_url = "https://www.theverge.com/23778745/demis-hassabis-google-deepmind-interview-agi-decoder"
+source_locator = "his answer to 'How many years until you think we have AGI?'"
+checked_how = "Read the printed transcript on 2026-10-19 (curl)."
+quote = "But right now, I would not be surprised if we approached something like AGI or AGI-like in the next decade."
+statement_id = "hassabis-2023-04"
+prediction = "He would not be surprised if something like artificial general intelligence (AGI), or 'AGI-like', were approached within the next decade."
+kind = "timing"
+bar = "None: 'something like AGI or AGI-like' is undefined in the interview, and 'would not be surprised if' names a possibility."
+due = 2033
+due_basis = "'in the next decade' from 2023-07-10; judged at 2033-12-31."
+status = "unfalsifiable"
+verdict_why = "A statement of what would not surprise him, not a forecast, about an undefined stage; missing the date would prove nothing. Decided at entry."
+search_ids = ["hassabis-claims-020"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Patel replies 'I'm going to come back to you in 10 years.'"

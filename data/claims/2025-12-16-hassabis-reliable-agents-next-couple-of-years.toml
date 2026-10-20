@@ -1,0 +1,19 @@
+[claim]
+id = "2025-12-16-hassabis-reliable-agents-next-couple-of-years"
+speaker_id = "hassabis"
+when = "2025-12-16"
+when_note = "Upload date of the episode."
+occasion = "Google DeepMind: The Podcast with Hannah Fry, 'The future of intelligence'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=PqVbypvxDto"
+source_locator = "about 53:42 to 53:52"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "Like in the next couple of years, I think we'll start seeing some really impressive reliable ones."
+prediction = "Within about two years, some really impressive and reliable AI agents (systems that carry out tasks on their own for a user) will start to appear."
+kind = "capability"
+bar = "Plainest reading: by 2027-12-31, AI agents in public use that reliably complete multi-step tasks on a user's behalf, shown by their makers or by outside tests of agent reliability."
+due = 2027
+due_basis = "'in the next couple of years' from 2025-12-16 is December 2027; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["hassabis-claims-008"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). 'Impressive' is not part of the bar; 'reliable' is."

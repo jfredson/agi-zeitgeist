@@ -1,0 +1,23 @@
+[claim]
+id = "2025-07-23-hassabis-agi-fifty-percent-by-2030"
+speaker_id = "hassabis"
+when = "2025-07-23"
+when_note = "The transcript page is dated 2025-07-23."
+occasion = "Lex Fridman Podcast #475"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/demis-hassabis-2-transcript/"
+source_locator = "section 'Path to AGI', at 00:52:33"
+checked_how = "Read the podcast's official transcript on 2026-10-19 (curl)."
+quote = "My estimate is sort of 50% chance by in the next five years, so by 2030 let’s say."
+statement_id = "hassabis-2025-07"
+prediction = "A 50% chance of artificial general intelligence (AGI) within five years, by about 2030."
+kind = "timing"
+bar = "His own definition and test in the same interview: a system that matches 'the cognitive functions that the brain has', consistently across the board, including true invention and creativity; tested by 'tens of thousands of cognitive tasks that we know that humans can do' and by giving a few hundred top experts 'a month or two' to find an obvious flaw. Met if such a system is shown and passes, by its maker or an outside body."
+due = 2030
+due_basis = "'by 2030 let's say'; judged at 2030-12-31."
+has_probability = true
+restates = "2024-02-23-hassabis-agi-on-track-twenty-year-plan"
+repeated_on = [2026-01-20, 2026-07-15]
+status = "not_yet_due"
+search_ids = ["hassabis-claims-004", "hassabis-claims-003", "hassabis-claims-031", "hassabis-claims-015"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Unchanged repeats: at Davos on 2026-01-20 the moderator said he had given 'a 50% chance of a system that can exhibit all the cognitive capabilities humans can by the end of the decade' and he replied 'I think I'm still on the same kind of timeline' (the date and chance are her words; his reply accepts them), and the same day on Bloomberg he answered 'It is ... that is still my timeline' to '50% chance of getting there by 2030'; at the lecture of the Worshipful Company of Information Technologists, published 2026-07-15, 'I actually talk about it as if 50% chance of 2030'. The seed list's record 'hassabis-2026-01-20-same-timeline-end-of-decade' is folded in here as a repeat. A stated chance, so out of the plain count."

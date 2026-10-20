@@ -1,0 +1,19 @@
+[claim]
+id = "2011-01-hassabis-human-level-agi-twenty-plus-years"
+speaker_id = "hassabis"
+when = "2011-01"
+when_note = "The 2011 Winter Intelligence Conference ran 2011-01-14 to 2011-01-17; the day of his talk is not given."
+occasion = "Talk 'Systems neuroscience and AGI' at the Winter Intelligence Conference, Oxford (Future of Humanity Institute)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=IjG_Fx3D0o0"
+source_locator = "about 0:24 into the talk; repeated at about 39:57"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "reaching human level AGI even by the most optimistic um kind of estimates is probably a 20year plus project"
+prediction = "Human-level artificial general intelligence (AGI) will probably take at least twenty years from January 2011, so not before 2031, 'even by the most optimistic' estimates."
+kind = "timing"
+bar = "Plainest reading of the named comparison 'human level': a machine about as capable as a typical person across thinking tasks. The claim fails if such a machine is shown before 2031."
+due = 2030
+due_basis = "'a 20year plus project' from January 2011 puts the earliest arrival in January 2031; the claim is that it does not come by the end of 2030, judged at 2030-12-31."
+status = "not_yet_due"
+search_ids = ["hassabis-claims-016", "hassabis-claims-017"]
+notes = "Role at the time: co-founder and chief executive of DeepMind, incorporated 2010-09-23. A judgement flagged for John: the brief treats words that are only a lower bound as unfalsifiable, with the example of a 'could be as soon as' possibility, where missing the date proves nothing. This is the reverse, a forecast that the thing will not come before a date, which an early arrival would show wrong; it is entered with a bar and not yet due. If John prefers the brief's literal reading, its status becomes unfalsifiable."

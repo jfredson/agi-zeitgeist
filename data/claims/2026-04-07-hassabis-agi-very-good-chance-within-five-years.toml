@@ -1,0 +1,22 @@
+[claim]
+id = "2026-04-07-hassabis-agi-very-good-chance-within-five-years"
+speaker_id = "hassabis"
+when = "2026-04-07"
+when_note = "Upload date; the recording date is not stated."
+occasion = "20VC podcast with Harry Stebbings"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=SSya123u9Yk"
+source_locator = "about 1:37 to 2:17"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I would say there's a very good chance of it being within the next 5 years."
+statement_id = "hassabis-2026-06"
+prediction = "A very good chance that artificial general intelligence (AGI) arrives within five years, by about April 2031."
+kind = "timing"
+bar = "His definition in the same interview: 'a system that exhibits all the cognitive capabilities the human mind has'. Met if such a system is shown by its maker or an outside body."
+due = 2031
+due_basis = "'within the next 5 years' from 2026-04-07; judged at 2031-12-31."
+restates = "2024-02-23-hassabis-agi-on-track-twenty-year-plan"
+repeated_on = [2026-07-15]
+status = "not_yet_due"
+search_ids = ["hassabis-claims-010", "hassabis-claims-015"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). 'A very good chance' is a hedge, not a number, so scored at face value. Unchanged repeat (same due year) at the lecture of the Worshipful Company of Information Technologists, published 2026-07-15, with the same definition: 'around four five years is my expectation from where we are today. So around 2030.'"

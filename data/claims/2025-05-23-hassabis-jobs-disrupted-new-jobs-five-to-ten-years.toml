@@ -1,0 +1,21 @@
+[claim]
+id = "2025-05-23-hassabis-jobs-disrupted-new-jobs-five-to-ten-years"
+speaker_id = "hassabis"
+when = "2025-05-23"
+when_note = "Upload date of the episode, recorded during Google I/O week (the keynote was 2025-05-20)."
+occasion = "Hard Fork podcast (New York Times), episode 137"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=KUzuQpMdQZo"
+source_locator = "about 58:24 to 58:41"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "over the next five to 10 years ... some jobs get disrupted but then new ... more valuable usually more interesting jobs get created"
+prediction = "Over the next five to ten years, AI will disrupt some jobs, but new, more valuable and usually more interesting jobs will be created."
+kind = "capability"
+bar = "None an outsider could apply: no measure separates jobs created by AI from other causes, and 'more valuable, usually more interesting' has no test."
+due = 2035
+due_early = 2030
+due_basis = "'over the next five to 10 years' from 2025-05-23; the later end is the due year."
+status = "unfalsifiable"
+verdict_why = "The claim names no number of jobs lost or gained and no way to tell which are due to AI; 'more interesting' is a matter of taste. Decided at entry."
+search_ids = ["hassabis-claims-006"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023)."

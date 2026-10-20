@@ -1,0 +1,19 @@
+[claim]
+id = "2026-04-29-hassabis-full-virtual-cell-ten-years"
+speaker_id = "hassabis"
+when = "2026-04-29"
+when_note = "Upload date of the live episode; the event date is not stated."
+occasion = "Y Combinator 'How to Build the Future' live episode with Garry Tan"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=JNyuX1zoOgU"
+source_locator = "about 26:33 to 26:39"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I think we're about 10 years away probably from something like a virtual cell, like a full virtual cell."
+prediction = "A full virtual cell, an AI simulation of a whole cell whose outputs are close enough to experiment to be useful, in probably about ten years."
+kind = "capability"
+bar = "His description in the same answer: a simulated cell that can be perturbed and whose outputs are 'close enough to experimental that it's useful', shown by its makers and checked against experiments, by 2036-12-31."
+due = 2036
+due_basis = "'about 10 years away' from April 2026; judged at 2036-12-31."
+status = "not_yet_due"
+search_ids = ["hassabis-claims-012"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023)."

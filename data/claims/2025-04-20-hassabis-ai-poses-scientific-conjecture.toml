@@ -1,0 +1,20 @@
+[claim]
+id = "2025-04-20-hassabis-ai-poses-scientific-conjecture"
+speaker_id = "hassabis"
+when = "2025-04-20"
+when_note = "Broadcast date; the archived page of 2025-04-23 is the original transcript (CBS later updated the page on 2025-08-03 and cut some questions)."
+occasion = "60 Minutes (CBS) interview with Scott Pelley"
+source_kind = "transcript"
+source_url = "https://web.archive.org/web/20250423001741/http://www.cbsnews.com/news/artificial-intelligence-google-deepmind-ceo-demis-hassabis-60-minutes-transcript/"
+source_locator = "the passage on curiosity and imagination"
+checked_how = "Read CBS's transcript on 2026-10-19 in the Internet Archive copy of 2025-04-23 (curl), and compared with the live page as updated 2025-08-03."
+quote = "I think we'll have systems that are capable of not only solving an important problem or conjecture in science but coming up with it"
+prediction = "Within maybe five to ten years, AI systems able not only to solve an important problem or conjecture in science but to come up with it in the first place."
+kind = "capability"
+bar = "An AI system shown to originate an important scientific conjecture or problem (one that scientists in the field recognise as important), not only to solve one, by 2035-12-31."
+due = 2035
+due_early = 2030
+due_basis = "'in the next maybe five to ten years' from 2025-04-20; the later end is the due year."
+status = "not_yet_due"
+search_ids = ["hassabis-claims-002"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). 'Important' is judged by the field's reception, the plainest reading."

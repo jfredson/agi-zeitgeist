@@ -1,0 +1,20 @@
+[claim]
+id = "2024-02-23-hassabis-agi-on-track-twenty-year-plan"
+speaker_id = "hassabis"
+when = "2024-02-23"
+when_note = "Upload date of the episode on the Hard Fork channel."
+occasion = "Hard Fork podcast (New York Times), episode 71, with Kevin Roose and Casey Newton"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=nwUARJeeplA"
+source_locator = "about 32:27 to 32:45; his definition at about 29:48"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "we stated in their 20-year time scale and I think I think we're actually pretty on track that gives us six more years"
+prediction = "DeepMind's 2010 business plan gave artificial general intelligence (AGI) a 20-year time scale, and it is 'pretty on track', which puts AGI around 2030 ('six more years', 'roughly')."
+kind = "timing"
+bar = "His definition in the same episode: 'a system that is generally capable so out of the box it should be able to do pretty much any cognitive task that humans can do', tested by 'a battery of thousands of tests' across what the human brain can do. Met if such a system is shown by 2030-12-31, by its maker or an outside body."
+due = 2030
+due_basis = "2010 plus twenty years, 'six more years' from 2024; judged at 2030-12-31."
+repeated_on = [2024-02-28, 2025-01-23, 2026-04-20, 2026-04-29]
+status = "not_yet_due"
+search_ids = ["hassabis-claims-005", "hassabis-claims-018", "hassabis-claims-019", "hassabis-claims-011", "hassabis-claims-012", "hassabis-claims-050"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Unchanged repeats of the 2030 date: Dwarkesh Podcast 2024-02-28 ('a 20-year project. And I think we're on track'); Big Technology printed interview 2025-01-23 ('probably three to five years away', 2028 to 2030, same due year); Sequoia's AI Ascent 2026-04-20 ('No, 2030. I've been pretty consistent about that', asked for his over-under year); Y Combinator, published 2026-04-29 ('mine's like 2030 or something like this'). Changed repeats have their own records: 2025-04-20 (five to ten years), 2025-07-23 (50% by 2030), 2026-04-07 (within five years), 2026-06-02 (2030 plus or minus a year). The seed list's record 'hassabis-2026-04-20-agi-2030' is folded in here as a repeat."
