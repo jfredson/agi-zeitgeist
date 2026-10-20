@@ -1,0 +1,24 @@
+[claim]
+id = "2023-05-10-pichai-magic-editor-later-this-year"
+speaker_id = "pichai"
+when = "2023-05-10"
+when_note = "The keynote was given on 2023-05-10; the official upload is dated the same day."
+occasion = "Opening keynote at Google I/O 2023, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=cNfINi5CNbY"
+source_locator = "00:09:16 to 00:09:23 into the video"
+checked_how = "Read the official upload's English captions on 2026-10-19 (yt-dlp); the captions name the speakers, and these words are in Pichai's opening segment."
+quote = "We are excited to roll out Magic Editor in Google Photos later this year."
+prediction = "Magic Editor, a photo editor in Google Photos using generative AI, would roll out later in 2023."
+kind = "deployment"
+bar = "Magic Editor available to some Google Photos users by 2023-12-31, shown by Google's own release."
+due = 2023
+due_basis = "'later this year', said 2023-05-10; judged at 2023-12-31."
+status = "hit"
+verdict_on = 2023-10-12
+verdict_why = "Google's post of 2023-10-04 says Magic Editor 'will all be available on Pixel 8 and Pixel 8 Pro' from their release on 2023-10-12, and its post of 2024-04-10 records the event: 'Last year, we launched Magic Editor on Pixel 8 and Pixel 8 Pro'."
+verdict_source = "https://blog.google/products-and-platforms/products/photos/google-photos-features-pixel-8-pro/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["pichai-claims-033", "pichai-claims-041", "pichai-claims-055"]
+notes = "Said as chief executive of Google (and, from 2019-12-03, of its parent Alphabet); Google builds frontier AI models (Google Brain, DeepMind, Gemini) and its own AI chips. It came first to two Pixel phones only, which the words allow."

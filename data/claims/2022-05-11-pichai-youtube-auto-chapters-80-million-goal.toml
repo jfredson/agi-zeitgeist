@@ -1,0 +1,24 @@
+[claim]
+id = "2022-05-11-pichai-youtube-auto-chapters-80-million-goal"
+speaker_id = "pichai"
+when = "2022-05-11"
+occasion = "Opening keynote at Google I/O 2022, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=nP-nMZpLM1A"
+source_locator = "00:11:33 to 00:11:37 into the video"
+checked_how = "Read the official upload's automatic English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words."
+quote = "we now have a goal to 10x the number of videos with from eight million today to 80 million over the next year."
+prediction = "Google's goal: within a year of May 2022, YouTube videos with chapters made automatically by DeepMind's AI would go from 8 million to 80 million."
+kind = "deployment"
+bar = "A dated record of at least 80 million YouTube videos with automatically made chapters by the end of 2023."
+due = 2023
+due_basis = "'over the next year' from 2022-05-11 is May 2023; judged at 2023-12-31 under the span rule."
+is_goal = true
+status = "missed"
+verdict_on = 2023-12-31
+verdict_why = "The only later figure found is DeepMind's own post of 2023-06-16, which says the chapters have been made for 'tens of millions of videos (and counting)': it does not show 80 million, and no later count was found. The verdict rests on the absence of a record of the stated number, so a later find could change it."
+verdict_source = "https://deepmind.google/blog/youtube-enhancing-the-user-experience/"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["pichai-claims-032", "pichai-claims-047", "pichai-claims-059"]
+notes = "Role at the time: chief executive of Google and Alphabet. A stated goal. First found by the research pass and not entered because nothing settled it; entered by the lead on 2026-10-19, because leaving out claims that cannot yet be settled would choose them by outcome."

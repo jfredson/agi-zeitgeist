@@ -1,0 +1,25 @@
+[claim]
+id = "2024-05-14-pichai-ask-photos-this-summer"
+speaker_id = "pichai"
+when = "2024-05-14"
+when_note = "Google I/O 2024 opened with this keynote on 2024-05-14; Google's upload of the video is dated the same day."
+occasion = "Opening keynote at Google I/O 2024, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=XEzRZ35urlk"
+source_locator = "00:07:37 to 00:07:40 into the video"
+checked_how = "Read the official upload's English captions on 2026-10-19 (yt-dlp); the captions name each speaker, and these words fall in a section labelled as Pichai's. The quote is a verbatim run of the caption words."
+quote = "We’re rolling out Ask Photos this summer, with more capabilities to come."
+prediction = "Ask Photos, a Gemini-powered way to ask questions of your Google Photos library, would start rolling out in the summer of 2024."
+kind = "deployment"
+bar = "Google starts rolling Ask Photos out to users by the end of summer 2024 (2024-09-22), shown by Google's own announcement. A rollout to some users counts; the words do not promise everyone."
+due = 2024
+due_basis = "'this summer', said 2024-05-14; summer is taken to end at the September equinox, 2024-09-22."
+due_date = 2024-09-22
+status = "hit"
+verdict_on = 2024-09-05
+verdict_why = "Google Photos announced on 2024-09-05 that 'early access to Ask Photos is rolling out to select U.S. users as part of Google Labs'. That is a start of the rollout inside the summer; it reached only some users, which the words allow."
+verdict_source = "https://blog.google/products-and-platforms/products/photos/google-ask-photos-early-access/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["pichai-claims-002", "pichai-claims-010"]
+notes = "Said as chief executive of Google and of its parent Alphabet (Google since 2015-08-10, Alphabet since 2019-12-03); Google builds the Gemini models and its own AI chips. Judgement call: an early-access rollout to select users is read as 'rolling out'; a reader who wants everyone in the United States would score it later."

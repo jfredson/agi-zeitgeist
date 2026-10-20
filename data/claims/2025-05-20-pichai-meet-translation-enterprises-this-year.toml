@@ -1,0 +1,24 @@
+[claim]
+id = "2025-05-20-pichai-meet-translation-enterprises-this-year"
+speaker_id = "pichai"
+when = "2025-05-20"
+when_note = "The keynote was given on 2025-05-20; the official upload is dated the same day."
+occasion = "Opening keynote at Google I/O 2025, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=o8NiE3XMPrM"
+source_locator = "00:10:11 to 00:10:22 into the video"
+checked_how = "Read the official upload's automatic English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words. The captions do not name speakers; the words fall in his own segment, between his opening and his hand-over to the next presenter."
+quote = "And real-time translation will be coming to enterprises later this year."
+prediction = "Real-time AI speech translation in Google Meet, then available to paying consumers, would come to business customers later in 2025."
+kind = "deployment"
+bar = "Speech translation in Meet available to Google Workspace business customers by 2025-12-31, shown by Google's own release. A closed test with a few businesses is not availability to enterprises."
+due = 2025
+due_basis = "'later this year', said 2025-05-20; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2026-01-27
+verdict_why = "Google's Workspace post of 2026-02-04 says that as of 2026-01-27 speech translation in Meet 'is no longer restricted to businesses in a limited alpha program'. In 2025 it reached businesses only through that closed test; general availability came about four weeks after the due date."
+verdict_source = "https://workspaceupdates.googleblog.com/2026/02/speech-translation-meet-ga.html"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["pichai-claims-034", "pichai-claims-044"]
+notes = "Said as chief executive of Google (and, from 2019-12-03, of its parent Alphabet); Google builds frontier AI models (Google Brain, DeepMind, Gemini) and its own AI chips. Judgement call: a closed alpha is read as short of 'coming to enterprises'; a reader who counts it would score a hit."

@@ -1,0 +1,25 @@
+[claim]
+id = "2025-05-20-pichai-personalized-smart-replies-this-summer"
+speaker_id = "pichai"
+when = "2025-05-20"
+occasion = "Opening keynote at Google I/O 2025, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=o8NiE3XMPrM"
+source_locator = "00:16:18 to 00:17:27 into the video, in his own opening segment"
+checked_how = "Read the official upload's automatic English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words."
+quote = "This will be available in Gmail this summer for subscribers."
+prediction = "Personalised smart replies, in which Gemini drafts an email reply in the user's own tone using their past emails and Drive files, would be available in Gmail to paying subscribers in summer 2025."
+kind = "deployment"
+bar = "Plain reading: a dated record that personalised smart replies were available in Gmail to Google's paying subscribers by the end of summer 2025."
+due = 2025
+due_date = 2025-09-22
+due_basis = "'this summer', said 2025-05-20; summer is taken to end at the September equinox, 2025-09-22, the generous reading."
+status = "missed"
+verdict_on = 2025-09-22
+verdict_why = "No dated record was found that personalised smart replies reached subscribers by 2025-09-22. The reports of the announcement say Google planned a test in its Labs programme in July and wider availability later; nothing found shows either happening. The verdict rests on the absence of a record, so a later find could change it."
+verdict_source = "https://techcrunch.com/2025/05/20/google-unveils-new-ai-features-coming-to-gmail-docs-and-vids"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["pichai-claims-034", "pichai-claims-046", "pichai-claims-057"]
+notes = "Role at the time: chief executive of Google and Alphabet. First found by the research pass and not entered because nothing settled it; entered by the lead on 2026-10-19, because leaving out claims that cannot yet be settled would choose them by outcome. Not the same as the contextual smart replies Google rolled out on 2024-09-27."
+verify = "Whether personalised smart replies reached Gmail subscribers by 2025-09-22, against Google's Workspace Updates blog, which was not found."

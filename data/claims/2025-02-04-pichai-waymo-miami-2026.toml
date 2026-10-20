@@ -1,0 +1,19 @@
+[claim]
+id = "2025-02-04-pichai-waymo-miami-2026"
+speaker_id = "pichai"
+when = "2025-02-04"
+when_note = "Alphabet's fourth-quarter 2024 earnings call was held on 2025-02-04."
+occasion = "Alphabet's fourth-quarter 2024 earnings call (Pichai's remarks as posted by Google)"
+source_kind = "transcript"
+source_url = "https://blog.google/inside-google/message-ceo/alphabet-earnings-q4-2024/"
+source_locator = "the Waymo section"
+checked_how = "Read Google's edited transcript of his remarks on the page on 2026-10-19 (curl)."
+quote = "Waymo will be expanding its network and operations partnerships to open up new markets, including Austin and Atlanta this year and Miami next year."
+prediction = "Waymo's driverless ride service would open in Miami in 2026."
+kind = "deployment"
+bar = "Driverless Waymo rides open to the public in Miami by 2026-12-31."
+due = 2026
+due_basis = "'next year', said 2025-02-04; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["pichai-claims-005"]
+notes = "Said as chief executive of Google and of its parent Alphabet (Google since 2015-08-10, Alphabet since 2019-12-03); Google builds the Gemini models and its own AI chips. Waymo, the self-driving car company whose cars are driven by AI, belongs to Alphabet. Seen so far: his remarks of 2026-02-04 say 'Its sixth market, Miami, launched two weeks ago'. The verdict is entered when the due date passes."

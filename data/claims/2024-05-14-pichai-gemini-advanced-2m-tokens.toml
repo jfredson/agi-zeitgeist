@@ -1,0 +1,24 @@
+[claim]
+id = "2024-05-14-pichai-gemini-advanced-2m-tokens"
+speaker_id = "pichai"
+when = "2024-05-14"
+when_note = "The post is dated 2024-05-14, the day of the keynote."
+occasion = "'Google I/O 2024: An I/O for a new generation', Pichai's keynote remarks as published under his name on Google's blog"
+source_kind = "own_words"
+source_url = "https://blog.google/inside-google/message-ceo/google-io-2024-keynote-sundar-pichai/"
+source_locator = "the paragraph after the announcement of Gemini Live"
+checked_how = "Read on the page on 2026-10-19 (curl); the date and the sentence were seen."
+quote = "We’ll also be bringing 2M tokens to Gemini Advanced later this year"
+prediction = "Gemini Advanced, Google's paid Gemini chatbot, would get a context window (how much text, video or code it can take in at once) of 2 million tokens later in 2024."
+kind = "deployment"
+bar = "Gemini Advanced subscribers able to use a 2-million-token context window by 2024-12-31, shown by Google's own release notes."
+due = 2024
+due_basis = "'later this year', written 2024-05-14; judged at 2024-12-31."
+status = "missed"
+verdict_on = 2025-01-30
+verdict_why = "It did not come in 2024. Google's own Gemini release note of 2025-01-30 says 'Gemini Advanced users will continue to have access to a 1M token context window', half the promised size, and no later note before the Advanced name was retired raises it to 2 million."
+verdict_source = "https://gemini.google/release-notes/"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["pichai-claims-001", "pichai-claims-002", "pichai-claims-021"]
+notes = "Said as chief executive of Google and of its parent Alphabet (Google since 2015-08-10, Alphabet since 2019-12-03); Google builds the Gemini models and its own AI chips. Judgement call on who said it: on stage the line was spoken by Sissie Hsiao, head of the Gemini app, but it is printed in Pichai's own published remarks, so it is entered as his written words. The 2-million-token window did reach developers through Google's programming interface in June 2024; that is a different product."

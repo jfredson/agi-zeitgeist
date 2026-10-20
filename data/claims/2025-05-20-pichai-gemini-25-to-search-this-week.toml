@@ -1,0 +1,25 @@
+[claim]
+id = "2025-05-20-pichai-gemini-25-to-search-this-week"
+speaker_id = "pichai"
+when = "2025-05-20"
+occasion = "Opening keynote at Google I/O 2025, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=o8NiE3XMPrM"
+source_locator = "00:47:36 to 00:47:47 into the video, before he hands over to Liz Reid"
+checked_how = "Read the official upload's automatic English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words."
+quote = "starting this week, Gemini 2.5, our most intelligent model series, is coming to search."
+prediction = "Starting in the week of 2025-05-20, Google's Gemini 2.5 models would come to Google Search."
+kind = "deployment"
+bar = "Plain reading: a dated record that Gemini 2.5 was running in Google Search for users during the week of 2025-05-20."
+due = 2025
+due_date = 2025-05-25
+due_basis = "'starting this week', said Tuesday 2025-05-20; the week is taken to end on Sunday 2025-05-25."
+status = "missed"
+verdict_on = 2025-05-25
+verdict_why = "No dated record was found that Gemini 2.5 was running in Search for users that week: only the same-day announcements saying it was coming, and a report of 2025-07-17 that Gemini 2.5 Pro had reached Search's AI Mode for paying subscribers. The verdict rests on the absence of a record, so a later find could change it."
+verdict_source = "https://www.gigazine.net/gsc_news/en/20250717-google-ai-mode-gemini-2-5-pro"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["pichai-claims-034", "pichai-claims-046", "pichai-claims-058"]
+notes = "Role at the time: chief executive of Google and Alphabet. First found by the research pass and not entered because nothing settled it; entered by the lead on 2026-10-19, because leaving out claims that cannot yet be settled would choose them by outcome."
+verify = "Whether Google's Search blog or a Search status page dates Gemini 2.5 running in AI Mode or AI Overviews in the week of 2025-05-20."
