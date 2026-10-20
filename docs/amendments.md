@@ -339,8 +339,7 @@ with Narayanan, not added: no independent statement, and the cohort would exceed
 Abeba Birhane and Katja Grace (near misses; on the wide list). A later find that would
 pass one of them is recorded, not acted on, unless I amend the panel.
 
-**Readings chosen at the freeze** (decided by: me, on the model's recommendation, recommended by Claude, chosen by
-me, 2026-10-06):
+**Readings chosen at the freeze** (decided by: me, on the model's recommendation, 2026-10-06):
 1. **`frontier_lab`: Liang yes, Mensch no.** DeepSeek counts as a company building the
    most capable models of its time; Mensch's research-scientist role at DeepMind
    (2020 to 2023) and Mistral do not meet the tag.
