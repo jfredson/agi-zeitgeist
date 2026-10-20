@@ -2,7 +2,7 @@
 title: "Are we in the singularity? Where the test stands, and what to watch"
 date: 2026-10-18
 kind: start-here
-summary: People have argued for decades about whether machines will one day outrun us. This site sets a test that can be checked, and as of 18 October 2026 the answer is not yet. Here is how the test works, where it stands, and what to watch.
+summary: People have argued for decades about whether machines will one day outrun us. This site follows what the academics and the people building AI have said, and how their talk has moved, and sets a test of whether the singularity has begun. As of 18 October 2026 the test says not yet.
 sources:
   - label: The numbers as they stand
     url: https://agizeitgeist.com/status.json
@@ -14,7 +14,9 @@ sources:
 
 For decades people have argued about whether machines will one day outrun us. The singularity is the name for that moment: machines getting smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI, a machine that can do most of the thinking work a person can. Some say it is decades away, some say it is already starting, and the trouble is agreeing on what would count as an answer.
 
-I am John Fredrickson, and I built this site, the AGI Zeitgeist Tracker, to answer the question in a way anyone can check. It asks one thing, are we in the singularity yet, and sets a test for it. Alongside the test, it keeps a dated, sourced record of when people expect AGI.
+I am John Fredrickson, and I built this site, the AGI Zeitgeist Tracker, to follow that argument. "Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. The site records what two groups have said about AGI, with every quote dated and linked to where it was said. One is the academics and writers who have talked about this for decades. The other is the people who run the AI companies, who are actually building it and who tend to run well ahead of the evidence with their predictions. Both belong in the picture, and the point is to see how the talk has moved, not to score anyone.
+
+The talk has moved a long way. [Geoffrey Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton), a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. [Gary Marcus](https://en.wikipedia.org/wiki/Gary_Marcus), a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025 ([what people have said](/#belief)). Beside that record, the site asks a harder question, are we in the singularity yet, and sets a test that anyone can check.
 
 ## Why the Test Needs Four Parts
 
@@ -53,8 +55,8 @@ AI's share of the research sits closest to its line, but it rests on only two fi
 
 For the economy, the [World Bank](https://www.worldbank.org/) has not yet published a figure for 2026. When it does, the economy part will move off zero only if growth beats its own long-run average ([the four parts](/#singularity)).
 
-Next to arrive is a record of the dated predictions made by the people who run the AI companies, in their own words, checked when their dates come. Among the first to come due is the prediction [Sam Altman](https://en.wikipedia.org/wiki/Sam_Altman), who runs [OpenAI](https://openai.com/), made in June 2025 that "2026 will likely see the arrival of systems that can figure out novel insights", judged at the end of 2026 ([the claim](/claims/#2025-06-10-altman-2026-systems-novel-insights)).
+Next to arrive is a fuller record of what the people who run the AI companies have said about the future, in their own words and with their dates, so that anyone can see how their talk has moved. [Sam Altman](https://en.wikipedia.org/wiki/Sam_Altman), who runs [OpenAI](https://openai.com/), wrote in June 2025 that "2026 will likely see the arrival of systems that can figure out novel insights" ([the quote, with its source](/claims/#2025-06-10-altman-2026-systems-novel-insights)). Where a date passes, the record notes in a line what happened.
 
 ---
 
-*Updated 2026-10-19:* the record of predictions opened the next day, with 325 predictions from fifteen people ([the claims page](/claims/)).
+*Updated 2026-10-19:* I opened that record the next day, with 325 dated predictions from fifteen people ([the claims page](/claims/)).
