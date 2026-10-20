@@ -51,7 +51,7 @@ FIELDS = ["claim_target", "temporal_status", "stance", "epistemic_qualification"
           "development_preference", "attribution", "title_only", "extrapolates_to_horizon"]
 PAIRS = [("claude", "gemini"), ("claude", "gpt"), ("gemini", "gpt")]
 UNRESOLVED_LIMIT, KAPPA_FLOOR = 0.15, 0.6
-RULED_UNRELIABLE = {"development_preference": "ruled unreliable by John, 2026-10-03"}
+RULED_UNRELIABLE = {"development_preference": "ruled unreliable by me, 2026-10-03"}
 R1_POSTS = D / "r1-split-trial-posts.csv"
 FULL_POSTS = D / "full-run-posts.csv"
 FULL = {m: [D / f"r-singularity-pilot-codes-{name}-full-final.csv"]

@@ -1,12 +1,12 @@
 # Proposal: a headline that measures distance, not a verdict
 
-*Written 2026-10-17 by the agent at John's request, relayed through the master session the same
+*Written 2026-10-17 by the agent at my request, relayed through the master session the same
 afternoon. Nothing scored changes with this document: the frozen definition, the thresholds file,
 the scored series and the verdict's wording all stay as they are. The numbered decisions at the
 end each carry a confidence and the strongest alternative, as the ground rule of 2026-09-08
 requires. If adopted, decision 5 says what gets numbered as an amendment and what does not.*
 
-## 1. The ask, in John's words
+## 1. The ask, in my words
 
 "I think we should re-evaluate whether 'Not Yet' is the right headline number for the AGI
 Zeitgeist tracker because it's just a binary. The more interesting question is how close are we
@@ -54,7 +54,7 @@ has fallen from the 1961-to-2019 average toward 2.6 years. World growth today (2
 than that average (3.5%), so the doubling time is longer than the reference and the gauge
 clips at zero. Growth has been flat to falling since 2010 (a trend of −0.05 points a year).
 Until a year's growth beats 3.5%, leg D reads 0%, and P(t), the minimum, reads 0% whatever A
-and C do. That is leg D doing exactly the job John gave it on 2026-10-08, against the agent's
+and C do. That is leg D doing exactly the job I gave it on 2026-10-08, against the agent's
 recommendation: it is the one leg measured by people outside the AI field, and it stops a
 "singularity on paper". A headline built on P(t) inherits that choice.
 
@@ -126,7 +126,7 @@ On the page and on the shelf:
 > them is.
 
 The count is the headline number because it is the only one of the three that is both faithful
-to the definition and moves when a leg moves. The four shares beneath it are what John asked
+to the definition and moves when a leg moves. The four shares beneath it are what I asked
 for, "how far along the path", leg by leg, and they are already on the page as bars; they
 become numbers in a row. P(t) stays published in the status file and in the definition's
 section 4, and is written out in the "Are we in the singularity?" section as "at most 0% of
@@ -164,7 +164,7 @@ five-line change in `scripts/site.py`.
    the frozen values do not change, so this lands as a dated note in section 4 ("published
    as ...") and a line in the README, not as an amendment. Moderate confidence. Alternative:
    number it anyway, as the next amendment, on the ground that what the parent site shows as
-   this project's one number is part of the record; John has preferred the amendment file to
+   this project's one number is part of the record; I have preferred the amendment file to
    be complete rather than minimal.
 6. **While P(t) is zero, the label names the bottleneck and its number** ("the economy grows
    2.9% a year and would need 30%"). High confidence. Alternative: name only the leg; rejected
@@ -195,8 +195,8 @@ five-line change in `scripts/site.py`.
 
 ## 9. Ruled
 
-Ruled by John on 2026-10-17 as recommended (the count, "1 of 4"), and landed that afternoon.
-Revised by John the same evening after seeing it on the parent site's shelf: the number is now the
+Decided on 2026-10-17 as recommended (the count, "1 of 4"), and landed that afternoon.
+Revised by me the same evening after seeing it on the parent site's shelf: the number is now the
 average share of the way across the measured parts, with the slowest part named, and the words an
 on-current-trends crossing sentence, the trend method recorded as amendment A25. The variant this
 document set aside in section 4 ("the mean of the measured legs", 32%) is therefore the headline,

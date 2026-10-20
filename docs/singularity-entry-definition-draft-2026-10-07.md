@@ -1,7 +1,7 @@
 # Draft: a measurable definition of "entering the singularity"
 
-**Status: draft for John's review, 2026-10-07. Not adopted. Not part of methodology
-version 2.** Written after John noticed that a top comment on r/accelerate ("any
+**Status: draft for me's review, 2026-10-07. Not adopted. Not part of methodology
+version 2.** Written after I noticed that a top comment on r/accelerate ("any
 prediction made right now about the next 5 years is gonna look stupid in retrospect")
 matches one of the standard definitions of the singularity, and asked whether the idea
 could be made into a definition, a progress measure and a mark to cross.
@@ -150,7 +150,7 @@ F and the vanguard sub-series) against P(t). Divergence in either direction is a
 finding. The hedging rule (R3) in the vanguard codebook already gives a proxy for a
 community's sense of its own forecast horizon, and can be charted against g_B.
 
-## 7. Open questions for John
+## 7. Open questions for me
 
 - Is METR's task horizon the right anchor for C, and what is the successor rule?
 - Placeholders to set: T\* (one month?), reference year (2019?), persistence (four

@@ -54,22 +54,22 @@ streams.
 | `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
 | `docs/codebook.md` | how each statement is coded under version 2, with decision rules and examples |
 | `docs/reviews/` | the two outside reviews behind version 2 |
-| `docs/panel-verification-2026-10.md` | evidence for each panel candidate, for John's freeze decision |
+| `docs/panel-verification-2026-10.md` | evidence for each panel candidate, for me's freeze decision |
 | `docs/amendments.md` | dated changes to the panel or the codes |
 | `docs/2026-09-30-kickoff.md` | the original plan |
 | `docs/singularity-entry-definition.md` | adopted 2026-10-08: the four-leg measurable definition of entering the singularity (pace, forecasts, AI doing the improving, the economy), with gauges and a mark |
 | `docs/singularity-entry-thresholds.json` | the frozen values the page scores from; any change is an amendment |
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
-| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A29): how a panel statement John comes across enters the record; rows the fixed searches did not find carry `tip_only` and stay out of every figure |
-| `docs/panel-watch/` | draft social notes on panel statements, beside the rows they cite; Claude drafts, John posts |
+| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A29): how a panel statement I come across enters the record; rows the fixed searches did not find carry `tip_only` and stay out of every figure |
+| `docs/panel-watch/` | draft social notes on panel statements, beside the rows they cite; Claude drafts, I post |
 | `sources/manifest.csv` | archived primary sources (address, dates, checksum); the archived files themselves stay on the maintainer's machine and are not in the repository |
 | `docs/leg-c-second-source-2026-10.md` | reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read as a candidate outside-the-company measure for leg C; found to be context, not a second source |
 | `docs/headline-proposal-2026-10-17.md` | the headline proposal (2026-10-17): the three forms and what each showed that day; ruled as the count that afternoon and revised to the average with a crossing sentence that evening (amendment A25) |
-| `docs/leg-c-second-source-2026-10-17.md` | reading note (2026-10-17): the wider search for a leg C second source (venue disclosure statistics, researcher surveys, independent measurements); 26 candidates judged, none qualifies, no row added; three near misses and the questions they raise are set out for John |
+| `docs/leg-c-second-source-2026-10-17.md` | reading note (2026-10-17): the wider search for a leg C second source (venue disclosure statistics, researcher surveys, independent measurements); 26 candidates judged, none qualifies, no row added; three near misses and the questions they raise are set out for me |
 | `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
 | `docs/claims-ledger-method.md` | the claims ledger's method (2026-10-17): the record layout, the admission rule, the five status words, what counts as a hit, the due-year rule, restatements, the rate and its guards, and what the ledger never touches |
-| `docs/claims-ledger-proposal-2026-10-17.md` | the proposal the ledger was adopted from (amendment A27), with its decisions and John's rulings; the seed list of 79 claims is in `docs/claims-ledger-seed-2026-10-17.md` |
+| `docs/claims-ledger-proposal-2026-10-17.md` | the proposal the ledger was adopted from (amendment A27), with its decisions and my rulings; the seed list of 79 claims is in `docs/claims-ledger-seed-2026-10-17.md` |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files, every reading record in `data/readings/` and every claim file in `data/claims/` |
 | `scripts/charts.py` | builds the charts from the CSV files |
 | `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |

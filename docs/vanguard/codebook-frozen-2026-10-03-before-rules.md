@@ -3,7 +3,7 @@
 
 How posts in the vanguard sub-series are coded. Written 2026-10-03 from section 7 of the
 accepted amendment `docs/amendments/2026-10-02-vanguard-stream.md`, the rules applied in the
-r/singularity pilot, and John's rulings of 2026-10-03 on the pilot report. Changes go in
+r/singularity pilot, and my rulings of 2026-10-03 on the pilot report. Changes go in
 `docs/amendments.md` first. (Statements by named experts, stream E, use `docs/codebook.md`.)
 
 Code what the post says, not what you know about the topic or the poster. Don't check

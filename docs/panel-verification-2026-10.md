@@ -1,13 +1,13 @@
 # Panel verification, October 2026
 
 Checked 2026-09-30 by claude-agent, under amendment A13 (three tiers with quotas) and
-methodology-v2 section 3. **Re-marked 2026-10-01 under John's rulings in amendment A14**
+methodology-v2 section 3. **Re-marked 2026-10-01 under my rulings in amendment A14**
 (rulings 1 to 6); the section "Freeze candidates as of 2026-10-01" at the end is the
 current summary, **re-marked again 2026-10-02 under amendment A16** (the looser
-newspaper rule; see "Re-marking under A16" below), and **re-marked 2026-10-06** after John's
+newspaper rule; see "Re-marking under A16" below), and **re-marked 2026-10-06** after my
 rulings of that day and the closing of the three unclear core cases (see "Closing the three
 unclear cases (2026-10-06)" and "Freeze candidates as of 2026-10-06" at the end, which is
-now the current summary). **The panel was frozen by John on 2026-10-06 (amendment A18,
+now the current summary). **The panel was frozen by me on 2026-10-06 (amendment A18,
 "Freeze and merge")** from the 2026-10-06 summary; this document is the evidence behind
 it. The frozen tiers and quota tags are in `data/speakers.csv` (25 core, 12 cohort); the
 wide list is `data/wide_list_candidates.csv` (308).
@@ -72,7 +72,7 @@ as searched. Nothing thin is rounded up to a plain pass.
 6. **Cohort prominence** is information only.
 
 Still open: archive checks through the Guardian and New York Times APIs (application
-programming interfaces, their official data services) once John has keys (ruling 7).
+programming interfaces, their official data services) once I have keys (ruling 7).
 ---
 
 ## Core panel candidates
@@ -116,7 +116,7 @@ opened; "2nd" = secondhand.
 | Max Tegmark | 2014-05-01 co-wr. op-ed (Independent) | 2025-06-03, implies nearness, no date ([repost](https://lifeboat.com/blog/2025/09/max-tegmark-can-we-prevent-ai-superintelligence-from-controlling-us)) | Independent 2014-05-01 (co-wr.); Christian Science Monitor 2015-01-16 ([link](https://csmonitor.com/Science/2015/0116/Elon-Musk-spends-10-million-to-stop-robot-uprising)); WSJ review 2017-08-29 (reviewer's reprint) | none | PASS (thin): C2 implies nearness without a date. The co-written op-ed counts for C1 (named author) and as his one allowed own piece |
 | Luciano Floridi | 2016-05-09, "utterly implausible" ([Aeon](https://aeon.co/essays/true-ai-is-both-logically-possible-and-utterly-implausible)) | 2024-06-14, "no such thing coming" ([SciELO](https://scielo.br/j/fun/a/8xsLKmCytRX9w7p9q8jG6GF/?lang=en)) | none found (an FT piece by him, 2017, unconfirmed) | skeptic, philosopher | **PASS (thin), 2026-10-06.** Third piece: Financial Times 2017-02-22, "Roman law offers a better guide to robot rights than sci-fi", by him (his one allowed own piece; [link](https://www.ft.com/content/99d60326-f85d-11e6-bd4e-68d53499ed71), not opened: confirmed by an academic citation and a Robohub link post). Thin because it was not opened and the headline is about robot rights. Earlier: UNCLEAR (C3, one piece short). Under A16 two Guardian pieces count: 2016-03-18 "How much should we fear the rise of artificial intelligence?" and 2017-01-27 on an AI watchdog (his own report). A confirmed 2017 Financial Times piece by him would be the third |
 | Mustafa Suleyman (from cohort list) | 2016-12-05, "20 years out or decades way" (2nd, [TechCrunch](https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off)) | 2025-11-14 ([transcript](https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/)) | Fortune 2016-10-10 ([link](https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/)); NPR 2016-09-28 (search); MIT Technology Review 2017-10-04 | frontier_lab (DeepMind 2010 to 2019, Inflection 2022, Microsoft AI from 2024); not skeptic (A14 ruling 5) | PASS. Fails the cohort rule (2016 timeline), so he belongs here |
-| Tyler Cowen (from cohort list) | 2005-09-21, skeptical of the Singularity ([Marginal Revolution](https://marginalrevolution.com/marginalrevolution/2005/09/the_singularity.html)) | 2025-04-16, "I think it is AGI, seriously" ([link](https://marginalrevolution.com/marginalrevolution/2025/04/o3-and-agi-is-april-16th-agi-day.html)) | Economist, WSJ and Daily Beast reviews of *Average Is Over*, 2013 (listed on Wikipedia, not opened; borderline topic) | skeptic near miss | PASS (thin) under A16: Guardian 2013-05-19, 2014-01-04 and 2017-02-26 discuss his views in the text. All three are about automation and jobs, the same footing as Brynjolfsson. Kept by John 2026-10-06. A fourth piece opened 2026-10-06: Daily Beast 2013-09-17, "Welcome to Tyler Cowen's Future of Genius Machines" ([link](https://www.thedailybeast.com/welcome-to-tyler-cowens-future-of-genius-machines/)), about machine intelligence itself |
+| Tyler Cowen (from cohort list) | 2005-09-21, skeptical of the Singularity ([Marginal Revolution](https://marginalrevolution.com/marginalrevolution/2005/09/the_singularity.html)) | 2025-04-16, "I think it is AGI, seriously" ([link](https://marginalrevolution.com/marginalrevolution/2025/04/o3-and-agi-is-april-16th-agi-day.html)) | Economist, WSJ and Daily Beast reviews of *Average Is Over*, 2013 (listed on Wikipedia, not opened; borderline topic) | skeptic near miss | PASS (thin) under A16: Guardian 2013-05-19, 2014-01-04 and 2017-02-26 discuss his views in the text. All three are about automation and jobs, the same footing as Brynjolfsson. Kept by me 2026-10-06. A fourth piece opened 2026-10-06: Daily Beast 2013-09-17, "Welcome to Tyler Cowen's Future of Genius Machines" ([link](https://www.thedailybeast.com/welcome-to-tyler-cowens-future-of-genius-machines/)), about machine intelligence itself |
 | Holden Karnofsky (from cohort list) | 2016-05-16, "nontrivial likelihood of transformative AI within the next 20 years" ([mirror](https://forum.nunosempere.com/posts/zmBnKnpECErWsCiYq/some-background-on-open-philanthropy-s-views-regarding)) | 2025-08-28, about takeoff speed ([podcast](https://podcast.clearerthinking.org/episode/277/holden-karnofsky-the-most-important-century)) | none found | frontier_lab (OpenAI board 2017 to 2021, Anthropic staff from 2025-01; A15 ruling 8) | FAIL (C3). Also fails the cohort rule |
 
 ### Quota totals among core candidates who pass (as of 2026-09-30, superseded below)
@@ -156,21 +156,21 @@ and would mostly add skeptics.
 | Jan Leike | earliest 2019-12-16, possibility ([FLI](https://futureoflife.org/?p=39550)) | 2024-05-17, no date given (2nd, [Decrypt](https://decrypt.co/231294/openai-exec-quit-safety-took-backseat-shiny-products)) | none | frontier_lab | PASS (thin): few timeline statements; a full trace may find little |
 | Ethan Mollick | earliest 2023-01-21 ([newsletter](https://www.oneusefulthing.org/p/becoming-strange-in-the-long-singularity)) | 2025-04-20, "Jagged AGI" ([newsletter](https://www.oneusefulthing.org/p/on-jagged-agi-o3-gemini-25-and-everything)) | none | none | PASS (thin): rarely gives a date |
 | François Chollet (failed core C3) | 2017-07-18 is about possibility; first timeline found 2025 | 2026-03-27 (2nd) | none | frontier_lab (Google 2015 to 2024; A15 ruling 8) | PASS |
-| Ilya Sutskever (failed core C3) | 2015-12-11 co-signed post says "it's hard to predict when human-level AI might come within reach": a statement about timing, though not a date | 2025-11-25, "5 to 20" years | 1 confirmed | frontier_lab | **PASS, 2026-10-06** (John's corrected ruling, A17: the 2015 line is "Not a timeline statement"). Cohort C2 rechecked: 2025-11-25, "I think like 5 to 20" years, primary. Earlier: UNCLEAR |
+| Ilya Sutskever (failed core C3) | 2015-12-11 co-signed post says "it's hard to predict when human-level AI might come within reach": a statement about timing, though not a date | 2025-11-25, "5 to 20" years | 1 confirmed | frontier_lab | **PASS, 2026-10-06** (my corrected ruling, A17: the 2015 line is "Not a timeline statement"). Cohort C2 rechecked: 2025-11-25, "I think like 5 to 20" years, primary. Earlier: UNCLEAR |
 | Mustafa Suleyman | 2016-12-05 timeline ("20 years out or decades way") | 2025-11-14 | 3 | frontier_lab | FAIL (pre-2018 timeline). Passes core instead |
 | Holden Karnofsky | 2016-05-16 timeline ("within the next 20 years") | 2025-08-28 | none | frontier_lab arguable | FAIL (pre-2018 timeline); also fails core C3 |
 | Tyler Cowen | 2005-09-21 skeptical of a Singularity timeline | 2025-04-16 | 2013 book reviews | skeptic near miss | FAIL (pre-2018 timeline). Core UNCLEAR |
 | Liang Wenfeng (added 2026-10-06) | none found; High-Flyer fund from 2015, DeepSeek from 2023 | 2024-07, "It could be two, five, or ten years–in any case, it will happen in our lifetimes" (Waves/36Kr interview, ChinaTalk translation, [link](https://www.chinatalk.media/p/deepseek-ceo-interview-with-chinas)) | widely profiled from 2025 | non_us_uk; frontier_lab (DeepSeek from 2023; confirmed A18) | PASS (thin): read in translation |
-| Arthur Mensch (added 2026-10-06) | none found; doctoral student 2015 to 2018 | 2024-04, "So I don't believe in AGI" (to the New York Times; read in Fortune, [link](https://fortune.com/europe/2024/04/12/millennial-boss-french-openai-challenger-tech-ceos-obsession-ai-outsmarting-humans-very-religious-fascination-agi/)) | not checked | non_us_uk; not frontier_lab (A18); skeptic in outlook, tag not applicable | PASS (thin): whether, not when; secondhand. Statement counted by John (A18) |
+| Arthur Mensch (added 2026-10-06) | none found; doctoral student 2015 to 2018 | 2024-04, "So I don't believe in AGI" (to the New York Times; read in Fortune, [link](https://fortune.com/europe/2024/04/12/millennial-boss-french-openai-challenger-tech-ceos-obsession-ai-outsmarting-humans-very-religious-fascination-agi/)) | not checked | non_us_uk; not frontier_lab (A18); skeptic in outlook, tag not applicable | PASS (thin): whether, not when; secondhand. Statement counted by me (A18) |
 | Arvind Narayanan (added 2026-10-06) | none found | 2025-04-15, co-wr. with Sayash Kapoor: AGI's "goalpost [...] will continually move further away"; impacts "on the timescale of decades" ([essay](https://knightcolumbia.org/content/ai-as-normal-technology)) | TIME100 AI 2023 | none (skeptic in outlook, tag not applicable; academic, no AI company role) | PASS (thin): co-written, no arrival date |
 
 **Cohort count:** 8 pass (Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike,
 Mollick, Chollet) and Sutskever is unclear, against a target of 10 to 12. Three of the
-passes are thin. **Updated 2026-10-06:** 12 pass (Sutskever by John's corrected ruling;
-Liang, Mensch and Narayanan from the search John asked for). See "Freeze candidates as of
+passes are thin. **Updated 2026-10-06:** 12 pass (Sutskever by my corrected ruling;
+Liang, Mensch and Narayanan from the search I asked for). See "Freeze candidates as of
 2026-10-06".
 
-**Note on C3 for the cohort.** Information only, confirmed by John (A14 ruling 6).
+**Note on C3 for the cohort.** Information only, confirmed by me (A14 ruling 6).
 
 ---
 
@@ -321,7 +321,7 @@ archive's own full-text match.
 | Oren Etzioni | ten NYT pieces 2014 to 2017 | no 2024-or-later AGI statement | FAIL (C2) |
 | Pinker, Sutskever, Wooldridge, Goertzel, Davis, Pearl, Chollet, Mitchell, Karnofsky | fewer than three | | FAIL, unchanged |
 
-**Agent readings, for John to confirm or overturn:** counting Legg although he is named
+**Agent readings, for me to confirm or overturn:** counting Legg although he is named
 only in passing; counting jobs-and-automation pieces for Cowen as "where AI is going";
 passing Yudkowsky on two edge outlets. Each is marked thin.
 
@@ -329,7 +329,7 @@ passing Yudkowsky on two edge outlets. Each is marked thin.
 
 ## Freeze candidates as of 2026-10-02 (superseded by the 2026-10-06 summary below)
 
-For John's freeze. Nothing has been frozen. Updated 2026-10-02 after A16.
+For my freeze. Nothing has been frozen. Updated 2026-10-02 after A16.
 
 ### Core: pass now (22)
 
@@ -385,17 +385,17 @@ Checked 2026-10-06 by claude-agent at no cost (web search, page fetching, the Wa
 Machine, and YouTube's caption files; no paid services). Full quotes, links and queries:
 [`panel-evidence-2026-10/gaps-2026-10-06.md`](panel-evidence-2026-10/gaps-2026-10-06.md).
 
-### John's rulings applied (2026-10-06, amendment A17)
+### my rulings applied (2026-10-06, amendment A17)
 
 1. **Legg, Cowen and Yudkowsky stay in the core**, marked thin. This confirms the three
    agent readings listed under "Re-marking under A16": Legg counted although named only in
    passing; jobs-and-automation pieces counted for Cowen; Yudkowsky passed on two pieces
    from edge outlets.
-2. **Sutskever passes the 2020s cohort: "Not a timeline statement".** John's corrected
+2. **Sutskever passes the 2020s cohort: "Not a timeline statement".** my corrected
    ruling: the co-signed 2015 "hard to predict when" is not a timeline statement from
    before 2018, so he meets the cohort's first test. An earlier answer that day said the
    opposite; it was given to a question the coordinating session had framed backwards, and
-   this is John's ruling on the question framed correctly. Cohort C2 checked: the
+   this is my ruling on the question framed correctly. Cohort C2 checked: the
    2025-11-25 Dwarkesh Patel interview gives "I think like 5 to 20" (years) for a system
    that learns as well as a human, in his own words.
 3. **Freeze after the three gaps are closed, not before.** They are now closed.
@@ -406,7 +406,7 @@ Machine, and YouTube's caption files; no paid services). Full quotes, links and 
    thin. The core stays at 25.
 5. **"Search first, then freeze":** before freezing, search for one to three more cohort
    members at no cost, with the rules exactly as written. Done the same day (below); the
-   freeze is drafted as a proposed amendment (A18 in `docs/amendments.md`) for John's yes.
+   freeze is drafted as a proposed amendment (A18 in `docs/amendments.md`) for me's yes.
    Nothing has been frozen and `data/speakers.csv` is unchanged.
 
 ### The three verdicts
@@ -436,7 +436,7 @@ not meet "reject or doubt AGI within decades" as written. He stays a near miss.
 
 ## Cohort search (2026-10-06)
 
-John asked for one to three more cohort members before the freeze, found at no cost with
+I asked for one to three more cohort members before the freeze, found at no cost with
 the rules as written (no public AGI timeline statement found before 2018; one dated 2024
 or later), preferring people who broaden the cohort. Full evidence:
 [`panel-evidence-2026-10/cohort-search-2026-10-06.md`](panel-evidence-2026-10/cohort-search-2026-10-06.md).
@@ -461,7 +461,7 @@ by its rule, not by who was considered.
 
 ## Freeze candidates as of 2026-10-06
 
-**Frozen by John on 2026-10-06 (amendment A18, "Freeze and merge")** exactly as listed
+**Frozen by me on 2026-10-06 (amendment A18, "Freeze and merge")** exactly as listed
 here, with three readings chosen at the freeze: Liang tagged `frontier_lab` and Mensch
 not; Mensch's "I don't believe in AGI" counts as his 2024-or-later statement; Narayanan,
 not Kapoor. This replaces the 2026-10-02 summary.
@@ -500,7 +500,7 @@ Pinker (C3), Sutskever (C3; passes the cohort), Wooldridge (C3), Goertzel (C3), 
 ### 2020s cohort: pass now (12)
 
 Amodei, Aschenbrenner, Kokotajlo, Cotra, Huang, Leike, Mollick, Chollet, **Sutskever**
-(John's corrected ruling, 2026-10-06), and from the search of 2026-10-06 **Liang Wenfeng,
+(my corrected ruling, 2026-10-06), and from the search of 2026-10-06 **Liang Wenfeng,
 Arthur Mensch, Arvind Narayanan**. The cohort is at the top of its range of ten to twelve.
 Six are thin: Huang, Leike, Mollick, Liang, Mensch, Narayanan.
 
@@ -519,7 +519,7 @@ media sample has not run, so names quoted there are not yet added.
 
 ---
 
-## Notes after the full collection (2026-10-12, ruled by John; amendment A28)
+## Notes after the full collection (2026-10-12, ruled by me; amendment A28)
 
 The full collection (pull request 4) read each member year by year and found earlier
 statements than this record had. None changes a verdict or a tier. Recorded here so the
@@ -528,7 +528,7 @@ tables above are read with them.
 **Chollet's 2017 essay is not a public timeline statement.** His 2017-11-27 essay "The
 implausibility of intelligence explosion" (recorded as `chollet-2017-02b`) says
 civilization "will create superhuman AI ... over timescales we can barely comprehend".
-Ruled by John 2026-10-12: that is not a public AGI timeline statement, so the cohort's
+Decided 2026-10-12: that is not a public AGI timeline statement, so the cohort's
 first test (no AGI timeline statement before 2018) still holds and Chollet stays in the
 2020s group. His first timeline statement remains the 2025 "five-ish" years remark.
 

@@ -3,7 +3,7 @@
 r/singularity pilot, 2024Q4 to 2026Q3. Run record: `docs/vanguard/pilot-run-r-singularity-2026-10.md`;
 codebook: `docs/vanguard/codebook.md`; report: `docs/vanguard/pilot-report-r-singularity-2026-10.md`.
 
-Coding is fully model-based, with no human coder (John's ruling of 2026-10-03). Three models
+Coding is fully model-based, with no human coder (my ruling of 2026-10-03). Three models
 from different companies code the same 140-post set blind; the final code is their majority
 vote per field.
 
@@ -17,5 +17,5 @@ vote per field.
 | `r-singularity-pilot-codes-gpt.csv` | blind pass by `gpt-6-astra` (created 1787853604, reasoning effort medium) |
 | `r-singularity-pilot-codes-majority.csv` | final code per post and field by majority vote; `unresolved` where no two models agree |
 | `three-model-reliability.csv` | kappa for each pair of models, unresolved share and verdict, per field |
-| `*-rules-trial.csv` | the same 140 posts recoded by each model with the proposed codebook rules added (awaiting John's ruling; not used in figures) |
+| `*-rules-trial.csv` | the same 140 posts recoded by each model with the proposed codebook rules added (awaiting my ruling; not used in figures) |
 | `r-singularity-pilot-codes-second.csv` | earlier same-family second pass (superseded; kept for the record) |

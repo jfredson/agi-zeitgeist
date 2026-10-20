@@ -2,8 +2,8 @@
 
 Method: `docs/leg-b-ledger-method.md` (committed before any row was built). Rows:
 `data/leg_b_ledger.csv`. Numbers: `python3 scripts/leg_b_ledger.py`. Every verdict is the
-agent's judgement; the rows record the evidence and the gap so John can overrule any one.
-Revised the same day after an independent check of the pull request, and closed by John's
+agent's judgement; the rows record the evidence and the gap so I can overrule any one.
+Revised the same day after an independent check of the pull request, and closed by my
 rulings of 12 October 2026 (both at the end).
 
 ## The answer
@@ -57,7 +57,7 @@ unless their dates count.
 
 The factual-questions row matters most. Its only demonstration is from April 2025, and the
 agent found nothing earlier that compares a system with people who had internet access on
-simple factual questions. Its forecast date is 9 September 2023. If John counts it as
+simple factual questions. Its forecast date is 9 September 2023. If I count it as
 arrived and an earlier demonstration dated before about September 2023 turns up, it moves
 from late to early: 7 early and 10 late. If all four rows were counted with their current
 dates, the totals go back to the first draft's 9 early and 10 late. Either way, the
@@ -110,8 +110,8 @@ records which way the forecasts missed. It does not give a forecast horizon.
 
 ## Rulings (2026-10-12)
 
-These were the open questions put to John on 9 October. He ruled on 12 October 2026, in his
-words "all as recommended": each answer below was the session's recommendation and John
+These were the open questions put to me on 9 October. He ruled on 12 October 2026, in his
+words "all as recommended": each answer below was the session's recommendation and I
 approved it, so the authorship is mixed. The questions are kept as they were asked.
 
 1. The four milestones left unscored (sorting long lists without the form of the solution,
@@ -119,7 +119,7 @@ approved it, so the authorship is mixed. The questions are kept as they were ask
    moves): give each a bar, or keep them out.
 
    **Ruling:** keep them out. They stay out of the scores and their verdict is recorded as
-   "no bar" (it was "left for John" until this ruling). A bar set now would be chosen after
+   "no bar" (it was "left for me" until this ruling). A bar set now would be chosen after
    seeing the answers, which is the thing the method was written to avoid.
 
 2. The five "arguably arrived" rows: which count as arrived?

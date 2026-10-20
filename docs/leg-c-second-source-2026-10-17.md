@@ -10,7 +10,7 @@ second source, and it does not go over that ground again.
 **Result: nothing found qualifies. No row was added to `data/world_measures.csv`.** The scored
 series, the thresholds file (`docs/singularity-entry-thresholds.json`) and the definition are
 untouched. Twenty-six candidates were judged; the three nearest misses, and two questions, are
-set out for John at the end. This is a reading note, not an amendment.
+set out for me at the end. This is a reading note, not an amendment.
 
 ## 1. What the step asks for, and the bar each candidate was held to
 
@@ -20,7 +20,7 @@ supplied by AI systems rather than people, from the best measurement available".
 names three kinds of candidate source: lab self-reports of AI-written code share, surveys of
 frontier researchers on time saved, and the AI-contribution disclosures that venues require on
 papers. Today the leg is scored from one of the first kind, Anthropic's R&D Automation Index
-(John's ruling of 2026-10-17 keeps it scoring), with the company's staff poll and Google's
+(my ruling of 2026-10-17 keeps it scoring), with the company's staff poll and Google's
 code-share statement beside it unscored.
 
 A candidate qualifies as the second source the step wants when all four hold:
@@ -155,7 +155,7 @@ were recruited was not found. *Verdict: no, on three of the four tests.* A multi
 share and cannot feed the gauge's formula; the sample is technical workers at large, with no
 frontier-laboratory subgroup reported; and it is one wave with no stated repeat. It is, all the
 same, the nearest thing found to the definition's "surveys of frontier researchers on time saved"
-run by someone other than the company, and the first of the three near misses for John.
+run by someone other than the company, and the first of the three near misses for me.
 
 **7. METR, Frontier Risk Report, February to March 2026** (2026-05-19,
 https://metr.org/blog/2026-05-19-frontier-risk-report/, written with Anthropic, Google, Meta and
@@ -311,7 +311,7 @@ every human workday, and experiments per active experimenter reached a high in A
 OpenAI links to Codex adoption while noting that compute had also grown. *Verdict: excluded by
 the rule.* A company's report on itself, and a runtime ratio rather than a share. It is recorded
 here because it is the first OpenAI self-report of the same kind as the Google and Anthropic
-rows, and whether to record it beside the gauge is John's call (section 5).
+rows, and whether to record it beside the gauge is my call (section 5).
 
 ## 4. Why the search came up empty, in one paragraph
 
@@ -326,14 +326,14 @@ nearest outside measurements are of the wrong field (mathematics), the wrong uni
 a count of acknowledgments, an effort estimate), or the wrong work (a product codebase, public
 software in general).
 
-## 5. For John
+## 5. For me
 
 1. **Whether any near miss should sit beside the gauge as context, unscored.** The three are the
    METR survey (a 1.4x to 2x median value multiplier, February to April 2026), the Epoch
    mathematics series (6% of August 2026 math preprints crediting AI with a substantial research
    contribution) and the Epoch Codex measurement (8% of contributor-days at very high estimated
    effort in the second quarter of 2026). None is a measure of f, so none would be scored, and
-   the earlier note's rule was followed: context rows go in only if John wants them. Two of the
+   the earlier note's rule was followed: context rows go in only if I want them. Two of the
    three would need a unit the validator does not yet accept for `data/world_measures.csv`
    (a multiplier; a share of contributor-days), which is a small validator change, not a
    method change. The agent's recommendation is to add none of them: a row in that file is read
@@ -342,15 +342,15 @@ software in general).
 2. **The OpenAI self-report** (3.1 agent-workdays per human workday, 2026-09-06). It is excluded
    from this step by the rule but is the same kind of row as Google's code share. Under the
    weekly reading's rules it would be flagged, not appended, because it is not a repeat of a
-   series in the file. John can have it recorded as a self-report row with its own speaker, or
+   series in the file. I can have it recorded as a self-report row with its own speaker, or
    left out.
 3. **Whether the roadmap step is waiting for something that may not come.** As of 2026-10-17 the
    measure the step describes is not published by anyone, and the two outside groups closest to
-   it (METR, GovAI) say so. The step can stay open as a standing watch (section 6), or John can
+   it (METR, GovAI) say so. The step can stay open as a standing watch (section 6), or I can
    narrow it to the one shape most likely to appear first: Epoch's acknowledgment method run on
    AI preprints, or a second wave of METR's survey with a frontier-laboratory subgroup.
 4. **Nothing here proposes a scored series.** A qualifying measure would have been proposed as an
-   amendment for John to rule on; none qualified, so there is no amendment to propose.
+   amendment for me to rule on; none qualified, so there is no amendment to propose.
 
 ## 6. What a future reading should watch
 
