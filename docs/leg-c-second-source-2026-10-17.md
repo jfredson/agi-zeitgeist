@@ -89,7 +89,7 @@ on what sample, and why it does or does not meet the bar.
 | 23 | Survey of 868 scientists who program (arXiv 2512.19644) | survey | adoption and perceived productivity | frontier AI research; share of work |
 | 24 | Detector studies of AI-written prose in papers and reviews | independent measurement | 14% to 21% of papers; 21% of reviews | prose only |
 | 25 | Daniotti, Wachs, Feng and Neffke, AI-written code on GitHub (Science) | independent measurement | 29% of Python functions by US developers | not research |
-| 26 | Agents4Science 2025 | demonstration | 48 AI-authored papers accepted of about 315 | not a share of the field's work |
+| 26 | Agents4Science 2025 | demonstration | 48 papers with an AI first author accepted of 315 submitted | not a share of the field's work |
 
 ### 3.1 Venue-level measures
 
@@ -301,8 +301,13 @@ functions committed by developers in the United States look AI-written, with dat
 counterpart of the Google code-share row's kind of measure, and context for it.
 
 **26. Agents4Science 2025** (https://www.nature.com/articles/s41587-025-02963-8). A conference of
-AI-authored papers: about 315 submissions, 48 accepted. *Verdict: no.* A demonstration of what AI
-authors can get through review, not a share of any field's work.
+papers with an AI as first author, held online on 2025-10-22 and reported by its five organizers
+in Nature Biotechnology (published 2025-12-17). It received 315 submissions; 62 were incomplete and
+turned away unread, and each of the other 253 was scored by three AI reviewers. The 79 that scored
+best were also read by a human expert, and the organizers accepted 48, weighing both kinds of
+review. Every accepted paper named an AI as first author, and humans could be coauthors. *Verdict:
+no.* A demonstration of what AI authors can get through review, not a share of any field's work.
+(Counts checked against the full text on 2026-10-20; the earlier "about 315" is exactly 315.)
 
 **13. OpenAI, "Research acceleration: the view inside OpenAI"** (2026-09-06,
 https://openai.com/index/research-acceleration-view-inside-openai/). Found on the way. By
