@@ -1,0 +1,24 @@
+[claim]
+id = "2023-10-17-legg-agi-not-next-year-or-year-after"
+speaker_id = "legg"
+when = "2023-10-17"
+when_note = "TED's page data gives the recording date 2023-10-17 (TED AI, San Francisco); the talk was published 2023-12-07."
+occasion = "TED AI conversation with Chris Anderson, 'The transformative potential of AGI, and when it might arrive'"
+source_kind = "transcript"
+source_url = "https://www.ted.com/talks/shane_legg_and_chris_anderson_the_transformative_potential_of_agi_and_when_it_might_arrive/transcript"
+source_locator = "near the end, his answer on what the world needs to think about, just before Anderson's '2028?'"
+checked_how = "Read TED's official transcript on 2026-10-19 through a reader copy (r.jina.ai); the recording date from the ted.com page data (curl)."
+quote = "I don't think it's coming next year or the year after. It's probably a little bit further out than that."
+prediction = "Very powerful, very intelligent AI, which he equates with AGI, will not come in 2024 or 2025; probably a little later (he then gives 2028 as a 50% chance)."
+kind = "timing"
+bar = "His definition in the same talk: 'a system that can do all the cognitive kinds of tasks that people can do, possibly more, but at least ... the sorts of cognitive tasks that people can typically do'. The claim holds if no such system was shown by 2025-12-31."
+due = 2025
+due_basis = "'next year or the year after', said in 2023: not in 2024 or 2025; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-12-31
+verdict_why = "No system meeting his bar was shown by the end of 2025: on 2025-12-11 he said of today's systems 'we're not there yet' for that level. A 'not before' claim; judged at its date."
+verdict_source = "https://www.youtube.com/watch?v=l3u_FAv33G0"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["legg-claims-009", "legg-claims-012"]
+notes = "Role at the time: co-founder and chief AGI scientist of Google DeepMind, named as such. A judgement flagged for John: the brief treats words that are only a lower bound as unfalsifiable, but its example is a 'could be as soon as' possibility, where missing the date proves nothing; this is the reverse, a forecast that the thing will not come before a date, which would have been shown wrong had it come in 2024 or 2025. The 50% by 2028 in the same answer is a repeat in 2010-12-10-legg-human-level-agi-mean-2028."

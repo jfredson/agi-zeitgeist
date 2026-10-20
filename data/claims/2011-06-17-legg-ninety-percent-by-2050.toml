@@ -1,0 +1,22 @@
+[claim]
+id = "2011-06-17-legg-ninety-percent-by-2050"
+speaker_id = "legg"
+when = "2011-06-17"
+when_note = "The post's date line reads '17 Jun 2011 8:58 UTC'."
+occasion = "Question-and-answer by email with the blogger XiXiDu, posted on LessWrong as 'Q&A with Shane Legg on risks from AI'"
+source_kind = "printed_qa"
+source_url = "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai"
+source_locator = "Q1 and his answer"
+checked_how = "Read on 2026-10-19 through the greaterwrong.com copy of the LessWrong post (curl)."
+quote = "2018, 2028, 2050"
+statement_id = "legg-2011-01"
+prediction = "A 90% chance of human-level machine intelligence by 2050, assuming no global catastrophe halts progress."
+kind = "timing"
+bar = "Plainest reading of the question's named comparison: a machine about as capable as a typical person across thinking tasks."
+due = 2050
+due_basis = "The year given for a 90% chance; judged at 2050-12-31."
+has_probability = true
+restates = "2010-12-10-legg-human-level-agi-90-percent-by-2045"
+status = "not_yet_due"
+search_ids = ["legg-claims-001", "legg-claims-002", "legg-claims-006"]
+notes = "Six months earlier he had put the 95% point of his spread at 2045; here the 90% point is 2050, a later date, so it is a changed repeat. Role as in 2011-06-17-legg-ten-percent-by-2018."

@@ -1,0 +1,23 @@
+[claim]
+id = "2022-02-15-legg-agi-fifty-fifty-around-2030"
+speaker_id = "legg"
+when = "2022-02-15"
+when_note = "Release date of the episode (the YouTube upload is dated 2022-02-15)."
+occasion = "Google DeepMind: The Podcast with Hannah Fry, season 2 episode 'The road to AGI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Uy4OYU7PQYA"
+source_locator = "about 5:08 into the episode"
+checked_how = "Read the YouTube captions of Google DeepMind's own upload on 2026-10-19 (yt-dlp), as a run of words; the captions write the year as '20 30ish'."
+quote = "I always felt that somewhere around 20 30ish it was about 50/50 chance I still feel that seems reasonable"
+statement_id = "legg-2022-01"
+prediction = "About a 50% chance of artificial general intelligence (AGI) by around 2030."
+kind = "timing"
+bar = "None in the source: he does not define AGI in the episode; the presenter's narration speaks of generality but he gives no test."
+due = 2030
+due_basis = "'somewhere around 2030-ish'; judged at 2030-12-31."
+has_probability = true
+restates = "2010-12-10-legg-human-level-agi-mean-2028"
+status = "unfalsifiable"
+verdict_why = "Names a stage, AGI, that he does not define in this episode, so under John's ruling of 2026-10-19 no outsider test exists; it is also a stated chance. Decided at entry."
+search_ids = ["legg-claims-008"]
+notes = "This differs from the statement legg-2022-01, which was coded from a listener's transcription posted on LessWrong ('2030-ish ... a 50-50 chance'); the quote here is the run of the official video's captions. Entered as a changed repeat because the year moved from 2028 to around 2030, although he says he 'always felt' so; he went back to 2028 in 2023. The episode introduces him as DeepMind's 'co-founder and chief scientist'."
