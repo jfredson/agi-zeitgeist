@@ -1043,6 +1043,12 @@ WHO_LINK = {sp: f"https://en.wikipedia.org/wiki/{slug}" for sp, slug in {
     "hassabis": "Demis_Hassabis", "suleyman": "Mustafa_Suleyman", "sutskever": "Ilya_Sutskever", "legg": "Shane_Legg",
     "lecun": "Yann_LeCun", "liangwenfeng": "Liang_Wenfeng", "mensch": "Arthur_Mensch", "zuckerberg": "Mark_Zuckerberg",
     "pichai": "Sundar_Pichai", "nadella": "Satya_Nadella", "kaifulee": "Kai-Fu_Lee"}.items()}
+# The long-time thinkers the "now" figure's caption names, linked the same way: Wikipedia, or for Ajeya
+# Cotra, who has no Wikipedia article, her profile at METR, where she works (each opened 2026-10-20).
+THINKER_LINK = {sp: f"https://en.wikipedia.org/wiki/{slug}" for sp, slug in {
+    "yudkowsky": "Eliezer_Yudkowsky", "aschenbrenner": "Leopold_Aschenbrenner", "kokotajlo": "Daniel_Kokotajlo",
+    "bengio": "Yoshua_Bengio", "marcus": "Gary_Marcus", "hanson": "Robin_Hanson", "kurzweil": "Ray_Kurzweil",
+    "hinton": "Geoffrey_Hinton"}.items()} | {"cotra": "https://metr.org/team/ajeya-cotra/"}
 
 
 def load_claims():
@@ -1157,27 +1163,28 @@ def claims_page(sc, claims, built, commit):
                         f'<p class="dim">{WHO.get(sp) or esc(who["role_summary"].split(";")[0] + ".")}</p>{wl}'
                         f'<ul>{"".join(items)}</ul>')
 
-    silent = [speakers[sp]["name"] for sp in cs.LEADERS if not now[sp]["latest"]]
+    # Names first met here link to their pages (the link-what-you-name rule); the lines below link the rest.
+    silent = [f'<a href="{WHO_LINK[sp]}">{name(sp)}</a>' for sp in cs.LEADERS if not now[sp]["latest"]]
     nums = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
     silent_line = (f"{nums.get(len(silent), len(silent))} of them, {', '.join(silent[:-1]) + ' and ' + silent[-1] if len(silent) > 1 else silent[0]}, "
                    f"{'has' if len(silent) == 1 else 'have'} never put a date on it. ") if silent else ""
     lab = [p["name"] for p in band["people"] if p["id"] in cs.WORKED_AT_A_LAB] if band else []
     band_line = (f"Under them, in green, are the {band['n']} long-time thinkers on the panel who don't run AI companies, "
                  f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
-                 + "; ".join(f"{esc(p['name'])} {p['year']}" for p in band["people"]) + ". "
+                 + "; ".join((f'<a href="{THINKER_LINK[p["id"]]}">{esc(p["name"])}</a>' if p["id"] in THINKER_LINK else esc(p["name"])) + f" {p['year']}" for p in band["people"]) + ". "
                  + (f"Two of them, {esc(lab[0])} and {esc(lab[1])}, worked at OpenAI earlier in their careers. " if len(lab) == 2 else "")
                  + f"Their middle year is {band['middle']:.0f}. ") if band else ""
     body = f"""<section class="section prose">
 <p>I keep this page as one of the tracker's two voices. The home page follows the academics and long-time thinkers who have written about AGI and the singularity for decades; this page follows the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are part of the mood of the time. I record what they say, when they said it and where, so it can be read for what they are predicting now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note says what happened, and that is all.</p>
 
 <h2 id="now">What they say now</h2>
-<figure class="fig"><a href="/claims-now.png" title="Open the chart full size"><img src="/claims-now.png" alt="Each industry leader's most recent dated forecast of AGI, superintelligence or AI better than people at most things, on one timeline, against a band for the academics' dated guesses since 2023"></a>
+<figure class="fig"><a href="/claims-now.png" title="Open the chart full size"><picture><source media="(max-width: 640px)" srcset="/claims-now-phone.png"><img src="/claims-now.png" alt="Each industry leader's most recent dated forecast of AGI, superintelligence or AI better than people at most things, on one timeline, against a band for the academics' dated guesses since 2023"></picture></a>
 <figcaption>Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms. {band_line}The forecasts are in <a href="/data/claims.csv">a table</a>; the academics' guesses are in <a href="/data/statements.csv">another</a>.</figcaption></figure>
 <p>Each of them uses their own words for what is coming: AGI, superintelligence, "a country of geniuses in a data center", AI better than people at most things. They do not mean the same thing, so the line beside each name gives their term. {silent_line}For anyone who has spoken on when since their last dated forecast, or who has never given one, their latest words with no date are given too, quoted and dated, and never drawn.</p>
 <ul class="claims-now">{"".join(now_items)}</ul>
 
 <h2 id="moved">How their dates have moved</h2>
-<figure class="fig"><a href="/claims-moved.png" title="Open the chart full size"><img src="/claims-moved.png" alt="Each industry leader's dated forecasts since 2023, placed at the day each was said and the year it named"></a>
+<figure class="fig"><a href="/claims-moved.png" title="Open the chart full size"><picture><source media="(max-width: 640px)" srcset="/claims-moved-phone.png"><img src="/claims-moved.png" alt="Each industry leader's dated forecasts since 2023, placed at the day each was said and the year it named"></picture></a>
 <figcaption>Every dated forecast of this kind since 2023, one panel per leader. Earlier ones are in each person's list below. The same view for the panel of experts, academics and builders together, is the <a href="/#belief">frontier-voices chart</a> on the home page.</figcaption></figure>
 
 <h2 id="who">Who is on this page</h2>

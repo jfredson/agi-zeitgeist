@@ -1,0 +1,20 @@
+[claim]
+id = "2026-09-28-suleyman-health-record-prediction-18-months-to-5-years"
+speaker_id = "suleyman"
+when = "2026-09-28"
+when_note = "The Rest Is Politics: Leading uploaded the episode on 2026-09-28; the recording date is not stated."
+occasion = "The Rest Is Politics: Leading podcast, 'Can AI Stay Under Human Control?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=_VyF0naZ4AI"
+source_locator = "0:27:35 to 0:28:16 into the video"
+checked_how = "Read the English caption track of the channel's own upload on 2026-10-20 (yt-dlp; light punctuation, some fillers); the quote is a verbatim run of those caption words, with one cut marked."
+quote = "I hope it happens in the next 18 months. ... It might be 5 years, I don't know, but it is definitely going to happen."
+prediction = "A 'coding moment for healthcare': AI that reads a patient's electronic health record and accurately predicts what will happen, giving with high confidence the likelihood of developing all kinds of conditions, in hospital and outside. He hopes for it within 18 months and says it might take five years, but that it will definitely happen."
+kind = "capability"
+bar = "The plainest reading of his words: by the end of 2031, an AI model (Microsoft's, the Mayo Clinic's or anyone's) predicts from patients' electronic health records their likelihood of developing a wide range of conditions, with accuracy shown in a published evaluation, and is in use in hospitals."
+due = 2031
+due_early = 2028
+due_basis = "A range: 'in the next 18 months' from 2026-09-28 is March 2028 at the earlier end, and 'It might be 5 years' is September 2031 at the later end. The later end is taken as the rule says, and the earlier end recorded; the 18 months is a hope in his words, kept in the prediction."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-045", "suleyman-claims-067", "suleyman-words-07"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). The passage, in the captions: 'I absolutely guarantee that sometime in the next few years we are going to have a coding moment for healthcare we will stream an accurate prediction of what's going to happen in the electronic health record. Um, and it will be breathtaking. We will know with high confidence the likelihood that you're going to get all kinds of conditions in hospital, outside, so on and so forth. ... It is going to happen. I hope it happens in the next 18 months. We've just done a partnership with ... the Mayo Clinic, to do a big research program to train a new foundation model for health from scratch to do this. It might be 5 years, I don't know, but it is definitely going to happen.' He goes on: it will 'reduce the cost of production of super intelligent healthcare to near zero marginal cost just like coding is now'. 'Super intelligent healthcare' is his phrase for this one field, not a forecast of superintelligence, so the claim is a capability claim and is not drawn among the forecasts of AGI. Reading the hope ('I hope ... 18 months') and the hedge ('It might be 5 years, I don't know') as the two ends of one range is a judgement, flagged for me. Related but separate: 2025-12-16-suleyman-ai-diagnosis-free-to-everybody-by-2030-or-2035 (diagnosis from Microsoft's orchestrator, free to all), which is about cost and reach, not prediction from the health record."

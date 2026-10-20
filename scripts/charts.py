@@ -370,14 +370,18 @@ def _mark(ax, c, y, colour, size=1.0):
         ax.plot([hi], [y], "o", ms=9 * size, color=colour, mfc=SURFACE if hollow else colour, mew=2)
 
 
-def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
+def chart_claims_now(claims=None, words=None, statements=None, speakers=None, phone=False):
     """What the industry's leaders say now: each one's forecasts from the latest day they gave one, against
-    the academics' band (amendment A31). Verdicts are never drawn here (John, 2026-10-19)."""
+    the academics' band (amendment A31). Verdicts are never drawn here (John, 2026-10-19).
+    phone=True draws the same rows for screens narrower than 640 pixels: each name above its row instead
+    of in a wide margin, larger type, and the long-time thinkers named in the note under the chart."""
     now = cs.leaders_now(claims, words)
     band = cs.academics_band(statements, speakers)
     names = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
     rows = sorted((sp for sp in cs.LEADERS if now[sp]["latest"]),
                   key=lambda sp: (now[sp]["nearest"] is None, now[sp]["nearest"] or 0, sp))
+    if phone:
+        return _claims_now_phone(now, band, names, rows)
     fig, ax = figure(11.5, 6.2)
     fig.subplots_adjust(left=0.27, right=0.97, top=0.78, bottom=0.16)
     if band:
@@ -424,19 +428,84 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
     return save(fig, "claims-now.png")
 
 
-def chart_claims_moved(claims=None):
+def _claims_now_phone(now, band, names, rows):
+    """The phone layout of chart_claims_now: the same marks, the same title, sized to read at 375 pixels."""
+    import textwrap
+    wrap = lambda s, n: "\n".join(textwrap.fill(p, n) for p in s.split("\n"))  # noqa: E731
+    label_bg = dict(facecolor=SURFACE, edgecolor="none", alpha=0.85, pad=1)  # keeps a name readable across the grid lines
+    head, foot, row_h = 2.65, 1.9, 0.58  # inches
+    n = len(rows) + (1.3 if band else 0)
+    h = head + row_h * (n + 1) + foot
+    fig, ax = figure(4.0, h)
+    fig.subplots_adjust(left=0.04, right=0.96, top=1 - head / h, bottom=foot / h)
+    ax.tick_params(labelsize=10)
+    if band:
+        ax.axvline(band["middle"], color=PALETTE[2], lw=1.5, zorder=0.5)
+        y0 = len(rows) + 0.6
+        for p_ in band["people"]:
+            ax.plot([min(p_["year"], 2045.6)], [y0], marker="|", ms=14, mew=2.5, color=PALETTE[2])
+        ax.text(2025.2, y0 - 0.5, f"Long-time thinkers ({band['n']}), latest each", fontsize=10, color=INK, va="center", bbox=label_bg, zorder=1)
+        ax.text(band["middle"] + 0.3, -0.95, f"thinkers' middle year, {band['middle']:.0f}", fontsize=9, color="#0b6b48", va="bottom")
+    for i, sp in enumerate(rows):
+        ax.text(2025.2, i - 0.38, f"{names[sp]}, {now[sp]['day']}", fontsize=10, color=INK, va="center", bbox=label_bg, zorder=1)
+        latest = now[sp]["latest"]
+        for j, c in enumerate(sorted(latest, key=lambda c: c["due"])):
+            off = (j - (len(latest) - 1) / 2) * 0.16
+            _mark(ax, c, i + 0.25 + off, OTHER, 0.7 if len(latest) > 1 else 0.85)
+    today = _x(cs_today())
+    ax.axvline(today, color=INK_2, lw=0.8, ls=":", zorder=0.5)
+    ax.set_ylim(len(rows) + (1.3 if band else 0.6), -1.0)
+    ax.set_yticks([])
+    ax.set_xlim(2025, 2047.2)
+    ax.set_xticks(range(2026, 2047, 4))
+    ax.grid(axis="x", color=GRID, lw=0.8)
+    ax.set_axisbelow(True)
+    named = [sp for sp in rows if now[sp]["nearest"] is not None]
+    if band:
+        k = sum(1 for sp in named if now[sp]["nearest"] < band["middle"])
+        title = f"{k} of {len(rows)} industry leaders now name a year before the long-time thinkers' middle one, {band['middle']:.0f}"
+    else:
+        title = "Too few dated guesses by the academics since 2023 to set the leaders against them"
+    silent = [names[sp] for sp in cs.LEADERS if not now[sp]["latest"]]
+    fig.text(0.05, 1 - 0.15 / h, wrap(title, 36), fontsize=13, fontweight="bold", color=INK, ha="left", va="top")
+    fig.text(0.05, 1 - 1.0 / h, wrap(
+        "Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, "
+        "in their own terms, with the day it was said. A range counts by its nearer end.\n"
+        "Dark bar: a range. Light bar: a year it would come by. Dot: a single year (hollow: known only from news reports). "
+        "Orange arrow: not before that year. Dotted line: today.", 50), fontsize=9.5, color=INK_2, ha="left", va="top")
+    who = "; ".join(f"{p['name'].split()[-1]} {p['year']}" for p in band["people"]) if band else ""
+    fig.text(0.05, 0.1 / h, wrap(
+        (f"Green: the panel's long-time thinkers who don't run AI companies, each at their latest dated guess since 2023: {who}"
+         + ("." if cs.ACADEMICS_STRICT else "; Kokotajlo and Aschenbrenner worked at OpenAI earlier in their careers.") + " "
+         if band else "")
+        + (f"{', '.join(silent)} {'has' if len(silent) == 1 else 'have'} given no dated forecast of this kind. " if silent else "")
+        + "Source: agizeitgeist.com/data", 56), fontsize=8.5, color=INK_2, ha="left", va="bottom")
+    return save(fig, "claims-now-phone.png")
+
+
+def chart_claims_moved(claims=None, phone=False):
     """How the industry's leaders' dates have moved since 2023: one small panel per leader with any such
-    forecast, each mark placed at the day it was said and the year it named (amendment A31)."""
+    forecast, each mark placed at the day it was said and the year it named (amendment A31).
+    phone=True draws the same panels two to a row with larger type, for screens narrower than 640
+    pixels: the four-across figure shrinks there to a sixth of its size and its labels can't be read."""
     claims = claims if claims is not None else cs.load_claims()
     names = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
     # One mark per day a forecast was said, its repeats included (a repeat is saying it again).
     d = [dict(c, when=s) for c in claims if cs.drawn(c) for s in cs.said_on(c) if int(s[:4]) >= 2023]
     people = [sp for sp in cs.LEADERS if any(c["speaker_id"] == sp for c in d)]
     people.sort(key=lambda sp: -sum(1 for c in d if c["speaker_id"] == sp))
-    cols = 4
+    cols = 2 if phone else 4
     nrows = (len(people) + cols - 1) // cols
-    fig, axs = figure(11.5, 2.7 * nrows + 1.2, nrows=nrows, ncols=cols, sharex=True, sharey=True)
-    fig.subplots_adjust(left=0.07, right=0.98, top=1 - 1.55 / (2.7 * nrows + 1.2), bottom=0.6 / (2.7 * nrows + 1.2), hspace=0.42, wspace=0.12)
+    if phone:
+        head, foot, panel_h = 2.75, 1.15, 1.75  # inches: the title and key above, the note below, each row
+        h = head + panel_h * nrows + foot
+        fig, axs = figure(4.0, h, nrows=nrows, ncols=cols, sharex=True, sharey=True)
+        fig.subplots_adjust(left=0.15, right=0.96, top=1 - head / h, bottom=foot / h, hspace=0.5, wspace=0.12)
+        for a in axs.flat:
+            a.tick_params(labelsize=10)
+    else:
+        fig, axs = figure(11.5, 2.7 * nrows + 1.2, nrows=nrows, ncols=cols, sharex=True, sharey=True)
+        fig.subplots_adjust(left=0.07, right=0.98, top=1 - 1.55 / (2.7 * nrows + 1.2), bottom=0.6 / (2.7 * nrows + 1.2), hspace=0.42, wspace=0.12)
     flat = list(axs.flat) if hasattr(axs, "flat") else [axs]
     for a, sp in zip(flat, people):
         a.plot([2023, 2041], [2023, 2041], color=GRID, lw=1)
@@ -450,20 +519,33 @@ def chart_claims_moved(claims=None):
                 a.plot([x, x], [lo, c["due"]], "-", lw=3, color=OTHER, alpha=0.6)
             hollow = c["source_kind"] == "coverage_only"
             a.plot([x], [c["due"]], "v" if c["form"] == "by" else "o", ms=5, color=OTHER, mfc=SURFACE if hollow else OTHER, mew=1.5)
-        a.set_title(names[sp], fontsize=9.5, color=INK, loc="left")
+        a.set_title(names[sp], fontsize=11 if phone else 9.5, color=INK, loc="left")
         a.grid(axis="y", color=GRID, lw=0.6)
         a.set_axisbelow(True)
     for a in flat[len(people):]:
         a.set_visible(False)
     flat[0].set_xlim(2022.7, 2027)
     flat[0].set_ylim(2024, 2046)
-    flat[0].set_xticks([2023, 2025, 2027])
+    flat[0].set_xticks([2024, 2026] if phone else [2023, 2025, 2027])  # on a phone, end labels of side-by-side panels would collide
     flat[0].set_yticks([2025, 2030, 2035, 2040, 2045])
     m = cs.moved(claims)
     ways = {w: sum(1 for v in m.values() if v["way"] == w) for w in ("nearer", "held", "later")}
     parts = [f"{ways[w]} {t}" for w, t in (("nearer", "brought their dates nearer"), ("held", "held them"), ("later", "pushed them later")) if ways[w]]
     title = ("Since 2023: " + (", ".join(parts[:-1]) + ", " + parts[-1] if len(parts) > 1 else parts[0]).replace("brought their dates nearer", "leaders brought their dates nearer", 1)
              if m else "How the industry leaders' dates have moved since 2023")
+    if phone:
+        import textwrap
+        wrap = lambda s, n: "\n".join(textwrap.fill(p, n) for p in s.split("\n"))  # noqa: E731
+        fig.text(0.05, 1 - 0.15 / h, wrap(title, 36), fontsize=13, fontweight="bold", color=INK, ha="left", va="top")
+        fig.text(0.05, 1 - 1.0 / h, wrap(
+            "Each mark is one forecast of AGI, superintelligence or AI better than people at most things, in their own terms, "
+            "at a day it was said (across) and the year it named (up).\n"
+            "Dot: a year (hollow: known only from news reports). Bar: a range. Down-pointing triangle: a year it would come by. "
+            "Orange: not before that year. Grey line: 'this year'.", 50), fontsize=9.5, color=INK_2, ha="left", va="top")
+        fig.text(0.05, 0.1 / h, wrap(
+            "Nearer, held or later compares the nearest year named (a range by its nearer end) on the first and the latest day, "
+            "a year or more counting as a move. Source: agizeitgeist.com/data", 56), fontsize=8.5, color=INK_2, ha="left", va="bottom")
+        return save(fig, "claims-moved-phone.png")
     titles(fig, title,
            "Each mark is one forecast of AGI, superintelligence or AI better than people at most things, in their own terms, at a day it was said (repeats included) and the year it named.\n"
            "Dot: a year (hollow: known only from news reports). Bar: a range. Down-pointing triangle: a year it would come by. Orange: not before that year. Grey line: 'this year'.",
@@ -480,6 +562,8 @@ def cs_today():
 def main():
     for chart in (chart_experts, chart_researchers, chart_search, chart_forum, chart_frontier, chart_claims_now, chart_claims_moved):
         print(chart())
+    print(chart_claims_now(phone=True))
+    print(chart_claims_moved(phone=True))
 
 
 if __name__ == "__main__":
