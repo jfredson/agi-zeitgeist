@@ -43,6 +43,6 @@ The ledger holds 325 predictions. 108 have reached their date: 36 came true, 55 
 
 The predictions still to come get their verdicts as their dates arrive, and new predictions go in as they are made. One to watch is Musk's first deadline for an AI smarter than the smartest human, at the end of 2026. You can follow it on [the claims page](/claims/), which shows each person's counts and links every prediction to where it was said.
 
-*Widened 2026-10-19:* this post first covered 30 predictions by Altman and Musk; John Fredrickson, who runs this tracker, widened it the same day to all fifteen people ([the changelog](/docs/amendments)).
+*Widened 2026-10-19:* this post first covered 30 predictions by Altman and Musk; I widened it the same day to all fifteen people ([the changelog](/docs/amendments)).
 
-*Corrected 2026-10-19:* one verdict, Altman's goal of an automated AI research intern by September 2026, moved from "came true" to "cannot be tested" after an independent check ([the claim](/claims/#2025-10-29-altman-automated-research-intern-by-september-2026)).
+*Corrected 2026-10-19:* after an independent check, I moved one verdict, Altman's goal of an automated AI research intern by September 2026, from "came true" to "cannot be tested" ([the claim](/claims/#2025-10-29-altman-automated-research-intern-by-september-2026)).
