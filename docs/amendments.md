@@ -930,7 +930,8 @@ Now:
 9. **What gets in, and what a hit needs** (given by the managing session on 2026-10-19 while
    the ledger was widened). Only claims about AI: a company's spending, revenue, order book,
    headcount, chip count, computing or data-centre build-out, training costs and labour-market
-   forecasts stay out, and so does a plain hardware date. A hypothetical ("let's imagine",
+   forecasts not about what AI will do stay out (a forecast that AI will displace jobs is about
+   AI and is admitted), and so does a plain hardware date. A hypothetical ("let's imagine",
    "suppose", "I could imagine", a date given only for an extrapolation the speaker disowns) is
    not a prediction. A borderline case stays out. A hit needs a dated record of the event
    itself, not an argument that it had become possible. A test uses the speaker's own words and

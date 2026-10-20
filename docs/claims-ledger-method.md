@@ -92,8 +92,9 @@ A claim is admitted when all four are true. The test never looks at whether it c
 2. **The words look forward and are about AI**: they say AI will do, reach or ship something,
    or that it will not by a stated date (see "Readings ruled by John" below). A company's
    spending, revenue, order book, headcount, chip count, computing or data-centre build-out,
-   training costs and labour-market forecasts are business forecasts, not claims about AI, and
-   stay out. A product shipping counts only when the product is an AI system and the words claim
+   training costs and labour-market forecasts that are not about what AI will do ("50 million
+   workers short") are business forecasts, not claims about AI, and stay out; a forecast that AI
+   will displace or change jobs is about AI and is admitted. A product shipping counts only when the product is an AI system and the words claim
    something about what the AI will do or about its deployment; a plain hardware date stays out.
    A line framed as a hypothetical ("let's imagine", "suppose", "I could imagine", or a date
    given only for an extrapolation the speaker says he does not believe) is not a prediction.
