@@ -706,12 +706,14 @@ def render_news(built, commit):
         records = fm.get("records") or []
         record_line = ""
         if fm.get("kind") != "start-here":
-            parts = [f'<a href="/docs/amendments">amendment {esc(r)}</a>' if re.match(r"^A\d+$", r) else esc(r) for r in records]
+            # Plain names for what each record is (John, 2026-10-20: no bare amendment numbers under a post); the links stay.
+            parts = [f'<a href="/docs/amendments">{esc((RECORD_NAMES.get(r, "why this changed")[:1].upper() + RECORD_NAMES.get(r, "why this changed")[1:]) if i == 0 else RECORD_NAMES.get(r, "why this changed"))}</a>' if re.match(r"^A\d+$", r)
+                     else f'<a href="/#singularity">{"Part" if i == 0 else "part"} {esc(r)} of the singularity test</a>' if r in "ABCD" else esc(r) for i, r in enumerate(records)]
             srcs = fm.get("sources") or []
             srcs = fm.get("sources") or []
             src_html = " · ".join('<a href="%s" rel="noopener">%s</a>' % (esc(x.get("url", "")), esc(x.get("label", ""))) for x in srcs)
             record_line = ('<section class="post-record">' +
-                           ('<p class="rec">The record: %s · <a href="/docs/amendments">the changelog</a>.</p>' % " · ".join(parts) if parts else "") +
+                           ('<p class="rec">%s · <a href="/docs/amendments">every change, with its reason</a>.</p>' % " · ".join(parts) if parts else "") +
                            ('<p class="sources">Sources: %s.</p>' % src_html if srcs else "") +
                            "</section>")
         card = f"/news/{p['slug']}-card.png" if (out_root / f"{p['slug']}-card.png").exists() else None
@@ -1159,11 +1161,12 @@ def claims_page(sc, claims, built, commit):
     nums = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
     silent_line = (f"{nums.get(len(silent), len(silent))} of them, {', '.join(silent[:-1]) + ' and ' + silent[-1] if len(silent) > 1 else silent[0]}, "
                    f"{'has' if len(silent) == 1 else 'have'} never put a date on it. ") if silent else ""
-    band_line = (f"Under them, in green, are the academics and long-time thinkers on the panel "
-                 + ("who have never worked at a company that builds frontier AI, " if cs.ACADEMICS_STRICT else "not tagged as builders, ")
-                 + f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
-                 + "; ".join(f"{esc(p['name'])} {p['year']}" for p in band["people"])
-                 + f". Their middle year is {band['middle']:.0f}. ") if band else ""
+    lab = [p["name"] for p in band["people"] if p["id"] in cs.WORKED_AT_A_LAB] if band else []
+    band_line = (f"Under them, in green, are the {band['n']} long-time thinkers on the panel who don't run AI companies, "
+                 f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
+                 + "; ".join(f"{esc(p['name'])} {p['year']}" for p in band["people"]) + ". "
+                 + (f"Two of them, {esc(lab[0])} and {esc(lab[1])}, worked at OpenAI earlier in their careers. " if len(lab) == 2 else "")
+                 + f"Their middle year is {band['middle']:.0f}. ") if band else ""
     body = f"""<section class="section prose">
 <p>I keep this page as one of the tracker's two voices. The home page follows the academics and long-time thinkers who have written about AGI and the singularity for decades; this page follows the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are part of the mood of the time. I record what they say, when they said it and where, so it can be read for what they are predicting now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note says what happened, and that is all.</p>
 
@@ -1208,6 +1211,13 @@ def claims_page(sc, claims, built, commit):
 
 
 # ----------------------------------------------------------------------------- html
+# The plain name of what each amendment a news post names is about, for the line under the post.
+RECORD_NAMES = {"A24": "what replaces METR's measure", "A25": "how the headline is worked out",
+                "A26": "why statements about today's systems are always kept",
+                "A27": "how the ledger works", "A28": "how the panel's statements are sorted",
+                "A29": "how tips are taken in", "A30": "who the ledger covers", "A31": "what the ledger is for"}
+
+
 def esc(s):
     return html.escape(str(s), quote=True)
 
@@ -1372,7 +1382,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     # About the present, never a total of verdicts (amendment A31; John, 2026-10-19). The same figures as
     # the claims page's first chart.
     claims_line = (f'Of the {cl["leaders_with_a_date"]} industry leaders who have put a date on AGI or something beyond it, {cl["ahead_of_academics"]} now name a year '
-                   f'before the middle year of the academics\' latest guesses, {cl["academics"]["middle"]:.0f}, each person counted once. What each of them says now, in their own words, '
+                   f'before the middle year of the latest guesses by the panel\'s long-time thinkers who don\'t run AI companies, {cl["academics"]["middle"]:.0f}, each person counted once. What each of them says now, in their own words, '
                    f'is on <a href="/claims/">the claims page</a>.') if cl.get("academics") else ""
     # The same reading as the frontier-voices chart's title (charts.frontier_reading), so the two agree.
     from charts import frontier_reading
@@ -1383,7 +1393,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
         frontier_line = (f"the people building these systems have named about the same year all along, about {b:.0f}, and the people studying them have come down to meet it."
                          if abs(o - b) <= 3 else
                          f"the people building these systems have named about {b:.0f} all along, and the people studying them have come down from {'2100 or later' if t and t >= 2100 else f'about {t:.0f}'} in their earliest guesses to about {o:.0f} across all their guesses since 2023, most of the way but not all."
-                         + (f" (Counted once each, at their latest guess{', and leaving out the two who worked at OpenAI' if cs.ACADEMICS_STRICT else ''}, the academics' middle year is {ab['middle']:.0f}, the figure the claims page uses.)" if ab and round(ab["middle"]) != round(o) else ""))
+                         + (f" (Counted once each, at their latest guess, as the claims page counts them, the people studying it have a middle year of {ab['middle']:.0f}.)" if ab and round(ab["middle"]) != round(o) else ""))
     else:
         frontier_line = "too few dated guesses on one side yet to compare the people building these systems with the people studying them."
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}

@@ -390,7 +390,7 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
         for yv, who in at.items():
             ax.plot([yv], [y0], marker="|", ms=14, mew=2.5, color=PALETTE[2])
             ax.annotate("\n".join(who), (yv, y0), xytext=(0, -11), textcoords="offset points", ha="center", va="top", fontsize=6.5, color="#0b6b48")
-        ax.text(band["middle"] + 0.2, -0.55, f"the academics' middle year, {band['middle']:.0f}", fontsize=7.5, color="#0b6b48", va="bottom")
+        ax.text(band["middle"] + 0.2, -0.55, f"the long-time thinkers' middle year, {band['middle']:.0f}", fontsize=7.5, color="#0b6b48", va="bottom")
     for i, sp in enumerate(rows):
         latest = now[sp]["latest"]
         for j, c in enumerate(sorted(latest, key=lambda c: c["due"])):
@@ -402,7 +402,7 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
     ax.set_ylim(len(rows) + 1.75, -0.9)
     ticks = list(range(len(rows))) + ([len(rows) + 0.25] if band else [])
     ax.set_yticks(ticks)
-    ax.set_yticklabels([f"{names[sp]}, {now[sp]['day']}" for sp in rows] + ([f"The academics ({band['n']}), latest each"] if band else []), fontsize=8.5, color=INK)
+    ax.set_yticklabels([f"{names[sp]}, {now[sp]['day']}" for sp in rows] + ([f"Long-time thinkers ({band['n']}), latest each"] if band else []), fontsize=8.5, color=INK)
     ax.set_xlim(2025, 2046)
     ax.set_xticks(range(2026, 2047, 4))
     ax.grid(axis="x", color=GRID, lw=0.8)
@@ -410,14 +410,15 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
     named = [sp for sp in rows if now[sp]["nearest"] is not None]
     if band:
         k = sum(1 for sp in named if now[sp]["nearest"] < band["middle"])
-        title = f"{k} of {len(rows)} industry leaders now name a year before the academics' middle one, {band['middle']:.0f}"
+        title = f"{k} of {len(rows)} industry leaders now name a year before the long-time thinkers' middle one, {band['middle']:.0f}"
     else:
         title = "Too few dated guesses by the academics since 2023 to set the leaders against them"
     silent = [names[sp] for sp in cs.LEADERS if not now[sp]["latest"]]
     titles(fig, title,
            "Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms;\nthe date beside each name is when it was said or, where that is unknown, published. A range counts by its nearer end.\n"
            "A dark bar is a range they gave; a light bar runs to a year they said it would come by; a dot is a single year (hollow: known only from news reports);\nan orange arrow is a forecast that it will not come before that year.",
-           (f"Green: the academics and long-time thinkers on the panel, each at their latest dated guess since 2023.\n"
+           (f"Green: the panel's long-time thinkers who don't run AI companies, each at their latest dated guess since 2023"
+            + ("." if cs.ACADEMICS_STRICT else "; two of them, Kokotajlo and Aschenbrenner, worked at OpenAI earlier in their careers.") + "\n"
             + (f"{', '.join(silent)} {'has' if len(silent) == 1 else 'have'} given no dated forecast of this kind. " if silent else "")
             + "Source: agizeitgeist.com/data"))
     return save(fig, "claims-now.png")

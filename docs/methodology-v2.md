@@ -17,8 +17,9 @@ valuable for the Zeitgeist though."
 So the tracker follows two voices of one zeitgeist, and scores neither:
 
 - **The academics and long-time thinkers:** the members of the frozen expert panel (amendment
-  A18) who have never worked at a company that builds frontier AI, read through their coded
-  statements (`data/statements.csv`).
+  A18) who don't run AI companies and are not tagged as builders, read through their coded
+  statements (`data/statements.csv`). Two of them, Daniel Kokotajlo and Leopold Aschenbrenner,
+  worked at OpenAI earlier in their careers (John, 2026-10-20).
 - **The industry's leaders:** the fifteen figureheads of the companies building it (amendment
   A30), read through their dated predictions (`data/claims/`, the claims page). Twelve of them
   are also on the panel, where the frontier-voices chart draws them apart from the rest.

@@ -349,8 +349,9 @@ A page of its own at `/claims/`, headed "What the industry's leaders predict", i
 
 1. **What they say now.** A figure (`site/claims-now.png`, drawn by `scripts/charts.py`) of each person's latest dated forecasts of AGI, superintelligence or AI
    better than people at most things, in their own term, on one shared timeline (a range, a
-   year, or a forecast that it will not come before a date), set against a band for the middle
-   half of the academics' dated guesses since 2023 (the frontier-voices rows), with the date it was said and a
+   year, or a forecast that it will not come before a date), set against the panel's long-time
+   thinkers who don't run AI companies, each once at their latest dated guess since 2023, and
+   their middle year (amendment A31, as John ruled on 2026-10-20), with the date it was said and a
    mark where it comes from news reports rather than their own words. Under it, a line per
    person: those forecasts in their own terms; their latest undated words when newer than that
    forecast or when they have none (words only, never drawn); and their latest dated prediction of
@@ -366,7 +367,7 @@ A page of its own at `/claims/`, headed "What the industry's leaders predict", i
 One sentence on the home page, about the present (what the leaders who name a year say now,
 beside the academics), never a total of verdicts. `scripts/site.py` reads `data/claims/*.toml`, writes
 `site/claims/index.html` and `site/data/claims.csv`, and adds a `claims_ledger` block to
-`site/status.json` with the number of claims and people, the academics' band, and a `now` block
+`site/status.json` with the number of claims and people, the long-time thinkers' latest guesses and middle year, and a `now` block
 (each person's latest forecasts and undated words), with no verdict counts;
 `scripts/validate.py` checks every file.
 

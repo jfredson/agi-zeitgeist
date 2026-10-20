@@ -131,9 +131,10 @@ def nearest(cs):
 
 
 # Panel members not tagged as builders who nonetheless worked at a company that builds frontier AI, in any
-# role. They are left out of the academics (amendment A31) when ACADEMICS_STRICT is on.
+# role. John ruled on 2026-10-20 ("(b)") that they stay among the long-time thinkers, and the page says plainly
+# that they worked at OpenAI earlier in their careers (amendment A31). ACADEMICS_STRICT on would leave them out.
 WORKED_AT_A_LAB = {"kokotajlo": "OpenAI, 2022 to 2024", "aschenbrenner": "OpenAI, 2023 to 2024"}
-ACADEMICS_STRICT = True
+ACADEMICS_STRICT = False
 
 
 def academics_band(statements=None, speakers=None, since=2023):

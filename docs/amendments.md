@@ -1009,7 +1009,7 @@ And John's "Agreed on all", 2026-10-19, to the remaining choices.
 Now:
 
 1. **Two voices of one zeitgeist.** The tracker follows the academics and long-time thinkers
-   (the frozen panel's members who have never worked at a company that builds frontier AI, read
+   (the frozen panel's members who don't run AI companies and are not tagged as builders, read
    through their coded statements) and the industry's leaders (the claims ledger). The panel's
    builders are in the coded statements too, and the frontier-voices chart draws the two groups
    apart. Both
@@ -1019,14 +1019,16 @@ Now:
    holds, read for what they predict now and how that has shifted.
 3. **The claims page** leads with each leader's latest dated forecast of AGI, superintelligence
    or AI better than people at most things, in their own term, set against the academics; with
-   each leader's latest prediction of any kind beside it. The academics are the panel's members
-   who have never worked at a company that builds frontier AI, in any role (so not Daniel
-   Kokotajlo or Leopold Aschenbrenner, who worked at OpenAI, though the frozen tag does not mark
-   them), and are counted as the leaders are: each person once, at their latest dated guess since
-   2023, by the nearer year it names. The figure draws each of them and their middle year.
-   (Proposed by the managing session after the independent check of 2026-10-19 found the first
-   build pooled 26 guesses from seven people, ten of them from the two who worked at OpenAI;
-   put to John.) Then how the leaders' forecasts have moved. Then every
+   each leader's latest prediction of any kind beside it. The other side is the panel's long-time
+   thinkers who don't run AI companies (not tagged as builders and not among the fifteen),
+   counted as the leaders are: each person once, at their latest dated guess since 2023, by the
+   nearer year it names. The figure draws each of them and their middle year. **Decided by John
+   on 2026-10-20 (decided by: john), "(b)":** Daniel Kokotajlo and Leopold Aschenbrenner, who
+   worked at OpenAI earlier in their careers, stay among them, and the page says so plainly
+   rather than calling the group people who never worked at such a company. The independent
+   check of 2026-10-19 had found that the first build pooled 26 guesses from these seven people,
+   ten of them from those two; counted once each, their middle year is 2030 whether the two are
+   in or out. Then how the leaders' forecasts have moved. Then every
    claim, by person, in date order.
 4. **Verdicts are small notes.** Each claim keeps its status and evidence. On the page,
    the status is a small note on the claim saying whether its date has passed and what
