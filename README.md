@@ -49,7 +49,7 @@ streams.
 | `data/world_measures.csv` | world measures, kept apart from belief: capability readings (METR time horizon), company self-reports of AI-done work, and world output growth (World Bank), for the singularity-entry definition |
 | `data/search_log.csv` | every search run to build the record, and what it found; the weekly reading's searches carry ids starting `reading-` |
 | `data/readings/` | one file per run of the weekly reading (`YYYY-MM-DD.json`), never edited: what was searched, what was found, one verdict per source |
-| `data/claims/` | the claims ledger (amendments A27 and A30): one file per dated prediction by one of the industry's fourteen figureheads (eleven on the panel, three on the ledger-only list), with the words, the source, the test, the due year and the verdict; method in `docs/claims-ledger-method.md` |
+| `data/claims/` | the claims ledger (amendments A27 and A30): one file per dated prediction by one of the industry's fifteen figureheads (twelve on the panel, three on the ledger-only list), with the words, the source, the test, the due year and the verdict; method in `docs/claims-ledger-method.md` |
 | `docs/methodology-v2.md` | the method (version 2, 2026-09-30): four streams, coding scheme, panel rule, preregistered tests |
 | `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
 | `docs/codebook.md` | how each statement is coded under version 2, with decision rules and examples |

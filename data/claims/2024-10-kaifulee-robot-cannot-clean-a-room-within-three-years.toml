@@ -1,0 +1,19 @@
+[claim]
+id = "2024-10-kaifulee-robot-cannot-clean-a-room-within-three-years"
+speaker_id = "kaifulee"
+when = "2024-10"
+when_note = "Peter Diamandis uploaded the episode on 2024-12-05. In it Lee says 01.AI was founded '17 months ago', and the host says they will meet at the FII summit in Riyadh (held 2024-10-29 to 2024-10-31) 'in just 10 days or so', so it was recorded about 2024-10-19; the day is not certain."
+occasion = "Moonshots podcast with Peter Diamandis, episode 134, 'Ex-Google China President on How China Is Shaping the Future of AI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=n1BVlDPercI"
+source_locator = "1:01:51 to 1:02:10 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (yt-dlp; no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "clean my room is one thing that I would predict in three years this robot cannot even begin to do because every room is different"
+prediction = "Within three years of October 2024, home humanoid robots of the kind Tesla and Figure are building will still not be able to 'even begin to' clean a person's room, because every room, every family's idea of clean and every home is different; other household chores and talking to children can be done."
+kind = "capability"
+bar = "A forecast that something will not happen by a date (the method's reading 2): it comes true if, by 2027-12-31, there is no public record of a humanoid or household robot that can clean an ordinary person's room across different homes; it fails if there is such a record, from the robot's maker or an outside test."
+due = 2027
+due_basis = "'in three years', said about 2024-10-19: October 2027; by the span rule judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["kaifulee-claims-048"]
+notes = "Role at the time: founder and chief executive of 01.AI (Lingyi Wanwu), which he founded in March 2023 to build large language models; he announced the company on 2023-03-19/20 and still leads it. Said in answer to the host, an investor in Figure, who expected home humanoid robots at about $30,000. 'This robot' refers to those humanoid robots."

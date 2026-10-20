@@ -1,0 +1,21 @@
+[claim]
+id = "2026-09-23-kaifulee-no-ai-sentience-for-a-century"
+speaker_id = "kaifulee"
+when = "2026-09-23"
+when_note = "YouTube upload date of the Endgame channel's video; the recording date is not stated (he says his book came out in mid-September, so it may have been recorded a little earlier)."
+occasion = "Endgame #279 podcast with Gita Wirjawan, 'Kai-Fu Lee: The Future of Humanity in a World of AI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=c4w3njBhYVk"
+source_locator = "1:30:19 to 1:30:42 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (yt-dlp; no punctuation, some misheard words); the quote is a verbatim run of those caption words. 'sensions' is the captions' rendering of 'sentience'."
+quote = "95% confident. um that our definition of our sensions will not likely be uh replicated by AI in the next 100 years."
+prediction = "He is 'highly confident, not 100% but ... 95% confident' that human sentience, as we define it, will not be replicated by AI in the next 100 years."
+kind = "capability"
+bar = "None an outsider could run: no test of sentience exists; in the same talk he says of sentience and self-awareness 'we don't even have a clear scientific definition', so the absence of AI sentience could never be shown either way."
+due = 2126
+due_basis = "'in the next 100 years', said 2026-09-23: 2126."
+has_probability = true
+status = "unfalsifiable"
+verdict_why = "A forecast that something will not happen is scored by whether it is on record by the date, but there is no way to record real sentience in an AI, as he says himself; and the 95% is a chance. Decided at entry."
+search_ids = ["kaifulee-claims-006"]
+notes = "Role at the time: founder and chief executive of 01.AI (Lingyi Wanwu), which he founded in March 2023 to build large language models; he announced the company on 2023-03-19/20 and still leads it."

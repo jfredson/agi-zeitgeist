@@ -1,0 +1,24 @@
+[claim]
+id = "2024-03-kaifulee-hallucination-solved-in-eighteen-months"
+speaker_id = "kaifulee"
+when = "2024-03"
+when_note = "Fortune's article of 2024-05-25 (https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/) places the conversation at the Fortune Innovation Forum in Hong Kong in March 2024; Fortune uploaded the video on 2024-05-23. The day is not given."
+occasion = "On-stage conversation with Alyson Shontell, editor-in-chief of Fortune, at the Fortune Innovation Forum, Hong Kong (video 'About 50% Of Jobs Will Be Displaced By AI Within 3 Years')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=zZs447dgMjg"
+source_locator = "19:22 to 19:40 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (yt-dlp; no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "hallucination we we I can predict uh that they will be more or less solved in a year and a half or so"
+prediction = "The problems that hold AI systems back, such as hallucination (confidently making things up), will be 'more or less solved' in about a year and a half from March 2024, that is by about September 2025."
+kind = "capability"
+bar = "Plain reading of his words: by the end of 2025, leading AI chatbots have stopped making things up apart from rare slips, so that hallucination no longer holds them back, as shown by their makers' own statements or an outside measurement of how often they make things up."
+due = 2025
+due_basis = "'in a year and a half or so', said in March 2024: about September 2025; by the span rule judged at 2025-12-31."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "Not met. OpenAI, maker of the most used chatbot, wrote on 2025-09-05, about eighteen months after he spoke, that GPT-5 hallucinates less 'but they still occur' and that 'Hallucinations remain a fundamental challenge for all large language models'. After the due date, Vectara's outside leaderboard (updated 2026-10-16) still finds every model making things up when it only has to summarise a document it is given: 1.8% for the best and 3 to 6.5% for current frontier models. Hallucination was reduced, not more or less solved."
+verdict_source = "https://github.com/vectara/hallucination-leaderboard"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["kaifulee-claims-009", "kaifulee-claims-010", "kaifulee-claims-062", "kaifulee-claims-063", "kaifulee-claims-064", "kaifulee-claims-065"]
+notes = "Role at the time: founder and chief executive of 01.AI (Lingyi Wanwu), which he founded in March 2023 to build large language models; he announced the company on 2023-03-19/20 and still leads it. His words run 'many of the problems that plague these systems like hallucination ... will be more or less solved'; the test takes hallucination, the one problem he named. Judgement: 'more or less solved' has no number, so the verdict rests on the leading maker's own statement that the problem remains and on an outside measure that still finds it in every model, on the easiest task. OpenAI's post: https://openai.com/index/why-language-models-hallucinate/. In the same talk he called his 2017 forecast of 40 to 50 percent of jobs replaced in 10 to 15 years 'uncannily accurate'; a labour-market forecast, not entered."

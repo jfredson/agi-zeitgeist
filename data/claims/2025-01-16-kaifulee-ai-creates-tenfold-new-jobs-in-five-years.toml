@@ -1,0 +1,18 @@
+[claim]
+id = "2025-01-16-kaifulee-ai-creates-tenfold-new-jobs-in-five-years"
+speaker_id = "kaifulee"
+when = "2025-01-16"
+occasion = "Printed interview with the People's Daily English app, 'Look forward to 2025 as the year where Chinese AI apps really rise up: Kai-Fu Lee'"
+source_kind = "printed_qa"
+source_url = "https://peoplesdaily.pdnews.cn/tech/er/30048032628"
+source_locator = "end of his last answer, on fields AI cannot replace"
+checked_how = "Read on the page on 2026-10-19 (curl); the page's timestamp is 2025-01-16. 01.AI's blog reprinted it in English and Chinese (lingyiwanwu.com/blog/2025-ai-first, read through the Internet Archive)."
+quote = "I bet in five years the number of new jobs created by AI will be ten times larger than the tens of millions"
+prediction = "Within five years of January 2025, the number of new jobs created by AI will be ten times the tens of millions of people labelling data for AI around the world, the kind of job he says AI has already created."
+kind = "deployment"
+bar = "His words and his own usage in the same answer, where labelling data for AI is his example of a job AI has created: by 2030-12-31, an outside count (official statistics or a recognised research body) shows the people working in new kinds of jobs that exist because of AI to number at least ten times the world's data labellers, which he puts at tens of millions."
+due = 2030
+due_basis = "'in five years', said 2025-01-16: 2030."
+status = "not_yet_due"
+search_ids = ["kaifulee-claims-028", "kaifulee-claims-069", "kaifulee-claims-073"]
+notes = "Role at the time: founder and chief executive of 01.AI (Lingyi Wanwu), which he founded in March 2023 to build large language models; he announced the company on 2023-03-19/20 and still leads it. 'I bet' marks it as his own forecast. First left out as a labour-market forecast; entered after the method's admission rule was amended on 2026-10-19 to admit forecasts that AI will create or displace jobs (search row kaifulee-claims-073). Flag: no agreed count of jobs created by AI exists yet, so settling it in 2030 may be hard; the test is kept to his words."
