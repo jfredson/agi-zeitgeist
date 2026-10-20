@@ -1,11 +1,11 @@
 ---
-title: The tracker now keeps score of the dates AI's leaders put on the future
+title: The tracker now follows what AI's leaders say is coming, and how their dates move
 date: 2026-10-19
 kind: claim
-summary: The people who run the AI companies keep telling us when things will happen, and hardly anyone goes back to check. This tracker now keeps a ledger of the dated predictions fifteen of them have made in public, and checks each one when its date comes.
-records: [A27, A30]
+summary: The people building AI keep telling us when it will match us, and their dates keep moving. I now keep a dated record of what fifteen of them predict, in their own words, beside the long-time thinkers who have watched the question for decades.
+records: [A27, A30, A31]
 before: "None on record"
-after: "325 predictions from fifteen people, 108 due, 36 came true"
+after: "328 predictions from 15 leaders; 7 of 12 now name a year before 2030"
 sources:
   - label: The claims page
     url: https://agizeitgeist.com/claims/
@@ -13,36 +13,38 @@ sources:
     url: https://agizeitgeist.com/docs/claims-ledger-method
   - label: Every prediction, as a table
     url: https://agizeitgeist.com/data/claims.csv
-  - label: The changelog entries that set up the ledger
+  - label: What the ledger is for, and who it covers
     url: https://agizeitgeist.com/docs/amendments
 ---
 
-In April 2019, at an event for [Tesla](https://en.wikipedia.org/wiki/Tesla,_Inc.)'s investors, [Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk) said: "next year for sure we will have over a million Robo taxis on the road." He added that regulators might not approve them everywhere. Tesla ran no driverless taxis that year. By Musk's own account, its first paid rides without a safety monitor on board came in January 2026, in Austin, Texas. The million has not come ([the claim and its verdict](/claims/#2019-04-22-musk-million-robotaxis-next-year)).
+In March 2024, at an economics summit at [Stanford University](https://en.wikipedia.org/wiki/Stanford_University), [Jensen Huang](https://en.wikipedia.org/wiki/Jensen_Huang), who runs the chipmaker [Nvidia](https://www.nvidia.com/), talked about artificial general intelligence, or AGI: machines that can do the thinking people do. If it meant passing every test we could set a computer, he said, "I'm guessing in 5 years time we'll do well on every single one of them" ([the prediction](/claims/#2024-03-01-huang-ai-does-well-on-every-human-test-five-years)). On 6 September 2026, congratulating [OpenAI](https://openai.com/) on a new model trained on Nvidia's chips, he posted: "AGI has arrived" ([his post](https://x.com/JensenHuang/status/2096700264569090384)). In two and a half years, his own sense of where we stand had gone from five years away to here.
 
-The year passed, and the forecast was left behind. This site, the AGI Zeitgeist Tracker, asks how close we are to the singularity, the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with ([the home page](/)). It now goes back for forecasts like Musk's.
+Moments like that are why I now keep a record of what the industry's leaders say.
 
-## Why keep score
+## Two voices
 
-The people who run the companies building the most powerful AI put dates on the future all the time, often to the people who act on them. Twenty-eight of the predictions gathered so far were made on companies' quarterly calls with investors ([every prediction, as a table](/data/claims.csv)). Even warnings come with dates. [Dario Amodei](https://en.wikipedia.org/wiki/Dario_Amodei), who runs [Anthropic](https://www.anthropic.com/), told a US Senate committee in July 2023 that, without safeguards, the AI systems expected within two to three years posed "a substantial risk" of supplying every missing step someone would need to make a biological weapon ([his written testimony](https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf)). Investors, lawmakers and the rest of us plan around dates like these. Once one passes, hardly anyone checks, so a wrong forecast costs its maker nothing.
+I built this tracker to follow the mood of the time around AGI and the singularity, the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with ([the home page](/)). Two kinds of people shape that mood. One is the long-time thinkers, academics and writers who have argued about it for decades. The other is the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are worth hearing. The thinkers give the long view; the leaders are the ones making it happen, and what they say is the clearest sign of what the industry expects right now.
 
 ## What the ledger does
 
-So the tracker now keeps [a ledger](/claims/) meant to hold every dated prediction fifteen of these people have made in public: the heads of the companies that build the leading AI models or their chips, and their chief scientists. Each is in the speaker's own words, checked against the recording, post or transcript where it was said. The ledger also writes down, in advance, what would have to happen for each to come true, so the verdict cannot be bent afterwards.
+The [claims page](/claims/) is the leaders' voice. It holds 328 dated predictions from fifteen people who run the companies building the most advanced AI or the chips it runs on, each in their own words, dated, and linked to where it was said. I read them for what they predict now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note on it says what happened, and I don't add those notes up ([how the ledger works](/docs/claims-ledger-method)).
 
-## Two harder cases
+## What they say now
 
-Some predictions can never be checked. In September 2024 [Sam Altman](https://en.wikipedia.org/wiki/Sam_Altman), who runs [OpenAI](https://openai.com/), wrote that "It is possible that we will have superintelligence in a few thousand days", adding that it might take longer ([the claim](/claims/#2024-09-23-altman-superintelligence-few-thousand-days)). It sounds like a date, but the essay does not say what superintelligence is or how anyone would know it had arrived, so nobody could ever show it wrong. The ledger marks it as a prediction that cannot be tested, and many others share the flaw.
+Twelve of the fifteen have put a date on AGI or something beyond it. Seven of those twelve name a year before 2030 ([the claims page](/claims/)). Among the experts the tracker follows are seven long-time thinkers who don't run AI companies. Line up each one's latest guess, and the one in the middle is 2030. (Two of them worked at OpenAI earlier in their careers, so they are not wholly outsiders, and the page says so.) So more than half of the leaders who give a date name a year earlier than the thinkers' middle one. Each leader uses their own words for what is coming: AGI, superintelligence, or, for [Dario Amodei](https://en.wikipedia.org/wiki/Dario_Amodei) of [Anthropic](https://www.anthropic.com/), what he calls "Powerful AI". They don't all mean the same thing, so the page gives each person's term beside their date.
 
-Other dates move. In April 2024 Musk said an AI smarter than the smartest human would come "probably end of next year", or within two years ([the claim](/claims/#2024-04-08-musk-agi-smarter-than-smartest-human)). In January 2026, at the [World Economic Forum](https://www.weforum.org/) in Davos, he said it might come "by the end of this year", and "no later than next year" ([the later claim](/claims/#2026-01-22-musk-ai-smarter-than-any-human-end-of-year)). The ledger keeps both, or a forecaster could push a date forward forever. The first is judged at the end of 2026, the second at the end of 2027.
+Three have never put a date on it: [Arthur Mensch](https://en.wikipedia.org/wiki/Arthur_Mensch) of [Mistral AI](https://mistral.ai/), [Mark Zuckerberg](https://en.wikipedia.org/wiki/Mark_Zuckerberg) of [Meta](https://www.meta.com/about/) and [Satya Nadella](https://en.wikipedia.org/wiki/Satya_Nadella) of [Microsoft](https://www.microsoft.com/). Not naming a year is not the same as saying nothing, so the page quotes their latest words instead. Mensch calls AGI "rather a direction than a point of arrival". Zuckerberg told his company's conference in September 2026 that "Delivering personal superintelligence is now within reach" ([the claims page](/claims/)).
 
-## What the first numbers show
+## How the dates move
 
-The ledger holds 325 predictions. 108 have reached their date: 36 came true, 55 did not, and 17 could never be checked. The other 217 are still to come ([the claims page](/claims/)). The 36 are not a score. They come from the predictions gathered to open the ledger, which may lean toward the famous ones, and a score built from famous predictions would mostly show which ones are easy to find. So nobody gets a hit rate, the share of their checkable predictions that came true, until their public words have been searched year by year and at least five of their predictions are due ([how the ledger works](/docs/claims-ledger-method)). A hit is not always foresight: Altman's promise in March 2024 that OpenAI would "release an amazing new model this year" came true ([the claim](/claims/#2024-03-18-altman-amazing-new-model-this-year)), but it was a promise about his own company's plans.
+In April 2024 [Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk), who founded the AI company [xAI](https://x.ai/) (since renamed SpaceXSI), said an AI smarter than the smartest human would come "probably end of next year" ([the prediction](/claims/#2024-04-08-musk-agi-smarter-than-smartest-human)). In January 2026, at the [World Economic Forum](https://www.weforum.org/) in Davos, he said it might come "by the end of this year", and "no later than next year" ([the later prediction](/claims/#2026-01-22-musk-ai-smarter-than-any-human-end-of-year)). The page keeps both, so the move shows.
+
+Across the leaders, since 2023, five have brought their dates nearer, three have held them, and two have pushed them later ([the claims page](/claims/)). The page draws each person's forecasts over time, so you can see how each person's dates have moved.
 
 ## What happens next
 
-The predictions still to come get their verdicts as their dates arrive, and new predictions go in as they are made. One to watch is Musk's first deadline for an AI smarter than the smartest human, at the end of 2026. You can follow it on [the claims page](/claims/), which shows each person's counts and links every prediction to where it was said.
+New predictions go on the page as the fifteen make them, and the picture of what the industry expects moves with them. The question I will keep asking is whether the two voices, the builders and the long-time thinkers, are drawing together or apart. You can watch it on [the claims page](/claims/), where every prediction links to the moment it was said.
 
-*Widened 2026-10-19:* this post first covered 30 predictions by Altman and Musk; I widened it the same day to all fifteen people ([the changelog](/docs/amendments)).
+*Widened 2026-10-19:* this post first covered 30 predictions by [Sam Altman](https://en.wikipedia.org/wiki/Sam_Altman) and Musk; I widened it the same day to all fifteen people ([who the ledger covers](/docs/amendments)).
 
-*Corrected 2026-10-19:* after an independent check, I moved one verdict, Altman's goal of an automated AI research intern by September 2026, from "came true" to "cannot be tested" ([the claim](/claims/#2025-10-29-altman-automated-research-intern-by-september-2026)).
+*Rewritten 2026-10-20:* the first version of this post counted how many predictions had come true. I have since decided the ledger records what the leaders predict, not whether they were right, so the counts are gone ([what the ledger is for](/docs/amendments)).
