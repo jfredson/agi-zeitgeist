@@ -856,6 +856,9 @@ and Huang and any others that you feel are relevant to include in that category"
 session proposed an inclusion rule and fourteen names, and John accepted them. Of the three
 company heads who are not on the frozen panel he ruled: "Those three should be included,
 whatever that means". This amendment records how they are included without touching the panel.
+Later the same day, reading the pull request that carried it, John ruled two of the questions it
+left open, in his words: "Yes Musk's claims from 2019-2021 should count", and "Sure, add Kai-Fu
+Lee." Both rulings are written into the items below.
 
 ### A30. The figureheads: who the claims ledger covers, and the ledger-only list
 
@@ -878,10 +881,12 @@ Now:
    counts only if it was made while the person held that role.** A claim made before or after
    it, or in a gap between two such roles, is left out, and the search-log row that found it
    says why.
-2. **The fourteen people** (John, 2026-10-19). On the frozen panel already: Sam Altman, Elon
+2. **The fifteen people** (John, 2026-10-19). On the frozen panel already: Sam Altman, Elon
    Musk, Dario Amodei, Jensen Huang, Demis Hassabis, Mustafa Suleyman, Ilya Sutskever, Liang
-   Wenfeng, Arthur Mensch, Shane Legg and Yann LeCun. Not on the panel: Mark Zuckerberg (Meta),
-   Sundar Pichai (Google and Alphabet) and Satya Nadella (Microsoft).
+   Wenfeng, Arthur Mensch, Shane Legg, Yann LeCun and Kai-Fu Lee (added by John's second ruling
+   of the day; his claims count only from 2023, as founder and chief executive of 01.AI, a
+   company that builds AI models). Not on the panel: Mark Zuckerberg (Meta), Sundar Pichai
+   (Google and Alphabet) and Satya Nadella (Microsoft).
 3. **The ledger-only list.** The three who are not on the panel enter `data/speakers.csv` with
    a new tier, `claims_only`. A `claims_only` row is never a panel member: it never enters
    `data/statements.csv`, the opinion charts, the experts' dates or any of the panel's counts,
@@ -893,16 +898,16 @@ Now:
    primary source) are unchanged.
 5. **Each figurehead's role, with its dates,** is written in the speaker row's notes
    (`inclusion_note`) for the three new rows, and in each claim's `notes` for everyone, so the
-   role-at-the-time rule can be checked one claim at a time. The eleven panel rows keep their
+   role-at-the-time rule can be checked one claim at a time. The twelve panel rows keep their
    frozen notes; their role histories were already in `role_summary` and the `frontier_lab`
    tag.
 6. **The order of work** for the twelve people beyond Altman and Musk: Amodei and Huang first,
    then Hassabis, Suleyman, Sutskever, Legg, LeCun, Liang Wenfeng, Mensch, Zuckerberg, Pichai
-   and Nadella. Panel members with dated claims in the seed list who are not figureheads under
-   the rule (Geoffrey Hinton and Ray Kurzweil, who never ran such a company) are not entered.
-   Kai-Fu Lee, on the panel and in the seed list, has been the founder and chief executive of
-   01.AI, a company that builds AI models, since 2023, so he appears to meet the rule for claims
-   made since then; he is not on John's list, and whether to add him is a call for John.
+   and Nadella, then Kai-Fu Lee, added last. Panel members with dated claims in the seed list who
+   are not figureheads under the rule (Geoffrey Hinton and Ray Kurzweil, who never ran such a
+   company) are not entered. Lee's earlier dated claims (his "half of jobs in the next decade"
+   of 2017 and his 2019 forecasts, made as a venture investor) are left out under the
+   role-at-the-time rule.
 7. **Enforcement.** `scripts/validate.py` accepts `claims_only` as a tier for a person, refuses
    a claim whose speaker is not `core`, `cohort_2020s` or `claims_only` (so the wider list of
    candidates, tier `wide`, cannot have claims either), refuses a quota tag on a `claims_only`
@@ -924,11 +929,11 @@ qualifying role (Altman as OpenAI's co-chair in January 2019 and its chief execu
 Musk as OpenAI's co-chair in January 2016 and as the founder and head of xAI from 2023). Three
 Musk claims were made when he headed Tesla but held no role at OpenAI (he left its board in
 February 2018) or xAI (founded in 2023): the million robotaxis of 2019-04-22, the "level five"
-basic functionality of 2020-07-09, and the Tesla robot prototype of 2021-08-19. Whether Tesla
-counted then as a company that builds frontier AI models or the chips they are trained on (it
-designed its own driving chip, shown on 2019-04-22, and announced its own training chip, Dojo,
-on 2021-08-19) is a call for John. The three files are left as entered until he rules; nothing
-in them changes.
+basic functionality of 2020-07-09, and the Tesla robot prototype of 2021-08-19. John ruled on
+2026-10-19 that they count ("Yes Musk's claims from 2019-2021 should count"): Tesla counted then
+as a company that builds frontier AI, training its own driving models and designing its own
+chips (its driving chip was shown on 2019-04-22, and its own training chip, Dojo, announced on
+2021-08-19), so his claims as its chief executive qualify. The three files stay as entered.
 
 What does not change: the frozen panel's membership (A18), `data/statements.csv`, the scored
 series, the frozen thresholds, the definition, the verdict and the headline (A25), and every

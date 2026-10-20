@@ -86,7 +86,9 @@ A claim is admitted when all four are true. The test never looks at whether it c
    named chief scientist speaking for it.** A claim counts only if it was made while the
    person held that role. A claim made before or after it, or in a gap between two such roles,
    is left out, and the search-log row that found it says why. Each claim's `notes` name the
-   role that applied. The fourteen figureheads are listed under "Order of work".
+   role that applied. The fifteen figureheads are listed under "Order of work". Tesla counts as
+   such a company for Elon Musk's claims as its chief executive from 2019 to 2021 (ruled by John
+   2026-10-19).
 2. **The words look forward**: they say AI will do, reach or ship something.
 3. **The words carry a date or a length of time**: a year ("by 2030"), a span counted from the
    day it was said ("in five years", "the next ten years", "this president's term"), or a stage
@@ -255,11 +257,12 @@ checks every file.
 Ruled by John on 2026-10-17: Altman and Musk first, then Amodei, then Huang, then the other
 panel members tied to the frontier labs, then anyone else on the panel with a dated claim.
 
-Widened by John on 2026-10-19 (amendment A30) to the fourteen figureheads. On the frozen panel:
+Widened by John on 2026-10-19 (amendment A30) to the fifteen figureheads. On the frozen panel:
 Sam Altman, Elon Musk, Dario Amodei, Jensen Huang, Demis Hassabis, Mustafa Suleyman, Ilya
-Sutskever, Liang Wenfeng, Arthur Mensch, Shane Legg and Yann LeCun. On the ledger-only list:
+Sutskever, Liang Wenfeng, Arthur Mensch, Shane Legg, Yann LeCun and Kai-Fu Lee (his claims
+count only from 2023, as founder and chief executive of 01.AI). On the ledger-only list:
 Mark Zuckerberg, Sundar Pichai and Satya Nadella. After Altman and Musk the order is Amodei and
 Huang, then Hassabis, Suleyman, Sutskever, Legg, LeCun, Liang Wenfeng, Mensch, Zuckerberg,
-Pichai and Nadella. Panel members who never held a qualifying role (Geoffrey Hinton, Ray
+Pichai and Nadella, then Kai-Fu Lee, added by John later the same day. Panel members who never held a qualifying role (Geoffrey Hinton, Ray
 Kurzweil) are not entered; any other name is added only by amendment.
 Kurzweil's 2029 date is entered once, with its repeats in `repeated_on`, when his turn comes.

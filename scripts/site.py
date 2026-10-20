@@ -1011,9 +1011,10 @@ CLAIM_FIELDS = ["id", "speaker_id", "when", "when_note", "occasion", "source_kin
                 "checked_how", "quote", "reported_as", "statement_id", "prediction", "kind", "bar", "due", "due_early",
                 "due_date", "due_basis", "is_goal", "has_probability", "restates", "repeated_on", "status", "verdict_on",
                 "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify"]
-# The order John ruled: Altman and Musk (2026-10-17), then the twelve he added on 2026-10-19 (A30).
+# The order John ruled: Altman and Musk (2026-10-17), then the thirteen he added on 2026-10-19 (A30),
+# Kai-Fu Lee last.
 LEDGER_ORDER = ["altman", "musk", "amodei", "huang", "hassabis", "suleyman", "sutskever", "legg", "lecun",
-                "liangwenfeng", "mensch", "zuckerberg", "pichai", "nadella"]
+                "liangwenfeng", "mensch", "zuckerberg", "pichai", "nadella", "kaifulee"]
 STATUS_WORDS = {"not_yet_due": "not yet due", "hit": "came true", "missed": "did not", "withdrawn": "took it back",
                 "unfalsifiable": "cannot be tested"}
 STATUS_CHIP = {"hit": "chip ok", "missed": "chip no", "withdrawn": "chip no", "not_yet_due": "chip", "unfalsifiable": "chip"}
@@ -1033,13 +1034,14 @@ WHO = {"altman": 'Head of <a href="https://openai.com/">OpenAI</a> since 2019; i
        "mensch": 'Co-founder and head of <a href="https://mistral.ai/">Mistral AI</a> since 2023.',
        "zuckerberg": 'Founder and head of Facebook, now Meta. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).',
        "pichai": 'Head of <a href="https://about.google/">Google</a> since 2015 and of its parent <a href="https://abc.xyz/">Alphabet</a> since 2019. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).',
+       "kaifulee": 'Founder and head of <a href="https://www.01.ai/">01.AI</a> since 2023; earlier a venture investor and head of Google China. His words from before 01.AI are not counted.',
        "nadella": 'Head of <a href="https://www.microsoft.com/">Microsoft</a> since 2014 and its chair since 2021. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).'}
 # Each person's name links, at its first mention on the page (the counts table), to their Wikipedia article.
 WHO_LINK = {sp: f"https://en.wikipedia.org/wiki/{slug}" for sp, slug in {
     "altman": "Sam_Altman", "musk": "Elon_Musk", "amodei": "Dario_Amodei", "huang": "Jensen_Huang",
     "hassabis": "Demis_Hassabis", "suleyman": "Mustafa_Suleyman", "sutskever": "Ilya_Sutskever", "legg": "Shane_Legg",
     "lecun": "Yann_LeCun", "liangwenfeng": "Liang_Wenfeng", "mensch": "Arthur_Mensch", "zuckerberg": "Mark_Zuckerberg",
-    "pichai": "Sundar_Pichai", "nadella": "Satya_Nadella"}.items()}
+    "pichai": "Sundar_Pichai", "nadella": "Satya_Nadella", "kaifulee": "Kai-Fu_Lee"}.items()}
 
 
 def load_claims():
@@ -1182,7 +1184,7 @@ def claims_page(sc, claims, built, commit):
 
 <h2>What this page is</h2>
 <p>The people who run the AI companies both sell the story and see further than anyone else. This page keeps a plain account of their predictions: each one that carried a date, in the person's own words, with where it was said, the test it will be judged by, and, once the date has passed, whether it came true. It answers one narrow question, how often each person's dated predictions have come true so far, and which way the misses went. It does not say whether anyone is right about the future, whether they are sincere, or whether the technology is good or bad. A person with a poor record may be right next time; one with a good record may have been lucky.</p>
-<p>The people on this page are the industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Eleven of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
+<p>The people on this page are the industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Twelve of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
 <p>A prediction gets in only if the person is one of these figureheads at the time, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Whether it came true is never looked at when deciding what gets in. A prediction with no date ("AGI is coming", "we are close") is not scored; the table says how many of each person's recorded statements look ahead and how many of those carry a year, so vagueness stays visible. The full rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
 <p>So far: {n_all} dated predictions by {len(people)} people. {n_due} are due, their dates passed: {n_hit} came true, {n_missed} did not and {n_unf_due} cannot be tested. Of those still ahead, {n_unf - n_unf_due} cannot be tested either, so will never be scored. The people here were traced for their best-known, checkable predictions first, so these counts measure which predictions were easy to find; no one gets a percentage until they have been traced year by year with every search written down, and never from fewer than five due predictions.</p>
 {counts_table}
