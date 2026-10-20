@@ -1032,10 +1032,10 @@ WHO = {"altman": 'Head of <a href="https://openai.com/">OpenAI</a> since 2019; i
        "lecun": 'Chief AI scientist of <a href="https://about.meta.com/">Meta</a> from 2018 to 2025; since then executive chairman of the start-up <a href="https://techcrunch.com/2025/12/19/yann-lecun-confirms-his-new-world-model-startup-reportedly-seeks-5b-valuation/">AMI Labs</a>. His words as head of Facebook\'s AI research lab, 2013 to 2018, are not counted.',
        "liangwenfeng": 'Founder and head of <a href="https://www.deepseek.com/">DeepSeek</a> since 2023.',
        "mensch": 'Co-founder and head of <a href="https://mistral.ai/">Mistral AI</a> since 2023.',
-       "zuckerberg": 'Founder and head of Facebook, now Meta. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).',
-       "pichai": 'Head of <a href="https://about.google/">Google</a> since 2015 and of its parent <a href="https://abc.xyz/">Alphabet</a> since 2019. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).',
+       "zuckerberg": 'Founder and head of Facebook, now Meta. Not on the site\'s fixed list of experts: he is on this page only.',
+       "pichai": 'Head of <a href="https://about.google/">Google</a> since 2015 and of its parent <a href="https://abc.xyz/">Alphabet</a> since 2019. Not on the site\'s fixed list of experts: he is on this page only.',
        "kaifulee": 'Founder and head of <a href="https://www.01.ai/">01.AI</a> since 2023; earlier a venture investor and head of Google China. His words from before 01.AI are not counted.',
-       "nadella": 'Head of <a href="https://www.microsoft.com/">Microsoft</a> since 2014 and its chair since 2021. Not on the site\'s fixed list of experts: he is on this page only (the ledger-only list).'}
+       "nadella": 'Head of <a href="https://www.microsoft.com/">Microsoft</a> since 2014 and its chair since 2021. Not on the site\'s fixed list of experts: he is on this page only.'}
 # Each person's name links, at its first mention on the page (the counts table), to their Wikipedia article.
 WHO_LINK = {sp: f"https://en.wikipedia.org/wiki/{slug}" for sp, slug in {
     "altman": "Sam_Altman", "musk": "Elon_Musk", "amodei": "Dario_Amodei", "huang": "Jensen_Huang",
@@ -1128,7 +1128,7 @@ def claims_page(sc, claims, built, commit):
         if p["not_come"]:
             misses.append(f"{p['not_come']} {'has' if p['not_come'] == 1 else 'have'} not come")
         name = esc(speakers[sp]["name"])
-        rows.append([f'<a href="{WHO_LINK[sp]}">{name}</a>' if sp in WHO_LINK else name, p["n"], p["due"], p["hit"], p["missed"] + p["withdrawn"], p["not_yet_due"], p["unfalsifiable"],
+        rows.append([f'<a href="{WHO_LINK[sp]}">{name}</a>' if sp in WHO_LINK else name, p["n"], p["due"], p["hit"], p["missed"] + p["withdrawn"], p["not_yet_due"], f'{p["unfalsifiable"]} ({p["unf_due"]} due)' if p["unfalsifiable"] else 0,
                      esc(p["rate_label"]), esc("; ".join(misses) or ""),
                      "none recorded: not on the list of experts" if speakers[sp]["tier"] == "claims_only"
                      else f'{p["statements_ahead"]} ({p["statements_dated"]} with a year)'])
