@@ -1,6 +1,67 @@
 # Independent check of the widened claims ledger (pull request 23), 2026-10-19
 
-**Final verdict (second pass, commit `cf8fec5`): merge after the named fixes below.**
+**Update, third round (commit `4bc00cc`): merge once the five small fixes in "Third round"
+below are made.**
+
+- **One fix changes a count:** Hassabis's 2011 "came true", which does not meet his own
+  definition. It must become "did not come true", or go to John.
+- **The other four are wording.** None needs another check from this session.
+
+# Third round (commit `4bc00cc`): the named fixes, confirmed at the sources
+
+The builder made the second pass's section A fixes, and John ruled items A3 and A5, in commits
+`4953661` and `4bc00cc`.
+
+- **What was checked.** Each fix, John's two rulings, and the builder's two extra changes, the
+  search-log label and the word "create". The files changed were read again, with two helpers
+  re-reading the sources.
+- **The page now reads** 325 claims, 108 due, 37 came true, 54 did not. That is exactly what
+  the four status changes give:
+  - Pichai −1;
+  - Suleyman +1;
+  - Hassabis's Astra +1 (John's ruling);
+  - Hassabis's 2011 claim +1, which does not hold (below).
+- **Checks.** `validate.py` (325 claims, 4,922 search-log rows), `check_news.py` and
+  `test_check_news.py` pass. The site builds, the panel is still 37, and the ledger-only list
+  does not leak.
+
+| item | result |
+|---|---|
+| A1, Pichai's Atlanta "later this summer" | **Confirmed.** Taken out; 2025-04-24 is a repeat date on the February record, the page-19 line is in its notes, and the search log records the removal. |
+| A2, Suleyman's 2025 self-improvement experiment, now came true | **Status confirmed; reason needs one line.** The date (arXiv 2505.22954, 2025-05-29) and authors are right, and the evidence is outside. But the reason quotes only "sandboxing, human oversight". It leaves out the paper's nearest sentence to his words, "we actively monitor agent performance and code changes, with the DGM archive providing a traceable lineage of modifications for review". That reads as watching and after-the-fact review, not approval of each change, so the test is still met. The reason must quote it and say so. |
+| A3, Hassabis's Astra, came true 2024-12-11 (John's ruling) | **Confirmed.** The test is unchanged. Google's 2024-12-11 post, its developer post and its API changelog show live camera and screen streaming released that day. The AI Studio "Stream Realtime" date rests on a same-day press report. Google's own record of it is its developer post of 2024-12-23, still within 2024, and the reason could cite it. |
+| A4, Hassabis's 2011 transfer learning and concepts, now came true | **Not confirmed.** The test quotes his definitions faithfully (22:32 to 24:29, 35:10 to 35:42). But the "concepts" half is not met. The record (Higgins and others, arXiv 1606.05579) finds factors such as position, scale and rotation, which the talk itself places at the perceptual level ("what a dog looks like"), not above it. DeepMind's own 2017 follow-up (SCAN, arXiv 1707.03389) calls such output "visual primitives" and builds concepts on top of them. The transfer half is weak but defensible. Read on its own test this is **did not come true** (came true 37 becomes 36; did not 54 becomes 55), or John rules. His 2017 *Neuron* review, which could not be opened here, may say whether he thought these were still open. |
+| A5, Amodei's "most intelligent model", did not (John's ruling) | **Confirmed.** LiveBench version 1 (2024-06-27) puts Claude 3.5 Sonnet first (61.2 against GPT-4o's 55.0), and Chatbot Arena puts it second overall. The reason states both, and Amodei's 84th claims search (`amodei-claims-084`) logs LiveBench. |
+| A6 to A10, five tests back to the speaker's words | **Confirmed** at the captions: LeCun's Davos, Amodei's same-cost, and Lee's AGI, room-cleaning robot and company run by agents. The last two are scored as forecasts that something will not happen, due 2027-10-31 and 2030-10-31. Two small notes: the robot file's notes already predict "will be scored as not come true", which should wait for the date; and the agents file's timestamp ends at 6:55 where the quote runs to about 7:01. |
+| A11, Lee's embodied-AI line | **Confirmed as his.** The video makers' own caption track marks 57 speaker changes with a dash, none between 1:40:06 and 1:41:01, and the run continues his answer. Its quote drops "one could say", which the prediction already reads as conditional. |
+| A12, Lee's missing claim of 2026-02-04 | **Confirmed.** Checked against the copy of the Fudan page saved in the second pass; the site would not connect live this round. The quote, date, test, due (2029, early end 2028) and both restatement links are right. Lee's 84th claims search (`kaifulee-claims-084`) records it, and logs the conditional "hundredfold" line and the undated hardware line as left out. |
+| A13, Lee's two Qianwang files | **Confirmed.** Both now cite Tencent News' printed question-and-answer page of 2024-11-05. The Chinese quotes match, the date note explains the file names' 2024-11-10, and the GPT-5 verdict holds (released 2025-08-07, after 2025-05-31). |
+| A14, Lee's two WIRED files | **Not confirmed (wording).** The byline is now right. But both files call the 2024-12-17 repost on news.qq.com "01.AI's own repost", and it is on Lee's own Tencent News account; this is new in the fix. The flood-of-apps file still calls the Qianwang forecast "of 2024-11-10", where the date is 2024-11-05. |
+| A15, Lee's hallucination reason | **Not confirmed (wording).** The OpenAI post of 2025-09-05 is cited correctly, and "about 6.5% to 14%" for frontier models is right. But "only some small models score below 6%" is false: GPT-4.1 (5.6%), Grok 3 (5.8%), DeepSeek-V3.1 (5.5%), Mistral Large (4.5%) and Llama 3.3 70B (4.1%) are below it. "OpenAI's newest about 6.5 to 7%" leaves out gpt-6-astra (8.7%) and gpt-5.5 (9.3%), and Claude Opus runs 10.9% to 12.2%. The verdict stands. |
+| A16, Suleyman's hallucination reason | **Confirmed.** It now gives the GPT-5 system card's full 4.8% to 22%, and the miss follows from the European Broadcasting Union study. One wording point: "on the maker's own count" should read "on OpenAI's own count", since in this ledger "maker" means the speaker's company. |
+| A17, the Grok 2 and Microsoft 365 Copilot dates | Left to the notes, as advised. |
+| Extra: the search-log label | **Confirmed but for one row.** It is gone from every row but Zuckerberg's 20th claims search (`zuckerberg-claims-020`, "In the next few years"). |
+| Extra: "create" in the method's jobs wording | **Confirmed.** It reads "displace, change or create". |
+
+**The five fixes before merging:**
+1. **A4:** set Hassabis's 2011 claim to "did not come true", with a dated note, or put it to
+   John. The page then reads 36 came true and 55 did not.
+2. **A2:** add the paper's "actively monitor ... code changes" sentence to Suleyman's reason,
+   and say why the test is still met.
+3. **A14:** correct whose account posted the WIRED repost, and the remaining 2024-11-10.
+4. **A15:** correct the Vectara figures in Lee's hallucination reason.
+5. **The last label,** in Zuckerberg's 20th claims search.
+
+Fixes 2 to 5 change no verdict and need no further check from this session. Fix 1 changes the
+counts the news post's dated note will quote, so that note should be written from the page
+after it.
+
+The third-round notes for each item are in
+[`claims-ledger-check-2026-10-19-per-claim-third.md`](claims-ledger-check-2026-10-19-per-claim-third.md).
+
+# Second pass (commit `cf8fec5`)
+
+**Verdict after the second pass (commit `cf8fec5`): merge after the named fixes in its section A.**
 
 - **The first pass failed the claim files and is kept below as found.** In it, 12 of 40 sampled
   files failed and about ten "came true" verdicts were in doubt.
@@ -29,7 +90,6 @@ for the first pass and
 [`claims-ledger-check-2026-10-19-per-claim-second.md`](claims-ledger-check-2026-10-19-per-claim-second.md)
 for the second.
 
-# Second pass (commit `cf8fec5`)
 
 The branch was read at `cf8fec5`: 325 claims by 15 people, 109 due, 35 came true, 56 did not.
 
