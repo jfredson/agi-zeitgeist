@@ -1,0 +1,24 @@
+[claim]
+id = "2023-10-nadella-m365-copilot-generally-available-this-year"
+speaker_id = "nadella"
+when = "2023-10"
+when_note = "The letter is in Microsoft's 2023 annual report and refers to the Copilot event of 2023-09-21 as 'last month', so it was written in October 2023; the page gives no day."
+occasion = "His letter to shareholders in Microsoft's 2023 annual report"
+source_kind = "own_words"
+source_url = "https://www.microsoft.com/investor/reports/ar23/index.html"
+source_locator = "the Microsoft 365 paragraph"
+checked_how = "Read through a reader copy (r.jina.ai) on 2026-10-19, because microsoft.com refuses direct requests."
+quote = "Just last month, I was excited to announce that we will make Microsoft 365 Copilot generally available to our commercial customers later this year."
+prediction = "Microsoft 365 Copilot, the generative-AI assistant in Word, Excel, Outlook and Teams, would be generally available to business customers before the end of 2023."
+kind = "deployment"
+bar = "Microsoft 365 Copilot generally available to commercial customers by 2023-12-31, shown by Microsoft's own record."
+due = 2023
+due_basis = "'later this year', written in October 2023; judged at 2023-12-31."
+status = "hit"
+verdict_on = 2023-11-01
+verdict_why = "Microsoft's post of 2023-11-15 records that 'On November 1, 2023, Copilot for Microsoft 365 became generally available for enterprises'."
+verdict_source = "https://www.microsoft.com/en-us/microsoft-365/blog/2023/11/15/introducing-microsoft-copilot/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["nadella-claims-012", "nadella-claims-016"]
+notes = "Said as chief executive of Microsoft (since 2014-02-04; also chair since 2021-06-16). Microsoft builds AI models (Phi, the Microsoft AI models) and its own AI chips (Maia), and is OpenAI's largest backer. The 1 November date had been set at the event of 2023-09-21; the letter is his own written restatement of it. Enterprise availability is read as 'commercial customers'."
