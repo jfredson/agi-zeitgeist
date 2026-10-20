@@ -1366,20 +1366,23 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
     n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
     cl = _CLAIMS
-    claims_line = (f'Of the {cl["claims"]} predictions with a date recorded so far from {len(cl["people"])} of the people who run the AI companies, {cl["due"]} are now due, and {cl["hit"]} came true. '
-                   f'Each is on <a href="/claims/">the claims page</a> in their own words, with its source and its verdict.') if cl["claims"] else ""
+    # No verdict counts here (amendment A31, proposed; John 2026-10-19: verdicts "are not the point of the tracker").
+    # Once the "what arrives" field is entered, this becomes the computed sentence about what the leaders say now.
+    claims_line = (f'What {len(cl["people"])} of the people who run the AI companies have predicted, with a date, is on <a href="/claims/">the claims page</a>: '
+                   f'{cl["claims"]} predictions so far, each in their own words and with its source.') if cl["claims"] else ""
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
 <p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about AGI. Every quote carries its date and a link to where it was said.</p>
+<p>It follows two voices. One is the academics and long-time thinkers who have written about AGI and the singularity for decades. The other is the people now running the companies that build it, whose dates have tended to run ahead of everyone else's. Both are part of the mood of the time. The site keeps both, says what each is saying now, how far apart they are and how both have moved, and scores neither. The industry's leaders have <a href="/claims/">a page of their own</a>.</p>
 <p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
-<p>Fifth, and this is a reading of the same rows rather than a new measure: the people building these systems have named about the same year all along, and the people studying them have come down to meet it. The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems from the rest: the academics, the critics and the philosophers. A builder has a front-row seat and a product to sell; a critic has neither. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+<p>Fifth, and this is a reading of the same rows rather than a new measure: the people building these systems have named about the same year all along, and the people studying them have come down to meet it. The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
 
 <figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
 <figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>

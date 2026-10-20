@@ -32,7 +32,7 @@ for who in latest:
     d=latest[who]['when']; same=[r for r in rows if r['who']==who and r['when']==d]
     latest[who]=sorted(same,key=lambda r:(r['notbefore'],r['year']))[0]
 order=sorted(latest.values(),key=lambda r:((r['early'] or r['year'])+r['year'])/2)
-fig,ax=figure(10,5.6); fig.subplots_adjust(left=0.27,right=0.97,top=0.78,bottom=0.14)
+fig,ax=figure(11.5,5.8); fig.subplots_adjust(left=0.27,right=0.97,top=0.78,bottom=0.14)
 for i,r in enumerate(order):
     lo=r['early'] or r['year']; hi=r['year']
     col=PALETTE[0]
@@ -43,12 +43,19 @@ for i,r in enumerate(order):
         ax.plot([lo,hi],[i,i],'-',lw=6,color=col,solid_capstyle='round',alpha=.85)
     else:
         ax.plot([hi],[i],'o',ms=9,color=col)
-ax.set_yticks(range(len(order))); ax.set_yticklabels([f"{NAMES[r['who']]}, said {r['when']}" for r in order],fontsize=8.5,color=INK)
-ax.invert_yaxis(); ax.set_xlim(2025,2046); ax.set_xticks(range(2026,2047,4)); ax.grid(axis='x',color=GRID,lw=.8); ax.set_axisbelow(True)
+ax.set_ylim(len(order)+0.9,-0.6); ax.set_yticks(range(len(order))); ax.set_yticklabels([f"{NAMES[r['who']]}, said {r['when']}" for r in order],fontsize=8.5,color=INK)
+# The academics and long-time thinkers on the frozen panel: the middle half of their dated guesses since 2023
+import statistics, charts
+FIG={'altman','musk','amodei','huang','hassabis','suleyman','sutskever','liangwenfeng','mensch','legg','lecun','kaifulee','zuckerberg','pichai','nadella'}
+fr=[r['year'] for r in charts.frontier_rows() if not r['builder'] and r['speaker'] not in FIG and r['said']>=2023]; fr.sort()  # the fifteen leaders never count as academics
+q1,med,q3=fr[len(fr)//4],statistics.median(fr),fr[3*len(fr)//4]
+ax.axvspan(q1,q3,color=PALETTE[2],alpha=.12,lw=0); ax.axvline(med,color=PALETTE[2],lw=1.5)
+ax.text(med+.2,len(order)-.35,f"academics and long-time thinkers on the panel:\nmiddle half of their dated guesses since 2023 ({q1:.0f} to {q3:.0f}), middle line {med:.0f}",fontsize=7.5,color='#0b6b48',va='top')
+ax.set_xlim(2025,2046); ax.set_xticks(range(2026,2047,4)); ax.grid(axis='x',color=GRID,lw=.8); ax.set_axisbelow(True)
 ax.axvline(2026.8,color=INK_2,lw=.8,ls=':'); ax.text(2026.9,-0.9,'today',fontsize=7.5,color=INK_2)
-titles(fig,"What they say now: eight of the eleven who name a year put it by 2031",
+titles(fig,f"{sum(1 for r in order if not r['notbefore'] and r['year']<=2029)} of {len(order)} industry leaders now name 2029 or sooner; the academics' middle is about {med:.0f}",
  "Each person's most recent dated forecast of AGI, superintelligence or AI better than people at most things, in their own terms.\nA bar is a range they gave; a dot is a single year; an orange arrow is a forecast that it will not come before that year.",
- "DRAFT for John's ruling, 2026-10-19: claims picked by keyword for this picture only.\nFour of the fifteen (Huang, Mensch, Zuckerberg, Nadella) have named no year. Source: agizeitgeist.com/data")
+ "DRAFT for John's ruling, 2026-10-19: claims picked by keyword for this picture only.\nFour of the fifteen (Huang, Mensch, Zuckerberg, Nadella) have no dated AGI forecast in the ledger; the band leaves out all fifteen. Source: agizeitgeist.com/data")
 fig.savefig(OUT+'/claims-reframe-now-draft.png',facecolor=SURFACE); plt.close(fig)
 # 2. How it has moved: one small panel per person.
 people=sorted({r['who'] for r in rows},key=lambda w:-max(x(r['when']) for r in rows if r['who']==w))

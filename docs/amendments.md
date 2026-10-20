@@ -968,50 +968,71 @@ What does not change: the frozen panel's membership (A18), `data/statements.csv`
 series, the frozen thresholds, the definition, the verdict and the headline (A25), and every
 other rule of the ledger (A27 and John's rulings of 2026-10-19 in the method).
 
-## 2026-10-19: what the claims ledger is for (PROPOSED, not yet ruled)
+## 2026-10-19: two voices of one zeitgeist, and the claims ledger as the industry's voice (PROPOSED, partly ruled)
 
-### A31. The claims ledger becomes a record of what the industry's leaders predict, not a scorecard (proposed)
+### A31. The claims ledger becomes a record of what the industry's leaders predict, beside the academics, not a scorecard (proposed)
 
-**Proposed 2026-10-19 by the managing session, on John's ruling of the same day; the choices in
-it wait on John, and nothing here is in force until he rules.** The full proposal, with draft
-pictures, is `docs/claims-ledger-reframe-proposal-2026-10-19.md`.
+**Proposed 2026-10-19 by the managing session, on three rulings John gave that day (quoted
+below). Three smaller choices wait on him (section 6 of the proposal), and nothing here is in force
+until he rules on them.** The full proposal, with draft pictures, is
+`docs/claims-ledger-reframe-proposal-2026-10-19.md`.
 
 Applies to: `docs/claims-ledger-method.md` (the title; "What this ledger is for"; "The rate, and
-what stops it being gamed"; "Where it shows"); `scripts/site.py` (the claims page, the home-page
-sentence, the `claims` block of `site/status.json`); `scripts/validate.py` (one new field on
-timing claims); `scripts/charts.py` (two new figures).
+what stops it being gamed"; "Where it shows"); `docs/methodology-v2.md` (a new section 0, what
+the tracker is for); `scripts/site.py` (the claims page, the home page's zeitgeist section and
+its claims sentence, the `claims_ledger` block of `site/status.json`); `scripts/validate.py`
+(one new field on timing claims); `scripts/charts.py` (two new figures).
 
-Was: the ledger existed to score each figurehead's dated predictions once they came due. It
-asked how many came true, how many did not and which way the misses went. A per-person hit rate
-was to be printed once a person's claims had been searched year by year and five were due
-(amendment A27). The page led with a table of counts per person, and the home page gave the
-totals.
+Was: the ledger existed to score each figurehead's dated predictions once they came due: how
+many came true, how many did not, and which way the misses went. A per-person hit rate was to be
+printed once a person's claims had been searched year by year and five were due (amendment A27).
+The page led with a table of counts per person, and the home page and the status file gave the
+totals. The home page described the panel's builders as having "a product to sell".
 
-Now (proposed):
+John's rulings, 2026-10-19, in his words:
 
-1. **The purpose,** in John's words of 2026-10-19: "to track the zeitgeist of what these people
-   are saying to get a feel for what the vanguard of the industry is predicting at any given
-   time." The ledger is a dated record of what the people leading the industry say the future
-   holds. It is read for what they predict now and how that has shifted, and it is not a
-   scorecard.
-2. **The page** leads with what each person says now: their latest dated forecast of AGI,
-   superintelligence or AI better than people at most things, in their own term, and their
-   latest dated prediction of any kind. Next it shows how their forecasts have moved, by the
-   date they were said. Then come all the claims, by person, in date order.
-3. **Verdicts stay as context.** Every claim keeps its status and evidence in the data. On the
-   page, the status is a quiet note on the claim (whether its date has passed, and what
-   happened). It is never totalled in a headline, on the page's top or on the home page.
-4. **No hit rates** (subject to John's choice 1 in the proposal). The floor of five due claims
-   and the "seed only: not a rate" label go with them. The year-by-year search and its "claims
-   traced" row stay, as the record that a person's latest forecast is really their latest.
-5. **One new field** on each timing claim, entered by hand and checked by the validator: what
+- "The goal is not to score people on their success at predicting the future, the goal is to
+  track the zeitgeist of what these people are saying to get a feel for what the vanguard of
+  the industry is predicting at any given time."
+- "The goal is to make a tracker of the Zeitgeist around AGI and the Singularity. We need to
+  track both the traditional academics who have been talking about this for decades as well as
+  the new industry leaders who are actually making it happen but tend to run way out in front of
+  their skis with their predictions. Both of these are valuable for the Zeitgeist though."
+- "Sure, we can keep the verdicts as small notes, but they are not the point of the tracker."
+
+Now (proposed on those rulings):
+
+1. **Two voices of one zeitgeist.** The tracker follows the academics and long-time thinkers
+   (the frozen panel's members who have never worked at a company that builds frontier AI, read
+   through their coded statements) and the industry's leaders (the claims ledger). The panel's
+   builders are in the coded statements too, and the frontier-voices chart draws the two groups
+   apart. Both
+   are valuable and neither is scored. The site shows what each says now, how far apart they
+   are, and how both have moved. The home page and the method say so.
+2. **The ledger's purpose** is a dated record of what the industry's leaders say the future
+   holds, read for what they predict now and how that has shifted.
+3. **The claims page** leads with each leader's latest dated forecast of AGI, superintelligence
+   or AI better than people at most things, in their own term, set against a band for the
+   academics' dated guesses since 2023 from the frontier-voices rows; with each leader's latest
+   prediction of any kind beside it. Then how the leaders' forecasts have moved. Then every
+   claim, by person, in date order. (Subject to John's choice 1 in the proposal.)
+4. **Verdicts are small notes** (ruled). Each claim keeps its status and evidence. On the page,
+   the status is a small note on the claim saying whether its date has passed and what
+   happened. Verdicts appear in no headline, summary, count, chart title or share post. The
+   status file keeps the number of claims and people and gains a `now` block, with no verdict
+   counts. The downloadable table keeps each claim's status.
+5. **No hit rates** (ruled), per person or pooled. The floor of five due claims and the "seed
+   only: not a rate" label go with them. The year-by-year search and its "claims traced" row
+   stay, as the record that a person's latest forecast is really their latest.
+6. **One new field** on each timing claim, entered by hand and checked by the validator: what
    the forecast says arrives, in the person's own term.
+7. **Undated predictions** stay out (subject to John's choice 2 in the proposal).
 
 Unchanged: who is in the ledger (A30), the admission rule, the five status words and what
-counts as a hit, the readings John ruled on 2026-10-19, and everything A27 and A30 say the
-ledger must never touch (the frozen panel, the coded statements, the scored series, the
-thresholds, the definition, the verdict and the headline).
+counts as a hit (now used for the notes), the readings John ruled on 2026-10-19, and everything
+A27 and A30 say the ledger must never touch (the frozen panel, the coded statements, the scored
+series, the thresholds, the definition, the verdict and the headline).
 
-Why: John's ruling. A scorecard answers whether a person was right, which says little about
-where the industry's expectations stand. The record of what they say, read over time, is what
-the tracker exists to follow.
+Why: John's rulings. A scorecard answers whether a person was right, which says little about
+where expectations stand. Read side by side over time, the record of what the academics and the
+industry's leaders say is what the tracker exists to follow.

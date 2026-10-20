@@ -20,10 +20,14 @@ what the vanguard of the industry is predicting at any given time."
 So this is a dated record of what the people who lead the companies building frontier AI say
 the future holds: when they expect AI to match or pass people, and what they expect it to do
 along the way. Who they are is set out under the admission rule. Each prediction is in their own
-words, with the date, the occasion and the source. The record is read for what they are
-predicting now and how that has shifted. It is not a scorecard. Where a prediction's date has
-passed, a note on the claim says what happened, so each forecast can be seen in the light of
-events, but no one is given a score.
+words, with the date, the occasion and the source. It is one of the tracker's two voices, beside
+the academics and long-time thinkers on the frozen panel. John's ruling of the same day: "We need
+to track both the traditional academics who have been talking about this for decades as well as
+the new industry leaders who are actually making it happen but tend to run way out in front of
+their skis with their predictions. Both of these are valuable for the Zeitgeist though." It is
+read the same way as the panel: for what they are predicting now, how far that sits from the
+academics, and how it has shifted. It is not a scorecard. Where a prediction's date has passed,
+a small note on the claim says what happened.
 
 It does not say whether a person is right about the future, whether they are sincere, or
 whether the technology is good or bad.
@@ -222,19 +226,22 @@ Saying the same thing again is not a new prediction; changing the date is.
   date whatever was said later. The page groups a chain and shows the due years in order, so a
   date that keeps sliding is visible as a slide.
 
-## Verdicts as context, and no rate
+## Verdicts as small notes, and no rate
 
-*(Rewritten under amendment A31, proposed 2026-10-19. Until John rules, the rules this replaces
-stand; they are kept below for the record.)*
+*(Rewritten under amendment A31, proposed 2026-10-19; its verdict rule was ruled by John that
+day: "Sure, we can keep the verdicts as small notes, but they are not the point of the
+tracker." Until A31 is in force, the rules this replaces stand; they are kept below for the
+record.)*
 
 - **Each claim keeps its verdict** (the five status words and the evidence, as above). On the
-  page it is a quiet note on the claim: whether its date has passed, and what happened. It is
-  never totalled in a headline, at the top of the claims page or on the home page. The counts
-  stay in the downloadable table and in `site/status.json` for anyone who wants them.
-- **When a claim is due.** A claim is due once its date has passed: 31 December of `due`, or
-  `due_date` where set. That holds for every status (2026-10-19, amendment A30).
-- **No hit rate,** per person or pooled (subject to John's choice 1 in
-  `docs/claims-ledger-reframe-proposal-2026-10-19.md`).
+  page it is a small note on the claim: whether its date has passed, and what happened.
+- **Verdicts appear in no headline, summary, count, chart title or share post.** The claims
+  page carries no table of counts, the home page no total, and the `claims_ledger` block of
+  `site/status.json` no verdict counts (it keeps the number of claims and people, and a `now`
+  block). The downloadable table keeps each claim's status, which is that claim's note.
+- **When a claim's date has passed:** 31 December of `due`, or `due_date` where set, whatever its
+  status (amendment A30).
+- **No hit rate,** per person or pooled.
 - **The year-by-year search stays.** A person's latest forecast is only their latest if their
   recent years have been searched, so each person is traced from their most recent year back,
   with every search logged and quiet years entered as rows. The finished trace is still the row
@@ -320,7 +327,8 @@ A page of its own at `/claims/`, headed "What the industry's leaders predict", i
 
 1. **What they say now.** Each person's latest dated forecast of AGI, superintelligence or AI
    better than people at most things, in their own term, on one shared timeline (a range, a
-   year, or a forecast that it will not come before a date), with the date it was said and a
+   year, or a forecast that it will not come before a date), set against a band for the middle
+   half of the academics' dated guesses since 2023 (the frontier-voices rows), with the date it was said and a
    mark where it comes from news reports rather than their own words. Beside it, their latest
    dated prediction of any kind. The figure's title is computed, so it stays true as claims are
    added.
@@ -330,8 +338,8 @@ A page of its own at `/claims/`, headed "What the industry's leaders predict", i
 3. **Every claim,** by person, in date order: the words, the date, the occasion, the source, the
    test, and the verdict as a quiet note.
 
-One sentence on the home page, about the present (what the leaders who name a year say now),
-never a total of verdicts. `scripts/site.py` reads `data/claims/*.toml`, writes
+One sentence on the home page, about the present (what the leaders who name a year say now,
+beside the academics), never a total of verdicts. `scripts/site.py` reads `data/claims/*.toml`, writes
 `site/claims/index.html` and `site/data/claims.csv`, and adds a `claims` block to
 `site/status.json` with the counts and a `now` block (each person's latest forecast);
 `scripts/validate.py` checks every file.
