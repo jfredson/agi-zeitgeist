@@ -419,7 +419,8 @@ def chart_claims_moved(claims=None):
     forecast, each mark placed at the day it was said and the year it named (amendment A31)."""
     claims = claims if claims is not None else cs.load_claims()
     names = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
-    d = [c for c in claims if cs.drawn(c) and int(str(c["when"])[:4]) >= 2023]
+    # One mark per day a forecast was said, its repeats included (a repeat is saying it again).
+    d = [dict(c, when=s) for c in claims if cs.drawn(c) for s in cs.said_on(c) if int(s[:4]) >= 2023]
     people = [sp for sp in cs.LEADERS if any(c["speaker_id"] == sp for c in d)]
     people.sort(key=lambda sp: -sum(1 for c in d if c["speaker_id"] == sp))
     cols = 4
@@ -454,7 +455,7 @@ def chart_claims_moved(claims=None):
     title = ("Since 2023: " + (", ".join(parts[:-1]) + ", " + parts[-1] if len(parts) > 1 else parts[0]).replace("brought their dates nearer", "leaders brought their dates nearer", 1)
              if m else "How the industry leaders' dates have moved since 2023")
     titles(fig, title,
-           "Each mark is one forecast of AGI, superintelligence or AI better than people at most things, in their own terms, at the day it was said and the year it named.\n"
+           "Each mark is one forecast of AGI, superintelligence or AI better than people at most things, in their own terms, at a day it was said (repeats included) and the year it named.\n"
            "Dot: a year (hollow: known only from news reports). Bar: a range. Down-pointing triangle: a year it would come by. Orange: not before that year. Grey line: 'this year'.",
            "Nearer, held or later compares the nearest year named on the first and the latest day, a year or more counting as a move; the terms they use can change between days. Source: agizeitgeist.com/data")
     return save(fig, "claims-moved.png")

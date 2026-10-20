@@ -1116,6 +1116,7 @@ def claims_page(sc, claims, built, commit):
         parts = []
         if n["latest"]:
             fs = "; ".join(f'<a href="#{esc(c["id"])}">{esc(c["arrives_term"])}, {esc(forecast_years(c))}</a>'
+                           + (f" (first said {esc(str(c['when']))}, repeated that day)" if str(c["when"]) != n["day"] else "")
                            + (" (reported, not their own words)" if c["source_kind"] == "coverage_only" else "") for c in n["latest"])
             parts.append(f"Latest dated forecast ({esc(n['day'])}): {fs}.")
         else:
@@ -1124,7 +1125,7 @@ def claims_page(sc, claims, built, commit):
         if w and (not n["day"] or str(w["when"]) > n["day"]):
             parts.append(words_line(w) + ".")
         a = n["any"]
-        if a and a not in n["latest"]:
+        if a and a not in n["latest"] and (not n["day"] or str(a["when"]) >= n["day"]):  # only when it is not older
             parts.append(f'Latest dated prediction of any kind ({said(a)}): <a href="#{esc(a["id"])}">{esc(a["prediction"])}</a>')
         now_items.append(f'<li><b><a href="{WHO_LINK[sp]}">{name(sp)}</a></b><br>{"<br>".join(parts)}</li>')
 

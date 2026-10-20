@@ -111,6 +111,11 @@ def drawn(c):
     return c["kind"] == "timing" and c.get("arrives") in DRAWN and c.get("form") != "chance_tail"
 
 
+def said_on(c):
+    """Every day a claim was said: its own date and each day it was repeated unchanged (`repeated_on`)."""
+    return [str(c["when"])] + [d.isoformat() for d in c.get("repeated_on") or []]
+
+
 def nearest(cs):
     """The nearest year named among one day's forecasts: the late end of each, ignoring 'not before'."""
     ys = [c["due"] for c in cs if c.get("form") != "not_before"]
@@ -137,8 +142,8 @@ def leaders_now(claims=None, words=None):
     for sp in LEADERS:
         mine = [c for c in claims if c["speaker_id"] == sp]
         d = [c for c in mine if drawn(c)]
-        day = max((str(c["when"]) for c in d), default=None)
-        latest = [c for c in d if str(c["when"]) == day]
+        day = max((s for c in d for s in said_on(c)), default=None)  # a repeat counts as saying it again
+        latest = [c for c in d if day in said_on(c)]
         w = [x for x in words if x["speaker_id"] == sp]
         out[sp] = dict(day=day, latest=latest, nearest=nearest(latest) if latest else None,
                        any=max(mine, key=lambda c: (str(c["when"]), c["id"])) if mine else None,
@@ -154,8 +159,10 @@ def moved(claims=None, since=2023):
     for sp in LEADERS:
         days = {}
         for c in claims:
-            if c["speaker_id"] == sp and drawn(c) and int(str(c["when"])[:4]) >= since:
-                days.setdefault(str(c["when"]), []).append(c)
+            if c["speaker_id"] == sp and drawn(c):
+                for s in said_on(c):
+                    if int(s[:4]) >= since:
+                        days.setdefault(s, []).append(c)
         named = [(d, nearest(cs)) for d, cs in sorted(days.items()) if nearest(cs) is not None]
         if len(named) >= 2:
             first, last = named[0][1], named[-1][1]
