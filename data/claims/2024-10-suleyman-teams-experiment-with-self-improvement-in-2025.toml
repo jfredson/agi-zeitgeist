@@ -1,0 +1,24 @@
+[claim]
+id = "2024-10-suleyman-teams-experiment-with-self-improvement-in-2025"
+speaker_id = "suleyman"
+when = "2024-10"
+when_note = "Recorded on stage at the Masters of Scale Summit in October 2024 (the upload of 2024-11-02 says so); the exact day is not stated, so the month is recorded."
+occasion = "Masters of Scale Summit, on stage with Reid Hoffman"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=IZBT57oLKas"
+source_locator = "0:04:15 to 0:04:38 into the video"
+checked_how = "Read YouTube's automatic English captions of the Masters of Scale channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "we can see that coming into view in 2025 teams will start experimenting with that"
+prediction = "In 2025 research teams will start experimenting with closed-loop recursive self-improvement: AI improving itself without a human directly overseeing each step."
+kind = "capability"
+bar = "The plainest reading: during 2025, a published experiment by a research team in which an AI system repeatedly improves itself (changing its own code, training or design) in a loop with no person directing each change."
+due = 2025
+due_basis = "'in 2025': judged at the end of 2025."
+status = "hit"
+verdict_on = 2025-05-29
+verdict_why = "On 2025-05-29 a team from Sakana AI and the University of British Columbia (Jenny Zhang and four others) published the Darwin Godel Machine, a coding agent that repeatedly rewrites its own code and keeps the versions that score better, run in a sandbox with people overseeing the experiment but not each change. That is a team experimenting with a self-improvement loop in 2025."
+verdict_source = "https://arxiv.org/abs/2505.22954"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["suleyman-claims-013", "suleyman-claims-030", "suleyman-claims-051"]
+notes = "Said as chief executive of Microsoft AI (from 2024-03-19). The claim is only that teams will 'start experimenting', not that self-improvement will work or run at scale; the bar is read that narrowly. Restated more strongly on 2025-11-12 (closed loop 'at significant scale' in a few years)."

@@ -1,0 +1,25 @@
+[claim]
+id = "2024-09-18-suleyman-ai-memory-workable-in-18-months"
+speaker_id = "suleyman"
+when = "2024-09-18"
+when_note = "Uploaded 2024-10-23; recorded live at the Lesbians Who Tech summit in New York. Kara Swisher mentions the Microsoft and BlackRock AI fund announced 'yesterday', which was announced on 2024-09-17, so the session is dated 2024-09-18."
+occasion = "'On with Kara Swisher' live podcast recording at the Lesbians Who Tech summit, New York"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=8Mv1ERMF89E"
+source_locator = "0:24:39 to 0:25:18 into the video"
+checked_how = "Read YouTube's automatic English captions of the Lesbians Who Tech channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "I I think that we're 18 months away from really getting that to a workable level"
+prediction = "Within 18 months AI assistants will have working memory: they will really remember everything you have told them and retrieve it accurately from the history of your conversations."
+kind = "capability"
+bar = "By 2026-03-18, an AI assistant released to the public that remembers what a user has said across all past conversations and retrieves it accurately enough for everyday use, shown by a maker's release."
+due = 2026
+due_date = 2026-03-18
+due_basis = "'18 months away' from 2024-09-18 is 2026-03-18."
+status = "hit"
+verdict_on = 2026-01-15
+verdict_why = "Sam Altman announced on 2025-04-10 that ChatGPT 'can now reference all your past conversations', and OpenAI's release note of 2026-01-15 says it 'can now more reliably find specific details from your past chats', showing each past chat used as a source. Both are before the due date. The accuracy rests on the maker's own description; no outside test was found."
+verdict_source = "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["suleyman-claims-013", "suleyman-claims-029", "suleyman-claims-050", "suleyman-claims-054"]
+notes = "Said as chief executive of Microsoft AI (from 2024-03-19). 'We' is read as the field. OpenAI is not his company, so the evidence is marked outside, though it is OpenAI describing its own product. Microsoft's Copilot also gained memory in 2025. Restated with an earlier date at the Masters of Scale Summit in October 2024 ('2025 memory is done')."

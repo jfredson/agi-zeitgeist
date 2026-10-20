@@ -1,0 +1,20 @@
+[claim]
+id = "2023-07-14-suleyman-modern-turing-test-as-little-as-two-years"
+speaker_id = "suleyman"
+when = "2023-07-14"
+when_note = "The essay prints the date 'July 14, 2023' under his byline."
+occasion = "Essay by Suleyman in MIT Technology Review, 'My new Turing test would see if AI can make $1 million'"
+source_kind = "own_words"
+source_url = "https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/"
+source_locator = "the paragraph after the test is described, beginning 'Something like this could be as little as two years away.'"
+checked_how = "Read on the page on 2026-10-19 (curl); the date, the byline and the sentence were seen."
+quote = "Something like this could be as little as two years away."
+prediction = "An AI able to pass his Modern Turing Test (turn $100,000 into $1 million on a retail web platform in a few months, with a person only approving steps, opening a bank account and signing) could be as little as two years away, that is, mid-2025 at the earliest."
+kind = "capability"
+bar = "His own test, defined in the same essay: an AI that, told to 'Go make $1 million on a retail web platform in a few months with just a $100,000 investment', researches and designs products, deals with manufacturers and logistics, negotiates contracts and runs marketing with minimal oversight. The words give only the earliest date it might happen, not a date by which it will."
+due = 2025
+due_basis = "'as little as two years away' from 2023-07-14 is 2025-07-14; that is the earliest date he names, not a deadline."
+status = "unfalsifiable"
+verdict_why = "'Could be as little as two years away' is a lower bound: it says the earliest the test might be passed, so the test not being passed by mid-2025 does not show the words wrong, and no later date is given that could. The test itself is well defined; the date is not a deadline."
+search_ids = ["suleyman-claims-001", "suleyman-claims-002"]
+notes = "Said as co-founder and chief executive of Inflection AI (the essay's own bio line; Inflection founded 2022-03, he left for Microsoft 2024-03). He restated the test with a firm date, 'this year', in a Financial Times interview published 2026-02-12 (2026-02-12-suleyman-modern-turing-test-this-year). The test also appears in his book The Coming Wave (2023-09), not opened. The seed list of 2026-10-17 had this as unfalsifiable for the same reason; unchanged."

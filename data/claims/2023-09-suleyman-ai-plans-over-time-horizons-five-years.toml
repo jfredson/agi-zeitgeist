@@ -1,0 +1,19 @@
+[claim]
+id = "2023-09-suleyman-ai-plans-over-time-horizons-five-years"
+speaker_id = "suleyman"
+when = "2023-09"
+when_note = "The full recording was uploaded to Yuval Noah Harari's channel on 2023-09-17; the debate, chaired by The Economist's editor, took place shortly before and its exact day is not stated, so the month is recorded."
+occasion = "Debate with Yuval Noah Harari chaired by Zanny Minton Beddoes of The Economist"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=7JkPWHr7sTY"
+source_locator = "0:03:30 to 0:03:56 into the video"
+checked_how = "Read YouTube's automatic English captions of the full recording on Yuval Noah Harari's channel on 2026-10-19 (The Economist's own channel carries only an excerpt); no punctuation, some stutters; the quote is a verbatim run of those caption words."
+quote = "the new capabilities that it will come this time over the next five years will be the ability to plan over multiple time Horizons"
+prediction = "Over the next five years the new capability AI gains will be planning over multiple time horizons: instead of producing text in one shot, models will produce sequences of actions over time, 'AIs that can't just say things they can also do things'."
+kind = "capability"
+bar = "The plainest reading: by the end of 2028, AI models shown by their makers' releases or outside tests to plan and carry out multi-step tasks over extended periods, producing a sequence of actions rather than a single answer."
+due = 2028
+due_basis = "'over the next five years' from September 2023 runs to September 2028; judged at the end of 2028."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-013", "suleyman-claims-023"]
+notes = "Said as co-founder and chief executive of Inflection AI (founded 2022-03; he left for Microsoft on 2024-03-19). In the same answer: frontier companies 'are going to train models that are over a thousand times larger than ... GPT 4' in five years; left out under the lead's ruling of 2026-10-19 (a forecast of compute build-out, not of what AI will do). Agents doing multi-step tasks already shipped in 2025; the verdict waits for the date."

@@ -1,0 +1,25 @@
+[claim]
+id = "2024-10-suleyman-permanent-ai-memory-done-in-2025"
+speaker_id = "suleyman"
+when = "2024-10"
+when_note = "Recorded on stage at the Masters of Scale Summit in October 2024 (the upload of 2024-11-02 says so); the exact day is not stated, so the month is recorded."
+occasion = "Masters of Scale Summit, on stage with Reid Hoffman"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=IZBT57oLKas"
+source_locator = "0:14:18 to 0:14:55 into the video"
+checked_how = "Read YouTube's automatic English captions of the Masters of Scale channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "I'm I'm really confident 2025 memory is done permanent memory"
+prediction = "In 2025 AI memory will be 'done': AI companions will have permanent memory of what users tell them, coming 'way before actions'."
+kind = "capability"
+bar = "By the end of 2025, an AI assistant released to the public that keeps a lasting memory of what a user has shared across all conversations and draws on it, shown by a maker's release."
+due = 2025
+due_basis = "'2025': judged at the end of 2025."
+restates = "2024-09-18-suleyman-ai-memory-workable-in-18-months"
+status = "hit"
+verdict_on = 2025-04-10
+verdict_why = "On 2025-04-10 Sam Altman announced on X that ChatGPT 'can now reference all your past conversations', a lasting memory across all conversations, released to paying users (Decrypt's report of the same day gives the rollout). 'Done' is read as shipped and working, not perfect: OpenAI said on 2026-01-15 that the feature had become 'more reliably' able to find details, so its accuracy in 2025 was imperfect."
+verdict_source = "https://x.com/sama/status/1910380643772665873"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["suleyman-claims-013", "suleyman-claims-030", "suleyman-claims-050", "suleyman-claims-054"]
+notes = "Said as chief executive of Microsoft AI (from 2024-03-19). Judgement call: a strict reading of 'memory is done' (solved) could make this a miss; the plain reading taken is that permanent memory shipped in 2025. A changed repeat, with an earlier date, of his words of 2024-09-18 (18 months to a workable level). Microsoft's Copilot also gained memory in 2025."

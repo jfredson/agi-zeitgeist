@@ -1,0 +1,20 @@
+[claim]
+id = "2025-12-16-suleyman-ai-diagnosis-free-to-everybody-by-2030-or-2035"
+speaker_id = "suleyman"
+when = "2025-12-16"
+when_note = "Mayim Bialik's channel uploaded the episode on 2025-12-16; the recording date is not stated."
+occasion = "Mayim Bialik's Breakdown podcast"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=JmrA_BZ7XMA"
+source_locator = "0:31:12 to 0:31:56 into the video"
+checked_how = "Read YouTube's automatic English captions of the Mayim Bialik channel's own upload on 2026-10-19 (light punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "it is basically going to be zero marginal cost and free to everybody in the world by 2030 or 2035."
+prediction = "AI medical diagnosis of the kind Microsoft's diagnostic orchestrator gives (more accurate than human doctors on full case records, he says) will be essentially free to everybody in the world by 2030 or 2035."
+kind = "deployment"
+bar = "The plainest reading: by the end of 2035, an AI service that diagnoses from a person's medical records at least as accurately as doctors is available free (or at negligible cost) to essentially anyone with a phone or internet access, shown by makers' or health services' releases."
+due = 2035
+due_early = 2030
+due_basis = "A range: 'by 2030 or 2035' gives 2030 at the earlier end and 2035 at the later end. The later end is taken as the rule says, and the earlier end recorded."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-013", "suleyman-claims-039"]
+notes = "Said as chief executive of Microsoft AI. 'It' is the Microsoft AI diagnostic orchestrator, which he says 'diagnoses what your condition is with four times more accuracy than the human doctors'; that figure is his and is not checked here."

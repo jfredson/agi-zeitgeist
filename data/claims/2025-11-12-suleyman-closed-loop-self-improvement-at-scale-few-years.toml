@@ -1,0 +1,20 @@
+[claim]
+id = "2025-11-12-suleyman-closed-loop-self-improvement-at-scale-few-years"
+speaker_id = "suleyman"
+when = "2025-11-12"
+when_note = "Alex Kantrowitz's channel uploaded the episode on 2025-11-12; the recording date is not stated."
+occasion = "Big Technology podcast with Alex Kantrowitz, 'Could LLMs Be The Route To Superintelligence?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=j_3MPTLhHxM"
+source_locator = "0:18:35 to 0:18:55 into the video"
+checked_how = "Read YouTube's automatic English captions of the Big Technology channel's own upload on 2026-10-19 (light punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "it doesn't seem very far-fetched to say that in a few years time at significant scale or that will get closed loop"
+prediction = "Within a few years, the process of improving AI models, parts of which are already done by language models, will run as a closed loop at significant scale: AI improving AI without people doing each step."
+kind = "capability"
+bar = "The plainest reading: by the due date, a maker or research team publicly shows a large-scale training pipeline in which AI systems carry out the work of improving the next model from start to finish, with people overseeing rather than doing the steps."
+due = 2029
+due_early = 2027
+due_basis = "'in a few years time' from 2025-11-12, with 'a few' read as two to four years: 2027 at the earlier end and 2029 at the later end. The later end is taken as the rule says, and the earlier end recorded."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-013", "suleyman-claims-037"]
+notes = "Said as chief executive of Microsoft AI. Hedged in his words: 'it doesn't seem very far-fetched'. A stronger form of the Masters of Scale claim (teams experimenting in 2025)."

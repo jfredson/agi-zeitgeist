@@ -1,0 +1,24 @@
+[claim]
+id = "2023-09-07-suleyman-pi-takes-actions-late-2024"
+speaker_id = "suleyman"
+when = "2023-09-07"
+when_note = "Metis Strategy uploaded episode 800 of Technovation on 2023-09-07; the recording date is not stated (the host says Inflection is '18 months' old)."
+occasion = "Technovation podcast with Peter High (Metis Strategy), episode 800"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Zc4csOv7QtM"
+source_locator = "0:43:15 to 0:43:52 into the video"
+checked_how = "Read YouTube's automatic English captions of the Metis Strategy channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "it's going to be very rudimentary at the beginning um you know late next year"
+prediction = "Inflection's personal AI, Pi, would gain an 'actions quotient': using software interfaces, phoning a person to book a restaurant, buying or planning something, talking to other AIs and organising your day, very rudimentary at first, from late 2024."
+kind = "deployment"
+bar = "By the end of 2024, Inflection's personal AI (Pi) takes actions for its users of the kinds he lists (using software interfaces to book, buy or plan things, or arranging a schedule), even if only in a rudimentary way, shown by Inflection's own releases."
+due = 2024
+due_basis = "'late next year', said 2023-09-07: judged at the end of 2024."
+status = "missed"
+verdict_on = 2024-12-31
+verdict_why = "No action features reached Pi in 2024. Inflection turned to selling to businesses on 2024-03-19, said on 2024-08-26 that it would cap free use of Pi, and its blog lists no Pi feature for booking, buying or planning. The nearest thing, 'Agentic Workflows' for its enterprise product (2024-10-22), lets employees trigger predetermined automations through UiPath: actions through software, but not by Pi and not the personal tasks the words describe."
+verdict_source = "https://web.archive.org/web/2025/https://inflection.ai/blog"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["suleyman-claims-013", "suleyman-claims-021", "suleyman-claims-047"]
+notes = "Said as co-founder and chief executive of Inflection AI (founded 2022-03; he left for Microsoft on 2024-03-19). The company changed course after he left in March 2024; the claim is judged as a promise about his company's product all the same. The preceding words: 'increasingly we'll be able to have high [AQ] take actions learn to use apis telephone a human and make a request to book a restaurant or buy something or plan something right maybe it'll call other AIS'."

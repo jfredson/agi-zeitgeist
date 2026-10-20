@@ -1,0 +1,25 @@
+[claim]
+id = "2024-12-05-suleyman-copilot-vision-general-availability-early-2025"
+speaker_id = "suleyman"
+when = "2024-12-05"
+when_note = "The Rundown AI uploaded the interview on 2024-12-05, the day Microsoft put Copilot Vision into preview."
+occasion = "Interview with Rowan Cheung, The Rundown AI, on the launch of Copilot Vision"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=dQP2zLYmCG8"
+source_locator = "0:16:50 to 0:17:12 into the video"
+checked_how = "Read YouTube's automatic English captions of the The Rundown AI channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "sometime next year uh in the early part of next year it will go into GA and lots of people get access to it"
+prediction = "Copilot Vision, Microsoft's AI that sees the web pages a user is looking at, then in a limited preview, would become generally available in the early part of 2025, so that lots of people get access to it."
+kind = "deployment"
+bar = "By 2025-06-30 (the early part of the year read as its first half), Copilot Vision is open to the general public in at least one market rather than to a limited preview group, shown by Microsoft's release or reporting of it."
+due = 2025
+due_date = 2025-06-30
+due_basis = "'in the early part of next year', said 2024-12-05; 'early part' is read as the first half of 2025, so the due date is 2025-06-30."
+status = "hit"
+verdict_on = 2025-06-12
+verdict_why = "Microsoft's own post of 2025-06-12 says Copilot Vision on Windows 'is available now in the US for Windows 10 and Windows 11', after it had been made free to all US users of Microsoft Edge in April 2025 (Windows Central, 2025-04-17). Lots of people got access in the first half of 2025, though in the United States only and still labelled part of Copilot Labs."
+verdict_source = "https://web.archive.org/web/2025/https://www.microsoft.com/en-us/microsoft-copilot/blog/2025/06/12/copilot-vision-on-windows-with-highlights-is-now-available-in-the-u-s/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["suleyman-claims-013", "suleyman-claims-031", "suleyman-claims-052"]
+notes = "Said as chief executive of Microsoft AI (from 2024-03-19). 'GA' is the industry's 'general availability'. Microsoft kept the feature under the Copilot Labs label, so a strict reading of general availability could differ; the plain reading taken is that the public got access. Marked as the maker's word because the only evidence is Microsoft's release as reported."

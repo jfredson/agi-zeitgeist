@@ -1,0 +1,21 @@
+[claim]
+id = "2024-12-09-suleyman-agi-plausible-five-to-seven-years"
+speaker_id = "suleyman"
+when = "2024-12-09"
+when_note = "The Verge published the episode and transcript on 2024-12-09 (datePublished 2024-12-09T15:00 UTC). It was recorded a little earlier: he says he arrived at Microsoft 'eight or nine months ago now', that is, in about November or December 2024."
+occasion = "Decoder podcast with Nilay Patel, The Verge, printed transcript"
+source_kind = "transcript"
+source_url = "https://www.theverge.com/24314821/microsoft-ai-ceo-mustafa-suleyman-google-deepmind-openai-inflection-agi-decoder-podcast"
+source_locator = "his first answer, on whether artificial general intelligence can be reached on current hardware; his definition two answers later"
+checked_how = "Read the printed transcript on the page on 2026-10-19 (curl); the page says it was lightly edited for length and clarity."
+quote = "I do think it is going to be plausible at some point in the next two to five generations."
+statement_id = "suleyman-2024-02"
+prediction = "Artificial general intelligence (AGI) is not possible on today's chips but is plausible within two to five chip generations, which he puts at 'within the next five to seven years' (by about 2029 to 2031), with five generations 'up to 10 years away depending on how things go'."
+kind = "timing"
+bar = "His own definition in the same interview: 'a general-purpose learning system that can perform well across all human-level training environments', which he says covers knowledge work and physical labour. Read plainly: a single AI system that can learn to do, at a human level, essentially every kind of work people do at a computer and with their hands, shown by its maker or an outside body. Hedged in his words: 'plausible', 'I think'."
+due = 2031
+due_early = 2029
+due_basis = "A range: 'within the next five to seven years' from late 2024 runs to the end of 2029 at the earlier end and the end of 2031 at the later end. The later end is taken as the rule says, and the earlier end recorded. His outer figure, 'up to 10 years' (2034), is a looser bound and is not scored."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-003"]
+notes = "Said as chief executive of Microsoft AI. The quote differs from the statement: statement suleyman-2024-02 was taken from an AOL report and holds the next sentence ('I think within the next five to seven years, since each generation takes 18 to 24 months now'); the quote here is the sentence before it, read in The Verge's own transcript, where the five-to-seven-year words also appear. He added: 'The uncertainty around this is so high that any categorical declarations just feel sort of ungrounded to me.' The seed list of 2026-10-17 had this as not yet due with due 2031; unchanged, with the bar now taken from his own definition in the same interview."
