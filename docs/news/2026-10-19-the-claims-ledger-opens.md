@@ -39,7 +39,7 @@ Three have never put a date on it: [Arthur Mensch](https://en.wikipedia.org/wiki
 
 In April 2024 [Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk), who founded the AI company [xAI](https://x.ai/) (since renamed SpaceXSI), said an AI smarter than the smartest human would come "probably end of next year" ([the prediction](/claims/#2024-04-08-musk-agi-smarter-than-smartest-human)). In January 2026, at the [World Economic Forum](https://www.weforum.org/) in Davos, he said it might come "by the end of this year", and "no later than next year" ([the later prediction](/claims/#2026-01-22-musk-ai-smarter-than-any-human-end-of-year)). The page keeps both, so the move shows.
 
-Across the leaders, since 2023, five have brought their dates nearer, three have held them, and two have pushed them later ([the claims page](/claims/)). The page draws each person's forecasts over time, so you can see how each person's dates have moved.
+Across the leaders, since 2023, five have brought their dates nearer, three have held them, and two have pushed them later ([the claims page](/claims/)). The page draws every leader's forecasts over time, one small chart each.
 
 ## What happens next
 
