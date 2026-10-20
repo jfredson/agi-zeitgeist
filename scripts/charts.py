@@ -340,7 +340,7 @@ def chart_frontier(statements=None, speakers=None):
         title = "Too few dated guesses on one side yet to compare the builders with the others"
     titles(fig, title,
            "Each dot is one dated guess by a panel member; the lines join each group's median for the years with two or more guesses.\n"
-           "A builder is anyone on the panel who has worked at a company that builds frontier AI systems, or leads one.",
+           "A builder is anyone on the panel who has led, founded or done senior research at a company that builds frontier AI systems, or who runs one now.",
            "Guesses in the person's own words only, for machines matching people at most thinking work. Source: agizeitgeist.com/data")
     return save(fig, "zeitgeist-frontier.png")
 
@@ -358,6 +358,7 @@ def _mark(ax, c, y, colour, size=1.0):
     hollow = c["source_kind"] == "coverage_only"
     form, hi = c["form"], c["due"]
     if form == "not_before":
+        hi = c["not_before_year"]
         ax.annotate("", (hi + 3, y), (hi, y), arrowprops=dict(arrowstyle="-|>", color=PALETTE[1], lw=2 * size))
         ax.plot([hi], [y], "|", ms=11 * size, mew=2.5 * size, color=PALETTE[1])
     elif form == "range" or (form == "by" and _x(c["when"]) < hi - 0.5):
@@ -378,13 +379,18 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
     rows = sorted((sp for sp in cs.LEADERS if now[sp]["latest"]),
                   key=lambda sp: (now[sp]["nearest"] is None, now[sp]["nearest"] or 0, sp))
     fig, ax = figure(11.5, 6.2)
-    fig.subplots_adjust(left=0.27, right=0.97, top=0.78, bottom=0.14)
+    fig.subplots_adjust(left=0.27, right=0.97, top=0.78, bottom=0.16)
     if band:
-        ax.axvspan(band["low"], band["high"], color=PALETTE[2], alpha=0.12, lw=0)
+        # Each academic once, at their latest dated guess: a short green mark under the leaders, and their middle year.
         ax.axvline(band["middle"], color=PALETTE[2], lw=1.5)
-        ax.text(band["middle"] + 0.2, len(rows) - 0.35,
-                f"academics and long-time thinkers on the panel: the middle half of\ntheir {band['n']} dated guesses since 2023 "
-                f"({band['low']:.0f} to {band['high']:.0f}), middle about {band['middle']:.0f}", fontsize=7.5, color="#0b6b48", va="top")
+        y0 = len(rows) + 0.25
+        at = {}
+        for p_ in band["people"]:
+            at.setdefault(min(p_["year"], 2045.6), []).append(p_["name"].split()[-1] + (f" ({p_['year']})" if p_["year"] > 2045.6 else ""))
+        for yv, who in at.items():
+            ax.plot([yv], [y0], marker="|", ms=14, mew=2.5, color=PALETTE[2])
+            ax.annotate("\n".join(who), (yv, y0), xytext=(0, -11), textcoords="offset points", ha="center", va="top", fontsize=6.5, color="#0b6b48")
+        ax.text(band["middle"] + 0.2, -0.55, f"the academics' middle year, {band['middle']:.0f}", fontsize=7.5, color="#0b6b48", va="bottom")
     for i, sp in enumerate(rows):
         latest = now[sp]["latest"]
         for j, c in enumerate(sorted(latest, key=lambda c: c["due"])):
@@ -393,9 +399,10 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
     today = _x(cs_today())
     ax.axvline(today, color=INK_2, lw=0.8, ls=":")
     ax.text(today + 0.1, -0.85, "today", fontsize=7.5, color=INK_2)
-    ax.set_ylim(len(rows) + 0.9, -0.6)
-    ax.set_yticks(range(len(rows)))
-    ax.set_yticklabels([f"{names[sp]}, said {now[sp]['day']}" for sp in rows], fontsize=8.5, color=INK)
+    ax.set_ylim(len(rows) + 1.75, -0.9)
+    ticks = list(range(len(rows))) + ([len(rows) + 0.25] if band else [])
+    ax.set_yticks(ticks)
+    ax.set_yticklabels([f"{names[sp]}, {now[sp]['day']}" for sp in rows] + ([f"The academics ({band['n']}), latest each"] if band else []), fontsize=8.5, color=INK)
     ax.set_xlim(2025, 2046)
     ax.set_xticks(range(2026, 2047, 4))
     ax.grid(axis="x", color=GRID, lw=0.8)
@@ -403,14 +410,16 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None):
     named = [sp for sp in rows if now[sp]["nearest"] is not None]
     if band:
         k = sum(1 for sp in named if now[sp]["nearest"] < band["middle"])
-        title = f"{k} of {len(rows)} industry leaders now name a year before the academics' middle one, about {band['middle']:.0f}"
+        title = f"{k} of {len(rows)} industry leaders now name a year before the academics' middle one, {band['middle']:.0f}"
     else:
         title = "Too few dated guesses by the academics since 2023 to set the leaders against them"
     silent = [names[sp] for sp in cs.LEADERS if not now[sp]["latest"]]
     titles(fig, title,
-           "Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms.\n"
+           "Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms;\nthe date beside each name is when it was said or, where that is unknown, published. A range counts by its nearer end.\n"
            "A dark bar is a range they gave; a light bar runs to a year they said it would come by; a dot is a single year (hollow: known only from news reports);\nan orange arrow is a forecast that it will not come before that year.",
-           f"{', '.join(silent)} have given no dated forecast of this kind; their latest words are on the claims page. Source: agizeitgeist.com/data")
+           (f"Green: the academics and long-time thinkers on the panel, each at their latest dated guess since 2023.\n"
+            + (f"{', '.join(silent)} {'has' if len(silent) == 1 else 'have'} given no dated forecast of this kind. " if silent else "")
+            + "Source: agizeitgeist.com/data"))
     return save(fig, "claims-now.png")
 
 
@@ -433,7 +442,7 @@ def chart_claims_moved(claims=None):
         for c in [c for c in d if c["speaker_id"] == sp]:
             x = _x(c["when"])
             if c["form"] == "not_before":
-                a.plot([x], [c["due"]], "^", ms=6, color=PALETTE[1])
+                a.plot([x], [c["not_before_year"]], "^", ms=6, color=PALETTE[1])
                 continue
             lo = c["due_early"] if c["form"] == "range" else None
             if lo:
@@ -457,7 +466,7 @@ def chart_claims_moved(claims=None):
     titles(fig, title,
            "Each mark is one forecast of AGI, superintelligence or AI better than people at most things, in their own terms, at a day it was said (repeats included) and the year it named.\n"
            "Dot: a year (hollow: known only from news reports). Bar: a range. Down-pointing triangle: a year it would come by. Orange: not before that year. Grey line: 'this year'.",
-           "Nearer, held or later compares the nearest year named on the first and the latest day, a year or more counting as a move; the terms they use can change between days. Source: agizeitgeist.com/data")
+           "Nearer, held or later compares the nearest year named (a range by its nearer end) on the first and the latest day, a year or more counting as a move; terms can change between days. Source: agizeitgeist.com/data")
     return save(fig, "claims-moved.png")
 
 

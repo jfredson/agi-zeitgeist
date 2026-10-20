@@ -1018,9 +1018,15 @@ Now:
 2. **The ledger's purpose** is a dated record of what the industry's leaders say the future
    holds, read for what they predict now and how that has shifted.
 3. **The claims page** leads with each leader's latest dated forecast of AGI, superintelligence
-   or AI better than people at most things, in their own term, set against a band for the
-   academics' dated guesses since 2023 from the frontier-voices rows; with each leader's latest
-   prediction of any kind beside it. Then how the leaders' forecasts have moved. Then every
+   or AI better than people at most things, in their own term, set against the academics; with
+   each leader's latest prediction of any kind beside it. The academics are the panel's members
+   who have never worked at a company that builds frontier AI, in any role (so not Daniel
+   Kokotajlo or Leopold Aschenbrenner, who worked at OpenAI, though the frozen tag does not mark
+   them), and are counted as the leaders are: each person once, at their latest dated guess since
+   2023, by the nearer year it names. The figure draws each of them and their middle year.
+   (Proposed by the managing session after the independent check of 2026-10-19 found the first
+   build pooled 26 guesses from seven people, ten of them from the two who worked at OpenAI;
+   put to John.) Then how the leaders' forecasts have moved. Then every
    claim, by person, in date order.
 4. **Verdicts are small notes.** Each claim keeps its status and evidence. On the page,
    the status is a small note on the claim saying whether its date has passed and what
@@ -1030,17 +1036,22 @@ Now:
 5. **No hit rates,** per person or pooled, and no per-person line of counts. The floor of five due claims and the "seed
    only: not a rate" label go with them. The year-by-year search and its "claims traced" row
    stay, as the record that a person's latest forecast is really their latest.
-6. **What arrives, on each timing claim,** entered by hand and checked by the validator:
+6. **What arrives, on each timing claim and on each capability claim that forecasts AGI or
+   beyond,** entered by hand and checked by the validator:
    `arrives` (agi, superintelligence, beyond_people for AI better than people at most or all
    things, or other), `arrives_term` (the person's own term) and `form` (a year, a range, by a
    year, not before a year, or the far tail of a stated chance, which is not drawn). Only
-   forecasts of AGI or beyond are drawn.
+   forecasts of AGI or beyond are drawn. A `not_before` forecast also gives `not_before_year`,
+   the first year its words leave open. A range counts by its nearer end when years are
+   compared.
 7. **Undated words are let in, as words only.** A leader's latest words on when AGI or beyond
    arrives that carry no year or length of time ("AGI is close") are kept in
    `data/claims_undated/`, one file each, from a primary source, quoted and dated by when they
    were said, every search logged. They appear in the "what they say now" section when they are
    newer than the person's latest dated forecast, or the person has none, so that leaders who
    never name a year are not shown as silent. They are never drawn on a chart and never scored.
+   A quote runs to 25 words at most; a cut never removes a date; and words that only use another
+   body's name for AI are left out.
 
 8. **The frontier-voices chart's builders** (John, 2026-10-19, "Yes", to the master session's
    recommendation). The home page's chart draws as builders everyone with the panel's

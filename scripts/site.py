@@ -1068,7 +1068,7 @@ def claims_csv(claims):
 def forecast_years(c):
     """A drawn forecast's date in words: about a year, a range, by a year, or not before a year."""
     return {"year": f"about {c['due']}", "range": f"{c.get('due_early')} to {c['due']}", "by": f"by {c['due']}",
-            "not_before": f"not before {c['due']}", "chance_tail": f"{c['due']}"}[c["form"]]
+            "not_before": f"not before {c.get('not_before_year')}", "chance_tail": f"{c['due']}"}[c["form"]]
 
 
 def verdict_note(c):
@@ -1155,15 +1155,21 @@ def claims_page(sc, claims, built, commit):
                         f'<p class="dim">{WHO.get(sp) or esc(who["role_summary"].split(";")[0] + ".")}</p>{wl}'
                         f'<ul>{"".join(items)}</ul>')
 
-    band_line = (f"Behind them is a band for the academics and long-time thinkers on the panel: the middle half of their {band['n']} dated guesses since 2023, "
-                 f"{band['low']:.0f} to {band['high']:.0f}, with its middle at about {band['middle']:.0f}. ") if band else ""
+    silent = [speakers[sp]["name"] for sp in cs.LEADERS if not now[sp]["latest"]]
+    nums = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
+    silent_line = (f"{nums.get(len(silent), len(silent))} of them, {', '.join(silent[:-1]) + ' and ' + silent[-1] if len(silent) > 1 else silent[0]}, "
+                   f"{'has' if len(silent) == 1 else 'have'} never put a date on it. ") if silent else ""
+    band_line = (f"Under them, in green, are the academics and long-time thinkers on the panel who have never worked at a company that builds frontier AI, "
+                 f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
+                 + "; ".join(f"{esc(p['name'])} {p['year']}" for p in band["people"])
+                 + f". Their middle year is {band['middle']:.0f}. ") if band else ""
     body = f"""<section class="section prose">
 <p>I keep this page as one of the tracker's two voices. The home page follows the academics and long-time thinkers who have written about AGI and the singularity for decades; this page follows the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are part of the mood of the time. I record what they say, when they said it and where, so it can be read for what they are predicting now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note says what happened, and that is all.</p>
 
 <h2 id="now">What they say now</h2>
 <figure class="fig"><a href="/claims-now.png" title="Open the chart full size"><img src="/claims-now.png" alt="Each industry leader's most recent dated forecast of AGI, superintelligence or AI better than people at most things, on one timeline, against a band for the academics' dated guesses since 2023"></a>
 <figcaption>Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms. {band_line}The forecasts are in <a href="/data/claims.csv">a table</a>; the academics' guesses are in <a href="/data/statements.csv">another</a>.</figcaption></figure>
-<p>Each of them uses their own words for what is coming: AGI, superintelligence, "a country of geniuses in a data center", AI better than people at most things. They do not mean the same thing, so the line beside each name gives their term. Four have never put a date on it; for them, and for anyone who has spoken since their last dated forecast, their latest words with no date are given instead, quoted and dated, and never drawn.</p>
+<p>Each of them uses their own words for what is coming: AGI, superintelligence, "a country of geniuses in a data center", AI better than people at most things. They do not mean the same thing, so the line beside each name gives their term. {silent_line}For anyone who has spoken on when since their last dated forecast, or who has never given one, their latest words with no date are given too, quoted and dated, and never drawn.</p>
 <ul class="claims-now">{"".join(now_items)}</ul>
 
 <h2 id="moved">How their dates have moved</h2>
@@ -1365,7 +1371,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     # About the present, never a total of verdicts (amendment A31; John, 2026-10-19). The same figures as
     # the claims page's first chart.
     claims_line = (f'Of the {cl["leaders_with_a_date"]} industry leaders who have put a date on AGI or something beyond it, {cl["ahead_of_academics"]} now name a year '
-                   f'before the middle of the academics\' dated guesses since 2023, about {cl["academics"]["middle"]:.0f}. What each of them says now, in their own words, '
+                   f'before the middle year of the academics\' latest guesses, {cl["academics"]["middle"]:.0f}, each person counted once. What each of them says now, in their own words, '
                    f'is on <a href="/claims/">the claims page</a>.') if cl.get("academics") else ""
     # The same reading as the frontier-voices chart's title (charts.frontier_reading), so the two agree.
     from charts import frontier_reading
@@ -1383,28 +1389,28 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <h2>The current zeitgeist</h2>
 <p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about AGI. Every quote carries its date and a link to where it was said.</p>
 <p>It follows two voices. One is the academics and long-time thinkers who have written about AGI and the singularity for decades. The other is the people now running the companies that build it, whose dates have tended to run ahead of everyone else's. Both are part of the mood of the time. The site keeps both, says what each is saying now, how far apart they are and how both have moved, and scores neither. The industry's leaders have <a href="/claims/">a page of their own</a>.</p>
-<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
+<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Five things stand out so far.</p>
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
-<p>Fifth, and this is a reading of the same rows rather than a new measure: {frontier_line} The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems, and the industry leaders who run one, from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+<p>Second, and this is a reading of the same rows rather than a new measure: {frontier_line} The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having led, founded or done senior research at a company that builds frontier systems, and the industry leaders who run one, from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
 
 <figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
 <figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it, together with the fifteen industry leaders on <a href="/claims/">the claims page</a>, so that Jensen Huang, who runs Nvidia, is drawn among the builders. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
-<p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
+<p>Third, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
 <figure class="fig"><a href="zeitgeist-researchers.png" title="Open the chart full size"><img src="zeitgeist-researchers.png" alt="AI researchers' even-chance year for machines doing every task and every job, in surveys from 2016, 2022 and 2023"></a>
 <figcaption>Two different groups of researchers answered the two questions in each survey. The numbers are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
-<p>Third, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
+<p>Fourth, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
 
 <figure class="fig"><a href="zeitgeist-search.png" title="Open the chart full size"><img src="zeitgeist-search.png" alt="Worldwide Google searches for artificial general intelligence and for the singularity, each year from 2005 to 2026"></a>
 <figcaption>Google reports searches on its own scale rather than as counts. The numbers, and the polls, are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
-<p>Fourth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
+<p>Fifth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
 
 <figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>

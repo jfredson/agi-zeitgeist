@@ -132,7 +132,7 @@ CLAIM_FIELDS = {
     "is_goal": bool, "has_probability": bool, "restates": str, "repeated_on": "dates",
     "status": str, "verdict_on": "date", "verdict_why": str, "verdict_source": str,
     "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
-    "arrives": str, "arrives_term": str, "form": str,
+    "arrives": str, "arrives_term": str, "form": str, "not_before_year": int,
 }
 CLAIM_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url",
                   "source_locator", "checked_how", "prediction", "kind", "bar", "due",
@@ -750,7 +750,8 @@ def check_claims(tables, speakers):
                         and "differs from the statement" not in (c.get("notes") or ""):
                     errors.append(f"{f}: the quote is not inside statement {sid}'s quote, and notes do not say why the span differs")
         arrives, form = c.get("arrives"), c.get("form")
-        if c.get("kind") == "timing":
+        # A timing claim always says what arrives; a capability claim says so when it forecasts AGI or beyond.
+        if c.get("kind") == "timing" or (c.get("kind") == "capability" and arrives is not None):
             if arrives not in CLAIM_ARRIVES:
                 errors.append(f"{f}: a timing claim says what arrives: 'arrives' is one of {sorted(CLAIM_ARRIVES)} (A31)")
             elif arrives != "other":
@@ -760,10 +761,12 @@ def check_claims(tables, speakers):
                     errors.append(f"{f}: 'arrives_term' gives what arrives in the person's own term (A31)")
                 if form == "range" and "due_early" not in c:
                     errors.append(f"{f}: a range needs due_early")
+                if (form == "not_before") != isinstance(c.get("not_before_year"), int):
+                    errors.append(f"{f}: a 'not before' forecast, and only one, gives not_before_year, the first year its words leave open (A31)")
             elif form or c.get("arrives_term"):
                 errors.append(f"{f}: 'form' and 'arrives_term' are only for a forecast of AGI or beyond (A31)")
         elif arrives or form or c.get("arrives_term"):
-            errors.append(f"{f}: 'arrives', 'arrives_term' and 'form' are only for timing claims (A31)")
+            errors.append(f"{f}: 'arrives', 'arrives_term' and 'form' are only for timing and capability claims (A31)")
         for field in ("search_ids",):
             for s_id in c.get(field) or []:
                 if s_id not in search_ids:
@@ -822,6 +825,8 @@ def check_words(tables):
             errors.append(f"{f}: undated words come from a primary source: source_kind is own_words, transcript or printed_qa")
         if w.get("arrives") not in CLAIM_ARRIVES - {"other"}:
             errors.append(f"{f}: 'arrives' is agi, superintelligence or beyond_people")
+        if isinstance(w.get("quote"), str) and len(w["quote"].split()) > CLAIM_QUOTE_WORDS:
+            errors.append(f"{f}: the quote runs past {CLAIM_QUOTE_WORDS} words; quote the core words and put the rest in notes")
         if re.search(r"\b(19|20)\d\d\b", w.get("quote") or ""):
             errors.append(f"{f}: the words name a year, so they are a dated claim, not undated words")
         sid = w.get("statement_id")

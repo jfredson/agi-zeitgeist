@@ -87,24 +87,36 @@ Every file holds one `[claim]` table with these fields.
 
 A worked example is in the proposal, section 2.
 
-### What a timing claim says arrives (amendment A31)
+### What a forecast says arrives (amendment A31)
 
-Every timing claim carries, entered by hand:
+Every timing claim carries, entered by hand, and so does any capability claim that forecasts AGI or beyond (such as "if AGI means passing human tests, it is five years away"):
 
 - `arrives`: what the forecast says comes. `agi` (AGI or human-level AI, in whatever term the
   person uses), `superintelligence`, `beyond_people` (AI better than people at most or all
   things, smarter than any human, "a country of geniuses"), or `other` (a model, a product, a
-  robot, a feeling in the industry).
+  robot, a feeling in the industry). The person's own word decides first: what they call AGI is
+  `agi`, even where they define it as smarter than any human; otherwise the meaning decides.
 - `arrives_term`: for anything but `other`, the person's own term, short ("minimal AGI",
   "powerful AI").
 - `form`: for anything but `other`, the shape of the date: `year` (about a single year), `range`
   (`due_early` to `due`), `by` (no later than `due`), `not_before` (not before `due`), or
-  `chance_tail` (the far end of a stated chance, such as a 10% or a 90% year, which marks the edge
-  of a spread rather than the forecast and is not drawn).
+  `chance_tail` (the far end of a stated chance, such as a 10% or a 90% year, or "some
+  non-negligible likelihood", which marks the edge of a spread rather than the forecast and is not
+  drawn).
+- `not_before_year`: for a `not_before` forecast only, the first year its words leave open ("not
+  next year", said in 2026, leaves 2028 open; "not within five years" of April 2026 leaves 2031).
+  `due` stays the year the claim is judged.
+
+A range counts by its nearer end wherever the figures compare years (the "now" figure's title, the
+home-page sentence, and whether a leader's dates moved nearer or later); a "by" year counts as
+named. "Several years" is undated, as "a few years" is, so "several years if not a decade" is a
+"by" forecast to the decade.
 
 Only forecasts with `arrives` other than `other` and `form` other than `chance_tail` are drawn.
-The validator refuses a timing claim without these fields, and any other kind of claim with
-them.
+The validator refuses a timing claim without these fields, a deployment claim with them, and a
+`not_before` forecast without `not_before_year`. A forecast repeated unchanged on a later day
+(`repeated_on`) counts as said that day; where only a publication date is known, that date
+stands, and the figure says so.
 
 ### Undated words (amendment A31)
 
@@ -113,14 +125,18 @@ close", "we are nowhere near it") are not claims. Since 2026-10-19 they are kept
 in `data/claims_undated/`, one file per passage, `[words]` table: `id` (the date said, the
 speaker and a slug, equal to the file name), `speaker_id`, `when`, `occasion`, `source_kind`
 (own words, a transcript or a printed Q&A; never news coverage), `source_url`,
-`source_locator`, `checked_how`, `quote` (and `translation` where the words are not in English),
+`source_locator`, `checked_how`, `quote` (at most 25 words, the same limit as claims, with the
+rest in `notes`; and `translation` where the words are not in English),
 `arrives`, `about` (one plain sentence), `search_ids`, and optionally `when_note`,
 `statement_id` and `notes`. The same people and the same role-at-the-time rule apply as for
 claims. Each person's search for them runs back from the present to their latest dated forecast
 (or two years, for those with none), every search logged. The page shows a person's latest undated
 words when they are newer than their latest dated forecast, or the person has none, so that no
-one is shown as silent; they are never drawn and never scored. The validator refuses a passage
-that names a year.
+one is shown as silent; they are never drawn and never scored. A cut in the words never removes
+a date: words that put a year or a length of time on it are a dated claim, entered as one. Words
+that only use someone else's name for AI (the US government's "Super Intelligence" since the
+executive order of 2026-09-29, a company renaming itself) are about naming, not when, and are
+left out. The validator refuses a passage that names a year or runs past 25 words.
 
 ## Which claims get in (the admission rule)
 

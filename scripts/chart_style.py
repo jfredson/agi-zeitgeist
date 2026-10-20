@@ -108,7 +108,7 @@ def load_words():
 def drawn(c):
     """A dated forecast that goes on the claims figures: a timing claim about AGI or beyond, not the far
     tail of a stated chance (a 10% or 90% year marks the edge of a spread, not the forecast)."""
-    return c["kind"] == "timing" and c.get("arrives") in DRAWN and c.get("form") != "chance_tail"
+    return c["kind"] in ("timing", "capability") and c.get("arrives") in DRAWN and c.get("form") != "chance_tail"
 
 
 def said_on(c):
@@ -116,21 +116,46 @@ def said_on(c):
     return [str(c["when"])] + [d.isoformat() for d in c.get("repeated_on") or []]
 
 
+def near_end(c):
+    """The nearer year a forecast names: the early end of a range, otherwise its year (a 'by' year is the
+    latest it allows, so it stands as named). None for 'not before'."""
+    if c.get("form") == "not_before":
+        return None
+    return c["due_early"] if c.get("form") == "range" else c["due"]
+
+
 def nearest(cs):
-    """The nearest year named among one day's forecasts: the late end of each, ignoring 'not before'."""
-    ys = [c["due"] for c in cs if c.get("form") != "not_before"]
+    """The nearest year named among one day's forecasts (see near_end), ignoring 'not before'."""
+    ys = [near_end(c) for c in cs if near_end(c) is not None]
     return min(ys) if ys else None
 
 
-def academics_band(statements=None, speakers=None):
-    """The academics and long-time thinkers: panel members not tagged as builders, leaving out all fifteen
-    leaders, and their dated guesses since 2023 from the frontier-voices rows. The middle half and the middle."""
-    from charts import frontier_rows  # the same rows as the home page's frontier-voices chart
-    v = sorted(r["year"] for r in frontier_rows(statements, speakers)
-               if not r["builder"] and r["speaker"] not in LEADERS and r["said"] >= 2023)
-    if len(v) < 8:
+# Panel members not tagged as builders who nonetheless worked at a company that builds frontier AI, in any
+# role. They are left out of the academics (amendment A31) when ACADEMICS_STRICT is on.
+WORKED_AT_A_LAB = {"kokotajlo": "OpenAI, 2022 to 2024", "aschenbrenner": "OpenAI, 2023 to 2024"}
+ACADEMICS_STRICT = True
+
+
+def academics_band(statements=None, speakers=None, since=2023):
+    """The academics and long-time thinkers, counted the way the leaders are: each person once, at their
+    latest dated guess since `since`, by the nearer year it names. Panel members only, never a builder by the
+    frozen tag, never one of the fifteen leaders, and (when ACADEMICS_STRICT) never anyone who worked at a
+    frontier AI company in any role. Rows as the frontier-voices chart reads them (accepts, hedges or conditions
+    a year for machines matching people at most thinking work; tip_only rows left out)."""
+    speakers = {r["speaker_id"]: r for r in (speakers or read("speakers.csv"))}
+    latest = {}
+    for r in sorted(measured(statements or read("statements.csv")), key=lambda r: r["date"]):
+        sp = speakers.get(r["speaker_id"])
+        if (r["target_capability"] != "broad_competence" or not r.get("timeline_year")
+                or r["endorsement"] not in ("accepts", "uncertain", "conditional") or int(r["date"][:4]) < since
+                or not sp or sp["tier"] not in PANEL_TIERS or sp["frontier_lab"] or r["speaker_id"] in LEADERS
+                or (ACADEMICS_STRICT and r["speaker_id"] in WORKED_AT_A_LAB)):
+            continue
+        latest[r["speaker_id"]] = dict(id=r["speaker_id"], name=sp["name"], said=r["date"], year=int(r["timeline_year"]))
+    if len(latest) < 3:
         return None
-    return dict(n=len(v), low=v[len(v) // 4], middle=statistics.median(v), high=v[3 * len(v) // 4])
+    v = sorted(x["year"] for x in latest.values())
+    return dict(n=len(v), people=sorted(latest.values(), key=lambda x: x["year"]), middle=statistics.median(v), low=v[0], high=v[-1])
 
 
 def leaders_now(claims=None, words=None):

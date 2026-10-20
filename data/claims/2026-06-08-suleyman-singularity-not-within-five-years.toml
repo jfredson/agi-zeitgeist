@@ -1,0 +1,23 @@
+[claim]
+id = "2026-06-08-suleyman-singularity-not-within-five-years"
+speaker_id = "suleyman"
+when = "2026-06-08"
+when_note = "The show's own upload is dated 2026-06-08; the conversation was recorded at Microsoft Build a few days earlier."
+occasion = "Decoder with Nilay Patel (The Verge), 'Microsoft AI chief thinks superintelligence is near, but won't take your job'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Z4bwAjR7azM"
+source_locator = "captions 01:09:12 to 01:09:25"
+checked_how = "Read the upload's English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of those caption words, and the independent check of the same day read it at the same place."
+quote = "I don't think this is something that is going to knock on the door in the next 5 years."
+prediction = "The singularity, which he defines in the same answer as a superintelligence that can recursively improve itself and grow its capabilities exponentially, will not arrive within five years of June 2026; his own take is that it is 'decades away'."
+kind = "timing"
+bar = "His own definition in the same answer: a superintelligence that recursively self-improves and grows its capabilities exponentially. The claim holds if no such system is shown, by its maker or an outside body, before 2031-06-08."
+due = 2031
+due_basis = "'in the next 5 years' from 2026-06-08 runs to 2031-06-08; by the span rule judged at 2031-12-31."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-066", "suleyman-words-03"]
+notes = "Role at the time: chief executive of Microsoft AI (since 2024). He answers Nilay Patel's question whether he agrees with Demis Hassabis that 'we're in the foothills of the singularity'; 'this' is the singularity, as his next sentence says. His 'decades away' is a vaguer, later floor and is not entered as its own claim (flagged for John). Found by the search for undated words and confirmed by the independent check of 2026-10-19, which asked for it to be entered; the claims search had not read this episode. Earlier in the same episode (00:07:23): 'super intelligence is coming. I think it's just around the corner.'"
+arrives = "superintelligence"
+arrives_term = "the singularity: a superintelligence that recursively improves itself"
+form = "not_before"
+not_before_year = 2031
