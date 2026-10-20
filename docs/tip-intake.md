@@ -1,11 +1,11 @@
-# Tip intake: how a statement John comes across enters the record
+# Tip intake: how a statement I come across enters the record
 
-Written 2026-10-18. Status: **RULED**. John ruled on 2026-10-18, through the master session,
+Written 2026-10-18. Status: **RULED**. I ruled on 2026-10-18, through the master session,
 "all as recommended": the four decisions at the end, the step 1 rule for quotes, and amendment
 A29 in `docs/amendments.md`, which records the change to the method. The first case run
 under it is Nick Bostrom's interview on The Roman Forum (pull request 18).
 
-It answers a question John asked on 2026-10-18, after sending a link to Nick Bostrom's
+It answers a question I asked on 2026-10-18, after sending a link to Nick Bostrom's
 interview on The Roman Forum (published 2026-10-16): when a prominent figure is heard
 discussing exactly the questions the tracker asks, what place does that have in the project,
 and how is it handled the same way every time?
@@ -27,7 +27,7 @@ never exists because a note wanted one.
 The weekly reading already reserves part 4 for the frozen panel's new statements, deferred
 until full collection lands, with the job to "find and log the statement and leave coding to
 the collection pipeline" (`docs/weekly-reading.md`, "Deferred"). Tip intake is that job with a
-different trigger: John sends a link instead of a schedule finding it. When part 4 goes live
+different trigger: I send a link instead of a schedule finding it. When part 4 goes live
 it follows this file for every item it finds, so there is one way in for a panel statement
 found between full passes, not two.
 
@@ -51,10 +51,10 @@ tracker", or a link to a panel member speaking about AI's future sent with a req
 - Machine captions are not quotes. Any quote taken from them is checked against the audio at
   its timestamp before it goes in a row. A quote that cannot be checked goes in with
   `coding_confidence` no higher than `medium` and the notes tag `asr_unverified`.
-- **What "checked against the audio" means** (ruled by John 2026-10-18): two automatic
+- **What "checked against the audio" means** (decided 2026-10-18): two automatic
   transcripts from separate programs agree on the quoted words, word for word, ignoring case,
   punctuation and filler sounds (uh, um). The two are the platform's own captions and a local
-  Whisper transcription of the audio. Nobody listens by ear. This is the rule John ruled for
+  Whisper transcription of the audio. Nobody listens by ear. This is the rule I ruled for
   The Upgrade Tree on 2026-10-17 (`docs/upgrade-schema.md` in that repository, "Checking quoted
   recordings"). A quote the two transcripts disagree on, or that has no second transcript,
   carries `asr_unverified`.
@@ -120,34 +120,34 @@ rows, and a link to the tracker. Rules:
 - Once the Sentient Horizons Outreach process is ratified (`outreach/` in the
   sentient-horizons repository, proposed 2026-10-17), a note is posted as one of its trials:
   stated before posting, with what came back recorded there.
-- Claude drafts; John edits and posts. Nothing is posted automatically.
+- Claude drafts; I edit and posts. Nothing is posted automatically.
 
 ### 7. Hand over
 
 One commit (or pull request) per tip: the archived source line in the manifest, the search
-log rows, the statement rows, and the draft note if any. The reply to John is a short list of
+log rows, the statement rows, and the draft note if any. The reply to me is a short list of
 what he needs to rule on or post, and nothing else.
 
-## Decisions (ruled by John 2026-10-18, all as recommended)
+## Decisions (decided 2026-10-18, all as recommended)
 
 Each decision keeps its alternative and its stated confidence for the record.
 
 1. **Rows the rule would not have found.** Recommended: keep them, tagged `tip_only`, left out
    of figures and shares, listed on the site's changelog as "noted, outside the measured
    record". Alternative: code them as ordinary rows. Confidence: high. Without the exclusion,
-   John's own feed becomes a sampling frame, and it leans toward whatever the enthusiast
+   my own feed becomes a sampling frame, and it leans toward whatever the enthusiast
    venues are amplifying, which is the bias the vanguard sub-series is kept apart for.
-   **Ruled 2026-10-18, by John: as recommended.** `scripts/charts.py` and `scripts/site.py`
+   **Ruled 2026-10-18, by me: as recommended.** `scripts/charts.py` and `scripts/site.py`
    leave the rows out, and the validator rejects `tip_only` without `tip` (A29).
 2. **Archived transcripts in a public repository.** Recommended: keep the files local (add
    `sources/*/` to `.gitignore`) and commit only `sources/manifest.csv`, so a reader can see
    what was archived, when, and its checksum, without the repository republishing a full
    transcript of someone else's interview. Alternative: commit the files. Confidence: medium.
-   **Ruled 2026-10-18, by John: as recommended.**
+   **Ruled 2026-10-18, by me: as recommended.**
 3. **Where panel watch notes live.** Recommended: drafts here, in `docs/panel-watch/`, next to
    the rows they cite, with the posting record kept by the Outreach process once it is
    ratified. Alternative: draft them in the Outreach folder from the start. Confidence: medium.
-   **Ruled 2026-10-18, by John: as recommended.** The first note (Bostrom, 2026-10-18) is not
+   **Ruled 2026-10-18, by me: as recommended.** The first note (Bostrom, 2026-10-18) is not
    one of the outreach trials; it goes to the first outreach review on 2026-10-24 as a proposal.
 4. **Is the "would the rule have found it" test run again later?** Added 2026-10-18 after the
    first run. Run on the day a tip arrives, step 3 measures how fast search engines index a
@@ -158,7 +158,7 @@ Each decision keeps its alternative and its stated confidence for the record.
    appearance, saying in the notes on what date and by which search it was lifted. The re-run
    only ever lifts the tag, never adds it, and a row stays out of figures until it is lifted.
    Alternative: the verdict on the day of intake stands for good, which is simpler but means the
-   sooner John sends a tip, the likelier it is to be left out. Confidence: medium; the
+   sooner I send a tip, the likelier it is to be left out. Confidence: medium; the
    remaining question is whether "the next full pass" is soon enough, or whether a fixed wait
-   (for example 30 days after intake) is better. **Ruled 2026-10-18, by John: as
+   (for example 30 days after intake) is better. **Ruled 2026-10-18, by me: as
    recommended,** at the next full pass.

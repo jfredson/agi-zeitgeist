@@ -8,7 +8,7 @@ Status: frozen for the seed phase. Changes require an amendment entry.
 
 *(Added under amendment A31, decided 2026-10-19.)*
 
-John's ruling of 2026-10-19, in his words: "The goal is to make a tracker of the Zeitgeist
+My ruling of 2026-10-19, in his words: "The goal is to make a tracker of the Zeitgeist
 around AGI and the Singularity. We need to track both the traditional academics who have been
 talking about this for decades as well as the new industry leaders who are actually making it
 happen but tend to run way out in front of their skis with their predictions. Both of these are
@@ -19,7 +19,7 @@ So the tracker follows two voices of one zeitgeist, and scores neither:
 - **The academics and long-time thinkers:** the members of the frozen expert panel (amendment
   A18) who don't run AI companies and are not tagged as builders, read through their coded
   statements (`data/statements.csv`). Two of them, Daniel Kokotajlo and Leopold Aschenbrenner,
-  worked at OpenAI earlier in their careers (John, 2026-10-20).
+  worked at OpenAI earlier in their careers (my ruling, 2026-10-20).
 - **The industry's leaders:** the fifteen figureheads of the companies building it (amendment
   A30), read through their dated predictions (`data/claims/`, the claims page). Twelve of them
   are also on the panel, where the frontier-voices chart draws them apart from the rest.
@@ -39,7 +39,7 @@ Four streams of evidence about artificial general intelligence (AGI, meaning AI 
 | M, published argument | a fixed set of national outlets with public archives | one article or opinion piece | share of published pieces |
 | F, specialist discourse | named online communities | one post or comment | share of sampled units in that community |
 
-The story John set out to test (the leading question moved from whether AGI is possible, to when it arrives, to whether current systems can already improve themselves) is tested inside each stream under section 7. The essay reports where the streams agree and where they diverge. Divergence between F and P is an expected finding, not a failure.
+The story I set out to test (the leading question moved from whether AGI is possible, to when it arrives, to whether current systems can already improve themselves) is tested inside each stream under section 7. The essay reports where the streams agree and where they diverge. Divergence between F and P is an expected finding, not a failure.
 
 ## 2. Coding scheme (applies to E, M and F; P items are mapped where the wording allows)
 
@@ -72,7 +72,7 @@ Coding rules: code what was said, not what the speaker is known for. Require exp
 
 Three tiers (amendment A13).
 
-Core panel, about 25 people, fully traced. Eligibility (position-independent, datable): at least one public statement on AGI possibility or timing dated 2017 or earlier; at least one dated 2024 or later; named in at least three distinct national-outlet pieces about AI futures dated 2017 or earlier. A piece the person wrote or co-wrote counts toward the three, but for at most one of them (A14). A piece counts when the person is named anywhere in its text and its headline or abstract shows the piece is about where AI is going (A16). Co-written statements count for the earliest and latest tests when the person is a named author (A14). Minimum quotas: six sustained skeptics or critics (statements dated 2017 or earlier reject or doubt AGI within decades; A14); three based outside the United States and United Kingdom at the time of their pre-2017 statements; two philosophers or cognitive scientists; three with frontier-lab ties (recorded, not screened out; time-varying, so the tag applies if true at the time of any statement in the record, with dates in the justification; A14). `philosopher` means the person's primary role (A14). Candidates and the evidence for each criterion and quota go in `docs/panel-verification-2026-10.md`. The panel is frozen by John before full collection; later changes need an amendment entry.
+Core panel, about 25 people, fully traced. Eligibility (position-independent, datable): at least one public statement on AGI possibility or timing dated 2017 or earlier; at least one dated 2024 or later; named in at least three distinct national-outlet pieces about AI futures dated 2017 or earlier. A piece the person wrote or co-wrote counts toward the three, but for at most one of them (A14). A piece counts when the person is named anywhere in its text and its headline or abstract shows the piece is about where AI is going (A16). Co-written statements count for the earliest and latest tests when the person is a named author (A14). Minimum quotas: six sustained skeptics or critics (statements dated 2017 or earlier reject or doubt AGI within decades; A14); three based outside the United States and United Kingdom at the time of their pre-2017 statements; two philosophers or cognitive scientists; three with frontier-lab ties (recorded, not screened out; time-varying, so the tag applies if true at the time of any statement in the record, with dates in the justification; A14). `philosopher` means the person's primary role (A14). Candidates and the evidence for each criterion and quota go in `docs/panel-verification-2026-10.md`. The panel is frozen by me before full collection; later changes need an amendment entry.
 
 2020s cohort, ten to twelve people prominent on AGI timelines only since 2020 with no public AGI timeline statement before 2018 and at least one dated 2024 or later, fully traced, reported as its own series. National-outlet prominence is recorded for the cohort as information only (A14).
 
@@ -80,7 +80,7 @@ Wide list, as many names as the rule yields (A14; 184 at 2026-10-01), built by a
 
 `speakers.csv` gains a `tier` field (`core`, `cohort_2020s`, `wide`) and quota tags (`skeptic`, `non_us_uk`, `philosopher`, `frontier_lab`), each with a one-line justification and a dated source.
 
-Collection: year-by-year search per person from first statement to present, queries logged in `data/search_log.csv`. Years with no statement found are logged as rows, so quiet years are visible. Where a person made more than ten qualifying statements in a year (counted by passage: each distinct passage of one essay, talk or interview is its own statement, which is how the whole record counts; ruled by John 2026-10-18, see amendment A28), all timeline-bearing statements are kept, and so are all statements that bear on the "now" question (a `self_improvement` frame, or `present_capability` coded `claimed`; amendment A26, 2026-10-17); the rest are sampled at a fixed interval, logged. Within-person change (the same person's codes over time) is reported separately from composition change (who is speaking in a given year).
+Collection: year-by-year search per person from first statement to present, queries logged in `data/search_log.csv`. Years with no statement found are logged as rows, so quiet years are visible. Where a person made more than ten qualifying statements in a year (counted by passage: each distinct passage of one essay, talk or interview is its own statement, which is how the whole record counts; decided 2026-10-18, see amendment A28), all timeline-bearing statements are kept, and so are all statements that bear on the "now" question (a `self_improvement` frame, or `present_capability` coded `claimed`; amendment A26, 2026-10-17); the rest are sampled at a fixed interval, logged. Within-person change (the same person's codes over time) is reported separately from composition change (who is speaking in a given year).
 
 Benchmarks alongside the panel: the AI Impacts expert surveys (2016, 2022, 2023), Müller and Bostrom 2014, Pew's 2025 expert sample, with question framing and respondent composition recorded before any comparison.
 
@@ -138,7 +138,7 @@ Shown separately, each normalized within itself; never combined into an index. W
 
 ## 10. Reliability and reproducibility
 
-**How coding is checked (plain-language note, John, 2026-10-03).** This is a one-person
+**How coding is checked (plain-language note, 2026-10-03).** This is a one-person
 project, and coding is fully model-based: no human codes the posts. Three AI models from
 different companies (Anthropic, Google and OpenAI) code the same sample independently,
 without seeing each other's codes. The final code for each field is the one at least two of

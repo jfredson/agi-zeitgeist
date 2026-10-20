@@ -4,7 +4,7 @@ Dated changes to the method, the panel or the codes, with the reason. Nothing in
 
 ## 2026-09-30: reconciliation of the two outside reviews (Gemini 3.1 Pro, GPT-6 Astra Medium)
 
-Both reviews were read against the kickoff plan (`docs/2026-09-30-kickoff.md`). The result is `docs/methodology-v2.md`, which supersedes the method sections of the kickoff plan. The kickoff plan stays as the record of where the project started. John ruled on 2026-09-30 that no third review would be sought and that these two would be worked with.
+Both reviews were read against the kickoff plan (`docs/2026-09-30-kickoff.md`). The result is `docs/methodology-v2.md`, which supersedes the method sections of the kickoff plan. The kickoff plan stays as the record of where the project started. I ruled on 2026-09-30 that no third review would be sought and that these two would be worked with.
 
 ### A1. The headline claim is replaced by three separately registered outcomes (GPT)
 
@@ -70,11 +70,11 @@ Fast and Horvitz 2017 (New York Times coverage of AI, 1986 to 2016; its categori
 
 Double-coding of a stratified subset with dates and identities hidden where practical; disagreements and per-category agreement published; `ambiguous` and `unexpressed` kept as codes; any automated coding validated separately by era and source. Published with the data: sampling frames, queries, code, random seeds, source versions, retrieval dates, document identifiers, exclusions, missingness audits, and snapshots with checksums where the source permits.
 
-### A13. Expert panel expanded into three tiers with written quotas (John, 2026-09-30, after discussing panel size)
+### A13. Expert panel expanded into three tiers with written quotas (my ruling, 2026-09-30, after discussing panel size)
 
 Was: a core panel of 15 to 20 plus an unsized 2020s cohort.
 Now: three tiers.
-- Core panel, about 25, each meeting the dated rule in A5, frozen by John from the verification table. Minimum quotas, written so the panel cannot lean one way by construction: at least six sustained skeptics or critics (people whose pre-2017 statements reject or doubt AGI within decades); at least three based outside the United States and United Kingdom at the time of their pre-2017 statements; at least two philosophers or cognitive scientists; at least three with frontier-lab ties, so incentives are visible rather than screened out. Fully traced.
+- Core panel, about 25, each meeting the dated rule in A5, frozen by me from the verification table. Minimum quotas, written so the panel cannot lean one way by construction: at least six sustained skeptics or critics (people whose pre-2017 statements reject or doubt AGI within decades); at least three based outside the United States and United Kingdom at the time of their pre-2017 statements; at least two philosophers or cognitive scientists; at least three with frontier-lab ties, so incentives are visible rather than screened out. Fully traced.
 - 2020s cohort, ten to twelve people prominent on AGI timelines only since 2020, fully traced, reported as its own series so its arrival is visible in the data.
 - Wide list, 60 to 100 names, built by an enumerable rule rather than by hand, with a light capture: one qualifying statement per person per era (2005 to 2015, 2016 to 2022, 2023 onward) found by a fixed query. Used only for composition and balance checks, never for within-person claims. Seed sources for the list: the public MIRI/AI Impacts dataset of dated AI timeline predictions (Armstrong and Sotala 2012 and its successors), the TIME100 AI lists 2023 to 2025, and every person quoted on AGI timelines in the stream M media sample.
 Why: with 15 to 20 people the expert frame share is driven by whoever spoke most, and the dated prominence rule rewards the people who were loud early, mostly singularitarians and lab founders, so the "whether" era would be answered only by people who had already decided. Collection is cheap (a full trace took the seed session about thirteen minutes with a helper); coding and double-coding are the cost, which is why the wide list is a light capture. Timing: the panel freezes before full collection and the verification table is being built now, so the expansion costs an afternoon this week rather than an amendment and re-sampling later.
@@ -87,9 +87,9 @@ Why: with 15 to 20 people the expert frame share is driven by whoever spoke most
 - Film box office as a measurement series (Gemini): kept as dated event annotations only (Her 2013, Transcendence and Ex Machina 2014, and so on), because a theme-tagged box-office series would need its own coding project.
 - A single numerical common axis: used only where the source gives a probability for a specified capability by a specified date, as GPT advised; "soon" is never converted to a number.
 
-## 2026-09-30: implementation decisions for version 2 (decided by: agent)
+## 2026-09-30: implementation decisions for version 2 (decided by: the model, not reviewed by me)
 
-Made while carrying out the version 2 migration. John can reverse any of them.
+Made while carrying out the version 2 migration. I can reverse any of them.
 - **`question_frame` retired.** `frame_primary` replaces it (A4 widened the same code),
   so `statements.csv` drops `question_frame` along with `stance` rather than keeping two
   competing frame codes. Version 1 codes remain in git history (commits up to `1508fde`).
@@ -114,12 +114,12 @@ Made while carrying out the version 2 migration. John can reverse any of them.
   column is replaced by the `frontier_lab` quota tag, which carries the role, years and
   source; `skeptic`, `non_us_uk` and `philosopher` sit alongside it. Each tag is blank
   or "<justification> (<date>, <url>)". Tags judged arguable are left blank and listed
-  in `docs/panel-verification-2026-10.md` for John to rule on.
+  in `docs/panel-verification-2026-10.md` for me to rule on.
 
-## 2026-10-01: John's rulings on the fifteen open decisions
+## 2026-10-01: my rulings on the fifteen open decisions
 
-Decided by: john. The decisions were listed in `docs/status-2026-10-01.md`; the
-rulings below were sent by John on 2026-10-01. Where an agent had to interpret a
+Decided by: me. The decisions were listed in `docs/status-2026-10-01.md`; the
+rulings below were sent by me on 2026-10-01. Where an agent had to interpret a
 ruling to apply it, the interpretation is marked as such.
 
 ### A14. Rulings on panel eligibility, the codebook, and process
@@ -141,7 +141,7 @@ ruling to apply it, the interpretation is marked as such.
    condition.
 7. Archive checks for prominence cases blocked by unreachable news sites will run
    later through the Guardian and New York Times APIs (application programming
-   interfaces: their official data services) once John has keys. Not attempted now.
+   interfaces: their official data services) once I have keys. Not attempted now.
 8. The wide list keeps all 184 names; its target is "whatever the rule yields", not 60
    to 100.
 
@@ -165,8 +165,8 @@ ruling to apply it, the interpretation is marked as such.
 
 **Process**
 
-13. John double-codes a blind sample himself (`data/double-coding/`).
-14. John merges the branch himself.
+13. I double-code a blind sample myself (`data/double-coding/`).
+14. I merge the branch myself.
 15. Licence: Creative Commons Attribution 4.0 (CC BY 4.0) for the data, MIT for the
     scripts.
 
@@ -174,16 +174,16 @@ Why: these were the open questions found while building the panel table and whil
 recoding the seed under version 2; recoders were applying 9 to 12 inconsistently.
 Rows recoded under rulings 9 to 12 carry `coder: claude-agent-v2.1` and a note naming
 the ruling.
-- *Agent interpretation of ruling 10 (2026-10-01), for John to confirm:* a firm, unhedged
+- *Agent interpretation of ruling 10 (2026-10-01), for me to confirm:* a firm, unhedged
   first-person date that uses none of the listed words ("I set the date for the
   Singularity as 2045", "I'm still saying 2029") is kept as `accepts`, because coding a
   stated prediction as "no position" would misreport the source. The rows concerned
   are listed in `docs/status-2026-10-01.md`.
 
-## 2026-10-01: John's rulings on the eight calls raised after A14
+## 2026-10-01: my rulings on the eight calls raised after A14
 
-Decided by: john. The eight calls were listed in `docs/status-2026-10-01.md` (section
-"New questions for John").
+Decided by: me. The eight calls were listed in `docs/status-2026-10-01.md` (section
+"New questions for me").
 
 ### A15. Firm dates, routes, minimum years, split statements and time-varying tags
 
@@ -210,16 +210,16 @@ Decided by: john. The eight calls were listed in `docs/status-2026-10-01.md` (se
    and Karnofsky are tagged, with the dates in the justification. Kokotajlo is not tagged
    `philosopher`, since the tag means primary role.
 
-Why: these were the cases where applying A14 needed a reading John hadn't given.
+Why: these were the cases where applying A14 needed a reading I hadn't given.
 Validator changes that follow: statement ids may carry a one-letter suffix, and a
 `range` may leave the high bound open when the row carries the `lower_bound` tag.
 
-- **2026-10-02, vanguard sub-series of stream F (accepted; decided by: john):** after the Gemini 3.1 Pro and GPT-6 Astra Medium reviews, John ruled: enthusiast venues only, plus an event-by-event comparison with skeptic venues once one exists, no monthly gap; claims coded on separate fields, six-rung proximity ladder as a display for AGI claims only; stream F's sampling reused; image posts with legible text included; GPT's caption on every figure and heading, "leading indicator" only in the essay as a hypothesis; shares only; folded into stream F as a labelled sub-series never pooled with F's other venues. Full text: `docs/amendments/2026-10-02-vanguard-stream.md`. Only the r/singularity retrievability check may run.
+- **2026-10-02, vanguard sub-series of stream F (accepted; decided by: me):** after the Gemini 3.1 Pro and GPT-6 Astra Medium reviews, I ruled: enthusiast venues only, plus an event-by-event comparison with skeptic venues once one exists, no monthly gap; claims coded on separate fields, six-rung proximity ladder as a display for AGI claims only; stream F's sampling reused; image posts with legible text included; GPT's caption on every figure and heading, "leading indicator" only in the essay as a hypothesis; shares only; folded into stream F as a labelled sub-series never pooled with F's other venues. Full text: `docs/amendments/2026-10-02-vanguard-stream.md`. Only the r/singularity retrievability check may run.
 
 ## 2026-10-02: the newspaper-prominence rule loosened
 
-Decided by: mixed. The seed-phase agent raised the question on 2026-10-01 and offered the
-looser wording; John chose it on 2026-10-02 when asked in the management session.
+Decided by: me, on the model's recommendation. The seed-phase agent raised the question on 2026-10-01 and offered the
+looser wording; I chose it on 2026-10-02 when asked in the management session.
 
 ### A16. What counts as "named in" a national piece
 
@@ -238,24 +238,24 @@ unclear, each on one remaining point; Pinker, Sutskever, Wooldridge and Goertzel
 fail. Core passes go from 19 to 22. Details and the agent's three judgment calls are in
 `docs/panel-verification-2026-10.md`, section "Re-marking under A16".
 
-- **2026-10-02, vanguard sub-series, video posts (decided by: john):** video posts are coded from their title only; the video is not watched or coded, and a video post is eligible only if its title makes a claim about AI capability, timeline or consequence. Written into section 6 of `docs/amendments/2026-10-02-vanguard-stream.md`.
-- **2026-10-03, vanguard sub-series, title-only rows (decided by: john):** retrievability is always reported as two figures (fully recoverable; including video posts coded by title only) with per-quarter counts; a `title_only` field marks rows coded from the title alone so their hedge and claim fields can be excluded; section 8 notes that title-only coding likely overstates unhedged claims.
-- **2026-10-03, vanguard sub-series, pilot rulings (decided by: john):** capability and consequence claims become the primary measures, the four headline claims are kept and reported as near-absent; new field `extrapolates_to_horizon`; figures labelled "interim, model-coded" until two people have coded the worksheet; codebook rulings: new target `industry_governance` for AI company and policy drama, demo-only video titles are eligible capability claims, posts not mentioning AI are ineligible, memes follow the legible-text rule. Instrument: `docs/vanguard/codebook.md`.
-- **2026-10-03, reliability design (decided by: john):** the requirement that two people code a blind subset (amendment section 9, and the double-coding in methodology-v2 section 10) is withdrawn because this is a single-researcher project. Replaced by a blind second pass from a different model family (both models named and pinned), a 40-post blind subsample coded by John with his agreement against each model reported, and a plain-language note that coding is model-assisted with one human check, disclosed as a limitation, not a second coder. **This departs from both outside reviews**, which asked for independent human double-coding.
-- **2026-10-03, reliability design, second revision (decided by: john):** the human coding step is removed. John's 40-post blind check (part (b) of the earlier ruling the same day) is withdrawn, with its worksheet and agreement script. Coding is fully model-based: Claude, Gemini and GPT-6 Astra code the same 140-post set blind; the final code is the majority vote per field, unresolved where no two agree; pairwise kappa is reported for all three pairs. A field unresolved on more than 15% of posts, or with every pairwise kappa below 0.6, is excluded from figures and listed as unreliable. Recurring disagreements get a proposed codebook rule with kappa before and after, for John to rule on. **This departs from both outside reviews**, which asked for independent human double-coding, and goes further than the earlier revision, which kept one human check.
-- **2026-10-03, vanguard codebook rules (decided by: john):** R2 (target decided by the subject of the main claim: a model or system, a company or government, or people and society) and R3 (hedging coded only from hedge words in the words stating the claim) adopted into `docs/vanguard/codebook.md`. R1 not adopted as written; split into R1a (a post passed on without comment has no stated stance) and R1b (such a post attributes the claim to the linked source), each trialled separately on the 112 posts all three models coded in the first trial. "Whether the poster wants AI sped up or slowed down" is dropped from reported measures and listed as unreliable. A monthly cost quote for Gemini's paid tier is required before the full-sample run. The codebook as it stood before R2 and R3 is kept as `docs/vanguard/codebook-frozen-2026-10-03-before-rules.md`, so the first trial's remaining Gemini posts are coded on the same codebook as the rest of that run.
-- **2026-10-03, Gemini spending (decided by: john):** the cost quote in `docs/vanguard/model-cost-quote-2026-10-03.md` is approved: up to $15 for the first month (the full-sample run, about $9.80, plus the first monthly runs), then up to $5 a month for three venues. The full-sample run waits for the ruling on rules R1a and R1b, so the 390 posts are coded once under the final codebook.
+- **2026-10-02, vanguard sub-series, video posts (decided by: me):** video posts are coded from their title only; the video is not watched or coded, and a video post is eligible only if its title makes a claim about AI capability, timeline or consequence. Written into section 6 of `docs/amendments/2026-10-02-vanguard-stream.md`.
+- **2026-10-03, vanguard sub-series, title-only rows (decided by: me):** retrievability is always reported as two figures (fully recoverable; including video posts coded by title only) with per-quarter counts; a `title_only` field marks rows coded from the title alone so their hedge and claim fields can be excluded; section 8 notes that title-only coding likely overstates unhedged claims.
+- **2026-10-03, vanguard sub-series, pilot rulings (decided by: me):** capability and consequence claims become the primary measures, the four headline claims are kept and reported as near-absent; new field `extrapolates_to_horizon`; figures labelled "interim, model-coded" until two people have coded the worksheet; codebook rulings: new target `industry_governance` for AI company and policy drama, demo-only video titles are eligible capability claims, posts not mentioning AI are ineligible, memes follow the legible-text rule. Instrument: `docs/vanguard/codebook.md`.
+- **2026-10-03, reliability design (decided by: me):** the requirement that two people code a blind subset (amendment section 9, and the double-coding in methodology-v2 section 10) is withdrawn because this is a single-researcher project. Replaced by a blind second pass from a different model family (both models named and pinned), a 40-post blind subsample coded by me with his agreement against each model reported, and a plain-language note that coding is model-assisted with one human check, disclosed as a limitation, not a second coder. **This departs from both outside reviews**, which asked for independent human double-coding.
+- **2026-10-03, reliability design, second revision (decided by: me):** the human coding step is removed. My 40-post blind check (part (b) of the earlier ruling the same day) is withdrawn, with its worksheet and agreement script. Coding is fully model-based: Claude, Gemini and GPT-6 Astra code the same 140-post set blind; the final code is the majority vote per field, unresolved where no two agree; pairwise kappa is reported for all three pairs. A field unresolved on more than 15% of posts, or with every pairwise kappa below 0.6, is excluded from figures and listed as unreliable. Recurring disagreements get a proposed codebook rule with kappa before and after, for me to rule on. **This departs from both outside reviews**, which asked for independent human double-coding, and goes further than the earlier revision, which kept one human check.
+- **2026-10-03, vanguard codebook rules (decided by: me):** R2 (target decided by the subject of the main claim: a model or system, a company or government, or people and society) and R3 (hedging coded only from hedge words in the words stating the claim) adopted into `docs/vanguard/codebook.md`. R1 not adopted as written; split into R1a (a post passed on without comment has no stated stance) and R1b (such a post attributes the claim to the linked source), each trialled separately on the 112 posts all three models coded in the first trial. "Whether the poster wants AI sped up or slowed down" is dropped from reported measures and listed as unreliable. A monthly cost quote for Gemini's paid tier is required before the full-sample run. The codebook as it stood before R2 and R3 is kept as `docs/vanguard/codebook-frozen-2026-10-03-before-rules.md`, so the first trial's remaining Gemini posts are coded on the same codebook as the rest of that run.
+- **2026-10-03, Gemini spending (decided by: me):** the cost quote in `docs/vanguard/model-cost-quote-2026-10-03.md` is approved: up to $15 for the first month (the full-sample run, about $9.80, plus the first monthly runs), then up to $5 a month for three venues. The full-sample run waits for the ruling on rules R1a and R1b, so the 390 posts are coded once under the final codebook.
 
-## 2026-10-06: John's rulings on the A16 readings, Sutskever, the thin readings and the freeze
+## 2026-10-06: my rulings on the A16 readings, Sutskever, the thin readings and the freeze
 
-Decided by: john (rulings 1, 2, 3 and 5); mixed (ruling 4: recommended by the coordinating
-session, chosen by John). Sent by John on 2026-10-06 in the management session, in answer
+Decided by: me (rulings 1, 2, 3 and 5); mixed (ruling 4: recommended by the coordinating
+session, chosen by me). Sent by me on 2026-10-06 in the management session, in answer
 to the open points in `docs/panel-verification-2026-10.md`, and relayed to this branch by
 the coordinating session.
 
 ### A17. Panel rulings before the freeze
 
-1. **Legg, Cowen and Yudkowsky stay in the core.** John confirmed the verifier's three
+1. **Legg, Cowen and Yudkowsky stay in the core.** I confirmed the verifier's three
    judgement calls: "Legg named in passing, Cowen on jobs-and-automation pieces, and
    Yudkowsky on two edge outlets". They stay marked thin.
 2. **Sutskever: "Not a timeline statement".** His co-signed 2015 "hard to predict when" is
@@ -263,11 +263,11 @@ the coordinating session.
    passes the 2020s cohort. His 2024-or-later statement was checked against the record:
    the 2025-11-25 Dwarkesh Patel interview, "I think like 5 to 20" (years), in his own
    words.
-   *Correction recorded:* John's first answer the same day said the 2015 line *does*
+   *Correction recorded:* my first answer the same day said the 2015 line *does*
    count as a timeline statement and that Sutskever passes. That answer was given to a
    question the coordinating session had framed backwards; read literally, it would have
    failed him (as the agent flagged, the same reason failed Suleyman and Karnofsky). This
-   ruling is John's answer to the question framed correctly, and replaces the first.
+   ruling is my answer to the question framed correctly, and replaces the first.
 3. **Freeze after the three gaps are closed. Don't freeze now.** The three unclear core
    cases (Shanahan, Bengio, Floridi) were closed the same day; all three pass thin.
 4. **Both thin readings count.** Shanahan's 2025 podcast remark that it is hard to tell
@@ -280,7 +280,7 @@ the coordinating session.
    drawing on the wide list and other prominent voices of the 2020s, preferring people who
    broaden the cohort. Done the same day: Liang Wenfeng, Arthur Mensch and Arvind
    Narayanan pass (all thin), taking the cohort to 12. The freeze was drafted as A18 and
-   first marked PROPOSED; John then said "Freeze and merge" (A18, below).
+   first marked PROPOSED; I then said "Freeze and merge" (A18, below).
 
 Why: these were the last open points before the freeze. Effect: core passes 22 to 25;
 cohort 8 to 12; the three new cohort members leave the wide list (308 names). Details in
@@ -291,10 +291,10 @@ evidence in `docs/panel-evidence-2026-10/gaps-2026-10-06.md` and
 
 ## 2026-10-06: the expert panel is frozen
 
-Decided by: john ("Freeze and merge", 2026-10-06). The three readings under "Readings
-chosen at the freeze" are decided by: mixed (recommended by Claude, chosen by John).
+Decided by: me ("Freeze and merge", 2026-10-06). The three readings under "Readings
+chosen at the freeze" are decided by: me, on the model's recommendation (recommended by the model, chosen by me).
 Drafted by claude-agent on 2026-10-06 under A17 rulings 3 and 5 and first recorded as a
-proposal; John's yes was relayed to this branch by the coordinating session the same day.
+proposal; my yes was relayed to this branch by the coordinating session the same day.
 The tiers and quota tags are written into `data/speakers.csv`.
 
 ### A18. The panel is frozen
@@ -337,10 +337,9 @@ Karnofsky (each fails a core test as searched); Dennett (dropped, A14 ruling 4; 
 wide list); from the cohort search, Sayash Kapoor (meets the rule on the essay co-written
 with Narayanan, not added: no independent statement, and the cohort would exceed 12),
 Abeba Birhane and Katja Grace (near misses; on the wide list). A later find that would
-pass one of them is recorded, not acted on, unless John amends the panel.
+pass one of them is recorded, not acted on, unless I amend the panel.
 
-**Readings chosen at the freeze** (decided by: mixed, recommended by Claude, chosen by
-John, 2026-10-06):
+**Readings chosen at the freeze** (decided by: me, on the model's recommendation, 2026-10-06):
 1. **`frontier_lab`: Liang yes, Mensch no.** DeepSeek counts as a company building the
    most capable models of its time; Mensch's research-scientist role at DeepMind
    (2020 to 2023) and Mistral do not meet the tag.
@@ -351,7 +350,7 @@ John, 2026-10-06):
    list.
 
 Why: A17 rulings 3 and 5 asked for the freeze once the three gaps were closed and the
-cohort search was done; both were done, and John said "Freeze and merge".
+cohort search was done; both were done, and I said "Freeze and merge".
 
 Effect: `data/speakers.csv` gains 32 rows (20 core, 12 cohort) beside the five seed
 speakers, each with `tier`, quota tags (justification, date, link) and an inclusion note
@@ -364,7 +363,7 @@ cohort members.
 
 ## 2026-10-08: the singularity-entry definition adopted, with a fourth leg
 
-Decided by: john, on four questions the agent put to him with recommendations; John
+Decided by: me, on four questions the agent put to me with recommendations; I
 followed the recommendation on the anchor, the thresholds and the backward test, and
 overruled it on the economic leg. Full text: `docs/singularity-entry-definition.md`; frozen
 values: `docs/singularity-entry-thresholds.json`.
@@ -383,19 +382,19 @@ Now:
 3. **Backward test owed, not met.** The definition must return "not entered" for 1995 to
    2019; the series to run it do not exist yet. Adopted anyway, with the gap stated on the
    page. If the test later fires on those years, the thresholds are amended.
-4. **Leg D, the economy, added (John's ruling against the agent's recommendation).** World
+4. **Leg D, the economy, added (my ruling against the agent's recommendation).** World
    output doubling time from World Bank annual world growth. Threshold: growth at or above
    30 percent a year, Davidson's published "explosive growth" line (2021). Reference: the
    1961 to 2019 mean of the same series. One annual reading covers its four quarters;
    revisions reset the count. The agent had recommended publishing the economic reading
    beside the mark, not inside it, because output lags capability by years and the
-   progress number (the smallest gauge) will track the economy until it moves. John
+   progress number (the smallest gauge) will track the economy until it moves. I
    accepted that cost for the sake of a leg measured outside the AI field.
 5. **Gauges and status are published** at agizeitgeist.com from the frozen
    file. Leg B is shown as not yet measurable until the forecast-versus-outcome ledger
    exists; progress is then reported as "at most" the smallest measured gauge.
 
-Agent decisions inside the adoption (John can reverse any):
+Agent decisions inside the adoption (I can reverse any):
 - T_ref for leg A is METR's own whole-series fit (187.8 days, row `metr-th11-doubling-all`,
   the fit over all frontier models since 2019), because the trailing-window series cannot
   be computed in 2019 itself. Windows that include a reading past 16 hours are not scored,
@@ -407,7 +406,7 @@ Agent decisions inside the adoption (John can reverse any):
 
 ## 2026-10-08: the 2022 survey's even-odds year recorded as 2060
 
-Decided by: mixed. The agent re-read both sources and recommended the change; John approved
+Decided by: me, on the model's recommendation. The agent re-read both sources and recommended the change; I approved
 ("make it 2060").
 
 ### A20. aiimpacts-2022-hlmi50 changed from 2059 to 2060
@@ -426,8 +425,8 @@ surveys, where it said about 14. The card's comparison with the 2016 survey does
 
 ## 2026-10-08: AI releases added to the events list
 
-Decided by: john ("add the product launches to the events list"). The inclusion rule below
-is the agent's, made so that the list is not chosen by taste; John can change it.
+Decided by: me ("add the product launches to the events list"). The inclusion rule below
+is the agent's, made so that the list is not chosen by taste; I can change it.
 
 ### A21. A new kind of event, `ai_release`, and seven releases
 
@@ -448,8 +447,8 @@ statement record grows, releases its statements name are added under the same ru
 
 ## 2026-10-08: institutional events since November 2023 added
 
-Decided by: john ("add the post-2024 institutional events too"). The inclusion rule below is
-the agent's, written to match the events already listed; John can change it.
+Decided by: me ("add the post-2024 institutional events too"). The inclusion rule below is
+the agent's, written to match the events already listed; I can change it.
 
 ### A22. Fifteen institutional events, May 2024 to September 2026
 
@@ -479,9 +478,9 @@ the Frontier.
 
 ## 2026-10-12: rulings on the forecast ledger and the backward test
 
-Decided by: mixed. The agent put five questions from the forecast ledger
+Decided by: me, on the model's recommendation. The agent put five questions from the forecast ledger
 (`docs/leg-b-ledger-2026-10.md`) and one from the backward test (`docs/backward-test-method.md`)
-to John with recommendations; John approved all of them ("all as recommended"). Only the first
+to me with recommendations; I approved all of them ("all as recommended"). Only the first
 changes a document's wording; the rest are recorded here so that no later session reopens
 them without knowing they were settled. Each ruling is also recorded in the document it bears
 on, and in section 8 of the definition.
@@ -504,7 +503,7 @@ Rulings that changed no wording:
   gauge stays defined on forecasts of METR's task-length measure. The survey's milestones
   are yes-or-no events with no trend to extend, so they cannot fill that formula.
 - **The ledger's four milestones with no bar stay out of the scores.** Their verdict is
-  recorded as "no bar" (it was "left for John" in the ledger's data, script and method
+  recorded as "no bar" (it was "left for me" in the ledger's data, script and method
   until this ruling; the meaning is the same). A bar set now would be chosen after seeing
   the answers.
 - **None of the five "arguably arrived" milestones is promoted to arrived.** Both the strict
@@ -520,12 +519,12 @@ Rulings that changed no wording:
 
 ## 2026-10-17: the pace gauge's anchor series has stopped updating; the successor question is opened
 
-Decided by: mixed. The first weekly reading (2026-10-16) flagged that METR's time-horizon
+Decided by: me, on the model's recommendation. The first weekly reading (2026-10-16) flagged that METR's time-horizon
 page says it is no longer actively updated (last update 2026-09-08) and that METR's Frontier
 Risk Report of 2026-05-19 says the Time Horizon 1.1 suite cannot measure above 16 hours and
 the strongest agents have saturated it. The agent and the master session recommended asking
 METR whether a successor is coming and recording the question here as open, so the page says
-the gauge is running out rather than going quiet; John accepted ("ask METR and record the
+the gauge is running out rather than going quiet; I accepted ("ask METR and record the
 successor question as open", 2026-10-17, confirmed in the review session the same day after
 asking what METR is).
 
@@ -544,9 +543,9 @@ What the successor rule requires (A19): a replacement measure named before the s
 an overlap period published, and the switch recorded here as an amendment.
 
 What happens next:
-1. John asks METR whether a Time Horizon 1.2 or 2.0 is planned, whether it will overlap the
+1. I ask METR whether a Time Horizon 1.2 or 2.0 is planned, whether it will overlap the
    1.1 series, and if not which public series they would point to (note drafted and sent by
-   John from his own address on 2026-10-17).
+   me from my own address on 2026-10-17).
 2. On METR's answer, or after a stated wait if none comes, candidate successors are proposed
    with pictures of the overlap, and the switch is ruled as A25 or later.
 3. Until then the page says the gauge's source has stopped updating, with this entry linked.
@@ -555,8 +554,8 @@ What happens next:
 
 ## 2026-10-17: the headline becomes the average share of the way, with an on-current-trends crossing sentence
 
-Decided by: mixed. The agent's proposal of 2026-10-17 (`docs/headline-proposal-2026-10-17.md`)
-recommended a count of parts past halfway; John ruled it that afternoon and, after seeing "1 of
+Decided by: me, on the model's recommendation. The agent's proposal of 2026-10-17 (`docs/headline-proposal-2026-10-17.md`)
+recommended a count of parts past halfway; I ruled it that afternoon and, after seeing "1 of
 4" on the parent site's shelf ("'1 in 4' is just not a very interesting headline"), revised it
 the same evening in his words: "Rule the AGI Zeitgeist headline as the average share of the way
 across the parts as the number, with the slowest part named, and an on-current-trends crossing
@@ -621,7 +620,7 @@ before.
 **The weekly reading** recomputes the number and the sentence at every site rebuild; nothing
 is written for them by hand.
 
-**The next question, not built now.** John named a version two for a later day: a computed
+**The next question, not built now.** I named a version two for a later day: a computed
 probability and a year on the siblings' pattern (The Belt Equation, The Quiet Galaxy), from a
 model that draws each leg's crossing year from a range and reports the chance the test is met
 by a given year and the middle year. It would need a stated distribution for each leg's
@@ -630,12 +629,12 @@ that follows this amendment.
 
 ## 2026-10-17: the busy-year sampling rule keeps the "now" statements
 
-Decided by: mixed. The frontier-lab traces of 2026-10-17 (pull request 13) applied section
+Decided by: me, on the model's recommendation. The frontier-lab traces of 2026-10-17 (pull request 13) applied section
 3's busy-year rule as written, keeping every timeline-bearing statement and sampling the rest at
 every third item, and so dropped the statements closest to the project's third question, whether
 today's systems are already improving themselves: six of Dario Amodei's 2026 statements and four
 of Demis Hassabis's from 2025 to 2026. The managing session recommended keeping that frame in
-full; John ruled "as recommended" on 2026-10-17 through the master session.
+full; I ruled "as recommended" on 2026-10-17 through the master session.
 
 ### A26. Statements on the "now" question are never sampled out
 
@@ -659,11 +658,11 @@ score a gauge.
 
 ## 2026-10-17: a dated-claims ledger per person, scored against delivery
 
-Decided by: mixed. John asked on 2026-10-17 for more from the industry leaders at the front of
+Decided by: me, on the model's recommendation. I asked on 2026-10-17 for more from the industry leaders at the front of
 the AGI claims: are they a front-row seat or salesmen? The agent proposed a ledger of each
 person's dated claims scored against what happened, on the pattern of the sibling trackers'
 claims logs (`docs/claims-ledger-proposal-2026-10-17.md`, with the seed list in
-`docs/claims-ledger-seed-2026-10-17.md`), and John ruled "as recommended" on all ten of its
+`docs/claims-ledger-seed-2026-10-17.md`), and I ruled "as recommended" on all ten of its
 rulings the same evening, through the master session. The method is
 `docs/claims-ledger-method.md`, written before any row.
 
@@ -709,11 +708,11 @@ verdict is never a measure of the world and never enters the headline. The corre
 proposal's section 0 stands: Jensen Huang is already on the panel (2020s cohort, A18), so no
 panel amendment is needed to give him claims.
 
-## 2026-10-12: John's rulings on the open calls from the panel collection (numbered A28 when the collection landed on 2026-10-17, after A24 to A27)
+## 2026-10-12: my rulings on the open calls from the panel collection (numbered A28 when the collection landed on 2026-10-17, after A24 to A27)
 
-Decided by: mixed. The open calls were listed in the body of pull request 4 (the full
+Decided by: me, on the model's recommendation. The open calls were listed in the body of pull request 4 (the full
 collection for the 32 frozen panel members), under "Departures from the written method"
-and "Places the method is silent". The recommendations were the session's; John ruled on
+and "Places the method is silent". The recommendations were the session's; I ruled on
 2026-10-12, in his words, "all as recommended". The rulings are recorded on the pull
 request as a comment of 2026-10-12 and applied by the commits that follow it.
 
@@ -765,10 +764,10 @@ request as a comment of 2026-10-12 and applied by the commits that follow it.
 (Liang Wenfeng 11 statements, Arthur Mensch 6, Arvind Narayanan 29), so the collection covers all
 32 members. The paid check stays deferred.
 
-*Ruled by John, 2026-10-18 (relayed by the master session; applied 2026-10-19):* what counts as
+*Decided, 2026-10-18 (relayed by the master session; applied 2026-10-19):* what counts as
 one statement for the busy-year line, which the collection raised. The codebook said a unit is
 "one statement by one speaker on one occasion", while the whole record has always counted each
-distinct passage of an essay, talk or interview as its own row. John ruled the passage count, as
+distinct passage of an essay, talk or interview as its own row. I ruled the passage count, as
 recommended. Methodology version 2 section 3, `docs/methodology.md` ("Busy years") and the
 codebook's section 0 now say so. Nothing is re-sampled: the collection's busy-year counts were
 already made by passage.
@@ -780,10 +779,10 @@ the practice makes the next trace follow the same rules.
 
 ## 2026-10-18: tip intake, a way in for panel statements found between full passes
 
-Decided by: mixed. The procedure (`docs/tip-intake.md`) and this amendment were drafted on
-2026-10-18 after John sent a link to Nick Bostrom's interview on The Roman Forum; the first run
+Decided by: me, on the model's recommendation. The procedure (`docs/tip-intake.md`) and this amendment were drafted on
+2026-10-18 after I sent a link to Nick Bostrom's interview on The Roman Forum; the first run
 on that interview (pull request 18) added a fourth open decision and a reading of "checked
-against the audio". John ruled on 2026-10-18, through the master session, "all as
+against the audio". I ruled on 2026-10-18, through the master session, "all as
 recommended": the four open decisions, the reading, and this amendment.
 
 ### A29. Tip intake
@@ -795,12 +794,12 @@ Applies to: `docs/methodology-v2.md` section 3 (stream E, collection), `docs/wee
 Was: stream E rows come only from the year-by-year trace, run per person with fixed queries
 (methodology section 3; version 1 query set D1 to D3, Y1 to Y3). The weekly reading may not
 add a statement by a panel member; part 4, which will find and log the panel's new
-statements, is deferred until full collection lands. A statement John comes across has no
+statements, is deferred until full collection lands. A statement I come across has no
 defined way in.
 
 Now:
 
-1. **One way in.** A panel statement found outside a full pass (sent by John, or, once part 4
+1. **One way in.** A panel statement found outside a full pass (sent by me, or, once part 4
    is live, found by the weekly reading) enters through `docs/tip-intake.md`: primary source
    archived with a checksum in `sources/manifest.csv`; speaker checked against the frozen
    tiers; the person's fixed year queries and own outlets searched and logged; candidate
@@ -822,9 +821,9 @@ Now:
    local Whisper transcription of the audio), word for word, ignoring case, punctuation and
    filler sounds; nobody listens by ear. A quote they disagree on, or that has no second
    transcript, carries `asr_unverified` and `coding_confidence` no higher than `medium`. This
-   is the rule John ruled for The Upgrade Tree on 2026-10-17.
+   is the rule I ruled for The Upgrade Tree on 2026-10-17.
 5. **Panel watch notes** are drafted in `docs/panel-watch/`, beside the rows they cite; Claude
-   drafts and John posts.
+   drafts and I post.
 6. **Codebook section 9** gains three notes tags: `tip`, `tip_only` and `asr_unverified`.
 7. **Enforcement.** `scripts/chart_style.py` gains `tip_only()` and `measured()`;
    `scripts/charts.py` and `scripts/site.py` compute every figure and the site's statement
@@ -843,31 +842,31 @@ case, two days old, was not found even by a search for its exact title (`bostrom
 
 Effect on the first case: the nine Bostrom rows of 2026-10-16 (`bostrom-2026-02a` to
 `bostrom-2026-08`) are `tip_only` and change no figure. The draft panel watch note on them
-(`docs/panel-watch/2026-10-18-bostrom.md`) is not posted; John ruled it is not one of the
+(`docs/panel-watch/2026-10-18-bostrom.md`) is not posted; I ruled it is not one of the
 Sentient Horizons outreach trials, and it goes to the first outreach review on 2026-10-24 as a
 proposal. Nothing scored changes: statements never score a gauge.
 
 ## 2026-10-19: the claims ledger widened to the industry's figureheads, with a ledger-only list
 
-Decided by: mixed. The claims ledger opened on 2026-10-19 with thirty claims by Sam Altman and
-Elon Musk. John read the news post announcing it the same day and asked, in his words, "why is
+Decided by: me, on the model's recommendation. The claims ledger opened on 2026-10-19 with thirty claims by Sam Altman and
+Elon Musk. I read the news post announcing it the same day and asked, in his words, "why is
 it just Altman and Musk. This should be a collection of all of the figureheads including Amodei
 and Huang and any others that you feel are relevant to include in that category". The managing
-session proposed an inclusion rule and fourteen names, and John accepted them. Of the three
+session proposed an inclusion rule and fourteen names, and I accepted them. Of the three
 company heads who are not on the frozen panel he ruled: "Those three should be included,
 whatever that means". This amendment records how they are included without touching the panel.
-Later the same day, reading the pull request that carried it, John ruled two of the questions it
+Later the same day, reading the pull request that carried it, I ruled two of the questions it
 left open, in his words: "Yes Musk's claims from 2019-2021 should count", and "Sure, add Kai-Fu
 Lee." Both rulings are written into the items below. An independent check of the pull request
 (`docs/reviews/claims-ledger-check-2026-10-19.md`) then found the claim files read the same
-phrases in different ways; John ruled four readings the same day, each as the check
+phrases in different ways; I ruled four readings the same day, each as the check
 recommended, and they are items 9 and 10 below.
 
 ### A30. The figureheads: who the claims ledger covers, and the ledger-only list
 
 Applies to: `docs/claims-ledger-method.md` (what the ledger is for, the `speaker_id` field, the
-admission rule's first and second conditions, the `bar` field, a new section "Readings ruled by
-John", the `hit` status word, when a claim is due, what the ledger must never touch, the order
+admission rule's first and second conditions, the `bar` field, a new section "Readings I
+ruled", the `hit` status word, when a claim is due, what the ledger must never touch, the order
 of work);
 `data/speakers.csv` (a new tier value); `scripts/validate.py`, `scripts/chart_style.py`,
 `scripts/charts.py` and `scripts/site.py` (the checks and the tier filters).
@@ -886,9 +885,9 @@ Now:
    counts only if it was made while the person held that role.** A claim made before or after
    it, or in a gap between two such roles, is left out, and the search-log row that found it
    says why.
-2. **The fifteen people** (John, 2026-10-19). On the frozen panel already: Sam Altman, Elon
+2. **The fifteen people** (my ruling, 2026-10-19). On the frozen panel already: Sam Altman, Elon
    Musk, Dario Amodei, Jensen Huang, Demis Hassabis, Mustafa Suleyman, Ilya Sutskever, Liang
-   Wenfeng, Arthur Mensch, Shane Legg, Yann LeCun and Kai-Fu Lee (added by John's second ruling
+   Wenfeng, Arthur Mensch, Shane Legg, Yann LeCun and Kai-Fu Lee (added by my second ruling
    of the day; his claims count only from 2023, as founder and chief executive of 01.AI, a
    company that builds AI models). Not on the panel: Mark Zuckerberg (Meta), Sundar Pichai
    (Google and Alphabet) and Satya Nadella (Microsoft).
@@ -936,19 +935,19 @@ Now:
    not a prediction. A borderline case stays out. A hit needs a dated record of the event
    itself, not an argument that it had become possible. A test uses the speaker's own words and
    usage in the same source and is never shaped to fit a verdict.
-10. **Four readings, ruled by John on 2026-10-19, each as the check recommended.** (1) "Early"
+10. **Four readings, decided on 2026-10-19, each as the check recommended.** (1) "Early"
    in a year is its first quarter, by 31 March. (2) A forecast that something will not happen by
    a date is a claim, scored at that date: it came true if there is no public record of the
    thing by then, and did not if there is. (3) "A few years" and "as little as X" are undated,
    so they are not claim records (the agent applied the same reading to "the next few months"
-   and "the coming months", which took out three Zuckerberg files, flagged for John). (4) Bare "human level" with no comparison in the same source
+   and "the coming months", which took out three Zuckerberg files, flagged for me). (4) Bare "human level" with no comparison in the same source
    is a named stage and cannot be tested; a stated comparison gives a plain test. Every claim
    file was passed again against them before merging.
 
-Why: John asked for all the figureheads, not two. The rule makes the list checkable: anyone can
+Why: I asked for all the figureheads, not two. The rule makes the list checkable: anyone can
 see why a name is on it, and the role-at-the-time condition keeps a person's words from before
 or after they ran such a company from being scored as if they had. The ledger-only list is how
-John's "those three should be included" is met without touching the frozen panel: the panel was
+My "those three should be included" is met without touching the frozen panel: the panel was
 frozen (A18) so that it could not drift toward the story, and widening it to fit the ledger would
 do exactly that. A separate tier keeps the two records apart in the data itself, not only in the
 prose.
@@ -958,7 +957,7 @@ qualifying role (Altman as OpenAI's co-chair in January 2019 and its chief execu
 Musk as OpenAI's co-chair in January 2016 and as the founder and head of xAI from 2023). Three
 Musk claims were made when he headed Tesla but held no role at OpenAI (he left its board in
 February 2018) or xAI (founded in 2023): the million robotaxis of 2019-04-22, the "level five"
-basic functionality of 2020-07-09, and the Tesla robot prototype of 2021-08-19. John ruled on
+basic functionality of 2020-07-09, and the Tesla robot prototype of 2021-08-19. I ruled on
 2026-10-19 that they count ("Yes Musk's claims from 2019-2021 should count"): Tesla counted then
 as a company that builds frontier AI, training its own driving models and designing its own
 chips (its driving chip was shown on 2019-04-22, and its own training chip, Dojo, announced on
@@ -966,14 +965,14 @@ chips (its driving chip was shown on 2019-04-22, and its own training chip, Dojo
 
 What does not change: the frozen panel's membership (A18), `data/statements.csv`, the scored
 series, the frozen thresholds, the definition, the verdict and the headline (A25), and every
-other rule of the ledger (A27 and John's rulings of 2026-10-19 in the method).
+other rule of the ledger (A27 and my rulings of 2026-10-19 in the method).
 
 ## 2026-10-19: two voices of one zeitgeist, and the claims ledger as the industry's voice
 
 ### A31. The claims ledger becomes a record of what the industry's leaders predict, beside the academics, not a scorecard
 
-**Decided 2026-10-19 (decided by: mixed).** The managing session proposed it on three rulings
-John gave that day (quoted below); John then agreed the remaining choices, in his words "Agreed on
+**Decided 2026-10-19 (decided by: me, on the model's recommendation).** The managing session proposed it on three rulings
+I gave that day (quoted below); I then agreed the remaining choices, in his words "Agreed on
 all", to the master session's recommendations, which took the managing session's recommendation
 on what leads the page and its alternative on undated words. The proposal, with its draft
 pictures, is `docs/claims-ledger-reframe-proposal-2026-10-19.md`.
@@ -993,7 +992,7 @@ printed once a person's claims had been searched year by year and five were due 
 The page led with a table of counts per person, and the home page and the status file gave the
 totals. The home page described the panel's builders as having "a product to sell".
 
-John's rulings, 2026-10-19, in his words:
+My rulings, 2026-10-19, in his words:
 
 - "The goal is not to score people on their success at predicting the future, the goal is to
   track the zeitgeist of what these people are saying to get a feel for what the vanguard of
@@ -1004,7 +1003,7 @@ John's rulings, 2026-10-19, in his words:
   their skis with their predictions. Both of these are valuable for the Zeitgeist though."
 - "Sure, we can keep the verdicts as small notes, but they are not the point of the tracker."
 
-And John's "Agreed on all", 2026-10-19, to the remaining choices.
+And my "Agreed on all", 2026-10-19, to the remaining choices.
 
 Now:
 
@@ -1022,8 +1021,8 @@ Now:
    each leader's latest prediction of any kind beside it. The other side is the panel's long-time
    thinkers who don't run AI companies (not tagged as builders and not among the fifteen),
    counted as the leaders are: each person once, at their latest dated guess since 2023, by the
-   nearer year it names. The figure draws each of them and their middle year. **Decided by John
-   on 2026-10-20 (decided by: john), "(b)":** Daniel Kokotajlo and Leopold Aschenbrenner, who
+   nearer year it names. The figure draws each of them and their middle year. **Decided by me
+   on 2026-10-20 (decided by: me), "(b)":** Daniel Kokotajlo and Leopold Aschenbrenner, who
    worked at OpenAI earlier in their careers, stay among them, and the page says so plainly
    rather than calling the group people who never worked at such a company. The independent
    check of 2026-10-19 had found that the first build pooled 26 guesses from these seven people,
@@ -1055,7 +1054,7 @@ Now:
    A quote runs to 25 words at most; a cut never removes a date; and words that only use another
    body's name for AI are left out.
 
-8. **The frontier-voices chart's builders** (John, 2026-10-19, "Yes", to the master session's
+8. **The frontier-voices chart's builders** (my ruling, 2026-10-19, "Yes", to the master session's
    recommendation). The home page's chart draws as builders everyone with the panel's
    frontier-lab tag and all fifteen industry leaders. It moves Jensen Huang's three dated
    guesses since 2023 to the builders' side; his tag was left off when the panel was frozen
@@ -1065,10 +1064,10 @@ Now:
    either way.
 
 Unchanged: who is in the ledger (A30), the admission rule for dated claims, the five status words and what
-counts as a hit (now used for the notes), the readings John ruled on 2026-10-19, and everything
+counts as a hit (now used for the notes), the readings I ruled on 2026-10-19, and everything
 A27 and A30 say the ledger must never touch (the frozen panel, the coded statements, the scored
 series, the thresholds, the definition, the verdict and the headline).
 
-Why: John's rulings. A scorecard answers whether a person was right, which says little about
+Why: my rulings. A scorecard answers whether a person was right, which says little about
 where expectations stand. Read side by side over time, the record of what the academics and the
 industry's leaders say is what the tracker exists to follow.

@@ -1,6 +1,6 @@
 # Search for more 2020s cohort members, 2026-10-06
 
-Asked for by John on 2026-10-06 ("Search first, then freeze"): one to three more cohort
+Asked for by me on 2026-10-06 ("Search first, then freeze"): one to three more cohort
 members before the freeze, found at no cost by the same method, with the rules exactly as
 written in `docs/methodology-v2.md` section 3:
 
@@ -40,7 +40,7 @@ and none a skeptic.
   public AGI remarks found are from 2023.
 - **Tags:** `non_us_uk` (Hangzhou, China). `frontier_lab`: yes, DeepSeek from 2023 (its
   R1 model of January 2025 was close to the best of its time; arguable, so marked for
-  John). Not a skeptic (expects AGI within his lifetime). Not a philosopher.
+  me). Not a skeptic (expects AGI within his lifetime). Not a philosopher.
 - **Prominence (information only):** profiled widely after January 2025 (a Reuters
   story of 2025-01-28 seen in search results).
 
@@ -62,13 +62,13 @@ when, and is secondhand.
 
   This is a rejection of AGI arriving at all. It is counted as a timeline statement in the
   sense the cohort table already uses (Leike's 2024 pass rests on a statement with no date;
-  Mollick's on "Jagged AGI"). If John reads "timeline statement" as requiring a date or
+  Mollick's on "Jagged AGI"). If I reads "timeline statement" as requiring a date or
   horizon, Mensch becomes a near miss.
 - **C1: none found.** He was a doctoral student at Inria and NeuroSpin, Paris, 2015 to
   2018, working on brain-imaging analysis; then a postdoctoral researcher at the École
   normale supérieure; Google DeepMind Paris from 2020 (Wikipedia, seen in search results).
   No AGI statement before 2018 turned up.
-- **Tags:** `non_us_uk` (Paris). `frontier_lab`: arguable, marked for John: research
+- **Tags:** `non_us_uk` (Paris). `frontier_lab`: arguable, marked for me: research
   scientist at DeepMind 2020 to 2023 (a research role, not clearly senior) and head of
   Mistral from 2023 (a strong European lab, not clearly at the frontier). Skeptic in
   outlook (2024), but the `skeptic` tag as defined rests on statements from 2017 or
@@ -120,7 +120,7 @@ quote`; `Arvind Narayanan 2015 OR 2016 OR 2017 "artificial general intelligence"
 
 | person | why not added |
 |---|---|
-| Sayash Kapoor (Princeton, co-author with Narayanan) | Meets the rule on the same co-written essay, with no pre-2018 statement (he was a student). Not proposed: his only qualifying statement is the one Narayanan's pass rests on, so he adds no independent voice, and adding him would take the cohort to 13, above the range of 10 to 12. John may prefer him to one of the three |
+| Sayash Kapoor (Princeton, co-author with Narayanan) | Meets the rule on the same co-written essay, with no pre-2018 statement (he was a student). Not proposed: his only qualifying statement is the one Narayanan's pass rests on, so he adds no independent voice, and adding him would take the cohort to 13, above the range of 10 to 12. I may prefer him to one of the three |
 | Abeba Birhane (Trinity College Dublin, Ireland; skeptic) | Would broaden the cohort most (outside the US and UK, skeptic, academic), but the search found only criticism of AI hype in general ("inflated optimism around AI"), no 2024-or-later statement on whether or when AGI arrives. Fails C2 as searched |
 | Katja Grace (AI Impacts; TIME100 AI 2024) | Lead author of the 2017 expert survey "When Will AI Exceed Human Performance?" (arXiv 1705.08807, May 2017), which reports surveyed researchers' forecast dates for human-level machine intelligence, and ran AI Impacts' timeline work from 2015. Probably fails C1; whether a survey report counts as her own timeline statement is arguable and was not pursued, since the three above already fill the range |
 | Yi Zeng, Andrew Yao, Xue Lan (China; TIME100 AI lists) | Not checked within this search; leads for a later amendment if the cohort is reopened |
@@ -135,7 +135,7 @@ All three are thin, for the reasons given.
 
 ### Resolved at the freeze (2026-10-06, amendment A18)
 
-John froze the panel the same day ("Freeze and merge") and chose three readings,
+I froze the panel the same day ("Freeze and merge") and chose three readings,
 recommended by Claude: Liang is tagged `frontier_lab`, Mensch is not; Mensch's April 2024
 "I don't believe in AGI" counts as his 2024-or-later statement; Narayanan is taken, not
 Kapoor, and Kapoor stays on the wide list.

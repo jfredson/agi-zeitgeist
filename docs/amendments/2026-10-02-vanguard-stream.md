@@ -1,14 +1,14 @@
 # Amendment: vanguard sub-series of stream F
 
-Status: **ACCEPTED by John, 2026-10-02**, with his rulings on the seven open questions
-applied. Drafted by John 2026-10-02 (original in git history, commit `d3a1e19`); reviewed
+Status: **ACCEPTED by me, 2026-10-02**, with his rulings on the seven open questions
+applied. Drafted by me 2026-10-02 (original in git history, commit `d3a1e19`); reviewed
 by Gemini 3.1 Pro and GPT-6 Astra Medium (verbatim in `docs/reviews/vanguard-stream-review-*.md`,
 prompt `docs/reviews/vanguard-stream-review-prompt.md`); reconciled 2026-10-02 (commit
 `d7482b2`).
 Applies to: `docs/methodology-v2.md` section 6 (stream F), `docs/amendments.md` (log entry).
 
 **Collection status:** only the retrievability check in section 5 may run. Nothing else is
-collected until John has seen its result.
+collected until I have seen its result.
 
 ## 1. Purpose
 
@@ -93,7 +93,7 @@ share of top posts whose text is recoverable. Results go in
 - No new sampling design is added for the vanguard sub-series.
 - **Eligibility:** the post asserts, disputes or relays a claim about AI capability,
   timeline or consequence. **Image posts with legible text are included; image-only posts
-  without text are excluded.** **Video posts are coded from their title only** (John,
+  without text are excluded.** **Video posts are coded from their title only** (my ruling,
   2026-10-02): the video itself is not watched or coded, and a video post is eligible only
   if its title makes such a claim. Counts of each are reported. Rows coded from the title
   alone carry `title_only: yes` (section 7).
@@ -122,7 +122,7 @@ share of top posts whose text is recoverable. Results go in
   results are reported with and without de-duplication.
 - **Pilot window:** the 24 complete calendar months before the freeze month, so
   **2024-10 to 2026-09** (8 quarters). Rule set by the agent on 2026-10-02 before any data
-  was inspected; John may change it. A small preregistered sample from earlier eras tests
+  was inspected; I may change it. A small preregistered sample from earlier eras tests
   whether the codebook works on older posts.
 
 ## 7. Coding: each post sampled, each claim coded
@@ -180,10 +180,10 @@ would sit in a post's body or a video's narration are missing. Every share is th
 reported twice, with and without `title_only: yes` rows, and the hedge and claim fields of
 title-only rows are excluded from any claim about how hedged the venue's framing is.
 
-## 9. Reliability (revised by John, 2026-10-03; human step removed the same day)
+## 9. Reliability (revised by me, 2026-10-03; human step removed the same day)
 
 Coding is fully model-based. There is no human coder: the earlier requirement that two
-people code a subset blind, and the later plan for a 40-post check by John, are both
+people code a subset blind, and the later plan for a 40-post check by me, are both
 withdrawn.
 
 1. **Three models from different companies code the same preregistered subset blind**, each
@@ -197,7 +197,7 @@ withdrawn.
 4. **Reliability test.** A field unresolved on more than 15% of posts, or with every pairwise
    kappa below 0.6, is excluded from figures and listed as unreliable.
 5. **Recurring disagreements** get a proposed codebook rule, tested by recoding the subset
-   with the rule and comparing kappa before and after. John rules on each rule. A rule tested
+   with the rule and comparing kappa before and after. I rules on each rule. A rule tested
    on the posts it was written from will look better than it is, so an adopted rule is
    checked again on a fresh sample.
 
@@ -228,10 +228,10 @@ kept out of figures).
 
 ## 12. Acceptance criteria for the pilot
 
-1. Retrievability check (section 5) on r/singularity for the pilot window, reviewed by John.
+1. Retrievability check (section 5) on r/singularity for the pilot window, reviewed by me.
 2. Venue inventory, X selection script (or X deferred) and eligibility rule committed before
    the first coded pull.
 3. Pilot plus the cross-era sample coded; blind two-person agreement reported; codebook
    revised if agreement is poor and checked on a fresh holdout.
-4. Pilot figure under the presentation rules reviewed by John before any other venue is
+4. Pilot figure under the presentation rules reviewed by me before any other venue is
    collected.

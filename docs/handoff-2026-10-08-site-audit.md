@@ -21,13 +21,13 @@ carry on without re-reading the day. Everything below is in the repo or in TimeA
   what a five-year-old knows plus what the page has already said; audit top to bottom.
   The working documents under `/docs/` are published as written, each with a preface.
 
-## Audited and approved by John so far (top of the home page)
+## Audited and approved by me so far (top of the home page)
 
 Top bar labels; the landing hero ("Not yet.", the sentence, the lede, "The four pillars of
 the singularity" block, the freshness line); the card ("When?" / "It depends what you mean",
 about 2030 / 2047 / 2116 ladder, the market link to the market's own page).
 
-## Not yet audited with John (continue from here, top down)
+## Not yet audited with me (continue from here, top down)
 
 1. "The current zeitgeist" section: its three paragraphs, the two charts and their captions.
 2. "Are we in the singularity?": the opening paragraph, the four condition cards, the four

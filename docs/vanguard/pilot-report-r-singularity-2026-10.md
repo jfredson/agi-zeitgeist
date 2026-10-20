@@ -5,7 +5,7 @@ were coded by all three models, so every quarter now has 20 eligible top posts (
 2026-10-09). Updated 2026-10-08: the figure and the results now come from the majority codes
 of the full-sample run (all 390 posts, three models, final codebook).
 Updated 2026-10-04 with Gemini's trial results (all three models complete on both trials).
-Updated 2026-10-03 after John's rulings: first on the first version of this report, then on
+Updated 2026-10-03 after my rulings: first on the first version of this report, then on
 the reliability design, which he revised twice that day. Coding is fully model-based
 (amendment section 9; log entries of 2026-10-03). Run record:
 `docs/vanguard/pilot-run-r-singularity-2026-10.md`; codebook: `docs/vanguard/codebook.md`.
@@ -119,12 +119,12 @@ three gave a different answer. Full table:
 | Whether the poster agrees | 0.75 (263) | 0.63 (258) | 0.55 (262) | 3% | reliable |
 | Hedging | 0.73 (263) | 0.67 (258) | 0.54 (262) | 0% | reliable |
 | Tone of the post | 0.72 (263) | 0.76 (258) | 0.77 (262) | 0% | reliable |
-| Whether the poster wants it faster or slower | 0.47 (263) | 0.59 (258) | 0.45 (262) | 0% | unreliable (every pair below 0.6; ruled unreliable by John, 2026-10-03) |
+| Whether the poster wants it faster or slower | 0.47 (263) | 0.59 (258) | 0.45 (262) | 0% | unreliable (every pair below 0.6; ruled unreliable by me, 2026-10-03) |
 | Whose claim it is | 0.71 (263) | 0.71 (258) | 0.71 (262) | 1% | reliable |
 | Coded from the title alone | 0.99 (263) | 0.99 (258) | 1.00 (262) | 0% | reliable |
 | Projects to a time horizon | 0.75 (263) | 0.72 (258) | 0.73 (262) | 1% | reliable |
 
-Under John's test (unresolved on more than 15% of posts, or every pairwise kappa below 0.6),
+Under my test (unresolved on more than 15% of posts, or every pairwise kappa below 0.6),
 every field passes except whether the poster wants AI sped up or slowed down, which is kept
 out of figures. The figure's five measures use whether the post counts, what the claim is
 about, timing, whether the poster agrees, tone (for the irony exclusion), projects to a time
@@ -153,7 +153,7 @@ majority finds eligible where no two models agree. Full table:
 | coded from the title only | 0.97 | 0.97 | 1.00 | 0% | reliable |
 | draws a timeline or consequence from a capability | 0.71 | 0.64 | 0.65 | 0% | reliable |
 
-On this subset, under John's test, **hedging and irony were unreliable**. Both pass on the
+On this subset, under my test, **hedging and irony were unreliable**. Both pass on the
 full sample under the final codebook (table above). No field came close to the 15%
 unresolved limit.
 
@@ -165,7 +165,7 @@ about) badly overstated reliability.
 
 ### Codebook rules R1 to R3, before and after
 
-**Where things stand (2026-10-04).** John adopted R2 and R3 on 2026-10-03 (now in
+**Where things stand (2026-10-04).** I adopted R2 and R3 on 2026-10-03 (now in
 `docs/vanguard/codebook.md`) and split R1 into two rules to be trialled separately: R1a for
 whether the poster agrees and R1b for whose claim it is. Their results are in the next
 section. On 2026-10-04 he adopted R1a, with a sentence on jokes and reaction titles added, and
@@ -199,7 +199,7 @@ on 2026-10-04 under the same frozen codebook
 | irony | (none targeted) | 0.60 → 0.71 | 0.57 → 0.75 | 0.58 → 0.74 |
 | forecast or already happened | (none targeted) | 0.66 → 0.75 | 0.65 → 0.74 | 0.77 → 0.71 |
 
-With the rules, hedging and irony pass the test. On the first 112 posts (the figures John
+With the rules, hedging and irony pass the test. On the first 112 posts (the figures I
 ruled on) the rows read much the same, with two exceptions: hedging between Gemini and GPT
 was 0.55 → 0.62 and is now 0.56 → 0.56, and whose claim it is between Gemini and GPT was
 0.80 → 0.62 and is now 0.78 → 0.57.
@@ -215,10 +215,10 @@ was 0.55 → 0.62 and is now 0.56 → 0.56, and whose claim it is between Gemini
 3. **R1 brings Claude into line but slightly lowers Gemini–GPT agreement**, both on whether
    the poster agrees (0.68 → 0.63) and on whose claim it is (0.78 → 0.57). The trial coders
    found that R1 has no default when a post names no source, and no answer for a model's own
-   output in a screenshot. Refinement for John to consider: when no source is named,
+   output in a screenshot. Refinement for me to consider: when no source is named,
    attribution = original; a model's output = lab_or_company.
 4. **Optimistic by construction.** The rules were written from disagreements on these same
-   posts, so they will look better here than on new posts. Any rule John adopts is checked
+   posts, so they will look better here than on new posts. Any rule I adopt is checked
    again on a fresh sample (section 9).
 5. **Other refinements the trial coders raised:**
    - R3: an "if" that sets a condition is not a hedge.
@@ -243,7 +243,7 @@ The 90% ranges come from resampling the posts 2,000 times (`scripts/vanguard_r1_
 | whose claim it is | R1b | 0.77 → 0.83 | 0.75 → 0.72 | 0.78 → 0.75 |
 
 - **R1a decides whether the field is usable.** Without it every pair is below 0.6, so
-  whether the poster agrees fails John's test; with it every pair passes. The gain is clear
+  whether the poster agrees fails my test; with it every pair passes. The gain is clear
   in both Claude pairs (+0.13 to +0.51 and +0.05 to +0.44) and likely between Gemini and GPT
   (−0.11 to +0.37; R1a higher in 82% of resamples).
 - **R1b makes no measurable difference** (every range spans zero), and the field passes
@@ -252,7 +252,7 @@ The 90% ranges come from resampling the posts 2,000 times (`scripts/vanguard_r1_
   are a reaction or joke ("HOLY SHIT", "This… could be something…"). The original R1 had a
   sentence for this that the split dropped.
 
-Decision packet (recommendation followed by John's ruling: refine and adopt R1a; reject R1b):
+Decision packet (recommendation followed by my ruling: refine and adopt R1a; reject R1b):
 `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md`. The split-trial codes
 (`*-r1a-trial.csv`, `*-r1b-trial.csv`) aren't used in any figure or count.
 
@@ -267,7 +267,7 @@ Decision packet (recommendation followed by John's ruling: refine and adopt R1a;
   satire about labs, and government action not aimed at an AI company (the DOGE intern post,
   kept ineligible).
 
-## Decisions for John
+## Decisions for me
 
 1. ~~Rules R1a and R1b~~ ruled 2026-10-04: R1a adopted with the reactions sentence, R1b
    rejected. (R2 and R3 adopted 2026-10-03.)

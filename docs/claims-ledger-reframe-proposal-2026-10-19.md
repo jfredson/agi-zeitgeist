@@ -1,13 +1,13 @@
 # Two voices of one zeitgeist: reframing the claims ledger
 
-**Status: ruled 2026-10-19.** John agreed the remaining choices ("Agreed on all", to the master
+**Status: ruled 2026-10-19.** I agreed the remaining choices ("Agreed on all", to the master
 session's recommendations): the page leads with AGI forecasts against the academics' band, and
 undated words are let in as words only (the alternative in choice 2 below, not the first
-recommendation). Amendment A31 records the decision. John answered the Huang question (choice 3)
+recommendation). Amendment A31 records the decision. I answered the Huang question (choice 3)
 separately, "Yes", to the recommendation. This file is kept as the record of what was proposed; the method and the page are
 built from A31.
 
-## John's rulings, 2026-10-19
+## my rulings, 2026-10-19
 
 All three were given in his words and relayed by the master session.
 
@@ -55,7 +55,7 @@ the panel. The claims page becomes the industry's half, in the same spirit.
 > they are, and how both have moved. Neither is scored.
 
 **The method page** (`docs/methodology-v2.md`) gets a short section 0, "What the tracker is
-for", quoting John's second ruling and naming the two voices and where each lives in the data.
+for", quoting my second ruling and naming the two voices and where each lives in the data.
 
 ## 2. The claims page, from top to bottom
 
@@ -97,7 +97,7 @@ passed on 2020-12-31; there were not a million robotaxis on the road." Or: "Its 
 come." Or: "It names nothing an outsider could check." The coloured status chips go, and so does
 the table of counts per person.
 
-## 3. Where verdicts stop appearing (John's third ruling)
+## 3. Where verdicts stop appearing (my third ruling)
 
 | Place | Now | Proposed |
 |---|---|---|
@@ -126,11 +126,11 @@ and work back.
 ## 5. What does not change
 
 Who is in the ledger and why (A30); the admission rule; the five status words and what counts
-as a hit, now used for the notes; John's readings of 2026-10-19; and everything the ledger must
+as a hit, now used for the notes; my readings of 2026-10-19; and everything the ledger must
 never touch (the frozen panel, the coded statements, the scored series, the thresholds, the
 definition, the singularity verdict and the headline).
 
-## 6. The three choices still open for John
+## 6. The three choices still open for me
 
 **1. What leads the claims page: AGI forecasts, or the latest of everything?**
 - **Recommended: AGI forecasts lead**, against the academics' band, with each leader's latest
@@ -149,7 +149,7 @@ definition, the singularity verdict and the headline).
   better, especially for the three leaders who are not on the panel.
 
 **3. Jensen Huang on the home page's frontier-voices chart.** That chart splits the panel by a
-builder tag that John left off Huang when the panel was frozen (amendment A18), so his three
+builder tag that I left off Huang when the panel was frozen (amendment A18), so his three
 dated guesses since 2023 (2026, 2028 and 2029) are drawn among "the people who study it". Under
 the two-voices framing he is plainly one of the industry's leaders.
 - **Recommended: draw all fifteen industry leaders on the builders' side of that chart**, by
@@ -160,7 +160,7 @@ the two-voices framing he is plainly one of the industry's leaders.
 
 ## 7. What happens next
 
-Once John rules on the three choices: amendment A31 as ruled; the method and home-page wording as
+Once I rule on the three choices: amendment A31 as ruled; the method and home-page wording as
 on this branch; the new field entered on every timing claim and checked by a second reader; the
 claims page and the status file rebuilt; and the news post reframed by the session that drafted
-the story version, then put to John before it goes up. The share task stays on hold until then.
+the story version, then put to me before it goes up. The share task stays on hold until then.

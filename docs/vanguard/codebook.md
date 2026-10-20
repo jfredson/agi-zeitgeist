@@ -2,7 +2,7 @@
 
 How posts in the vanguard sub-series are coded. Written 2026-10-03 from section 7 of the
 accepted amendment `docs/amendments/2026-10-02-vanguard-stream.md`, the rules applied in the
-r/singularity pilot, and John's rulings of 2026-10-03 on the pilot report. Changes go in
+r/singularity pilot, and my rulings of 2026-10-03 on the pilot report. Changes go in
 `docs/amendments.md` first. (Statements by named experts, stream E, use `docs/codebook.md`.)
 
 Code what the post says, not what you know about the topic or the poster. Don't check
@@ -63,7 +63,7 @@ claim first. An ineligible post gets one row with `claim_n` 0 and the claim fiel
 
 Denials keep their target ("AGI is not imminent" = agi, forecast, denies).
 
-### Decision rules adopted by John, 2026-10-03
+### Decision rules adopted by me, 2026-10-03
 
 **R2: company and policy news, or capability.**
 
@@ -91,7 +91,7 @@ early signs, if, or an equivalent phrase. Otherwise unqualified. Code explicit_p
 only for a stated number or odds. Code unclear only when no claim is stated in words at all
 (a title that just names a topic, such as "X's thoughts on AI").
 
-### Decision rule adopted by John, 2026-10-04
+### Decision rule adopted by me, 2026-10-04
 
 **R1a: stance of posts passed on without comment.**
 
@@ -116,4 +116,4 @@ rejected.
   horizon; self-improvement under way; singularity framing (poster affirms each).
 - Every share is reported with and without `title_only` rows.
 - **Not reported:** whether the poster wants AI sped up or slowed down
-  (`development_preference`). Ruled unreliable by John, 2026-10-03; still coded.
+  (`development_preference`). Ruled unreliable by me, 2026-10-03; still coded.

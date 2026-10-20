@@ -15,7 +15,7 @@ must never be cited as quotes.
 
 ## 0. One unit, and how to read it
 
-A unit is one statement by one speaker on one occasion; one occasion can give several units, since each distinct passage of an essay, talk or interview is its own row (ruled by John 2026-10-18; amendment A28). Code **only what the quoted
+A unit is one statement by one speaker on one occasion; one occasion can give several units, since each distinct passage of an essay, talk or interview is its own row (decided 2026-10-18; amendment A28). Code **only what the quoted
 words and their immediate context say**. Don't use what the speaker is known for,
 what they said elsewhere, or what the article around the quote implies.
 
@@ -63,7 +63,7 @@ question 1 above:
 - When the words **do say the AI improves itself** ("the AI will improve itself", "a
   machine improves itself", "a self-improving system", "improve their own
   capabilities", "recursive self-improvement"), question 1 is answered and the lowest
-  level those words support is `si_modify`. Ruled by John 2026-10-12 (A28): an earlier
+  level those words support is `si_modify`. Decided 2026-10-12 (A28): an earlier
   version of this paragraph listed "the AI will improve itself" among the words that
   don't say who improves, which contradicted question 1.
 - Code `si_sustained` only when the words themselves describe repeated rounds with
@@ -76,7 +76,7 @@ question 1 above:
   "a hard takeoff scenario is very unlikely"), keep the level the speaker is rejecting
   (the words describe it) rather than the lowest level. Coding `si_assist` would turn a
   rejection of runaway growth into a rejection of AI helping people build AI, which
-  the speaker never said. Ruled by John 2026-10-12 (A28).
+  the speaker never said. Decided 2026-10-12 (A28).
 
 - *Seed example, `altman-2023-04`:* Altman told the New York Times it would be a "very
   slow takeoff". The words don't say who improves the systems or how, so
@@ -170,7 +170,7 @@ Rulings of 2026-10-01 (A14), with examples from the seed data:
   `timeline_text: "still likely decades away"`, and `ambiguous: yes` for the "likely"
   (A28).
 - **Self-improvement words (ruling 12):** see section 1.
-- **"Probably", "likely" and "perhaps" (A28, ruled by John 2026-10-12).** A position
+- **"Probably", "likely" and "perhaps" (A28, decided 2026-10-12).** A position
   resting on one of these words is `accepts` with `ambiguous: yes` (field:
   endorsement), whether the word governs the arrival claim ("it's likely that machines
   will be smarter than us") or its timing ("still probably decades away", "likely

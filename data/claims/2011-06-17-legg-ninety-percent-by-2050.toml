@@ -12,15 +12,19 @@ quote = "2018, 2028, 2050"
 statement_id = "legg-2011-01"
 prediction = "A 90% chance of human-level machine intelligence by 2050, assuming no global catastrophe halts progress."
 kind = "timing"
-bar = "None an outsider can run. The question asks about 'human-level machine intelligence' with no comparison or definition, and in his answer to the third question of the same exchange Legg himself calls 'human level' 'a rather vague term'. Under John's reading of 2026-10-19, bare 'human level' with no comparison in the same source is a named stage and cannot be tested."
+bar = "None an outsider can run. The question asks about 'human-level machine intelligence' with no comparison or definition, and in his answer to the third question of the same exchange Legg himself calls 'human level' 'a rather vague term'. Under my reading of 2026-10-19, bare 'human level' with no comparison in the same source is a named stage and cannot be tested."
 due = 2050
 due_basis = "The year given for a 90% chance; judged at 2050-12-31."
 has_probability = true
 restates = "2010-12-10-legg-human-level-agi-90-percent-by-2045"
 status = "unfalsifiable"
-verdict_why = "Names a stage, human-level machine intelligence, that neither the question nor his answers define or compare with anything (he calls 'human level' 'a rather vague term'); under John's reading of 2026-10-19 no outsider test exists. Decided from the words. It is also a stated chance, so it is out of the plain count."
+verdict_why = "Names a stage, human-level machine intelligence, that neither the question nor his answers define or compare with anything (he calls 'human level' 'a rather vague term'); under my reading of 2026-10-19 no outsider test exists. Decided from the words. It is also a stated chance, so it is out of the plain count."
 search_ids = ["legg-claims-001", "legg-claims-002", "legg-claims-006", "legg-claims-015"]
-notes = "Role at the time: co-founder of DeepMind, incorporated on 2010-09-23, taken as a founder-leader of a small company building AI at the research frontier (a judgement flagged for John, as in 2010-12-10-legg-human-level-agi-mean-2028); the post introduces him only as a researcher and does not name DeepMind, so he was answering as himself. Test changed before merging on 2026-10-19: it read \"Plainest reading of the question's named comparison: a machine about as capable as a typical person across thinking tasks.\"; the claim is now marked as one that cannot be tested, under John's reading of the same day that bare 'human level' with no comparison in the same source is a named stage. Six months earlier he had put the 95% point of his spread at 2045; here the 90% point is 2050, a later date, so it is a changed repeat."
+<<<<<<< HEAD
+notes = "Role at the time: co-founder of DeepMind, incorporated on 2010-09-23, taken as a founder-leader of a small company building AI at the research frontier (a judgement flagged for me, as in 2010-12-10-legg-human-level-agi-mean-2028); the post introduces him only as a researcher and does not name DeepMind, so he was answering as himself. Test changed before merging on 2026-10-19: it read \"Plainest reading of the question's named comparison: a machine about as capable as a typical person across thinking tasks.\"; the claim is now marked as one that cannot be tested, under my reading of the same day that bare 'human level' with no comparison in the same source is a named stage. Six months earlier he had put the 95% point of his spread at 2045; here the 90% point is 2050, a later date, so it is a changed repeat."
+=======
+notes = "Role at the time: co-founder of DeepMind, incorporated on 2010-09-23, taken as a founder-leader of a small company building AI at the research frontier (a judgement flagged for me, as in 2010-12-10-legg-human-level-agi-mean-2028); the post introduces him only as a researcher and does not name DeepMind, so he was answering as himself. Test changed before merging on 2026-10-19: it read \"Plainest reading of the question's named comparison: a machine about as capable as a typical person across thinking tasks.\"; the claim is now marked as one that cannot be tested, under my reading of the same day that bare 'human level' with no comparison in the same source is a named stage. Six months earlier he had put the 95% point of his spread at 2045; here the 90% point is 2050, a later date, so it is a changed repeat."
 arrives = "agi"
 arrives_term = "human-level machine intelligence"
 form = "chance_tail"
+>>>>>>> origin/main

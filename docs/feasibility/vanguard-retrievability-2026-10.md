@@ -6,7 +6,7 @@ was stored; the output files hold post IDs, times, scores and status flags only.
 
 ## Headline: two figures, always reported together
 
-John ruled (2026-10-02) that video posts are coded from their title only, and asked
+I ruled (2026-10-02) that video posts are coded from their title only, and asked
 (2026-10-03) that both figures be reported side by side:
 
 - **Fully recoverable**: text posts with their body, links with title and address, and
@@ -31,7 +31,7 @@ John ruled (2026-10-02) that video posts are coded from their title only, and as
 | **full pilot window, 2024Q4 to 2026Q3** | **160** | **88 (55%)** | **56** | **144 (90%)** | **9** | **7** |
 
 **Video's share of top posts, and what the title-only exclusion tracks** (added
-2026-10-03 at John's request). Video's share of the top 20 per quarter is 30, 15, 50, 35,
+2026-10-03 at my request). Video's share of the top 20 per quarter is 30, 15, 50, 35,
 15, 45, 55 and 35% (2024Q4 to 2026Q3); of the top 50, 38, 20, 50, 28, 32, 44, 54 and 24%.
 It does **not** rise steadily: it swings by quarter and falls again in 2026Q3. Comparing
 halves of the window, it edges up from 32.5% to 37.5% of the top 20 (34% to 38.5% of the
@@ -93,11 +93,11 @@ with legible text) will drop some and pull in lower-ranked posts.
 
 ## What this means for the design
 
-1. **The rewarded series in r/singularity is mostly pictures and video.** Under John's ruling,
+1. **The rewarded series in r/singularity is mostly pictures and video.** Under my ruling,
    image posts with legible text are coded; that requires the image, and about one in eight
    top images is already gone after one to two years. The loss will be larger for older
    periods.
-2. **Video posts: settled.** John ruled on 2026-10-02 that they are coded from the title only (see the revised headline). Previously: 38 of 120 top posts are videos. The amendment covered
+2. **Video posts: settled.** I ruled on 2026-10-02 that they are coded from the title only (see the revised headline). Previously: 38 of 120 top posts are videos. The amendment covered
    image posts but not videos; a ruling is needed (code from the title only, code from the
    video, or exclude), and whichever is chosen decides most of the 36% unverified band.
 3. **Reddit's own status can't be checked by a public script** (HTTP 403), so removal and
