@@ -5,7 +5,7 @@ below). Neither needs another check from this session.** John's pending ruling o
 Aschenbrenner does not change any published number. With them in or out, the academics' middle
 year is 2030 and the headline is "7 of 12".
 
-## Recheck at commit `16fc6fe`
+# Recheck at commit `16fc6fe`
 
 The build, `validate.py` (328 claims, 9 undated passages, 5,007 search-log rows), `check_news.py`
 and its tests pass. The panel is still 37. Each fix was checked against the data, the code and,
