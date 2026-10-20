@@ -1,0 +1,21 @@
+[claim]
+id = "2023-08-08-amodei-dwarkesh-well-educated-human-two-three-years"
+speaker_id = "amodei"
+when = "2023-08-08"
+when_note = "The episode page is dated 'Aug 08, 2023'."
+occasion = "Dwarkesh Podcast interview (episode page now titled 'The hidden pattern behind every AI breakthrough')"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei"
+source_locator = "transcript at 00:27:56 to 00:29:32, his answer to 'what does your estimate of when we get something kind of human level look like?'"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "generally well educated human, that could be not very far away at all. I think that could happen in two or three years."
+statement_id = "amodei-2023-02"
+prediction = "A model that, even if you talk to it for an hour or so, seems basically like a generally well-educated human could arrive in two or three years (by about August 2026). He said the main thing that could stop it is companies or governments slowing down for safety reasons, and that this may not be the point where models can take over most AI research or change the economy."
+kind = "timing"
+bar = "His own test in the same answer, a comparison that can be checked: someone talking to the model for an hour or so finds it basically like a generally well-educated human, 'across the board'. Shown by a published conversation test (people judging whether they are talking to a model or to an educated person) or a comparable outside study."
+due = 2026
+due_early = 2025
+due_basis = "'two or three years' from 2023-08-08 runs from August 2025 to August 2026; the later end, 2026, is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-006", "amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'could'. The seed list of 2026-10-17 had this as unfalsifiable; under John's ruling of 2026-10-19 a named comparison gives a plain-reading bar, and 'basically like a generally well educated human' after an hour's talk is such a comparison. For context only: on 2026-02-13 Dwarkesh Patel told him 'You were right' about this prediction, and he did not dispute it. The verdict is entered after 2026-12-31."

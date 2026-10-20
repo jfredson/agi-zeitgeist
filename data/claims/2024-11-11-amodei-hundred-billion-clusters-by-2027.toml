@@ -1,0 +1,19 @@
+[claim]
+id = "2024-11-11-amodei-hundred-billion-clusters-by-2027"
+speaker_id = "amodei"
+when = "2024-11-11"
+when_note = "The transcript page is dated 'November 11, 2024'."
+occasion = "Lex Fridman Podcast episode 452"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/dario-amodei-transcript/"
+source_locator = "00:18:23, the sentence after the few-billion claim"
+checked_how = "Read the transcript page on 2026-10-19 (curl)."
+quote = "And probably by 2027, their ambitions to build hundred billion dollar clusters. And I think all of that actually will happen."
+prediction = "By 2027 frontier AI companies would probably be setting out to build computing clusters costing about a hundred billion dollars, and he expected it to happen."
+kind = "deployment"
+bar = "At least one frontier AI company building (not only announcing) a single computing cluster, one site or one connected system, costing about a hundred billion dollars, by the end of 2027, shown by the company's or its partners' figures."
+due = 2027
+due_basis = "'by 2027'; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-017"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'probably'; 'ambitions to build' is read with his next words, 'all of that actually will happen'."

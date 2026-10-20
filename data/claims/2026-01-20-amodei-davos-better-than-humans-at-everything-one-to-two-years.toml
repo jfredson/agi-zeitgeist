@@ -1,0 +1,22 @@
+[claim]
+id = "2026-01-20-amodei-davos-better-than-humans-at-everything-one-to-two-years"
+speaker_id = "amodei"
+when = "2026-01-20"
+when_note = "The World Economic Forum's own upload of the session is dated 2026-01-20."
+occasion = "World Economic Forum Annual Meeting, Davos, session 'The Day After AGI' (artificial general intelligence) with Demis Hassabis, moderated by Zanny Minton Beddoes of The Economist"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=NnVW9epLlTM"
+source_locator = "16:46 to 16:56 into the video"
+checked_how = "Read the English captions supplied with the upload on 2026-10-19; the quote is a verbatim run of those caption words."
+quote = "we might have AI that's better than humans at at everything in, you know, maybe one to two years, maybe a little longer than that."
+statement_id = "amodei-2026-03"
+prediction = "AI better than humans at everything might arrive in maybe one to two years (by about January 2028), maybe a little longer."
+kind = "timing"
+bar = "A comparison that can be checked: an AI system shown by its maker or an outside body to perform better than people at essentially every kind of thinking work, by the end of 2028."
+due = 2028
+due_early = 2027
+due_basis = "'maybe one to two years' from 2026-01-20 runs to January 2027 to January 2028; the later end is taken and the earlier recorded. 'Maybe a little longer' is kept in the prediction."
+repeated_on = [2026-01-26]
+status = "not_yet_due"
+search_ids = ["amodei-claims-046", "amodei-claims-049"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Repeated unchanged six days later in 'The Adolescence of Technology': 'we may have AI that is more capable than everyone in only 1–2 years'."

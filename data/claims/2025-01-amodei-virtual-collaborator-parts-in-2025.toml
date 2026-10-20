@@ -1,0 +1,24 @@
+[claim]
+id = "2025-01-amodei-virtual-collaborator-parts-in-2025"
+speaker_id = "amodei"
+when = "2025-01"
+when_note = "The Economist's events channel uploaded it 2025-01-27; it was recorded at Davos the week before (he refers to DeepSeek's new release). The day is not stated."
+occasion = "Conversation with Zanny Minton Beddoes, editor-in-chief of The Economist, 'Navigating a world in transition'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=uvMolVW_2v0"
+source_locator = "7:07 to 7:35 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "in 2025 we're going to you know release probably in pieces parts of a vision we call a virtual collaborator"
+prediction = "During 2025 Anthropic would release, probably in pieces, parts of what it calls a virtual collaborator: a model you give a task that it works on for several hours, checking in with you now and then."
+kind = "deployment"
+bar = "Anthropic releasing during 2025 a model or product that can be given a task and work on it on its own for several hours, checking in with the user now and then."
+due = 2025
+due_basis = "'in 2025'; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-05-22
+verdict_why = "On 2025-05-22 Anthropic released Claude Opus 4, 'with the ability to work continuously for several hours', and made Claude Code, its tool that carries out programming tasks on its own, generally available. Shown by the company's own release."
+verdict_source = "https://www.anthropic.com/news/claude-4"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["amodei-claims-019", "amodei-claims-033"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Not in the seed list. A product promise by Anthropic's chief executive about Anthropic's own release."

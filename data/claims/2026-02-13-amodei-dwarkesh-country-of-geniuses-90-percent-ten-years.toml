@@ -1,0 +1,21 @@
+[claim]
+id = "2026-02-13-amodei-dwarkesh-country-of-geniuses-90-percent-ten-years"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "section '00:12:36 - Is diffusion cope?', his answer on the ten-year odds"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "within ten years we’ll get to what I call a “country of geniuses in a data center”, I’m at 90% on that."
+statement_id = "amodei-2026-07"
+prediction = "A 90 percent chance that within ten years (by 2036) there will be a 'country of geniuses in a data center'; he called it 'crazy to say that this won't happen by 2035'."
+kind = "timing"
+bar = "The description given and accepted in the same conversation: AI systems with intellectual capabilities matching or exceeding Nobel Prize winners, able to use the interfaces of a person doing digital work. Shown by the maker or an outside body, by the end of 2036."
+due = 2036
+due_basis = "'within ten years' from 2026-02-13; judged at 2036-12-31."
+has_probability = true
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Later in the interview he put it at '99%, 95%' that 'all this will happen in 10 years'."

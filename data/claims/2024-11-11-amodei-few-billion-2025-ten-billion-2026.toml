@@ -1,0 +1,22 @@
+[claim]
+id = "2024-11-11-amodei-few-billion-2025-ten-billion-2026"
+speaker_id = "amodei"
+when = "2024-11-11"
+when_note = "The transcript page is dated 'November 11, 2024'."
+occasion = "Lex Fridman Podcast episode 452"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/dario-amodei-transcript/"
+source_locator = "00:18:23, answering a question on the limits of compute"
+checked_how = "Read the transcript page on 2026-10-19 (curl)."
+quote = "I think next year we’re going to go to a few billion, and then 2026, we may go to above 10 billion."
+prediction = "Frontier AI companies, then working 'in roughly 1 billion scale' for the models being trained, would go to a few billion dollars in 2025 and may go above ten billion in 2026; 'I think all of that actually will happen'."
+kind = "deployment"
+bar = "None an outsider can apply. What a model costs to train is not published by the companies, and there is no agreed way to count it (the compute for the final run alone, all the experiments before it, or the whole cluster). No outsider can check the figure, so the words give no test."
+due = 2026
+due_early = 2025
+due_basis = "'next year' (2025) and '2026'; the later year is taken and the earlier recorded."
+restates = "2024-06-26-amodei-ten-to-hundred-billion-models-2025-2027"
+status = "unfalsifiable"
+verdict_why = "What a model costs to train is not published by the companies, and there is no agreed way to count it (the compute for the final run alone, all the experiments before it, or the whole cluster). No outsider can check the figure, so the words give no test. Decided at entry."
+search_ids = ["amodei-claims-017"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Judgement call, flagged: the 'scale' here is the cost of the models 'that exist now or are being trained now', not of a whole cluster; the next sentence, about hundred-billion-dollar clusters by 2027, is testable and is its own record."

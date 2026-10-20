@@ -1,0 +1,21 @@
+[claim]
+id = "2026-01-26-amodei-adolescence-half-entry-level-jobs-one-to-five-years"
+speaker_id = "amodei"
+when = "2026-01-26"
+when_note = "The page says only 'January 2026'; the first Hacker News submission of it is 2026-01-26."
+occasion = "Essay 'The Adolescence of Technology' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/essay/the-adolescence-of-technology"
+source_locator = "section on labour market displacement, the paragraph beginning 'There are two specific problems I am worried about'; again near the end of that section"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "I predicted that AI could displace half of all entry-level white collar jobs in the next 1–5 years"
+prediction = "Restating in his own words his 2025 warning: AI could displace half of all entry-level white-collar jobs within one to five years of 2025 (later in the essay, 'AI will disrupt 50% of entry-level white-collar jobs over 1–5 years'). The unemployment figure of the 2025 report is not repeated."
+kind = "deployment"
+bar = "Half of entry-level white-collar jobs in the United States displaced by AI by the end of 2030, shown by official labour statistics or studies of entry-level hiring."
+due = 2030
+due_early = 2026
+due_basis = "He dates the window from his 2025 warning ('I predicted ... in the next 1–5 years'), so 2026 to 2030; the later end is taken and the earlier recorded."
+restates = "2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs"
+status = "not_yet_due"
+search_ids = ["amodei-claims-049"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). A changed repeat of the Axios report of 2025-05-28: the condition changes (no unemployment figure; 'displace' and 'disrupt'), so it is its own record. It is also the first time the claim appears in his own words. He writes that some 'didn't see the 1–5-year time range and thought I was claiming AI is displacing jobs right now (which I agree it is likely not)'."

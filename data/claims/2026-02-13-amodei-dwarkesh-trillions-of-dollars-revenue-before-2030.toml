@@ -1,0 +1,19 @@
+[claim]
+id = "2026-02-13-amodei-dwarkesh-trillions-of-dollars-revenue-before-2030"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "section '00:58:49 - How will AI labs actually make profit?', the answer beginning 'That’s just not my view. So I’ll make another prediction.'"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "It is hard for me to see that there won’t be trillions of dollars in revenue before 2030."
+prediction = "AI will bring in trillions of dollars of revenue a year before 2030; his slow case is the 'country of geniuses' in 2028 and revenue reaching trillions about two years later."
+kind = "deployment"
+bar = "Yearly revenue from AI products and services across the companies that sell them reaching at least two trillion dollars during 2029, shown by the companies' figures or outside counts."
+due = 2029
+due_basis = "'before 2030': by 2029-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Judgement call: 'trillions' is read as at least two trillion a year and 'revenue' as the AI industry's, which the transcript does not narrow. He adds: 'I suspect even composing the technical exponential and diffusion exponential, we'll get there before 2030'."

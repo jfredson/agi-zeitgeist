@@ -1,0 +1,25 @@
+[claim]
+id = "2024-amodei-new-model-most-intelligent-by-airing"
+speaker_id = "amodei"
+when = "2024"
+when_note = "Recorded on a day not stated, before Claude 3.5 Sonnet came out (he speaks of it as coming); the episode was published 2024-06-26."
+occasion = "In Good Company podcast with Nicolai Tangen, head of Norway's sovereign wealth fund (Norges Bank Investment Management)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=xm6jNMSFT7g"
+source_locator = "0:49 to 0:55 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "by the time this podcast airs a new model will be out from anthropic that will probably be the most intelligent ... in the world"
+prediction = "By the time the episode aired, Anthropic would have released a new model that would 'probably' be the most intelligent and powerful in the world."
+kind = "deployment"
+bar = "A new Anthropic model released before the episode was published (2024-06-26) that leads the other companies' models on the main published comparisons at its release."
+due = 2024
+due_date = 2024-06-26
+due_basis = "'by the time this podcast airs': the episode was published 2024-06-26."
+status = "hit"
+verdict_on = 2024-06-21
+verdict_why = "Anthropic's page dated 2024-06-21 launched Claude 3.5 Sonnet and said it 'raises the industry bar for intelligence, outperforming competitor models ... on a wide range of evaluations'. The release date is plain; that it was the most intelligent model rests on Anthropic's own evaluations."
+verdict_source = "https://www.anthropic.com/news/claude-3-5-sonnet"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["amodei-claims-012", "amodei-claims-069"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'probably'. Not in the seed list. Outside leaderboards of the time were not checked, so 'most intelligent' is the company's claim."

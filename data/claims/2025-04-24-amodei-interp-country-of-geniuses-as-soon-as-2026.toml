@@ -1,0 +1,23 @@
+[claim]
+id = "2025-04-24-amodei-interp-country-of-geniuses-as-soon-as-2026"
+speaker_id = "amodei"
+when = "2025-04-24"
+when_note = "The page says only 'April 2025'; the first Hacker News submission of it is 2025-04-24 23:40 universal time (16:40 Pacific)."
+occasion = "Short post 'The Urgency of Interpretability' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/post/the-urgency-of-interpretability"
+source_locator = "the paragraph beginning 'On the other hand, I worry that AI itself is advancing so quickly'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "we could have AI systems equivalent to a “country of geniuses in a datacenter” as soon as 2026 or 2027."
+statement_id = "amodei-2025-07"
+prediction = "AI systems equivalent to a 'country of geniuses in a datacenter' could exist as soon as 2026 or 2027."
+kind = "timing"
+bar = "None: the post does not define a 'country of geniuses in a datacenter', and 'as soon as' gives only an earliest date."
+due = 2027
+due_early = 2026
+due_basis = "'as soon as 2026 or 2027', an earliest date; the later year is recorded as due."
+restates = "2024-10-11-amodei-mlg-powerful-ai-as-early-as-2026"
+status = "unfalsifiable"
+verdict_why = "Two reasons, each enough: the named stage is not defined in this post, and 'as soon as' names only the earliest date. Decided at entry."
+search_ids = ["amodei-claims-028", "amodei-claims-015"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021)."

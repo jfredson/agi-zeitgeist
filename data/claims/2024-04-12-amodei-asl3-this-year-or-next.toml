@@ -1,0 +1,26 @@
+[claim]
+id = "2024-04-12-amodei-asl3-this-year-or-next"
+speaker_id = "amodei"
+when = "2024-04-12"
+when_note = "The show's own YouTube upload is dated 2024-04-12."
+occasion = "The Ezra Klein Show (New York Times), episode 'What if Dario Amodei Is Right About A.I.?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Gi_t3v53XRU"
+source_locator = "1:02:27 to 1:02:32 into the video, answering how many years away AI Safety Level 3 and 4 are; his description of the levels at 58:36 to 1:01:00"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "I think asl3 is is you know could easily happen this year or next year"
+prediction = "Anthropic's AI Safety Level 3 (ASL-3), the risk level in its own published safety policy that is 'triggered by risks related to misuse of biology and cyber technology', could easily be reached in 2024 or 2025."
+kind = "capability"
+bar = "His description in the same interview: a model of Anthropic's reaches the point where its policy's AI Safety Level 3 (ASL-3) is triggered by the risk of misuse for biological or cyber attacks. Shown by Anthropic applying its ASL-3 standard to a model because of that risk, in 2024 or 2025."
+due = 2025
+due_early = 2024
+due_basis = "'this year or next year', said 2024-04-12: 2024 or 2025; the later year is taken and the earlier recorded."
+repeated_on = [2024-11-11, 2025-03-10]
+status = "hit"
+verdict_on = 2025-05-22
+verdict_why = "On 2025-05-22 Anthropic switched on its AI Safety Level 3 (ASL-3) deployment and security standards with the launch of Claude Opus 4, because 'clearly ruling out ASL-3 risks is not possible' for chemical, biological, radiological and nuclear weapons. The same post says it had 'not yet determined' that the model definitely crossed the threshold; its policy requires the stricter level when a model cannot be shown to be well below it, so the trigger fired. Only Anthropic's word shows this."
+verdict_source = "https://www.anthropic.com/news/activating-asl3-protections"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["amodei-claims-011", "amodei-claims-017", "amodei-claims-026", "amodei-claims-032"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Repeated unchanged on the Lex Fridman Podcast, 2024-11-11, about AI Safety Level 3 (ASL-3) ('I would not be surprised at all if we hit ASL-3 next year', answering a question about 'the timeline for ASL-3 where several of the triggers are fired'), and at the Council on Foreign Relations, 2025-03-10 ('We may actually hit that this year'). The seed list of 2026-10-17 keyed this claim to the Lex Fridman interview; the earliest saying with the same due year is this one, so the record is keyed here. Judgement call: the protections were switched on as a precaution, not on a finding that the model had crossed the line; read as 'the level's trigger fired', it is a hit on the company's word."

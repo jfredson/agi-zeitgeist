@@ -1,0 +1,20 @@
+[claim]
+id = "2025-02-11-amodei-paris-country-of-geniuses-2026-or-2027"
+speaker_id = "amodei"
+when = "2025-02-11"
+when_note = "The statement on Anthropic's site is dated 'Feb 11, 2025'."
+occasion = "'Statement from Dario Amodei on the Paris AI Action Summit' on Anthropic's site"
+source_kind = "own_words"
+source_url = "https://www.anthropic.com/news/paris-ai-summit"
+source_locator = "second paragraph"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "Possibly by 2026 or 2027 ... the capabilities of AI systems will be best thought of as akin to an entirely new state"
+prediction = "Possibly by 2026 or 2027, AI systems' capabilities will be 'akin to an entirely new state populated by highly intelligent people appearing on the global stage', a 'country of geniuses in a datacenter'."
+kind = "timing"
+bar = "His comparison in the same sentence, read plainly: AI systems that, running as many copies, can do the intellectual work of a whole nation of highly intelligent people, each copy at least as capable as a highly intelligent person across intellectual work. Shown by the maker or an outside body, by the end of 2027."
+due = 2027
+due_early = 2026
+due_basis = "'by 2026 or 2027'; the later year is taken and the earlier recorded. The same sentence's outer date is its own record."
+status = "not_yet_due"
+search_ids = ["amodei-claims-021", "amodei-claims-022", "amodei-claims-023"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'possibly'. Not in the seed list. At Davos on 2026-01-20 Zanny Minton Beddoes read this back ('by 2026/27 ... do you still stand by that timeline?') and he said 'I don't think that's going to turn out to be that far off'."

@@ -1,0 +1,21 @@
+[claim]
+id = "2024-10-11-amodei-mlg-powerful-ai-as-early-as-2026"
+speaker_id = "amodei"
+when = "2024-10-11"
+when_note = "The essay page says only 'October 2024'; the first Hacker News submission of the page is 2024-10-11 20:15 universal time, so the essay was out by then."
+occasion = "Essay 'Machines of Loving Grace' on his own site"
+source_kind = "own_words"
+source_url = "https://darioamodei.com/essay/machines-of-loving-grace"
+source_locator = "section 'Basic assumptions and framework', the paragraph beginning 'What powerful AI (I dislike the term AGI)'; the definition follows"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "I think it could come as early as 2026, though there are also ways it could take much longer."
+statement_id = "amodei-2024-02"
+prediction = "'Powerful AI', which the essay defines as a model smarter than a Nobel Prize winner across most fields that can work on its own for days and run as millions of copies ('a country of geniuses in a datacenter'), could come as early as 2026, though it could take much longer."
+kind = "timing"
+bar = "The essay defines powerful AI, but the words give only an earliest date ('as early as 2026') with an open end ('could take much longer'), so there is no date by which it must have come."
+due = 2026
+due_basis = "'as early as 2026', an earliest date."
+status = "unfalsifiable"
+verdict_why = "A lower bound: 'could come as early as 2026, though ... it could take much longer' names the earliest date, so its not arriving in 2026 proves nothing. Decided at entry under the brief's rule for lower bounds."
+search_ids = ["amodei-claims-014", "amodei-claims-015"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The seed list of 2026-10-17 had this as not yet due; the lower-bound rule moves it. Later restatements with other dates are separate records that name this one in 'restates'. The essay's other figures ('the next 50-100 years of biological progress in 5-10 years') count from when powerful AI arrives, not from a calendar date, and are not entered."

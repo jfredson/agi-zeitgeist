@@ -1,0 +1,20 @@
+[claim]
+id = "2025-05-22-amodei-one-person-billion-dollar-company-2026"
+speaker_id = "amodei"
+when = "2025-05-22"
+when_note = "Said at Anthropic's Code with Claude event on 2025-05-22, the day Claude 4 was released; the re-upload read here is dated 2025-05-29."
+occasion = "Code with Claude developer event, keynote conversation with Anthropic's chief product officer Mike Krieger"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=eNWobM4XeOE"
+source_locator = "16:10 to 16:14 into the video"
+checked_how = "Read YouTube's automatic English captions of a third-party re-upload (channel Techusiness) of the keynote conversation on 2026-10-19; no upload by Anthropic itself was found. The quote is a verbatim run of the caption words: Krieger's question and his one-word answer."
+quote = "when do you think there'll be the first billion dollar company with one human employee? 2026."
+prediction = "The first billion-dollar company with only one human employee would appear in 2026."
+kind = "deployment"
+bar = "A company with one human employee valued at, or earning, a billion dollars or more during 2026, shown by a funding round, sale or published accounts."
+due = 2026
+due_basis = "'2026'; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-029", "amodei-claims-030", "amodei-claims-031"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Coverage of the same day reports that at a later press session he put it at 70 to 80 percent; that was not found as a recording and is not entered. Not in the seed list."
+verify = "An upload of the keynote by Anthropic itself, to replace the re-upload as the source."

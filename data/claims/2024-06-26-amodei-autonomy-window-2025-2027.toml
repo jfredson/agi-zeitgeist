@@ -1,0 +1,20 @@
+[claim]
+id = "2024-06-26-amodei-autonomy-window-2025-2027"
+speaker_id = "amodei"
+when = "2024-06-26"
+when_note = "The date the episode was published; it was recorded somewhat earlier."
+occasion = "In Good Company podcast with Nicolai Tangen (Norges Bank Investment Management)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=xm6jNMSFT7g"
+source_locator = "23:55 to 24:45 into the video (the question and his answer)"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "I I again point to the 2025 2026 maybe 2027 window"
+prediction = "Asked how far away models are from acting autonomously in the ways Anthropic tests for (training their own models, setting up cloud computing accounts and acting on them, signing up for accounts and making financial transactions), he pointed to 2025, 2026 or maybe 2027."
+kind = "capability"
+bar = "A model shown, by its maker's or an outside evaluation, to be able to do the autonomous tasks he listed: train its own models, set up and use cloud computing accounts, and sign up for accounts and make financial transactions, by the end of 2027."
+due = 2027
+due_early = 2025
+due_basis = "'the 2025 2026 maybe 2027 window': the later year is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-012"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). In the same breath he said 'some of the negative concerns may start to arise then as well' and 'I'm not a crystal ball'."

@@ -1,0 +1,19 @@
+[claim]
+id = "2025-02-28-amodei-coding-near-best-humans-end-2026"
+speaker_id = "amodei"
+when = "2025-02-28"
+when_note = "The Hard Fork upload is dated 2025-02-28; he says he first said this to himself 'over winter break'."
+occasion = "Hard Fork podcast (New York Times), episode 'Dario Amodei of Anthropic's Hopes and Fears for the Future of A.I.'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=YhGUSIvsn_Y"
+source_locator = "42:22 to 42:40 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "by the end of 2026 it might it might be you know everything you know close to the level of the best humans"
+prediction = "By the end of 2026 AI might be close to the level of the best human programmers at 'everything' in coding."
+kind = "capability"
+bar = "A comparison that can be checked: an AI system shown, by its maker or an outside body, to perform close to the best human programmers across programming work (for example in open programming competitions and on real software tasks), by the end of 2026."
+due = 2026
+due_basis = "'by the end of 2026'."
+status = "not_yet_due"
+search_ids = ["amodei-claims-024"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'might'."

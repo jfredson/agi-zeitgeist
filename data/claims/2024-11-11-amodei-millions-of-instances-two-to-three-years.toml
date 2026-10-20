@@ -1,0 +1,20 @@
+[claim]
+id = "2024-11-11-amodei-millions-of-instances-two-to-three-years"
+speaker_id = "amodei"
+when = "2024-11-11"
+when_note = "The transcript page is dated 'November 11, 2024'."
+occasion = "Lex Fridman Podcast episode 452"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/dario-amodei-transcript/"
+source_locator = "02:05:03, in the discussion of the essay's definition of powerful AI (also in the excerpt that opens the transcript)"
+checked_how = "Read the transcript page on 2026-10-19 (curl)."
+quote = "certainly within two to three years ... clusters are going to get to the size where you’ll be able to deploy millions of these."
+prediction = "Within two to three years, computing clusters would be big enough to run millions of copies of a frontier AI model at once, whether or not the models are 'super powerful' by then."
+kind = "deployment"
+bar = "A frontier AI company able to run a million or more copies of its leading model at the same time, shown by the company's figures or an outside estimate, by the end of 2027."
+due = 2027
+due_early = 2026
+due_basis = "'within two to three years' from 2024-11-11 runs to November 2026 to November 2027; the later end is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-017", "amodei-claims-014"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The essay of 2024-10-11 says the same in an aside ('this matches projected cluster sizes by ~2027'), as a reference to others' projections; this interview is the first time it is his own forecast."

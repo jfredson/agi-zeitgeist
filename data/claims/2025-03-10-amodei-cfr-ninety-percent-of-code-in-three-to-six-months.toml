@@ -1,0 +1,25 @@
+[claim]
+id = "2025-03-10-amodei-cfr-ninety-percent-of-code-in-three-to-six-months"
+speaker_id = "amodei"
+when = "2025-03-10"
+when_note = "The Council on Foreign Relations event page gives 'Monday March 10, 2025, 6:00 p.m. (EDT)'; the video was uploaded 2025-03-11, which is the date in the statements table."
+occasion = "Council on Foreign Relations speaker series for company chief executives, conversation with its president Michael Froman"
+source_kind = "transcript"
+source_url = "https://www.cfr.org/event/ceo-speaker-series-dario-amodei-anthropic"
+source_locator = "his answer that begins 'But now, getting to kind of the job side of this', about the middle of the transcript"
+checked_how = "Read the transcript printed on the event page on 2026-10-19 (curl); the page marks it 'an uncorrected transcript'."
+quote = "I think we’ll be there in three to six months—where AI is writing 90 percent of the code."
+statement_id = "amodei-2025-06"
+prediction = "Within three to six months (by about June to September 2025) AI would be writing 90 percent of the code. He did not say whose code; the sentence begins 'If I look at coding, programming'."
+kind = "deployment"
+bar = "The plainest reading of the words, which name no company: AI writing 90 percent of the code being written, by the end of 2025, shown by a measure of code written by AI across programming generally."
+due = 2025
+due_basis = "'three to six months' from 2025-03-10 runs from June to September 2025; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "No measure shows AI writing 90 percent of code in general by the end of 2025. Even read as Anthropic's own code, the only outside estimate (Redwood Research, 2025-10-22) put AI's share of the code merged at Anthropic at about 50 percent on average, near 90 only on some teams; he himself said in October 2025 'on many teams, not uniformly' and on 2026-02-13 'That happened, at least at some places'."
+verdict_source = "https://blog.redwoodresearch.org/p/is-90-of-code-at-anthropic-being"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["amodei-claims-026", "amodei-claims-027", "amodei-claims-041", "amodei-claims-040", "amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Judgement call, flagged for John: whose code is not stated. Read as all code, it plainly missed; read as Anthropic's code, the outside estimate says it fell short on average, and he claimed at Dreamforce in October 2025 that 'within Anthropic and within a number of companies that we work with, that is absolutely true'. On 2026-02-13 he called 90 percent of code 'a very weak criterion' and said people took it to mean 90 percent fewer engineers. The seed list of 2026-10-17 also had this as missed."

@@ -1,0 +1,19 @@
+[claim]
+id = "2026-02-13-amodei-anthropic-revenue-growth-bends-2026"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "section '00:12:36 - Is diffusion cope?', his answer on Anthropic's revenue"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "I would even guess that it bends somewhat this year, but that is a fast curve."
+prediction = "Anthropic's revenue, which grew about tenfold a year for three years, would grow somewhat less than tenfold in 2026, though still fast."
+kind = "deployment"
+bar = "Anthropic's annualised revenue at the end of 2026 less than ten times its level at the start of 2026 (about 10 billion dollars), shown by the company's figures or outside reports."
+due = 2026
+due_basis = "'this year', said 2026-02-13; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-051", "amodei-claims-058"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'Bends somewhat' is read as below the tenfold of earlier years. For context only: on 2026-06-17 he said revenue grew more than threefold in the first quarter of 2026."

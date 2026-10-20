@@ -1,0 +1,19 @@
+[claim]
+id = "2025-01-21-amodei-anthropic-million-chips-2026"
+speaker_id = "amodei"
+when = "2025-01-21"
+when_note = "The Wall Street Journal's own upload is dated 2025-01-21."
+occasion = "Wall Street Journal live interview at Davos, 'Inside Anthropic's Race to Build a Smarter Claude and Human-Level AI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=snkOMOjiVOk"
+source_locator = "3:42 to 3:58 into the video"
+checked_how = "Read the English captions supplied with the upload on 2026-10-19; the quote is a verbatim run of those caption words."
+quote = "I would not be surprised if in 2026 we have, we have more than a million of some kind of chip."
+prediction = "In 2026 Anthropic would have more than a million AI chips of some kind (after a cluster of several hundred thousand of Amazon's Trainium 2 chips)."
+kind = "deployment"
+bar = "Anthropic using more than a million AI chips of one kind during 2026, shown by Anthropic's or its suppliers' figures."
+due = 2026
+due_basis = "'in 2026'; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-018", "amodei-claims-042"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged ('I would not be surprised if'). For context only: Amazon wrote on 2025-10-29 that Claude was expected to run on more than one million Trainium2 chips by the end of 2025."

@@ -1,0 +1,19 @@
+[claim]
+id = "2025-07-30-amodei-same-cost-much-more-capable-two-years"
+speaker_id = "amodei"
+when = "2025-07-30"
+when_note = "The interviewer's upload is dated 2025-07-30."
+occasion = "Interview with Alex Kantrowitz (Big Technology)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=mYDSSRS-B5U"
+source_locator = "31:05 to 31:25 into the video"
+checked_how = "Read YouTube's automatic English captions (the original-language track) of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "my guess is that we'll have models that cost of the same order of magnitude that they cost today except they'll be much more capable"
+prediction = "Two years on (mid-2027), AI models would cost about the same to use as in mid-2025, within a factor of ten, but be much more capable, doing work far more on their own and more broadly."
+kind = "deployment"
+bar = "The leading models' published prices for use in mid-2027 within a factor of ten of mid-2025 prices, while scoring clearly higher on public tests than the mid-2025 models."
+due = 2027
+due_basis = "'two years from now', said 2025-07-30; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-038"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'My guess' is kept as a hedge."

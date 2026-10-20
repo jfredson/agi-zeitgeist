@@ -1,0 +1,24 @@
+[claim]
+id = "2025-01-amodei-hundreds-of-thousands-of-chips-this-year"
+speaker_id = "amodei"
+when = "2025-01"
+when_note = "Uploaded 2025-01-27 by The Economist's events channel; recorded at Davos the week before. The day is not stated."
+occasion = "Conversation with Zanny Minton Beddoes, editor-in-chief of The Economist, 'Navigating a world in transition'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=uvMolVW_2v0"
+source_locator = "10:18 to 10:23 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "later this year we and and probably others will have hundreds of thousands of chips"
+prediction = "Later in 2025 Anthropic, and probably other companies, would have hundreds of thousands of AI chips."
+kind = "deployment"
+bar = "Anthropic using at least two hundred thousand AI chips during 2025, shown by Anthropic's or its suppliers' figures."
+due = 2025
+due_basis = "'later this year', said January 2025; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-10-29
+verdict_why = "Amazon announced on 2025-10-29 that Project Rainier, with nearly half a million Trainium2 chips, was in use and that Anthropic was running its models on it, expected to pass a million chips by the end of 2025. Amazon is Anthropic's main cloud partner and an investor, but not Anthropic itself."
+verdict_source = "https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["amodei-claims-019", "amodei-claims-042"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'and probably others' is not scored. Not in the seed list."

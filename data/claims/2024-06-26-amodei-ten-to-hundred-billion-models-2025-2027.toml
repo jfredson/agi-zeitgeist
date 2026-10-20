@@ -1,0 +1,22 @@
+[claim]
+id = "2024-06-26-amodei-ten-to-hundred-billion-models-2025-2027"
+speaker_id = "amodei"
+when = "2024-06-26"
+when_note = "The date the episode was published (as the statements table has it); it was recorded somewhat earlier."
+occasion = "In Good Company podcast with Nicolai Tangen (Norges Bank Investment Management)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=xm6jNMSFT7g"
+source_locator = "13:25 to 14:05 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "I think if we go to 10 or 100 billion and I think that will happen in 2025 2026 maybe 2027"
+prediction = "AI models costing 10 to 100 billion dollars would be trained in 2025, 2026 or maybe 2027 (up from about a billion for models then in training); asked whether a 10-billion-dollar model would come next year, he said its training 'could start sometime in 2025'."
+kind = "deployment"
+bar = "None an outsider can apply. What a model costs to train is not published by the companies, and there is no agreed way to count it (the compute for the final run alone, all the experiments before it, or the whole cluster). No outsider can check the figure, so the words give no test."
+due = 2027
+due_early = 2025
+due_basis = "'2025 2026 maybe 2027': the later year is taken and the earlier recorded."
+restates = "2024-04-12-amodei-training-cost-five-to-ten-billion-2025-2026"
+status = "unfalsifiable"
+verdict_why = "What a model costs to train is not published by the companies, and there is no agreed way to count it (the compute for the final run alone, all the experiments before it, or the whole cluster). No outsider can check the figure, so the words give no test. Decided at entry."
+search_ids = ["amodei-claims-012"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Restates the Ezra Klein figure of 2024-04-12 (five to ten billion in 2025-2026) with a higher range and a later end."

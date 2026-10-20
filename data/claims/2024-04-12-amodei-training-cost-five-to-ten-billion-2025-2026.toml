@@ -1,0 +1,21 @@
+[claim]
+id = "2024-04-12-amodei-training-cost-five-to-ten-billion-2025-2026"
+speaker_id = "amodei"
+when = "2024-04-12"
+when_note = "The show's own YouTube upload is dated 2024-04-12."
+occasion = "The Ezra Klein Show (New York Times), episode 'What if Dario Amodei Is Right About A.I.?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Gi_t3v53XRU"
+source_locator = "14:50 to 15:12 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "I think in 2025 and 2026 we'll get more towards five or 10 billion"
+prediction = "The most advanced AI models would cost about five to ten billion dollars each to train in 2025 and 2026, up from about 100 million dollars for the models then out and about a billion for those then in training."
+kind = "deployment"
+bar = "None an outsider can apply. What a model costs to train is not published by the companies, and there is no agreed way to count it (the compute for the final run alone, all the experiments before it, or the whole cluster). No outsider can check the figure, so the words give no test."
+due = 2026
+due_early = 2025
+due_basis = "'in 2025 and 2026'; the later year, 2026, is taken and the earlier recorded."
+status = "unfalsifiable"
+verdict_why = "What a model costs to train is not published by the companies, and there is no agreed way to count it (the compute for the final run alone, all the experiments before it, or the whole cluster). No outsider can check the figure, so the words give no test. Decided at entry."
+search_ids = ["amodei-claims-011"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). In the same sentence: models 'that will come out at various times later this year early next year are closer in cost to a billion dollars'; that part has the same problem and is not entered separately. Restated with other figures on 2024-06-26 and 2024-11-11 (separate records)."

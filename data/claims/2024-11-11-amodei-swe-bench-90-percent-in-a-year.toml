@@ -1,0 +1,24 @@
+[claim]
+id = "2024-11-11-amodei-swe-bench-90-percent-in-a-year"
+speaker_id = "amodei"
+when = "2024-11-11"
+when_note = "The transcript page is dated 'November 11, 2024'."
+occasion = "Lex Fridman Podcast episode 452"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/dario-amodei-transcript/"
+source_locator = "00:19:28, in the section on scaling; said again at 02:30:52 in the section on programming"
+checked_how = "Read the transcript page on 2026-10-19 (curl)."
+quote = "in 10 months we’ve gone from 3% to 50% on this task. And I think in another year we’ll probably be at 90%."
+prediction = "On SWE-bench, a public test of fixing real software issues taken from GitHub, the best AI score had gone from about 3 percent to about 50 percent in 2024; within another year it would probably reach 90 percent. Later in the interview: 'in another 10 months, we'll probably get pretty close. We'll be at least 90%.'"
+kind = "capability"
+bar = "An AI system scoring at least 90 percent on SWE-bench Verified, the checked version of the public test of fixing real software issues that his 50 percent figure refers to, by the end of 2025."
+due = 2025
+due_basis = "'in another year' from 2024-11-11 is November 2025 ('another 10 months' is September 2025); judged at 2025-12-31."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "On the public leaderboard of SWE-bench Verified (the test of fixing real software issues), the highest results dated in 2025 are 79.2 percent (2025-12-05 and 2025-12-15); none reached 90. It came later: on 2026-04-07 Anthropic reported 93.9 percent for Claude Mythos Preview, a model not released to the public (the maker's own figure)."
+verdict_source = "https://www.swebench.com/"
+evidence_by = "outside"
+direction = "later"
+search_ids = ["amodei-claims-017", "amodei-claims-061", "amodei-claims-059", "amodei-claims-070"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'probably' and 'I mean, I don't know, but might even be less than that'. Not in the seed list. The 3-to-50 percent figures match the test's Verified version (Claude 3.5 Sonnet's 49 percent of October 2024)."

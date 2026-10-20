@@ -1,0 +1,22 @@
+[claim]
+id = "2025-01-29-amodei-deepseek-smarter-than-almost-all-humans-2026-2027"
+speaker_id = "amodei"
+when = "2025-01-29"
+when_note = "The page says only 'January 2025'; the first Hacker News submission of it is 2025-01-29 16:19 universal time."
+occasion = "Essay 'On DeepSeek and Export Controls' on his own site"
+source_kind = "own_words"
+source_url = "https://darioamodei.com/on-deepseek-and-export-controls"
+source_locator = "section 'Export controls', the paragraph beginning 'Making AI that is smarter than almost all humans'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "Making AI that is smarter than almost all humans at almost all things ... is most likely to happen in 2026-2027."
+statement_id = "amodei-2025-01"
+prediction = "AI that is smarter than almost all humans at almost all things is most likely to be made in 2026 or 2027, needing millions of chips and tens of billions of dollars."
+kind = "timing"
+bar = "A comparison that can be checked: an AI system shown by its maker or an outside body to be smarter than almost all people at almost all kinds of thinking work, by the end of 2027."
+due = 2027
+due_early = 2026
+due_basis = "'2026-2027'; the later year is taken and the earlier recorded."
+repeated_on = [2025-02-28]
+status = "not_yet_due"
+search_ids = ["amodei-claims-020", "amodei-claims-015", "amodei-claims-024"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The quote differs from the statement amodei-2025-01 by the words left out at the '...' ('will require millions of chips, tens of billions of dollars (at least), and'). Repeated unchanged on Hard Fork, 2025-02-28 ('a very large number of AI systems that are much smarter than humans at almost everything ... my guess is 2026 or 2027'). The seed list of 2026-10-17 had this record restating the 2024 essay; it is a different bar (a comparison, not 'powerful AI'), so it stands on its own."

@@ -1,0 +1,24 @@
+[claim]
+id = "2025-12-03-amodei-revenue-eight-to-ten-billion-end-of-2025"
+speaker_id = "amodei"
+when = "2025-12-03"
+when_note = "The New York Times upload of the DealBook Summit conversation is dated 2025-12-03."
+occasion = "New York Times DealBook Summit, conversation with Andrew Ross Sorkin"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=FEj7wAjwQIk"
+source_locator = "5:44 to 6:06 into the video"
+checked_how = "Read the English captions supplied with the upload on 2026-10-19; the quote is a verbatim run of those caption words."
+quote = "1 billion to it's going to end somewhere between 8 and 10 at at the end of this year."
+prediction = "Anthropic's revenue, at an annual rate, would end 2025 somewhere between 8 and 10 billion dollars, after about 1 billion at the end of 2024."
+kind = "deployment"
+bar = "Anthropic's annualised revenue at the end of 2025 between 8 and 10 billion dollars, shown by the company's figure or outside reports."
+due = 2025
+due_basis = "'at the end of this year', said 2025-12-03; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-12-31
+verdict_why = "At Davos on 2026-01-20 he said Anthropic's revenue went from '1 billion to 10 billion in 2025', and on 2026-02-13 that 'at the beginning of this year, we're looking at $10 billion in annualized revenue'. Ten billion is the top of his range. Only the company's word shows it."
+verdict_source = "https://www.youtube.com/watch?v=NnVW9epLlTM"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["amodei-claims-045", "amodei-claims-046", "amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). A near-term forecast made four weeks before the year's end, about the AI revenue of his own company. Not in the seed list."

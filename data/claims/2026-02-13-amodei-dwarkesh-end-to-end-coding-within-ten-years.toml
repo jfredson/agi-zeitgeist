@@ -1,0 +1,19 @@
+[claim]
+id = "2026-02-13-amodei-dwarkesh-end-to-end-coding-within-ten-years"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "the sentence after the one-or-two-years claim"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "There’s no way we will not be there in ten years in terms of being able to do end-to-end coding."
+prediction = "Within ten years (by 2036) AI will certainly be able to do end-to-end coding."
+kind = "capability"
+bar = "The same as the one-or-two-years claim: an AI system able to do software engineering end to end on its own, shown by its maker or an outside body, by the end of 2036."
+due = 2036
+due_basis = "'in ten years' from 2026-02-13; judged at 2036-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The outer end beside the point estimate, entered as its own claim as the method says."

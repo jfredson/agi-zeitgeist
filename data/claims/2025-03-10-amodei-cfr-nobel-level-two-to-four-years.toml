@@ -1,0 +1,22 @@
+[claim]
+id = "2025-03-10-amodei-cfr-nobel-level-two-to-four-years"
+speaker_id = "amodei"
+when = "2025-03-10"
+when_note = "The Council on Foreign Relations event page gives 'Monday March 10, 2025'; the video was uploaded 2025-03-11."
+occasion = "Council on Foreign Relations speaker series for company chief executives, conversation with its president Michael Froman"
+source_kind = "transcript"
+source_url = "https://www.cfr.org/event/ceo-speaker-series-dario-amodei-anthropic"
+source_locator = "his answer beginning 'Yeah. So I go back by starting with the exponential'"
+checked_how = "Read the transcript printed on the event page on 2026-10-19 (curl); the page marks it 'an uncorrected transcript'."
+quote = "We will get to models that are as intelligent as Nobel Prize winners across a whole bunch of fields."
+statement_id = "amodei-2025-05"
+prediction = "In two, three or maybe four years there would be models as intelligent as Nobel Prize winners across many fields, able to do anything a person can do on a computer and any remote work, including tasks taking days, weeks or months; he put his confidence at 'maybe 70 or 80 percent'."
+kind = "timing"
+bar = "His own description in the same answer: models as intelligent as Nobel Prize winners across many fields, able to do any remote work a person can do on a computer, including tasks that take days or weeks, shown by the maker or an outside body, by the end of 2029."
+due = 2029
+due_early = 2027
+due_basis = "'another two years, three years, maybe four years' from 2025-03-10 runs to March 2027 to March 2029; the later end is taken and the earlier recorded."
+has_probability = true
+status = "not_yet_due"
+search_ids = ["amodei-claims-026"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). A stated chance (70 to 80 percent), so it is flagged and kept out of the plain count."

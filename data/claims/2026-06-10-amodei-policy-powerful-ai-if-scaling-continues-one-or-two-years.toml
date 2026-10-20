@@ -1,0 +1,23 @@
+[claim]
+id = "2026-06-10-amodei-policy-powerful-ai-if-scaling-continues-one-or-two-years"
+speaker_id = "amodei"
+when = "2026-06-10"
+when_note = "The page says only 'June 2026'; the first Hacker News submission of it is 2026-06-10 18:36 universal time."
+occasion = "Short post 'Policy on the AI Exponential' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/post/policy-on-the-ai-exponential"
+source_locator = "second paragraph"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "If these scaling laws continue for only a year or two longer, we are likely to get what I’ve called Powerful AI"
+statement_id = "amodei-2026-11"
+prediction = "If AI's scaling laws (better results from more computing power) hold for one or two more years, we are likely to get what he calls powerful AI, 'a country of geniuses in a datacenter'."
+kind = "timing"
+bar = "None: the post does not define powerful AI, and the claim depends on a condition ('if these scaling laws continue') that itself has no test."
+due = 2028
+due_early = 2027
+due_basis = "'a year or two longer' from 2026-06-10 runs to June 2027 to June 2028; the later end is recorded as due."
+restates = "2026-01-26-amodei-adolescence-powerful-ai-as-little-as-one-to-two-years"
+status = "unfalsifiable"
+verdict_why = "A named stage not defined in the same source, under John's ruling of 2026-10-19; it is also conditional on scaling laws continuing, which has no agreed test. Decided at entry."
+search_ids = ["amodei-claims-057", "amodei-claims-015"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021)."

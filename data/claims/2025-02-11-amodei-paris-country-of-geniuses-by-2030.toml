@@ -1,0 +1,19 @@
+[claim]
+id = "2025-02-11-amodei-paris-country-of-geniuses-by-2030"
+speaker_id = "amodei"
+when = "2025-02-11"
+when_note = "The statement on Anthropic's site is dated 'Feb 11, 2025'."
+occasion = "'Statement from Dario Amodei on the Paris AI Action Summit' on Anthropic's site"
+source_kind = "own_words"
+source_url = "https://www.anthropic.com/news/paris-ai-summit"
+source_locator = "second paragraph"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "(and almost certainly no later than 2030), the capabilities of AI systems will be best thought of as akin to an entirely new state"
+prediction = "Almost certainly no later than 2030, AI systems' capabilities will be 'akin to an entirely new state populated by highly intelligent people', a 'country of geniuses in a datacenter'."
+kind = "timing"
+bar = "The same plain reading as the 2026-2027 claim of the same sentence: AI systems able, as many copies, to do the intellectual work of a nation of highly intelligent people, each copy at least as capable as a highly intelligent person across intellectual work, by the end of 2030."
+due = 2030
+due_basis = "'almost certainly no later than 2030'; judged at 2030-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-023"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'Almost certainly' is a hedge, not a number. This is the only outer date he has put on the arrival in his own words. Not in the seed list."

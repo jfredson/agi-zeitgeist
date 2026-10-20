@@ -1,0 +1,19 @@
+[claim]
+id = "2026-02-13-amodei-industry-compute-100-gigawatts-2028"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "the same answer, the next sentence"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "2028 might be 100 gigawatts."
+prediction = "The AI industry might build about 100 gigawatts of computing capacity in 2028."
+kind = "deployment"
+bar = "The AI computing capacity the industry brings into service during 2028 totalling about 100 gigawatts of power (at least 75), shown by outside counts."
+due = 2028
+due_basis = "'2028'."
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'might'."
