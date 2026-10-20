@@ -16,7 +16,7 @@ from pathlib import Path
 from matplotlib.patches import Rectangle
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from chart_style import GRID, INK, INK_2, PALETTE, PEOPLE, SURFACE, figure, measured, read, save, titles  # noqa: E402
+from chart_style import GRID, INK, INK_2, PALETTE, PANEL_TIERS, PEOPLE, SURFACE, figure, measured, read, save, titles  # noqa: E402
 
 # Each person's earliest and latest guess at when machines will match people at most thinking work
 # (target_capability broad_competence), chosen by hand from the quotes so the choice can be checked.
@@ -255,7 +255,7 @@ def frontier_rows(statements=None, speakers=None):
         if r["endorsement"] not in ("accepts", "uncertain", "conditional"):
             continue
         sp = speakers.get(r["speaker_id"])
-        if not sp or sp["tier"] not in ("core", "cohort_2020s"):
+        if not sp or sp["tier"] not in PANEL_TIERS:  # the ledger-only list never enters a figure (A30)
             continue
         lo = int(r["timeline_year"]); hi = int(r["timeline_year_high"] or lo)
         out.append(dict(id=r["statement_id"], speaker=r["speaker_id"], name=sp["name"], said=int(r["date"][:4]),

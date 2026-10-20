@@ -1,0 +1,25 @@
+[claim]
+id = "2025-02-04-pichai-waymo-austin-atlanta-2025"
+speaker_id = "pichai"
+when = "2025-02-04"
+when_note = "Alphabet's fourth-quarter 2024 earnings call was held on 2025-02-04."
+occasion = "Alphabet's fourth-quarter 2024 earnings call (Pichai's remarks as posted by Google)"
+source_kind = "transcript"
+source_url = "https://blog.google/inside-google/message-ceo/alphabet-earnings-q4-2024/"
+source_locator = "the Waymo section"
+checked_how = "Read Google's edited transcript of his remarks on the page on 2026-10-19 (curl)."
+quote = "Waymo will be expanding its network and operations partnerships to open up new markets, including Austin and Atlanta this year and Miami next year."
+prediction = "Waymo's driverless ride service would open in Austin and in Atlanta during 2025, through partnerships."
+kind = "deployment"
+bar = "Driverless Waymo rides open to the public in both Austin and Atlanta by 2025-12-31."
+due = 2025
+repeated_on = [2025-04-24]
+due_basis = "'this year', said 2025-02-04; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-06-24
+verdict_why = "Waymo rides opened to Uber users in Austin on 2025-03-04 and in Atlanta on 2025-06-24 (press reports); his own remarks of 2025-07-23 say 'Last month, Waymo launched in Atlanta'."
+verdict_source = "https://blog.google/inside-google/message-ceo/alphabet-earnings-q2-2025/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["pichai-claims-005", "pichai-claims-022", "pichai-claims-069"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips. Waymo, the self-driving car company whose cars are driven by AI, belongs to Alphabet. On 2025-04-24 he said both 'our public launch in Atlanta later this summer' (prepared remarks) and 'the first paid rides in Atlanta, via Uber, later this year' (official transcript, page 19), so the date was not clearly narrowed: that day is a repeat of this claim, not a record of its own (settled before merging on 2026-10-19, after the independent check). Miami, in the same sentence, is a separate claim (2025-02-04-pichai-waymo-miami-2026)."

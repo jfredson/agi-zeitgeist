@@ -1,0 +1,24 @@
+[claim]
+id = "2024-12-04-pichai-waymo-ten-us-cities-next-year"
+speaker_id = "pichai"
+when = "2024-12-04"
+when_note = "The DealBook Summit interview took place on 2024-12-04 in New York; the New York Times' upload is dated 2024-12-06."
+occasion = "Interview with Andrew Ross Sorkin at the New York Times DealBook Summit 2024"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=OsxwBmp3iFU"
+source_locator = "00:16:37 to 00:16:46 into the video"
+checked_how = "Read the official upload's automatic English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words, which are rough."
+quote = "I think in the US by next year we'll be in like 10 cities robustly right and like in 10 of the major market"
+prediction = "Waymo's driverless cars, driven by AI, would be operating 'robustly' in about ten major United States markets by the end of 2025."
+kind = "deployment"
+bar = "Waymo operating a driverless ride service in about ten major United States markets by 2025-12-31, shown by Alphabet's or Waymo's own count. 'Like 10' is read as at least nine."
+due = 2025
+due_basis = "'by next year', said 2024-12-04; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "His own remarks of 2026-04-29 say Waymo had launched 'six new cities so far in 2026, and operations in 11 major U.S. cities in total', which leaves five at the end of 2025 (Phoenix, the San Francisco Bay Area, Los Angeles, Austin, Atlanta): about half the number. The count passed ten in early 2026."
+verdict_source = "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["pichai-claims-005", "pichai-claims-051"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips. Waymo, the self-driving car company, belongs to Alphabet. Judgement call: 'like 10' is a rough number, so nine would have counted; five does not."

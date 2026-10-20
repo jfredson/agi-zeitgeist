@@ -1,0 +1,20 @@
+[claim]
+id = "2025-11-20-mensch-self-driving-madrid-moscow-in-four-years"
+speaker_id = "mensch"
+when = "2025-11-20"
+when_note = "YouTube gives the upload date of the episode as 2025-11-20; the day of recording is not given."
+occasion = "This Week in Startups podcast, episode E2212, 'Why data is the biggest AI bottleneck'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Z5H0Jl4ohv4"
+source_locator = "47:17 to 48:40 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words. The captions mark speaker changes only with '>>'; the line is his answer to the hosts' 'Give me a year. 2028? 2029?', and the host then repeats '2028 to 2029' and he says 'Yeah'."
+quote = "I'd say like yeah four four four years from now"
+prediction = "Pressed by the hosts to pick a year, he said that in about four years from November 2025 (2028 to 2029) an AI model will be able to drive a car anywhere in Europe, from Madrid to Moscow, safely 10,000 times out of 10,000."
+kind = "capability"
+bar = "Plain reading: by the end of 2029, a car driven by an AI system makes long cross-border trips across Europe with no human driver and no safety failures, shown by a public service or an outside test of such driving at scale."
+due = 2029
+due_early = 2028
+due_basis = "'four years from now', said 2025-11-20: November 2029; the host's '2028 to 2029', which he accepted, gives the earlier end."
+status = "not_yet_due"
+search_ids = ["mensch-claims-021"]
+notes = "Role at the time: co-founder and chief executive of Mistral AI (founded 2023-04-28). A reluctant answer to a bet ('You got to pick a year though, man'): before it he said self-driving cars are 'still very far away from general availability' and that a car doing it 'perfectly' 10,000 times out of 10,000 was 'probably not' possible yet. 'Ten thousand out of ten thousand' cannot be tested literally; the bar takes the plain sense of fully reliable driving with no person at the wheel."

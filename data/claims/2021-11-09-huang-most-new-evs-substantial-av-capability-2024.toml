@@ -1,0 +1,20 @@
+[claim]
+id = "2021-11-09-huang-most-new-evs-substantial-av-capability-2024"
+speaker_id = "huang"
+when = "2021-11-09"
+when_note = "GTC November 2021 keynote, released on NVIDIA's channel on 2021-11-09."
+occasion = "GTC November 2021 keynote (recorded)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=jhDiaUL_RaM"
+source_locator = "1:31:35 to 1:31:46 into the video"
+checked_how = "Read the English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp); the captions are punctuated and read as a clean run of his words."
+quote = "By 2024, the vast majority of new EVs will have substantial AV capability."
+prediction = "By 2024 the vast majority of new electric cars would have substantial self-driving (autonomous vehicle) capability."
+kind = "deployment"
+bar = "None an outsider could run: 'substantial AV capability' names no level of automation. Read as lane-keeping and adaptive cruise control it was already true in 2021; read as cars that drive themselves it was far from true, and the words do not choose."
+due = 2024
+due_basis = "His words: 'By 2024'; judged at 2024-12-31."
+status = "unfalsifiable"
+verdict_why = "'Substantial' is a judgement word with no measure, like 'materially change' in the ledger's Altman example; the claim cannot be held to either reading without supplying a bar after the fact. Decided at entry."
+search_ids = ["huang-claims-021"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. Said just after 'Someday, everything that moves will be autonomous', which has no date."

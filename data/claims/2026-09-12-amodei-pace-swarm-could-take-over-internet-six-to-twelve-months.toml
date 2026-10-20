@@ -1,0 +1,19 @@
+[claim]
+id = "2026-09-12-amodei-pace-swarm-could-take-over-internet-six-to-twelve-months"
+speaker_id = "amodei"
+when = "2026-09-12"
+when_note = "The page says only 'September 2026'; the first Hacker News submission of it is 2026-09-12 14:10 universal time."
+occasion = "Short post 'We Must Pace the Frontier' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/post/we-must-pace-the-frontier"
+source_locator = "the paragraph beginning 'My second concern is the OpenAI-Hugging Face incident'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "it’s my worry that in 6–12 months such a swarm could be capable of taking over the entire internet with a persistent botnet"
+prediction = "He worries that within six to twelve months a swarm of AI agents with greater abilities, but the same misbehaviour as in an incident he describes, could be capable of taking over the entire internet with a persistent botnet (a network of hijacked computers), causing perhaps hundreds of billions of dollars of damage."
+kind = "capability"
+bar = "His words: a swarm of AI agents with greater abilities than the one in the incident he describes but a similar level of misbehaviour, shown, in a real event or in a published test by its maker or an outside body, to be capable of taking over the entire internet with a persistent botnet (a network of hijacked computers that it keeps control of), by the end of 2027."
+due = 2027
+due_basis = "'in 6–12 months' from 2026-09-12 runs from March to September 2027; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-063", "amodei-claims-015", "amodei-claims-078"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Stated as a worry ('it's my worry that ... could'), scored at face value. The incident he names was not checked independently. Test changed before merging on 2026-10-19: it read 'taking control of computers across the internet at large scale and keeping that control', now 'taking over the entire internet with a persistent botnet', with 'such a swarm' kept, because the test must keep his words and not weaken them. The page gives only 'September 2026'; 2026-09-12, the first Hacker News submission, is the latest day it could have been posted, and the file name keeps it."

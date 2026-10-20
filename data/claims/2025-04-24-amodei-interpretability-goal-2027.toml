@@ -1,0 +1,20 @@
+[claim]
+id = "2025-04-24-amodei-interpretability-goal-2027"
+speaker_id = "amodei"
+when = "2025-04-24"
+when_note = "The page says only 'April 2025'; the first Hacker News submission of it is 2025-04-24."
+occasion = "Short post 'The Urgency of Interpretability' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/post/the-urgency-of-interpretability"
+source_locator = "the paragraph beginning 'First, AI researchers in companies, academia, or nonprofits'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "we have a goal of getting to “interpretability can reliably detect most model problems” by 2027."
+prediction = "Anthropic's goal: by 2027, interpretability (looking inside AI models) can reliably detect most problems in a model."
+kind = "capability"
+bar = "His words: methods that look inside models reliably detect most model problems, shown by Anthropic's or outside published tests (for example audits where hidden problems are planted and must be found), by the end of 2027."
+due = 2027
+due_basis = "'by 2027'; judged at 2027-12-31."
+is_goal = true
+status = "not_yet_due"
+search_ids = ["amodei-claims-028"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). A stated goal of the company he leads, marked as a goal."

@@ -7,18 +7,18 @@ occasion = "Tesla AI Day 2021, announcing the Tesla Bot (later named Optimus), a
 source_kind = "transcript"
 source_url = "https://www.youtube.com/watch?v=j0z4FweCy4M"
 source_locator = "2:07:48 to 2:07:57 into the video"
-checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters), and again on 2026-10-19 for the words around the quote (2:07:02 to 2:09:30); the quote is a verbatim run of those caption words."
 quote = "we think we'll probably have a prototype sometime next year that basically looks like this"
-prediction = "Tesla would probably have a working prototype of its humanoid robot in 2022, looking like the design shown on stage."
+prediction = "Tesla would probably have a prototype of its humanoid robot in 2022, looking basically like the design shown on stage, a robot that in his words would carry the same self-driving AI as Tesla's cars."
 kind = "timing"
-bar = "A physical Tesla humanoid robot prototype shown in public by the end of 2022."
+bar = "A physical prototype of the Tesla humanoid robot that basically looks like the design shown, running Tesla's self-driving AI as he described it in the same talk ('the autopilot system ... cameras ... full self-driving computer and making use of all of the same tools that we use in the car'; 'neural nets recognizing the world, understanding how to navigate through the world ... it kind of makes sense to put that onto a humanoid form'), shown in public by the end of 2022."
 due = 2022
 due_basis = "'sometime next year', said 2021-08-19; judged at the end of 2022."
 status = "hit"
 verdict_on = 2022-09-30
-verdict_why = "At Tesla AI Day on 2022-09-30 a Tesla humanoid robot walked on stage; the presenters said it was 'the first time we try this robot without any backup support. Cranes, mechanical mechanisms, no cables', and a second prototype was shown walking and dancing, which Musk called 'humble beginnings'. The claim was for a prototype, and a prototype was shown."
+verdict_why = "At Tesla AI Day on 2022-09-30 a Tesla humanoid robot (the rough development robot, Bumble C) walked on stage, 'the first time we try this robot without any backup support'; a presenter said it ran 'essentially the same self-driving computer that runs in your Tesla cars' (18:26), and in the video shown of it the presenters said 'you can see the autopilot neural networks running as is, just retrained for the bot' (19:52). The same evening a second prototype with Tesla's own actuators, 'fairly close to what will go into production', was brought on stage, though it did not yet walk. 'Basically looks like this' names no detail; both were humanoid robots of the kind shown in 2021, and the second was the design carried towards production. Every part of the test was shown by the date."
 verdict_source = "https://www.youtube.com/watch?v=ODSJsviD_SU"
 evidence_by = "maker"
 direction = "on_time"
-search_ids = ["musk-claims-005", "musk-claims-006"]
-notes = "The demonstration was public and is on video, so the maker's mark here means the event was Tesla's own, not that the record rests on a statement."
+search_ids = ["musk-claims-005", "musk-claims-006", "musk-claims-020", "musk-claims-021"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI; he had left OpenAI's board in February 2018 and founded xAI only in 2023. (Role note added before merging on 2026-10-19.) Test changed before merging on 2026-10-19, after the independent check found it held no condition about AI and so read as a plain hardware date: it read 'A physical Tesla humanoid robot prototype shown in public by the end of 2022.'; it now carries his own words from the same talk, which make the robot an AI system (it runs the cars' self-driving computer and neural networks), and his 'basically looks like this', which the old test had dropped. The verdict is unchanged: the 2022 event showed both. The demonstration was public and is on video, so the maker's mark here means the event was Tesla's own, not that the record rests on a statement."

@@ -1,0 +1,24 @@
+[claim]
+id = "2025-01-21-amodei-virtual-collaborator-strong-version-this-year"
+speaker_id = "amodei"
+when = "2025-01-21"
+when_note = "The Wall Street Journal's own upload of the event is dated 2025-01-21, during the World Economic Forum in Davos."
+occasion = "Wall Street Journal live interview at Davos, 'Inside Anthropic's Race to Build a Smarter Claude and Human-Level AI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=snkOMOjiVOk"
+source_locator = "15:03 to 17:11 into the video (his description, then the forecast)"
+checked_how = "Read the English captions supplied with the upload on 2026-10-19; the quote is a verbatim run of those caption words."
+quote = "A very strong version of these capabilities will come this year, um, and it may be in the first half of this year."
+prediction = "A 'very strong version' of what he called a virtual collaborator would come during 2025, perhaps in the first half: a model able to do anything on a computer screen a person working virtually could do, given a task that takes about a day (such as building a product feature: writing and testing code, deploying it, talking to coworkers, writing documents, messages and emails), working on its own and checking in now and then."
+kind = "capability"
+bar = "His own description in the same answer: an AI system that can be handed a task of about a day's work of that kind and do it on its own, checking in now and then, at a 'very strong' level, available during 2025. Shown by releases and by outside measures of how long a task AI can finish on its own."
+due = 2025
+due_basis = "'this year', said 2025-01-21; judged at 2025-12-31."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "No released system could reliably do a day's work on its own in 2025. Measurements by METR, an independent group that tests AI models, of task length (how long the software tasks take skilled people) put the best model released in 2025 at about six hours with 50 percent success and about one hour with 80 percent success. Even Claude Mythos Preview, measured in May 2026 and not released to the public, reached about 17 hours at 50 percent but about three hours at 80 percent."
+verdict_source = "https://metr.org/time-horizons/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["amodei-claims-018", "amodei-claims-062", "amodei-claims-033"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). He hedged it: 'I suspect, I'm not promising', 'I don't know for sure what will happen in the industry'. Judgement call, flagged: 'a very strong version' is not a number, so the verdict rests on the plain reading that such a collaborator does day-long tasks reliably; partial versions did ship in 2025 (Claude Code and Claude Opus 4, able to 'work continuously for several hours'), which settles his narrower claim of the same week as a hit (2025-01-amodei-virtual-collaborator-parts-in-2025). Not in the seed list."

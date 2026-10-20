@@ -1,0 +1,21 @@
+[claim]
+id = "2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs"
+speaker_id = "amodei"
+when = "2025-05-28"
+when_note = "Date from the Axios article's address and page (2025/05/28); the interview took place in his San Francisco office shortly before."
+occasion = "Interview with Axios (Jim VandeHei and Mike Allen), 'Behind the Curtain: A white-collar bloodbath'"
+source_kind = "coverage_only"
+source_url = "https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic"
+source_locator = "first bullet under the opening"
+checked_how = "axios.com refused the request (HTTP 403) on 2026-10-19; read a reader copy (r.jina.ai). The figures are the reporters' paraphrase ('Amodei told us'), not a quotation; his own words with the same figures were not found (CNN 2025-05-29 transcript checked: he does not repeat them)."
+reported_as = "Axios (Jim VandeHei and Mike Allen): 'AI could wipe out half of all entry-level white-collar jobs — and spike unemployment to 10-20% in the next one to five years, Amodei told us'."
+prediction = "As reported, AI could wipe out half of all entry-level white-collar jobs and push United States unemployment to 10 to 20 percent within one to five years of May 2025."
+kind = "deployment"
+bar = "Two conditions, both needed: half of entry-level white-collar jobs gone, and the United States unemployment rate at 10 percent or more, by the end of 2030, shown by official labour statistics and studies of entry-level hiring."
+due = 2030
+due_early = 2026
+due_basis = "'in the next one to five years' from May 2025 runs to 2026 to 2030; the later end is taken and the earlier recorded."
+repeated_on = [2025-11-16, 2026-01-20]
+status = "not_yet_due"
+search_ids = ["amodei-claims-034", "amodei-claims-035", "amodei-claims-036", "amodei-claims-037", "amodei-claims-043", "amodei-claims-044", "amodei-claims-046", "amodei-claims-040", "amodei-claims-058"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'could'. Repeats: on 60 Minutes (2025-11-16) Anderson Cooper quoted the figures to him and he answered 'Yes, that is the future we could see if we don't become aware of this problem'; at Davos (2026-01-20) 'one to five years as of six months ago I would stick with that'. At Dreamforce (October 2025) he spoke of broad labour disruption 'in the next two to five years' without figures, and on Bloomberg (2026-06-17) he said the real statement 'was always, I don't know what's gonna happen, but this is an order of magnitude' and that he had 'the same order of concern'; neither is a retraction. His essay of 2026-01-26 restates the jobs half in his own words without the unemployment figure (separate record)."

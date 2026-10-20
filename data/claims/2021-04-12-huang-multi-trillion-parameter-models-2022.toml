@@ -1,0 +1,24 @@
+[claim]
+id = "2021-04-12-huang-multi-trillion-parameter-models-2022"
+speaker_id = "huang"
+when = "2021-04-12"
+when_note = "GTC 2021 keynote, released on NVIDIA's channel on 2021-04-12."
+occasion = "GTC 2021 spring keynote (recorded)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=eAn_oiZwUXA"
+source_locator = "0:49:58 to 0:50:13 into the video"
+checked_how = "Read the English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp); the captions are punctuated and read as a clean run of his words."
+quote = "We expect to see multi-trillion-parameter models by next year, and 100 trillion+ parameter models by 2023."
+prediction = "AI models with several trillion parameters (the adjustable numbers a model learns) would exist by 2022. The 2023 half of the sentence is its own record."
+kind = "timing"
+bar = "An AI model with at least two trillion parameters trained and reported by 2022-12-31."
+due = 2022
+due_basis = "'by next year', said 2021-04-12, is 2022; judged at 2022-12-31."
+status = "hit"
+verdict_on = 2021-10-08
+verdict_why = "Alibaba's paper submitted 2021-10-08 reports 'pretraining unprecedented 10-trillion-parameter model ... on solely 512 GPUs within 10 days', more than a year before the due date."
+verdict_source = "https://arxiv.org/abs/2110.03888"
+evidence_by = "outside"
+direction = "sooner"
+search_ids = ["huang-claims-020", "huang-claims-086", "huang-claims-087"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. He put it beside 'the human brain has roughly 125 trillion synapses' as a loose comparison. The Alibaba model shared weights during early training and split them later; it was still trained and reported as a 10-trillion-parameter model."

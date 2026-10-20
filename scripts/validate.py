@@ -57,6 +57,11 @@ HEADERS = {
 
 SPEAKER_TYPES = {"individual", "survey", "prediction_market", "institution", "poll"}
 PANEL_TIERS = {"core", "cohort_2020s", "wide"}
+# The claims ledger's ledger-only list (amendment A30): people who may have claim files but are never
+# panel members, never in statements.csv, the opinion charts or the panel's counts.
+CLAIMS_ONLY_TIER = "claims_only"
+# Who may have claim files: the frozen panel's two tiers and the ledger-only list (A27, A30).
+CLAIMS_TIERS = {"core", "cohort_2020s", CLAIMS_ONLY_TIER}
 QUOTA_TAGS = ["skeptic", "non_us_uk", "philosopher", "frontier_lab"]
 # A quota tag is blank or "<justification> (<date>, <url>)": it needs a dated source.
 TAG_EVIDENCE = re.compile(r"\d{4}(-\d{2}){0,2}.*https?://\S+")
@@ -232,8 +237,10 @@ def check_speakers(rows):
             err(f, i, f"invalid speaker_type {r['speaker_type']!r}")
         # Every row carries a tier: panel tiers for people, not_panel for other sources.
         if r["speaker_type"] == "individual":
-            if r["tier"] not in PANEL_TIERS:
-                err(f, i, f"individual needs tier core, cohort_2020s or wide, got {r['tier']!r}")
+            if r["tier"] not in PANEL_TIERS | {CLAIMS_ONLY_TIER}:
+                err(f, i, f"individual needs tier core, cohort_2020s, wide or claims_only, got {r['tier']!r}")
+            if r["tier"] == CLAIMS_ONLY_TIER and any(r[tag] for tag in QUOTA_TAGS):
+                err(f, i, "a claims_only row is not on the panel, so it carries no panel quota tag")
             if not r["inclusion_note"]:
                 err(f, i, "individual needs an inclusion_note")
         elif r["tier"] != "not_panel":
@@ -599,7 +606,8 @@ def claim_value_ok(kind, value):
 def check_claims(tables, speakers):
     """Every claim file in data/claims/ (docs/claims-ledger-method.md): it parses, holds one
     [claim] table, every field is known and of the right kind, the required ones are there, the
-    id is the file name and names the speaker and the date, the speaker is on the panel, the
+    id is the file name and names the speaker and the date, the speaker is on the panel or the
+    ledger-only list (A30), the
     status is one of the five words, a settled claim carries its verdict record, an
     unfalsifiable claim says why, a claim past its due date is not still not_yet_due, a quote is
     short and absent on coverage_only, a cited statement row exists and matches, a restated
@@ -609,7 +617,8 @@ def check_claims(tables, speakers):
         return 0
     search_ids = {r["search_id"] for r in tables["search_log.csv"]}
     statements = {r["statement_id"]: r for r in tables["statements.csv"]}
-    panel = {r["speaker_id"] for r in tables["speakers.csv"] if r["speaker_type"] == "individual"}
+    claimants = {r["speaker_id"] for r in tables["speakers.csv"]
+                 if r["speaker_type"] == "individual" and r["tier"] in CLAIMS_TIERS}
     claims = {}
     files = sorted(CLAIMS.glob("*.toml"))
     for path in files:
@@ -647,8 +656,8 @@ def check_claims(tables, speakers):
                 if m.group(2) != c.get("speaker_id"):
                     errors.append(f"{f}: the speaker in the id ({m.group(2)}) is not 'speaker_id' ({c.get('speaker_id')!r})")
         sp = c.get("speaker_id")
-        if sp not in panel:
-            errors.append(f"{f}: speaker_id {sp!r} is not a person on the frozen panel (speakers.csv); the panel changes only by amendment")
+        if sp not in claimants:
+            errors.append(f"{f}: speaker_id {sp!r} is not on the frozen panel (tier core or cohort_2020s) or the ledger-only list (tier claims_only) in speakers.csv; either list changes only by amendment")
         when = c.get("when")
         if isinstance(when, str) and not PRECISION_PATTERNS["day"].match(when) and not c.get("when_note"):
             errors.append(f"{f}: 'when' is not a full date, so 'when_note' must say how it was settled")
@@ -755,6 +764,12 @@ def main():
     check_search_log(tables["search_log.csv"], speakers)
     check_readings(tables, speakers)
     n_claims = check_claims(tables, speakers)
+
+    # The ledger-only list never enters the opinion record (amendment A30).
+    claims_only = {r["speaker_id"] for r in tables["speakers.csv"] if r["tier"] == CLAIMS_ONLY_TIER}
+    for i, r in enumerate(tables["statements.csv"], start=2):
+        if r["speaker_id"] in claims_only:
+            err("statements.csv", i, f"speaker {r['speaker_id']!r} is on the claims ledger's ledger-only list (tier claims_only), which never enters statements.csv (A30)")
 
     # Every speaker with statements must have logged searches (sampling rule 1).
     searched = {r["speaker_id"] for r in tables["search_log.csv"]}

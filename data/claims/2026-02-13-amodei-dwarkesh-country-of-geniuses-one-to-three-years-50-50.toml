@@ -1,0 +1,23 @@
+[claim]
+id = "2026-02-13-amodei-dwarkesh-country-of-geniuses-one-to-three-years-50-50"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "section '00:29:42 - Is continual learning necessary?', his answer on when an AI could replace a human editor"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "I have a hunch—this is more like a 50/50 thing—that it’s going to be more like one to two, maybe more like one to three."
+statement_id = "amodei-2026-08"
+prediction = "A 'country of geniuses in a data center' in one to two years, maybe one to three, which he calls 'more like a 50/50 thing'."
+kind = "timing"
+bar = "The description given in the same conversation, which he accepts as his own ('That description you gave comes from Machines of Loving Grace'): AI systems with intellectual capabilities matching or exceeding Nobel Prize winners, able to use the interfaces of a person doing digital work and to work with the physical world through them. Shown by the maker or an outside body, by the end of 2029."
+due = 2029
+due_early = 2027
+due_basis = "'one to two, maybe more like one to three' years from 2026-02-13 runs to 2027 to 2029; the later end is taken and the earlier recorded."
+has_probability = true
+restates = "2025-08-06-amodei-cheeky-pint-country-of-geniuses-one-to-three-years"
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). A stated chance (about even), flagged and kept out of the plain count. Later in the same interview he said of his 2024 essay: 'I said we'll get that in 2026, maybe 2027. Again, that is my hunch. I wouldn't be surprised if I'm off by a year or two'."

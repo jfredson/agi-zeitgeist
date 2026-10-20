@@ -1,0 +1,24 @@
+[claim]
+id = "2018-05-08-pichai-john-legend-voice-later-this-year"
+speaker_id = "pichai"
+when = "2018-05-08"
+when_note = "The keynote was given on 2018-05-08; the official upload is dated 2018-05-10."
+occasion = "Opening keynote at Google I/O 2018, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=ogfYd705cRs"
+source_locator = "00:19:21 to 00:20:06 into the video"
+checked_how = "Read the official upload's automatic English captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words. The captions do not name speakers; the passage comes after a presenter says 'back to you sundar' and before he invites Scott Huffman on stage."
+quote = "his voice will be coming later this year in certain context"
+prediction = "The singer John Legend's voice, made with DeepMind's WaveNet speech model, would come to the Google Assistant in some contexts later in 2018."
+kind = "deployment"
+bar = "John Legend's voice usable in the Google Assistant by 2018-12-31, shown by Google's own release."
+due = 2018
+due_basis = "'later this year', said 2018-05-08 (and repeated in the same passage); judged at 2018-12-31."
+status = "missed"
+verdict_on = 2019-04-03
+verdict_why = "Nothing came in 2018. Google's post of 2019-04-03 says 'John Legend's voice is now available as a cameo' on the Assistant, about three months after the due date."
+verdict_source = "https://blog.google/products/assistant/talk-like-a-legend/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["pichai-claims-029", "pichai-claims-037"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 (and later also of its parent Alphabet, from 2019-12-03); Google builds frontier AI models (Google Brain, DeepMind, later Gemini) and its own AI chips. The captions write 'context'; he likely said 'contexts'."

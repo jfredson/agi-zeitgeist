@@ -1,0 +1,25 @@
+[claim]
+id = "2024-12-11-hassabis-gemini-2-flash-general-availability-january"
+speaker_id = "hassabis"
+when = "2024-12-11"
+when_note = "The post is dated 2024-12-11."
+occasion = "Google blog post on Gemini 2.0, the section 'By Demis Hassabis, CEO of Google DeepMind and Koray Kavukcuoglu, CTO of Google DeepMind on behalf of the Gemini team'"
+source_kind = "own_words"
+source_url = "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+source_locator = "section 'Gemini 2.0 Flash'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "General availability will follow in January, along with more model sizes."
+prediction = "Gemini 2.0 Flash, released as an experiment, would become generally available in January 2025, together with more sizes of Gemini 2.0."
+kind = "deployment"
+bar = "Gemini 2.0 Flash generally available (a stable release for production use) and further Gemini 2.0 model sizes released, by 2025-01-31."
+due = 2025
+due_date = 2025-01-31
+due_basis = "'in January', said in December 2024; the month sets the due date, 2025-01-31."
+status = "missed"
+verdict_on = 2025-02-05
+verdict_why = "Google made the updated Gemini 2.0 Flash generally available through its developer service on 2025-02-05, with 2.0 Pro Experimental and 2.0 Flash-Lite, five days after January ended. Users of the Gemini app got 2.0 Flash in the last week of January, but that is the consumer app, not the general availability promised to developers."
+verdict_source = "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["hassabis-claims-038", "hassabis-claims-039"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Co-signed with Koray Kavukcuoglu; entered under Hassabis as the first-named author."

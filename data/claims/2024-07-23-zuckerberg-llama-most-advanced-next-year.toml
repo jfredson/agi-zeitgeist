@@ -1,0 +1,24 @@
+[claim]
+id = "2024-07-23-zuckerberg-llama-most-advanced-next-year"
+speaker_id = "zuckerberg"
+when = "2024-07-23"
+occasion = "Essay 'Open Source AI is the Path Forward' on Meta's newsroom"
+source_kind = "own_words"
+source_url = "https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/"
+source_locator = "third paragraph"
+checked_how = "Read on the page on 2026-10-19 (curl); the essay is dated July 23, 2024 and signed by him as founder and CEO."
+quote = "Starting next year, we expect future Llama models to become the most advanced in the industry."
+prediction = "From 2025 Meta's Llama models would be the most advanced AI models in the industry."
+kind = "timing"
+bar = "During 2025 a Llama model released by Meta is the most capable model in the industry, ahead of the best models of other companies on the main outside comparisons (public leaderboards and benchmark tables)."
+due = 2025
+due_basis = "'Starting next year', said 2024-07-23; judged at 2025-12-31."
+repeated_on = [2024-07-31]
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "Llama 4, released 2025-04-05, was the only Llama generation of 2025, and he himself said on 2025-09-18 that he 'didn't feel like we were on the trajectory that we needed to be on to ... be at the frontier'. On 2026-01-28 he said that in 2025 Meta 'rebuilt the foundations of our AI program' and would start shipping new models in the coming months. No Llama model led the industry in 2025."
+verdict_source = "https://s21.q4cdn.com/399680738/files/doc_financials/2025/q4/META-Q4-2025-Earnings-Call-Transcript.pdf"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["zuckerberg-claims-015", "zuckerberg-claims-025", "zuckerberg-claims-048", "zuckerberg-claims-073", "zuckerberg-claims-031"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Repeated on the second-quarter 2024 earnings call as an aim: 'we're already starting to work on Llama 4, which we're aiming to be the most advanced in the industry next year'. Restated with a changed condition on 2025-01-24 (2025-01-24-zuckerberg-llama-4-leading-model-2025). Test changed before merging on 2026-10-19: it read '... on the main outside comparisons, or Meta itself says so', now without the last clause, because a maker's word that its model beats its rivals' is not a figure only the maker holds and needs an outside comparison (the re-pass rule of that day). The verdict is unchanged."

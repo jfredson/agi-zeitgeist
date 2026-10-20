@@ -1,0 +1,25 @@
+[claim]
+id = "2024-04-12-amodei-agents-take-actions-3-to-18-months"
+speaker_id = "amodei"
+when = "2024-04-12"
+when_note = "The show's own YouTube upload and the New York Times episode are dated 2024-04-12."
+occasion = "The Ezra Klein Show (New York Times), episode 'What if Dario Amodei Is Right About A.I.?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Gi_t3v53XRU"
+source_locator = "8:42 to 8:49 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "I think all of that is coming in the next I would say I don't know 3 to 18 months with increasing levels of ability"
+prediction = "Within 3 to 18 months of April 2024, AI models would be able to do things end to end for a user: go to websites and take actions on the user's computer, 'with increasing levels of ability'."
+kind = "deployment"
+bar = "A released AI model or product that carries out tasks for a user by acting on websites or on the user's computer, end to end, available by the end of 2025."
+due = 2025
+due_early = 2024
+due_basis = "'3 to 18 months' from 2024-04-12 runs from July 2024 to October 2025; the later end falls in 2025, and the earlier end is recorded."
+status = "hit"
+verdict_on = 2024-10-22
+verdict_why = "On 2024-10-22 Anthropic released 'computer use' to developers, in public beta: Claude operating a computer the way people do, by looking at the screen, moving a cursor, clicking buttons and typing. Other companies released similar agents in 2025. The release is the evidence; how well it worked is not part of the bar."
+verdict_source = "https://www.anthropic.com/news/3-5-models-and-computer-use"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["amodei-claims-009", "amodei-claims-010", "amodei-claims-011", "amodei-claims-068"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The New York Times transcript could not be opened (it asked for a check that the reader is human), so the show's own video was used. Anthropic called the release 'still experimental' and 'at times cumbersome and error-prone'; the test does not ask how well it worked, and he said 'with increasing levels of ability'. 'All of that' in his words also took in booking a car, reserving a restaurant and talking to the other people on a trip; the test keeps the general part, acting on websites and the user's computer. The words before it describe 'the model being able to kind of do things end to end or going to websites or taking actions on your computer for you'."

@@ -1,0 +1,19 @@
+[claim]
+id = "2025-04-29-zuckerberg-most-ai-research-code-by-ai"
+speaker_id = "zuckerberg"
+when = "2025-04-29"
+occasion = "Dwarkesh Podcast interview, released the day of LlamaCon"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/mark-zuckerberg-2"
+source_locator = "the section 'Intelligence explosion'"
+checked_how = "Read on 2026-10-19 on the podcast's transcript page (curl), dated Apr 29, 2025."
+quote = "in the next 12 to 18 months, we'll reach the point where most of the code that's going toward these efforts is written by AI"
+prediction = "Within 12 to 18 months of April 2025, most of the code going into Meta's AI research efforts (Llama) would be written by AI agents given goals, not by autocomplete."
+kind = "capability"
+bar = "More than half of the code in Meta's AI research work written by AI agents by the end of 2026, shown by Meta's own figure or an outside report."
+due = 2026
+due_early = 2026
+due_basis = "A range of spans: 12 months from 2025-04-29 is April 2026 and 18 months is October 2026; both fall in 2026, judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["zuckerberg-claims-018", "zuckerberg-claims-041"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Hedged with 'I would guess'. The same day at LlamaCon he told Satya Nadella 'our bet is sort of that in the next year probably you know I don't know maybe half the development is going to be done by AI' (Meta's upload, 16:28); that softer version is noted here rather than entered twice. The share is a figure only Meta holds; if Meta never publishes it, the claim will be hard to settle."

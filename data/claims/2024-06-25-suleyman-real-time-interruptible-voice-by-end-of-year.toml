@@ -1,0 +1,24 @@
+[claim]
+id = "2024-06-25-suleyman-real-time-interruptible-voice-by-end-of-year"
+speaker_id = "suleyman"
+when = "2024-06-25"
+when_note = "NBC News uploaded the session on 2024-06-25; it took place at the Aspen Ideas Festival (2024-06-23 to 2024-06-29) on that day or shortly before."
+occasion = "Conversation with Andrew Ross Sorkin at the Aspen Ideas Festival"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=lPvqvt55l3A"
+source_locator = "0:44:30 to 0:44:45 into the video"
+checked_how = "Read YouTube's automatic English captions of the NBC News upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "literally by the end of this year we'll have realtime voice-based interfaces that allow full Dynamic interrupt and it feels like just talking"
+prediction = "By the end of 2024 there will be real-time voice interfaces to AI that let you interrupt freely, so that it feels like ordinary conversation."
+kind = "deployment"
+bar = "By 2024-12-31, a voice interface to an AI assistant, released to the public, that answers in real time and can be interrupted mid-answer, shown by a maker's release or reporting of it."
+due = 2024
+due_basis = "'by the end of this year', said in June 2024: judged at 2024-12-31."
+status = "hit"
+verdict_on = 2024-08-13
+verdict_why = "Google's post of 2024-08-13 says Gemini Live, a real-time voice conversation with its AI assistant, 'begins rolling out today in English to our Gemini Advanced subscribers on Android phones', and that 'You can even interrupt mid-response'. That is a public voice interface that answers in real time and can be interrupted, released well before the end of 2024. OpenAI's Advanced Voice Mode followed for all paying ChatGPT users from 2024-09-24."
+verdict_source = "https://blog.google/products/gemini/made-by-google-gemini-ai-updates/"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["suleyman-claims-013", "suleyman-claims-028", "suleyman-claims-049", "suleyman-claims-053", "suleyman-claims-056", "suleyman-claims-057"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). 'We' is read as the field, not Microsoft alone: re-read in the captions on 2026-10-19, he is answering a teacher's question about how teachers can use AI, and nothing in the answer names Microsoft or Copilot. Google is not his company, so the evidence is marked outside, though it is Google's description of its own product. Record changed before merging on 2026-10-19: the earlier record, OpenAI's Voice mode FAQ as captured 2024-12-26, speaks only of 'preventing interruptions' by background noise and never says the user can interrupt the AI, so the independent check of 2026-10-19 asked for a record that says so; the verdict date moved from 2024-09-24 to 2024-08-13. Microsoft's own Copilot Voice launched 2024-10-01, but its announcement says nothing of interruption."

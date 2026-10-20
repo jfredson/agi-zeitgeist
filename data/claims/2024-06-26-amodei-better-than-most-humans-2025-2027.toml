@@ -1,0 +1,21 @@
+[claim]
+id = "2024-06-26-amodei-better-than-most-humans-2025-2027"
+speaker_id = "amodei"
+when = "2024-06-26"
+when_note = "The date the episode was published (as the statements table has it); it was recorded somewhat earlier."
+occasion = "In Good Company podcast with Nicolai Tangen (Norges Bank Investment Management)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=xm6jNMSFT7g"
+source_locator = "13:25 to 13:49 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "a good chance that by that time we'll be able to get models that are better than most humans at most things"
+statement_id = "amodei-2024-01"
+prediction = "If model spending reaches 10 to 100 billion dollars (which he expected in 2025, 2026 or maybe 2027) and chips and methods keep improving, there is 'a good chance' that by then there will be models better than most humans at most things."
+kind = "timing"
+bar = "A comparison that can be checked: an AI model shown by its maker or an outside body to perform better than most people at most kinds of work and tasks, by the end of 2027. The condition (spending of that size, continued improvement) is recorded with the verdict."
+due = 2027
+due_early = 2025
+due_basis = "'by that time' refers to '2025 2026 maybe 2027'; the later year is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-012"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'A good chance' is a hedge, not a number, so the claim is scored at face value."

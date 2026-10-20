@@ -1,0 +1,24 @@
+[claim]
+id = "2024-05-14-hassabis-astra-capabilities-gemini-app-later-this-year"
+speaker_id = "hassabis"
+when = "2024-05-14"
+when_note = "Date of the Google I/O 2024 keynote."
+occasion = "Google I/O 2024 keynote, his segment on Project Astra"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=XEzRZ35urlk"
+source_locator = "about 28:45 to 28:59"
+checked_how = "Read the English subtitles of Google's official upload on 2026-10-19 (yt-dlp)."
+quote = "Some of these agent capabilities will come to Google products like the Gemini app later this year."
+prediction = "Some of the Project Astra assistant capabilities just shown (understanding live video from a phone camera, spatial understanding, memory) would reach Google products such as the Gemini app during 2024."
+kind = "deployment"
+bar = "At least some of the capabilities shown in the Astra demonstration, chiefly live camera or video understanding in conversation, available to the public in a Google product such as the Gemini app by 2024-12-31."
+due = 2024
+due_basis = "'later this year', said 2024-05-14; judged at 2024-12-31."
+status = "hit"
+verdict_on = 2024-12-11
+verdict_why = "On 2024-12-11 Google released Gemini 2.0 with a Multimodal Live API taking 'real-time audio, video-streaming input', and the same day Google AI Studio, a public Google product, let anyone share a live camera or screen with Gemini and talk with it ('Stream Real-Time'). That is live camera or video understanding in conversation, available to the public in a Google product, within 2024, which is the test as written. The Gemini app itself got live video only from March 2025. John ruled on 2026-10-19 that AI Studio counts as a Google product under the test."
+verdict_source = "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["hassabis-claims-037", "hassabis-claims-038", "hassabis-claims-041", "hassabis-claims-042", "hassabis-claims-062"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Changed before merging on 2026-10-19 from did not to came true: the earlier verdict set aside AI Studio as a developer tool, which added a condition the test does not state (a consumer product); the independent check said so and John ruled it came true."

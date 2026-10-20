@@ -1,0 +1,20 @@
+[claim]
+id = "2023-08-12-suleyman-naive-open-source-catastrophe-20-years"
+speaker_id = "suleyman"
+when = "2023-08-12"
+when_note = "The post's timestamp is 2023-08-12 20:23 UTC (2023-08-12 in Pacific time)."
+occasion = "Post on X promoting his book The Coming Wave"
+source_kind = "own_words"
+source_url = "https://x.com/mustafasuleyman/status/1690458931716341760"
+source_locator = "the post's last paragraph"
+checked_how = "Read the post's text and timestamp on 2026-10-19 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "But left unchecked, naive open source - in 20 yrs time - will almost certainly cause catastrophe."
+prediction = "If the open release of future AI (and synthetic biology) is left unchecked, it will almost certainly cause a catastrophe within 20 years, that is, by 2043."
+kind = "capability"
+bar = "The plainest reading: by 2043-08-12, a catastrophe (an event causing mass deaths or damage on a national scale or larger) caused by an openly released AI model or openly published synthetic-biology tool, shown by official investigations or reporting. The condition is part of the claim: the verdict must also say whether open release was in fact left unchecked."
+due = 2043
+due_date = 2043-08-12
+due_basis = "'in 20 yrs time' from 2023-08-12 runs to 2043-08-12."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-006", "suleyman-claims-008"]
+notes = "Role at the time: chief executive of Inflection AI. The post is about future generations of AI and synthetic biology together; 'catastrophe' is not defined in it, so the bar is a plain reading. The condition 'left unchecked' is open to argument, which the verdict will have to address."

@@ -1,0 +1,23 @@
+[claim]
+id = "2023-02-01-zuckerberg-generative-ai-launches-this-year"
+speaker_id = "zuckerberg"
+when = "2023-02-01"
+occasion = "Meta's fourth-quarter 2022 earnings call, answering a question on generative AI"
+source_kind = "transcript"
+source_url = "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q4/META-Q4-2022-Earnings-Call-Transcript.pdf"
+source_locator = "question-and-answer session, first answer on generative AI"
+checked_how = "Read on 2026-10-19 in Meta's own transcript of the call (PDF from its investor relations file host, read as text)."
+quote = "So I think you'll see us launch a number of different things this year"
+prediction = "During 2023 Meta would launch a number of different generative AI products (built on large language models and image, video and avatar generators) across its apps."
+kind = "deployment"
+bar = "Several generative AI products released to the public in Meta's apps during 2023, shown by Meta's own releases."
+due = 2023
+due_basis = "'this year', said 2023-02-01; judged at 2023-12-31."
+status = "hit"
+verdict_on = 2023-09-27
+verdict_why = "Meta's release of 2023-09-27 starts rolling out AI stickers, puts the Meta AI assistant out in beta and launches 28 AI characters in beta in the United States: several generative AI products launched within the year. The same release only announces its image editing tools as coming soon to Instagram, so they are not counted."
+verdict_source = "https://about.fb.com/news/2023/09/introducing-ai-powered-assistants-characters-and-creative-tools/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["zuckerberg-claims-019", "zuckerberg-claims-021", "zuckerberg-claims-069"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). A plain product promise with no number; 'a number of different things' is read as more than two. Re-checked on 2026-10-19 after the independent check: the image editing tools, first listed as rolling out, were only announced that day, so the reason now leaves them out; the verdict is unchanged."

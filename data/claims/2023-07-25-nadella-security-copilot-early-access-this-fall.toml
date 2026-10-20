@@ -1,0 +1,25 @@
+[claim]
+id = "2023-07-25-nadella-security-copilot-early-access-this-fall"
+speaker_id = "nadella"
+when = "2023-07-25"
+when_note = "Microsoft's fiscal 2023 fourth-quarter earnings call was held on 2023-07-25; the transcript is dated that day."
+occasion = "Microsoft's fiscal 2023 fourth-quarter earnings call, his prepared remarks"
+source_kind = "transcript"
+source_url = "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/TranscriptFY23Q4"
+source_locator = "his prepared remarks, the security paragraph"
+checked_how = "Read Microsoft's official transcript (Word file) on 2026-10-19 (curl)."
+quote = "Finally, our Security Copilot ... will be available to customers via a paid early access program this fall."
+prediction = "Security Copilot, Microsoft's generative-AI assistant for security teams, would be available to customers through a paid early-access program in autumn 2023."
+kind = "deployment"
+bar = "Security Copilot open to customers through a paid early-access program by the end of autumn 2023 (2023-12-21), shown by a dated record."
+due = 2023
+due_basis = "'this fall', said 2023-07-25; autumn is taken to end at the December solstice, 2023-12-21 in Pacific time."
+due_date = 2023-12-21
+status = "hit"
+verdict_on = 2023-10-19
+verdict_why = "Microsoft's own post of 2023-10-19 says 'our Early Access Program is now open to qualified customers'. That the program was paid rests on Directions on Microsoft, an independent analyst firm, which wrote before the general release of 2024-04-01 that Security Copilot 'has been in paid, private testing via Microsoft's Early Access Program since October 2023'."
+verdict_source = "https://www.microsoft.com/en-us/security/blog/2023/10/19/microsoft-security-copilot-early-access-program-harnessing-generative-ai-to-empower-security-teams/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["nadella-claims-004", "nadella-claims-015", "nadella-claims-022", "nadella-claims-023"]
+notes = "Role at the time: chief executive of Microsoft from 2014-02-04 and its chair from 2021-06-16; Microsoft builds AI models (Phi, the Microsoft AI models) and its own AI chips (Maia), and is OpenAI's largest backer. The quote's ellipsis stands for 'the first product to apply this next generation of AI to SecOps'. Test changed before merging on 2026-10-19: it read 'Security Copilot open to customers through an early-access program by the end of autumn 2023 (2023-12-21), shown by Microsoft's announcement or a report of it', now says 'paid', because he said 'a paid early access program' and a test may not drop a condition he stated. The record was a press report of 2023-10-22 (BleepingComputer) that relayed Microsoft's post; it is now Microsoft's post itself, so the opening is marked as the maker's word."

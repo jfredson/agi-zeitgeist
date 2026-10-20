@@ -1,0 +1,21 @@
+[claim]
+id = "2023-05-22-sutskever-ten-years-expert-skill-most-domains"
+speaker_id = "sutskever"
+when = "2023-05-22"
+when_note = "The post is dated 'May 22, 2023'."
+occasion = "OpenAI blog post 'Governance of superintelligence', by Sam Altman, Greg Brockman and Ilya Sutskever"
+source_kind = "own_words"
+source_url = "https://web.archive.org/web/2023/https://openai.com/blog/governance-of-superintelligence"
+source_locator = "first paragraph"
+checked_how = "openai.com refuses curl; read the Internet Archive copy on 2026-10-19 and saw the date, the three named authors and the sentence."
+quote = "it’s conceivable that within the next ten years, AI systems will exceed expert skill level in most domains"
+statement_id = "sutskever-2023-08"
+prediction = "It is conceivable that within ten years of May 2023, so by May 2033, AI systems will exceed expert skill level in most domains and carry out as much productive activity as one of today's largest corporations."
+kind = "capability"
+bar = "The same bar as Altman's record of these words: published results showing AI systems beating human experts across most fields of skilled work, and an AI system or fleet whose output matches a very large company's, by 2033-05-22. Hedged in the words: 'conceivable'."
+due = 2033
+due_date = 2033-05-22
+due_basis = "'within the next ten years' from 2023-05-22 runs to 2033-05-22."
+status = "not_yet_due"
+search_ids = ["sutskever-claims-001", "sutskever-claims-003"]
+notes = "Said as OpenAI's co-founder and chief scientist (December 2015 to May 2024), the company's named chief scientist speaking for it in a company post. Three named authors, so the words are joint; the same words are recorded for Altman as 2023-05-22-altman-ten-years-expert-skill-most-domains, and this file gives Sutskever's record the same bar so the two are judged alike. The rest of the sentence: 'and carry out as much productive activity as one of today's largest corporations'."

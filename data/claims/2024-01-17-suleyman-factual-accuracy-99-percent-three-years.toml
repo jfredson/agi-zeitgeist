@@ -1,0 +1,20 @@
+[claim]
+id = "2024-01-17-suleyman-factual-accuracy-99-percent-three-years"
+speaker_id = "suleyman"
+when = "2024-01-17"
+when_note = "The World Economic Forum's upload (2024-04-15) says the session was held on 2024-01-17 at the Annual Meeting in Davos."
+occasion = "World Economic Forum town hall 'How to Trust Technology', Davos"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=GbbGpc_4MiI"
+source_locator = "0:11:09 to 0:11:30 into the video"
+checked_how = "Read YouTube's automatic English captions of the World Economic Forum's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "hovering around sort of 80 85% all the way up to 90 99 to 99.9% right an order of magnitude improvement"
+prediction = "Over the next three years hallucinations will be largely eliminated: the factual accuracy of AI models, about 80 to 85% today in his words, will rise to 99 to 99.9%, 'an order of magnitude improvement'."
+kind = "capability"
+bar = "His own numbers: by the end of 2027, the answers of leading AI models are factually accurate 99% of the time or better, so that errors are about a tenth of what they were at the start of 2024, shown by a published measurement of ordinary use (such as a maker's count on real conversations) or an outside factuality benchmark."
+due = 2027
+due_basis = "'over the next next three years' from 2024-01-17 runs to 2027-01-17; judged at the end of 2027."
+restates = "2023-06-10-suleyman-hallucinations-largely-eliminated-by-june-2025"
+status = "not_yet_due"
+search_ids = ["suleyman-claims-013", "suleyman-claims-025"]
+notes = "Role at the time: co-founder and chief executive of Inflection AI (he left for Microsoft on 2024-03-19). He says 'inaccuracies' but the numbers describe accuracy; the captions read '90 99 to 99.9%', taken as a slip on the way to 99 to 99.9%. A changed repeat of the claim of 2023-06-10 (95% by June 2025): a higher bar and a later date. For context only: OpenAI's GPT-5 system card (2025-08-13) measured 4.8% to 11.6% of ChatGPT answers with a major factual error."

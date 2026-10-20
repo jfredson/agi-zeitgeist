@@ -1,0 +1,20 @@
+[claim]
+id = "2025-08-06-amodei-ai-tax-return-2026-or-2027"
+speaker_id = "amodei"
+when = "2025-08-06"
+when_note = "Stripe's upload is dated 2025-08-06; he says in it 'this year, we're halfway through the year', so it was recorded around mid-2025."
+occasion = "'A Cheeky Pint' with John Collison of Stripe"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=GcqQ1ebBqkc"
+source_locator = "39:52 to 40:50 into the video (the question and his answer)"
+checked_how = "Read the English captions supplied with the upload on 2026-10-19; the quote is a verbatim run of those caption words."
+quote = "Probably sooner than that. Okay. I don't know if it's '26 or '27."
+prediction = "Asked about Dwarkesh Patel's forecast of 2028 for the first year an AI can do your taxes when you just send it all your financial data and emails, he said probably sooner, 2026 or 2027; the model could do it already but 'would make too many mistakes'."
+kind = "capability"
+bar = "An AI product that a person can give their financial documents and emails and that prepares a complete, correct tax return with no human doing the work, available to the public, by the end of 2027."
+due = 2027
+due_early = 2026
+due_basis = "''26 or '27'; the later year is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-039"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The quote runs his answer, Collison's 'Okay', and his next sentence. He added 'I would be surprised if it takes that long'. Not in the seed list."

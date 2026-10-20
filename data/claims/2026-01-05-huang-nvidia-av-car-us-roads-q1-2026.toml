@@ -1,0 +1,26 @@
+[claim]
+id = "2026-01-05-huang-nvidia-av-car-us-roads-q1-2026"
+speaker_id = "huang"
+when = "2026-01-05"
+when_note = "NVIDIA Live at CES 2026 keynote, released on NVIDIA's channel on 2026-01-05."
+occasion = "NVIDIA Live at CES 2026 keynote, Las Vegas"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=0NBILspM4c4"
+source_locator = "0:41:35 to 0:41:46 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "the first AV car from NVIDIA is going to be on the road in Q1, and then it goes Europe in Q2"
+prediction = "The first car with Nvidia's own full self-driving stack (the Mercedes-Benz CLA with Nvidia's Alpamayo driving model) would be on US roads in the first quarter of 2026. Europe and Asia are their own records."
+kind = "deployment"
+bar = "Mercedes CLA cars running Nvidia's full self-driving stack, with its point-to-point assisted driving, in customers' hands on US roads by 2026-03-31."
+due = 2026
+due_basis = "'in Q1 ... here in the United States in Q1', said 2026-01-05; the first quarter of 2026 ends 2026-03-31."
+due_date = 2026-03-31
+restates = "2025-05-19-huang-mercedes-self-driving-stack-around-world-2025"
+status = "missed"
+verdict_on = 2026-05-25
+verdict_why = "On 2026-05-25 Mercedes said 'the full urban point-to-point capability is expected to activate later this year'; only a limited version (steering, lane change, parking) was on sale in the US. Nvidia's own blog on the day of the keynote already said 'expected by end of this year', and Nvidia's call of 2026-02-25 said the car 'will be on the road soon'."
+verdict_source = "https://www.cbtnews.com/mercedes-benz-to-roll-out-urban-assisted-driving/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["huang-claims-011", "huang-claims-095", "huang-claims-096", "huang-claims-098"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. A changed repeat of the 2025-05-19 claim (2025 slid to the first quarter of 2026). No record was found, by 2026-10-19, of the full US feature switched on; the direction is as of the verdict. In the same talk he said the CLA 'just went to production'."

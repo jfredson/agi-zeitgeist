@@ -7,11 +7,11 @@ occasion = "Tesla's third-quarter 2025 earnings call"
 source_kind = "transcript"
 source_url = "https://www.youtube.com/watch?v=GQ9S7xbkGAY"
 source_locator = "17:04 to 17:12 into the video"
-checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-17 (no punctuation, some stutters), and again on 2026-10-19 for the words around the quote (14:31 to 18:00); the quote is a verbatim run of those caption words."
 quote = "we look forward to unveiling Optimus V3 um you know probably in Q1"
-prediction = "Tesla would probably unveil the third version of its Optimus humanoid robot in the first quarter of 2026."
+prediction = "Tesla would probably unveil the third version of its Optimus humanoid robot in the first quarter of 2026; in the same passage he said most of 'the real world intelligence we've developed for the car' transfers to Optimus."
 kind = "timing"
-bar = "A public unveiling of Optimus version 3 by Tesla by 2026-03-31."
+bar = "A public unveiling by Tesla of Optimus version 3, the humanoid robot to which, in his words in the same passage, most of 'the real world intelligence we've developed for the car' transfers, by 2026-03-31."
 due = 2026
 due_date = 2026-03-31
 due_basis = "'probably in Q1', said 2025-10-22, means the first quarter of 2026; the due date is 2026-03-31."
@@ -21,6 +21,6 @@ verdict_why = "On Tesla's call of 2026-04-22, after the quarter had ended, Musk 
 verdict_source = "https://www.youtube.com/watch?v=qO7T5zgRvXM"
 evidence_by = "maker"
 direction = "not_come"
-search_ids = ["musk-claims-015", "musk-claims-017"]
-notes = "If Tesla unveiled Optimus 3 later in 2026 the direction becomes 'later'; the Q2 2026 call could not be read (search musk-claims-019)."
-verify = "Whether Optimus version 3 was unveiled after April 2026, and when; coverage found by search says Optimus Gen 3 hands were shown in February 2026, which was not opened."
+search_ids = ["musk-claims-015", "musk-claims-017", "musk-claims-022", "musk-claims-023"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models; he was also chief executive of Tesla, which this claim is about. (Role note added before merging on 2026-10-19.) Test changed before merging on 2026-10-19: it read 'A public unveiling of Optimus version 3 by Tesla by 2026-03-31.'; it now names the AI the robot carries, in his words from the same passage, so that it is a claim about an AI system and not a plain hardware date (the rule the independent check applied to the 2021 robot prototype). A search on 2026-10-19 found coverage of further delays (his post of late March 2026 that it 'needs some finishing touches', his words on the 2026-04-22 call) and no unveiling. If Tesla unveiled Optimus 3 later in 2026 the direction becomes 'later'; the Q2 2026 call could not be read (search musk-claims-019)."
+verify = "Whether Optimus version 3 was unveiled after April 2026, and when; a search on 2026-10-19 found none, but the call of 2026-07-22 has not been read."

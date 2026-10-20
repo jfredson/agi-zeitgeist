@@ -1,0 +1,20 @@
+[claim]
+id = "2023-08-29-suleyman-gpt-4-class-open-source-two-to-three-years"
+speaker_id = "suleyman"
+when = "2023-08-29"
+when_note = "Sam Harris's channel uploaded the episode on 2023-08-29; the recording date is not stated."
+occasion = "Making Sense podcast with Sam Harris, episode 332, 'Can We Contain Artificial Intelligence?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=IkojE37PUO8"
+source_locator = "0:51:58 to 0:52:50 into the video"
+checked_how = "Read YouTube's automatic English captions of the Sam Harris channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "Frontier models like ours are inflection and and like gpt4 uh gbt 3.5 even will be open source in the next two to three years"
+prediction = "If the trend of models getting smaller and cheaper continues, the frontier models of mid-2023 (Inflection's own, GPT-4, GPT-3.5) will be matched by openly released models within two to three years."
+kind = "deployment"
+bar = "The plainest reading: by the end of 2026, a model whose weights anyone may download matches GPT-4 as released in March 2023 on the standard published benchmarks. The condition in the words (the trend continuing) is kept."
+due = 2026
+due_early = 2025
+due_basis = "A range: 'in the next two to three years' from 2023-08-29 is 2025 at the earlier end and 2026 at the later end. The later end is taken as the rule says, and the earlier end recorded."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-013", "suleyman-claims-018"]
+notes = "Role at the time: co-founder and chief executive of Inflection AI (founded 2022-03; he left for Microsoft on 2024-03-19). The run-up: 'if that trajectory continues then we should expect that what is Cutting Edge today ...'. Read as the capability becoming openly available, not as these exact models being released."

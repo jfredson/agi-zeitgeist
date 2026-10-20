@@ -1,0 +1,20 @@
+[claim]
+id = "2016-04-27-zuckerberg-better-than-people-at-senses"
+speaker_id = "zuckerberg"
+when = "2016-04-27"
+occasion = "Facebook's first-quarter 2016 earnings call, answering an analyst"
+source_kind = "transcript"
+source_url = "https://www.sec.gov/Archives/edgar/data/0001326801/000132680116000069/earningscalltranscript-def.htm"
+source_locator = "question-and-answer session, answer to Robert W. Baird's question on machine learning"
+checked_how = "Read on 2026-10-19 in the call transcript Facebook filed with the US Securities and Exchange Commission (curl)."
+quote = "it's possible to get to the point in the next 5 to 10 years where we have computer systems that are better than people"
+prediction = "Within five to ten years of April 2016 it is possible that computer systems will be better than people at each of the basic human senses: seeing, hearing and language. He added that this would not mean computers 'will be thinking or will be generally better'."
+kind = "capability"
+bar = "His own terms: computer systems better than people at each of seeing, hearing and language. Plainest reading: by the end of 2026, published results showing machines beat people across the main tests of recognising images and video, recognising speech, and understanding language, not on one narrow benchmark only."
+due = 2026
+due_early = 2021
+due_basis = "A range of spans: five years from 2016-04-27 is April 2021 and ten years is April 2026. The later end, 2026, is the due year; the earlier end is recorded."
+repeated_on = [2016-12-19]
+status = "not_yet_due"
+search_ids = ["zuckerberg-claims-004", "zuckerberg-claims-005", "zuckerberg-claims-003", "zuckerberg-claims-054"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Hedged with 'it's possible'. He said the same idea two weeks earlier at the F8 developer conference (2016-04-12), in looser words, as part of a ten-year roadmap ('Artificial intelligence will power all kinds of different services with better than human level perception', read only in a third-party transcript), and repeated it in his note 'Building Jarvis' (2016-12-19): 'within 5-10 years we'll have AI systems that are more accurate than people for each of our senses', adding touch. An earlier version from his Facebook question-and-answer session of 2015-06-30 survives only in press reports and was left out (see the search log)."

@@ -1,0 +1,21 @@
+[claim]
+id = "2026-01-26-amodei-constitution-goal-2026"
+speaker_id = "amodei"
+when = "2026-01-26"
+when_note = "The page says only 'January 2026'; the first Hacker News submission of it is 2026-01-26."
+occasion = "Essay 'The Adolescence of Technology' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/essay/the-adolescence-of-technology"
+source_locator = "section on autonomy risks, the paragraph beginning 'We believe that a feasible goal for 2026'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "a feasible goal for 2026 is to train Claude in such a way that it almost never goes against the spirit of its constitution."
+prediction = "Anthropic's goal for 2026: train Claude so that it almost never goes against the spirit of its constitution (the written principles Anthropic trains it to follow)."
+kind = "capability"
+bar = "None an outsider can apply: whether Claude goes against 'the spirit' of its constitution, and how rarely is 'almost never', are judged only by Anthropic."
+due = 2026
+due_basis = "'a feasible goal for 2026'."
+is_goal = true
+status = "unfalsifiable"
+verdict_why = "'The spirit of its constitution' has no outside test and only the maker can judge it. Decided at entry."
+search_ids = ["amodei-claims-049"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). A stated goal, marked as such."

@@ -1,0 +1,20 @@
+[claim]
+id = "2024-06-02-huang-jlr-self-driving-fleet-2026"
+speaker_id = "huang"
+when = "2024-06-02"
+when_note = "Computex 2024 keynote in Taipei, released on NVIDIA's channel on 2024-06-02."
+occasion = "Computex 2024 keynote, Taipei"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=pKXDVsWZmUU"
+source_locator = "1:42:30 to 1:42:40 into the video"
+checked_how = "Read the punctuated English (US) caption track of the official NVIDIA upload on 2026-10-19 (yt-dlp); the quote is a verbatim run of those caption words."
+quote = "Next year we're going to go to production with the Mercedes fleet. And after that, in 2026, the JLR fleet"
+prediction = "In 2026 the Jaguar Land Rover fleet running Nvidia's self-driving stack ('NVIDIA again builds the entire stack', the sentence before) would go into production."
+kind = "deployment"
+bar = "Jaguar or Land Rover cars running Nvidia's self-driving software stack, the 'entire stack' he says Nvidia builds, entering series production during 2026."
+due = 2026
+due_basis = "His words: 'in 2026'; judged at 2026-12-31."
+restates = "2022-03-22-huang-hyperion-8-in-jlr-cars-2025"
+status = "not_yet_due"
+search_ids = ["huang-claims-014", "huang-claims-092", "huang-claims-110"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. A changed repeat of the 2022 Jaguar Land Rover claims (2025 slid to 2026). As of 2025-07-22 JLR had put its new electric models, the first on Nvidia's platform, into 2026. Test changed before merging on 2026-10-19: it read 'Jaguar or Land Rover cars running Nvidia's self-driving (driver-assistance) software entering series production during 2026', now names the 'entire stack' of his own sentence, as for the Mercedes half. Quote corrected the same day from the clean caption track; the automatic captions read 'the jlr Fe Fleet'."

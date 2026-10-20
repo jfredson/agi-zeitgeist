@@ -1,0 +1,25 @@
+[claim]
+id = "2023-12-06-hassabis-gemini-ultra-developers-enterprise-early-next-year"
+speaker_id = "hassabis"
+when = "2023-12-06"
+when_note = "The post is dated 2023-12-06."
+occasion = "Google blog post 'Introducing Gemini', the section written 'By Demis Hassabis, CEO and Co-Founder of Google DeepMind, on behalf of the Gemini team'"
+source_kind = "own_words"
+source_url = "https://blog.google/technology/ai/google-gemini-ai/"
+source_locator = "section 'Gemini Ultra coming soon'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "before rolling it out to developers and enterprise customers early next year."
+prediction = "Google would roll out Gemini Ultra, its largest model, to developers and business customers early in 2024, after safety checks and a trial with selected testers."
+kind = "deployment"
+bar = "Gemini Ultra rolled out, after the limited early access for 'select customers, developers, partners', to developers and to business customers through Google's own services, by 2024-03-31. Access by invitation or allowlist is the limited stage the words set before the roll-out, so it does not count."
+due = 2024
+due_date = 2024-03-31
+due_basis = "'early next year', said in 2023, read as the first quarter of 2024 (the plainest reading of 'early')."
+status = "missed"
+verdict_on = 2024-04-18
+verdict_why = "The business half was met: Google Workspace's post of 2024-02-21 says Gemini Business and Enterprise customers can chat with Gemini 'built on our 1.0 Ultra model'. The developer half was not. Google Cloud offered 1.0 Ultra on 2024-02-15 only 'via allowlist', and the Gemini API's own list of models, as archived on 2024-03-25 and 2024-04-18, lists 1.5 Pro (preview), 1.0 Pro and 1.0 Pro Vision but no Ultra. Pichai's note of 2024-02-15 says developers 'can begin building with 1.0 Ultra', but that is an announcement, not a record that open access existed. No record found of open developer access to 1.0 Ultra."
+verdict_source = "https://web.archive.org/web/20240418173837/https://ai.google.dev/gemini-api/docs/models/gemini"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["hassabis-claims-034", "hassabis-claims-036", "hassabis-claims-057", "hassabis-claims-058", "hassabis-claims-059"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). The full sentence: 'we'll make Gemini Ultra available to select customers, developers, partners and safety and responsibility experts for early experimentation and feedback before rolling it out to developers and enterprise customers early next year.' Test changed before merging on 2026-10-19: it read 'Gemini Ultra made available to developers and business customers through Google's own services in early 2024, read as by 2024-03-31.', now names the limited early stage his own sentence sets apart, because the independent check of 2026-10-19 found the earlier test let access by allowlist, the same by-invitation kind, count as the roll-out. Status changed the same day from came true to did not. A judgement: the miss rests on the developer half alone; the business half came on 2024-02-21."

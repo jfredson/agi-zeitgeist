@@ -1,0 +1,27 @@
+[claim]
+id = "2024-03-18-huang-self-driving-in-mercedes-end-2024-early-2025"
+speaker_id = "huang"
+when = "2024-03-18"
+when_note = "GTC 2024 keynote, released on NVIDIA's channel on 2024-03-18."
+occasion = "GTC 2024 keynote, San Jose"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Y2F8yisiS6E"
+source_locator = "1:45:00 to 1:45:17 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "self-driving application at the end of this year or I guess beginning of next year we will be shipping in Mercedes"
+prediction = "Nvidia's full self-driving stack, including the self-driving application, would ship in Mercedes cars at the end of 2024 or the start of 2025, and in Jaguar Land Rover cars shortly after."
+kind = "deployment"
+bar = "Mercedes cars running Nvidia's self-driving software delivered to customers by the end of the first quarter of 2025."
+due = 2025
+due_early = 2024
+due_basis = "A range: 'the end of this year' (2024) 'or ... beginning of next year' (early 2025). 'Beginning of next year' is read as 'early' next year, which John ruled on 2026-10-19 means the first quarter: due 2025-03-31; 2024 is the early end."
+due_date = 2025-03-31
+restates = "2022-03-22-huang-hyperion-8-in-mercedes-cars-2024"
+status = "missed"
+verdict_on = 2025-06-04
+verdict_why = "The first Mercedes on Nvidia's driving software, the new CLA, went on order on 2025-04-29 and was confirmed in series production on 2025-06-04, after the due date; deliveries followed later in 2025. Its point-to-point feature was still not on US roads in January 2026."
+verdict_source = "https://www.electrive.com/2025/06/04/mercedes-benz-cla-enters-series-production"
+evidence_by = "outside"
+direction = "later"
+search_ids = ["huang-claims-015", "huang-claims-093", "huang-claims-094", "huang-claims-095", "huang-claims-096"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. A changed repeat of the 2022 claim (2024 slid to end of 2024 or early 2025). 'I guess' is kept as a hedge."

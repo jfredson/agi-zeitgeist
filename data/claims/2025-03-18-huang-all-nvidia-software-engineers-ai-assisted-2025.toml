@@ -1,0 +1,24 @@
+[claim]
+id = "2025-03-18-huang-all-nvidia-software-engineers-ai-assisted-2025"
+speaker_id = "huang"
+when = "2025-03-18"
+when_note = "GTC 2025 keynote in San Jose, released on NVIDIA's channel on 2025-03-18."
+occasion = "GTC 2025 keynote, San Jose"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=_waPvOwL9Z8"
+source_locator = "1:45:59 to 1:46:04 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "100% of Nvidia software Engineers will be AI assisted by the end of this year"
+prediction = "By the end of 2025 every Nvidia software engineer would work with AI assistance. He added that all 30 million software engineers in the world would be AI-assisted, with no date."
+kind = "deployment"
+bar = "Every Nvidia software engineer using an AI coding assistant in their work by 2025-12-31. Only Nvidia can count this."
+due = 2025
+due_basis = "'by the end of this year', said 2025-03-18; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-10-08
+verdict_why = "On CNBC on 2025-10-08 he said 'every one of our engineers, 100% is now assisted by AI coders' (naming Cursor). On 2025-05-19 he had said '100% of NVIDIA software engineers now have digital agents working with them'. Later in the same CNBC interview he said of Cursor alone 'Almost every one of them are going to use it'; that is about one tool, while the 100% is about AI coding help in general. Only Nvidia's own word exists."
+verdict_source = "https://www.cnbc.com/2025/10/08/cnbc-transcript-nvidia-co-founder-president-ceo-jensen-huang-speaks-with-cnbcs-squawk-box-today.html"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["huang-claims-003", "huang-claims-004", "huang-claims-100", "huang-claims-101", "huang-claims-111"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. The evidence is the speaker's own word; no outside count exists. 'AI assisted' is a loose test, read as using an AI coding assistant."

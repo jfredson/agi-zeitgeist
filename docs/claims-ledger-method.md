@@ -3,14 +3,16 @@
 **Status: method written 2026-10-17 by the agent, from the proposal John adopted the same day
 (`docs/claims-ledger-proposal-2026-10-17.md`, all ten rulings "as recommended"), before any
 claim row was built. Amendment A27 in `docs/amendments.md` records the adoption. Changing a
-rule here after rows exist is an amendment entry, never a quiet edit.**
+rule here after rows exist is an amendment entry, never a quiet edit. Amendment A30 (2026-10-19)
+widened the ledger from the panel to the industry's figureheads, with a ledger-only list for
+the three who are not on the panel.**
 
 ## What this ledger is for
 
 The people who run the frontier AI companies both sell the story and see further than anyone
 else. John's question of 2026-10-17 was whether each of them is a front-row seat or a salesman.
-This ledger answers one narrow part of that: **for each named person on the panel, of the
-predictions they made that have since come due, how many came true, how many did not, and
+This ledger answers one narrow part of that: **for each of the industry's figureheads (who
+they are is set out under the admission rule), of the predictions they made that have since come due, how many came true, how many did not, and
 which way the misses went.** Every claim is published in the person's own words, with the
 source, the test it will be judged by, and the evidence for the verdict.
 
@@ -39,7 +41,7 @@ Every file holds one `[claim]` table with these fields.
 | field | required | what it holds |
 |---|---|---|
 | `id` | yes | The file name without `.toml`. |
-| `speaker_id` | yes | A `speaker_id` in `data/speakers.csv`. The panel is frozen (amendment A18); a claim by anyone not in it is refused by the validator. |
+| `speaker_id` | yes | A `speaker_id` in `data/speakers.csv` whose tier is `core` or `cohort_2020s` (the frozen panel, amendment A18) or `claims_only` (the ledger-only list, amendment A30). The validator refuses a claim by anyone else. |
 | `when` | yes | When it was said: `YYYY-MM-DD`, or `YYYY-MM` or `YYYY` where the record settles nothing finer. |
 | `when_note` | if `when` is not a full date, else optional | How the date was settled (a post's timestamp, a page's date line, an event's date). |
 | `occasion` | yes | Where it was said: a post, an essay, a keynote, a named interview, a hearing, a filing. |
@@ -52,7 +54,7 @@ Every file holds one `[claim]` table with these fields.
 | `statement_id` | no | The `statement_id` of the row in `data/statements.csv` the claim was seeded from, if any. The validator checks the row exists, its speaker matches, and its date matches `when` (to the month, since the statements table carries some dates in universal time and this ledger in the speaker's own time). |
 | `prediction` | yes | What it commits to, in plain words, with the hedges and conditions kept ("probably", "may", "if"). |
 | `kind` | yes | `capability` (a thing AI will be able to do), `timing` (a named stage arrives, such as AGI or superintelligence, or a named thing comes out by a date), or `deployment` (a product ships or a number is reached). |
-| `bar` | yes | The test that will settle it, written at entry and never changed afterwards except by a dated note: the speaker's own definition if the same source gives one, otherwise the plainest reading of the words. A claim whose words give no test an outsider could run has `bar` saying so, and the status `unfalsifiable`. |
+| `bar` | yes | The test that will settle it, written at entry and never changed afterwards except by a dated note: the speaker's own definition if the same source gives one, otherwise the plainest reading of the words. The test uses the speaker's words and the speaker's own usage in the same source, adds no condition he did not state and drops none he did, and is never shaped to fit a verdict. A claim whose words give no test an outsider could run has `bar` saying so, and the status `unfalsifiable`. |
 | `due` | yes | The year the claim can be judged by, from the speaker's own words (the rule below). A whole number. |
 | `due_basis` | yes | The words or the sum that gave the year. |
 | `due_date` | no | A full date, where the words name a point earlier than the end of the year ("by September of 2026" gives `2026-09-30`; "in June" gives the last day of June). |
@@ -77,8 +79,27 @@ A worked example is in the proposal, section 2.
 
 A claim is admitted when all four are true. The test never looks at whether it came true.
 
-1. **The speaker is on the frozen panel** (`data/speakers.csv`).
-2. **The words look forward**: they say AI will do, reach or ship something.
+1. **The speaker is on the frozen panel or on the ledger-only list, and held a qualifying role
+   when the words were said** (`data/speakers.csv`; amendment A30). The ledger covers the
+   industry's figureheads: **a figurehead is the chief executive, founder-leader or chair of a
+   company that builds frontier AI models or the chips they are trained on, or that company's
+   named chief scientist speaking for it.** A claim counts only if it was made while the
+   person held that role. A claim made before or after it, or in a gap between two such roles,
+   is left out, and the search-log row that found it says why. Each claim's `notes` name the
+   role that applied. The fifteen figureheads are listed under "Order of work". Tesla counts as
+   such a company for Elon Musk's claims as its chief executive from 2019 to 2021 (ruled by John
+   2026-10-19).
+2. **The words look forward and are about AI**: they say AI will do, reach or ship something,
+   or that it will not by a stated date (see "Readings ruled by John" below). A company's
+   spending, revenue, order book, headcount, chip count, computing or data-centre build-out,
+   training costs and labour-market forecasts that are not about what AI will do ("50 million
+   workers short") are business forecasts, not claims about AI, and stay out; a forecast that AI
+   will displace, change or create jobs is about AI and is admitted. A product shipping counts only when the product is an AI system and the words claim
+   something about what the AI will do or about its deployment; a plain hardware date stays out.
+   A line framed as a hypothetical ("let's imagine", "suppose", "I could imagine", or a date
+   given only for an extrapolation the speaker says he does not believe) is not a prediction.
+   A truly borderline case stays out and is logged as borderline. (Given by the managing
+   session on 2026-10-19 while the ledger was widened; amendment A30.)
 3. **The words carry a date or a length of time**: a year ("by 2030"), a span counted from the
    day it was said ("in five years", "the next ten years", "this president's term"), or a stage
    with its own end ("by the end of this decade").
@@ -87,16 +108,40 @@ A claim is admitted when all four are true. The test never looks at whether it c
    marked, with no quote.
 
 Anything else stays what it is, a coded statement: "AGI is coming", "still many years away",
-"we are close". **An undated claim is not a claim record.** The page says how many of each
+"we are close", "in a few years", "could be as little as two years away". **An undated claim is
+not a claim record.** The page says how many of each
 person's coded statements look forward (their frames include `timeline` or `possibility`) and
 how many of those carry a year, so vagueness stays visible without being scored.
+
+## Readings ruled by John
+
+John ruled four readings on 2026-10-19, each as the independent check of the widened ledger
+recommended (`docs/reviews/claims-ledger-check-2026-10-19.md`):
+
+1. **"Early" in a year means its first quarter.** "Early next year" or "early 2025" sets
+   `due_date` to 31 March of that year. "Early" in a month ("early June") is not ruled; the
+   ledger reads it the same way, as the first third, so the tenth of the month, and flags it for
+   John.
+2. **A forecast that something will not happen by a date is a claim.** "Not in the next two
+   years", "not before 2030", "it will take at least a decade" are scored at the stated date:
+   it came true if there is no public record of the thing by then, and did not if there is.
+   The test names the thing in the speaker's words; `due` is the stated date.
+3. **"A few years" and "as little as X" are undated.** "A few years" names no length; "could be
+   as little as two years away" names only the earliest the thing could come, so missing it
+   proves nothing. Neither is a claim record; each is left out and logged. The ledger applies the
+   same reading to "the next few months" and "the coming months", which name no length either
+   (an application by the agent on 2026-10-19, flagged for John).
+4. **Bare "human level" is a named stage.** With no comparison in the same source, "human-level
+   AI" cannot be tested, like an undefined "AGI". A stated comparison ("better than humans at
+   X", "smarter than the smartest human", "can do the cognitive tasks people can typically do")
+   gives a plain-reading test.
 
 ## The five status words
 
 | word | meaning |
 |---|---|
 | `not_yet_due` | The due date has not passed: 31 December of the due year, or `due_date` where the words name an earlier point. Shown, not scored. A claim stays `not_yet_due` until its date passes even where the thing has already happened; the notes may say what has been seen so far, and the verdict is entered when the date passes. |
-| `hit` | By the due date, every condition in `bar` was met, shown by a dated primary source. |
+| `hit` | By the due date, every condition in `bar` was met, shown by a dated primary record of the event itself (the release, the count, the demonstration), not by an argument that it had become possible (given by the managing session on 2026-10-19). For a forecast that something will not happen, a hit is no public record of the thing by the date (reading 2 above). |
 | `missed` | The due date has passed and the bar was not met, or only part of it was. The record says which condition failed. A near miss is a miss with the gap named; there is no "partly". |
 | `withdrawn` | The speaker later said the claim no longer holds: a retraction, not a new date. **Counted as missed in every total.** The word is kept apart only so the page can show that they took it back, and when. A claim the speaker re-dates is not withdrawn: it is a changed repeat (see Restatements), and the earlier claim keeps its own due date and gets its verdict then (ruled by John 2026-10-19). |
 | `unfalsifiable` | The claim has a date but no bar an outsider could test, or its only judge is the speaker ("we will have an internal system I would call AGI"). Decided at entry, when `bar` is written; shown and counted apart, left out of the rate, and a bar is never supplied after the fact. This is the rule the leg B ledger uses for its "no bar" rows. |
@@ -177,6 +222,10 @@ Saying the same thing again is not a new prediction; changing the date is.
   `has_probability`). A pooled rate would make three people answer for a fourth.
 - **Which way the misses went.** For each person, how many misses came later than said and how
   many have not come, from `direction`. The rate alone hides this half of the question.
+- **When a claim is due.** A claim is due once its date has passed: 31 December of `due`, or
+  `due_date` where set. That holds for every status: a claim that cannot be tested counts among
+  the due only from its own date, not from the day it was entered (2026-10-19, amendment A30).
+  The page's "due" and the home-page sentence count this way.
 - **A floor.** A person with fewer than five due claims in the plain count shows "too few to
   rate" and the counts, never a percentage.
 - **A collection pass before any rate.** A rate computed from the famous, easy-to-find claims
@@ -206,8 +255,15 @@ that is not there. Ids are `<speaker_id>-claims-NNN`, numbered in the order the 
 
 The ledger is a separate record kind beside the others. Talk and delivery are never mixed.
 
-- **The frozen panel** (`data/speakers.csv`, amendment A18). A claim by someone not in it is
-  refused. Adding anyone is an amendment to the panel first.
+- **The frozen panel** (`data/speakers.csv`, amendment A18). A claim by someone neither on it
+  nor on the ledger-only list is refused. Adding anyone to the panel is an amendment to the
+  panel first.
+- **The ledger-only list** (tier `claims_only` in `data/speakers.csv`, amendment A30): the
+  figureheads who are not on the panel, so that their claims can be scored without widening
+  it. These rows are never panel members. They never enter `data/statements.csv`, the opinion
+  charts, the experts' dates or the panel's counts, and they carry no panel quota tag; the
+  validator refuses each of these. Adding a name to the list, or taking one off, is itself an
+  amendment.
 - **The coded statements** (`data/statements.csv`). No row is edited, added or deleted because
   of a claim. A claim points at its row with `statement_id`; nothing is copied back.
 - **The scored series**: `data/world_measures.csv`, `data/aggregates.csv`, the leg B ledger's
@@ -238,4 +294,12 @@ checks every file.
 
 Ruled by John on 2026-10-17: Altman and Musk first, then Amodei, then Huang, then the other
 panel members tied to the frontier labs, then anyone else on the panel with a dated claim.
-Kurzweil's 2029 date is entered once, with its repeats in `repeated_on`, when his turn comes.
+
+Widened by John on 2026-10-19 (amendment A30) to the fifteen figureheads. On the frozen panel:
+Sam Altman, Elon Musk, Dario Amodei, Jensen Huang, Demis Hassabis, Mustafa Suleyman, Ilya
+Sutskever, Liang Wenfeng, Arthur Mensch, Shane Legg, Yann LeCun and Kai-Fu Lee (his claims
+count only from 2023, as founder and chief executive of 01.AI). On the ledger-only list:
+Mark Zuckerberg, Sundar Pichai and Satya Nadella. After Altman and Musk the order is Amodei and
+Huang, then Hassabis, Suleyman, Sutskever, Legg, LeCun, Liang Wenfeng, Mensch, Zuckerberg,
+Pichai and Nadella, then Kai-Fu Lee, added by John later the same day. Panel members who never held a qualifying role (Geoffrey Hinton, Ray
+Kurzweil) are not entered; any other name is added only by amendment.

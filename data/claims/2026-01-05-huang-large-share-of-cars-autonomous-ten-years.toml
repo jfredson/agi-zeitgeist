@@ -1,0 +1,20 @@
+[claim]
+id = "2026-01-05-huang-large-share-of-cars-autonomous-ten-years"
+speaker_id = "huang"
+when = "2026-01-05"
+when_note = "NVIDIA Live at CES 2026 keynote, released on NVIDIA's channel on 2026-01-05."
+occasion = "NVIDIA Live at CES 2026 keynote, Las Vegas"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=0NBILspM4c4"
+source_locator = "0:45:40 to 0:45:47 into the video"
+checked_how = "Read YouTube's English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp; no punctuation, some mis-heard words); the quote is a verbatim run of those caption words."
+quote = "In in the next 10 years, I'm fairly certain a very, very large percentage of the world's cars will be autonomous or highly autonomous."
+prediction = "Within ten years a very large share of the world's cars would be autonomous or highly autonomous."
+kind = "deployment"
+bar = "None an outsider could run: 'a very, very large percentage' gives no number, and 'highly autonomous' names no level of automation."
+due = 2036
+due_basis = "'In the next 10 years', said 2026-01-05, runs to January 2036; judged at 2036-12-31."
+status = "unfalsifiable"
+verdict_why = "With no share and no level of automation named, any outcome can be read as meeting or missing it. Decided at entry, as for his 2021 claim about 'substantial AV capability'."
+search_ids = ["huang-claims-011"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. Judgement call: a reader could take 'very, very large percentage' as more than half of cars on the road; that reading is not supplied here because the words do not give it."

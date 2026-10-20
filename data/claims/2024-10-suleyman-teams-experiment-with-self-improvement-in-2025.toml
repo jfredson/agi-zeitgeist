@@ -1,0 +1,24 @@
+[claim]
+id = "2024-10-suleyman-teams-experiment-with-self-improvement-in-2025"
+speaker_id = "suleyman"
+when = "2024-10"
+when_note = "Recorded on stage at the Masters of Scale Summit in October 2024 (the upload of 2024-11-02 says so); the exact day is not stated, so the month is recorded."
+occasion = "Masters of Scale Summit, on stage with Reid Hoffman"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=IZBT57oLKas"
+source_locator = "0:04:15 to 0:04:38 into the video"
+checked_how = "Read YouTube's automatic English captions of the Masters of Scale channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "we can see that coming into view in 2025 teams will start experimenting with that"
+prediction = "In 2025 research teams will start experimenting with closed-loop recursive self-improvement: AI improving itself without a human directly overseeing each step."
+kind = "capability"
+bar = "In his words, read plainly: during 2025, a research team publishes an experiment with 'a closed loop of self-improvement that doesn't have a human directly overseeing it': an AI system that repeatedly improves itself (changing its own code, training or design), proposing, testing and keeping its own changes with no person reviewing or approving each one."
+due = 2025
+due_basis = "'in 2025': judged at the end of 2025."
+status = "hit"
+verdict_on = 2025-05-29
+verdict_why = "On 2025-05-29 a team from Sakana AI and the University of British Columbia (Jenny Zhang and four others) published the Darwin Godel Machine, 'a self-improving system that iteratively modifies its own code' and checks each change on coding tests, keeping the versions that score better, with no person reviewing or approving each change, which is the test as written. The authors add that 'All experiments were done with safety precautions (e.g., sandboxing, human oversight)': oversight of the experiment as a whole, which the test does not exclude. The paper's nearest sentence to his words is 'we actively monitor agent performance and code changes, with the DGM archive providing a traceable lineage of modifications for review': that is watching the run and reviewing its record afterwards, not a person approving each change before it is kept, so the test, a loop with no human directly overseeing each improvement, is still met."
+verdict_source = "https://arxiv.org/abs/2505.22954"
+evidence_by = "outside"
+direction = "on_time"
+search_ids = ["suleyman-claims-013", "suleyman-claims-030", "suleyman-claims-051", "suleyman-claims-057", "suleyman-claims-063"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). The claim is only that teams will 'start experimenting', not that self-improvement will work or run at scale; the bar is read that narrowly. His words, re-read in the captions on 2026-10-19: 'there's not a closed loop of self-improvement that doesn't have a human and directly overseeing it but we can see that coming into view in 2025 teams will start experimenting with that'. Test changed before merging on 2026-10-19: it read 'in a loop with no person directing each change', now it quotes his 'doesn't have a human directly overseeing it' and reads it as no person reviewing or approving each change, so that the test uses his own words. Judgement call: the paper's 'human oversight' of the experiment as a whole is not read as a person directly overseeing the loop; read the other way, this would be a miss. Verdict changed by the lead before merging on 2026-10-19, from came true to did not: a hit needs every condition shown by the record, and the paper itself reports human oversight, so the condition is not shown; read as oversight of the run only, it would be a hit, and that reading is left to the check. Verdict set back to came true before merging on 2026-10-19: the lead had changed it to did not on the paper's mention of human oversight, but the file's own test reads his 'directly overseeing' as no person approving each change, which the paper meets; the independent check found the verdict contradicted its test, and a test cannot be changed to fit a verdict."

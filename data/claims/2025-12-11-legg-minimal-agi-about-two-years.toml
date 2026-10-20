@@ -1,0 +1,19 @@
+[claim]
+id = "2025-12-11-legg-minimal-agi-about-two-years"
+speaker_id = "legg"
+when = "2025-12-11"
+when_note = "Release date of the episode (YouTube upload dated 2025-12-11)."
+occasion = "Google DeepMind: The Podcast with Hannah Fry, episode 'The arrival of AGI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=l3u_FAv33G0"
+source_locator = "about 6:52 to 7:09 into the episode; his test at about 15:37"
+checked_how = "Read the YouTube captions of Google DeepMind's own upload on 2026-10-19 (yt-dlp), as a run of words."
+quote = "we're not there yet, but it could be one year, it could be 5 years. I'm guessing probably about two or so."
+prediction = "'Minimal AGI' (an AI agent that can at least do the cognitive things people can typically do) probably in about two years from December 2025, so around the end of 2027."
+kind = "timing"
+bar = "His definition and test in the same episode: an artificial agent that 'can at least do all the sorts of cognitive things that we would typically expect people to be able to do', checked by a suite of tasks with known typical human performance, which it must pass in full, then a team given a month or two to find a cognitive task people typically do that it fails; if they cannot, it counts."
+due = 2027
+due_basis = "'probably about two or so' years from 2025-12-11 is about December 2027; judged at 2027-12-31. His spread of one to five years is its own record."
+status = "not_yet_due"
+search_ids = ["legg-claims-012"]
+notes = "Role at the time: co-founder of Google DeepMind and its chief AGI scientist, counted as a founder in the company's leadership (its named chief scientist is Jeff Dean, so the founder-leader reading is a judgement in the open points for John). The brief asked whether 'minimal AGI' is a bar an outsider could test: yes, broadly; his two-stage test can be run by people outside the company, though choosing the task suite and the team leaves room for argument. In the same episode he repeats '50/50 by 2028' (a repeat in 2010-12-10-legg-human-level-agi-mean-2028)."

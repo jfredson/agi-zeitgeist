@@ -1,0 +1,24 @@
+[claim]
+id = "2024-12-05-suleyman-copilot-vision-all-apps-always-on-2025"
+speaker_id = "suleyman"
+when = "2024-12-05"
+when_note = "The Rundown AI uploaded the interview on 2024-12-05, the day Microsoft put Copilot Vision into preview."
+occasion = "Interview with Rowan Cheung, The Rundown AI, on the launch of Copilot Vision"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=dQP2zLYmCG8"
+source_locator = "0:17:25 to 0:17:55 into the video"
+checked_how = "Read YouTube's automatic English captions of the The Rundown AI channel's own upload on 2026-10-19 (no punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "yeah I mean that is definitely coming uh you know next year"
+prediction = "In 2025 ordinary users would get Copilot Vision fully working across all their apps and screens, always on, with no limits on websites or apps (and, in the question, possibly unlimited memory)."
+kind = "deployment"
+bar = "By the end of 2025, Microsoft releases to ordinary users a Copilot Vision that can see all their apps and screens at once, all the time, with no restrictions on which websites or apps it works on, shown by Microsoft's release. Unlimited memory was the interviewer's 'possibly' and is not part of the bar."
+due = 2025
+due_basis = "'next year', said 2024-12-05: judged at the end of 2025."
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "What failed is the always-on part. By the end of 2025 Copilot Vision had spread a long way: Microsoft's post of 2025-10-16 says it was available on Windows 'in all markets where Copilot is offered', with 'Full desktop and app sharing'. But it still worked only when the user chose to share a screen or app, 'with your permission', as 'an opt-in experience', in sessions the user starts. Nothing that watched all of a user's apps and screens 'all the time' ('24/7', in the question he accepted) shipped in 2025."
+verdict_source = "https://blogs.windows.com/windowsexperience/2025/10/16/making-every-windows-11-pc-an-ai-pc/"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["suleyman-claims-013", "suleyman-claims-031", "suleyman-claims-052", "suleyman-claims-057", "suleyman-claims-059"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). The question he answered: will 'the regular user be able to have the co-pilot Vision with fully functioning Vision across all their apps across all their screens 24/7 and no limitations on websites and apps and possibly even infinite memory'. Microsoft's own page has since moved; the Internet Archive copy was read. Reason rewritten before merging on 2026-10-19: it described the position in mid-2025 (two apps at a time, in the United States, whole-desktop sharing only for testers), which the independent check of 2026-10-19 found out of date by the end of the year; the miss stands on the always-on condition, and the record is now Microsoft's post of 2025-10-16 (read through an Internet Archive copy, since the live page refuses scripted readers). 'We' in his answer is Microsoft: 'we are working extremely hard on getting the cost of inference down so that we can make it widely available'."

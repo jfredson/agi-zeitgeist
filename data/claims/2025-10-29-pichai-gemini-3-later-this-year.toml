@@ -1,0 +1,24 @@
+[claim]
+id = "2025-10-29-pichai-gemini-3-later-this-year"
+speaker_id = "pichai"
+when = "2025-10-29"
+when_note = "Alphabet's third-quarter 2025 earnings call was held on 2025-10-29."
+occasion = "Alphabet's third-quarter 2025 earnings call (Pichai's remarks as posted by Google)"
+source_kind = "transcript"
+source_url = "https://blog.google/inside-google/message-ceo/alphabet-earnings-q3-2025/"
+source_locator = "the paragraph on Google's models"
+checked_how = "Read Google's edited transcript of his remarks on the page on 2026-10-19 (curl)."
+quote = "We’re looking forward to the release of Gemini 3 later this year."
+prediction = "Google would release Gemini 3, its next frontier AI model, later in 2025."
+kind = "timing"
+bar = "A public release of a Gemini 3 model by 2025-12-31, shown by Google's own release."
+due = 2025
+due_basis = "'later this year', said 2025-10-29; judged at 2025-12-31."
+status = "hit"
+verdict_on = 2025-11-18
+verdict_why = "Google's post of 2025-11-18 releases 'Gemini 3 Pro in preview and making it available today across a suite of Google products'."
+verdict_source = "https://blog.google/products-and-platforms/products/gemini/gemini-3/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["pichai-claims-005", "pichai-claims-016"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips."

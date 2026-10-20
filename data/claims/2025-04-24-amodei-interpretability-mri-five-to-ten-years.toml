@@ -1,0 +1,20 @@
+[claim]
+id = "2025-04-24-amodei-interpretability-mri-five-to-ten-years"
+speaker_id = "amodei"
+when = "2025-04-24"
+when_note = "The page says only 'April 2025'; the first Hacker News submission of it is 2025-04-24."
+occasion = "Short post 'The Urgency of Interpretability' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/post/the-urgency-of-interpretability"
+source_locator = "the paragraph beginning 'On one hand, recent progress'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "on its current trajectory I would bet strongly in favor of interpretability reaching this point within 5-10 years."
+prediction = "Within five to ten years, interpretability (the science of seeing what goes on inside AI models) would become 'a sophisticated and reliable way to diagnose problems in even very advanced AI', a true 'MRI for AI' (a scan of the AI's inner workings)."
+kind = "capability"
+bar = "His description in the same paragraph: methods that look inside AI models and reliably find their problems, even in the most advanced models, shown by published audits or tests in which such methods catch most planted or real problems, by the end of 2035."
+due = 2035
+due_early = 2030
+due_basis = "'within 5-10 years' from April 2025 runs to 2030 to 2035; the later end is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-028"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'I would bet strongly' is a hedge word, not a number."

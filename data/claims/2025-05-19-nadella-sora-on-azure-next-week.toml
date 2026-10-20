@@ -1,0 +1,25 @@
+[claim]
+id = "2025-05-19-nadella-sora-on-azure-next-week"
+speaker_id = "nadella"
+when = "2025-05-19"
+when_note = "Microsoft Build 2025 opened with this keynote on 2025-05-19; Microsoft's transcript carries that date."
+occasion = "Opening keynote at Microsoft Build 2025"
+source_kind = "transcript"
+source_url = "https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf"
+source_locator = "page 9 of the transcript, the Azure AI Foundry section"
+checked_how = "Read Microsoft's official transcript of the keynote on 2026-10-19 (curl, PDF text)."
+quote = "giving same-day access when a new model drops and Sora is coming next week."
+prediction = "OpenAI's Sora video-generation model would come to Microsoft's Azure AI Foundry the following week."
+kind = "deployment"
+bar = "Sora available to Azure customers, in any form including a preview, by the end of the following week (2025-06-01), shown by Microsoft's own release notes."
+due = 2025
+due_basis = "'next week', said on Monday 2025-05-19; the following week ends on Sunday 2025-06-01."
+due_date = 2025-06-01
+status = "hit"
+verdict_on = 2025-05-29
+verdict_why = "Microsoft's Foundry post of 2025-05-29 introduces Sora in the Azure AI Foundry video playground, and its 'What's new' page lists 'Sora video generation released (preview)' under May 2025. Both fall inside the following week."
+verdict_source = "https://devblogs.microsoft.com/foundry/sora-in-video-playground/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["nadella-claims-005", "nadella-claims-018", "nadella-claims-024"]
+notes = "Role at the time: chief executive of Microsoft from 2014-02-04 and its chair from 2021-06-16; Microsoft builds AI models (Phi, the Microsoft AI models) and its own AI chips (Maia), and is OpenAI's largest backer. Changed before merging on 2026-10-19: the record was the 'What's new' page, which gives only the month, with the end of May used as the date; it is now the dated post of 2025-05-29."

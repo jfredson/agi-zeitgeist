@@ -1,0 +1,22 @@
+[claim]
+id = "2023-07-25-amodei-senate-bio-two-to-three-years"
+speaker_id = "amodei"
+when = "2023-07-25"
+when_note = "The written statement is headed 'July 25th, 2023', the hearing date; the file name of the PDF says 07-26."
+occasion = "Written testimony to the Senate Judiciary subcommittee on privacy, technology and the law, hearing 'Oversight of A.I.: Principles for Regulation'"
+source_kind = "own_words"
+source_url = "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf"
+source_locator = "section 'AI, Biology, and National Security', second paragraph (page 4)"
+checked_how = "Downloaded the PDF on 2026-10-19 (curl), took out its text and read the passage."
+quote = "a straightforward extrapolation of today’s systems to those we expect to see in 2-3 years suggests a substantial risk"
+prediction = "In two to three years from mid-2023 there would be 'a substantial risk' that AI systems could fill in all the missing steps of making a biological weapon, 'if appropriate guardrails and mitigations are not put in place'."
+kind = "capability"
+bar = "None an outsider can apply: the words forecast a risk ('a substantial risk'), not an event, and only for models without safeguards, which the companies do not release; whether such a risk existed cannot be shown true or false by what happened."
+due = 2026
+due_early = 2025
+due_basis = "'in 2-3 years' from 2023-07-25 runs from July 2025 to July 2026; the later end, 2026, is taken and the earlier recorded."
+repeated_on = [2023-08-08]
+status = "unfalsifiable"
+verdict_why = "It is a statement about a chance ('a substantial risk'), and he put the chance at about even two weeks later ('It could be 50-50'). A risk of that kind is neither proved nor disproved by an attack happening or not, and the condition (no safeguards) does not hold for released models. Decided at entry."
+search_ids = ["amodei-claims-002", "amodei-claims-005", "amodei-claims-006", "amodei-claims-024", "amodei-claims-032"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Said again on the Dwarkesh Podcast on 2023-08-08 ('it shows every sign that two or three years from now, we're going to have a real problem'; 'in two or three years we might be there. There's a substantial risk of it ... It could be 50-50'). On Hard Fork (2025-02-28) he recalled it as 'it might happen in 2025 or 2026'. The same written statement speaks of 'extraordinarily grave threats' to the national security of the United States 'over the next 2 to 3 years'. For context only: Anthropic switched on its stricter biological-weapons protections on 2025-05-22 because it could no longer rule out that Claude Opus 4 crossed its own threshold. The seed list of 2026-10-17 already had this as unfalsifiable."

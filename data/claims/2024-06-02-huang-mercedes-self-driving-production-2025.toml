@@ -1,0 +1,26 @@
+[claim]
+id = "2024-06-02-huang-mercedes-self-driving-production-2025"
+speaker_id = "huang"
+when = "2024-06-02"
+when_note = "Computex 2024 keynote in Taipei, released on NVIDIA's channel on 2024-06-02."
+occasion = "Computex 2024 keynote, Taipei"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=pKXDVsWZmUU"
+source_locator = "1:42:30 to 1:42:40 into the video"
+checked_how = "Read the punctuated English (US) caption track of the official NVIDIA upload on 2026-10-19 (yt-dlp); the quote is a verbatim run of those caption words."
+quote = "Next year we're going to go to production with the Mercedes fleet. And after that, in 2026, the JLR fleet"
+prediction = "In 2025 cars in the Mercedes fleet running Nvidia's self-driving stack ('NVIDIA again builds the entire stack', the sentence before) would go into production. The Jaguar Land Rover half is its own record."
+kind = "deployment"
+bar = "Mercedes cars running Nvidia's self-driving software stack, the 'entire stack' he says Nvidia builds, entering series production during 2025."
+due = 2025
+due_basis = "'next year', said 2024-06-02, is 2025; judged at 2025-12-31."
+restates = "2024-03-18-huang-self-driving-in-mercedes-end-2024-early-2025"
+repeated_on = [2025-01-06]
+status = "hit"
+verdict_on = 2025-06-04
+verdict_why = "Mercedes confirmed series production of the new CLA at Rastatt by 2025-06-04 (electrive, which does not mention Nvidia). Only Nvidia's own blog of 2026-01-05 says the CLA's driver-assistance features are 'powered by NVIDIA's full-stack DRIVE AV software'. Production in 2025 is shown by an outside report; that the car runs Nvidia's whole stack rests on Nvidia's word alone. The features are driver assistance; the fuller point-to-point driving was still to come in 2026."
+verdict_source = "https://blogs.nvidia.com/blog/drive-av-software-mercedes-benz-cla/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["huang-claims-014", "huang-claims-010", "huang-claims-093", "huang-claims-094", "huang-claims-096", "huang-claims-109", "huang-claims-110"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. A changed repeat of the 2024-03-18 claim (from shipping by early 2025 to production during 2025). Repeated unchanged at CES on 2025-01-06: 'a fleet of cars coming with Nvidia starting ... this year going to production' (1:08:22 of https://www.youtube.com/watch?v=k82RwXqZHY8). Test changed before merging on 2026-10-19: it read 'Mercedes cars running Nvidia's self-driving (driver-assistance) software entering series production during 2025', now names the 'entire stack' of his own sentence, because the earlier test narrowed his words to driver assistance. The record was electrive's report of 2025-06-04; it is now Nvidia's blog, the only record that the car runs Nvidia's software, so the evidence is marked as the maker's word. The hit is softer than it looks: electrive (2026-01-07) says Mercedes works with Nvidia on its point-to-point system in the US 'and potentially in Europe in the future', and uses Momenta's software in China. Quote corrected the same day from the clean caption track; the automatic captions read 'the jlr Fe Fleet'."

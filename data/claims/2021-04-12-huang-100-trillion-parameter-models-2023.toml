@@ -1,0 +1,24 @@
+[claim]
+id = "2021-04-12-huang-100-trillion-parameter-models-2023"
+speaker_id = "huang"
+when = "2021-04-12"
+when_note = "GTC 2021 keynote, released on NVIDIA's channel on 2021-04-12."
+occasion = "GTC 2021 spring keynote (recorded)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=eAn_oiZwUXA"
+source_locator = "0:49:58 to 0:50:13 into the video"
+checked_how = "Read the English captions of the official NVIDIA upload on 2026-10-19 (yt-dlp); the captions are punctuated and read as a clean run of his words."
+quote = "We expect to see multi-trillion-parameter models by next year, and 100 trillion+ parameter models by 2023."
+prediction = "AI models with more than 100 trillion parameters would exist by 2023."
+kind = "timing"
+bar = "An AI model with at least 100 trillion parameters trained and reported by 2023-12-31. A run that only measures the speed of a system able to hold such a model is not a trained model."
+due = 2023
+due_basis = "His words: 'by 2023'; judged at 2023-12-31."
+status = "missed"
+verdict_on = 2023-12-31
+verdict_why = "No trained model of 100 trillion parameters or more was reported by the end of 2023. The nearest records are speed runs: BaGuaLu (2022) 'can train 14.5-trillion-parameter models' and 'has the capability to train 174-trillion-parameter models', and Persia (2021) ran 'scalability experiments up to 100 trillion parameters' on synthetic data. Neither reports a finished model of that size."
+verdict_source = "https://pacman.cs.tsinghua.edu.cn/~cwg/publication/bagualu-2022/"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["huang-claims-020", "huang-claims-086", "huang-claims-088", "huang-claims-089"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. Judgement call for John: if a training run measured for speed counts as 'a model', BaGuaLu's 174-trillion run in 2022 would make this a hit. As of 2026 the largest models reported are a few trillion parameters."

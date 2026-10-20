@@ -1,0 +1,20 @@
+[claim]
+id = "2025-12-11-legg-minimal-agi-one-to-five-years"
+speaker_id = "legg"
+when = "2025-12-11"
+when_note = "Release date of the episode (YouTube upload dated 2025-12-11)."
+occasion = "Google DeepMind: The Podcast with Hannah Fry, episode 'The arrival of AGI'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=l3u_FAv33G0"
+source_locator = "about 7:05 into the episode"
+checked_how = "Read the YouTube captions of Google DeepMind's own upload on 2026-10-19 (yt-dlp), as a run of words."
+quote = "it could be one year, it could be 5 years."
+prediction = "Minimal AGI (an AI agent that can at least do the cognitive things people can typically do) arrives between about one and five years from December 2025: the spread around his guess of about two years."
+kind = "timing"
+bar = "As in 2025-12-11-legg-minimal-agi-about-two-years: his definition and two-stage test in the same episode."
+due = 2030
+due_early = 2026
+due_basis = "One to five years from 2025-12-11 runs to about December 2026 and December 2030; the later end is the due year and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["legg-claims-012"]
+notes = "Role at the time: co-founder of Google DeepMind and its chief AGI scientist, counted as a founder in the company's leadership (its named chief scientist is Jeff Dean, so the founder-leader reading is a judgement in the open points for John). The spread beside a point year is its own record, as the method says. Worded as possibilities ('could be'), kept and scored at face value."

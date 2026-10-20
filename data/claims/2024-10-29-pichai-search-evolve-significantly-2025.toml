@@ -1,0 +1,20 @@
+[claim]
+id = "2024-10-29-pichai-search-evolve-significantly-2025"
+speaker_id = "pichai"
+when = "2024-10-29"
+when_note = "Alphabet's third-quarter 2024 earnings call was held on 2024-10-29."
+occasion = "Alphabet's third-quarter 2024 earnings call, answering an analyst's question"
+source_kind = "transcript"
+source_url = "https://s206.q4cdn.com/479360582/files/doc_financials/2024/q3/2024-q3-earnings-transcript.pdf"
+source_locator = "page 14, his answer in the question session"
+checked_how = "Read Alphabet's official transcript on 2026-10-19 (curl, PDF text)."
+quote = "So I expect Search to continue to evolve significantly in 2025, both in the Search product and in Gemini."
+prediction = "Google Search would keep changing significantly during 2025, through AI, both in Search itself and in the Gemini app."
+kind = "deployment"
+bar = "None an outsider could apply: 'evolve significantly' names no measure."
+due = 2025
+due_basis = "'in 2025'; judged at 2025-12-31."
+status = "unfalsifiable"
+verdict_why = "The words carry a year but no test; how much change is 'significant' is left to the speaker."
+search_ids = ["pichai-claims-026"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips."

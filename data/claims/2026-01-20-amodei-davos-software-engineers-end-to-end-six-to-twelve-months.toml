@@ -1,0 +1,21 @@
+[claim]
+id = "2026-01-20-amodei-davos-software-engineers-end-to-end-six-to-twelve-months"
+speaker_id = "amodei"
+when = "2026-01-20"
+when_note = "The World Economic Forum's own upload of the session is dated 2026-01-20."
+occasion = "World Economic Forum Annual Meeting, Davos, session 'The Day After AGI' (artificial general intelligence) with Demis Hassabis, moderated by Zanny Minton Beddoes of The Economist"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=NnVW9epLlTM"
+source_locator = "1:54 to 2:12 into the video"
+checked_how = "Read the English captions supplied with the upload on 2026-10-19; the quote is a verbatim run of those caption words. Checked against a third-party transcript (A Letter a Day newsletter)."
+quote = "we might be 6 to 12 months away from when the model is doing most maybe all of what SWES do end to end"
+statement_id = "amodei-2026-02"
+prediction = "Within six to twelve months (by about January 2027) AI models might be doing most, maybe all, of what software engineers do, from start to finish."
+kind = "capability"
+bar = "An AI system shown, by its maker or an outside body, doing most of a software engineer's work end to end on its own (not only writing code, but also setting up, testing, deploying and documenting), by the end of 2027."
+due = 2027
+due_early = 2026
+due_basis = "'6 to 12 months' from 2026-01-20 runs from July 2026 to January 2027; the later end falls in 2027, and the earlier end is recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-046", "amodei-claims-047", "amodei-claims-048"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged ('I don't know, we might be'). 'SWEs' in the captions is software engineers. The statement row cites the Forum's short clip of the same words; the quote differs from the statement only in caption punctuation and capitals ('most maybe all' for 'most, maybe all'), because the two uploads carry separately made captions. Restated with a longer span on 2026-02-13 (separate record)."

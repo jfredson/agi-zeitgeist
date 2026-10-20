@@ -1,0 +1,20 @@
+[claim]
+id = "2026-09-12-amodei-pace-cure-most-major-diseases-five-to-ten-years"
+speaker_id = "amodei"
+when = "2026-09-12"
+when_note = "The page says only 'September 2026'; the first Hacker News submission of it is 2026-09-12."
+occasion = "Short post 'We Must Pace the Frontier' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/post/we-must-pace-the-frontier"
+source_locator = "first paragraph"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "I believe that AI could cure most major diseases in the next 5–10 years"
+prediction = "AI could cure most major diseases in the next five to ten years (by 2031 to 2036)."
+kind = "capability"
+bar = "Cures, with AI's help, for most of the major diseases (the leading causes of death and disability, such as most cancers, heart disease, Alzheimer's disease and major infections), approved by regulators or shown in completed trials, by the end of 2036."
+due = 2036
+due_early = 2031
+due_basis = "'in the next 5–10 years' from 2026-09-12 runs to 2031 to 2036; the later end is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-063"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'could'. The first time he has put a calendar span on this hope in his own words; his 2024 essay counted '5-10 years' from the arrival of powerful AI instead."

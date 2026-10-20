@@ -1,0 +1,25 @@
+[claim]
+id = "2023-01-25-lecun-teenagers-train-image-models-within-two-years"
+speaker_id = "lecun"
+when = "2023-01-25"
+when_note = "YouTube gives the upload date as 2023-01-25; the day of recording is not given."
+occasion = "Big Technology Podcast with Alex Kantrowitz, 'Is ChatGPT A Step Toward Human-Level AI?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=ULbpPHjiSBg"
+source_locator = "59:28 into the video, on artists' complaints about image generators"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some misheard words); the quote is a verbatim run of those caption words."
+quote = "within a year or two you know any teenager in the parents basement is going to be able to do this"
+prediction = "Within a year or two of January 2023, any teenager in their parents' basement would be able to do what a large tech company does with artists' work: make images with a model trained on their art. He said it to argue that artists should not frame the issue as a big California company profiting from their work."
+kind = "capability"
+bar = "His own words: within a year or two, 'any teenager in the parents basement is going to be able to do this', where 'this', from the sentences around it, is what 'a large tech company in California' does with artists' work, which he says the big companies 'are just the first ones to have the technology to do': train an image-making model on artists' work and make images with it. Plain test: by the end of 2025, a dated record showing that one person on their own, on home or cheaply hired equipment and with no company behind them, could do that."
+due = 2025
+due_early = 2024
+due_basis = "'within a year or two', said 2023-01-25: 2024 to 2025; the later end is taken and the earlier recorded."
+status = "hit"
+verdict_on = 2023-01-26
+verdict_why = "Hugging Face's guide of 2023-01-26 shows a full further training of the openly released Stable Diffusion image model on one's own chosen images 'in a 2080 Ti with 11 GB of VRAM', a home graphics card, in about five hours. It was already within reach of one person before he spoke: on 2022-11-01 Andy Baio reported that a student had trained such a model on 32 of the illustrator Hollie Mengert's drawings, on a hired graphics card, in about 2.5 hours for under $2. Every condition of his words was met inside the window."
+verdict_source = "https://huggingface.co/blog/lora"
+evidence_by = "outside"
+direction = "sooner"
+search_ids = ["lecun-claims-048", "lecun-claims-049", "lecun-claims-050", "lecun-claims-062", "lecun-claims-063"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. First entered as a hit, then changed to a miss with a test that added conditions he never said (home equipment only, a model built from scratch, adapting a released model not counting). Changed again before merging on 2026-10-19, after the independent check: the test is restored to his own words, with 'this' read from the sentences around it in the captions (re-read that day), and scored on what the dated record shows. His next sentence, 'eventually everybody is going to be able to use this kind of stuff and train their own models', has no date and is not the claim. Whether training a model from scratch at home was possible by 2025 does not decide it, since he did not say 'from scratch'."

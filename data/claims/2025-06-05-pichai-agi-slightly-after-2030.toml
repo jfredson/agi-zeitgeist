@@ -1,0 +1,20 @@
+[claim]
+id = "2025-06-05-pichai-agi-slightly-after-2030"
+speaker_id = "pichai"
+when = "2025-06-05"
+when_note = "The transcript page says it was posted on 2025-06-05, and the official video was uploaded the same day; the recording date is not given."
+occasion = "Lex Fridman Podcast episode 471, a long interview"
+source_kind = "transcript"
+source_url = "https://lexfridman.com/sundar-pichai-transcript/"
+source_locator = "the 'AGI and ASI' section, 00:40:31 to 00:41:34"
+checked_how = "Read the transcript page on 2026-10-19 (curl) and checked the passage against the official video's automatic captions (yt-dlp), which carry the same words."
+quote = "I don’t think we’ll quite get there by 2030, so my sense is it’s slightly after that"
+prediction = "Asked whether artificial general intelligence (AGI) could come by 2030, he said it would 'just fall short of that timeline' and arrive 'slightly after' 2030, while stressing that the definition does not matter."
+kind = "timing"
+bar = "None in the source. He does not define AGI; he says 'we constantly move the line of what it means to be AGI' and 'it doesn't matter what that definition is'. The interviewer's loose definition ('human expert level at a lot of the main fields') is not the speaker's own."
+due = 2031
+due_basis = "'slightly after' 2030 sets no end; 2031 is taken as the earliest year it could be judged."
+status = "unfalsifiable"
+verdict_why = "AGI is a named stage he never defines in the source, and he says the definition does not matter, so no outsider could test it. Decided at entry under the bar rule (John, 2026-10-19)."
+search_ids = ["pichai-claims-003", "pichai-claims-004"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips. The same answer says that by 2030 'there'll be such dramatic progress' (2025-06-05-pichai-dramatic-progress-by-2030). 'I don't think we'll quite get there by 2030' is also a forecast that something will not happen by a date, which John ruled on 2026-10-19 is a claim; it names the same undefined AGI, so it cannot be tested either and is kept in this one record."

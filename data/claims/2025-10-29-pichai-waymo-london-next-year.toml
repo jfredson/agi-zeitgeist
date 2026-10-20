@@ -1,0 +1,20 @@
+[claim]
+id = "2025-10-29-pichai-waymo-london-next-year"
+speaker_id = "pichai"
+when = "2025-10-29"
+when_note = "Alphabet's third-quarter 2025 earnings call was held on 2025-10-29."
+occasion = "Alphabet's third-quarter 2025 earnings call (Pichai's remarks as posted by Google)"
+source_kind = "transcript"
+source_url = "https://blog.google/inside-google/message-ceo/alphabet-earnings-q3-2025/"
+source_locator = "the Waymo section"
+checked_how = "Read Google's edited transcript of his remarks on the page on 2026-10-19 (curl)."
+quote = "Next year, Waymo aims to open service in London, and they're working to bring service to Tokyo."
+prediction = "Waymo aimed to open its driverless ride service in London in 2026. Tokyo is named with no date."
+kind = "deployment"
+bar = "Driverless Waymo rides open to the public in London by 2026-12-31."
+due = 2026
+due_basis = "'Next year', said 2025-10-29; judged at 2026-12-31."
+is_goal = true
+status = "not_yet_due"
+search_ids = ["pichai-claims-005"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips. Waymo, the self-driving car company whose cars are driven by AI, belongs to Alphabet. Marked as a goal because of 'aims to'. Tokyo carries no date and is not scored."

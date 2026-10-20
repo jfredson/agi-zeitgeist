@@ -1,0 +1,23 @@
+[claim]
+id = "2024-02-23-hassabis-agi-not-surprised-within-decade-or-sooner"
+speaker_id = "hassabis"
+when = "2024-02-23"
+when_note = "Upload date of the episode on the Hard Fork channel."
+occasion = "Hard Fork podcast (New York Times), episode 71, with Kevin Roose and Casey Newton"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=nwUARJeeplA"
+source_locator = "about 32:11 to 32:18"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I would not be surprised if we saw systems nearing that kind of capability within the next decade or sooner"
+statement_id = "hassabis-2024-01"
+prediction = "He would not be surprised to see systems nearing artificial general intelligence (AGI) within the next decade or sooner; he adds 'that doesn't mean it's going to happen'."
+kind = "timing"
+bar = "None: 'nearing that kind of capability' sets no level to reach, so nothing an outsider could see would show it had or had not happened."
+due = 2034
+due_basis = "'within the next decade' from 2024-02-23; judged at 2034-12-31."
+restates = "2023-07-10-hassabis-agi-like-not-surprised-next-decade"
+repeated_on = [2024-02-28]
+status = "unfalsifiable"
+verdict_why = "Systems 'nearing' a capability is a direction with no level set, so no outsider test exists. Decided at entry."
+search_ids = ["hassabis-claims-005", "hassabis-claims-018", "hassabis-claims-060"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Repeated on 2024-02-28 on the Dwarkesh Podcast: 'I wouldn't be surprised if we had AGI-like systems within the next decade.' Test changed before merging on 2026-10-19: it read 'None: 'nearing' sets no level, and 'would not be surprised' names a possibility, which he says in the next breath is not a forecast.', now drops the reason that it names a possibility, because 'would not be surprised' is a hedge scored at face value; the status is unchanged. A judgement: at about 32:52 he adds 'that doesn't mean it's going to happen so I just wouldn't be surprised so you can sort of infer some probability mass'. That is a hedge on his own forecast, not a date he says he does not believe (his forecast in the same answer is 2030), so the claim is kept rather than left out as a hypothetical."

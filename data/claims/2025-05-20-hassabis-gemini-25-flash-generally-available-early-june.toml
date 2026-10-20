@@ -1,0 +1,25 @@
+[claim]
+id = "2025-05-20-hassabis-gemini-25-flash-generally-available-early-june"
+speaker_id = "hassabis"
+when = "2025-05-20"
+when_note = "Date of the Google I/O 2025 keynote."
+occasion = "Google I/O 2025 keynote, his segment on Gemini 2.5"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=o8NiE3XMPrM"
+source_locator = "about 20:21 to 20:25"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I'm excited to say that Flash will be generally available in early June with Pro soon after."
+prediction = "Gemini 2.5 Flash would be generally available in early June 2025, with 2.5 Pro soon after."
+kind = "deployment"
+bar = "Gemini 2.5 Flash generally available by 2025-06-10 ('early June'), with 2.5 Pro following soon after."
+due = 2025
+due_date = 2025-06-10
+due_basis = "'in early June', said 2025-05-20: 'early' in a month is read as its first third, so the due date is 2025-06-10 (the ledger's reading, set beside John's ruling that 'early' in a year is its first quarter, and flagged for him)."
+status = "missed"
+verdict_on = 2025-06-17
+verdict_why = "Flash became generally available on 2025-06-17, a week after 'early June' ended on this reading: Google's post of that day says 'Gemini 2.5 Flash and Pro are now generally available'. Before then Flash was a preview only. The condition that failed is the date; Pro did follow, the same day."
+verdict_source = "https://blog.google/products/gemini/gemini-2-5-model-family-expands/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["hassabis-claims-043", "hassabis-claims-044"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Test changed before merging on 2026-10-19: it read 'Gemini 2.5 Flash generally available by the end of June 2025, with 2.5 Pro following.', now 'by 2025-06-10', because the earlier test read 'early June' as the whole month, the most generous of three readings of 'early' in the ledger, and John ruled on 2026-10-19 that 'early' means the first part of the period. Status changed the same day from came true to did not. 'Early' in a month is not yet ruled by John; under a whole-month reading this would be a hit."

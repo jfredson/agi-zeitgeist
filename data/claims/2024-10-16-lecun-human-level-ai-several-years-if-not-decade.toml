@@ -1,0 +1,22 @@
+[claim]
+id = "2024-10-16-lecun-human-level-ai-several-years-if-not-decade"
+speaker_id = "lecun"
+when = "2024-10-16"
+when_note = "The post's timestamp is 2024-10-16 15:31 UTC."
+occasion = "Post on X answering why he disagrees with Sam Altman and Dario Amodei on timelines"
+source_kind = "own_words"
+source_url = "https://x.com/ylecun/status/1846574605894340950"
+source_locator = "the first line of the post"
+checked_how = "Read the post's text and timestamp on 2026-10-19 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "I said that reaching Human-Level AI \"will take several years if not a decade.\""
+statement_id = "lecun-2024-07"
+prediction = "Reaching human-level AI will take several years, if not a decade, from October 2024; he adds that the distribution has a long tail and 'it could take much longer than that'."
+kind = "timing"
+bar = "None in the source: the post does not say what human-level AI is or how anyone would know it had arrived, and the words set a minimum time rather than a deadline."
+due = 2034
+due_early = 2027
+due_basis = "A range: 'several years' (taken as three, 2027) to 'a decade' (2034) from 2024-10-16. The later end is taken and the earlier recorded."
+status = "unfalsifiable"
+verdict_why = "'Human-Level AI' is a named stage he does not define or compare with anything in the post, so under John's reading of 2026-10-19 that bare 'human level' is a named stage, no outsider can test it. He also adds that it could take much longer. Decided at entry."
+search_ids = ["lecun-claims-002"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. He quotes his own earlier words ('I said'); the earliest instance was not found. In the same post he reads Altman's 'several thousand days' as six to nine years and says 'So we're not in disagreement'. The seed list of 2026-10-17 had this as not yet due."

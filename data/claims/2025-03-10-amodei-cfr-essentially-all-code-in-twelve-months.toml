@@ -1,0 +1,20 @@
+[claim]
+id = "2025-03-10-amodei-cfr-essentially-all-code-in-twelve-months"
+speaker_id = "amodei"
+when = "2025-03-10"
+when_note = "The Council on Foreign Relations event page gives 'Monday March 10, 2025'; the video was uploaded 2025-03-11."
+occasion = "Council on Foreign Relations speaker series for company chief executives, conversation with its president Michael Froman"
+source_kind = "transcript"
+source_url = "https://www.cfr.org/event/ceo-speaker-series-dario-amodei-anthropic"
+source_locator = "the same answer, the sentence after the 90-percent sentence"
+checked_how = "Read the transcript printed on the event page on 2026-10-19 (curl); the page marks it 'an uncorrected transcript'."
+quote = "And then in twelve months, we may be in a world where AI is writing essentially all of the code."
+statement_id = "amodei-2025-06"
+prediction = "Within twelve months (by about March 2026) we 'may' be in a world where AI writes essentially all of the code, though a programmer still has to say what is to be built."
+kind = "deployment"
+bar = "The plainest reading, with no company named: AI writing essentially all of the code being written, shown by a measure of code written by AI across programming generally."
+due = 2026
+due_basis = "'in twelve months' from 2025-03-10 is March 2026; a span is judged at the end of the year it ends in, 2026-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-026", "amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The seed list of 2026-10-17 had this as missed; under the method a span of months is judged at the end of the year it ends in, so the verdict waits for 2026-12-31. For context only: on 2026-02-13 he listed '100% of code is written by the model' as a further step and did not say it had been reached. Hedged with 'may'. Whose code is not stated, as in the 90-percent claim."

@@ -1,0 +1,25 @@
+[claim]
+id = "2024-12-11-hassabis-gemini-2-more-google-products-early-next-year"
+speaker_id = "hassabis"
+when = "2024-12-11"
+when_note = "The post is dated 2024-12-11."
+occasion = "Google blog post on Gemini 2.0, the section 'By Demis Hassabis, CEO of Google DeepMind and Koray Kavukcuoglu, CTO of Google DeepMind on behalf of the Gemini team'"
+source_kind = "own_words"
+source_url = "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"
+source_locator = "section 'Gemini 2.0 available in Gemini app, our AI assistant'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "Early next year, we’ll expand Gemini 2.0 to more Google products."
+prediction = "Early in 2025 Gemini 2.0 would be brought into more Google products beyond the Gemini app and developer tools."
+kind = "deployment"
+bar = "Gemini 2.0 running in at least one further Google product by 2025-03-31."
+due = 2025
+due_date = 2025-03-31
+due_basis = "'Early next year', said in December 2024, read as the first quarter of 2025."
+status = "hit"
+verdict_on = 2025-03-05
+verdict_why = "On 2025-03-05 Google said it had 'launched Gemini 2.0 for AI Overviews in the U.S.' in Search."
+verdict_source = "https://blog.google/products/search/ai-mode-search/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["hassabis-claims-038", "hassabis-claims-040"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Co-signed with Koray Kavukcuoglu."

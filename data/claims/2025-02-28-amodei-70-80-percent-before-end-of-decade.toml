@@ -1,0 +1,21 @@
+[claim]
+id = "2025-02-28-amodei-70-80-percent-before-end-of-decade"
+speaker_id = "amodei"
+when = "2025-02-28"
+when_note = "The Hard Fork upload is dated 2025-02-28."
+occasion = "Hard Fork podcast (New York Times), episode 'Dario Amodei of Anthropic's Hopes and Fears for the Future of A.I.'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=YhGUSIvsn_Y"
+source_locator = "32:42 to 33:11 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "maybe 70 80% we get that before the end of the decade and my guess is 2026 or 2027"
+statement_id = "amodei-2025-04"
+prediction = "A 70 to 80 percent chance that before the end of the decade there will be 'a very large number of AI systems that are much smarter than humans at almost everything'; his own guess for the year is 2026 or 2027."
+kind = "timing"
+bar = "A comparison that can be checked: a very large number of running AI systems, each shown by its maker or an outside body to be much smarter than people at almost everything, by the end of 2030."
+due = 2030
+due_basis = "'before the end of the decade': his words do not say whether he means 2029 or 2030, so the later is taken, as the method says."
+has_probability = true
+status = "not_yet_due"
+search_ids = ["amodei-claims-024"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). The point guess '2026 or 2027' in the same sentence is an unchanged repeat of the essay of 2025-01-29 and is entered in that record's repeated_on."

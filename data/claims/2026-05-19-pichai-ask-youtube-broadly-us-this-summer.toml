@@ -1,0 +1,25 @@
+[claim]
+id = "2026-05-19-pichai-ask-youtube-broadly-us-this-summer"
+speaker_id = "pichai"
+when = "2026-05-19"
+when_note = "The keynote was given on 2026-05-19; the official upload is dated the same day."
+occasion = "Opening keynote at Google I/O 2026, Google's developer conference"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=wYSncx9zLIU"
+source_locator = "00:08:44 to 00:08:52 into the video"
+checked_how = "Read the official upload's English caption track on 2026-10-19 (yt-dlp); the quote is a verbatim run of the caption words. The words fall in his own segment, between his opening and his hand-over to the next presenter."
+quote = "We are starting to test Ask YouTube now and it will roll out broadly in the US this summer."
+prediction = "Ask YouTube, a Gemini-powered conversational search inside YouTube, would roll out broadly in the United States in summer 2026."
+kind = "deployment"
+bar = "Ask YouTube available to most users in the United States on at least one main platform by the end of summer 2026 (2026-09-22), shown by YouTube's word or a report of it."
+due = 2026
+due_basis = "'this summer', said 2026-05-19; summer is taken to end at the September equinox, 2026-09-22."
+due_date = 2026-09-22
+status = "hit"
+verdict_on = 2026-07-07
+verdict_why = "On 2026-07-07 Social Media Today, quoting YouTube, reported Ask YouTube 'finally available for all signed-in users in the U.S. aged 13 and older' on the desktop site. YouTube's own post of 2026-10-12 brought it to phones and says it had come to TVs earlier in the year."
+verdict_source = "https://www.socialmediatoday.com/news/youtube-launches-desktop-version-of-ask-youtube/824660/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["pichai-claims-035", "pichai-claims-048", "pichai-claims-056", "pichai-claims-066"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips. Judgement call: availability to all signed-in desktop users is read as 'broadly'; a reader who requires the phone app too would score it a month late. The record is a same-day trade-press report quoting YouTube's announcement thread, which could not itself be read. Quote corrected before merging on 2026-10-19: the caption track reads 'it will', not 'it'll'."

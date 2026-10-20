@@ -1,0 +1,21 @@
+[claim]
+id = "2026-01-26-amodei-ai-builds-next-generation-one-to-two-years"
+speaker_id = "amodei"
+when = "2026-01-26"
+when_note = "The page says only 'January 2026'; the first Hacker News submission of it is 2026-01-26."
+occasion = "Essay 'The Adolescence of Technology' on his own site"
+source_kind = "own_words"
+source_url = "https://www.darioamodei.com/essay/the-adolescence-of-technology"
+source_locator = "the paragraph beginning 'In fact, that picture probably underestimates the likely rate of progress'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "may be only 1–2 years away from a point where the current generation of AI autonomously builds the next."
+statement_id = "amodei-2026-05b"
+prediction = "The loop in which AI writes code that speeds up building the next AI may be only one to two years from the point where the current generation of AI builds the next generation on its own."
+kind = "capability"
+bar = "An AI company stating, with evidence, that a new generation of its models was built autonomously by the previous generation (people setting goals, the AI doing the research and engineering), by the end of 2028."
+due = 2028
+due_early = 2027
+due_basis = "'1–2 years' from 2026-01-26 runs to January 2027 to January 2028; the later end is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-049"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'may'. The evidence is likely to be only the maker's word. Not in the seed list."

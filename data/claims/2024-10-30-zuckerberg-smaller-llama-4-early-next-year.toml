@@ -1,0 +1,25 @@
+[claim]
+id = "2024-10-30-zuckerberg-smaller-llama-4-early-next-year"
+speaker_id = "zuckerberg"
+when = "2024-10-30"
+occasion = "Meta's third-quarter 2024 earnings call, opening remarks"
+source_kind = "transcript"
+source_url = "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q3/META-Q3-2024-Earnings-Call-Transcript.pdf"
+source_locator = "opening remarks, the paragraph on Llama 4"
+checked_how = "Read on 2026-10-19 in Meta's own transcript of the call (PDF, read as text)."
+quote = "I expect that the smaller Llama 4 models will be ready first, and they’ll be ready, we expect sometime early next year"
+prediction = "The smaller Llama 4 models would be ready early in 2025."
+kind = "timing"
+bar = "A public release of the first, smaller Llama 4 models by the end of March 2025, shown by Meta's own release."
+due = 2025
+due_basis = "'sometime early next year', said 2024-10-30. Under John's reading of 2026-10-19, 'early' in a year is its first quarter, so the due date is 2025-03-31."
+due_date = 2025-03-31
+repeated_on = [2024-12-06]
+status = "missed"
+verdict_on = 2025-04-05
+verdict_why = "It came, but after the date. On 2025-04-05 he posted 'New drop: llama.com/4' as Meta released Llama 4 Scout and Llama 4 Maverick, the first two Llama 4 models, with the larger Behemoth still in training: five days after the end of March 2025."
+verdict_source = "https://www.threads.com/@zuck/post/DIE2cjxy0hO"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["zuckerberg-claims-026", "zuckerberg-claims-058", "zuckerberg-claims-059", "zuckerberg-claims-018"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). Repeated more loosely in a reel of 2024-12-06: 'Next stop -- Llama 4 in 2025'. Changed before merging on 2026-10-19: it was read as due by the end of June 2025 (the first half of the year) and scored as came true; under John's ruling of the same day that 'early' in a year means its first quarter, it is due 2025-03-31 and the release came five days later. The test is otherwise unchanged."

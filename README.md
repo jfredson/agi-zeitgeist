@@ -24,8 +24,9 @@ Altman) and, in pull request 4 (merged 2026-10-19), the other 32 members (596 st
 searches, every quiet year recorded; the frontier-lab traces of pull request 13 are folded in and the
 ten statements they sampled out are restored under amendment A26), plus surveys, prediction markets,
 polls and dated events, coded under methodology version 2. **The expert panel was frozen on
-2026-10-06** (amendment A18): 25 core members and a 2020s cohort of 12 in `data/speakers.csv`,
-and a wide list of 308 in `data/wide_list_candidates.csv`. The r/singularity pilot of the online
+2026-10-06** (amendment A18): 25 core members and a 2020s cohort of 12 in `data/speakers.csv`
+(which since 2026-10-19 also holds the claims ledger's ledger-only list, tier `claims_only`,
+three company heads who are not on the panel; amendment A30), and a wide list of 308 in `data/wide_list_candidates.csv`. The r/singularity pilot of the online
 communities stream is model-coded by three model families on all 390 sampled posts. The four-leg
 definition of entering the singularity was adopted on 2026-10-08 (amendment A19); the page scores
 it from frozen thresholds, and since 2026-10-17 its headline is the average share of the way with
@@ -48,7 +49,7 @@ streams.
 | `data/world_measures.csv` | world measures, kept apart from belief: capability readings (METR time horizon), company self-reports of AI-done work, and world output growth (World Bank), for the singularity-entry definition |
 | `data/search_log.csv` | every search run to build the record, and what it found; the weekly reading's searches carry ids starting `reading-` |
 | `data/readings/` | one file per run of the weekly reading (`YYYY-MM-DD.json`), never edited: what was searched, what was found, one verdict per source |
-| `data/claims/` | the claims ledger (amendment A27): one file per dated prediction by a panel member, with the words, the source, the test, the due year and the verdict; method in `docs/claims-ledger-method.md` |
+| `data/claims/` | the claims ledger (amendments A27 and A30): one file per dated prediction by one of the industry's fifteen figureheads (twelve on the panel, three on the ledger-only list), with the words, the source, the test, the due year and the verdict; method in `docs/claims-ledger-method.md` |
 | `docs/methodology-v2.md` | the method (version 2, 2026-09-30): four streams, coding scheme, panel rule, preregistered tests |
 | `docs/methodology.md` | pointer to version 2, plus details carried over from version 1 |
 | `docs/codebook.md` | how each statement is coded under version 2, with decision rules and examples |

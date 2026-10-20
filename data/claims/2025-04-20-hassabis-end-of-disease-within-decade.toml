@@ -1,0 +1,19 @@
+[claim]
+id = "2025-04-20-hassabis-end-of-disease-within-decade"
+speaker_id = "hassabis"
+when = "2025-04-20"
+when_note = "Broadcast date; the archived page of 2025-04-23 is the original transcript (CBS later updated the page on 2025-08-03 and cut some questions)."
+occasion = "60 Minutes (CBS) interview with Scott Pelley"
+source_kind = "transcript"
+source_url = "https://web.archive.org/web/20250423001741/http://www.cbsnews.com/news/artificial-intelligence-google-deepmind-ceo-demis-hassabis-60-minutes-transcript/"
+source_locator = "the drug-development passage; Pelley asks 'The end of disease?'"
+checked_how = "Read CBS's transcript on 2026-10-19 in the Internet Archive copy of 2025-04-23 (curl), and compared with the live page as updated 2025-08-03."
+quote = "I think that's within reach. Maybe within the next decade or so, I don't see why not."
+prediction = "Curing all disease with the help of AI is within reach, maybe within the next decade or so."
+kind = "capability"
+bar = "Plainest reading of 'the end of disease' and 'cure all disease': by the end of 2035, essentially all human diseases curable, with AI's help."
+due = 2035
+due_basis = "'within the next decade or so' from 2025-04-20; judged at 2035-12-31. 'Or so' gives some slack, not a second date."
+status = "not_yet_due"
+search_ids = ["hassabis-claims-002"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). A judgement: the seed list asked whether John might rule this unfalsifiable. It is kept with a bar because 'the end of disease' is a plain state an outsider can check, though heavily hedged ('maybe', 'or so', 'I don't see why not'). 'Within reach' could be read as 'achievable' rather than 'achieved'; if John prefers that reading, it becomes unfalsifiable."

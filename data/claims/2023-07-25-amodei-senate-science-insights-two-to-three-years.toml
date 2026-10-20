@@ -1,0 +1,22 @@
+[claim]
+id = "2023-07-25-amodei-senate-science-insights-two-to-three-years"
+speaker_id = "amodei"
+when = "2023-07-25"
+when_note = "Same written statement as the biological-risk claim; headed 'July 25th, 2023'."
+occasion = "Written testimony to the Senate Judiciary subcommittee on privacy, technology and the law, hearing 'Oversight of A.I.: Principles for Regulation'"
+source_kind = "own_words"
+source_url = "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf"
+source_locator = "section 'Short-Term, Medium-Term, and Long-Term Risks', the paragraph beginning 'The medium-term risks are where I would most like to draw the subcommittee’s attention' (page 3)"
+checked_how = "Downloaded the PDF on 2026-10-19 (curl), took out its text and read the passage."
+quote = "in 2-3 years, AI systems may facilitate extraordinary insights in broad swaths of many science and engineering disciplines"
+statement_id = "amodei-2023-01"
+prediction = "In two to three years from mid-2023, AI systems may help bring about 'extraordinary insights' across many fields of science and engineering, causing 'a revolution in technology and scientific discovery'."
+kind = "capability"
+bar = "None an outsider can apply: 'extraordinary insights in broad swaths of many science and engineering disciplines' names no discovery, field or measure."
+due = 2026
+due_early = 2025
+due_basis = "'in 2-3 years' from 2023-07-25 runs from July 2025 to July 2026; the later end, 2026, is taken and the earlier recorded."
+status = "unfalsifiable"
+verdict_why = "'Extraordinary insights' and 'broad swaths' have no test, and the words are hedged with 'may'. Decided at entry."
+search_ids = ["amodei-claims-005"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021)."

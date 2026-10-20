@@ -1,0 +1,21 @@
+[claim]
+id = "2023-05-02-hassabis-agi-few-years-maybe-decade"
+speaker_id = "hassabis"
+when = "2023-05-02"
+when_note = "Fortune (2023-05-03) says he spoke on the Tuesday, 2023-05-02."
+occasion = "The Wall Street Journal's Future of Everything Festival, as reported by Fortune"
+source_kind = "coverage_only"
+source_url = "https://fortune.com/2023/05/03/google-deepmind-ceo-agi-artificial-intelligence/"
+source_locator = "the paragraph quoting him on how far away AGI is"
+checked_how = "Read Fortune's report on 2026-10-19; no recording or transcript of the festival talk was found."
+reported_as = "Fortune (Tristan Bove, 2023-05-03) reports him saying at the festival that AGI 'could be just a few years, maybe within a decade away'."
+statement_id = "hassabis-2023-02"
+prediction = "Artificial general intelligence (AGI) could be a few years away, maybe within a decade (by 2033)."
+kind = "timing"
+bar = "None: AGI is not defined in the report."
+due = 2033
+due_basis = "'maybe within a decade' from 2023-05-02; judged at 2033-12-31."
+status = "unfalsifiable"
+verdict_why = "Names a stage, artificial general intelligence (AGI), that nothing in the report defines, so no outsider test exists. Decided at entry. 'A few years' names no length (John's reading of 2026-10-19), so the date is 'maybe within a decade'."
+search_ids = ["hassabis-claims-021", "hassabis-claims-022"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). Coverage only: the words are Fortune's report. Test changed before merging on 2026-10-19: it read 'None: AGI is not defined in the report, and the words name a possibility ('could be').', now 'None: AGI is not defined in the report.', because a hedge such as 'could be' is scored at face value under the method and is not a reason a claim cannot be tested; the status is unchanged."

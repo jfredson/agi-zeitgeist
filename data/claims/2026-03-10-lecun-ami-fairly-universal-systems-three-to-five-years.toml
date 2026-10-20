@@ -1,0 +1,21 @@
+[claim]
+id = "2026-03-10-lecun-ami-fairly-universal-systems-three-to-five-years"
+speaker_id = "lecun"
+when = "2026-03-10"
+when_note = "Agence France-Presse's report is dated 2026-03-10, the day AMI Labs announced its funding round, and draws on an interview AFP held with him."
+occasion = "Interview with Agence France-Presse (AFP) on AMI Labs' funding round of about $1 billion, as reported by AFP"
+source_kind = "coverage_only"
+source_url = "https://macaubusiness.com/french-ai-startup-ami-announces-1-bn-raised-in-funding/"
+source_locator = "the paragraph beginning 'Within three to five years'"
+checked_how = "Read the AFP report as carried by Macau Business and by RTHK (news.rthk.hk) on 2026-10-19; no recording or transcript of the AFP interview was found, and the time span is the agency's paraphrase around a quoted phrase."
+reported_as = "Agence France-Presse, 2026-03-10: 'Within three to five years, AMI plans to produce \"fairly universal intelligent systems\" that could be used for almost any task requiring intelligent machines, such as autonomous driving and robotics, LeCun said.'"
+prediction = "As reported, AMI Labs plans to produce, within three to five years of March 2026, 'fairly universal intelligent systems' that could be used for almost any task needing intelligent machines, such as self-driving and robots."
+kind = "deployment"
+bar = "Plain reading: by the end of 2031, AMI Labs has released or deployed AI systems, shown by its releases or by outside users, that are used across a wide range of tasks needing intelligent machines, including at least driving or robot control, rather than one narrow use."
+due = 2031
+due_early = 2029
+due_basis = "'Within three to five years' from 2026-03-10: 2029 to 2031; the later end is taken and the earlier recorded."
+is_goal = true
+status = "not_yet_due"
+search_ids = ["lecun-claims-013", "lecun-claims-014", "lecun-claims-015", "lecun-claims-017", "lecun-claims-069"]
+notes = "Role at the time: founder and chairman of Advanced Machine Intelligence (AMI Labs), the Paris company he set up after leaving Meta at the end of 2025 to build AI models of the world. He called himself its executive chairman in MIT Technology Review (2026-01-22), and Brown University's page of 2026-04-01 says the same, while Agence France-Presse's report of 2026-03-10 calls him its non-executive chairman; he is its chair either way. Treated as a qualifying founder-leader or chair role, a judgement flagged for the lead. Coverage only: only the phrase 'fairly universal intelligent systems' is quoted, and the time span is the agency's. Global Finance (2026-04-07) gives a related paraphrase with no source: 'In three to five years, LeCun says he hopes to create apps for airplane engines, autos, and robots.' Entered as a company plan (is_goal), since AFP reports it as what 'AMI plans'."

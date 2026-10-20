@@ -1,0 +1,25 @@
+[claim]
+id = "2024-02-20-suleyman-hallucinations-largely-eliminated-next-year"
+speaker_id = "suleyman"
+when = "2024-02-20"
+when_note = "The report was published 2024-02-21 01:55 UTC, the night of the forum's first day (held 2024-02-20 and 2024-02-21 in Mumbai); he spoke by video link. The day is taken as 2024-02-20 from the publication time; the forum's programme was not found to confirm it."
+occasion = "Virtual conversation with Nasscom president Debjani Ghosh at the Nasscom Technology Leadership Forum 2024"
+source_kind = "coverage_only"
+source_url = "https://www.communicationstoday.co.in/?p=276559"
+source_locator = "the article 'DeepMind's Mustafa Suleyman predicts end to AI hallucinations by next year', third paragraph"
+checked_how = "Read the report on the page on 2026-10-19 (curl). The forum's own upload (nasscom, uploaded 2024-03-26) is a 167-second excerpt whose captions do not hold these words; no full recording or transcript was found."
+reported_as = "Communications Today, crediting Moneycontrol, reports that he said he was 'very convinced' AI hallucinations would be largely eliminated over the next year, and that AI would then be as accurate as any content found on the web."
+prediction = "Within about a year of February 2024, hallucinations (made-up facts in AI answers) would be largely eliminated, and AI answers would be as accurate as any content one can find on the web."
+kind = "capability"
+bar = "His named comparison, read plainly: by the end of 2025, hallucinations (made-up facts) in the answers of leading AI assistants are largely eliminated, so that their answers are 'as accurate as any content that you can find on the web', read as no less accurate than the reliable sources on the web that they draw on, such as established news sites and reference works, shown by a published measurement of the accuracy of AI answers. His 2023 number (95% of answers verifiably accurate) is not given in this report and is not borrowed."
+due = 2025
+due_basis = "'over the next year' from 2024-02-20 runs to about 2025-02-20; judged at the end of 2025."
+restates = "2023-06-10-suleyman-hallucinations-largely-eliminated-by-june-2025"
+status = "missed"
+verdict_on = 2025-12-31
+verdict_why = "Not met by the end of 2025. In the largest outside check of the year, published 2025-10-22, journalists from 22 public broadcasters, in a study run by the European Broadcasting Union and led by the BBC, judged more than 3,000 answers about the news from ChatGPT, Copilot, Gemini and Perplexity: 20% 'contained major accuracy issues, including hallucinated details and outdated information', and 45% had at least one significant issue. Answers that get the news they draw on badly wrong one time in five are not as accurate as that news, and made-up details were not largely eliminated. OpenAI's own measurement of everyday ChatGPT answers with web browsing (its GPT-5 system card, 2025-08-13) found 4.8% to 22% of answers with at least one major factual error, depending on the model: 4.8% for its best, gpt-5-thinking, 11.6% for gpt-5-main, 20.6% and 22.0% for GPT-4o and o3. Even the 4.8% is a major error in about one answer in twenty, on OpenAI's own count, and the outside study of the same year, which is what the test names, found one in five."
+verdict_source = "https://www.bbc.co.uk/mediacentre/2025/new-ebu-research-ai-assistants-news-content"
+evidence_by = "outside"
+direction = "not_come"
+search_ids = ["suleyman-claims-010", "suleyman-claims-011", "suleyman-claims-009", "suleyman-claims-061"]
+notes = "Role at the time: still chief executive of Inflection AI (he moved to Microsoft on 2024-03-19). Coverage only: no primary source was found after searching YouTube and the web. A changed repeat of the claim of 2023-06-10, earlier in date (about February 2025 instead of June 2025) and with a different condition, so it is a new record; the earlier claim keeps its own due date and verdict. Test changed before merging on 2026-10-19: it read 'None an outsider could apply: this occasion gives no measure for largely eliminated, and as accurate as any content that you can find on the web has none either', now a plain test from his comparison with content on the web, because the independent check of 2026-10-19 found that the comparison is a named one, which under John's ruling on named comparisons gives a test; the status changed from cannot be tested to did not come true. The study cited was published by the BBC; it measured answers about the news only, which is the kind of web content his comparison names. Reason corrected before merging on 2026-10-19: it had given the system card's range as 11.6% to 22% and left out the 4.8% of gpt-5-thinking, the figure most favourable to him (independent check)."

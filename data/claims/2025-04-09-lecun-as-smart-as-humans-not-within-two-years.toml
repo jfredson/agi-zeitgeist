@@ -1,0 +1,21 @@
+[claim]
+id = "2025-04-09-lecun-as-smart-as-humans-not-within-two-years"
+speaker_id = "lecun"
+when = "2025-04-09"
+when_note = "The episode page gives April 09, 2025."
+occasion = "AI Inside podcast with Jason Howell and Jeff Jarvis, 'Yann LeCun: Human Intelligence is not General Intelligence'"
+source_kind = "transcript"
+source_url = "https://www.aiinside.show/episode/yann-lecun-human-intelligence-is-not-general-intelligence"
+source_locator = "the written transcript, his answer in the chapter 'AGI Timeline' (from 0:14:47)"
+checked_how = "Read the show's own written transcript on the episode page on 2026-10-19 (curl)."
+quote = "It's not going to happen next year. It's not going to happen two years from now."
+statement_id = "lecun-2025-05"
+prediction = "Machines at least as smart as humans in all the domains where humans are smart (what Meta calls advanced machine intelligence, 'human level intelligence if you want') will come, but not in 2026 and not within two years of April 2025."
+kind = "timing"
+bar = "His own definition in the same answer: machines 'at least as smart as humans in all the domains where humans are smart'. The claim holds if no AI is shown, by its maker or an outside body, to meet that before 2027-04-09."
+due = 2027
+due_basis = "'two years from now', said 2025-04-09: 2027-04-09; by the span rule judged at 2027-12-31."
+restates = "2024-04-09-lecun-not-surpass-human-intelligence-next-year"
+status = "not_yet_due"
+search_ids = ["lecun-claims-003"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. Unlike his undefined uses of 'human-level AI', this answer defines the stage, so the claim has a bar. It restates the London claim of 2024-04-09 with the date moved from 2025 to 2027. The same answer adds 'It may happen or happen to some degree within the next ten years', entered as a repeat on 2025-03-18-lecun-human-level-might-happen-within-a-decade. As of 2026-10-19 no such machine has been shown."

@@ -1,0 +1,20 @@
+[claim]
+id = "2024-04-12-amodei-asl4-2025-to-2028"
+speaker_id = "amodei"
+when = "2024-04-12"
+when_note = "The show's own YouTube upload is dated 2024-04-12."
+occasion = "The Ezra Klein Show (New York Times), episode 'What if Dario Amodei Is Right About A.I.?'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Gi_t3v53XRU"
+source_locator = "1:02:38 to 1:02:40 into the video; his description of the level at 1:00:11 to 1:00:55"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-10-19 (no punctuation, some stutters); the quote is a verbatim run of those caption words."
+quote = "I think ASL 4 Could Happen anywhere from 2025 to 2028"
+prediction = "Anthropic's AI Safety Level 4 (ASL-4) could be reached anywhere from 2025 to 2028. In the same answer he described it as models that could greatly increase the military capability of states such as North Korea, China or Russia, or that come close to being able to copy themselves and survive on their own outside their maker's control."
+kind = "capability"
+bar = "His description in the same interview: a model that greatly enhances a nation-state's offensive capability, or that is close to being able to replicate itself and survive in the wild. Shown by a dated finding, by Anthropic, another maker or an outside evaluator, that a model has such a capability, by the end of 2028. Protections switched on only as a precaution, because the capability could not be ruled out, are not such a finding."
+due = 2028
+due_early = 2025
+due_basis = "'anywhere from 2025 to 2028': the later year is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-011", "amodei-claims-073"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Hedged with 'could'. He said in the same interview that the level was not yet fully specified. Test changed before merging on 2026-10-19: it read 'Shown by Anthropic (or another maker) placing a model at its fourth safety level for these reasons, or by an outside evaluation finding such a capability', now asks for a finding that a model has the capability, because a level switched on as a precaution is not a record that the capability arrived (the same reading as his AI Safety Level 3 claim of the same answer)."

@@ -1,0 +1,19 @@
+[claim]
+id = "2025-04-24-pichai-waymo-washington-dc-2026"
+speaker_id = "pichai"
+when = "2025-04-24"
+when_note = "Alphabet's first-quarter 2025 earnings call was held on 2025-04-24."
+occasion = "Alphabet's first-quarter 2025 earnings call (Pichai's remarks as posted by Google)"
+source_kind = "transcript"
+source_url = "https://blog.google/inside-google/message-ceo/alphabet-earnings-q1-2025/"
+source_locator = "the Waymo section"
+checked_how = "Read Google's edited transcript of his remarks on the page on 2026-10-19 (curl)."
+quote = "We recently announced Washington, DC, as a future ride-hailing city, going live in 2026 alongside Miami."
+prediction = "Waymo's driverless ride service would go live in Washington, DC, in 2026."
+kind = "deployment"
+bar = "Driverless Waymo rides open to the public in Washington, DC, by 2026-12-31."
+due = 2026
+due_basis = "'going live in 2026'; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["pichai-claims-005"]
+notes = "Role at the time: chief executive of Google from 2015-10-02 and of its parent Alphabet from 2019-12-03; Google builds the Gemini models and its own AI chips. Waymo, the self-driving car company whose cars are driven by AI, belongs to Alphabet."

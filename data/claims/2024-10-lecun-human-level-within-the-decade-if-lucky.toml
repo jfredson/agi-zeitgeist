@@ -1,0 +1,22 @@
+[claim]
+id = "2024-10-lecun-human-level-within-the-decade-if-lucky"
+speaker_id = "lecun"
+when = "2024-10"
+when_note = "Shaastra, the IIT Madras science magazine, dates the issue (vol 03 issue 09) and the interview October 2024 and says it was given during his visit to IIT Madras that month; no day is printed."
+occasion = "Printed interview in Shaastra magazine, 'The future of AI is not LLMs: Yann LeCun', given at IIT Madras, Chennai"
+source_kind = "printed_qa"
+source_url = "https://shaastramag.iitm.ac.in/interview/future-ai-not-llms-yann-lecun"
+source_locator = "the answer to 'Do you think human-level intelligence is the next technological revolution waiting to happen?'"
+checked_how = "Read on the page on 2026-10-19 (curl); a printed question-and-answer interview ('Excerpts')."
+quote = "if we are lucky, human-level intelligence within the decade"
+statement_id = "lecun-2024-06"
+prediction = "If current theories work and there are no big obstacles, it should be clear within six or seven years whether research is on a good path to animal-level intelligence, and then, if we are lucky, human-level intelligence within ten years."
+kind = "timing"
+bar = "None in the source: 'human-level intelligence' is not defined in the interview, and the claim is conditional twice ('if all the theories ... work', 'if we are lucky')."
+due = 2034
+due_basis = "'within the decade', said October 2024, read as within ten years: 2034. Read as 'this decade' it would be 2030; the generous reading is taken."
+repeated_on = [2024-11-27]
+status = "unfalsifiable"
+verdict_why = "'Human-level intelligence' is a named stage he does not define or compare with anything in this interview (re-read on 2026-10-19), so under John's reading of that day that bare 'human level' is a named stage no outsider can say whether it arrived. The words are hedged ('if we are lucky'). The first part, 'we will know if we are on a good path towards animal-level intelligence in six-seven years', has the speaker as its only judge. Decided at entry."
+search_ids = ["lecun-claims-021", "lecun-claims-026", "lecun-claims-065"]
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. Repeated on 2024-11-27 in the People by WTF podcast with Nikhil Kamath (captions, 1:15:30): human-level intelligence is 'quite possibly within a decade', where he also called five to ten years the best case, 'almost certainly not going to happen'."

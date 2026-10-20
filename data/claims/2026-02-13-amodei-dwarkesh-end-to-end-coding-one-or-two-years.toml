@@ -1,0 +1,21 @@
+[claim]
+id = "2026-02-13-amodei-dwarkesh-end-to-end-coding-one-or-two-years"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "section '00:12:36 - Is diffusion cope?', early in his answer on the ten-year odds"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "With coding, except for that irreducible uncertainty, I think we’ll be there in one or two years."
+prediction = "Apart from 'irreducible uncertainty' (wars, upheavals), AI will be able to do end-to-end coding, the whole of a software engineer's task, in one or two years (by about February 2028)."
+kind = "capability"
+bar = "An AI system shown, by its maker or an outside body, able to do software engineering end to end on its own (writing, testing, setting up environments, deploying and documenting), by the end of 2028."
+due = 2028
+due_early = 2027
+due_basis = "'in one or two years' from 2026-02-13 runs to February 2027 to February 2028; the later end is taken and the earlier recorded."
+restates = "2026-01-20-amodei-davos-software-engineers-end-to-end-six-to-twelve-months"
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Re-dates the Davos claim of 2026-01-20 ('6 to 12 months'); under John's ruling of 2026-10-19 that earlier claim keeps its own due date."

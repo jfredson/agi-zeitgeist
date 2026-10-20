@@ -1,0 +1,24 @@
+[claim]
+id = "2023-09-27-zuckerberg-glasses-multimodal-ai-early-next-year"
+speaker_id = "zuckerberg"
+when = "2023-09-27"
+occasion = "Interview with Alex Heath of The Verge on the day of Meta Connect 2023"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=9aCg7jH4S1w"
+source_locator = "45:56 into the video"
+checked_how = "Read YouTube's automatic English captions of The Verge's upload on 2026-10-19 (no punctuation); the quote is a verbatim run of those caption words."
+quote = "sometime early next year we're also going to have this multimodality so you're going to be able to ask the AI"
+prediction = "Early in 2024 the AI in the Ray-Ban Meta glasses would become multimodal, so wearers could ask it about what they are looking at."
+kind = "deployment"
+bar = "A release of multimodal Meta AI (answering questions about what the glasses' camera sees) on Ray-Ban Meta glasses for ordinary owners, by the end of March 2024."
+due = 2024
+due_basis = "'sometime early next year', said 2023-09-27. Under John's reading of 2026-10-19, 'early' in a year is its first quarter, so the due date is 2024-03-31."
+due_date = 2024-03-31
+status = "missed"
+verdict_on = 2024-04-23
+verdict_why = "It came, but after the date. Meta's release of 2024-04-23 says that, after a test begun in December 2023 with a small number of owners who opted in, multimodal Meta AI was rolling out to all Ray-Ban Meta glasses in the United States and Canada, as a test version open to all ('in beta'): 'now they can see what you see'. That is about three weeks after the end of March 2024; the December test was not a release to owners generally."
+verdict_source = "https://about.fb.com/news/2024/04/new-ray-ban-meta-smart-glasses-styles-and-meta-ai-updates/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["zuckerberg-claims-038", "zuckerberg-claims-066", "zuckerberg-claims-069"]
+notes = "Role at the time: founder and chief executive of Meta (Facebook). The Connect 2023 keynote upload has no captions, so the interview of the same day is the source. Changed before merging on 2026-10-19: it was read as due by the end of June 2024 (the first half of the year) and scored as came true; under John's ruling of the same day that 'early' in a year means its first quarter, it is due 2024-03-31 and did not come true by then. The test is otherwise unchanged."

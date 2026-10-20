@@ -1,0 +1,25 @@
+[claim]
+id = "2023-12-06-hassabis-bard-advanced-early-next-year"
+speaker_id = "hassabis"
+when = "2023-12-06"
+when_note = "The post is dated 2023-12-06."
+occasion = "Google blog post 'Introducing Gemini', the section written 'By Demis Hassabis, CEO and Co-Founder of Google DeepMind, on behalf of the Gemini team'"
+source_kind = "own_words"
+source_url = "https://blog.google/technology/ai/google-gemini-ai/"
+source_locator = "section 'Gemini Ultra coming soon'"
+checked_how = "Read on the page on 2026-10-19 (curl)."
+quote = "Early next year, we’ll also launch Bard Advanced, a new, cutting-edge AI experience that gives you access to our best models"
+prediction = "Early in 2024 Google would launch Bard Advanced, giving users access to its best models, starting with Gemini Ultra."
+kind = "deployment"
+bar = "A public launch of the promised product (Bard Advanced, under any name) giving access to Gemini Ultra, by 2024-03-31."
+due = 2024
+due_date = 2024-03-31
+due_basis = "'Early next year', said in 2023, read as the first quarter of 2024."
+status = "hit"
+verdict_on = 2024-02-08
+verdict_why = "On 2024-02-08 Google launched it as Gemini Advanced ('Today we're launching Gemini Advanced — a new experience that gives you access to Ultra 1.0'), in more than 150 countries; Bard was renamed Gemini the same day."
+verdict_source = "https://blog.google/products/gemini/bard-gemini-advanced-app/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["hassabis-claims-034", "hassabis-claims-035"]
+notes = "Role at the time: co-founder and chief executive of Google DeepMind (DeepMind until 2023). The name changed; the product promised shipped."

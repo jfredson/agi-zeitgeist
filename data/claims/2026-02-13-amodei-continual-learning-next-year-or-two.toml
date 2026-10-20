@@ -1,0 +1,20 @@
+[claim]
+id = "2026-02-13-amodei-continual-learning-next-year-or-two"
+speaker_id = "amodei"
+when = "2026-02-13"
+when_note = "The episode page is dated 'Feb 13, 2026'."
+occasion = "Dwarkesh Podcast, episode 'We are near the end of the exponential'"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/dario-amodei-2"
+source_locator = "section '00:29:42 - Is continual learning necessary? How will it be solved?'"
+checked_how = "Read the transcript printed on the episode page on 2026-10-19 (curl)."
+quote = "There’s a good chance that we will get there within the next year or two."
+prediction = "There is 'a good chance' that within a year or two the problem of continual learning, a single model learning on the job as a person does, will be solved."
+kind = "capability"
+bar = "A released AI model that keeps learning from its own work after deployment and gets measurably better at a job over weeks without being retrained by its maker, shown by the maker or an outside test, by the end of 2028."
+due = 2028
+due_early = 2027
+due_basis = "'within the next year or two' from 2026-02-13 runs to February 2027 to February 2028; the later end is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["amodei-claims-051"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). 'A good chance' is a hedge, not a number."

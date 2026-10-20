@@ -1,0 +1,25 @@
+[claim]
+id = "2011-12-31-legg-proto-agi-within-eight-years"
+speaker_id = "legg"
+when = "2011-12-31"
+when_note = "The post's header reads 'Posted on 31 December, 2011'."
+occasion = "Year-end blog post 'Goodbye 2011, hello 2012' on vetta.org, with his replies in the comments"
+source_kind = "own_words"
+source_url = "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/"
+source_locator = "the post's only paragraph; his replies to Carl Shulman (2011-12-31) and to himself (2012-01-02) in the comments"
+checked_how = "Read on the page on 2026-10-19 (curl), the post, its date line and his comment replies; read again the same day when the test was changed."
+quote = "I expect to see an impressive proto-AGI within the next 8 years."
+statement_id = "legg-2011-04"
+prediction = "Within eight years, by the end of 2019, 'an impressive proto-AGI': a system with basic vision, sound processing, movement control and language, all largely learnt rather than programmed, able to solve a range of simple problems including new ones."
+kind = "capability"
+bar = "His definition in the post itself: 'a system with basic vision, basic sound processing, basic movement control, and basic language abilities, with all of these things being essentially learnt rather than preprogrammed', which 'will also be able to solve a range of simple problems, including novel ones', shown in a dated public record by 2019-12-31. One system must have all of it. 'Impressive' is his word and is not tested."
+due = 2019
+due_basis = "'within the next 8 years' from 2011-12-31; judged at 2019-12-31."
+status = "missed"
+verdict_on = 2022-05-12
+verdict_why = "Not met by the end of 2019: no single system with learnt vision, sound processing, movement control and language, able to solve a range of simple problems including new ones, was shown by then. The record is DeepMind's own paper 'A Generalist Agent' (Gato), first posted 2022-05-12, which presents as new a single network that can 'play Atari, caption images, chat, stack blocks with a real robot arm': vision, language and movement control in one learnt system, two and a half years after the date, and still without sound processing. The condition that failed is having all four abilities in one learnt system. It is the work of his own company, so the record is marked as the maker's."
+verdict_source = "https://arxiv.org/abs/2205.06175"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["legg-claims-001", "legg-claims-002", "legg-claims-007", "legg-claims-016", "legg-claims-017", "legg-claims-018"]
+notes = "Role at the time: DeepMind was incorporated on 2010-09-23 and launched on 2010-11-15; Legg was one of its three co-founders and in its leadership (Google DeepMind's own podcast of 2022-02-15 calls him 'co-founder and chief scientist'; his title in 2010 and 2011 is not on record in the sources read). DeepMind was then a small company building AI at the research frontier; he is taken as a founder-leader of it, a judgement flagged for John. He wrote on his personal blog, not for the company. Test changed before merging on 2026-10-19, after the independent check: it read \"None an outsider can run. The post lists capabilities, but asked the same day to make them more testable he replied that a list 'would somewhat miss the point' and gave as the 'acid test' whether a smart person with an AI background, shown the system for an hour or two, 'would be highly likely to conclude that full human level AGI wasn't more than a decade away'.\", and the claim was marked as one that cannot be tested; it now uses the definition the post itself gives, a list of abilities an outsider can check, and is scored. His later remark that the prediction 'might be impossible to falsify' (2012-01-02) gave as the reason that a military which built such a system might keep it secret, not that the claim had no test; and his 'acid test' in a reply of the same day, what a smart person with a background in AI would conclude after seeing the system, is a further description he offered when asked for a more testable list, which does not withdraw the post's own definition. Outside readers saw it the same way at the time: under a copy of his post on LessWrong, a reader asked on 2019-12-09 how close researchers were, and another replied the same day that 'no one's tried to build a unified system with all of those capacities, but we do seem to have rudimentary learned versions of each'; two later readers (2022 and 2023) took Gato as meeting the prediction about three years late, which the test does not accept because Gato has no sound processing. Whether a later system has all four is not settled here; the direction says only that nothing had come as of the record. The seed list of 2026-10-17 also had this as unfalsifiable and as a restatement of the 2009 claim; it is a new claim (a nearer, smaller milestone), so no restates is given. In the same post the human-level spread is repeated unchanged (entered as repeats)."

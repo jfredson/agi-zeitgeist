@@ -1,0 +1,19 @@
+[claim]
+id = "2025-09-18-suleyman-ai-long-horizon-actions-by-end-of-2026"
+speaker_id = "suleyman"
+when = "2025-09-18"
+when_note = "Trevor Noah's channel uploaded the episode on 2025-09-18; the recording date is not stated."
+occasion = "'What Now? with Trevor Noah' podcast"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=tQ5wO1lznCQ"
+source_locator = "1:00:48 to 1:01:10 into the video"
+checked_how = "Read YouTube's automatic English captions of the Trevor Noah channel's own upload on 2026-10-19 (light punctuation, some stutters and fillers); the quote is a verbatim run of those caption words."
+quote = "And I think that we basically have that by the end of next year."
+prediction = "By the end of 2026, AI will be able to take actions over 'infinitely long time horizons', using a persistent memory of its experience with each user to act consistently over very long sequences of activity."
+kind = "capability"
+bar = "The plainest reading ('infinitely' cannot be met literally): by the end of 2026, an AI agent released or demonstrated by its maker that carries out a single task over a very long run of steps (days, not minutes) without losing track, drawing on a persistent memory of its past interactions."
+due = 2026
+due_basis = "'by the end of next year', said in September 2025: judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-013", "suleyman-claims-034"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). 'That' refers to his preceding words: 'imagine when it's able to not just answer any question ... but it can actually take actions over infinitely long time horizons'. The 'imagine' is rhetorical; the dated sentence that follows is his own forecast, so it is entered (a borderline case, listed in the report)."

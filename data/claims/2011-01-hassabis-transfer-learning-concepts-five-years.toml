@@ -1,0 +1,24 @@
+[claim]
+id = "2011-01-hassabis-transfer-learning-concepts-five-years"
+speaker_id = "hassabis"
+when = "2011-01"
+when_note = "The 2011 Winter Intelligence Conference ran 2011-01-14 to 2011-01-17; the day of his talk is not given. The video was uploaded 2011-12-12."
+occasion = "Talk 'Systems neuroscience and AGI' at the Winter Intelligence Conference, Oxford (Future of Humanity Institute)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=IjG_Fx3D0o0"
+source_locator = "about 39:10 into the talk"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-19 (yt-dlp), as a run of words; punctuation is the captions'."
+quote = "I expect we'll we'll see in the next sort of five years some systems with some kind of transfer learning conceptual knowledge acquisition capabilities"
+prediction = "Within about five years, by early 2016, some AI systems with some kind of transfer learning (carrying what is learnt on one task to another) and of acquiring conceptual knowledge."
+kind = "capability"
+bar = "His own definitions in the same talk. By 2016-12-31, some AI systems shown with some kind of transfer learning, in his sense of extracting the underlying rules learned in one perceptual context and applying them correctly in a completely new perceptual context (35:10 to 35:42), and of conceptual knowledge acquisition, in his sense of abstracting information above the raw percepts, as 'it's a mammal' is above what a dog looks like (22:32 to 24:29)."
+due = 2016
+due_basis = "'in the next sort of five years' from January 2011; judged at 2016-12-31."
+status = "missed"
+verdict_on = 2016-12-31
+verdict_why = "Not met by his own definitions. The transfer half is weakly shown by 2016 (Rusu and colleagues, 2016-10-13: a robot arm that learned a task in simulation and carried it to the real world). The concepts half is not: the paper of 2016-06-17 (Higgins and colleagues, arXiv 1606.05579) finds factors such as position, scale and rotation, which his talk places at the perceptual level, what a dog looks like, not at the level of concepts above the percepts, 'it's a mammal' (22:32 to 24:29). DeepMind's own follow-up of 2017 (SCAN, arXiv 1707.03389) calls such output 'visual primitives' and builds concepts on top of them. Both halves were asked for; by 2016-12-31 one was not shown."
+verdict_source = "https://arxiv.org/abs/1606.05579"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["hassabis-claims-016", "hassabis-claims-017", "hassabis-claims-061"]
+notes = "Role at the time: co-founder and chief executive of DeepMind, incorporated 2010-09-23. He calls these interim milestones on the way to AGI. Changed before merging on 2026-10-19 from cannot be tested to came true, because the independent check found that the same talk defines both terms and the method makes the speaker's own definition in the same source the test; then, on the check's third round the same day, from came true to did not come true, because the paper cited for the concepts half finds only the perceptual level his own definition sets below concepts."

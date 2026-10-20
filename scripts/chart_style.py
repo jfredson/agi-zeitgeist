@@ -36,6 +36,16 @@ def tip_only(row):
     return any(part.strip().split(":")[0].strip() == "tip_only" for part in (row.get("notes") or "").split(";"))
 
 
+# The frozen panel's two tiers (amendment A18). The opinion record (figures, shares, the panel's counts)
+# reads only these; the claims ledger's ledger-only list (tier claims_only, A30) never enters it.
+PANEL_TIERS = ("core", "cohort_2020s")
+
+
+def panel(speakers):
+    """The speaker ids on the frozen panel, from the rows of speakers.csv."""
+    return {r["speaker_id"] for r in speakers if r["tier"] in PANEL_TIERS}
+
+
 def measured(rows):
     """The statements figures and shares are computed from: every row except tip_only rows."""
     return [r for r in rows if not tip_only(r)]

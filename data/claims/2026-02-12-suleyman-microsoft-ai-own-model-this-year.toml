@@ -1,0 +1,19 @@
+[claim]
+id = "2026-02-12-suleyman-microsoft-ai-own-model-this-year"
+speaker_id = "suleyman"
+when = "2026-02-12"
+when_note = "The Financial Times uploaded the interview to YouTube on 2026-02-12; the recording date is not stated. He mentions the Moltbook episode of late January 2026 as \"a few weeks ago\", so it was recorded in early February 2026."
+occasion = "Financial Times interview with editor Roula Khalaf, \"Mustafa Suleyman sets out Microsoft AI's goal of humanist superintelligence\""
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=YTrBz6Z5c0E"
+source_locator = "0:18:08 to 0:18:20 into the video; the self-sufficiency plan at 0:03:02 to 0:03:46"
+checked_how = "Read YouTube's automatic English captions of the official Financial Times upload on 2026-10-19 (no reliable punctuation, some fillers); the quote is a verbatim run of those caption words."
+quote = "We are developing our own superintelligence ... So, sometime this year."
+prediction = "Asked when Microsoft AI will have its own model, he answers 'sometime this year': during 2026 Microsoft AI will have its own frontier foundation model, built in-house as part of the 'AI self-sufficiency' plan he describes earlier in the interview."
+kind = "deployment"
+bar = "The plainest reading of an answer to 'when are you going to have your model?': during 2026, Microsoft AI releases, publicly or inside Microsoft's products, a foundation model of its own that it presents as at the frontier, shown by Microsoft's own release."
+due = 2026
+due_basis = "'sometime this year', said in early 2026: judged at the end of 2026."
+status = "not_yet_due"
+search_ids = ["suleyman-claims-004", "suleyman-claims-041", "suleyman-claims-042"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). Judgement call: the answer says 'our own superintelligence' and then 'sometime this year'; read with the question, 'this year' dates the model, not superintelligence, and the claim is entered that way (read the other way it would be a named stage with no definition, so untestable). Earlier in the interview: 'We have to develop our own foundation models which are at the absolute frontier with gigawatt scale compute.' Microsoft AI had already released a model of its own (MAI-1-preview) in August 2025, so the bar asks for a new, frontier-class one. Seen so far, settling nothing before the date: at Microsoft Build 2026 (Microsoft's upload of 2026-06-03) he unveiled seven MAI models, among them MAI Thinking 1, which he placed 'in the medium size weight class'; on Bloomberg Tech (2026-09-25) he said Microsoft AI's frontier-scale language and coding models would be out 'later this year' and in spring 2027 (recorded as a restatement)."

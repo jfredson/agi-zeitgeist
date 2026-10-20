@@ -1,0 +1,24 @@
+[claim]
+id = "2024-05-21-nadella-team-copilot-preview-later-this-year"
+speaker_id = "nadella"
+when = "2024-05-21"
+when_note = "Microsoft Build 2024 opened with this keynote on 2024-05-21; Microsoft's transcript carries that date."
+occasion = "Opening keynote at Microsoft Build 2024, Microsoft's developer conference"
+source_kind = "transcript"
+source_url = "https://news.microsoft.com/wp-content/uploads/prod/2024/05/Satya-Nadella_Transcript_KEY01_Build2024.pdf"
+source_locator = "page 14 of the transcript, the Team Copilot announcement"
+checked_how = "Read Microsoft's official transcript of the keynote on 2026-10-19 (curl, PDF text)."
+quote = "These capabilities will all come to you all and be available in preview later this year."
+prediction = "Team Copilot, an AI agent for groups in Teams, Loop and Planner (meeting facilitator, collaborator and project manager), would be available in preview later in 2024."
+kind = "deployment"
+bar = "All three capabilities he named, meeting facilitator, collaborator in chats and project manager, available to customers in preview by 2024-12-31, shown by Microsoft's own release."
+due = 2024
+due_basis = "'later this year', said 2024-05-21; judged at 2024-12-31."
+status = "hit"
+verdict_on = 2024-11-19
+verdict_why = "Microsoft's Ignite 2024 Book of News (2024-11-19) lists the Facilitator agent, which 'works within Teams meetings and chats' and 'In chats ... shares a summary of important information', and the Project Manager agent for Planner, each 'in preview'. The Facilitator covers both the meeting facilitator and the collaborator in chats."
+verdict_source = "https://news.microsoft.com/ignite-2024-book-of-news/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["nadella-claims-005", "nadella-claims-017", "nadella-claims-026"]
+notes = "Role at the time: chief executive of Microsoft from 2014-02-04 and its chair from 2021-06-16; Microsoft builds AI models (Phi, the Microsoft AI models) and its own AI chips (Maia), and is OpenAI's largest backer. Test changed before merging on 2026-10-19: it read 'The facilitator and project-manager capabilities available to customers in preview by 2024-12-31', now names all three capabilities, because he said 'These capabilities will all come' and the test may not drop one. Judgement call: the capabilities shipped as separate agents under new names rather than as one 'Team Copilot', and the collaborator role is taken to be the Facilitator's work in chats."

@@ -1,0 +1,20 @@
+[claim]
+id = "2025-05-22-amodei-one-person-billion-dollar-company-2026"
+speaker_id = "amodei"
+when = "2025-05-22"
+when_note = "Said at Anthropic's Code with Claude event on 2025-05-22, the day Claude 4 was released; the re-upload read here is dated 2025-05-29."
+occasion = "Code with Claude developer event, keynote conversation with Anthropic's chief product officer Mike Krieger"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=eNWobM4XeOE"
+source_locator = "16:10 to 16:14 into the video"
+checked_how = "Read YouTube's automatic English captions of a third-party re-upload (channel Techusiness) of the keynote conversation on 2026-10-19; no upload by Anthropic itself was found. The quote is a verbatim run of the caption words: Krieger's question and his one-word answer."
+quote = "when do you think there'll be the first billion dollar company with one human employee? 2026."
+prediction = "Asked by Mike Krieger, in a run of questions about where AI is heading, when the first billion-dollar company with one human employee will come, he answered 2026: a company of one person whose other work is done by AI."
+kind = "deployment"
+bar = "The question he answered, read plainly: a company with one human employee, its other work done by AI systems in place of employees, valued at, or earning, a billion dollars or more during 2026, shown by a funding round, sale or published accounts."
+due = 2026
+due_basis = "'2026'; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["amodei-claims-029", "amodei-claims-030", "amodei-claims-031", "amodei-claims-076", "amodei-claims-077"]
+notes = "Role at the time: co-founder and chief executive of Anthropic (since 2021). Coverage of the same day reports that at a later press session he put it at 70 to 80 percent; that was not found as a recording and is not entered. Not in the seed list. The captions do not mark who speaks; coverage of the event gives the answer '2026' to him, and in his own post 'Policy on the AI Exponential' (June 2026) he wrote 'I've predicted that AI will enable single individuals to create billion-dollar companies', which confirms both that the answer was his and that he meant a company built with AI. Test changed before merging on 2026-10-19: it read 'A company with one human employee valued at, or earning, a billion dollars or more', now requires that the company's other work be done by AI, because the question he answered ('one human employee', in a run of questions about AI's future) carries that condition, and without it a one-person holding company with no AI would pass."
+verify = "An upload of the keynote by Anthropic itself, to replace the re-upload as the source."

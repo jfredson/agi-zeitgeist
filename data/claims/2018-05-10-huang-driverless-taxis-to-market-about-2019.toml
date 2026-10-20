@@ -1,0 +1,24 @@
+[claim]
+id = "2018-05-10-huang-driverless-taxis-to-market-about-2019"
+speaker_id = "huang"
+when = "2018-05-10"
+when_note = "The transcript gives the call as 2018-05-10, 5:00 p.m. ET."
+occasion = "Nvidia's first-quarter fiscal 2019 earnings call, answer to an analyst about self-driving cars"
+source_kind = "transcript"
+source_url = "https://www.fool.com/earnings/call-transcripts/2018/05/16/nvidia-corporation-nvda-q1-2019-earnings-conferenc.aspx"
+source_locator = "Huang's answer beginning 'Now, in the self-driving cars, the ASPs for Level 2'"
+checked_how = "Read the Motley Fool's printed transcript on 2026-10-19 through the r.jina.ai reader (fool.com refused direct requests after a rate limit)."
+quote = "I expect that driverless taxis will start going to market about 2019 and self-driving cars probably somewhere between 2020 and 2021."
+prediction = "Driverless taxis would start going to market around 2019. The second half of the sentence is its own record."
+kind = "deployment"
+bar = "A taxi service selling rides to members of the public in cars with nobody at the wheel begins by 2019-12-31. 'About' is kept as a hedge and the claim is scored at 2019."
+due = 2019
+due_basis = "His words: 'about 2019'; judged at 2019-12-31."
+status = "missed"
+verdict_on = 2020-10-08
+verdict_why = "In 2019 Waymo's rides with nobody at the wheel went only to a closed group of early riders and were free ('The company's driverless rides are currently free', TechCrunch, 2019-11-01). Waymo opened its fully driverless service to paying Waymo One riders on 2020-10-08, about ten months after the year named."
+verdict_source = "https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless"
+evidence_by = "outside"
+direction = "later"
+search_ids = ["huang-claims-063", "huang-claims-064", "huang-claims-070", "huang-claims-102", "huang-claims-103"]
+notes = "Role at the time: co-founder and chief executive of Nvidia (since 1993), which designs the chips frontier AI models are trained on. Judgement call: Waymo's 2020 post says it had 'for the last year ... pioneered fully driverless, paid rides' for early riders, which conflicts with TechCrunch's report that the 2019 rides were free; the dated 2019 record is preferred. Read loosely, 'about 2019' could stretch to October 2020; the method scores the year named. Waymo One with safety drivers began in December 2018, which does not meet 'driverless'."

@@ -1,0 +1,21 @@
+[claim]
+id = "2026-02-12-suleyman-professional-agi-coming-into-view"
+speaker_id = "suleyman"
+when = "2026-02-12"
+when_note = "The Financial Times uploaded the interview to YouTube on 2026-02-12; the recording date is not stated. He mentions the Moltbook episode of late January 2026 as \"a few weeks ago\", so it was recorded in early February 2026."
+occasion = "Financial Times interview with editor Roula Khalaf, \"Mustafa Suleyman sets out Microsoft AI's goal of humanist superintelligence\""
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=YTrBz6Z5c0E"
+source_locator = "0:04:12 to 0:04:46 into the video"
+checked_how = "Read YouTube's automatic English captions of the official Financial Times upload on 2026-10-19 (no reliable punctuation, some fillers); the quote is a verbatim run of those caption words."
+quote = "And I think that's coming into view in the next two or three years time."
+prediction = "A 'professional grade' artificial general intelligence (a system that can do most of the tasks a regular professional does at work each day), and beyond it teams of such systems coordinated by an 'organizational AGI' able to run large institutions, is 'coming into view' in the next two or three years."
+kind = "timing"
+bar = "None an outsider could apply: he defines professional-grade AGI in the same answer, but the words say only that it is 'coming into view', that is, becoming visible on the horizon, not that it will exist or be shown by a date."
+due = 2029
+due_early = 2028
+due_basis = "A range: 'in the next two or three years' from early 2026 is 2028 at the earlier end and 2029 at the later end."
+status = "unfalsifiable"
+verdict_why = "'Coming into view' names no event that could be checked: something can come into view without arriving, so no record could show the claim right or wrong. Decided at entry under the bar rule; the definition he gives in the same answer is noted but cannot be scored against these words."
+search_ids = ["suleyman-claims-004"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). His definition: 'a system that could achieve most of the tasks that a regular professional in a workplace goes about on a daily basis. Think of it as a professional grade AGI.' The firmer claim about professional tasks later in the same interview is entered separately (2026-02-12-suleyman-white-collar-tasks-automated-12-to-18-months)."
