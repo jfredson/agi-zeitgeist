@@ -980,8 +980,9 @@ pictures, is `docs/claims-ledger-reframe-proposal-2026-10-19.md`.
 
 Applies to: `docs/claims-ledger-method.md` (the title; "What this ledger is for"; "The rate, and
 what stops it being gamed"; "Where it shows"); `docs/methodology-v2.md` (a new section 0, what
-the tracker is for); `scripts/site.py` (the claims page, the home page's zeitgeist section and
-its claims sentence, the `claims_ledger` block of `site/status.json`); `scripts/validate.py`
+the tracker is for); `scripts/site.py` (the claims page, the home page's zeitgeist section,
+its claims sentence and the frontier-voices caption, the `claims_ledger` block of
+`site/status.json`); `scripts/validate.py`
 (three new fields on timing claims, and the undated-words records); `scripts/charts.py` and
 `scripts/chart_style.py` (two new figures and the logic they share with the page); a new folder,
 `data/claims_undated/`.
@@ -1040,6 +1041,15 @@ Now:
    were said, every search logged. They appear in the "what they say now" section when they are
    newer than the person's latest dated forecast, or the person has none, so that leaders who
    never name a year are not shown as silent. They are never drawn on a chart and never scored.
+
+8. **The frontier-voices chart's builders** (John, 2026-10-19, "Yes", to the master session's
+   recommendation). The home page's chart draws as builders everyone with the panel's
+   frontier-lab tag and all fifteen industry leaders. It moves Jensen Huang's three dated
+   guesses since 2023 to the builders' side; his tag was left off when the panel was frozen
+   (A18), and under the two-voices framing he is plainly one of the industry's leaders. The
+   frozen tags themselves are not changed. `scripts/charts.py` reads the fifteen from
+   `scripts/chart_style.py`. The academics' band on the claims page leaves the fifteen out
+   either way.
 
 Unchanged: who is in the ledger (A30), the admission rule for dated claims, the five status words and what
 counts as a hit (now used for the notes), the readings John ruled on 2026-10-19, and everything

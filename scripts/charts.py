@@ -260,8 +260,24 @@ def frontier_rows(statements=None, speakers=None):
             continue
         lo = int(r["timeline_year"]); hi = int(r["timeline_year_high"] or lo)
         out.append(dict(id=r["statement_id"], speaker=r["speaker_id"], name=sp["name"], said=int(r["date"][:4]),
-                        year=(lo + hi) / 2, builder=bool(sp["frontier_lab"])))
+                        # A builder: the frontier-lab tag, or one of the fifteen industry leaders (John, 2026-10-19,
+                        # amendment A31: Jensen Huang among them, the frozen tag itself left alone).
+                        year=(lo + hi) / 2, builder=bool(sp["frontier_lab"]) or r["speaker_id"] in cs.LEADERS))
     return out
+
+
+def frontier_reading(statements=None, speakers=None):
+    """What the frontier-voices chart shows, in numbers: each group's median year among guesses made
+    since 2023, and the people who study it in their earliest guesses. The chart's title and the home
+    page's sentence both read this, so they cannot disagree."""
+    import statistics
+    rows = frontier_rows(statements, speakers)
+    b = [r for r in rows if r["builder"]]
+    o = [r for r in rows if not r["builder"]]
+    rec = lambda rs: statistics.median([r["year"] for r in rs if r["said"] >= 2023]) if any(r["said"] >= 2023 for r in rs) else None
+    first = sorted(o, key=lambda r: r["said"])[:max(3, len(o) // 4)]
+    return dict(builders_now=rec(b), others_now=rec(o), others_then=statistics.median([r["year"] for r in first]) if first else None,
+                enough=len(b) >= 10 and len(o) >= 10)
 
 
 def chart_frontier(statements=None, speakers=None):
@@ -324,7 +340,7 @@ def chart_frontier(statements=None, speakers=None):
         title = "Too few dated guesses on one side yet to compare the builders with the others"
     titles(fig, title,
            "Each dot is one dated guess by a panel member; the lines join each group's median for the years with two or more guesses.\n"
-           "A builder is anyone on the panel who has worked at a company that builds frontier AI systems.",
+           "A builder is anyone on the panel who has worked at a company that builds frontier AI systems, or leads one.",
            "Guesses in the person's own words only, for machines matching people at most thinking work. Source: agizeitgeist.com/data")
     return save(fig, "zeitgeist-frontier.png")
 

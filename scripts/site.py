@@ -1366,6 +1366,16 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     claims_line = (f'Of the {cl["leaders_with_a_date"]} industry leaders who have put a date on AGI or something beyond it, {cl["ahead_of_academics"]} now name a year '
                    f'before the middle of the academics\' dated guesses since 2023, about {cl["academics"]["middle"]:.0f}. What each of them says now, in their own words, '
                    f'is on <a href="/claims/">the claims page</a>.') if cl.get("academics") else ""
+    # The same reading as the frontier-voices chart's title (charts.frontier_reading), so the two agree.
+    from charts import frontier_reading
+    fr = frontier_reading()
+    if fr["enough"] and fr["builders_now"] and fr["others_now"]:
+        b, o, t = fr["builders_now"], fr["others_now"], fr["others_then"]
+        frontier_line = (f"the people building these systems have named about the same year all along, about {b:.0f}, and the people studying them have come down to meet it."
+                         if abs(o - b) <= 3 else
+                         f"the people building these systems have named about {b:.0f} all along, and the people studying them have come down from {'2100 or later' if t and t >= 2100 else f'about {t:.0f}'} in their earliest guesses to about {o:.0f} in their guesses since 2023, most of the way but not all.")
+    else:
+        frontier_line = "too few dated guesses on one side yet to compare the people building these systems with the people studying them."
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
@@ -1378,10 +1388,10 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
-<p>Fifth, and this is a reading of the same rows rather than a new measure: the people building these systems have named about the same year all along, and the people studying them have come down to meet it. The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+<p>Fifth, and this is a reading of the same rows rather than a new measure: {frontier_line} The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems, and the industry leaders who run one, from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
 
 <figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
-<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it, together with the fifteen industry leaders on <a href="/claims/">the claims page</a>, so that Jensen Huang, who runs Nvidia, is drawn among the builders. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
 <p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 

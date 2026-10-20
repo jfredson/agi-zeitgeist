@@ -3,9 +3,8 @@
 **Status: ruled 2026-10-19.** John agreed the remaining choices ("Agreed on all", to the master
 session's recommendations): the page leads with AGI forecasts against the academics' band, and
 undated words are let in as words only (the alternative in choice 2 below, not the first
-recommendation). Amendment A31 records the decision. The Huang question (choice 3) was not part of
-that relay and is asked separately; until it is answered the home page's frontier-voices chart is
-unchanged. This file is kept as the record of what was proposed; the method and the page are
+recommendation). Amendment A31 records the decision. John answered the Huang question (choice 3)
+separately, "Yes", to the recommendation. This file is kept as the record of what was proposed; the method and the page are
 built from A31.
 
 ## John's rulings, 2026-10-19
