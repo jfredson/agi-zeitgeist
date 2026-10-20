@@ -7,7 +7,7 @@ agizeitgeist.com scores the gauges from that file. The draft this grew from
 is kept unchanged as `docs/singularity-entry-definition-draft-2026-10-07.md`. Changing any
 frozen value is an amendment entry, never a quiet edit.
 
-It began when John noticed that a top comment on r/accelerate ("any prediction made right
+It began when I noticed that a top comment on r/accelerate ("any prediction made right
 now about the next 5 years is gonna look stupid in retrospect") matches one of the standard
 definitions of the singularity, and asked whether the idea could be made into a definition, a
 progress measure and a mark to cross.
@@ -70,7 +70,7 @@ longer actively updated (last 2026-09-08), and METR's Frontier Risk Report of 20
 Time Horizon 1.1 suite cannot measure above 16 hours and the strongest agents have saturated
 it. The record's top frontier reading is already past the 16-hour bar, so this gauge will soon
 have no scorable window. The successor rule applies: a replacement is to be named with an
-overlap period, by amendment. John has asked METR whether a successor suite is planned; until
+overlap period, by amendment. I have asked METR whether a successor suite is planned; until
 the switch is ruled, nothing here changes and the gauge is scored as written.
 
 ### Leg B: forecasts have stopped working
@@ -142,9 +142,9 @@ says the poll answers "are not a measurement by Anthropic or a company forecast"
 is recorded as its own row (`anthropic_institute-2026-08-staff-estimate-ai-share`, a
 self-report survey of one company's staff) in the same table as the scored row, so it
 sits beside the gauge; it is not scored, and the thresholds file is unchanged. Whether a
-staff estimate or the index should score the leg is John's call and is not settled here.
+staff estimate or the index should score the leg is my call and is not settled here.
 
-**Ruled 2026-10-17 (John, on the agent's recommendation).** The index keeps scoring the leg. The
+**Ruled 2026-10-17 (my ruling, on the agent's recommendation).** The index keeps scoring the leg. The
 staff estimate stays beside the gauge, unscored: the index is a measurement of tasks completed,
 the poll is opinion with no definition of "does". The thresholds file is unchanged.
 
@@ -170,7 +170,7 @@ or less. Leg D asks whether that has started.
   growth crosses the line counts as all four of its quarters holding; persistence is met by
   one full year above the line, confirmed when the following year's first estimate is
   published. A revision that pulls a year back below the line resets the count.
-- **Why a fourth leg.** John's ruling (2026-10-08), against the agent's recommendation to
+- **Why a fourth leg.** My ruling (2026-10-08), against the agent's recommendation to
   publish it beside the mark rather than inside it: it is the only leg measured by people
   outside the AI field, so it guards against a singularity on paper, where benchmarks and
   lab self-reports fire and nothing in the world changes. The cost, accepted knowingly:
@@ -203,11 +203,11 @@ minimum is not an index; it is the definition's own bottleneck. While a leg is n
 measurable, P(t) is reported as "at most" the minimum of the measured legs, since the
 missing one can only lower it.
 
-**Note of 2026-10-17 (how it is published; ruled by John on the agent's proposal,
+**Note of 2026-10-17 (how it is published; ruled on by me on the agent's proposal,
 `docs/headline-proposal-2026-10-17.md`; a note, not an amendment, since nothing above changes).**
 The page's headline number was, for the afternoon of 2026-10-17, the count of legs whose
 gauge is above one half ("1 of 4"), with each leg's gauge printed beneath. **Revised the same
-evening by John, amendment A25:** the headline is the average of the measured legs' gauges,
+evening by me, amendment A25:** the headline is the average of the measured legs' gauges,
 written as a percentage of the way (32% on 2026-10-17), always printed with the slowest leg and
 its share, and beneath it one sentence saying when each leg crosses its line on current trends
 and whether the test is met on current trends (the method is in A25). The verdict ("Not yet.")
@@ -223,7 +223,7 @@ never used for the status. `status.json` carries `headline`, `headline_label`, `
    available, the definition must return "not entered". Specifically, 1995 to 2000
    (internet) should fire leg B and nothing else; 2012 to 2017 (deep learning) should fire
    leg A weakly and nothing else. The leg A series starts in 2019 and leg C in 2026, so
-   the test cannot run yet. **Adopted without it, by John's ruling of 2026-10-08, with this
+   the test cannot run yet. **Adopted without it, by my ruling of 2026-10-08, with this
    gap stated on the page.** Older capability series must be built before it can run; if
    it then fires on those periods, the thresholds are wrong and get amended.
 2. **Preregistration.** The capability measure, the reference year, the four thresholds and
@@ -248,21 +248,21 @@ forecast horizon, and can be charted against g_B.
 
 ## 7. Record of the rulings (2026-10-08)
 
-Proposed by the agent, approved by John unless marked otherwise:
+Proposed by the agent, I approved unless marked otherwise:
 
 | question | ruling | reason |
 |---|---|---|
 | anchor for legs A and B | METR 50% time horizon, with the successor rule above | the one capability series that has not saturated |
 | thresholds | the draft's placeholders as written: one month, one year, one half, reference year 2019, four quarters | preregistered before any gauge; placeholders had been published in the draft a day earlier |
 | backward test | adopt without it, gap stated | the data to run it does not exist yet; waiting would mean never publishing |
-| economic leg | **added as leg D (decided by John, against the agent's recommendation)** | the only leg measured outside the AI field |
+| economic leg | **added as leg D (decided by me, against the agent's recommendation)** | the only leg measured outside the AI field |
 | leg D line | 30 percent a year (Davidson 2021); reference the 1961 to 2019 mean | a published line, not an invented one |
 | leg D timing | one annual reading covers its four quarters; revisions reset | the series is annual and revised |
 
 ## 8. Record of the rulings (2026-10-12)
 
 Proposed by the agent after the first forecast ledger (`docs/leg-b-ledger-2026-10.md`) and
-the first backward test (`docs/backward-test-method.md`); approved by John ("all as
+the first backward test (`docs/backward-test-method.md`); I approved ("all as
 recommended"). Only the first changes this document.
 
 | question | ruling | reason |

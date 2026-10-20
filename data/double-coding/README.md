@@ -2,7 +2,7 @@
 
 For the pass check in `docs/methodology-v2.md` section 12: two independent codings of
 two seed speakers should agree on `frame_primary`, `endorsement` and
-`target_capability` at least 80% of the time. John codes this sample blind (amendment
+`target_capability` at least 80% of the time. I code this sample blind (amendment
 A14, ruling 13).
 
 - **Sample:** 30 statements, 15 from Geoffrey Hinton and 15 from Gary Marcus, stratified

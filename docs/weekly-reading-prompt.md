@@ -4,17 +4,17 @@ Written 2026-10-16. A fresh Claude session with no memory of any earlier convers
 this file from top to bottom. The scheduled task's own prompt, when one exists, only says to
 open the repository and follow this file, so the procedure can change without touching the
 task. When this file and `docs/weekly-reading.md` disagree, this file wins for the run and the
-disagreement is a flag for John. Modelled on The Upgrade Tree's `docs/weekly-reading-prompt.md`
+disagreement is a flag for me. Modelled on The Upgrade Tree's `docs/weekly-reading-prompt.md`
 and The Belt Equation's `docs/scan-procedure.md`.
 
 ## 0. Orient
 
-- Get the date in John's time zone before anything else: `TZ=America/Los_Angeles date +%F`.
+- Get the date in my time zone before anything else: `TZ=America/Los_Angeles date +%F`.
   That is the reading's `date`; every date you write is absolute (YYYY-MM-DD), never "today".
   The window is the seven days ending on that date: `window_start` is six days earlier.
-- The repository is `/Users/john/Code/agi-zeitgeist` when you run on John's Mac (the scheduled
+- The repository is `/Users/john/Code/agi-zeitgeist` when you run on my Mac (the scheduled
   task), or a fresh clone of `https://github.com/jfredson/agi-zeitgeist` in a cloud workspace.
-  On the Mac, do not work in any folder under `.claude/worktrees/`; those belong to John's own
+  On the Mac, do not work in any folder under `.claude/worktrees/`; those belong to my own
   sessions.
 - Bring `main` up to date before anything else, in one command: `git fetch origin && git
   checkout -B main origin/main`. If the working tree has uncommitted changes that are not
@@ -88,7 +88,7 @@ Read each leg's named source, and only that source counts as a reading of the ga
 For every speaker in the step 0 list, in file order, except METR, the Anthropic Institute and
 the World Bank (read in part 1) and except Monmouth (its polling institute closed on 2025-07-01;
 ruled 2026-10-17, see "Rulings on flagged items" in `docs/weekly-reading.md`, which also lists
-the kinds of document John has ruled out, so they are not flagged again):
+the kinds of document I have ruled out, so they are not flagged again):
 
 1. Compose one or two web searches for releases in the window, from the speaker's `name` and
    the `measure` text of its series in `data/aggregates.csv`; where the record was built by a
@@ -131,11 +131,11 @@ against the primary record. One item per kind.
   action), it is `flagged`, not added.
 - A `flagged` item opens the primary page that would settle it before it is written up (for a
   bill, the legislature's own register, such as congress.gov; for an organisation's figure, its
-  own page), so the question put to John rests on the record, not on a news report. Added
+  own page), so the question put to me rests on the record, not on a news report. Added
   2026-10-19 after the audit of the first cloud reading (`docs/readings/audit-2026-10-19.md`).
 - A bill counts as a `government_action` only when it has passed a chamber of a legislature or
   become law, dated from the legislature's own record; an introduced bill is `noted` (ruled by
-  John 2026-10-19).
+  me 2026-10-19).
 - An aggregator page is never the cited source for a date. For an AI release or any dated
   event, the date comes from the maker's or the institution's own announcement; an aggregator
   may point the way. Added 2026-10-19, same audit.
@@ -195,14 +195,14 @@ One commit, one push:
 
 The commit-message hook refuses dates that are not year-month-day; write them that way. A
 refused push: push the same commit once to `claude/reading-YYYY-MM-DD` and say so in the
-report; the site does not update until John merges it. If that push is refused too, do not
+report; the site does not update until I merge it. If that push is refused too, do not
 retry: put the reading record's contents in the report and stop. Never force-push, never
 rebase, never touch any other branch. The deploy workflow on GitHub runs the validator, builds
 and deploys the site from the push to `main`; do not deploy by any other road.
 
 ## 9. Report
 
-Send John one short message, a numbered list and nothing else: each flagged item with its
+Send me one short message, a numbered list and nothing else: each flagged item with its
 `for_john` line, first; then one line per row appended, with its id and what it is; then one
 line with the counts (items read, searches, verdicts); then the push refusal if there was one.
 No prose, no summary of quiet items. Do not write a worklog entry.
@@ -217,5 +217,5 @@ No prose, no summary of quiet items. Do not write a worklog entry.
   codebook, the amendments and the speakers file are not yours.
 - One reading, one commit, on `main` (and the one fallback branch in step 8).
 - If anything in this file cannot be followed as written, do the parts that can, flag the rest
-  for John in the report, and never improvise an edit outside the limits in
+  for me in the report, and never improvise an edit outside the limits in
   `docs/weekly-reading.md`.

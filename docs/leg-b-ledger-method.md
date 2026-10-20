@@ -1,7 +1,7 @@
 # Leg B ledger: method for scoring the 2016 survey's milestone forecasts
 
 **Status: method written 2026-10-09 by the agent, before any ledger row was built. Every
-choice below is the agent's own and John can reverse any of them. Changing a rule after the
+choice below is the agent's own and I can reverse any of them. Changing a rule after the
 ledger is built is an amendment entry, never a quiet edit.**
 
 ## What this ledger is for
@@ -18,7 +18,7 @@ It does not compute the leg B gauge. That gauge is defined on forecasts of one n
 length of software task an AI can finish, as measured by METR) and compares them with
 simply extending the trend. The survey's milestones are yes-or-no events with no trend to
 extend, so they cannot fill that formula. Whether this ledger should feed the gauge at all,
-and how, is a question for John.
+and how, is a question for me.
 
 ## Sources
 
@@ -71,7 +71,7 @@ of the screen). Each row then gets one of four verdicts:
    9 October 2026. The nearest demonstration found is recorded, if there is one.
 4. **No bar.** The description sets no bar a demonstration could be checked against (for
    example, "give good answers"), so the agent cannot decide it without inventing one.
-   (Called "left for John" until 2026-10-12, when John ruled that these rows stay out of
+   (Called "left for me" until 2026-10-12, when I ruled that these rows stay out of
    the scores rather than being given a bar after the fact; the verdict's meaning is
    unchanged.)
 
@@ -113,4 +113,4 @@ Rows with no bar are listed but not scored.
 
 - `data/leg_b_ledger.csv`: one row per milestone, with every source and date.
 - `scripts/leg_b_ledger.py`: checks the rows against this method and prints the scores.
-- `docs/leg-b-ledger-2026-10.md`: the first reading and the questions it leaves for John.
+- `docs/leg-b-ledger-2026-10.md`: the first reading and the questions it leaves for me.

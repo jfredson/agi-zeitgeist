@@ -3,7 +3,7 @@
 Run id: `vanguard-pilot-rsing-2026-10-03`. Written and committed **before** any sample was
 drawn or any post coded. Governs: `docs/amendments/2026-10-02-vanguard-stream.md`
 (accepted 2026-10-02, with the 2026-10-02 video ruling and the 2026-10-03 title-only
-instruction). Brief: John, 2026-10-03.
+instruction). Brief: me, 2026-10-03.
 
 ## Window and source
 
@@ -87,7 +87,7 @@ instruction). Brief: John, 2026-10-03.
    coded from the title with `title_only: yes` and `content_basis: text_title`. Galleries
    and image files that no longer load stay excluded.
 
-## Recode run, 2026-10-03 (after John's rulings on the pilot report)
+## Recode run, 2026-10-03 (after my rulings on the pilot report)
 
 Same model, `claude-opus-5-5`, the same four first-pass coders (resumed, so their earlier
 judgments stay consistent). Applied to every screened post in the existing sample: the new
@@ -101,16 +101,16 @@ pass is not recoded, so the interim agreement figures predate these rulings.
 
 ## Cross-family second pass, 2026-10-03
 
-Run under the revised section 9 (John, 2026-10-03). The models are named and pinned:
+Run under the revised section 9 (my ruling, 2026-10-03). The models are named and pinned:
 
 - First pass: `claude-opus-5-5`, coder label `claude-opus-5-5-first`, recoded under the 2026-10-03 rulings (424 rows, 390 posts).
 - Second pass: `gemini-3.1-pro-preview`, version `3.1-pro-preview-01-2026`. The script checks the version against the Gemini models endpoint before running and stops if it doesn't match. Run id `vanguard-pilot-rsing-2026-10-03-crossfamily`, script `scripts/vanguard_crossfamily_pass.py`. The model sees the full codebook and the same content as the first pass (image, link-page text, or title only), with structured output limited to the codebook's values. It saw no first-pass codes. 140 of 140 posts coded, 177 rows.
 - The same-family second pass (`r-singularity-pilot-codes-second.csv`) is superseded and was not recoded.
-- John's 40-post blind worksheet (seed 20261005) was drawn, then withdrawn the same day by his ruling removing the human step; the worksheet and its scripts were deleted.
+- my 40-post blind worksheet (seed 20261005) was drawn, then withdrawn the same day by his ruling removing the human step; the worksheet and its scripts were deleted.
 
 ## Three-model coding, 2026-10-03
 
-Run under section 9 as ruled by John later the same day: no human coder, three models from
+Run under section 9 as ruled by me later the same day: no human coder, three models from
 different companies, final code by majority vote.
 
 - **GPT pass:** `gpt-6-astra`, reasoning effort medium. OpenAI publishes no dated snapshot, so
@@ -150,13 +150,13 @@ python3 scripts/vanguard_three_way.py --r1-split    # R1a and R1b, all three pai
 ```
 
 That is 252 Gemini requests against a limit of 250 a day; if the last R1b posts are refused,
-rerun the third command the next evening. Then update the pilot report and send John the R1a
+rerun the third command the next evening. Then update the pilot report and send me the R1a
 and R1b kappas for all three pairs. Claude and GPT codes for both trials are already committed.
 Interim Claude–GPT result: R1a raises stance agreement (0.50 without, 0.74 with); R1b doesn't
 help attribution (0.75 without, 0.72 with). The trial coders found that both rules need to say
 how a bare reaction or joke title ("WTF") is treated.
 
-**Waiting on John:** a ruling on R1a and R1b. (John added $25 OpenAI credit on 2026-10-03, so GPT's share is covered.) Then the full-sample
+**Waiting on me:** a ruling on R1a and R1b. (I added $25 OpenAI credit on 2026-10-03, so GPT's share is covered.) Then the full-sample
 run: all 390 posts by Gemini and GPT under the final codebook, with Gemini capped at about 240
 new requests a day (`--ids data/vanguard/r-singularity-pilot-sample.csv` style list, `--max-new 240`,
 a fresh `--tag` so earlier replies aren't reused).
@@ -184,15 +184,15 @@ after 2 more requests, so 254 in a day was the ceiling here. Plan on 240 a day.)
 - **Results:** in the pilot report; recommendation in
   `docs/vanguard/decision-packet-r1a-r1b-2026-10-04.md`.
 
-**Ruled by John, 2026-10-04:** R1a adopted with the reactions sentence; R1b rejected. The
+**Decided, 2026-10-04:** R1a adopted with the reactions sentence; R1b rejected. The
 codebook (`docs/vanguard/codebook.md`) is now final for the full-sample run.
 
-**Waiting on John:** about $15 more OpenAI credit. Then the full-sample run as described in
+**Waiting on me:** about $15 more OpenAI credit. Then the full-sample run as described in
 the handover above, on today's codebook with a fresh `--tag`.
 
 ## Full-sample run, started 2026-10-04
 
-John topped up the OpenAI credit and started the run the evening of 2026-10-04. Final codebook
+I topped up the OpenAI credit and started the run the evening of 2026-10-04. Final codebook
 (`docs/vanguard/codebook.md`: R2 and R3 adopted 2026-10-03, R1a adopted 2026-10-04). Posts:
 the 390 screened in the first pass, listed in `data/vanguard/full-run-posts.csv` (230 top-ranked,
 160 random; built from `r-singularity-pilot-codes.csv`). Label `--tag full-final`, so no earlier
@@ -211,7 +211,7 @@ python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard
 
   Run it twice, on two days; 388 posts remain.
 
-**Claude, recoded under the final codebook (John, 2026-10-04).** Claude's earlier codes for
+**Claude, recoded under the final codebook (my ruling, 2026-10-04).** Claude's earlier codes for
 these posts predate R2, R3 and R1a, so a three-way majority would have mixed codebooks. Six
 fresh `claude-opus-5-5` coders, 65 posts each (posts dealt out in turn, so each part mixes
 quarters and post types), coded all 390 blind. They got the same instructions, codebook and
@@ -231,7 +231,7 @@ pages from the same cache, so the 13 unreadable ones are coded from the title). 
 - `vanguard_three_way.py --full` builds the majority and the three-pair table once Gemini's
   file exists.
 
-## Gemini, 2026-10-06: stopped at 219 of 390, waiting on John over the cost limit
+## Gemini, 2026-10-06: stopped at 219 of 390, waiting on me over the cost limit
 
 The daily limit had reset: a one-request test at 09:14 Pacific was accepted and the pin was
 confirmed (`gemini-3.1-pro-preview` version `3.1-pro-preview-01-2026`). The run went ahead with
@@ -249,7 +249,7 @@ the command from the section above, capped at 240 requests for the day.
   thinking counted as output, at $2 and $12 per million). The full run so far: $5.63 for 219 posts,
   $0.0257 a post.
 
-**Against the approved quote.** John approved up to $15 for October (the full run plus the first
+**Against the approved quote.** I approved up to $15 for October (the full run plus the first
 monthly runs), with the full run itself quoted at $9.80.
 - Google's billing page showed $12.25 for October before today's coding (about $5.90 on
   2026-10-03 and $6.30 on 2026-10-04, the rules trials). The quote listed the 2026-10-04 trial
@@ -258,10 +258,10 @@ monthly runs), with the full run itself quoted at $9.80.
 - With today's $5.58, October is about **$17.83, already over the $15**.
 - Finishing the full run needs about $4.40 more (171 posts at $0.0257), taking the full run to
   about $10.03 (just over its own $9.80 line) and October to about **$22.20**.
-- So **finishing would exceed the approved $15**. It is not resumed without John's go. A $25
+- So **finishing would exceed the approved $15**. It is not resumed without my go. A $25
   monthly budget alert is now set on the billing account.
 
-**To resume once John approves** (saved replies are reused; at most about 240 requests a day):
+**To resume once I approve** (saved replies are reused; at most about 240 requests a day):
 
 ```
 python3 scripts/vanguard_crossfamily_pass.py --family gemini --ids data/vanguard/full-run-posts.csv --tag full-final --max-new 171
@@ -271,7 +271,7 @@ python3 scripts/vanguard_three_way.py --full
 Then re-apply the 20-eligible cut-off per quarter from the majority codes, redraw the figure
 from the majority codes, and check that "AGI already achieved" counts leave out ironic posts.
 
-**Approved by John, 2026-10-06, about 10:20 Pacific** (in the planning session; recorded as a
+**Approved by me, 2026-10-06, about 10:20 Pacific** (in the planning session; recorded as a
 TimeAssembler decision): "approve finishing the Gemini coding, go with the recommendation."
 That is about $4.40 more, about $22.20 for October; the limit is now about $22.50 for October
 without asking again. The approval is also noted under the quote in
@@ -289,7 +289,7 @@ without asking again. The approval is also noted under the quote in
 - **Cost:** $6.37 today (252 requests). The full run so far is $6.42 for 254 posts ($0.0253 a post).
   October is about **$18.62** ($12.25 before today, plus today).
 - **To finish:** 136 posts at about $0.0253 is about $3.45 more. That takes the full run to about
-  $9.87 and October to about **$22.07**, inside John's 2026-10-06 limit of about $22.50.
+  $9.87 and October to about **$22.07**, inside my 2026-10-06 limit of about $22.50.
 
 **Resume after midnight Pacific (2026-10-07 or later)**, when the daily limit resets. It fits in
 one day's allowance:
@@ -302,13 +302,13 @@ python3 scripts/vanguard_three_way.py --full
 Then re-apply the 20-eligible cut-off per quarter from the majority codes, redraw the figure
 from the majority codes, and check that "AGI already achieved" counts leave out ironic posts. If
 the per-post cost runs higher than expected, stop before October passes about $22.50 (full run
-about $10.30) and ask John again.
+about $10.30) and ask I again.
 
 ## Gemini, 2026-10-07: finished, 390 of 390, and the three-way comparison
 
 Scheduled run, started 09:34 Pacific, with the command from the section above. The daily limit
 had reset and no request was refused. It ran in three batches (40, 50, 46) so the cost could be
-checked between them against John's 2026-10-06 limit of about $22.50 for October; it never came
+checked between them against my 2026-10-06 limit of about $22.50 for October; it never came
 close to it.
 
 - **Posts coded:** the remaining **136** (positions 255 to 390). **All 390 of 390 are now coded**,
@@ -339,7 +339,7 @@ posts where all three gave a different answer.
 | Whether the poster agrees | 0.75 (259) | 0.63 (254) | 0.56 (258) | 3% | reliable |
 | Hedging | 0.73 (259) | 0.66 (254) | 0.54 (258) | 0% | reliable |
 | Tone of the post | 0.74 (259) | 0.75 (254) | 0.79 (258) | 0% | reliable |
-| Whether the poster wants it faster or slower | 0.46 (259) | 0.59 (254) | 0.45 (258) | 0% | unreliable (every pair below 0.6; ruled unreliable by John, 2026-10-03) |
+| Whether the poster wants it faster or slower | 0.46 (259) | 0.59 (254) | 0.45 (258) | 0% | unreliable (every pair below 0.6; ruled unreliable by me, 2026-10-03) |
 | Whose claim it is | 0.72 (259) | 0.71 (254) | 0.71 (258) | 1% | reliable |
 | Coded from the title alone | 0.99 (259) | 0.99 (254) | 1.00 (258) | 0% | reliable |
 | Projects to a time horizon | 0.75 (259) | 0.72 (254) | 0.73 (258) | 1% | reliable |
@@ -367,7 +367,7 @@ agree. It carries no secondary claims, no forecast horizon text and no frame tag
   **main claim** is about. Secondary claims were never compared across the models. Each model
   finds a consequence claim somewhere in about twice as many posts as have one as the main
   claim (Claude 50 against 30, Gemini 55 against 29, GPT 63 against 29), which is why the
-  consequence shares are lower than the first-pass figure's. *Agent decision; John can rule
+  consequence shares are lower than the first-pass figure's. *Agent decision; I can rule
   otherwise.*
 - A post with an unresolved value in any field a measure uses is left out of that measure
   (it cannot be put on either side). Across the counted posts: what the claim is about is
@@ -399,7 +399,7 @@ until 20 posts are eligible by majority; eligible posts below that rank are left
 cut-off). Three quarters fall short of 20 because the majority finds fewer eligible posts than
 Claude's first pass did among the ranks that were screened; reaching 20 there needs all three
 models to code the next posts down the ranked reserve (ranks 30 and on in 2025Q1, 33 and on
-in 2025Q4, 27 and on in 2026Q3). Not done; it costs money and is John's call. The random
+in 2025Q4, 27 and on in 2026Q3). Not done; it costs money and is my call. The random
 sample has no cut-off: 160 drawn, 104 eligible by majority, all counted.
 
 **Irony and the headline claims.** The codebook (section 3, `rhetorical_mode`, and rule R1a)
@@ -427,7 +427,7 @@ caption still says a 140-post subset; it is updated separately.
 
 ## Reserve posts coded, 2026-10-09: every quarter now has 20 eligible top posts
 
-Approved by John, 2026-10-09 ("Go."), for this purpose only, with a hard cap of $8 across the
+Approved by me, 2026-10-09 ("Go."), for this purpose only, with a hard cap of $8 across the
 three models. Same method and scripts as the full-sample run: the final codebook, unchanged
 since 2026-10-04; each reserve post coded blind by all three models; majority by
 `vanguard_three_way.py --full`; figure by `vanguard_figure.py`. No new posts were drawn: the
@@ -441,7 +441,7 @@ Expected about 7 posts, ceiling about 14. Per post: Gemini $0.0253 (full-run ave
 $0.054 (the quote), Claude no separate charge (it runs inside the Claude Code session). About
 $0.56 expected, $1.11 at the ceiling. Accounts: Gemini's October was about $22.03 against the
 earlier $22.50 line, so 14 posts (about $0.35) would still fit under it; the OpenAI credit
-left was not recorded (about $4 if John's 2026-10-04 top-up was the $15 asked for), and there
+left was not recorded (about $4 if my 2026-10-04 top-up was the $15 asked for), and there
 is no way to read the balance through the API, so a refusal would have been the signal.
 
 **How it ran.** One post per short quarter at a time, all three models, then the majority

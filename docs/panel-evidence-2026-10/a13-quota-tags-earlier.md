@@ -13,7 +13,7 @@ Web searches used: 3 of 25.
 ### Ray Kurzweil
 Tier checked: core (seed)
 C1/C2/C3: see panel-verification
-Quota tags: skeptic: no. His prediction before 2017 is human-level AI by 2029 and the Singularity by 2045 (2005, https://singularity.com/qanda.html) | non_us_uk: no (US) | philosopher: no | frontier_lab: arguable. He has been Director of Engineering at Google since December 2012, hired to "bring natural language understanding to Google" (fetched 2026-09-30, https://en.wikipedia.org/wiki/Ray_Kurzweil). Google was building frontier models over that time, but this is an engineering-director job, not leadership of a lab. Flag for John.
+Quota tags: skeptic: no. His prediction before 2017 is human-level AI by 2029 and the Singularity by 2045 (2005, https://singularity.com/qanda.html) | non_us_uk: no (US) | philosopher: no | frontier_lab: arguable. He has been Director of Engineering at Google since December 2012, hired to "bring natural language understanding to Google" (fetched 2026-09-30, https://en.wikipedia.org/wiki/Ray_Kurzweil). Google was building frontier models over that time, but this is an engineering-director job, not leadership of a lab. Flag for me.
 
 ### Nick Bostrom
 Tier checked: core
@@ -33,7 +33,7 @@ Quota tags: skeptic: YES. On 2012-08-27 he wrote "we probably have at least a ce
 ### Geoffrey Hinton
 Tier checked: core (seed)
 C1/C2/C3: see panel-verification
-Quota tags: skeptic: YES. In May 2015 he said "No sooner than 2070" (published 2015-11-23, https://www.newyorker.com/magazine/2015/11/23/doomsday-invention-artificial-intelligence-nick-bostrom; statement `hinton-2015-01` in `data/statements.csv`). Note that in 2016 he refused to predict "beyond five years" (`hinton-2016-01`), which is a different position. | non_us_uk: YES. He has been at the University of Toronto, Canada, since 1987 (except for University College London 1998–2001), so he was in Canada for the 2015 statement (https://en.wikipedia.org/wiki/Geoffrey_Hinton). | philosopher: arguable. Wikipedia calls him a "cognitive scientist", and he has a BA in experimental psychology (Cambridge, 1970), but his PhD is in artificial intelligence (Edinburgh, 1978). Flag for John; don't count him toward the minimum of two without a ruling. | frontier_lab: YES. Google Brain, 2013–2023, alongside his Toronto post (https://en.wikipedia.org/wiki/Geoffrey_Hinton)
+Quota tags: skeptic: YES. In May 2015 he said "No sooner than 2070" (published 2015-11-23, https://www.newyorker.com/magazine/2015/11/23/doomsday-invention-artificial-intelligence-nick-bostrom; statement `hinton-2015-01` in `data/statements.csv`). Note that in 2016 he refused to predict "beyond five years" (`hinton-2016-01`), which is a different position. | non_us_uk: YES. He has been at the University of Toronto, Canada, since 1987 (except for University College London 1998–2001), so he was in Canada for the 2015 statement (https://en.wikipedia.org/wiki/Geoffrey_Hinton). | philosopher: arguable. Wikipedia calls him a "cognitive scientist", and he has a BA in experimental psychology (Cambridge, 1970), but his PhD is in artificial intelligence (Edinburgh, 1978). Flag for me; don't count him toward the minimum of two without a ruling. | frontier_lab: YES. Google Brain, 2013–2023, alongside his Toronto post (https://en.wikipedia.org/wiki/Geoffrey_Hinton)
 
 ### Yann LeCun
 Tier checked: core (seed)
@@ -48,7 +48,7 @@ Quota tags: skeptic: near miss, unresolved. His only interview before 2017 (MIT 
 ### Demis Hassabis
 Tier checked: core
 C1/C2/C3: see panel-verification
-Quota tags: skeptic: no. His 2010 talk was titled "A systems neuroscience approach to building AGI" | non_us_uk: no (London) | philosopher: arguable. PhD in cognitive neuroscience, UCL Institute of Neurology, 2009 (https://en.wikipedia.org/wiki/Demis_Hassabis). That is neuroscience rather than cognitive science in the strict sense. Flag for John. | frontier_lab: YES. DeepMind co-founder (2010) and CEO; Wikipedia says he moved to chief scientist in 2026 (https://en.wikipedia.org/wiki/Demis_Hassabis)
+Quota tags: skeptic: no. His 2010 talk was titled "A systems neuroscience approach to building AGI" | non_us_uk: no (London) | philosopher: arguable. PhD in cognitive neuroscience, UCL Institute of Neurology, 2009 (https://en.wikipedia.org/wiki/Demis_Hassabis). That is neuroscience rather than cognitive science in the strict sense. Flag for me. | frontier_lab: YES. DeepMind co-founder (2010) and CEO; Wikipedia says he moved to chief scientist in 2026 (https://en.wikipedia.org/wiki/Demis_Hassabis)
 
 ### Shane Legg
 Tier checked: core
@@ -93,7 +93,7 @@ Quota tags: skeptic: no. The 2015 OpenAI launch post he co-signed says only that
 ### François Chollet
 Tier checked: core (with caveat)
 C1/C2/C3: see panel-verification
-Quota tags: skeptic: near miss. On 2017-07-18 he called a "singularitarian robot apocalypse" "pure fantasy" (https://blog.keras.io/the-future-of-deep-learning.html). That is from 2017, not before it, and it is about a robot apocalypse rather than when AGI arrives. In the same post he allows that a learning system "could be interpreted as an AGI". | non_us_uk: no, a near miss. He is French but was at Google in the US from 2015 (https://en.wikipedia.org/wiki/François_Chollet) | philosopher: no | frontier_lab: arguable. Senior Staff Engineer at Google 2015–2024, where he created Keras (https://en.wikipedia.org/wiki/François_Chollet). That is a senior technical role at a frontier company, but not a research-leadership role on its frontier models. Flag for John.
+Quota tags: skeptic: near miss. On 2017-07-18 he called a "singularitarian robot apocalypse" "pure fantasy" (https://blog.keras.io/the-future-of-deep-learning.html). That is from 2017, not before it, and it is about a robot apocalypse rather than when AGI arrives. In the same post he allows that a learning system "could be interpreted as an AGI". | non_us_uk: no, a near miss. He is French but was at Google in the US from 2015 (https://en.wikipedia.org/wiki/François_Chollet) | philosopher: no | frontier_lab: arguable. Senior Staff Engineer at Google 2015–2024, where he created Keras (https://en.wikipedia.org/wiki/François_Chollet). That is a senior technical role at a frontier company, but not a research-leadership role on its frontier models. Flag for me.
 
 ### Luciano Floridi
 Tier checked: core (proposed skeptic)
@@ -128,7 +128,7 @@ Quota tags: skeptic and non_us_uk: don't apply | philosopher: no | frontier_lab:
 ### Mustafa Suleyman
 Tier checked: cohort_2020s (clears the core bar per panel-verification)
 C1/C2/C3: see panel-verification
-Quota tags: skeptic: near miss, borderline. On 2016-12-05 in London he said: "when we say it's 20 years out or decades way, we say that it so far out, we can't really measure it" (fetched 2026-09-30, https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off). He places general AI decades off and "so far out" it can't be measured, which arguably doubts it within decades. But "20 years out" falls inside the window, unlike Hinton's 2070. John to rule. | non_us_uk: no (London, DeepMind) | philosopher: no, a near miss. He studied philosophy and theology at Mansfield College, Oxford, but dropped out at 19 (https://en.wikipedia.org/wiki/Mustafa_Suleyman) | frontier_lab: YES. DeepMind co-founder (2010) and chief product officer, then head of applied AI after Google bought it, to 2019; co-founded Inflection AI in 2022; CEO of Microsoft AI since March 2024 (https://en.wikipedia.org/wiki/Mustafa_Suleyman)
+Quota tags: skeptic: near miss, borderline. On 2016-12-05 in London he said: "when we say it's 20 years out or decades way, we say that it so far out, we can't really measure it" (fetched 2026-09-30, https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off). He places general AI decades off and "so far out" it can't be measured, which arguably doubts it within decades. But "20 years out" falls inside the window, unlike Hinton's 2070. I to rule. | non_us_uk: no (London, DeepMind) | philosopher: no, a near miss. He studied philosophy and theology at Mansfield College, Oxford, but dropped out at 19 (https://en.wikipedia.org/wiki/Mustafa_Suleyman) | frontier_lab: YES. DeepMind co-founder (2010) and chief product officer, then head of applied AI after Google bought it, to 2019; co-founded Inflection AI in 2022; CEO of Microsoft AI since March 2024 (https://en.wikipedia.org/wiki/Mustafa_Suleyman)
 
 ## Group f tallies against the A13 minimums
 

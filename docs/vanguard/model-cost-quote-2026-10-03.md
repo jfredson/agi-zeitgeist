@@ -1,11 +1,11 @@
-# Cost quote: Gemini paid tier for vanguard coding (for John's approval)
+# Cost quote: Gemini paid tier for vanguard coding (for me's approval)
 
-Prepared 2026-10-03, before the full-sample run, as John asked. **Approved by John, 2026-10-03:**
+Prepared 2026-10-03, before the full-sample run, as I asked. **Approved by me, 2026-10-03:**
 up to $15 for the first month (the full run plus the first monthly runs), then up to $5 a
 month for three venues.
 
-**Raised by John, 2026-10-06:** October's Gemini spending reached about $17.83 with the full run
-at 219 of 390 posts, because the billing account counts the trial work in the same month. John
+**Raised by me, 2026-10-06:** October's Gemini spending reached about $17.83 with the full run
+at 219 of 390 posts, because the billing account counts the trial work in the same month. I
 approved finishing the run ("approve finishing the Gemini coding, go with the recommendation"),
 about $4.40 more, taking October to about $22.20; do not go past about $22.50 without asking
 again. Details in the run record (`pilot-run-r-singularity-2026-10.md`).

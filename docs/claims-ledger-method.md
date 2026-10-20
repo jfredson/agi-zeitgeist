@@ -1,6 +1,6 @@
 # Claims ledger: method for scoring a named person's dated predictions
 
-**Status: method written 2026-10-17 by the agent, from the proposal John adopted the same day
+**Status: method written 2026-10-17 by the agent, from the proposal I adopted the same day
 (`docs/claims-ledger-proposal-2026-10-17.md`, all ten rulings "as recommended"), before any
 claim row was built. Amendment A27 in `docs/amendments.md` records the adoption. Changing a
 rule here after rows exist is an amendment entry, never a quiet edit. Amendment A30 (2026-10-19)
@@ -10,7 +10,7 @@ the three who are not on the panel.**
 ## What this ledger is for
 
 The people who run the frontier AI companies both sell the story and see further than anyone
-else. John's question of 2026-10-17 was whether each of them is a front-row seat or a salesman.
+else. my question of 2026-10-17 was whether each of them is a front-row seat or a salesman.
 This ledger answers one narrow part of that: **for each of the industry's figureheads (who
 they are is set out under the admission rule), of the predictions they made that have since come due, how many came true, how many did not, and
 which way the misses went.** Every claim is published in the person's own words, with the
@@ -87,10 +87,10 @@ A claim is admitted when all four are true. The test never looks at whether it c
    person held that role. A claim made before or after it, or in a gap between two such roles,
    is left out, and the search-log row that found it says why. Each claim's `notes` name the
    role that applied. The fifteen figureheads are listed under "Order of work". Tesla counts as
-   such a company for Elon Musk's claims as its chief executive from 2019 to 2021 (ruled by John
+   such a company for Elon Musk's claims as its chief executive from 2019 to 2021 (ruled by me
    2026-10-19).
 2. **The words look forward and are about AI**: they say AI will do, reach or ship something,
-   or that it will not by a stated date (see "Readings ruled by John" below). A company's
+   or that it will not by a stated date (see "Readings ruled by me" below). A company's
    spending, revenue, order book, headcount, chip count, computing or data-centre build-out,
    training costs and labour-market forecasts that are not about what AI will do ("50 million
    workers short") are business forecasts, not claims about AI, and stay out; a forecast that AI
@@ -113,15 +113,15 @@ not a claim record.** The page says how many of each
 person's coded statements look forward (their frames include `timeline` or `possibility`) and
 how many of those carry a year, so vagueness stays visible without being scored.
 
-## Readings ruled by John
+## Readings ruled by me
 
-John ruled four readings on 2026-10-19, each as the independent check of the widened ledger
+I ruled four readings on 2026-10-19, each as the independent check of the widened ledger
 recommended (`docs/reviews/claims-ledger-check-2026-10-19.md`):
 
 1. **"Early" in a year means its first quarter.** "Early next year" or "early 2025" sets
    `due_date` to 31 March of that year. "Early" in a month ("early June") is not ruled; the
    ledger reads it the same way, as the first third, so the tenth of the month, and flags it for
-   John.
+   me.
 2. **A forecast that something will not happen by a date is a claim.** "Not in the next two
    years", "not before 2030", "it will take at least a decade" are scored at the stated date:
    it came true if there is no public record of the thing by then, and did not if there is.
@@ -130,7 +130,7 @@ recommended (`docs/reviews/claims-ledger-check-2026-10-19.md`):
    as little as two years away" names only the earliest the thing could come, so missing it
    proves nothing. Neither is a claim record; each is left out and logged. The ledger applies the
    same reading to "the next few months" and "the coming months", which name no length either
-   (an application by the agent on 2026-10-19, flagged for John).
+   (an application by the agent on 2026-10-19, flagged for me).
 4. **Bare "human level" is a named stage.** With no comparison in the same source, "human-level
    AI" cannot be tested, like an undefined "AGI". A stated comparison ("better than humans at
    X", "smarter than the smartest human", "can do the cognitive tasks people can typically do")
@@ -143,7 +143,7 @@ recommended (`docs/reviews/claims-ledger-check-2026-10-19.md`):
 | `not_yet_due` | The due date has not passed: 31 December of the due year, or `due_date` where the words name an earlier point. Shown, not scored. A claim stays `not_yet_due` until its date passes even where the thing has already happened; the notes may say what has been seen so far, and the verdict is entered when the date passes. |
 | `hit` | By the due date, every condition in `bar` was met, shown by a dated primary record of the event itself (the release, the count, the demonstration), not by an argument that it had become possible (given by the managing session on 2026-10-19). For a forecast that something will not happen, a hit is no public record of the thing by the date (reading 2 above). |
 | `missed` | The due date has passed and the bar was not met, or only part of it was. The record says which condition failed. A near miss is a miss with the gap named; there is no "partly". |
-| `withdrawn` | The speaker later said the claim no longer holds: a retraction, not a new date. **Counted as missed in every total.** The word is kept apart only so the page can show that they took it back, and when. A claim the speaker re-dates is not withdrawn: it is a changed repeat (see Restatements), and the earlier claim keeps its own due date and gets its verdict then (ruled by John 2026-10-19). |
+| `withdrawn` | The speaker later said the claim no longer holds: a retraction, not a new date. **Counted as missed in every total.** The word is kept apart only so the page can show that they took it back, and when. A claim the speaker re-dates is not withdrawn: it is a changed repeat (see Restatements), and the earlier claim keeps its own due date and gets its verdict then (decided 2026-10-19). |
 | `unfalsifiable` | The claim has a date but no bar an outsider could test, or its only judge is the speaker ("we will have an internal system I would call AGI"). Decided at entry, when `bar` is written; shown and counted apart, left out of the rate, and a bar is never supplied after the fact. This is the rule the leg B ledger uses for its "no bar" rows. |
 
 Verdicts are entered by hand and dated. Nothing scores a claim automatically.
@@ -163,7 +163,7 @@ Verdicts are entered by hand and dated. Nothing scores a claim automatically.
   A named comparison gives a plain reading; a named stage does not. Musk's "smarter than the
   smartest human" keeps a bar because it names a comparison that can be checked (better than
   the best person at thinking work), while Altman's "superintelligence in a few thousand days"
-  is `unfalsifiable` because it names a stage he never defines in the source (ruled by John
+  is `unfalsifiable` because it names a stage he never defines in the source (ruled by me
   2026-10-19).
   The ledger never borrows the singularity test's thresholds for this, because that would let
   the ledger move the test. For a named thing coming out, the bar is its release.
@@ -292,14 +292,14 @@ checks every file.
 
 ## Order of work
 
-Ruled by John on 2026-10-17: Altman and Musk first, then Amodei, then Huang, then the other
+Decided on 2026-10-17: Altman and Musk first, then Amodei, then Huang, then the other
 panel members tied to the frontier labs, then anyone else on the panel with a dated claim.
 
-Widened by John on 2026-10-19 (amendment A30) to the fifteen figureheads. On the frozen panel:
+Widened by me on 2026-10-19 (amendment A30) to the fifteen figureheads. On the frozen panel:
 Sam Altman, Elon Musk, Dario Amodei, Jensen Huang, Demis Hassabis, Mustafa Suleyman, Ilya
 Sutskever, Liang Wenfeng, Arthur Mensch, Shane Legg, Yann LeCun and Kai-Fu Lee (his claims
 count only from 2023, as founder and chief executive of 01.AI). On the ledger-only list:
 Mark Zuckerberg, Sundar Pichai and Satya Nadella. After Altman and Musk the order is Amodei and
 Huang, then Hassabis, Suleyman, Sutskever, Legg, LeCun, Liang Wenfeng, Mensch, Zuckerberg,
-Pichai and Nadella, then Kai-Fu Lee, added by John later the same day. Panel members who never held a qualifying role (Geoffrey Hinton, Ray
+Pichai and Nadella, then Kai-Fu Lee, added by me later the same day. Panel members who never held a qualifying role (Geoffrey Hinton, Ray
 Kurzweil) are not entered; any other name is added only by amendment.

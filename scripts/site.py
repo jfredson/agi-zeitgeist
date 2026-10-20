@@ -954,7 +954,7 @@ def disagree_page(built, commit):
 {cards}
 <p>Each form opens an issue in the public repository with the right questions already in it. Issues are used because they are durable and quotable, and folding one into the record is a change that can cite it. Or write a plain issue: the page or the row, what you would change, and why is exactly enough.</p>
 <h2>What happens to it</h2>
-<p>John Fredrickson rules on it. Some disagreements change the record; some are answered and left as they are. Either way the issue records the ruling and the reason.</p>
+<p>I rule on it. Some disagreements change the record; some are answered and left as they are. Either way the issue records the ruling and the reason.</p>
 <p>A corrected statement gets a dated note in its row that cites the issue; the search that found it stays in the search log. A changed measure, line or rule is a dated amendment with its reason, never a quiet edit, because the test's lines were fixed before the numbers were looked at. A new reading is a row added with its source. The expert panel is fixed, so that it cannot drift toward the story; adding or removing a person is an amendment too.</p>
 <p>The repository is at <a href="{REPO}" rel="noopener">github.com/jfredson/agi-zeitgeist</a>. The data is free to reuse with credit (CC BY 4.0) and the scripts are under the MIT licence; <a href="/data/">how to cite</a> is on the data page.</p>
 </section>"""

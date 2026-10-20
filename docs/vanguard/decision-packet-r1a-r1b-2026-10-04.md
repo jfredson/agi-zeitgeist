@@ -1,9 +1,9 @@
 # Decision packet: rules R1a and R1b (posts passed on without comment)
 
-Prepared 2026-10-04 for John, once all three models had coded the trial posts. The
+Prepared 2026-10-04 for me, once all three models had coded the trial posts. The
 recommendations below were the agent's.
 
-**Ruled by John, 2026-10-04: R1a adopted with the reactions sentence; R1b rejected.** Now in
+**Decided, 2026-10-04: R1a adopted with the reactions sentence; R1b rejected.** Now in
 `docs/vanguard/codebook.md` and `docs/amendments.md`.
 
 ## What you are deciding

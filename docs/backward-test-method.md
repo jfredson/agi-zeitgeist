@@ -1,6 +1,6 @@
 # How the backward test is run (1995 to 2019)
 
-Written 2026-10-09, before any series was built, by an agent session working on John's
+Written 2026-10-09, before any series was built, by an agent session working on my
 four-day weekend list. This file says how the test owed by
 `docs/singularity-entry-definition.md` section 5, item 1, is run. The definition says what
 the test must return ("not entered" for every year from 1995 to 2019) and what pattern it
@@ -140,7 +140,7 @@ T5 and AlphaStar within six weeks). Two cautions on reading this: the series mea
 went into AI systems, not what they could do; and with only three or four systems in a
 window, one large system can swing the fitted doubling time a long way.
 
-What this means for the thresholds is a question for John, not for this run. The pass does
+What this means for the thresholds is a question for me, not for this run. The pass does
 not depend on leg A: it rests entirely on leg D. On this stand-in series, the pace line on
 its own would have been crossed in 2014, and the "getting quicker" part of the rule plus
 the three-system minimum are what held it.
@@ -167,7 +167,7 @@ quicker than the one before it. The two readings give different answers here:
 
 The test passes on either reading, because world growth never came near 30 percent: "not
 entered" in every quarter, also with the forecasting and AI-doing-the-improving conditions
-assumed met. Which reading the rule means is for John to settle. The results files now carry
+assumed met. Which reading the rule means is for me to settle. The results files now carry
 both (`leg_a_looser_reading` and the `looser_pace_reading` verdict columns). The "held back
 only by the getting-quicker rule" sentence above is true of the stricter reading only.
 
@@ -194,8 +194,8 @@ the same.
 
 ## Ruling (2026-10-12)
 
-John ruled on 12 October 2026, in his words "all as recommended"; the recommendation was the
-session's and John approved it, so the authorship is mixed. Nothing above this section was
+I ruled on 12 October 2026, in his words "all as recommended"; the recommendation was the
+session's and I approved it, so the authorship is mixed. Nothing above this section was
 changed, and the frozen thresholds were not touched.
 
 The pace rule stays as written, read the way the live site reads it: the last three

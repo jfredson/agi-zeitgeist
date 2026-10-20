@@ -1,10 +1,10 @@
 # Leg C second source: the ICLR 2026 AI-disclosure audit, read 2026-10-17
 
-Written by the agent on 2026-10-17 after John's ruling of the same day that the audit flagged by
+Written by the agent on 2026-10-17 after my ruling of the same day that the audit flagged by
 the first weekly reading (2026-10-16) should be read before deciding whether it is the "second
 source for leg C" the roadmap asks for. This is a reading note, not an amendment: no row was
 added to `data/world_measures.csv`, and `docs/singularity-entry-thresholds.json` and the
-definition are untouched. Naming a second source is an amendment and is John's call.
+definition are untouched. Naming a second source is an amendment and is my call.
 
 ## What the roadmap step asks for
 
@@ -78,7 +78,7 @@ from outside any company, and a yearly repeat (by these authors or by the venues
 would give a dated, outside-the-company trend in how openly the field says it uses AI for
 writing and code. That belongs beside leg C as background, in the same way the code-share
 statements from Google and the Anthropic staff poll sit beside the gauge unscored, and only if
-John wants it recorded at all.
+I want it recorded at all.
 
 ## What the roadmap step still needs
 
@@ -93,7 +93,7 @@ in the record yet:
 3. A measurement of a company's AI research output that the company does not control, for
    example an outside audit of the R&D Automation Index.
 
-Until one appears, the Anthropic index scores the leg alone, as John ruled on 2026-10-17, and the
+Until one appears, the Anthropic index scores the leg alone, as I ruled on 2026-10-17, and the
 weekly reading's third leg C read keeps flagging candidates.
 
 **Later the same day.** The wider search for these three kinds of source, across venue

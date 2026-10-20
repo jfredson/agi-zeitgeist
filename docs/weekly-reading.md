@@ -2,11 +2,11 @@
 
 Written 2026-10-16, adapted from The Upgrade Tree's weekly reading (`docs/weekly-reading.md`
 and `docs/weekly-reading-prompt.md` in that repository, written the same day) and The Belt
-Equation's scan procedure (`docs/scan-procedure.md`, ruled by John 2026-09-19, audited
-2026-10-06). It answers a question John asked on 2026-10-16: how would a report like the
+Equation's scan procedure (`docs/scan-procedure.md`, decided 2026-09-19, audited
+2026-10-06). It answers a question I asked on 2026-10-16: how would a report like the
 Anthropic Institute's expectations-gap survey, published that day, be caught by future scans
 instead of by chance? The decisions at the end each carry a confidence and an alternative, as
-the siblings' do, and the schedule is a proposal until John rules on it.
+the siblings' do, and the schedule is a proposal until I rules on it.
 
 This is a working document, so it uses the project's own words (leg, gauge, row, verdict,
 scanner). The scanner is the fresh Claude session that follows
@@ -21,7 +21,7 @@ session with no memory of earlier conversations reads each of those sources for 
 in the past week, and writes a reading record: for each source, what it searched, what it
 found, and one of four verdicts. Where a source has published a new reading of a series the
 record already holds, the scanner appends a row; where something new or unclear turned up, it
-writes the item up for John. It never changes anything that is already in the record, and it
+writes the item up for me. It never changes anything that is already in the record, and it
 never changes what is scored. The record of each run is one file, never edited, and every
 search it ran is in the project's search log like every other search.
 
@@ -59,17 +59,17 @@ It **may not**:
 - add a speaker, a statement by a panel member, or an AI release that amendment A21's rule
   does not admit;
 - change the window, the parts or the verdicts of the reading; those change by editing this
-  document, which is John's.
+  document, which is mine.
 
 Anything it wants to do outside those limits becomes a `flagged` item: what it would have
-added, the record it rests on, and why it stopped. John rules after the fact.
+added, the record it rests on, and why it stopped. I rules after the fact.
 
 ## The rule that matters most: a measurement is not the series
 
 The definition scores each leg from one named series. The world keeps producing other
 measurements of the same thing, often from the same source, often more striking. The scanner
 records such a measurement as a row when it is a repeat of a series already in the file, and it
-**always** flags it for John, and it **never** swaps it into the scoring.
+**always** flags it for me, and it **never** swaps it into the scoring.
 
 The worked example is the week this document was written. Leg C (AI doing the improving) is
 scored from the Anthropic Institute's R&D Automation Index: the share of Anthropic's AI
@@ -84,7 +84,7 @@ The right handling, done by hand on 2026-10-16 before this reading existed, is w
 scanner must do by rule: the 51% is recorded as its own row in `data/world_measures.csv`
 (`anthropic_institute-2026-08-staff-estimate-ai-share`, marked as a staff survey), its id does
 not end in `-rd-leads`, so the site's leg C gauge ignores it, the thresholds file is untouched,
-and a dated note under leg C says which should score is John's call. Had the reading found it,
+and a dated note under leg C says which should score is my call. Had the reading found it,
 the item's verdict would have been `new-row` for the survey rows and `flagged` for the
 question of what scores, with both in the report.
 
@@ -142,9 +142,9 @@ in the window, or one fetch of the source's own database where the record was bu
 - a release with new wording, or a repeat whose sample size or fieldwork dates the public page
   does not give, is `noted` or `flagged`, never added as though comparable;
 - a source that has stopped publishing, closed, or changed its method is `flagged`, since
-  what to do about its row is John's.
+  what to do about its row is mine.
 
-Sources John has ruled closed are not read at all, on any scope: Monmouth University's polling
+Sources I have ruled closed are not read at all, on any scope: Monmouth University's polling
 institute (ceased operations 2025-07-01; ruled 2026-10-17). Metaculus is read only if a search
 finds a public reading, since its question cannot be fetched without an account token (ruled
 2026-10-17: the row stays with no series).
@@ -189,7 +189,7 @@ An item found that is older than the window but newer than the series' latest ro
 three weeks ago the record missed) is handled the same way as an in-window item, with "older
 than the window" said in `found`; the record exists to be complete, and the row carries its
 own dates. On the first reading, where the backlog is of unknown size, such items are
-`flagged` rather than appended, so John can decide the catch-up in one piece.
+`flagged` rather than appended, so I can decide the catch-up in one piece.
 
 ## The searches
 
@@ -307,33 +307,33 @@ when one exists, only says to open the repository and follow that file. In brief
    and the reading makes none, so nothing is written there. The commit message is the log.
 8. **Publish**: one commit on `main`, one push; the push deploys the site through
    `.github/workflows/deploy.yml`. A refused push falls back to `claude/reading-YYYY-MM-DD`.
-9. **Report** to John: flagged items first, then new rows, then counts. No prose.
+9. **Report** to me: flagged items first, then new rows, then counts. No prose.
 
 ## The schedule: a proposal
 
-The reading is meant to run once a week without John opening anything. Two slots in this
+The reading is meant to run once a week without me opening anything. Two slots in this
 family are taken: The Upgrade Tree's reading runs on this Mac at 18:00 Pacific on Sundays,
 and The Belt Equation's scan runs as a cloud routine (claude.ai/code/routines) on its own
 schedule. Running two readings on the Mac at the same hour would have them contend for the
 machine and land their reports together.
 
-Proposed: **Monday 06:00 Pacific on this Mac**, so the week's reading is in John's hands with
+Proposed: **Monday 06:00 Pacific on this Mac**, so the week's reading is in my hands with
 the Monday digest and after the weekend's releases, and the Upgrade Tree's Sunday report has
 had the evening to itself. Alternatives: Sunday 20:00 Pacific on the Mac, directly after the
 Upgrade Tree's run, so both land on Sunday night; or a cloud routine with the repository
 attached, which runs whether or not the Mac is open (The Belt Equation moved to one on
 2026-10-08 after a Mac-scheduled scan landed 39 hours late) but needs the Claude GitHub App on
-this repository and cannot be made from a Code session. The choice is John's; no task was
+this repository and cannot be made from a Code session. The choice is mine; no task was
 created with this document.
 
-**Ruled 2026-10-16.** John chose the proposed slot. The scheduled task
+**Ruled 2026-10-16.** I chose the proposed slot. The scheduled task
 `agi-zeitgeist-weekly-reading` (the tracker's weekly reading, on this Mac) was created the same
 day for Mondays at 06:00 Pacific (the app adds a few minutes' delay), with its prompt pointing
 at `docs/weekly-reading-prompt.md`; its first unattended run is 2026-10-19. It runs while the
 Claude desktop app is open, and a run missed because the app was closed starts on the next
 launch.
 
-**Moved to a cloud routine on John's ruling of 2026-10-18.** The reading now runs as the cloud
+**Moved to a cloud routine on my ruling of 2026-10-18.** The reading now runs as the cloud
 routine "AGI Zeitgeist weekly reading" (routine id `trig_01P7b2icKe5hxxtBAmTpDTtq`, at
 claude.ai/code/routines), Mondays at 06:00 Pacific as before, with this repository attached; it
 runs whether or not the Mac is awake, and its prompt is the same as the Mac task's: open the
@@ -361,7 +361,7 @@ ruled yet unless the line says so.
 2. **Four verdicts: quiet, noted, new-row, flagged.** High confidence. The siblings' moving
    verdicts (`moved`, `resolved`, `stage-change`) have no counterpart here because the
    scanner moves nothing; `new-row` is the one act it may take. Alternative: a fifth verdict
-   `new-series` for a release with new wording. Rejected: new wording is John's to admit, so
+   `new-series` for a release with new wording. Rejected: new wording is mine to admit, so
    it is `flagged` or `noted`.
 3. **A measurement that is not the scored series is recorded if it repeats a series in the
    file, always flagged, never swapped in.** High confidence; it is the hand-made handling of
@@ -405,22 +405,22 @@ ruled yet unless the line says so.
     the public-writing rule (no project language) and every page is a design pass; the
     readings are in the repository, and the three-surface pattern (a strip on the home page,
     a "this week's reading" page, each series' last readings) is the next step once four
-    readings exist and John has audited them. Alternative: publish the JSON beside the CSV
+    readings exist and I have audited them. Alternative: publish the JSON beside the CSV
     files now by extending `copy_data` in `scripts/site.py`. One line; not done because an
     unexplained file on the download page is worse than none.
 13. **Monday 06:00 Pacific on the Mac, proposed.** Low confidence; see "The schedule". The
-    alternatives are in that section, and the choice is John's. *Ruled 2026-10-16 as proposed;
-    moved to a cloud routine in the same slot on John's ruling of 2026-10-18, first run
+    alternatives are in that section, and the choice is mine. *Ruled 2026-10-16 as proposed;
+    moved to a cloud routine in the same slot on my ruling of 2026-10-18, first run
     2026-10-19 (see "The schedule").*
 14. **The scheduled run writes no worklog entry.** Moderate confidence; The Upgrade Tree
-    decided the same on 2026-10-16 (the record is the log, and the Monday digest reads it).
+    Decided the same on 2026-10-16 (the record is the log, and the Monday digest reads it).
     Alternative: one `progress` entry per run in the AGI Zeitgeist project. Cheap, but
     fifty-two near-identical entries a year would bury the real ones.
-15. **A first audit after four readings**, John reading every scanner item to date. High
+15. **A first audit after four readings**, me reading every scanner item to date. High
     confidence; both siblings' first audits changed their procedures.
 16. **The scheduler commits on `main` and pushes, with a fallback branch.** High confidence;
     the deploy workflow runs the validator before building, so a bad row cannot reach the
-    site, and the siblings do the same. Alternative: a pull request per reading. Costs John a
+    site, and the siblings do the same. Alternative: a pull request per reading. Costs me a
     merge a week for rows the validator has already checked.
 
 ## Deferred, and why
@@ -438,12 +438,12 @@ ruled yet unless the line says so.
 
 ## Rulings on flagged items
 
-Each reading's flagged items are John's to rule on. The rulings are recorded here, dated, so a
+Each reading's flagged items are mine to rule on. The rulings are recorded here, dated, so a
 later reading can tell a settled question from an open one and does not flag it again.
 
-**2026-10-17, on the first reading (2026-10-16), John ruling on the agent's recommendations:**
+**2026-10-17, on the first reading (2026-10-16), my ruling on the agent's recommendations:**
 
-- *METR's time-horizon series has stopped updating (leg A anchor).* Ruled 2026-10-17 after John
+- *METR's time-horizon series has stopped updating (leg A anchor).* Ruled 2026-10-17 after I
   asked what METR is: ask METR whether a successor suite is planned, and record the question as
   an open amendment (A24) so the page says the gauge is running out. The switch itself waits on
   the answer and is a later amendment. The leg A item adds "Time Horizon 2.0" to its searches.
@@ -467,7 +467,7 @@ later reading can tell a settled question from an open one and does not flag it 
 Two of these set precedent for later readings: a corporate pledge is not an open letter of the
 record's kind, and an annual industry survey is not a report of the record's kind.
 
-**2026-10-19, on the first cloud reading (2026-10-19), John ruling on the audit's
+**2026-10-19, on the first cloud reading (2026-10-19), my ruling on the audit's
 recommendations ("For the Zeitgeist audit, agreed on all"):**
 
 - *Anthropic's "more than 80% of the code we merge was authored by Claude" (May 2026).*
