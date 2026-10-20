@@ -1,0 +1,21 @@
+[claim]
+id = "2025-11-25-sutskever-human-like-learner-5-to-20-years"
+speaker_id = "sutskever"
+when = "2025-11-25"
+when_note = "The episode page is dated 2025-11-25 (post date 2025-11-25 17:04 UTC); the recording date is not stated."
+occasion = "Dwarkesh Podcast interview with Dwarkesh Patel"
+source_kind = "transcript"
+source_url = "https://www.dwarkesh.com/p/ilya-sutskever-2"
+source_locator = "printed transcript, 01:22:14 to 01:22:29"
+checked_how = "Read the host's printed transcript on the page on 2026-10-19 (curl)."
+quote = "I think like 5 to 20."
+statement_id = "sutskever-2025-04"
+prediction = "Asked for his forecast for 'this system you're describing, which can learn as well as a human and subsequently, as a result, become superhuman', he answers 5 to 20 years (2030 to 2045)."
+kind = "timing"
+bar = "A named comparison, so a plain reading: an AI system shown, by its maker or an outside body, to learn new skills and jobs from as little experience as a person needs (generalising as well as people do), and as a result to become better than people at the work it learns."
+due = 2045
+due_early = 2030
+due_basis = "A range: '5 to 20' years from 2025-11-25 is 2030 at the earlier end and 2045 at the later end. The later end is taken as the rule says, and the earlier end recorded."
+status = "not_yet_due"
+search_ids = ["sutskever-claims-001", "sutskever-claims-004"]
+notes = "Said as chief executive of Safe Superintelligence (from 2025-07-03). The question is the host's; he answers 'I think like 5 to 20' and confirms 'Mhm' when the host says '5 to 20 years?'. The comparison 'learn as well as a human' is his own theme in the interview (models 'generalize dramatically worse than people'), so it gives a plain-reading bar under the ruling that a named comparison keeps a bar. The seed list of 2026-10-17 had this as not yet due with due 2045; unchanged, with due_early added."

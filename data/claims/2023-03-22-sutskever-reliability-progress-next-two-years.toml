@@ -1,0 +1,20 @@
+[claim]
+id = "2023-03-22-sutskever-reliability-progress-next-two-years"
+speaker_id = "sutskever"
+when = "2023-03-22"
+when_note = "NVIDIA's pre-event release scheduled the fireside chat for 2023-03-22 at GTC, aired then and on demand afterwards."
+occasion = "Fireside chat with Jensen Huang at NVIDIA GTC 2023, 'AI Today and Vision of the Future'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=I6qQinoY9WM"
+source_locator = "0:46:30 to 0:48:25 into the video"
+checked_how = "Read YouTube's automatic English captions on 2026-10-19 of a full third-party re-upload of the session (NVIDIA's own channel carries only a 66-second excerpt); no punctuation; the quote is a verbatim run of those caption words. The recording was not checked against NVIDIA's on-demand copy."
+quote = "so I think we'll see a lot of that in the next two years"
+prediction = "Asked about the next year or two, he expects progress centred on reliability: models that can be trusted, that ask for clarification or say when they do not know, that recognise every important point in a document, and that follow their operator's intent; 'we'll see a lot of that in the next two years'."
+kind = "capability"
+bar = "None an outsider could apply: 'a lot of' progress on reliability names no measure or level to reach."
+due = 2025
+due_basis = "'in the next two years' from 2023-03-22 runs to 2025-03-22; judged at the end of 2025."
+status = "unfalsifiable"
+verdict_why = "The words promise 'a lot of' improvement, a direction with no size: any measured gain, or none, could be argued either way. Decided at entry under the bar rule."
+search_ids = ["sutskever-claims-009", "sutskever-claims-014"]
+notes = "Said as OpenAI's co-founder and chief scientist. He prefaces it: 'predictions are hard ... it's a little difficult to say things which are too specific'."

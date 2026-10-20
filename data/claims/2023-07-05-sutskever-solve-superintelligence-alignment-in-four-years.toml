@@ -1,0 +1,22 @@
+[claim]
+id = "2023-07-05-sutskever-solve-superintelligence-alignment-in-four-years"
+speaker_id = "sutskever"
+when = "2023-07-05"
+when_note = "The post is dated 'July 5, 2023' under its title."
+occasion = "OpenAI blog post 'Introducing Superalignment', written by Jan Leike and Ilya Sutskever for OpenAI"
+source_kind = "own_words"
+source_url = "https://web.archive.org/web/2023/https://openai.com/blog/introducing-superalignment"
+source_locator = "section 'The new team', second paragraph (also the post's opening: 'To solve this problem within four years'), and the footnote on 'this problem'"
+checked_how = "The live page (https://openai.com/index/introducing-superalignment/) returned a bot check to curl; read the Internet Archive copy captured 2023-12-31 on 2026-10-19, and saw the date, the two named authors, the sentence and the footnotes."
+quote = "Our goal is to solve the core technical challenges of superintelligence alignment in four years."
+prediction = "OpenAI's stated goal, through a new Superalignment team co-led by Sutskever and Leike: within four years, to solve the core technical problems of making AI systems much smarter than humans follow human intent. The post adds that it is 'an incredibly ambitious goal and we're not guaranteed to succeed'."
+kind = "capability"
+bar = "The post's own test, in its footnote: solving the problem 'includes providing evidence and arguments that convince the machine learning and safety community that it has been solved'. A hit needs, by 2027-07-05, a published solution to the core technical problems of aligning much-smarter-than-human AI that the machine-learning and AI-safety research community broadly accepts as such."
+due = 2027
+due_date = 2027-07-05
+due_basis = "'in four years' from 2023-07-05 runs to 2027-07-05."
+is_goal = true
+status = "not_yet_due"
+search_ids = ["sutskever-claims-001", "sutskever-claims-002"]
+notes = "Said as OpenAI's co-founder and chief scientist (December 2015 to May 2024), the company's named chief scientist speaking for it in a company post. Co-written with Jan Leike for OpenAI. Both co-leads left OpenAI in May 2024 and the team was reported disbanded then; that is not a retraction by Sutskever (no words of his withdrawing the goal were found), so under the rule the claim keeps its date and gets its verdict on 2027-07-05. Also in the post, left out under the lead's ruling of 2026-10-19 on spending: 'We are dedicating 20% of the compute we've secured to date over the next four years' to the problem."
+verify = "The team's disbanding in May 2024 is from the seed list's news link (Popular Science) and general reporting; not opened in this work."
