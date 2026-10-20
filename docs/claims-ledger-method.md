@@ -107,6 +107,13 @@ Every timing claim carries, entered by hand, and so does any capability claim th
   next year", said in 2026, leaves 2028 open; "not within five years" of April 2026 leaves 2031).
   `due` stays the year the claim is judged.
 
+A restatement that says the same length of time again from a later day ("within five years", then
+"in five years time" three months on) carries `same_span = true` with its `restates`; when the
+figures ask whether a leader's dates moved, such a pair counts as held, since crossing into the
+next calendar year is not a move. For a forecast that something will not happen, the later end
+of a range is the stricter test, and the ledger takes it ("2 or 3 years is false" is judged at the
+end of the third year; flagged for John).
+
 A range counts by its nearer end wherever the figures compare years (the "now" figure's title, the
 home-page sentence, and whether a leader's dates moved nearer or later); a "by" year counts as
 named. "Several years" is undated, as "a few years" is, so "several years if not a decade" is a

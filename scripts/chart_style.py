@@ -191,5 +191,11 @@ def moved(claims=None, since=2023):
         named = [(d, nearest(cs)) for d, cs in sorted(days.items()) if nearest(cs) is not None]
         if len(named) >= 2:
             first, last = named[0][1], named[-1][1]
-            out[sp] = dict(first=first, last=last, way="nearer" if last <= first - 1 else "later" if last >= first + 1 else "held")
+            way = "nearer" if last <= first - 1 else "later" if last >= first + 1 else "held"
+            # The same length of time said again from a later day ("within five years", fourteen weeks on) can cross
+            # into the next year without the person moving: a restatement marked same_span counts as held.
+            first_ids = {c["id"] for c in days[named[0][0]]}
+            if any(c.get("same_span") and c.get("restates") in first_ids for c in days[named[-1][0]]):
+                way = "held"
+            out[sp] = dict(first=first, last=last, way=way)
     return out

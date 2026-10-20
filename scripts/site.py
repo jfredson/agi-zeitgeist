@@ -1159,8 +1159,9 @@ def claims_page(sc, claims, built, commit):
     nums = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
     silent_line = (f"{nums.get(len(silent), len(silent))} of them, {', '.join(silent[:-1]) + ' and ' + silent[-1] if len(silent) > 1 else silent[0]}, "
                    f"{'has' if len(silent) == 1 else 'have'} never put a date on it. ") if silent else ""
-    band_line = (f"Under them, in green, are the academics and long-time thinkers on the panel who have never worked at a company that builds frontier AI, "
-                 f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
+    band_line = (f"Under them, in green, are the academics and long-time thinkers on the panel "
+                 + ("who have never worked at a company that builds frontier AI, " if cs.ACADEMICS_STRICT else "not tagged as builders, ")
+                 + f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
                  + "; ".join(f"{esc(p['name'])} {p['year']}" for p in band["people"])
                  + f". Their middle year is {band['middle']:.0f}. ") if band else ""
     body = f"""<section class="section prose">
@@ -1376,11 +1377,13 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     # The same reading as the frontier-voices chart's title (charts.frontier_reading), so the two agree.
     from charts import frontier_reading
     fr = frontier_reading()
+    ab = cs.academics_band()
     if fr["enough"] and fr["builders_now"] and fr["others_now"]:
         b, o, t = fr["builders_now"], fr["others_now"], fr["others_then"]
         frontier_line = (f"the people building these systems have named about the same year all along, about {b:.0f}, and the people studying them have come down to meet it."
                          if abs(o - b) <= 3 else
-                         f"the people building these systems have named about {b:.0f} all along, and the people studying them have come down from {'2100 or later' if t and t >= 2100 else f'about {t:.0f}'} in their earliest guesses to about {o:.0f} in their guesses since 2023, most of the way but not all.")
+                         f"the people building these systems have named about {b:.0f} all along, and the people studying them have come down from {'2100 or later' if t and t >= 2100 else f'about {t:.0f}'} in their earliest guesses to about {o:.0f} across all their guesses since 2023, most of the way but not all."
+                         + (f" (Counted once each, at their latest guess{', and leaving out the two who worked at OpenAI' if cs.ACADEMICS_STRICT else ''}, the academics' middle year is {ab['middle']:.0f}, the figure the claims page uses.)" if ab and round(ab["middle"]) != round(o) else ""))
     else:
         frontier_line = "too few dated guesses on one side yet to compare the people building these systems with the people studying them."
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}

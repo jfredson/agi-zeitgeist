@@ -132,7 +132,7 @@ CLAIM_FIELDS = {
     "is_goal": bool, "has_probability": bool, "restates": str, "repeated_on": "dates",
     "status": str, "verdict_on": "date", "verdict_why": str, "verdict_source": str,
     "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
-    "arrives": str, "arrives_term": str, "form": str, "not_before_year": int,
+    "arrives": str, "arrives_term": str, "form": str, "not_before_year": int, "same_span": bool,
 }
 CLAIM_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url",
                   "source_locator", "checked_how", "prediction", "kind", "bar", "due",
@@ -749,6 +749,8 @@ def check_claims(tables, speakers):
                 if isinstance(q, str) and normalise(q.replace("...", "")).split(" ... ")[0] not in normalise(row["quote"]) \
                         and "differs from the statement" not in (c.get("notes") or ""):
                     errors.append(f"{f}: the quote is not inside statement {sid}'s quote, and notes do not say why the span differs")
+        if c.get("same_span") and not c.get("restates"):
+            errors.append(f"{f}: same_span marks a restatement with the same length of time, so it needs restates (A31)")
         arrives, form = c.get("arrives"), c.get("form")
         # A timing claim always says what arrives; a capability claim says so when it forecasts AGI or beyond.
         if c.get("kind") == "timing" or (c.get("kind") == "capability" and arrives is not None):
