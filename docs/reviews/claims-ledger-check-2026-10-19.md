@@ -1,20 +1,287 @@
 # Independent check of the widened claims ledger (pull request 23), 2026-10-19
 
-**Verdict: do not merge yet.** The rules, the code and the ledger-only list are sound. The
-claim files are not ready. In a random sample of 40 new files, 12 fail; of the 45 claims marked
-"came true", about ten verdicts are in doubt, one of them among the thirty already live. The
-fixes are named below. Most come from a handful of reading rules that the files apply in
-different ways, so the right repair is to settle those readings, re-pass every file against
-them, and check a fresh sample, not only to patch the files named here.
+**Final verdict (second pass, commit `cf8fec5`): merge after the named fixes below.**
 
-Checked by a session that did not build the work, on the pull request's branch
-(`claude/epic-haibt-dc6bf6`, last commit `2b66e6a`, the merge of main). Nothing was merged,
-pushed to that branch or published. The per-claim notes behind every line below are in
-[`claims-ledger-check-2026-10-19-per-claim.md`](claims-ledger-check-2026-10-19-per-claim.md),
-beside this file.
+- **The first pass failed the claim files and is kept below as found.** In it, 12 of 40 sampled
+  files failed and about ten "came true" verdicts were in doubt.
+- **What changed since.** John ruled the open readings, and the builder passed every file again.
+- **The re-pass worked.**
+  - In a fresh random sample, 3 of 40 files fail (first pass: 12 of 40).
+  - Of the 35 claims now marked "came true", 2 fail.
+  - Of the 33 first-pass failures, 27 are fixed, 4 were taken out properly, and 2 still need
+    work.
+  - The rules, the code, the search log, the ledger-only list and the page all pass.
+- **What is left is specific:**
+  - two verdicts that are wrong by their own tests;
+  - a handful of tests that drift from the speaker's words, which must be fixed before
+    publishing, because a test cannot change afterwards;
+  - one quote whose speaker is uncertain;
+  - one missed claim;
+  - and Kai-Fu Lee's files, which were new this round and fail at 8 of 33.
+- **None needs another full re-pass.** The managing session can merge once the "must fix" list
+  in section A is done, without a third check, if the builder's commit for it is read by the
+  managing session.
 
-Kai-Fu Lee's claims, which John added on 2026-10-19 after this check began, are covered in
-the section on him at the end, once the builder's commits reached the branch.
+Checked by a session that did not build the work. Nothing was merged, pushed to the pull
+request's branch or published. The per-claim notes for both passes are beside this file:
+[`claims-ledger-check-2026-10-19-per-claim.md`](claims-ledger-check-2026-10-19-per-claim.md)
+for the first pass and
+[`claims-ledger-check-2026-10-19-per-claim-second.md`](claims-ledger-check-2026-10-19-per-claim-second.md)
+for the second.
+
+# Second pass (commit `cf8fec5`)
+
+The branch was read at `cf8fec5`: 325 claims by 15 people, 109 due, 35 came true, 56 did not.
+
+## What was checked: 138 files, plus the 4 taken out
+
+- **The 33 files that failed the first pass.** 29 still exist and were read again; for the 4
+  taken out, the search-log row that records each was found, and each says "taken out before
+  merging" with its reason.
+- **Every claim marked "came true": 35.**
+- **Every forecast that something will not happen: 20.** These are scored under John's
+  second reading, and the bare "human level" in them falls under his fourth.
+- **All 33 of Kai-Fu Lee's files.**
+- **A fresh random sample of 40 new files.** It was drawn with Python's
+  `random.seed(2026101902)` from the 172 new files in none of the groups above and not read in
+  the first pass.
+
+The groups overlap, so 138 files were read at their sources.
+
+| group | files | pass | fail | could not verify |
+|---|---|---|---|---|
+| first-pass failures, still present | 29 | 27 | 2 | 0 |
+| first-pass failures, taken out | 4 | 4 (removal logged) | 0 | 0 |
+| "came true" | 35 | 33 | 2 | 0 |
+| forecasts that something will not happen | 20 | 16 | 4 | 0 |
+| Kai-Fu Lee | 33 | 24 | 8 | 1 |
+| fresh random sample | 40 | 37 | 3 | 0 |
+| **all files read** (overlaps counted once) | **138** | **121** | **16** | **1** |
+
+One count is my own call, not the helper's. The helper marked Suleyman's 2025
+self-improvement experiment a pass with a flag. I count it as a failure, because its verdict
+contradicts its own test (item A2).
+
+## A. Must fix before merging
+
+**Verdicts that are wrong by their own tests or records (change a count):**
+
+1. `2025-04-24-pichai-waymo-atlanta-later-this-summer` (the builder's own call f). It is
+   entered as a separate record, a hit, for narrowing Atlanta to "later this summer". But on the
+   same earnings call Pichai also says "first paid rides in Atlanta, via Uber, later this year"
+   (official transcript, page 19). So the date was not clearly narrowed, and one Atlanta launch
+   now scores two hits. Take it out as borderline, and add 2025-04-24 as a repeat date on the
+   February Austin-and-Atlanta record. **Pichai: 10 came true becomes 9.**
+2. `2024-10-suleyman-teams-experiment-with-self-improvement-in-2025` (the builder's call d).
+   - It is scored "did not come true" because the Darwin Gödel Machine paper mentions "human
+     oversight".
+   - But the file's own test reads his words "doesn't have a human directly overseeing it" as
+     no person approving each change. Its own reason grants that the paper meets that; the
+     paper's safety line is about oversight of the whole experiment.
+   - By its test it came true on 2025-05-29, and the test cannot be changed now. **Suleyman: 3
+     came true becomes 4, and 6 did not becomes 5.**
+   - Then check `2024-04-suleyman-self-improving-ai-five-to-ten-years` ("not before 2029") does
+     not later read the same paper the other way.
+3. `2024-05-14-hassabis-astra-capabilities-gemini-app-later-this-year`. It is scored "did not
+   come true", but its test asks for the capabilities "available to the public in a Google
+   product such as the Gemini app". From 2024-12-11 Google AI Studio's "Stream Realtime" let
+   anyone talk to Gemini over a live camera or shared screen. That rests on outside coverage and
+   Google's developer forum; Google's own Gemini 2.0 post confirms the live video interface
+   underneath it. Rescore it as came true, or put the "is a developer tool a Google product"
+   question to John. Either way, the reason must deal with it.
+4. `2011-01-hassabis-transfer-learning-concepts-five-years`. It is marked "cannot be tested",
+   but the same 2011 talk defines conceptual knowledge (22:32) and transfer learning (35:10). By
+   the rule that the speaker's own definition in the same source is the test, write the test
+   from them and score it (due 2016).
+5. `2024-amodei-new-model-most-intelligent-by-airing`. The re-pass made it "did not", saying the
+   lead "rests only on Anthropic's word". That is wrong, and so was my first pass, which cited
+   only the Chatbot Arena leaderboard (second place). An outside benchmark of the same week,
+   LiveBench (arXiv 2406.19314, version 1, 2024-06-27), put Claude 3.5 Sonnet first overall.
+   The outside record is split. Rewrite the reason to name both, log the LiveBench search, and
+   put the status to John. "Did not" is defensible under "leads on the main published
+   comparisons", but it should be his call with both facts in front of him.
+
+**Tests that do not hold the speaker's words** (a test is fixed at entry, so these cannot wait):
+
+6. `2026-01-lecun-smarter-than-humans-not-within-two-years`: the test adds "at thinking work
+   across the board" to his "smarter than humans". The same addition was taken out of his London
+   file in the re-pass, so the two now disagree.
+7. `2025-07-30-amodei-same-cost-much-more-capable-two-years`: the test asks only for "scoring
+   clearly higher on public tests". He said "much more capable of doing work much more
+   autonomously much more broadly".
+8. `2024-10-kaifulee-agi-better-at-almost-everything-five-to-ten-years`: the test narrows his
+   "almost everything we do" to "thinking work". Its timestamp also stops about 20 seconds
+   before the quote.
+9. `2024-10-kaifulee-robot-cannot-clean-a-room-within-three-years`. The test changes his words
+   twice:
+   - it widens "this robot" (the home humanoid robots from Tesla and Figure the host had just
+     named) to any household robot;
+   - it raises "cannot even begin to do" to full cleaning across homes.
+
+   As written, Physical Intelligence's π0.5 robot, shown on 2025-04-22 cleaning in homes it had
+   never seen, may already defeat it. Write the test in his words.
+10. `2025-10-30-kaifulee-company-run-by-ai-agents-five-to-ten-years`: "we won't get there for
+    another perhaps 5 or 10 years" is the shape of John's second reading (his own example is "it
+    will take at least a decade"). Score it as a forecast that something will not happen, as
+    Lee's GPT-5 file does with the same construction.
+
+**Kai-Fu Lee: a speaker, a missing claim, and the record:**
+
+11. `2026-09-23-kaifulee-embodied-agi-five-to-ten-more-years`: could not be verified. In the
+    Endgame podcast's captions a speaker-change mark falls at the start of this line (1:40:51),
+    so it may be the host, Gita Wirjawan, speaking. Listen to 1:40:48 to 1:41:05. If it is the
+    host, take the file out and correct its search-log row (Lee's sixth claims search,
+    `kaifulee-claims-006`). If it cannot be settled, take it out as borderline.
+12. **A missing claim.** In the dialogue of 2026-02-04 (the Fudan University repost, Lee's 60th
+    claims search, `kaifulee-claims-060`), section 04, Lee says that within two to three years
+    an AI will appear that does 90% of human tasks better than 90% of people, and that this
+    will certainly happen.
+    - It is dated, about AI, and testable by his own comparison.
+    - It is the middle step between his October 2025 "about five years" and September 2026
+      "maybe two years", and neither the ledger nor the search log has it.
+    - Enter it (due 2029, early end 2028, restating the 2025-10-02 claim), and point the
+      September 2026 file's `restates` at it.
+    - Log two lines of the same dialogue as left out: the conditional "if ... we can multiply
+      the value humans create a hundredfold within five years", and the undated peak of AI
+      hardware.
+13. `2024-11-10-kaifulee-gpt5-not-within-six-months` and
+    `2024-11-10-kaifulee-consumer-ai-apps-explode-first-half-2025`: a printed Chinese text of the
+    full conversation exists. Recode China AI links it, and Tencent Tech's WeChat account posted
+    it on 2024-11-05. So these are not coverage only, and the words were said by 2024-11-05, not
+    on 2024-11-10 (the podcast page). The file names cannot change and the validator ties `when`
+    to them. So say it in `when_note` and the source fields, and upgrade the source kind to the
+    printed interview. The GPT-5 verdict stands.
+14. `2024-11-26-kaifulee-ai-apps-proliferate-within-two-years` and
+    `2024-11-26-kaifulee-flood-of-ai-apps-in-2025`. The notes say the WIRED column is signed as
+    01.AI's chief executive. Its byline calls him chief executive of Sinovation Ventures, and it
+    never names 01.AI. He held the 01.AI role that day, so the claims still count; correct the
+    stated fact.
+15. `2024-03-kaifulee-hallucination-solved-in-eighteen-months`. The verdict stands, but its
+    reason misreports Vectara's table: it says frontier models make things up 3 to 6.5% of the
+    time, but those figures are small models. The frontier models run about 6.5 to 14%. Correct
+    the figures, and prefer OpenAI's post of 2025-09-05 ("Hallucinations remain a fundamental
+    challenge"), which is dated before the due date.
+16. `2024-02-20-suleyman-hallucinations-largely-eliminated-next-year`. The verdict stands (the
+    European Broadcasting Union study), but the reason gives the GPT-5 system card's error rate
+    as "11.6% to 22%" and leaves out its 4.8% for gpt-5-thinking, the figure most favourable to
+    him. State the full range and why the miss still stands.
+
+**Fixes that change no verdict but were asked for and not fully made:**
+
+17. **The Grok 2 and Microsoft 365 Copilot dates.**
+    - Musk's Grok 2 post (`2024-07-01-musk-grok-2-in-august`) was made on 2024-06-30 in his own
+      time.
+    - Nadella's shareholder letter (`2023-10-nadella-m365-copilot-generally-available-this-year`)
+      is signed 2023-10-16.
+    - Both files explain this in `when_note`, but `when` cannot change while the validator ties
+      it to the file name and the method forbids renaming.
+    - Accept the notes for now; whether the validator should allow it is a question for John.
+
+## B. The search log, the page and the counts
+
+- **The search log.**
+  - Every search id named by every claim exists, with no duplicates and none borrowed from
+    another speaker.
+  - Kai-Fu Lee has 77 new rows.
+  - No row says "withdrawn" any more.
+  - The four files taken out after the first pass are each logged with their reason.
+  - **One wording fault (not blocking).** In 22 rows a new reason is appended after an old
+    label, "under the strict reading of the admission rule's second condition (the managing
+    session's ruling: only claims about AI):". The reason after it is right: undated, "as little
+    as", a hypothetical, or a borrowed span. But the label in front of it is wrong.
+  - The rows include Amodei's 14th, 17th, 28th and 49th claims searches, and several of
+    Suleyman's and Zuckerberg's. Drop the label where the reason is not a business forecast.
+- **The ledger-only list still does not leak.**
+  - The home page says "the 37 people on the expert panel".
+  - The experts' dates come from 27 experts.
+  - The frontier-voices chart reads no row by Zuckerberg, Pichai or Nadella.
+  - `data/statements.csv` is unchanged by the pull request.
+  - Kai-Fu Lee is on the panel already (tier core), so his statements belonging there is
+    right.
+- **The page.**
+  - The summary reads "325 dated predictions by 15 people. 109 are due ...: 35 came true, 56 did
+    not and 18 cannot be tested".
+  - The counts table's "cannot be tested" column now gives the due ones in brackets, so every
+    row adds up (Altman: due 6 = 2 + 1 + 3).
+  - The coined label "ledger-only list" is gone from the page.
+  - At 375 pixels wide nothing scrolls the page sideways. At 1,280 the table still scrolls
+    inside itself, as before.
+- **The checks.** `validate.py` passes (325 claims, 4,906 search-log rows), and so do
+  `check_news.py` (3 posts) and `test_check_news.py` (8 tests).
+- **The method and amendment A30** now carry, with the date and John's words:
+  - the four readings;
+  - the managing session's rulings;
+  - the rule that a test uses the speaker's words;
+  - the change to when a claim is due, as A30 item 8, with the first thirty's 17 due;
+  - Musk's Tesla years;
+  - Kai-Fu Lee.
+
+  The stale Kurzweil line is gone.
+- **Every first-pass item in "Wrong words, dates or records" is fixed** except item 17 above.
+  That includes Pichai's YouTube-chapters quote, now in his words.
+
+## C. The news post
+
+The live post still says "twenty are due" in its summary, its `after:` line and its table,
+with Altman at 9. After the merge the page will say 17 for the first thirty, and 6 for Altman.
+Amendment A30 item 8 records why.
+
+Main's correction already moved "five came true" to four, and the page agrees: Altman 2, Musk
+2. The dated note the managing session adds at the merge must also give 17 due and say that
+the counting of "due" changed. Otherwise the post's table disagrees with the page it links to.
+
+The home-page sentence ("325 predictions ... 109 are now due, and 35 came true") will move with
+items A1 to A5, and only from the merged files.
+
+## D. The builder's seven calls, which John has not ruled
+
+| call | reasonable reading meanwhile? | note |
+|---|---|---|
+| a. "the next few months", "the coming months" undated | Yes: it follows the reason behind John's "a few years". | It took out a Zuckerberg claim that had come true (multimodal Llama "over the next few months"), and "a few months" plainly ends within about a year. Put it to John soon; it is flagged in the method. |
+| b. "early" in a month means by the 10th | Yes. | It decides Hassabis's Gemini 2.5 Flash ("early June", generally available 2025-06-17), which misses under every reading but "the whole month". |
+| c. "It's conceivable that within the next ten years" is a hedge, scored | Yes: "within" sets an upper limit. | |
+| d. Suleyman's 2025 experiment "did not" | **No.** | The verdict contradicts its own test: item A2. |
+| e. Pichai's personalised smart replies "not come" | Yes. | Not re-read at the source in this pass. No record shows them by 2025-09-22, and the later Suggested Replies (2026-01-08) came after the date anyway. |
+| f. Pichai's Atlanta "later this summer" as its own record | **No.** | It double-counts one launch: item A1. |
+| g. Forecasts that AI will displace or change jobs are admitted | Yes. | The method says "displace or change" but not "create"; one Lee file forecasts jobs created. Add the word. |
+
+## E. Open for John after the merge (no change needed first)
+
+1. **Seasons.** "This summer" is taken to end at the September equinox, applied the same way
+   to hits and misses. Two hits rest on it: Pichai's Ask Photos (2024-09-05) and Docs Live
+   (2026-09-03).
+2. **"A few thousand days".** Altman's superintelligence line is still a dated claim (cannot be
+   tested), though it names no length any more than "a few years" does. Under reading 3 it
+   would be an undated statement. No due count changes, and the live post uses it as its
+   example of a claim that cannot be tested.
+3. **Floors.** "At least" floors are taken at the later end in one Suleyman file (no scaling
+   slowdown for "at least two to three years", due 2027) and at the earlier end in another
+   (self-improvement "a good five to 10 years", due 2029). One rule is needed. Forecasts that
+   something will not happen "within N years" are judged at the end of the year, slightly later
+   than the stated date; the tests carry the exact date, so nothing is wrong today.
+4. **Roles.**
+   - LeCun's chair of AMI Labs, a company that has released no model, decides every LeCun
+     claim from 2026.
+   - Legg counts as "Chief AGI Scientist", a co-founder in Google DeepMind's leadership.
+   - Zuckerberg counts from 2013.
+   - Lee: by his own account in February 2026, 01.AI now works only for businesses and leaves
+     large base models to the big firms. His claims since then stay in (the ruling has no end
+     date), but the role notes should say so.
+5. **"PhD level"** is read as an undefined stage, like bare "human level"; it changes no count.
+6. **Restatements and repeats.**
+   - Whether a repeat that adds a definition becomes its own scored record: Legg's 2028
+     cannot be tested in its first source but is defined in 2023 and 2025.
+   - Whether Huang's Jaguar Land Rover and Hyperion 8 misses count the same 2025 event twice.
+7. **The validator and dates**, as in item A17.
+8. **Links inside the claim records' own text**, as for the first thirty.
+
+The other smaller points (caption mishearings, a verdict date set at the due date, a `verify`
+field left on the research-intern file, a podcast's channel name) are in the second-pass
+per-claim notes.
+
+# First pass (commit `2b66e6a`), kept as found
+
+Verdict then: **do not merge yet.** The rules, the code and the ledger-only list were sound; the claim files were not. The rest of this part is as written then, and its "Kai-Fu Lee" placeholder is answered in the second pass.
 
 ## 1. Claims checked against their sources
 
@@ -317,6 +584,4 @@ For the other eight, the question is only whether any must change before the mer
 6. **Write the news post's dated note** from the merged counts: due for the thirty is 17, not
    20, and say so; carry any change to "five came true"; and give the new totals.
 
-## Kai-Fu Lee
-
-*(Written when the builder's commits adding him reach the branch.)*
+*Kai-Fu Lee's claims are checked in the second pass above.*
