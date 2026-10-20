@@ -4,6 +4,30 @@ Date: 2026-09-30
 Supersedes: the method sections of `docs/2026-09-30-kickoff.md`. Reasons for every change are in `docs/amendments.md` under the 2026-09-30 entry.
 Status: frozen for the seed phase. Changes require an amendment entry.
 
+## 0. What the tracker is for
+
+*(Added under amendment A31, decided 2026-10-19.)*
+
+My ruling of 2026-10-19, in his words: "The goal is to make a tracker of the Zeitgeist
+around AGI and the Singularity. We need to track both the traditional academics who have been
+talking about this for decades as well as the new industry leaders who are actually making it
+happen but tend to run way out in front of their skis with their predictions. Both of these are
+valuable for the Zeitgeist though."
+
+So the tracker follows two voices of one zeitgeist, and scores neither:
+
+- **The academics and long-time thinkers:** the members of the frozen expert panel (amendment
+  A18) who don't run AI companies and are not tagged as builders, read through their coded
+  statements (`data/statements.csv`). Two of them, Daniel Kokotajlo and Leopold Aschenbrenner,
+  worked at OpenAI earlier in their careers (my ruling, 2026-10-20).
+- **The industry's leaders:** the fifteen figureheads of the companies building it (amendment
+  A30), read through their dated predictions (`data/claims/`, the claims page). Twelve of them
+  are also on the panel, where the frontier-voices chart draws them apart from the rest.
+
+The site shows what each voice says now, how far apart the two are, and how both have moved.
+Around them sit the surveys of researchers, the polls, the markets and the forums of the streams
+below, and the singularity test, which measures the world rather than what anyone says about it.
+
 ## 1. What the project measures
 
 Four streams of evidence about artificial general intelligence (AGI, meaning AI that can do most intellectual work a person can), 2005 to the present, each with its own unit and its own population, reported separately and compared only with units visible:

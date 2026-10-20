@@ -20,3 +20,7 @@ status = "unfalsifiable"
 verdict_why = "A forecast that a named stage, 'Human-Level AI', will not arrive by a date. Such a forecast is a claim (my reading 2 of 2026-10-19), but the post never says what the stage is or compares it with anything, and under his reading 4 bare 'human level' with no comparison in the same source cannot be tested. Decided at entry."
 search_ids = ["lecun-claims-002", "lecun-claims-026"]
 notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. This line differs from the statement: the row lecun-2024-07 quotes the post only up to 'the distribution has a long tail', and this is the post's last line. Repeated on 2024-11-27 with Nikhil Kamath ('it's not going to happen next year. It's not going to happen in two years'), the same due year. The lead asked whether this is a testable prediction: read as a comparison ('as smart as humans') it would be scored, and on the record as of 2026-10-19 it would be on course to hold, since no maker or outside body has shown such a system; read as he wrote it, a stage he leaves undefined, it is not. The seed list of 2026-10-17 had it as not yet due and 'likely to be a hit'; the 2026-10-19 bar rule moves it. He gave his own definition in other sources (2025-04-09 and 2026-04-01), which are entered separately."
+arrives = "agi"
+arrives_term = "human-level AI"
+form = "not_before"
+not_before_year = 2026

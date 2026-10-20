@@ -706,12 +706,14 @@ def render_news(built, commit):
         records = fm.get("records") or []
         record_line = ""
         if fm.get("kind") != "start-here":
-            parts = [f'<a href="/docs/amendments">amendment {esc(r)}</a>' if re.match(r"^A\d+$", r) else esc(r) for r in records]
+            # Plain names for what each record is (John, 2026-10-20: no bare amendment numbers under a post); the links stay.
+            parts = [f'<a href="/docs/amendments">{esc((RECORD_NAMES.get(r, "why this changed")[:1].upper() + RECORD_NAMES.get(r, "why this changed")[1:]) if i == 0 else RECORD_NAMES.get(r, "why this changed"))}</a>' if re.match(r"^A\d+$", r)
+                     else f'<a href="/#singularity">{"Part" if i == 0 else "part"} {esc(r)} of the singularity test</a>' if r in "ABCD" else esc(r) for i, r in enumerate(records)]
             srcs = fm.get("sources") or []
             srcs = fm.get("sources") or []
             src_html = " · ".join('<a href="%s" rel="noopener">%s</a>' % (esc(x.get("url", "")), esc(x.get("label", ""))) for x in srcs)
             record_line = ('<section class="post-record">' +
-                           ('<p class="rec">The record: %s · <a href="/docs/amendments">the changelog</a>.</p>' % " · ".join(parts) if parts else "") +
+                           ('<p class="rec">%s · <a href="/docs/amendments">every change, with its reason</a>.</p>' % " · ".join(parts) if parts else "") +
                            ('<p class="sources">Sources: %s.</p>' % src_html if srcs else "") +
                            "</section>")
         card = f"/news/{p['slug']}-card.png" if (out_root / f"{p['slug']}-card.png").exists() else None
@@ -858,7 +860,7 @@ DOC_PURPOSE = {
     "codebook": "The rules for sorting each statement by what it says, with examples.",
     "README": "An overview of the project and of every file in it, written for people working on it.",
     "2026-09-30-kickoff": "The plan the project started from.",
-    "claims-ledger-method": "The rules of the claims ledger: which of a person's predictions get in, the five status words, what counts as a hit, how the due year is set, and how the record is kept honest.",
+    "claims-ledger-method": "The rules for the record of what the industry's leaders predict: who is on it, which predictions get in, how each is dated, what it says arrives, their undated words, and the small note once a date has passed.",
     "claims-ledger-proposal-2026-10-17": "The proposal the claims ledger was adopted from, with the decisions behind it and the rulings made on it.",
     "claims-ledger-seed-2026-10-17": "The list of 79 dated claims found for the proposal, each with its source and a proposed verdict; a working list, not the record.",
 }
@@ -1010,14 +1012,13 @@ def copy_data():
 CLAIM_FIELDS = ["id", "speaker_id", "when", "when_note", "occasion", "source_kind", "source_url", "source_locator",
                 "checked_how", "quote", "reported_as", "statement_id", "prediction", "kind", "bar", "due", "due_early",
                 "due_date", "due_basis", "is_goal", "has_probability", "restates", "repeated_on", "status", "verdict_on",
-                "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify"]
+                "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify", "arrives", "arrives_term", "form"]
 # The order John ruled: Altman and Musk (2026-10-17), then the thirteen he added on 2026-10-19 (A30),
 # Kai-Fu Lee last.
 LEDGER_ORDER = ["altman", "musk", "amodei", "huang", "hassabis", "suleyman", "sutskever", "legg", "lecun",
                 "liangwenfeng", "mensch", "zuckerberg", "pichai", "nadella", "kaifulee"]
 STATUS_WORDS = {"not_yet_due": "not yet due", "hit": "came true", "missed": "did not", "withdrawn": "took it back",
                 "unfalsifiable": "cannot be tested"}
-STATUS_CHIP = {"hit": "chip ok", "missed": "chip no", "withdrawn": "chip no", "not_yet_due": "chip", "unfalsifiable": "chip"}
 DIRECTION_WORDS = {"later": "came later than said", "not_come": "has not come", "sooner": "came sooner than said", "on_time": "came on time"}
 # One plain line on who each person is, for the page, as written HTML with the companies linked at their
 # first mention (the link-what-you-name rule); anyone not named here gets the first clause of their speaker row.
@@ -1066,145 +1067,157 @@ def claims_csv(claims):
             w.writerow(["; ".join(str(x) for x in c[k]) if isinstance(c.get(k), list) else ("" if k not in c else str(c[k]).lower() if isinstance(c[k], bool) else str(c[k])) for k in CLAIM_FIELDS])
 
 
-def claims_counts(claims, search_ids, statements):
-    """Per person: the counts the method asks for, the rate only where its guards allow, and the
-    direction of the misses. Withdrawn counts as missed everywhere; a numeric chance is kept out
-    of the plain count; no percentage before a trace or under five due claims."""
-    people = {}
-    for c in claims:
-        p = people.setdefault(c["speaker_id"], dict(hit=0, missed=0, not_yet_due=0, unfalsifiable=0, withdrawn=0,
-                                                   plain_hit=0, plain_missed=0, later=0, not_come=0, sooner=0, chance=0, goal=0, coverage=0, n=0, unf_due=0))
-        p["n"] += 1
-        p[c["status"]] += 1
-        # A claim is due once its date has passed (31 December of the due year, or due_date); every settled
-        # claim has, and a "cannot be tested" claim counts as due only from its own date, not from entry.
-        end = c["due_date"] if isinstance(c.get("due_date"), date) else date(c["due"], 12, 31)
-        p["unf_due"] += c["status"] == "unfalsifiable" and end < pacific_today()
-        if c.get("has_probability"):
-            p["chance"] += 1
-        elif c["status"] == "hit":
-            p["plain_hit"] += 1
-        elif c["status"] in ("missed", "withdrawn"):
-            p["plain_missed"] += 1
-        if c["status"] in ("missed", "withdrawn") and c.get("direction") in ("later", "not_come"):
-            p[c["direction"]] += 1
-        if c["status"] == "hit" and c.get("direction") == "sooner":
-            p["sooner"] += 1
-        p["goal"] += bool(c.get("is_goal"))
-        p["coverage"] += c["source_kind"] == "coverage_only"
-    for sp, p in people.items():
-        p["due"] = p["hit"] + p["missed"] + p["withdrawn"] + p["unf_due"]
-        p["plain_due"] = p["plain_hit"] + p["plain_missed"]
-        p["traced"] = f"{sp}-claims-traced" in search_ids
-        p["rate"] = None
-        if p["traced"] and p["plain_due"] >= 5:
-            p["rate"] = p["plain_hit"] / p["plain_due"]
-        p["rate_label"] = (f"{round(p['rate'] * 100)}% ({p['plain_hit']} of {p['plain_due']} due)" if p["rate"] is not None
-                           else "too few to rate" if p["traced"] else "seed only: not a rate")
-        # The coded statements that look ahead, and how many carry a year (the undated-claim rule).
-        ahead = [r for r in statements if r["speaker_id"] == sp and ({"timeline", "possibility"} & set(x.strip() for x in r["frames_present"].split(";")))]
-        p["statements_ahead"] = len(ahead)
-        p["statements_dated"] = sum(1 for r in ahead if r["timeline_year"])
-    return people
+def forecast_years(c):
+    """A drawn forecast's date in words: about a year, a range, by a year, or not before a year."""
+    return {"year": f"about {c['due']}", "range": f"{c.get('due_early')} to {c['due']}", "by": f"by {c['due']}",
+            "not_before": f"not before {c.get('not_before_year')}", "chance_tail": f"{c['due']}"}[c["form"]]
+
+
+def verdict_note(c):
+    """The small note on a claim (amendment A31; John, 2026-10-19: verdicts are "not the point of the
+    tracker"): whether its date has passed, and what happened. Never totalled anywhere."""
+    end = c["due_date"] if isinstance(c.get("due_date"), date) else date(c["due"], 12, 31)
+    passed = end < pacific_today()
+    when = f'Its date passed on {end.strftime("%-d %B %Y")}' if passed else "Its date has not come"
+    src = f' (<a href="{esc(c["verdict_source"])}">where this is shown</a>)' if c.get("verdict_source") else ""
+    if c["status"] == "hit":
+        return f"{when}; it came true. {esc(c['verdict_why'])}{src}"
+    if c["status"] == "missed":
+        way = f" ({esc(DIRECTION_WORDS[c['direction']])})" if c.get("direction") else ""
+        return f"{when}; it did not come true as said{way}. {esc(c['verdict_why'])}{src}"
+    if c["status"] == "withdrawn":
+        return f"Taken back. {esc(c['verdict_why'])}{src}"
+    if c["status"] == "unfalsifiable":
+        return f"{when}. It names nothing an outsider could check: {esc(c['verdict_why'])}"
+    return f"{when}."
 
 
 def claims_page(sc, claims, built, commit):
     speakers = {r["speaker_id"]: r for r in read("speakers.csv")}
-    statements = read("statements.csv")
-    search_ids = {r["search_id"] for r in read("search_log.csv")}
-    people = claims_counts(claims, search_ids, statements)
-    order = [sp for sp in LEDGER_ORDER if sp in people] + sorted((sp for sp in people if sp not in LEDGER_ORDER),
-                                                                  key=lambda sp: (not speakers[sp]["frontier_lab"], speakers[sp]["name"]))
-    # The four gauges' shares, drawn from the same figures as the home page: display only, linked to no claim (rule 6.4).
-    share_names = {"A": "Pace", "B": "Forecasts", "C": "AI doing the research", "D": "Economy"}
-    strip = "".join(f'<span class="chip">{esc(share_names[k])} {f"{round(sc[k]['gauge'] * 100)}% of the way" if sc[k].get("measurable") else "unmeasured"}</span>' for k in "ABCD")
+    words = cs.load_words()
+    now = cs.leaders_now(claims, words)
+    band = cs.academics_band()
+    people = {c["speaker_id"] for c in claims}
+    order = [sp for sp in LEDGER_ORDER if sp in people]
+    name = lambda sp: esc(speakers[sp]["name"])
 
-    rows = []
-    for sp in order:
-        p = people[sp]
-        misses = []
-        if p["later"]:
-            misses.append(f"{p['later']} came later than said")
-        if p["not_come"]:
-            misses.append(f"{p['not_come']} {'has' if p['not_come'] == 1 else 'have'} not come")
-        name = esc(speakers[sp]["name"])
-        rows.append([f'<a href="{WHO_LINK[sp]}">{name}</a>' if sp in WHO_LINK else name, p["n"], p["due"], p["hit"], p["missed"] + p["withdrawn"], p["not_yet_due"], f'{p["unfalsifiable"]} ({p["unf_due"]} due)' if p["unfalsifiable"] else 0,
-                     esc(p["rate_label"]), esc("; ".join(misses) or ""),
-                     "none recorded: not on the list of experts" if speakers[sp]["tier"] == "claims_only"
-                     else f'{p["statements_ahead"]} ({p["statements_dated"]} with a year)'])
-    counts_table = table(["who", "claims", "due", "came true", "did not", "not yet due", "cannot be tested", "rate", "which way the misses went", "coded statements that look ahead"], rows)
+    def said(x):
+        return esc(str(x["when"]))
 
-    n_all = len(claims)
-    n_due = sum(p["due"] for p in people.values())
-    n_hit = sum(p["hit"] for p in people.values())
-    n_missed = sum(p["missed"] + p["withdrawn"] for p in people.values())
-    n_unf = sum(p["unfalsifiable"] for p in people.values())
-    n_unf_due = sum(p["unf_due"] for p in people.values())
+    def words_line(w):
+        tr = f' ({esc(w["translation"])})' if w.get("translation") else ""
+        return (f'Latest words with no date ({said(w)}): &ldquo;{esc(w["quote"])}&rdquo;{tr} '
+                f'(<a href="{esc(w["source_url"])}">the source</a>; {esc(w["occasion"])})')
+
+    # What they say now: the chart's rows in its order, then those with no dated forecast of this kind.
+    rows = sorted((sp for sp in cs.LEADERS if now[sp]["latest"]), key=lambda sp: (now[sp]["nearest"] is None, now[sp]["nearest"] or 0, sp))
+    rows += [sp for sp in cs.LEADERS if not now[sp]["latest"]]
+    now_items = []
+    for sp in rows:
+        n = now[sp]
+        parts = []
+        if n["latest"]:
+            fs = "; ".join(f'<a href="#{esc(c["id"])}">{esc(c["arrives_term"])}, {esc(forecast_years(c))}</a>'
+                           + (f" (first said {esc(str(c['when']))}, repeated that day)" if str(c["when"]) != n["day"] else "")
+                           + (" (reported, not their own words)" if c["source_kind"] == "coverage_only" else "") for c in n["latest"])
+            parts.append(f"Latest dated forecast ({esc(n['day'])}): {fs}.")
+        else:
+            parts.append("No dated forecast of AGI, superintelligence or AI better than people at most things.")
+        w = n["words"]
+        if w and (not n["day"] or str(w["when"]) > n["day"]):
+            parts.append(words_line(w) + ".")
+        a = n["any"]
+        if a and a not in n["latest"] and (not n["day"] or str(a["when"]) >= n["day"]):  # only when it is not older
+            parts.append(f'Latest dated prediction of any kind ({said(a)}): <a href="#{esc(a["id"])}">{esc(a["prediction"])}</a>')
+        now_items.append(f'<li><b><a href="{WHO_LINK[sp]}">{name(sp)}</a></b><br>{"<br>".join(parts)}</li>')
 
     sections = []
     for sp in order:
-        p = people[sp]
         items = []
         for c in [c for c in claims if c["speaker_id"] == sp]:
-            when = str(c["when"])
-            chip = f'<span class="{STATUS_CHIP[c["status"]]}">{esc(STATUS_WORDS[c["status"]])}</span>'
             marks = []
             if c.get("is_goal"):
                 marks.append('<span class="chip">a stated goal</span>')
             if c.get("has_probability"):
-                marks.append('<span class="chip">a stated chance, not counted</span>')
+                marks.append('<span class="chip">a stated chance</span>')
             if c["source_kind"] == "coverage_only":
                 marks.append('<span class="chip">reported, not their own words</span>')
-            if c.get("evidence_by") == "maker":
-                marks.append('<span class="chip accent">on the company\'s own word</span>')
             if c.get("restates"):
                 marks.append(f'<a class="chip" href="#{esc(c["restates"])}">restates an earlier claim</a>')
-            words = (f'&ldquo;{esc(c["quote"])}&rdquo;' if c.get("quote") else f'<span class="dim">{esc(c["reported_as"])}</span>')
-            due = f'due {c["due"]}' + (f' (by {c["due_date"].strftime("%-d %B %Y")})' if c.get("due_date") else "") + (f', or {c["due_early"]} at the early end' if c.get("due_early") else "")
-            verdict = ""
-            if c["status"] in ("hit", "missed", "withdrawn"):
-                verdict = (f'<br><span class="dim"><b>{esc(STATUS_WORDS[c["status"]].capitalize())}</b> ({c["verdict_on"].strftime("%-d %B %Y")}'
-                           f'{", " + esc(DIRECTION_WORDS[c["direction"]]) if c.get("direction") else ""}): {esc(c["verdict_why"])} '
-                           f'(<a href="{esc(c["verdict_source"])}">where this is shown</a>)</span>')
-            elif c["status"] == "unfalsifiable":
-                verdict = f'<br><span class="dim"><b>Cannot be tested:</b> {esc(c["verdict_why"])}</span>'
-            items.append(f'<li id="{esc(c["id"])}"><span class="mono">{esc(when)}</span> {chip} {" ".join(marks)}<br>'
-                         f'{words} (<a href="{esc(c["source_url"])}">the source</a>; {esc(c["occasion"])}) &middot; {esc(due)}<br>'
-                         f'<span class="dim"><b>What it commits to:</b> {esc(c["prediction"])} <b>The test:</b> {esc(c["bar"])}</span>{verdict}</li>')
+            quote = (f'&ldquo;{esc(c["quote"])}&rdquo;' if c.get("quote") else f'<span class="dim">{esc(c["reported_as"])}</span>')
+            due = f'for {c["due"]}' + (f' (by {c["due_date"].strftime("%-d %B %Y")})' if c.get("due_date") else "") + (f', or as early as {c["due_early"]}' if c.get("due_early") else "")
+            items.append(f'<li id="{esc(c["id"])}"><span class="mono">{said(c)}</span> {" ".join(marks)}<br>'
+                         f'{quote} (<a href="{esc(c["source_url"])}">the source</a>; {esc(c["occasion"])}) &middot; {esc(due)}<br>'
+                         f'<span class="dim"><b>What it says:</b> {esc(c["prediction"])} <b>What would show it:</b> {esc(c["bar"])}</span><br>'
+                         f'<small class="dim">{verdict_note(c)}</small></li>')
+        mine = [w for w in words if w["speaker_id"] == sp]
+        wl = f'<p class="dim">{words_line(mine[-1])}.</p>' if mine else ""
         who = speakers[sp]
-        sections.append(f'<h2 id="{esc(sp)}">{esc(who["name"])}</h2>'
-                        f'<p class="dim">{WHO.get(sp) or esc(who["role_summary"].split(";")[0] + ".")} {p["n"]} dated claims: {p["hit"]} came true, {p["missed"] + p["withdrawn"]} did not'
-                        f'{f" (of which {p['withdrawn']} taken back)" if p["withdrawn"] else ""}, {p["not_yet_due"]} not yet due, {p["unfalsifiable"]} cannot be tested. {esc(p["rate_label"].capitalize())}.</p>'
+        sections.append(f'<h3 id="{esc(sp)}">{esc(who["name"])}</h3>'
+                        f'<p class="dim">{WHO.get(sp) or esc(who["role_summary"].split(";")[0] + ".")}</p>{wl}'
                         f'<ul>{"".join(items)}</ul>')
 
+    silent = [speakers[sp]["name"] for sp in cs.LEADERS if not now[sp]["latest"]]
+    nums = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
+    silent_line = (f"{nums.get(len(silent), len(silent))} of them, {', '.join(silent[:-1]) + ' and ' + silent[-1] if len(silent) > 1 else silent[0]}, "
+                   f"{'has' if len(silent) == 1 else 'have'} never put a date on it. ") if silent else ""
+    lab = [p["name"] for p in band["people"] if p["id"] in cs.WORKED_AT_A_LAB] if band else []
+    band_line = (f"Under them, in green, are the {band['n']} long-time thinkers on the panel who don't run AI companies, "
+                 f"each once, at their latest dated guess since 2023, counted the same way as the leaders: "
+                 + "; ".join(f"{esc(p['name'])} {p['year']}" for p in band["people"]) + ". "
+                 + (f"Two of them, {esc(lab[0])} and {esc(lab[1])}, worked at OpenAI earlier in their careers. " if len(lab) == 2 else "")
+                 + f"Their middle year is {band['middle']:.0f}. ") if band else ""
     body = f"""<section class="section prose">
-<p class="kicker">Where the world is, on the same day</p>
-<div class="chips">{strip}</div>
-<p class="dim">The four parts of the singularity test on the <a href="/">home page</a>, each as its share of the way to its line. They are shown here so that what these people said can be read against what has actually happened; nothing on this page changes them.</p>
+<p>I keep this page as one of the tracker's two voices. The home page follows the academics and long-time thinkers who have written about AGI and the singularity for decades; this page follows the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are part of the mood of the time. I record what they say, when they said it and where, so it can be read for what they are predicting now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note says what happened, and that is all.</p>
 
-<h2>What this page is</h2>
-<p>The people who run the AI companies both sell the story and see further than anyone else. This page keeps a plain account of their predictions: each one that carried a date, in the person's own words, with where it was said, the test it will be judged by, and, once the date has passed, whether it came true. It answers one narrow question, how often each person's dated predictions have come true so far, and which way the misses went. It does not say whether anyone is right about the future, whether they are sincere, or whether the technology is good or bad. A person with a poor record may be right next time; one with a good record may have been lucky.</p>
-<p>The people on this page are the industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Twelve of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
-<p>A prediction gets in only if the person is one of these figureheads at the time, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Whether it came true is never looked at when deciding what gets in. A prediction with no date ("AGI is coming", "we are close") is not scored; the table says how many of each person's recorded statements look ahead and how many of those carry a year, so vagueness stays visible. The full rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
-<p>So far: {n_all} dated predictions by {len(people)} people. {n_due} are due, their dates passed: {n_hit} came true, {n_missed} did not and {n_unf_due} cannot be tested. Of those still ahead, {n_unf - n_unf_due} cannot be tested either, so will never be scored. The people here were traced for their best-known, checkable predictions first, so these counts measure which predictions were easy to find; no one gets a percentage until they have been traced year by year with every search written down, and never from fewer than five due predictions.</p>
-{counts_table}
-<p class="dim">"Did not" includes predictions the person later took back. "Cannot be tested" means the words carry a date but no test anyone outside could run, or the only judge is the speaker; such predictions are shown and counted apart, never scored. A stated chance ("a 50% chance") is kept and marked but left out of the rate.</p>
+<h2 id="now">What they say now</h2>
+<figure class="fig"><a href="/claims-now.png" title="Open the chart full size"><img src="/claims-now.png" alt="Each industry leader's most recent dated forecast of AGI, superintelligence or AI better than people at most things, on one timeline, against a band for the academics' dated guesses since 2023"></a>
+<figcaption>Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms. {band_line}The forecasts are in <a href="/data/claims.csv">a table</a>; the academics' guesses are in <a href="/data/statements.csv">another</a>.</figcaption></figure>
+<p>Each of them uses their own words for what is coming: AGI, superintelligence, "a country of geniuses in a data center", AI better than people at most things. They do not mean the same thing, so the line beside each name gives their term. {silent_line}For anyone who has spoken on when since their last dated forecast, or who has never given one, their latest words with no date are given too, quoted and dated, and never drawn.</p>
+<ul class="claims-now">{"".join(now_items)}</ul>
+
+<h2 id="moved">How their dates have moved</h2>
+<figure class="fig"><a href="/claims-moved.png" title="Open the chart full size"><img src="/claims-moved.png" alt="Each industry leader's dated forecasts since 2023, placed at the day each was said and the year it named"></a>
+<figcaption>Every dated forecast of this kind since 2023, one panel per leader. Earlier ones are in each person's list below. The same view for the panel of experts, academics and builders together, is the <a href="/#belief">frontier-voices chart</a> on the home page.</figcaption></figure>
+
+<h2 id="who">Who is on this page</h2>
+<p>The industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Twelve of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
+<p>A prediction gets in if the person is one of these figureheads at the time, the words look forward, the words carry a date or a length of time, and there is a record of them being said. Their latest words with no date are kept separately, as words only. Every search behind this page is in <a href="/data/search_log.csv">the search log</a>, and the rules are in <a href="/docs/claims-ledger-method">the method</a>.</p>
+
+<h2 id="all">Everything they have predicted with a date</h2>
 {"".join(sections)}
-<h2>How to read a verdict</h2>
-<p>A prediction counts as having come true only if every condition in its test was met by its date, shown by a dated public record: the maker's own release, an official result, a regulator's notice. Where the only evidence is the company's own word, the entry says so. A prediction that was only partly met, or met late, did not come true, and the entry says which part failed and whether the thing came later or has not come. The test is written when the prediction is entered and never changed afterwards. Every search that found a prediction or settled a verdict is in <a href="/data/search_log.csv">the search log</a>, and the whole ledger can be downloaded as <a href="/data/claims.csv">a table</a>. To argue with a verdict, use <a href="/disagree/">the disagree page</a>.</p>
+
+<h2 id="notes">About the notes</h2>
+<p>Each prediction carries the test that would show it, written when it was entered and never changed afterwards, and a small note once its date has passed: whether it came true, shown by a dated public record, or did not, and which way. A prediction whose words name nothing anyone outside could check says so. To argue with a note, use <a href="/disagree/">the disagree page</a>.</p>
 </section>"""
     out = SITE / "claims"
     out.mkdir(exist_ok=True)
-    (out / "index.html").write_text(shell(f"Claims | {SITE_TITLE}", "The dated predictions of the people who run the AI companies, in their own words, scored against what happened.",
+    (out / "index.html").write_text(shell(f"Claims | {SITE_TITLE}", "What the people who run the AI companies say is coming, in their own words, set beside the academics.",
                                           body, built, commit, canonical_path="/claims/", eyebrow="Claims", active="/claims/",
-                                          h1="What the people who run the AI companies predicted, and what happened",
-                                          lede="Every prediction that carried a date, in their own words, with its source and its verdict."), encoding="utf-8")
+                                          h1="What the industry's leaders predict",
+                                          lede="When the people building AI expect it to match or pass us, in their own words and dated, beside the academics who have watched the question for decades."), encoding="utf-8")
     claims_csv(claims)
-    return dict(people={sp: {k: people[sp][k] for k in ("n", "due", "hit", "missed", "withdrawn", "not_yet_due", "unfalsifiable", "later", "not_come", "traced", "rate")} for sp in order},
-                claims=n_all, due=n_due, hit=n_hit, missed=n_missed, unfalsifiable=n_unf, page=f"{SITE_URL}/claims/", table=f"{SITE_URL}/data/claims.csv")
+    named = [sp for sp in cs.LEADERS if now[sp]["nearest"] is not None]
+    drawn_people = [sp for sp in cs.LEADERS if now[sp]["latest"]]
+    return dict(claims=len(claims), people=len(people), page=f"{SITE_URL}/claims/", table=f"{SITE_URL}/data/claims.csv",
+                academics=band,
+                ahead_of_academics=sum(1 for sp in named if band and now[sp]["nearest"] < band["middle"]) if band else None,
+                leaders_with_a_date=len(drawn_people),
+                now={sp: dict(said=now[sp]["day"], nearest=now[sp]["nearest"],
+                              forecasts=[dict(id=c["id"], arrives=c["arrives"], term=c["arrives_term"], form=c["form"],
+                                              early=c.get("due_early"), year=c["due"]) for c in now[sp]["latest"]],
+                              undated_words=(dict(id=now[sp]["words"]["id"], said=str(now[sp]["words"]["when"])) if now[sp]["words"] else None))
+                     for sp in cs.LEADERS})
 
 
 # ----------------------------------------------------------------------------- html
+# The plain name of what each amendment a news post names is about, for the line under the post.
+RECORD_NAMES = {"A24": "what replaces METR's measure", "A25": "how the headline is worked out",
+                "A26": "why statements about today's systems are always kept",
+                "A27": "how the ledger works", "A28": "how the panel's statements are sorted",
+                "A29": "how tips are taken in", "A30": "who the ledger covers", "A31": "what the ledger is for"}
+
+
 def esc(s):
     return html.escape(str(s), quote=True)
 
@@ -1366,35 +1379,51 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     _stmts = [r for r in read("statements.csv") if r["speaker_id"] in _panel]
     n_panel, n_statements = len({r["speaker_id"] for r in _stmts}), len(_stmts)
     cl = _CLAIMS
-    claims_line = (f'Of the {cl["claims"]} predictions with a date recorded so far from {len(cl["people"])} of the people who run the AI companies, {cl["due"]} are now due, and {cl["hit"]} came true. '
-                   f'Each is on <a href="/claims/">the claims page</a> in their own words, with its source and its verdict.') if cl["claims"] else ""
+    # About the present, never a total of verdicts (amendment A31; John, 2026-10-19). The same figures as
+    # the claims page's first chart.
+    claims_line = (f'Of the {cl["leaders_with_a_date"]} industry leaders who have put a date on AGI or something beyond it, {cl["ahead_of_academics"]} now name a year '
+                   f'before the middle year of the latest guesses by the panel\'s long-time thinkers who don\'t run AI companies, {cl["academics"]["middle"]:.0f}, each person counted once. What each of them says now, in their own words, '
+                   f'is on <a href="/claims/">the claims page</a>.') if cl.get("academics") else ""
+    # The same reading as the frontier-voices chart's title (charts.frontier_reading), so the two agree.
+    from charts import frontier_reading
+    fr = frontier_reading()
+    ab = cs.academics_band()
+    if fr["enough"] and fr["builders_now"] and fr["others_now"]:
+        b, o, t = fr["builders_now"], fr["others_now"], fr["others_then"]
+        frontier_line = (f"the people building these systems have named about the same year all along, about {b:.0f}, and the people studying them have come down to meet it."
+                         if abs(o - b) <= 3 else
+                         f"the people building these systems have named about {b:.0f} all along, and the people studying them have come down from {'2100 or later' if t and t >= 2100 else f'about {t:.0f}'} in their earliest guesses to about {o:.0f} across all their guesses since 2023, most of the way but not all."
+                         + (f" (Counted once each, at their latest guess, as the claims page counts them, the people studying it have a middle year of {ab['middle']:.0f}.)" if ab and round(ab["middle"]) != round(o) else ""))
+    else:
+        frontier_line = "too few dated guesses on one side yet to compare the people building these systems with the people studying them."
     body = f"""{landing(sc, b_pts, mani, _AGG, built, commit, ytl)}
 <div class="with-rail"><div>
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
 <p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about AGI. Every quote carries its date and a link to where it was said.</p>
-<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
+<p>It follows two voices. One is the academics and long-time thinkers who have written about AGI and the singularity for decades. The other is the people now running the companies that build it, whose dates have tended to run ahead of everyone else's. Both are part of the mood of the time. The site keeps both, says what each is saying now, how far apart they are and how both have moved, and scores neither. The industry's leaders have <a href="/claims/">a page of their own</a>.</p>
+<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Five things stand out so far.</p>
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
 <figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
-<p>Fifth, and this is a reading of the same rows rather than a new measure: the people building these systems have named about the same year all along, and the people studying them have come down to meet it. The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having worked at a company that builds frontier systems from the rest: the academics, the critics and the philosophers. A builder has a front-row seat and a product to sell; a critic has neither. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+<p>Second, and this is a reading of the same rows rather than a new measure: {frontier_line} The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having led, founded or done senior research at a company that builds frontier systems, and the industry leaders who run one, from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
 
 <figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
-<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it, together with the fifteen industry leaders on <a href="/claims/">the claims page</a>, so that Jensen Huang, who runs Nvidia, is drawn among the builders. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
 
-<p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
+<p>Third, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
 <figure class="fig"><a href="zeitgeist-researchers.png" title="Open the chart full size"><img src="zeitgeist-researchers.png" alt="AI researchers' even-chance year for machines doing every task and every job, in surveys from 2016, 2022 and 2023"></a>
 <figcaption>Two different groups of researchers answered the two questions in each survey. The numbers are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
-<p>Third, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
+<p>Fourth, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
 
 <figure class="fig"><a href="zeitgeist-search.png" title="Open the chart full size"><img src="zeitgeist-search.png" alt="Worldwide Google searches for artificial general intelligence and for the singularity, each year from 2005 to 2026"></a>
 <figcaption>Google reports searches on its own scale rather than as counts. The numbers, and the polls, are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
-<p>Fourth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
+<p>Fifth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
 
 <figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
@@ -1514,7 +1543,7 @@ def main():
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "
           f"(A {sc['A']['gauge']:.2f}, B none, C {sc['C']['gauge']:.2f}, D {sc['D']['gauge']:.2f}); {n_docs} docs rendered, {n_news} news posts, {n_data} data files copied; "
-          f"claims page: {len(claims)} claims by {len(_CLAIMS['people'])} people")
+          f"claims page: {len(claims)} claims by {_CLAIMS['people']} people")
 
 
 if __name__ == "__main__":

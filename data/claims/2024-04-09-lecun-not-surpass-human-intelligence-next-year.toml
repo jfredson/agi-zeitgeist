@@ -22,3 +22,7 @@ verdict_source = "https://www.youtube.com/watch?v=IgifEgm1-e0"
 evidence_by = "outside"
 search_ids = ["lecun-claims-023", "lecun-claims-024", "lecun-claims-061"]
 notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. Coverage only: the report quotes him directly, but the event's own recording was not found. Musk's claim of 2024-04-08 is in this ledger as 2024-04-08-musk-agi-smarter-than-smartest-human. The statement row lecun-2024-04 holds the same reported words. 'Surpass human intelligence' is read as a comparison, as the method reads Musk's 'smarter than the smartest human'. Test changed before merging on 2026-10-19: it read 'smarter than humans at thinking work across the board', now his own words, 'surpass human intelligence'. The verdict is unchanged."
+arrives = "beyond_people"
+arrives_term = "machines that surpass human intelligence"
+form = "not_before"
+not_before_year = 2026

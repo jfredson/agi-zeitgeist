@@ -16,4 +16,12 @@ due = 2034
 due_basis = "'at least a decade' from 2024-03-07 runs to 2034-03-07; by the span rule judged at 2034-12-31."
 status = "not_yet_due"
 search_ids = ["lecun-claims-020", "lecun-claims-064"]
+<<<<<<< HEAD
 notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. The same answer says it is 'not going to be an event' but gradual progress. The coded statement row from this episode (lecun-2024-03) holds a different passage, so no statement is cited. Changed before merging on 2026-10-19: it was marked cannot be tested, because the words only set a floor and because the stage had no test. Under my readings of that day a forecast that something will not happen by a date is a claim (reading 2), and human-level AI with a description or comparison in the same answer is scored (reading 4); this answer describes what he means, ability by ability, against humans and the human brain, so it is scored at its date. Judgement call: a reader who takes the list as too loose to check would mark it cannot be tested."
+=======
+notes = "Role at the time: Meta's Chief AI Scientist (2018 to the end of 2025), the company's named chief scientist speaking for it. The same answer says it is 'not going to be an event' but gradual progress. The coded statement row from this episode (lecun-2024-03) holds a different passage, so no statement is cited. Changed before merging on 2026-10-19: it was marked cannot be tested, because the words only set a floor and because the stage had no test. Under my readings of that day a forecast that something will not happen by a date is a claim (reading 2), and human-level AI with a description or comparison in the same answer is scored (reading 4); this answer describes what he means, ability by ability, against humans and the human brain, so it is scored at its date. Judgement call: a reader who takes the list as too loose to check would mark it cannot be tested."
+arrives = "agi"
+arrives_term = "human-level AI"
+form = "not_before"
+not_before_year = 2034
+>>>>>>> origin/main

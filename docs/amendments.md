@@ -966,3 +966,108 @@ chips (its driving chip was shown on 2019-04-22, and its own training chip, Dojo
 What does not change: the frozen panel's membership (A18), `data/statements.csv`, the scored
 series, the frozen thresholds, the definition, the verdict and the headline (A25), and every
 other rule of the ledger (A27 and my rulings of 2026-10-19 in the method).
+
+## 2026-10-19: two voices of one zeitgeist, and the claims ledger as the industry's voice
+
+### A31. The claims ledger becomes a record of what the industry's leaders predict, beside the academics, not a scorecard
+
+**Decided 2026-10-19 (decided by: me, on the model's recommendation).** The managing session proposed it on three rulings
+I gave that day (quoted below); I then agreed the remaining choices, in his words "Agreed on
+all", to the master session's recommendations, which took the managing session's recommendation
+on what leads the page and its alternative on undated words. The proposal, with its draft
+pictures, is `docs/claims-ledger-reframe-proposal-2026-10-19.md`.
+
+Applies to: `docs/claims-ledger-method.md` (the title; "What this ledger is for"; "The rate, and
+what stops it being gamed"; "Where it shows"); `docs/methodology-v2.md` (a new section 0, what
+the tracker is for); `scripts/site.py` (the claims page, the home page's zeitgeist section,
+its claims sentence and the frontier-voices caption, the `claims_ledger` block of
+`site/status.json`); `scripts/validate.py`
+(three new fields on timing claims, and the undated-words records); `scripts/charts.py` and
+`scripts/chart_style.py` (two new figures and the logic they share with the page); a new folder,
+`data/claims_undated/`.
+
+Was: the ledger existed to score each figurehead's dated predictions once they came due: how
+many came true, how many did not, and which way the misses went. A per-person hit rate was to be
+printed once a person's claims had been searched year by year and five were due (amendment A27).
+The page led with a table of counts per person, and the home page and the status file gave the
+totals. The home page described the panel's builders as having "a product to sell".
+
+My rulings, 2026-10-19, in his words:
+
+- "The goal is not to score people on their success at predicting the future, the goal is to
+  track the zeitgeist of what these people are saying to get a feel for what the vanguard of
+  the industry is predicting at any given time."
+- "The goal is to make a tracker of the Zeitgeist around AGI and the Singularity. We need to
+  track both the traditional academics who have been talking about this for decades as well as
+  the new industry leaders who are actually making it happen but tend to run way out in front of
+  their skis with their predictions. Both of these are valuable for the Zeitgeist though."
+- "Sure, we can keep the verdicts as small notes, but they are not the point of the tracker."
+
+And my "Agreed on all", 2026-10-19, to the remaining choices.
+
+Now:
+
+1. **Two voices of one zeitgeist.** The tracker follows the academics and long-time thinkers
+   (the frozen panel's members who don't run AI companies and are not tagged as builders, read
+   through their coded statements) and the industry's leaders (the claims ledger). The panel's
+   builders are in the coded statements too, and the frontier-voices chart draws the two groups
+   apart. Both
+   are valuable and neither is scored. The site shows what each says now, how far apart they
+   are, and how both have moved. The home page and the method say so.
+2. **The ledger's purpose** is a dated record of what the industry's leaders say the future
+   holds, read for what they predict now and how that has shifted.
+3. **The claims page** leads with each leader's latest dated forecast of AGI, superintelligence
+   or AI better than people at most things, in their own term, set against the academics; with
+   each leader's latest prediction of any kind beside it. The other side is the panel's long-time
+   thinkers who don't run AI companies (not tagged as builders and not among the fifteen),
+   counted as the leaders are: each person once, at their latest dated guess since 2023, by the
+   nearer year it names. The figure draws each of them and their middle year. **Decided by me
+   on 2026-10-20 (decided by: me), "(b)":** Daniel Kokotajlo and Leopold Aschenbrenner, who
+   worked at OpenAI earlier in their careers, stay among them, and the page says so plainly
+   rather than calling the group people who never worked at such a company. The independent
+   check of 2026-10-19 had found that the first build pooled 26 guesses from these seven people,
+   ten of them from those two; counted once each, their middle year is 2030 whether the two are
+   in or out. Then how the leaders' forecasts have moved. Then every
+   claim, by person, in date order.
+4. **Verdicts are small notes.** Each claim keeps its status and evidence. On the page,
+   the status is a small note on the claim saying whether its date has passed and what
+   happened. Verdicts appear in no headline, summary, count, chart title or share post. The
+   status file keeps the number of claims and people and gains a `now` block, with no verdict
+   counts. The downloadable table keeps each claim's status.
+5. **No hit rates,** per person or pooled, and no per-person line of counts. The floor of five due claims and the "seed
+   only: not a rate" label go with them. The year-by-year search and its "claims traced" row
+   stay, as the record that a person's latest forecast is really their latest.
+6. **What arrives, on each timing claim and on each capability claim that forecasts AGI or
+   beyond,** entered by hand and checked by the validator:
+   `arrives` (agi, superintelligence, beyond_people for AI better than people at most or all
+   things, or other), `arrives_term` (the person's own term) and `form` (a year, a range, by a
+   year, not before a year, or the far tail of a stated chance, which is not drawn). Only
+   forecasts of AGI or beyond are drawn. A `not_before` forecast also gives `not_before_year`,
+   the first year its words leave open. A range counts by its nearer end when years are
+   compared.
+7. **Undated words are let in, as words only.** A leader's latest words on when AGI or beyond
+   arrives that carry no year or length of time ("AGI is close") are kept in
+   `data/claims_undated/`, one file each, from a primary source, quoted and dated by when they
+   were said, every search logged. They appear in the "what they say now" section when they are
+   newer than the person's latest dated forecast, or the person has none, so that leaders who
+   never name a year are not shown as silent. They are never drawn on a chart and never scored.
+   A quote runs to 25 words at most; a cut never removes a date; and words that only use another
+   body's name for AI are left out.
+
+8. **The frontier-voices chart's builders** (my ruling, 2026-10-19, "Yes", to the master session's
+   recommendation). The home page's chart draws as builders everyone with the panel's
+   frontier-lab tag and all fifteen industry leaders. It moves Jensen Huang's three dated
+   guesses since 2023 to the builders' side; his tag was left off when the panel was frozen
+   (A18), and under the two-voices framing he is plainly one of the industry's leaders. The
+   frozen tags themselves are not changed. `scripts/charts.py` reads the fifteen from
+   `scripts/chart_style.py`. The academics' band on the claims page leaves the fifteen out
+   either way.
+
+Unchanged: who is in the ledger (A30), the admission rule for dated claims, the five status words and what
+counts as a hit (now used for the notes), the readings I ruled on 2026-10-19, and everything
+A27 and A30 say the ledger must never touch (the frozen panel, the coded statements, the scored
+series, the thresholds, the definition, the verdict and the headline).
+
+Why: my rulings. A scorecard answers whether a person was right, which says little about
+where expectations stand. Read side by side over time, the record of what the academics and the
+industry's leaders say is what the tracker exists to follow.
