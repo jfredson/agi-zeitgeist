@@ -1,0 +1,23 @@
+[claim]
+id = "2026-09-16-lecun-smarter-than-humans-not-next-year"
+speaker_id = "lecun"
+when = "2026-09-16"
+when_note = "The video's description gives the event as Wednesday 16 September 2026; Sciences Po's upload is dated 2026-09-17."
+occasion = "Sciences Po 'Grande Conférence', Paris, a public conversation moderated by Éric Hazan"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Y4s8NadbZfU"
+source_locator = "captions 01:07:53 to 01:08:00"
+checked_how = "Read the upload's French captions on 2026-10-19 (yt-dlp); the quote is a verbatim run of those caption words, with one cut marked."
+quote = "ça va pas arriver l'année prochaine, hein. Mais on aura des machines ... plus intelligents que les humains dans tous les domaines"
+prediction = "Machines more intelligent than humans in nearly every domain will certainly come, but not in 2027 ('it won't happen next year'), not with large language models, and 'it will take time'."
+kind = "timing"
+bar = "His own words in the same passage: machines more intelligent than humans in (nearly) every domain. The claim holds if no AI is shown, by its maker or an outside body, to be more intelligent than humans across nearly every domain before the end of 2027."
+due = 2027
+due_basis = "'l'année prochaine' (next year), said in 2026, is 2027; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["lecun-claims-073", "lecun-words-05"]
+notes = "Role at the time: founder and executive chairman of Advanced Machine Intelligence (AMI Labs), as the video's own description calls him; treated as a qualifying founder-leader or chair role, as for his other 2026 claims. The captions spell AMI Labs 'Mila Labs'. The words around it ('Il y a pas de doute. Ça va arriver.' and 'Mais ça va prendre du temps.') were first entered as undated words with this phrase cut out; the independent check of 2026-10-19 found the cut not honest, so the passage is entered here as a dated claim and the undated record was withdrawn."
+arrives = "beyond_people"
+arrives_term = "machines more intelligent than humans in nearly every domain"
+form = "not_before"
+not_before_year = 2028

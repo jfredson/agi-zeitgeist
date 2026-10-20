@@ -19,3 +19,6 @@ due_basis = "'This president's term' began 2025-01-20 and ends 2029-01-20."
 status = "not_yet_due"
 search_ids = ["altman-claims-007", "altman-claims-024"]
 notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. (Role note added before merging on 2026-10-19.) In the same interview he said he once thought 'we would do it in 2025, but it was a totally random number based off of 10 years from when we started'. Test changed before merging on 2026-10-19: it read \"The interview gives no definition. The plainest reading for the head of OpenAI is his company's published one, quoted by TIME on 2026-08-26 from OpenAI's charter: 'highly autonomous systems that outperform humans at most economically valuable work'; a hit needs a system shown by outside evidence to meet that, not the company's word alone\"; it now uses his own definition, given in the same interview (the answer to 'What's the threshold where you're going to say, OK, we've achieved AGI now?'), because a test must use the speaker's words in the same source and the interview does give one. The earlier test took a definition from a different source and added a condition (outside evidence only) that he did not state."
+arrives = "agi"
+arrives_term = "AGI"
+form = "by"
