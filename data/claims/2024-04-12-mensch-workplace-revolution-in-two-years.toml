@@ -1,0 +1,20 @@
+[claim]
+id = "2024-04-12-mensch-workplace-revolution-in-two-years"
+speaker_id = "mensch"
+when = "2024-04-12"
+when_note = "The New York Times article is dated 2024-04-12; the interview was held earlier at Mistral's offices in Paris, on a day the article does not give."
+occasion = "Interview with Liz Alderman and Adam Satariano of The New York Times, reported in 'Europe's A.I. \"Champion\" Sets Sights on Tech Giants in U.S.'"
+source_kind = "coverage_only"
+source_url = "https://www.nytimes.com/2024/04/12/business/artificial-intelligence-mistral-france-europe.html"
+source_locator = "the paragraph beginning 'A.I.'s biggest risk, Mr. Mensch added'"
+checked_how = "Read in the Internet Archive's copy (snapshot 2024-12-31) on 2026-10-19; nytimes.com itself is paywalled. A reporters' article with quotes, not a printed question-and-answer interview, so entered as coverage."
+reported_as = "The New York Times, 2024-04-12: 'A.I.'s biggest risk, Mr. Mensch added, is that it will spur a workplace revolution, eliminating some jobs while creating new ones that will require retraining. \"It's coming faster than in the previous revolutions,\" he said, \"not in 10 years but more like in two.\"'"
+prediction = "As reported, AI will bring a workplace revolution, eliminating some jobs and creating new ones that need retraining, within about two years of April 2024 rather than ten."
+kind = "deployment"
+bar = "None an outsider could run: no measure of a 'workplace revolution' is given (no number of jobs, sectors or workers)."
+due = 2026
+due_basis = "'more like in two' years from 2024-04-12: April 2026; by the span rule judged at 2026-12-31."
+status = "unfalsifiable"
+verdict_why = "'A workplace revolution' has no threshold an outsider could check, and the span is hedged ('more like in two'). Decided at entry."
+search_ids = ["mensch-claims-009", "mensch-claims-010"]
+notes = "Role at the time: co-founder and chief executive of Mistral AI (founded 2023-04-28). The same article carries his 'So I don't believe in A.G.I.' (statement row mensch-2024-01), which is not dated."
