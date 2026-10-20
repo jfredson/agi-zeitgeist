@@ -1,5 +1,64 @@
 # Independent check of the claims-ledger reframe (pull request 27), 2026-10-19
 
+**Recheck (commit `16fc6fe`): merge after two small wording and counting fixes (A and B
+below). Neither needs another check from this session.** John's pending ruling on Kokotajlo and
+Aschenbrenner does not change any published number. With them in or out, the academics' middle
+year is 2030 and the headline is "7 of 12".
+
+## Recheck at commit `16fc6fe`
+
+The build, `validate.py` (328 claims, 9 undated passages, 5,007 search-log rows), `check_news.py`
+and its tests pass. The panel is still 37. Each fix was checked against the data, the code and,
+for the new claims, the sources.
+
+| fix | result |
+|---|---|
+| 1. The academics' band | **Done as described.** Each person counted once at their latest dated guess since 2023, by the nearer year. With the two who worked at OpenAI left out, the band is five people (Yudkowsky 2027, Bengio 2030, Cotra 2030, Marcus 2036, Hanson 2094), drawn by name; the middle is 2030. With them in it is seven people, and still 2030 and still 7 of 12, so John's ruling on them moves nothing published. |
+| 2. AGI forecasts filed as capability claims | **Done.** The fields are on Huang (2023-11-29, 2024-03-01) and Suleyman (2025-09-24, 2025-11-14, 2026-02-12), and the figures read them. Huang appears at "by 2029". The 2026-02-12 white-collar claim is filed as AGI on the strength of his run-up in the same answer ("human-level performance on most, if not all, professional tasks"); that is a fair reading. |
+| 3. Suleyman on Decoder | **Confirmed** at the captions (01:09:12 to 01:09:25): "I don't think this is something that is going to knock on the door in the next 5 years", with his definition of the singularity beside it. It is filed as not before 2031. |
+| 4. LeCun, Sciences Po | **Confirmed** at the French captions. The first quote (01:07:51 to 01:07:59) is "ça va pas arriver l'année prochaine, hein. Mais on aura des machines ... plus intelligents que les humains dans tous les domaines", and the cut ("à un certain moment qui seront") is fair. The second quote (01:00:35 to 01:00:41) is "dans 2 ou 3 ans, donnez-nous euh 300 milliards. Mais c'est faux." The undated record is withdrawn and the log says why. |
+| 5. Nadella | **Done.** Withdrawn, and his third undated-words search row (`nadella-words-03`) gives the reason. |
+| 6. LeCun's "non-negligible likelihood" | **Done.** It is now a chance tail. |
+| 7. Ranges by their nearer end | **Done.** The "now" title is "7 of 12 industry leaders now name a year before the academics' middle one, 2030". The "moved" title is **"5 leaders brought their dates nearer, 2 held them, 3 pushed them later"**. That is not the "6 nearer, 2 held, 2 later" given in the managing session's message, but it is what the code computes, and it is right for the code. |
+| 8. Undated quotes | **Done.** All nine are 25 words or fewer; the method and the validator state the limit. |
+| 9 to 17 | **Done.** These cover: Pichai's locator and his 00:45:25 note; Musk's "a later model"; Suleyman's quote from the uploader's track; the own-word rule in the method; a not-before year on every such forecast (Hassabis 2011 is drawn at 2031); LeCun's "several years" as "by 2034"; the figure's note that a date may be when it was published; search-log rows for Amodei's clips, Sutskever's award message and the Yang Lan date; Legg's 13th claims search corrected; and Huang's quote cut to "AGI has arrived. Congratulations @OpenAI team." |
+| Extras | **Done.** The frontier chart's builder definition now matches the tag ("led, founded or done senior research at"). The home page's five points read First to Fifth in order. |
+
+### A. Huang's "pushed later" is a rounding effect
+
+He said "within the next 5 years" on 2023-11-29 and "in 5 years time" on 2024-03-01. The
+same five years, restated fourteen weeks later, lands in the next calendar year (2028, then
+2029). The "moved" figure counts a change of a year or more as a move, so the restatement reads
+as Huang pushing his date later.
+
+Count a forecast restated with the same span as held, or compare the exact end dates (the day
+said plus the span). The title then reads "5 nearer, 3 held, 2 later".
+
+### B. Two numbers for the academics on the home page
+
+- **Fifth point:** "the people studying them have come down ... to about 2033 in their guesses
+  since 2023". This comes from the frontier-voices chart, which pools every guess since 2023
+  and counts Kokotajlo and Aschenbrenner among the people who study it.
+- **Claims sentence:** "the middle year of the academics' latest guesses, 2030, each person
+  counted once".
+- **The problem:** each sentence says how it counts, but a reader meets "about 2033" and "2030"
+  for the same group a few lines apart.
+
+Add half a sentence saying why they differ ("counting every guess since 2023 rather than each
+person's latest"), or give the fifth point the per-person figure too.
+
+### To note for John, no change needed now
+
+- **"Generous" reversed for "will not happen" forecasts.** LeCun's "superintelligence in 2 or 3
+  years is false" takes 2029 as its date and calls the later end "the generous one". For a
+  forecast that something will not happen, the later end is the harder test for the speaker,
+  not the generous one. The method's range rule was written for forecasts that something will
+  happen. It needs a line on which end a "will not happen" range takes.
+- **Still to follow, as agreed:** links inside the leader lines (18) and the figures' size on a
+  phone (19).
+
+# First check (commit `93f1e6d`)
+
 **Verdict: merge after fixes.** Fixes 1 to 8 below come before the merge. Fix 1 needs a ruling
 from John, because it changes the number in the new headline.
 
