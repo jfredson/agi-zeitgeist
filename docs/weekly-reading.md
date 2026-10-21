@@ -179,7 +179,8 @@ On 2026-10-21 I ruled that every tip I send counts at once, and that fairness co
 searching every person on the panel every week (amendment A32). Part 4 is that search. Every
 week, for each of the 37 panel members and the three ledger-only industry leaders: their three
 fixed year searches for the current year (Y1 to Y3), one search for the past week's news, and
-their own outlets, every search logged in `data/search_log.csv` in the same columns a full pass
+their own outlets, plus every search in `data/added_searches.csv` (searches added, automatically
+and for everyone, after the regular searches missed a tip), every search logged in `data/search_log.csv` in the same columns a full pass
 uses. A new statement found this way is taken in by the tip intake steps (`docs/tip-intake.md`),
 but it is not a tip: the rule's own searches found it. A new dated forecast by an industry leader
 is flagged for the claims ledger; the reading never writes a claim file. The full instruction is

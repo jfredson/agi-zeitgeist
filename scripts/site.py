@@ -889,7 +889,24 @@ def added_from_tips():
     for r in rows:
         per[r["speaker_id"]] = per.get(r["speaker_id"], 0) + 1
     spread = "; ".join(f"{esc(names.get(k, k))} {v}" for k, v in sorted(per.items(), key=lambda kv: (-kv[1], kv[0])))
-    return head + f"<ul>{items}</ul><p>Statements from tips, by person: {spread}.</p>"
+    return head + f"<ul>{items}</ul><p>Statements from tips, by person: {spread}.</p>" + searches_added()
+
+
+def searches_added():
+    """The changelog's list of searches added because the searches missed a tip (data/added_searches.csv;
+    amendment A32 item 4, John's ruling of 2026-10-21: "Yes, apply them automatically")."""
+    path = DATA / "added_searches.csv"
+    rows = read("added_searches.csv") if path.exists() else []
+    head = ('<h2 id="searches-added-from-tips">Searches added from tips</h2>'
+            '<p>When the regular searches miss something I sent in, one better search is added, worded for anyone, '
+            'and from the next weekly search it is run for every person on the panel, not only the person in the tip. '
+            'Searches are only ever added, never taken away. Each is in <a href="../data/added_searches.csv">a table</a>, '
+            'and every time it is run is in <a href="../data/search_log.csv">the search log</a>.</p>')
+    if not rows:
+        return head + "<p>None yet.</p>"
+    items = "".join(f'<li>{esc(long_date(r["added_on"]))}: <code>{esc(r["query"])}</code>. {esc(r["what_it_reaches"])} '
+                    f'Prompted by the tip behind {esc(r["prompted_by"].replace(";", ","))}.</li>' for r in rows)
+    return head + f"<ul>{items}</ul>"
 
 
 def render_docs(built, commit):
@@ -1511,7 +1528,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
-<p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, the searches are improved for everyone, not only for that person. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
+<p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, a better search is added automatically and run for everyone from the next week, not only for that person; searches are only ever added, and each one is listed on <a href="/docs/amendments#searches-added-from-tips">the changelog</a> with its date and the tip that prompted it. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
 <p>I wrote the rules for finding and sorting statements, and I decided every rule and every line of the test; Claude, an AI model made by Anthropic, did the searching and sorting by those rules. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
 <p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
