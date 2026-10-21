@@ -144,11 +144,67 @@ Search economy: no fewer than two searches per item that is searched, no more th
 the fetches a candidate row needs. If a search tool fails twice, mark the item `quiet` with
 `found` saying the search was unavailable and move on.
 
+## 3b. Part 4: every person on the panel
+
+Added 2026-10-21 under amendment A32 (my ruling of that day: every tip counts, and every other
+person gets "ample search time" so that what I happen to read does not decide who is heard).
+Every week, every person with tier `core` or `cohort_2020s` in `data/speakers.csv` (37 people),
+and the three industry leaders with tier `claims_only`, is searched for new words. One item per
+person, `part` `"panel"`, `speaker_id` the person.
+
+**The searches, for each person** (the year is the reading's year):
+
+1. Y1 `"<name>" AGI <year>`
+2. Y2 `"<name>" "human-level" intelligence <year>`
+3. Y3 `"<name>" superintelligence OR singularity OR "self-improving" <year>`
+4. One recent-news search: `"<name>" AI` restricted to the past week where the search tool allows
+   it, otherwise with the month and year added.
+5. Their own outlets: the blog, newsletter, site or channel their earlier search-log rows list as
+   "own outlet" (`grep -i "own outlet" data/search_log.csv | grep "^<speaker_id>"`), fetched. A
+   person with none listed gets one search for a personal site or newsletter, and `found` says so.
+
+Up to two more fetches per person to read a candidate. Log every one in step 5 with
+`speaker_id` the person and `year` the reading's year, exactly as a full pass logs them; this is
+what `scripts/panel_status.py` reads to say through what date each person was searched.
+
+**Keep the run within one session.** Hand the people to subagents in batches of about eight, in
+file order, each batch told to run the five searches per person and return, for every search,
+the query, where it ran and a one-line result, plus any candidate: a source (address, date,
+speaker) where the person speaks about AI's possibility, timing, present capability,
+self-improvement or consequences. The subagents do not write files. You log and decide.
+
+**What is new.** A candidate is new if its address is not already in `data/statements.csv`
+(`source_url`) or in the search log, and it is dated inside the window, or after the person's
+latest row and not more than a year old. Anything older is `noted`.
+
+**Verdicts.**
+
+- `quiet`: nothing new.
+- `noted`: something new that is not a statement of the record's kind, or older material.
+- `new-row`: a new statement, taken in by `docs/tip-intake.md` steps 1, 2, 4 and 5 (archive the
+  source with its checksum in `sources/manifest.csv`, check the tier, extract the candidates,
+  code them under the codebook, then have a separate subagent code the same passages blind from
+  the codebook and the source and record any disagreement in the notes, as tip intake does).
+  These rows are found by the rule's own searches, so they are not tips: notes say
+  `found by the weekly reading of YYYY-MM-DD` and the search ids. Append to
+  `data/statements.csv` and run the validator, as in step 4.
+- `flagged`: a new statement you cannot take in as the rules require: the words cannot be got
+  (no transcript, a paywall, a page that refuses), the year is a busy year for the person
+  (methodology section 3) and the sampling is not clear, or two readings are possible. Also every
+  new dated forecast by one of the fifteen industry leaders, `for_john` naming the source, so a
+  session can add it to the claims ledger under `docs/claims-ledger-method.md`. The reading never
+  writes a claim file.
+
+**Then run `python3 scripts/panel_status.py`.** It prints the date through which every panel
+member has been searched, anyone overdue (not searched in the last eight days), and how tips are
+spread across people. Both go in the report (step 9).
+
 ## 4. Append the rows
 
 For every `new-row`, append the row to the end of the file (`data/world_measures.csv`,
-`data/aggregates.csv` or `data/events.csv`), quoting fields with commas as the file does, in
-the form of the existing rows of that series. Say in `notes` that the row was appended by the
+`data/aggregates.csv`, `data/events.csv`, or for part 4 `data/statements.csv`), quoting fields with commas as the file does, in
+the form of the existing rows of that series; part 4's statements go to
+`data/statements.csv` in the form of the person's existing rows. Say in `notes` that the row was appended by the
 weekly reading of YYYY-MM-DD and name the search ids it rests on. Run `python3
 scripts/validate.py` after each file. If it fails on your row, remove the row, mark the item
 `flagged` with the error in `for_john`, and continue. Never edit any existing row. Never touch
@@ -159,7 +215,7 @@ scripts/validate.py` after each file. If it fails on your row, remove the row, m
 
 Append one row per search or fetch to `data/search_log.csv`, in the order run:
 `search_id` = `reading-YYYY-MM-DD-NN` (two-digit counter from 01); `speaker_id` = the speaker
-it was for, `events` for part 3, or `reading` for leg B and leg C's outside measures; `year` =
+it was for (in part 4, the panel member), `events` for part 3, or `reading` for leg B and leg C's outside measures; `year` =
 the year searched for (the reading's year) or blank; `query` = the search as typed, or the
 address fetched with "(fetch)"; `where_searched` = the search engine or the site;
 `what_found` = one line; `date_searched` = the reading's date.
@@ -204,7 +260,10 @@ and deploys the site from the push to `main`; do not deploy by any other road.
 
 Send me one short message, a numbered list and nothing else: each flagged item with its
 `for_john` line, first; then one line per row appended, with its id and what it is; then one
-line with the counts (items read, searches, verdicts); then the push refusal if there was one.
+line with the counts (items read, searches, verdicts); then the two lines from
+`scripts/panel_status.py`: the date through which every panel member was searched, with anyone
+overdue named (a comparison of people is not shared while anyone in it is overdue), and the
+spread of tips across people; then the push refusal if there was one.
 No prose, no summary of quiet items. Do not write a worklog entry.
 
 ## Standing rules

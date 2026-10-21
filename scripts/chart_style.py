@@ -7,6 +7,7 @@ the bottom line names the source. Colour follows the thing (a person, a question
 import csv
 import statistics
 import tomllib
+from datetime import date
 from pathlib import Path
 
 import matplotlib
@@ -32,10 +33,15 @@ def read(name):
         return list(csv.DictReader(f))
 
 
-def tip_only(row):
-    """A statement that came in by tip and that the fixed searches did not find (docs/tip-intake.md).
-    It stays in the record and out of every figure and share (ruled by John 2026-10-18)."""
-    return any(part.strip().split(":")[0].strip() == "tip_only" for part in (row.get("notes") or "").split(";"))
+def note_tags(row):
+    """The leading '; '-separated words of a row's notes, before any free text (codebook section 9)."""
+    return {part.strip().split(":")[0].strip() for part in (row.get("notes") or "").split(";")}
+
+
+def from_tip(row):
+    """A statement that came in by tip (docs/tip-intake.md). Since amendment A32 (John, 2026-10-21) it is an
+    ordinary row in every figure, shown publicly as added from a tip."""
+    return "tip" in note_tags(row)
 
 
 # The frozen panel's two tiers (amendment A18). The opinion record (figures, shares, the panel's counts)
@@ -48,9 +54,30 @@ def panel(speakers):
     return {r["speaker_id"] for r in speakers if r["tier"] in PANEL_TIERS}
 
 
-def measured(rows):
-    """The statements figures and shares are computed from: every row except tip_only rows."""
-    return [r for r in rows if not tip_only(r)]
+def searched_through(speaker_ids, log=None, year=None):
+    """The date through which every one of these people has been searched for this year's words: for each
+    person, the latest date_searched of a search-log row for them and the current year; the earliest of
+    those across the people (amendment A32, item 3). None if anyone has no such row."""
+    year = str(year or date.today().year)
+    latest = {}
+    for r in (log if log is not None else read("search_log.csv")):
+        if r["speaker_id"] in speaker_ids and r["year"] == year and r.get("date_searched"):
+            latest[r["speaker_id"]] = max(latest.get(r["speaker_id"], ""), r["date_searched"])
+    if not speaker_ids or set(speaker_ids) - set(latest):
+        return None
+    return min(latest.values())
+
+
+def long_date(iso):
+    d = date.fromisoformat(iso)
+    return f"{d.day} {d:%B %Y}"
+
+
+def freshness(speaker_ids, log=None):
+    """The sentence every chart or headline that compares people carries (A32, item 3)."""
+    d = searched_through(set(speaker_ids), log)
+    return (f"Every person here searched for new words through {long_date(d)}." if d
+            else "Not every person here has been searched for new words this year.")
 
 
 def figure(w=10, h=6, **kw):
@@ -142,10 +169,10 @@ def academics_band(statements=None, speakers=None, since=2023):
     latest dated guess since `since`, by the nearer year it names. Panel members only, never a builder by the
     frozen tag, never one of the fifteen leaders, and (when ACADEMICS_STRICT) never anyone who worked at a
     frontier AI company in any role. Rows as the frontier-voices chart reads them (accepts, hedges or conditions
-    a year for machines matching people at most thinking work; tip_only rows left out)."""
+    a year for machines matching people at most thinking work; tip rows count like any other, A32)."""
     speakers = {r["speaker_id"]: r for r in (speakers or read("speakers.csv"))}
     latest = {}
-    for r in sorted(measured(statements or read("statements.csv")), key=lambda r: r["date"]):
+    for r in sorted((statements or read("statements.csv")), key=lambda r: r["date"]):
         sp = speakers.get(r["speaker_id"])
         if (r["target_capability"] != "broad_competence" or not r.get("timeline_year")
                 or r["endorsement"] not in ("accepts", "uncertain", "conditional") or int(r["date"][:4]) < since

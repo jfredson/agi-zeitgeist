@@ -5,6 +5,14 @@ Written 2026-10-18. Status: **RULED**. I ruled on 2026-10-18, through the master
 A29 in `docs/amendments.md`, which records the change to the method. The first case run
 under it is Nick Bostrom's interview on The Roman Forum (pull request 18).
 
+**Changed 2026-10-21 by my ruling (amendment A32).** In my words: "I want a rule that includes
+everything I find and gives every other person on the tracker ample search time to find things
+they have said too that I otherwise miss." Every tip now counts at once, in every figure, marked
+"added from a tip"; the `tip_only` exclusion of decision 1 is retired. Fairness comes from the
+other side instead: every person on the panel is searched every week (part 4 of
+`docs/weekly-reading.md`). The step 3 search stays, because it now measures whether the
+searches would have found the tip, and a miss improves the searches for everyone (step 3b).
+
 It answers a question I asked on 2026-10-18, after sending a link to Nick Bostrom's
 interview on The Roman Forum (published 2026-10-16): when a prominent figure is heard
 discussing exactly the questions the tracker asks, what place does that have in the project,
@@ -12,9 +20,12 @@ and how is it handled the same way every time?
 
 ## The idea in one paragraph
 
-A tip is evidence only if the project's own rule would have found it. So a tip never adds a
-statement the fixed queries would miss; it only gets a statement into the record sooner, with
-its source archived and checksummed. Each tip goes through the same steps whoever sends it:
+A tip counts. A statement I send in becomes an ordinary row in every figure, marked "added
+from a tip" wherever it is shown, so a reader can see which rows came in that way and how many
+each person has. What keeps my reading from deciding whose words are on the record is the other
+half of the rule: every person on the panel is searched every week, so their new statements are
+found whether or not I happen to read them; and when a tip shows the searches missed something,
+the searches are improved for everyone. Each tip goes through the same steps whoever sends it:
 archive the primary source, check who is speaking against the frozen panel, run that person's
 logged queries to see whether the rule finds the source, extract the candidate statements,
 and hand them to coding under the codebook like any collected row. Separately, and only as a
@@ -24,12 +35,12 @@ never exists because a note wanted one.
 
 ## One procedure, two triggers
 
-The weekly reading already reserves part 4 for the frozen panel's new statements, deferred
-until full collection lands, with the job to "find and log the statement and leave coding to
-the collection pipeline" (`docs/weekly-reading.md`, "Deferred"). Tip intake is that job with a
-different trigger: I send a link instead of a schedule finding it. When part 4 goes live
-it follows this file for every item it finds, so there is one way in for a panel statement
-found between full passes, not two.
+The weekly reading's part 4 searches every panel member every week (from 2026-10-21,
+`docs/weekly-reading.md`). Tip intake is the same job with a different trigger: I send a link
+instead of a schedule finding it. Part 4 follows steps 1, 2, 4 and 5 of this file for every new
+statement it finds, so there is one way in for a panel statement found between full passes, not
+two. The difference is only in the notes: a row from a tip starts `tip`; a row part 4 found says
+so, because the rule's own searches found it.
 
 Trigger cues for a session: `zeitgeist:` followed by a link, or "log this for the zeitgeist
 tracker", or a link to a panel member speaking about AI's future sent with a request to save it.
@@ -82,13 +93,39 @@ Y2 `"<name>" "human-level" intelligence <year>`, Y3 `"<name>" superintelligence 
 singularity OR "self-improving" <year>`) plus a check of their own outlets, as the collection
 does. Log every search in `data/search_log.csv` with ids continuing the person's series.
 
-- **The rule finds it** (the source, or a report of the same appearance, is in the results):
-  rows are ordinary rows. Notes start with `tip`.
-- **The rule does not find it:** rows go in with the notes tags `tip; tip_only`. They are
-  kept in the record but left out of every figure and every share (decision 1), and the site
-  lists them on its changelog page under "Noted, outside the measured record". At the person's
-  next full pass the same searches are run again and logged, and `tip_only` is lifted if they
-  then find the source (decision 4).
+Either way the rows count in every figure (A32). The search result decides only the notes:
+
+- **The searches find it** (the source, or a report of the same appearance, is in the results):
+  notes start with `tip`.
+- **The searches do not find it:** notes start with `tip; tip_missed`, and step 3b follows.
+  The tag records how far the searches reach; it changes nothing about how the row is counted.
+  (Until 2026-10-21 such rows were tagged `tip_only` and left out of figures; that tag is
+  retired, and the nine Bostrom rows that carried it are now `tip; tip_missed`.)
+
+A claim the tip adds to the claims ledger carries `from_tip = true`, and the claims page marks it
+"added from a tip".
+
+### 3b. When the searches missed it: a better search for everyone
+
+Added 2026-10-21 (A32). A miss is information about the searches, not about the person. When
+step 3 does not find the source:
+
+1. Say why, in the search-log row for the tip source: not indexed yet (a search for the exact
+   title finds nothing either, as with Bostrom's interview two days after it was published), or
+   the searches' words did not match (the person spoke on a podcast whose page never says "AGI",
+   for example).
+2. If the words did not match, propose one search that would have found it and that is worded
+   for any person, not this one: a new year query (a Y4) or a new kind of own outlet to check
+   (the podcasts a person has appeared on, for example). Write it in the reply to me with the tip
+   it came from and what it would have found.
+3. Once I approve it, it is added to the searches for every person on the panel: in part 4 of
+   the weekly reading from the next week, and in the next full pass. It is recorded as a dated
+   amendment, because the searches are part of the method.
+
+The standing rule I proposed on 2026-10-21, for me to accept or not: a proposed search is
+applied to everyone without asking me when it only adds a search (it never removes or narrows
+one), it is worded for any person, and it would have found the tip; I see it in the next weekly
+report. Until I accept that rule, every proposed search waits for my approval.
 
 ### 4. Extract the candidate statements
 
@@ -115,7 +152,7 @@ quote under fifteen words, attributed, with timestamp), how it compares with the
 rows, and a link to the tracker. Rules:
 
 - It cites rows that exist; it never claims more than the rows show.
-- A `tip_only` row can be the subject of a note, labelled as outside the measured record.
+- A note on a row from a tip says it came from a tip.
 - It passes the Voice Calibration Protocol as the final gate, like all public writing.
 - Once the Sentient Horizons Outreach process is ratified (`outreach/` in the
   sentient-horizons repository, proposed 2026-10-17), a note is posted as one of its trials:
@@ -126,7 +163,14 @@ rows, and a link to the tracker. Rules:
 
 One commit (or pull request) per tip: the archived source line in the manifest, the search
 log rows, the statement rows, and the draft note if any. The reply to me is a short list of
-what he needs to rule on or post, and nothing else.
+what I need to rule on or post (including any better search from step 3b), and nothing else.
+
+### Tip spread
+
+`python3 scripts/panel_status.py` prints how many statements and claims came in by tip, per
+person, and what share of each person's statements that is. The weekly reading's report carries
+it, and the site's changelog lists every tip row with a count per person, so anyone can see if
+my reading tilts the record toward the people I follow.
 
 ## Decisions (decided 2026-10-18, all as recommended)
 
@@ -139,6 +183,8 @@ Each decision keeps its alternative and its stated confidence for the record.
    venues are amplifying, which is the bias the vanguard sub-series is kept apart for.
    **Ruled 2026-10-18, by me: as recommended.** `scripts/charts.py` and `scripts/site.py`
    leave the rows out, and the validator rejects `tip_only` without `tip` (A29).
+   **Replaced 2026-10-21 by my ruling (A32):** every tip counts at once, marked "added from a
+   tip", and every panel member is searched weekly. The validator now refuses `tip_only`.
 2. **Archived transcripts in a public repository.** Recommended: keep the files local (add
    `sources/*/` to `.gitignore`) and commit only `sources/manifest.csv`, so a reader can see
    what was archived, when, and its checksum, without the repository republishing a full
@@ -161,4 +207,6 @@ Each decision keeps its alternative and its stated confidence for the record.
    sooner I send a tip, the likelier it is to be left out. Confidence: medium; the
    remaining question is whether "the next full pass" is soon enough, or whether a fixed wait
    (for example 30 days after intake) is better. **Ruled 2026-10-18, by me: as
-   recommended,** at the next full pass.
+   recommended,** at the next full pass. **Moot from 2026-10-21 (A32):** with no `tip_only`
+   tag there is nothing to lift. The re-run survives as the weekly search of every person, and
+   a miss leads to step 3b.

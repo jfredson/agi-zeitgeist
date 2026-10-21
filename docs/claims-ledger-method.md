@@ -82,6 +82,7 @@ Every file holds one `[claim]` table with these fields.
 | `evidence_by` | on `hit`, `missed`, `withdrawn` | `outside` (someone other than the speaker's own company measured it) or `maker` (the only evidence is the speaker's company, or the speaker, saying so). The page marks `maker`. |
 | `direction` | on `missed`; optional on `hit` | Which way it went: `later` (the thing came, after the due date), `not_come` (it has not come as of the verdict), `sooner` (a hit that came well before the date), `on_time`. |
 | `search_ids` | yes | The ids in `data/search_log.csv` of the searches and fetches that found the words and settled the verdict. Every one must exist. |
+| `from_tip` | no | `true` when the claim came in through tip intake (`docs/tip-intake.md`): something I sent in rather than something the searches found. It counts like any other claim, and the claims page marks it "added from a tip" (amendment A32, 2026-10-21). |
 | `notes` | no | Anything else a reader needs: the judgement calls, the words left out, the flags. |
 | `verify` | no | Plain claims in the entry made from memory or a search excerpt and not yet checked at the source. A later session clears each. |
 

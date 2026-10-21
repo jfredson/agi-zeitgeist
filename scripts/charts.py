@@ -16,7 +16,7 @@ from pathlib import Path
 from matplotlib.patches import Rectangle
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from chart_style import GRID, INK, INK_2, PALETTE, PANEL_TIERS, PEOPLE, SURFACE, figure, measured, read, save, titles  # noqa: E402
+from chart_style import GRID, INK, INK_2, PALETTE, PANEL_TIERS, PEOPLE, SURFACE, figure, read, save, titles  # noqa: E402
 import chart_style as cs  # noqa: E402
 
 # Each person's earliest and latest guess at when machines will match people at most thinking work
@@ -36,7 +36,7 @@ CEILINGS = {"altman-2024-02", "lecun-2025-05"}  # "by the end of this decade"; "
 
 
 def chart_experts():
-    by_id = {s["statement_id"]: s for s in measured(read("statements.csv"))}  # tip_only rows never plotted
+    by_id = {s["statement_id"]: s for s in read("statements.csv")}  # tip rows count like any other (A32)
 
     def point(sid):
         s = by_id[sid]
@@ -75,8 +75,8 @@ def chart_experts():
     titles(fig, "Hinton's and Marcus's dates have come closer; Kurzweil's has not moved",
            "Each person's earliest dated guess (open circle, label above) and their latest (filled, label below). "
            "A shaded bar is a range.",
-           "Guesses in the person's own words only; earliest means the earliest collected so far. "
-           "Source: agizeitgeist.com/data")
+           "Guesses in the person's own words only; earliest means the earliest collected so far."
+           + "\n" + cs.freshness({pid for pid, _, _ in EXPERT_POINTS}) + " Source: agizeitgeist.com/data")
     return save(fig, "zeitgeist-experts.png")
 
 
@@ -250,7 +250,7 @@ def frontier_rows(statements=None, speakers=None):
     reading of coded rows (2026-10-17); nothing scored."""
     speakers = {r["speaker_id"]: r for r in (speakers or read("speakers.csv"))}
     out = []
-    for r in measured(statements or read("statements.csv")):  # tip_only rows stay out of every figure (A29)
+    for r in (statements or read("statements.csv")):  # tip rows count like any other (A32)
         if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
             continue
         if r["endorsement"] not in ("accepts", "uncertain", "conditional"):
@@ -341,7 +341,8 @@ def chart_frontier(statements=None, speakers=None):
     titles(fig, title,
            "Each dot is one dated guess by a panel member; the lines join each group's median for the years with two or more guesses.\n"
            "A builder is anyone on the panel who has led, founded or done senior research at a company that builds frontier AI systems, or who runs one now.",
-           "Guesses in the person's own words only, for machines matching people at most thinking work. Source: agizeitgeist.com/data")
+           "Guesses in the person's own words only, for machines matching people at most thinking work."
+           + "\n" + cs.freshness({r["speaker"] for r in rows}) + " Source: agizeitgeist.com/data")
     return save(fig, "zeitgeist-frontier.png")
 
 
@@ -424,7 +425,7 @@ def chart_claims_now(claims=None, words=None, statements=None, speakers=None, ph
            (f"Green: the panel's long-time thinkers who don't run AI companies, each at their latest dated guess since 2023"
             + ("." if cs.ACADEMICS_STRICT else "; two of them, Kokotajlo and Aschenbrenner, worked at OpenAI earlier in their careers.") + "\n"
             + (f"{', '.join(silent)} {'has' if len(silent) == 1 else 'have'} given no dated forecast of this kind. " if silent else "")
-            + "Source: agizeitgeist.com/data"))
+            + cs.freshness(set(cs.LEADERS) | {p_["id"] for p_ in (band["people"] if band else [])}) + " Source: agizeitgeist.com/data"))
     return save(fig, "claims-now.png")
 
 
@@ -479,7 +480,7 @@ def _claims_now_phone(now, band, names, rows):
          + ("." if cs.ACADEMICS_STRICT else "; Kokotajlo and Aschenbrenner worked at OpenAI earlier in their careers.") + " "
          if band else "")
         + (f"{', '.join(silent)} {'has' if len(silent) == 1 else 'have'} given no dated forecast of this kind. " if silent else "")
-        + "Source: agizeitgeist.com/data", 56), fontsize=8.5, color=INK_2, ha="left", va="bottom")
+        + cs.freshness(set(cs.LEADERS) | {p_["id"] for p_ in (band["people"] if band else [])}) + " Source: agizeitgeist.com/data", 56), fontsize=8.5, color=INK_2, ha="left", va="bottom")
     return save(fig, "claims-now-phone.png")
 
 
@@ -544,12 +545,13 @@ def chart_claims_moved(claims=None, phone=False):
             "Orange: not before that year. Grey line: 'this year'.", 50), fontsize=9.5, color=INK_2, ha="left", va="top")
         fig.text(0.05, 0.1 / h, wrap(
             "Nearer, held or later compares the nearest year named (a range by its nearer end) on the first and the latest day, "
-            "a year or more counting as a move. Source: agizeitgeist.com/data", 56), fontsize=8.5, color=INK_2, ha="left", va="bottom")
+            "a year or more counting as a move. " + cs.freshness(people) + " Source: agizeitgeist.com/data", 56), fontsize=8.5, color=INK_2, ha="left", va="bottom")
         return save(fig, "claims-moved-phone.png")
     titles(fig, title,
            "Each mark is one forecast of AGI, superintelligence or AI better than people at most things, in their own terms, at a day it was said (repeats included) and the year it named.\n"
            "Dot: a year (hollow: known only from news reports). Bar: a range. Down-pointing triangle: a year it would come by. Orange: not before that year. Grey line: 'this year'.",
-           "Nearer, held or later compares the nearest year named (a range by its nearer end) on the first and the latest day, a year or more counting as a move; terms can change between days. Source: agizeitgeist.com/data")
+           "Nearer, held or later compares the nearest year named (a range by its nearer end) on the first and the latest day, a year or more counting as a move; terms can change between days."
+           + "\n" + cs.freshness(people) + " Source: agizeitgeist.com/data")
     return save(fig, "claims-moved.png")
 
 
