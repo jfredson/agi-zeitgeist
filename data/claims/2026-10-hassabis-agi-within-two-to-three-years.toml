@@ -1,0 +1,25 @@
+[claim]
+id = "2026-10-hassabis-agi-within-two-to-three-years"
+speaker_id = "hassabis"
+when = "2026-10"
+when_note = "The interview date is not given; the writer says it took place days after an Anthropic researcher put a high probability on human extinction within a decade. Dated to the month of publication (2026-10-21)."
+occasion = "Interview for The Wall Street Journal's WSJ. Magazine (The Innovators issue), profile by Ben Cohen, as reported by the writer"
+source_kind = "coverage_only"
+source_url = "https://www.wsj.com/tech/ai/demis-hassabis-ai-deepmind-google-isomorphic-2b4e3153"
+source_locator = "the paragraph beginning 'These days and nights', just before the quote 'It's soon'"
+checked_how = "Read in full on 2026-10-21 from a PDF of the published page that John supplied (the site refuses automated access), archived with its checksum in sources/manifest.csv. The time span is the writer's paraphrase; his quoted words around it are 'It's soon' and 'I'm updating nearer and nearer'."
+reported_as = "The Wall Street Journal (Ben Cohen, 2026-10-21): 'Earlier this year, he felt AGI was still three to five years away. Now he expects AGI within two to three years.'"
+statement_id = "hassabis-2026-22"
+prediction = "As reported, artificial general intelligence (AGI) within two to three years of October 2026, so by 2028 or 2029."
+kind = "timing"
+bar = "His definition as the same source reports it: 'a system with the full cognitive range of the human brain', all of our capabilities and not just some. The same source gives the test by which he says he will know it is here: a system trained only on human knowledge up to 1901 produces Einstein's work of 1905. A named comparison with the whole range of human thinking; met if such a system is shown, by its maker or an outside body."
+due = 2029
+due_early = 2028
+due_basis = "'within two to three years' from October 2026: 2028 to 2029; the later end is the due year and the earlier is recorded."
+restates = "2026-06-02-hassabis-agi-2030-plus-or-minus-a-year"
+status = "not_yet_due"
+search_ids = ["hassabis-words-06", "hassabis-words-07", "hassabis-words-08", "hassabis-words-09", "hassabis-words-10", "hassabis-words-11"]
+notes = "Role at the time: chief scientist of Alphabet and chair of Google DeepMind, both qualifying roles (A30); the profile says he recently took both on after running Google DeepMind. Coverage only: the span is the writer's paraphrase in his own interview, with no quotation marks, so the record shows no quote (admission rule 4; the same case as LeCun's Agence France-Presse report of 2026-03-10). Restates his earlier dated forecast of about 2030, give or take a year (Stanford, 2026-06-02), with an earlier date. The writer's 'earlier this year ... three to five years' is not entered as its own claim: it is the writer's summary of past statements, and his dated forecasts of 2026 are already in the ledger. The coded statement hassabis-2026-22 holds his own words ('It's soon ... I'm updating nearer and nearer'), entered through tip intake and left out of figures (tip_only) until a later search finds the profile."
+arrives = "agi"
+arrives_term = "AGI, as he defines it"
+form = "range"
