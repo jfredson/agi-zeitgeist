@@ -1071,3 +1071,85 @@ series, the thresholds, the definition, the verdict and the headline).
 Why: my rulings. A scorecard answers whether a person was right, which says little about
 where expectations stand. Read side by side over time, the record of what the academics and the
 industry's leaders say is what the tracker exists to follow.
+
+## 2026-10-21: every tip counts, and every person on the panel is searched every week
+
+Decided by: me. On 2026-10-21 I ruled, in my words: "I want a rule that includes everything I find
+and gives every other person on the tracker ample search time to find things they have said too
+that I otherwise miss." The master session proposed the seven parts below to carry it out, and I
+started the work on them. The details of each part (the tag names, the eight-day line, the cost
+estimate, the standing rule in item 4) were worked out while building and are the model's
+proposals inside my ruling; the standing rule waits on me.
+
+### A32. Every tip counts; the panel is searched weekly
+
+Applies to: A29 (tip intake), `docs/tip-intake.md` decisions 1 and 4, `docs/weekly-reading.md`
+("Deferred: the frozen panel's new statements", decision 1), codebook section 9, and the
+claims ledger's fields (`docs/claims-ledger-method.md`).
+
+Was: a statement I sent in counted in figures only if the tracker's own fixed searches also found
+it. One the searches did not find was tagged `tip_only`, kept in the record, left out of every
+figure and share, and listed on this page under "Noted, outside the measured record", until a
+later full pass found it. The rule kept my own reading from becoming the sample. The panel itself
+was searched only in occasional full passes (2026-09-30, 2026-10-09, 2026-10-17, 2026-10-19), and
+part 4 of the weekly reading, which would search it, was deferred.
+
+Now:
+
+1. **Every tip counts at once.** Rows from a tip are ordinary rows in every figure, in the site's
+   statement count and on the claims page. They are marked "added from a tip": on the claims page
+   beside the claim, and on this page in the list "Added from a tip", which also gives the count
+   per person. The `tip_only` tag is retired and the validator refuses it. The step 3 search
+   still runs and is logged, because it now measures whether the searches would have found the
+   tip: a row whose source they did not find carries `tip; tip_missed`, and is counted like any
+   other. A claim from a tip carries `from_tip = true`.
+2. **The rows that were `tip_only`.** The nine rows from Nick Bostrom's interview on The Roman
+   Forum (`bostrom-2026-02a` to `bostrom-2026-08`, taken in on 2026-10-18) become ordinary tip
+   rows, `tip; tip_missed`, counted from 2026-10-21, each with a note that it was left out from
+   2026-10-18 to 2026-10-21.
+3. **Every person on the panel, every week.** The weekly reading gains part 4: for each of the 37
+   panel members and the three ledger-only industry leaders, the three fixed year searches for
+   the current year, one search for the past week's news, and their own outlets, every search
+   logged in `data/search_log.csv` in the columns a full pass uses. A new statement found is taken
+   in by the tip intake steps but is not a tip; a new dated forecast by an industry leader is
+   flagged for the claims ledger. The second coding that the agreement test needs is done by a
+   separate agent coding the same passages blind, as tip intake does. Full collection landed on
+   2026-10-17, which settles the other reason the panel was deferred.
+4. **A tip the searches missed improves them for everyone.** The intake says why the searches
+   missed it, and if their words did not match, proposes one search worded for any person. Once
+   I approve it, it is added for every person on the panel, by a dated amendment. Proposed, for me
+   to accept or not: a standing rule that such a search is added without asking me when it only
+   adds a search, is worded for any person, and would have found the tip, with the change in the
+   next weekly report.
+5. **Freshness on comparisons.** Every chart or headline that compares people states "every
+   person here searched for new words through" a date: for each person, the latest day a search
+   for the current year's words was logged; the earliest of those across the people compared.
+   It is computed from the search log at each build. The weekly reading names anyone not
+   searched in the last eight days, and a comparison is not shared while anyone in it is overdue.
+6. **Tip spread.** `scripts/panel_status.py` prints, each week, how many statements and claims
+   came in by tip, per person, and what share of each person's statements that is, so I can see
+   whether my reading tilts the record.
+7. **Enforcement.** `scripts/chart_style.py` drops `tip_only()` and `measured()` and gains
+   `from_tip()`, `searched_through()` and `freshness()`; `scripts/charts.py` and
+   `scripts/site.py` count every row and print the freshness line on the four comparing charts
+   and their captions; `scripts/validate.py` knows `tip_missed`, refuses `tip_only`, accepts
+   `from_tip` on a claim, and accepts a reading item of part `panel` whose new rows are
+   statements.
+
+Why: my ruling. The old rule protected the record from my reading by leaving out what I found;
+the new one protects it by making sure everyone else is looked for as often as I might look, and
+by showing which rows came from me. A tip the searches missed is now evidence about the searches,
+and fixing them helps every person on the panel.
+
+Effect on the record: the nine Bostrom rows enter the figures. None of them names a year for
+machines matching people at most thinking work, so no chart's numbers move: the frontier-voices
+reading and the long-time thinkers' middle year (2030) were computed before and after the change
+and are the same. The site's statement count rises by nine. On the first build under this
+amendment, every panel member was searched for 2026 words through 2026-09-30, the date of the
+first full pass, because 23 of the 37 have not been searched since 2026-10-09 or earlier; the
+first weekly part 4, on Monday 2026-10-26, brings that to the week. Nothing scored changes:
+statements never score a gauge.
+
+Cost: the reading runs on my Claude plan as a cloud routine, so part 4 spends no API credits.
+Were it moved to a script on the API, the estimate is about $9 a week, $40 a month
+(`docs/weekly-reading.md`, "Part 4").

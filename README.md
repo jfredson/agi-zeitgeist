@@ -61,7 +61,7 @@ streams.
 | `docs/singularity-entry-thresholds.json` | the frozen values the page scores from; any change is an amendment |
 | `docs/singularity-entry-definition-draft-2026-10-07.md` | the three-leg draft the definition grew from, kept unchanged |
 | `docs/weekly-reading.md` | the weekly reading (2026-10-16): how the four gauges, every institution in the record and the events list are checked against the week's news; it may append rows and flag, never change what is scored |
-| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A29): how a panel statement I come across enters the record; rows the fixed searches did not find carry `tip_only` and stay out of every figure |
+| `docs/tip-intake.md` | tip intake (ruled 2026-10-18, amendment A29): how a panel statement I come across enters the record; since 2026-10-21 (A32) every tip counts at once, marked "added from a tip", and every panel member is searched weekly |
 | `docs/panel-watch/` | draft social notes on panel statements, beside the rows they cite; Claude drafts, I post |
 | `sources/manifest.csv` | archived primary sources (address, dates, checksum); the archived files themselves stay on the maintainer's machine and are not in the repository |
 | `docs/leg-c-second-source-2026-10.md` | reading note (2026-10-17): the ICLR 2026 AI-disclosure audit, read as a candidate outside-the-company measure for leg C; found to be context, not a second source |
@@ -70,6 +70,7 @@ streams.
 | `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
 | `docs/claims-ledger-method.md` | the claims ledger's method (2026-10-17): the record layout, the admission rule, the five status words, what counts as a hit, the due-year rule, restatements, the rate and its guards, and what the ledger never touches |
 | `docs/claims-ledger-proposal-2026-10-17.md` | the proposal the ledger was adopted from (amendment A27), with its decisions and my rulings; the seed list of 79 claims is in `docs/claims-ledger-seed-2026-10-17.md` |
+| `scripts/panel_status.py` | the weekly reading's two checks (A32): the date through which every panel member has been searched, anyone overdue, and how tips are spread across people |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files, every reading record in `data/readings/` and every claim file in `data/claims/` |
 | `scripts/charts.py` | builds the charts from the CSV files |
 | `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |

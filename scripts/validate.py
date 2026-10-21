@@ -102,7 +102,7 @@ PRECISION_PATTERNS = {
     "year": re.compile(r"^\d{4}$"),
 }
 NOTE_TAGS = {"secondhand", "incidental", "sampled", "lower_bound",
-             "tip", "tip_only", "asr_unverified"}  # tip intake (docs/tip-intake.md), ruled by John 2026-10-18
+             "tip", "tip_missed", "asr_unverified"}  # tip intake (docs/tip-intake.md); tip_missed replaced tip_only (A32, John 2026-10-21)
 # Books, papers and recorded talks may carry a full citation instead of a link.
 CITATION_TYPES = {"book", "paper", "talk"}
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
@@ -113,7 +113,7 @@ READING_FIELDS = ["date", "ran_at", "window_start", "window_end", "scope", "comm
                   "by", "items_read", "searches", "new_rows", "flagged"]
 READING_SCOPES = {"weekly", "monthly"}
 READING_BY = {"hand", "scheduled"}
-READING_PARTS = {"gauges", "institutions", "events"}
+READING_PARTS = {"gauges", "institutions", "events", "panel"}  # panel: part 4, the weekly search of every panel member (A32)
 VERDICTS = ["quiet", "noted", "new-row", "flagged"]
 # Searches that belong to no one speaker: "events" for data/events.csv (the existing rule),
 # "reading" for the weekly reading's searches about a leg rather than a speaker.
@@ -133,6 +133,7 @@ CLAIM_FIELDS = {
     "status": str, "verdict_on": "date", "verdict_why": str, "verdict_source": str,
     "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
     "arrives": str, "arrives_term": str, "form": str, "not_before_year": int, "same_span": bool,
+    "from_tip": bool,  # came in by tip intake; shown as "added from a tip" (A32, John 2026-10-21)
 }
 CLAIM_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url",
                   "source_locator", "checked_how", "prediction", "kind", "bar", "due",
@@ -308,8 +309,10 @@ def check_statements(rows, speakers):
         if "secondhand" in note_tags(r["notes"]) and r["coding_confidence"] != "low":
             err(f, i, "secondhand rows must have coding_confidence low")
         tags = note_tags(r["notes"])
-        if "tip_only" in tags and "tip" not in tags:
-            err(f, i, "tip_only is only for rows that came in by tip; the notes must also carry tip")
+        if any(part.strip().split(":")[0].strip() == "tip_only" for part in (r["notes"] or "").split(";")):
+            err(f, i, "tip_only was retired on 2026-10-21 (A32): every tip counts; a tip the searches did not find carries tip; tip_missed")
+        if "tip_missed" in tags and "tip" not in tags:
+            err(f, i, "tip_missed is only for rows that came in by tip; the notes must also carry tip")
         if "asr_unverified" in tags and r["coding_confidence"] == "high":
             err(f, i, "asr_unverified rows must have coding_confidence medium or low")
 
@@ -468,7 +471,8 @@ def check_readings(tables, speakers):
     search_ids = {r["search_id"] for r in tables["search_log.csv"]}
     row_ids = ({r["aggregate_id"] for r in tables["aggregates.csv"]}
                | {r["aggregate_id"] for r in tables["world_measures.csv"]}
-               | {r["event_id"] for r in tables["events.csv"]})
+               | {r["event_id"] for r in tables["events.csv"]}
+               | {r["statement_id"] for r in tables["statements.csv"]})  # part 4 appends statements (A32)
     used_search_ids = set()
     if not READINGS.exists():
         return
@@ -530,7 +534,7 @@ def check_readings(tables, speakers):
                 errors.append(f"{where}: this id is used twice in the same reading")
             seen.add(iid)
             if item.get("part") not in READING_PARTS:
-                errors.append(f"{where}: 'part' must be gauges, institutions or events, not {item.get('part')!r}")
+                errors.append(f"{where}: 'part' must be gauges, institutions, events or panel, not {item.get('part')!r}")
             sp = item.get("speaker_id")
             if sp is not None and sp not in speakers and sp not in SEARCH_SPEAKERS_RESERVED:
                 errors.append(f"{where}: speaker_id {sp!r} is not in speakers.csv (or 'events' or 'reading')")
@@ -571,7 +575,7 @@ def check_readings(tables, speakers):
                 errors.append(f"{where}: a '{verdict}' item appended nothing, so 'new_rows' must be empty")
             for rid in new_rows:
                 if rid not in row_ids:
-                    errors.append(f"{where}: appended row {rid!r} is not in aggregates.csv, world_measures.csv or events.csv")
+                    errors.append(f"{where}: appended row {rid!r} is not in aggregates.csv, world_measures.csv, events.csv or statements.csv")
             all_new_rows += new_rows
             fj = item.get("for_john")
             if verdict == "flagged":
