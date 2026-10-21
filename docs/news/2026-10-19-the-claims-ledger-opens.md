@@ -5,7 +5,7 @@ kind: claim
 summary: The people building AI keep telling us when it will match us, and their dates keep moving. I now keep a dated record of what fifteen of them predict, in their own words, beside the long-time thinkers who have watched the question for decades.
 records: [A27, A30, A31]
 before: "None on record"
-after: "328 predictions from 15 leaders; 7 of 12 now name a year before 2030"
+after: "More than 300 predictions from 15 leaders; 7 of 12 now name a year before 2030"
 sources:
   - label: The claims page
     url: https://agizeitgeist.com/claims/
@@ -27,7 +27,7 @@ I built this tracker to follow the mood of the time around AGI and the singulari
 
 ## What the ledger does
 
-The [claims page](/claims/) is the leaders' voice. It holds 328 dated predictions from fifteen people who run the companies building the most advanced AI or the chips it runs on, each in their own words, dated, and linked to where it was said. I read them for what they predict now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note on it says what happened, and I don't add those notes up ([how the ledger works](/docs/claims-ledger-method)).
+The [claims page](/claims/) is the leaders' voice. It holds more than 300 dated predictions from fifteen people who run the companies building the most advanced AI or the chips it runs on, each in their own words, dated, and linked to where it was said. I read them for what they predict now and how that has shifted. It is not a scorecard. Where a prediction's date has passed, a small note on it says what happened, and I don't add those notes up ([how the ledger works](/docs/claims-ledger-method)).
 
 ## What they say now
 
@@ -48,3 +48,5 @@ New predictions go on the page as the fifteen make them, and the picture of what
 *Widened 2026-10-19:* this post first covered 30 predictions by [Sam Altman](https://en.wikipedia.org/wiki/Sam_Altman) and Musk; I widened it the same day to all fifteen people ([who the ledger covers](/docs/amendments)).
 
 *Rewritten 2026-10-20:* the first version of this post counted how many predictions had come true. I have since decided the ledger records what the leaders predict, not whether they were right, so the counts are gone ([what the ledger is for](/docs/amendments)).
+
+*Updated 2026-10-20:* two more predictions by [Mustafa Suleyman](https://en.wikipedia.org/wiki/Mustafa_Suleyman) went on the page, so this post now says "more than 300" rather than an exact count that changes each time one is added. The exact number is always on [the claims page](/claims/).
