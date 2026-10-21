@@ -331,8 +331,8 @@ Notes start with any of these tags, separated by `; `, then free text:
 | `basis: "<words>"` | the words carrying the endorsement (required unless `unexpressed`) |
 | `not_by: YYYY` | "won't happen by YYYY" (section 5) |
 | `lower_bound` | the timeline year is a minimum (section 5) |
-| `tip` | entered through tip intake (`docs/tip-intake.md`), not found first by a full pass (A29) |
-| `tip_only` | a `tip` row the fixed searches did not find; kept in the record, left out of every figure and share until a later search finds the source (A29). Always with `tip` |
+| `tip` | entered through tip intake (`docs/tip-intake.md`), not found first by a full pass or the weekly reading (A29); counted in every figure and shown as "added from a tip" (A32) |
+| `tip_missed` | a `tip` row whose source the fixed searches did not find when the tip arrived; counted like any other row, and it starts a better search for everyone (A32, which retired `tip_only` on 2026-10-21). Always with `tip` |
 | `asr_unverified` | the quote comes from machine captions and two automatic transcripts did not both carry it; `coding_confidence` no higher than `medium` (A29) |
 
 ## 10. Mapping to Fast and Horvitz 2017

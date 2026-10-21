@@ -768,7 +768,7 @@ def long_date(iso):
 
 def provenance(built, commit):
     """The plain-language provenance clause of the attribution line (design standard, section 8)."""
-    n_statements = len(cs.measured(read("statements.csv")))  # tip_only rows are noted, not counted
+    n_statements = len(read("statements.csv"))  # tip rows count like any other (A32)
     n_world = len(read("world_measures.csv"))
     posts = DATA / "vanguard" / "full-run-posts.csv"
     n_posts = (sum(1 for _ in posts.open(encoding="utf-8")) - 1) if posts.exists() else 0
@@ -866,21 +866,30 @@ DOC_PURPOSE = {
 }
 
 
-def noted_outside_record():
-    """The changelog's list of tip_only statements: in the record, left out of every figure and share
-    (docs/tip-intake.md, open decision 1, ruled by John 2026-10-18). Written from statements.csv at build."""
-    rows = [r for r in read("statements.csv") if cs.tip_only(r)]
+def added_from_tips():
+    """The changelog's list of statements and claims that came in by tip (docs/tip-intake.md). Since amendment
+    A32 (John, 2026-10-21) they count in every figure like any other row; this list is where a reader sees
+    which they are, and how many each person has. Written from the data at each build."""
+    rows = [r for r in read("statements.csv") if cs.from_tip(r)]
+    claims = [c for c in load_claims() if c.get("from_tip")]
     names = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
-    head = ('<h2 id="noted-outside-the-measured-record">Noted, outside the measured record</h2>'
-            '<p>Statements that came in by tip (<a href="tip-intake.html">tip intake</a>) and that the fixed searches '
-            'did not find. They are kept in <a href="../data/statements.csv">the statements table</a> and left out of '
-            'every figure and share until the searches find their source.</p>')
-    if not rows:
+    head = ('<h2 id="added-from-a-tip">Added from a tip</h2>'
+            '<p>Statements I came across and sent in myself, rather than ones the regular searches found '
+            '(<a href="tip-intake.html">tip intake</a>). Since 21 October 2026 they count in every figure like any other '
+            'statement; from 26 October 2026 every person on the panel is searched every week, so that what I happen to read does not '
+            'decide who is heard. The list says which they are, so anyone can check whether my reading tilts the record.</p>')
+    if not rows and not claims:
         return head + "<p>None at present.</p>"
     items = "".join(f'<li><code>{esc(r["statement_id"])}</code>, {esc(names.get(r["speaker_id"], r["speaker_id"]))}, '
                     f'{esc(r["date"])}: {esc(r["claim_summary"])} <a href="{esc(r["source_url"])}">Source</a>.</li>'
                     for r in sorted(rows, key=lambda r: (r["date"], r["statement_id"])))
-    return head + f"<ul>{items}</ul>"
+    items += "".join(f'<li>Prediction <a href="/claims/#{esc(c["id"])}">{esc(c["id"])}</a>, {esc(names.get(c["speaker_id"], c["speaker_id"]))}, '
+                     f'{esc(str(c["when"]))}: {esc(c["prediction"])}</li>' for c in sorted(claims, key=lambda c: str(c["when"])))
+    per = {}
+    for r in rows:
+        per[r["speaker_id"]] = per.get(r["speaker_id"], 0) + 1
+    spread = "; ".join(f"{esc(names.get(k, k))} {v}" for k, v in sorted(per.items(), key=lambda kv: (-kv[1], kv[0])))
+    return head + f"<ul>{items}</ul><p>Statements from tips, by person: {spread}.</p>"
 
 
 def render_docs(built, commit):
@@ -914,7 +923,7 @@ def render_docs(built, commit):
                   "panel-evidence-2026-10": "Panel evidence", "feasibility": "Feasibility check"}.get(rel.parts[0] if depth else "", "Document")
         note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at version {esc(commit)}.</p>'
         if rel.as_posix() == "amendments.md":
-            body += noted_outside_record()
+            body += added_from_tips()
         what = DOC_PURPOSE.get(rel.with_suffix("").as_posix(), "")
         preface = ('<div class="status"><strong>A working document.</strong> ' + (what + ' ' if what else '') +
                    'It is one of the documents the site is built from, published as it is written for anyone checking the work, '
@@ -1103,6 +1112,7 @@ def claims_page(sc, claims, built, commit):
     words = cs.load_words()
     now = cs.leaders_now(claims, words)
     band = cs.academics_band()
+    fresh_claims = esc(cs.freshness(set(cs.LEADERS) | {p["id"] for p in (band["people"] if band else [])}))
     people = {c["speaker_id"] for c in claims}
     order = [sp for sp in LEDGER_ORDER if sp in people]
     name = lambda sp: esc(speakers[sp]["name"])
@@ -1125,7 +1135,8 @@ def claims_page(sc, claims, built, commit):
         if n["latest"]:
             fs = "; ".join(f'<a href="#{esc(c["id"])}">{esc(c["arrives_term"])}, {esc(forecast_years(c))}</a>'
                            + (f" (first said {esc(str(c['when']))}, repeated that day)" if str(c["when"]) != n["day"] else "")
-                           + (" (reported, not their own words)" if c["source_kind"] == "coverage_only" else "") for c in n["latest"])
+                           + (" (reported, not their own words)" if c["source_kind"] == "coverage_only" else "")
+                           + (" (added from a tip)" if c.get("from_tip") else "") for c in n["latest"])
             parts.append(f"Latest dated forecast ({esc(n['day'])}): {fs}.")
         else:
             parts.append("No dated forecast of AGI, superintelligence or AI better than people at most things.")
@@ -1148,6 +1159,8 @@ def claims_page(sc, claims, built, commit):
                 marks.append('<span class="chip">a stated chance</span>')
             if c["source_kind"] == "coverage_only":
                 marks.append('<span class="chip">reported, not their own words</span>')
+            if c.get("from_tip"):
+                marks.append('<a class="chip" href="/docs/tip-intake">added from a tip</a>')
             if c.get("restates"):
                 marks.append(f'<a class="chip" href="#{esc(c["restates"])}">restates an earlier claim</a>')
             quote = (f'&ldquo;{esc(c["quote"])}&rdquo;' if c.get("quote") else f'<span class="dim">{esc(c["reported_as"])}</span>')
@@ -1179,13 +1192,13 @@ def claims_page(sc, claims, built, commit):
 
 <h2 id="now">What they say now</h2>
 <figure class="fig"><a href="/claims-now.png" title="Open the chart full size"><picture><source media="(max-width: 640px)" srcset="/claims-now-phone.png"><img src="/claims-now.png" alt="Each industry leader's most recent dated forecast of AGI, superintelligence or AI better than people at most things, on one timeline, against a band for the academics' dated guesses since 2023"></picture></a>
-<figcaption>Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms. {band_line}The forecasts are in <a href="/data/claims.csv">a table</a>; the academics' guesses are in <a href="/data/statements.csv">another</a>.</figcaption></figure>
+<figcaption>Each leader's forecasts from the latest day they put a date on AGI, superintelligence or AI better than people at most things, in their own terms. {band_line}The forecasts are in <a href="/data/claims.csv">a table</a>; the academics' guesses are in <a href="/data/statements.csv">another</a>. {fresh_claims}</figcaption></figure>
 <p>Each of them uses their own words for what is coming: AGI, superintelligence, "a country of geniuses in a data center", AI better than people at most things. They do not mean the same thing, so the line beside each name gives their term. {silent_line}For anyone who has spoken on when since their last dated forecast, or who has never given one, their latest words with no date are given too, quoted and dated, and never drawn.</p>
 <ul class="claims-now">{"".join(now_items)}</ul>
 
 <h2 id="moved">How their dates have moved</h2>
 <figure class="fig"><a href="/claims-moved.png" title="Open the chart full size"><picture><source media="(max-width: 640px)" srcset="/claims-moved-phone.png"><img src="/claims-moved.png" alt="Each industry leader's dated forecasts since 2023, placed at the day each was said and the year it named"></picture></a>
-<figcaption>Every dated forecast of this kind since 2023, one panel per leader. Earlier ones are in each person's list below. The same view for the panel of experts, academics and builders together, is the <a href="/#belief">frontier-voices chart</a> on the home page.</figcaption></figure>
+<figcaption>Every dated forecast of this kind since 2023, one panel per leader. Earlier ones are in each person's list below. The same view for the panel of experts, academics and builders together, is the <a href="/#belief">frontier-voices chart</a> on the home page. {fresh_claims}</figcaption></figure>
 
 <h2 id="who">Who is on this page</h2>
 <p>The industry's figureheads: the head, founder-leader or chair of a company that builds the most advanced AI models or the chips they are trained on, or that company's named chief scientist. A prediction counts only if it was made while the person held that role. Twelve of them are on the site's fixed list of experts; three, Mark Zuckerberg, Sundar Pichai and Satya Nadella, are not, and they appear on this page only, never in the record of what experts expect.</p>
@@ -1266,7 +1279,7 @@ def expert_dates():
     speakers = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
     panel = cs.panel(read("speakers.csv"))  # the experts' dates come from the panel only, never the ledger-only list (A30)
     latest = {}
-    for r in cs.measured(read("statements.csv")):  # tip_only rows stay out of every figure
+    for r in read("statements.csv"):  # tip rows count like any other (A32)
         if r["speaker_id"] not in panel:
             continue
         if r["target_capability"] != "broad_competence" or not r.get("timeline_year"):
@@ -1390,11 +1403,15 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     # the claims page's first chart.
     claims_line = (f'Of the {cl["leaders_with_a_date"]} industry leaders who have put a date on AGI or something beyond it, {cl["ahead_of_academics"]} now name a year '
                    f'before the middle year of the latest guesses by the panel\'s long-time thinkers who don\'t run AI companies, {cl["academics"]["middle"]:.0f}, each person counted once. What each of them says now, in their own words, '
-                   f'is on <a href="/claims/">the claims page</a>.') if cl.get("academics") else ""
+                   f'is on <a href="/claims/">the claims page</a>. ' + esc(cs.freshness(set(cs.LEADERS) | {p["id"] for p in cl["academics"]["people"]}))) if cl.get("academics") else ""
     # The same reading as the frontier-voices chart's title (charts.frontier_reading), so the two agree.
-    from charts import frontier_reading
+    from charts import EXPERT_POINTS, frontier_reading, frontier_rows
     fr = frontier_reading()
     ab = cs.academics_band()
+    # Every chart or headline that compares people says how recently each of them was searched (A32, item 3).
+    fresh_experts = esc(cs.freshness({pid for pid, _, _ in EXPERT_POINTS}))
+    fresh_frontier = esc(cs.freshness({r["speaker"] for r in frontier_rows()}))
+    fresh_claims = esc(cs.freshness(set(cs.LEADERS) | {p["id"] for p in (ab["people"] if ab else [])}))
     if fr["enough"] and fr["builders_now"] and fr["others_now"]:
         b, o, t = fr["builders_now"], fr["others_now"], fr["others_then"]
         frontier_line = (f"the people building these systems have named about the same year all along, about {b:.0f}, and the people studying them have come down to meet it."
@@ -1413,12 +1430,12 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
-<figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+<figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>. {fresh_experts}</figcaption></figure>
 
 <p>Second, and this is a reading of the same rows rather than a new measure: {frontier_line} The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having led, founded or done senior research at a company that builds frontier systems, and the industry leaders who run one, from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
 
 <figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
-<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it, together with the fifteen industry leaders on <a href="/claims/">the claims page</a>, so that Jensen Huang, who runs Nvidia, is drawn among the builders. The numbers are in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it, together with the fifteen industry leaders on <a href="/claims/">the claims page</a>, so that Jensen Huang, who runs Nvidia, is drawn among the builders. The numbers are in <a href="/data/statements.csv">a table</a>. {fresh_frontier}</figcaption></figure>
 
 <p>Third, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
@@ -1494,6 +1511,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
+<p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, the searches are improved for everyone, not only for that person. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
 <p>I wrote the rules for finding and sorting statements, and I decided every rule and every line of the test; Claude, an AI model made by Anthropic, did the searching and sorting by those rules. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
 <p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>

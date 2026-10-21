@@ -88,7 +88,7 @@ and a dated note under leg C says which should score is my call. Had the reading
 the item's verdict would have been `new-row` for the survey rows and `flagged` for the
 question of what scores, with both in the report.
 
-## The three parts of the reading
+## The four parts of the reading
 
 ### Part 1: the four gauges
 
@@ -166,17 +166,41 @@ amendment A21's rule, that the system is named in at least one statement in
 statement naming it flags the release for adding. Whether a report or a statement is of the
 record's kind is read strictly: when two readers could disagree, it is `flagged`, not added.
 
-### Deferred: the frozen panel's new statements
+### Part 4: every person on the panel (from 2026-10-21)
 
-The thirty-seven panel members (core and 2020s cohort) and the wide list are not read in the
-first version, for two reasons. Full collection for the panel is not done, so a weekly pass
-would be adding statements for 2026 to people whose 2017 to 2025 rows do not exist yet, and
-the series would be dense at one end for no reason but the reading's start date. And the
-codebook's quality bar is an agreement test (methodology section 10 and section 12: coding is
-model-based with three model families and a two-of-three rule, and the seed phase required 80%
-agreement on the main fields), which one session coding one statement a week cannot meet. When
-full collection is done, the panel becomes part 4, and the reading's job for it is to find
-and log the statement and leave coding to the collection pipeline.
+Until 2026-10-21 the panel was deferred from the weekly reading, for two reasons: full collection
+was not done, so a weekly pass would have made 2026 dense for no reason but the reading's start
+date, and one session coding one statement a week could not meet the codebook's agreement test.
+Full collection landed on 2026-10-17, which settles the first. The second is met the way tip
+intake meets it: a second, blind coding of the same passages by a separate agent, with every
+disagreement in the notes.
+
+On 2026-10-21 I ruled that every tip I send counts at once, and that fairness comes instead from
+searching every person on the panel every week (amendment A32). Part 4 is that search. Every
+week, for each of the 37 panel members and the three ledger-only industry leaders: their three
+fixed year searches for the current year (Y1 to Y3), one search for the past week's news, and
+their own outlets, every search logged in `data/search_log.csv` in the same columns a full pass
+uses. A new statement found this way is taken in by the tip intake steps (`docs/tip-intake.md`),
+but it is not a tip: the rule's own searches found it. A new dated forecast by an industry leader
+is flagged for the claims ledger; the reading never writes a claim file. The full instruction is
+part 4 in `docs/weekly-reading-prompt.md`.
+
+After part 4, `scripts/panel_status.py` prints the date through which every panel member has
+been searched, anyone overdue (not searched in the last eight days), and how the tips are spread
+across people. Every chart and headline that compares people states the first of these ("every
+person here searched for new words through ..."), computed from the search log at each build,
+and a comparison is not shared while anyone in it is overdue.
+
+**What it costs.** The reading runs as a cloud routine on my Claude plan, not on the API, so
+part 4 spends none of the monthly API credits. If the reading ever moves to a script on the
+`weekly-readings` key (`~/Code/timeassembler/docs/session-routing.md`), the estimate made on
+2026-10-21 is: 40 people at five to seven searches each, about 240 searches a week; about 60,000
+tokens read and 5,000 written per person on Sonnet 5.5 ($2 and $10 per million), about $6.50 a
+week, plus the search tool's own charge, about $2.40 a week at $10 per thousand searches (a
+figure from memory, to be checked on Anthropic's price page before any switch). About $9 a week,
+$40 a month, under the $50 line that would bring it to me first. The second coding of a new
+statement adds cents. On the plan, the cost is usage: a reading of about 280 searches instead of
+40, run in batches by subagents so one session holds it.
 
 ## The window and the scope
 
@@ -266,7 +290,7 @@ readings are in the repository and not yet on the site; see decision 12.
       "items": [
         {
           "id": "leg-a-metr",              a slug, unique in the reading
-          "part": "gauges",                "gauges", "institutions" or "events"
+          "part": "gauges",                "gauges", "institutions", "events" or "panel"
           "speaker_id": "metr",            optional; a speaker, "events" or "reading"
           "verdict": "flagged",            quiet, noted, new-row or flagged
           "search_ids": ["reading-2026-10-16-01", "reading-2026-10-16-02"],
@@ -298,6 +322,8 @@ when one exists, only says to open the repository and follow that file. In brief
 1. **Part 1**, the four gauges, in order A, B, C, D.
 2. **Part 2**, every non-individual speaker, in file order.
 3. **Part 3**, events, by kind.
+3b. **Part 4**, every person on the panel, in batches by subagents; then
+   `python3 scripts/panel_status.py` (from 2026-10-21, A32).
 4. **Append rows** for every `new-row`, in the form the file's existing rows use, and run
    `python3 scripts/validate.py` after each file; a row that fails is removed and the item
    becomes `flagged` with the error.
@@ -357,7 +383,9 @@ ruled yet unless the line says so.
 1. **Three parts, and the panel deferred.** High confidence on the three; moderate on
    deferring the panel, for the two reasons under "Deferred". Alternative: read the panel's
    thirty-seven people weekly from the start, logging statements uncoded. Rejected because
-   the collection pipeline would then inherit a partial, newest-first set.
+   the collection pipeline would then inherit a partial, newest-first set. *Replaced on my
+   ruling of 2026-10-21 (amendment A32): the panel is part 4, searched every week, now that full
+   collection has landed; see "Part 4".*
 2. **Four verdicts: quiet, noted, new-row, flagged.** High confidence. The siblings' moving
    verdicts (`moved`, `resolved`, `stage-change`) have no counterpart here because the
    scanner moves nothing; `new-row` is the one act it may take. Alternative: a fifth verdict
@@ -425,7 +453,6 @@ ruled yet unless the line says so.
 
 ## Deferred, and why
 
-- **The frozen panel's new statements** (part 4): decision 1.
 - **A site surface**: decision 12.
 - **Online communities, media outlets, Wikipedia and Google Trends monthly**: the streams
   these belong to (methodology sections 5, 6 and 9) have not started, and their series are
