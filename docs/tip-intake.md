@@ -114,18 +114,22 @@ step 3 does not find the source:
    title finds nothing either, as with Bostrom's interview two days after it was published), or
    the searches' words did not match (the person spoke on a podcast whose page never says "AGI",
    for example).
-2. If the words did not match, propose one search that would have found it and that is worded
-   for any person, not this one: a new year query (a Y4) or a new kind of own outlet to check
-   (the podcasts a person has appeared on, for example). Write it in the reply to me with the tip
-   it came from and what it would have found.
-3. Once I approve it, it is added to the searches for every person on the panel: in part 4 of
-   the weekly reading from the next week, and in the next full pass. It is recorded as a dated
-   amendment, because the searches are part of the method.
+2. If the words did not match, add one search that would have found it, worded for any person,
+   not this one: a new year query (a Y4) or a new kind of own outlet to check (the podcasts a
+   person has appeared on, for example). Run it for the person in the tip and log it, to show it
+   finds the source.
+3. Add it as one row of `data/added_searches.csv`: the date, a short name (Y4, Y5 and so on),
+   the query with `<name>` and `<year>` where the person and year go, what it reaches that the
+   searches missed, the tip's statement or claim ids, and the search-log ids that show the miss
+   and the test. From the next weekly reading on, part 4 runs it for every person on the panel,
+   never only the person in the tip, and every full pass runs it too.
+4. Searches are only ever added. No row of that file is removed or narrowed, and no original
+   search is dropped because a new one covers it.
+5. The site's changelog lists each added search, with its date and the tip that prompted it,
+   built from the file, and every time it runs is in the search log. The reply to me names it.
 
-The standing rule I proposed on 2026-10-21, for me to accept or not: a proposed search is
-applied to everyone without asking me when it only adds a search (it never removes or narrows
-one), it is worded for any person, and it would have found the tip; I see it in the next weekly
-report. Until I accept that rule, every proposed search waits for my approval.
+This is automatic: no search waits for my approval. I ruled so on 2026-10-21, on the master
+session's proposal, in my words: "Yes, apply them automatically." (amendment A32, item 4).
 
 ### 4. Extract the candidate statements
 

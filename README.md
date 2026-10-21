@@ -70,6 +70,7 @@ streams.
 | `docs/weekly-reading-prompt.md` | the standalone instruction a fresh session follows to run the reading |
 | `docs/claims-ledger-method.md` | the claims ledger's method (2026-10-17): the record layout, the admission rule, the five status words, what counts as a hit, the due-year rule, restatements, the rate and its guards, and what the ledger never touches |
 | `docs/claims-ledger-proposal-2026-10-17.md` | the proposal the ledger was adopted from (amendment A27), with its decisions and my rulings; the seed list of 79 claims is in `docs/claims-ledger-seed-2026-10-17.md` |
+| `data/added_searches.csv` | searches added because the regular searches missed a tip; each is run for every panel member from the next weekly reading, and only ever added (A32, John's ruling of 2026-10-21) |
 | `scripts/panel_status.py` | the weekly reading's two checks (A32): the date through which every panel member has been searched, anyone overdue, and how tips are spread across people |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files, every reading record in `data/readings/` and every claim file in `data/claims/` |
 | `scripts/charts.py` | builds the charts from the CSV files |

@@ -1078,8 +1078,9 @@ Decided by: me. On 2026-10-21 I ruled, in my words: "I want a rule that includes
 and gives every other person on the tracker ample search time to find things they have said too
 that I otherwise miss." The master session proposed the seven parts below to carry it out, and I
 started the work on them. The details of each part (the tag names, the eight-day line, the cost
-estimate, the standing rule in item 4) were worked out while building and are the model's
-proposals inside my ruling; the standing rule waits on me.
+estimate) were worked out while building and are the model's proposals inside my ruling. The
+standing rule in item 4 was proposed the same way, and I accepted it later on 2026-10-21: "Yes,
+apply them automatically."
 
 ### A32. Every tip counts; the panel is searched weekly
 
@@ -1116,11 +1117,15 @@ Now:
    separate agent coding the same passages blind, as tip intake does. Full collection landed on
    2026-10-17, which settles the other reason the panel was deferred.
 4. **A tip the searches missed improves them for everyone.** The intake says why the searches
-   missed it, and if their words did not match, proposes one search worded for any person. Once
-   I approve it, it is added for every person on the panel, by a dated amendment. Proposed, for me
-   to accept or not: a standing rule that such a search is added without asking me when it only
-   adds a search, is worded for any person, and would have found the tip, with the change in the
-   next weekly report.
+   missed it, and if their words did not match, adds one search worded for any person, tested on
+   the tip. It goes in `data/added_searches.csv`, and from the next weekly reading it is run for
+   every person on the panel, never only the person in the tip, and in every full pass. Searches
+   are only ever added, never removed or narrowed. Each is listed on this page under "Searches
+   added from tips", with its date and the tip that prompted it, and every run is in the search
+   log. **Ruled by me on 2026-10-21, later the same day,** on the master session's proposal of a
+   standing rule, in my words: "Yes, apply them automatically." No added search waits for my
+   approval, and no amendment is needed for each one; the validator checks every row (worded for
+   any person, prompted by a tip, its searches logged).
 5. **Freshness on comparisons.** Every chart or headline that compares people states "every
    person here searched for new words through" a date: for each person, the latest day a search
    for the current year's words was logged; the earliest of those across the people compared.
@@ -1134,7 +1139,8 @@ Now:
    `scripts/site.py` count every row and print the freshness line on the four comparing charts
    and their captions; `scripts/validate.py` knows `tip_missed`, refuses `tip_only`, accepts
    `from_tip` on a claim, and accepts a reading item of part `panel` whose new rows are
-   statements.
+   statements. It also checks `data/added_searches.csv` (item 4), which `scripts/site.py` lists on
+   this page.
 
 Why: my ruling. The old rule protected the record from my reading by leaving out what I found;
 the new one protects it by making sure everyone else is looked for as often as I might look, and

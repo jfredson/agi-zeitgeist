@@ -162,6 +162,10 @@ person, `part` `"panel"`, `speaker_id` the person.
 5. Their own outlets: the blog, newsletter, site or channel their earlier search-log rows list as
    "own outlet" (`grep -i "own outlet" data/search_log.csv | grep "^<speaker_id>"`), fetched. A
    person with none listed gets one search for a personal site or newsletter, and `found` says so.
+6. Every search in `data/added_searches.csv`, in file order, with `<name>` and `<year>` filled in:
+   searches added because the regular searches missed a tip, run for every person from the week
+   after they were added (amendment A32, item 4). Name the added search in `what_found` (for
+   example "Y4: ...").
 
 Up to two more fetches per person to read a candidate. Log every one in step 5 with
 `speaker_id` the person and `year` the reading's year, exactly as a full pass logs them; this is

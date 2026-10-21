@@ -844,6 +844,54 @@ def check_words(tables):
     return len(files)
 
 
+# Searches added from tips (amendment A32 item 4, John's ruling of 2026-10-21: "Yes, apply them
+# automatically."): one row each, worded for any person, run for every person from the next weekly reading.
+ADDED_SEARCHES = DATA / "added_searches.csv"
+ADDED_SEARCH_FIELDS = ["added_on", "search_name", "query", "what_it_reaches", "prompted_by", "search_ids"]
+
+
+def check_added_searches(tables):
+    """Every row of data/added_searches.csv: the header is exact; added_on is a date; the name is unique
+    and not one of the original searches; the query is worded for any person (it carries <name>); the tip
+    that prompted it is a statement or claim that came in by tip; every search id is in the search log.
+    Rows are only ever added: the file is append-only by rule, and a search is never removed."""
+    if not ADDED_SEARCHES.exists():
+        return 0
+    f = "added_searches.csv"
+    with ADDED_SEARCHES.open(newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        if reader.fieldnames != ADDED_SEARCH_FIELDS:
+            errors.append(f"{f}: header must be {','.join(ADDED_SEARCH_FIELDS)}")
+            return 0
+        rows = list(reader)
+    search_ids = {r["search_id"] for r in tables["search_log.csv"]}
+    tips = {r["statement_id"] for r in tables["statements.csv"] if "tip" in note_tags(r["notes"])}
+    claim_tips = set()
+    for path in sorted(CLAIMS.glob("*.toml")):
+        c = tomllib.loads(path.read_text(encoding="utf-8")).get("claim", {})
+        if c.get("from_tip"):
+            claim_tips.add(c.get("id"))
+    names = set()
+    for i, r in enumerate(rows, start=2):
+        if not valid_date(r["added_on"], "day"):
+            err(f, i, f"added_on {r['added_on']!r} is not a valid YYYY-MM-DD date")
+        name = r["search_name"].strip()
+        if not name or name in names or name in {"D1", "D2", "D3", "Y1", "Y2", "Y3"}:
+            err(f, i, f"search_name {name!r} must be new and unique (not D1 to D3 or Y1 to Y3)")
+        names.add(name)
+        if "<name>" not in r["query"]:
+            err(f, i, "the query must be worded for any person, with <name> where the person's name goes")
+        if not r["what_it_reaches"].strip():
+            err(f, i, "what_it_reaches says in plain words what the searches missed that this one finds")
+        prompted = [x.strip() for x in r["prompted_by"].split(";") if x.strip()]
+        if not prompted or any(x not in tips and x not in claim_tips for x in prompted):
+            err(f, i, "prompted_by names the statement or claim ids, from a tip, whose miss prompted this search")
+        ids = [x.strip() for x in r["search_ids"].split(";") if x.strip()]
+        if not ids or any(x not in search_ids for x in ids):
+            err(f, i, "search_ids names the search-log rows that show the miss and test the new search; each must exist")
+    return len(rows)
+
+
 def main():
     tables = {name: read(name) for name in HEADERS}
     speakers = {r["speaker_id"] for r in tables["speakers.csv"]}
@@ -856,6 +904,7 @@ def main():
     check_readings(tables, speakers)
     n_claims = check_claims(tables, speakers)
     n_words = check_words(tables)
+    n_added = check_added_searches(tables)
 
     # The ledger-only list never enters the opinion record (amendment A30).
     claims_only = {r["speaker_id"] for r in tables["speakers.csv"] if r["tier"] == CLAIMS_ONLY_TIER}
@@ -877,7 +926,7 @@ def main():
         sys.exit(1)
     counts = ", ".join(f"{name} {len(rows)}" for name, rows in tables.items())
     n_readings = len(list(READINGS.glob("*.json"))) if READINGS.exists() else 0
-    print(f"OK: {counts}, readings {n_readings}, claims {n_claims}, undated words {n_words}")
+    print(f"OK: {counts}, readings {n_readings}, claims {n_claims}, undated words {n_words}, searches added from tips {n_added}")
 
 
 if __name__ == "__main__":
