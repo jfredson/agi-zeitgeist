@@ -45,7 +45,7 @@ If current trends simply continued, AI's share of the research would cross its l
 
 ## How to Follow It
 
-Every Monday morning, from 19 October 2026, a scheduled check reads the past week from the site's sources. It can add new figures and flag things for me to decide, but it never changes how anything is scored ([how the weekly check works](/docs/weekly-reading)). When it finds something that moves a number you follow, I will write it up here and say why it matters, and a quiet week gets no post. [The method](/#method) says how the record was built and who did what. Think a number here is wrong? [Here's how to tell me, and what happens next](/disagree/).
+Every Monday morning, from 19 October 2026, a scheduled check reads the past week from the site's sources. It can add new figures and flag things for me to decide, but it never changes how anything is scored ([how the weekly check works](/docs/weekly-reading)). When it finds something that moves a number you follow, I will write it up here and say why it matters, and a quiet week gets no post. [The method](/about/#method) says how the record was built and who did what. Think a number here is wrong? [Here's how to tell me, and what happens next](/disagree/).
 
 ## What to Watch For
 

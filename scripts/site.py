@@ -485,13 +485,14 @@ TAGLINE = ("A dated record of what people expect from artificial general intelli
 # Short handles (tracker pattern rule 4.7, ruled for this site by John on 2026-10-18): one word per page, so the
 # bar holds one row on laptop and tablet widths; the full names stay as the sections' own headings.
 # Simplified on 2026-10-21 (tracker pattern rule 4.21, ruled by John that day): five pages a reader would come
-# for, then Family beside the theme switch. This site gets no About page: it has no story page, and its method
-# is a section of the home page, so Method stays in the bar and points there. Definitions and Changelog left
-# the bar for the footer, where they were already linked.
-NAV_PRIMARY = [("/#belief", "Zeitgeist"), ("/#singularity", "Singularity"), ("/claims/", "Claims"), ("/news/", "News"), ("/#method", "Method")]  # "Claims": amendment A27; News: tracker pattern rule 4.10
+# for, then Family beside the theme switch. Definitions and Changelog left the bar for the footer, where they
+# were already linked. Later the same day John started the About page for this site too, as on the other
+# trackers: who is asking and why, the method moved from the home page, and the story so far drawn from the
+# changelog (about_page below). The home page keeps a one-line pointer where the method was.
+NAV_PRIMARY = [("/#belief", "Zeitgeist"), ("/#singularity", "Singularity"), ("/claims/", "Claims"), ("/news/", "News"), ("/about/", "About")]  # "Claims": amendment A27; News: tracker pattern rule 4.10
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
 NAV_SECONDARY = [("https://sentient-horizons.com/projects/", "Family")]
-FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Feedback"),
+FOOTER_LINKS = [("/data/", "Download the data"), ("/about/#method", "Method and data"), ("/disagree/", "Feedback"),
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
 THEME_SCRIPT = """<script>
@@ -517,6 +518,11 @@ ICON_THEME = ('<svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" 
 # Styles of this site only, on top of the shared file. Tokens only; no new colours.
 SITE_CSS = """
 .brand { white-space: nowrap; }
+.about-toc { padding-left: 1.1em; line-height: 1.7; }
+.story { list-style: none; padding: 0; margin: 14px 0 0; max-width: 70ch; }
+.story li { padding: 10px 0; border-top: 1px solid var(--line); }
+.story-date { display: block; font-family: var(--sans); font-size: 14px; color: var(--text-soft); }
+.about-part { scroll-margin-top: 80px; }
 .with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; align-items: start; }
 .rail { position: sticky; top: 86px; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px; background: var(--panel); font-family: var(--sans); }
 .rail h4 { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -1034,7 +1040,7 @@ def copy_data():
     first.sort(key=lambda f: list(main).index(f.relative_to(DATA).as_posix()))
     rest = [f for f in files if f not in first]
     body = (f'<div class="prose narrow"><p>Every table behind the site, as it stood when the site was last built. Each row carries a link to where its number came from. '
-            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>); how to cite is on the <a href="/#method">home page</a>.</p>'
+            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>); how to cite is on <a href="/about/#cite">the About page</a>.</p>'
             f'<h2>The main tables</h2><ul>{"".join(li(f, main[f.relative_to(DATA).as_posix()]) for f in first)}</ul>'
             f'<h2>Working files</h2><p>The rest are working files: the forum posts and how each of three AI systems sorted them in each trial run, '
             f'and the samples used to double-check the sorting of statements. They are kept so that every step can be checked; the plain account is on the <a href="/">home page</a>.</p>'
@@ -1388,13 +1394,13 @@ def rail(sc, built, commit):
     progress = ("at most " if sc["progress_is_upper_bound"] else "") + f"{sc['progress']:.2f}"
     toc = [("#belief", "The current zeitgeist", ""), ("#singularity", "Are we in the singularity?", ""),
            ("#leg-a", "A. The pace", "d3"), ("#leg-b", "B. Forecasts", "d3"), ("#leg-c", "C. AI doing research", "d3"), ("#leg-d", "D. The economy", "d3"),
-           ("#owed", "Not finished yet", "d3"), ("#method", "Method and data", "")]
+           ("#owed", "Not finished yet", "d3"), ("/about/#method", "Method and data", "")]
     toc_html = "".join(f'<a href="{h}" class="{c}">{esc(t)}</a>' for h, t, c in toc)
     return f"""<aside class="rail">
 <h4>On this page</h4>
 <nav class="toc">{toc_html}</nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/data/">What each file holds</a> · version {esc(commit)}</p>
+<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="/about/#cite">How to cite</a> ·<a href="/data/">What each file holds</a> · version {esc(commit)}</p>
 </aside>"""
 
 
@@ -1545,16 +1551,108 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 
 <section class="section prose" id="method">
 <h2>Method and data</h2>
-<p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
-<p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, a better search is added automatically and run for everyone from the next week, not only for that person; searches are only ever added, and each one is listed on <a href="/docs/amendments#searches-added-from-tips">the changelog</a> with its date and the tip that prompted it. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
-<p>I wrote the rules for finding and sorting statements, and I decided every rule and every line of the test; Claude, an AI model made by Anthropic, did the searching and sorting by those rules. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+<p>How the record is kept, who did what, and how to cite it are now on <a href="/about/#method">the About page</a>.</p>
+{METHOD_FORWARD}
 </section>
 </div>
 {rail(sc, built, commit)}
 </div>
 """
     return shell(SITE_TITLE, TAGLINE, body, built, commit, backdrop=True)
+
+
+# ----------------------------------------------------------------------------- about
+# About (/about/), added 2026-10-21 under tracker pattern rule 4.21, in the shape of The Quiet Galaxy's and
+# Outrunning Ageing's: who is asking and why, then how the record is kept (the method, moved from the home
+# page), then the story so far. The opening is drafted only from words John has already published (the start-here
+# post of 2026-10-18, the claims-ledger post of 2026-10-19), and stays marked as a draft until he edits it.
+ABOUT_OPENING_IS_DRAFT = True
+
+# The story so far: the main changes, newest first, each linked to its entry in the changelog
+# (docs/amendments.md), which keeps every change in full. A line is added here when a change is one a
+# newcomer would want to know about; the changelog stays the full record.
+STORY = [
+    ("2026-10-21", "2026-10-21-robots-doing-paid-work-shown-beside-the-economy-part",
+     "Counts of machines doing paid physical work are shown beside the economy part of the test. They are not scored."),
+    ("2026-10-21", "2026-10-21-every-tip-counts-and-every-person-on-the-panel-is-searched-every-week",
+     "Every statement I come across and send in counts like any other, and from October 26th, 2026 every person on the panel is searched for new statements every week."),
+    ("2026-10-19", "2026-10-19-two-voices-of-one-zeitgeist-and-the-claims-ledger-as-the-industrys-voice",
+     "The record of what the industry's leaders predict becomes one of the site's two voices, beside the long-time thinkers. It records their words; it is not a scorecard."),
+    ("2026-10-19", "2026-10-19-the-claims-ledger-widened-to-the-industrys-figureheads-with-a-ledger-only-list",
+     "That record widens from two people to fifteen: the people who lead the companies building the most advanced AI, or the chips it is trained on."),
+    ("2026-10-18", "2026-10-18-tip-intake-a-way-in-for-panel-statements-found-between-full-passes",
+     "A way in for statements I find myself, in an interview or an article, between the full searches."),
+    ("2026-10-17", "2026-10-17-a-dated-claims-ledger-per-person-scored-against-delivery",
+     "A dated record of each industry leader's predictions is set up, with its rules written before any prediction was entered."),
+    ("2026-10-17", "2026-10-17-the-headline-becomes-the-average-share-of-the-way-with-an-on-current-trends-crossing-sentence",
+     "The headline becomes how far along the way the parts of the test are, on average, with the slowest part named and a sentence on where current trends lead."),
+    ("2026-10-17", "2026-10-17-the-pace-gauges-anchor-series-has-stopped-updating-the-successor-question-is-opened",
+     'The measurements the pace part is scored on have stopped being updated. The question of what replaces them is opened, and nothing is changed until it is answered.'),
+    ("2026-10-08", "2026-10-08-the-singularity-entry-definition-adopted-with-a-fourth-leg",
+     "The test of whether the singularity has begun is adopted, with the line each part must cross fixed in advance. A fourth part, the economy, is added, because it is the only one measured outside the AI world."),
+    ("2026-10-06", "2026-10-06-the-expert-panel-is-frozen",
+     "The panel of experts whose words the site follows is fixed, so that it cannot drift toward the story. Any change to it is a dated entry of its own."),
+    ("2026-09-30", "2026-09-30-reconciliation-of-the-two-outside-reviews-gemini-31-pro-gpt-6-astra-medium",
+     "The project starts. Two outside reviews of the first plan reshape it into the second version of the method."),
+]
+
+
+def prose_date(iso):
+    """A date as public prose spells it: "October 21st, 2026" (John, 2026-10-21)."""
+    d = date.fromisoformat(iso)
+    suffix = "th" if 11 <= d.day <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(d.day % 10, "th")
+    return f"{d:%B} {d.day}{suffix}, {d.year}"
+
+
+def about_page(sc, built, commit):
+    draft = ('<div class="status"><strong>Draft opening, for John to edit.</strong> These two paragraphs are drawn only from '
+             'words already published on this site: <a href="/news/2026-10-18-start-here/">the start-here post</a> and '
+             '<a href="/news/2026-10-19-the-claims-ledger-opens/">the post opening the claims page</a>.</div>') if ABOUT_OPENING_IS_DRAFT else ""
+    story = "".join(f'<li><span class="story-date">{esc(prose_date(d))}</span> {esc(t)} <a href="/docs/amendments#{a}">The change in full</a>.</li>'
+                    for d, a, t in STORY)
+    body = f"""{draft}
+<section class="section prose" id="who">
+<h2>Who is asking</h2>
+<p>For decades people have argued about whether machines will one day outrun us. Some say it is decades away, some say it is already starting, and the trouble is agreeing on what would count as an answer. I am John Fredrickson, and I built this site to follow that argument. It records what two groups have said about artificial general intelligence, or AGI, a machine that can do most of the thinking work a person can, with <a href="/#belief">every quote dated and linked</a> to where it was said. One is the academics and writers who have talked about this for decades. The other is <a href="/claims/">the people who run the AI companies</a>, who are actually building it and who tend to run well ahead of the evidence with their predictions. Both belong in the picture, and the point is to see how the talk has moved, not to score anyone. Beside that record, the site asks a harder question, are we in the singularity yet, and sets <a href="/#singularity">a test that anyone can check</a>.</p>
+<h2>Why the name?</h2>
+<p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. Two kinds of people shape that mood. The long-time thinkers give the long view; the leaders are the ones making it happen, and what they say is the clearest sign of what the industry expects right now.</p>
+<ul class="about-toc">
+<li><a href="#method">How the record is kept</a>, who did what, and how to cite it</li>
+<li><a href="#story">The story so far</a>, the main changes with their dates</li>
+<li><a href="/docs/amendments">The changelog</a>, every change in full, with its reason and who decided it</li>
+<li><a href="/disagree/">Feedback</a>, if something here is wrong</li>
+</ul>
+</section>
+{method_section(sc, built, commit)}
+<section class="section prose about-part" id="story">
+<h2>The story so far</h2>
+<p>The main changes to how the record is kept and how the test is scored, newest first. Each links to its entry in <a href="/docs/amendments">the changelog</a>, which keeps every change in full with its date, its reason and who decided it.</p>
+<ul class="story">{story}</ul>
+</section>"""
+    out = SITE / "about"
+    out.mkdir(exist_ok=True)
+    (out / "index.html").write_text(shell(f"About: who is asking, how the record is kept, and what has changed | {SITE_TITLE}",
+                                          "Who built the AGI Zeitgeist Tracker and why, how the record of what people expect from AI is kept and the singularity test scored, and the main changes so far, each dated.",
+                                          body, built, commit, canonical_path="/about/", eyebrow="About", h1="Who is asking, and how it works", active="/about/"), encoding="utf-8")
+
+
+# The method section, moved from the home page to About on 2026-10-21 (tracker pattern rule 4.21) with its
+# text unchanged but for two words: "this page" became "the home page" twice, since the figures it describes
+# stay there. Old links to /#method are sent on to /about/#method by METHOD_FORWARD on the home page.
+def method_section(sc, built, commit):
+    return f"""<section class="section prose about-part" id="method">
+<h2>Method and data</h2>
+<p>Everything on the home page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. The home page is the plain account of the same material.</p>
+<p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, a better search is added automatically and run for everyone from the next week, not only for that person; searches are only ever added, and each one is listed on <a href="/docs/amendments#searches-added-from-tips">the changelog</a> with its date and the tip that prompted it. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
+<p>I wrote the rules for finding and sorting statements, and I decided every rule and every line of the test; Claude, an AI model made by Anthropic, did the searching and sorting by those rules. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
+<p class="cite" id="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#7-record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+</section>"""
+
+
+# An old link to the home page's method (/#method) lands on its new place in About. A server cannot forward
+# it, because the part after "#" never reaches the server, so a one-line script does it; without scripts the
+# pointer line in the same spot links there.
+METHOD_FORWARD = "<script>if(location.hash==='#method')location.replace('/about/#method');</script>"
 
 
 def main():
@@ -1599,6 +1697,7 @@ def main():
     claims_csv(claims)
     (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
     disagree_page(built, git_commit())
+    about_page(sc, built, git_commit())
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "
