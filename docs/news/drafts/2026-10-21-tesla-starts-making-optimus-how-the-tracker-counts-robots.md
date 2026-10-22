@@ -1,5 +1,5 @@
 ---
-title: Tesla has started making its Optimus robot. Here is how the tracker will count robots doing real work
+title: Tesla has started making its Optimus robot. Here is how we will count robots doing real work
 date: 2026-10-21
 status: draft
 kind: method-changed
@@ -20,7 +20,7 @@ sources:
     url: https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years
 ---
 
-On October 21st, 2026, [Tesla](https://en.wikipedia.org/wiki/Tesla,_Inc.) told its investors that "Optimus production began in Fremont on our high-volume lines" ([Tesla's results, page 6](https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm)). [Optimus](https://en.wikipedia.org/wiki/Optimus_(robot)) is the humanoid robot Tesla first announced in August 2021, and the line is at its car factory in [Fremont, California](https://en.wikipedia.org/wiki/Tesla_Fremont_Factory). A lot of people read that as robots now rolling off a production line, so I want to set out what Tesla actually said, and how this tracker will treat news like it from now on.
+On October 21st, 2026, [Tesla](https://en.wikipedia.org/wiki/Tesla,_Inc.) told its investors that "Optimus production began in Fremont on our high-volume lines" ([Tesla's results, page 6](https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm)). [Optimus](https://en.wikipedia.org/wiki/Optimus_(robot)) is the humanoid robot Tesla first announced in August 2021, and the line is at its car factory in [Fremont, California](https://en.wikipedia.org/wiki/Tesla_Fremont_Factory). A lot of people read that as robots now rolling off a production line, so I want to set out what Tesla actually said, and how we will treat news like it from now on.
 
 ## What Tesla said
 
@@ -30,11 +30,11 @@ On the call with investors the same afternoon, [Elon Musk](https://en.wikipedia.
 
 ## Why robots belong to the economy part of the test
 
-The tracker asks whether we are entering the singularity, the idea that machines will one day get smarter so quickly that the world changes faster than anyone can keep up with. It answers with a test in four parts. The fourth asks whether the world's economy has changed gear. The economist [Robin Hanson](https://en.wikipedia.org/wiki/Robin_Hanson) found that each new era of history, from hunting to farming to industry, made the world's economy double about a hundred times faster than the era before. This part watches the [World Bank](https://www.worldbank.org/)'s yearly figure for how much the world produces. In 2025 it grew 2.9 percent. The line the test is waiting for is 30 percent in a single year ([the economy part](/#leg-d)).
+This site asks whether we are entering the singularity, the idea that machines will one day get smarter so quickly that the world changes faster than anyone can keep up with. It answers with a test in four parts. The fourth asks whether the world's economy has changed gear. The economist [Robin Hanson](https://en.wikipedia.org/wiki/Robin_Hanson) found that each new era of history, from hunting to farming to industry, made the world's economy double about a hundred times faster than the era before. This part watches the [World Bank](https://www.worldbank.org/)'s yearly figure for how much the world produces. In 2025 it grew 2.9 percent. The line the test is waiting for is 30 percent in a single year ([the economy part](/#leg-d)).
 
 I think robots matter here because most of the economy is still physical. Goods are made, moved, built and repaired, and almost all of that is done by people. AI that writes code and answers questions can only change the economy so much while that stays true. If the economy ever does change gear, machines doing physical work for pay is one of the likeliest ways it would happen, and the first signs would show up in counts of robots at work long before they show up in the world's output.
 
-## How the tracker will treat it
+## How we will treat it
 
 The score does not change. The economy part is still scored on the World Bank's figure alone, and nothing a company says about robots moves it ([the rules of the test](/docs/singularity-entry-definition)).
 
@@ -42,9 +42,9 @@ Beside the score, I will now show measured evidence that machines are doing paid
 
 - **A count made by someone other than the robot's maker.** That means a trade body's census, a government survey or a regulator's register. The [International Federation of Robotics](https://en.wikipedia.org/wiki/International_Federation_of_Robotics), for example, counted 542,000 factory robots installed around the world in 2024. It does not yet count humanoid robots on their own ([its report for 2024](https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years)).
 - **A customer's own published figures**, such as hours of work or tasks done by robots in its operations, in an annual report or a filing.
-- **A maker's own count** of robots built, shipped or working for paying customers. These are shown and marked as the company's word about itself. That is how the tracker already treats [Anthropic](https://www.anthropic.com/)'s figure that its AI wrote more than 80 percent of the code it added to its software: in the table, and not scored ([the AI-research part](/#leg-c)).
+- **A maker's own count** of robots built, shipped or working for paying customers. These are shown and marked as the company's word about itself. That is how we already treat [Anthropic](https://www.anthropic.com/)'s figure that its AI wrote more than 80 percent of the code it added to its software: in the table, and not scored ([the AI-research part](/#leg-c)).
 
-Some things are not a measurement at all. A company saying production has begun, a target rate, a demonstration video and a forecast all fall in this group, so none of them goes in the table. Tesla's results of October 21st, 2026, are all of these, with no number in them, so today they add no row. When the person making a promise runs one of the companies the tracker follows, a dated promise goes on [the claims page](/claims/) instead, in their own words. That page records what the industry's leaders predict, not whether they turned out right.
+Some things are not a measurement at all. A company saying production has begun, a target rate, a demonstration video and a forecast all fall in this group, so none of them goes in the table. Tesla's results of October 21st, 2026, are all of these, with no number in them, so today they add no row. When the person making a promise runs one of the companies we follow, a dated promise goes on [the claims page](/claims/) instead, in their own words. That page records what the industry's leaders predict, not whether they turned out right.
 
 ## The promises so far
 
