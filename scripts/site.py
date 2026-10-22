@@ -1565,8 +1565,9 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 # About (/about/), added 2026-10-21 under tracker pattern rule 4.21, in the shape of The Quiet Galaxy's and
 # Outrunning Ageing's: who is asking and why, then how the record is kept (the method, moved from the home
 # page), then the story so far. The opening is drafted only from words John has already published (the start-here
-# post of 2026-10-18, the claims-ledger post of 2026-10-19), and stays marked as a draft until he edits it.
-ABOUT_OPENING_IS_DRAFT = True
+# post of 2026-10-18, the claims-ledger post of 2026-10-19). John edited it and approved it to go live on 2026-10-21
+# ("Otherwise push it live"), so the draft mark is off.
+ABOUT_OPENING_IS_DRAFT = False
 
 # The story so far: the main changes, newest first, each linked to its entry in the changelog
 # (docs/amendments.md), which keeps every change in full. A line is added here when a change is one a
