@@ -1,12 +1,12 @@
 ---
 title: Tesla has started making its Optimus robot. Here is how we will count robots doing real work
 date: 2026-10-21
-status: draft
+status: published
 kind: method-changed
 summary: Tesla says production of its Optimus humanoid robot has begun in Fremont. Robots doing paid physical work are how the economy part of the singularity test could one day move, so I now set out what counts as evidence of that, and what is shown but not scored.
 records: [D, A33]
-before: "Robots appear only as dated promises in the claims ledger"
-after: "Measured counts of robots doing paid work are shown beside the economy part; company announcements are shown, never scored"
+before: "Robots on record only as dated promises"
+after: "measured counts of robots at work, shown beside the economy part and not scored"
 sources:
   - label: Tesla's results for July to September 2026, as filed with the SEC
     url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026066738/exhibit9914.htm
