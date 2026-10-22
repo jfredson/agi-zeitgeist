@@ -17,7 +17,7 @@ sources:
 
 Ask whether we are in the singularity yet, and the honest answer today is no. But a bare "no" does not say whether nothing is happening or a great deal is. This site had that problem with its own headline.
 
-I am John Fredrickson, and my site, the AGI Zeitgeist Tracker, asks whether we are in the singularity, the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. Its test has four parts: how fast AI is improving, whether anyone can still forecast it, how much of the work of improving AI is done by AI itself, and whether the world's economy has started growing far faster than it ever has. All four have to cross a line set in advance, and stay across for a year, before the test says yes ([the test's rules](/docs/singularity-entry-definition)).
+I am John Fredrickson, and my site, the AGI Zeitgeist Tracker, asks whether we are in the singularity, the idea that machines will one day get smarter so quickly that the world changes faster than anyone can keep up with. Its test has four parts: how fast AI is improving, whether anyone can still forecast it, how much of the work of improving AI is done by AI itself, and whether the world's economy has started growing far faster than it ever has. All four have to cross a line set in advance, and stay across for a year, before the test says yes ([the test's rules](/docs/singularity-entry-definition)).
 
 ## A Headline That Could Only Say One Thing
 
