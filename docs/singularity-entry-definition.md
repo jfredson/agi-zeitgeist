@@ -177,6 +177,10 @@ or less. Leg D asks whether that has started.
   output lags capability by years, so this leg will usually be the bottleneck, and the
   progress number below will track the economy until it moves.
 
+**Note of 2026-10-21 (amendment A33, approved by me the same day).** Counts of machines doing paid
+physical work (rows with unit `robots` in `data/world_measures.csv`) are shown beside this leg and
+never scored. The gauge, the threshold and the thresholds file are unchanged.
+
 ## 3. The mark
 
 **We have entered the singularity, as defined here, when all four gauges equal one for

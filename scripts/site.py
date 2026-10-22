@@ -272,6 +272,15 @@ def leg_d(world):
     return pts
 
 
+def leg_d_context(world):
+    """Counts of machines doing paid physical work: shown beside leg D, never scored (amendment A33)."""
+    kinds = {"outside": "counted by someone other than the maker", "customer": "the customer's own figure",
+             "maker": "the maker's own figure"}
+    rows = sorted([r for r in world if r["unit"] == "robots"], key=lambda r: r["date"], reverse=True)
+    return [dict(id=r["aggregate_id"], date=r["date"], measure=r["measure"], value=float(r["value"]), url=r["source_url"],
+                 kind=kinds[r["notes"].split(".", 1)[0].removeprefix("kind: ")]) for r in rows]
+
+
 # ----------------------------------------------------------------------------- scoring
 def clip(x):
     return max(0.0, min(1.0, x))
@@ -1385,7 +1394,7 @@ def rail(sc, built, commit):
 </aside>"""
 
 
-def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, commit):
+def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, commit, robots=()):
     frontier = [p for p in a_pts if p["frontier"]]
     latest = frontier[-1]
     last_step = b_steps[-1]
@@ -1402,6 +1411,7 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
     step_rows = [[f"{s['frm']['date'].year} to {s['to']['date'].isoformat()}", f"{s['years']:.1f}", f"{s['change']:+.1f}", f"{s['pull_in']:+.1f}"] for s in b_steps]
     mani_rows = [[r["date"], f"{float(r['value'])*100:.0f}%", link(market_page(r["source_url"]), r["aggregate_id"])] for r in mani]
     c_rows = [[p["date"].isoformat(), esc(p["measure"]), f"{int(p['value'])}%" + (f" ({p['bound']})" if p["bound"] else ""), link(p["url"], p["id"])] for p in c_pts]
+    r_rows = [[esc(r["date"]), esc(r["measure"]), f"{r['value']:,.0f}", esc(r["kind"]), link(r["url"], r["id"])] for r in robots]
     d_rows = [[q["year"], f"{q['growth']:.2f}%", f"{q['doubling']:.1f}" if q["doubling"] else "none (output fell)", link(q["url"], q["id"])] for q in reversed(d_pts)]
 
     progress_word = "at most " if sc["progress_is_upper_bound"] else ""
@@ -1515,6 +1525,10 @@ def build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, c
 <details><summary>Every year ({len(d_pts)} readings)</summary>
 {table(["year", "growth", "years to double at that rate", "source"], d_rows)}
 </details>
+<p>One way the economy could change gear is machines taking on far more of the world's physical work: making, moving, building and repairing things. So beside this part, and not counted in it, is a table of measured counts of machines doing paid physical work. Each row says who counted it: someone other than the maker, the customer, or the maker itself. Company announcements, targets and demonstration videos are not counts, so they are not in it (<a href="/docs/amendments">the change that added it</a>).</p>
+<details><summary>Machines doing paid work ({len(r_rows)} counts, shown and not scored)</summary>
+{table(["year", "what was counted", "number", "who counted it", "source"], r_rows)}
+</details>
 
 <h3 id="owed">Not finished yet</h3>
 <p>Three pieces the test needs before it is complete.</p>
@@ -1553,7 +1567,7 @@ def main():
     built = pacific_today().isoformat()
     claims = load_claims()
     globals()["_CLAIMS"] = claims_page(sc, claims, built, git_commit())
-    (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit()), encoding="utf-8")
+    (SITE / "index.html").write_text(build_html(a_pts, a_series, b_pts, b_steps, mani, c_pts, d_pts, sc, built, git_commit(), leg_d_context(world)), encoding="utf-8")
     last_reading = max((p.stem for p in (ROOT / "data" / "readings").glob("*.json")), default=None)
     newest_measurement = max((r["date"] for r in world if r["speaker_id"] in ("metr", "anthropic_institute", "world_bank") and r["aggregate_id"] != "metr-th11-doubling-all"), default=None)
     headline = {"headline_question": HEADLINE_QUESTION, "headline": sc["headline"], "headline_label": sc["headline_label"], "crossing_sentence": ytl["_sentence"],

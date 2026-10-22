@@ -94,7 +94,9 @@ CODED_FIELDS = {
 }
 UNITS = {"year", "probability", "percent_of_respondents", "index",
          # world_measures.csv only
-         "minutes", "days", "percent", "percent_growth"}
+         "minutes", "days", "percent", "percent_growth",
+         # leg D context rows, shown beside the score and never scored (amendment A33, 2026-10-21)
+         "robots"}
 EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report", "ai_release"}  # ai_release: amendment A21
 PRECISION_PATTERNS = {
     "day": re.compile(r"^\d{4}-\d{2}-\d{2}$"),
@@ -426,6 +428,11 @@ def check_aggregates(rows, speakers, f="aggregates.csv"):
             err(f, i, "missing or malformed source_url")
         if not r["notes"]:
             err(f, i, "notes must give the definition and question wording")
+        # A33: a robot row is context for leg D only; it names who measured it and is never scored.
+        if r["unit"] == "robots" and not re.match(r"^kind: (outside|customer|maker)\.", r["notes"]):
+            err(f, i, "a robots row's notes must begin 'kind: outside.', 'kind: customer.' or 'kind: maker.' (amendment A33)")
+        if r["unit"] == "robots" and f != "world_measures.csv":
+            err(f, i, "robots rows belong in world_measures.csv only (amendment A33)")
 
 
 def check_events(rows):
