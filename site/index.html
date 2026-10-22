@@ -17,8 +17,13 @@
 <meta property="og:url" content="https://agizeitgeist.com/">
 <meta property="og:title" content="AGI Zeitgeist Tracker">
 <meta property="og:description" content="A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.">
-<meta name="twitter:card" content="summary">
-
+<meta property="og:image" content="https://agizeitgeist.com/social-preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AGI Zeitgeist Tracker: Are we in the singularity?">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://agizeitgeist.com/social-preview.png">
 <link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -55,6 +60,7 @@
    numbers, serif only for the explanatory line. */
 .land { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding: 48px 0 24px; }
 .land .eyebrow { margin-bottom: 18px; }
+.land .eyebrow-verdict { margin: 30px 0 10px; }
 .land .answer { font-family: var(--sans); font-size: clamp(72px, 10.5vw, 128px); line-height: 0.92; font-weight: 600; letter-spacing: -0.04em; color: var(--text); margin: 0 0 22px; }
 .land h1 { font-family: var(--sans); font-size: clamp(22px, 2.5vw, 31px); line-height: 1.2; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 12px; max-width: 640px; }
 .land .lede { font-style: normal; font-size: 17px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
@@ -172,32 +178,33 @@ figure.fig { border-radius: 0; }
 <header class="site-header"><div class="container nav">
 <a class="brand" href="/">AGI Zeitgeist</a>
 <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg class="ico-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg><svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
-<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Current Zeitgeist</a><a href="/#singularity" class="nav-primary">Are We in the Singularity?</a><a href="/#method" class="nav-primary">Method and Data</a><a href="/news/" class="nav-primary">News</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><a href="https://sentient-horizons.com/projects/" class="nav-secondary" rel="noopener">Family</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
+<nav class="navlinks" id="site-nav"><a href="/#belief" class="nav-primary">Zeitgeist</a><a href="/#singularity" class="nav-primary">Singularity</a><a href="/claims/" class="nav-primary">Claims</a><a href="/#method" class="nav-primary">Method</a><a href="/news/" class="nav-primary">News</a><span class="nav-divider" aria-hidden="true"></span><a href="/docs/singularity-entry-definition" class="nav-secondary">Definitions</a><a href="/docs/amendments" class="nav-secondary">Changelog</a><a href="https://sentient-horizons.com/projects/" class="nav-secondary" rel="noopener">Family</a><button type="button" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme"><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav>
 </div></header>
 <main class="container">
 
 <section class="land">
 <div>
-<p class="eyebrow">Are we in the singularity?</p>
+<p class="eyebrow">How far along the way are we?</p>
 <p class="answer">32%</p>
 <p class="kicker">of the way, averaged over the 3 parts that can be measured (forecasts unmeasured); all four must cross, and the slowest, the economy, is at 0%</p>
 <p class="shares">Pace 43% · Forecasts unmeasured · AI doing the research 52% · Economy 0%</p>
 <p class="shares">On current trends the economy does not cross its line, so the test is not met on current trends; the pace crosses between 2028 and 2048; the AI-research share crosses in 2027; forecasts unmeasured.</p>
+<p class="eyebrow eyebrow-verdict">Are we in the singularity?</p>
 <h1><span class="verdict">Not yet.</span> Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
 <p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
 <div class="conds"><div class="cond"><span class="k">A</span><span class="n">AI is getting better faster and faster</span><div class="bar"><i style="width:43%"></i><span>43% of the way to its line</span></div><span class="d">How long a job the best AI can do by itself has been doubling every 121 days. It would count at 30 days and still speeding up.</span></div><div class="cond"><span class="k">B</span><span class="n">Nobody can predict AI progress any more</span><div class="bar none"><span>not yet measurable</span></div><span class="d">Cannot be scored yet: that needs a record of old predictions set against what actually happened, and it has not been built.</span></div><div class="cond"><span class="k">C</span><span class="n">AI now does most of the work of improving AI</span><div class="bar"><i style="width:52%"></i><span>52% of the way to its line</span></div><span class="d">Anthropic, an AI company, says its own AI leads 26% of its AI research. It would count at half. Only the company can check that.</span></div><div class="cond"><span class="k">D</span><span class="n">The world&#x27;s economy grows ten times faster than it ever has</span><div class="bar"><i style="width:0%"></i><span>0% of the way to its line</span></div><span class="d">The world&#x27;s economy grew 2.9% in 2025. It would count at 30% in a year.</span></div></div>
 <p class="fresh">Each bar shows how far that measure has come since 2019 toward the line where it would count.</p>
-<p class="fresh">Scored 18 October 2026 from public numbers. <a href="/docs/amendments">Track the changes here.</a></p>
+<p class="fresh">Scored 21 October 2026 from public numbers. <a href="/docs/amendments">Track the changes here.</a></p>
 </div>
 <aside class="card">
 <p class="ch-big">When?</p>
 <p class="ch">It depends what you mean by AGI</p>
 <p class="big">about 2030</p>
-<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates from the 5 experts traced so far (2026 to 2036). People betting on Manifold put the odds of AGI before 2030 at <a href="https://manifold.markets/RemNi/will-we-get-agi-before-2030">49%</a>.</p>
+<p class="what"><b>Machines match people at thinking and digital work.</b> The middle of the latest dates from the 27 experts traced so far (2026 to 2300). People betting on Manifold put the odds of AGI before 2030 at <a href="https://manifold.markets/RemNi/will-we-get-agi-before-2030">50%</a>.</p>
 <div class="ladder">
-<div><b>2047</b><span><b>Every task, better and cheaper than a human worker.</b> Even odds, from 1,714 researchers asked in the <a href="https://arxiv.org/html/2401.02843">largest survey</a> (2023); one-in-ten odds by 2027. 14 years closer than the 2016 survey said.</span></div>
-<div><b>2116</b><span><b>All human work could be automated.</b> Even odds, same survey. Factories and hospitals move far more slowly than software.</span></div>
+<div><b>2042</b><span><b>Every task, better and cheaper than a human worker.</b> Even odds, from 1,008 researchers asked in the <a href="https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf">largest survey</a> (2024); one-in-ten odds by 2027. 19 years closer than the 2016 survey said.</span></div>
+<div><b>2098</b><span><b>All human work could be automated.</b> Even odds, same survey. Factories and hospitals move far more slowly than software.</span></div>
 </div>
 <p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>
@@ -206,28 +213,35 @@ figure.fig { border-radius: 0; }
 <section class="section prose" id="belief">
 <h2>The current zeitgeist</h2>
 <p>"Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. This part of the site records what well-known experts, surveys of researchers, opinion polls, betting markets and online forums have said since 2005 about AGI. Every quote carries its date and a link to where it was said.</p>
-<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Four things stand out so far.</p>
+<p>It follows two voices. One is the academics and long-time thinkers who have written about AGI and the singularity for decades. The other is the people now running the companies that build it, whose dates have tended to run ahead of everyone else's. Both are part of the mood of the time. The site keeps both, says what each is saying now, how far apart they are and how both have moved, and scores neither. The industry's leaders have <a href="/claims/">a page of their own</a>.</p>
+<p>Has the argument moved: from <em>whether</em> such a machine can be built, to <em>when</em> it will arrive, to <em>whether today's machines are nearly there</em>? Five things stand out so far.</p>
 <p>First, the doubters have moved. Geoffrey Hinton, a computer scientist whose work underlies today's AI, said "no sooner than 2070" in 2015 and "between five and 20 years" in 2025. Gary Marcus, a psychologist and the best-known critic of today's AI, said "at least thirty or fifty years" in 2016 and "10-25 years" in 2025. Ray Kurzweil has said 2029 the whole time. This is where the "about 2030" at the top of the page comes from.</p>
 
 <figure class="fig"><a href="zeitgeist-experts.png" title="Open the chart full size"><img src="zeitgeist-experts.png" alt="Each of five experts' earliest and latest guess at when machines will match people at most thinking work"></a>
-<figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>.</figcaption></figure>
+<figcaption>Only guesses in the person's own words are shown, not a reporter's summary of them. Every guess, with its quote and a link to where it was said, is in <a href="/data/statements.csv">a table</a>. Every person here searched for new words through 30 September 2026.</figcaption></figure>
 
-<p>Second, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
+<p>Second, and this is a reading of the same rows rather than a new measure: the people building these systems have named about 2030 all along, and the people studying them have come down from about 2076 in their earliest guesses to about 2033 across all their guesses since 2023, most of the way but not all. (Counted once each, at their latest guess, as the claims page counts them, the people studying it have a middle year of 2030.) The chart below takes every dated guess by a panel member for machines matching people at most thinking work and draws apart the people tagged as having led, founded or done senior research at a company that builds frontier systems, and the industry leaders who run one, from the rest: the academics, the critics and the philosophers. Both are part of the zeitgeist: the builders see the work up close and have tended to name early years, and the academics have watched the question for decades. The chart shows whether the two groups differ and whether the gap moves; it does not say which group is right.</p>
+
+<figure class="fig"><a href="zeitgeist-frontier.png" title="Open the chart full size"><img src="zeitgeist-frontier.png" alt="Every dated guess by a panel member for when machines will match people at most thinking work, from 2005 to 2026, with the people who build frontier AI systems drawn apart from the people who study them, and each group's median by year"></a>
+<figcaption>One dot per dated guess; the lines join each group's median for years with two or more guesses. Who counts as a builder is the frontier-lab tag in <a href="/data/speakers.csv">the speakers table</a>, with the dates that justify it, together with the fifteen industry leaders on <a href="/claims/">the claims page</a>, so that Jensen Huang, who runs Nvidia, is drawn among the builders. The numbers are in <a href="/data/statements.csv">a table</a>. Every person here searched for new words through 30 September 2026.</figcaption></figure>
+
+<p>Third, AI researchers have moved too, more slowly, and how far depends on the question. In the largest repeated survey of researchers, the year they give an even chance that machines could do every task better and more cheaply than people came 14 years closer between 2016 and 2023, to 2047. Asked when machines could do every job that way, they say 2116.</p>
 
 <figure class="fig"><a href="zeitgeist-researchers.png" title="Open the chart full size"><img src="zeitgeist-researchers.png" alt="AI researchers' even-chance year for machines doing every task and every job, in surveys from 2016, 2022 and 2023"></a>
 <figcaption>Two different groups of researchers answered the two questions in each survey. The numbers are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
-<p>Third, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
+<p>Fourth, ordinary people have started paying attention. Google searches for artificial general intelligence were flat for fifteen years and have climbed steeply since 2023, and in polls since 2023 about half of American adults say they are more concerned than excited about the growing use of AI in daily life.</p>
 
 <figure class="fig"><a href="zeitgeist-search.png" title="Open the chart full size"><img src="zeitgeist-search.png" alt="Worldwide Google searches for artificial general intelligence and for the singularity, each year from 2005 to 2026"></a>
 <figcaption>Google reports searches on its own scale rather than as counts. The numbers, and the polls, are in <a href="/data/aggregates.csv">a table</a>.</figcaption></figure>
 
-<p>Fourth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
+<p>Fifth, almost no one says the machine has arrived, not even on r/singularity, a forum on the website Reddit for people who expect it.</p>
 
 <figure class="fig"><a href="zeitgeist-forum.png" title="Open the chart full size"><img src="zeitgeist-forum.png" alt="The most popular posts on the r/singularity forum every three months from late 2024 to 2026, by what each mainly says"></a>
 <figcaption>One forum, not the public. The numbers are in <a href="vanguard-pilot-r-singularity.csv">a table</a>.</figcaption></figure>
 
-<p>So far this rests on five well-known people (Ray Kurzweil, Geoffrey Hinton, Yann LeCun, Gary Marcus and Sam Altman), three surveys of AI researchers, opinion polls, betting markets and one online forum. More people and sources are being added.</p>
+<p>This rests on the 37 people on the expert panel, each traced year by year from their first public statement on AGI (811 statements in all, every search written down), 4 waves of the largest survey of AI researchers, opinion polls, betting markets and one online forum. A weekly reading adds what is new.</p>
+<p>Of the 12 industry leaders who have put a date on AGI or something beyond it, 8 now name a year before the middle year of the latest guesses by the panel's long-time thinkers who don't run AI companies, 2030, each person counted once. What each of them says now, in their own words, is on <a href="/claims/">the claims page</a>. Every person here searched for new words through 30 September 2026.</p>
 <p>Expecting it soon is not the same as it happening. Whether the singularity has actually begun is the test below.</p>
 </section>
 
@@ -287,16 +301,18 @@ figure.fig { border-radius: 0; }
 
 <h3 id="leg-b">B. Has AI become impossible to predict?</h3>
 <p><em>The idea, from the writer Vernor Vinge: past some point nobody can predict what comes next, and it can only be confirmed after the fact. A post on an online forum put it this way: "Any prediction made now about the next five years will look stupid in retrospect."</em></p>
-<p>This part cannot be scored yet. Scoring it needs old predictions of the measure in part A set against what then happened, to see how far ahead forecasts still beat the simplest guess, that the trend carries on. Nobody has collected that record, and it can only be scored once the predicted dates have passed. The nearest evidence is the surveys of AI researchers in the section above. If their forecasts had been right, the year they expect would have stood still while time passed. Instead it jumped closer: between 2022 and 2023, about 15 years of expected waiting disappeared in 1.7 years. Forecasts that keep being wrong in the same direction, too slow, are what this part looks for, but surveys about a distant year are only a hint, not the score.</p>
+<p>This part cannot be scored yet. Scoring it needs old predictions of the measure in part A set against what then happened, to see how far ahead forecasts still beat the simplest guess, that the trend carries on. Nobody has collected that record, and it can only be scored once the predicted dates have passed. The nearest evidence is the surveys of AI researchers in the section above. If their forecasts had been right, the year they expect would have stood still while time passed. Instead it jumped closer: between 2023 and 2024, about 6 years of expected waiting disappeared in 1.2 years. Forecasts that keep being wrong in the same direction, too slow, are what this part looks for, but surveys about a distant year are only a hint, not the score.</p>
 <details><summary>The surveys, the steps between them, and the betting odds for comparison</summary>
 <table class="data"><thead><tr><th>survey</th><th>even-odds year</th><th>years away at the time</th><th>source</th></tr></thead><tbody>
 <tr><td>2016-01-01</td><td>2061</td><td>45.0</td><td><a href="https://ar5iv.labs.arxiv.org/html/1705.08807" title="row aiimpacts-2016-hlmi50">source</a></td></tr>
 <tr><td>2022-01-01</td><td>2060</td><td>38.0</td><td><a href="https://arxiv.org/html/2401.02843" title="row aiimpacts-2022-hlmi50">source</a></td></tr>
 <tr><td>2023-10-01</td><td>2047</td><td>23.3</td><td><a href="https://arxiv.org/html/2401.02843" title="row aiimpacts-2023-hlmi50">source</a></td></tr>
+<tr><td>2024-12-01</td><td>2042</td><td>17.1</td><td><a href="https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf" title="row aiimpacts-2024-hlmi50">source</a></td></tr>
 </tbody></table>
 <table class="data"><thead><tr><th>step</th><th>years of real time</th><th>change in years away</th><th>years closer per year, beyond the passage of time</th></tr></thead><tbody>
 <tr><td>2016 to 2022-01-01</td><td>6.0</td><td>-7.0</td><td>+0.2</td></tr>
 <tr><td>2022 to 2023-10-01</td><td>1.7</td><td>-14.7</td><td>+7.4</td></tr>
+<tr><td>2023 to 2024-12-01</td><td>1.2</td><td>-6.2</td><td>+4.3</td></tr>
 </tbody></table>
 <p>Betting odds on Manifold for "AGI created and publicly announced before 2030", for comparison only (a price people bet at, not a survey):</p>
 <table class="data"><thead><tr><th>date</th><th>odds</th><th>source</th></tr></thead><tbody>
@@ -305,18 +321,20 @@ figure.fig { border-radius: 0; }
 <tr><td>2025-12-07</td><td>36%</td><td><a href="https://manifold.markets/RemNi/will-we-get-agi-before-2030" title="row manifold-agi2030-2025-12-07">source</a></td></tr>
 <tr><td>2026-09-30</td><td>53%</td><td><a href="https://manifold.markets/RemNi/will-we-get-agi-before-2030" title="row manifold-agi2030-2026-09-30">source</a></td></tr>
 <tr><td>2026-10-16</td><td>49%</td><td><a href="https://manifold.markets/RemNi/will-we-get-agi-before-2030" title="row manifold-agi2030-2026-10-16">source</a></td></tr>
+<tr><td>2026-10-19</td><td>50%</td><td><a href="https://manifold.markets/RemNi/will-we-get-agi-before-2030" title="row manifold-agi2030-2026-10-19">source</a></td></tr>
 </tbody></table>
 </details>
 
 <h3 id="leg-c">C. Is AI doing the work of improving AI?</h3>
 <p><em>The idea, from the mathematician I. J. Good: once machines do the work of making machines better, progress feeds on itself.</em></p>
-<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it. At the pace of its first 6 months (1% to 26%), the share would reach half in about 6 months if it rose steadily, and in about 1 month if it kept multiplying; two readings are a thin basis for either.</p>
+<p>Nobody outside the AI companies can measure how much of the work of improving AI is now done by AI, so what exists is what the companies say about themselves. Anthropic, which makes the Claude AI systems, reports what share of its AI research work its own AI leads, as judged by that AI. That is the figure scored, and it would count at half. Google says about three-quarters of its new computer code is written by AI, but that covers all its code, not its research, so it is not scored. Anthropic also says its AI takes part in more than 90% of its research work, a lower bar than leading it. Its figure that its AI wrote more than 80% of the code it added to its software, as of May 2026, counts code, not research, so like Google's it is in the table but not scored. At the pace of its first 6 months (1% to 26%), the share would reach half in about 6 months if it rose steadily, and in about 1 month if it kept multiplying; two readings are a thin basis for either.</p>
 <figure class="fig"><a href="leg-c-self-reports.png" title="Open the chart full size"><img src="leg-c-self-reports.png" alt="The share of Anthropic's AI research work led by its own AI: under 1% in February 2026 and 26% in August 2026, against a line at one half"></a>
 <figcaption>Anthropic gave its February figure as "under 1%". Every statement, including Google's, is in the table below.</figcaption></figure>
 <details><summary>What the companies said</summary>
 <table class="data"><thead><tr><th>date</th><th>what was measured</th><th>figure</th><th>source</th></tr></thead><tbody>
 <tr><td>2026-02-01</td><td>share of Anthropic&#x27;s AI research and development work that Claude &#x27;leads&#x27; (R&amp;D Automation Index, prototype)</td><td>1% (upper bound)</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development" title="row anthropic_institute-2026-02-rd-leads">source</a></td></tr>
 <tr><td>2026-04-24</td><td>share of Google&#x27;s new code that is AI-generated and approved by engineers (company self-report)</td><td>75%</td><td><a href="https://www.semafor.com/article/04/24/2026/google-ceo-says-75-of-companys-new-code-is-ai-generated" title="row google-2026-04-code-share">source</a></td></tr>
+<tr><td>2026-05-01</td><td>share of the code merged into Anthropic&#x27;s codebase that was authored by its own AI model (company self-report)</td><td>80% (lower bound)</td><td><a href="https://www.anthropic.com/institute/recursive-self-improvement" title="row anthropic_institute-2026-05-code-share">source</a></td></tr>
 <tr><td>2026-08-01</td><td>share of Anthropic&#x27;s AI research and development work that Claude &#x27;leads&#x27; (R&amp;D Automation Index, prototype)</td><td>26%</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development" title="row anthropic_institute-2026-08-rd-leads">source</a></td></tr>
 <tr><td>2026-08-01</td><td>share of Anthropic&#x27;s AI research and development work at or above the level where Claude &#x27;collaborates&#x27; (R&amp;D Automation Index, prototype)</td><td>90% (lower bound)</td><td><a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development" title="row anthropic_institute-2026-08-rd-collaborates">source</a></td></tr>
 <tr><td>2026-08-09</td><td>share of the work of building an early-2026 frontier model that AI does today, median estimate of Anthropic staff (internal poll, self-report)</td><td>51%</td><td><a href="https://www.anthropic.com/research/ai-expectations-gap" title="row anthropic_institute-2026-08-staff-estimate-ai-share">source</a></td></tr>
@@ -410,15 +428,16 @@ figure.fig { border-radius: 0; }
 <section class="section prose" id="method">
 <h2>Method and data</h2>
 <p>Everything on this page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. This page is the plain account of the same material.</p>
+<p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, a better search is added automatically and run for everyone from the next week, not only for that person; searches are only ever added, and each one is listed on <a href="/docs/amendments#searches-added-from-tips">the changelog</a> with its date and the tip that prompted it. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
 <p>I wrote the rules for finding and sorting statements, and I decided every rule and every line of the test; Claude, an AI model made by Anthropic, did the searching and sorting by those rules. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
-<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-18 (1877bbc). https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on 8 October 2026; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+<p class="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of 2026-10-21 (fbb5fa0). https://agizeitgeist.com. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on 8 October 2026; <a href="/docs/singularity-entry-definition#record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>
 </div>
 <aside class="rail">
 <h4>On this page</h4>
 <nav class="toc"><a href="#belief" class="">The current zeitgeist</a><a href="#singularity" class="">Are we in the singularity?</a><a href="#leg-a" class="d3">A. The pace</a><a href="#leg-b" class="d3">B. Forecasts</a><a href="#leg-c" class="d3">C. AI doing research</a><a href="#leg-d" class="d3">D. The economy</a><a href="#owed" class="d3">Not finished yet</a><a href="#method" class="">Method and data</a></nav>
 <h4 class="rail-sec">Use the data</h4>
-<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/data/">What each file holds</a> · version 1877bbc</p>
+<p class="use"><a href="/data/">Download every table</a> (free to reuse with credit) · <a href="#method">How to cite</a> · <a href="/data/">What each file holds</a> · version fbb5fa0</p>
 </aside>
 </div>
 
@@ -426,8 +445,8 @@ figure.fig { border-radius: 0; }
 <footer class="site-footer"><div class="container footer-grid"><div>
 <span class="footer-brand">AGI Zeitgeist Tracker</span>
 <p class="footer-tag">A dated record of what people expect from artificial general intelligence, with every quote linked to its source, and a test of whether the singularity has begun.</p>
-<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/disagree/">Disagree with something</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
-<p class="footer-meta">© 2026 John Fredrickson. Last built 18 October 2026 (version 1877bbc) from 159 expert statements, 98 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-links"><a href="/data/">Download the data</a><a href="/#method">Method and data</a><a href="/disagree/">Feedback</a><a href="/docs/singularity-entry-definition">Definitions</a><a href="/docs/amendments">Changelog</a></p>
+<p class="footer-meta">© 2026 John Fredrickson. Last built 21 October 2026 (version fbb5fa0) from 811 expert statements, 99 measurements of AI and the economy and 395 community posts. Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a></p>
 </div></div></footer>
 <script>
