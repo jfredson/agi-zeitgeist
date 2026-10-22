@@ -1,0 +1,22 @@
+[claim]
+id = "2026-10-21-musk-optimus-video-not-pre-programmed"
+speaker_id = "musk"
+when = "2026-10-21"
+when_note = "Tesla's own upload of the call is dated 2026-10-21, the day of the call."
+occasion = "Tesla's third-quarter 2026 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=tFezqXBF-gw"
+source_locator = "26:36 to 27:29 into the video"
+checked_how = "Read YouTube's automatic English captions of the official upload on 2026-10-21; the quote is a verbatim run of those caption words."
+quote = "I want to release a video that's where it's Optimus doing things that um that are not pre-programmed"
+prediction = "Tesla may be ready to release, in 'a month or so', 'maybe a month or two', a video of Optimus doing things that are not pre-programmed, 'not like a canned demo'."
+kind = "timing"
+bar = "Tesla publicly releases, by 2026-12-21, a video of Optimus doing things that, in his words in the same passage, 'are not pre-programmed' and are 'not like a canned demo'."
+due = 2026
+due_date = 2026-12-21
+due_basis = "'maybe a month or two', said 2026-10-21; the later end, two months on, is 2026-12-21."
+status = "not_yet_due"
+search_ids = ["musk-claims-027"]
+notes = "Role at the time: founder and head of xAI; chief executive of Tesla. Hedged ('we may be ready'). Only Tesla can say whether what a video shows was pre-programmed, so any verdict will carry evidence_by = 'maker'; whether a video came out by the date is testable by anyone, so the claim is not marked unfalsifiable (flagged for John)."
+verify = "The captions mark a change of speaker at 26:36; the words are attributed to Musk from their content and from coverage. Listen to the recording to confirm before entry."
+arrives = "other"

@@ -4,6 +4,16 @@
 here is entered. No claim file, search-log row, table or page changes until John says yes. The
 draft entries below are written so that they can be copied in as they stand.**
 
+**Updated 2026-10-21, after John's reply.** John: "I think you are right on the optimus robot
+news fitting into the economy part of the AGI Zeitgeist tracker and perhaps there is a news article
+worth writing there to explain why and how we are integrating it." So the home is the economy part
+(part D), with the claims ledger for the dated promises. Section 2b below is superseded by the
+proposed amendment A33 (`docs/amendments/proposed-2026-10-21-a33-robots-beside-the-economy-part.md`):
+measured counts of robots doing paid work are shown in a table beside part D, and the score is
+unchanged. The draft news post is `docs/news/drafts/2026-10-21-tesla-starts-making-optimus-how-the-tracker-counts-robots.md`.
+The three claims and the two dated notes are now real files on this branch, and they pass
+`scripts/validate.py`; merging enters them.
+
 John's question (2026-10-21): people are discussing Tesla's earnings call, which reportedly says
 Optimus humanoid robots are entering production at its Fremont factory. Where does this kind of
 progress fit in the tracker family, or is it a new area worth tracking?
@@ -155,7 +165,7 @@ wanted it shown beside part D (shown, not scored, as part C does with company co
 
 - **A count made by someone other than the maker**, of robots doing paid work for a customer
   outside the maker's own company: a trade body's census (the
-  [International Federation of Robotics](https://www.ifr.org/worldrobotics/report-2025) counts
+  [International Federation of Robotics](https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years) counts
   industrial robots installed each year, 542,000 in 2024, but does not yet count humanoids
   separately), a government survey, or a regulator's register.
 - **A customer's own published figures**, such as hours worked or tasks done by robots in its
