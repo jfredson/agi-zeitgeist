@@ -484,9 +484,13 @@ TAGLINE = ("A dated record of what people expect from artificial general intelli
 # Labels ruled by John, 2026-10-08.
 # Short handles (tracker pattern rule 4.7, ruled for this site by John on 2026-10-18): one word per page, so the
 # bar holds one row on laptop and tablet widths; the full names stay as the sections' own headings.
-NAV_PRIMARY = [("/#belief", "Zeitgeist"), ("/#singularity", "Singularity"), ("/claims/", "Claims"), ("/#method", "Method"), ("/news/", "News")]  # "Claims": amendment A27; News: tracker pattern rule 4.10, John 2026-10-18
+# Simplified on 2026-10-21 (tracker pattern rule 4.21, ruled by John that day): five pages a reader would come
+# for, then Family beside the theme switch. This site gets no About page: it has no story page, and its method
+# is a section of the home page, so Method stays in the bar and points there. Definitions and Changelog left
+# the bar for the footer, where they were already linked.
+NAV_PRIMARY = [("/#belief", "Zeitgeist"), ("/#singularity", "Singularity"), ("/claims/", "Claims"), ("/news/", "News"), ("/#method", "Method")]  # "Claims": amendment A27; News: tracker pattern rule 4.10
 # "Family" ends the lighter tier on every tracker and links to the family's Projects page (John, 2026-10-17; tracker pattern rule 4.9).
-NAV_SECONDARY = [("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog"), ("https://sentient-horizons.com/projects/", "Family")]
+NAV_SECONDARY = [("https://sentient-horizons.com/projects/", "Family")]
 FOOTER_LINKS = [("/data/", "Download the data"), ("/#method", "Method and data"), ("/disagree/", "Feedback"),
                 ("/docs/singularity-entry-definition", "Definitions"), ("/docs/amendments", "Changelog")]
 
