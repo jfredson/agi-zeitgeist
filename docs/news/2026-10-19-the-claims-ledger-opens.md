@@ -23,7 +23,7 @@ Moments like that are why I now keep a record of what the industry's leaders say
 
 ## Two voices
 
-I built this tracker to follow the mood of the time around AGI and the singularity, the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with ([the home page](/)). Two kinds of people shape that mood. One is the long-time thinkers, academics and writers who have argued about it for decades. The other is the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are worth hearing. The thinkers give the long view; the leaders are the ones making it happen, and what they say is the clearest sign of what the industry expects right now.
+I built this tracker to follow the mood of the time around AGI and the singularity, the idea that machines will one day get smarter so quickly that the world changes faster than anyone can keep up with ([the home page](/)). Two kinds of people shape that mood. One is the long-time thinkers, academics and writers who have argued about it for decades. The other is the people now running the companies that build it, whose dates tend to run ahead of everyone else's. Both are worth hearing. The thinkers give the long view; the leaders are the ones making it happen, and what they say is the clearest sign of what the industry expects right now.
 
 ## What the ledger does
 

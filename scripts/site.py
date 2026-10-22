@@ -1307,7 +1307,7 @@ def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
 <p class="shares">{esc(ytl["_sentence"])}</p>
 <p class="eyebrow eyebrow-verdict">Are we in the singularity?</p>
 <h1><span class="verdict">{answer}</span> Four things would all have to be true, and stay true for a year. Today none of them is.</h1>
-<p class="lede">The singularity is the idea that machines will one day get smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
+<p class="lede">The singularity is the idea that machines will one day get smarter so quickly that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI: a machine that can do most of the thinking work a person can. This site checks whether the singularity has started, and records when people expect AGI.</p>
 <p class="kicker">The four pillars of the singularity</p>
 <div class="conds">{rows}</div>
 <p class="fresh">Each bar shows how far that measure has come since {sc['reference_year']} toward the line where it would count.</p>

@@ -12,7 +12,7 @@ sources:
     url: https://agizeitgeist.com/docs/amendments
 ---
 
-For decades people have argued about whether machines will one day outrun us. The singularity is the name for that moment: machines getting smarter so fast that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI, a machine that can do most of the thinking work a person can. Some say it is decades away, some say it is already starting, and the trouble is agreeing on what would count as an answer.
+For decades people have argued about whether machines will one day outrun us. The singularity is the name for that moment: machines getting smarter so quickly that the world changes faster than anyone can keep up with. The step before it is artificial general intelligence, or AGI, a machine that can do most of the thinking work a person can. Some say it is decades away, some say it is already starting, and the trouble is agreeing on what would count as an answer.
 
 I am John Fredrickson, and I built this site, the AGI Zeitgeist Tracker, to follow that argument. "Zeitgeist" is a German word for the mood of a time: what people are saying and what they expect. The site records what two groups have said about AGI, with every quote dated and linked to where it was said. One is the academics and writers who have talked about this for decades. The other is the people who run the AI companies, who are actually building it and who tend to run well ahead of the evidence with their predictions. Both belong in the picture, and the point is to see how the talk has moved, not to score anyone.
 
