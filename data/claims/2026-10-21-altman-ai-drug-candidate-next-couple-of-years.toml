@@ -1,0 +1,20 @@
+[claim]
+id = "2026-10-21-altman-ai-drug-candidate-next-couple-of-years"
+speaker_id = "altman"
+when = "2026-10-21"
+when_note = "Upload date of the interview on Matthew Berman's YouTube channel, from the video's metadata."
+occasion = "Interview with Matthew Berman, 'Sam Altman: RSI, AI Consciousness, OpenAI's New Hardware, Compute, and more!' (Matthew Berman's YouTube channel)"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=3gXLmy7DK_4"
+source_locator = "about 02:27 to 02:31, chapter 'When Will AI Discover New Treatments?'"
+checked_how = "Read YouTube's automatic English captions of the interviewer's upload on 2026-10-22 (yt-dlp), as a run of words; not checked against a second transcript."
+quote = "I would hope we have the candidate for that in the next couple of years for the first like really major thing."
+prediction = "He hopes that within about two years AI will have discovered a candidate for curing or treating a major disease, one that then has to go through testing; he says the drug approval process itself will take longer."
+kind = "capability"
+bar = "His words in the same answer: by 2028-12-31, a candidate for 'curing or treating a major disease', discovered by AI, is publicly named as ready to go through testing. Approval is not part of the test: he set it aside ('the FDA process is going to take a while')."
+due = 2028
+due_basis = "'in the next couple of years', said 2026-10-21, is October 2028; judged at 2028-12-31, as the ledger reads 'couple of years' in the Hassabis and Zuckerberg claims."
+status = "not_yet_due"
+search_ids = ["altman-claims-028"]
+from_tip = true
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. 'I would hope' is a hedge, kept in the prediction and scored at face value. He does not say the candidate will come from OpenAI; the answer follows his point that what worked for math 'is going to work for biology'. Judgement call, flagged for John: 'the first like really major thing' suggests he means something beyond AI-assisted drug candidates already in testing before he spoke; whether any earlier candidate already meets the plain reading of the test has not been checked here. Compare 2024-02-23-hassabis-ai-designed-drugs-in-clinic-couple-of-years and 2026-09-08-zuckerberg-ai-starts-designing-treatments."
