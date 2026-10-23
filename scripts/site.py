@@ -474,6 +474,9 @@ def load_thresholds():
 # theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
 # footer ending "A Sentient Horizons project." (linking to the family's Projects page, John 2026-10-17) with the attribution line "© year John Fredrickson. provenance. licence."
 # (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
+# Bump when the icon set changes, so browsers that keep their own copy of the icon (Safari above
+# all) fetch the new one (2026-10-23, family-wide on John's word). The same tag is in site/site.webmanifest.
+ICON_VERSION = "2"
 SITE_NAME = "AGI Zeitgeist"
 SITE_TITLE = "AGI Zeitgeist Tracker"
 # The question the headline number answers (John, 2026-10-18); "Are we in the singularity?" sits
@@ -834,12 +837,12 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{SITE_URL}{esc(preview)}">
 <link rel="alternate" type="application/rss+xml" title="AGI Zeitgeist Tracker · News" href="/news/feed.xml">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="/favicon.svg?v={ICON_VERSION}" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v={ICON_VERSION}">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v={ICON_VERSION}">
+<link rel="icon" href="/favicon.ico?v={ICON_VERSION}" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v={ICON_VERSION}">
+<link rel="manifest" href="/site.webmanifest?v={ICON_VERSION}">
 <link rel="stylesheet" href="/shell.css">
 <link rel="stylesheet" href="/skin.css">
 <style>{SITE_CSS}</style>
