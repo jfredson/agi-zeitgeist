@@ -883,8 +883,8 @@ def check_added_searches(tables):
         if not valid_date(r["added_on"], "day"):
             err(f, i, f"added_on {r['added_on']!r} is not a valid YYYY-MM-DD date")
         name = r["search_name"].strip()
-        if not name or name in names or name in {"D1", "D2", "D3", "Y1", "Y2", "Y3"}:
-            err(f, i, f"search_name {name!r} must be new and unique (not D1 to D3 or Y1 to Y3)")
+        if not name or name in names or name in {"D1", "D2", "D3", "Y1", "Y2", "Y3", "V1"}:
+            err(f, i, f"search_name {name!r} must be new and unique (not D1 to D3, Y1 to Y3 or V1)")
         names.add(name)
         if "<name>" not in r["query"]:
             err(f, i, "the query must be worded for any person, with <name> where the person's name goes")

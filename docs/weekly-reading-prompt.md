@@ -162,7 +162,13 @@ person, `part` `"panel"`, `speaker_id` the person.
 5. Their own outlets: the blog, newsletter, site or channel their earlier search-log rows list as
    "own outlet" (`grep -i "own outlet" data/search_log.csv | grep "^<speaker_id>"`), fetched. A
    person with none listed gets one search for a personal site or newsletter, and `found` says so.
-6. Every search in `data/added_searches.csv`, in file order, with `<name>` and `<year>` filled in:
+6. V1 `"<name>" interview <year>`, limited to youtube.com (the search tool's domain filter, or
+   `site:youtube.com` where it has none): the video search, added 2026-10-24 by amendment A35.
+   A result counts only if the person is heard speaking in the recording and the channel is the
+   person's, the host's or outlet's, the event organiser's, or a news channel carrying the event
+   whole. A channel that narrates over or re-cuts clips is a report: log it, and use it only to
+   find the original. Name it in `what_found` as "V1: ...".
+7. Every search in `data/added_searches.csv`, in file order, with `<name>` and `<year>` filled in:
    searches added because the regular searches missed a tip, run for every person from the week
    after they were added (amendment A32, item 4). Name the added search in `what_found` (for
    example "Y4: ...").
@@ -172,7 +178,7 @@ Up to two more fetches per person to read a candidate. Log every one in step 5 w
 what `scripts/panel_status.py` reads to say through what date each person was searched.
 
 **Keep the run within one session.** Hand the people to subagents in batches of about eight, in
-file order, each batch told to run the five searches per person and return, for every search,
+file order, each batch told to run the six searches per person and return, for every search,
 the query, where it ran and a one-line result, plus any candidate: a source (address, date,
 speaker) where the person speaks about AI's possibility, timing, present capability,
 self-improvement or consequences. The subagents do not write files. You log and decide.

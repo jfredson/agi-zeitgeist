@@ -178,7 +178,8 @@ disagreement in the notes.
 On 2026-10-21 I ruled that every tip I send counts at once, and that fairness comes instead from
 searching every person on the panel every week (amendment A32). Part 4 is that search. Every
 week, for each of the 37 panel members and the three ledger-only industry leaders: their three
-fixed year searches for the current year (Y1 to Y3), one search for the past week's news, and
+fixed year searches for the current year (Y1 to Y3), the video search (V1, a search of YouTube for
+their interviews that year, added 2026-10-24 by amendment A35), one search for the past week's news, and
 their own outlets, plus every search in `data/added_searches.csv` (searches added, automatically
 and for everyone, after the regular searches missed a tip), every search logged in `data/search_log.csv` in the same columns a full pass
 uses. A new statement found this way is taken in by the tip intake steps (`docs/tip-intake.md`),

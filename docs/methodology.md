@@ -21,10 +21,13 @@ These come from version 1 and still apply; the agent implementation entry in
   intelligence"`, D3 `"<name>" "human-level" AI when`; then for every year from the
   first documented year to the present, Y1 `"<name>" AGI <year>`, Y2 `"<name>"
   "human-level" intelligence <year>`, Y3 `"<name>" superintelligence OR singularity OR
-  "self-improving" <year>`; plus the person's own outlets. Quiet years are logged as
+  "self-improving" <year>`, and V1 `"<name>" interview <year>` limited to youtube.com
+  (the video search, added by amendment A35 on 2026-10-24); plus the
+  person's own outlets. Quiet years are logged as
   rows with what_found "quiet year: no qualifying statement found".
 - **Busy years:** more than ten qualifying statements → keep every timeline-bearing one
-  and every one on the "now" question (A26), sample the rest at every third by date, tag
+  and every one on the "now" question (A26, reworded by A34 to cover `present_capability`
+  coded `claimed` or `demonstrated`), sample the rest at every third by date, tag
   `sampled`, log the sampling. Statements are counted by passage: each distinct passage
   of one essay, talk or interview is its own statement (decided 2026-10-18, A28).
 - **events.csv** fields: event_id, date, date_precision, event_type (`open_letter`,
