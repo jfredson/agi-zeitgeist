@@ -739,7 +739,7 @@ def render_news(built, commit):
                            ('<p class="sources">Sources: %s.</p>' % src_html if srcs else "") +
                            "</section>")
         card = f"/news/{p['slug']}-card.png" if (out_root / f"{p['slug']}-card.png").exists() else None
-        follow = '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a>.</p>'
+        follow = '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a>.</p>'
         body_html = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
         page = shell(f"{fm.get('title', p['slug'])} | {SITE_TITLE}", fm.get("summary", ""), body_html, built, commit,
                      canonical_path=f"/news/{p['slug']}/", eyebrow=f"News · {long_date(fm['date'])} · {kind}", h1=fm.get("title", p["slug"]),
@@ -758,7 +758,7 @@ def render_news(built, commit):
     else:
         items += '<p class="empty">No post yet. The first is written the day something of note moves.</p>'
     foot = ('<p class="news-foot">Every change to the method and the record, including the ones no post explains, is in <a href="/docs/amendments">the changelog</a>. '
-            'The weekly readings are in <a href="https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings" rel="noopener">the public record</a>. </p>' + '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a>.</p>')
+            'The weekly readings are in <a href="https://github.com/jfredson/agi-zeitgeist/tree/main/data/readings" rel="noopener">the public record</a>. </p>' + '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a>.</p>')
     lede = ("A post is written only when a weekly reading or a ruling changes something a reader would want explained: a new measurement on one of the four parts, "
             "the headline moving, a claim added to the ledger or settled, the method changed. Each post says what happened, where the record is, what it changes on this site, and what it does not mean.")
     page = shell(f"News | {SITE_TITLE}", "What moved the test, and why: one post for each change a reader would want explained.",
@@ -863,7 +863,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Andrew Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence. Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by John Andrew Fredrickson, a Sentient Horizons project, <a href="https://agizeitgeist.com/">agizeitgeist.com</a>.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a></p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
@@ -1006,7 +1006,7 @@ def disagree_page(built, commit):
 <h2>What happens to it</h2>
 <p>I rule on it. Some disagreements change the record; some are answered and left as they are. Either way the issue records the ruling and the reason.</p>
 <p>A corrected statement gets a dated note in its row that cites the issue; the search that found it stays in the search log. A changed measure, line or rule is a dated amendment with its reason, never a quiet edit, because the test's lines were fixed before the numbers were looked at. A new reading is a row added with its source. The expert panel is fixed, so that it cannot drift toward the story; adding or removing a person is an amendment too.</p>
-<p>The repository is at <a href="{REPO}" rel="noopener">github.com/jfredson/agi-zeitgeist</a>. The data is free to reuse with credit (CC BY 4.0) and the scripts are under the MIT licence; <a href="/data/">how to cite</a> is on the data page.</p>
+<p>The repository is at <a href="{REPO}" rel="noopener">github.com/jfredson/agi-zeitgeist</a>. Readers also talk it over at <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a>: say which number or claim you think is wrong and link a source; a ruling still goes through an issue. The data is free to reuse with credit (CC BY 4.0) and the scripts are under the MIT licence; <a href="/data/">how to cite</a> is on the data page.</p>
 </section>"""
     out = SITE / "disagree"
     out.mkdir(exist_ok=True)
