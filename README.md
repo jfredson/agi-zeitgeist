@@ -80,7 +80,7 @@ streams.
 
 ## How to cite
 
-> Fredrickson, J. (2026). *AGI Zeitgeist Tracker* [dataset]. Version of
+> Fredrickson, J. A. (2026). *AGI Zeitgeist Tracker* [dataset]. Version of
 > <commit date>, commit <short hash>. https://agizeitgeist.com
 
 Cite a specific commit: the data changes as rows are added, and a commit pins the
@@ -89,7 +89,8 @@ version you used. To cite a single statement, give its `statement_id`
 
 **Licence.** The data in `data/` is under Creative Commons Attribution 4.0 (CC BY 4.0,
 see [`LICENSE-DATA`](LICENSE-DATA)): reuse it freely, with credit. The scripts in
-`scripts/` are under the MIT licence (see [`LICENSE`](LICENSE)). When you reuse the
+`scripts/`, which also build the site, are under the MIT licence (see [`LICENSE`](LICENSE));
+the site's text, like the data, is under CC BY 4.0. When you reuse the
 data, cite it as above, with the commit you used and a link to the licence, and please
 credit it as: *AGI Zeitgeist Tracker*, by John Andrew Fredrickson, a Sentient Horizons
 project, https://agizeitgeist.com/ (CC BY 4.0).
