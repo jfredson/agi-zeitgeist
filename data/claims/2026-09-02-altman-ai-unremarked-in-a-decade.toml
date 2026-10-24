@@ -1,0 +1,21 @@
+[claim]
+id = "2026-09-02-altman-ai-unremarked-in-a-decade"
+speaker_id = "altman"
+when = "2026-09-02"
+when_note = "Upload date of DRM News's video of the session, from the video's metadata; the event date is not given in the video or its description."
+occasion = "Fireside chat with U.S. Commerce Secretary Howard Lutnick at the G20 Innovation Ministerial, The Carolina Inn, Chapel Hill (DRM News's video 'FULL INTERVIEW: Sam Altman on OpenAI, New AI Model, Governments and Global Growth at G20')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=cRX84IvyVNU"
+source_locator = "about 20:30 to 20:50"
+checked_how = "Two automatic transcripts checked on 2026-10-24: YouTube's automatic English captions (yt-dlp, archived in sources/manifest.csv) and a local Whisper large-v3-turbo transcription of the audio; the quoted words are in both, compared ignoring case, punctuation and filler sounds. Nobody listened."
+quote = "my prediction is we won't be talking about AI as much as we do in a decade from now because we'll just expect it everywhere"
+statement_id = "altman-2026-53"
+prediction = "In ten years people will talk about AI less than they do now, because it will be in everything they use, as electricity is."
+kind = "deployment"
+bar = "None an outsider could run: 'talking about AI as much as we do' names no measure (news coverage, searches, speech), and the words give no amount by which it would fall."
+due = 2036
+due_basis = "'a decade from now', said 2026-09-02, is 2036-09-02; judged at 2036-12-31."
+status = "unfalsifiable"
+verdict_why = "The words give no measure of how much people talk about AI and no size of the fall, so any count chosen now would be a test he did not set. Decided at entry."
+search_ids = ["altman-claims-032", "altman-134"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. He compares AI with electricity: used everywhere and hardly thought about. The next sentence, 'a kid growing up today will never be smarter than AI', carries no date or length of time and is left out (altman-claims-033)."

@@ -1,0 +1,21 @@
+[claim]
+id = "2026-03-11-altman-more-thinking-capacity-in-data-centres-late-2028"
+speaker_id = "altman"
+when = "2026-03-11"
+when_note = "Upload date of DRM News's video of the session, from the video's metadata; the summit date is not given in the video or its description."
+occasion = "Conversation with a BlackRock host at BlackRock's U.S. Infrastructure Summit, Washington, D.C. (DRM News's video 'FULL INTERVIEW: OpenAI CEO Sam Altman Speaks on AI Scaling and Infrastructure Need')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=sTnl8O_BuuE"
+source_locator = "about 04:20 to 04:54"
+checked_how = "Two automatic transcripts checked on 2026-10-24: YouTube's automatic English captions (yt-dlp, archived in sources/manifest.csv) and a local Whisper large-v3-turbo transcription of the audio; the quoted words are in both, compared ignoring case, punctuation and filler sounds. Nobody listened."
+quote = "more of the world's cognitive capacity inside of data centers than outside of them? ... maybe that could happen by like late 2028"
+statement_id = "altman-2026-36"
+prediction = "Asked how close AGI is, he sets the word aside and names a threshold instead: more of the world's thinking capacity inside data centres than outside them, which he says maybe could happen by late 2028, with 'huge error bars' and 'I could be totally wrong'."
+kind = "capability"
+bar = "None an outsider could run: he gives no measure of 'the world's cognitive capacity', so there is no count of how much of it sits inside data centres and how much in people."
+due = 2028
+due_basis = "'by like late 2028'; judged at 2028-12-31."
+status = "unfalsifiable"
+verdict_why = "The words name a quantity, thinking capacity, that he does not define and that no one counts, so no record could show it crossing. Decided at entry."
+search_ids = ["altman-claims-030", "altman-131"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. The quote differs from the statement row altman-2026-36's quote: it leaves out the hedges between the question and the date, to stay within 25 words. The hedges are his: 'maybe it could happen', 'Huge error bars, I could be totally wrong'. Entered as a capability claim, not a forecast of AGI or beyond: it is a total amount of capacity, not a system better than people, so it carries no 'arrives' and is not drawn. His second threshold in the same answer, when a chief executive, a president or a Nobel-winning scientist cannot do their job without heavy use of AI, 'may take a little bit longer, but probably not a lot longer', names no length and is left out (altman-claims-033). Added on John's ruling of 2026-10-24 ('Yes', through the master session) to enter the five dated forecasts flagged in pull request 47."

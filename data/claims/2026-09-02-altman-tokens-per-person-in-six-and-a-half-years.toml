@@ -1,0 +1,19 @@
+[claim]
+id = "2026-09-02-altman-tokens-per-person-in-six-and-a-half-years"
+speaker_id = "altman"
+when = "2026-09-02"
+when_note = "Upload date of DRM News's video of the session, from the video's metadata; the event date is not given in the video or its description."
+occasion = "Fireside chat with U.S. Commerce Secretary Howard Lutnick at the G20 Innovation Ministerial, The Carolina Inn, Chapel Hill (DRM News's video 'FULL INTERVIEW: Sam Altman on OpenAI, New AI Model, Governments and Global Growth at G20')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=cRX84IvyVNU"
+source_locator = "about 25:03 to 26:09"
+checked_how = "Two automatic transcripts checked on 2026-10-24: YouTube's automatic English captions (yt-dlp, archived in sources/manifest.csv) and a local Whisper large-v3-turbo transcription of the audio; the quoted words are in both, compared ignoring case, punctuation and filler sounds. Nobody listened. The captions write '6 and 1/2' where Whisper writes 'six and a half'; the quote uses the words. After '100 billion' only Whisper has 'tokens a month', so the quote stops there."
+quote = "in another six and a half years, the average per capita use of tokens will go up to, let's round it down, to 100 billion"
+prediction = "Projecting forward the growth he says happened from the start of 2020 to the middle of 2026 (average use per person on Earth from about zero to 100,000 tokens a month), which he calls 'a reasonable thing to do', average use of AI per person on Earth reaches about 100 billion tokens a month in another six and a half years. He says tokens are a poor unit, used as shorthand for 'amount of intelligence'."
+kind = "deployment"
+bar = "By 2033-12-31, a published figure, from OpenAI or from anyone counting AI use across the world, shows average use of at least 100 billion tokens a month per person on Earth (world use in a month divided by world population). A figure for one company's users only, or per user rather than per person on Earth, does not meet it."
+due = 2033
+due_basis = "'in another six and a half years', said 2026-09-02, is 2033-03-02; judged at 2033-12-31."
+status = "not_yet_due"
+search_ids = ["altman-claims-032", "altman-134"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Admitted as a forecast of how much AI will be used, which the method counts as deployment ('a billion users by Y'), not as a business forecast: he endorses the projection ('which seems like a reasonable thing to do to me') and does not call it a hypothetical. In the same breath he gives the heaviest single user at 100 trillion and at 100 quadrillion tokens a month, correcting himself both ways ('No, I was right. 100 trillion tokens a month. 100 quadrillion tokens a month.'); the two figures disagree and only a maker could know either, so the bar uses the average he gives once. His starting figures (100,000 tokens a month per person on Earth in mid-2026) are his own and not checked here. 'Let's round it down' is his. A count, if it comes, will most likely be a maker's, and the verdict will say so."
