@@ -90,8 +90,9 @@ version you used. To cite a single statement, give its `statement_id`
 **Licence.** The data in `data/` is under Creative Commons Attribution 4.0 (CC BY 4.0,
 see [`LICENSE-DATA`](LICENSE-DATA)): reuse it freely, with credit. The scripts in
 `scripts/` are under the MIT licence (see [`LICENSE`](LICENSE)). When you reuse the
-data, cite it as above, with the commit you used and a link to the licence:
-"AGI Zeitgeist Tracker by John Fredrickson, CC BY 4.0".
+data, cite it as above, with the commit you used and a link to the licence, and please
+credit it as: *AGI Zeitgeist Tracker*, by John Andrew Fredrickson, a Sentient Horizons
+project, https://agizeitgeist.com/ (CC BY 4.0).
 
 ## How to add a row
 
