@@ -1,0 +1,21 @@
+[claim]
+id = "2026-09-16-altman-technological-wonders-by-2030"
+speaker_id = "altman"
+when = "2026-09-16"
+when_note = "Upload date of Salesforce's video of the session, from the video's metadata."
+occasion = "Conversation with Marc Benioff at Dreamforce 2026 (Salesforce's video 'Marc Benioff & Sam Altman | Dreamforce 2026')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Bh5bJrrJ6xs"
+source_locator = "about 35:54 to 36:10"
+checked_how = "Read in the channel's uploaded English (US) captions (yt-dlp, archived in sources/manifest.csv) on 2026-10-24; a local Whisper large-v3-turbo transcription of the audio agrees except that it reads 'they'll be' for the captions' 'they will be'. Nobody listened."
+quote = "There is no doubt there will be more technological wonders between now and 2030 and they will be big ones"
+statement_id = "altman-2026-71"
+prediction = "Asked what AI will bring by 2030, he says the things he named at the last Dreamforce, AI discovering new science and curing disease, have 'started happening', and that there will be more technological wonders before 2030, 'big ones', 'some of the biggest ones in human history'."
+kind = "capability"
+bar = "None an outsider could run: 'technological wonders' and 'big ones' name nothing that a record could show arriving or failing to arrive."
+due = 2030
+due_basis = "'between now and 2030'; judged at 2030-12-31."
+status = "unfalsifiable"
+verdict_why = "No thing is named, only wonders and their size, so no dated record could settle it. Decided at entry."
+search_ids = ["altman-claims-031", "altman-135"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. The host's question named what Altman said at the previous Dreamforce, 'discovering new science, maybe curing a disease'; he says 'those things ... have started happening' and goes on to his hope for 2030, that people say their lives are much better and one-person companies thrive, a hope rather than a forecast."

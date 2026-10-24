@@ -1329,8 +1329,11 @@ transcript and each row coded a second time, blind. Redoing the every-third coun
 interview of 2026-10-21: the passages on coders (04:01, `altman-2026-07`) and on cures bought with
 human agency (42:44, `altman-2026-12`) are left out, and the passage on the gap between the most
 competitive people and everyone else (19:00, now `altman-2026-72`) comes in. That follows the
-written rule, every third by date across the year. The other reading, carrying on the count of
-2026-10-23 so that rows already published stay, is open for me to rule on.
+written rule, every third by date across the year. The other reading was to carry on the count of
+2026-10-23 so that rows already published stay. On 2026-10-24 the master session put the choice to
+me and I answered "Yes" to the written rule: the two rows are sampled out, as the search log
+records (`altman-136`), and they stay out of the record like any other passage the count leaves
+out.
 
 None of the new rows names a year for machines matching people at most thinking work, so the
 frontier-voices reading is the same before and after (builders 2029.5, everyone else 2032.75), and

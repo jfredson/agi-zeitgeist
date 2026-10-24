@@ -1,0 +1,20 @@
+[claim]
+id = "2026-09-16-altman-very-different-way-to-work-by-end-of-year"
+speaker_id = "altman"
+when = "2026-09-16"
+when_note = "Upload date of Salesforce's video of the session, from the video's metadata."
+occasion = "Conversation with Marc Benioff at Dreamforce 2026 (Salesforce's video 'Marc Benioff & Sam Altman | Dreamforce 2026')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Bh5bJrrJ6xs"
+source_locator = "about 31:58 to 32:32"
+checked_how = "Read in the channel's uploaded English (US) captions (yt-dlp, archived in sources/manifest.csv) on 2026-10-24, and found word for word in a local Whisper large-v3-turbo transcription of the audio. The captions have 'I would say by like by the end of this year'; the quote starts at 'by'. Nobody listened."
+quote = "by the end of this year, there's like a very different way that it'll be possible to work."
+statement_id = "altman-2026-70"
+prediction = "By the end of 2026 AI will make possible a very different way of working, the 'third phase' he describes in the same answer, though he says the world's inertia means it 'will take some number of years to filter through'."
+kind = "capability"
+bar = "By 2026-12-31, an AI product is generally available that does what he calls the third phase in the same answer: it is 'running for you all of the time, understanding your job', and 'proactively watching your Slack, or your email', acting on what it sees without being asked each time. A demonstration or a product open only to testers does not meet it. How widely it is used is not part of the test, since he says the change will take years to filter through."
+due = 2026
+due_basis = "'by the end of this year', said 2026-09-16; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["altman-claims-031", "altman-135"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. The bar takes his own description of the coming 'third phase' from earlier in the same answer (about 29:26 to 30:35), since 'a very different way that it'll be possible to work' names no test by itself; the agent's reading, flagged for John. He says 'we are on the precipice of this third phase'."
