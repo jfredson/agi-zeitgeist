@@ -863,7 +863,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
 <p class="footer-meta">© {year} John Andrew Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence. Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by John Andrew Fredrickson, a Sentient Horizons project, <a href="https://agizeitgeist.com/">agizeitgeist.com</a>.</p>
-<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a></p>
+<p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
 </body>
@@ -1625,6 +1625,7 @@ def about_page(sc, built, commit):
 <li><a href="#story">The story so far</a>, the main changes with their dates</li>
 <li><a href="/docs/amendments">The changelog</a>, every change in full, with its reason and who decided it</li>
 <li><a href="/disagree/">Feedback</a>, if something here is wrong</li>
+<li>To follow along or talk it over: <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a> and <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a></li>
 </ul>
 </section>
 {method_section(sc, built, commit)}
