@@ -1224,3 +1224,114 @@ Not decided here, and left for me:
 - whether driverless vehicles belong in this table or wait for a ruling of their own (they have
   the best outside counts, from regulators, but they are a large field);
 - whether the weekly reading should search for these rows, or a yearly pass is enough.
+
+## 2026-10-24: the "now" rule covers statements that point to evidence, and video interviews are searched
+
+Decided by: me, on the model's recommendation. Both came out of the intake of Sam Altman's
+interview with Matthew Berman (pull request 42, merged 2026-10-23). The intake flagged two things
+for me: that A26, read literally, would sample out two of his statements about today's systems
+because they were coded as the stronger form (search log `altman-123`), and that a trial search of
+YouTube found at least eight of his 2026 video interviews with no row in the record (search log
+`altman-120`). On 2026-10-24 the master session put both to me as recommendations and I answered
+"agreed".
+
+### A34. A26 protects statements coded "claimed or demonstrated"
+
+Applies to: A26, methodology version 2 section 3 ("Collection"), the busy-year line of
+`docs/methodology.md`, and step 4 of `docs/tip-intake.md`.
+
+Was (A26): in a busy year, all timeline-bearing statements are kept, and so are all statements
+that bear on the "now" question, meaning any whose `frame_primary` or `frames_present` includes
+`self_improvement`, or whose `present_capability` is coded `claimed`; the rest are sampled at a
+fixed interval, logged.
+
+Now: the same, with `present_capability` coded `claimed` **or `demonstrated`**. A statement in
+which the speaker says a capability exists today is kept whether or not they point to evidence
+for it.
+
+Why: the codebook (section 4) has two codes for "it exists now": `claimed`, when the speaker says
+so without pointing to evidence, and `demonstrated`, when they point to it. A26 named only the
+first. Its stated purpose is to keep the "now" question whole, and the stronger form of the claim
+is the one that question most needs. Read literally, A26 would have sampled out two of Altman's
+statements of 2026-10-21: that AI is "now ... figuring out very complicated, important new
+knowledge" (`altman-2026-05`), and that OpenAI's maths results are beyond "any model currently
+widely available" (`altman-2026-10`). The intake kept them on the reading that A26 meant both
+codes, and flagged that reading for me.
+
+Effect on the record: the two Altman rows stay as they are, now under the rule as written rather
+than a reading of it. A34 by itself changes nothing in the every-third count of 2026-10-23
+(`altman-123`); the count was redone the same day for the rows A35's first run added (below). The other busy years were sampled before this change (search log `lecun-133`,
+`sutskever-153`, `hassabis-words-12`; Amodei 2026 and Hassabis 2025 and 2026 left nothing out).
+Read by the model against the words quoted in those records, none of the eight passages left out
+there says a capability exists today and points to it, so none comes back. The codes those
+passages were given are not kept in the repository, so this is a reading of the quotes, not a
+check of codes. Nothing scored changes: statements never score a gauge.
+
+### A35. A standing video search, V1, joins the fixed searches
+
+Applies to: the fixed query set (`docs/methodology.md`, "Fixed query set for each panel member";
+methodology version 2 section 3), part 4 of the weekly reading (`docs/weekly-reading.md` and
+`docs/weekly-reading-prompt.md`), step 3 of `docs/tip-intake.md`, and `scripts/validate.py`.
+
+Was: each person is searched with three discovery queries (D1 to D3), three queries for each
+year (Y1 to Y3), their own outlets, and, since A32, any search added because the searches missed
+a tip (`data/added_searches.csv`). None of them looks at video pages on purpose. The three year
+queries are worded for articles that say "AGI", "human-level" or "superintelligence", so an hour
+of someone talking on camera is found only if a written report of it uses those words.
+
+Now:
+
+1. **The search.** V1 is `"<name>" interview <year>`, limited to youtube.com (the search tool's
+   domain filter, or `site:youtube.com` where the tool has none). It is part of the fixed set,
+   beside Y1 to Y3.
+2. **When it runs.** For every person on the panel and the three ledger-only industry leaders:
+   every week in part 4 of the weekly reading, for the current year, from the reading of
+   2026-10-26; at every full pass, for every year the pass covers; and at step 3 of every tip
+   intake. Every run is logged in `data/search_log.csv` like any other search, with "V1" named in
+   `what_found`. The first weekly run covers 2026 for everyone. Earlier years are searched at each
+   person's next full pass, not all at once now.
+3. **What counts from it.** A result counts only if the person is heard speaking in the
+   recording, and the channel is the person's own, the host's or outlet's, the event organiser's,
+   or a news channel carrying the event whole. A channel that narrates over clips or re-cuts them
+   is a report of the interview, not the interview: it is logged, and used only to find the
+   original. Everything else is the existing rules: the statements are found, coded and
+   double-coded as the collection does (tip intake steps 1, 2, 4 and 5); quotes are checked by two
+   automatic transcripts from separate programs (A29 item 4), or carry `asr_unverified`; the
+   transcripts are archived with a checksum in `sources/manifest.csv` and kept out of the
+   repository; and the busy-year rule (A26, as reworded by A34) applies to the person's year as a
+   whole. A row V1 finds is not a tip: the rule's own search found it.
+4. **Not an added search.** V1 is not a row of `data/added_searches.csv`. That file holds searches
+   added because the searches missed a tip, each tested on the tip it missed (A32 item 4). V1
+   did not find the tip that prompted it, so it comes in by this amendment instead. The validator
+   reserves the name, as it does D1 to D3 and Y1 to Y3.
+
+Why: leading voices now speak mostly in long recorded interviews (the reason given in A29), and
+the searches were built for articles. Run once as a trial on 2026-10-23, a YouTube search for
+Altman's 2026 interviews listed at least eight with no row in the record (`altman-120`). The gap
+is in how videos are searched, not in any one person, so the fix is a search for everyone.
+
+What it costs: one more search per person per week, about 40 searches, and the reading time of
+whatever it finds, which is most of the cost, since an interview is up to an hour of transcript.
+The weekly reading runs on my Claude plan, so it spends no API credits. Making the second
+transcript runs on this Mac and costs nothing.
+
+Effect on the record, from the first run (Altman, 2026, search log `altman-125` to `altman-136`):
+ten results; six are 2026 recordings of Altman speaking on a channel that counts, and all six were
+read in full (The Indian Express, 2026-02-20; BlackRock's infrastructure summit, 2026-03-11; the
+OpenAI Forum, 2026-04-07; TIME, 2026-09-01; the G20 meeting with Howard Lutnick, 2026-09-02;
+Dreamforce, 2026-09-16). Two results are clip or commentary channels; the original behind one of
+them, a podcast with David Senra, could not be found, so nothing from it is recorded. One result,
+from December 2025, looks like the original of a 2025 row now held only secondhand, and is left for
+his next full pass. The six videos give 73 coded rows; with Altman's 2026 now far past the busy-year
+line, every row with a timeline or on the "now" question is kept and the rest are sampled, so 58
+of them join the record (`altman-2026-14` to `altman-2026-71`), each quote checked against a second
+transcript and each row coded a second time, blind. Redoing the every-third count over the whole year changes two rows from the
+interview of 2026-10-21: the passages on coders (04:01, `altman-2026-07`) and on cures bought with
+human agency (42:44, `altman-2026-12`) are left out, and the passage on the gap between the most
+competitive people and everyone else (19:00, now `altman-2026-72`) comes in. That follows the
+written rule, every third by date across the year. The other reading, carrying on the count of
+2026-10-23 so that rows already published stay, is open for me to rule on.
+
+None of the new rows names a year for machines matching people at most thinking work, so the
+frontier-voices reading is the same before and after (builders 2029.5, everyone else 2032.75), and
+the site's statement count rises by 57. Nothing scored changes: statements never score a gauge.

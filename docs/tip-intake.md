@@ -90,8 +90,9 @@ Check `data/speakers.csv`:
 
 Run the person's fixed year queries for the statement's year (Y1 `"<name>" AGI <year>`,
 Y2 `"<name>" "human-level" intelligence <year>`, Y3 `"<name>" superintelligence OR
-singularity OR "self-improving" <year>`) plus a check of their own outlets, as the collection
-does. Log every search in `data/search_log.csv` with ids continuing the person's series.
+singularity OR "self-improving" <year>`), the video search (V1 `"<name>" interview <year>`
+limited to youtube.com, added 2026-10-24 by amendment A35), and every search in
+`data/added_searches.csv`, plus a check of their own outlets, as the collection does. Log every search in `data/search_log.csv` with ids continuing the person's series.
 
 Either way the rows count in every figure (A32). The search result decides only the notes:
 
@@ -136,7 +137,7 @@ session's proposal, in my words: "Yes, apply them automatically." (amendment A32
 Read the whole source. A candidate is any passage that bears on possibility, timing, present
 capability, self-improvement or consequences, under codebook section 0's unit rule and
 amendment A15's one-row-per-capability rule. Section 3's busy-year rule applies to the
-person's year as a whole, and amendment A26 keeps every statement on the "now" question.
+person's year as a whole, and amendment A26 (reworded by A34 on 2026-10-24) keeps every statement on the "now" question.
 Skip the cold-open montage of an episode when it repeats passages from the body; code the
 passage where it is said in full.
 
