@@ -472,7 +472,7 @@ def load_thresholds():
 # site's skin site/skin.css ("Gazette", ruled by John 2026-10-17: newsprint, ink, one red for the mark
 # and for links, a blue-grey for the gauge bars; light by default), the top bar with two tiers and the
 # theme toggle, the skin's backdrop (a broadsheet's column rules) on the home page only, and the five-line
-# footer ending "A Sentient Horizons project." (linking to the family's Projects page, John 2026-10-17) with the attribution line "© year John Fredrickson. provenance. licence."
+# footer ending "A Sentient Horizons project." (linking to the family's Projects page, John 2026-10-17) with the attribution line "© year John Andrew Fredrickson. provenance. licence."
 # (No "with Claude" in the line: John, 2026-10-08. Who did the sorting is said in the method section instead.)
 # Bump when the icon set changes, so browsers that keep their own copy of the icon (Safari above
 # all) fetch the new one (2026-10-23, family-wide on John's word). The same tag is in site/site.webmanifest.
@@ -821,7 +821,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<meta name="author" content="John Fredrickson">
+<meta name="author" content="John Andrew Fredrickson">
 <link rel="canonical" href="{SITE_URL}{esc(canonical_path)}">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
 <meta property="og:type" content="website">
@@ -862,7 +862,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <span class="footer-brand">{SITE_TITLE}</span>
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
-<p class="footer-meta">© {year} John Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence.</p>
+<p class="footer-meta">© {year} John Andrew Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence. Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by John Andrew Fredrickson, a Sentient Horizons project, <a href="https://agizeitgeist.com/">agizeitgeist.com</a>.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p><p class="footer-follow"><a href="https://x.com/SentHorizons" rel="noopener">Follow on X</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
@@ -1043,7 +1043,7 @@ def copy_data():
     first.sort(key=lambda f: list(main).index(f.relative_to(DATA).as_posix()))
     rest = [f for f in files if f not in first]
     body = (f'<div class="prose narrow"><p>Every table behind the site, as it stood when the site was last built. Each row carries a link to where its number came from. '
-            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>); how to cite is on <a href="/about/#cite">the About page</a>.</p>'
+            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>). Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by John Andrew Fredrickson, a Sentient Horizons project, <a href=\"https://agizeitgeist.com/\">agizeitgeist.com</a>. How to cite a version is on <a href="/about/#cite">the About page</a>.</p>'
             f'<h2>The main tables</h2><ul>{"".join(li(f, main[f.relative_to(DATA).as_posix()]) for f in first)}</ul>'
             f'<h2>Working files</h2><p>The rest are working files: the forum posts and how each of three AI systems sorted them in each trial run, '
             f'and the samples used to double-check the sorting of statements. They are kept so that every step can be checked; the plain account is on the <a href="/">home page</a>.</p>'
@@ -1649,7 +1649,7 @@ def method_section(sc, built, commit):
 <p>Everything on the home page is worked out from tables anyone can <a href="/data/">download</a>, and every row in those tables links to where it came from. What people said and expected is kept in <a href="/data/statements.csv">one set of tables</a>, and what the world actually did (how good AI got, what the companies reported, how the economy grew) in <a href="/data/world_measures.csv">another</a>; the two are never mixed. Every search that was run to find a quote is <a href="/data/search_log.csv">written down</a>, so that someone else can run it again. The working documents behind the site are published as they are written, in the project's own terms, for anyone checking the work: <a href="/docs/methodology-v2">the method</a>, <a href="/docs/codebook">the rules for sorting statements</a>, <a href="/docs/singularity-entry-definition">the rules of the test</a>, and <a href="/docs/amendments">every change, with its date and reason</a>. The home page is the plain account of the same material.</p>
 <p>Most statements are found by the same fixed searches, run for every person on the panel. Some I come across myself, in an interview or an article, and send in; these are taken in the same way as any other, coded by the same rules, and count in every figure, and each is marked "added from a tip" (<a href="/docs/amendments#added-from-a-tip">the full list, with how many each person has</a>). So that what I happen to read does not decide whose words are on the record, every person on the panel is searched for new statements every week (from 26 October 2026), and every chart that compares people says how recently all of them were searched. When the searches miss something I sent in, a better search is added automatically and run for everyone from the next week, not only for that person; searches are only ever added, and each one is listed on <a href="/docs/amendments#searches-added-from-tips">the changelog</a> with its date and the tip that prompted it. <a href="/docs/tip-intake">How tips are taken in</a>.</p>
 <p>I wrote the rules for finding and sorting statements, and I decided every rule and every line of the test; Claude, an AI model made by Anthropic, did the searching and sorting by those rules. The forum posts were sorted by three AI systems from three companies with no person checking them, and systems from different companies can still share blind spots.</p>
-<p class="cite" id="cite">Cite as: Fredrickson, J. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#7-record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
+<p class="cite" id="cite">Cite as: Fredrickson, J. A. (2026). <em>AGI Zeitgeist Tracker</em> [dataset]. Version of {built} ({esc(commit)}). {SITE_URL}. Data under <a href="/data/LICENSE-DATA.txt">CC BY 4.0</a>; scripts under MIT. The charts are pictures; the table linked beside each one holds the numbers drawn. The test's lines were fixed on {long_date(sc['adopted'])}; <a href="/docs/singularity-entry-definition#7-record-of-the-rulings-2026-10-08">the record of that decision</a>.</p>
 </section>"""
 
 
