@@ -15,7 +15,7 @@ the headline and the archive gives no abstract is recorded with the flag `headli
 and not counted. A hit where the name is in neither is recorded with the flag
 `named_in_text_only` and not counted. Abstracts are used for the check but not stored.
 
-API keys are read at run time from ~/Documents/.agi-zeitgeist/credentials.env
+API keys are read at run time from ~/.config/sentient-horizons/agi-zeitgeist.env
 (GUARDIAN_API_KEY, NYT_API_KEY). They are never printed or written anywhere; error
 messages have them removed. Rate limits: Guardian about one request a second; New York
 Times about five a minute (one request every 12.5 seconds). If either archive refuses a
@@ -45,7 +45,7 @@ def pacific_today():
     return datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
-CREDENTIALS = Path.home() / "Documents" / ".agi-zeitgeist" / "credentials.env"
+CREDENTIALS = Path.home() / ".config" / "sentient-horizons" / "agi-zeitgeist.env"
 OUT = Path(__file__).resolve().parent.parent / "docs" / "panel-evidence-2026-10" / "archive-checks.csv"
 FIELDS = ["person", "window", "archive", "date", "headline", "url", "named_in_headline",
           "named_in_abstract", "ai_term_in_headline_or_abstract", "counts_toward_c3",

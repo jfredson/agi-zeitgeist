@@ -21,7 +21,7 @@ their text passed in; if a page can't be read, the post is coded from its title.
 Writes data/vanguard/r-singularity-pilot-codes-crossfamily.csv (codes schema) and keeps
 raw replies in the scratch folder (GPT: ...-codes-gpt.csv; with --rules, ...-rules-trial.csv).
 Keys read at run time (GEMINI_API_KEY from the environment; OPENAI_API_KEY from
-~/Documents/.agi-zeitgeist/credentials.env); never printed or written anywhere.
+~/.config/sentient-horizons/agi-zeitgeist.env); never printed or written anywhere.
 
     python3 scripts/vanguard_crossfamily_pass.py --family gemini|gpt [--rules FILE] [--limit N] [--cached-only]
 
@@ -192,7 +192,7 @@ def strict(schema):
 
 
 def openai_key():
-    path = Path.home() / "Documents" / ".agi-zeitgeist" / "credentials.env"
+    path = Path.home() / ".config" / "sentient-horizons" / "agi-zeitgeist.env"
     for line in path.read_text().splitlines():
         if line.startswith("OPENAI_API_KEY="):
             return line.split("=", 1)[1].strip().strip('"').strip("'")
