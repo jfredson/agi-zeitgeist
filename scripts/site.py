@@ -822,6 +822,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta name="author" content="John Andrew Fredrickson">
+<link rel="author" href="https://johnandrewfredrickson.com/">
 <link rel="canonical" href="{SITE_URL}{esc(canonical_path)}">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
 <meta property="og:type" content="website">
@@ -862,7 +863,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <span class="footer-brand">{SITE_TITLE}</span>
 <p class="footer-tag">{TAGLINE}</p>
 <p class="footer-links">{links}</p>
-<p class="footer-meta">© {year} John Andrew Fredrickson. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence. Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by John Andrew Fredrickson, a Sentient Horizons project, <a href="https://agizeitgeist.com/">agizeitgeist.com</a>.</p>
+<p class="footer-meta">© {year} <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>. {provenance(built, commit)} Free to reuse with credit (<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>); code under the MIT licence. Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>, a Sentient Horizons project, <a href="https://agizeitgeist.com/">agizeitgeist.com</a>.</p>
 <p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
 </div></div></footer>
 {SHELL_SCRIPT}
@@ -1043,7 +1044,7 @@ def copy_data():
     first.sort(key=lambda f: list(main).index(f.relative_to(DATA).as_posix()))
     rest = [f for f in files if f not in first]
     body = (f'<div class="prose narrow"><p>Every table behind the site, as it stood when the site was last built. Each row carries a link to where its number came from. '
-            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>). Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by John Andrew Fredrickson, a Sentient Horizons project, <a href=\"https://agizeitgeist.com/\">agizeitgeist.com</a>. How to cite a version is on <a href="/about/#cite">the About page</a>.</p>'
+            f'Free to reuse with credit (<a href="LICENSE-DATA.txt">the licence</a>). Please credit as: <cite>AGI Zeitgeist Tracker</cite>, by <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>, a Sentient Horizons project, <a href=\"https://agizeitgeist.com/\">agizeitgeist.com</a>. How to cite a version is on <a href="/about/#cite">the About page</a>.</p>'
             f'<h2>The main tables</h2><ul>{"".join(li(f, main[f.relative_to(DATA).as_posix()]) for f in first)}</ul>'
             f'<h2>Working files</h2><p>The rest are working files: the forum posts and how each of three AI systems sorted them in each trial run, '
             f'and the samples used to double-check the sorting of statements. They are kept so that every step can be checked; the plain account is on the <a href="/">home page</a>.</p>'
