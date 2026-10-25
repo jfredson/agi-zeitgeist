@@ -4,7 +4,7 @@ __pycache__/
 .claude/
 *.env
 .agi-zeitgeist/
-# keys live outside the repo at ~/Documents/.agi-zeitgeist/credentials.env; never copy them in
+# keys live outside the repo at ~/.config/sentient-horizons/agi-zeitgeist.env; never copy them in
 
 # archived sources stay local (tip intake, open decision 2, applied provisionally 2026-10-18); only sources/manifest.csv is committed
 sources/*/
