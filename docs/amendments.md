@@ -1338,3 +1338,33 @@ out.
 None of the new rows names a year for machines matching people at most thinking work, so the
 frontier-voices reading is the same before and after (builders 2029.5, everyone else 2032.75), and
 the site's statement count rises by 57. Nothing scored changes: statements never score a gauge.
+
+## 2026-10-27: the source-overlap rule is shown beside the pace part
+
+Decided by: me, on a reader's suggestion. On 2026-10-25 a reader on
+[r/SentientHorizons](https://www.reddit.com/r/SentientHorizons/), commenting on my post there
+about this site, suggested that the rule for replacing the pace part's source should be printed
+on the page next to that part now, before any replacement is chosen, so that a reader sees in
+advance that a new source must run alongside the old one before it counts, and so that the
+switch, when it comes, cannot read as moving the goalposts after the fact. I accepted the
+suggestion on 2026-10-27.
+
+### A36. The successor rule is printed beside part A
+
+Status: wording only. No rule changes, no frozen value changes, and nothing scored changes.
+`docs/singularity-entry-thresholds.json` is untouched, and the successor rule of A19 (a
+replacement measure named before the series stops, the overlap period published, the switch an
+amendment) stands exactly as written in `docs/singularity-entry-definition.md`, section 2.
+
+Was: the home page's paragraph on part A ended by saying that METR's series had stopped updating,
+that the rules call for a replacement with an overlap, and that the question was open (A24).
+
+Now: the same paragraph says, in two sentences, that the question of a replacement is open (A24),
+and that if the source is replaced, the replacement has to run alongside the old one, with the
+overlap published, before it counts, with the switch recorded here; and it links the successor
+rule where it is written in full, noting that the rule was set down before the series stopped.
+
+Why: the rule already existed, but a reader had to open the working document to find it. The
+point of fixing a rule in advance is lost if it is only visible after it is used. Printing it
+beside the part it governs, before any replacement is proposed, lets a reader check the switch
+against the rule when it comes. Credit for the suggestion goes to the reader on Reddit.
