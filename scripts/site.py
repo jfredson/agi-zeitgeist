@@ -798,7 +798,14 @@ def provenance(built, commit):
             f"{n_world} measurements of AI and the economy and {n_posts} community posts.")
 
 
+# Every page the shell wraps, by its canonical address, in the order built; main() writes the sitemap
+# from this list, so the sitemap says exactly what the build made and nothing else (2026-10-31).
+PAGES: list[str] = []
+
+
 def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None, image=None):
+    if canonical_path not in PAGES:
+        PAGES.append(canonical_path)
     nav1 = "".join(f'<a href="{esc(h)}" class="nav-primary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_PRIMARY)
     nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in NAV_SECONDARY)
     links = "".join(f'<a href="{esc(h)}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in FOOTER_LINKS)
@@ -1661,6 +1668,20 @@ def method_section(sc, built, commit):
 METHOD_FORWARD = "<script>if(location.hash==='#method')location.replace('/about/#method');</script>"
 
 
+def write_sitemap():
+    """Write site/sitemap.xml from the pages this build wrapped in the shell: every public page at its
+    stable address, nothing else. The sister sites build theirs the same way from their own pages
+    (upgrade-tree and quiet-galaxy, site/src/pages/sitemap.xml.ts). Added 2026-10-31, when a search
+    for the family's sites by name found four of them, this one among them, serving no sitemap;
+    site/robots.txt names it."""
+    paths = ["/"] + sorted(p for p in PAGES if p != "/")  # the home page first, then by address, so two builds of the same pages give the same file
+    urls = "\n".join(f"<url><loc>{esc(SITE_URL + path)}</loc></url>" for path in paths)
+    (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
+                                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                                      f"{urls}\n</urlset>\n", encoding="utf-8")
+    return len(PAGES)
+
+
 def main():
     SITE.mkdir(exist_ok=True)
     world = read("world_measures.csv")
@@ -1704,6 +1725,8 @@ def main():
     (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
     disagree_page(built, git_commit())
     about_page(sc, built, git_commit())
+    n_pages = write_sitemap()
+    print(f"site/sitemap.xml: {n_pages} pages")
     print(f"site/index.html built: {len(a_pts)} time-horizon readings, {len(a_series)} doubling-time windows, "
           f"{len(b_pts)} survey points, {len(c_pts)} self-reports, {len(d_pts)} years of world growth; "
           f"status {sc['status']!r}, progress {'<= ' if sc['progress_is_upper_bound'] else ''}{sc['progress']:.2f} "

@@ -74,7 +74,7 @@ streams.
 | `scripts/panel_status.py` | the weekly reading's two checks (A32): the date through which every panel member has been searched, anyone overdue, and how tips are spread across people |
 | `scripts/validate.py` | checks every row: codes, dates, sources, links between files, every reading record in `data/readings/` and every claim file in `data/claims/` |
 | `scripts/charts.py` | builds the charts from the CSV files |
-| `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc) and the data copies (`site/data/`) |
+| `scripts/site.py` | builds `site/index.html` (public copy written under the public-writing rule: no project language, every idea built from scratch; see the Sentient Horizons design standard, section 1a), the leg A to D figures, `site/status.json`, the rendered documents (`site/docs/`, via pandoc), the data copies (`site/data/`) and `site/sitemap.xml`, the list of every page the build made (added 2026-10-31; `site/robots.txt` names it) |
 | `site/` | the static site; serve locally with `python3 -m http.server 8765 --directory site` |
 | `wrangler.jsonc`, `worker/` | how the site is published: a Cloudflare Worker serving `site/` at agizeitgeist.com (`npx wrangler deploy`) |
 
