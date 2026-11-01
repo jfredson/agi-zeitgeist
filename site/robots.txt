@@ -1,0 +1,8 @@
+# The site is public and crawling is allowed. The sitemap is written by the build
+# (scripts/site.py, write_sitemap, added 2026-10-31) and lists every page the build made at its
+# stable address. Cloudflare puts its own block of content signals in front of this file when it
+# serves it; the lines below follow it.
+User-agent: *
+Allow: /
+
+Sitemap: https://agizeitgeist.com/sitemap.xml
