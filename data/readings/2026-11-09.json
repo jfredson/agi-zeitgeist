@@ -1,0 +1,904 @@
+{
+ "reading": {
+  "date": "2026-11-09",
+  "ran_at": "2026-11-09T14:09:16Z",
+  "window_start": "2026-11-03",
+  "window_end": "2026-11-09",
+  "scope": "weekly",
+  "commit_before": "13db190",
+  "by": "scheduled",
+  "items_read": 57,
+  "searches": 286,
+  "new_rows": [
+   "manifold-agi2030-2026-11-09"
+  ],
+  "flagged": 6
+ },
+ "items": [
+  {
+   "id": "leg-a-metr",
+   "part": "gauges",
+   "speaker_id": "metr",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-01",
+    "reading-2026-11-09-02",
+    "reading-2026-11-09-03",
+    "reading-2026-11-09-04"
+   ],
+   "found": "No new model key in METR's results file (26 models, every one already in the record). The time-horizons page still says it is no longer actively updated (last entry 2026-09-08) and lists no Time Horizon 1.2 or 2.0; METR's blog (read 2026-11-09) shows no successor release either."
+  },
+  {
+   "id": "leg-b-forecasts",
+   "part": "gauges",
+   "speaker_id": "reading",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-05",
+    "reading-2026-11-09-06"
+   ],
+   "found": "No new scored set of forecasts, retrospective or change in a consensus arrival date turned up for 2026-11-03 to 2026-11-09; results were earlier retrospectives already known (the AI 2027 tracker, Epoch's review of 2025 forecasts) and snapshots of Metaculus and expert medians."
+  },
+  {
+   "id": "leg-c-rd-automation-index",
+   "part": "gauges",
+   "speaker_id": "anthropic_institute",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-07"
+   ],
+   "found": "The index page still shows only February 2026 (under 1%) and August 2026 (26%); no September or October 2026 reading is published, so no row was added. The separate web search for an update was not run for lack of search budget in this run."
+  },
+  {
+   "id": "leg-c-institute-publications",
+   "part": "gauges",
+   "speaker_id": "anthropic_institute",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-08",
+    "reading-2026-11-09-09",
+    "reading-2026-11-09-10"
+   ],
+   "found": "No new Anthropic Institute measurement of AI's share of AI work: the newest Institute items are from 2026-09, and Anthropic's research page of 2026-11-05 ('How scientists use Claude') is about speeding discovery, not a share of AI work. Noted for the record.",
+   "sources": [
+    "https://www.anthropic.com/research/how-researchers-use-claude"
+   ]
+  },
+  {
+   "id": "leg-c-outside-measures",
+   "part": "gauges",
+   "speaker_id": "reading",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-11",
+    "reading-2026-11-09-12"
+   ],
+   "found": "No new researcher survey of AI's share of frontier research work, and no new venue AI-contribution statistics dated in the window; results were earlier items (an interview study of 25 researchers, the ICLR 2026 review audits)."
+  },
+  {
+   "id": "aiimpacts",
+   "part": "institutions",
+   "speaker_id": "aiimpacts",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-13",
+    "reading-2026-11-09-14"
+   ],
+   "found": "No new AI Impacts survey release; the latest on its own pages is the 2023 survey. One unconfirmed blog claims a 2024 round, but nothing with sample size and fieldwork dates is on AI Impacts' own page."
+  },
+  {
+   "id": "metaculus",
+   "part": "institutions",
+   "speaker_id": "metaculus",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-15",
+    "reading-2026-11-09-16"
+   ],
+   "found": "Metaculus's question page cannot be read without a token (the ruling of 2026-10-17 stands). Search found only secondary snapshots, with no dated change in the window."
+  },
+  {
+   "id": "manifold",
+   "part": "institutions",
+   "speaker_id": "manifold",
+   "verdict": "new-row",
+   "search_ids": [
+    "reading-2026-11-09-17",
+    "reading-2026-11-09-18"
+   ],
+   "found": "Read the Manifold market 'Will we get AGI before 2030?' by its interface: probability 0.5166 on 2026-11-09, 351 unique traders, last trade 2026-11-07 00:17 UTC. Appended as the weekly row.",
+   "sources": [
+    "https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC"
+   ],
+   "new_rows": [
+    "manifold-agi2030-2026-11-09"
+   ]
+  },
+  {
+   "id": "pew",
+   "part": "institutions",
+   "speaker_id": "pew",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-19",
+    "reading-2026-11-09-20"
+   ],
+   "found": "Nothing new from Pew in the window; its latest AI report, 'Americans and AI 2026' (published 2026-06-17, fieldwork 2026-02-17 to 2026-02-23), is already in the record."
+  },
+  {
+   "id": "yougov",
+   "part": "institutions",
+   "speaker_id": "yougov",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-21",
+    "reading-2026-11-09-22"
+   ],
+   "found": "Nothing in the window. The latest 'end of the human race' repeat (fieldwork 2026-09-11 to 2026-09-14, 18,294 adults, 50% concerned) is already in the record; later YouGov polls from September 2026 are outside the window."
+  },
+  {
+   "id": "ipsos",
+   "part": "institutions",
+   "speaker_id": "ipsos",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-23",
+    "reading-2026-11-09-24"
+   ],
+   "found": "Nothing new. The Ipsos AI Monitor 2026 (fieldwork 2026-03-20 to 2026-04-03, 23,532 adults in 32 countries) is already in the record."
+  },
+  {
+   "id": "google",
+   "part": "institutions",
+   "speaker_id": "google",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-25",
+    "reading-2026-11-09-26"
+   ],
+   "found": "No new statement by Google's chief executive on the share of new code written by AI; the latest remains 75% (Cloud Next, April 2026), already in the record."
+  },
+  {
+   "id": "ifr",
+   "part": "institutions",
+   "speaker_id": "ifr",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-27",
+    "reading-2026-11-09-28"
+   ],
+   "found": "No new International Federation of Robotics release in the window; World Robotics 2026 came out on 2026-09-24 and is already in the record."
+  },
+  {
+   "id": "events-open-letters",
+   "part": "events",
+   "speaker_id": "events",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-29",
+    "reading-2026-11-09-30",
+    "reading-2026-11-09-31"
+   ],
+   "found": "No new open letter or public statement on AI dated 2026-11-03 to 2026-11-09; searches returned only the 2025 Future of Life Institute statement and the 2026-10-13 cybersecurity letter, both already in the record."
+  },
+  {
+   "id": "events-government-actions",
+   "part": "events",
+   "speaker_id": "events",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-32",
+    "reading-2026-11-09-33",
+    "reading-2026-11-09-34"
+   ],
+   "found": "No bill passed a chamber and no new executive order or treaty on AI was found for 2026-11-03 to 2026-11-09; the latest on file is executive order 14434 of 2026-09-29."
+  },
+  {
+   "id": "events-reports",
+   "part": "events",
+   "speaker_id": "events",
+   "verdict": "flagged",
+   "search_ids": [
+    "reading-2026-11-09-35",
+    "reading-2026-11-09-36",
+    "reading-2026-11-09-37",
+    "reading-2026-11-09-38"
+   ],
+   "found": "METR published a review on 2026-11-05 of the 'Risks from automated R&D' section of Anthropic's August 2026 Risk Report. It is a blog post, not a formal report, so I did not add it as a report event. Epoch AI also posted an Epoch Capabilities Index method update on 2026-11-04, which is a methods note.",
+   "sources": [
+    "https://metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review/",
+    "https://epoch.ai/latest"
+   ],
+   "for_john": "METR's 2026-11-05 blog post reviews Anthropic's August 2026 Risk Report and says the 'twice as fast' AI-speed-up threshold may have been crossed (its range 1.3 to 2.8 times, Anthropic's public figure 'slightly less than twice'). Is this a report of the record's kind? It is a review post, not a research report, so I added nothing. It is also a candidate evidence source for leg C, but it measures speed-up, not AI's share of work, so I did not touch the scored series."
+  },
+  {
+   "id": "events-ai-releases",
+   "part": "events",
+   "speaker_id": "events",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-39",
+    "reading-2026-11-09-40",
+    "reading-2026-11-09-41",
+    "reading-2026-11-09-42"
+   ],
+   "found": "OpenAI's own changelog lists GPT-6-Cyber (2026-11-05) and two GPT-Image-2.6 image models (2026-11-04). None of these names appears in the record's statements, so no release row was added under the A21 rule. No release from Anthropic, Google, xAI or DeepSeek was found in the window.",
+   "sources": [
+    "https://developers.openai.com/api/docs/changelog",
+    "https://thursdai.news/releases/2026-11"
+   ]
+  },
+  {
+   "id": "panel-kurzweil",
+   "part": "panel",
+   "speaker_id": "kurzweil",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-43",
+    "reading-2026-11-09-44",
+    "reading-2026-11-09-45",
+    "reading-2026-11-09-46",
+    "reading-2026-11-09-47",
+    "reading-2026-11-09-48"
+   ],
+   "found": "Nothing new by Kurzweil in the window; searches returned recaps of his 2029 and 2045 dates. A YouTube video listed as uploaded in November 2026 was filmed in 2025 and its words could not be read."
+  },
+  {
+   "id": "panel-marcus",
+   "part": "panel",
+   "speaker_id": "marcus",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-49",
+    "reading-2026-11-09-50",
+    "reading-2026-11-09-51",
+    "reading-2026-11-09-52",
+    "reading-2026-11-09-53",
+    "reading-2026-11-09-54"
+   ],
+   "found": "Marcus posted on 2026-11-05 and 2026-11-06 about the market fall and AI productivity; the posts are mostly behind a paywall, so his words could not be taken in. No statement about AI's possibility or timing could be read.",
+   "sources": [
+    "https://garymarcus.substack.com/p/the-markets-dropped-25-trillion-yesterday"
+   ]
+  },
+  {
+   "id": "panel-lecun",
+   "part": "panel",
+   "speaker_id": "lecun",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-55",
+    "reading-2026-11-09-56",
+    "reading-2026-11-09-57",
+    "reading-2026-11-09-58",
+    "reading-2026-11-09-59",
+    "reading-2026-11-09-60"
+   ],
+   "found": "Nothing new by LeCun in the window; the latest items are from October 2026 or earlier and none is dated in the window."
+  },
+  {
+   "id": "panel-hinton",
+   "part": "panel",
+   "speaker_id": "hinton",
+   "verdict": "flagged",
+   "search_ids": [
+    "reading-2026-11-09-61",
+    "reading-2026-11-09-62",
+    "reading-2026-11-09-63",
+    "reading-2026-11-09-64",
+    "reading-2026-11-09-65",
+    "reading-2026-11-09-66",
+    "reading-2026-11-09-67"
+   ],
+   "found": "Hinton gave a Guardian interview published 2026-11-03 (in the window) saying humanity may have been better off never developing AI, and that a 'Chornobyl' event may come later this year or next. The Guardian page could not be fetched, so only secondary reports were read.",
+   "sources": [
+    "https://www.theguardian.com/uk-news/2026/nov/03/ai-godfather-geoffrey-hinton-better-off-without-ai",
+    "https://aiweekly.co/alerts/geoffrey-hinton-tells-guardian-humanity-may-have-been-better-off-without-ai"
+   ],
+   "for_john": "New statement in the window that I could not take in: Hinton's Guardian interview of 2026-11-03 (https://www.theguardian.com/uk-news/2026/nov/03/ai-godfather-geoffrey-hinton-better-off-without-ai). The Guardian page refuses my fetch, so I have only second-hand quotes (humanity 'might have been better off never developing' AI; 'Chornobyl' later this year or next). It needs a transcript or the page read by hand before it can be coded."
+  },
+  {
+   "id": "panel-altman",
+   "part": "panel",
+   "speaker_id": "altman",
+   "verdict": "flagged",
+   "search_ids": [
+    "reading-2026-11-09-68",
+    "reading-2026-11-09-69",
+    "reading-2026-11-09-70",
+    "reading-2026-11-09-71",
+    "reading-2026-11-09-72",
+    "reading-2026-11-09-73"
+   ],
+   "found": "At ADIPEC in Abu Dhabi on 2026-11-02 (one day before the window, newer than his latest row of 2026-10-21) Altman said AI is now mostly smarter than the smartest scientists. The text was read on a news agency page; no timeline given, and no new dated forecast.",
+   "sources": [
+    "https://aa.com.tr/en/world/ai-models-mostly-smarter-than-top-scientists-openais-altman-says/4108511"
+   ],
+   "for_john": "Altman's ADIPEC remarks of 2026-11-02 ('At the start of this year, AI was mostly not as smart as our smartest scientist, and now it's mostly smarter than them'; https://aa.com.tr/en/world/ai-models-mostly-smarter-than-top-scientists-openais-altman-says/4108511) are a new present-capability statement by an industry leader, dated one day before the window. I read a news agency's account, not a transcript, and did not run the full intake, so no row was added. No new dated forecast."
+  },
+  {
+   "id": "panel-bostrom",
+   "part": "panel",
+   "speaker_id": "bostrom",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-74",
+    "reading-2026-11-09-75",
+    "reading-2026-11-09-76",
+    "reading-2026-11-09-77",
+    "reading-2026-11-09-78",
+    "reading-2026-11-09-79"
+   ],
+   "found": "Nothing new by Bostrom after his latest row; the only newer item (a video of 2026-10-29) is already in the search log."
+  },
+  {
+   "id": "panel-hanson",
+   "part": "panel",
+   "speaker_id": "hanson",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-80",
+    "reading-2026-11-09-81",
+    "reading-2026-11-09-82",
+    "reading-2026-11-09-83",
+    "reading-2026-11-09-84",
+    "reading-2026-11-09-85"
+   ],
+   "found": "Nothing on AI in the window; his one post (2026-11-03) is about prestige and prediction markets."
+  },
+  {
+   "id": "panel-hassabis",
+   "part": "panel",
+   "speaker_id": "hassabis",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-86",
+    "reading-2026-11-09-87",
+    "reading-2026-11-09-88",
+    "reading-2026-11-09-89",
+    "reading-2026-11-09-90",
+    "reading-2026-11-09-91"
+   ],
+   "found": "No new Hassabis words that could be read. A video of Hassabis with Reid Hoffman at a 2026 summit was listed on 2026-11-05 but could not be opened; the WSJ Magazine 'AGI in two to three years' item is from October 2026.",
+   "sources": [
+    "https://www.youtube.com/watch?v=x7Z_1miRWB8"
+   ]
+  },
+  {
+   "id": "panel-ng",
+   "part": "panel",
+   "speaker_id": "ng",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-92",
+    "reading-2026-11-09-93",
+    "reading-2026-11-09-94",
+    "reading-2026-11-09-95",
+    "reading-2026-11-09-96",
+    "reading-2026-11-09-97"
+   ],
+   "found": "Ng's letter in The Batch of 2026-11-06 (read) is about jobs and says coding is not the bottleneck; it says nothing on AGI or timing, so it is not a statement of the record's kind.",
+   "sources": [
+    "https://www.deeplearning.ai/the-batch/issue-378"
+   ]
+  },
+  {
+   "id": "panel-russell",
+   "part": "panel",
+   "speaker_id": "russell",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-98",
+    "reading-2026-11-09-99",
+    "reading-2026-11-09-100",
+    "reading-2026-11-09-101",
+    "reading-2026-11-09-102",
+    "reading-2026-11-09-103"
+   ],
+   "found": "Nothing new by Russell in the window; the latest items are from June 2026 or earlier."
+  },
+  {
+   "id": "panel-brooks",
+   "part": "panel",
+   "speaker_id": "brooks",
+   "verdict": "flagged",
+   "search_ids": [
+    "reading-2026-11-09-104",
+    "reading-2026-11-09-105",
+    "reading-2026-11-09-106",
+    "reading-2026-11-09-107",
+    "reading-2026-11-09-108",
+    "reading-2026-11-09-109",
+    "reading-2026-11-09-110"
+   ],
+   "found": "Brooks posted 'Does until it doesn't and doesn't until it does' on his own blog on 2026-11-08 (read in full). He says current machine learning may run out of steam, new technology takes decades to mature, and the word 'super intelligence' is being thrown around. It is a new statement of the record's kind that I did not take in under the intake rules.",
+   "sources": [
+    "https://rodneybrooks.com/does-until-it-doesnt-and-doesnt-until-it-does/"
+   ],
+   "for_john": "New statement in the window: Rodney Brooks, blog post of 2026-11-08, 'Does until it doesn't and doesn't until it does' (https://rodneybrooks.com/does-until-it-doesnt-and-doesnt-until-it-does/): 'Current machine learning techniques may run out of steam. When? We do not know. How far can they go? We do not know.' I read it in full but did not run the full intake (archive, coding, blind second coding) in this run, so no row was added; it needs intake. Also newer than his last row and unread: the 2026-10-28 Automate podcast, the 2026-08-01 'Four Time Scales' post."
+  },
+  {
+   "id": "panel-musk",
+   "part": "panel",
+   "speaker_id": "musk",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-111",
+    "reading-2026-11-09-112",
+    "reading-2026-11-09-113",
+    "reading-2026-11-09-114",
+    "reading-2026-11-09-115",
+    "reading-2026-11-09-116"
+   ],
+   "found": "No Musk statement dated in the window could be read. A 2026-10-20 interview (AI exceeding all humans in about 5 years; humans unlikely to stay in control within a decade) is newer than his latest row, but I saw only a summary; a Baron conference video of 2026-11-06 was listed and unreadable.",
+   "sources": [
+    "https://dealroom.co/news/169462-elon-musk-to-walter-isaacson-humans-are-unlikely-to-stay-in-control-of-s/"
+   ]
+  },
+  {
+   "id": "panel-chalmers",
+   "part": "panel",
+   "speaker_id": "chalmers",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-117",
+    "reading-2026-11-09-118",
+    "reading-2026-11-09-119",
+    "reading-2026-11-09-120",
+    "reading-2026-11-09-121",
+    "reading-2026-11-09-122"
+   ],
+   "found": "Nothing by Chalmers in the window; a Nov 5 to 6 symposium lists him as a speaker but no text or recording was found."
+  },
+  {
+   "id": "panel-brynjolfsson",
+   "part": "panel",
+   "speaker_id": "brynjolfsson",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-123",
+    "reading-2026-11-09-124",
+    "reading-2026-11-09-125",
+    "reading-2026-11-09-126",
+    "reading-2026-11-09-127",
+    "reading-2026-11-09-128"
+   ],
+   "found": "Stanford Business ran a feature on 2026-11-03 quoting him on how AI works out in workplaces (mostly organisation, not the model; entry-level jobs start higher). It is about jobs, not AI's possibility or timing, so it is noted, not taken in.",
+   "sources": [
+    "https://www.gsb.stanford.edu/index%2Ephp/node/631299"
+   ]
+  },
+  {
+   "id": "panel-schmidhuber",
+   "part": "panel",
+   "speaker_id": "schmidhuber",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-129",
+    "reading-2026-11-09-130",
+    "reading-2026-11-09-131",
+    "reading-2026-11-09-132",
+    "reading-2026-11-09-133",
+    "reading-2026-11-09-134"
+   ],
+   "found": "Nothing dated in the window. Items newer than his latest row exist from September 2026 (a podcast and an X reply to Musk on AGI needing mastery of the real world) but they are second-hand reports, so not taken in.",
+   "sources": [
+    "https://aiweekly.co/alerts/schmidhuber-current-gpu-spend-could-be-a-temporary-ai-bubble",
+    "https://digg.com/science/sjdoj65p"
+   ]
+  },
+  {
+   "id": "panel-kaifulee",
+   "part": "panel",
+   "speaker_id": "kaifulee",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-135",
+    "reading-2026-11-09-136",
+    "reading-2026-11-09-137",
+    "reading-2026-11-09-138",
+    "reading-2026-11-09-139",
+    "reading-2026-11-09-140"
+   ],
+   "found": "Nothing by Lee in the window; the latest items are from October 2026 (a PBS clip about his book) and July 2026. The logged outlets (LinkedIn, X) could not be fetched."
+  },
+  {
+   "id": "panel-walsh",
+   "part": "panel",
+   "speaker_id": "walsh",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-141",
+    "reading-2026-11-09-142",
+    "reading-2026-11-09-143",
+    "reading-2026-11-09-144",
+    "reading-2026-11-09-145",
+    "reading-2026-11-09-146"
+   ],
+   "found": "Nothing new by Walsh in the window; the latest are a September 2026 reprint already in the record and March 2026 videos."
+  },
+  {
+   "id": "panel-tegmark",
+   "part": "panel",
+   "speaker_id": "tegmark",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-147",
+    "reading-2026-11-09-148",
+    "reading-2026-11-09-149",
+    "reading-2026-11-09-150",
+    "reading-2026-11-09-151",
+    "reading-2026-11-09-152"
+   ],
+   "found": "Nothing by Tegmark in the window; the newest items are from August 2026 and a video of 2026-10-23 already in the log."
+  },
+  {
+   "id": "panel-suleyman",
+   "part": "panel",
+   "speaker_id": "suleyman",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-153",
+    "reading-2026-11-09-154",
+    "reading-2026-11-09-155",
+    "reading-2026-11-09-156",
+    "reading-2026-11-09-157",
+    "reading-2026-11-09-158"
+   ],
+   "found": "A news site reported on 2026-11-04 his X post of 2026-11-01 that current AI is not conscious but the future is open. It is about consciousness, second-hand, so noted.",
+   "sources": [
+    "https://www.neoteo.com/en/mustafa-suleyman-says-current-ai-isnt-conscious-but-leaves-the-future-open"
+   ]
+  },
+  {
+   "id": "panel-legg",
+   "part": "panel",
+   "speaker_id": "legg",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-159",
+    "reading-2026-11-09-160",
+    "reading-2026-11-09-161",
+    "reading-2026-11-09-162",
+    "reading-2026-11-09-163",
+    "reading-2026-11-09-164"
+   ],
+   "found": "Nothing by Legg in the window; the newest items are from September 2026 (one already in the record)."
+  },
+  {
+   "id": "panel-cowen",
+   "part": "panel",
+   "speaker_id": "cowen",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-165",
+    "reading-2026-11-09-166",
+    "reading-2026-11-09-167",
+    "reading-2026-11-09-168",
+    "reading-2026-11-09-169",
+    "reading-2026-11-09-170"
+   ],
+   "found": "His blog Marginal Revolution had AI posts on 2026-11-06 (AI-run legal entities, 'to some degree it is inevitable') and 2026-11-07 (Anthropic governance); these concern consequences and governance rather than AI's timing, so noted.",
+   "sources": [
+    "https://marginalrevolution.com/marginalrevolution/2026/11/untethered-ai-agents-in-delaware.html"
+   ]
+  },
+  {
+   "id": "panel-yudkowsky",
+   "part": "panel",
+   "speaker_id": "yudkowsky",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-171",
+    "reading-2026-11-09-172",
+    "reading-2026-11-09-173",
+    "reading-2026-11-09-174",
+    "reading-2026-11-09-175",
+    "reading-2026-11-09-176"
+   ],
+   "found": "Nothing posted by him in the window. A Korean outlet announced a first Korea visit and a talk at the SBS D Forum on 2026-11-05, but no recording or text was found.",
+   "sources": [
+    "https://news.sbs.co.kr/english/endPagePrintPopup.do?news_id=N1008824918"
+   ]
+  },
+  {
+   "id": "panel-shanahan",
+   "part": "panel",
+   "speaker_id": "shanahan",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-177",
+    "reading-2026-11-09-178",
+    "reading-2026-11-09-179",
+    "reading-2026-11-09-180",
+    "reading-2026-11-09-181",
+    "reading-2026-11-09-182"
+   ],
+   "found": "Nothing by Shanahan in the window; his page lists publications only up to 2024 and the searches found no 2026 statement."
+  },
+  {
+   "id": "panel-bengio",
+   "part": "panel",
+   "speaker_id": "bengio",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-183",
+    "reading-2026-11-09-184",
+    "reading-2026-11-09-185",
+    "reading-2026-11-09-186",
+    "reading-2026-11-09-187",
+    "reading-2026-11-09-188"
+   ],
+   "found": "Nothing dated in the window. His own blog has two October 2026 posts newer than his latest row (2026-10-05 and 2026-10-08) that are not in the record; I did not read them in full.",
+   "sources": [
+    "https://yoshuabengio.org/en/blog/bengio-if-you-prioritize-safety-leave-frontier-ai-companies",
+    "https://yoshuabengio.org/en/blog/dangerous-myth-behind-ai-agent-hacks"
+   ]
+  },
+  {
+   "id": "panel-floridi",
+   "part": "panel",
+   "speaker_id": "floridi",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-189",
+    "reading-2026-11-09-190",
+    "reading-2026-11-09-191",
+    "reading-2026-11-09-192",
+    "reading-2026-11-09-193",
+    "reading-2026-11-09-194"
+   ],
+   "found": "Nothing posted in the window. Several 2026 interviews newer than his latest row (2026-07-15) exist, mostly Italian, on agency without intelligence; none read and none dated in the window.",
+   "sources": [
+    "https://www.youtube.com/watch?v=RMV2t2tDEjc"
+   ]
+  },
+  {
+   "id": "panel-amodei",
+   "part": "panel",
+   "speaker_id": "amodei",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-195",
+    "reading-2026-11-09-196",
+    "reading-2026-11-09-197",
+    "reading-2026-11-09-198",
+    "reading-2026-11-09-199",
+    "reading-2026-11-09-200"
+   ],
+   "found": "Nothing new by Amodei in the window; his site shows no post dated October or November 2026."
+  },
+  {
+   "id": "panel-aschenbrenner",
+   "part": "panel",
+   "speaker_id": "aschenbrenner",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-201",
+    "reading-2026-11-09-202",
+    "reading-2026-11-09-203",
+    "reading-2026-11-09-204",
+    "reading-2026-11-09-205",
+    "reading-2026-11-09-206"
+   ],
+   "found": "Nothing by Aschenbrenner in 2026; his blog's newest post is from 2024."
+  },
+  {
+   "id": "panel-kokotajlo",
+   "part": "panel",
+   "speaker_id": "kokotajlo",
+   "verdict": "flagged",
+   "search_ids": [
+    "reading-2026-11-09-207",
+    "reading-2026-11-09-208",
+    "reading-2026-11-09-209",
+    "reading-2026-11-09-210",
+    "reading-2026-11-09-211",
+    "reading-2026-11-09-212",
+    "reading-2026-11-09-213"
+   ],
+   "found": "Kokotajlo's Senate testimony of 2026-09-30 (posted on his blog 2026-10-02) is newer than his latest row and not in the record: '50% chance by end of 2028' for automating AI R&D. It is outside the window and I did not run the intake.",
+   "sources": [
+    "https://blog.aifutures.org/p/senate-testimony-sept-2026"
+   ],
+   "for_john": "New statement not yet in the record: Daniel Kokotajlo's Senate testimony of 2026-09-30 (https://blog.aifutures.org/p/senate-testimony-sept-2026), spoken opening read in full: '50% chance by end of 2028' of automating AI R&D. It is newer than his latest row (2026-08-16) but outside the window, and I did not run the intake (archive, coding, blind second coding), so no row was added. The written PDF was not read."
+  },
+  {
+   "id": "panel-cotra",
+   "part": "panel",
+   "speaker_id": "cotra",
+   "verdict": "flagged",
+   "search_ids": [
+    "reading-2026-11-09-214",
+    "reading-2026-11-09-215",
+    "reading-2026-11-09-216",
+    "reading-2026-11-09-217",
+    "reading-2026-11-09-218",
+    "reading-2026-11-09-219",
+    "reading-2026-11-09-220"
+   ],
+   "found": "Cotra posted 'AI is dramatically accelerating AI' on her newsletter on 2026-11-06 (read in full): the 'dramatic acceleration' threshold looks already crossed, about 1.8 times overall and 10 times for researchers. It is a new, in-window statement of the record's kind, not taken in under the intake rules in this run.",
+   "sources": [
+    "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai"
+   ],
+   "for_john": "New statement in the window: Ajeya Cotra, newsletter post of 2026-11-06, 'AI is dramatically accelerating AI' (https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai). She says the dramatic-acceleration threshold looks already crossed (about 1.8 times overall, about 10 times for researchers), which taken at face value 'naively implies extreme superintelligence within a year'. I read the full text but did not run the intake (archive, coding, blind second coding) in this run, so no row was added. It needs intake. Her latest row is 2026-04-03."
+  },
+  {
+   "id": "panel-huang",
+   "part": "panel",
+   "speaker_id": "huang",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-221",
+    "reading-2026-11-09-222",
+    "reading-2026-11-09-223",
+    "reading-2026-11-09-224",
+    "reading-2026-11-09-225",
+    "reading-2026-11-09-226"
+   ],
+   "found": "No Huang words dated in the window could be read; the interview videos found are undated listings. His 'AGI has arrived' claims of 2026-09-06 and 2026-09-14 are already known.",
+   "sources": [
+    "https://www.youtube.com/watch?v=xCUala5j7aQ"
+   ]
+  },
+  {
+   "id": "panel-leike",
+   "part": "panel",
+   "speaker_id": "leike",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-227",
+    "reading-2026-11-09-228",
+    "reading-2026-11-09-229",
+    "reading-2026-11-09-230",
+    "reading-2026-11-09-231",
+    "reading-2026-11-09-232"
+   ],
+   "found": "Nothing new by Leike; his newsletter's newest post is January 2026, already in the record."
+  },
+  {
+   "id": "panel-mollick",
+   "part": "panel",
+   "speaker_id": "mollick",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-233",
+    "reading-2026-11-09-234",
+    "reading-2026-11-09-235",
+    "reading-2026-11-09-236",
+    "reading-2026-11-09-237",
+    "reading-2026-11-09-238"
+   ],
+   "found": "Nothing dated in the window on his newsletter (newest 2026-10-20). A Business Insider interview republished 2026-11-02 and late-October podcasts are newer than his latest row (2025-04-20) but are about jobs or unreadable.",
+   "sources": [
+    "https://www.theringer.com/podcasts/plain-english-with-derek-thompson/2026/10/20/ai-is-smarter-than-ever-so-wheres-the-revolution"
+   ]
+  },
+  {
+   "id": "panel-chollet",
+   "part": "panel",
+   "speaker_id": "chollet",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-239",
+    "reading-2026-11-09-240",
+    "reading-2026-11-09-241",
+    "reading-2026-11-09-242",
+    "reading-2026-11-09-243",
+    "reading-2026-11-09-244"
+   ],
+   "found": "Nothing new by Chollet in the window; his site's newest essay is from 2023 and the video listings are from March and April 2026."
+  },
+  {
+   "id": "panel-sutskever",
+   "part": "panel",
+   "speaker_id": "sutskever",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-245",
+    "reading-2026-11-09-246",
+    "reading-2026-11-09-247",
+    "reading-2026-11-09-248",
+    "reading-2026-11-09-249",
+    "reading-2026-11-09-250"
+   ],
+   "found": "Nothing new by Sutskever; searches return recaps of his November 2025 interview."
+  },
+  {
+   "id": "panel-liangwenfeng",
+   "part": "panel",
+   "speaker_id": "liangwenfeng",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-251",
+    "reading-2026-11-09-252",
+    "reading-2026-11-09-253",
+    "reading-2026-11-09-254",
+    "reading-2026-11-09-255",
+    "reading-2026-11-09-256"
+   ],
+   "found": "Nothing new by Liang in the window; the latest transcript (2026-05-20) is already in the record."
+  },
+  {
+   "id": "panel-mensch",
+   "part": "panel",
+   "speaker_id": "mensch",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-257",
+    "reading-2026-11-09-258",
+    "reading-2026-11-09-259",
+    "reading-2026-11-09-260",
+    "reading-2026-11-09-261",
+    "reading-2026-11-09-262"
+   ],
+   "found": "Mensch spoke on European AI sovereignty around 2026-11-02 (one day before the window); the reports read have no capability or timing content, so noted.",
+   "sources": [
+    "https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/"
+   ]
+  },
+  {
+   "id": "panel-narayanan",
+   "part": "panel",
+   "speaker_id": "narayanan",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-263",
+    "reading-2026-11-09-264",
+    "reading-2026-11-09-265",
+    "reading-2026-11-09-266",
+    "reading-2026-11-09-267",
+    "reading-2026-11-09-268"
+   ],
+   "found": "Nothing new in the window; his newsletter's newest posts (2026-10-14 and 2026-10-19) are already logged."
+  },
+  {
+   "id": "panel-zuckerberg",
+   "part": "panel",
+   "speaker_id": "zuckerberg",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-269",
+    "reading-2026-11-09-270",
+    "reading-2026-11-09-271",
+    "reading-2026-11-09-272",
+    "reading-2026-11-09-273",
+    "reading-2026-11-09-274"
+   ],
+   "found": "Nothing new by Zuckerberg in the window; the newest items are the August 2026 essay and a July 2026 town hall (second-hand)."
+  },
+  {
+   "id": "panel-pichai",
+   "part": "panel",
+   "speaker_id": "pichai",
+   "verdict": "noted",
+   "search_ids": [
+    "reading-2026-11-09-275",
+    "reading-2026-11-09-276",
+    "reading-2026-11-09-277",
+    "reading-2026-11-09-278",
+    "reading-2026-11-09-279",
+    "reading-2026-11-09-280"
+   ],
+   "found": "Nothing dated in the window. A second-hand summary (2026-10-24) of a podcast has him saying Google is in early recursive self-improvement and expects acceleration over 12 months; the original episode was not found.",
+   "sources": [
+    "https://cryptobriefing.com/googles-pichai-says-ai-self-improvement-still-in-early-stages/"
+   ]
+  },
+  {
+   "id": "panel-nadella",
+   "part": "panel",
+   "speaker_id": "nadella",
+   "verdict": "quiet",
+   "search_ids": [
+    "reading-2026-11-09-281",
+    "reading-2026-11-09-282",
+    "reading-2026-11-09-283",
+    "reading-2026-11-09-284",
+    "reading-2026-11-09-285",
+    "reading-2026-11-09-286"
+   ],
+   "found": "Nothing dated in the window; newest are a September 2026 X post and an October 2026 letter, second-hand."
+  }
+ ]
+}
