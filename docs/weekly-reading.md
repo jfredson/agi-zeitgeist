@@ -515,7 +515,9 @@ From the reading of 2026-11-09, every person's statement is taken in under the n
 rules (`docs/tip-intake.md`, steps 1, 2, 4 and 5), each source opened and archived, each passage
 coded twice, the second time blind:
 
-- *Cotra, newsletter post of 2026-11-06, "AI is dramatically accelerating AI".* Taken in.
+- *Cotra, newsletter post of 2026-11-06, "AI is dramatically accelerating AI".* Taken in:
+  thirteen rows (`cotra-2026-05` to `-16`). Her 2026 now has more than ten statements, but every
+  passage but one carries a timeline or is about the present, so nothing is left out.
 - *Hinton, interview in the Guardian, 2026-11-03.* Taken in: four rows (`hinton-2026-03` to
   `-06`); only his words inside quotation marks are coded.
 - *Altman at ADIPEC, 2026-11-02.* Taken in from the organiser's own recording, not the news
@@ -535,7 +537,10 @@ From the readings of 2026-10-26 and 2026-11-02, the flags that had no ruling:
   quoted as his ("a new form of acting without intelligence") are the journalist's description
   of his book, and are not coded.
 - *Bostrom, interview on Jon Hernández's podcast, 2026-10-30.* The channel is the host's own, so
-  it counts. Taken in.
+  it counts. Taken in: sixteen rows. His 2026 now has more than ten statements, so the
+  every-third count (search log `bostrom-131`) also leaves out one row already published,
+  `bostrom-2026-07`. One quote, "it would be fair to call it" AGI (`bostrom-2026-16`), is marked
+  as not yet checked by ear, because a third transcript hears "wouldn't".
 - *Suleyman, The Builders with Walter Isaacson, 2026-10-29.* The show's own channel, so it
   counts. Taken in: thirteen rows, and one claim on the claims page (materials breakthroughs
   "two or three or four years away", marked as having no test anyone could check).
