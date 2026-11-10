@@ -4,7 +4,7 @@
 Plain Python, standard library only. Run from anywhere:
 
     python3 scripts/check_news.py                 check docs/news/, print the count
-    python3 scripts/check_news.py --posts DIR --amendments FILE --cards DIR   (for tests)
+    python3 scripts/check_news.py --posts DIR --amendments FILE --cards DIR --claims DIR   (for tests)
 
 A post is one Markdown file, YYYY-MM-DD-slug.md, with a frontmatter block. The records on this
 site are rows and amendments, not pages (tracker pattern, section 9), so a post names the
@@ -17,12 +17,21 @@ or a written-out https address) to a source or a record (a table is covered by t
 the page draws under the post); names an amendment whose section carries no date within fourteen
 days of the post's date; or has no card drawn beside it (site/news/<slug>-card.png, from
 scripts/news_cards.py). The rules are John's of 2026-10-18.
+
+It also refuses every post while any claim on the site carries an open check: a non-empty
+`verify` line in a file of data/claims/ (the list of facts set down before their source was
+opened). That is rule 3.3 part 4 of the tracker pattern, ruled by John on 2026-10-17: nothing
+that sends readers to the site goes out while a fact waits to be checked, and the count across
+the site must be none. Added 2026-11-09, on John's ruling of that day, after posts went out on
+2026-10-19 and 2026-10-21 while ten checks were open. The rule is kept strict: while a check is
+open the check fails, so the site is not rebuilt until the check is cleared or the fact removed.
 """
 from __future__ import annotations
 
 import argparse
 import re
 import sys
+import tomllib
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -97,9 +106,29 @@ def amendments(text: str) -> dict[str, list[str]]:
     return out
 
 
-def check(posts_dir: Path, amend: dict[str, list[str]], cards_dir: Path | None) -> tuple[list[str], int]:
+def open_checks(claims_dir: Path) -> list[tuple[str, str]]:
+    """Every claim whose `verify` line is not empty, as (file name, what waits to be checked).
+    A file that cannot be read counts as open, because what it holds cannot be known."""
+    out: list[tuple[str, str]] = []
+    for path in sorted(claims_dir.glob("*.toml")) if claims_dir.exists() else []:
+        try:
+            claim = tomllib.loads(path.read_text(encoding="utf-8")).get("claim", {})
+        except (tomllib.TOMLDecodeError, UnicodeDecodeError) as e:
+            out.append((path.name, f"cannot be read: {e}")); continue
+        v = claim.get("verify") if isinstance(claim, dict) else None
+        if isinstance(v, str) and v.strip():
+            out.append((path.name, v.strip()))
+    return out
+
+
+def check(posts_dir: Path, amend: dict[str, list[str]], cards_dir: Path | None,
+          checks: list[tuple[str, str]] | None = None) -> tuple[list[str], int]:
     problems: list[str] = []
     files = sorted(posts_dir.glob("*.md")) if posts_dir.exists() else []
+    if checks and files:
+        problems.append(f"{len(checks)} claim(s) carry an open check, so no post may go out "
+                        f"(tracker pattern, rule 3.3 part 4); clear each check at its source or remove the fact:")
+        problems.extend(f"  {name}: {what}" for name, what in checks)
     openers = 0
     for path in files:
         name = path.name
@@ -153,10 +182,11 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--posts", default=str(ROOT / "docs" / "news"))
     ap.add_argument("--amendments", default=str(ROOT / "docs" / "amendments.md"))
     ap.add_argument("--cards", default=str(ROOT / "site" / "news"))
+    ap.add_argument("--claims", default=str(ROOT / "data" / "claims"))
     ap.add_argument("--no-cards", action="store_true")
     a = ap.parse_args(argv)
     amend = amendments(Path(a.amendments).read_text(encoding="utf-8")) if Path(a.amendments).exists() else {}
-    problems, n = check(Path(a.posts), amend, None if a.no_cards else Path(a.cards))
+    problems, n = check(Path(a.posts), amend, None if a.no_cards else Path(a.cards), open_checks(Path(a.claims)))
     if problems:
         print("\n".join(problems), file=sys.stderr)
         print(f"{len(problems)} problem(s) in {n} post(s)", file=sys.stderr)

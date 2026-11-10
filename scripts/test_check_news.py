@@ -58,5 +58,36 @@ class NewsPosts(unittest.TestCase):
         self.assertTrue(any("no card beside it" in p for p in problems))
 
 
+class OpenChecks(unittest.TestCase):
+    """Rule 3.3 part 4: no post while any claim carries an open check (added 2026-11-09)."""
+    def claims(self, d, verify):
+        line = f'verify = "{verify}"\n' if verify is not None else ""
+        (d / "2025-01-01-x-a-claim.toml").write_text(f'[claim]\nid = "2025-01-01-x-a-claim"\n{line}', encoding="utf-8")
+
+    def run_with(self, verify):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp); posts = d / "news"; claims = d / "claims"; posts.mkdir(); claims.mkdir()
+            (posts / "2026-10-18-the-headline-moves.md").write_text(GOOD, encoding="utf-8")
+            self.claims(claims, verify)
+            problems, _ = check_news.check(posts, AMEND, None, check_news.open_checks(claims))
+        return problems
+
+    def test_an_open_check_refuses_the_post(self):
+        problems = self.run_with("Whether the quote matches the recording.")
+        self.assertTrue(any("carry an open check" in p for p in problems))
+        self.assertTrue(any("Whether the quote matches the recording." in p for p in problems))
+
+    def test_no_check_lets_the_post_through(self):
+        self.assertEqual(self.run_with(None), [])
+
+    def test_an_unreadable_claim_counts_as_open(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp); (d / "broken.toml").write_text("[claim\n", encoding="utf-8")
+            self.assertEqual(len(check_news.open_checks(d)), 1)
+
+    def test_the_live_record_has_no_open_check(self):
+        self.assertEqual(check_news.open_checks(check_news.ROOT / "data" / "claims"), [])
+
+
 if __name__ == "__main__":
     unittest.main()
