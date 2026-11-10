@@ -507,3 +507,49 @@ recommendations ("For the Zeitgeist audit, agreed on all"):**
   government action: a bill enters the events list when it passes a chamber of a legislature or
   becomes law, dated from the legislature's own record. An introduced bill is `noted`, never
   `flagged` again for this reason.
+
+**2026-11-09, on the readings of 2026-10-26, 2026-11-02 and 2026-11-09, my ruling ("Yes, all of
+them") on a session's recommendations, carried out by an agent the same day:**
+
+From the reading of 2026-11-09, every person's statement is taken in under the normal intake
+rules (`docs/tip-intake.md`, steps 1, 2, 4 and 5), each source opened and archived, each passage
+coded twice, the second time blind:
+
+- *Cotra, newsletter post of 2026-11-06, "AI is dramatically accelerating AI".* Taken in.
+- *Hinton, interview in the Guardian, 2026-11-03.* Taken in: four rows (`hinton-2026-03` to
+  `-06`); only his words inside quotation marks are coded.
+- *Altman at ADIPEC, 2026-11-02.* Taken in from the organiser's own recording, not the news
+  agency's account: ten rows (`altman-2026-73` to `-81`).
+- *Brooks, blog post of 2026-11-08.* Taken in: three rows (`brooks-2026-02` to `-03b`).
+- *Kokotajlo, Senate testimony of 2026-09-30.* Taken in, the spoken and the written statement
+  as one occasion: fourteen rows (`kokotajlo-2026-04a` to `-15`).
+- *METR's review of 2026-11-05 of Anthropic's August 2026 risk report.* A blog post, not a
+  research report, so not added to the events list. Its link is kept for the news post on Cotra.
+
+From the readings of 2026-10-26 and 2026-11-02, the flags that had no ruling:
+
+- *Marcus, Substack posts of 2026-10-22, 2026-10-24 and 2026-10-31.* Taken in: seven rows kept.
+  His 2026 now has more than ten statements, so the every-third count (search log `marcus-128`)
+  also leaves out two rows already published, `marcus-2026-02` and `marcus-2026-06`.
+- *Floridi, Milano Finanza interview of 2026-10-27.* Taken in: five rows. The words the reading
+  quoted as his ("a new form of acting without intelligence") are the journalist's description
+  of his book, and are not coded.
+- *Bostrom, interview on Jon Hernández's podcast, 2026-10-30.* The channel is the host's own, so
+  it counts. Taken in.
+- *Suleyman, The Builders with Walter Isaacson, 2026-10-29.* The show's own channel, so it
+  counts. Taken in: thirteen rows, and one claim on the claims page (materials breakthroughs
+  "two or three or four years away", marked as having no test anyone could check).
+- *Yudkowsky, debate with Geoffrey Irving at the ILIAD conference, 2026-10-29.* The organiser's
+  own channel, so it counts. Taken in: seven rows.
+- *Google Trends could not be read.* Dropped: the record keeps only yearly averages, read each
+  January, so nothing is due before January 2027, and the report the reading found (a rise in
+  United States searches for "super intelligence") is a news account of one country, not the
+  worldwide series the record keeps.
+- *Epoch AI's report of 2026-10-29 on open-weight models turning security fixes into exploits.*
+  Dropped: the events list carries reports on the pace of AI as a whole (computing power,
+  algorithms, data, the international safety report), and a study of one narrow ability is not
+  of that kind.
+
+No news posts are written for any of these except Cotra's, and none for the changes of 2026-10-21
+to 2026-10-24 that were never posted (the method changes A34 and A35, and the eight Altman and
+Hassabis claims); they stay on the record pages as they are.
