@@ -1,5 +1,5 @@
 ---
-title: The forecaster Ajeya Cotra says AI is now nearly doubling the pace of AI progress, and I have added her case to this site
+title: The forecaster Ajeya Cotra says AI is now nearly doubling the pace of AI progress, and her case is now on the AGI Zeitgeist
 date: 2026-11-10
 status: draft
 kind: flagged-item-ruled
@@ -26,7 +26,7 @@ On November 5th, 2026, a research group called [METR](https://metr.org/), which 
 
 [Ajeya Cotra](https://www.planned-obsolescence.org/about) is a forecaster who writes about how soon powerful AI could arrive, and she works at METR, although she did not work on this project. The next day she wrote that the report is a much bigger deal than it sounds ([her post](https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai)). By her reading, Anthropic's AI is improving about 1.8 times as fast as it would if the company were not using AI in its research, and probably faster since.
 
-Their ideas are only one half of what makes AI better, and the other half is the computing power to test those ideas, which did not speed up. So for the whole to go twice as fast, the researchers' side has to go a good deal more than twice as fast. Each new idea is also harder to find than the last, which pushes the number up further. Her rough answer is that each researcher would need to be getting something like ten times as much done as before. She calls that "very uncertain", and it rests on simple assumptions she chose to keep the arithmetic easy. Informal reports from Anthropic staff, she notes, put it at about twelve times.
+The researchers' ideas are only one half of what makes AI better, and the other half is the computing power to test those ideas, which did not speed up. So for the whole to go twice as fast, the researchers' side has to go a good deal more than twice as fast. Each new idea is also harder to find than the last, which pushes the number up further. Her rough answer is that each researcher would need to be getting something like ten times as much done as before. She calls that "very uncertain", and it rests on simple assumptions she chose to keep the arithmetic easy. Informal reports from Anthropic staff, she notes, put it at about twelve times.
 
 ## Where she thinks it leads
 
