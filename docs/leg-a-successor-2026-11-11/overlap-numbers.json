@@ -1,0 +1,134 @@
+{
+  "retrieved": "2026-11-11",
+  "threshold_days": 30.44,
+  "reference_days": 187.8,
+  "metr": {
+    "last_scorable_window": "2026-02-05",
+    "days": 120.8,
+    "gauge": 0.426
+  },
+  "eci_conversion": {
+    "systems_in_both": 20,
+    "doublings_per_point": 0.2112,
+    "points_per_doubling": 4.74,
+    "r_squared": 0.978,
+    "first": "2023-03-14",
+    "last": "2026-03-05"
+  },
+  "eci": {
+    "frontier_systems": 23,
+    "windows": 21,
+    "overlap_windows": 10,
+    "overlap_mean_days_metr": 121.8,
+    "overlap_mean_days_eci": 113.1,
+    "overlap_ratio_low": 0.73,
+    "overlap_ratio_high": 1.19,
+    "at_metr_last_window": {
+      "metr_days": 120.8,
+      "eci_days": 120.0,
+      "eci_window_end": "2025-12-11",
+      "eci_gauge": 0.431
+    },
+    "latest_window": {
+      "end": "2026-11-09",
+      "system": "Claude Fable 5.2",
+      "days": 94.5,
+      "points_per_year": 18.3,
+      "systems": 9,
+      "gauge": 0.593
+    },
+    "falling_last_three": true,
+    "whole_span_points_per_year": 15.8,
+    "whole_span_days": 109.5
+  },
+  "mirrorcode": {
+    "systems": 39,
+    "first": "2025-08-07",
+    "last": "2026-10-26",
+    "frontier_first": {
+      "system": "gpt-5-2025-08-07",
+      "date": "2025-08-07",
+      "share": 0.044
+    },
+    "frontier_last": {
+      "system": "claude-sonnet-5-5",
+      "date": "2026-09-28",
+      "share": 0.978
+    },
+    "shared_with_metr": [
+      {
+        "system": "GPT-5",
+        "metr_minutes": 203.0,
+        "share": 0.044
+      },
+      {
+        "system": "GPT-5.2",
+        "metr_minutes": 352.2,
+        "share": 0.322
+      },
+      {
+        "system": "Claude Opus 4.6",
+        "metr_minutes": 718.8,
+        "share": 0.333
+      },
+      {
+        "system": "Gemini 3.1 Pro",
+        "metr_minutes": 384.1,
+        "share": 0.089
+      },
+      {
+        "system": "GPT-5.4",
+        "metr_minutes": 341.7,
+        "share": 0.233
+      }
+    ],
+    "pairs_in_same_order": "8 of 10",
+    "share_doubling_days_latest_year": 164.6,
+    "doublings_left_before_100_percent": 0.03
+  },
+  "remote_labor_index": {
+    "systems": 17,
+    "first": "2025-06-05",
+    "last": "2026-11-09",
+    "frontier_first": {
+      "system": "gemini-2.5-pro-preview-06-05",
+      "date": "2025-06-05",
+      "share": 0.008
+    },
+    "frontier_last": {
+      "system": "claude-fable-5-2",
+      "date": "2026-11-09",
+      "share": 0.413
+    },
+    "shared_with_metr": [
+      {
+        "system": "GPT-5",
+        "metr_minutes": 203.0,
+        "share": 0.017
+      },
+      {
+        "system": "Gemini 3 Pro",
+        "metr_minutes": 224.3,
+        "share": 0.013
+      },
+      {
+        "system": "Claude Opus 4.5",
+        "metr_minutes": 293.0,
+        "share": 0.037
+      },
+      {
+        "system": "GPT-5.2",
+        "metr_minutes": 352.2,
+        "share": 0.025
+      },
+      {
+        "system": "Claude Opus 4.6",
+        "metr_minutes": 718.8,
+        "share": 0.042
+      }
+    ],
+    "pairs_in_same_order": "8 of 10",
+    "share_doubling_days_latest_year": 100.4,
+    "doublings_left_before_100_percent": 1.28
+  }
+}
