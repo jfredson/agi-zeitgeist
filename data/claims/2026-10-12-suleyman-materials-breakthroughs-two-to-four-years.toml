@@ -1,0 +1,22 @@
+[claim]
+id = "2026-10-12-suleyman-materials-breakthroughs-two-to-four-years"
+speaker_id = "suleyman"
+when = "2026-10-12"
+when_note = "Taped on stage at the 92NY on 2026-10-12, as the video's description states ('Interview taped October 12, 2026'); the show uploaded it on 2026-10-29. The statement row it was seeded from (suleyman-2026-10) is dated at the upload, under the statements table's rule for an interview published later; the ledger dates a claim by when it was said."
+occasion = "The Builders with Walter Isaacson, live on stage at the 92NY, 'Mustafa Suleyman: The End of Human Jobs, the Rise of AI, and the Future of Humanity'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=aeIY7Q0iebw"
+source_locator = "0:45:36 to 0:46:18 into the video"
+checked_how = "Read the YouTube automatic English captions of the show's own upload on 2026-11-09 (yt_transcript.py, captions route; archived with a checksum in sources/manifest.csv), and checked the quoted words against a local Whisper large-v3-turbo transcription of 45:30 to 46:20 of the audio made the same day: the two agree word for word on the quote, ignoring case, punctuation and filler sounds. The captions read 'It it's it's going to be'; Whisper has no 'It' before 'it's it's', so the quote starts at the first 'it's'. The words just before, 'still it's not next year', are carried by both transcripts and are kept in the prediction. Nobody listened."
+quote = "it's it's going to be two or three or four years away, those sorts of breakthroughs."
+statement_id = "suleyman-2026-10"
+prediction = "Breakthroughs in which AI finds the best molecular structures for compounds that change food and energy systems, and gives transformative materials, will come not next year but in two, three or four years; he puts the next big commercial uses of AI 'in the sort of 29-30 era', in physical things ('atoms rather than in bits')."
+kind = "capability"
+bar = "None an outsider could apply: 'those sorts of breakthroughs' are named only as AI 'finding sort of the optimal molecular structure for compounds that really change our food systems, energy systems' and as 'transformative materials', with no measure of what counts as such a breakthrough, so no record could show it has or has not come by the date."
+due = 2030
+due_early = 2028
+due_basis = "A range: 'two or three or four years away' from 2026-10-12 gives 2028 at the earlier end and 2030 at the later end. The later end is taken as the rule says, and the earlier end recorded. His 'sort of 29-30 era' for the commercial uses agrees with the later end."
+status = "unfalsifiable"
+verdict_why = "His words give no test for what counts as a breakthrough in finding molecular structures or materials, so no outside record could settle it. Decided at entry under the bar rule, as for his claim of 2026-09-28 on energy, materials science and drug discovery."
+search_ids = ["reading-2026-11-02-168", "suleyman-082"]
+notes = "Role at the time: chief executive of Microsoft AI (from 2024-03-19). Found by the weekly reading of 2026-11-02 (the video search V1); not a tip. The words in full, in the captions: 'the next big product market fits in the sort of 29-30 era are going to come in atoms rather than in bits. So, rather than just sort of managing, synthesizing, organizing, processing information, it's going to be about finding sort of the optimal molecular structure for compounds that really change our food systems, energy systems, you know, that really sort of are going to provide transformative materials. I think material science is is really one of the most important things on exciting things on the horizon. But, you know, it's still a way off, right? It's still it's not next year. It it's it's going to be two or three or four years away, those sorts of breakthroughs.' Compare 2026-09-28-suleyman-energy-materials-drugs-5-to-10-years, about two weeks earlier, where he put 'the same thing' (AI doing for a field what he says it has done for coding) in energy, materials science and drug discovery at 'like 5 to 10 years'. It is not entered as a restatement of that claim (no restates field), because the earlier one is about expert work in those fields becoming nearly free and this one about breakthroughs in materials found by AI; flagged for John, since entered as a restatement it would show the date moving nearer."
