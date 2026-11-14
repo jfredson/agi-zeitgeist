@@ -1,7 +1,7 @@
 ---
 title: The forecaster Ajeya Cotra says AI is now nearly doubling the pace of AI progress, and her case is now on the AGI Zeitgeist
-date: 2026-11-10
-status: draft
+date: 2026-11-13
+status: published
 kind: flagged-item-ruled
 summary: Researchers from METR spent nearly three months studying Anthropic and found its AI improving about twice as fast as before, mostly because the company now uses its own AI in its research. Ajeya Cotra, a forecaster on METR's staff, argues that if the speed-up keeps growing, the result could be superintelligence within a year. Her case is now on this site beside her earlier statements.
 records: [C]
