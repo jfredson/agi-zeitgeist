@@ -1,0 +1,19 @@
+[claim]
+id = "2022-altman-transformers-not-in-use-in-five-years"
+speaker_id = "altman"
+when = "2022"
+when_note = "Greylock's page for the interview is dated 2022-09-13 and says it took place at Greylock's Intelligent Future summit; the day of the summit is not given there, so only the year is entered. Greylock's upload is dated 2022-09-21."
+occasion = "Interview with Reid Hoffman at Greylock's Intelligent Future summit ('AI for the Next Era')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=WHoWGNQRXb0"
+source_locator = "13:38 to 13:45 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page, in the built-in browser, on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened to the recording. The quote is a verbatim run of the caption words."
+quote = "I doubt we'll still be using the Transformers in five years I hope we're not I hope we find something way better"
+prediction = "He doubts that AI will still be built on the transformer design (the architecture of today's language models) five years on, and hopes something much better is found."
+kind = "capability"
+bar = "By the end of 2027, the leading AI models are no longer built on the transformer architecture, shown by their makers' own technical descriptions."
+due = 2027
+due_basis = "'in five years', said in 2022 (no later than 2022-09-13), runs into 2027; judged at the end of 2027."
+status = "not_yet_due"
+search_ids = ["altman-claims-099"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Hedged ('I doubt', 'I hope')."

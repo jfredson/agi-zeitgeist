@@ -1,0 +1,25 @@
+[claim]
+id = "2025-01-17-altman-o3-mini-in-a-couple-of-weeks"
+speaker_id = "altman"
+when = "2025-01-17"
+when_note = "The post's timestamp is 2025-01-17 20:47 UTC (12:47 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1880356297985638649"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "we have now finalized a version and are beginning the release process; planning to ship in ~a couple of weeks."
+prediction = "OpenAI planned to ship its o3-mini model in about two weeks, by about 2025-01-31."
+kind = "deployment"
+bar = "OpenAI releases o3-mini to the public (in ChatGPT or its API) by 2025-01-31, shown by OpenAI's own release."
+due = 2025
+due_basis = "'~a couple of weeks' from 2025-01-17 is 2025-01-31."
+due_date = 2025-01-31
+status = "hit"
+verdict_on = 2025-01-31
+verdict_why = "OpenAI's page 'OpenAI o3-mini', dated 2025-01-31 in OpenAI's news feed, says 'We're releasing OpenAI o3‑mini ... available in both ChatGPT and the API today.'"
+verdict_source = "https://openai.com/index/openai-o3-mini/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-087", "altman-claims-104"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models."

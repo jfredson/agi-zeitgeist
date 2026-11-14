@@ -1,0 +1,26 @@
+[claim]
+id = "2025-01-20-altman-not-deploy-agi-next-month"
+speaker_id = "altman"
+when = "2025-01-20"
+when_note = "The post's timestamp is 2025-01-20 08:32 UTC (00:32 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1881258443669172470"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened. The post's address was taken from Decrypt's embed of it."
+quote = "we are not gonna deploy AGI next month, nor have we built it."
+statement_id = "altman-2025-04"
+prediction = "OpenAI would not deploy AGI in February 2025, and had not built it."
+kind = "timing"
+bar = "None in the source: AGI is not defined, so whether OpenAI 'deployed AGI' could be decided only by OpenAI's own naming, which makes the speaker the judge."
+due = 2025
+due_basis = "'next month', said 2025-01-20: February 2025, to 2025-02-28."
+due_date = 2025-02-28
+status = "unfalsifiable"
+verdict_why = "A forecast that something will not happen is scored by the record of the thing; with AGI undefined, the only judge of whether OpenAI deployed it is OpenAI. Decided at entry, as for his 2026 claim of an internal system he would call AGI; flagged for John."
+search_ids = ["altman-claims-087"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Written to calm talk on X that OpenAI was about to announce AGI ('twitter hype is out of control again')."
+arrives = "agi"
+arrives_term = "AGI"
+form = "not_before"
+not_before_year = 2025

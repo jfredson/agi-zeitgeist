@@ -1,0 +1,25 @@
+[claim]
+id = "2023-12-06-altman-agi-in-four-or-five-years"
+speaker_id = "altman"
+when = "2023-12-06"
+when_note = "The date the profile was published; the conversations behind it came earlier and are not dated."
+occasion = "TIME's 2023 CEO of the Year profile"
+source_kind = "coverage_only"
+source_url = "https://time.com/6342827/ceo-of-the-year-2023-sam-altman/"
+source_locator = "the paragraph beginning 'But one of the big reasons for the standoff'"
+checked_how = "Read on 2026-11-14 through the r.jina.ai reader; the page's published time is 2023-12-06 12:42 UTC."
+reported_as = "TIME, in the writers' own words: 'Altman thinks AGI—a system that surpasses humans in most regards—could be reached sometime in the next four or five years.'"
+statement_id = "altman-2023-09"
+prediction = "AGI, which the writers gloss as a system that surpasses humans in most regards, could be reached within four or five years of December 2023."
+kind = "timing"
+bar = "None an outsider could run from his own words: the gloss 'surpasses humans in most regards' is the writers', not his, and 'most regards' names no test."
+due = 2028
+due_early = 2027
+due_basis = "'the next four or five years' from 2023-12-06: 2027 to 2028; the later end is taken and the earlier recorded."
+status = "unfalsifiable"
+verdict_why = "Only the writers' paraphrase survives, and neither it nor any words of his give a test for AGI; decided at entry."
+search_ids = ["altman-claims-102", "altman-claims-103"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Second-hand: the writers' sentence, with no quotation marks, so the page shows it as from news reports."
+arrives = "agi"
+arrives_term = "AGI"
+form = "range"

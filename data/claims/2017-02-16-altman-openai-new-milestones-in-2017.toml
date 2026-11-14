@@ -1,0 +1,21 @@
+[claim]
+id = "2017-02-16-altman-openai-new-milestones-in-2017"
+speaker_id = "altman"
+when = "2017-02-16"
+when_note = "The blog's feed gives published 2017-02-16 17:37 UTC (09:37 Pacific)."
+occasion = "Y Combinator's 2017 annual letter, on his blog"
+source_kind = "own_words"
+source_url = "https://blog.samaltman.com/2017-yc-annual-letter"
+source_locator = "the paragraph on OpenAI"
+checked_how = "Read on the page on 2026-11-14 (curl); the date from the blog's feed."
+quote = "In 2017, we hope to achieve significant new milestones that are not possible with current AI technology."
+prediction = "OpenAI hoped to reach, during 2017, significant new milestones that the AI technology of early 2017 could not reach."
+kind = "capability"
+bar = "None an outsider could run: the letter names no milestone and no test of what 'current AI technology' could not do."
+due = 2017
+due_basis = "His words: 'In 2017'."
+is_goal = true
+status = "unfalsifiable"
+verdict_why = "The words name neither a milestone nor a way to tell one that was 'not possible with current AI technology' from one that was; decided at entry under the bar rule."
+search_ids = ["altman-claims-085", "altman-claims-086"]
+notes = "Role at the time: co-chair of OpenAI (from its founding in 2015 to March 2019, when he became chief executive), a company that builds frontier AI models. He wrote the letter as president of Y Combinator, which then counted OpenAI among its research projects; 'we' is OpenAI. A hope, so marked as a goal."

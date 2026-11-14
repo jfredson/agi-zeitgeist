@@ -1,0 +1,25 @@
+[claim]
+id = "2025-06-10-altman-open-weights-model-later-this-summer"
+speaker_id = "altman"
+when = "2025-06-10"
+when_note = "The post's timestamp is 2025-06-10 22:58 UTC (15:58 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1932573231199707168"
+source_locator = "the first sentence of the post"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "we are going to take a little more time with our open-weights model, i.e. expect it later this summer but not june."
+prediction = "OpenAI's open-weights model (one anyone can download and run) would come out later in the summer of 2025, not in June."
+kind = "deployment"
+bar = "OpenAI releases an open-weights model after June 2025 and by the end of the northern summer of 2025, shown by OpenAI's own release."
+due = 2025
+due_basis = "'later this summer but not june', said 2025-06-10; the end of the northern summer, 2025-09-22, is taken as the last day (a season is not covered by the readings; flagged for John)."
+due_date = 2025-09-22
+status = "hit"
+verdict_on = 2025-08-05
+verdict_why = "OpenAI's page 'Introducing gpt-oss', dated 2025-08-05 in OpenAI's news feed: 'We're releasing gpt-oss-120b and gpt-oss-20b—two state-of-the-art open-weight language models'. After June and before the end of the summer."
+verdict_source = "https://openai.com/index/introducing-gpt-oss/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-087", "altman-claims-104"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models."

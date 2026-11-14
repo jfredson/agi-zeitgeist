@@ -1,0 +1,20 @@
+[claim]
+id = "2022-altman-no-prompt-engineering-in-five-years"
+speaker_id = "altman"
+when = "2022"
+when_note = "Greylock's page for the interview is dated 2022-09-13 and says it took place at Greylock's Intelligent Future summit; the day of the summit is not given there, so only the year is entered. Greylock's upload is dated 2022-09-21."
+occasion = "Interview with Reid Hoffman at Greylock's Intelligent Future summit ('AI for the Next Era')"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=WHoWGNQRXb0"
+source_locator = "25:15 to 25:32 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page, in the built-in browser, on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened to the recording. The quote is a verbatim run of the caption words."
+quote = "I don't think we'll still be doing prompt Engineering in five years I think it'll just be like you and this will be integrated everywhere"
+prediction = "Five years on, people will no longer be doing 'prompt engineering' (writing carefully built instructions for a model); they will simply talk or type to computers in plain language."
+kind = "capability"
+bar = "None an outsider could run: 'prompt engineering' is not defined, and talking to a computer in plain language and crafting prompts shade into each other, so no record could show it had stopped."
+due = 2027
+due_basis = "'in five years', said in 2022; judged at the end of 2027."
+status = "unfalsifiable"
+verdict_why = "The words give no test that tells 'doing prompt engineering' from simply using a model; decided at entry."
+search_ids = ["altman-claims-099"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Answering Saam Motamedi's question on how most users will interact with foundation models in five years."
