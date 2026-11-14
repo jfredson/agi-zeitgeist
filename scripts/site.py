@@ -568,6 +568,20 @@ SITE_CSS = """
 .cond .d { grid-column: 2; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
 .fresh { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; font-family: var(--sans); }
+/* ---- latest news on the right of the first screen (2026-11-14; sentient-horizons/design/proposals/home-latest-news-2026-11-14.md) ---- */
+.land-side { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.side-news { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+.side-news-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--sans); }
+.side-news-head h2 { margin: 0; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.side-news-head a { font-size: 13px; }
+.side-news-list { list-style: none; margin: 0; padding: 0; }
+.side-news-list li { border-top: 1px solid var(--line); padding: 11px 0; }
+.side-news-list li:last-child { padding-bottom: 2px; }
+.side-news-meta { margin: 0 0 3px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; }
+.side-news-meta .kind { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.side-news-title { display: block; font-family: var(--serif); font-size: 16px; line-height: 1.32; font-weight: 600; color: var(--text); text-decoration: none; }
+.side-news-title:hover { color: var(--accent); }
+.side-news-foot { margin: 0; border-top: 1px solid var(--line); padding-top: 12px; font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
 .card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
 .card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
 .card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
@@ -1341,6 +1355,35 @@ def expert_dates():
     return med, years[0], years[-1], rows
 
 
+NEWS_ON_HOME = 3
+NEWS_MIN_POSTS = 1
+
+
+def side_news():
+    """The latest news, on the right of the first screen under the "When?" card (the tracker family's
+    home-page panel, first built on The Belt Equation on 2026-11-14; both layouts considered are drawn
+    in sentient-horizons/design/proposals/home-latest-news-2026-11-14.md). Titles and links only: the
+    three newest posts, newest first, read from the same files as the News page. The pinned start-here
+    post is not one of the three; it gets its own line underneath. One dated post is enough to show
+    the panel: its date tells the reader how fresh it is."""
+    posts = []
+    for src in sorted((DOCS / "news").glob("*.md")):
+        fm, _ = news_frontmatter(src.read_text(encoding="utf-8"))
+        posts.append({"slug": src.stem, "fm": fm})
+    posts.sort(key=lambda p: (p["fm"].get("date", ""), p["slug"]), reverse=True)
+    opener = next((p for p in posts if p["fm"].get("kind") == "start-here"), None)
+    dated = [p for p in posts if p["fm"].get("kind") != "start-here"]
+    if len(dated) < NEWS_MIN_POSTS:
+        return ""
+    items = "".join(
+        f'<li><p class="side-news-meta"><time datetime="{p["fm"]["date"]}">{long_date(p["fm"]["date"])}</time>'
+        f'<span class="kind">{esc(NEWS_KINDS.get(p["fm"].get("kind"), ""))}</span></p>'
+        f'<a class="side-news-title" href="/news/{p["slug"]}/">{esc(p["fm"]["title"])}</a></li>' for p in dated[:NEWS_ON_HOME])
+    foot = f'<p class="side-news-foot">New here? <a href="/news/{opener["slug"]}/">Start with where the test stands</a>.</p>' if opener else ""
+    return ('<aside class="side-news" aria-labelledby="side-news-title"><div class="side-news-head"><h2 id="side-news-title">Latest news</h2>'
+            f'<a href="/news/">All news</a></div><ul class="side-news-list">{items}</ul>{foot}</aside>')
+
+
 def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
     """The first screen: the answer, the four conditions, the experts' date."""
     A, C, D = sc["A"], sc["C"], sc["D"]
@@ -1380,6 +1423,7 @@ def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
 <p class="fresh">Each bar shows how far that measure has come since {sc['reference_year']} toward the line where it would count.</p>
 <p class="fresh">Scored {long_date(built)} from public numbers. <a href="/docs/amendments">Track the changes here.</a></p>
 </div>
+<div class="land-side">
 <aside class="card">
 <p class="ch-big">When?</p>
 <p class="ch">It depends what you mean by AGI</p>
@@ -1391,6 +1435,8 @@ def landing(sc, b_pts, mani, aggregates, built, commit, ytl):
 </div>
 <p class="foot"><a href="#belief">The full record is below.</a></p>
 </aside>
+{side_news()}
+</div>
 </section>"""
 
 
