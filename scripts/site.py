@@ -582,6 +582,17 @@ SITE_CSS = """
 .side-news-title { display: block; font-family: var(--serif); font-size: 16px; line-height: 1.32; font-weight: 600; color: var(--text); text-decoration: none; }
 .side-news-title:hover { color: var(--accent); }
 .side-news-foot { margin: 0; border-top: 1px solid var(--line); padding-top: 12px; font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+/* ---- "Recent news" beside a news post (John, 2026-11-14), the same list as The Belt Equation's. It wears the
+   home page's .side-news panel above. Beside the post on a wide screen, staying in view while scrolling; under
+   900 pixels it drops below the post, above the footer. ---- */
+.post-layout { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 32px; align-items: start; }
+.post-layout .post { min-width: 0; }
+.recent-news { position: sticky; top: 86px; padding: 16px 18px; gap: 8px; }
+.recent-news .side-news-title { font-size: 15px; }
+@media (max-width: 900px) {
+  .post-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .recent-news { position: static; max-width: 760px; }
+}
 .card .ch-big { font-family: var(--sans); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--text); margin: 0 0 6px; }
 .card .ch { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
 .card .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 54px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: var(--text); margin: 0 0 8px; }
@@ -754,7 +765,9 @@ def render_news(built, commit):
                            "</section>")
         card = f"/news/{p['slug']}-card.png" if (out_root / f"{p['slug']}-card.png").exists() else None
         follow = '<p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a>.</p>'
-        body_html = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
+        article = f'<article class="post prose narrow">{p["html"]}{record_line}{follow}</article>'
+        recent = recent_news(dated, opener, p["slug"])
+        body_html = f'<div class="post-layout">{article}{recent}</div>' if recent else article
         page = shell(f"{fm.get('title', p['slug'])} | {SITE_TITLE}", fm.get("summary", ""), body_html, built, commit,
                      canonical_path=f"/news/{p['slug']}/", eyebrow=f"News · {long_date(fm['date'])} · {kind}", h1=fm.get("title", p["slug"]),
                      lede=(None if fm.get("kind") == "start-here" else esc(fm.get("summary", ""))), active="/news/", image=card)
@@ -795,6 +808,28 @@ def render_news(built, commit):
             f'<language>en-gb</language><atom:link href="{SITE_URL}/news/feed.xml" rel="self" type="application/rss+xml"/>{rss_items}</channel></rss>')
     (out_root / "feed.xml").write_text(feed, encoding="utf-8")
     return len(posts)
+
+
+RECENT_NEWS_COUNT = 5
+
+
+def recent_news(dated, opener, current_slug, count=RECENT_NEWS_COUNT):
+    """The "Recent news" list beside a news post (John, 2026-11-14), so a reader who lands on one post can
+    find the others; the same list as The Belt Equation's. The newest dated posts, newest first, leaving out
+    the post being read, each as its date written out and its title as a link. The start-here post is not
+    in the list: it is offered underneath, as on the home page, except on the start-here post itself.
+    Empty when there is no other post to show."""
+    recent = [p for p in dated if p["slug"] != current_slug][:count]
+    if not recent:
+        return ""
+    items = "".join(
+        f'<li><p class="side-news-meta"><time datetime="{p["fm"]["date"]}">{long_date(p["fm"]["date"])}</time></p>'
+        f'<a class="side-news-title" href="/news/{p["slug"]}/">{esc(p["fm"]["title"])}</a></li>' for p in recent)
+    start = (f' · New here? <a href="/news/{opener["slug"]}/">Start with where the test stands</a>.'
+             if opener and opener["slug"] != current_slug else "")
+    return ('<nav class="side-news recent-news" aria-labelledby="recent-news-title"><div class="side-news-head">'
+            '<h2 id="recent-news-title">Recent news</h2></div>'
+            f'<ul class="side-news-list">{items}</ul><p class="side-news-foot"><a href="/news/">All news</a>{start}</p></nav>')
 
 
 def long_date(iso):
