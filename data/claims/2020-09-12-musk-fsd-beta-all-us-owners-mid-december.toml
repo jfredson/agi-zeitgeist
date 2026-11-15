@@ -1,0 +1,25 @@
+[claim]
+id = "2020-09-12-musk-fsd-beta-all-us-owners-mid-december"
+speaker_id = "musk"
+when = "2020-09-12"
+when_note = "The post's timestamp is 2020-09-12 15:20 UTC."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1304802133355556864"
+source_locator = "the end of the first sentence"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "public beta (early access owners who opt in) 4 to 6 weeks after that, then all US Tesla owners mid December"
+prediction = "The rewritten Full Self-Driving software would reach a public beta for opted-in early-access owners four to six weeks after the private beta, and all US Tesla owners in mid-December 2020."
+kind = "deployment"
+bar = "The rewritten Full Self-Driving software available to all US Tesla owners (who bought it) by 2020-12-15."
+due = 2020
+due_basis = "'mid December', said 2020-09-12: 2020-12-15."
+due_date = 2020-12-15
+status = "missed"
+verdict_on = 2021-04-14
+verdict_why = "On 2021-04-14 he posted 'I would be surprised if wide beta (aka button) is later than June', so the software had not gone to all owners by mid-December 2020."
+verdict_source = "https://x.com/elonmusk/status/1382460531550785541"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Contingent, in the post, 'upon not encountering major unexpected setbacks'."

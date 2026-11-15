@@ -1,0 +1,25 @@
+[claim]
+id = "2025-04-04-altman-o3-and-o4-mini-in-a-couple-of-weeks"
+speaker_id = "altman"
+when = "2025-04-04"
+when_note = "The post's timestamp is 2025-04-04 14:39 UTC (07:39 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/sama/status/1908167621624856998"
+source_locator = "the first sentence of the post"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened. The address was taken from Simon Willison's post of 2025-04-04, which links it."
+quote = "change of plans: we are going to release o3 and o4-mini after all, probably in a couple of weeks"
+prediction = "OpenAI would probably release its o3 and o4-mini models in about two weeks, by about 2025-04-18."
+kind = "deployment"
+bar = "OpenAI releases o3 and o4-mini to the public by 2025-04-18, shown by OpenAI's own release."
+due = 2025
+due_basis = "'probably in a couple of weeks' from 2025-04-04 is 2025-04-18."
+due_date = 2025-04-18
+status = "hit"
+verdict_on = 2025-04-16
+verdict_why = "OpenAI's page 'Introducing OpenAI o3 and o4-mini', dated 2025-04-16 in OpenAI's news feed: 'Today, we're releasing OpenAI o3 and o4-mini'."
+verdict_source = "https://openai.com/index/introducing-o3-and-o4-mini/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-087", "altman-claims-104"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. The same post says GPT-5 would follow 'in a few months', which names no length and is not entered."

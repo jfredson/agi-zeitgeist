@@ -1,0 +1,26 @@
+[claim]
+id = "2019-02-19-musk-safe-to-sleep-end-of-next-year"
+speaker_id = "musk"
+when = "2019-02-19"
+when_note = "ARK Invest's podcast is dated 2019-02-19."
+occasion = "ARK Invest's 'For Your Innovation' podcast with Tasha Keeney"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=tnjK8g4NQX0"
+source_locator = "10:21 to 10:44 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "safe for somebody to essentially fall asleep and wake up the destination probably towards the end of next year"
+prediction = "Towards the end of 2020 a Tesla would be safe enough for someone to fall asleep and wake up at their destination; when regulators would agree he did not know."
+kind = "capability"
+bar = "A Tesla sold to the public that drives itself safely with no one responsible for watching the road, shown by Tesla's own release or description, by 2020-12-31."
+due = 2020
+due_basis = "'towards the end of next year', said 2019-02-19: 2020."
+restates = "2017-04-musk-sleep-in-the-car-about-two-years"
+repeated_on = [2019-06-11, 2019-10-23]
+status = "missed"
+verdict_on = 2021-02-08
+verdict_why = "Tesla's annual report for 2020 (filed 2021-02-08) says 'at present the driver is ultimately responsible for controlling the vehicle' and 'We intend to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-105", "musk-claims-106", "musk-claims-107", "musk-claims-099"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Repeated at the shareholder meeting of 2019-06-11 ('probably some time next year ... the car be autonomous without supervision', 36:02) and on the call of 2019-10-23 ('reliable enough that you do not need to pay attention ... by the end of next year', 1:26:24)."

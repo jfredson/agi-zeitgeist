@@ -1,0 +1,23 @@
+[claim]
+id = "2024-05-25-musk-agi-next-year"
+speaker_id = "musk"
+when = "2024-05-25"
+when_note = "The post's timestamp is 2024-05-25 05:34 UTC (2024-05-24 22:34 Pacific); entered under the UTC date."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1794240517875920935"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Next year"
+prediction = "Answering Logan Kilpatrick's 'How long until AGI?': next year, 2025."
+kind = "timing"
+bar = "None in the source: the two-word reply does not say what AGI is."
+due = 2025
+due_basis = "'Next year', said 2024-05-25."
+status = "unfalsifiable"
+verdict_why = "AGI is not defined in the exchange; as with other undefined named stages, no test. Decided at entry."
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. The question, posted the same day by @OfficialLoganK, reads 'How long until AGI?'."
+arrives = "agi"
+arrives_term = "AGI"
+form = "year"

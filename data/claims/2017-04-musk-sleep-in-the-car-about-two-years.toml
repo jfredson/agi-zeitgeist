@@ -1,0 +1,24 @@
+[claim]
+id = "2017-04-musk-sleep-in-the-car-about-two-years"
+speaker_id = "musk"
+when = "2017-04"
+when_note = "Given at TED2017 in April 2017; TED's transcript page gives no day."
+occasion = "Conversation with Chris Anderson at TED2017"
+source_kind = "transcript"
+source_url = "https://www.ted.com/talks/elon_musk_the_future_we_re_building_and_boring/transcript"
+source_locator = "the section on self-driving cars, after the coast-to-coast drive"
+checked_how = "TED's own transcript read on 2026-11-14 through the r.jina.ai reader."
+quote = "I think that's about two years."
+prediction = "In about two years someone could buy a Tesla, take their hands off the wheel, go to sleep and wake up at their destination, safely (leaving regulation aside)."
+kind = "capability"
+bar = "A Tesla sold to the public that drives itself safely with no one responsible for watching the road, shown by Tesla's own release or description, by the end of 2019."
+due = 2019
+due_basis = "'about two years', said in April 2017: 2019."
+status = "missed"
+verdict_on = 2020-02-13
+verdict_why = "Tesla's annual report for 2019 (filed 2020-02-13) describes Autopilot and FSD as 'advanced driver assist systems' and says 'at present the driver is ultimately responsible for controlling the vehicle'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000156459020004475/tsla-10k_20191231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-097", "musk-claims-099"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (John's ruling of 2026-10-19), so it is the OpenAI role that admits it. The question: 'the time when someone will be able to buy one of your cars and literally just take the hands off the wheel and go to sleep and wake up and find that they've arrived, how far away is that, to do that safely?'"

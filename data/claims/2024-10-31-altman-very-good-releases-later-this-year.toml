@@ -1,0 +1,24 @@
+[claim]
+id = "2024-10-31-altman-very-good-releases-later-this-year"
+speaker_id = "altman"
+when = "2024-10-31"
+when_note = "The day of the Reddit AMA and of TechCrunch's report of it (published 2024-10-31 19:37 UTC)."
+occasion = "Written answer in an 'Ask Me Anything' thread on Reddit's r/ChatGPT, with Kevin Weil, Srinivas Narayanan and Mark Chen"
+source_kind = "coverage_only"
+source_url = "https://techcrunch.com/2024/10/31/openai-ceo-sam-altman-says-lack-of-compute-is-delaying-the-companys-products/"
+source_locator = "the paragraph on releases later in the year"
+checked_how = "TechCrunch's report read on 2026-11-14 through the r.jina.ai reader; the Reddit thread itself (https://www.reddit.com/r/ChatGPT/comments/1ggixzy/) was not opened, because Reddit refuses plain fetches from here."
+reported_as = "TechCrunch (Kyle Wiggers) quotes his written answer: 'We have some very good releases coming later this year,' Altman wrote. 'Nothing that we are going to call GPT-5, though.'"
+prediction = "OpenAI would put out some very good releases before the end of 2024, none of them called GPT-5."
+kind = "deployment"
+bar = "OpenAI releases at least one new model or product to the public between 2024-10-31 and 2024-12-31, none named GPT-5, shown by OpenAI's own release. 'Very good' is his word and is not tested."
+due = 2024
+due_basis = "'later this year', said 2024-10-31; judged at 2024-12-31."
+status = "hit"
+verdict_on = 2024-12-09
+verdict_why = "OpenAI's post 'Sora is here', dated 2024-12-09 in OpenAI's news feed, released its video model to the public; the feed also carries 'OpenAI o1 System Card' on 2024-12-05. No model called GPT-5 came out in 2024."
+verdict_source = "https://openai.com/index/sora-is-here"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-102", "altman-claims-106", "altman-claims-104"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Second-hand: only the report was read, not the thread. The page for 'Sora is here' was not itself opened; its title and date are the feed's."

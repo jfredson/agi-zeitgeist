@@ -1,0 +1,25 @@
+[claim]
+id = "2020-09-12-musk-private-beta-in-2-to-4-weeks"
+speaker_id = "musk"
+when = "2020-09-12"
+when_note = "The post's timestamp is 2020-09-12 15:20 UTC (08:20 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1304802133355556864"
+source_locator = "the first clause of the post"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Releasing private beta in 2 to 4 weeks"
+prediction = "Tesla would release the private beta of its rewritten Full Self-Driving software in two to four weeks."
+kind = "deployment"
+bar = "Tesla releases the private beta of the rewritten Full Self-Driving software by 2020-10-10."
+due = 2020
+due_basis = "'2 to 4 weeks' from 2020-09-12: the later end, 2020-10-10."
+due_date = 2020-10-10
+status = "missed"
+verdict_on = 2020-10-20
+verdict_why = "The limited beta went out on 2020-10-20 ('Limited FSD beta releasing on Tuesday next week', his post of 2020-10-12; 'Now that Tesla FSD beta is out in limited release', 2020-10-22), ten days after the later end."
+verdict_source = "https://x.com/elonmusk/status/1315616137464307718"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. The post adds that the schedule 'is contingent upon not encountering major unexpected setbacks'. A near miss, ten days."

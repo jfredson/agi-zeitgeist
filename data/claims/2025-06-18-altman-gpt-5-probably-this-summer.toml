@@ -1,0 +1,25 @@
+[claim]
+id = "2025-06-18-altman-gpt-5-probably-this-summer"
+speaker_id = "altman"
+when = "2025-06-18"
+when_note = "OpenAI's upload of the episode is dated 2025-06-18; the day it was recorded is not given."
+occasion = "The OpenAI Podcast, episode 1, with Andrew Mayne"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=DB9mjd-65gw"
+source_locator = "10:48 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page, in the built-in browser, on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened to the recording. The quote is a verbatim run of the caption words. The transcript names its speakers: 'Andrew Mayne: When are we gonna see this? Sam Altman: Probably sometime this summer.'"
+quote = "Probably sometime this summer."
+prediction = "GPT-5 would probably come out sometime in the summer of 2025; he did not know exactly when."
+kind = "deployment"
+bar = "OpenAI releases GPT-5 to the public by the end of the northern summer of 2025, shown by OpenAI's own release."
+due = 2025
+due_basis = "'this summer', said 2025-06-18; the end of the northern summer, 2025-09-22, is taken as the last day (flagged for John)."
+due_date = 2025-09-22
+status = "hit"
+verdict_on = 2025-08-07
+verdict_why = "OpenAI's page 'Introducing GPT-5', dated 2025-08-07 in OpenAI's news feed: 'We are introducing GPT‑5, our best AI system yet.'"
+verdict_source = "https://openai.com/index/introducing-gpt-5/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-095", "altman-claims-104"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. The question just before is 'What is the time frame for GPT-five?'; he adds 'I don't know exactly when.'"

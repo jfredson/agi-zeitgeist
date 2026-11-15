@@ -1,0 +1,25 @@
+[claim]
+id = "2022-04-06-altman-dall-e-2-product-launch-this-summer"
+speaker_id = "altman"
+when = "2022-04-06"
+when_note = "The blog's feed gives published 2022-04-06 18:15 UTC (11:15 Pacific)."
+occasion = "Blog post 'DALL•E 2'"
+source_kind = "own_words"
+source_url = "https://blog.samaltman.com/dall-star-e-2"
+source_locator = "the paragraph after the six numbered points"
+checked_how = "Read on the page on 2026-11-14 (curl); the date from the blog's feed."
+quote = "Hopefully this summer, we’ll do a product launch and people will be able to use it for all sorts of things."
+prediction = "OpenAI would, he hoped, launch DALL·E 2 as a product in the summer of 2022, so that people could use it for all sorts of things."
+kind = "deployment"
+bar = "OpenAI opens DALL·E 2 to the public as a product people can use, by the end of the northern summer of 2022, shown by OpenAI's own release."
+due = 2022
+due_basis = "'this summer', said 2022-04-06; the end of the northern summer, 2022-09-22, is taken as the last day (a season is not covered by the readings; flagged for John)."
+due_date = 2022-09-22
+status = "hit"
+verdict_on = 2022-07-20
+verdict_why = "OpenAI's page 'DALL·E now available in beta', dated 2022-07-20 in OpenAI's news feed, says DALL·E 'is now available in beta' and that OpenAI is 'beginning the process of inviting 1 million people from our waitlist', with free monthly credits and credits for sale. Counted as the product launch; that a waitlist remained until 2022-09-28 is noted for John."
+verdict_source = "https://openai.com/index/dall-e-now-available-in-beta/"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["altman-claims-085", "altman-claims-086", "altman-claims-104"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Hedged ('Hopefully'). Whether a beta opened from a waitlist counts as 'a product launch' is a judgement, flagged for John; the waitlist was dropped on 2022-09-28 ('DALL·E now available without waitlist'), six days after the date taken."

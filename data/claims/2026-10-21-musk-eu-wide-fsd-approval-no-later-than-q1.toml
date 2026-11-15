@@ -1,0 +1,20 @@
+[claim]
+id = "2026-10-21-musk-eu-wide-fsd-approval-no-later-than-q1"
+speaker_id = "musk"
+when = "2026-10-21"
+when_note = "Tesla's own upload of its third-quarter 2026 call, 2026-10-21."
+occasion = "Tesla's third-quarter 2026 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=tFezqXBF-gw"
+source_locator = "1:33 to 1:58 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "I would I would be surprised if it takes longer than than Q1."
+prediction = "EU-wide approval of supervised full self-driving would come within a few months and, he would be surprised otherwise, by the end of the first quarter of 2027."
+kind = "deployment"
+bar = "Supervised FSD approved for use across the European Union by 2027-03-31, shown by Tesla's release or a regulator's notice."
+due = 2027
+due_basis = "'longer than Q1', said 2026-10-21: the first quarter of 2027, to 2027-03-31."
+due_date = 2027-03-31
+status = "not_yet_due"
+search_ids = ["musk-claims-122"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about."

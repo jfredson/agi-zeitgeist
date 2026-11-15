@@ -1,0 +1,24 @@
+[claim]
+id = "2023-07-06-musk-full-self-driving-level-four-or-five-later-this-year"
+speaker_id = "musk"
+when = "2023-07-06"
+when_note = "AFP's report gives the day: he spoke by video at the opening of the conference on 2023-07-06."
+occasion = "Video address to the World Artificial Intelligence Conference, Shanghai"
+source_kind = "coverage_only"
+source_url = "https://thestar.com.my/tech/tech-news/2023/07/06/elon-musk-predicts-tesla-self-driving-cars-later-this-year"
+source_locator = "the third paragraph"
+checked_how = "AFP's report as printed by The Star, read on 2026-11-14 through the r.jina.ai reader; published 2023-07-06."
+reported_as = "AFP quotes him: 'This is only speculation, but I think we'll achieve full self-driving, maybe what you would call four or five, I think later this year.'"
+prediction = "Tesla would achieve full self-driving, level four or five, later in 2023; he called it speculation."
+kind = "capability"
+bar = "Tesla's software, as released, drives a car with no one responsible for it (level four or five), shown by Tesla's own release or description, by 2023-12-31."
+due = 2023
+due_basis = "'later this year', said 2023-07-06."
+status = "missed"
+verdict_on = 2024-01-29
+verdict_why = "Tesla's annual report for 2023 (filed 2024-01-29) says 'at present the driver is ultimately responsible for controlling the vehicle' and that Tesla intends 'to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-096", "musk-claims-099"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about. Second-hand: no recording found. 'Only speculation' is a hedge, not a hypothetical."

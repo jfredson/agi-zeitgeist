@@ -1,0 +1,25 @@
+[claim]
+id = "2023-07-12-musk-superintelligence-in-five-or-six-years"
+speaker_id = "musk"
+when = "2023-07-12"
+when_note = "Reuters, 2023-07-13: the Twitter Spaces event of 'Wednesday', 2023-07-12, the day xAI was announced."
+occasion = "Twitter Spaces conversation on the day xAI was announced"
+source_kind = "coverage_only"
+source_url = "https://www.tbsnews.net/tech/elon-musk-launches-ai-firm-xai-he-looks-take-openai-664458"
+source_locator = "the paragraph after the 'pro-humanity' quote"
+checked_how = "Reuters' report as reprinted by The Business Standard, read on 2026-11-14 (curl); published 2023-07-13."
+reported_as = "Reuters: 'Musk also predicted that superintelligence, or AI that is smarter than humans, will arrive in five or six years.'"
+statement_id = "musk-2023-02"
+prediction = "Superintelligence, which the reporters gloss as AI smarter than humans, would arrive in five or six years."
+kind = "timing"
+bar = "None from his own words: only the reporters' paraphrase survives, and the gloss is theirs."
+due = 2029
+due_early = 2028
+due_basis = "'five or six years', said 2023-07-12: 2028 to 2029; the later end is taken and the earlier recorded."
+status = "unfalsifiable"
+verdict_why = "Only the reporters' paraphrase and gloss survive; as with Altman's TIME paraphrase, the ledger takes no test from a reporter's words. Decided at entry."
+search_ids = ["musk-claims-096"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. Second-hand, a paraphrase."
+arrives = "superintelligence"
+arrives_term = "superintelligence"
+form = "range"

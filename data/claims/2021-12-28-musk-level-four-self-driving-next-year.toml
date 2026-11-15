@@ -1,0 +1,24 @@
+[claim]
+id = "2021-12-28-musk-level-four-self-driving-next-year"
+speaker_id = "musk"
+when = "2021-12-28"
+when_note = "Lex Fridman's upload of the episode is dated 2021-12-28; recorded earlier, the day not given."
+occasion = "Lex Fridman Podcast, episode 252"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=DxREm3s1scA"
+source_locator = "1:26:51 to 1:27:01 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context. The transcript names its speakers."
+quote = "I mean, it's looking quite likely that it'll be next year."
+prediction = "Asked when Tesla would solve level four full self-driving (a car driving itself with no human needed within its operating area), he said it was looking quite likely in 2022."
+kind = "capability"
+bar = "Tesla's self-driving, as released, operating with no human responsible for it (level four), shown by Tesla's own release or description, by 2022-12-31."
+due = 2022
+due_basis = "'next year', said 2021-12-28."
+status = "missed"
+verdict_on = 2024-01-29
+verdict_why = "Tesla's annual report for 2023 (filed 2024-01-29) still says 'at present the driver is ultimately responsible for controlling the vehicle' and that Tesla intends 'to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-117", "musk-claims-099"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. The question ('when do you think Tesla will solve level four FSD?') is Lex Fridman's. In the same answer he says it 'certainly appears like we will get there next year' that the chance of an accident on FSD is less than for the average human (1:27:49); that part is held for John, as judging it needs a ruling on Tesla's own crash figures. Also: a 'decent prototype' of the Tesla Bot 'towards the end of next year' (1:45:53), a repeat recorded on 2021-08-19-musk-tesla-bot-prototype-next-year."

@@ -1,0 +1,26 @@
+[claim]
+id = "2021-04-14-musk-wide-beta-no-later-than-june"
+speaker_id = "musk"
+when = "2021-04-14"
+when_note = "The post's timestamp is 2021-04-14 22:27 UTC (15:27 Pacific), ten minutes after the post it qualifies."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1382460531550785541"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "I would be surprised if wide beta (aka button) is later than June."
+prediction = "The wide Full Self-Driving beta (the request button) would come no later than June 2021; May was aspirational."
+kind = "deployment"
+bar = "Tesla puts a button in owners' cars or app to request the Full Self-Driving beta by 2021-06-30."
+due = 2021
+due_basis = "'later than June', said 2021-04-14: 2021-06-30."
+due_date = 2021-06-30
+restates = "2021-04-14-musk-beta-button-hopefully-next-month"
+status = "missed"
+verdict_on = 2021-09-24
+verdict_why = "The request button went live on the night of 2021-09-24 Pacific (his post of that evening), about three months late."
+verdict_source = "https://x.com/elonmusk/status/1441560961593262081"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. The post also says 'FSD subscription next month is a sure thing'; a way of paying, not entered."

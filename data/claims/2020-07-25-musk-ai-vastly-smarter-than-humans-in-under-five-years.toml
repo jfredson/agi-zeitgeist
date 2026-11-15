@@ -1,0 +1,29 @@
+[claim]
+id = "2020-07-25-musk-ai-vastly-smarter-than-humans-in-under-five-years"
+speaker_id = "musk"
+when = "2020-07-25"
+when_note = "The day the interview was published; it was done earlier, the day not given."
+occasion = "Interview with Maureen Dowd, The New York Times"
+source_kind = "coverage_only"
+source_url = "https://www.nytimes.com/2020/07/25/style/elon-musk-maureen-dowd.html"
+source_locator = "the paragraph on A.I., about two-thirds of the way down"
+checked_how = "Read on 2026-11-14 from the Internet Archive copy of 2020-12-31 (the Times site asks for a login); published 2020-07-25 09:00 UTC."
+reported_as = "The New York Times (Maureen Dowd) quotes him: 'we're headed toward a situation where A.I. is vastly smarter than humans and I think that time frame is less than five years from now.'"
+statement_id = "musk-2020-01"
+prediction = "AI would be vastly smarter than humans in less than five years, by July 2025; that would not mean everything goes to hell, just that things get unstable or weird."
+kind = "timing"
+bar = "An AI shown by its maker or an outside body to be far smarter than any person at thinking work, by 2025-07-25."
+due = 2025
+due_basis = "'less than five years from now', published 2020-07-25: before 2025-07-25."
+due_date = 2025-07-25
+status = "missed"
+verdict_on = 2026-01-22
+verdict_why = "At Davos on 2026-01-22 he said 'we might have AI that is smarter than any human by the end of this year', so by his own account it had not happened by mid-2025."
+verdict_source = "https://www.youtube.com/watch?v=IgifEgm1-e0"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-096", "musk-claims-111"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Second-hand in form: a news interview with his words in quotation marks. The verdict rests on his own later words and is flagged for John."
+arrives = "beyond_people"
+arrives_term = "AI vastly smarter than humans"
+form = "by"

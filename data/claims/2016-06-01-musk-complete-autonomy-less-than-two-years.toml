@@ -1,0 +1,26 @@
+[claim]
+id = "2016-06-01-musk-complete-autonomy-less-than-two-years"
+speaker_id = "musk"
+when = "2016-06-01"
+when_note = "The Code Conference interview of 2016-06-01; the upload is the conference's own."
+occasion = "Interview with Kara Swisher and Walt Mossberg at the Code Conference 2016"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=wsixsRI-Sz4"
+source_locator = "1:19:59 to 1:21:11 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "I I think we're basically um less than two years away from complete autonomy."
+prediction = "Tesla was less than two years from complete autonomy, safer than a human driver; regulators would take at least another year, so about three years before it was allowed."
+kind = "capability"
+bar = "A Tesla car able to drive itself with no driver responsible for it, safer than a human driver, shown by Tesla's own release or description, by 2018-06-01."
+due = 2018
+due_basis = "'less than two years away', said 2016-06-01: before 2018-06-01."
+due_date = 2018-06-01
+restates = "2015-12-21-musk-complete-autonomy-in-two-years"
+status = "missed"
+verdict_on = 2020-02-13
+verdict_why = "Tesla's annual report for 2019 (filed 2020-02-13) describes Autopilot and FSD as 'advanced driver assist systems' and says 'at present the driver is ultimately responsible for controlling the vehicle'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000156459020004475/tsla-10k_20191231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-100", "musk-claims-099"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (John's ruling of 2026-10-19), so it is the OpenAI role that admits it. He adds at once 'Complete safer than a human' and that regulators 'will take ... at least another year'; the regulatory step is not part of the test."

@@ -1,0 +1,24 @@
+[claim]
+id = "2021-01-27-musk-drive-itself-more-reliably-than-humans-this-year"
+speaker_id = "musk"
+when = "2021-01-27"
+when_note = "Tesla's fourth-quarter 2020 call, 2021-01-27."
+occasion = "Tesla's fourth-quarter 2020 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=rUFCP5iE80I"
+source_locator = "0:06:38 to 0:06:50 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-11-14 (downloaded before YouTube began refusing); nobody listened. The quote is a verbatim run of caption words; the speaker is judged from context. The upload is a shortened re-upload of the call."
+quote = "i'm highly confident to call the old drive itself with reliability in excess of humans this year"
+prediction = "During 2021 the car would drive itself more reliably than humans do ('to call the old' is the captions' rendering of 'the car will')."
+kind = "capability"
+bar = "Tesla's software, as released, drives a car with no one responsible for watching the road and with fewer crashes than human drivers, shown by Tesla's own release, by 2021-12-31."
+due = 2021
+due_basis = "'this year', said 2021-01-27."
+status = "missed"
+verdict_on = 2022-02-07
+verdict_why = "Tesla's annual report for 2021 (filed 2022-02-07) says 'at present the driver is ultimately responsible for controlling the vehicle' and 'We intend to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/tsla-20211231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-115", "musk-claims-099"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Later on the call he answers a written question, 'why are you confident Tesla will achieve level five autonomy in 2021', with 'i'm confident based on my understanding of the tech roadmap'; the date there is the question's."
