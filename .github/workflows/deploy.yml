@@ -40,7 +40,7 @@ jobs:
       - name: Check every data row
         run: python3 scripts/validate.py
       - name: Check the news posts
-        run: python3 scripts/test_check_news.py && python3 scripts/check_news.py
+        run: python3 scripts/test_check_news.py && python3 scripts/test_recent_news.py && python3 scripts/check_news.py
       - name: Draw the charts and build the site
         run: |
           python3 scripts/charts.py
