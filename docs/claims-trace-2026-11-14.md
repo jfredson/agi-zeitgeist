@@ -48,7 +48,7 @@ up. Posts on X were read through a mirror of the post (api.fxtwitter.com), never
 
 **A cross-check.** Every dated statement of each man already in `data/statements.csv` was
 checked against the claim files. That found one Altman claim the searches had missed (TIME,
-December 2023) and ten Musk forecasts of AGI or beyond.
+December 2023) and a dozen of Musk's dated forecasts of AGI or beyond that the ledger had not yet entered (row `musk-claims-144`).
 
 **How the words were read.** YouTube refused direct caption downloads from this machine during
 the session, so most recordings were read through the transcript panel on the video page in the
