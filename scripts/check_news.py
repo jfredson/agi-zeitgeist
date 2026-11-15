@@ -10,7 +10,7 @@ A post is one Markdown file, YYYY-MM-DD-slug.md, with a frontmatter block. The r
 site are rows and amendments, not pages (tracker pattern, section 9), so a post names the
 amendment it explains (A25) or one of the four parts of the test (A, B, C, D). The check refuses a
 post that: has a file name not of that form, or a frontmatter date that differs from it; carries
-a kind outside the seven; names no record, or an amendment that is not in docs/amendments.md (the
+a kind outside the eight (the eighth, "year-review", proposed 2026-11-15 for the year-end post and not yet ruled); names no record, or an amendment that is not in docs/amendments.md (the
 opener, kind "start-here", is the one post that need not name a record); cites no source with an
 https address; states a figure (any digit) in a paragraph that carries no link (a Markdown link
 or a written-out https address) to a source or a record (a table is covered by the record links
@@ -45,7 +45,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KINDS = {"start-here", "rung-reached", "estimate-revised", "flagged-item-ruled", "claim", "headline-moved", "method-changed"}
+KINDS = {"start-here", "rung-reached", "estimate-revised", "flagged-item-ruled", "claim", "headline-moved", "method-changed", "year-review"}
 LEGS = {"A", "B", "C", "D"}
 WINDOW_DAYS = 14
 NAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-([a-z0-9]+(?:-[a-z0-9]+)*)\.md$")
@@ -219,7 +219,7 @@ def check(posts_dir: Path, amend: dict[str, list[str]], cards_dir: Path | None,
             problems.append(f"{name}: the frontmatter date {fm['date']} differs from the file name's {m.group(1)}")
         kind = fm.get("kind")
         if kind not in KINDS:
-            problems.append(f"{name}: kind {kind!r} is not one of the seven")
+            problems.append(f"{name}: kind {kind!r} is not one of the listed kinds")
         if kind == "start-here":
             openers += 1
         recs = fm.get("records") or []

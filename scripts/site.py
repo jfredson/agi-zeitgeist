@@ -700,7 +700,8 @@ figure.fig { border-radius: 0; }
 # and amendments, not pages, so a post names the amendment it explains and the page links the changelog.
 NEWS_KINDS = {"start-here": "start here", "rung-reached": "a line crossed", "estimate-revised": "a measure revised",
               "flagged-item-ruled": "a flagged item ruled", "claim": "a claim added or settled",
-              "headline-moved": "the headline moved", "method-changed": "the method changed"}
+              "headline-moved": "the headline moved", "method-changed": "the method changed",
+              "year-review": "the year in review"}
 
 
 def news_frontmatter(text):
