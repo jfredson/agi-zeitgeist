@@ -58,6 +58,39 @@ class NewsPosts(unittest.TestCase):
         self.assertTrue(any("no card beside it" in p for p in problems))
 
 
+REVIEW = GOOD.replace("date: 2026-10-18", "date: 2026-12-29").replace("kind: headline-moved", "kind: year-in-review")
+
+
+class YearInReview(unittest.TestCase):
+    """The year in review (ruled by John on 2026-11-15 for all five trackers): accepted as a kind, at most
+    one per calendar year, and every amendment it names dated in the post's own calendar year."""
+    def run_posts(self, posts, amend=AMEND):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp)
+            for name, text in posts.items():
+                (d / name).write_text(text, encoding="utf-8")
+            problems, _ = check_news.check(d, amend, None)
+        return problems
+
+    def test_the_kind_is_accepted_beyond_fourteen_days(self):
+        # A25 is dated 2026-10-17, more than fourteen days before 2026-12-29, but in the same year.
+        self.assertEqual(self.run_posts({"2026-12-29-the-year.md": REVIEW}), [])
+
+    def test_a_second_review_in_the_same_year_is_refused(self):
+        second = REVIEW.replace("date: 2026-12-29", "date: 2026-12-30")
+        problems = self.run_posts({"2026-12-29-the-year.md": REVIEW, "2026-12-30-the-year-again.md": second})
+        self.assertTrue(any("at most one per calendar year" in p for p in problems))
+
+    def test_reviews_in_different_years_pass(self):
+        later = REVIEW.replace("date: 2026-12-29", "date: 2027-12-29")
+        amend = {"A25": ["2026-10-17", "2027-03-01"]}
+        self.assertEqual(self.run_posts({"2026-12-29-the-year.md": REVIEW, "2027-12-29-the-year.md": later}, amend), [])
+
+    def test_a_record_with_no_change_that_year_is_refused(self):
+        problems = self.run_posts({"2026-12-29-the-year.md": REVIEW}, {"A25": ["2025-10-17"]})
+        self.assertTrue(any("carries no date in 2026" in p for p in problems))
+
+
 class OpenChecks(unittest.TestCase):
     """Rule 3.3 part 4: no post while any claim carries an open check (added 2026-11-09)."""
     def claims(self, d, verify):

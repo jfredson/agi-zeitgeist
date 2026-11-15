@@ -2,9 +2,9 @@
 title: "2026 on the AGI Zeitgeist: AI began doing a real share of AI research, the economy did not move, and what 2027 could settle"
 date: 2026-12-29
 status: held
-kind: year-review
+kind: year-in-review
 summary: At one AI company, the share of research led by its own AI went from under 1 percent to 26 percent in six months, which is the biggest move on this site this year. The best AI also outgrew the test that measured how fast AI improves, and the world economy grew at its usual pace. In 2027 some of the boldest dates the industry's leaders have named come due.
-records: [A, C, D]
+records: [A, C, D, A19, A25, A27, A30, A31, A32]
 after: "Where the test stands: 32 percent of the way. Are we in the singularity? Not yet."
 sources:
   - label: Anthropic, "Measurements for understanding the pace of AI development inside frontier labs"
