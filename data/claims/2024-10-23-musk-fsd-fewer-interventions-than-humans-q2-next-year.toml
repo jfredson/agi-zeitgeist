@@ -1,0 +1,21 @@
+[claim]
+id = "2024-10-23-musk-fsd-fewer-interventions-than-humans-q2-next-year"
+speaker_id = "musk"
+when = "2024-10-23"
+when_note = "Tesla's own upload of its third-quarter 2024 call, 2024-10-23."
+occasion = "Tesla's third-quarter 2024 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=ScxNmPREZtg"
+source_locator = "15:53 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "the Tesla FSD having um longer miles between interion than human is the second quarter of next year"
+prediction = "Tesla's internal expectation was that FSD would go longer between interventions than a human driver by the second quarter of 2025, maybe the third."
+kind = "capability"
+bar = "None an outsider could run: miles between interventions is measured only by Tesla."
+due = 2025
+due_basis = "'the second quarter of next year', said 2024-10-23."
+due_date = 2025-06-30
+status = "unfalsifiable"
+verdict_why = "Only Tesla holds the measure, so the speaker's company is the only judge. Decided at entry."
+search_ids = ["musk-claims-127"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about."

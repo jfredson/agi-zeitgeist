@@ -1,0 +1,25 @@
+[claim]
+id = "2020-10-12-musk-limited-fsd-beta-tuesday-next-week"
+speaker_id = "musk"
+when = "2020-10-12"
+when_note = "The post's timestamp is 2020-10-12 11:31 UTC (04:31 Pacific)."
+occasion = "Post on X, replying to CleanTechnica"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1315616137464307718"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened. The address was taken from CleanTechnica's report of 2020-10-22."
+quote = "Limited FSD beta releasing on Tuesday next week, as promised."
+prediction = "The limited Full Self-Driving beta would be released on Tuesday 2020-10-20, at first to a small number of expert and careful drivers."
+kind = "deployment"
+bar = "Tesla releases the limited Full Self-Driving beta by 2020-10-20."
+due = 2020
+due_basis = "'Tuesday next week', said Monday 2020-10-12: 2020-10-20."
+due_date = 2020-10-20
+status = "hit"
+verdict_on = 2020-10-20
+verdict_why = "On the call of 2020-10-21 he said 'we put it out there last night', and on 2020-10-22 he posted 'Now that Tesla FSD beta is out in limited release'."
+verdict_source = "https://x.com/elonmusk/status/1319164198241341440"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["musk-claims-095", "musk-claims-112"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Found while settling the claims of August and September 2020, not by the fixed queries."

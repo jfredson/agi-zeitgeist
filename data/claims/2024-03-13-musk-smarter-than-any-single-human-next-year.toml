@@ -1,0 +1,28 @@
+[claim]
+id = "2024-03-13-musk-smarter-than-any-single-human-next-year"
+speaker_id = "musk"
+when = "2024-03-13"
+when_note = "The post's timestamp is 2024-03-13 02:25 UTC (2024-03-12 19:25 Pacific); entered under the UTC date, as in the statement record."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1767738797276451090"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "AI will probably be smarter than any single human next year."
+statement_id = "musk-2024-02a"
+prediction = "AI would probably be smarter than any single human in 2025."
+kind = "timing"
+bar = "An AI shown by its maker or an outside body to be smarter than any single person, better than the best person at thinking work across the board, by 2025-12-31."
+due = 2025
+due_basis = "'next year', said 2024-03-13."
+status = "missed"
+verdict_on = 2026-01-22
+verdict_why = "At Davos on 2026-01-22 he said 'we might have AI that is smarter than any human by the end of this year', so by his own account it had not happened in 2025. Flagged for John: the verdict rests on the speaker's later words."
+verdict_source = "https://www.youtube.com/watch?v=IgifEgm1-e0"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-095", "musk-claims-111"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. Quoting Ray Kurzweil's forecast of human-level AI by 2029."
+arrives = "beyond_people"
+arrives_term = "AI smarter than any single human"
+form = "year"

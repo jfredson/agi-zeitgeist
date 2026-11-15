@@ -1,0 +1,21 @@
+[claim]
+id = "2026-07-22-musk-self-driving-tesla-semi-around-end-of-year"
+speaker_id = "musk"
+when = "2026-07-22"
+when_note = "Tesla's own upload of its second-quarter 2026 call, 2026-07-22."
+occasion = "Tesla's second-quarter 2026 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=9H5y9Uag8AA"
+source_locator = "55:12 to 56:04 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "get self-driving working on the the Tesla Semi um probably around the end of this year or early next year."
+prediction = "Self-driving would be working on the Tesla Semi truck probably around the end of 2026 or early 2027."
+kind = "capability"
+bar = "Tesla shows its Semi driving itself, by a dated public record, by 2027-03-31."
+due = 2027
+due_early = 2026
+due_basis = "'around the end of this year or early next year', said 2026-07-22: 'early' is the first quarter (reading 1)."
+due_date = 2027-03-31
+status = "not_yet_due"
+search_ids = ["musk-claims-139"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about."

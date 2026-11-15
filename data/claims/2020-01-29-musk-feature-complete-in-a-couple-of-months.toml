@@ -1,0 +1,26 @@
+[claim]
+id = "2020-01-29-musk-feature-complete-in-a-couple-of-months"
+speaker_id = "musk"
+when = "2020-01-29"
+when_note = "Tesla's fourth-quarter 2019 call, 2020-01-29."
+occasion = "Tesla's fourth-quarter 2019 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=LTOetiSVJnc"
+source_locator = "0:19:26 to 0:19:41 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-11-14 (downloaded before YouTube began refusing); nobody listened. The quote is a verbatim run of caption words; the speaker is judged from context. The upload is a re-upload of the call's audio."
+quote = "so I think that's looking like maybe it's going to be a couple months from now"
+prediction = "Tesla's full self-driving would be feature complete in maybe a couple of months, meaning it has some chance of driving from home to work without intervention."
+kind = "capability"
+bar = "Tesla releases self-driving software able to drive from home to work without intervention, shown by Tesla's own release, by 2020-03-29."
+due = 2020
+due_basis = "'a couple months from now', said 2020-01-29: 2020-03-29."
+due_date = 2020-03-29
+restates = "2019-02-19-musk-feature-complete-self-driving-this-year"
+status = "missed"
+verdict_on = 2020-07-22
+verdict_why = "On Tesla's call of 2020-07-22 he said 'I am very confident about full self-driving functionality being complete by the end of this year' (0:07:11), so it was not complete by the end of March."
+verdict_source = "https://www.youtube.com/watch?v=TEAQjgJoDns"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-108", "musk-claims-109"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Just before: 'it's looking like we might be feature complete um in a few months'."

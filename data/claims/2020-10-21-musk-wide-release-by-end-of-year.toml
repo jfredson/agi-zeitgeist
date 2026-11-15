@@ -1,0 +1,25 @@
+[claim]
+id = "2020-10-21-musk-wide-release-by-end-of-year"
+speaker_id = "musk"
+when = "2020-10-21"
+when_note = "Tesla's third-quarter 2020 call, 2020-10-21."
+occasion = "Tesla's third-quarter 2020 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=aTgZYNB8AD0"
+source_locator = "0:04:05 to 0:04:25 into the video"
+checked_how = "Read YouTube's automatic English captions of the upload on 2026-11-14 (downloaded before YouTube began refusing); nobody listened. The quote is a verbatim run of caption words; the speaker is judged from context. The upload is a re-upload of the call."
+quote = "Um and then just gradually step it up um until we have uh hopefully a wide release by the end of this year."
+prediction = "The Full Self-Driving beta would be stepped up gradually until, he hoped, a wide release by the end of 2020."
+kind = "deployment"
+bar = "Tesla's Full Self-Driving beta released widely to owners who bought it by 2020-12-31."
+due = 2020
+due_basis = "'by the end of this year', said 2020-10-21."
+restates = "2020-09-12-musk-fsd-beta-all-us-owners-mid-december"
+status = "missed"
+verdict_on = 2021-04-14
+verdict_why = "On 2021-04-14 he posted that he 'would be surprised if wide beta (aka button) is later than June', so there was no wide release in 2020."
+verdict_source = "https://x.com/elonmusk/status/1382460531550785541"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-112", "musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Hedged ('hopefully')."

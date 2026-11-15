@@ -1,0 +1,24 @@
+[claim]
+id = "2016-10-19-musk-los-angeles-to-new-york-on-its-own-by-end-of-2017"
+speaker_id = "musk"
+when = "2016-10-19"
+when_note = "The press call announcing that all new Teslas would carry self-driving hardware, 2016-10-19; Fortune's report is dated the same day."
+occasion = "Tesla press call on its new self-driving hardware"
+source_kind = "coverage_only"
+source_url = "https://fortune.com/2016/10/19/tesla-self-driving-tech/"
+source_locator = "the paragraph on the Los Angeles to New York drive"
+checked_how = "Read on 2026-11-14 through the r.jina.ai reader."
+reported_as = "Fortune: 'Tesla expects that a car could drive from Los Angeles to New York on its own by the end of next year, said Musk.'"
+prediction = "By the end of 2017 a Tesla could drive itself from Los Angeles to New York."
+kind = "capability"
+bar = "A Tesla drives from Los Angeles to New York on its own (no one controlling it) by 2017-12-31, shown by a dated record of the drive."
+due = 2017
+due_basis = "'by the end of next year', said 2016-10-19: 2017-12-31."
+status = "missed"
+verdict_on = 2018-02-07
+verdict_why = "On Tesla's call of 2018-02-07 he said 'timing wise I think we could probably coast-to-coast drive in three months six months at the outside' (0:32:00), so the drive had not been made by the end of 2017."
+verdict_source = "https://www.youtube.com/watch?v=t3i4ghtpteQ"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-096", "musk-claims-101"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (John's ruling of 2026-10-19), so it is the OpenAI role that admits it. Second-hand: the reporter's paraphrase. He repeated the date at TED in April 2017 with narrower words (2017-04-musk-coast-to-coast-no-controls-touched-by-end-of-2017)."

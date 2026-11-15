@@ -1,0 +1,24 @@
+[claim]
+id = "2017-06-06-musk-ai-beats-humans-at-everything-2030-to-2040"
+speaker_id = "musk"
+when = "2017-06-06"
+when_note = "The post's timestamp is 2017-06-06 00:27 UTC (2017-06-05 17:27 Pacific); the statement record and this ledger use the UTC date."
+occasion = "Post on X quoting New Scientist's report of the 2016 expert survey"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/871886151014940672"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Probably closer to 2030 to 2040 imo. 2060 would be a linear extrapolation, but progress is exponential."
+statement_id = "musk-2017-04"
+prediction = "AI will be able to beat people at everything (the quoted report's words) probably between 2030 and 2040, not 2060 as the surveyed experts said."
+kind = "timing"
+bar = "An AI shown by its maker or an outside body to be better than people at every task, by 2040."
+due = 2040
+due_early = 2030
+due_basis = "'2030 to 2040': the later end is taken and the earlier recorded."
+status = "not_yet_due"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (John's ruling of 2026-10-19), so it is the OpenAI role that admits it. He answers New Scientist's headline 'AI will be able to beat us at everything by 2060, say experts'."
+arrives = "beyond_people"
+arrives_term = "AI that beats us at everything"
+form = "range"

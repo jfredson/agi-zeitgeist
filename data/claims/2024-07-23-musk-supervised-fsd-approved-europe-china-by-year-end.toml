@@ -1,0 +1,24 @@
+[claim]
+id = "2024-07-23-musk-supervised-fsd-approved-europe-china-by-year-end"
+speaker_id = "musk"
+when = "2024-07-23"
+when_note = "Tesla's own upload of its second-quarter 2024 call, 2024-07-23."
+occasion = "Tesla's second-quarter 2024 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=ktkCRVxTuEI"
+source_locator = "45:58 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "supervised FSD in uh Europe China and other countries and I I think we're likely to receive that uh before the end of the year"
+prediction = "Regulators in Europe, China and other countries would likely approve Tesla's supervised full self-driving before the end of 2024."
+kind = "deployment"
+bar = "Supervised FSD approved for customers in Europe and in China by 2024-12-31, shown by Tesla's own release or a regulator's notice."
+due = 2024
+due_basis = "'before the end of the year', said 2024-07-23."
+status = "missed"
+verdict_on = 2025-07-23
+verdict_why = "On Tesla's call of 2025-07-23 he said 'we will get the approvals' and that people in 'most of Europe' would have the experience 'this year hopefully' (9:02), so Europe had not approved it in 2024."
+verdict_source = "https://www.youtube.com/watch?v=pLjG7a-NX7U"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-124", "musk-claims-126"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about."

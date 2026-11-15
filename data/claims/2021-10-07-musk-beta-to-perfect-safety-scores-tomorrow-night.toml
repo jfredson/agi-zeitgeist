@@ -1,0 +1,25 @@
+[claim]
+id = "2021-10-07-musk-beta-to-perfect-safety-scores-tomorrow-night"
+speaker_id = "musk"
+when = "2021-10-07"
+when_note = "Tesla's 2021 annual meeting at Giga Texas, 2021-10-07."
+occasion = "Tesla's 2021 annual shareholder meeting"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=XXrRteXWPIY"
+source_locator = "1:05:43 to 1:06:16 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context. The upload is a live re-stream by a commentator."
+quote = "we're going to start rolling out the fsd beta to all customers with a perfect safety driving record um tomorrow night at midnight california time"
+prediction = "Tesla would start sending the Full Self-Driving beta to all customers with a perfect safety score at midnight California time the next night."
+kind = "deployment"
+bar = "Tesla starts releasing the Full Self-Driving beta to customers with a perfect safety score by the end of 2021-10-08 Pacific."
+due = 2021
+due_basis = "'tomorrow night at midnight california time', said 2021-10-07: 2021-10-08."
+due_date = 2021-10-08
+status = "missed"
+verdict_on = 2021-10-11
+verdict_why = "His post of 2021-10-11 08:00 UTC: 'Beta 10.2 now rolling out to cars with 100/100 safety score over 100 miles', three days after the night named."
+verdict_source = "https://x.com/elonmusk/status/1447472059152408578"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-116", "musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. A near miss, three days; flagged for John as the smallest slip in the ledger."

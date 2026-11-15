@@ -1,0 +1,24 @@
+[claim]
+id = "2024-12-23-musk-all-humans-combined-by-2030-near-certain"
+speaker_id = "musk"
+when = "2024-12-23"
+when_note = "The post's timestamp is 2024-12-23 06:42 UTC (2024-12-22 22:42 Pacific); entered under the UTC date, as in the statement record."
+occasion = "Reply on X to Chamath Palihapitiya"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1871083864111919134"
+source_locator = "the second paragraph"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Probability that AI exceeds the intelligence of all humans combined by 2030 is ~100%."
+statement_id = "musk-2024-06"
+prediction = "It is close to certain (about 100%) that AI exceeds the intelligence of all humans combined by 2030."
+kind = "timing"
+bar = "An AI shown by its maker or an outside body to exceed all people together in intelligence, by 2030-12-31."
+due = 2030
+due_basis = "His words: 'by 2030'."
+has_probability = true
+status = "not_yet_due"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models."
+arrives = "beyond_people"
+arrives_term = "AI exceeding all humans combined"
+form = "by"

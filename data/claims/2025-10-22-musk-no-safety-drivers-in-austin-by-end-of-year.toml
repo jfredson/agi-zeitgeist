@@ -1,0 +1,24 @@
+[claim]
+id = "2025-10-22-musk-no-safety-drivers-in-austin-by-end-of-year"
+speaker_id = "musk"
+when = "2025-10-22"
+when_note = "Tesla's own upload of its third-quarter 2025 call, 2025-10-22."
+occasion = "Tesla's third-quarter 2025 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=GQ9S7xbkGAY"
+source_locator = "25:44 to 26:47 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "we are expecting to have uh no safety drivers in uh at least um large parts of Austin by the end of this year."
+prediction = "Tesla's robotaxis would run with no safety drivers in at least large parts of Austin by the end of 2025, and in about 8 to 10 metro areas."
+kind = "deployment"
+bar = "Tesla robotaxi rides with no safety driver or monitor on board in large parts of Austin by 2025-12-31, shown by Tesla's own release."
+due = 2025
+due_basis = "'by the end of this year', said 2025-10-22."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "On Tesla's call of 2026-01-28 he said the first paid rides with no safety monitor in the car, in Austin, had begun 'as of maybe yesterday' (search log musk-claims-016), about four weeks after the date."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-133", "musk-claims-016"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about. The 8 to 10 metro areas by the end of 2025 are not entered separately; at Davos on 2026-01-22 he spoke of robotaxi service 'in a few cities'."

@@ -1,0 +1,24 @@
+[claim]
+id = "2025-07-23-musk-fsd-in-most-of-europe-this-year"
+speaker_id = "musk"
+when = "2025-07-23"
+when_note = "Tesla's own upload of its second-quarter 2025 call, 2025-07-23."
+occasion = "Tesla's second-quarter 2025 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=pLjG7a-NX7U"
+source_locator = "9:02 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "some people in Europe will have an experience similar to that of the US uh in most of Europe you know this year hopefully"
+prediction = "Supervised full self-driving like that in the US would reach most of Europe in 2025, hopefully partly in the third quarter."
+kind = "deployment"
+bar = "Supervised FSD available to customers in most European countries by 2025-12-31."
+due = 2025
+due_basis = "'this year', said 2025-07-23."
+status = "missed"
+verdict_on = 2026-01-22
+verdict_why = "At Davos on 2026-01-22 he said 'we hope to get supervised full self-driving approval in Europe hopefully next month' (25:06), so it had not reached most of Europe in 2025."
+verdict_source = "https://www.youtube.com/watch?v=IgifEgm1-e0"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-126", "musk-claims-111"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about."

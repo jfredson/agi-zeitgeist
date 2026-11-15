@@ -1,0 +1,20 @@
+[claim]
+id = "2026-03-musk-fully-automated-recursive-self-improvement-by-next-year"
+speaker_id = "musk"
+when = "2026-03"
+when_note = "The upload is dated 2026-03-11; the statement record dates the episode to March 2026."
+occasion = "Moonshots podcast with Peter Diamandis"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=N5KCm_55xeQ"
+source_locator = "2:26 to 2:58 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "it's not yet fully automated. Um it may be there end of this year, but not later than next year."
+prediction = "Recursive self-improvement of AI (each model built by the one before) may be fully automated by the end of 2026, and no later than 2027."
+kind = "capability"
+bar = "An AI lab shown to build a new model with no people in the loop, by a dated public record, by 2027-12-31."
+due = 2027
+due_early = 2026
+due_basis = "'end of this year, but not later than next year', said in March 2026."
+status = "not_yet_due"
+search_ids = ["musk-claims-137"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. In the same episode: Grok leading at coding 'by the middle of this year' (3:44), held for John (no agreed scoreboard)."

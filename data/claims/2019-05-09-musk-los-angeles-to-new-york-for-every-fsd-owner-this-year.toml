@@ -1,0 +1,25 @@
+[claim]
+id = "2019-05-09-musk-los-angeles-to-new-york-for-every-fsd-owner-this-year"
+speaker_id = "musk"
+when = "2019-05-09"
+when_note = "The post's timestamp is 2019-05-09 22:14 UTC (15:14 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1126611407984779264"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "when we do it this year, everyone with Tesla Full Self-Driving will be able to do it too"
+prediction = "During 2019 Tesla would make its Los Angeles to New York self-driving journey, and every owner with Full Self-Driving would be able to do the same."
+kind = "deployment"
+bar = "Tesla's Full Self-Driving, as released to owners, able to drive from Los Angeles to New York with no one in control, by 2019-12-31."
+due = 2019
+due_basis = "'this year', said 2019-05-09."
+restates = "2018-02-07-musk-coast-to-coast-in-three-to-six-months"
+status = "missed"
+verdict_on = 2020-02-13
+verdict_why = "Tesla's annual report for 2019 (filed 2020-02-13) describes Autopilot and FSD as 'advanced driver assist systems' and says 'at present the driver is ultimately responsible for controlling the vehicle'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000156459020004475/tsla-10k_20191231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-095", "musk-claims-099"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI."

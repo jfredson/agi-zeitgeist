@@ -1,0 +1,25 @@
+[claim]
+id = "2021-04-14-musk-beta-button-hopefully-next-month"
+speaker_id = "musk"
+when = "2021-04-14"
+when_note = "The post's timestamp is 2021-04-14 22:17 UTC (15:17 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1382458022367162370"
+source_locator = "the second sentence of the post"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Beta button hopefully next month."
+prediction = "A button letting owners ask for the Full Self-Driving beta would come, he hoped, in May 2021."
+kind = "deployment"
+bar = "Tesla puts a button in owners' cars or app to request the Full Self-Driving beta by 2021-05-31."
+due = 2021
+due_basis = "'next month', said 2021-04-14: May 2021."
+due_date = 2021-05-31
+status = "missed"
+verdict_on = 2021-09-24
+verdict_why = "His post of 2021-09-25 00:31 UTC (2021-09-24 Pacific): 'FSD Beta request button goes live tonight'; almost four months after the date."
+verdict_source = "https://x.com/elonmusk/status/1441560961593262081"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Hedged ('hopefully')."

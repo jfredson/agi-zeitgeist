@@ -1,0 +1,26 @@
+[claim]
+id = "2020-09-22-musk-private-beta-in-a-month-or-so"
+speaker_id = "musk"
+when = "2020-09-22"
+when_note = "Tesla's own upload of Battery Day and its annual meeting, 2020-09-22."
+occasion = "Tesla's 2020 annual meeting and Battery Day"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=l6T9xIeZTds"
+source_locator = "14:59 to 15:15 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "we'll hopefully release uh a private beta of of autopilot the full self-driving version of autopilot in I think a month or so."
+prediction = "Tesla would, he hoped, release a private beta of the full self-driving version of Autopilot in about a month."
+kind = "deployment"
+bar = "Tesla releases a private beta of its full self-driving software by about 2020-10-22."
+due = 2020
+due_basis = "'a month or so' from 2020-09-22: 2020-10-22."
+due_date = 2020-10-22
+restates = "2020-09-12-musk-private-beta-in-2-to-4-weeks"
+status = "hit"
+verdict_on = 2020-10-20
+verdict_why = "The limited beta went out on 2020-10-20 (his posts of 2020-10-12 and 2020-10-22; 'we put it out there last night' on the call of 2020-10-21)."
+verdict_source = "https://x.com/elonmusk/status/1319164198241341440"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["musk-claims-113", "musk-claims-095"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. Hedged ('hopefully')."

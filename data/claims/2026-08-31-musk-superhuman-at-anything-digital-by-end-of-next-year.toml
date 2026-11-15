@@ -1,0 +1,22 @@
+[claim]
+id = "2026-08-31-musk-superhuman-at-anything-digital-by-end-of-next-year"
+speaker_id = "musk"
+when = "2026-08-31"
+when_note = "The post's timestamp is 2026-08-31 01:54 UTC (2026-08-30 18:54 Pacific); entered under the UTC date."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/2094242307511853196"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "AI will be able to do anything digital (that doesn’t require shaping atoms) at a superhuman level by the end of next year"
+prediction = "By the end of 2027 AI will be able to do anything digital, anything not needing physical work, at a superhuman level."
+kind = "timing"
+bar = "An AI shown by its maker or an outside body to do every kind of digital work better than the best people, by 2027-12-31."
+due = 2027
+due_basis = "'by the end of next year', said 2026-08-31."
+status = "not_yet_due"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. A reply to Guillermo Rauch; the address was taken from Rauch's post quoting it (2094242622642782696)."
+arrives = "beyond_people"
+arrives_term = "superhuman at anything digital"
+form = "by"

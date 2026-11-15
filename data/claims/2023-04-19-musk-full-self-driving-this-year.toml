@@ -1,0 +1,24 @@
+[claim]
+id = "2023-04-19-musk-full-self-driving-this-year"
+speaker_id = "musk"
+when = "2023-04-19"
+when_note = "Tesla's own upload of its first-quarter 2023 call, 2023-04-19."
+occasion = "Tesla's first-quarter 2023 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=3MVIWeU36ZY"
+source_locator = "29:26 to 29:59 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "towards full autonomy um and um you know as I hesitate to say this but I I think we'll do it this year"
+prediction = "Tesla would reach full self-driving, full autonomy, during 2023; he hesitated to say it."
+kind = "capability"
+bar = "Tesla's software, as released, drives a car with no one responsible for watching the road, shown by Tesla's own release or description, by 2023-12-31."
+due = 2023
+due_basis = "'this year', said 2023-04-19."
+status = "missed"
+verdict_on = 2024-01-29
+verdict_why = "Tesla's annual report for 2023 (filed 2024-01-29) says 'at present the driver is ultimately responsible for controlling the vehicle' and that Tesla intends 'to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-118", "musk-claims-099"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about. xAI had been incorporated on 2023-03-09 (its start as a company; announced 2023-07-12), so his role at xAI admits the claim; flagged for John, since the company was not yet public."

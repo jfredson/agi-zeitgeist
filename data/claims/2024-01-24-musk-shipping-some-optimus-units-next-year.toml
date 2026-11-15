@@ -1,0 +1,24 @@
+[claim]
+id = "2024-01-24-musk-shipping-some-optimus-units-next-year"
+speaker_id = "musk"
+when = "2024-01-24"
+when_note = "Tesla's own upload of its fourth-quarter 2023 call, 2024-01-24."
+occasion = "Tesla's fourth-quarter 2023 earnings call"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=A_2Z-AEtdAg"
+source_locator = "33:44 to 34:03 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "I think we've got a a good chance of shipping some number of Optimus units next year"
+prediction = "Tesla had a good chance of shipping some Optimus humanoid robots in 2025, with a lot of uncertainty."
+kind = "deployment"
+bar = "Tesla ships (delivers) some Optimus robots to customers outside Tesla by 2025-12-31, shown by Tesla's own release."
+due = 2025
+due_basis = "'next year', said 2024-01-24."
+status = "missed"
+verdict_on = 2026-10-21
+verdict_why = "On Tesla's call of 2026-10-21 he said the robot's remaining problems should be solved 'around the end of next year ... that's the time to to expect um when we're delivering Optimus to uh uh to companies outside of Tesla' (7:07), so none had been shipped to outside customers in 2025. Read as shipping to customers; if Tesla's own use counts as 'shipping', a ruling for John."
+verdict_source = "https://www.youtube.com/watch?v=tFezqXBF-gw"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-121", "musk-claims-122"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. He was also chief executive of Tesla, which this claim is about."

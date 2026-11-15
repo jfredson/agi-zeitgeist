@@ -1,0 +1,24 @@
+[claim]
+id = "2020-12-01-musk-full-autonomy-to-customers-next-year"
+speaker_id = "musk"
+when = "2020-12-01"
+when_note = "Axel Springer's own upload of the award evening of 2020-12-01."
+occasion = "Interview with Mathias Döpfner at the Axel Springer Award, Berlin"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=AF2HXId2Xhg"
+source_locator = "22:43 to 23:04 into the video"
+checked_how = "Read YouTube's automatic English captions through the transcript panel of the video page in the built-in browser on 2026-11-14 (YouTube refused direct caption downloads from this machine that day); nobody listened. The quote is a verbatim run of caption words; the captions name no speaker, and the speaker is judged from context."
+quote = "I'm I'm extremely confident uh of achieving full autonomy uh and releasing it to the Tesla customer base uh next year"
+prediction = "Tesla would achieve full autonomy and release it to its customers in 2021; how long regulators would take was uncertain."
+kind = "deployment"
+bar = "Tesla releases to its customers software that drives their cars with no one responsible for watching the road, by 2021-12-31."
+due = 2021
+due_basis = "'next year', said 2020-12-01."
+status = "missed"
+verdict_on = 2022-02-07
+verdict_why = "Tesla's annual report for 2021 (filed 2022-02-07) says 'at present the driver is ultimately responsible for controlling the vehicle' and 'We intend to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/tsla-20211231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-114", "musk-claims-099"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI. The same answer adds 'I think at least some jurisdictions will allow full self-driving next year' (24:09); that part is not entered separately, as it rests on the same release."

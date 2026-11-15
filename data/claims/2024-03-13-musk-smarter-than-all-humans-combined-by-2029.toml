@@ -1,0 +1,23 @@
+[claim]
+id = "2024-03-13-musk-smarter-than-all-humans-combined-by-2029"
+speaker_id = "musk"
+when = "2024-03-13"
+when_note = "The post's timestamp is 2024-03-13 02:25 UTC."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1767738797276451090"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "By 2029, AI is probably smarter than all humans combined."
+statement_id = "musk-2024-02b"
+prediction = "By 2029 AI would probably be smarter than all humans combined."
+kind = "timing"
+bar = "An AI shown by its maker or an outside body to be smarter than all people together, by 2029-12-31."
+due = 2029
+due_basis = "His words: 'By 2029'."
+status = "not_yet_due"
+search_ids = ["musk-claims-095"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models."
+arrives = "beyond_people"
+arrives_term = "AI smarter than all humans combined"
+form = "by"

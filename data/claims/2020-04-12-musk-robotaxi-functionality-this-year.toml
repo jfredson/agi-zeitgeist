@@ -1,0 +1,24 @@
+[claim]
+id = "2020-04-12-musk-robotaxi-functionality-this-year"
+speaker_id = "musk"
+when = "2020-04-12"
+when_note = "The post's timestamp is 2020-04-12 05:38 UTC (2020-04-11 22:38 Pacific); entered under the UTC date."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1249210220200550405"
+source_locator = "the post itself"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Functionality still looking good for this year. Regulatory approval is the big unknown."
+prediction = "Answering 'How long for the first robotaxi release/deployment? 2023?': the robotaxi functionality was still looking good for 2020, with regulatory approval the big unknown."
+kind = "capability"
+bar = "Tesla's robotaxi function (a car carrying passengers with no driver) working, shown by Tesla's own release or description, by 2020-12-31; approval by regulators is not part of the test."
+due = 2020
+due_basis = "'this year', said in April 2020."
+status = "missed"
+verdict_on = 2021-02-08
+verdict_why = "Tesla's annual report for 2020 (filed 2021-02-08) says 'at present the driver is ultimately responsible for controlling the vehicle' and 'We intend to establish in the future an autonomous Tesla ride-hailing network'."
+verdict_source = "https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-095", "musk-claims-099"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI."

@@ -1,0 +1,25 @@
+[claim]
+id = "2020-08-14-musk-limited-public-release-in-6-to-10-weeks"
+speaker_id = "musk"
+when = "2020-08-14"
+when_note = "The post's timestamp is 2020-08-14 20:46 UTC (13:46 Pacific)."
+occasion = "Post on X"
+source_kind = "own_words"
+source_url = "https://x.com/elonmusk/status/1294374864657162240"
+source_locator = "the last sentence of the post"
+checked_how = "Read the post's text and timestamp on 2026-11-14 through the api.fxtwitter.com mirror, which returns the post as stored on X; x.com itself was not opened."
+quote = "Limited public release in 6 to 10 weeks."
+prediction = "The rewritten Full Self-Driving software would have a limited public release in six to ten weeks."
+kind = "deployment"
+bar = "Tesla releases the rewritten Full Self-Driving software to some members of the public by 2020-10-23."
+due = 2020
+due_basis = "'6 to 10 weeks' from 2020-08-14: the later end, 2020-10-23."
+due_date = 2020-10-23
+status = "hit"
+verdict_on = 2020-10-20
+verdict_why = "His post of 2020-10-12 said 'Limited FSD beta releasing on Tuesday next week' (2020-10-20), and his post of 2020-10-22 says 'Now that Tesla FSD beta is out in limited release'; on the call of 2020-10-21 he said 'we put it out there last night'."
+verdict_source = "https://x.com/elonmusk/status/1319164198241341440"
+evidence_by = "maker"
+direction = "on_time"
+search_ids = ["musk-claims-095", "musk-claims-112"]
+notes = "Role at the time: chief executive of Tesla (counted by John's ruling of 2026-10-19), Tesla then counting as a company building frontier AI."
