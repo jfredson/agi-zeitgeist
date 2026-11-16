@@ -5977,3 +5977,298 @@ leg-c-second-source-048,reading,2026,independent survey frontier lab employees f
 leg-c-second-source-049,reading,2026,"""Measuring AI R&D Automation"" metrics third party tracking 2026 results",web search,no outside party publishing GovAI's metrics yet; coverage repeats Anthropic's R&D Automation Index of 2026-09-17 and says no outside party has checked it,2026-11-14
 leg-c-second-source-050,reading,2026,"https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment, https://metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review, https://epoch.ai/data/ai-research-use and its documentation page, https://forecastingresearch.substack.com/p/what-experts-and-superforecasters, https://futuresearch.ai/app/p/a/rsi-shares-of-research",curl and the fetch tool (pages opened and read),findings in docs/leg-c-second-source-2026-11-14.md: none is a share of frontier AI research work measured from outside a company; nothing added to world_measures.csv,2026-11-14
 bostrom-133,bostrom,2026,https://www.youtube.com/watch?v=FxhOdrmVXKQ&t=3135s at 52:15 to 52:25 (whether Bostrom says 'would' or 'wouldn't' be fair to call it AGI),"heard by John, listening to the video himself","John's ruling, relayed by the master session on 2026-11-14: he definitely says ""would"". The asr_unverified tag is removed from bostrom-2026-16 and the row records that the words were heard; the quote, the codes and the coding confidence are unchanged. Settles the question left open by bostrom-130 and bostrom-132",2026-11-14
+reading-2026-11-16-01,metr,,https://metr.org/assets/benchmark_results_1_1.yaml (fetch),metr.org,"26 model keys, every one already in the record; newest is Claude Mythos (early preview), 2026-04-07; doubling-time fields unchanged",2026-11-16
+reading-2026-11-16-02,metr,,https://metr.org/time-horizons/ (fetch),metr.org,"Version 1.1 still labelled current, page last updated 2026-09-08 and says no longer actively updated (known, amendment A24); no 1.2 or 2.0",2026-11-16
+reading-2026-11-16-03,metr,,METR time horizon 2.0,WebSearch,No source names a Time Horizon 2.0; only coverage of version 1.1,2026-11-16
+reading-2026-11-16-04,metr,,"METR ""Time Horizon 1.2"" OR ""time horizon"" new model evaluation November 2026",WebSearch,"No 1.2; one weak secondary page says METR assessed an unreleased Anthropic model on 2026-11-05, a benchmark assessment and not a time-horizon figure",2026-11-16
+reading-2026-11-16-05,reading,,AI forecasts scored against outcomes retrospective AI progress predictions November 2026,WebSearch,"Nothing verifiably dated in the window; earlier items (FRI LEAP panel scoring, a withdrawn scorecard in October 2026, a Metaculus roundup)",2026-11-16
+reading-2026-11-16-06,reading,,AGI timeline forecast update consensus date shifted forecasters track record 2026,WebSearch,"Nothing in the window; AI Futures Project Q1 2026 update, FRI LEAP wave 8, a tracker updated 2026-11-02",2026-11-16
+reading-2026-11-16-07,anthropic_institute,,https://www.anthropic.com/institute/measuring-pace-of-ai-development (fetch),anthropic.com,Latest month is August 2026 (Claude leads 26%); no September or October value,2026-11-16
+reading-2026-11-16-08,anthropic_institute,,Anthropic R&D Automation Index update share of AI R&D work Claude leads,WebSearch,Only the September 2026 launch coverage; no update,2026-11-16
+reading-2026-11-16-09,anthropic_institute,,Anthropic Institute AI share of AI research work measurement November 2026,WebSearch,Only the September 2026 index coverage and the recursive-self-improvement post (already in the record through its 2026-05 and 2026-08-09 rows),2026-11-16
+reading-2026-11-16-10,anthropic_institute,,Anthropic Institute new measurement AI automating AI research and development share (anthropic.com only),"WebSearch, anthropic.com","Index page, recursive-self-improvement post, expectations-gap post; nothing new and dated in the window",2026-11-16
+reading-2026-11-16-11,reading,,survey of AI researchers share of frontier AI research work done by AI automation of AI R&D 2026,WebSearch,"Epoch interviews (2024), a 2026 preprint of 25 interviews, a safety-researcher speedup survey; none measures the share, none recurring, none in the window",2026-11-16
+reading-2026-11-16-12,reading,,conference AI contribution disclosure statistics papers AI-written reviews disclosed NeurIPS ICLR 2026,WebSearch,"Detector-based ICLR 2026 estimates (about 21% of reviews), not disclosure counts; nothing in the window",2026-11-16
+reading-2026-11-16-13,aiimpacts,,AI Impacts Expert Survey on Progress in AI Grace et al. new survey results high-level machine intelligence forecast,WebSearch,Newest edition is the 2023 survey (published January 2024); no new round,2026-11-16
+reading-2026-11-16-14,aiimpacts,,AI Impacts survey 2026 aggregate forecast 50% chance full automation of labour November 2026,WebSearch,No 2026 round; restatements only,2026-11-16
+reading-2026-11-16-15,metaculus,,https://www.metaculus.com/questions/5121/date-of-artificial-general-intelligence/ (fetch),metaculus.com,"HTTP 403, needs a token (known)",2026-11-16
+reading-2026-11-16-16,metaculus,,Metaculus AGI question community forecast November 2026,WebSearch,"No November snapshot; only a February 2026 secondary mention (median 2031, unverified)",2026-11-16
+reading-2026-11-16-17,manifold,,https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC (fetch),manifold.markets,"Probability 0.4999999999999999, 352 unique traders, last trade 2026-11-14 07:04:22 UTC, not resolved",2026-11-16
+reading-2026-11-16-18,manifold,,Manifold Markets AGI created and publicly announced before 2030 market probability,WebSearch,Only other related markets; no snapshot of this one,2026-11-16
+reading-2026-11-16-19,pew,,Pew Research Center AI survey November 2026 more concerned than excited increased use of AI in daily life,WebSearch,"52% more concerned than excited, June 2026 fieldwork, already the 2026-06-22 row; nothing new",2026-11-16
+reading-2026-11-16-20,pew,,Pew Research Center artificial intelligence Americans survey new report (pewresearch.org only),"WebSearch, pewresearch.org","Newest is the 2026-10-29 healthcare report (June 22 to 28 fieldwork, 3,488 adults), a different subject; nothing in the window",2026-11-16
+reading-2026-11-16-21,yougov,,YouGov poll AI end of the human race OR better than the average person at thinking OR more intelligent than people November 2026,WebSearch,"Latest are the September 2026 polls, already in the record; no November poll with these wordings",2026-11-16
+reading-2026-11-16-22,yougov,,YouGov artificial intelligence Americans poll AI concerned (yougov domains) and fetch of the 2026-10-07 article,"WebSearch, yougov.com","2026-10-07 article on worries about using AI: outside the window, no fieldwork dates, sample size or comparable wording",2026-11-16
+reading-2026-11-16-23,ipsos,,Ipsos AI Monitor global survey products and services using AI make me nervous excited November 2026,WebSearch,AI Monitor 2026 (32 countries) already recorded 2026-03-20; no new edition,2026-11-16
+reading-2026-11-16-24,ipsos,,Ipsos poll artificial intelligence new survey November 2026 (ipsos.com) and fetch of the Reuters/Ipsos post-election survey,"WebSearch, ipsos.com","Reuters/Ipsos survey, fieldwork 2026-11-06 to 2026-11-09, 1,705 adults, released 2026-11-10; AI items on regulation priorities, not comparable wording",2026-11-16
+reading-2026-11-16-25,google,,Sundar Pichai percent of new code at Google generated by AI,WebSearch,"Only the 75% figure (2026-04-24), already the latest row",2026-11-16
+reading-2026-11-16-26,google,,"Pichai ""new code"" AI-generated Google earnings call OR interview November 2026",WebSearch,"No new figure; one weak source on launch speed from 2026-10-28, not code share",2026-11-16
+reading-2026-11-16-27,ifr,,International Federation of Robotics World Robotics 2026 industrial robots operational stock installations press release,WebSearch,"World Robotics 2026 release of 2026-09-24, already the 2025 rows",2026-11-16
+reading-2026-11-16-28,ifr,,IFR robots press release November 2026 (ifr.org),"WebSearch, ifr.org","Nothing newer than 2026-09-30 (service robots, a different series)",2026-11-16
+reading-2026-11-16-29,events,,open letter AI signatories November 2026,WebSearch,"Nothing dated in the window; only the 2026-10-13 AI security letter (already a row), July 2026 and 2025 items",2026-11-16
+reading-2026-11-16-30,events,,statement on AI superintelligence scientists call November 2026,WebSearch,Nothing in the window; FLI items and coverage of the 2026-10-13 letter,2026-11-16
+reading-2026-11-16-31,events,,AI executive order OR law signed OR passed Senate OR House artificial intelligence November 2026,WebSearch,No November action; earlier executive orders and a legal tracker,2026-11-16
+reading-2026-11-16-32,events,,AI regulation government announces new rules week of November 10 2026,WebSearch,No dated item in the window; roundups and the EU Digital Omnibus (in force 2026-07-27),2026-11-16
+reading-2026-11-16-33,events,,Congress passes AI bill House vote Senate vote artificial intelligence congress.gov November 12 2026,WebSearch,No passage found; House adjourned until after the midterms; one undated lead on a data-centre bill,2026-11-16
+reading-2026-11-16-34,events,,https://www.whitehouse.gov/presidential-actions/ (fetch),whitehouse.gov,"Actions dated 2026-11-09 to 2026-11-12: nominations, Veterans Day, a wildfire determination; none about AI",2026-11-16
+reading-2026-11-16-35,events,,House passes AI data center power grid bill November 2026,WebSearch,"The undated lead is the Ratepayer Protection Act, passed the House 417 to 3 on 2026-09-16, not in the window",2026-11-16
+reading-2026-11-16-36,events,,report pace of AI progress compute algorithms published November 2026,WebSearch,Nothing in the window; Stanford AI Index 2026 (April) and Epoch pages,2026-11-16
+reading-2026-11-16-37,events,,AI research report pace of AI progress released November 12 2026,WebSearch,"Stanford AI100 third five-year report (""AI Goes Mainstream: The Scaling Era and the Rise of Generative AI""), press says published on a Tuesday, about 2026-11-10",2026-11-16
+reading-2026-11-16-38,events,,https://ai100.stanford.edu/ (fetch),ai100.stanford.edu,Page lists the 2026 AI100 Report with its title and key sentence but prints no publication date,2026-11-16
+reading-2026-11-16-39,events,,"""AI100"" 2026 report Stanford ""AI Goes Mainstream"" published",WebSearch,Several press pieces; cover dated November 2026; no date from Stanford itself,2026-11-16
+reading-2026-11-16-40,events,,new AI model release launches November 2026,WebSearch,Aggregator trackers only; they disagree and were not used for dates,2026-11-16
+reading-2026-11-16-41,events,,OpenAI OR Anthropic OR Google DeepMind OR xAI announces new model this week November 2026,WebSearch,Same trackers; nothing dated in the window,2026-11-16
+reading-2026-11-16-42,events,,https://www.anthropic.com/news (fetch),anthropic.com,"2026-11-09 ""Introducing Claude Fable 5.2 and Claude Mythos 5.2"" (one day before the window); 2026-11-10 IPO roadshow (not a model); nothing else to 2026-11-16",2026-11-16
+reading-2026-11-16-43,events,,grep -i Fable|Mythos|GPT-5.6|GPT-Image|Grok 4.6|Kimi|Gemini 4 data/statements.csv,repository,"No row names Fable; Mythos appears only as ""Mythos Preview""; the other names do not appear",2026-11-16
+reading-2026-11-16-44,kurzweil,2026,"""Ray Kurzweil"" AGI 2026",WebSearch,Y1: Reaffirms 2029; nothing new (his January 2026 podcast is already a row),2026-11-16
+reading-2026-11-16-45,kurzweil,2026,"""Ray Kurzweil"" ""human-level"" intelligence 2026",WebSearch,"Y2: Same 2029 and 2045 restatements, secondary",2026-11-16
+reading-2026-11-16-46,kurzweil,2026,"""Ray Kurzweil"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing new,2026-11-16
+reading-2026-11-16-47,kurzweil,2026,"""Ray Kurzweil"" AI November 2026",WebSearch,"N: No November item; newest are September and October summaries (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-48,kurzweil,2026,https://www.thekurzweillibrary.com/,thekurzweillibrary.com,own outlet: home page lists no dated new items,2026-11-16
+reading-2026-11-16-49,kurzweil,2026,"""Ray Kurzweil"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings of earlier 2026 videos (June Moonshots episode, a video uploaded 2026-11-05 of a 2025 talk); none confirmed in the window, none opened",2026-11-16
+reading-2026-11-16-50,marcus,2026,"""Gary Marcus"" AGI 2026",WebSearch,"Y1: Substack posts, nothing in window",2026-11-16
+reading-2026-11-16-51,marcus,2026,"""Gary Marcus"" ""human-level"" intelligence 2026",WebSearch,"Y2: Secondary pieces, nothing in window",2026-11-16
+reading-2026-11-16-52,marcus,2026,"""Gary Marcus"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: A Substack post on the singularity, undated, not checked",2026-11-16
+reading-2026-11-16-53,marcus,2026,"""Gary Marcus"" AI November 2026",WebSearch,"N: Substack sitemap only (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-54,marcus,2026,https://garymarcus.substack.com/archive,garymarcus.substack.com,"own outlet: six posts dated 2026-11-10 to 2026-11-14, none in the record",2026-11-16
+reading-2026-11-16-55,marcus,2026,https://garymarcus.substack.com/p/the-great-generative-ai-unraveling,garymarcus.substack.com,"own outlet: dated 2026-11-13, fully readable; says systems ""remain poor at following instructions"", lacked reliability, ""we are not there yet"", the market fall looks like a bubble popping; no timing claim",2026-11-16
+reading-2026-11-16-56,marcus,2026,https://garymarcus.substack.com/p/just-say-no-to-anthropics-ipo,garymarcus.substack.com,"own outlet: dated 2026-11-10, partly paywalled; about Anthropic finances",2026-11-16
+reading-2026-11-16-57,marcus,2026,"""Gary Marcus"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings only (Fast Money segment, TAIS talk, Bloomberg); none confirmed in the window, none opened",2026-11-16
+reading-2026-11-16-58,lecun,2026,"""Yann LeCun"" AGI 2026",WebSearch,Y1: Only January to March 2026 items,2026-11-16
+reading-2026-11-16-59,lecun,2026,"""Yann LeCun"" ""human-level"" intelligence 2026",WebSearch,Y2: January to May 2026 items,2026-11-16
+reading-2026-11-16-60,lecun,2026,"""Yann LeCun"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Same cluster; a Seoul piece of about 2026-10-12 (machine translated, dismisses AI conquering humanity as science fiction)",2026-11-16
+reading-2026-11-16-61,lecun,2026,"""Yann LeCun"" AI November 2026",WebSearch,"N: Newest is an October 2026 Fortune interview via a secondary page (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-62,lecun,2026,"LeCun logged outlets (Threads, LinkedIn, Quora)",not fetched,own outlet: earlier rows needed third-party readers; not used this week,2026-11-16
+reading-2026-11-16-63,lecun,2026,"""Yann LeCun"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings of RAISE summit, AIM, Sciences Po (September 2026) talks; none confirmed in the window, none opened",2026-11-16
+reading-2026-11-16-64,hinton,2026,"""Geoffrey Hinton"" AGI 2026",WebSearch,"Y1: Fortune June 2026, April 2026 coverage",2026-11-16
+reading-2026-11-16-65,hinton,2026,"""Geoffrey Hinton"" ""human-level"" intelligence 2026",WebSearch,"Y2: September radio mention, Fortune June",2026-11-16
+reading-2026-11-16-66,hinton,2026,"""Geoffrey Hinton"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Intelligence-explosion paper with Bengio and others, undated; a 2026-10-03 post on recursive self-improvement (secondhand)",2026-11-16
+reading-2026-11-16-67,hinton,2026,"""Geoffrey Hinton"" AI November 2026",WebSearch,"N: Guardian interview 2026-11-03 is already in the record (hinton-2026-03 to -06); press reports a Channel 4 documentary with Hinton and Hassabis airing 2026-11-12 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-68,hinton,2026,Hinton logged outlets,not fetched,own outlet: earlier rows say they are unreadable,2026-11-16
+reading-2026-11-16-69,hinton,2026,"""Geoffrey Hinton"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: A video listed about two days old, title about superintelligence and Jensen Huang, channel unknown, not opened; other 2026 talks (MIT, Big Technology) earlier",2026-11-16
+reading-2026-11-16-70,altman,2026,"""Sam Altman"" AGI 2026",WebSearch,Y1: TIME 2026-08-26 and earlier items,2026-11-16
+reading-2026-11-16-71,altman,2026,"""Sam Altman"" ""human-level"" intelligence 2026",WebSearch,Y2: Fortune June and July items,2026-11-16
+reading-2026-11-16-72,altman,2026,"""Sam Altman"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: ""In the singularity"" remark of late July 2026",2026-11-16
+reading-2026-11-16-73,altman,2026,"""Sam Altman"" AI November 2026",WebSearch,"N: ADIPEC 2026-11-02, already in the record (altman-2026-80, -81) (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-74,altman,2026,https://blog.samaltman.com/,blog.samaltman.com,own outlet: newest posts unchanged; nothing new,2026-11-16
+reading-2026-11-16-75,altman,2026,"""Sam Altman"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Titles including the ADIPEC conversation (2026-11-01 or 11-02, already recorded), a Fortune talk (2026-09-12), a Berman interview about three weeks old; none new in the window",2026-11-16
+reading-2026-11-16-76,bostrom,2026,"""Nick Bostrom"" AGI 2026",WebSearch,Y1: Commentary and a 2026-09-24 piece,2026-11-16
+reading-2026-11-16-77,bostrom,2026,"""Nick Bostrom"" ""human-level"" intelligence 2026",WebSearch,Y2: Nothing 2026-specific,2026-11-16
+reading-2026-11-16-78,bostrom,2026,"""Nick Bostrom"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: a16z episode of about 2026-10-11 and an Atlantic podcast mention,2026-11-16
+reading-2026-11-16-79,bostrom,2026,"""Nick Bostrom"" AI November 2026",WebSearch,"N: No November item (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-80,bostrom,2026,https://nickbostrom.com/,nickbostrom.com,"own outlet: Optimal Timing paper (recorded), a Yampolskiy video and a second Joe Rogan appearance, undated",2026-11-16
+reading-2026-11-16-81,bostrom,2026,"""Nick Bostrom"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings of October 2026 videos (""We May Already Have AGI"" 2026-10-16, Interesting Times 2026-10-01, Rogan #2525 2026-07-14, one on 2026-10-08); none in the window, none opened",2026-11-16
+reading-2026-11-16-82,hanson,2026,"""Robin Hanson"" AGI 2026",WebSearch,Y1: No 2026 statement,2026-11-16
+reading-2026-11-16-83,hanson,2026,"""Robin Hanson"" ""human-level"" intelligence 2026",WebSearch,Y2: Old items; a January 2026 post,2026-11-16
+reading-2026-11-16-84,hanson,2026,"""Robin Hanson"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: betonit.ai ""My Superintelligence Skepticism"", undated, not fetched",2026-11-16
+reading-2026-11-16-85,hanson,2026,"""Robin Hanson"" AI November 2026",WebSearch,"N: Nothing from November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-86,hanson,2026,https://www.overcomingbias.com/,overcomingbias.com,"own outlet: returned only the blog header, no post list",2026-11-16
+reading-2026-11-16-87,hanson,2026,"""Robin Hanson"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings of August to October 2026 videos (economy doubling every month, AI end of humanity); none in the window, none opened",2026-11-16
+reading-2026-11-16-88,hassabis,2026,"""Demis Hassabis"" AGI 2026",WebSearch,Y1: WSJ 2026-10-21 (already rows hassabis-2026-23 and -24),2026-11-16
+reading-2026-11-16-89,hassabis,2026,"""Demis Hassabis"" ""human-level"" intelligence 2026",WebSearch,Y2: Same cluster,2026-11-16
+reading-2026-11-16-90,hassabis,2026,"""Demis Hassabis"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Google I/O May 2026 ""foothills of the singularity""",2026-11-16
+reading-2026-11-16-91,hassabis,2026,"""Demis Hassabis"" AI November 2026",WebSearch,"N: Nothing in the window; the Channel 4 documentary of 2026-11-12 is the lead (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-92,hassabis,2026,https://demishassabis.substack.com/archive,demishassabis.substack.com,own outlet: newest is the 2026-07-14 essay,2026-11-16
+reading-2026-11-16-93,hassabis,2026,"""Demis Hassabis"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings including a Reid Hoffman conversation (early November 2026) and a Job Interview podcast (late October); none confirmed in the window, none opened",2026-11-16
+reading-2026-11-16-94,ng,2026,"""Andrew Ng"" AGI 2026",WebSearch,"Y1: Skeptic items, February 2026 already a row",2026-11-16
+reading-2026-11-16-95,ng,2026,"""Andrew Ng"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-96,ng,2026,"""Andrew Ng"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Secondary September 2026 reports,2026-11-16
+reading-2026-11-16-97,ng,2026,"""Andrew Ng"" AI November 2026",WebSearch,"N: Only an October 28 recap (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-98,ng,2026,https://www.deeplearning.ai/the-batch/,deeplearning.ai,own outlet: issues 378 (2026-11-06) and 379 (2026-11-13) newest,2026-11-16
+reading-2026-11-16-99,ng,2026,https://www.deeplearning.ai/the-batch/issue-379/,deeplearning.ai,"own outlet: Ng letter on agent harnesses; ""LLMs have become powerful enough that it is practical to build many applications by repeatedly calling an LLM""; no AGI or timing",2026-11-16
+reading-2026-11-16-100,ng,2026,https://www.deeplearning.ai/the-batch/issue-378/,deeplearning.ai,"own outlet: letter says LinkedIn data ""undermines the jobpocalypse story""; bottleneck is product management and workflow redesign",2026-11-16
+reading-2026-11-16-101,ng,2026,"""Andrew Ng"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Listings of 2026 talks, none in the window",2026-11-16
+reading-2026-11-16-102,russell,2026,"""Stuart Russell"" AGI 2026",WebSearch,Y1: Early 2026 items,2026-11-16
+reading-2026-11-16-103,russell,2026,"""Stuart Russell"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-104,russell,2026,"""Stuart Russell"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Feb to August 2026 items,2026-11-16
+reading-2026-11-16-105,russell,2026,"""Stuart Russell"" AI November 2026",WebSearch,"N: Nothing dated November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-106,russell,2026,https://people.eecs.berkeley.edu/~russell/research/future/,berkeley.edu,own outlet: newest entries two Economist pieces of 2026-03-05,2026-11-16
+reading-2026-11-16-107,russell,2026,"""Stuart Russell"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; DLD Munich (January 2026) and Diary of a CEO (already in record); none in the window",2026-11-16
+reading-2026-11-16-108,brooks,2026,"""Rodney Brooks"" AGI 2026",WebSearch,"Y1: Predictions scorecard (January), ""four clocks"" essay (known)",2026-11-16
+reading-2026-11-16-109,brooks,2026,"""Rodney Brooks"" ""human-level"" intelligence 2026",WebSearch,Y2: Nothing new,2026-11-16
+reading-2026-11-16-110,brooks,2026,"""Rodney Brooks"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: A journal commentary by Brooks on recursive self-improvement, date not established",2026-11-16
+reading-2026-11-16-111,brooks,2026,"""Rodney Brooks"" AI November 2026",WebSearch,"N: Automate podcast 2026-10-28, before his latest row (2026-11-08) (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-112,brooks,2026,https://rodneybrooks.com/,rodneybrooks.com,own outlet: header only,2026-11-16
+reading-2026-11-16-113,brooks,2026,https://rodneybrooks.com/blog/,rodneybrooks.com,own outlet: newest post 2026-11-08 (already in the record); nothing later,2026-11-16
+reading-2026-11-16-114,brooks,2026,"""Rodney Brooks"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; No youtube.com page found",2026-11-16
+reading-2026-11-16-115,musk,2026,"""Elon Musk"" AGI 2026",WebSearch,Y1: Davos January and March 2026 items,2026-11-16
+reading-2026-11-16-116,musk,2026,"""Elon Musk"" ""human-level"" intelligence 2026",WebSearch,"Y2: August 2026 X post: AI better than humans at anything digital ""by the end of next year""",2026-11-16
+reading-2026-11-16-117,musk,2026,"""Elon Musk"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: February ""entered the singularity"" coverage",2026-11-16
+reading-2026-11-16-118,musk,2026,"""Elon Musk"" AI November 2026",WebSearch,"N: Isaacson ""The Builders"" interview published 2026-10-20 (""humans unlikely to stay in control within a decade"", per a secondary summary); nothing from Musk in the window (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-119,musk,2026,https://x.com/elonmusk,x.com,"own outlet: HTTP 402, not readable",2026-11-16
+reading-2026-11-16-120,musk,2026,"""Elon Musk"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Listings: Economist interview (already a row), X Takeover event (October), Isaacson (October 20), Bloomberg; no original located",2026-11-16
+reading-2026-11-16-121,chalmers,2026,"""David Chalmers"" AGI 2026",WebSearch,Y1: Berkeley talk already a row,2026-11-16
+reading-2026-11-16-122,chalmers,2026,"""David Chalmers"" ""human-level"" intelligence 2026",WebSearch,Y2: Nothing new,2026-11-16
+reading-2026-11-16-123,chalmers,2026,"""David Chalmers"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: 2010 paper commentary only,2026-11-16
+reading-2026-11-16-124,chalmers,2026,"""David Chalmers"" AI November 2026",WebSearch,"N: UT Austin symposium 2026-11-05 to 11-06; a recap post of 2026-11-10 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-125,chalmers,2026,https://theconsciousness.ai/posts/ut-austin-consciousness-and-intelligence-2026-recap-chalmers-seth-aaronson/,theconsciousness.ai,"own outlet: recap dated 2026-11-10, a paraphrase and not a transcript; full video not yet uploaded",2026-11-16
+reading-2026-11-16-126,chalmers,2026,"""David Chalmers"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Closer to Truth listing and the Berkeley video (already a row)",2026-11-16
+reading-2026-11-16-127,brynjolfsson,2026,"""Erik Brynjolfsson"" AGI 2026",WebSearch,"Y1: July 2026 Stanford statement, Fortune items",2026-11-16
+reading-2026-11-16-128,brynjolfsson,2026,"""Erik Brynjolfsson"" ""human-level"" intelligence 2026",WebSearch,Y2: Stanford GSB Q&A 2026-09-17,2026-11-16
+reading-2026-11-16-129,brynjolfsson,2026,"""Erik Brynjolfsson"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing,2026-11-16
+reading-2026-11-16-130,brynjolfsson,2026,"""Erik Brynjolfsson"" AI November 2026",WebSearch,"N: Stanford GSB feature 2026-11-03, contents not seen (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-131,brynjolfsson,2026,https://brynjolfsson.com,brynjolfsson.com,own outlet: newest item October 2026 (CACM research agenda); nothing in November,2026-11-16
+reading-2026-11-16-132,brynjolfsson,2026,"""Erik Brynjolfsson"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; No youtube.com page; a podcast page undated",2026-11-16
+reading-2026-11-16-133,schmidhuber,2026,"""Jürgen Schmidhuber"" AGI 2026",WebSearch,Y1: Europe on Edge podcast 2026-09-08,2026-11-16
+reading-2026-11-16-134,schmidhuber,2026,"""Jürgen Schmidhuber"" ""human-level"" intelligence 2026",WebSearch,"Y2: Disputes with LeCun and Musk, September 2026",2026-11-16
+reading-2026-11-16-135,schmidhuber,2026,"""Jürgen Schmidhuber"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Der Spiegel July 2026; ""self-improving hardware ... path to superintelligence"" (as quoted)",2026-11-16
+reading-2026-11-16-136,schmidhuber,2026,"""Jürgen Schmidhuber"" AI November 2026",WebSearch,"N: Nothing dated November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-137,schmidhuber,2026,https://people.idsia.ch/~juergen/blog.html,idsia.ch,own outlet: newest entry September 2026 (already in the record); none in November,2026-11-16
+reading-2026-11-16-138,schmidhuber,2026,"""Jürgen Schmidhuber"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Aggregator listings only",2026-11-16
+reading-2026-11-16-139,kaifulee,2026,"""Kai-Fu Lee"" AGI 2026",WebSearch,Y1: Caixin 2026-07-22,2026-11-16
+reading-2026-11-16-140,kaifulee,2026,"""Kai-Fu Lee"" ""human-level"" intelligence 2026",WebSearch,Y2: Single secondary summary of WAIC 2026,2026-11-16
+reading-2026-11-16-141,kaifulee,2026,"""Kai-Fu Lee"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing,2026-11-16
+reading-2026-11-16-142,kaifulee,2026,"""Kai-Fu Lee"" AI November 2026",WebSearch,"N: 36Kr German article 2026-11-11 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-143,kaifulee,2026,https://eu.36kr.com/de/p/4063981307745417,36kr.com,"own outlet: 2026-11-11 third-party summary of a 2026-11-04 interview in Unternehmer; paraphrase in machine German, not his words, no dates or AGI claim",2026-11-16
+reading-2026-11-16-144,kaifulee,2026,"""Kai-Fu Lee"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Bloomberg video listed 2026-09-04 (aggregator, not opened)",2026-11-16
+reading-2026-11-16-145,walsh,2026,"""Toby Walsh"" AGI 2026",WebSearch,Y1: 2025 and UNSW June 2026 (already a row),2026-11-16
+reading-2026-11-16-146,walsh,2026,"""Toby Walsh"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-147,walsh,2026,"""Toby Walsh"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing,2026-11-16
+reading-2026-11-16-148,walsh,2026,"""Toby Walsh"" AI November 2026",WebSearch,"N: Only February 2026 items (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-149,walsh,2026,https://thefutureofai.blogspot.com/,blogspot.com,"own outlet: title only, no posts",2026-11-16
+reading-2026-11-16-150,walsh,2026,"""Toby Walsh"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings of 2026 talks (Vienna lecture 2026-03-26, UNSW videos); none in the window, none opened",2026-11-16
+reading-2026-11-16-151,tegmark,2026,"""Max Tegmark"" AGI 2026",WebSearch,"Y1: Democracy Now 2026-07-30, Realtid August items, TIME100 AI",2026-11-16
+reading-2026-11-16-152,tegmark,2026,"""Max Tegmark"" ""human-level"" intelligence 2026",WebSearch,Y2: Al Jazeera 2026-08-16,2026-11-16
+reading-2026-11-16-153,tegmark,2026,"""Max Tegmark"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Doom Debates, Harari debate at Davos",2026-11-16
+reading-2026-11-16-154,tegmark,2026,"""Max Tegmark"" AI November 2026",WebSearch,"N: No November hits (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-155,tegmark,2026,https://futureoflife.org/person/max-tegmark/,futureoflife.org,own outlet: no dated Tegmark items,2026-11-16
+reading-2026-11-16-156,tegmark,2026,"""Max Tegmark"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings: ""AI Is Not A Tool, It's A New Species"" (about three weeks old), a 2026-09-16 conversation, Katie Pavlich Tonight; none in the window, none opened",2026-11-16
+reading-2026-11-16-157,suleyman,2026,"""Mustafa Suleyman"" AGI 2026",WebSearch,"Y1: Secondary claims (professional-grade AGI in 2 to 3 years, March 2026)",2026-11-16
+reading-2026-11-16-158,suleyman,2026,"""Mustafa Suleyman"" ""human-level"" intelligence 2026",WebSearch,"Y2: Quotes in a February repost, UTS 2026-05-22",2026-11-16
+reading-2026-11-16-159,suleyman,2026,"""Mustafa Suleyman"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Build 2026 coverage, 2025 interview",2026-11-16
+reading-2026-11-16-160,suleyman,2026,"""Mustafa Suleyman"" AI November 2026",WebSearch,"N: His 2026-11-01 X post on consciousness (already searched in the previous reading); a Chinese interview page of 11-13, year unconfirmed (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-161,suleyman,2026,personal site or newsletter search for Mustafa Suleyman,not run,own outlet: earlier log rows list no readable own outlet and none was fetched this week,2026-11-16
+reading-2026-11-16-162,suleyman,2026,"""Mustafa Suleyman"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings: FT, Bloomberg, CNN, an uploaded video of 2026-10-29 (already in the record); none new in the window",2026-11-16
+reading-2026-11-16-163,legg,2026,"""Shane Legg"" AGI 2026",WebSearch,Y1: DeepMind Institute launch 2026-09-16 (already a row legg-2026-01),2026-11-16
+reading-2026-11-16-164,legg,2026,"""Shane Legg"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-165,legg,2026,"""Shane Legg"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: The Star (Reuters/FT) 2026-09-16; arXiv 2606.12683,2026-11-16
+reading-2026-11-16-166,legg,2026,"""Shane Legg"" AI November 2026",WebSearch,"N: Nothing dated November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-167,legg,2026,personal site or newsletter search for Shane Legg,not run,own outlet: earlier log rows list no readable own outlet and none was fetched this week,2026-11-16
+reading-2026-11-16-168,legg,2026,"""Shane Legg"" interview 2026 (youtube.com domain filter)",WebSearch,V1: No 2026 interview; items about 325 to 339 days old,2026-11-16
+reading-2026-11-16-169,cowen,2026,"""Tyler Cowen"" AGI 2026",WebSearch,"Y1: October 2026 Marginal Revolution post (written by ChatGPT), July DeepMind talk (a row)",2026-11-16
+reading-2026-11-16-170,cowen,2026,"""Tyler Cowen"" ""human-level"" intelligence 2026",WebSearch,Y2: Free Press essays,2026-11-16
+reading-2026-11-16-171,cowen,2026,"""Tyler Cowen"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Free Press columns of 2026-09-13 and 2026-09-20,2026-11-16
+reading-2026-11-16-172,cowen,2026,"""Tyler Cowen"" AI November 2026",WebSearch,"N: Chronicle of Higher Education interview 2026-10-27 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-173,cowen,2026,https://www.thefp.com/p/tyler-cowen-a-doomsday-scenario-for,thefp.com,"own outlet: 2026-09-20, paywalled; visible text has nothing on capability or timing",2026-11-16
+reading-2026-11-16-174,cowen,2026,"""Tyler Cowen"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings: WealthCon2026 (about three weeks old), ARC 2026 (June), others; none in the window",2026-11-16
+reading-2026-11-16-175,yudkowsky,2026,"""Eliezer Yudkowsky"" AGI 2026",WebSearch,Y1: LessWrong posts April and May 2026,2026-11-16
+reading-2026-11-16-176,yudkowsky,2026,"""Eliezer Yudkowsky"" ""human-level"" intelligence 2026",WebSearch,Y2: Commentary,2026-11-16
+reading-2026-11-16-177,yudkowsky,2026,"""Eliezer Yudkowsky"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Commentary,2026-11-16
+reading-2026-11-16-178,yudkowsky,2026,"""Eliezer Yudkowsky"" AI November 2026",WebSearch,"N: Nothing dated November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-179,yudkowsky,2026,https://www.lesswrong.com/users/eliezer_yudkowsky,lesswrong.com,"own outlet: posts show day and month without a year, latest visible Oct 8",2026-11-16
+reading-2026-11-16-180,yudkowsky,2026,"""Eliezer Yudkowsky"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Irving debate (already a row), ""AI and Human 2026"" panel; none new in the window",2026-11-16
+reading-2026-11-16-181,shanahan,2026,"""Murray Shanahan"" AGI 2026",WebSearch,Y1: No 2026 statement,2026-11-16
+reading-2026-11-16-182,shanahan,2026,"""Murray Shanahan"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-183,shanahan,2026,"""Murray Shanahan"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Same,2026-11-16
+reading-2026-11-16-184,shanahan,2026,"""Murray Shanahan"" AI November 2026",WebSearch,"N: Latest item a May 2026 Beijing keynote (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-185,shanahan,2026,https://www.doc.ic.ac.uk/~mpsha,doc.ic.ac.uk,own outlet: newest entries 2024,2026-11-16
+reading-2026-11-16-186,shanahan,2026,"""Murray Shanahan"" interview 2026 (youtube.com domain filter)",WebSearch,V1: Mostly a different Shanahan (football coach); nothing dated 2026 for him,2026-11-16
+reading-2026-11-16-187,bengio,2026,"""Yoshua Bengio"" AGI 2026",WebSearch,Y1: January to February 2026 items,2026-11-16
+reading-2026-11-16-188,bengio,2026,"""Yoshua Bengio"" ""human-level"" intelligence 2026",WebSearch,"Y2: WEF video of 2026-01-20 (""human-level AI in just 5 years"", secondary)",2026-11-16
+reading-2026-11-16-189,bengio,2026,"""Yoshua Bengio"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: 80,000 Hours May 2026; extinction items",2026-11-16
+reading-2026-11-16-190,bengio,2026,"""Yoshua Bengio"" AI November 2026",WebSearch,"N: Latest rows 2026-09-16 and 2026-09-23; Mila event of 11-10 (his part unconfirmed) (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-191,bengio,2026,https://yoshuabengio.org/en/blog,yoshuabengio.org,"own outlet: newest posts 2026-10-08, 10-05, 09-23; none 11-10 to 11-16",2026-11-16
+reading-2026-11-16-192,bengio,2026,https://yoshuabengio.org/en/blog/bengio-if-you-prioritize-safety-leave-frontier-ai-companies,yoshuabengio.org,"own outlet: 2026-10-08, excerpt only (full op-ed on Transformer)",2026-11-16
+reading-2026-11-16-193,bengio,2026,https://yoshuabengio.org/en/blog/dangerous-myth-behind-ai-agent-hacks,yoshuabengio.org,"own outlet: 2026-10-05, excerpt only (full op-ed in the Financial Times)",2026-11-16
+reading-2026-11-16-194,bengio,2026,"""Yoshua Bengio"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings including a RAI interview of 2026-06-14 and Davos; none in the window, none opened",2026-11-16
+reading-2026-11-16-195,floridi,2026,"""Luciano Floridi"" AGI 2026",WebSearch,"Y1: Interviews, no AGI timing",2026-11-16
+reading-2026-11-16-196,floridi,2026,"""Luciano Floridi"" ""human-level"" intelligence 2026",WebSearch,"Y2: Perfil September, cssn.cn 2026-10-29",2026-11-16
+reading-2026-11-16-197,floridi,2026,"""Luciano Floridi"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing new,2026-11-16
+reading-2026-11-16-198,floridi,2026,"""Luciano Floridi"" AI November 2026",WebSearch,"N: Milano Finanza 2026-10-27 is already in the record; an event on 19 to 20 November is outside the window (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-199,floridi,2026,personal site or newsletter search for Luciano Floridi,not run,own outlet: earlier log rows list no readable own outlet and none was fetched this week,2026-11-16
+reading-2026-11-16-200,floridi,2026,"""Luciano Floridi"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; The Trajectory episode (2026-03-13) and a talk of 2026-03-26; outside the window",2026-11-16
+reading-2026-11-16-201,amodei,2026,"""Dario Amodei"" AGI 2026",WebSearch,Y1: January to February 2026 items,2026-11-16
+reading-2026-11-16-202,amodei,2026,"""Dario Amodei"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-203,amodei,2026,"""Dario Amodei"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Secondary commentary,2026-11-16
+reading-2026-11-16-204,amodei,2026,"""Dario Amodei"" AI November 2026",WebSearch,"N: No dated November items; a French full text of the ""slow down"" piece (2026-09-12) (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-205,amodei,2026,https://darioamodei.com,darioamodei.com,own outlet: not re-fetched; earlier rows read the index,2026-11-16
+reading-2026-11-16-206,amodei,2026,"""Dario Amodei"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Davos and NYT videos, already logged; none in the window",2026-11-16
+reading-2026-11-16-207,aschenbrenner,2026,"""Leopold Aschenbrenner"" AGI 2026",WebSearch,Y1: Secondary pages on the 2024 essay,2026-11-16
+reading-2026-11-16-208,aschenbrenner,2026,"""Leopold Aschenbrenner"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-209,aschenbrenner,2026,"""Leopold Aschenbrenner"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Same,2026-11-16
+reading-2026-11-16-210,aschenbrenner,2026,"""Leopold Aschenbrenner"" AI November 2026",WebSearch,"N: Nothing from November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-211,aschenbrenner,2026,forourposterity.com and situational-awareness.ai,not re-fetched,own outlet: earlier rows read both,2026-11-16
+reading-2026-11-16-212,aschenbrenner,2026,"""Leopold Aschenbrenner"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Limitless podcast and TBPN segment listings, not him speaking on a confirmed channel",2026-11-16
+reading-2026-11-16-213,kokotajlo,2026,"""Daniel Kokotajlo"" AGI 2026",WebSearch,"Y1: January timeline pushback, 80,000 Hours",2026-11-16
+reading-2026-11-16-214,kokotajlo,2026,"""Daniel Kokotajlo"" ""human-level"" intelligence 2026",WebSearch,Y2: Diary of a CEO 2026-07-13,2026-11-16
+reading-2026-11-16-215,kokotajlo,2026,"""Daniel Kokotajlo"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: 80,000 Hours July 2026, Senate testimony",2026-11-16
+reading-2026-11-16-216,kokotajlo,2026,"""Daniel Kokotajlo"" AI November 2026",WebSearch,"N: A secondary page relays the 2026-11-10 AI Futures update (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-217,kokotajlo,2026,https://blog.aifutures.org/archive,blog.aifutures.org,"own outlet: 2026-11-10 ""Q3.5 Timelines Update"" and ""Verified Compute Allocation Disclosures""",2026-11-16
+reading-2026-11-16-218,kokotajlo,2026,https://blog.aifutures.org/p/q35-timelines-update-looks-like-the,blog.aifutures.org,"own outlet: 2026-11-10, group post by Lifland, Halstead, Kokotajlo, Dean and others; ""all of us forecast"" a Superhuman AI Researcher ""likely arrive[s] at some point in 2027"", 35 to 65% chance of fully automated AI R&D before 2028; read about 100k of 164.8k characters",2026-11-16
+reading-2026-11-16-219,kokotajlo,2026,"""Daniel Kokotajlo"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Listings (Diary of a CEO 2026-07-13, 80,000 Hours); none in the window",2026-11-16
+reading-2026-11-16-220,cotra,2026,"""Ajeya Cotra"" AGI 2026",WebSearch,Y1: Self-sufficient AI post (January),2026-11-16
+reading-2026-11-16-221,cotra,2026,"""Ajeya Cotra"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-222,cotra,2026,"""Ajeya Cotra"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: 80,000 Hours ""crunch time""",2026-11-16
+reading-2026-11-16-223,cotra,2026,"""Ajeya Cotra"" AI November 2026",WebSearch,"N: A newsletter snippet on 100-hour task horizons, no primary source (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-224,cotra,2026,Planned Obsolescence post of 2026-11-06,not re-fetched,"own outlet: read in full on 2026-11-09 (log row cotra-040), rows already in the record",2026-11-16
+reading-2026-11-16-225,cotra,2026,"""Ajeya Cotra"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; 80,000 Hours and Cognitive Revolution episodes, February and April",2026-11-16
+reading-2026-11-16-226,huang,2026,"""Jensen Huang"" AGI 2026",WebSearch,Y1: Lex Fridman 2026-03-23 and 2026-09-06 post (already rows),2026-11-16
+reading-2026-11-16-227,huang,2026,"""Jensen Huang"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-228,huang,2026,"""Jensen Huang"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: All-In 2026-09-14 (""In some fields, superintelligence has arrived""), before the window",2026-11-16
+reading-2026-11-16-229,huang,2026,"""Jensen Huang"" AI November 2026",WebSearch,"N: Huge If True interview 2026-11-09 (one day before the window), mostly physical AI, not read (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-230,huang,2026,Huang has no own outlet (log row huang-051),not fetched,own outlet: keynotes are video only,2026-11-16
+reading-2026-11-16-231,huang,2026,"""Jensen Huang"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Listings: Huge If True 2026-11-09 (YouTube id 7ARBJQn6QkM), Yahoo Finance 2026-10-21, Dwarkesh, Sequoia; dates from aggregators, none opened",2026-11-16
+reading-2026-11-16-232,leike,2026,"""Jan Leike"" AGI 2026",WebSearch,Y1: 2024 resignation coverage only,2026-11-16
+reading-2026-11-16-233,leike,2026,"""Jan Leike"" ""human-level"" intelligence 2026",WebSearch,Y2: Personal-site post of 2026-01-22 (already leike-2026-01),2026-11-16
+reading-2026-11-16-234,leike,2026,"""Jan Leike"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing,2026-11-16
+reading-2026-11-16-235,leike,2026,"""Jan Leike"" AI November 2026",WebSearch,"N: Nothing (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-236,leike,2026,https://aligned.substack.com/archive,aligned.substack.com,"own outlet: newest post Jan 22, already in the record",2026-11-16
+reading-2026-11-16-237,leike,2026,"""Jan Leike"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; No 2026 video found",2026-11-16
+reading-2026-11-16-238,mollick,2026,"""Ethan Mollick"" AGI 2026",WebSearch,"Y1: Aggregator pages, not usable",2026-11-16
+reading-2026-11-16-239,mollick,2026,"""Ethan Mollick"" ""human-level"" intelligence 2026",WebSearch,Y2: Ringer episode 2026-10-20 (log row reading-2026-10-26-239 covers his post),2026-11-16
+reading-2026-11-16-240,mollick,2026,"""Ethan Mollick"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Aggregators,2026-11-16
+reading-2026-11-16-241,mollick,2026,"""Ethan Mollick"" AI November 2026",WebSearch,"N: Business Insider 2026-11-02 and Big Technology 2026-10-28, before the window (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-242,mollick,2026,https://www.oneusefulthing.org/archive,oneusefulthing.org,"own outlet: newest 2026-11-09 ""Fable 5.2 and Jagged AGI"", then 2026-10-20, 10-01, 09-18, 08-31 and earlier",2026-11-16
+reading-2026-11-16-243,mollick,2026,https://www.oneusefulthing.org/p/fable-52-and-jagged-agi,oneusefulthing.org,"own outlet: dated 2026-11-09, readable; ""almost"" AGI, defines AGI as as good as most human experts at most computer intellectual tasks, ""likely not there yet"" for running a business alone; no forecast year",2026-11-16
+reading-2026-11-16-244,mollick,2026,"""Ethan Mollick"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings of October interviews (Galloway 2026-10-22, Big Technology 2026-10-25) and earlier; none in the window",2026-11-16
+reading-2026-11-16-245,chollet,2026,"""François Chollet"" AGI 2026",WebSearch,"Y1: ARC-AGI-3 coverage (launched 2026-03-24), 2025 ""AGI in about 5 years""",2026-11-16
+reading-2026-11-16-246,chollet,2026,"""François Chollet"" ""human-level"" intelligence 2026",WebSearch,Y2: No 2026 human-level statement,2026-11-16
+reading-2026-11-16-247,chollet,2026,"""François Chollet"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: 2017 essay only,2026-11-16
+reading-2026-11-16-248,chollet,2026,"""François Chollet"" AI November 2026",WebSearch,"N: Nothing dated November 2026 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-249,chollet,2026,fchollet.com and Keras blog,not re-fetched,own outlet: fetched 2026-11-09: newest essay 2023-10-09,2026-11-16
+reading-2026-11-16-250,chollet,2026,"""François Chollet"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Y Combinator interview 2026-03-27 (aggregator, outside window)",2026-11-16
+reading-2026-11-16-251,sutskever,2026,"""Ilya Sutskever"" AGI 2026",WebSearch,Y1: Nov 2025 Dwarkesh commentary,2026-11-16
+reading-2026-11-16-252,sutskever,2026,"""Ilya Sutskever"" ""human-level"" intelligence 2026",WebSearch,Y2: Same,2026-11-16
+reading-2026-11-16-253,sutskever,2026,"""Ilya Sutskever"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Same,2026-11-16
+reading-2026-11-16-254,sutskever,2026,"""Ilya Sutskever"" AI November 2026",WebSearch,"N: Nothing dated November 2026 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-255,sutskever,2026,https://ssi.inc,ssi.inc,own outlet: no posts,2026-11-16
+reading-2026-11-16-256,sutskever,2026,https://ssi.inc/updates,ssi.inc,own outlet: newest 2026-07-26 (NVIDIA partnership),2026-11-16
+reading-2026-11-16-257,sutskever,2026,"""Ilya Sutskever"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Only the Nov 2025 video",2026-11-16
+reading-2026-11-16-258,liangwenfeng,2026,"""Liang Wenfeng"" AGI 2026",WebSearch,Y1: Coverage of the 2026-05-20 investor meeting (already a row),2026-11-16
+reading-2026-11-16-259,liangwenfeng,2026,"""Liang Wenfeng"" ""human-level"" intelligence 2026",WebSearch,Y2: Nothing new,2026-11-16
+reading-2026-11-16-260,liangwenfeng,2026,"""Liang Wenfeng"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: Nothing new,2026-11-16
+reading-2026-11-16-261,liangwenfeng,2026,"""Liang Wenfeng"" AI November 2026",WebSearch,"N: Items from August to October 2026, none a statement by him (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-262,liangwenfeng,2026,personal site or newsletter search,WebSearch,own outlet: none exists; confirms the earlier log row,2026-11-16
+reading-2026-11-16-263,liangwenfeng,2026,"""Liang Wenfeng"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; No YouTube video found",2026-11-16
+reading-2026-11-16-264,mensch,2026,"""Arthur Mensch"" AGI 2026",WebSearch,"Y1: Big Technology podcast 2026-01-16, earlier items",2026-11-16
+reading-2026-11-16-265,mensch,2026,"""Arthur Mensch"" ""human-level"" intelligence 2026",WebSearch,Y2: Nothing new,2026-11-16
+reading-2026-11-16-266,mensch,2026,"""Arthur Mensch"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: None named him,2026-11-16
+reading-2026-11-16-267,mensch,2026,"""Arthur Mensch"" AI November 2026",WebSearch,"N: A weak page reports a 2026-11-02 warning that Europe risks a ""complete trap"" on frontier models (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-268,mensch,2026,https://mistral.ai/news,mistral.ai,"own outlet: post of 2026-11-05, not by or quoting him",2026-11-16
+reading-2026-11-16-269,mensch,2026,https://x.com/arthurmensch,x.com,own outlet: not fetched; earlier row says unreadable,2026-11-16
+reading-2026-11-16-270,mensch,2026,"""Arthur Mensch"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Listings of conferences January to July 2026; none in the window",2026-11-16
+reading-2026-11-16-271,narayanan,2026,"""Arvind Narayanan"" AGI 2026",WebSearch,"Y1: ICML keynote July 2026, normaltech archive",2026-11-16
+reading-2026-11-16-272,narayanan,2026,"""Arvind Narayanan"" ""human-level"" intelligence 2026",WebSearch,Y2: Same plus Kapoor essay of August,2026-11-16
+reading-2026-11-16-273,narayanan,2026,"""Arvind Narayanan"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Debate with Kokotajlo, undated",2026-11-16
+reading-2026-11-16-274,narayanan,2026,"""Arvind Narayanan"" AI November 2026",WebSearch,"N: Newest items October 2026 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-275,narayanan,2026,https://www.normaltech.ai/archive,normaltech.ai,"own outlet: newest 2026-11-10 ""The missing quadrant in responses to AI""",2026-11-16
+reading-2026-11-16-276,narayanan,2026,https://www.normaltech.ai/p/the-missing-quadrant-in-responses,normaltech.ai,"own outlet: dated 2026-11-10, by Kapoor, Bommasani and Narayanan; societal change bottlenecked by human and organisational speed, agents cannot yet do open-ended AI research, want to test recursive self-improvement claims; the fetch guessed the address and the canonical URL is unconfirmed",2026-11-16
+reading-2026-11-16-277,narayanan,2026,"""Arvind Narayanan"" interview 2026 site:youtube.com",WebSearch,"V1: site: operator not honoured, aggregator pages only; Listings: Ezra Klein 2026-10-09, IAS talk, ICML talk; outside the window",2026-11-16
+reading-2026-11-16-278,zuckerberg,2026,"""Mark Zuckerberg"" AGI 2026",WebSearch,"Y1: 2025 statements; an August 2026 essay ""The Future Is for Everyone"" (personal superintelligence)",2026-11-16
+reading-2026-11-16-279,zuckerberg,2026,"""Mark Zuckerberg"" ""human-level"" intelligence 2026",WebSearch,"Y2: No 2026 ""human-level"" statement; August 2026 essay and April 2026 remarks",2026-11-16
+reading-2026-11-16-280,zuckerberg,2026,"""Mark Zuckerberg"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: August 2026 essay and a July 2026 op-ed; nothing on self-improvement or the singularity,2026-11-16
+reading-2026-11-16-281,zuckerberg,2026,"""Mark Zuckerberg"" AI November 2026",WebSearch,"N: Latest dated item is Semafor 2026-10-12 (Muse model, ""reached the frontier""); an undated town-hall report that agents are slower than expected; nothing from November (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-282,zuckerberg,2026,https://about.fb.com/news/,about.fb.com,"own outlet: items 2026-11-05 to 11-15 are attributed to Meta, none to him by headline; article text not read",2026-11-16
+reading-2026-11-16-283,zuckerberg,2026,"""Mark Zuckerberg"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings: Meta Connect (2026-09-23), Idea Gen (June), NBC (about two months old), Bloomberg; none in the window",2026-11-16
+reading-2026-11-16-284,pichai,2026,"""Sundar Pichai"" AGI 2026",WebSearch,"Y1: Post-I/O 2026 remarks (May), secondary",2026-11-16
+reading-2026-11-16-285,pichai,2026,"""Sundar Pichai"" ""human-level"" intelligence 2026",WebSearch,"Y2: No 2026 ""human-level"" statement",2026-11-16
+reading-2026-11-16-286,pichai,2026,"""Sundar Pichai"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,"Y3: Podcast remarks (October 2026) that Google is early in recursive self-improvement, via Business Insider (secondary)",2026-11-16
+reading-2026-11-16-287,pichai,2026,"""Sundar Pichai"" AI November 2026",WebSearch,"N: Nothing clearly dated November; a podcast of about October 2026 (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-288,pichai,2026,https://blog.google/authors/sundar-pichai/,blog.google,"own outlet: only the I/O 2026 post, undated, no list",2026-11-16
+reading-2026-11-16-289,pichai,2026,"""Sundar Pichai"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings: October 2026 conversation after the Gemini 4 release, AI Impact Summit, Hard Fork (2026-05-28); none in the window",2026-11-16
+reading-2026-11-16-290,nadella,2026,"""Satya Nadella"" AGI 2026",WebSearch,"Y1: Secondary items; ""nonsensical benchmark hacking"" (dated February or November 2025)",2026-11-16
+reading-2026-11-16-291,nadella,2026,"""Satya Nadella"" ""human-level"" intelligence 2026",WebSearch,"Y2: No 2026 ""human-level"" statement; January blog post, June X essay",2026-11-16
+reading-2026-11-16-292,nadella,2026,"""Satya Nadella"" superintelligence OR singularity OR ""self-improving"" 2026",WebSearch,Y3: September 2026 X post: superintelligence not worth pursuing without human control (2026-09-13 or 14),2026-11-16
+reading-2026-11-16-293,nadella,2026,"""Satya Nadella"" AI November 2026",WebSearch,"N: Nothing dated November; a Semafor piece of 2026-10-21 (no content) (no past-week filter in the tool, so the month and year were added)",2026-11-16
+reading-2026-11-16-294,nadella,2026,https://snscratchpad.com,snscratchpad.com,own outlet: newest post 2026-10-10 (already logged); nothing in the window,2026-11-16
+reading-2026-11-16-295,nadella,2026,"""Satya Nadella"" interview 2026 (youtube.com domain filter)",WebSearch,"V1: Listings: Build 2026 podcast, Hard Fork (June), Davos; none in the window",2026-11-16

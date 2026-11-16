@@ -1,0 +1,921 @@
+{
+  "reading": {
+    "date": "2026-11-16",
+    "ran_at": "2026-11-16T14:08:32Z",
+    "window_start": "2026-11-10",
+    "window_end": "2026-11-16",
+    "scope": "weekly",
+    "commit_before": "35755a5",
+    "by": "scheduled",
+    "items_read": 57,
+    "searches": 295,
+    "new_rows": [
+      "manifold-agi2030-2026-11-16"
+    ],
+    "flagged": 6
+  },
+  "items": [
+    {
+      "id": "leg-a-metr",
+      "part": "gauges",
+      "speaker_id": "metr",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-01",
+        "reading-2026-11-16-02",
+        "reading-2026-11-16-03",
+        "reading-2026-11-16-04"
+      ],
+      "found": "No new model key in METR's results file (26 models, all in the record). The time-horizons page still says it is no longer actively updated, lists no Time Horizon 1.2 or 2.0 and is not retired."
+    },
+    {
+      "id": "leg-b-forecasts",
+      "part": "gauges",
+      "speaker_id": "reading",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-05",
+        "reading-2026-11-16-06"
+      ],
+      "found": "Two searches found scored-forecast material (the Forecasting Research Institute's LEAP results and a prediction-ledger page) but none dated inside the window and none opened. The AI Futures Project published a timelines update on 2026-11-10 (see the Kokotajlo item).",
+      "sources": [
+        "https://forecastingresearch.substack.com/p/leap-wave-8-ai-timelines",
+        "https://blog.aifutures.org/p/q35-timelines-update-looks-like-the"
+      ]
+    },
+    {
+      "id": "leg-c-rd-automation-index",
+      "part": "gauges",
+      "speaker_id": "anthropic_institute",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-07",
+        "reading-2026-11-16-08"
+      ],
+      "found": "The index page still shows only February 2026 (under 1%) and August 2026 (26% led by Claude); no newer month and no update found."
+    },
+    {
+      "id": "leg-c-institute-publications",
+      "part": "gauges",
+      "speaker_id": "anthropic_institute",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-09",
+        "reading-2026-11-16-10"
+      ],
+      "found": "No new Anthropic Institute measurement of AI's share of AI work dated in the window; what turned up is already in the record."
+    },
+    {
+      "id": "leg-c-outside-measures",
+      "part": "gauges",
+      "speaker_id": "reading",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-11",
+        "reading-2026-11-16-12"
+      ],
+      "found": "No researcher survey of AI's share of frontier research and no venue disclosure statistics dated in the window; nothing is a candidate second source for leg C."
+    },
+    {
+      "id": "aiimpacts",
+      "part": "institutions",
+      "speaker_id": "aiimpacts",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-13",
+        "reading-2026-11-16-14"
+      ],
+      "found": "No new AI Impacts survey round; the 2023 survey is still the latest."
+    },
+    {
+      "id": "metaculus",
+      "part": "institutions",
+      "speaker_id": "metaculus",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-15",
+        "reading-2026-11-16-16"
+      ],
+      "found": "The Metaculus question page cannot be read without a token (ruled 2026-10-17, the row stays with no series), and no November snapshot turned up in search.",
+      "sources": [
+        "https://www.metaculus.com/questions/5121/date-of-artificial-general-intelligence/"
+      ]
+    },
+    {
+      "id": "manifold",
+      "part": "institutions",
+      "speaker_id": "manifold",
+      "verdict": "new-row",
+      "search_ids": [
+        "reading-2026-11-16-17",
+        "reading-2026-11-16-18"
+      ],
+      "found": "Read the Manifold market by its interface: probability 0.50 on 2026-11-16, 352 unique traders, last trade 2026-11-14 07:04 UTC (down from 0.517 on 2026-11-09). Appended as the weekly row.",
+      "sources": [
+        "https://api.manifold.markets/v0/market/hh2bXhwKDTioZ7KtGKfC"
+      ],
+      "new_rows": [
+        "manifold-agi2030-2026-11-16"
+      ]
+    },
+    {
+      "id": "pew",
+      "part": "institutions",
+      "speaker_id": "pew",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-19",
+        "reading-2026-11-16-20"
+      ],
+      "found": "No new Pew release on AI in the window; the latest Pew item (2026-10-29, AI in healthcare) is a different subject."
+    },
+    {
+      "id": "yougov",
+      "part": "institutions",
+      "speaker_id": "yougov",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-21",
+        "reading-2026-11-16-22"
+      ],
+      "found": "The only new YouGov item (2026-10-07, worries about using AI) is outside the window and about a different question, with no sample size or fieldwork dates on the page.",
+      "sources": [
+        "https://yougov.com/en-us/articles/55709-americans-are-worried-about-using-ai-but-that-isnt-stopping-them-from-using-it"
+      ]
+    },
+    {
+      "id": "ipsos",
+      "part": "institutions",
+      "speaker_id": "ipsos",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-23",
+        "reading-2026-11-16-24"
+      ],
+      "found": "A Reuters/Ipsos survey (fieldwork 2026-11-06 to 2026-11-09, 1,705 adults) asked what Congress should focus on, including regulating AI and data centres; the wording does not match the Ipsos AI Monitor series, so no row.",
+      "sources": [
+        "https://www.ipsos.com/en-us/reutersipsos-post-election-survey"
+      ]
+    },
+    {
+      "id": "google",
+      "part": "institutions",
+      "speaker_id": "google",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-25",
+        "reading-2026-11-16-26"
+      ],
+      "found": "No new statement by Google's chief executive on the share of new code written by AI; the 75% figure of 2026-04-24 is still the latest."
+    },
+    {
+      "id": "ifr",
+      "part": "institutions",
+      "speaker_id": "ifr",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-27",
+        "reading-2026-11-16-28"
+      ],
+      "found": "No new IFR release in the window; the World Robotics 2026 figures of 2026-09-24 are already in the record."
+    },
+    {
+      "id": "events-open-letters",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-29",
+        "reading-2026-11-16-30"
+      ],
+      "found": "No open letter or public statement dated 2026-11-10 to 2026-11-16 found in two searches."
+    },
+    {
+      "id": "events-government-actions",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-31",
+        "reading-2026-11-16-32",
+        "reading-2026-11-16-33",
+        "reading-2026-11-16-34",
+        "reading-2026-11-16-35"
+      ],
+      "found": "No government action on AI dated in the window; the data-centre ratepayer bill the first search hinted at passed the House on 2026-09-16, outside the window."
+    },
+    {
+      "id": "events-reports",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-11-16-36",
+        "reading-2026-11-16-37",
+        "reading-2026-11-16-38",
+        "reading-2026-11-16-39"
+      ],
+      "found": "The Stanford AI100 2026 report (third five-year report of the One Hundred Year Study) came out about 2026-11-10, but Stanford's own page prints no date, and an assessment of AI as a whole by a study panel may or may not be the record's kind of report.",
+      "sources": [
+        "https://ai100.stanford.edu/",
+        "https://thenextweb.com/news/stanford-ai100-report-2026-ai-goes-mainstream"
+      ],
+      "for_john": "Stanford's AI100 panel published its 2026 report (\"AI Goes Mainstream: The Scaling Era and the Rise of Generative AI\") around 2026-11-10; the AI100 page I opened prints no date, so I took none from press. Is a five-year panel review of AI as a whole the record's kind of report (like the International AI Safety Report row), and may the row date come from the organiser's later dated post? I added nothing."
+    },
+    {
+      "id": "events-ai-releases",
+      "part": "events",
+      "speaker_id": "events",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-40",
+        "reading-2026-11-16-41",
+        "reading-2026-11-16-42",
+        "reading-2026-11-16-43"
+      ],
+      "found": "Anthropic's own news page dates Claude Fable 5.2 and Claude Mythos 5.2 on 2026-11-09, one day before the window, and no statement in the record names them (Mythos appears only as the earlier Mythos Preview). OpenAI releases could not be confirmed from the maker's own page (it refused the fetch).",
+      "sources": [
+        "https://www.anthropic.com/news"
+      ]
+    },
+    {
+      "id": "panel-kurzweil",
+      "part": "panel",
+      "speaker_id": "kurzweil",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-44",
+        "reading-2026-11-16-45",
+        "reading-2026-11-16-46",
+        "reading-2026-11-16-47",
+        "reading-2026-11-16-48",
+        "reading-2026-11-16-49"
+      ],
+      "found": "Nothing new by Kurzweil dated in the window; searches returned recaps of his 2029 and 2045 dates and listings of earlier videos."
+    },
+    {
+      "id": "panel-marcus",
+      "part": "panel",
+      "speaker_id": "marcus",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-11-16-50",
+        "reading-2026-11-16-51",
+        "reading-2026-11-16-52",
+        "reading-2026-11-16-53",
+        "reading-2026-11-16-54",
+        "reading-2026-11-16-55",
+        "reading-2026-11-16-56",
+        "reading-2026-11-16-57"
+      ],
+      "found": "Marcus posted six times on Substack between 2026-11-10 and 2026-11-14; the post of 2026-11-13 is readable and says today's systems are unreliable and \"we are not there yet\", with no timing claim. Two other posts (FAA ground stop, Eli Lilly chief on Amodei's medical claims) were not read.",
+      "sources": [
+        "https://garymarcus.substack.com/p/the-great-generative-ai-unraveling",
+        "https://garymarcus.substack.com/archive"
+      ],
+      "for_john": "Marcus's Substack post of 2026-11-13, \"The great generative AI unraveling\", is new, readable and says present systems are unreliable and \"we are not there yet\" (a present-capability passage, no forecast); two more posts of 2026-11-12 and 2026-11-14 (FAA ground stop, Eli Lilly chief) may bear on capability but were not opened. I did not code any rows: his 2026 already has more than ten statements, so the every-third rule applies. Should a session take these in?"
+    },
+    {
+      "id": "panel-lecun",
+      "part": "panel",
+      "speaker_id": "lecun",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-58",
+        "reading-2026-11-16-59",
+        "reading-2026-11-16-60",
+        "reading-2026-11-16-61",
+        "reading-2026-11-16-62",
+        "reading-2026-11-16-63"
+      ],
+      "found": "Nothing by LeCun found dated in the window; the October 2026 Fortune interview and a Seoul piece are older leads not checked against the record."
+    },
+    {
+      "id": "panel-hinton",
+      "part": "panel",
+      "speaker_id": "hinton",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-64",
+        "reading-2026-11-16-65",
+        "reading-2026-11-16-66",
+        "reading-2026-11-16-67",
+        "reading-2026-11-16-68",
+        "reading-2026-11-16-69"
+      ],
+      "found": "Press says Channel 4 aired a documentary with Hinton and Hassabis on 2026-11-12, and a video about two days old with Hinton on superintelligence turned up; neither could be opened or placed on a qualifying channel, so no words were taken.",
+      "sources": [
+        "https://www.channel4.com/",
+        "https://www.youtube.com/watch?v=y7JTtzo3mj4"
+      ]
+    },
+    {
+      "id": "panel-altman",
+      "part": "panel",
+      "speaker_id": "altman",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-70",
+        "reading-2026-11-16-71",
+        "reading-2026-11-16-72",
+        "reading-2026-11-16-73",
+        "reading-2026-11-16-74",
+        "reading-2026-11-16-75"
+      ],
+      "found": "Nothing new by Altman in the window; the ADIPEC remarks of 2026-11-02 are already taken in."
+    },
+    {
+      "id": "panel-bostrom",
+      "part": "panel",
+      "speaker_id": "bostrom",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-76",
+        "reading-2026-11-16-77",
+        "reading-2026-11-16-78",
+        "reading-2026-11-16-79",
+        "reading-2026-11-16-80",
+        "reading-2026-11-16-81"
+      ],
+      "found": "Nothing from Bostrom dated in the window; October 2026 interviews (2026-10-16 \"We May Already Have AGI\", 2026-10-01 Interesting Times) and a second Rogan appearance came out after his latest row and were not opened or checked against the record.",
+      "sources": [
+        "https://nickbostrom.com/"
+      ]
+    },
+    {
+      "id": "panel-hanson",
+      "part": "panel",
+      "speaker_id": "hanson",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-82",
+        "reading-2026-11-16-83",
+        "reading-2026-11-16-84",
+        "reading-2026-11-16-85",
+        "reading-2026-11-16-86",
+        "reading-2026-11-16-87"
+      ],
+      "found": "Nothing from Hanson dated in the window; undated or earlier leads (a betonit.ai post on superintelligence skepticism, August to October 2026 videos) were not opened.",
+      "sources": [
+        "https://www.betonit.ai/p/my_superintellihtml"
+      ]
+    },
+    {
+      "id": "panel-hassabis",
+      "part": "panel",
+      "speaker_id": "hassabis",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-88",
+        "reading-2026-11-16-89",
+        "reading-2026-11-16-90",
+        "reading-2026-11-16-91",
+        "reading-2026-11-16-92",
+        "reading-2026-11-16-93"
+      ],
+      "found": "Nothing new by Hassabis found in the window; the Channel 4 documentary of 2026-11-12 (with Hinton) and an early-November conversation with Reid Hoffman are leads that could not be opened.",
+      "sources": [
+        "https://www.channel4.com/",
+        "https://www.youtube.com/watch?v=x7Z_1miRWB8"
+      ]
+    },
+    {
+      "id": "panel-ng",
+      "part": "panel",
+      "speaker_id": "ng",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-11-16-94",
+        "reading-2026-11-16-95",
+        "reading-2026-11-16-96",
+        "reading-2026-11-16-97",
+        "reading-2026-11-16-98",
+        "reading-2026-11-16-99",
+        "reading-2026-11-16-100",
+        "reading-2026-11-16-101"
+      ],
+      "found": "Ng's weekly letters of 2026-11-06 (jobs: \"undermines the jobpocalypse story\") and 2026-11-13 (present capability of LLMs for building applications) are new, fully readable and not in the record; neither carries a timeline.",
+      "sources": [
+        "https://www.deeplearning.ai/the-batch/issue-378/",
+        "https://www.deeplearning.ai/the-batch/issue-379/"
+      ],
+      "for_john": "Andrew Ng's newsletter letters of 2026-11-06 (issue 378, jobs) and 2026-11-13 (issue 379, present capability) are new, free to read and about consequences and present capability, with no forecast year. They are after his latest row (2026-02) and not in the record. I did not code rows this run; should a session take them in under the normal rules?"
+    },
+    {
+      "id": "panel-russell",
+      "part": "panel",
+      "speaker_id": "russell",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-102",
+        "reading-2026-11-16-103",
+        "reading-2026-11-16-104",
+        "reading-2026-11-16-105",
+        "reading-2026-11-16-106",
+        "reading-2026-11-16-107"
+      ],
+      "found": "Nothing new by Russell in the window."
+    },
+    {
+      "id": "panel-brooks",
+      "part": "panel",
+      "speaker_id": "brooks",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-108",
+        "reading-2026-11-16-109",
+        "reading-2026-11-16-110",
+        "reading-2026-11-16-111",
+        "reading-2026-11-16-112",
+        "reading-2026-11-16-113",
+        "reading-2026-11-16-114"
+      ],
+      "found": "Nothing new by Brooks after his post of 2026-11-08, which is already in the record."
+    },
+    {
+      "id": "panel-musk",
+      "part": "panel",
+      "speaker_id": "musk",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-115",
+        "reading-2026-11-16-116",
+        "reading-2026-11-16-117",
+        "reading-2026-11-16-118",
+        "reading-2026-11-16-119",
+        "reading-2026-11-16-120"
+      ],
+      "found": "Nothing from Musk dated in the window. The Isaacson interview of 2026-10-20 (secondary summary says humans are unlikely to stay in control within a decade) may hold a dated forecast not yet in the record; no original URL or transcript was found.",
+      "sources": [
+        "https://dealroom.co/news/169462-elon-musk-to-walter-isaacson-humans-are-unlikely-to-stay-in-control-of-s/"
+      ]
+    },
+    {
+      "id": "panel-chalmers",
+      "part": "panel",
+      "speaker_id": "chalmers",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-121",
+        "reading-2026-11-16-122",
+        "reading-2026-11-16-123",
+        "reading-2026-11-16-124",
+        "reading-2026-11-16-125",
+        "reading-2026-11-16-126"
+      ],
+      "found": "A recap of the 2026-11-05 to 11-06 UT Austin symposium (posted 2026-11-10) paraphrases Chalmers, but it is secondhand and the video is not up, so no words could be taken.",
+      "sources": [
+        "https://theconsciousness.ai/posts/ut-austin-consciousness-and-intelligence-2026-recap-chalmers-seth-aaronson/"
+      ]
+    },
+    {
+      "id": "panel-brynjolfsson",
+      "part": "panel",
+      "speaker_id": "brynjolfsson",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-127",
+        "reading-2026-11-16-128",
+        "reading-2026-11-16-129",
+        "reading-2026-11-16-130",
+        "reading-2026-11-16-131",
+        "reading-2026-11-16-132"
+      ],
+      "found": "Nothing from Brynjolfsson in the window; leads before it (an October 2026 research agenda in the Communications of the ACM, a Stanford feature of 2026-11-03) were not read.",
+      "sources": [
+        "https://brynjolfsson.com"
+      ]
+    },
+    {
+      "id": "panel-schmidhuber",
+      "part": "panel",
+      "speaker_id": "schmidhuber",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-133",
+        "reading-2026-11-16-134",
+        "reading-2026-11-16-135",
+        "reading-2026-11-16-136",
+        "reading-2026-11-16-137",
+        "reading-2026-11-16-138"
+      ],
+      "found": "Nothing new by Schmidhuber in the window; September 2026 items are before his latest row or already recorded."
+    },
+    {
+      "id": "panel-kaifulee",
+      "part": "panel",
+      "speaker_id": "kaifulee",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-139",
+        "reading-2026-11-16-140",
+        "reading-2026-11-16-141",
+        "reading-2026-11-16-142",
+        "reading-2026-11-16-143",
+        "reading-2026-11-16-144"
+      ],
+      "found": "A third-party summary (2026-11-11) of Lee's 2026-11-04 interview in the magazine Unternehmer says intelligence is turning into a cheap mass product; it is a paraphrase, not his words, and the original interview was not found.",
+      "sources": [
+        "https://eu.36kr.com/de/p/4063981307745417"
+      ]
+    },
+    {
+      "id": "panel-walsh",
+      "part": "panel",
+      "speaker_id": "walsh",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-145",
+        "reading-2026-11-16-146",
+        "reading-2026-11-16-147",
+        "reading-2026-11-16-148",
+        "reading-2026-11-16-149",
+        "reading-2026-11-16-150"
+      ],
+      "found": "Nothing new by Walsh in the window."
+    },
+    {
+      "id": "panel-tegmark",
+      "part": "panel",
+      "speaker_id": "tegmark",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-151",
+        "reading-2026-11-16-152",
+        "reading-2026-11-16-153",
+        "reading-2026-11-16-154",
+        "reading-2026-11-16-155",
+        "reading-2026-11-16-156"
+      ],
+      "found": "Nothing by Tegmark dated in the window. Items after his latest row (2025-06), such as Democracy Now 2026-07-30 and Al Jazeera 2026-08-16, are not in the record and were not opened.",
+      "sources": [
+        "https://democracynow.org/2026/7/30/max_tegmark"
+      ]
+    },
+    {
+      "id": "panel-suleyman",
+      "part": "panel",
+      "speaker_id": "suleyman",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-157",
+        "reading-2026-11-16-158",
+        "reading-2026-11-16-159",
+        "reading-2026-11-16-160",
+        "reading-2026-11-16-161",
+        "reading-2026-11-16-162"
+      ],
+      "found": "Nothing new by Suleyman in the window; a Chinese interview page dated 11-13 (year unconfirmed) was not opened, and his dated \"12 to 18 months\" figures appear only in secondary reports.",
+      "sources": [
+        "https://hao.cnyes.com/post/207526"
+      ]
+    },
+    {
+      "id": "panel-legg",
+      "part": "panel",
+      "speaker_id": "legg",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-163",
+        "reading-2026-11-16-164",
+        "reading-2026-11-16-165",
+        "reading-2026-11-16-166",
+        "reading-2026-11-16-167",
+        "reading-2026-11-16-168"
+      ],
+      "found": "Nothing new by Legg in the window; the 2026-09-16 coverage is the same event as his latest row.",
+      "sources": [
+        "https://www.thestar.com.my/tech/tech-news/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports"
+      ]
+    },
+    {
+      "id": "panel-cowen",
+      "part": "panel",
+      "speaker_id": "cowen",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-169",
+        "reading-2026-11-16-170",
+        "reading-2026-11-16-171",
+        "reading-2026-11-16-172",
+        "reading-2026-11-16-173",
+        "reading-2026-11-16-174"
+      ],
+      "found": "Nothing by Cowen in the window; Free Press columns (September 2026, paywalled) and a Chronicle interview of 2026-10-27 are after his latest row but unread.",
+      "sources": [
+        "https://chronicle.com/article/tyler-cowens-radical-ai-university"
+      ]
+    },
+    {
+      "id": "panel-yudkowsky",
+      "part": "panel",
+      "speaker_id": "yudkowsky",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-175",
+        "reading-2026-11-16-176",
+        "reading-2026-11-16-177",
+        "reading-2026-11-16-178",
+        "reading-2026-11-16-179",
+        "reading-2026-11-16-180"
+      ],
+      "found": "Nothing new by Yudkowsky in the window; his latest row (2026-10-29 debate) is already in the record."
+    },
+    {
+      "id": "panel-shanahan",
+      "part": "panel",
+      "speaker_id": "shanahan",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-181",
+        "reading-2026-11-16-182",
+        "reading-2026-11-16-183",
+        "reading-2026-11-16-184",
+        "reading-2026-11-16-185",
+        "reading-2026-11-16-186"
+      ],
+      "found": "Nothing new by Shanahan in the window."
+    },
+    {
+      "id": "panel-bengio",
+      "part": "panel",
+      "speaker_id": "bengio",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-187",
+        "reading-2026-11-16-188",
+        "reading-2026-11-16-189",
+        "reading-2026-11-16-190",
+        "reading-2026-11-16-191",
+        "reading-2026-11-16-192",
+        "reading-2026-11-16-193",
+        "reading-2026-11-16-194"
+      ],
+      "found": "Nothing by Bengio in the window; two October 2026 blog excerpts (2026-10-05, 2026-10-08) are new to the record but only excerpts were readable, with the full op-eds on other sites.",
+      "sources": [
+        "https://yoshuabengio.org/en/blog"
+      ]
+    },
+    {
+      "id": "panel-floridi",
+      "part": "panel",
+      "speaker_id": "floridi",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-195",
+        "reading-2026-11-16-196",
+        "reading-2026-11-16-197",
+        "reading-2026-11-16-198",
+        "reading-2026-11-16-199",
+        "reading-2026-11-16-200"
+      ],
+      "found": "Nothing new by Floridi dated in the window; a Chinese interview of 2026-10-29 (cssn.cn) is after his latest row but unread."
+    },
+    {
+      "id": "panel-amodei",
+      "part": "panel",
+      "speaker_id": "amodei",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-201",
+        "reading-2026-11-16-202",
+        "reading-2026-11-16-203",
+        "reading-2026-11-16-204",
+        "reading-2026-11-16-205",
+        "reading-2026-11-16-206"
+      ],
+      "found": "Nothing new by Amodei in the window."
+    },
+    {
+      "id": "panel-aschenbrenner",
+      "part": "panel",
+      "speaker_id": "aschenbrenner",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-207",
+        "reading-2026-11-16-208",
+        "reading-2026-11-16-209",
+        "reading-2026-11-16-210",
+        "reading-2026-11-16-211",
+        "reading-2026-11-16-212"
+      ],
+      "found": "Nothing new by Aschenbrenner in the window."
+    },
+    {
+      "id": "panel-kokotajlo",
+      "part": "panel",
+      "speaker_id": "kokotajlo",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-11-16-213",
+        "reading-2026-11-16-214",
+        "reading-2026-11-16-215",
+        "reading-2026-11-16-216",
+        "reading-2026-11-16-217",
+        "reading-2026-11-16-218",
+        "reading-2026-11-16-219"
+      ],
+      "found": "The AI Futures Project's \"Q3.5 Timelines Update\" of 2026-11-10 gives a new dated forecast (Superhuman AI Researcher likely in 2027), but it is a group post by several authors and his own median was in the unread part of the page.",
+      "sources": [
+        "https://blog.aifutures.org/p/q35-timelines-update-looks-like-the"
+      ],
+      "for_john": "The AI Futures Project post of 2026-11-10, \"Q3.5 Timelines Update: Looks Like the Intelligence Explosion Will Happen in 2027 After All\", is a group forecast (authors include Kokotajlo) that moves the group to a Superhuman AI Researcher \"likely at some point in 2027\", citing METR's review of Anthropic. It is a joint post, so I did not code it as his words and did not read the part where his own median would be. A secondary site says his median moved from December 2028 to May 2027 (unverified). Should a session take it in, and as his statement or the group's?"
+    },
+    {
+      "id": "panel-cotra",
+      "part": "panel",
+      "speaker_id": "cotra",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-220",
+        "reading-2026-11-16-221",
+        "reading-2026-11-16-222",
+        "reading-2026-11-16-223",
+        "reading-2026-11-16-224",
+        "reading-2026-11-16-225"
+      ],
+      "found": "Nothing new by Cotra in the window; her post of 2026-11-06 is already taken in."
+    },
+    {
+      "id": "panel-huang",
+      "part": "panel",
+      "speaker_id": "huang",
+      "verdict": "noted",
+      "search_ids": [
+        "reading-2026-11-16-226",
+        "reading-2026-11-16-227",
+        "reading-2026-11-16-228",
+        "reading-2026-11-16-229",
+        "reading-2026-11-16-230",
+        "reading-2026-11-16-231"
+      ],
+      "found": "No statement by Huang dated in the window. A Huge If True interview of 2026-11-09 (the day before the window) and a Yahoo Finance interview of 2026-10-21 are after his latest row but unopened.",
+      "sources": [
+        "https://www.youtube.com/watch?v=7ARBJQn6QkM"
+      ]
+    },
+    {
+      "id": "panel-leike",
+      "part": "panel",
+      "speaker_id": "leike",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-232",
+        "reading-2026-11-16-233",
+        "reading-2026-11-16-234",
+        "reading-2026-11-16-235",
+        "reading-2026-11-16-236",
+        "reading-2026-11-16-237"
+      ],
+      "found": "Nothing new by Leike in the window."
+    },
+    {
+      "id": "panel-mollick",
+      "part": "panel",
+      "speaker_id": "mollick",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-11-16-238",
+        "reading-2026-11-16-239",
+        "reading-2026-11-16-240",
+        "reading-2026-11-16-241",
+        "reading-2026-11-16-242",
+        "reading-2026-11-16-243",
+        "reading-2026-11-16-244"
+      ],
+      "found": "Mollick's newsletter post of 2026-11-09, \"Fable 5.2 and Jagged AGI\", is readable and says the model is \"almost\" AGI; it is dated one day before the window but after his latest row (2025-04-20), and several of his 2026 posts (2026-10-01, 09-18, 08-31) are also not in the record.",
+      "sources": [
+        "https://www.oneusefulthing.org/p/fable-52-and-jagged-agi"
+      ],
+      "for_john": "Ethan Mollick's post of 2026-11-09, \"Fable 5.2 and Jagged AGI\" (\"this is almost AGI\", \"we are likely not there yet\" for running a business alone), is readable and not in the record, and his latest row is April 2025; at least three 2026 posts (2026-10-01, 09-18, 08-31) are also missing. It falls one day before the window. Should a session take in his 2026 posts, and does a post just before the window count as new?"
+    },
+    {
+      "id": "panel-chollet",
+      "part": "panel",
+      "speaker_id": "chollet",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-245",
+        "reading-2026-11-16-246",
+        "reading-2026-11-16-247",
+        "reading-2026-11-16-248",
+        "reading-2026-11-16-249",
+        "reading-2026-11-16-250"
+      ],
+      "found": "Nothing new by Chollet in the window."
+    },
+    {
+      "id": "panel-sutskever",
+      "part": "panel",
+      "speaker_id": "sutskever",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-251",
+        "reading-2026-11-16-252",
+        "reading-2026-11-16-253",
+        "reading-2026-11-16-254",
+        "reading-2026-11-16-255",
+        "reading-2026-11-16-256",
+        "reading-2026-11-16-257"
+      ],
+      "found": "Nothing new by Sutskever in the window."
+    },
+    {
+      "id": "panel-liangwenfeng",
+      "part": "panel",
+      "speaker_id": "liangwenfeng",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-258",
+        "reading-2026-11-16-259",
+        "reading-2026-11-16-260",
+        "reading-2026-11-16-261",
+        "reading-2026-11-16-262",
+        "reading-2026-11-16-263"
+      ],
+      "found": "Nothing new by Liang in the window."
+    },
+    {
+      "id": "panel-mensch",
+      "part": "panel",
+      "speaker_id": "mensch",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-264",
+        "reading-2026-11-16-265",
+        "reading-2026-11-16-266",
+        "reading-2026-11-16-267",
+        "reading-2026-11-16-268",
+        "reading-2026-11-16-269",
+        "reading-2026-11-16-270"
+      ],
+      "found": "Nothing new by Mensch dated in the window; a weak report of remarks on 2026-11-02 (before the window) was not confirmed."
+    },
+    {
+      "id": "panel-narayanan",
+      "part": "panel",
+      "speaker_id": "narayanan",
+      "verdict": "flagged",
+      "search_ids": [
+        "reading-2026-11-16-271",
+        "reading-2026-11-16-272",
+        "reading-2026-11-16-273",
+        "reading-2026-11-16-274",
+        "reading-2026-11-16-275",
+        "reading-2026-11-16-276",
+        "reading-2026-11-16-277"
+      ],
+      "found": "A three-author post on normaltech.ai dated 2026-11-10, \"The missing quadrant in responses to AI\" (Kapoor, Bommasani, Narayanan), is new, readable and about the limits of agents and of recursive self-improvement claims, but it is a joint post and the address was guessed.",
+      "sources": [
+        "https://www.normaltech.ai/p/the-missing-quadrant-in-responses",
+        "https://www.normaltech.ai/archive"
+      ],
+      "for_john": "Narayanan co-wrote a post dated 2026-11-10, \"The missing quadrant in responses to AI\", with Sayash Kapoor and Rishi Bommasani (they say agents cannot yet do open-ended AI research and they want to test recursive-self-improvement claims empirically). It is not in the record, it is a joint statement, and the address I read was a guess that returned the article, so the canonical one needs confirming. Should a session take it in, and as his statement?"
+    },
+    {
+      "id": "panel-zuckerberg",
+      "part": "panel",
+      "speaker_id": "zuckerberg",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-278",
+        "reading-2026-11-16-279",
+        "reading-2026-11-16-280",
+        "reading-2026-11-16-281",
+        "reading-2026-11-16-282",
+        "reading-2026-11-16-283"
+      ],
+      "found": "Nothing by Mark Zuckerberg found dated in the window; searches returned earlier 2026 items only."
+    },
+    {
+      "id": "panel-pichai",
+      "part": "panel",
+      "speaker_id": "pichai",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-284",
+        "reading-2026-11-16-285",
+        "reading-2026-11-16-286",
+        "reading-2026-11-16-287",
+        "reading-2026-11-16-288",
+        "reading-2026-11-16-289"
+      ],
+      "found": "Nothing by Sundar Pichai found dated in the window; searches returned earlier 2026 items only."
+    },
+    {
+      "id": "panel-nadella",
+      "part": "panel",
+      "speaker_id": "nadella",
+      "verdict": "quiet",
+      "search_ids": [
+        "reading-2026-11-16-290",
+        "reading-2026-11-16-291",
+        "reading-2026-11-16-292",
+        "reading-2026-11-16-293",
+        "reading-2026-11-16-294",
+        "reading-2026-11-16-295"
+      ],
+      "found": "Nothing by Satya Nadella found dated in the window; searches returned earlier 2026 items only."
+    }
+  ]
+}
