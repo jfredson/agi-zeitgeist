@@ -1,0 +1,297 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2020,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4402,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 30360,
+      "cache_read_input_tokens": 273829,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 6673,
+      "output_tokens_details": {
+        "thinking_tokens": 1310
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mark Zuckerberg\" AI prediction 2020','\"Mark Zuckerberg\" 2020 interview AGI \"years\"','\"Mark Zuckerberg\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2020 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.ivanti.com/blog/mark-zuckerberg-silicon-slopes-tech-summit-2020\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nimport re\nprint(len(c))\nfor k in ['AI','artificial','intelligence','years','decade','202','203']:\n    for m in re.finditer(k,c):\n        pass\nfor m in re.finditer(r'(AI\\b|artificial intelligence|machine learning|10 years|next decade|five years|by 20)',c):\n    print('--',c[max(0,m.start()-400):m.end()+400].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.ivanti.com/blog/mark-zuckerberg-silicon-slopes-tech-summit-2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg January 2020 post \"this decade\" \"augmented reality glasses\" \"2020s\"','Zuckerberg Munich Security Conference 2020 artificial intelligence content transcript']:\n    r=await web_search({\"query\":q}); print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg January 2020 post \"this decade\" \"augmented reality glasses\" \"2020s\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Munich Security Conference 2020 artificial intelligence content transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://epublications.marquette.edu/zuckerberg_files_transcripts/1091/\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nprint(len(c)); print(c[:1500])\nfor m in re.finditer(r'(\\bAI\\b|artificial intelligence|machine learning|years|decade|by 20)',c):\n    print('--',c[max(0,m.start()-300):m.end()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://epublications.marquette.edu/zuckerberg_files_transcripts/1091/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://epublications.marquette.edu/cgi/viewcontent.cgi?article=2092&context=zuckerberg_files_transcripts\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nprint(len(c)); print(c[:300])\nfor m in re.finditer(r'(\\bAI\\b|artificial intelligence|machine learning|years|decade|by 20)',c):\n    print('--',c[max(0,m.start()-400):m.end()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://epublications.marquette.edu/cgi/viewcontent.cgi?article=2092&context=zuckerberg_files_transcripts"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg 2020 earnings call \"AI\" \"proactively\" hate speech \"over the next\" transcript','Zuckerberg Facebook Connect 2020 keynote transcript AI \"contextual\"','zuckerberg_files_transcripts 2020 artificial intelligence']:\n    r=await web_search({\"query\":q}); print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg 2020 earnings call \"AI\" \"proactively\" hate speech \"over the next\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Facebook Connect 2020 keynote transcript AI \"contextual\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "zuckerberg_files_transcripts 2020 artificial intelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Facebook Q2 2020 earnings call transcript Zuckerberg AI q4cdn','Facebook Q3 2020 earnings call transcript Zuckerberg AI \"hate speech\"']:\n    r=await web_search({\"query\":q}); print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook Q2 2020 earnings call transcript Zuckerberg AI q4cdn"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook Q3 2020 earnings call transcript Zuckerberg AI \"hate speech\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://s21.q4cdn.com/399680738/files/doc_financials/2020/q1/Q1'20-FB-Earnings-Call-Transcript-(1).pdf\",\n\"https://s21.q4cdn.com/399680738/files/doc_financials/2020/q3/FB-Q3-2020-Earnings-Call-Transcript.pdf\",\n\"https://www.fool.com/earnings/call-transcripts/2020/07/31/facebook-fb-q2-2020-earnings-call-transcript.aspx\"]\ndocs={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,list): c=r[0].get('content','')\n    else: c=str(r)\n    docs[u]=c if isinstance(c,str) else json.dumps(c)\n    print(u,len(docs[u]),docs[u][:150])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2020/q1/Q1'20-FB-Earnings-Call-Transcript-(1).pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2020/q3/FB-Q3-2020-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2020/07/31/facebook-fb-q2-2020-earnings-call-transcript.aspx"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\ntexts={}\nfor u,c in docs.items():\n    d=json.loads(c)\n    cont=d.get('content')\n    src=cont.get('source',{}) if isinstance(cont,dict) else {}\n    print(u[-40:],src.get('type'),src.get('media_type'))\n    data=src.get('data','') if src else str(cont)\n    if src.get('type')=='base64':\n        import pypdf\n        rd=pypdf.PdfReader(io.BytesIO(base64.b64decode(data)))\n        data=\"\\n\".join(p.extract_text() for p in rd.pages)\n    texts[u]=data\n    print(len(data))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,t in texts.items():\n    print(\"#####\",u[-45:])\n    t2=re.sub(r'\\s+',' ',t)\n    for m in re.finditer(r'(\\bAI\\b|artificial intelligence|machine learning)',t2):\n        s=t2[max(0,m.start()-350):m.end()+350]\n        if re.search(r'(year|decade|20\\d\\d|months|future|over time)',s): print('--',s)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,t in list(texts.items())[:2]:\n    t2=re.sub(r'\\s+',' ',t)\n    print(\"#####\",u[-45:], len(re.findall(r'\\bAI\\b',t2)))\n    for m in re.finditer(r'(\\bAI\\b|artificial intelligence)',t2):\n        print('--',t2[max(0,m.start()-250):m.end()+250])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,t in list(texts.items())[:2]:\n    print(repr(t[:500]))\n    t2=re.sub(r'\\s+',' ',t)\n    for m in re.finditer(r'(?i)(artificial|machine learn|\\bAI\\b|systems)',t2):\n        print('--',t2[max(0,m.start()-250):m.end()+250])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2019",
+        "note": "A search snippet from a Q3 2019 earnings call transcript (transcripts.platformaeronaut.com/transcripts/META-3Q19-transcript) suggests he said he did not foresee AI bringing content-review costs down in the near future. Not opened and not verified."
+      },
+      {
+        "year": "2017",
+        "note": "A search snippet from the Q4 2017 earnings call transcript PDF (s21.q4cdn.com/.../2017/Q4/Q4-17-Earnings-call-transcript.pdf) shows an AI answer and the phrase 'Over the next 10 years'. Not opened and not verified."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2020",
+        "what_found": "Only coverage from 2024-2026 (superintelligence essay, AI writing code, jobs); nothing from 2020."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2020 interview AGI \"years\"",
+        "what_found": "Turned up the Ivanti write-up of the Silicon Slopes 2020 interview and a CNBC remote-work transcript; the rest was AGI coverage from 2024-2025."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Recent coverage, plus a Fortune item from January 2020 on his decade-long focus; no AI prediction from 2020."
+      },
+      {
+        "query_or_url": "https://www.ivanti.com/blog/mark-zuckerberg-silicon-slopes-tech-summit-2020",
+        "what_found": "Opened. Q&A excerpts from January 31, 2020: forecasts for AR/VR, private messaging and payments in the next 10 years; no mention of AI."
+      },
+      {
+        "query_or_url": "Zuckerberg January 2020 post \"this decade\" \"augmented reality glasses\" \"2020s\"",
+        "what_found": "Coverage of his January 9, 2020 post predicting breakthrough AR glasses in the 2020s; that is about hardware, not AI."
+      },
+      {
+        "query_or_url": "Zuckerberg Munich Security Conference 2020 artificial intelligence content transcript",
+        "what_found": "The Marquette Zuckerberg Files has a transcript record (02/20/20), and CNBC covered the talk."
+      },
+      {
+        "query_or_url": "https://epublications.marquette.edu/zuckerberg_files_transcripts/1091/",
+        "what_found": "Opened. Only the catalogue page, which links to the transcript PDF."
+      },
+      {
+        "query_or_url": "https://epublications.marquette.edu/cgi/viewcontent.cgi?article=2092&context=zuckerberg_files_transcripts",
+        "what_found": "Would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "Zuckerberg 2020 earnings call \"AI\" \"proactively\" hate speech \"over the next\" transcript",
+        "what_found": "Earnings call transcripts from 2017 and 2019, plus Marquette entries for a June 2020 town hall and post."
+      },
+      {
+        "query_or_url": "Zuckerberg Facebook Connect 2020 keynote transcript AI \"contextual\"",
+        "what_found": "Only Connect 2021 and 2025 transcripts; no Connect 2020 transcript turned up."
+      },
+      {
+        "query_or_url": "zuckerberg_files_transcripts 2020 artificial intelligence",
+        "what_found": "Marquette index pages for 2020 and a record for the Q3 2020 earnings call."
+      },
+      {
+        "query_or_url": "Facebook Q2 2020 earnings call transcript Zuckerberg AI q4cdn",
+        "what_found": "Q2 2020 transcripts (Motley Fool, Seeking Alpha) and the official Q1 2020 transcript PDF."
+      },
+      {
+        "query_or_url": "Facebook Q3 2020 earnings call transcript Zuckerberg AI \"hate speech\"",
+        "what_found": "The official Q3 2020 transcript PDF and other copies."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2020/q1/Q1'20-FB-Earnings-Call-Transcript-(1).pdf",
+        "what_found": "Opened. The Q1 2020 call (April 29, 2020) does not mention AI or artificial intelligence."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2020/q3/FB-Q3-2020-Earnings-Call-Transcript.pdf",
+        "what_found": "Opened. The Q3 2020 call (October 29, 2020) talks about content moderation systems and a goal of 10 million VR units; it never says AI and makes no AI prediction."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2020/07/31/facebook-fb-q2-2020-earnings-call-transcript.aspx",
+        "what_found": "Opened. The Q2 2020 call (July 30, 2020) mentions AI only to look back ('become a pioneer in using artificial intelligence to remove hateful content at scale'); no dated prediction."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "No dated AI predictions by Zuckerberg from 2020 turned up in the pages I could open. His forward-looking remarks that year were about AR glasses, VR and private messaging, not AI. His AI remarks were about content moderation and looked back. The Munich Security Conference transcript (February 2020) would not open and remains unchecked."
+  },
+  "reply_text": "I found no dated AI predictions by Mark Zuckerberg from 2020. All three fixed searches ran, and I opened four 2020 sources: the Silicon Slopes interview and three earnings calls. None had a forward-looking AI claim tied to a date or span. A fifth source, the Munich Security Conference transcript, wouldn't open, so I haven't checked it.\n\n- **His 2020 forecasts weren't about AI.** His January 2020 decade post predicted \"breakthrough augmented reality glasses\" in the 2020s, but I saw that only in search snippets. At Silicon Slopes (January 31, 2020) he said \"the craziest\" thing coming \"in the next 10 years\" was \"real, true, augmented reality and a more mainstream virtual reality.\" On the Q3 2020 call he set a goal of 10 million active VR units. Those are product forecasts, not AI, so they're left out.\n- **His 2020 AI remarks look back, not forward.** On the Q2 2020 call he said Facebook had \"become a pioneer in using artificial intelligence to remove hateful content at scale.\" That describes the past and gives no date.\n- **Not checked:** the Munich talk (February 2020), where coverage says he spoke about finding harmful content proactively. The Marquette archive page loaded, but the PDF link returned \"not accessible.\" I also didn't reach the June 2020 town-hall video, the Facebook Connect 2020 keynote or the Q4 2019 call (held January 2020). I had no page openings left.\n- **Search budget:** I used 9 of the 12 searches and all 6 page openings.\n- **Other years:** two search snippets pointed to AI remarks on calls from other years (Q4 2017 and Q3 2019). I didn't open either page, so treat them as leads only.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2019\", \"note\": \"A search snippet from a Q3 2019 earnings call transcript (transcripts.platformaeronaut.com/transcripts/META-3Q19-transcript) suggests he said he did not foresee AI bringing content-review costs down in the near future. Not opened and not verified.\"},\n    {\"year\": \"2017\", \"note\": \"A search snippet from the Q4 2017 earnings call transcript PDF (s21.q4cdn.com/.../2017/Q4/Q4-17-Earnings-call-transcript.pdf) shows an AI answer and the phrase 'Over the next 10 years'. Not opened and not verified.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2020\", \"what_found\": \"Only coverage from 2024-2026 (superintelligence essay, AI writing code, jobs); nothing from 2020.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2020 interview AGI \\\"years\\\"\", \"what_found\": \"Turned up the Ivanti write-up of the Silicon Slopes 2020 interview and a CNBC remote-work transcript; the rest was AGI coverage from 2024-2025.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2020 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Recent coverage, plus a Fortune item from January 2020 on his decade-long focus; no AI prediction from 2020.\"},\n    {\"query_or_url\": \"https://www.ivanti.com/blog/mark-zuckerberg-silicon-slopes-tech-summit-2020\", \"what_found\": \"Opened. Q&A excerpts from January 31, 2020: forecasts for AR/VR, private messaging and payments in the next 10 years; no mention of AI.\"},\n    {\"query_or_url\": \"Zuckerberg January 2020 post \\\"this decade\\\" \\\"augmented reality glasses\\\" \\\"2020s\\\"\", \"what_found\": \"Coverage of his January 9, 2020 post predicting breakthrough AR glasses in the 2020s; that is about hardware, not AI.\"},\n    {\"query_or_url\": \"Zuckerberg Munich Security Conference 2020 artificial intelligence content transcript\", \"what_found\": \"The Marquette Zuckerberg Files has a transcript record (02/20/20), and CNBC covered the talk.\"},\n    {\"query_or_url\": \"https://epublications.marquette.edu/zuckerberg_files_transcripts/1091/\", \"what_found\": \"Opened. Only the catalogue page, which links to the transcript PDF.\"},\n    {\"query_or_url\": \"https://epublications.marquette.edu/cgi/viewcontent.cgi?article=2092&context=zuckerberg_files_transcripts\", \"what_found\": \"Would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"Zuckerberg 2020 earnings call \\\"AI\\\" \\\"proactively\\\" hate speech \\\"over the next\\\" transcript\", \"what_found\": \"Earnings call transcripts from 2017 and 2019, plus Marquette entries for a June 2020 town hall and post.\"},\n    {\"query_or_url\": \"Zuckerberg Facebook Connect 2020 keynote transcript AI \\\"contextual\\\"\", \"what_found\": \"Only Connect 2021 and 2025 transcripts; no Connect 2020 transcript turned up.\"},\n    {\"query_or_url\": \"zuckerberg_files_transcripts 2020 artificial intelligence\", \"what_found\": \"Marquette index pages for 2020 and a record for the Q3 2020 earnings call.\"},\n    {\"query_or_url\": \"Facebook Q2 2020 earnings call transcript Zuckerberg AI q4cdn\", \"what_found\": \"Q2 2020 transcripts (Motley Fool, Seeking Alpha) and the official Q1 2020 transcript PDF.\"},\n    {\"query_or_url\": \"Facebook Q3 2020 earnings call transcript Zuckerberg AI \\\"hate speech\\\"\", \"what_found\": \"The official Q3 2020 transcript PDF and other copies.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2020/q1/Q1'20-FB-Earnings-Call-Transcript-(1).pdf\", \"what_found\": \"Opened. The Q1 2020 call (April 29, 2020) does not mention AI or artificial intelligence.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2020/q3/FB-Q3-2020-Earnings-Call-Transcript.pdf\", \"what_found\": \"Opened. The Q3 2020 call (October 29, 2020) talks about content moderation systems and a goal of 10 million VR units; it never says AI and makes no AI prediction.\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2020/07/31/facebook-fb-q2-2020-earnings-call-transcript.aspx\", \"what_found\": \"Opened. The Q2 2020 call (July 30, 2020) mentions AI only to look back ('become a pioneer in using artificial intelligence to remove hateful content at scale'); no dated prediction.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"No dated AI predictions by Zuckerberg from 2020 turned up in the pages I could open. His forward-looking remarks that year were about AR glasses, VR and private messaging, not AI. His AI remarks were about content moderation and looked back. The Munich Security Conference transcript (February 2020) would not open and remains unchecked.\"\n}\n```"
+}

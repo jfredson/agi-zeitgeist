@@ -1,0 +1,302 @@
+{
+  "speaker_id": "lecun",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5894,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7894
+      },
+      "cache_creation_input_tokens": 47169,
+      "cache_read_input_tokens": 325605,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 9916,
+      "output_tokens_details": {
+        "thinking_tokens": 3687
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Yann LeCun\" AI prediction 2024','\"Yann LeCun\" 2024 interview AGI \"years\"','\"Yann LeCun\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q)\n    R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "allr={}\nfor q in R:\n    for x in R[q]: allr[x['url']]=x\nfor u in ['https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/','https://thenextweb.com/news/meta-yann-lecun-ai-behind-human-intelligence','https://x.com/ylecun/status/1779845304788955292','https://www.ctol.digital/news/lecun-challenges-agi-hype-true-artificial-general-intelligence-years-away/','https://www.longtermwiki.com/wiki/E647','https://wandb.ai/byyoung3/ml-news/reports/Yann-LeCun-and-Martin-Signoux-share-their-2024-AI-Predictions---Vmlldzo2Mzk4MzI1']:\n    print('##',u); print(allr[u]['content'][:1800]); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=await web_fetch({\"url\":\"https://time.com/6694432/yann-lecun-meta-ai-interview/\"})\nif isinstance(t,str): t=json.loads(t)\nc=t[0]['content'] if isinstance(t,list) else str(t)\nprint(len(c))\nimport re\nfor k in ['year','decade','AGI','human-level']:\n    for m in re.finditer(k,c):\n        pass\nidx=[m.start() for m in re.finditer(r'year|decade|soon',c)]\nprint(c[:300])\nfor i in idx: print('>>',c[max(0,i-400):i+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/6694432/yann-lecun-meta-ai-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=c\nfor k in ['AGI','human-level','Published','2024','not going to','will be','next ']:\n    for m in re.finditer(k,d):\n        i=m.start(); s=d[max(0,i-200):i+300].replace('\\n',' ')\n        if 'PMI' in s or 'PMP' in s: continue\n        print(k,'>>',s);print()\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun Johns Hopkins Bloomberg Center December 2024 AGI panel','Yann LeCun Davos January 2024 panel human-level AI years','LeCun \"quite possibly within a decade\" \"not going to happen next year\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q][:6]:\n        cc=x['content']\n        for m in re.finditer(r'decade|next year|years',cc):\n            print('   ..',cc[max(0,m.start()-150):m.start()+100].replace('\\n',' '))\n            break"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun Johns Hopkins Bloomberg Center December 2024 AGI panel"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun Davos January 2024 panel human-level AI years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun \"quite possibly within a decade\" \"not going to happen next year\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    return u\npages={}\nfor u in ['https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent','https://the-decoder.com/metas-ai-chief-lecun-says-next-gen-ai-needs-emotions-to-set-goals-and-grasp-consequences/?amp=&amp=']:\n    t=await web_fetch({\"url\":u})\n    if isinstance(t,str): t=json.loads(t)\n    if isinstance(t,dict) and t.get('type','').endswith('error'): print(u,t); continue\n    cc=t[0]['content'] if isinstance(t,list) else t\n    if not isinstance(cc,str): cc=json.dumps(cc)\n    pages[u]=cc\n    print('##',u,len(cc))\n    for m in re.finditer(r'five years|decade|next year|years from|two years|several years|202\\d',cc):\n        print('  >>',cc[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ').replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://the-decoder.com/metas-ai-chief-lecun-says-next-gen-ai-needs-emotions-to-set-goals-and-grasp-consequences/?amp=&amp="
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "cc=pages['https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent']\nfor m in re.finditer(r'Davos|January|Jan',cc): print(cc[max(0,m.start()-150):m.start()+150].replace('\\\\n',' '));print('-')\ndd=pages['https://the-decoder.com/metas-ai-chief-lecun-says-next-gen-ai-needs-emotions-to-set-goals-and-grasp-consequences/?amp=&amp=']\ni=dd.find('Speaking at a Johns'); print(dd[i:i+3000].replace('\\\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun November 2024 interview AGI \"within a decade\" Altman Hassabis \"not very different\"','LeCun 2024 autoregressive LLMs \"five years\" \"right mind\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q][:8]:\n        cc=x['content']\n        for m in re.finditer(r'within a decade|right mind|five years',cc):\n            print('   ..',x['url'][:60],'|',cc[max(0,m.start()-250):m.start()+150].replace('\\n',' '))\n            break"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun November 2024 interview AGI \"within a decade\" Altman Hassabis \"not very different\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun 2024 autoregressive LLMs \"five years\" \"right mind\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/','https://x.com/ylecun/status/1779845304788955292','https://www.threads.com/@yannlecun/post/DDRsvzXvupC']:\n    t=await web_fetch({\"url\":u})\n    if isinstance(t,str): t=json.loads(t)\n    if isinstance(t,dict) and t.get('type','').endswith('error'): print(u,t); continue\n    cc=t[0]['content'] if isinstance(t,list) else t\n    if not isinstance(cc,str): cc=json.dumps(cc)\n    pages[u]=cc\n    cc2=cc.replace('\\\\n',' ')\n    print('##',u,len(cc))\n    i=cc2.find('data\":'); print(cc2[i:i+3500]); print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/ylecun/status/1779845304788955292"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.threads.com/@yannlecun/post/DDRsvzXvupC"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "cc2=pages['https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/'].replace('\\\\n',' ')\ni=cc2.find('quite possibly'); print(cc2[i:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='LeCun podcast \"5 to 10 years would be if everything goes great\"'\nR[q]=show(await web_search({\"query\":q}))\nfor x in R[q][:8]:\n    cc=x['content']\n    for m in re.finditer(r'everything goes great|podcast',cc):\n        print('   ..',x['url'][:70],'|',cc[max(0,m.start()-250):m.start()+150].replace('\\n',' ')); break"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun podcast \"5 to 10 years would be if everything goes great\""
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-11",
+        "quote": "No, I don’t think it’s that far away. I don’t think my opinion about how far it is is very different from what you will hear from some (Sam) Altman or Demis Hassabis. (It can happen) quite possibly within a decade",
+        "what_is_predicted": "Human-level AI (AGI) could quite possibly arrive within a decade, and not next year or in two years; 5 to 10 years would need everything to go great.",
+        "date_or_span": "within a decade; not next year, not in two years; 5 to 10 years at best",
+        "occasion": "An unnamed podcast linked from the article (YouTube JAgHUDhaTU0), shared around 27-28 November 2024; recording date not confirmed",
+        "source_url": "https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/",
+        "source_kind": "coverage_only",
+        "already_recorded": "2024-10-lecun-human-level-within-the-decade-if-lucky.toml"
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2024-01-26",
+        "quote": "So AGI, or human-level AI, is not just around the corner, it's going to require some pretty deep perceptual changes.",
+        "source_url": "https://time.com/6694432/yann-lecun-meta-ai-interview/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Six Five 'View from Davos' transcript (WEF25): 'early progress on this sort of new paradigm within three to five years' and 'perhaps in five years we'll know if we're on the good path towards something like human level intelligence' (sixfivemedia.com). TechCrunch, 23 Jan 2025, covers 'new paradigm within 5 years' and 'decade of robotics'."
+      },
+      {
+        "year": "2025",
+        "note": "Davos 2025: 'within five years, nobody in their right mind would use them' (LLMs). Seen only in search results (HPCwire, Vulcan Post)."
+      },
+      {
+        "year": "2023",
+        "note": "Search results show 'five years from now nobody in their right mind would use them' (autoregressive LLMs) from 2023 (LinkedIn, 20VC). The LeCun/Martin Signoux '2024 AI predictions' (W&B report) appear to be from late December 2023 and are mainly Signoux's list. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Yann LeCun\" AI prediction 2024",
+        "what_found": "W&B report on the Signoux/LeCun 2024 predictions (late 2023), the 15 Apr 2024 X post 'won't happen next year' (snippet only), and a LongTermWiki track record."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2024 interview AGI \"years\"",
+        "what_found": "TIME interview (Feb 2024), OfficeChai 'AGI possible in 5-10 years' (Nov 2024), and CTOL coverage of the Dec 2024 Johns Hopkins panel."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "TheNextWeb, 10 Apr 2024 (Paris event, 'certainly not next year'), the 15 Apr X post, OfficeChai, and TechCrunch Jan 2025."
+      },
+      {
+        "query_or_url": "https://time.com/6694432/yann-lecun-meta-ai-interview/",
+        "what_found": "Opened: interview conducted 26 Jan 2024; says AGI is 'not just around the corner', with no date or span."
+      },
+      {
+        "query_or_url": "LeCun Johns Hopkins Bloomberg Center December 2024 AGI panel",
+        "what_found": "The Decoder article on the Dec 2024 panel, plus summit agenda pages."
+      },
+      {
+        "query_or_url": "Yann LeCun Davos January 2024 panel human-level AI years",
+        "what_found": "His X post about the 2024 WEF panel (not opened) and the Six Five Davos interview, which turned out to be WEF25."
+      },
+      {
+        "query_or_url": "LeCun \"quite possibly within a decade\" \"not going to happen next year\"",
+        "what_found": "OfficeChai again, his 16 Oct 2024 X post 'several years if not a decade' (snippet only), and a Threads post about his timeline."
+      },
+      {
+        "query_or_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+        "what_found": "Opened: transcript is from WEF25 (2025), so it goes under other_years."
+      },
+      {
+        "query_or_url": "https://the-decoder.com/metas-ai-chief-lecun-says-next-gen-ai-needs-emotions-to-set-goals-and-grasp-consequences/?amp=&amp=",
+        "what_found": "Opened: 23 Dec 2024 report on the Johns Hopkins panel; paraphrase only ('several years' from AGI), no direct timeline quote."
+      },
+      {
+        "query_or_url": "LeCun November 2024 interview AGI \"within a decade\" Altman Hassabis \"not very different\"",
+        "what_found": "OfficeChai, the 16 Oct X post, and a LeCun Threads post from Dec 2024 pointing to a video clip about his timeline."
+      },
+      {
+        "query_or_url": "LeCun 2024 autoregressive LLMs \"five years\" \"right mind\"",
+        "what_found": "The 'nobody in their right mind' claims are from 2023 and Davos 2025, not 2024."
+      },
+      {
+        "query_or_url": "https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/",
+        "what_found": "Opened: 28 Nov 2024 article quoting LeCun on an unnamed podcast: within a decade, not next year or two, 5-10 years at best."
+      },
+      {
+        "query_or_url": "https://x.com/ylecun/status/1779845304788955292",
+        "what_found": "Fetch failed (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "https://www.threads.com/@yannlecun/post/DDRsvzXvupC",
+        "what_found": "Fetch failed (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "LeCun podcast \"5 to 10 years would be if everything goes great\"",
+        "what_found": "Posts on X dated about 27-28 Nov 2024 spreading the 5-10 year clip; the podcast's name was still not found."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2024 LeCun kept saying human-level AI is years away: not next year or the year after, possibly within a decade, and not reachable by scaling LLMs. The only new candidate is a late-November podcast clip quoted by OfficeChai (seen only in coverage), which probably repeats a claim already recorded. His own posts on X and Threads from that year would not open, and the December Johns Hopkins panel survives only as a paraphrase."
+  },
+  "reply_text": "I found one new 2024 candidate, and it only comes from a news report. Several known 2024 statements came up, but I couldn't open pages carrying their words.\n\n**Candidate (seen only in news coverage).** An OfficeChai article from 28 November 2024 quotes LeCun on a podcast. It links a YouTube video but doesn't name the show, and I couldn't confirm when it was recorded. He says human-level AI is \"quite possibly within a decade\", \"not going to happen next year\" or \"in two years\", and that \"5 to 10 years would be if everything goes great\". This is probably the same claim as `2024-10-lecun-human-level-within-the-decade-if-lucky.toml`, but I can't confirm it's the same occasion.\n\n**No date given.** In a TIME interview conducted 26 January 2024, LeCun said human-level AI \"is not just around the corner\". That page also had an unrelated sponsored block in the middle, which I ignored.\n\n**Seen but not quotable:**\n- **15 April 2024 post on X** (\"it won't happen next year\"): I only saw it in search results. The page wouldn't open, so I haven't quoted it. It matches `2024-04-09-lecun-not-surpass-human-intelligence-next-year.toml`.\n- **His 16 October 2024 post on X** (\"several years if not a decade\"): this also appeared only in search results. It matches the recorded 2024-10-16 file.\n- **Johns Hopkins Bloomberg Center panel, December 2024:** The Decoder only paraphrases him (AGI is \"several years\" away), with no direct quote, so it isn't listed.\n\n**Other years.** A Davos interview I opened, which looked like 2024, turned out to be from 2025.\n\nTwo of my six page openings failed (X and Threads). One search was used up by a coding error that stopped after the first query, though every query ran only once.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2024-11\",\n      \"quote\": \"No, I don’t think it’s that far away. I don’t think my opinion about how far it is is very different from what you will hear from some (Sam) Altman or Demis Hassabis. (It can happen) quite possibly within a decade\",\n      \"what_is_predicted\": \"Human-level AI (AGI) could quite possibly arrive within a decade, and not next year or in two years; 5 to 10 years would need everything to go great.\",\n      \"date_or_span\": \"within a decade; not next year, not in two years; 5 to 10 years at best\",\n      \"occasion\": \"An unnamed podcast linked from the article (YouTube JAgHUDhaTU0), shared around 27-28 November 2024; recording date not confirmed\",\n      \"source_url\": \"https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"2024-10-lecun-human-level-within-the-decade-if-lucky.toml\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2024-01-26\",\n      \"quote\": \"So AGI, or human-level AI, is not just around the corner, it's going to require some pretty deep perceptual changes.\",\n      \"source_url\": \"https://time.com/6694432/yann-lecun-meta-ai-interview/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Six Five 'View from Davos' transcript (WEF25): 'early progress on this sort of new paradigm within three to five years' and 'perhaps in five years we'll know if we're on the good path towards something like human level intelligence' (sixfivemedia.com). TechCrunch, 23 Jan 2025, covers 'new paradigm within 5 years' and 'decade of robotics'.\"},\n    {\"year\": \"2025\", \"note\": \"Davos 2025: 'within five years, nobody in their right mind would use them' (LLMs). Seen only in search results (HPCwire, Vulcan Post).\"},\n    {\"year\": \"2023\", \"note\": \"Search results show 'five years from now nobody in their right mind would use them' (autoregressive LLMs) from 2023 (LinkedIn, 20VC). The LeCun/Martin Signoux '2024 AI predictions' (W&B report) appear to be from late December 2023 and are mainly Signoux's list. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" AI prediction 2024\", \"what_found\": \"W&B report on the Signoux/LeCun 2024 predictions (late 2023), the 15 Apr 2024 X post 'won't happen next year' (snippet only), and a LongTermWiki track record.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"TIME interview (Feb 2024), OfficeChai 'AGI possible in 5-10 years' (Nov 2024), and CTOL coverage of the Dec 2024 Johns Hopkins panel.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"TheNextWeb, 10 Apr 2024 (Paris event, 'certainly not next year'), the 15 Apr X post, OfficeChai, and TechCrunch Jan 2025.\"},\n    {\"query_or_url\": \"https://time.com/6694432/yann-lecun-meta-ai-interview/\", \"what_found\": \"Opened: interview conducted 26 Jan 2024; says AGI is 'not just around the corner', with no date or span.\"},\n    {\"query_or_url\": \"LeCun Johns Hopkins Bloomberg Center December 2024 AGI panel\", \"what_found\": \"The Decoder article on the Dec 2024 panel, plus summit agenda pages.\"},\n    {\"query_or_url\": \"Yann LeCun Davos January 2024 panel human-level AI years\", \"what_found\": \"His X post about the 2024 WEF panel (not opened) and the Six Five Davos interview, which turned out to be WEF25.\"},\n    {\"query_or_url\": \"LeCun \\\"quite possibly within a decade\\\" \\\"not going to happen next year\\\"\", \"what_found\": \"OfficeChai again, his 16 Oct 2024 X post 'several years if not a decade' (snippet only), and a Threads post about his timeline.\"},\n    {\"query_or_url\": \"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\", \"what_found\": \"Opened: transcript is from WEF25 (2025), so it goes under other_years.\"},\n    {\"query_or_url\": \"https://the-decoder.com/metas-ai-chief-lecun-says-next-gen-ai-needs-emotions-to-set-goals-and-grasp-consequences/?amp=&amp=\", \"what_found\": \"Opened: 23 Dec 2024 report on the Johns Hopkins panel; paraphrase only ('several years' from AGI), no direct timeline quote.\"},\n    {\"query_or_url\": \"LeCun November 2024 interview AGI \\\"within a decade\\\" Altman Hassabis \\\"not very different\\\"\", \"what_found\": \"OfficeChai, the 16 Oct X post, and a LeCun Threads post from Dec 2024 pointing to a video clip about his timeline.\"},\n    {\"query_or_url\": \"LeCun 2024 autoregressive LLMs \\\"five years\\\" \\\"right mind\\\"\", \"what_found\": \"The 'nobody in their right mind' claims are from 2023 and Davos 2025, not 2024.\"},\n    {\"query_or_url\": \"https://officechai.com/stories/agi-possible-in-5-10-years-metas-chief-ai-scientist-yann-lecun/\", \"what_found\": \"Opened: 28 Nov 2024 article quoting LeCun on an unnamed podcast: within a decade, not next year or two, 5-10 years at best.\"},\n    {\"query_or_url\": \"https://x.com/ylecun/status/1779845304788955292\", \"what_found\": \"Fetch failed (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"https://www.threads.com/@yannlecun/post/DDRsvzXvupC\", \"what_found\": \"Fetch failed (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"LeCun podcast \\\"5 to 10 years would be if everything goes great\\\"\", \"what_found\": \"Posts on X dated about 27-28 Nov 2024 spreading the 5-10 year clip; the podcast's name was still not found.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2024 LeCun kept saying human-level AI is years away: not next year or the year after, possibly within a decade, and not reachable by scaling LLMs. The only new candidate is a late-November podcast clip quoted by OfficeChai (seen only in coverage), which probably repeats a claim already recorded. His own posts on X and Threads from that year would not open, and the December Johns Hopkins panel survives only as a paraphrase.\"\n}\n```"
+}

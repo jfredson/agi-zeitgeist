@@ -1,0 +1,372 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2016,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.2358,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7673
+      },
+      "cache_creation_input_tokens": 116029,
+      "cache_read_input_tokens": 1718708,
+      "inference_geo": "global",
+      "input_tokens": 48,
+      "output_tokens": 10584,
+      "output_tokens_details": {
+        "thinking_tokens": 3144
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Mark Zuckerberg\" AI prediction 2016','\"Mark Zuckerberg\" 2016 interview AGI \"years\"','\"Mark Zuckerberg\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2016"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r[:8]:\n        print(' -',x.get('title'),x.get('url'),x.get('page_age'))\n    return r\nR[qs[0]]=show(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2016 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef grep(r,urlpart,pat=r'(year|decade|20[12]\\d)'):\n    for x in r:\n        if urlpart in x['url']:\n            c=x['content']\n            for m in re.finditer(pat,c):\n                print('...',c[max(0,m.start()-250):m.end()+150].replace('\\n',' '))\n            print('#####')\ngrep(R[qs[0]],'2016/01/27')\ngrep(R[qs[2]],'chinadaily')\ngrep(R[qs[0]],'2016/01/04/mark')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg F8 2016 keynote transcript artificial intelligence 10-year roadmap','Zuckerberg \"Building Jarvis\" December 2016','Zuckerberg Q4 2015 earnings call transcript January 2016 artificial intelligence']:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg F8 2016 keynote transcript artificial intelligence 10-year roadmap"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg \"Building Jarvis\" December 2016"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Q4 2015 earnings call transcript January 2016 artificial intelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=r'(\\byears?\\b|decade|20[12]\\d)'\nfor q in list(R)[3:]:\n    for x in R[q]:\n        c=x['content']\n        hits=[c[max(0,m.start()-200):m.end()+120].replace('\\n',' ') for m in re.finditer(pat,c)]\n        hits=[h for h in hits if re.search(r'(AI|intelligen|machine|computer|vision|language)',h,re.I)]\n        if hits:\n            print('##',x['url'])\n            for h in hits[:6]: print('  ...',h)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/',\n'https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q415_and_FY_2015_Earnings_Call_Transcript.pdf',\n'https://www.chinadaily.com.cn/business/tech/2016-03/21/content_23990073.htm',\n'https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/']\nP={}\nimport asyncio\nres=await asyncio.gather(*[web_fetch({\"url\":u}) for u in urls])\nfor u,r in zip(urls,res):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    P[u]=r[0]['content']; print(u,len(P[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q415_and_FY_2015_Earnings_Call_Transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.chinadaily.com.cn/business/tech/2016-03/21/content_23990073.htm"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64, io\ndef text_of(r):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict):\n        s=c.get('source',{})\n        if s.get('type')=='base64':\n            from pypdf import PdfReader\n            pdf=PdfReader(io.BytesIO(base64.b64decode(s['data'])))\n            return '\\n'.join(p.extract_text() for p in pdf.pages)\n        return s.get('data','')\n    return c or ''\nfor u,r in zip(urls,res):\n    P[u]=text_of(r); print(u[:60],len(P[u]), r.get('type') if isinstance(r,dict) else '')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def kw(u,pat,w=300,maxn=12):\n    t=P[u]; n=0\n    for m in re.finditer(pat,t):\n        print('...',t[max(0,m.start()-w):m.end()+w].replace('\\n',' ')); print(); n+=1\n        if n>=maxn: break\nq4=urls[1]\nkw(q4,r'(?i)(artificial intelligence|\\bAI\\b)',w=400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=re.sub(r'\\s+',' ',P[q4]); P[q4]=t\nkw(q4,r'(?i)(\\d+ (to|or) \\d+ years|next \\w+ years|decade|years from now)',w=300)\nt2=P[urls[2]]; i=t2.find('Zuckerberg'); print(t2[i-200:i+1800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t2[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=urls[3]\nkw(u,r'(?i)(closer and farther|in the next|years|decade|future)',w=350,maxn=10)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P[u]\nfor s in [\"I’ve previously predicted\",\"In a way, AI is both\",\"At the same time, we are still far\"]:\n    i=t.find(s); print(repr(t[i:i+450])); print()\ni=t.find('Building Jarvis'); print(t[:600])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg Döpfner interview February 2016 artificial intelligence transcript','Zuckerberg Berlin town hall 2016 artificial intelligence \"years\"','Zuckerberg Facebook post January 2016 AI Go \"unsupervised learning\"']:\n    R[q]=show(q,await web_search({\"query\":q}))\nfor q in list(R)[-3:]:\n    for x in R[q]:\n        c=x['content']\n        hits=[c[max(0,m.start()-200):m.end()+150].replace('\\n',' ') for m in re.finditer(r'(\\d+ (to|or) \\d+ years|next \\w+ years|decade|\\d+ years)',c)]\n        hits=[h for h in hits if re.search(r'(AI|intelligen|machine|computer)',h)]\n        if hits:\n            print('##',x['url'])\n            for h in hits[:3]: print('  ...',h)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Döpfner interview February 2016 artificial intelligence transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Berlin town hall 2016 artificial intelligence \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Facebook post January 2016 AI Go \"unsupervised learning\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Zuckerberg Döpfner interview February 2016 artificial intelligence transcript'\nfor x in R[q]:\n    if any(k in x['url'] for k in ['marquette','inc.com','balticmedia']):\n        c=x['content']; print('##',x['url'],len(c)); print(c[:800].replace('\\n',' '))\n        for m in re.finditer(r'(?i)(years|decade)',c):\n            print('  ..',c[max(0,m.start()-250):m.end()+100].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='businessinsider Mark Zuckerberg interview Mathias Döpfner 2016 full'\nR[q]=show(q,await web_search({\"query\":q}))\nfor x in R[q]:\n    c=x['content']\n    for m in re.finditer(r'(?i)(\\d+ (to|or) \\d+ years|next \\w+ years|decade|years)',c):\n        h=c[max(0,m.start()-250):m.end()+120].replace('\\n',' ')\n        if re.search(r'(AI|intelligen|machine|computer)',h): print('##',x['url'][:90],'..',h)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "businessinsider Mark Zuckerberg interview Mathias Döpfner 2016 full"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in R[q]:\n    if 'nkour' in x['url']:\n        c=x['content']; print(len(c))\n        for m in re.finditer(r'(?i)(artificial|\\bAI\\b)',c):\n            print('..',c[max(0,m.start()-300):m.end()+400].replace('\\n',' ')); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u5='https://nkour.wordpress.com/2016/03/19/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-dopfner/'\nr=await web_fetch({\"url\":u5}); P[u5]=text_of(r); print(len(P[u5]))\nkw(u5,r'(?i)(artificial intelligence|\\bAI\\b)',w=500,maxn=8)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://nkour.wordpress.com/2016/03/19/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-dopfner/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P[u5]; print(t[:1500]); kw(u5,r'(?i)(intelligen|machine|years)',w=300,maxn=8)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u6='http://www.businessinsider.com/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-doepfner-2016-2'\nr=await web_fetch({\"url\":u6})\nif isinstance(r,dict) and r.get('type','').endswith('error'): print(r)\nelse:\n    P[u6]=text_of(r); print(len(P[u6]))\n    kw(u6,r'(?i)(artificial intelligence|\\bAI\\b|years|decade)',w=350,maxn=15)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "http://www.businessinsider.com/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-doepfner-2016-2"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P[urls[0]]\nfor s in [\"In a decade, video\",\"Artificial intelligence will power\",\"The next 10-year challenge\"]:\n    i=t.find(s); print(repr(t[i:i+400])); print()"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2016-03-19",
+        "quote": "Artificial intelligence will understand senses, such as vision and hearing, and grasp language better than human beings over the next five to 10 years",
+        "what_is_predicted": "AI will be better than humans at senses such as vision and hearing and at language.",
+        "date_or_span": "over the next five to 10 years",
+        "occasion": "China Development Forum, Beijing (on stage with Jack Ma), as reported by China Daily on 2016-03-21",
+        "source_url": "https://www.chinadaily.com.cn/business/tech/2016-03/21/content_23990073.htm",
+        "source_kind": "coverage_only",
+        "already_recorded": "2016-04-27-zuckerberg-better-than-people-at-senses.toml"
+      },
+      {
+        "date_said": "2016-04-12",
+        "quote": "Artificial intelligence will power all kinds of different services with better than human level perception, and we’ll see the emergence of the next major computing platform in virtual and augmented reality. These are all elements of our 10-year roadmap to connect the world.",
+        "what_is_predicted": "Within Facebook's 10-year roadmap, AI will power services with better-than-human perception.",
+        "date_or_span": "the next 10 years (\"our roadmap for the next 10 years\"; \"The next 10-year challenge... our goal with artificial intelligence is to build systems that are better than people at perception\")",
+        "occasion": "F8 2016 Day 1 keynote, Fort Mason, San Francisco",
+        "source_url": "https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": "2016-04-27-zuckerberg-better-than-people-at-senses.toml"
+      },
+      {
+        "date_said": "2016-12",
+        "quote": "I’ve previously predicted that within 5-10 years we’ll have AI systems that are more accurate than ours for each of our human senses – vision, hearing, touch, etc, as well as things like language. It’s impressive how powerful the state of the art for these tools is becoming, and this year makes me more confident in my prediction.",
+        "what_is_predicted": "AI systems will be more accurate than humans at each human sense and at language, restated and reaffirmed.",
+        "date_or_span": "within 5-10 years",
+        "occasion": "\"Building Jarvis\" note on his 2016 personal challenge (published about 2016-12-19), read as reposted by TechTrends Africa on 2016-12-23",
+        "source_url": "https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/",
+        "source_kind": "own_words",
+        "already_recorded": "2016-04-27-zuckerberg-better-than-people-at-senses.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2019",
+        "note": "A second Zuckerberg–Döpfner conversation (2019 personal challenge) is listed in the Marquette Zuckerberg Files; it was not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2016",
+        "what_found": "News on the January 2016 Jarvis resolution, a BigDATAwire piece on the April 2016 '5 to 10 years' perception claim, and unrelated items."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2016 interview AGI \"years\"",
+        "what_found": "Mostly 2024 coverage of Meta's AGI goal; nothing from 2016 about AGI timing."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "A China Daily report on the March 2016 China Development Forum carrying a five-to-10-year AI claim; the rest was later news."
+      },
+      {
+        "query_or_url": "Zuckerberg F8 2016 keynote transcript artificial intelligence 10-year roadmap",
+        "what_found": "A full transcript of the F8 2016 keynote on singjupost.com and Facebook's own keynote video page."
+      },
+      {
+        "query_or_url": "Zuckerberg \"Building Jarvis\" December 2016",
+        "what_found": "Coverage of the Jarvis note and a full repost of it on techtrends.africa."
+      },
+      {
+        "query_or_url": "Zuckerberg Q4 2015 earnings call transcript January 2016 artificial intelligence",
+        "what_found": "Facebook investor-relations PDFs for the Q4 2015 (held 2016-01-27), Q2 2016 and Q3 2016 calls."
+      },
+      {
+        "query_or_url": "Zuckerberg Döpfner interview February 2016 artificial intelligence transcript",
+        "what_found": "Secondary write-ups of the Die Welt am Sonntag / Axel Springer interview; no opened source with a dated AI claim."
+      },
+      {
+        "query_or_url": "Zuckerberg Berlin town hall 2016 artificial intelligence \"years\"",
+        "what_found": "Coverage of the February 2016 Berlin town hall and the AI programme for Europe; no dated prediction seen."
+      },
+      {
+        "query_or_url": "Zuckerberg Facebook post January 2016 AI Go \"unsupervised learning\"",
+        "what_found": "News on his late-January 2016 Facebook post about AI research; the post itself was not opened."
+      },
+      {
+        "query_or_url": "businessinsider Mark Zuckerberg interview Mathias Döpfner 2016 full",
+        "what_found": "A blog repost of the Döpfner interview; other results were from 2019."
+      },
+      {
+        "query_or_url": "https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/",
+        "what_found": "Opened; the F8 2016 keynote frames AI with better-than-human perception as part of a 10-year roadmap."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q415_and_FY_2015_Earnings_Call_Transcript.pdf",
+        "what_found": "Opened; the 2016-01-27 call says AI breakthroughs are 'going to take a long time', with no date."
+      },
+      {
+        "query_or_url": "https://www.chinadaily.com.cn/business/tech/2016-03/21/content_23990073.htm",
+        "what_found": "Opened; China Daily quotes him on AI beating humans at senses and language 'over the next five to 10 years'."
+      },
+      {
+        "query_or_url": "https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/",
+        "what_found": "Opened; the reposted Jarvis note restates the within-5-10-years senses prediction and says he is more confident in it."
+      },
+      {
+        "query_or_url": "https://nkour.wordpress.com/2016/03/19/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-dopfner/",
+        "what_found": "Opened; it holds only a link to the Business Insider interview, not the interview text."
+      },
+      {
+        "query_or_url": "http://www.businessinsider.com/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-doepfner-2016-2",
+        "what_found": "Would not open (url_not_allowed); nothing quoted from it."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2016 Zuckerberg made one dated AI prediction and repeated it: AI will beat humans at perception (vision, hearing, language) within five to ten years. I found it at the China Development Forum (March, news report only), the F8 keynote's 10-year roadmap (April, third-party transcript) and the December Jarvis note (repost), alongside the already-recorded April earnings call. I found no dated or undated statement on when AGI or superintelligence arrives, and the February Döpfner interview could not be read."
+  },
+  "reply_text": "I found three 2016 statements, all repeating one claim you already have on file: that within five to ten years AI will be better than people at perception (seeing, hearing, language). I found nothing new on AGI or superintelligence timing, so the \"undated\" list is empty.\n\n- **19 March 2016, China Development Forum, Beijing:** I only have this from a China Daily report, not his own words. The wording may be the paper's rendering or translation.\n- **12 April 2016, F8 keynote:** The quotes come from a third-party transcript on singjupost.com, not Facebook's own page. The official video is on developers.facebook.com, but I didn't open it. The AI line itself doesn't name a date. The \"next decade\" timing comes from how he framed the whole talk as a 10-year roadmap.\n- **About 19 December 2016, \"Building Jarvis\" note:** He restates that he has \"previously predicted\" this \"within 5-10 years\" and says the year made him more confident. I read the note as reposted on techtrends.africa, not on his own Facebook page.\n\nOther things I checked or couldn't reach:\n- **27 January 2016 earnings call (Facebook's official transcript):** only says AI breakthroughs are \"going to take a long time\", with no date, so it doesn't qualify.\n- **Late February 2016 interview with Axel Springer chief Mathias Döpfner:** not checked. The repost I opened had only a link, and the Business Insider page was blocked. This is the main gap.\n- **July and November 2016 earnings calls, and his late-January 2016 Facebook post on AI:** found but not opened. The 27 April call, behind the existing file, also wasn't opened again.\n\nI used 10 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2016-03-19\", \"quote\": \"Artificial intelligence will understand senses, such as vision and hearing, and grasp language better than human beings over the next five to 10 years\", \"what_is_predicted\": \"AI will be better than humans at senses such as vision and hearing and at language.\", \"date_or_span\": \"over the next five to 10 years\", \"occasion\": \"China Development Forum, Beijing (on stage with Jack Ma), as reported by China Daily on 2016-03-21\", \"source_url\": \"https://www.chinadaily.com.cn/business/tech/2016-03/21/content_23990073.htm\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2016-04-27-zuckerberg-better-than-people-at-senses.toml\"},\n    {\"date_said\": \"2016-04-12\", \"quote\": \"Artificial intelligence will power all kinds of different services with better than human level perception, and we’ll see the emergence of the next major computing platform in virtual and augmented reality. These are all elements of our 10-year roadmap to connect the world.\", \"what_is_predicted\": \"Within Facebook's 10-year roadmap, AI will power services with better-than-human perception.\", \"date_or_span\": \"the next 10 years (\\\"our roadmap for the next 10 years\\\"; \\\"The next 10-year challenge... our goal with artificial intelligence is to build systems that are better than people at perception\\\")\", \"occasion\": \"F8 2016 Day 1 keynote, Fort Mason, San Francisco\", \"source_url\": \"https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2016-04-27-zuckerberg-better-than-people-at-senses.toml\"},\n    {\"date_said\": \"2016-12\", \"quote\": \"I’ve previously predicted that within 5-10 years we’ll have AI systems that are more accurate than ours for each of our human senses – vision, hearing, touch, etc, as well as things like language. It’s impressive how powerful the state of the art for these tools is becoming, and this year makes me more confident in my prediction.\", \"what_is_predicted\": \"AI systems will be more accurate than humans at each human sense and at language, restated and reaffirmed.\", \"date_or_span\": \"within 5-10 years\", \"occasion\": \"\\\"Building Jarvis\\\" note on his 2016 personal challenge (published about 2016-12-19), read as reposted by TechTrends Africa on 2016-12-23\", \"source_url\": \"https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2016-04-27-zuckerberg-better-than-people-at-senses.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2019\", \"note\": \"A second Zuckerberg–Döpfner conversation (2019 personal challenge) is listed in the Marquette Zuckerberg Files; it was not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2016\", \"what_found\": \"News on the January 2016 Jarvis resolution, a BigDATAwire piece on the April 2016 '5 to 10 years' perception claim, and unrelated items.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2016 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2024 coverage of Meta's AGI goal; nothing from 2016 about AGI timing.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2016 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"A China Daily report on the March 2016 China Development Forum carrying a five-to-10-year AI claim; the rest was later news.\"},\n    {\"query_or_url\": \"Zuckerberg F8 2016 keynote transcript artificial intelligence 10-year roadmap\", \"what_found\": \"A full transcript of the F8 2016 keynote on singjupost.com and Facebook's own keynote video page.\"},\n    {\"query_or_url\": \"Zuckerberg \\\"Building Jarvis\\\" December 2016\", \"what_found\": \"Coverage of the Jarvis note and a full repost of it on techtrends.africa.\"},\n    {\"query_or_url\": \"Zuckerberg Q4 2015 earnings call transcript January 2016 artificial intelligence\", \"what_found\": \"Facebook investor-relations PDFs for the Q4 2015 (held 2016-01-27), Q2 2016 and Q3 2016 calls.\"},\n    {\"query_or_url\": \"Zuckerberg Döpfner interview February 2016 artificial intelligence transcript\", \"what_found\": \"Secondary write-ups of the Die Welt am Sonntag / Axel Springer interview; no opened source with a dated AI claim.\"},\n    {\"query_or_url\": \"Zuckerberg Berlin town hall 2016 artificial intelligence \\\"years\\\"\", \"what_found\": \"Coverage of the February 2016 Berlin town hall and the AI programme for Europe; no dated prediction seen.\"},\n    {\"query_or_url\": \"Zuckerberg Facebook post January 2016 AI Go \\\"unsupervised learning\\\"\", \"what_found\": \"News on his late-January 2016 Facebook post about AI research; the post itself was not opened.\"},\n    {\"query_or_url\": \"businessinsider Mark Zuckerberg interview Mathias Döpfner 2016 full\", \"what_found\": \"A blog repost of the Döpfner interview; other results were from 2019.\"},\n    {\"query_or_url\": \"https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/\", \"what_found\": \"Opened; the F8 2016 keynote frames AI with better-than-human perception as part of a 10-year roadmap.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q415_and_FY_2015_Earnings_Call_Transcript.pdf\", \"what_found\": \"Opened; the 2016-01-27 call says AI breakthroughs are 'going to take a long time', with no date.\"},\n    {\"query_or_url\": \"https://www.chinadaily.com.cn/business/tech/2016-03/21/content_23990073.htm\", \"what_found\": \"Opened; China Daily quotes him on AI beating humans at senses and language 'over the next five to 10 years'.\"},\n    {\"query_or_url\": \"https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/\", \"what_found\": \"Opened; the reposted Jarvis note restates the within-5-10-years senses prediction and says he is more confident in it.\"},\n    {\"query_or_url\": \"https://nkour.wordpress.com/2016/03/19/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-dopfner/\", \"what_found\": \"Opened; it holds only a link to the Business Insider interview, not the interview text.\"},\n    {\"query_or_url\": \"http://www.businessinsider.com/mark-zuckerberg-interview-with-axel-springer-ceo-mathias-doepfner-2016-2\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted from it.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2016 Zuckerberg made one dated AI prediction and repeated it: AI will beat humans at perception (vision, hearing, language) within five to ten years. I found it at the China Development Forum (March, news report only), the F8 keynote's 10-year roadmap (April, third-party transcript) and the December Jarvis note (repost), alongside the already-recorded April earnings call. I found no dated or undated statement on when AGI or superintelligence arrives, and the February Döpfner interview could not be read.\"\n}\n```"
+}

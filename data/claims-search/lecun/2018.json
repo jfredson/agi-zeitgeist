@@ -1,0 +1,364 @@
+{
+  "speaker_id": "lecun",
+  "year": 2018,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6571,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7702
+      },
+      "cache_creation_input_tokens": 48839,
+      "cache_read_input_tokens": 532397,
+      "inference_geo": "global",
+      "input_tokens": 42,
+      "output_tokens": 9315,
+      "output_tokens_details": {
+        "thinking_tokens": 2474
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 4,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Yann LeCun\" AI prediction 2018','\"Yann LeCun\" 2018 interview AGI \"years\"','\"Yann LeCun\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" AI prediction 2018"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r), str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q)\n    R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2018 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun 2018 Verge interview \"human-level\" AI','LeCun 2018 \"common sense\" machines interview decades','LeCun 2018 talk \"world model\" \"years\" Facebook AI chief']:\n    print(\"==\",q)\n    R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun 2018 Verge interview \"human-level\" AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun 2018 \"common sense\" machines interview decades"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun 2018 talk \"world model\" \"years\" Facebook AI chief"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Facebook AI chief LeCun 2018 \"decades\" human-level intelligence','Yann LeCun interview October 2018 Facebook chief AI scientist']:\n    print(\"==\",q)\n    R[q]=show(await web_search({\"query\":q}))\nr=await web_fetch({\"url\":\"https://www.forbes.com/sites/insights-intelai/2018/07/17/yann-lecun-an-ai-groundbreaker-takes-stock/\"})\nr=json.loads(r) if isinstance(r,str) else r\nF=r[0]['content'] if isinstance(r,list) else str(r)\nprint(len(F))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook AI chief LeCun 2018 \"decades\" human-level intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun interview October 2018 Facebook chief AI scientist"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.forbes.com/sites/insights-intelai/2018/07/17/yann-lecun-an-ai-groundbreaker-takes-stock/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor kw in ['year','decade','will ','future','next']:\n    for m in re.finditer(kw,F):\n        print(kw,'|',F[max(0,m.start()-250):m.start()+200].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(F.count('LeCun')); i=F.find('housecat'); print(F[i-1500:i+1500] if i>0 else 'none')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def op(u):\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    return r[0].get('content','') if isinstance(r,list) else 'ERR '+str(r)\nN=await op(\"https://engineering.nyu.edu/news/facebook-ai-chief-yann-lecun-says-machines-are-decades-away-matching-human-brain\")\ni=N.find('Facebook AI Chief'); print(len(N)); print(N[i:i+5000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://engineering.nyu.edu/news/facebook-ai-chief-yann-lecun-says-machines-are-decades-away-matching-human-brain"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=N.find('Robots aren'); print(N[i-800:i+4500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['decades','201','LeCun says','said']:\n    for m in re.finditer(kw,N):\n        print(kw,'|',N[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun 2018 \"Facebook\\'s chief AI scientist\" interview transcript \"we are very far\"','\"LeCun\" 2018 Q&A \"artificial general intelligence\" \"years from now\"']:\n    print(\"==\",q)\n    R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun 2018 \"Facebook's chief AI scientist\" interview transcript \"we are very far\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" 2018 Q&A \"artificial general intelligence\" \"years from now\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "C=await op(\"https://www.cnn.com/2018/12/05/tech/ai-facebook-lecun/index.html\")\ni=C.find('Without artificial'); print(len(C)); print(C[i:i+7000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnn.com/2018/12/05/tech/ai-facebook-lecun/index.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Architects of Intelligence\" LeCun human-level AI years excerpt','Yann LeCun 2018 Verge interview AI \"next few years\"']:\n    print(\"==\",q)\n    R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Architects of Intelligence\" LeCun human-level AI years excerpt"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun 2018 Verge interview AI \"next few years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "A=await op(\"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\")\nprint(len(A), A[:200])\nfor m in re.finditer('LECUN|LeCun',A):\n    pass\nidx=[m.start() for m in re.finditer('YANN LECUN',A)]; print(idx[:20])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://x\"}) if False else None\nraw=A\nprint(raw[200:800])\nprint(raw.count('LeCun'), raw.count('LECUN'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,ast\nres=await web_fetch({\"url\":\"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\"}) if False else None\ns=A[4:]\nd=ast.literal_eval(s)\nb=base64.b64decode(d['content']['source']['data'])\nopen('/tmp/ai.pdf','wb').write(b)\nimport subprocess\nsubprocess.run(['pdftotext','-layout','/tmp/ai.pdf','/tmp/ai.txt'])\nT=open('/tmp/ai.txt').read(); print(len(T), T.count('LECUN'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "st=[m.start() for m in re.finditer('YANN LECUN',T)]; print(st[:5], st[-3:])\n# find chapter start: the opening quote\nch_start=T.find('A human can learn to drive a car in 15 hours')\nnxt=T.find('FEI-FEI LI',ch_start+1000)\nprint(ch_start,nxt)\nL=T[ch_start:nxt]\nL2=re.sub(r'[ \\t]+',' ',L)\nfor kw in ['years','decade','20[0-9][0-9]','by the end','soon']:\n    for m in re.finditer(kw,L2):\n        print(kw,'|',L2[max(0,m.start()-300):m.start()+200].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['It will probably take 10 years','AGI might take 50 years','coming in the next 2 or 3','We could have a breakthrough in two','Certainly, over the next several']:\n    i=L.find(kw[:20]); print(repr(L[i-700:i+500]));print('=====')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=L.find('AI is going to be in the hands'); print(repr(L[i-900:i+250]))\ni=T.find('Copyright'); print(repr(T[i:i+600]))\n# survey of AGI years\nj=T.find('2099'); print(repr(T[j-1500:j+300]))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2018",
+        "quote": "How long is it going to take before we figure out a way to train machines so that they learn how the world works by watching YouTube videos? That’s not entirely clear. We could have a breakthrough in two years that might take another 10 years to actually make it work, or it might take 10 or 20 years. I have no idea when it will happen, but I do know it has to happen.",
+        "what_is_predicted": "A breakthrough in machines learning how the world works from video could come in two years (then about 10 more to make it work), or could take 10 to 20 years; LeCun says he has no idea which.",
+        "date_or_span": "two years / 10 years / 10 or 20 years",
+        "occasion": "Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)",
+        "source_url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018",
+        "quote": "It will probably take 10 years before we find this kind of breakthrough and before it has some consequence in the real world, and that has to happen way before we reach human-level artificial general intelligence.",
+        "what_is_predicted": "The self-supervised breakthrough in learning how the world works, and its real-world effect, will probably take about 10 years, well before human-level AGI.",
+        "date_or_span": "10 years",
+        "occasion": "Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)",
+        "source_url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018",
+        "quote": "There’s a whole lot of problems that will absolutely pop up, so AGI might take 50 years, it might take 100 years, I’m not too sure.",
+        "what_is_predicted": "AGI may be 50 to 100 years away; asked straight after whether it is achievable, he answered 'Oh, definitely.'",
+        "date_or_span": "50 years / 100 years",
+        "occasion": "Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)",
+        "source_url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018",
+        "quote": "AI is going to be in the hands of everyone because of progress in hardware technology that is specialized for deep learning, and that’s coming in the next 2 or 3 years.",
+        "what_is_predicted": "Cheap hardware built for deep learning will put AI in everyone's hands within 2 to 3 years (borderline: the reason given is chips, but the prediction is that AI becomes widely available).",
+        "date_or_span": "the next 2 or 3 years",
+        "occasion": "Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)",
+        "source_url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2017",
+        "note": "NYU Tandon page repeating a Wall Street Journal piece by Sara Castellanos dated April 6, 2017: says LeCun puts researchers decades away from machines that match human intelligence and quotes him: 'We’re still quite far from building artificial general intelligence, and certainly far from superhuman AI.' (https://engineering.nyu.edu/news/facebook-ai-chief-yann-lecun-says-machines-are-decades-away-matching-human-brain)"
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Yann LeCun\" AI prediction 2018",
+        "what_found": "Mostly 2024-2026 coverage, plus a link to the Forbes Insights profile of 17 July 2018."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2018 interview AGI \"years\"",
+        "what_found": "Mostly later interviews (Time, Lex Fridman) and a February 2018 IPAM lecture listing with no transcript."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2025 predictions (Davos 2025, the 2025 departure from Meta); nothing from 2018."
+      },
+      {
+        "query_or_url": "LeCun 2018 Verge interview \"human-level\" AI",
+        "what_found": "Later-year items only."
+      },
+      {
+        "query_or_url": "LeCun 2018 \"common sense\" machines interview decades",
+        "what_found": "MIT Technology Review pieces from 2015-2016 and 2022, plus the 2018 Forbes profile again."
+      },
+      {
+        "query_or_url": "LeCun 2018 talk \"world model\" \"years\" Facebook AI chief",
+        "what_found": "Only coverage from 2024-2026."
+      },
+      {
+        "query_or_url": "Facebook AI chief LeCun 2018 \"decades\" human-level intelligence",
+        "what_found": "NYU page with a 'decades away' headline (turned out to be from 2017) and later items."
+      },
+      {
+        "query_or_url": "Yann LeCun interview October 2018 Facebook chief AI scientist",
+        "what_found": "January 2018 Fast Company news of his move to chief AI scientist; no prediction."
+      },
+      {
+        "query_or_url": "LeCun 2018 \"Facebook's chief AI scientist\" interview transcript \"we are very far\"",
+        "what_found": "CNN piece of 5 December 2018 and Forbes piece of 1 October 2018 on FAIR doubling its size by 2020 (a headcount plan, so excluded)."
+      },
+      {
+        "query_or_url": "\"LeCun\" 2018 Q&A \"artificial general intelligence\" \"years from now\"",
+        "what_found": "Forbes piece of 30 November 2018 about Martin Ford's Architects of Intelligence, which includes a LeCun interview."
+      },
+      {
+        "query_or_url": "\"Architects of Intelligence\" LeCun human-level AI years excerpt",
+        "what_found": "A full PDF of the book hosted at UCLA and the O'Reilly page for the LeCun chapter."
+      },
+      {
+        "query_or_url": "Yann LeCun 2018 Verge interview AI \"next few years\"",
+        "what_found": "Only coverage from 2023-2025."
+      },
+      {
+        "query_or_url": "https://www.forbes.com/sites/insights-intelai/2018/07/17/yann-lecun-an-ai-groundbreaker-takes-stock/",
+        "what_found": "Opened, but only the site's menus came back, not the article; nothing quoted."
+      },
+      {
+        "query_or_url": "https://engineering.nyu.edu/news/facebook-ai-chief-yann-lecun-says-machines-are-decades-away-matching-human-brain",
+        "what_found": "A repeat of a Wall Street Journal piece dated April 2017, so it belongs to 2017, not 2018."
+      },
+      {
+        "query_or_url": "https://www.cnn.com/2018/12/05/tech/ai-facebook-lecun/index.html",
+        "what_found": "December 2018 news piece; LeCun says Facebook would be 'dust' without deep learning; no dated prediction."
+      },
+      {
+        "query_or_url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+        "what_found": "Full text of the book, copyright 2018; the LeCun chapter holds all four candidates. Its AGI-year survey is anonymous apart from Kurzweil and Brooks."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2018 LeCun's dated predictions on record come from his printed interview in Martin Ford's Architects of Intelligence. He said a self-supervised breakthrough in learning how the world works could take two years or 10 to 20, probably about 10, and that AGI 'might take 50 years, it might take 100 years'. He also said cheap deep-learning hardware would put AI in everyone's hands within 2 or 3 years. The 2018 news coverage I opened (CNN, a Forbes headcount story) held no further dated AI predictions."
+  },
+  "reply_text": "Decode the PDF and extract text.I found four dated predictions from 2018. All come from one source: LeCun's printed interview in Martin Ford's book *Architects of Intelligence* (Packt Publishing, copyright 2018). I read them in a full copy of the book hosted on a UCLA faculty page. That copy is not the publisher's own edition, so you may want to check the quotes against the printed book. The book does not give the day of the interview. Ford asks a question that says \"Now, in 2018\", so I've dated everything \"2018\".\n\n**The four predictions**\n- **Machines learning how the world works from video:** a breakthrough \"in two years\", or \"10 or 20 years\". He adds that he has \"no idea when it will happen.\"\n- **That breakthrough and its real-world effect:** \"probably\" 10 years, and he says it \"has to happen way before\" human-level AGI.\n- **AGI:** \"might take 50 years, it might take 100 years, I'm not too sure.\"\n- **AI in everyone's hands:** \"in the next 2 or 3 years\", because of hardware built for deep learning. This one is borderline. It rests on chips, but what it predicts is that AI will be widely available, so I kept it and flagged it.\n\n**Left out on purpose**\n- **Self-driving cars \"in the next five years\":** he describes this as what investors are hoping for, not his own forecast.\n- **The job market shifting \"over the next several decades\":** this is about the economy, not about AI doing something.\n- **Facebook's AI lab doubling in size by 2020** (Forbes, October 2018): a company headcount plan. I saw this only in a search snippet and didn't open the page.\n- **The book's survey of when AGI arrives:** the answers are anonymous, so none of them can be tied to LeCun.\n\n**Pages that didn't help**\n- **Forbes, July 2018 profile:** it opened, but only the site's menus came back, not the article. Nothing is quoted from it.\n- **CNN, December 2018:** it opened, but it's a news write-up with no dated prediction in it.\n- **NYU page \"decades away\" from human-level intelligence:** it turned out to repeat a Wall Street Journal piece from April 2017, so it's listed under other_years.\n\n**Accounting**\n- **Searches:** all 12 used. The three fixed searches ran exactly as written, once each. The first one's results came back in an unexpected format and broke my display code, so I read the stored results instead of running it again.\n- **Page openings:** 4 of 6 used.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2018\", \"quote\": \"How long is it going to take before we figure out a way to train machines so that they learn how the world works by watching YouTube videos? That’s not entirely clear. We could have a breakthrough in two years that might take another 10 years to actually make it work, or it might take 10 or 20 years. I have no idea when it will happen, but I do know it has to happen.\", \"what_is_predicted\": \"A breakthrough in machines learning how the world works from video could come in two years (then about 10 more to make it work), or could take 10 to 20 years; LeCun says he has no idea which.\", \"date_or_span\": \"two years / 10 years / 10 or 20 years\", \"occasion\": \"Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)\", \"source_url\": \"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2018\", \"quote\": \"It will probably take 10 years before we find this kind of breakthrough and before it has some consequence in the real world, and that has to happen way before we reach human-level artificial general intelligence.\", \"what_is_predicted\": \"The self-supervised breakthrough in learning how the world works, and its real-world effect, will probably take about 10 years, well before human-level AGI.\", \"date_or_span\": \"10 years\", \"occasion\": \"Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)\", \"source_url\": \"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2018\", \"quote\": \"There’s a whole lot of problems that will absolutely pop up, so AGI might take 50 years, it might take 100 years, I’m not too sure.\", \"what_is_predicted\": \"AGI may be 50 to 100 years away; asked straight after whether it is achievable, he answered 'Oh, definitely.'\", \"date_or_span\": \"50 years / 100 years\", \"occasion\": \"Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)\", \"source_url\": \"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2018\", \"quote\": \"AI is going to be in the hands of everyone because of progress in hardware technology that is specialized for deep learning, and that’s coming in the next 2 or 3 years.\", \"what_is_predicted\": \"Cheap hardware built for deep learning will put AI in everyone's hands within 2 to 3 years (borderline: the reason given is chips, but the prediction is that AI becomes widely available).\", \"date_or_span\": \"the next 2 or 3 years\", \"occasion\": \"Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)\", \"source_url\": \"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2017\", \"note\": \"NYU Tandon page repeating a Wall Street Journal piece by Sara Castellanos dated April 6, 2017: says LeCun puts researchers decades away from machines that match human intelligence and quotes him: 'We’re still quite far from building artificial general intelligence, and certainly far from superhuman AI.' (https://engineering.nyu.edu/news/facebook-ai-chief-yann-lecun-says-machines-are-decades-away-matching-human-brain)\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" AI prediction 2018\", \"what_found\": \"Mostly 2024-2026 coverage, plus a link to the Forbes Insights profile of 17 July 2018.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2018 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly later interviews (Time, Lex Fridman) and a February 2018 IPAM lecture listing with no transcript.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2018 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2025 predictions (Davos 2025, the 2025 departure from Meta); nothing from 2018.\"},\n    {\"query_or_url\": \"LeCun 2018 Verge interview \\\"human-level\\\" AI\", \"what_found\": \"Later-year items only.\"},\n    {\"query_or_url\": \"LeCun 2018 \\\"common sense\\\" machines interview decades\", \"what_found\": \"MIT Technology Review pieces from 2015-2016 and 2022, plus the 2018 Forbes profile again.\"},\n    {\"query_or_url\": \"LeCun 2018 talk \\\"world model\\\" \\\"years\\\" Facebook AI chief\", \"what_found\": \"Only coverage from 2024-2026.\"},\n    {\"query_or_url\": \"Facebook AI chief LeCun 2018 \\\"decades\\\" human-level intelligence\", \"what_found\": \"NYU page with a 'decades away' headline (turned out to be from 2017) and later items.\"},\n    {\"query_or_url\": \"Yann LeCun interview October 2018 Facebook chief AI scientist\", \"what_found\": \"January 2018 Fast Company news of his move to chief AI scientist; no prediction.\"},\n    {\"query_or_url\": \"LeCun 2018 \\\"Facebook's chief AI scientist\\\" interview transcript \\\"we are very far\\\"\", \"what_found\": \"CNN piece of 5 December 2018 and Forbes piece of 1 October 2018 on FAIR doubling its size by 2020 (a headcount plan, so excluded).\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" 2018 Q&A \\\"artificial general intelligence\\\" \\\"years from now\\\"\", \"what_found\": \"Forbes piece of 30 November 2018 about Martin Ford's Architects of Intelligence, which includes a LeCun interview.\"},\n    {\"query_or_url\": \"\\\"Architects of Intelligence\\\" LeCun human-level AI years excerpt\", \"what_found\": \"A full PDF of the book hosted at UCLA and the O'Reilly page for the LeCun chapter.\"},\n    {\"query_or_url\": \"Yann LeCun 2018 Verge interview AI \\\"next few years\\\"\", \"what_found\": \"Only coverage from 2023-2025.\"},\n    {\"query_or_url\": \"https://www.forbes.com/sites/insights-intelai/2018/07/17/yann-lecun-an-ai-groundbreaker-takes-stock/\", \"what_found\": \"Opened, but only the site's menus came back, not the article; nothing quoted.\"},\n    {\"query_or_url\": \"https://engineering.nyu.edu/news/facebook-ai-chief-yann-lecun-says-machines-are-decades-away-matching-human-brain\", \"what_found\": \"A repeat of a Wall Street Journal piece dated April 2017, so it belongs to 2017, not 2018.\"},\n    {\"query_or_url\": \"https://www.cnn.com/2018/12/05/tech/ai-facebook-lecun/index.html\", \"what_found\": \"December 2018 news piece; LeCun says Facebook would be 'dust' without deep learning; no dated prediction.\"},\n    {\"query_or_url\": \"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\", \"what_found\": \"Full text of the book, copyright 2018; the LeCun chapter holds all four candidates. Its AGI-year survey is anonymous apart from Kurzweil and Brooks.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2018 LeCun's dated predictions on record come from his printed interview in Martin Ford's Architects of Intelligence. He said a self-supervised breakthrough in learning how the world works could take two years or 10 to 20, probably about 10, and that AGI 'might take 50 years, it might take 100 years'. He also said cheap deep-learning hardware would put AI in everyone's hands within 2 or 3 years. The 2018 news coverage I opened (CNN, a Forbes headcount story) held no further dated AI predictions.\"\n}\n```"
+}

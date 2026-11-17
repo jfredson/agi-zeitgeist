@@ -1,0 +1,298 @@
+{
+  "speaker_id": "suleyman",
+  "year": 2018,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4751,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7623
+      },
+      "cache_creation_input_tokens": 37089,
+      "cache_read_input_tokens": 205909,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 7421,
+      "output_tokens_details": {
+        "thinking_tokens": 2123
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mustafa Suleyman\" AI prediction 2018','\"Mustafa Suleyman\" 2018 interview AGI \"years\"','\"Mustafa Suleyman\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','')\n        i=c.find('2018')\n        print('   ',c[max(0,i-150):i+200].replace('\\n',' ') if i>=0 else c[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" AI prediction 2018"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(R.get(qs[0])), str(R.get(qs[0]))[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','')\n        i=c.find('2018')\n        print('   ',c[max(0,i-150):i+250].replace('\\n',' ') if i>=0 else c[:250].replace('\\n',' '))\n    return r\nR[qs[0]]=show(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2018 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass\"})\nif isinstance(r,str): r=json.loads(r)\nc=r[0]['content'] if isinstance(r,list) else r\nprint(c if isinstance(c,str) else c)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['\"Mustafa Suleyman\" CogX 2018 talk','\"Mustafa Suleyman\" 2018 DeepMind speech health AI \"five years\"','\"Suleyman\" DeepMind 2018 interview transcript','\"Mustafa Suleyman\" 2018 Wired Live OR Economist OR \"Web Summit\"']\nfor q in qs2:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" CogX 2018 talk"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2018 DeepMind speech health AI \"five years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Suleyman\" DeepMind 2018 interview transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2018 Wired Live OR Economist OR \"Web Summit\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    pass\nr=await web_fetch({\"url\":\"https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf\"})\nif isinstance(r,str): r=json.loads(r)\nd=r[0] if isinstance(r,list) else r\ncont=d.get('content')\ntxt=cont['source']['data'] if isinstance(cont,dict) else cont\nprint(d.get('type'), len(txt)); print(txt[:8000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(txt[8000:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['\"Suleyman\" \"In 2019, we\\'ll come together in the pursuit of ethical tech\"','\"Suleyman\" UN General Assembly President artificial intelligence SDGs 2018 DeepMind','\"AI Offers a Unique Opportunity for Social Progress\" Suleyman']\nfor q in qs3:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Suleyman\" \"In 2019, we'll come together in the pursuit of ethical tech\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Suleyman\" UN General Assembly President artificial intelligence SDGs 2018 DeepMind"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"AI Offers a Unique Opportunity for Social Progress\" Suleyman"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef gettxt(r):\n    if isinstance(r,str): r=json.loads(r)\n    d=r[0] if isinstance(r,list) else r\n    if d.get('type')!='web_fetch_result' and 'content' not in d: return str(d)\n    c=d.get('content'); return c['source']['data'] if isinstance(c,dict) else c\nT={}\nfor u in [\"https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech\",\"https://medium.com/@the_economist/ai-offers-a-unique-opportunity-for-social-progress-489ed4c00151\",\"https://www.un.org/pga/72/event-latest/daily-agenda-11-june-2018/\"]:\n    T[u]=gettxt(await web_fetch({\"url\":u}))\n    print(u,len(T[u]))\nt=T[\"https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech\"]\ni=t.find('# In 2019'); print(t[i:i+6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://medium.com/@the_economist/ai-offers-a-unique-opportunity-for-social-progress-489ed4c00151"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.un.org/pga/72/event-latest/daily-agenda-11-june-2018/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in list(T)[1:]: print(u,'\\n',T[u],'\\n')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2018-01-05",
+        "quote": "This is why I predict the study of the ethics, safety and societal impact of AI is going to become one of the most pressing areas of inquiry over the coming year. There has already been valuable work done in this area. For example, there is an emerging consensus that it is the responsibility of those developing new technologies to help address the effects of inequality, injustice and bias. In 2018, we're going to see many more groups start to address these issues.",
+        "what_is_predicted": "Research on the ethics, safety and social impact of AI will become one of the most pressing fields during 2018, with many more groups taking it up.",
+        "date_or_span": "over the coming year / 2018",
+        "occasion": "Wired essay 'DeepMind's Mustafa Suleyman - in 2018, AI will gain a moral compass' (Wired World in 2018 series), reposted on his personal site",
+        "source_url": "https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018",
+        "quote": "If we can create the right structures, ethics and incentives, then we can look forward to incredible scientific and social progress. And if we do that, we won't meet the SDGs by 2030 - we will far exceed them.",
+        "what_is_predicted": "With the right governance, AI-driven progress will mean the UN Sustainable Development Goals are far exceeded by 2030.",
+        "date_or_span": "by 2030",
+        "occasion": "Speaking text for a talk at the UN General Assembly (office of the President of the 72nd session) on AI and the Sustainable Development Goals; the exact date is not on the document",
+        "source_url": "https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018-12-19",
+        "quote": "Next year we will build global arenas in which to communicate across borders and between organisations in an attempt to minimise the potentially dangerous effects of artificial intelligence (AI) and maximise the positive impact it can have in the world.",
+        "what_is_predicted": "In 2019, new international forums will be set up to manage the risks and benefits of AI.",
+        "date_or_span": "next year (2019)",
+        "occasion": "Wired essay 'In 2019, we'll come together in the pursuit of ethical tech', reposted on his personal site",
+        "source_url": "https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Search results (Financial Times interview as covered by Yahoo Finance, Fortune and Windows Forum) carry his forecast that most white-collar computer tasks will be fully automated within 12 to 18 months; an X post also says that in 10 years only about 5% of what humans do will be replaced by AI. Not opened."
+      },
+      {
+        "year": "2023",
+        "note": "Search results (Cointelegraph, Business Insider via ANU mailing list) report he said AI could invent, market and run businesses within five years, i.e. by 2029; the 80,000 Hours podcast describes misaligned AI as a concern in 8 to 12 years. Not opened."
+      },
+      {
+        "year": "2024",
+        "note": "Search results (Tech Edition, AOL/Business Insider) report he estimated AGI could take up to 10 years. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mustafa Suleyman\" AI prediction 2018",
+        "what_found": "His personal-site repost of the January 2018 Wired essay, plus mostly 2023-2026 news on his automation forecasts."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2018 interview AGI \"years\"",
+        "what_found": "Only later interviews (2023-2025) on AGI timelines; nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage of the 2026 12-18 month forecast and the 2023 'by 2029' claim; nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" CogX 2018 talk",
+        "what_found": "No 2018 CogX talk found; only 2023 CogX coverage and a Wikidata note that he was on the Davos 2018 participant list."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2018 DeepMind speech health AI \"five years\"",
+        "what_found": "Background on DeepMind Health moving into Google in November 2018; no 2018 forecasts."
+      },
+      {
+        "query_or_url": "\"Suleyman\" DeepMind 2018 interview transcript",
+        "what_found": "His UN speech PDF and a Bloomberg video interview of 23 May 2018 on AI ethics (not opened; no transcript seen)."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2018 Wired Live OR Economist OR \"Web Summit\"",
+        "what_found": "A Muck Rack profile listing his 19 December 2018 Wired essay and a September 2018 Economist essay."
+      },
+      {
+        "query_or_url": "\"Suleyman\" \"In 2019, we'll come together in the pursuit of ethical tech\"",
+        "what_found": "His personal-site repost of the 19 December 2018 Wired essay."
+      },
+      {
+        "query_or_url": "\"Suleyman\" UN General Assembly President artificial intelligence SDGs 2018 DeepMind",
+        "what_found": "A UN General Assembly President daily agenda for 11 June 2018 listing Suleyman at 11:00, plus the speech PDF."
+      },
+      {
+        "query_or_url": "\"AI Offers a Unique Opportunity for Social Progress\" Suleyman",
+        "what_found": "The Economist's Medium copy of his 20 September 2018 essay."
+      },
+      {
+        "query_or_url": "https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass",
+        "what_found": "Full text of the January 2018 Wired essay, dated 5 January 2018, with the coming-year forecast on AI ethics research."
+      },
+      {
+        "query_or_url": "https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf",
+        "what_found": "Full text of his UN speech on AI and the Sustainable Development Goals, including the conditional line about exceeding the goals by 2030; no date on the document."
+      },
+      {
+        "query_or_url": "https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech",
+        "what_found": "Full text of the 19 December 2018 Wired essay forecasting global AI-governance forums in 2019."
+      },
+      {
+        "query_or_url": "https://medium.com/@the_economist/ai-offers-a-unique-opportunity-for-social-progress-489ed4c00151",
+        "what_found": "Only the first three paragraphs loaded (paywall); no forecasts in them."
+      },
+      {
+        "query_or_url": "https://www.un.org/pga/72/event-latest/daily-agenda-11-june-2018/",
+        "what_found": "Confirms Suleyman was on the UN General Assembly President's agenda at 11:00 on 11 June 2018; does not say this was the speech."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2018 Suleyman, then at DeepMind, wrote and spoke mostly about AI ethics, governance and AI for the Sustainable Development Goals. He made no dated forecasts about AI capabilities and said nothing about AGI timelines in what I read. His dated forward-looking lines are about AI ethics and governance (a January Wired essay and a December Wired essay) and a conditional claim in a UN speech that the goals would be far exceeded by 2030; all three are borderline under the rules."
+  },
+  "reply_text": "I found no 2018 statement in which Suleyman gave a date for something AI itself would do or achieve. He also said nothing in 2018 about when AGI might arrive, at least in what I read. I did find three dated forward-looking lines from his own 2018 writing and speeches, and all three are borderline. Two predict that work on AI ethics and governance will grow, not what AI will do. The third is conditional (\"if we can create the right structures...\"). I've listed them so you can decide; you may reasonably exclude them.\n\n**Checks on dates and sources:**\n- **The January 2018 Wired piece.** I read it on Suleyman's personal site, which dates it 5 January 2018 and links to the Wired original. I didn't open the Wired page itself. Wired's \"World in 2018\" pieces often appear in print in December of the year before, so check the date there.\n- **The UN speech.** I read it as a PDF on the UN General Assembly President's site. It isn't dated. The file is stored in a 2018/01 folder and cites a January 2018 article. A UN agenda lists Suleyman meeting the Assembly President at 11:00 on 11 June 2018, but nothing on that agenda shows this was when he gave the speech. So I've given only \"2018\" as the date.\n- **The Economist essay (20 September 2018).** It seems to reuse wording from the UN speech, but only its first few paragraphs loaded, with no forecasts in them. I haven't quoted it.\n- **Searches.** All three fixed searches ran. Their results were almost entirely about 2023–2026 claims, such as the \"12–18 months\" automation forecast and \"by 2029\". I used 10 of the 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2018-01-05\",\n      \"quote\": \"This is why I predict the study of the ethics, safety and societal impact of AI is going to become one of the most pressing areas of inquiry over the coming year. There has already been valuable work done in this area. For example, there is an emerging consensus that it is the responsibility of those developing new technologies to help address the effects of inequality, injustice and bias. In 2018, we're going to see many more groups start to address these issues.\",\n      \"what_is_predicted\": \"Research on the ethics, safety and social impact of AI will become one of the most pressing fields during 2018, with many more groups taking it up.\",\n      \"date_or_span\": \"over the coming year / 2018\",\n      \"occasion\": \"Wired essay 'DeepMind's Mustafa Suleyman - in 2018, AI will gain a moral compass' (Wired World in 2018 series), reposted on his personal site\",\n      \"source_url\": \"https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2018\",\n      \"quote\": \"If we can create the right structures, ethics and incentives, then we can look forward to incredible scientific and social progress. And if we do that, we won't meet the SDGs by 2030 - we will far exceed them.\",\n      \"what_is_predicted\": \"With the right governance, AI-driven progress will mean the UN Sustainable Development Goals are far exceeded by 2030.\",\n      \"date_or_span\": \"by 2030\",\n      \"occasion\": \"Speaking text for a talk at the UN General Assembly (office of the President of the 72nd session) on AI and the Sustainable Development Goals; the exact date is not on the document\",\n      \"source_url\": \"https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2018-12-19\",\n      \"quote\": \"Next year we will build global arenas in which to communicate across borders and between organisations in an attempt to minimise the potentially dangerous effects of artificial intelligence (AI) and maximise the positive impact it can have in the world.\",\n      \"what_is_predicted\": \"In 2019, new international forums will be set up to manage the risks and benefits of AI.\",\n      \"date_or_span\": \"next year (2019)\",\n      \"occasion\": \"Wired essay 'In 2019, we'll come together in the pursuit of ethical tech', reposted on his personal site\",\n      \"source_url\": \"https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Search results (Financial Times interview as covered by Yahoo Finance, Fortune and Windows Forum) carry his forecast that most white-collar computer tasks will be fully automated within 12 to 18 months; an X post also says that in 10 years only about 5% of what humans do will be replaced by AI. Not opened.\"},\n    {\"year\": \"2023\", \"note\": \"Search results (Cointelegraph, Business Insider via ANU mailing list) report he said AI could invent, market and run businesses within five years, i.e. by 2029; the 80,000 Hours podcast describes misaligned AI as a concern in 8 to 12 years. Not opened.\"},\n    {\"year\": \"2024\", \"note\": \"Search results (Tech Edition, AOL/Business Insider) report he estimated AGI could take up to 10 years. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" AI prediction 2018\", \"what_found\": \"His personal-site repost of the January 2018 Wired essay, plus mostly 2023-2026 news on his automation forecasts.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2018 interview AGI \\\"years\\\"\", \"what_found\": \"Only later interviews (2023-2025) on AGI timelines; nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2018 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage of the 2026 12-18 month forecast and the 2023 'by 2029' claim; nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" CogX 2018 talk\", \"what_found\": \"No 2018 CogX talk found; only 2023 CogX coverage and a Wikidata note that he was on the Davos 2018 participant list.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2018 DeepMind speech health AI \\\"five years\\\"\", \"what_found\": \"Background on DeepMind Health moving into Google in November 2018; no 2018 forecasts.\"},\n    {\"query_or_url\": \"\\\"Suleyman\\\" DeepMind 2018 interview transcript\", \"what_found\": \"His UN speech PDF and a Bloomberg video interview of 23 May 2018 on AI ethics (not opened; no transcript seen).\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2018 Wired Live OR Economist OR \\\"Web Summit\\\"\", \"what_found\": \"A Muck Rack profile listing his 19 December 2018 Wired essay and a September 2018 Economist essay.\"},\n    {\"query_or_url\": \"\\\"Suleyman\\\" \\\"In 2019, we'll come together in the pursuit of ethical tech\\\"\", \"what_found\": \"His personal-site repost of the 19 December 2018 Wired essay.\"},\n    {\"query_or_url\": \"\\\"Suleyman\\\" UN General Assembly President artificial intelligence SDGs 2018 DeepMind\", \"what_found\": \"A UN General Assembly President daily agenda for 11 June 2018 listing Suleyman at 11:00, plus the speech PDF.\"},\n    {\"query_or_url\": \"\\\"AI Offers a Unique Opportunity for Social Progress\\\" Suleyman\", \"what_found\": \"The Economist's Medium copy of his 20 September 2018 essay.\"},\n    {\"query_or_url\": \"https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass\", \"what_found\": \"Full text of the January 2018 Wired essay, dated 5 January 2018, with the coming-year forecast on AI ethics research.\"},\n    {\"query_or_url\": \"https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf\", \"what_found\": \"Full text of his UN speech on AI and the Sustainable Development Goals, including the conditional line about exceeding the goals by 2030; no date on the document.\"},\n    {\"query_or_url\": \"https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech\", \"what_found\": \"Full text of the 19 December 2018 Wired essay forecasting global AI-governance forums in 2019.\"},\n    {\"query_or_url\": \"https://medium.com/@the_economist/ai-offers-a-unique-opportunity-for-social-progress-489ed4c00151\", \"what_found\": \"Only the first three paragraphs loaded (paywall); no forecasts in them.\"},\n    {\"query_or_url\": \"https://www.un.org/pga/72/event-latest/daily-agenda-11-june-2018/\", \"what_found\": \"Confirms Suleyman was on the UN General Assembly President's agenda at 11:00 on 11 June 2018; does not say this was the speech.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2018 Suleyman, then at DeepMind, wrote and spoke mostly about AI ethics, governance and AI for the Sustainable Development Goals. He made no dated forecasts about AI capabilities and said nothing about AGI timelines in what I read. His dated forward-looking lines are about AI ethics and governance (a January Wired essay and a December Wired essay) and a conditional claim in a UN speech that the goals would be far exceeded by 2030; all three are borderline under the rules.\"\n}\n```"
+}

@@ -1,0 +1,312 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2010,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4622,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 34055,
+      "cache_read_input_tokens": 249516,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 6595,
+      "output_tokens_details": {
+        "thinking_tokens": 1698
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2010','\"Demis Hassabis\" 2010 interview AGI \"years\"','\"Demis Hassabis\" 2010 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2010"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    print(\"==\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2010 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2010 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis Singularity Summit 2010 \"systems neuroscience\" AGI talk transcript','Hassabis \"Singularity Summit\" 2010 talk']:\n    print(\"==\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Singularity Summit 2010 \"systems neuroscience\" AGI talk transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"Singularity Summit\" 2010 talk"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://intelligence.org/singularitysummit/\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nimport re\ni=c.find('Hassabis'); print(c[i-500:i+800])\nfor m in re.finditer(r'https?://[^\\s\\)\\]\"]*',c):\n    u=m.group(0)\n    if 'ass' in u.lower() or 'transcript' in u.lower(): print(u)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://intelligence.org/singularitysummit/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://docs.google.com/document/d/1jRVK_85QdvT3afKtpoVPhiS28XJGpM5sG64azv6Dmig/pub\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nprint(len(c))\nfor kw in ['year','decade','century','20','soon','future','will ','predict','time','next']:\n    for m in re.finditer(kw,c):\n        pass\nprint(c[:500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://docs.google.com/document/d/1jRVK_85QdvT3afKtpoVPhiS28XJGpM5sG64azv6Dmig/pub"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Hassabis\" 2010 singularity summit transcript \"AGI\" \"systems neuroscience\" \"machine learning\" \"years\"','Demis Hassabis 2010 \"Combining systems neuroscience and machine learning\" transcript']:\n    print(\"==\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Hassabis\" 2010 singularity summit transcript \"AGI\" \"systems neuroscience\" \"machine learning\" \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Demis Hassabis 2010 \"Combining systems neuroscience and machine learning\" transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\",\"https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html\",\"https://opentheory.net/2010/08/ss2010-highlights-day-1/\"]\npages={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    c=r[0]['content'] if isinstance(r,list) else str(r)\n    pages[u]=c\n    print(\"=====\",u,len(c))\n    for kw in ['year','decade','Prediction','predict']:\n        for m in re.finditer(kw,c):\n            print('  ..',c[max(0,m.start()-250):m.start()+200].replace('\\n',' | '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://opentheory.net/2010/08/ss2010-highlights-day-1/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=pages[urls[0]]; i=c.find('## Context'); print(c[i:i+700])\nc=pages[urls[1]]; print(c[-3500:])\nc=pages[urls[2]]; i=c.find('Hassabis'); print(c[i:i+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=pages[urls[1]]; i=c.find('What use is neuroscience'); print(c[i:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis 2010 Singularity Summit \"20 years\" human-level AGI slide','\"Hassabis\" 2010 \"transfer learning\" \"next 5 years\" AGI']:\n    print(\"==\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2010 Singularity Summit \"20 years\" human-level AGI slide"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Hassabis\" 2010 \"transfer learning\" \"next 5 years\" AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nprint(len(c)); print(c[:1500])\nfor kw in ['youtube','IjG_','Qgd3','five years','20','Singularity']:\n    for m in re.finditer(kw,c): print('..',kw,c[max(0,m.start()-200):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['IjG_Fx3D0o0','Demis Hassabis December 2011 talk \"systems neuroscience\" AGI video']:\n    print(\"==\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "IjG_Fx3D0o0"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Demis Hassabis December 2011 talk \"systems neuroscience\" AGI video"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2010-08",
+        "quote": "Not clear how well this will work and looks like it may take as long as 50 years to achieve good results.",
+        "what_is_predicted": "Brain reverse-engineering approaches to AGI such as Blue Brain and SyNAPSE may take up to 50 years to produce good results.",
+        "date_or_span": "as long as 50 years",
+        "occasion": "Singularity Summit 2010, San Francisco, talk 'Combining systems neuroscience and machine learning: a new approach to AGI'",
+        "source_url": "https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2011",
+        "note": "blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/ reproduces slides with 'Predictions': 'System with transfer learning and conceptual knowledge acquisition capabilities will appear in the next 5 years' and 'Probably ~20+ years for full human-level AGI'. The page says it is based on YouTube IjG_Fx3D0o0, which search results show is Hassabis at the 2011 Winter Intelligence Conference, Oxford (FHI). whatishappening.org has a 'Dec 2011' page with the same points but would not open."
+      },
+      {
+        "year": "2025-2026",
+        "note": "Many recent articles say Hassabis set a 20-year AGI mission in 2010; these are later retellings, not 2010 words."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2010",
+        "what_found": "Only recent news and retellings (AGI by 2030, '2010 mission'); nothing from 2010."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2010 interview AGI \"years\"",
+        "what_found": "Recent interviews and retellings; one Substack piece on the August 2010 Singularity Summit; no 2010 words."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2010 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2026 timeline coverage."
+      },
+      {
+        "query_or_url": "Hassabis Singularity Summit 2010 \"systems neuroscience\" AGI talk transcript",
+        "what_found": "MIRI Singularity Summit page listing the talk with video, mp3 and transcript links; tomrochette slide summary; NextBigFuture live notes."
+      },
+      {
+        "query_or_url": "Hassabis \"Singularity Summit\" 2010 talk",
+        "what_found": "Same MIRI page plus 2010 blog mentions (htmwatch, vetta.org, opentheory)."
+      },
+      {
+        "query_or_url": "https://intelligence.org/singularitysummit/",
+        "what_found": "Confirms the 2010 talk title and a Google Docs transcript link."
+      },
+      {
+        "query_or_url": "https://docs.google.com/document/d/1jRVK_85QdvT3afKtpoVPhiS28XJGpM5sG64azv6Dmig/pub",
+        "what_found": "Would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "\"Hassabis\" 2010 singularity summit transcript \"AGI\" \"systems neuroscience\" \"machine learning\" \"years\"",
+        "what_found": "NextBigFuture 2010 notes and tomrochette slide summary."
+      },
+      {
+        "query_or_url": "Demis Hassabis 2010 \"Combining systems neuroscience and machine learning\" transcript",
+        "what_found": "No other copy of the transcript found; opentheory day-1 notes."
+      },
+      {
+        "query_or_url": "https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/",
+        "what_found": "Slide summary with dated predictions; later found to be based on the 2011 Oxford talk."
+      },
+      {
+        "query_or_url": "https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html",
+        "what_found": "August 2010 live notes; one '50 years' line on brain reverse-engineering projects, in the blogger's wording."
+      },
+      {
+        "query_or_url": "https://opentheory.net/2010/08/ss2010-highlights-day-1/",
+        "what_found": "2010 summary of the talk with no dated prediction."
+      },
+      {
+        "query_or_url": "Hassabis 2010 Singularity Summit \"20 years\" human-level AGI slide",
+        "what_found": "Shane Legg's 2010 vetta.org post (his own view, not Hassabis's) and later retellings."
+      },
+      {
+        "query_or_url": "\"Hassabis\" 2010 \"transfer learning\" \"next 5 years\" AGI",
+        "what_found": "tomrochette page and a whatishappening.org page titled Dec 2011 with the same slide points."
+      },
+      {
+        "query_or_url": "https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/",
+        "what_found": "Would not open (url_not_allowed)."
+      },
+      {
+        "query_or_url": "IjG_Fx3D0o0",
+        "what_found": "Search result identifies the video as the 2011 Winter Intelligence Conference at Oxford, not 2010."
+      },
+      {
+        "query_or_url": "Demis Hassabis December 2011 talk \"systems neuroscience\" AGI video",
+        "what_found": "Confirms the 2011 Oxford video; hardmaru on X links a different video (Qgd3OK5DZWI) for the 2010 talk."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Hassabis's main public statement in 2010 was his Singularity Summit talk (August, San Francisco). Its official transcript would not open, so the only dated forward-looking line seen is a blogger's paraphrase that bio-inspired brain reverse-engineering may take up to 50 years. The well-known '~20+ years for human-level AGI' and 'next 5 years' slide predictions come from his December 2011 Oxford talk, not 2010."
+  },
+  "reply_text": "MIRI lists a transcript. Let me open that page to find the transcript link.I found one weak lead for 2010 and no prediction from Hassabis that year in his own exact words. The lead is a blogger's live notes from his August 2010 Singularity Summit talk in San Francisco, which is the main occasion on record for that year.\n\n- **The lead:** NextBigFuture's blog post from the talk says the brain reverse-engineering projects Blue Brain and SyNAPSE \"may take as long as 50 years to achieve good results.\" That is the blogger's notes on Hassabis's view, not a quote of what he said, and it's about brain-simulation projects rather than when AGI arrives. Treat it as a lead to check against the recording, not a confirmed claim.\n- **The transcript wouldn't open.** The Machine Intelligence Research Institute's (MIRI's) Singularity Summit page links an official transcript of the talk, plus video and audio, but the transcript (a Google Doc) wouldn't open for me. I didn't listen to the recordings, so they are the place to settle it.\n- **The 2011 slides** include \"transfer learning … in the next 5 years\" and \"~20+ years for full human-level AGI.\" They look like 2010 material but aren't. The page that reproduces them says it's based on a video that turned out to be his December 2011 talk at the Winter Intelligence Conference at Oxford. They belong to 2011.\n- **Later retellings:** Many recent articles say he \"gave DeepMind 20 years\" in 2010, but they are looking back years later, so they don't count for 2010.\n\nI used 11 of 12 searches and all 6 page openings. Two openings failed: the Google Doc transcript and the whatishappening.org page on the 2011 talk.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2010-08\",\n      \"quote\": \"Not clear how well this will work and looks like it may take as long as 50 years to achieve good results.\",\n      \"what_is_predicted\": \"Brain reverse-engineering approaches to AGI such as Blue Brain and SyNAPSE may take up to 50 years to produce good results.\",\n      \"date_or_span\": \"as long as 50 years\",\n      \"occasion\": \"Singularity Summit 2010, San Francisco, talk 'Combining systems neuroscience and machine learning: a new approach to AGI'\",\n      \"source_url\": \"https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2011\", \"note\": \"blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/ reproduces slides with 'Predictions': 'System with transfer learning and conceptual knowledge acquisition capabilities will appear in the next 5 years' and 'Probably ~20+ years for full human-level AGI'. The page says it is based on YouTube IjG_Fx3D0o0, which search results show is Hassabis at the 2011 Winter Intelligence Conference, Oxford (FHI). whatishappening.org has a 'Dec 2011' page with the same points but would not open.\"},\n    {\"year\": \"2025-2026\", \"note\": \"Many recent articles say Hassabis set a 20-year AGI mission in 2010; these are later retellings, not 2010 words.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2010\", \"what_found\": \"Only recent news and retellings (AGI by 2030, '2010 mission'); nothing from 2010.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2010 interview AGI \\\"years\\\"\", \"what_found\": \"Recent interviews and retellings; one Substack piece on the August 2010 Singularity Summit; no 2010 words.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2010 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2026 timeline coverage.\"},\n    {\"query_or_url\": \"Hassabis Singularity Summit 2010 \\\"systems neuroscience\\\" AGI talk transcript\", \"what_found\": \"MIRI Singularity Summit page listing the talk with video, mp3 and transcript links; tomrochette slide summary; NextBigFuture live notes.\"},\n    {\"query_or_url\": \"Hassabis \\\"Singularity Summit\\\" 2010 talk\", \"what_found\": \"Same MIRI page plus 2010 blog mentions (htmwatch, vetta.org, opentheory).\"},\n    {\"query_or_url\": \"https://intelligence.org/singularitysummit/\", \"what_found\": \"Confirms the 2010 talk title and a Google Docs transcript link.\"},\n    {\"query_or_url\": \"https://docs.google.com/document/d/1jRVK_85QdvT3afKtpoVPhiS28XJGpM5sG64azv6Dmig/pub\", \"what_found\": \"Would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"\\\"Hassabis\\\" 2010 singularity summit transcript \\\"AGI\\\" \\\"systems neuroscience\\\" \\\"machine learning\\\" \\\"years\\\"\", \"what_found\": \"NextBigFuture 2010 notes and tomrochette slide summary.\"},\n    {\"query_or_url\": \"Demis Hassabis 2010 \\\"Combining systems neuroscience and machine learning\\\" transcript\", \"what_found\": \"No other copy of the transcript found; opentheory day-1 notes.\"},\n    {\"query_or_url\": \"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\", \"what_found\": \"Slide summary with dated predictions; later found to be based on the 2011 Oxford talk.\"},\n    {\"query_or_url\": \"https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html\", \"what_found\": \"August 2010 live notes; one '50 years' line on brain reverse-engineering projects, in the blogger's wording.\"},\n    {\"query_or_url\": \"https://opentheory.net/2010/08/ss2010-highlights-day-1/\", \"what_found\": \"2010 summary of the talk with no dated prediction.\"},\n    {\"query_or_url\": \"Hassabis 2010 Singularity Summit \\\"20 years\\\" human-level AGI slide\", \"what_found\": \"Shane Legg's 2010 vetta.org post (his own view, not Hassabis's) and later retellings.\"},\n    {\"query_or_url\": \"\\\"Hassabis\\\" 2010 \\\"transfer learning\\\" \\\"next 5 years\\\" AGI\", \"what_found\": \"tomrochette page and a whatishappening.org page titled Dec 2011 with the same slide points.\"},\n    {\"query_or_url\": \"https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/\", \"what_found\": \"Would not open (url_not_allowed).\"},\n    {\"query_or_url\": \"IjG_Fx3D0o0\", \"what_found\": \"Search result identifies the video as the 2011 Winter Intelligence Conference at Oxford, not 2010.\"},\n    {\"query_or_url\": \"Demis Hassabis December 2011 talk \\\"systems neuroscience\\\" AGI video\", \"what_found\": \"Confirms the 2011 Oxford video; hardmaru on X links a different video (Qgd3OK5DZWI) for the 2010 talk.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Hassabis's main public statement in 2010 was his Singularity Summit talk (August, San Francisco). Its official transcript would not open, so the only dated forward-looking line seen is a blogger's paraphrase that bio-inspired brain reverse-engineering may take up to 50 years. The well-known '~20+ years for human-level AGI' and 'next 5 years' slide predictions come from his December 2011 Oxford talk, not 2010.\"\n}\n```"
+}

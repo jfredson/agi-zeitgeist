@@ -1,0 +1,368 @@
+{
+  "speaker_id": "pichai",
+  "year": 2022,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6162,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7658
+      },
+      "cache_creation_input_tokens": 45803,
+      "cache_read_input_tokens": 382141,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 10029,
+      "output_tokens_details": {
+        "thinking_tokens": 2714
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Sundar Pichai\" AI prediction 2022','\"Sundar Pichai\" 2022 interview AGI \"years\"','\"Sundar Pichai\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" AI prediction 2022"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r));print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2022 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Pichai Google I/O 2022 keynote transcript','Pichai DealBook Summit 2022 AI','Pichai \"Google for India\" 2022 AI languages model']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Google I/O 2022 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai DealBook Summit 2022 AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai \"Google for India\" 2022 AI languages model"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/','https://www.cnbc.com/amp/2022/05/12/cnbc-exclusive-cnbc-transcript-alphabet-ceo-sundar-pichai-speaks-with-cnbcs-deirdre-bosa-on-techcheck-today-.html']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; P[u]=c; print(u,len(c))\nkw=r'(\\b20[2-4]\\d\\b|year|decade|next |by the end|within|month|soon|AGI|general intelligence|future)'\nfor u,c in P.items():\n    print('=====',u)\n    for s in re.split(r'(?<=[.!?])\\s+',c):\n        if re.search(kw,s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=json.loads(r) if isinstance(r,str) else r\nprint(type(r), str(r)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def get(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return c\nu1='https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/'\nP[u1]=get(r)\nu2='https://www.cnbc.com/amp/2022/05/12/cnbc-exclusive-cnbc-transcript-alphabet-ceo-sundar-pichai-speaks-with-cnbcs-deirdre-bosa-on-techcheck-today-.html'\nr2=await web_fetch({\"url\":u2}); P[u2]=get(r2)\nfor u,c in P.items():\n    print('=====',u,len(c))\n    for s in re.split(r'(?<=[.!?])\\s+',c):\n        if re.search(kw,s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/amp/2022/05/12/cnbc-exclusive-cnbc-transcript-alphabet-ceo-sundar-pichai-speaks-with-cnbcs-deirdre-bosa-on-techcheck-today-.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw=r'(\\b20[2-4]\\d\\b|year|decade|next |by the end|within|month|soon|AGI|general intelligence)'\nfor u,c in P.items():\n    print('=====',u,len(c or ''))\n    for s in re.split(r'(?<=[.!?])\\s+',c or ''):\n        if re.search(kw,s): print('-',s[:350])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=P[u1]\nfor k in ['coming','LaMDA','Test Kitchen','PaLM','will ','plan','launch','roll']:\n    for m in re.finditer(k,c):\n        pass\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r'(coming|LaMDA|Test Kitchen|PaLM|will |rolling|languages|Translate|Skin|Monk)',s): print('-',s[:350])\nprint(json.dumps(json.loads(r2) if isinstance(r2,str) else r2)[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('Advances in AI are taking');print(c[i:i+2200]);print('......');i=c.find('auto-generated chapters');print(c[i-600:i+1500]);print('.....TAIL');print(c[-2500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Pichai I/O 2022 LaMDA 2 \"AI Test Kitchen\" \"coming months\"','Alphabet Q3 2022 earnings call Sundar Pichai remarks AI','Pichai December 2022 all-hands ChatGPT language model 2023']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai I/O 2022 LaMDA 2 \"AI Test Kitchen\" \"coming months\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Alphabet Q3 2022 earnings call Sundar Pichai remarks AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai December 2022 all-hands ChatGPT language model 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://vrarnews.com/details/google-io-2022-advancing-knowledge-and-computing-627c20ce643ba282770a155e','https://abc.xyz/investor/events/event-details/2022/2022-Q3-Earnings-Call/','https://blog.google/intl/en-in/company-news/outreach-initiatives/google-for-india-2022-main-blog/']\nfor u in urls:\n    rr=await web_fetch({\"url\":u})\n    try: P[u]=get(rr)\n    except Exception as e: P[u]=''; print(u,str(rr)[:200])\nkw2=r'(\\b20[2-4]\\d\\b|year|decade|next |by the end|within|month|soon|AGI|general intelligence|coming|will )'\nfor u in urls:\n    c=P[u] or ''\n    print('=====',u,len(c))\n    for s in re.split(r'(?<=[.!?])\\s+',c):\n        if re.search(kw2,s) and re.search(r'(AI|model|LaMDA|PaLM|language|machine learning|ML|Test Kitchen|learn|Search|translat)',s): print('-',s[:350])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://vrarnews.com/details/google-io-2022-advancing-knowledge-and-computing-627c20ce643ba282770a155e"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://abc.xyz/investor/events/event-details/2022/2022-Q3-Earnings-Call/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/intl/en-in/company-news/outreach-initiatives/google-for-india-2022-main-blog/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=P[urls[1]]\nfor m in re.finditer(r'(AI|LaMDA|PaLM|large language|Bard|conversational)',c):\n    pass\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r'(AI\\b|LaMDA|PaLM|language model|conversational|Imagen|generative)',s): print('-',s[:400])\nprint('====VR')\nc=P[urls[0]]\nfor k in ['Google Chat','coming months','Test Kitchen','PaLM','Monk','skin tone']:\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.start()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=P[urls[0]]\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r'(this year|next year|next month|later this|by the end|over the next|few months|coming months|future)',s): print('-',s[:300])\ni=c.find('immersive view straight');print(c[i:i+900])\nprint('===INDIA')\nc=P[urls[2]]\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r'(Sundar|Pichai|will |next|year)',s): print('-',s[:350])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Pichai interview December 2022 India AI \"next decade\"','Pichai 2022 interview quantum AI \"five to ten years\"']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai interview December 2022 India AI \"next decade\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai 2022 interview quantum AI \"five to ten years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.gsb.stanford.edu/insights/sundar-pichai-reward-effort-not-outcomes'\nrr=await web_fetch({\"url\":u}); c=get(rr); P[u]=c; print(len(c))\nfor k in ['decade','years','AI','2022','April']:\n    pass\nfor m in re.finditer(r'(decade|years|artificial|\\bAI\\b|published|2022)',c):\n    pass\ni=c.find('take a decade');print(c[max(0,i-2000):i+600])\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r'(decade|\\d+ years|next year|20[23]\\d|AGI)',s): print('-',s[:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.gsb.stanford.edu/insights/sundar-pichai-reward-effort-not-outcomes"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2022-04-22",
+        "quote": "I think it will profoundly transform pretty much every sector. You see the potential in areas like healthcare. I think it'll still take a decade for it to fully play out, but we definitely see the potential.",
+        "what_is_predicted": "AI's transformation of sectors such as healthcare will take about a decade to fully play out.",
+        "date_or_span": "a decade (from 2022)",
+        "occasion": "Stanford GSB View From The Top conversation with MBA student Archana Sohmshetty; transcript published 2022-06-17; the event date of 2022-04-22 comes from a search-result listing of the GSB event page, which was not opened",
+        "source_url": "https://www.gsb.stanford.edu/insights/sundar-pichai-reward-effort-not-outcomes",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2022-05-11",
+        "quote": "This feature will start rolling out in Google Maps for select cities globally later this year.",
+        "what_is_predicted": "Immersive view in Google Maps, built with machine learning and neural rendering, would start rolling out to select cities in 2022.",
+        "date_or_span": "later in 2022",
+        "occasion": "Google I/O 2022 keynote (edited transcript posted under Pichai's name); borderline as an AI prediction because it is a near-term launch of a feature that uses AI",
+        "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2022-05-11",
+        "quote": "We'll also be expanding auto-translated captions to Ukrainian YouTube content next month, part of our larger effort to increase access to accurate information about the war.",
+        "what_is_predicted": "YouTube's machine auto-translated captions would expand to Ukrainian content in June 2022.",
+        "date_or_span": "next month (June 2022)",
+        "occasion": "Google I/O 2022 keynote; borderline as an AI prediction because it is a near-term launch of a feature that uses AI",
+        "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2022-05-11",
+        "quote": "With this, we now have a goal to 10X the number of videos with auto-generated chapters, from eight million today, to 80 million over the next year.",
+        "what_is_predicted": "Auto-generated YouTube chapters, using DeepMind multimodal technology, would grow from 8 million to 80 million videos within a year.",
+        "date_or_span": "over the next year (to about May 2023)",
+        "occasion": "Google I/O 2022 keynote",
+        "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+        "source_kind": "own_words",
+        "already_recorded": "2022-05-11-pichai-youtube-auto-chapters-80-million-goal.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "Search results showed a 2023 CNBC piece on Pichai warning society to prepare for AI acceleration, a 2023 MIT Technology Review interview ('the next decade ahead'), and a 2023 Gulf News piece on 'the next 10 years'; none were opened."
+      },
+      {
+        "year": "2024",
+        "note": "Search results showed DealBook Summit 2024 coverage (AI progress getting harder in 2025), a Semafor interview from December 2024, and a podcast saying DeepMind projected a 20-year AGI timeline in 2010; not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results showed quantum computing 'five to ten years' away (February 2025), a BBC interview on AI agents 'within the next year', AGI not quite by 2030 (Lex Fridman), and data centres in space; not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Search results showed India AI Impact Summit remarks about 'the next decade or two decades'; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sundar Pichai\" AI prediction 2022",
+        "what_found": "Only results from later years (2023-2025 coverage); nothing from 2022."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2022 interview AGI \"years\"",
+        "what_found": "Later AGI-timeline coverage (2025) plus a Stanford GSB event listing for View From The Top: Sundar Pichai on Apr 22, 2022."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only results from 2024-2025; nothing from 2022."
+      },
+      {
+        "query_or_url": "Pichai Google I/O 2022 keynote transcript",
+        "what_found": "Google blog edited keynote transcript, a CNBC TechCheck transcript from 2022-05-12, and a Stanford GSB transcript."
+      },
+      {
+        "query_or_url": "Pichai DealBook Summit 2022 AI",
+        "what_found": "Only DealBook 2024 coverage; nothing found for a 2022 appearance."
+      },
+      {
+        "query_or_url": "Pichai \"Google for India\" 2022 AI languages model",
+        "what_found": "Coverage and Google blog for Google for India, 2022-12-19 (AI model covering 100+ Indian languages)."
+      },
+      {
+        "query_or_url": "Pichai I/O 2022 LaMDA 2 \"AI Test Kitchen\" \"coming months\"",
+        "what_found": "Coverage of LaMDA 2 access opening 'over the coming months'; pointed to a vrarnews copy of the full keynote text."
+      },
+      {
+        "query_or_url": "Alphabet Q3 2022 earnings call Sundar Pichai remarks AI",
+        "what_found": "abc.xyz page for the Q3 2022 earnings call and transcript PDF."
+      },
+      {
+        "query_or_url": "Pichai December 2022 all-hands ChatGPT language model 2023",
+        "what_found": "Only Wikipedia pages; nothing useful."
+      },
+      {
+        "query_or_url": "Pichai interview December 2022 India AI \"next decade\"",
+        "what_found": "Stanford GSB transcript snippet ('take a decade') plus 2023 and 2026 items."
+      },
+      {
+        "query_or_url": "Pichai 2022 interview quantum AI \"five to ten years\"",
+        "what_found": "Only 2025 quantum computing coverage and a 2021 BCG item; nothing from 2022."
+      },
+      {
+        "query_or_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+        "what_found": "Opened; the text was cut off partway through the Workspace section; holds the Maps, captions and auto-chapters lines."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/amp/2022/05/12/cnbc-exclusive-cnbc-transcript-alphabet-ceo-sundar-pichai-speaks-with-cnbcs-deirdre-bosa-on-techcheck-today-.html",
+        "what_found": "Would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "https://vrarnews.com/details/google-io-2022-advancing-knowledge-and-computing-627c20ce643ba282770a155e",
+        "what_found": "Full copy of the I/O 2022 keynote text; LaMDA 'over the coming months' and Google Chat summaries 'in the next few months', both too vague to count."
+      },
+      {
+        "query_or_url": "https://abc.xyz/investor/events/event-details/2022/2022-Q3-Earnings-Call/",
+        "what_found": "Q3 2022 call; Pichai's AI remarks are undated (LaMDA in AI Test Kitchen, 'similar point now with AI')."
+      },
+      {
+        "query_or_url": "https://blog.google/intl/en-in/company-news/outreach-initiatives/google-for-india-2022-main-blog/",
+        "what_found": "Post by Sanjay Gupta, not Pichai; no dated AI forecast in Pichai's words."
+      },
+      {
+        "query_or_url": "https://www.gsb.stanford.edu/insights/sundar-pichai-reward-effort-not-outcomes",
+        "what_found": "Full transcript dated 2022-06-17 containing Pichai's line that AI's transformation of sectors like healthcare will 'take a decade' to fully play out."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2022 Pichai's dated AI forward-looking statements were few. The main one is at Stanford GSB: AI's transformation of sectors such as healthcare will take about a decade to fully play out. The rest are near-term product dates from the Google I/O keynote: the already-recorded YouTube auto-chapters goal, immersive view in Maps 'later this year', and Ukrainian auto-translated captions 'next month'; nothing about when AGI arrives was found."
+  },
+  "reply_text": "Pichai's 2022 record holds one clear dated forecast about AI and a few short-range product-launch dates from his I/O keynote.\n\n- **Main finding:** In his Stanford Graduate School of Business talk (\"View From The Top\"), he said AI will transform sectors like healthcare. He added, \"I think it'll still take a decade for it to fully play out.\" That makes it a forecast with a ten-year span. I read it in the school's own printed transcript, which is dated June 17, 2022. The talk itself was on April 22, 2022, but I got that date only from a search snippet of the event listing. I did not open that page.\n- **I/O keynote, May 11, 2022:** Besides the YouTube auto-chapters goal you already have, his keynote text gives two more dated launches of AI-powered features. Immersive view in Google Maps, built with \"neural rendering,\" was due \"later this year.\" Auto-translated captions for Ukrainian YouTube content were due \"next month.\" These are near-term product plans and only borderline as AI predictions, so you may decide to drop them.\n- **Mirror source:** Google's own page for the keynote cut off partway through. The two launches above and the auto-chapters goal are on Google's page. I took the LaMDA and Google Chat lines from a full copy on vrarnews.com.\n- **Left out:** \"Coming months\" for opening up LaMDA 2 and \"next few months\" for chat summaries in Google Chat. Both are too vague under your rules and are not about AGI timing.\n- **Nothing found:** The Q3 2022 earnings call held only undated remarks such as \"very early innings.\" Google's Google for India 2022 post was written by Sanjay Gupta, not Pichai. The CNBC TechCheck transcript from May 2022 would not open, so I quote nothing from it. I found no statement from Pichai in 2022 about when AGI arrives.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2022-04-22\", \"quote\": \"I think it will profoundly transform pretty much every sector. You see the potential in areas like healthcare. I think it'll still take a decade for it to fully play out, but we definitely see the potential.\", \"what_is_predicted\": \"AI's transformation of sectors such as healthcare will take about a decade to fully play out.\", \"date_or_span\": \"a decade (from 2022)\", \"occasion\": \"Stanford GSB View From The Top conversation with MBA student Archana Sohmshetty; transcript published 2022-06-17; the event date of 2022-04-22 comes from a search-result listing of the GSB event page, which was not opened\", \"source_url\": \"https://www.gsb.stanford.edu/insights/sundar-pichai-reward-effort-not-outcomes\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2022-05-11\", \"quote\": \"This feature will start rolling out in Google Maps for select cities globally later this year.\", \"what_is_predicted\": \"Immersive view in Google Maps, built with machine learning and neural rendering, would start rolling out to select cities in 2022.\", \"date_or_span\": \"later in 2022\", \"occasion\": \"Google I/O 2022 keynote (edited transcript posted under Pichai's name); borderline as an AI prediction because it is a near-term launch of a feature that uses AI\", \"source_url\": \"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2022-05-11\", \"quote\": \"We'll also be expanding auto-translated captions to Ukrainian YouTube content next month, part of our larger effort to increase access to accurate information about the war.\", \"what_is_predicted\": \"YouTube's machine auto-translated captions would expand to Ukrainian content in June 2022.\", \"date_or_span\": \"next month (June 2022)\", \"occasion\": \"Google I/O 2022 keynote; borderline as an AI prediction because it is a near-term launch of a feature that uses AI\", \"source_url\": \"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2022-05-11\", \"quote\": \"With this, we now have a goal to 10X the number of videos with auto-generated chapters, from eight million today, to 80 million over the next year.\", \"what_is_predicted\": \"Auto-generated YouTube chapters, using DeepMind multimodal technology, would grow from 8 million to 80 million videos within a year.\", \"date_or_span\": \"over the next year (to about May 2023)\", \"occasion\": \"Google I/O 2022 keynote\", \"source_url\": \"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2022-05-11-pichai-youtube-auto-chapters-80-million-goal.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"Search results showed a 2023 CNBC piece on Pichai warning society to prepare for AI acceleration, a 2023 MIT Technology Review interview ('the next decade ahead'), and a 2023 Gulf News piece on 'the next 10 years'; none were opened.\"},\n    {\"year\": \"2024\", \"note\": \"Search results showed DealBook Summit 2024 coverage (AI progress getting harder in 2025), a Semafor interview from December 2024, and a podcast saying DeepMind projected a 20-year AGI timeline in 2010; not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results showed quantum computing 'five to ten years' away (February 2025), a BBC interview on AI agents 'within the next year', AGI not quite by 2030 (Lex Fridman), and data centres in space; not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Search results showed India AI Impact Summit remarks about 'the next decade or two decades'; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" AI prediction 2022\", \"what_found\": \"Only results from later years (2023-2025 coverage); nothing from 2022.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2022 interview AGI \\\"years\\\"\", \"what_found\": \"Later AGI-timeline coverage (2025) plus a Stanford GSB event listing for View From The Top: Sundar Pichai on Apr 22, 2022.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2022 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only results from 2024-2025; nothing from 2022.\"},\n    {\"query_or_url\": \"Pichai Google I/O 2022 keynote transcript\", \"what_found\": \"Google blog edited keynote transcript, a CNBC TechCheck transcript from 2022-05-12, and a Stanford GSB transcript.\"},\n    {\"query_or_url\": \"Pichai DealBook Summit 2022 AI\", \"what_found\": \"Only DealBook 2024 coverage; nothing found for a 2022 appearance.\"},\n    {\"query_or_url\": \"Pichai \\\"Google for India\\\" 2022 AI languages model\", \"what_found\": \"Coverage and Google blog for Google for India, 2022-12-19 (AI model covering 100+ Indian languages).\"},\n    {\"query_or_url\": \"Pichai I/O 2022 LaMDA 2 \\\"AI Test Kitchen\\\" \\\"coming months\\\"\", \"what_found\": \"Coverage of LaMDA 2 access opening 'over the coming months'; pointed to a vrarnews copy of the full keynote text.\"},\n    {\"query_or_url\": \"Alphabet Q3 2022 earnings call Sundar Pichai remarks AI\", \"what_found\": \"abc.xyz page for the Q3 2022 earnings call and transcript PDF.\"},\n    {\"query_or_url\": \"Pichai December 2022 all-hands ChatGPT language model 2023\", \"what_found\": \"Only Wikipedia pages; nothing useful.\"},\n    {\"query_or_url\": \"Pichai interview December 2022 India AI \\\"next decade\\\"\", \"what_found\": \"Stanford GSB transcript snippet ('take a decade') plus 2023 and 2026 items.\"},\n    {\"query_or_url\": \"Pichai 2022 interview quantum AI \\\"five to ten years\\\"\", \"what_found\": \"Only 2025 quantum computing coverage and a 2021 BCG item; nothing from 2022.\"},\n    {\"query_or_url\": \"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\", \"what_found\": \"Opened; the text was cut off partway through the Workspace section; holds the Maps, captions and auto-chapters lines.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/amp/2022/05/12/cnbc-exclusive-cnbc-transcript-alphabet-ceo-sundar-pichai-speaks-with-cnbcs-deirdre-bosa-on-techcheck-today-.html\", \"what_found\": \"Would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"https://vrarnews.com/details/google-io-2022-advancing-knowledge-and-computing-627c20ce643ba282770a155e\", \"what_found\": \"Full copy of the I/O 2022 keynote text; LaMDA 'over the coming months' and Google Chat summaries 'in the next few months', both too vague to count.\"},\n    {\"query_or_url\": \"https://abc.xyz/investor/events/event-details/2022/2022-Q3-Earnings-Call/\", \"what_found\": \"Q3 2022 call; Pichai's AI remarks are undated (LaMDA in AI Test Kitchen, 'similar point now with AI').\"},\n    {\"query_or_url\": \"https://blog.google/intl/en-in/company-news/outreach-initiatives/google-for-india-2022-main-blog/\", \"what_found\": \"Post by Sanjay Gupta, not Pichai; no dated AI forecast in Pichai's words.\"},\n    {\"query_or_url\": \"https://www.gsb.stanford.edu/insights/sundar-pichai-reward-effort-not-outcomes\", \"what_found\": \"Full transcript dated 2022-06-17 containing Pichai's line that AI's transformation of sectors like healthcare will 'take a decade' to fully play out.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2022 Pichai's dated AI forward-looking statements were few. The main one is at Stanford GSB: AI's transformation of sectors such as healthcare will take about a decade to fully play out. The rest are near-term product dates from the Google I/O keynote: the already-recorded YouTube auto-chapters goal, immersive view in Maps 'later this year', and Ukrainian auto-translated captions 'next month'; nothing about when AGI arrives was found.\"\n}\n```"
+}

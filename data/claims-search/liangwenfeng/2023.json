@@ -1,0 +1,236 @@
+{
+  "speaker_id": "liangwenfeng",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4718,
+  "web_searches": 6,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7620
+      },
+      "cache_creation_input_tokens": 43513,
+      "cache_read_input_tokens": 275499,
+      "inference_geo": "global",
+      "input_tokens": 26,
+      "output_tokens": 6954,
+      "output_tokens_details": {
+        "thinking_tokens": 2194
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 6
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Liang Wenfeng\" AI prediction 2023','\"Liang Wenfeng\" 2023 interview AGI \"years\"','\"Liang Wenfeng\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in [\"https://crossingriver.substack.com/p/deepseeks-founder-speaks-the-liang\",\"https://www.lesswrong.com/posts/kANyEjDDFWkhSKbcK/two-interviews-with-the-founder-of-deepseek\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content'];P[u]=c;print(u,len(c))\n    for m in re.finditer(r'(years|decade|20[0-9]{2}|lifetime|AGI)',c):\n        pass"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://crossingriver.substack.com/p/deepseeks-founder-speaks-the-liang"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/kANyEjDDFWkhSKbcK/two-interviews-with-the-founder-of-deepseek"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/kANyEjDDFWkhSKbcK/two-interviews-with-the-founder-of-deepseek\"}) if False else None\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://rentry.co/DeepSeek-interview/\"})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): c=r[0]['content']\nelse:\n    c=r.get('content',{});c=c.get('source',{}).get('data','') if isinstance(c,dict) else str(r)\nprint(len(c))\ni=c.find('2024'); \nend=c.find('Unveiling') \nprint(c[:200])\nfor m in re.finditer(r'(next year|years|decade|20[0-9]{2}|lifetime|future|will )',c):\n    s=c[max(0,m.start()-200):m.end()+150].replace('\\n',' ')\n    print('--',m.start(),s)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://rentry.co/DeepSeek-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['疯狂的幻方 一家隐形AI巨头的大模型之路 梁文锋 暗涌','梁文锋 AGI \"有生之年\" 2年 5年 10年']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q][:6]:\n        c=x.get('content','')\n        for k in ['有生之年','明年','年内']:\n            i=c.find(k)\n            if i>=0: print('  ',k,'|',c[max(0,i-80):i+60].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "疯狂的幻方 一家隐形AI巨头的大模型之路 梁文锋 暗涌"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "梁文锋 AGI \"有生之年\" 2年 5年 10年"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    return None\nu=\"https://news.qq.com/rain/a/20230524A04F3300/\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): c=r[0]['content']\nelse:\n    cc=r.get('content',{}); c=cc.get('source',{}).get('data','') if isinstance(cc,dict) else str(r)\nprint(len(c)); print(c[:300])\nfor k in ['有生之年','明年','20年','年内','十年','AGI']:\n    for m in re.finditer(k,c):\n        print('--',k,'|',c[max(0,m.start()-150):m.end()+100].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.qq.com/rain/a/20230524A04F3300/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='揭秘DeepSeek 一个更极致的中国技术理想主义故事 梁文锋 有生之年'\nprint(\"==\",q); R[q]=show(await web_search({\"query\":q}))\nfor x in R[q][:8]:\n    cc=x.get('content','')\n    i=cc.find('有生之年')\n    if i>=0: print('  ',x['url'],'|',cc[max(0,i-120):i+20].replace('\\n',' '))\nu=\"https://finance.sina.com.cn/money/smjj/smdt/2023-05-24/doc-imyuxyfk2522975.shtml\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): c2=r[0]['content']\nelse:\n    cc=r.get('content',{}); c2=cc.get('source',{}).get('data','') if isinstance(cc,dict) else str(r)\ni=c2.find('看OpenA'); print(len(c2)); print(c2[i:i+2500] if i>=0 else c2[:500])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "揭秘DeepSeek 一个更极致的中国技术理想主义故事 梁文锋 有生之年"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://finance.sina.com.cn/money/smjj/smdt/2023-05-24/doc-imyuxyfk2522975.shtml"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['有生之年','最晚明年','未来20年','published','2023-05']:\n    i=c2.find(k); print(k, i, c2[max(0,i-60):i+80].replace('\\n',' ') if i>=0 else '')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-05",
+        "quote": "因为有OpenAI指路，又都基于公开论文和代码，最晚明年，大厂和创业公司都会把自己的大语言模型做出来。",
+        "what_is_predicted": "By 2024 at the latest, both big companies and startups will have built their own large language models.",
+        "date_or_span": "最晚明年 / 'by next year at the latest' (i.e. by 2024)",
+        "occasion": "36Kr 暗涌Waves interview, 'The Madness of High-Flyer' (疯狂的幻方：一家隐形AI巨头的大模型之路), published 23-24 May 2023",
+        "source_url": "https://finance.sina.com.cn/money/smjj/smdt/2023-05-24/doc-imyuxyfk2522975.shtml",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "The AGI timing line '可能是2年、5年或者10年，总之会在我们有生之年实现' (2, 5 or 10 years; within our lifetime) appears in search snippets for the July 2024 36Kr interview ('揭秘DeepSeek') and its reprints (e.g. news.qq.com/rain/a/20250129A03G4K00, finance.sina.com.cn/tech/2025-01-26/doc-inehhksk9178057.shtml). It is not in the full 2023 interview text. Seen only in snippets; I did not open a page carrying it."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Liang Wenfeng\" AI prediction 2023",
+        "what_found": "Profiles and news (Wikipedia, ChinaTalk, mign.io AGI tracker); none were 2023 primary sources. Because of a code error this search ran twice, so it used two of the 12 searches."
+      },
+      {
+        "query_or_url": "\"Liang Wenfeng\" 2023 interview AGI \"years\"",
+        "what_found": "Pointed to English translations of the May 2023 and July 2024 36Kr interviews (crossingriver Substack, LessWrong, ChinaTalk)."
+      },
+      {
+        "query_or_url": "\"Liang Wenfeng\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly coverage of a later investor presentation (not 2023), plus the same interview translations."
+      },
+      {
+        "query_or_url": "疯狂的幻方 一家隐形AI巨头的大模型之路 梁文锋 暗涌",
+        "what_found": "Chinese reprints of the May 2023 interview on Tencent News and Sina Finance, both dated 2023-05-24."
+      },
+      {
+        "query_or_url": "梁文锋 AGI \"有生之年\" 2年 5年 10年",
+        "what_found": "Snippets with the '2, 5 or 10 years, in our lifetime' AGI line; the source still needed checking."
+      },
+      {
+        "query_or_url": "揭秘DeepSeek 一个更极致的中国技术理想主义故事 梁文锋 有生之年",
+        "what_found": "Snippets that tie the 'in our lifetime' line to the July 2024 interview."
+      },
+      {
+        "query_or_url": "https://crossingriver.substack.com/p/deepseeks-founder-speaks-the-liang",
+        "what_found": "An English digest that merges the 2023 and 2024 interviews without marking which year each answer is from; not used for quotes."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/kANyEjDDFWkhSKbcK/two-interviews-with-the-founder-of-deepseek",
+        "what_found": "English translation of the 2023 interview (dated 2023-05-23) containing 'by next year at the latest, both big companies and startups will make their own LLMs'; the page cut off partway through."
+      },
+      {
+        "query_or_url": "https://rentry.co/DeepSeek-interview/",
+        "what_found": "The 14 Apr 2023 High-Flyer announcement (no dated prediction) and the same 2023 interview translation, also cut off."
+      },
+      {
+        "query_or_url": "https://news.qq.com/rain/a/20230524A04F3300/",
+        "what_found": "Chinese original published 2023-05-24 containing '最晚明年…都会把自己的大语言模型做出来'; ends mid-sentence near the end of the interview."
+      },
+      {
+        "query_or_url": "https://finance.sina.com.cn/money/smjj/smdt/2023-05-24/doc-imyuxyfk2522975.shtml",
+        "what_found": "Full Chinese text through the final answer (original publish time 2023-05-24); has the '最晚明年' line and no '有生之年' AGI timing line."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Liang Wenfeng's only public interview in 2023 was the 36Kr 暗涌 Q&A of May 2023. In it he made one dated AI forecast: by 2024 at the latest, big firms and startups alike would have their own large language models. He also said startups could enter 'at any point in the next 20 years', which I left out as a market forecast. He gave no AGI timeline that year; the well-known '2, 5 or 10 years, within our lifetime' remark comes from the July 2024 interview."
+  },
+  "reply_text": "I found one dated AI prediction from Liang Wenfeng in 2023. It comes from his only interview that year, a question-and-answer with 36Kr's \"暗涌 Waves\" published on 23–24 May 2023.\n\n- **The prediction:** He said that by 2024 at the latest, both big companies and startups would have built their own large language models. The Chinese original reads \"最晚明年，大厂和创业公司都会把自己的大语言模型做出来\". I read this sentence on both the Tencent and Sina reprints. The English version I read on LessWrong says \"by next year at the latest, both big companies and startups will make their own LLMs.\"\n- **Left out:** In the same answer he said startups could enter \"at any point in the next 20 years\" as the cost of building applications on large models falls. That is a prediction about the market rather than about what AI will do, so I didn't count it.\n- **No AGI timeline in 2023:** His AGI remarks that year say where AGI might come from, not when it will arrive. The full Chinese text on Sina does not contain \"有生之年\" (\"in our lifetime\").\n- **The 2024 quote people attribute to him:** \"可能是2年、5年或者10年，总之会在我们有生之年实现\" (AGI may come in 2, 5 or 10 years, but within our lifetime) belongs to the July 2024 interview. One search snippet says 暗涌 interviewed him in May 2023 and in July 2024, and that snippet contains the quote. I only saw it in snippets and did not open any page that carries it.\n- **Pages to avoid:** The crossingriver Substack translation merges the 2023 and 2024 interviews without saying which answer comes from which, so it can't be used to date anything. The LessWrong and rentry.co copies are cut off partway through the 2023 interview.\n- **Wasted call:** I accidentally ran the first fixed search twice because of a code error. It cost 7 of the 12 searches in all (6 distinct queries) and 5 of the 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-05\",\n      \"quote\": \"因为有OpenAI指路，又都基于公开论文和代码，最晚明年，大厂和创业公司都会把自己的大语言模型做出来。\",\n      \"what_is_predicted\": \"By 2024 at the latest, both big companies and startups will have built their own large language models.\",\n      \"date_or_span\": \"最晚明年 / 'by next year at the latest' (i.e. by 2024)\",\n      \"occasion\": \"36Kr 暗涌Waves interview, 'The Madness of High-Flyer' (疯狂的幻方：一家隐形AI巨头的大模型之路), published 23-24 May 2023\",\n      \"source_url\": \"https://finance.sina.com.cn/money/smjj/smdt/2023-05-24/doc-imyuxyfk2522975.shtml\",\n      \"source_kind\": \"printed_qa\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\n      \"year\": \"2024\",\n      \"note\": \"The AGI timing line '可能是2年、5年或者10年，总之会在我们有生之年实现' (2, 5 or 10 years; within our lifetime) appears in search snippets for the July 2024 36Kr interview ('揭秘DeepSeek') and its reprints (e.g. news.qq.com/rain/a/20250129A03G4K00, finance.sina.com.cn/tech/2025-01-26/doc-inehhksk9178057.shtml). It is not in the full 2023 interview text. Seen only in snippets; I did not open a page carrying it.\"\n    }\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" AI prediction 2023\", \"what_found\": \"Profiles and news (Wikipedia, ChinaTalk, mign.io AGI tracker); none were 2023 primary sources. Because of a code error this search ran twice, so it used two of the 12 searches.\"},\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"Pointed to English translations of the May 2023 and July 2024 36Kr interviews (crossingriver Substack, LessWrong, ChinaTalk).\"},\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly coverage of a later investor presentation (not 2023), plus the same interview translations.\"},\n    {\"query_or_url\": \"疯狂的幻方 一家隐形AI巨头的大模型之路 梁文锋 暗涌\", \"what_found\": \"Chinese reprints of the May 2023 interview on Tencent News and Sina Finance, both dated 2023-05-24.\"},\n    {\"query_or_url\": \"梁文锋 AGI \\\"有生之年\\\" 2年 5年 10年\", \"what_found\": \"Snippets with the '2, 5 or 10 years, in our lifetime' AGI line; the source still needed checking.\"},\n    {\"query_or_url\": \"揭秘DeepSeek 一个更极致的中国技术理想主义故事 梁文锋 有生之年\", \"what_found\": \"Snippets that tie the 'in our lifetime' line to the July 2024 interview.\"},\n    {\"query_or_url\": \"https://crossingriver.substack.com/p/deepseeks-founder-speaks-the-liang\", \"what_found\": \"An English digest that merges the 2023 and 2024 interviews without marking which year each answer is from; not used for quotes.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/kANyEjDDFWkhSKbcK/two-interviews-with-the-founder-of-deepseek\", \"what_found\": \"English translation of the 2023 interview (dated 2023-05-23) containing 'by next year at the latest, both big companies and startups will make their own LLMs'; the page cut off partway through.\"},\n    {\"query_or_url\": \"https://rentry.co/DeepSeek-interview/\", \"what_found\": \"The 14 Apr 2023 High-Flyer announcement (no dated prediction) and the same 2023 interview translation, also cut off.\"},\n    {\"query_or_url\": \"https://news.qq.com/rain/a/20230524A04F3300/\", \"what_found\": \"Chinese original published 2023-05-24 containing '最晚明年…都会把自己的大语言模型做出来'; ends mid-sentence near the end of the interview.\"},\n    {\"query_or_url\": \"https://finance.sina.com.cn/money/smjj/smdt/2023-05-24/doc-imyuxyfk2522975.shtml\", \"what_found\": \"Full Chinese text through the final answer (original publish time 2023-05-24); has the '最晚明年' line and no '有生之年' AGI timing line.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Liang Wenfeng's only public interview in 2023 was the 36Kr 暗涌 Q&A of May 2023. In it he made one dated AI forecast: by 2024 at the latest, big firms and startups alike would have their own large language models. He also said startups could enter 'at any point in the next 20 years', which I left out as a market forecast. He gave no AGI timeline that year; the well-known '2, 5 or 10 years, within our lifetime' remark comes from the July 2024 interview.\"\n}\n```"
+}

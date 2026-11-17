@@ -1,0 +1,23 @@
+[claim]
+id = "2019-10-23-musk-fsd-feature-complete-early-access-this-year"
+speaker_id = "musk"
+when = "2019-10-23"
+occasion = "Tesla's third-quarter 2019 earnings call, his opening remarks"
+source_kind = "transcript"
+source_url = "https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx"
+source_locator = "his prepared remarks, after 'Autopilot and Full Self-Driving functionality get better'"
+checked_how = "Read in The Motley Fool's transcript of the call on 2026-11-17 (curl); nobody listened to the recording."
+quote = "it appears to be on track for at least an early access release of a fully functional Full Self-Driving by the end of this year"
+prediction = "Tesla appears on track to release at least an early-access version of feature-complete Full Self-Driving by the end of 2019; he says 'it's going to be tight' and 'it's not for sure'."
+kind = "deployment"
+bar = "Tesla releasing a feature-complete Full Self-Driving build to at least its early-access owners by 2019-12-31."
+due = 2019
+due_basis = "'by the end of this year', said 2019-10-23."
+status = "missed"
+verdict_on = 2020-10-21
+verdict_why = "No such release came in 2019. On Tesla's earnings call of 2020-10-21 he said of the Full Self-Driving beta 'we put it out there last night', to a small first group; the early release came about ten months after the date."
+verdict_source = "https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-039", "musk-claims-040"]
+notes = "Role at the time: chief executive of Tesla (counted by my ruling of 2026-10-19), Tesla then counting as a company building frontier AI; he had left OpenAI's board in February 2018 and founded xAI only in 2023. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17."

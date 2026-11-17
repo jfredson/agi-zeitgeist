@@ -1,0 +1,309 @@
+{
+  "speaker_id": "legg",
+  "year": 2016,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6018,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7594
+      },
+      "cache_creation_input_tokens": 60905,
+      "cache_read_input_tokens": 293866,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 5921,
+      "output_tokens_details": {
+        "thinking_tokens": 1257
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Shane Legg\" AI prediction 2016','\"Shane Legg\" 2016 interview AGI \"years\"','\"Shane Legg\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2016"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:400].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2016 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Shane Legg DeepMind interview 2016','\"Shane Legg\" talk 2016 artificial general intelligence','\"Shane Legg\" Business Insider DeepMind cofounder']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg DeepMind interview 2016"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" talk 2016 artificial general intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Business Insider DeepMind cofounder"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['edge.org Shane Legg response','vetta.org Shane Legg blog AGI prediction','\"Shane Legg\" AlphaGo 2016 said']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "edge.org Shane Legg response"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "vetta.org Shane Legg blog AGI prediction"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AlphaGo 2016 said"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor u in ['https://en.wikipedia.org/wiki/Shane_Legg','https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; print('==',u,len(c))\n    for m in re.finditer(r'2016|2017|predict|years|decade|20[2-4]\\d',c):\n        print('  ..',c[max(0,m.start()-200):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://en.wikipedia.org/wiki/Shane_Legg"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def grab(r):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content')\n        if isinstance(c,dict): return c.get('source',{}).get('data','') or str(c)\n        return str(r)\n    return r[0].get('content','')\nfor u in ['https://www.bloomberg.com/news/articles/2016-12-05/google-deepmind-makes-ai-training-platform-publicly-available','https://web.archive.org/web/20190430134314/https://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=11384274']:\n    c=grab(await web_fetch({\"url\":u}))\n    print('==',u,len(c)); \n    i=c.find('Legg'); print(c[:200] if i<0 else '')\n    for m in re.finditer(r'Legg',c):\n        print('  ..',c[max(0,m.start()-300):m.start()+500].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bloomberg.com/news/articles/2016-12-05/google-deepmind-makes-ai-training-platform-publicly-available"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://web.archive.org/web/20190430134314/https://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=11384274"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Bloomberg December 2016 DeepMind Lab open source Shane Legg','\"Soaring Kiwis\" Shane Legg NZ Herald']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Bloomberg December 2016 DeepMind Lab open source Shane Legg"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Soaring Kiwis\" Shane Legg NZ Herald"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.nzherald.co.nz/business/soaring-kiwis-programmed-early-for-success/MDNQXUMMG2VQB45HQXEG6NIWSI/','https://deepmind.google/blog/deepminds-work-in-2016-a-round-up/']:\n    c=grab(await web_fetch({\"url\":u}))\n    print('==',u,len(c))\n    for m in re.finditer(r'20\\d\\d|year|decade|will |future|AGI|general',c):\n        print('  ..',c[max(0,m.start()-150):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nzherald.co.nz/business/soaring-kiwis-programmed-early-for-success/MDNQXUMMG2VQB45HQXEG6NIWSI/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://deepmind.google/blog/deepminds-work-in-2016-a-round-up/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Shane Legg\" keynote OR lecture OR panel 2016'\nr=await web_search({\"query\":q}); print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" keynote OR lecture OR panel 2016"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2017",
+        "note": "'DeepMind's work in 2016: a round-up' (co-authors Hassabis, Suleyman, Legg), published 3 January 2017 on deepmind.google: 'we're looking forward to playing more games in 2017' (an AlphaGo plan, not a prediction) and 'we remain a long way from anything that approximates what you or we would term intelligence' (no date)."
+      },
+      {
+        "year": "2015",
+        "note": "NZ Herald 'Programmed early for success' (Holly Ryan), dated on the page 9 Jan 2015. Wikipedia cites it as 10 January 2016. A biographical profile with no AI prediction."
+      },
+      {
+        "year": "2009",
+        "note": "Search snippet of vetta.org post 'Tick, tock, tick, tock… BING' (7 Dec 2009) gives an AGI-around-2025 prediction. Page not opened."
+      },
+      {
+        "year": "2011",
+        "note": "Search snippet of vetta.org 'Goodbye 2011, hello 2012' (31 Dec 2011): log-normal AGI forecast, mean 2028, mode 2025. LessWrong Q&A of 17 June 2011 quoted in the Business Insider/Yahoo piece of 26 Jan 2017. Neither vetta.org nor LessWrong page opened."
+      },
+      {
+        "year": "2021",
+        "note": "Search snippet of Legg tweet of 24 Aug 2021 restating 50% by 2028 and 90% by 2040. Not opened."
+      },
+      {
+        "year": "2023",
+        "note": "Search results show many reports of Legg restating 50% AGI by 2028 (Dwarkesh podcast, TED). Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2016",
+        "what_found": "Only later restatements of his 50%-by-2028 AGI forecast. Nothing said in 2016."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2016 interview AGI \"years\"",
+        "what_found": "2011 LessWrong Q&A, 2022 DeepMind podcast, 2023 coverage. Nothing from 2016."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "An older interview on a fandom wiki and 2023–2026 coverage. Nothing from 2016."
+      },
+      {
+        "query_or_url": "Shane Legg DeepMind interview 2016",
+        "what_found": "2023 Dwarkesh and TED interviews. No 2016 interview."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" talk 2016 artificial general intelligence",
+        "what_found": "Speaker bios, the 2023 TED talk, 2023 Gary Marcus post. No 2016 talk."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Business Insider DeepMind cofounder",
+        "what_found": "Business Insider profile of Jan 2017 (Yahoo syndication)."
+      },
+      {
+        "query_or_url": "edge.org Shane Legg response",
+        "what_found": "Edge member bio and later tweets. No 2016 Edge response found."
+      },
+      {
+        "query_or_url": "vetta.org Shane Legg blog AGI prediction",
+        "what_found": "vetta.org posts from 2009 and 2011 and a 2021 tweet. No 2016 post."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" AlphaGo 2016 said",
+        "what_found": "Later reflections on AlphaGo (2023–2024). No 2016 quotes."
+      },
+      {
+        "query_or_url": "https://en.wikipedia.org/wiki/Shane_Legg",
+        "what_found": "Opened. Cites the Jan 2017 Business Insider profile and an NZ Herald piece it dates to Jan 2016. No 2016 prediction."
+      },
+      {
+        "query_or_url": "https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html",
+        "what_found": "Opened. Business Insider profile, 26 Jan 2017. Says Legg rarely gives quotes, names a Bloomberg interview of 5 Dec 2016, and quotes only the 2011 LessWrong interview."
+      },
+      {
+        "query_or_url": "https://www.bloomberg.com/news/articles/2016-12-05/google-deepmind-makes-ai-training-platform-publicly-available",
+        "what_found": "Would not open (url_not_allowed). Not quoted."
+      },
+      {
+        "query_or_url": "https://web.archive.org/web/20190430134314/https://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=11384274",
+        "what_found": "Would not open (url_not_allowed)."
+      },
+      {
+        "query_or_url": "Bloomberg December 2016 DeepMind Lab open source Shane Legg",
+        "what_found": "DeepMind Lab release coverage and paper (Legg a co-author), plus the DeepMind 2016 round-up blog. No Legg prediction in the snippets."
+      },
+      {
+        "query_or_url": "\"Soaring Kiwis\" Shane Legg NZ Herald",
+        "what_found": "The NZ Herald profile, live URL."
+      },
+      {
+        "query_or_url": "https://www.nzherald.co.nz/business/soaring-kiwis-programmed-early-for-success/MDNQXUMMG2VQB45HQXEG6NIWSI/",
+        "what_found": "Opened. Page dated 9 Jan 2015. Biography, no AI prediction."
+      },
+      {
+        "query_or_url": "https://deepmind.google/blog/deepminds-work-in-2016-a-round-up/",
+        "what_found": "Opened. Published 3 Jan 2017. No dated AI prediction, only a plan to play more AlphaGo games in 2017."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" keynote OR lecture OR panel 2016",
+        "what_found": "Speaker bios, a 2009 lecture video, recent items. No 2016 talk."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "No dated or undated AI prediction by Shane Legg from 2016 was found on any page opened. Business Insider (January 2017) says he rarely spoke publicly then, and the one 2016 interview it names (Bloomberg, 5 Dec 2016) would not open. His well-known 50%-by-2028 AGI forecast shows up only in posts and interviews from other years."
+  },
+  "reply_text": "I found no dated AI prediction by Shane Legg from 2016, so I've marked it a quiet year.\n\n- **The three fixed searches** turned up only later restatements of his long-held forecast: a 50% chance of AGI by 2028, which he dates to 1999 and his 2009–2011 blog posts and interviews. He repeated it in 2021 and 2023, and later again.\n- **Business Insider, 26 January 2017:** this profile says Legg gave \"significantly fewer talks and far less quotes to journalists\" than his co-founders. It names one 2016 interview, with Bloomberg on 5 December 2016, but that page wouldn't open for me, so I can't say what he said in it. The profile's only quotes from him come from a 2011 LessWrong interview.\n- **New Zealand Herald, \"Programmed early for success\":** Wikipedia dates this to 10 January 2016, but the page itself shows 9 January 2015. I found no prediction in it.\n- **\"DeepMind's work in 2016: a round-up\":** Legg co-wrote this with Demis Hassabis and Mustafa Suleyman, but it was published on 3 January 2017. Its only line about the future is \"we're looking forward to playing more games in 2017,\" which is a plan for AlphaGo rather than a prediction. It also says \"we remain a long way from anything that approximates what you or we would term intelligence,\" which gives no date. I've put it under other years.\n\nI used all 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2017\", \"note\": \"'DeepMind's work in 2016: a round-up' (co-authors Hassabis, Suleyman, Legg), published 3 January 2017 on deepmind.google: 'we're looking forward to playing more games in 2017' (an AlphaGo plan, not a prediction) and 'we remain a long way from anything that approximates what you or we would term intelligence' (no date).\"},\n    {\"year\": \"2015\", \"note\": \"NZ Herald 'Programmed early for success' (Holly Ryan), dated on the page 9 Jan 2015. Wikipedia cites it as 10 January 2016. A biographical profile with no AI prediction.\"},\n    {\"year\": \"2009\", \"note\": \"Search snippet of vetta.org post 'Tick, tock, tick, tock… BING' (7 Dec 2009) gives an AGI-around-2025 prediction. Page not opened.\"},\n    {\"year\": \"2011\", \"note\": \"Search snippet of vetta.org 'Goodbye 2011, hello 2012' (31 Dec 2011): log-normal AGI forecast, mean 2028, mode 2025. LessWrong Q&A of 17 June 2011 quoted in the Business Insider/Yahoo piece of 26 Jan 2017. Neither vetta.org nor LessWrong page opened.\"},\n    {\"year\": \"2021\", \"note\": \"Search snippet of Legg tweet of 24 Aug 2021 restating 50% by 2028 and 90% by 2040. Not opened.\"},\n    {\"year\": \"2023\", \"note\": \"Search results show many reports of Legg restating 50% AGI by 2028 (Dwarkesh podcast, TED). Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2016\", \"what_found\": \"Only later restatements of his 50%-by-2028 AGI forecast. Nothing said in 2016.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2016 interview AGI \\\"years\\\"\", \"what_found\": \"2011 LessWrong Q&A, 2022 DeepMind podcast, 2023 coverage. Nothing from 2016.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2016 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"An older interview on a fandom wiki and 2023–2026 coverage. Nothing from 2016.\"},\n    {\"query_or_url\": \"Shane Legg DeepMind interview 2016\", \"what_found\": \"2023 Dwarkesh and TED interviews. No 2016 interview.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" talk 2016 artificial general intelligence\", \"what_found\": \"Speaker bios, the 2023 TED talk, 2023 Gary Marcus post. No 2016 talk.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Business Insider DeepMind cofounder\", \"what_found\": \"Business Insider profile of Jan 2017 (Yahoo syndication).\"},\n    {\"query_or_url\": \"edge.org Shane Legg response\", \"what_found\": \"Edge member bio and later tweets. No 2016 Edge response found.\"},\n    {\"query_or_url\": \"vetta.org Shane Legg blog AGI prediction\", \"what_found\": \"vetta.org posts from 2009 and 2011 and a 2021 tweet. No 2016 post.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AlphaGo 2016 said\", \"what_found\": \"Later reflections on AlphaGo (2023–2024). No 2016 quotes.\"},\n    {\"query_or_url\": \"https://en.wikipedia.org/wiki/Shane_Legg\", \"what_found\": \"Opened. Cites the Jan 2017 Business Insider profile and an NZ Herald piece it dates to Jan 2016. No 2016 prediction.\"},\n    {\"query_or_url\": \"https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html\", \"what_found\": \"Opened. Business Insider profile, 26 Jan 2017. Says Legg rarely gives quotes, names a Bloomberg interview of 5 Dec 2016, and quotes only the 2011 LessWrong interview.\"},\n    {\"query_or_url\": \"https://www.bloomberg.com/news/articles/2016-12-05/google-deepmind-makes-ai-training-platform-publicly-available\", \"what_found\": \"Would not open (url_not_allowed). Not quoted.\"},\n    {\"query_or_url\": \"https://web.archive.org/web/20190430134314/https://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=11384274\", \"what_found\": \"Would not open (url_not_allowed).\"},\n    {\"query_or_url\": \"Bloomberg December 2016 DeepMind Lab open source Shane Legg\", \"what_found\": \"DeepMind Lab release coverage and paper (Legg a co-author), plus the DeepMind 2016 round-up blog. No Legg prediction in the snippets.\"},\n    {\"query_or_url\": \"\\\"Soaring Kiwis\\\" Shane Legg NZ Herald\", \"what_found\": \"The NZ Herald profile, live URL.\"},\n    {\"query_or_url\": \"https://www.nzherald.co.nz/business/soaring-kiwis-programmed-early-for-success/MDNQXUMMG2VQB45HQXEG6NIWSI/\", \"what_found\": \"Opened. Page dated 9 Jan 2015. Biography, no AI prediction.\"},\n    {\"query_or_url\": \"https://deepmind.google/blog/deepminds-work-in-2016-a-round-up/\", \"what_found\": \"Opened. Published 3 Jan 2017. No dated AI prediction, only a plan to play more AlphaGo games in 2017.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" keynote OR lecture OR panel 2016\", \"what_found\": \"Speaker bios, a 2009 lecture video, recent items. No 2016 talk.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"No dated or undated AI prediction by Shane Legg from 2016 was found on any page opened. Business Insider (January 2017) says he rarely spoke publicly then, and the one 2016 interview it names (Bloomberg, 5 Dec 2016) would not open. His well-known 50%-by-2028 AGI forecast shows up only in posts and interviews from other years.\"\n}\n```"
+}

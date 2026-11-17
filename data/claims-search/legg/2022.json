@@ -1,0 +1,260 @@
+{
+  "speaker_id": "legg",
+  "year": 2022,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4245,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7621
+      },
+      "cache_creation_input_tokens": 37849,
+      "cache_read_input_tokens": 152475,
+      "inference_geo": "global",
+      "input_tokens": 20,
+      "output_tokens": 5233,
+      "output_tokens_details": {
+        "thinking_tokens": 1171
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 3,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Shane Legg\" AI prediction 2022','\"Shane Legg\" 2022 interview AGI \"years\"','\"Shane Legg\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2022"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:400].replace('\\n',' '))\nshow(r)\nres={}\nfor q in qs[1:]:\n    res[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(res[q])\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2022 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\"})\nif isinstance(p,str): p=json.loads(p)\nc=p[0]['content'] if isinstance(p,list) else str(p)\ni=c.find('Legg'); print(len(c)); print(c[:200])\nimport re\nfor m in re.finditer('Legg',c): print(c[max(0,m.start()-100):m.start()+1500].replace('\\n',' ')); print('----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Shane Legg\" tweet AGI 2022 Gato','\"Shane Legg\" \"DeepMind: The Podcast\" road to AGI transcript','\"Shane Legg\" 2022 talk OR keynote OR lecture AGI']:\n    res[q]=await web_search({\"query\":q}); print(\"==\",q); show(res[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" tweet AGI 2022 Gato"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" \"DeepMind: The Podcast\" road to AGI transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2022 talk OR keynote OR lecture AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['ShaneLegg x.com 2022 AGI timelines \"50%\"','\"Legg\" DeepMind podcast \"2030-ish\" \"50-50\"','\"Shane Legg\" 2022 AI safety alignment interview future']:\n    res[q]=await web_search({\"query\":q}); print(\"==\",q); show(res[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ShaneLegg x.com 2022 AGI timelines \"50%\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Legg\" DeepMind podcast \"2030-ish\" \"50-50\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2022 AI safety alignment interview future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in [\"https://aifuture.substack.com/p/how-far-are-we-from-artificial-general\",\"https://www.youtube.com/watch?v=Uy4OYU7PQYA\"]:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    c=json.dumps(p)\n    print(\"==\",u,len(c))\n    for m in re.finditer('Legg|2030|Published|uploadDate|datePublished',c): print(c[max(0,m.start()-300):m.start()+400]); print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://aifuture.substack.com/p/how-far-are-we-from-artificial-general"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.youtube.com/watch?v=Uy4OYU7PQYA"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"@ShaneLegg\" 2022 reply AGI \"2028\" OR \"2030\" twitter']:\n    res[q]=await web_search({\"query\":q}); print(\"==\",q); show(res[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"@ShaneLegg\" 2022 reply AGI \"2028\" OR \"2030\" twitter"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2022-02-15",
+        "quote": "I always felt that somewhere around 2030-ish it was about a 50-50 chance. I still feel that seems reasonable.",
+        "what_is_predicted": "There is roughly a 50% chance that AGI arrives around 2030.",
+        "date_or_span": "around 2030",
+        "occasion": "DeepMind: The Podcast, Season 2 Episode 5 'The road to AGI' (with Hannah Fry), at about 5:09; the YouTube upload is dated Feb 14, 2022 and the LessWrong post says Feb 15, 2022",
+        "source_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "source_kind": "transcript",
+        "already_recorded": "2022-02-15-legg-agi-fifty-fifty-around-2030.toml"
+      },
+      {
+        "date_said": "2022-02-15",
+        "quote": "If you look at the amazing progress in the last 10 years and you imagine in the next 10 years we have something comparable, maybe there's some chance that we will have an AGI in a decade. And if not in a decade, well I don't know, say three decades or so.",
+        "what_is_predicted": "There is some chance of AGI within a decade, and if not, within about three decades.",
+        "date_or_span": "within a decade (about 2032); otherwise about three decades (about 2052)",
+        "occasion": "DeepMind: The Podcast, Season 2 Episode 5 'The road to AGI', the same answer as the line above",
+        "source_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2021",
+        "note": "Search results show a 2021 tweet (x.com/ShaneLegg/status/1430146229426692097) giving 50% by 2028 and 90% by 2040. I did not open it."
+      },
+      {
+        "year": "2023",
+        "note": "Search results show the October 2023 Dwarkesh Patel interview (50% chance of AGI by 2028), the TED talk with Chris Anderson, and the TIME100 AI profile. I did not open these."
+      },
+      {
+        "year": "2024",
+        "note": "Search results show a December 13, 2024 reply to @tmhhope saying he has predicted a 50% chance of AGI by 2028 for 20 years. I did not open it."
+      },
+      {
+        "year": "2025",
+        "note": "Search results show a December 2025 Google DeepMind podcast episode, 'The Arrival of AGI', and a matching tweet and LinkedIn post (50% chance of AGI or minimal AGI by 2028). I did not open these."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2022",
+        "what_found": "Mostly 2023 coverage of the 2028 prediction; one 2022 Substack post pointing to the 2022 podcast."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2022 interview AGI \"years\"",
+        "what_found": "The LessWrong excerpt of the Feb 2022 podcast episode 'The road to AGI', plus 2023 and 2025 items."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage from 2023 and 2025 and an older interview with Jonathan Despres; nothing new from 2022."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" tweet AGI 2022 Gato",
+        "what_found": "A May 25, 2022 tweet about who coined the term AGI, which makes no prediction; the rest is from other years."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" \"DeepMind: The Podcast\" road to AGI transcript",
+        "what_found": "The LessWrong excerpt again, plus listings for the 2025 episode; no official transcript of the 2022 episode."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2022 talk OR keynote OR lecture AGI",
+        "what_found": "The 2023 TED talk and speaker-agency pages; no 2022 talk."
+      },
+      {
+        "query_or_url": "ShaneLegg x.com 2022 AGI timelines \"50%\"",
+        "what_found": "Tweets from 2021, 2024 and 2025 and a LinkedIn post; none from 2022."
+      },
+      {
+        "query_or_url": "\"Legg\" DeepMind podcast \"2030-ish\" \"50-50\"",
+        "what_found": "Only the LessWrong excerpt carries the wording."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2022 AI safety alignment interview future",
+        "what_found": "The 2023 Dwarkesh interview and the 2023 TIME100 profile; nothing from 2022."
+      },
+      {
+        "query_or_url": "\"@ShaneLegg\" 2022 reply AGI \"2028\" OR \"2030\" twitter",
+        "what_found": "Tweets from 2021, 2023, 2024 and 2025; nothing from 2022."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "what_found": "Opened: excerpts of S2 Ep5 with timestamps, including Legg's 2030-ish 50-50 answer and his decade/three-decades remark."
+      },
+      {
+        "query_or_url": "https://aifuture.substack.com/p/how-far-are-we-from-artificial-general",
+        "what_found": "Opened: a 2022 post that paraphrases the same podcast (50/50 by 2030) and contains no new Legg words."
+      },
+      {
+        "query_or_url": "https://www.youtube.com/watch?v=Uy4OYU7PQYA",
+        "what_found": "Opened: YouTube blocked the page; the title, channel, Feb 14, 2022 upload date and description came through, but no transcript."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Legg's only dated AI prediction found for 2022 comes from DeepMind: The Podcast S2 Ep5 (Feb 2022). There he repeated a roughly 50-50 chance of AGI around 2030 and added some chance of AGI within a decade, or else within about three decades. The first is already recorded. The wording comes from a fan's excerpt on LessWrong, not an official transcript, and no other 2022 interview, talk or post with a dated prediction turned up."
+  },
+  "reply_text": "I found one 2022 occasion with a dated prediction from Shane Legg, and it is the one you already have on file. It is episode 5 of season 2 of DeepMind: The Podcast, \"The road to AGI,\" hosted by Hannah Fry. Nothing else from 2022 turned up.\n\n- **Where the quotes come from:** I took them from a fan's word-for-word excerpt of the episode posted on LessWrong, not from an official transcript. I could not play the recording to check them.\n- **Release date:** LessWrong gives February 15, 2022. The YouTube page shows February 14, 2022 (YouTube blocked the page, so only the title, date and description came through). Your file uses the 15th.\n- **A possible second claim:** In the same answer Legg went on to say there was \"some chance\" of AGI within a decade, and otherwise in about three decades. I listed it as a separate candidate. You may decide it belongs to the claim you already have.\n- **Other years:** The other dated predictions I found are from 2021, 2023, 2024 and 2025. They are listed under other_years.\n\nI used 10 of the 12 searches and 3 of the 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2022-02-15\", \"quote\": \"I always felt that somewhere around 2030-ish it was about a 50-50 chance. I still feel that seems reasonable.\", \"what_is_predicted\": \"There is roughly a 50% chance that AGI arrives around 2030.\", \"date_or_span\": \"around 2030\", \"occasion\": \"DeepMind: The Podcast, Season 2 Episode 5 'The road to AGI' (with Hannah Fry), at about 5:09; the YouTube upload is dated Feb 14, 2022 and the LessWrong post says Feb 15, 2022\", \"source_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\", \"source_kind\": \"transcript\", \"already_recorded\": \"2022-02-15-legg-agi-fifty-fifty-around-2030.toml\"},\n    {\"date_said\": \"2022-02-15\", \"quote\": \"If you look at the amazing progress in the last 10 years and you imagine in the next 10 years we have something comparable, maybe there's some chance that we will have an AGI in a decade. And if not in a decade, well I don't know, say three decades or so.\", \"what_is_predicted\": \"There is some chance of AGI within a decade, and if not, within about three decades.\", \"date_or_span\": \"within a decade (about 2032); otherwise about three decades (about 2052)\", \"occasion\": \"DeepMind: The Podcast, Season 2 Episode 5 'The road to AGI', the same answer as the line above\", \"source_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2021\", \"note\": \"Search results show a 2021 tweet (x.com/ShaneLegg/status/1430146229426692097) giving 50% by 2028 and 90% by 2040. I did not open it.\"},\n    {\"year\": \"2023\", \"note\": \"Search results show the October 2023 Dwarkesh Patel interview (50% chance of AGI by 2028), the TED talk with Chris Anderson, and the TIME100 AI profile. I did not open these.\"},\n    {\"year\": \"2024\", \"note\": \"Search results show a December 13, 2024 reply to @tmhhope saying he has predicted a 50% chance of AGI by 2028 for 20 years. I did not open it.\"},\n    {\"year\": \"2025\", \"note\": \"Search results show a December 2025 Google DeepMind podcast episode, 'The Arrival of AGI', and a matching tweet and LinkedIn post (50% chance of AGI or minimal AGI by 2028). I did not open these.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2022\", \"what_found\": \"Mostly 2023 coverage of the 2028 prediction; one 2022 Substack post pointing to the 2022 podcast.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2022 interview AGI \\\"years\\\"\", \"what_found\": \"The LessWrong excerpt of the Feb 2022 podcast episode 'The road to AGI', plus 2023 and 2025 items.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2022 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage from 2023 and 2025 and an older interview with Jonathan Despres; nothing new from 2022.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" tweet AGI 2022 Gato\", \"what_found\": \"A May 25, 2022 tweet about who coined the term AGI, which makes no prediction; the rest is from other years.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" \\\"DeepMind: The Podcast\\\" road to AGI transcript\", \"what_found\": \"The LessWrong excerpt again, plus listings for the 2025 episode; no official transcript of the 2022 episode.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2022 talk OR keynote OR lecture AGI\", \"what_found\": \"The 2023 TED talk and speaker-agency pages; no 2022 talk.\"},\n    {\"query_or_url\": \"ShaneLegg x.com 2022 AGI timelines \\\"50%\\\"\", \"what_found\": \"Tweets from 2021, 2024 and 2025 and a LinkedIn post; none from 2022.\"},\n    {\"query_or_url\": \"\\\"Legg\\\" DeepMind podcast \\\"2030-ish\\\" \\\"50-50\\\"\", \"what_found\": \"Only the LessWrong excerpt carries the wording.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2022 AI safety alignment interview future\", \"what_found\": \"The 2023 Dwarkesh interview and the 2023 TIME100 profile; nothing from 2022.\"},\n    {\"query_or_url\": \"\\\"@ShaneLegg\\\" 2022 reply AGI \\\"2028\\\" OR \\\"2030\\\" twitter\", \"what_found\": \"Tweets from 2021, 2023, 2024 and 2025; nothing from 2022.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\", \"what_found\": \"Opened: excerpts of S2 Ep5 with timestamps, including Legg's 2030-ish 50-50 answer and his decade/three-decades remark.\"},\n    {\"query_or_url\": \"https://aifuture.substack.com/p/how-far-are-we-from-artificial-general\", \"what_found\": \"Opened: a 2022 post that paraphrases the same podcast (50/50 by 2030) and contains no new Legg words.\"},\n    {\"query_or_url\": \"https://www.youtube.com/watch?v=Uy4OYU7PQYA\", \"what_found\": \"Opened: YouTube blocked the page; the title, channel, Feb 14, 2022 upload date and description came through, but no transcript.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Legg's only dated AI prediction found for 2022 comes from DeepMind: The Podcast S2 Ep5 (Feb 2022). There he repeated a roughly 50-50 chance of AGI around 2030 and added some chance of AGI within a decade, or else within about three decades. The first is already recorded. The wording comes from a fan's excerpt on LessWrong, not an official transcript, and no other 2022 interview, talk or post with a dated prediction turned up.\"\n}\n```"
+}

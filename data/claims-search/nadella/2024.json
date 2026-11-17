@@ -1,0 +1,254 @@
+{
+  "speaker_id": "nadella",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.8854,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7735
+      },
+      "cache_creation_input_tokens": 113076,
+      "cache_read_input_tokens": 502865,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 7466,
+      "output_tokens_details": {
+        "thinking_tokens": 1956
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Satya Nadella\" AI prediction 2024','\"Satya Nadella\" 2024 interview AGI \"years\"','\"Satya Nadella\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "more=['Satya Nadella BG2 podcast transcript December 2024 agents SaaS','Satya Nadella Ignite 2024 keynote transcript','Satya Nadella Build 2024 keynote transcript','Satya Nadella Davos 2024 interview transcript AI']\nfor q in more:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella BG2 podcast transcript December 2024 agents SaaS"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Ignite 2024 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Build 2024 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Davos 2024 interview transcript AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nallres={}\nfor q,r in R.items():\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: allres.setdefault(x['url'],x)\npat=re.compile(r\"(next year|20[2-4]\\d|decade|in (?:the next )?\\w+ years|within \\w+ years|AGI|by the end of)\",re.I)\nfor u in ['https://www.bishoprockcap.com/assets/library/bill-gurley/December%202024%20Satya%20Nadella%20%20BG2%20w%20Bill%20Gurley%20&%20Brad%20Gerstner%20(transcript)','https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/','https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf','https://stratechery.com/2024/interviews-with-microsoft-ceo-satya-nadella-and-cto-kevin-scott-about-the-ai-platform-shift/']:\n    c=allres[u]['content']; print('==',u,len(c))\n    for m in pat.finditer(c):\n        print('  ..',c[max(0,m.start()-150):m.end()+100].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://www.bishoprockcap.com/assets/library/bill-gurley/December%202024%20Satya%20Nadella%20%20BG2%20w%20Bill%20Gurley%20&%20Brad%20Gerstner%20(transcript)',\n'https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf',\n'https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/',\n'https://news.microsoft.com/wp-content/uploads/prod/2024/05/Satya-Nadella_Transcript_KEY01_Build2024.pdf']\nF={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,'ERR',r); continue\n    F[u]=r[0]['content']; print(u,len(F[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bishoprockcap.com/assets/library/bill-gurley/December%202024%20Satya%20Nadella%20%20BG2%20w%20Bill%20Gurley%20&%20Brad%20Gerstner%20(transcript)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.microsoft.com/wp-content/uploads/prod/2024/05/Satya-Nadella_Transcript_KEY01_Build2024.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64, io\nG={}\nfor u in ['https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf','https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/']:\n    try:\n        r=await web_fetch({\"url\":u})\n        if isinstance(r,str): r=json.loads(r)\n        G[u]=r\n        print(u,type(r), (list(r.keys()) if isinstance(r,dict) else list(r[0].keys())))\n    except Exception as e: print(u,'EXC',e)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "from pypdf import PdfReader\nT={}\nfor u,r in G.items():\n    src=r['content']['source']\n    if src.get('type')=='base64':\n        pdf=PdfReader(io.BytesIO(base64.b64decode(src['data'])))\n        T[u]=' '.join(p.extract_text() for p in pdf.pages)\n    else: T[u]=src['data']\n    print(u,len(T[u]))\npat=re.compile(r\"(next year|20[2-5]\\d|decade|years|AGI|by the end of|this year|months)\",re.I)\nfor u,t in T.items():\n    t=re.sub(r'\\s+',' ',t)\n    T[u]=t\n    print('=====',u)\n    for m in pat.finditer(t):\n        print('  ..',t[max(0,m.start()-200):m.end()+120])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=T['https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/']\ni=d.find('one of the barriers can be access'); print(d[i-300:i+700])\ni=d.find('250 years'); print('\\n',d[i-600:i+300])\nig=T['https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf']\ni=ig.find('months to come'); print('\\n',ig[i-700:i+100])\nfor k in ['will be','going to be','future']:\n    for m in re.finditer(k,ig): pass\ni=ig.find('100 of these reliable'); print('\\n',ig[i-300:i+400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['later this','by the end','early next','coming weeks','in the coming','Copilot Studio','autonomous']:\n    for m in re.finditer(k,ig):\n        print(k,'..',ig[max(0,m.start()-250):m.end()+150],'\\n')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-01-16",
+        "quote": "this generation of technology will diffuse a lot faster. What may have taken 15 years or 10 years, depending on how you count with the cloud computing era, may take five or even less, and this will cover even the Global South.",
+        "what_is_predicted": "AI will spread through the world, including the Global South, in five years or less, against 10-15 years for cloud computing.",
+        "date_or_span": "five years or less",
+        "occasion": "World Economic Forum Annual Meeting, Davos: A conversation with Satya Nadella and Klaus Schwab",
+        "source_url": "https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results showed Nadella's Dwarkesh Patel podcast ('Microsoft's AGI plan & quantum breakthrough', early 2025) and coverage of his Davos 2025 / All-In session; not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results showed coverage (Cloud Wars, Storyboard18) of a Nadella blog post calling 2026 a pivotal year for AI; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Satya Nadella\" AI prediction 2024",
+        "what_found": "Medium and news write-ups of the December 2024 BG2 'SaaS is dead / agents replace business apps' remarks, Ignite 2024 recaps and Davos 2024 coverage."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2024 interview AGI \"years\"",
+        "what_found": "Stratechery 2024 interview, mostly 2025 Dwarkesh podcast pages and coverage."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Fortune Build 2024 profile, IDC piece on BG2 'SaaS is dead', later coverage of 2026 outlook; nothing quotable from 2024."
+      },
+      {
+        "query_or_url": "Satya Nadella BG2 podcast transcript December 2024 agents SaaS",
+        "what_found": "Listings dating the BG2 episode to 12 Dec 2024 and a transcript page at bishoprockcap.com."
+      },
+      {
+        "query_or_url": "Satya Nadella Ignite 2024 keynote transcript",
+        "what_found": "Microsoft speeches index and a PDF of the 19 Nov 2024 Ignite keynote transcript."
+      },
+      {
+        "query_or_url": "Satya Nadella Build 2024 keynote transcript",
+        "what_found": "Microsoft-hosted PDF of the 21 May 2024 Build keynote transcript."
+      },
+      {
+        "query_or_url": "Satya Nadella Davos 2024 interview transcript AI",
+        "what_found": "WEF podcast page with transcript of the 16 Jan 2024 Nadella-Schwab conversation."
+      },
+      {
+        "query_or_url": "https://www.bishoprockcap.com/assets/library/bill-gurley/December%202024%20Satya%20Nadella%20%20BG2%20w%20Bill%20Gurley%20&%20Brad%20Gerstner%20(transcript)",
+        "what_found": "BG2 transcript, but the page cut off at about 34:40; no dated AI prediction in that part; the 'SaaS' passage was not in what I read."
+      },
+      {
+        "query_or_url": "https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf",
+        "what_found": "First opening returned the PDF but I failed to read it (my handling error); opened again below."
+      },
+      {
+        "query_or_url": "https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/",
+        "what_found": "First opening's text was lost to a cut-off printout (my handling error); opened again below."
+      },
+      {
+        "query_or_url": "https://news.microsoft.com/wp-content/uploads/prod/2024/05/Satya-Nadella_Transcript_KEY01_Build2024.pdf",
+        "what_found": "Opened, but I lost the text to a cut-off printout (my handling error) and read none of it; nothing quoted from it."
+      },
+      {
+        "query_or_url": "https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf",
+        "what_found": "Full Ignite 2024 keynote read; only undated AI shipping ('months to come') and chip/server/device dates, no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/",
+        "what_found": "Full Davos 2024 transcript read; contains the 'five or even less' AI diffusion statement."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "The only dated AI prediction found and read is from Davos (16 Jan 2024): AI will spread worldwide in five years or less, against 10-15 years for cloud. The Ignite keynote had only undated agent shipping and chip, server and device dates. The BG2 transcript was cut off before its widely reported agent remarks, and the Build transcript was opened but lost to a handling error, so the two recorded Build claims were not confirmed."
+  },
+  "reply_text": "I found one 2024 statement that meets all four tests. None of the three claims already on your list turned up in pages I could read, so none is reported again. The year doesn't count as quiet.\n\n**The candidate: Davos, 16 January 2024.** Speaking with Klaus Schwab, Nadella said AI would spread to users far faster than cloud computing did. Cloud took \"15 years or 10 years\", and AI \"may take five or even less\", reaching the Global South too. I read this on the World Economic Forum's podcast page. The page says its transcript was made by speech-recognition software and may contain errors, so check the wording against the recording.\n\n**Excluded, with reasons:**\n- **Davos, same talk:** AI as \"taking 250 years of chemistry and somehow bringing it down to 25 years\". He used this to describe a battery-material result, not to predict a date.\n- **Ignite keynote, 19 November 2024:** developer agents that \"will just ship in the months to come\". There's no date, and it isn't about when AGI arrives, so it fails test 3 and isn't listed as undated either.\n- **Ignite, other forward-dated items:** a security chip in every new Azure server \"starting next year\", a virtual machine available \"next year\", and a Windows 365 Link device in \"April of next year\". All are chip or product plans, not AI forecasts.\n- **Ignite, scaling remark:** \"doubling every six months or so\" describes what is happening now, not a prediction.\n\n**Gaps you should know about:**\n- **BG2 podcast, 12 December 2024 (Bill Gurley and Brad Gerstner):** the transcript cut off at about 34:40. That part has nothing dated. His only forward line there is undated, that shopping or travel agents may move commercial searches into chat (\"one or two of these agents… away\"). The widely reported \"SaaS is dead\" remarks come later in the episode, which I couldn't see. I didn't find a dated claim from them.\n- **Build keynote PDF, 21 May 2024:** my own mistake lost it. The page opened, but I didn't save the text and it fell out of a cut-off printout, so I read none of it. That's why I couldn't confirm the two Build claims already on your list.\n- **Page limit:** both of my last two page openings went to reopening the Ignite and Davos pages. With none left, I ran no further searches. I didn't open the Stratechery interview or the Davos All-In session.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2024-01-16\",\n      \"quote\": \"this generation of technology will diffuse a lot faster. What may have taken 15 years or 10 years, depending on how you count with the cloud computing era, may take five or even less, and this will cover even the Global South.\",\n      \"what_is_predicted\": \"AI will spread through the world, including the Global South, in five years or less, against 10-15 years for cloud computing.\",\n      \"date_or_span\": \"five years or less\",\n      \"occasion\": \"World Economic Forum Annual Meeting, Davos: A conversation with Satya Nadella and Klaus Schwab\",\n      \"source_url\": \"https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results showed Nadella's Dwarkesh Patel podcast ('Microsoft's AGI plan & quantum breakthrough', early 2025) and coverage of his Davos 2025 / All-In session; not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results showed coverage (Cloud Wars, Storyboard18) of a Nadella blog post calling 2026 a pivotal year for AI; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" AI prediction 2024\", \"what_found\": \"Medium and news write-ups of the December 2024 BG2 'SaaS is dead / agents replace business apps' remarks, Ignite 2024 recaps and Davos 2024 coverage.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Stratechery 2024 interview, mostly 2025 Dwarkesh podcast pages and coverage.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Fortune Build 2024 profile, IDC piece on BG2 'SaaS is dead', later coverage of 2026 outlook; nothing quotable from 2024.\"},\n    {\"query_or_url\": \"Satya Nadella BG2 podcast transcript December 2024 agents SaaS\", \"what_found\": \"Listings dating the BG2 episode to 12 Dec 2024 and a transcript page at bishoprockcap.com.\"},\n    {\"query_or_url\": \"Satya Nadella Ignite 2024 keynote transcript\", \"what_found\": \"Microsoft speeches index and a PDF of the 19 Nov 2024 Ignite keynote transcript.\"},\n    {\"query_or_url\": \"Satya Nadella Build 2024 keynote transcript\", \"what_found\": \"Microsoft-hosted PDF of the 21 May 2024 Build keynote transcript.\"},\n    {\"query_or_url\": \"Satya Nadella Davos 2024 interview transcript AI\", \"what_found\": \"WEF podcast page with transcript of the 16 Jan 2024 Nadella-Schwab conversation.\"},\n    {\"query_or_url\": \"https://www.bishoprockcap.com/assets/library/bill-gurley/December%202024%20Satya%20Nadella%20%20BG2%20w%20Bill%20Gurley%20&%20Brad%20Gerstner%20(transcript)\", \"what_found\": \"BG2 transcript, but the page cut off at about 34:40; no dated AI prediction in that part; the 'SaaS' passage was not in what I read.\"},\n    {\"query_or_url\": \"https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf\", \"what_found\": \"First opening returned the PDF but I failed to read it (my handling error); opened again below.\"},\n    {\"query_or_url\": \"https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/\", \"what_found\": \"First opening's text was lost to a cut-off printout (my handling error); opened again below.\"},\n    {\"query_or_url\": \"https://news.microsoft.com/wp-content/uploads/prod/2024/05/Satya-Nadella_Transcript_KEY01_Build2024.pdf\", \"what_found\": \"Opened, but I lost the text to a cut-off printout (my handling error) and read none of it; nothing quoted from it.\"},\n    {\"query_or_url\": \"https://pub-c2c1d9230f0b4abb9b0d2d95e06fd4ef.r2.dev/2024/11/11192024-Ignite-KEY01-Satya-Nadella2.pdf\", \"what_found\": \"Full Ignite 2024 keynote read; only undated AI shipping ('months to come') and chip/server/device dates, no dated AI prediction.\"},\n    {\"query_or_url\": \"https://www.weforum.org/podcasts/meet-the-leader/episodes/davos-2024-conversation-microsoft-satya-nadella/\", \"what_found\": \"Full Davos 2024 transcript read; contains the 'five or even less' AI diffusion statement.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"The only dated AI prediction found and read is from Davos (16 Jan 2024): AI will spread worldwide in five years or less, against 10-15 years for cloud. The Ignite keynote had only undated agent shipping and chip, server and device dates. The BG2 transcript was cut off before its widely reported agent remarks, and the Build transcript was opened but lost to a handling error, so the two recorded Build claims were not confirmed.\"\n}\n```"
+}

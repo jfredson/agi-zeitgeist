@@ -1,0 +1,384 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.8924,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8079
+      },
+      "cache_creation_input_tokens": 79691,
+      "cache_read_input_tokens": 754733,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 12144,
+      "output_tokens_details": {
+        "thinking_tokens": 4327
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2026','\"Demis Hassabis\" 2026 interview AGI \"years\"','\"Demis Hassabis\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r));print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "allr=[x for q in qs for x in R[q]]\nseen=set()\nfor x in allr:\n    u=x['url']\n    if u in seen: continue\n    seen.add(u)\n    if any(k in u for k in ['businesstoday','axios','officechai','fastcompany','tech.yahoo.com/ai/gemini','tech.yahoo.com/ai/articles','engineai','the-ai-corner.com/p/demis-hassabis-agi-2030']):\n        print('##',u);print(x['content'][:2500]);print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Hassabis \"probably only a few short years away\" AGI X post',\n'Hassabis India AI Impact Summit speech \"five to eight years\" transcript',\n'Hassabis Google I/O 2026 \"foothills of the singularity\"',\n'Hassabis podcast 2026 \"2026, 2027\" agents singularity interview']\nfor q in qs2:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"probably only a few short years away\" AGI X post"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis India AI Impact Summit speech \"five to eight years\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Google I/O 2026 \"foothills of the singularity\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis podcast 2026 \"2026, 2027\" agents singularity interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs2:\n  for x in R[q]:\n    if any(k in x['url'] for k in ['dealroom','gsb.stanford','semafor','axios.com/2026/07','x.com/demishassabis','outlookbusiness','digit.in']):\n        print('##',x['url']);print(x['content'][:1500]);print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity',\n'https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026',\n'https://x.com/demishassabis/status/2076957440109625718',\n'https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18']\nF={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,'ERR',r); continue\n    F[u]=r[0]['content']; print(u,len(F[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/demishassabis/status/2076957440109625718"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Hassabis Y Combinator interview 2026 AGI 2030 transcript',\n'Hassabis podcast interview September 2026 AGI',\n'Hassabis 2026 \"next year\" AI interview Gemini prediction robotics']\nfor q in qs3:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q][:6]: print('   >',x['content'][:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Y Combinator interview 2026 AGI 2030 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis podcast interview September 2026 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2026 \"next year\" AI interview Gemini prediction robotics"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs3:\n  for x in R[q]:\n    if any(k in x['url'] for k in ['therundown','fortune.com','aletteraday','technology.org','techflowpost','the-ai-corner.com/p/demis-hassabis-agi-2-5']):\n        c=x['content']\n        import re\n        print('##',x['url'],len(c))\n        for m in re.finditer(r'(year|decade|20[23]\\d|months)',c):\n            pass\n        idx=[m.start() for m in re.finditer(r'(next year|years|decade|20[23]\\d|months)',c)][:8]\n        for i in idx: print('   ..',c[max(0,i-200):i+100].replace('\\n',' '))\n        print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls2=['https://fortune.com/article/fortune-500-titans-and-disruptors-of-industry-google-deepmind-demis-hassabis-isomorphic-artificial-intelligence/',\n'https://www.technology.org/2026/10/15/hassabis-ai-agent-hacks-early-warning-shots-certification/']\nfor u in urls2:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): c=r[0]['content']\n    else:\n        try: c=r['content']['source']['data']\n        except Exception: print(u,'ERR',str(r)[:300]); continue\n    F[u]=c; print(u,len(c))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/article/fortune-500-titans-and-disruptors-of-industry-google-deepmind-demis-hassabis-isomorphic-artificial-intelligence/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technology.org/2026/10/15/hassabis-ai-agent-hacks-early-warning-shots-certification/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[urls2[0]]\ni=c.find('# ');print(c[c.find('Titans') - 0: c.find('Titans')+0][:0])\nfor kw in ['published','Published','2026','next year','18 months','years','decade','interview','conducted','January','December']:\n    for m in re.finditer(kw,c):\n        s=m.start(); print(kw,'::',c[max(0,s-250):s+200].replace('\\n',' ')); print()\n    "
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['Cancer, cardiovascular','over the next 18 months','10 years is one year','end of','this year','agents','Fortune spoke','interview was','condensed']:\n    for m in list(re.finditer(re.escape(kw),c))[:2]:\n        s=m.start(); print(kw,'::',c[max(0,s-500):s+700].replace('\\n',' ')); print('-----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['breakthrough moments in robotics','glasses','by the end of this year','end of the year','next year']:\n    for m in list(re.finditer(re.escape(kw),c))[:3]:\n        s=m.start(); print(kw,'::',c[max(0,s-1200):s+300].replace('\\n',' ')); print('-----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s=c.find('over the next 18 months');print(c[s-1800:s+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['18 months or so','robotics','10 years is one year']:\n    idx=[m.start() for m in re.finditer(re.escape(kw),c)]\n    print(kw,idx)\ns=c.find('robotics—I still');print(c[s-2000:s+1200] if s>0 else 'NA')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[-1500:])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-02",
+        "quote": "At this point, I think we're at a threshold moment where AGI, artificial general intelligence, is on the horizon, maybe in the next five to eight years.",
+        "what_is_predicted": "AGI may arrive within five to eight years.",
+        "date_or_span": "next five to eight years (c. 2031-2034)",
+        "occasion": "Keynote at the India AI Impact Summit 2026, Bharat Mandapam, New Delhi (Business Today says Tuesday, i.e. 17 Feb; Outlook Business says 18 Feb)",
+        "source_url": "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-02",
+        "quote": "I think we're going to enter in the next, probably 10 years, this golden era for scientific discovery, almost a new Renaissance, using these incredible tools like Alpha Fold",
+        "what_is_predicted": "AI tools will bring a golden era of scientific discovery within about ten years.",
+        "date_or_span": "next, probably 10 years",
+        "occasion": "Keynote at the India AI Impact Summit 2026, New Delhi",
+        "source_url": "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-02",
+        "quote": "Hassabis also expressed excitement for robotics, predicting that the next two to three years will bring \"breakout moments\" as foundation models like Gemini are integrated into physical bodies.",
+        "what_is_predicted": "Robotics will have breakout moments in the next two to three years as foundation models are put into physical bodies.",
+        "date_or_span": "next two to three years",
+        "occasion": "Keynote at the India AI Impact Summit 2026, New Delhi; only 'breakout moments' is printed as his own words, the rest is the reporter's paraphrase",
+        "source_url": "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-02-11",
+        "quote": "And we are already in pre-clinical trials, very early stage, for some cancer drugs. And then, hopefully by the end of the year, if those are successful, we’ll start going towards clinical trials.",
+        "what_is_predicted": "Isomorphic Labs' AI-designed cancer drugs will start moving towards clinical trials by the end of 2026.",
+        "date_or_span": "by the end of the year (2026)",
+        "occasion": "Fortune 500 'Titans and Disruptors of Industry' interview, published 11 Feb 2026; the interview date is not printed",
+        "source_url": "https://fortune.com/article/fortune-500-titans-and-disruptors-of-industry-google-deepmind-demis-hassabis-isomorphic-artificial-intelligence/",
+        "source_kind": "printed_qa",
+        "already_recorded": "2026-01-hassabis-isomorphic-towards-clinical-trials-end-of-2026.toml"
+      },
+      {
+        "date_said": "2026-05",
+        "quote": "2030 is when I expect it to arrive, either plus or minus a year",
+        "what_is_predicted": "AGI will arrive around 2030, give or take a year.",
+        "date_or_span": "2030 plus or minus a year",
+        "occasion": "Interview with Harry McCracken during Google I/O week, Fast Company 'Plugged In', published 22 May 2026; same forecast as the 2026-06-02 file but a different occasion",
+        "source_url": "https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-05",
+        "quote": "It’s probably going to play out over the rest of the year, would be my guess.",
+        "what_is_predicted": "Ordinary users will adapt their work to agentic assistants like Gemini Spark over the rest of 2026.",
+        "date_or_span": "the rest of 2026",
+        "occasion": "Interview during Google I/O week, Fast Company, published 22 May 2026; said about bringing the Gemini Spark agent to the average person",
+        "source_url": "https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-05",
+        "quote": "I believe that we’re only a few years away from that, maybe like 20, 30 plus or minus a year, which is astounding to think really.",
+        "what_is_predicted": "AGI will arrive around 2030, give or take a year ('20, 30' is how the automated transcript prints 2030).",
+        "date_or_span": "2030 plus or minus a year",
+        "occasion": "Conversation with Stanford President Jonathan Levin at Stanford GSB (View From the Top), held the week of Google I/O; transcript published 18 June 2026",
+        "source_url": "https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "A search snippet from a TIME interview (time.com/7280740) had him saying coding assistants would be 'very good' by next year; I didn't open it and haven't quoted it."
+      },
+      {
+        "year": "2025",
+        "note": "Search results showed a transcript of a May 2025 I/O conversation with Sergey Brin (singjupost) titled 'AGI by 2030?'; not opened."
+      },
+      {
+        "year": "2025",
+        "note": "A Yahoo Tech article (opened only as a search snippet) says he told Axios in December 2025 that AGI could be five to ten years away."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2026",
+        "what_found": "Coverage of the February India summit (AGI within five years / five to eight years), the October WSJ Magazine two-to-three-year forecast, and the May I/O 'singularity' remarks. Run twice because the first run's results didn't print."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2026 interview AGI \"years\"",
+        "what_found": "Mostly October coverage of the two-to-three-year forecast, plus a write-up of a YC interview naming 2030."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Business Today on the India summit, Fast Company's I/O interview, and a Yahoo piece on a July X essay."
+      },
+      {
+        "query_or_url": "Hassabis \"probably only a few short years away\" AGI X post",
+        "what_found": "The 14 July 2026 X essay 'A Framework for Frontier AI and the Dawning of a New Age', plus Axios and Dealroom coverage."
+      },
+      {
+        "query_or_url": "Hassabis India AI Impact Summit speech \"five to eight years\" transcript",
+        "what_found": "Business Today, Outlook Business and Digit reports on the keynote; no official transcript found."
+      },
+      {
+        "query_or_url": "Hassabis Google I/O 2026 \"foothills of the singularity\"",
+        "what_found": "Forbes Australia, a Substack and other coverage of his closing line at I/O."
+      },
+      {
+        "query_or_url": "Hassabis podcast 2026 \"2026, 2027\" agents singularity interview",
+        "what_found": "Semafor's I/O interview and the Stanford GSB transcript page."
+      },
+      {
+        "query_or_url": "Hassabis Y Combinator interview 2026 AGI 2030 transcript",
+        "what_found": "Write-ups of the 29 April 2026 YC podcast and the Sequoia AI Ascent talk (both around 2030); not opened."
+      },
+      {
+        "query_or_url": "Hassabis podcast interview September 2026 AGI",
+        "what_found": "Sequoia Training Data episode (30 April), The Rundown exclusive (late May, 2030 plus or minus a year), Big Technology at Davos."
+      },
+      {
+        "query_or_url": "Hassabis 2026 \"next year\" AI interview Gemini prediction robotics",
+        "what_found": "Fortune Q&A, a technology.org piece of 15 Oct 2026 on agent hacks, and an older TIME interview."
+      },
+      {
+        "query_or_url": "https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity",
+        "what_found": "Opened; full automated transcript with the '20, 30 plus or minus a year' AGI line."
+      },
+      {
+        "query_or_url": "https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026",
+        "what_found": "Opened but the text was cut off; has the 2030 AGI quote and the 'rest of the year' line on agent adoption; the CBRN 'next year or year and a half' passage was beyond the cut and is not quoted."
+      },
+      {
+        "query_or_url": "https://x.com/demishassabis/status/2076957440109625718",
+        "what_found": "Would not open (url_not_allowed), so the July essay is not quoted."
+      },
+      {
+        "query_or_url": "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18",
+        "what_found": "Opened; India summit quotes on AGI in five to eight years, a ten-year golden era of science, and the robotics paraphrase."
+      },
+      {
+        "query_or_url": "https://fortune.com/article/fortune-500-titans-and-disruptors-of-industry-google-deepmind-demis-hassabis-isomorphic-artificial-intelligence/",
+        "what_found": "Opened but the text was cut off; has the Isomorphic clinical-trials line (already recorded); the robotics '18 months' answer was beyond the cut."
+      },
+      {
+        "query_or_url": "https://www.technology.org/2026/10/15/hassabis-ai-agent-hacks-early-warning-shots-certification/",
+        "what_found": "Would not open (url_not_allowed), so the line about agent hacks becoming major next year is not quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2026 was a busy year: Hassabis gave dated AGI forecasts at Davos, the India AI Impact Summit (five to eight years), Google I/O week (2030 plus or minus a year, in Fast Company and at Stanford) and the WSJ Magazine in October (two to three years). Four claims found here are not in the recorded list: the India summit AGI window, the ten-year golden era of science, the robotics paraphrase and the Spark adoption line. The Fast Company and Stanford 2030 quotes are the same forecast as the 2026-06-02 file on different occasions, and the Fortune Isomorphic line is already recorded. The July X essay ('a few short years') and the October line about agent hacks could not be opened and are not quoted."
+  },
+  "reply_text": "I found six 2026 claims from Hassabis on pages I opened. Four have not been recorded before. One repeats a recorded claim, and one says the same thing as a recorded claim but on a different occasion. The two strongest new finds are his own words in a printed interview and in a transcript, both from the week of Google I/O in May.\n\n- **Fast Company, May 2026:** He said, \"2030 is when I expect it to arrive, either plus or minus a year.\" This is the same 2030 forecast as the 2026-06-02 file but a different occasion, so I left `already_recorded` empty. In the same article he said bringing the Gemini Spark agent to ordinary users is \"probably going to play out over the rest of the year.\" The piece also says he predicted AI could accelerate chemical, biological, radiological and nuclear threats over the next year to year and a half. I saw that line only in the search snippet because the page I opened was cut off, so I haven't quoted it.\n- **Stanford talk, May 2026 (transcript published June 18):** The automated transcript says AGI is \"maybe like 20, 30 plus or minus a year\". That is almost certainly \"2030\" garbled, and I quoted it exactly as printed.\n- **India AI Impact Summit, February 2026:** Business Today reports him putting AGI \"maybe in the next five to eight years.\" It also reports a \"golden era for scientific discovery\" within \"probably 10 years,\" and robotics \"breakout moments\" in the next two to three years. I saw these only in news coverage. For the robotics claim, only \"breakout moments\" is printed as his own words.\n- **Fortune interview, February 11, 2026:** The line about Isomorphic's drugs going towards clinical trials by the end of the year is the claim already recorded in the 2026-01 file. The robotics \"next 18 months\" line was cut off the page I opened, so I left it out.\n\nSeveral things are unconfirmed or held back:\n- **July 14, 2026 essay on X:** It says AGI is \"probably only a few short years away.\" I couldn't open X, so I haven't quoted it and it isn't in `undated`.\n- **October 15 report:** It says AI agent hacks could become major \"looking into next year and the next couple years.\" That page also couldn't be opened, so I haven't quoted it.\n- **Stanford \"foothills of the singularity\" line:** It's about how people will look back in ten years, not about AI doing something by a date, so I left it out.\n\nI used 10 of the 12 searches and all 6 page openings. One fixed search was run twice because the first attempt's results weren't displayed. Two openings failed: the X post and the October 15 article (url_not_allowed).\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2026-02\", \"quote\": \"At this point, I think we're at a threshold moment where AGI, artificial general intelligence, is on the horizon, maybe in the next five to eight years.\", \"what_is_predicted\": \"AGI may arrive within five to eight years.\", \"date_or_span\": \"next five to eight years (c. 2031-2034)\", \"occasion\": \"Keynote at the India AI Impact Summit 2026, Bharat Mandapam, New Delhi (Business Today says Tuesday, i.e. 17 Feb; Outlook Business says 18 Feb)\", \"source_url\": \"https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-02\", \"quote\": \"I think we're going to enter in the next, probably 10 years, this golden era for scientific discovery, almost a new Renaissance, using these incredible tools like Alpha Fold\", \"what_is_predicted\": \"AI tools will bring a golden era of scientific discovery within about ten years.\", \"date_or_span\": \"next, probably 10 years\", \"occasion\": \"Keynote at the India AI Impact Summit 2026, New Delhi\", \"source_url\": \"https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-02\", \"quote\": \"Hassabis also expressed excitement for robotics, predicting that the next two to three years will bring \\\"breakout moments\\\" as foundation models like Gemini are integrated into physical bodies.\", \"what_is_predicted\": \"Robotics will have breakout moments in the next two to three years as foundation models are put into physical bodies.\", \"date_or_span\": \"next two to three years\", \"occasion\": \"Keynote at the India AI Impact Summit 2026, New Delhi; only 'breakout moments' is printed as his own words, the rest is the reporter's paraphrase\", \"source_url\": \"https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-02-11\", \"quote\": \"And we are already in pre-clinical trials, very early stage, for some cancer drugs. And then, hopefully by the end of the year, if those are successful, we’ll start going towards clinical trials.\", \"what_is_predicted\": \"Isomorphic Labs' AI-designed cancer drugs will start moving towards clinical trials by the end of 2026.\", \"date_or_span\": \"by the end of the year (2026)\", \"occasion\": \"Fortune 500 'Titans and Disruptors of Industry' interview, published 11 Feb 2026; the interview date is not printed\", \"source_url\": \"https://fortune.com/article/fortune-500-titans-and-disruptors-of-industry-google-deepmind-demis-hassabis-isomorphic-artificial-intelligence/\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2026-01-hassabis-isomorphic-towards-clinical-trials-end-of-2026.toml\"},\n    {\"date_said\": \"2026-05\", \"quote\": \"2030 is when I expect it to arrive, either plus or minus a year\", \"what_is_predicted\": \"AGI will arrive around 2030, give or take a year.\", \"date_or_span\": \"2030 plus or minus a year\", \"occasion\": \"Interview with Harry McCracken during Google I/O week, Fast Company 'Plugged In', published 22 May 2026; same forecast as the 2026-06-02 file but a different occasion\", \"source_url\": \"https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-05\", \"quote\": \"It’s probably going to play out over the rest of the year, would be my guess.\", \"what_is_predicted\": \"Ordinary users will adapt their work to agentic assistants like Gemini Spark over the rest of 2026.\", \"date_or_span\": \"the rest of 2026\", \"occasion\": \"Interview during Google I/O week, Fast Company, published 22 May 2026; said about bringing the Gemini Spark agent to the average person\", \"source_url\": \"https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-05\", \"quote\": \"I believe that we’re only a few years away from that, maybe like 20, 30 plus or minus a year, which is astounding to think really.\", \"what_is_predicted\": \"AGI will arrive around 2030, give or take a year ('20, 30' is how the automated transcript prints 2030).\", \"date_or_span\": \"2030 plus or minus a year\", \"occasion\": \"Conversation with Stanford President Jonathan Levin at Stanford GSB (View From the Top), held the week of Google I/O; transcript published 18 June 2026\", \"source_url\": \"https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"A search snippet from a TIME interview (time.com/7280740) had him saying coding assistants would be 'very good' by next year; I didn't open it and haven't quoted it.\"},\n    {\"year\": \"2025\", \"note\": \"Search results showed a transcript of a May 2025 I/O conversation with Sergey Brin (singjupost) titled 'AGI by 2030?'; not opened.\"},\n    {\"year\": \"2025\", \"note\": \"A Yahoo Tech article (opened only as a search snippet) says he told Axios in December 2025 that AGI could be five to ten years away.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2026\", \"what_found\": \"Coverage of the February India summit (AGI within five years / five to eight years), the October WSJ Magazine two-to-three-year forecast, and the May I/O 'singularity' remarks. Run twice because the first run's results didn't print.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly October coverage of the two-to-three-year forecast, plus a write-up of a YC interview naming 2030.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Business Today on the India summit, Fast Company's I/O interview, and a Yahoo piece on a July X essay.\"},\n    {\"query_or_url\": \"Hassabis \\\"probably only a few short years away\\\" AGI X post\", \"what_found\": \"The 14 July 2026 X essay 'A Framework for Frontier AI and the Dawning of a New Age', plus Axios and Dealroom coverage.\"},\n    {\"query_or_url\": \"Hassabis India AI Impact Summit speech \\\"five to eight years\\\" transcript\", \"what_found\": \"Business Today, Outlook Business and Digit reports on the keynote; no official transcript found.\"},\n    {\"query_or_url\": \"Hassabis Google I/O 2026 \\\"foothills of the singularity\\\"\", \"what_found\": \"Forbes Australia, a Substack and other coverage of his closing line at I/O.\"},\n    {\"query_or_url\": \"Hassabis podcast 2026 \\\"2026, 2027\\\" agents singularity interview\", \"what_found\": \"Semafor's I/O interview and the Stanford GSB transcript page.\"},\n    {\"query_or_url\": \"Hassabis Y Combinator interview 2026 AGI 2030 transcript\", \"what_found\": \"Write-ups of the 29 April 2026 YC podcast and the Sequoia AI Ascent talk (both around 2030); not opened.\"},\n    {\"query_or_url\": \"Hassabis podcast interview September 2026 AGI\", \"what_found\": \"Sequoia Training Data episode (30 April), The Rundown exclusive (late May, 2030 plus or minus a year), Big Technology at Davos.\"},\n    {\"query_or_url\": \"Hassabis 2026 \\\"next year\\\" AI interview Gemini prediction robotics\", \"what_found\": \"Fortune Q&A, a technology.org piece of 15 Oct 2026 on agent hacks, and an older TIME interview.\"},\n    {\"query_or_url\": \"https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity\", \"what_found\": \"Opened; full automated transcript with the '20, 30 plus or minus a year' AGI line.\"},\n    {\"query_or_url\": \"https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026\", \"what_found\": \"Opened but the text was cut off; has the 2030 AGI quote and the 'rest of the year' line on agent adoption; the CBRN 'next year or year and a half' passage was beyond the cut and is not quoted.\"},\n    {\"query_or_url\": \"https://x.com/demishassabis/status/2076957440109625718\", \"what_found\": \"Would not open (url_not_allowed), so the July essay is not quoted.\"},\n    {\"query_or_url\": \"https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18\", \"what_found\": \"Opened; India summit quotes on AGI in five to eight years, a ten-year golden era of science, and the robotics paraphrase.\"},\n    {\"query_or_url\": \"https://fortune.com/article/fortune-500-titans-and-disruptors-of-industry-google-deepmind-demis-hassabis-isomorphic-artificial-intelligence/\", \"what_found\": \"Opened but the text was cut off; has the Isomorphic clinical-trials line (already recorded); the robotics '18 months' answer was beyond the cut.\"},\n    {\"query_or_url\": \"https://www.technology.org/2026/10/15/hassabis-ai-agent-hacks-early-warning-shots-certification/\", \"what_found\": \"Would not open (url_not_allowed), so the line about agent hacks becoming major next year is not quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2026 was a busy year: Hassabis gave dated AGI forecasts at Davos, the India AI Impact Summit (five to eight years), Google I/O week (2030 plus or minus a year, in Fast Company and at Stanford) and the WSJ Magazine in October (two to three years). Four claims found here are not in the recorded list: the India summit AGI window, the ten-year golden era of science, the robotics paraphrase and the Spark adoption line. The Fast Company and Stanford 2030 quotes are the same forecast as the 2026-06-02 file on different occasions, and the Fortune Isomorphic line is already recorded. The July X essay ('a few short years') and the October line about agent hacks could not be opened and are not quoted.\"\n}\n```"
+}

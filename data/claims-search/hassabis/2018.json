@@ -1,0 +1,347 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2018,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.648,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 51498,
+      "cache_read_input_tokens": 543153,
+      "inference_geo": "global",
+      "input_tokens": 42,
+      "output_tokens": 8088,
+      "output_tokens_details": {
+        "thinking_tokens": 2363
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2018','\"Demis Hassabis\" 2018 interview AGI \"years\"','\"Demis Hassabis\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2018"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    r=R[q]\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=400):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:n].replace('\\n',' '))\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2018 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis 2018 Economist \"World in 2019\" artificial intelligence','Hassabis Economist Innovation Summit 2018 AGI','Hassabis 2018 interview \"decades\" general intelligence AlphaZero']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],500)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2018 Economist \"World in 2019\" artificial intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Economist Innovation Summit 2018 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2018 interview \"decades\" general intelligence AlphaZero"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.ted.com/podcasts/ted-interview/deepminds-demis-hassabis-on-the-future-of-ai-transcript\"})\nif isinstance(r,list): r=r[0]\nc=r.get('content',''); print(r.get('title'), len(c)); \nimport re\nfor kw in ['2018','2019','2020','2021','years','decade','within','by the end']:\n    for m in re.finditer(kw,c):\n        print(kw,'::',c[max(0,m.start()-250):m.start()+200].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.ted.com/podcasts/ted-interview/deepminds-demis-hassabis-on-the-future-of-ai-transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "if isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content',''); print(r.get('title'), r.get('type'), len(c)); print(c[:600])\nTED=c"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(r.keys()); print(str(r)[:800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=r['content']['source']['data']; print(len(c))\nfor kw in ['published','date','2018','2019','2020','2021','2022','season','Season']:\n    for m in list(re.finditer(kw,c))[:4]:\n        print(kw,'::',c[max(0,m.start()-150):m.start()+150].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor kw in ['published','Date','date:','2018','2019','2020','2021','2022','eason']:\n    for m in list(re.finditer(kw,c))[:4]:\n        print(kw,'::',c[max(0,m.start()-150):m.start()+150].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Royal Society \"You and AI\" Hassabis 2018 lecture','Hassabis \"The World in 2019\" Economist essay AI science','Hassabis 2018 Guardian OR \"Financial Times\" interview artificial general intelligence']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Royal Society \"You and AI\" Hassabis 2018 lecture"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"The World in 2019\" Economist essay AI science"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2018 Guardian OR \"Financial Times\" interview artificial general intelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Guardian December 2018 DeepMind AlphaFold Hassabis protein folding \"lighthouse\"','Hassabis 2018 talk transcript AGI \"decades away\" OR \"many decades\" OR \"few decades\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],500)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Guardian December 2018 DeepMind AlphaFold Hassabis protein folding \"lighthouse\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2018 talk transcript AGI \"decades away\" OR \"many decades\" OR \"few decades\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch_text(u):\n    r=await_res=None\nasync def ft(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    if r.get('type','').endswith('error'): return 'ERR '+str(r)\n    c=r.get('content')\n    if isinstance(c,dict):\n        s=c.get('source',{}); c=s.get('data') if isinstance(s.get('data'),str) else str(c)\n    return c or ''\nP={}\nfor u in ['https://www.pharma-iq.com/pre-clinical-discovery-and-development/articles/alphabets-deepmind-ai-algorithm-wins-protein-folding-contest','https://royalsociety.org/-/media/policy/projects/machine-learning/you-and-AI-summary.pdf?la=en-GB&hash=98E2FF41B07E0CD1E6F3F2684C27C7A5']:\n    P[u]=await ft(u); print(u,len(P[u]))\ndef kws(c,ks=['Hassabis','Demis','years','decade','202','within']):\n    for k in ks:\n        for m in list(re.finditer(k,c))[:8]:\n            print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.pharma-iq.com/pre-clinical-discovery-and-development/articles/alphabets-deepmind-ai-algorithm-wins-protein-folding-contest"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://royalsociety.org/-/media/policy/projects/machine-learning/you-and-AI-summary.pdf?la=en-GB&hash=98E2FF41B07E0CD1E6F3F2684C27C7A5"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P['https://www.pharma-iq.com/pre-clinical-discovery-and-development/articles/alphabets-deepmind-ai-algorithm-wins-protein-folding-contest'][:4700])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=P['https://royalsociety.org/-/media/policy/projects/machine-learning/you-and-AI-summary.pdf?la=en-GB&hash=98E2FF41B07E0CD1E6F3F2684C27C7A5']\nprint(c[:300])\nkws(c,['Hassabis','Demis'])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\nb=base64.b64decode(c)\nrd=PdfReader(io.BytesIO(b)); txt=\"\\n\".join(p.extract_text() or '' for p in rd.pages)\nprint(len(rd.pages),len(txt))\nRS=txt\nkws(txt,['Hassabis','Demis','decade','years'])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Google\\'s DeepMind predicts 3D shapes of proteins\" Guardian'\nR[q]=await web_search({\"query\":q}); show(R[q],600)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Google's DeepMind predicts 3D shapes of proteins\" Guardian"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://science.slashdot.org/story/18/12/04/0036223/googles-deepmind-predicts-3d-shapes-of-proteins','https://techcrunch.com/2018/12/03/deepmind-claims-early-progress-in-ai-based-predictive-protein-modelling']:\n    P[u]=await ft(u); print('#####',u,len(P[u])); kws(P[u],['Hassabis','years','decade'])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://science.slashdot.org/story/18/12/04/0036223/googles-deepmind-predicts-3d-shapes-of-proteins"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techcrunch.com/2018/12/03/deepmind-claims-early-progress-in-ai-based-predictive-protein-modelling"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.aiifi.ai/post/demis-hassabis-quotes'\nP[u]=await ft(u); print(len(P[u])); kws(P[u],['2018'])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.aiifi.ai/post/demis-hassabis-quotes"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2022",
+        "note": "The TED Interview with Steven Johnson ('DeepMind's Demis Hassabis on the future of AI'), transcript dated July 28, 2022 at ted.com; opened, but it is not 2018 and was not searched for predictions."
+      },
+      {
+        "year": "2024-2026",
+        "note": "Search snippets showed many later AGI timelines (CBS 60 Minutes, NBC 'five to 10 years', Davos 2026 '50% by end of decade', a WSJ Magazine profile 'two to three years'); not opened and outside 2018."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2018",
+        "what_found": "Mostly recent coverage and bios; the only 2018 items were the December 2018 AlphaFold CASP13 win and a mention of the 2018 Economist Innovation Summit."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2018 interview AGI \"years\"",
+        "what_found": "Only 2023-2026 AGI-timeline coverage; nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2025-2026 Davos and WSJ timeline coverage; nothing from 2018."
+      },
+      {
+        "query_or_url": "Hassabis 2018 Economist \"World in 2019\" artificial intelligence",
+        "what_found": "A Drum article confirms Hassabis wrote for The World in 2019, but the essay itself did not appear."
+      },
+      {
+        "query_or_url": "Hassabis Economist Innovation Summit 2018 AGI",
+        "what_found": "Only later Economist/Davos material; nothing usable from the 2018 summit."
+      },
+      {
+        "query_or_url": "Hassabis 2018 interview \"decades\" general intelligence AlphaZero",
+        "what_found": "A TED Interview transcript (turned out to be 2022) and later podcasts."
+      },
+      {
+        "query_or_url": "https://www.ted.com/podcasts/ted-interview/deepminds-demis-hassabis-on-the-future-of-ai-transcript",
+        "what_found": "Opened; transcript dated July 28, 2022, so not 2018."
+      },
+      {
+        "query_or_url": "Royal Society \"You and AI\" Hassabis 2018 lecture",
+        "what_found": "Confirms Hassabis gave the series' opening lecture on 30 April 2018; event pages only, no transcript."
+      },
+      {
+        "query_or_url": "Hassabis \"The World in 2019\" Economist essay AI science",
+        "what_found": "Did not surface the essay's text."
+      },
+      {
+        "query_or_url": "Hassabis 2018 Guardian OR \"Financial Times\" interview artificial general intelligence",
+        "what_found": "Only 2023-2025 FT and Guardian interviews."
+      },
+      {
+        "query_or_url": "Guardian December 2018 DeepMind AlphaFold Hassabis protein folding \"lighthouse\"",
+        "what_found": "December 2018 AlphaFold coverage, including a Pharma IQ article quoting Hassabis."
+      },
+      {
+        "query_or_url": "Hassabis 2018 talk transcript AGI \"decades away\" OR \"many decades\" OR \"few decades\"",
+        "what_found": "Only later (2023-2026) items."
+      },
+      {
+        "query_or_url": "https://www.pharma-iq.com/pre-clinical-discovery-and-development/articles/alphabets-deepmind-ai-algorithm-wins-protein-folding-contest",
+        "what_found": "Opened; December 2018 Hassabis quote calls AlphaFold a 'lighthouse project', with no dated prediction."
+      },
+      {
+        "query_or_url": "https://royalsociety.org/-/media/policy/projects/machine-learning/you-and-AI-summary.pdf?la=en-GB&hash=98E2FF41B07E0CD1E6F3F2684C27C7A5",
+        "what_found": "Opened; summary paraphrases his 30 April 2018 lecture on learning algorithms, with no timelines or direct quotes."
+      },
+      {
+        "query_or_url": "\"Google's DeepMind predicts 3D shapes of proteins\" Guardian",
+        "what_found": "Confirms the Guardian article of 2 December 2018 exists; the Guardian page itself was not in the results to open."
+      },
+      {
+        "query_or_url": "https://science.slashdot.org/story/18/12/04/0036223/googles-deepmind-predicts-3d-shapes-of-proteins",
+        "what_found": "Opened; reader comments and a Guardian excerpt, with no Hassabis prediction."
+      },
+      {
+        "query_or_url": "https://techcrunch.com/2018/12/03/deepmind-claims-early-progress-in-ai-based-predictive-protein-modelling",
+        "what_found": "Opened; quotes the DeepMind blog post, not Hassabis, with no dated prediction."
+      },
+      {
+        "query_or_url": "https://www.aiifi.ai/post/demis-hassabis-quotes",
+        "what_found": "Opened; credits a non-predictive, undated line to the 2018 Economist Innovation Summit, with no source transcript."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "In 2018 Hassabis gave the Royal Society's opening 'You and AI' lecture (30 April) and led AlphaFold's CASP13 win (December). He also wrote for The Economist's 'The World in 2019', but the essay was not found. None of the pages opened held a forward-looking AI claim with a date or time span from that year, and his own 2018 essay, The Guardian's AlphaFold article and any lecture recording remain unchecked."
+  },
+  "reply_text": "I found no dated AI prediction by Demis Hassabis from 2018. All three fixed searches ran once as written. I used all 12 searches and all 6 page openings, and none turned up a dated forward-looking AI claim from 2018 that I could read on a page I opened.\n\n**What 2018 held:** His public moments that year included the Royal Society's \"You and AI\" lecture on 30 April and the AlphaFold win at the CASP13 protein-structure contest in December. He also wrote a piece for The Economist's \"The World in 2019\", which I couldn't find or open.\n- The Royal Society's summary paper on the lecture series only paraphrases him, with no timelines.\n- In December news coverage of AlphaFold, his quoted words call it a \"lighthouse project\", which is not a prediction.\n\n**Dead ends:**\n- The TED Interview transcript with Steven Johnson turned out to be from July 2022, not 2018.\n- One quote site claims he spoke at the 2018 Economist Innovation Summit, but the line it gives is not dated and no transcript was opened.\n\n**Not checked:** I didn't find or open any 2018 interview transcript, The Economist essay, The Guardian's 2 December 2018 AlphaFold article (Ian Sample), or a recording of the Royal Society lecture. They are the most likely places a dated 2018 claim could still turn up.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2022\", \"note\": \"The TED Interview with Steven Johnson ('DeepMind's Demis Hassabis on the future of AI'), transcript dated July 28, 2022 at ted.com; opened, but it is not 2018 and was not searched for predictions.\"},\n    {\"year\": \"2024-2026\", \"note\": \"Search snippets showed many later AGI timelines (CBS 60 Minutes, NBC 'five to 10 years', Davos 2026 '50% by end of decade', a WSJ Magazine profile 'two to three years'); not opened and outside 2018.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2018\", \"what_found\": \"Mostly recent coverage and bios; the only 2018 items were the December 2018 AlphaFold CASP13 win and a mention of the 2018 Economist Innovation Summit.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2018 interview AGI \\\"years\\\"\", \"what_found\": \"Only 2023-2026 AGI-timeline coverage; nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2018 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2025-2026 Davos and WSJ timeline coverage; nothing from 2018.\"},\n    {\"query_or_url\": \"Hassabis 2018 Economist \\\"World in 2019\\\" artificial intelligence\", \"what_found\": \"A Drum article confirms Hassabis wrote for The World in 2019, but the essay itself did not appear.\"},\n    {\"query_or_url\": \"Hassabis Economist Innovation Summit 2018 AGI\", \"what_found\": \"Only later Economist/Davos material; nothing usable from the 2018 summit.\"},\n    {\"query_or_url\": \"Hassabis 2018 interview \\\"decades\\\" general intelligence AlphaZero\", \"what_found\": \"A TED Interview transcript (turned out to be 2022) and later podcasts.\"},\n    {\"query_or_url\": \"https://www.ted.com/podcasts/ted-interview/deepminds-demis-hassabis-on-the-future-of-ai-transcript\", \"what_found\": \"Opened; transcript dated July 28, 2022, so not 2018.\"},\n    {\"query_or_url\": \"Royal Society \\\"You and AI\\\" Hassabis 2018 lecture\", \"what_found\": \"Confirms Hassabis gave the series' opening lecture on 30 April 2018; event pages only, no transcript.\"},\n    {\"query_or_url\": \"Hassabis \\\"The World in 2019\\\" Economist essay AI science\", \"what_found\": \"Did not surface the essay's text.\"},\n    {\"query_or_url\": \"Hassabis 2018 Guardian OR \\\"Financial Times\\\" interview artificial general intelligence\", \"what_found\": \"Only 2023-2025 FT and Guardian interviews.\"},\n    {\"query_or_url\": \"Guardian December 2018 DeepMind AlphaFold Hassabis protein folding \\\"lighthouse\\\"\", \"what_found\": \"December 2018 AlphaFold coverage, including a Pharma IQ article quoting Hassabis.\"},\n    {\"query_or_url\": \"Hassabis 2018 talk transcript AGI \\\"decades away\\\" OR \\\"many decades\\\" OR \\\"few decades\\\"\", \"what_found\": \"Only later (2023-2026) items.\"},\n    {\"query_or_url\": \"https://www.pharma-iq.com/pre-clinical-discovery-and-development/articles/alphabets-deepmind-ai-algorithm-wins-protein-folding-contest\", \"what_found\": \"Opened; December 2018 Hassabis quote calls AlphaFold a 'lighthouse project', with no dated prediction.\"},\n    {\"query_or_url\": \"https://royalsociety.org/-/media/policy/projects/machine-learning/you-and-AI-summary.pdf?la=en-GB&hash=98E2FF41B07E0CD1E6F3F2684C27C7A5\", \"what_found\": \"Opened; summary paraphrases his 30 April 2018 lecture on learning algorithms, with no timelines or direct quotes.\"},\n    {\"query_or_url\": \"\\\"Google's DeepMind predicts 3D shapes of proteins\\\" Guardian\", \"what_found\": \"Confirms the Guardian article of 2 December 2018 exists; the Guardian page itself was not in the results to open.\"},\n    {\"query_or_url\": \"https://science.slashdot.org/story/18/12/04/0036223/googles-deepmind-predicts-3d-shapes-of-proteins\", \"what_found\": \"Opened; reader comments and a Guardian excerpt, with no Hassabis prediction.\"},\n    {\"query_or_url\": \"https://techcrunch.com/2018/12/03/deepmind-claims-early-progress-in-ai-based-predictive-protein-modelling\", \"what_found\": \"Opened; quotes the DeepMind blog post, not Hassabis, with no dated prediction.\"},\n    {\"query_or_url\": \"https://www.aiifi.ai/post/demis-hassabis-quotes\", \"what_found\": \"Opened; credits a non-predictive, undated line to the 2018 Economist Innovation Summit, with no source transcript.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"In 2018 Hassabis gave the Royal Society's opening 'You and AI' lecture (30 April) and led AlphaFold's CASP13 win (December). He also wrote for The Economist's 'The World in 2019', but the essay was not found. None of the pages opened held a forward-looking AI claim with a date or time span from that year, and his own 2018 essay, The Guardian's AlphaFold article and any lecture recording remain unchecked.\"\n}\n```"
+}

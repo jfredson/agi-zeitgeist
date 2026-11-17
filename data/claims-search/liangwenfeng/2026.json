@@ -1,0 +1,277 @@
+{
+  "speaker_id": "liangwenfeng",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4707,
+  "web_searches": 5,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7620
+      },
+      "cache_creation_input_tokens": 36770,
+      "cache_read_input_tokens": 346468,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 8373,
+      "output_tokens_details": {
+        "thinking_tokens": 2735
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 5
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Liang Wenfeng\" AI prediction 2026','\"Liang Wenfeng\" 2026 interview AGI \"years\"','\"Liang Wenfeng\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:300].replace('\\n',' '))\nprint(\"==\",qs[0]); show(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his\",\"https://chinaresearchcollective.substack.com/p/liang-wenfeng-investor-meeting-may\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u, r.get('type'), r.get('error_code'), len(P[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://chinaresearchcollective.substack.com/p/liang-wenfeng-investor-meeting-may"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(r.keys()); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={u:(c['source']['data'] if isinstance(c,dict) else c) for u,c in P.items()}\nfor u,t in T.items(): print(u,len(t))\nimport re\nkw=['year','decade','month','AGI','by 20','2027','2028','2030','within']\nt=T[\"https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his\"]\nfor m in re.finditer(r'(year|decade|month|202[6-9]|203\\d|ten percent|10%)',t):\n    pass\nsents=re.split(r'(?<=[.?!。])\\s+',t)\nhits=[s for s in sents if re.search(r'\\b(years?|decade|months?|202[6-9]|203\\d|10%)\\b',s)]\nprint(len(hits))\nfor s in hits: print('-',s.strip()[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def grep(t,pat,w=350):\n    for m in re.finditer(pat,t):\n        print('>>',t[max(0,m.start()-w):m.end()+w].replace('\\n',' '));print()\nc=T[\"https://chinaresearchcollective.substack.com/p/liang-wenfeng-investor-meeting-may\"]\ngrep(c,r'(one or two years|next year|this year|within|six months|three months|GDP|end of|2027|2028|2030|ten years|five years|few years)',250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "grep(t,r'(one or two years|This year’s step|next step|substitut|GDP|historic|within the next year|six to twelve|three to six|gap)',400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in [\"https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/\",\"https://rits.shanghai.nyu.edu/ai/deepseek-founder-details-agi-first-compute-bound-strategy-in-investor-meeting\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    T[u]=c['source']['data'] if isinstance(c,dict) else (c or '')\n    print(u, r.get('type'), r.get('error_code'), len(T[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://rits.shanghai.nyu.edu/ai/deepseek-founder-details-agi-first-compute-bound-strategy-in-investor-meeting"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=r'(one or two years|two years|this year|next year|within|six months|twelve months|three months|months|substitut|catch up|2027|AGI will)'\nfor u in list(T)[2:]:\n    print('#####',u); grep(T[u],pat,300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in T: \n    print('#####',u); grep(T[u],r'(abroad|foreign models|same as|AGI will definitely|definitely be achieved|ten years|decade|continuous learning will|next step)',250)\nprint(T[\"https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his\"][-800:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "m=T[\"https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/\"]\ni=m.find('Q4:'); print(m[i:i+2500])\nprint(m[:600])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Liang Wenfeng\" \"one or two years\" foreign models','梁文锋 投资人 交流会 实录 一两年 国外']:\n    r=await web_search({\"query\":q}); print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Liang Wenfeng\" \"one or two years\" foreign models"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "梁文锋 投资人 交流会 实录 一两年 国外"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://m.jrj.com.cn/madapter/stock/2026/07/23134157880611.shtml\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content'); T[u]=c['source']['data'] if isinstance(c,dict) else (c or '')\nprint(r.get('type'),r.get('error_code'),len(T[u]))\nj=T[u]\nfor k in ['一两年','AGI还需要多久','AGI 还需要多久','一年之内','一年内','明年','几年','年底','2027','十年','半年','6个月','六个月','3个月','三个月']:\n    for m in re.finditer(re.escape(k),j):\n        print('>>',k,':',j[max(0,m.start()-200):m.end()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://m.jrj.com.cn/madapter/stock/2026/07/23134157880611.shtml"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(T[u]); print(str(r)[:800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://forum.xiaoyinsi.com/t/topic/255\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content'); T[u]=c['source']['data'] if isinstance(c,dict) else (c or '')\nprint(r.get('type'),r.get('error_code'),len(T[u]))\nj=T[u]\nfor k in ['一两年','还需要多久','一年之内','一年内','明年','几年','年底','2027','十年','半年','个月','GDP']:\n    for m in re.finditer(re.escape(k),j):\n        print('>>',k,':',j[max(0,m.start()-200):m.end()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://forum.xiaoyinsi.com/t/topic/255"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-05-20",
+        "quote": "It’s a rapid-expansion process, and I think within a year the high-quality-data problem will be handled fairly well domestically.",
+        "what_is_predicted": "Within a year, Chinese AI developers (DeepSeek included) will largely solve the problem of getting high-quality annotated data for post-training.",
+        "date_or_span": "within a year (from May 2026)",
+        "occasion": "Closed-door DeepSeek investor meeting during the first external fundraising round, 20 May 2026 (answer A10). The transcript leaked in July 2026 and has not been verified by Liang or DeepSeek; this is Momentum Works' English translation.",
+        "source_url": "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2026-05-20",
+        "quote": "This is our conjecture—this is what we think the timeline should be: first solve learning-to-learn, then reach that intelligence singularity, the singularity that can self-iterate, and then comes embodied intelligence.",
+        "source_url": "https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his"
+      },
+      {
+        "date_said": "2026-05-20",
+        "quote": "It has no critical point, but it is non-linear.",
+        "source_url": "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Search snippets (Medium, jiexu Substack, ChinaTalk) show the 2024 Waves/36Kr interview line that people often say China trails the US by 'one or two years'. That describes the present gap, it is not a forecast, and I did not open those pages."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Liang Wenfeng\" AI prediction 2026",
+        "what_found": "Profiles and news items pointing to a leaked May 2026 investor meeting (AGI-first strategy, 'ten percent of GDP' line, Huawei chip timing)."
+      },
+      {
+        "query_or_url": "\"Liang Wenfeng\" 2026 interview AGI \"years\"",
+        "what_found": "Several English transcripts and write-ups of the 20 May 2026 investor meeting (China Research Collective, Momentum Works, Fred Gao, NYU Shanghai RITS, ChainCatcher)."
+      },
+      {
+        "query_or_url": "\"Liang Wenfeng\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Snippets with 'within the next year' (domestic chips) and 'next year, the year after' (training a bigger model on domestic chips), all from the same meeting."
+      },
+      {
+        "query_or_url": "https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his",
+        "what_found": "Opened; the transcript looked cut short. It had the CoT/Agent 'staircase', the undated AGI roadmap and the 'ten percent of GDP' line, but not the 'one or two years' line."
+      },
+      {
+        "query_or_url": "https://chinaresearchcollective.substack.com/p/liang-wenfeng-investor-meeting-may",
+        "what_found": "Opened; the transcript also looked cut short. Same material, nothing dated about AI capability."
+      },
+      {
+        "query_or_url": "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/",
+        "what_found": "Opened; Q&A translation with the 'within a year' data-annotation answer; asked when continual learning would be solved, he gave no date."
+      },
+      {
+        "query_or_url": "https://rits.shanghai.nyu.edu/ai/deepseek-founder-details-agi-first-compute-bound-strategy-in-investor-meeting",
+        "what_found": "Opened; a summary that paraphrases a hope to narrow the gap to six to twelve months (no deadline) and a chip bet 'within a year' (chips, excluded)."
+      },
+      {
+        "query_or_url": "\"Liang Wenfeng\" \"one or two years\" foreign models",
+        "what_found": "Snippets (Fred Gao, geopolitechs) of the 2026 'one or two years ... maybe this year' parity line, plus older 2024 interview lines; not opened."
+      },
+      {
+        "query_or_url": "梁文锋 投资人 交流会 实录 一两年 国外",
+        "what_found": "Chinese full-transcript pages (jrj.com.cn, forum.xiaoyinsi.com, GitHub) whose snippets carry the original Chinese of the parity line."
+      },
+      {
+        "query_or_url": "https://m.jrj.com.cn/madapter/stock/2026/07/23134157880611.shtml",
+        "what_found": "Did not open; redirected to an error page, so nothing quoted."
+      },
+      {
+        "query_or_url": "https://forum.xiaoyinsi.com/t/topic/255",
+        "what_found": "Did not open (url_not_allowed), so nothing quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Liang's only known on-record remarks in 2026 come from a leaked, unconfirmed transcript of a 20 May investor meeting. On pages I opened, the one dated AI claim is that China's high-quality-data problem will be handled within a year; a stronger claim (China at parity with foreign models in one or two years, maybe this year) appeared only in search snippets and could not be verified on an opened page."
+  },
+  "reply_text": "I found one candidate from 2026, and it is borderline. Everything this year traces back to a single occasion: a closed-door investor meeting Liang held on 20 May 2026, during DeepSeek's first outside fundraising round. A transcript leaked in July 2026. No one has confirmed it, and Liang and DeepSeek have not verified it. I saw no 2026 essay, post, public interview or hearing by him.\n\n- **The candidate:** Momentum Works' English translation of the transcript has Liang saying that \"within a year the high-quality-data problem will be handled fairly well domestically.\" That is about AI training data in China, so whether it counts as an AI prediction rather than an operations forecast is your call. The source is a translation of a leaked text, not an official transcript.\n- **Seen in search results but never opened:** Liang reportedly said that in China, within \"one or two years,\" AI should roughly match foreign models, or \"maybe this year\" replace them. That is the strongest dated claim of the year. I saw it in search snippets for Fred Gao's Substack and two other sites. But Fred Gao's page and the China Research Collective page I opened both seemed to be cut short, and neither contained the line. Two Chinese full-text pages that should carry it would not load (one redirected to an error page, the other was blocked). So I haven't quoted it. Opening one of those pages is the obvious next check.\n- **Left out:** He said the domestic chip ecosystem would prove itself \"within a year,\" but that's a chip forecast, so it's excluded. The \"ten months\" and revenue figures are business numbers. \"Ten percent of GDP\" and the hope to narrow the US gap to \"six to twelve months\" have no deadline, and the second is only in an NYU Shanghai article's paraphrase. \"This year's step is Agent\" describes the present. Asked when continual learning would be solved, he gave no date.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2026-05-20\",\n      \"quote\": \"It’s a rapid-expansion process, and I think within a year the high-quality-data problem will be handled fairly well domestically.\",\n      \"what_is_predicted\": \"Within a year, Chinese AI developers (DeepSeek included) will largely solve the problem of getting high-quality annotated data for post-training.\",\n      \"date_or_span\": \"within a year (from May 2026)\",\n      \"occasion\": \"Closed-door DeepSeek investor meeting during the first external fundraising round, 20 May 2026 (answer A10). The transcript leaked in July 2026 and has not been verified by Liang or DeepSeek; this is Momentum Works' English translation.\",\n      \"source_url\": \"https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2026-05-20\",\n      \"quote\": \"This is our conjecture—this is what we think the timeline should be: first solve learning-to-learn, then reach that intelligence singularity, the singularity that can self-iterate, and then comes embodied intelligence.\",\n      \"source_url\": \"https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his\"\n    },\n    {\n      \"date_said\": \"2026-05-20\",\n      \"quote\": \"It has no critical point, but it is non-linear.\",\n      \"source_url\": \"https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Search snippets (Medium, jiexu Substack, ChinaTalk) show the 2024 Waves/36Kr interview line that people often say China trails the US by 'one or two years'. That describes the present gap, it is not a forecast, and I did not open those pages.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" AI prediction 2026\", \"what_found\": \"Profiles and news items pointing to a leaked May 2026 investor meeting (AGI-first strategy, 'ten percent of GDP' line, Huawei chip timing).\"},\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Several English transcripts and write-ups of the 20 May 2026 investor meeting (China Research Collective, Momentum Works, Fred Gao, NYU Shanghai RITS, ChainCatcher).\"},\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Snippets with 'within the next year' (domestic chips) and 'next year, the year after' (training a bigger model on domestic chips), all from the same meeting.\"},\n    {\"query_or_url\": \"https://www.fredgao.com/p/deepseeks-liang-wenfeng-breaks-his\", \"what_found\": \"Opened; the transcript looked cut short. It had the CoT/Agent 'staircase', the undated AGI roadmap and the 'ten percent of GDP' line, but not the 'one or two years' line.\"},\n    {\"query_or_url\": \"https://chinaresearchcollective.substack.com/p/liang-wenfeng-investor-meeting-may\", \"what_found\": \"Opened; the transcript also looked cut short. Same material, nothing dated about AI capability.\"},\n    {\"query_or_url\": \"https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/\", \"what_found\": \"Opened; Q&A translation with the 'within a year' data-annotation answer; asked when continual learning would be solved, he gave no date.\"},\n    {\"query_or_url\": \"https://rits.shanghai.nyu.edu/ai/deepseek-founder-details-agi-first-compute-bound-strategy-in-investor-meeting\", \"what_found\": \"Opened; a summary that paraphrases a hope to narrow the gap to six to twelve months (no deadline) and a chip bet 'within a year' (chips, excluded).\"},\n    {\"query_or_url\": \"\\\"Liang Wenfeng\\\" \\\"one or two years\\\" foreign models\", \"what_found\": \"Snippets (Fred Gao, geopolitechs) of the 2026 'one or two years ... maybe this year' parity line, plus older 2024 interview lines; not opened.\"},\n    {\"query_or_url\": \"梁文锋 投资人 交流会 实录 一两年 国外\", \"what_found\": \"Chinese full-transcript pages (jrj.com.cn, forum.xiaoyinsi.com, GitHub) whose snippets carry the original Chinese of the parity line.\"},\n    {\"query_or_url\": \"https://m.jrj.com.cn/madapter/stock/2026/07/23134157880611.shtml\", \"what_found\": \"Did not open; redirected to an error page, so nothing quoted.\"},\n    {\"query_or_url\": \"https://forum.xiaoyinsi.com/t/topic/255\", \"what_found\": \"Did not open (url_not_allowed), so nothing quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Liang's only known on-record remarks in 2026 come from a leaked, unconfirmed transcript of a 20 May investor meeting. On pages I opened, the one dated AI claim is that China's high-quality-data problem will be handled within a year; a stronger claim (China at parity with foreign models in one or two years, maybe this year) appeared only in search snippets and could not be verified on an opened page.\"\n}\n```"
+}

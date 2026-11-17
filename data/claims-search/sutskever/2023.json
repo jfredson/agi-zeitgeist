@@ -1,0 +1,273 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.562,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7753
+      },
+      "cache_creation_input_tokens": 57310,
+      "cache_read_input_tokens": 286733,
+      "inference_geo": "global",
+      "input_tokens": 22,
+      "output_tokens": 7400,
+      "output_tokens_details": {
+        "thinking_tokens": 2365
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2023','\"Ilya Sutskever\" 2023 interview AGI \"years\"','\"Ilya Sutskever\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"##\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"##\",q)\n    R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nfor u in [\"https://www.dwarkesh.com/p/ilya-sutskever\",\"https://singjupost.com/the-exciting-perilous-journey-toward-agi-ilya-sutskever-transcript/\",\"https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever-openais-chief-scientist-on-his-hopes-and-fears-for-the-future-of-ai/\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; F[u]=c\n    print(\"##\",u,len(c),c[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/ilya-sutskever"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/the-exciting-perilous-journey-toward-agi-ilya-sutskever-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever-openais-chief-scientist-on-his-hopes-and-fears-for-the-future-of-ai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever \"Eye on AI\" Craig Smith 2023 transcript','Sutskever \"No Priors\" 2023 transcript','Sutskever Tel Aviv University June 2023 Altman superintelligence']:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    print(\"##\",q); R[q]=r\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever \"Eye on AI\" Craig Smith 2023 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever \"No Priors\" 2023 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever Tel Aviv University June 2023 Altman superintelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=re.compile(r'[^.]*\\b(years?|decade|20[2-4]\\d|next year|months)\\b[^.]*\\.',re.I)\nfor q in list(R)[3:]:\n    for x in R[q]:\n        c=x.get('content','')\n        hits=[m.group(0).strip() for m in pat.finditer(c)][:6]\n        if hits: print('##',x['url']); [print('  -',h[:250]) for h in hits]"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"What is Digital Life\" Sutskever No Priors transcript']:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    print(\"##\",q); R[q]=r\n    for x in r:\n        c=x.get('content','')\n        print(x.get('title'),'|',x.get('url'),'|',len(c))\n        for m in pat.finditer(c):\n            s=m.group(0).strip()\n            if 'Sutskever' in c and len(s)<300: print('   -',s[:250])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"What is Digital Life\" Sutskever No Priors transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://llm-utils.org/Ilya+Sutskever+interviewed+on+Eye+on+AI+-+Transcript+(Mar+15,+2023)\",\"https://www.ynetnews.com/business/article/bjmmwsjih\",\"https://www.yeschat.ai/blog-No-Priors-Ep-39-With-OpenAI-CoFounder-Chief-Scientist-Ilya-Sutskever-5809\"]\npat2=re.compile(r'[^.?!]*\\b(years?|decade|20[2-4]\\d|next year|months|ten|five|by the end)\\b[^.?!]*[.?!]',re.I)\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): c=r[0].get('content','')\n    elif r.get('type')=='web_fetch_result': c=r['content']['source']['data']\n    else: print(u,r); continue\n    F[u]=c\n    print('##',u,len(c))\n    for m in pat2.finditer(c):\n        s=m.group(0).strip().replace('\\n',' ')\n        if len(s)<400: print('  -',s)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://llm-utils.org/Ilya+Sutskever+interviewed+on+Eye+on+AI+-+Transcript+(Mar+15,+2023)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.ynetnews.com/business/article/bjmmwsjih"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.yeschat.ai/blog-No-Priors-Ep-39-With-OpenAI-CoFounder-Chief-Scientist-Ilya-Sutskever-5809"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[urls[1]]; i=c.find('# OpenAI'); \nj=c.find('next decade'); print(c[j-3000:j+1500])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-03-27",
+        "quote": "But I would say that already, last year, there has been a fair amount of economic value produced by AI. Next year is going to be larger and larger after that.",
+        "what_is_predicted": "The economic value produced by AI will be larger next year (2024) and keep growing after that; borderline because it is an economic-value forecast rather than a capability forecast.",
+        "date_or_span": "next year (2024) and after",
+        "occasion": "Dwarkesh Patel podcast (The Lunar Society), interview recorded at OpenAI offices, published 27 March 2023",
+        "source_url": "https://www.dwarkesh.com/p/ilya-sutskever",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2023-03-27",
+        "quote": "So I think it's going to be a good multi-year chunk of time where that’s going to be true, from now till AGI pretty much.",
+        "source_url": "https://www.dwarkesh.com/p/ilya-sutskever"
+      },
+      {
+        "date_said": "2023-03-27",
+        "quote": "It's the same question as asking how long until AGI. It's a hard question to answer. I hesitate to give you a number.",
+        "source_url": "https://www.dwarkesh.com/p/ilya-sutskever"
+      },
+      {
+        "date_said": "2023-10-26",
+        "quote": "At some point we really will have AGI. Maybe OpenAI will build it. Maybe some other company will build it.",
+        "source_url": "https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever-openais-chief-scientist-on-his-hopes-and-fears-for-the-future-of-ai/"
+      },
+      {
+        "date_said": "2023",
+        "quote": "As researchers and engineers continue to work on AI, the day will come when the digital brains that live inside our computers will become as good and even better than our own biological brains.",
+        "source_url": "https://singjupost.com/the-exciting-perilous-journey-toward-agi-ilya-sutskever-transcript/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Fixed-search results were dominated by coverage of his NeurIPS talk in Vancouver (Reuters-syndicated stories on stratnewsglobal and rnz), where he said pre-training 'will unquestionably end'; not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results showed his second Dwarkesh Patel interview and coverage of it (36kr headline 'AGI Achievable in Just 5 Years', theneuron, implicator); not opened."
+      },
+      {
+        "year": "2022",
+        "note": "MIT Technology Review cites his February 2022 X post 'it may be that today's large neural networks are slightly conscious'; not a dated prediction."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2023",
+        "what_found": "Mostly coverage of his NeurIPS talk, plus the MIT Technology Review October 2023 profile and a December 2023 blog post."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2023 interview AGI \"years\"",
+        "what_found": "Dwarkesh Patel March 2023 interview, the TED talk transcript on singjupost, the MIT Technology Review profile, and 2025 interview coverage."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly 2025 coverage plus Wikipedia; nothing new from 2023."
+      },
+      {
+        "query_or_url": "Sutskever \"Eye on AI\" Craig Smith 2023 transcript",
+        "what_found": "llm-utils transcript page for the 15 March 2023 Eye on AI episode, Forbes write-up, and Eye on AI episode pages."
+      },
+      {
+        "query_or_url": "Sutskever \"No Priors\" 2023 transcript",
+        "what_found": "No Priors Ep. 39 (2 Nov 2023) listings and a yeschat summary page; no full transcript."
+      },
+      {
+        "query_or_url": "Sutskever Tel Aviv University June 2023 Altman superintelligence",
+        "what_found": "ynetnews and Times of Israel reports on the 5 June 2023 Tel Aviv University event."
+      },
+      {
+        "query_or_url": "\"What is Digital Life\" Sutskever No Priors transcript",
+        "what_found": "Podcast directory pages for the 2 Nov 2023 episode only; no transcript."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/ilya-sutskever",
+        "what_found": "Opened; transcript of the 27 March 2023 interview (truncated after the post-AGI section), with the 'next year' economic-value line and undated AGI-timing remarks."
+      },
+      {
+        "query_or_url": "https://singjupost.com/the-exciting-perilous-journey-toward-agi-ilya-sutskever-transcript/",
+        "what_found": "Opened; TED talk transcript (posted 21 Nov 2023) with only undated claims that AGI will come."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever-openais-chief-scientist-on-his-hopes-and-fears-for-the-future-of-ai/",
+        "what_found": "Opened; 'At some point we really will have AGI', undated; the four-year superalignment goal appears only in the reporter's words, credited to OpenAI."
+      },
+      {
+        "query_or_url": "https://llm-utils.org/Ilya+Sutskever+interviewed+on+Eye+on+AI+-+Transcript+(Mar+15,+2023)",
+        "what_found": "Page returned 'Not Found'; nothing quoted."
+      },
+      {
+        "query_or_url": "https://www.ynetnews.com/business/article/bjmmwsjih",
+        "what_found": "Opened; Tel Aviv report in which Sutskever's quotes are undated; the 'next decade' line is Altman's."
+      },
+      {
+        "query_or_url": "https://www.yeschat.ai/blog-No-Priors-Ep-39-With-OpenAI-CoFounder-Chief-Scientist-Ilya-Sutskever-5809",
+        "what_found": "Would not open (url_not_accessible); nothing quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Sutskever's 2023 public words, in the Dwarkesh podcast, the MIT Technology Review profile, the TED talk and the Tel Aviv event, were firm that AGI will come but deliberately gave no date; he said he hesitated to give a number. The only dated forward-looking line found is a borderline remark that AI's economic value will be larger next year. None of the four claims already on file appeared in his own words on the pages opened; the Eye on AI and No Priors transcripts could not be read."
+  },
+  "reply_text": "I found one dated forward-looking line from Sutskever in 2023, and it's borderline. None of the four claims you already have showed up in his own words on the pages I opened, and I found no new claim with a clear date.\n\n**The one candidate.** In the Dwarkesh Patel podcast transcript (27 March 2023), he said AI's economic value \"Next year is going to be larger and larger after that.\" It names a year, but it's about economic value rather than what AI can do, so it's close to the business forecasts your rules exclude. I've listed it so you can decide.\n\n**What else I found:**\n- **Statements about AGI with no date** (listed under undated):\n  - In the same Dwarkesh interview he described \"a good multi-year window\" lasting \"from now till AGI.\" He also said, \"I hesitate to give you a number.\"\n  - The MIT Technology Review profile (26 October 2023) quotes him saying \"At some point we really will have AGI.\"\n  - A transcript of his TED talk says \"the day will come\" when AI matches or beats human brains. The transcript site dated its post 21 November 2023; I didn't confirm when the talk was given.\n- **Left out:**\n  - In the MIT profile he says that when researchers hit an obstacle, \"within six months or a year\" they find a way around it. That describes a past pattern rather than predicting something.\n  - The four-year superalignment goal appears in that article only in the reporter's words, credited to OpenAI.\n  - The Tel Aviv University article (5 June 2023) has \"the next decade,\" but Sam Altman said it, not Sutskever.\n\n**Gaps:**\n- The Eye on AI transcript page (15 March 2023) returned \"Not Found\", so I quote nothing from it.\n- The No Priors episode (2 November 2023) wouldn't open, and I found no transcript.\n- The Dwarkesh page cut off partway through, so I didn't see its last sections.\n- I used all six page openings, which left none for any further pages a search might turn up.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-03-27\",\n      \"quote\": \"But I would say that already, last year, there has been a fair amount of economic value produced by AI. Next year is going to be larger and larger after that.\",\n      \"what_is_predicted\": \"The economic value produced by AI will be larger next year (2024) and keep growing after that; borderline because it is an economic-value forecast rather than a capability forecast.\",\n      \"date_or_span\": \"next year (2024) and after\",\n      \"occasion\": \"Dwarkesh Patel podcast (The Lunar Society), interview recorded at OpenAI offices, published 27 March 2023\",\n      \"source_url\": \"https://www.dwarkesh.com/p/ilya-sutskever\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2023-03-27\",\n      \"quote\": \"So I think it's going to be a good multi-year chunk of time where that’s going to be true, from now till AGI pretty much.\",\n      \"source_url\": \"https://www.dwarkesh.com/p/ilya-sutskever\"\n    },\n    {\n      \"date_said\": \"2023-03-27\",\n      \"quote\": \"It's the same question as asking how long until AGI. It's a hard question to answer. I hesitate to give you a number.\",\n      \"source_url\": \"https://www.dwarkesh.com/p/ilya-sutskever\"\n    },\n    {\n      \"date_said\": \"2023-10-26\",\n      \"quote\": \"At some point we really will have AGI. Maybe OpenAI will build it. Maybe some other company will build it.\",\n      \"source_url\": \"https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever-openais-chief-scientist-on-his-hopes-and-fears-for-the-future-of-ai/\"\n    },\n    {\n      \"date_said\": \"2023\",\n      \"quote\": \"As researchers and engineers continue to work on AI, the day will come when the digital brains that live inside our computers will become as good and even better than our own biological brains.\",\n      \"source_url\": \"https://singjupost.com/the-exciting-perilous-journey-toward-agi-ilya-sutskever-transcript/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Fixed-search results were dominated by coverage of his NeurIPS talk in Vancouver (Reuters-syndicated stories on stratnewsglobal and rnz), where he said pre-training 'will unquestionably end'; not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results showed his second Dwarkesh Patel interview and coverage of it (36kr headline 'AGI Achievable in Just 5 Years', theneuron, implicator); not opened.\"},\n    {\"year\": \"2022\", \"note\": \"MIT Technology Review cites his February 2022 X post 'it may be that today's large neural networks are slightly conscious'; not a dated prediction.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2023\", \"what_found\": \"Mostly coverage of his NeurIPS talk, plus the MIT Technology Review October 2023 profile and a December 2023 blog post.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"Dwarkesh Patel March 2023 interview, the TED talk transcript on singjupost, the MIT Technology Review profile, and 2025 interview coverage.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly 2025 coverage plus Wikipedia; nothing new from 2023.\"},\n    {\"query_or_url\": \"Sutskever \\\"Eye on AI\\\" Craig Smith 2023 transcript\", \"what_found\": \"llm-utils transcript page for the 15 March 2023 Eye on AI episode, Forbes write-up, and Eye on AI episode pages.\"},\n    {\"query_or_url\": \"Sutskever \\\"No Priors\\\" 2023 transcript\", \"what_found\": \"No Priors Ep. 39 (2 Nov 2023) listings and a yeschat summary page; no full transcript.\"},\n    {\"query_or_url\": \"Sutskever Tel Aviv University June 2023 Altman superintelligence\", \"what_found\": \"ynetnews and Times of Israel reports on the 5 June 2023 Tel Aviv University event.\"},\n    {\"query_or_url\": \"\\\"What is Digital Life\\\" Sutskever No Priors transcript\", \"what_found\": \"Podcast directory pages for the 2 Nov 2023 episode only; no transcript.\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/ilya-sutskever\", \"what_found\": \"Opened; transcript of the 27 March 2023 interview (truncated after the post-AGI section), with the 'next year' economic-value line and undated AGI-timing remarks.\"},\n    {\"query_or_url\": \"https://singjupost.com/the-exciting-perilous-journey-toward-agi-ilya-sutskever-transcript/\", \"what_found\": \"Opened; TED talk transcript (posted 21 Nov 2023) with only undated claims that AGI will come.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2023/10/26/1082398/exclusive-ilya-sutskever-openais-chief-scientist-on-his-hopes-and-fears-for-the-future-of-ai/\", \"what_found\": \"Opened; 'At some point we really will have AGI', undated; the four-year superalignment goal appears only in the reporter's words, credited to OpenAI.\"},\n    {\"query_or_url\": \"https://llm-utils.org/Ilya+Sutskever+interviewed+on+Eye+on+AI+-+Transcript+(Mar+15,+2023)\", \"what_found\": \"Page returned 'Not Found'; nothing quoted.\"},\n    {\"query_or_url\": \"https://www.ynetnews.com/business/article/bjmmwsjih\", \"what_found\": \"Opened; Tel Aviv report in which Sutskever's quotes are undated; the 'next decade' line is Altman's.\"},\n    {\"query_or_url\": \"https://www.yeschat.ai/blog-No-Priors-Ep-39-With-OpenAI-CoFounder-Chief-Scientist-Ilya-Sutskever-5809\", \"what_found\": \"Would not open (url_not_accessible); nothing quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Sutskever's 2023 public words, in the Dwarkesh podcast, the MIT Technology Review profile, the TED talk and the Tel Aviv event, were firm that AGI will come but deliberately gave no date; he said he hesitated to give a number. The only dated forward-looking line found is a borderline remark that AI's economic value will be larger next year. None of the four claims already on file appeared in his own words on the pages opened; the Eye on AI and No Priors transcripts could not be read.\"\n}\n```"
+}

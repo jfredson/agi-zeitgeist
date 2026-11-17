@@ -1,0 +1,364 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2018,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6375,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7624
+      },
+      "cache_creation_input_tokens": 49679,
+      "cache_read_input_tokens": 544734,
+      "inference_geo": "global",
+      "input_tokens": 44,
+      "output_tokens": 8497,
+      "output_tokens_details": {
+        "thinking_tokens": 2062
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2018','\"Ilya Sutskever\" 2018 interview AGI \"years\"','\"Ilya Sutskever\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'),(x.get('content') or '')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2018"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print('-',x.get('title'),x.get('url'),x.get('page_age'),(x.get('content') or '')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2018 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever \"near-term AGI\" serious possibility 2018','Sutskever MIT 6.S099 \"meta-learning and self-play\" transcript','Sutskever AI Frontiers conference November 2018 AGI']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever \"near-term AGI\" serious possibility 2018"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever MIT 6.S099 \"meta-learning and self-play\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever AI Frontiers conference November 2018 AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in ['https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210','https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/']:\n    r=await web_fetch({\"url\":u}); \n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r; c=r.get('content') or ''\n    print(\"==\",u,r.get('type'),r.get('error_code'),len(c))\nimport re\ndef grep(c,pats,w=300):\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            print('['+p+']',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F['https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210']['content']\nprint(c[:6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "try:\n    print(len(R))\nexcept Exception as e: print(e)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,r in F.items():\n    c=r['content']; print(type(c)); print(str(c)[:3000]); print('#####')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "D={u:r['content']['source']['data'] for u,r in F.items()}\ns=D[list(D)[0]]\ni=s.find('---',10); body=s[i:]\nprint(len(body)); print(body[:9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'- \\[(\\d+ / 52 [^\\]]*)\\]',body):\n    n=int(m.group(1).split()[0])\n    if n>20: print(m.group(1))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "grep(body,[r'near.term',r'years',r'decade'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "alts=re.findall(r'!\\[(.*?)\\]\\(https://image.slidesharecdn.com[^)]*-(\\d+)-320\\.jpg\\)',body,flags=re.S)\nfor a,n in alts:\n    if int(n)>=40: print(n,'|',a.replace('\\n',' ').strip())"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s2=D['https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/']\ni=s2.find('While many AI experts'); print(s2[i-200:i+5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://github.com/LeiHao0/OpenCourseSubtitles/blob/master/MIT%20Artificial%20Intelligence%20Podcast/12%20-%20MIT%20AI%20-%20OpenAI%20Meta-Learning%20and%20Self-Play%20(Ilya%20Sutskever).en.srt'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content'); \nt=c['source']['data'] if isinstance(c,dict) else str(c)\nprint(r.get('error_code'),len(t))\n# dedupe srt text\nlines=[l.strip() for l in t.split('\\n') if l.strip() and not re.match(r'^\\d+$',l.strip()) and '-->' not in l]\ntxt=[]\nfor l in lines:\n    if not txt or txt[-1]!=l: txt.append(l)\nT=' '.join(txt); print(len(T))\ngrep(T,[r'\\byears?\\b',r'decade',r'\\bAGI\\b',r'general intelligence'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://github.com/LeiHao0/OpenCourseSubtitles/blob/master/MIT%20Artificial%20Intelligence%20Podcast/12%20-%20MIT%20AI%20-%20OpenAI%20Meta-Learning%20and%20Self-Play%20(Ilya%20Sutskever).en.srt"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Ilya Sutskever OpenAI Five Dota The International 2018 said','\"Sutskever\" 2018 talk transcript \"AGI\" compute \"years\"','\"Ilya Sutskever\" interview 2018 deep learning future']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever OpenAI Five Dota The International 2018 said"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sutskever\" 2018 talk transcript \"AGI\" compute \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" interview 2018 deep learning future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "G={}\nfor u in ['https://aithority.com/gaming/reinforcement-learning-really-works-for-ai-against-pro-gamers-openai-trailblazer-says/','https://medium.com/aifrontiers/the-journey-of-openais-founder-ilya-sutskever-s-story-486e96cd008f']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content'); t=c['source']['data'] if isinstance(c,dict) else str(c)\n    G[u]=t; print('==',u,r.get('error_code'),len(t))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://aithority.com/gaming/reinforcement-learning-really-works-for-ai-against-pro-gamers-openai-trailblazer-says/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://medium.com/aifrontiers/the-journey-of-openais-founder-ilya-sutskever-s-story-486e96cd008f"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=G['https://aithority.com/gaming/reinforcement-learning-really-works-for-ai-against-pro-gamers-openai-trailblazer-says/']\nprint(t[t.find('---',10):][:5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[:6594])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=G['https://medium.com/aifrontiers/the-journey-of-openais-founder-ilya-sutskever-s-story-486e96cd008f']\ngrep(t,[r'\\byears?\\b',r'decade',r'\\bAGI\\b',r'Published|min read|Sep|Oct'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever email 2018 OpenAI Musk lawsuit exhibit AGI years','Sutskever \"within the next three years\" robotics \"completely solved\" email']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever email 2018 OpenAI Musk lawsuit exhibit AGI years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever \"within the next three years\" robotics \"completely solved\" email"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content'); L=c['source']['data'] if isinstance(c,dict) else str(c)\nprint(r.get('error_code'),len(L))\nfor m in re.finditer(r'(?im)^#+ .*$',L): print(m.start(),m.group(0)[:120])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [
+      {
+        "date_said": "2018-11-09",
+        "quote": "Why is OpenAI’s mission relevant today? We review progress in the ﬁeld over the past 6 years Our conclusion: near term AGI should be taken as a serious possibility",
+        "source_url": "https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210"
+      },
+      {
+        "date_said": "2018-11-09",
+        "quote": "We (OpenAI) have reviewed progress in the field over the past six years. Our conclusion is near term AGI should be taken as a serious possibility.",
+        "source_url": "https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2019",
+        "note": "A search snippet only (not opened) showed a 2019-03-11 tweet by @ilyasut restating his AI Frontiers line as 'While highly uncertain, near term AGI should be considered as a possibility.' (twitter.com/ilyasut/status/1105184461631610881)."
+      },
+      {
+        "year": "2017",
+        "note": "Search snippets credit Sutskever with an email from the Musk v. Altman archive saying 'Within the next three years, robotics should be completely solved...', which I think dates from 2017. The LessWrong archive page I opened was cut off at 2016 emails, so I could not check who wrote it, when, or the exact wording."
+      },
+      {
+        "year": "2016",
+        "note": "The opened LessWrong email archive shows Sutskever emails dated Jan 2 2016 and Feb 19 2016. I did not review them for predictions because they fall outside this year."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2018",
+        "what_found": "Only 2024-2025 news (NeurIPS 2024, 'AI will do all the things we can do'); nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2018 interview AGI \"years\"",
+        "what_found": "Mostly 2025 Dwarkesh-interview coverage (5-20 year timeline); nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Again 2025 '5 to 20 years' coverage; nothing from 2018."
+      },
+      {
+        "query_or_url": "Sutskever \"near-term AGI\" serious possibility 2018",
+        "what_found": "Synced report and Slideshare deck for the 9 Nov 2018 AI Frontiers keynote; a 2019 tweet restating the line."
+      },
+      {
+        "query_or_url": "Sutskever MIT 6.S099 \"meta-learning and self-play\" transcript",
+        "what_found": "April 2018 MIT AGI course talk; a GitHub subtitle file; Berkeley and Fields Institute talk listings from early 2018."
+      },
+      {
+        "query_or_url": "Sutskever AI Frontiers conference November 2018 AGI",
+        "what_found": "Conference schedule and Synced coverage of the keynote."
+      },
+      {
+        "query_or_url": "Ilya Sutskever OpenAI Five Dota The International 2018 said",
+        "what_found": "AiThority report on his NVIDIA NTECH talk; OpenAI TI 2018 results post; later tweets."
+      },
+      {
+        "query_or_url": "\"Sutskever\" 2018 talk transcript \"AGI\" compute \"years\"",
+        "what_found": "Mostly later material (Dwarkesh 2023/2025, NeurIPS 2024); Synced again."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" interview 2018 deep learning future",
+        "what_found": "AI Frontiers promotional profile (Aug/Sep 2018) and later interviews; no 2018 Q&A interview."
+      },
+      {
+        "query_or_url": "Sutskever email 2018 OpenAI Musk lawsuit exhibit AGI years",
+        "what_found": "Coverage of the Musk v. Altman email archive; a snippet says Sutskever emailed Musk on New Year's Day 2018, but I saw no text."
+      },
+      {
+        "query_or_url": "Sutskever \"within the next three years\" robotics \"completely solved\" email",
+        "what_found": "Snippets of a 'three years' email in the archive, which I think is from 2017 rather than 2018."
+      },
+      {
+        "query_or_url": "https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210",
+        "what_found": "Opened; the deck is dated 9 Nov 2018 and slide 30 carries the undated 'near term AGI' line; I could not see slides 41-52."
+      },
+      {
+        "query_or_url": "https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/",
+        "what_found": "Opened; a news report quoting the keynote's near-term AGI line, with no date or span."
+      },
+      {
+        "query_or_url": "https://github.com/LeiHao0/OpenCourseSubtitles/blob/master/MIT%20Artificial%20Intelligence%20Podcast/12%20-%20MIT%20AI%20-%20OpenAI%20Meta-Learning%20and%20Self-Play%20(Ilya%20Sutskever).en.srt",
+        "what_found": "Opened, but only the first ~1.5 minutes of subtitles loaded; no prediction in them."
+      },
+      {
+        "query_or_url": "https://aithority.com/gaming/reinforcement-learning-really-works-for-ai-against-pro-gamers-openai-trailblazer-says/",
+        "what_found": "Opened; report of his NVIDIA NTECH talk, quoting only backward-looking remarks on Dota, compute growth and Dactyl."
+      },
+      {
+        "query_or_url": "https://medium.com/aifrontiers/the-journey-of-openais-founder-ilya-sutskever-s-story-486e96cd008f",
+        "what_found": "Opened; promotional profile with no forward-looking quotes from Sutskever."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman",
+        "what_found": "Opened, but the content cut off at September 2016 emails; no 2018 emails visible."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "In 2018 Sutskever gave talks on meta-learning and self-play (Berkeley, MIT and others), a talk at NVIDIA's internal NTECH conference, and the AI Frontiers keynote on 9 November. In that keynote he said near-term AGI should be taken as a serious possibility, but gave no date or span, so it is listed as undated. I found no 2018 statement on any opened page that ties an AI outcome to a date or time span."
+  },
+  "reply_text": "I found no dated AI prediction from Ilya Sutskever in 2018. All three fixed searches ran, plus six more. The only forward-looking statement on a page I opened has no date or time span, so I've listed it under undated rather than as a candidate.\n\n- **The undated line:** On slide 30 of his AI Frontiers keynote, given on 9 November 2018 in San Jose, he wrote that OpenAI had reviewed the past 6 years of progress, and concluded that \"near term AGI should be taken as a serious possibility\". I read this in the slide's alt-text on the Slideshare page; I couldn't see slides 41–52. Synced's news report of 13 November quotes him saying much the same words on stage.\n- **Other pages I opened had no prediction:** An AiThority report on his late-2018 talk at NTECH, an internal NVIDIA engineering conference, only looks back at Dota and compute growth. A promotional profile from AI Frontiers has no quotes from him that look ahead. Only the opening 1.5 minutes of the GitHub subtitle file for his April 2018 MIT talk loaded, and they contain nothing about the future.\n- **Things I saw only in search snippets, so I didn't quote them:**\n  - **2019:** A tweet from March 2019 restates the AGI line as \"should be considered as a possibility\".\n  - **2017:** An email excerpt says \"Within the next three years, robotics should be completely solved\". I believe it's from 2017, but the email archive page I opened stopped in 2016, so I couldn't confirm who wrote it or when.\n  - **2018 emails:** One source says he emailed Musk on New Year's Day 2018, but I never saw the text.\n\nI used 11 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [\n    {\"date_said\": \"2018-11-09\", \"quote\": \"Why is OpenAI’s mission relevant today? We review progress in the ﬁeld over the past 6 years Our conclusion: near term AGI should be taken as a serious possibility\", \"source_url\": \"https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210\"},\n    {\"date_said\": \"2018-11-09\", \"quote\": \"We (OpenAI) have reviewed progress in the field over the past six years. Our conclusion is near term AGI should be taken as a serious possibility.\", \"source_url\": \"https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2019\", \"note\": \"A search snippet only (not opened) showed a 2019-03-11 tweet by @ilyasut restating his AI Frontiers line as 'While highly uncertain, near term AGI should be considered as a possibility.' (twitter.com/ilyasut/status/1105184461631610881).\"},\n    {\"year\": \"2017\", \"note\": \"Search snippets credit Sutskever with an email from the Musk v. Altman archive saying 'Within the next three years, robotics should be completely solved...', which I think dates from 2017. The LessWrong archive page I opened was cut off at 2016 emails, so I could not check who wrote it, when, or the exact wording.\"},\n    {\"year\": \"2016\", \"note\": \"The opened LessWrong email archive shows Sutskever emails dated Jan 2 2016 and Feb 19 2016. I did not review them for predictions because they fall outside this year.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2018\", \"what_found\": \"Only 2024-2025 news (NeurIPS 2024, 'AI will do all the things we can do'); nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2018 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2025 Dwarkesh-interview coverage (5-20 year timeline); nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2018 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Again 2025 '5 to 20 years' coverage; nothing from 2018.\"},\n    {\"query_or_url\": \"Sutskever \\\"near-term AGI\\\" serious possibility 2018\", \"what_found\": \"Synced report and Slideshare deck for the 9 Nov 2018 AI Frontiers keynote; a 2019 tweet restating the line.\"},\n    {\"query_or_url\": \"Sutskever MIT 6.S099 \\\"meta-learning and self-play\\\" transcript\", \"what_found\": \"April 2018 MIT AGI course talk; a GitHub subtitle file; Berkeley and Fields Institute talk listings from early 2018.\"},\n    {\"query_or_url\": \"Sutskever AI Frontiers conference November 2018 AGI\", \"what_found\": \"Conference schedule and Synced coverage of the keynote.\"},\n    {\"query_or_url\": \"Ilya Sutskever OpenAI Five Dota The International 2018 said\", \"what_found\": \"AiThority report on his NVIDIA NTECH talk; OpenAI TI 2018 results post; later tweets.\"},\n    {\"query_or_url\": \"\\\"Sutskever\\\" 2018 talk transcript \\\"AGI\\\" compute \\\"years\\\"\", \"what_found\": \"Mostly later material (Dwarkesh 2023/2025, NeurIPS 2024); Synced again.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" interview 2018 deep learning future\", \"what_found\": \"AI Frontiers promotional profile (Aug/Sep 2018) and later interviews; no 2018 Q&A interview.\"},\n    {\"query_or_url\": \"Sutskever email 2018 OpenAI Musk lawsuit exhibit AGI years\", \"what_found\": \"Coverage of the Musk v. Altman email archive; a snippet says Sutskever emailed Musk on New Year's Day 2018, but I saw no text.\"},\n    {\"query_or_url\": \"Sutskever \\\"within the next three years\\\" robotics \\\"completely solved\\\" email\", \"what_found\": \"Snippets of a 'three years' email in the archive, which I think is from 2017 rather than 2018.\"},\n    {\"query_or_url\": \"https://www.slideshare.net/slideshow/ilya-sutskever-at-ai-frontiers-progress-towards-the-openai-mission/123119210\", \"what_found\": \"Opened; the deck is dated 9 Nov 2018 and slide 30 carries the undated 'near term AGI' line; I could not see slides 41-52.\"},\n    {\"query_or_url\": \"https://syncedreview.com/2018/11/13/openai-founder-short-term-agi-is-a-serious-possibility/\", \"what_found\": \"Opened; a news report quoting the keynote's near-term AGI line, with no date or span.\"},\n    {\"query_or_url\": \"https://github.com/LeiHao0/OpenCourseSubtitles/blob/master/MIT%20Artificial%20Intelligence%20Podcast/12%20-%20MIT%20AI%20-%20OpenAI%20Meta-Learning%20and%20Self-Play%20(Ilya%20Sutskever).en.srt\", \"what_found\": \"Opened, but only the first ~1.5 minutes of subtitles loaded; no prediction in them.\"},\n    {\"query_or_url\": \"https://aithority.com/gaming/reinforcement-learning-really-works-for-ai-against-pro-gamers-openai-trailblazer-says/\", \"what_found\": \"Opened; report of his NVIDIA NTECH talk, quoting only backward-looking remarks on Dota, compute growth and Dactyl.\"},\n    {\"query_or_url\": \"https://medium.com/aifrontiers/the-journey-of-openais-founder-ilya-sutskever-s-story-486e96cd008f\", \"what_found\": \"Opened; promotional profile with no forward-looking quotes from Sutskever.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman\", \"what_found\": \"Opened, but the content cut off at September 2016 emails; no 2018 emails visible.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"In 2018 Sutskever gave talks on meta-learning and self-play (Berkeley, MIT and others), a talk at NVIDIA's internal NTECH conference, and the AI Frontiers keynote on 9 November. In that keynote he said near-term AGI should be taken as a serious possibility, but gave no date or span, so it is listed as undated. I found no 2018 statement on any opened page that ties an AI outcome to a date or time span.\"\n}\n```"
+}

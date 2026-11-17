@@ -1,0 +1,352 @@
+{
+  "speaker_id": "musk",
+  "year": 2020,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6638,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7638
+      },
+      "cache_creation_input_tokens": 55029,
+      "cache_read_input_tokens": 529432,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 9631,
+      "output_tokens_details": {
+        "thinking_tokens": 2979
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Elon Musk\" AI prediction 2020','\"Elon Musk\" 2020 interview AGI \"years\"','\"Elon Musk\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"##\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" AI prediction 2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(\"-\",x.get('title'),x.get('url'),x.get('page_age'))\n        print(\"  \",x.get('content','')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    print(\"##\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2020 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Maureen Dowd Elon Musk July 2020 \"five years\" artificial intelligence','Joe Rogan 1470 Elon Musk transcript Neuralink AI','Axel Springer Award 2020 Elon Musk Döpfner interview transcript level 5 autonomy']:\n    print(\"##\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Maureen Dowd Elon Musk July 2020 \"five years\" artificial intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Joe Rogan 1470 Elon Musk transcript Neuralink AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Axel Springer Award 2020 Elon Musk Döpfner interview transcript level 5 autonomy"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\npages={}\nfor u in ['https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/','https://www.rev.com/transcripts/joe-rogan-elon-musk-podcast-transcript-may-7-2020']:\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str): f=json.loads(f)\n    if isinstance(f,dict): print(u,f); continue\n    c=f[0]['content']; pages[u]=c; print(u,len(c))\n    for kw in ['next year','years','autonomy','AI ','artificial','decade','superintelligen','language']:\n        for m in re.finditer(kw,c):\n            print('  >',kw,':',c[max(0,m.start()-250):m.start()+200].replace('\\n',' '))\n        "
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.rev.com/transcripts/joe-rogan-elon-musk-podcast-transcript-may-7-2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=f['content']['source']['data'];print(len(c))\nfor kw in ['year','language','decade','AI ','superintelligen']:\n    for m in re.finditer(kw,c):\n        s=c[max(0,m.start()-300):m.start()+200]\n        s=re.sub(r'\\(\\[(\\d\\d:\\d\\d(?::\\d\\d)?)\\]\\([^)]*\\)\\)',r'(\\1)',s)\n        print('>',kw,':',s.replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def getc(f):\n    if isinstance(f,str): f=json.loads(f)\n    if isinstance(f,list): f=f[0]\n    c=f.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return c or str(f)[:300]\nhs=getc(await web_fetch({\"url\":\"https://podcasts.happyscribe.com/happy-scribe-s-favorites/joe-rogan-experience-1470-elon-musk\"}))\nprint(len(hs))\nfor kw in ['five years','ten years','10 years','next year','less than a year','years from now','language','superintelligen','AGI','digital super']:\n    for m in re.finditer(kw,hs):\n        print('>',kw,':',hs[max(0,m.start()-350):m.start()+250].replace('\\n',' '))\nshow(await web_search({\"query\":\"nytimes Maureen Dowd \\\"Elon Musk, Blasting Off in Domestic Bliss\\\"\"}))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcasts.happyscribe.com/happy-scribe-s-favorites/joe-rogan-experience-1470-elon-musk"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "nytimes Maureen Dowd \"Elon Musk, Blasting Off in Domestic Bliss\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "a=getc(await web_fetch({\"url\":\"https://artificialintelligence-news.com/2020/07/28/musk-predicts-ai-superior-humans-five-years\"}))\ni=a.find('Musk predicts');print(a[i:i+3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://artificialintelligence-news.com/2020/07/28/musk-predicts-ai-superior-humans-five-years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['five years','Dowd','vastly']:\n    for m in re.finditer(kw,a):\n        print('>',a[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "n=getc(await web_fetch({\"url\":\"https://www.nytimes.com/2020/07/25/style/elon-musk-maureen-dowd.html\"}))\nprint(len(n))\nfor kw in ['five years','vastly','smarter','A.I.']:\n    for m in re.finditer(kw,n):\n        print('>',kw,':',n[max(0,m.start()-500):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nytimes.com/2020/07/25/style/elon-musk-maureen-dowd.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(n)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Tesla Q3 2020 earnings call transcript Musk full self-driving \"end of this year\"','Tesla Battery Day 2020 transcript Musk full self-driving autopilot rewrite']:\n    print(\"##\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla Q3 2020 earnings call transcript Musk full self-driving \"end of this year\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla Battery Day 2020 transcript Musk full self-driving autopilot rewrite"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q3=getc(await web_fetch({\"url\":\"https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/\"}))\nprint(len(q3))\nfor kw in ['end of this year','next year','this year','autonomous','years','superhuman','safer']:\n    for m in re.finditer(kw,q3):\n        print('>',kw,':',q3[max(0,m.start()-350):m.start()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['That is the system that we are developing','wide release by the end']:\n    i=q3.find(kw); seg=q3[max(0,i-2500):i]\n    print([ (m.start(),m.group()) for m in re.finditer(r'(Elon Musk|Zachary Kirkhorn|Martin Viecha|Operator|--)[^\\n]{0,60}',seg)][-3:])\n    print(seg[-1200:].replace('\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=q3.find('Regarding the Full Self-Driving beta');seg=q3[:i]\nfor m in re.finditer(r'\\*\\*[^*]{3,60}\\*\\*|\\n[A-Z][a-z]+ [A-Z][a-z]+ -- [^\\n]{0,60}',seg): last=m.group()\nprint(last); print(q3[q3.find('Elon Musk'):q3.find('Elon Musk')+300])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2020-12-01",
+        "quote": "Anyway, to actually answer your question, I’m extremely confident of achieving full autonomy and releasing it to the Tesla customer base next year.",
+        "what_is_predicted": "Tesla will achieve full (Level 5) self-driving autonomy and release it to customers in 2021; asked 'And we are discussing level 5 autonomy, so really full autonomy?' Musk answered 'Yes.'",
+        "date_or_span": "next year (2021)",
+        "occasion": "Axel Springer Award 2020 interview with Mathias Döpfner, Berlin",
+        "source_url": "https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-12-01",
+        "quote": "If say fast forward to like ten years from now, almost all cars will have full autonomy capability. All new cars produced.",
+        "what_is_predicted": "Within about ten years almost all newly produced cars will be capable of full autonomy.",
+        "date_or_span": "ten years from now (~2030)",
+        "occasion": "Axel Springer Award 2020 interview with Mathias Döpfner, Berlin",
+        "source_url": "https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-12-01",
+        "quote": "I think you’re saying he is predicting 2025. I think that is reasonably accurate.",
+        "what_is_predicted": "Musk endorses 2025 as the date of the singularity, in reply to the question 'And when is the singularity in the definition of Ray Kurzweil going to happen?' The 2025 figure is not in the question as transcribed, and Kurzweil's published singularity date is 2045.",
+        "date_or_span": "2025",
+        "occasion": "Axel Springer Award 2020 interview with Mathias Döpfner, Berlin",
+        "source_url": "https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-10-21",
+        "quote": "And then just gradually step it up until we have, hopefully, a wide release by the end of this year.",
+        "what_is_predicted": "Tesla's Full Self-Driving beta will be widely released by the end of 2020; the same remarks call the neural-net system one 'we are developing and aiming to release this year'.",
+        "date_or_span": "end of 2020",
+        "occasion": "Tesla Q3 2020 earnings call",
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-07-25",
+        "quote": "that doesn’t mean that everything goes to hell in five years. It just means that things get unstable or weird.",
+        "what_is_predicted": "AI will overtake humans within about five years (by 2025). The 2025 framing is the article's own paraphrase; only this quoted sentence was read.",
+        "date_or_span": "five years / 2025",
+        "occasion": "New York Times interview by Maureen Dowd, 'Elon Musk, Blasting Off in Domestic Bliss'",
+        "source_url": "https://artificialintelligence-news.com/2020/07/28/musk-predicts-ai-superior-humans-five-years",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2019",
+        "note": "TheNextWeb lists Musk's 2019 forecast of one million Tesla robotaxis on the road in 2020, and an earlier forecast of a Neuralink implant in a human by 2020; neither was said in 2020."
+      },
+      {
+        "year": "2024",
+        "note": "Search results (Yahoo, Gulf News) report Musk predicting AI smarter than the smartest human 'next year'; not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results report G20-related remarks that AI would handle all digital tasks by the end of next year, plus an Economist interview and a Moonshots podcast; not opened."
+      },
+      {
+        "year": "2023",
+        "note": "YouTube and U.Today results report an interview saying AGI is less than three years away; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Elon Musk\" AI prediction 2020",
+        "what_found": "Mostly roundups and recent news; TheNextWeb list of older predictions; AI Prediction Index entry citing the 25 July 2020 NYT interview."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2020 interview AGI \"years\"",
+        "what_found": "Diamandis blog referencing the July 2020 NYT interview, plus mostly 2023–2025 items."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Almost entirely late-2025 G20 coverage; nothing from 2020."
+      },
+      {
+        "query_or_url": "Maureen Dowd Elon Musk July 2020 \"five years\" artificial intelligence",
+        "what_found": "AI News and NewsBytes coverage of the NYT interview's five-year AI claim."
+      },
+      {
+        "query_or_url": "Joe Rogan 1470 Elon Musk transcript Neuralink AI",
+        "what_found": "Rev and HappyScribe transcripts of the 7 May 2020 podcast."
+      },
+      {
+        "query_or_url": "Axel Springer Award 2020 Elon Musk Döpfner interview transcript level 5 autonomy",
+        "what_found": "Fan-site transcript of the 1 December 2020 interview and Teslarati coverage of the Level 5 in 2021 claim."
+      },
+      {
+        "query_or_url": "nytimes Maureen Dowd \"Elon Musk, Blasting Off in Domestic Bliss\"",
+        "what_found": "NYT tweets and secondary mentions, but no openable NYT page."
+      },
+      {
+        "query_or_url": "Tesla Q3 2020 earnings call transcript Musk full self-driving \"end of this year\"",
+        "what_found": "Q1, Q2 and Q3 2020 earnings-call transcripts; the Q2 snippet shows FSD functionality 'complete by the end of this year' (page not opened)."
+      },
+      {
+        "query_or_url": "Tesla Battery Day 2020 transcript Musk full self-driving autopilot rewrite",
+        "what_found": "Battery Day (22 Sept 2020) snippets about a private FSD beta in 'a month or so' (page not opened)."
+      },
+      {
+        "query_or_url": "https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/",
+        "what_found": "Full transcript with the 2021 Level 5, ten-year autonomy and singularity-2025 statements."
+      },
+      {
+        "query_or_url": "https://www.rev.com/transcripts/joe-rogan-elon-musk-podcast-transcript-may-7-2020",
+        "what_found": "Page opened, but the content cut off after the opening exchanges, so there was nothing usable."
+      },
+      {
+        "query_or_url": "https://podcasts.happyscribe.com/happy-scribe-s-favorites/joe-rogan-experience-1470-elon-musk",
+        "what_found": "Auto-transcript with Neuralink forecasts (an implant in less than a year; maybe five to ten years until language is unnecessary); these are brain-interface claims, not AI, so they are excluded."
+      },
+      {
+        "query_or_url": "https://artificialintelligence-news.com/2020/07/28/musk-predicts-ai-superior-humans-five-years",
+        "what_found": "Coverage of the NYT interview with a short direct quote and a paraphrase of the 2025 claim."
+      },
+      {
+        "query_or_url": "https://www.nytimes.com/2020/07/25/style/elon-musk-maureen-dowd.html",
+        "what_found": "Would not open (url_not_allowed); nothing quoted from it."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/",
+        "what_found": "Q3 2020 call transcript with the 'wide release by the end of this year' FSD statement in remarks attributed to Musk."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2020 Musk's dated AI forecasts were mostly about Tesla self-driving: a wide FSD release by the end of 2020 (October) and full Level 5 autonomy in 2021 (December). His general-AI timeline was AI overtaking humans around 2025, reported from the July NYT interview (seen only in coverage) and repeated in December when he agreed with a 2025 singularity date. The Q2 2020 earnings call and Battery Day also hold FSD timing statements, but I did not open them."
+  },
+  "reply_text": "I found five candidates from 2020. Four come from transcripts I opened and read. The fifth, the New York Times \"five years\" claim, I could only read in a news report.\n\n- **1 December 2020, Axel Springer Award.** Musk said he was \"extremely confident\" Tesla would reach full autonomy and release it to customers in 2021, and confirmed he meant Level 5. In the same talk he said almost all new cars would have full autonomy within about ten years. Asked about Ray Kurzweil's date for the singularity, he answered, \"I think you're saying he is predicting 2025. I think that is reasonably accurate.\" Two things to check there. The 2025 date is Musk's own; it isn't in the question as transcribed. Kurzweil's published date for the singularity is 2045, not 2025. This transcript was made by a fan site from the event video, so it isn't official.\n- **21 October 2020, Tesla third-quarter earnings call.** Musk said Tesla hoped for a \"wide release\" of the Full Self-Driving beta by the end of 2020. The Motley Fool transcript doesn't name the speaker at each line; these lines are in the remarks it credits to Musk.\n- **25 July 2020, New York Times interview with Maureen Dowd.** The Times page wouldn't open for me. I read the claim only in an AI News article, which reports him saying AI \"could overtake humans by 2025\" and quotes him with a \"five years\" line. The fuller quote (\"less than five years from now\") appeared only in a search snippet, so I haven't used it.\n\nNothing I read matches the claim you already have on file (9 July 2020, Level 5 basic functionality this year), so none are marked as already recorded. One lead I didn't open: search snippets show that on the 22 July 2020 earnings call Musk was \"very confident\" Full Self-Driving would be functionally complete by the end of 2020. That looks close to your recorded claim.\n\nI left out two Neuralink forecasts from his May 2020 Joe Rogan podcast. They're about a brain implant, not AI. I used 9 of the 12 searches and all 6 page openings. The New York Times page was blocked, and the rev.com Rogan transcript cut off after the opening lines.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2020-12-01\", \"quote\": \"Anyway, to actually answer your question, I’m extremely confident of achieving full autonomy and releasing it to the Tesla customer base next year.\", \"what_is_predicted\": \"Tesla will achieve full (Level 5) self-driving autonomy and release it to customers in 2021; asked 'And we are discussing level 5 autonomy, so really full autonomy?' Musk answered 'Yes.'\", \"date_or_span\": \"next year (2021)\", \"occasion\": \"Axel Springer Award 2020 interview with Mathias Döpfner, Berlin\", \"source_url\": \"https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-12-01\", \"quote\": \"If say fast forward to like ten years from now, almost all cars will have full autonomy capability. All new cars produced.\", \"what_is_predicted\": \"Within about ten years almost all newly produced cars will be capable of full autonomy.\", \"date_or_span\": \"ten years from now (~2030)\", \"occasion\": \"Axel Springer Award 2020 interview with Mathias Döpfner, Berlin\", \"source_url\": \"https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-12-01\", \"quote\": \"I think you’re saying he is predicting 2025. I think that is reasonably accurate.\", \"what_is_predicted\": \"Musk endorses 2025 as the date of the singularity, in reply to the question 'And when is the singularity in the definition of Ray Kurzweil going to happen?' The 2025 figure is not in the question as transcribed, and Kurzweil's published singularity date is 2045.\", \"date_or_span\": \"2025\", \"occasion\": \"Axel Springer Award 2020 interview with Mathias Döpfner, Berlin\", \"source_url\": \"https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-10-21\", \"quote\": \"And then just gradually step it up until we have, hopefully, a wide release by the end of this year.\", \"what_is_predicted\": \"Tesla's Full Self-Driving beta will be widely released by the end of 2020; the same remarks call the neural-net system one 'we are developing and aiming to release this year'.\", \"date_or_span\": \"end of 2020\", \"occasion\": \"Tesla Q3 2020 earnings call\", \"source_url\": \"https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-07-25\", \"quote\": \"that doesn’t mean that everything goes to hell in five years. It just means that things get unstable or weird.\", \"what_is_predicted\": \"AI will overtake humans within about five years (by 2025). The 2025 framing is the article's own paraphrase; only this quoted sentence was read.\", \"date_or_span\": \"five years / 2025\", \"occasion\": \"New York Times interview by Maureen Dowd, 'Elon Musk, Blasting Off in Domestic Bliss'\", \"source_url\": \"https://artificialintelligence-news.com/2020/07/28/musk-predicts-ai-superior-humans-five-years\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2019\", \"note\": \"TheNextWeb lists Musk's 2019 forecast of one million Tesla robotaxis on the road in 2020, and an earlier forecast of a Neuralink implant in a human by 2020; neither was said in 2020.\"},\n    {\"year\": \"2024\", \"note\": \"Search results (Yahoo, Gulf News) report Musk predicting AI smarter than the smartest human 'next year'; not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results report G20-related remarks that AI would handle all digital tasks by the end of next year, plus an Economist interview and a Moonshots podcast; not opened.\"},\n    {\"year\": \"2023\", \"note\": \"YouTube and U.Today results report an interview saying AGI is less than three years away; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Elon Musk\\\" AI prediction 2020\", \"what_found\": \"Mostly roundups and recent news; TheNextWeb list of older predictions; AI Prediction Index entry citing the 25 July 2020 NYT interview.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2020 interview AGI \\\"years\\\"\", \"what_found\": \"Diamandis blog referencing the July 2020 NYT interview, plus mostly 2023–2025 items.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2020 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Almost entirely late-2025 G20 coverage; nothing from 2020.\"},\n    {\"query_or_url\": \"Maureen Dowd Elon Musk July 2020 \\\"five years\\\" artificial intelligence\", \"what_found\": \"AI News and NewsBytes coverage of the NYT interview's five-year AI claim.\"},\n    {\"query_or_url\": \"Joe Rogan 1470 Elon Musk transcript Neuralink AI\", \"what_found\": \"Rev and HappyScribe transcripts of the 7 May 2020 podcast.\"},\n    {\"query_or_url\": \"Axel Springer Award 2020 Elon Musk Döpfner interview transcript level 5 autonomy\", \"what_found\": \"Fan-site transcript of the 1 December 2020 interview and Teslarati coverage of the Level 5 in 2021 claim.\"},\n    {\"query_or_url\": \"nytimes Maureen Dowd \\\"Elon Musk, Blasting Off in Domestic Bliss\\\"\", \"what_found\": \"NYT tweets and secondary mentions, but no openable NYT page.\"},\n    {\"query_or_url\": \"Tesla Q3 2020 earnings call transcript Musk full self-driving \\\"end of this year\\\"\", \"what_found\": \"Q1, Q2 and Q3 2020 earnings-call transcripts; the Q2 snippet shows FSD functionality 'complete by the end of this year' (page not opened).\"},\n    {\"query_or_url\": \"Tesla Battery Day 2020 transcript Musk full self-driving autopilot rewrite\", \"what_found\": \"Battery Day (22 Sept 2020) snippets about a private FSD beta in 'a month or so' (page not opened).\"},\n    {\"query_or_url\": \"https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/\", \"what_found\": \"Full transcript with the 2021 Level 5, ten-year autonomy and singularity-2025 statements.\"},\n    {\"query_or_url\": \"https://www.rev.com/transcripts/joe-rogan-elon-musk-podcast-transcript-may-7-2020\", \"what_found\": \"Page opened, but the content cut off after the opening exchanges, so there was nothing usable.\"},\n    {\"query_or_url\": \"https://podcasts.happyscribe.com/happy-scribe-s-favorites/joe-rogan-experience-1470-elon-musk\", \"what_found\": \"Auto-transcript with Neuralink forecasts (an implant in less than a year; maybe five to ten years until language is unnecessary); these are brain-interface claims, not AI, so they are excluded.\"},\n    {\"query_or_url\": \"https://artificialintelligence-news.com/2020/07/28/musk-predicts-ai-superior-humans-five-years\", \"what_found\": \"Coverage of the NYT interview with a short direct quote and a paraphrase of the 2025 claim.\"},\n    {\"query_or_url\": \"https://www.nytimes.com/2020/07/25/style/elon-musk-maureen-dowd.html\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted from it.\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/\", \"what_found\": \"Q3 2020 call transcript with the 'wide release by the end of this year' FSD statement in remarks attributed to Musk.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2020 Musk's dated AI forecasts were mostly about Tesla self-driving: a wide FSD release by the end of 2020 (October) and full Level 5 autonomy in 2021 (December). His general-AI timeline was AI overtaking humans around 2025, reported from the July NYT interview (seen only in coverage) and repeated in December when he agreed with a 2025 singularity date. The Q2 2020 earnings call and Battery Day also hold FSD timing statements, but I did not open them.\"\n}\n```"
+}

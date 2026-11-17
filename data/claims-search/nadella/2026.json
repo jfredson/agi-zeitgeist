@@ -1,0 +1,350 @@
+{
+  "speaker_id": "nadella",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.1564,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7673
+      },
+      "cache_creation_input_tokens": 131541,
+      "cache_read_input_tokens": 958965,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 9840,
+      "output_tokens_details": {
+        "thinking_tokens": 2272
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Satya Nadella\" AI prediction 2026','\"Satya Nadella\" 2026 interview AGI \"years\"','\"Satya Nadella\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\nfor q in qs:\n    r=R[q]\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,url,n=4000,kw=None):\n    for x in R[q]:\n        if x['url']==url:\n            c=x['content']\n            if kw:\n                import re\n                for m in re.finditer(kw,c):\n                    print('...',c[max(0,m.start()-500):m.start()+500].replace('\\n',' '),'\\n')\n            else: print(c[:n])\nshow(qs[2],'https://www.cnbc.com/2026/10/10/microsoft-satya-nadella-ai-emergency-brake-safety.html',3000)\nprint('=====')\nshow(qs[2],'https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference',3000)\nprint('=====')\nshow(qs[1],'https://stratechery.com/2026/an-interview-with-microsoft-ceo-satya-nadella-about-finding-core-competencies/',3000)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['snscratchpad Nadella \"Looking ahead to 2026\"',\n'Nadella Davos 2026 transcript AI \"years\"',\n'Nadella \"emergency brake\" observability post October 2026',\n'Nadella Build 2026 keynote AI agents \"next\"']\nfor q in qs2:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "snscratchpad Nadella \"Looking ahead to 2026\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella Davos 2026 transcript AI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella \"emergency brake\" observability post October 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella Build 2026 keynote AI agents \"next\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\npat=r'(next (year|decade|five|ten|two|three|few)|by 20[2-4]\\d|in (two|three|five|ten|\\d+) years|end of (the|this) decade|within (the next|a|two|five|ten)|years from now|20[3]\\d)'\nseen=set()\nfor q,r in R.items():\n    for x in r:\n        u=x['url']\n        if u in seen: continue\n        seen.add(u)\n        c=x.get('content','')\n        hits=[m for m in re.finditer(pat,c,re.I)]\n        if hits and any(k in u for k in ['pdf','dig.watch','36kr','investing.com','latent.space','happyscribe','morganstanley','stratechery','dwarkesh.com/p/satya-nadella-2','thenewthings','techcrunch.com/2026','qz.com']):\n            print('##',u)\n            for m in hits[:8]:\n                print('  ..',c[max(0,m.start()-250):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nurls=['https://www.investing.com/news/transcripts/microsoft-at-morgan-stanley-conference-ais-transformative-role-93CH-4542000',\n'https://dig.watch/event/world-economic-forum-2026-at-davos/conversation-with-satya-nadella-ceo-of-microsoft',\n'https://msthesource.thesourcemediaassets.com/2026/06/06022026_Nadella_TRANSCRIPT_Build-Keynote.pdf',\n'https://latent.space/p/satya-2026/']\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r\n    print(u,r.get('type'),r.get('error_code'),len(r.get('content','') or ''))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.investing.com/news/transcripts/microsoft-at-morgan-stanley-conference-ais-transformative-role-93CH-4542000"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://dig.watch/event/world-economic-forum-2026-at-davos/conversation-with-satya-nadella-ceo-of-microsoft"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://msthesource.thesourcemediaassets.com/2026/06/06022026_Nadella_TRANSCRIPT_Build-Keynote.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://latent.space/p/satya-2026/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=F[urls[0]]; print(r.keys()); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={}\nfor u in urls:\n    c=F[u]['content']\n    if isinstance(c,dict): c=c.get('source',{}).get('data','') or str(c)\n    T[u]=c; print(u,len(c))\npat2=r'(next (year|decade|five|ten|two|three|12|18|six)|by 20[2-4]\\d|in (two|three|four|five|ten|\\d+) years|end of (the|this) decade|within (the next|a year|two|five|ten)|years from now|20[3]\\d|this year|AGI|superintelligence)'\nfor u in urls:\n    print('#########',u)\n    for m in re.finditer(pat2,T[u],re.I):\n        print('  ..',T[u][max(0,m.start()-300):m.start()+250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[urls[2]]['content']\nprint(type(c), c.keys() if isinstance(c,dict) else '', c.get('source',{}).get('type'), c.get('source',{}).get('media_type'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\nb=base64.b64decode(c['source']['data'])\nrd=PdfReader(io.BytesIO(b))\ntxt=\"\\n\".join(p.extract_text() or '' for p in rd.pages)\nT[urls[2]]=txt\nprint(len(rd.pages),len(txt))\npat3=r'(next (year|decade|five|ten|two|three|12|18|six)|by 20[2-4]\\d|in (two|three|four|five|ten|\\d+) years|end of (the|this) decade|within (the next|a year|two|five|ten)|years from now|20[3]\\d|by the end of|AGI|superintelligence)'\nfor u in urls[2:]:\n    print('#########',u)\n    for m in re.finditer(pat3,T[u],re.I):\n        print('  ..',T[u][max(0,m.start()-300):m.start()+250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[urls[0]]\nfor kw in ['next year','years','superintelligence','decade']:\n    for m in re.finditer(kw,t,re.I):\n        print(kw,'..',t[max(0,m.start()-600):m.start()+300].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[-3000:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Nadella 2026 \"superintelligence\" timeline interview',\n'Nadella earnings call 2026 transcript AI agents \"by the end of\"',\n'Nadella 2026 podcast AI \"in five years\" OR \"by 2030\"']\nfor q in qs3:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','')\n        hits=list(re.finditer(pat3,c,re.I))[:3]\n        for m in hits: print('   ..',c[max(0,m.start()-200):m.start()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella 2026 \"superintelligence\" timeline interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella earnings call 2026 transcript AI agents \"by the end of\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella 2026 podcast AI \"in five years\" OR \"by 2030\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='20VC Harry Stebbings Satya Nadella transcript evals \"five years\"'\nr=await web_search({\"query\":q})\nif isinstance(r,str): r=json.loads(r)\nR[q]=r\nfor x in r:\n    print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    c=x.get('content','')\n    for m in list(re.finditer(r'five years|5 years|AI native|evals',c,re.I))[:4]:\n        print('   ..',c[max(0,m.start()-250):m.start()+250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "20VC Harry Stebbings Satya Nadella transcript evals \"five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u5='https://www.996.fm/episodes/20vc--ep-55e1f0ea/'\nu6='https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference'\nfor u in [u5,u6]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content','')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    T[u]=c; print(u,r.get('type'),r.get('error_code'),len(c))\nfor u in [u5,u6]:\n    print('#####',u)\n    for m in re.finditer(r'five years|next year|years from now|decade|passe|passé|AGI|superintelligence',T[u],re.I):\n        print('  ..',T[u][max(0,m.start()-700):m.start()+400].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.996.fm/episodes/20vc--ep-55e1f0ea/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-10-26",
+        "quote": "This time around, what is considered, Oh, I’m an AI native company and I do this, I think five years from now, it’ll be pretty passe, I would imagine.",
+        "what_is_predicted": "Being an 'AI native' company will be commonplace rather than special within about five years, as happened with PCs and cloud.",
+        "date_or_span": "five years from now (c. 2031)",
+        "occasion": "20VC podcast interview with Harry Stebbings, 'Satya Nadella on Open vs Closed Models: Who Wins'",
+        "source_url": "https://www.996.fm/episodes/20vc--ep-55e1f0ea/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-10-26",
+        "quote": "You know, it might be that that thing that we just talked about, those evals.",
+        "what_is_predicted": "Each company owning private AI evals or benchmarks will be common and accepted within five years. The five-year span is in the interviewer's question, not in Nadella's answer.",
+        "date_or_span": "five years (span named in Stebbings' question: 'What looks crazy today but will be incredibly common and accepted in five years?')",
+        "occasion": "20VC podcast interview with Harry Stebbings, quick-fire round",
+        "source_url": "https://www.996.fm/episodes/20vc--ep-55e1f0ea/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-03-04",
+        "quote": "The smart thing that I think everybody is going to start doing in the next year is tools use. That's sort of all software.",
+        "what_is_predicted": "Within the next year, AI users will widely adopt tool use to make AI more token-efficient.",
+        "date_or_span": "the next year (c. March 2026 to March 2027)",
+        "occasion": "Fireside chat with Keith Weiss, Morgan Stanley Technology, Media & Telecom Conference 2026, San Francisco",
+        "source_url": "https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "The sn scratchpad post 'Looking ahead to 2026' ('2026 will be a pivotal year for AI') is dated 29 December 2025 in several reports (Kotaku, windowsforum, and techstory, which says around 28 December). It belongs to 2025, not 2026. The post itself was not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Dwarkesh Podcast 'How Microsoft is preparing for AGI' (dwarkesh.com/p/satya-nadella-2) appears in a podcast-summary listing from about November 2025. Its snippet has 'maybe it takes five years, ten years, twenty years' (speaker unclear) and Nadella's 'may happen in 20 years, 25 years' about Industrial Revolution-scale growth. Seen in snippets only, not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Satya Nadella\" AI prediction 2026",
+        "what_found": "Coverage of the Dec 2025 'Looking ahead to 2026' post, a TechCrunch July 2026 piece, and Davos 2026 coverage. No new dated 2026 prediction."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2026 interview AGI \"years\"",
+        "what_found": "Stratechery interview (4 June 2026, snippets only), Dwarkesh interviews (2025), CNBC Oct 2026 profile, and a Surface interview. No dated AGI claim."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "CNBC 'emergency brake' story (10 Oct 2026, no date in Nadella's words) and the Morgan Stanley TMT article with the 'next year is tools use' line."
+      },
+      {
+        "query_or_url": "snscratchpad Nadella \"Looking ahead to 2026\"",
+        "what_found": "Several reports date the post to 28 or 29 December 2025, so it falls outside 2026."
+      },
+      {
+        "query_or_url": "Nadella Davos 2026 transcript AI \"years\"",
+        "what_found": "Davos 2026 transcripts (dig.watch, All-In on happyscribe, 36kr). In snippets, the five-year lines were the interviewer's questions or about tech's share of GDP and US market share, not AI forecasts."
+      },
+      {
+        "query_or_url": "Nadella \"emergency brake\" observability post October 2026",
+        "what_found": "Coverage of Nadella's 10 Oct 2026 X post on AI safety principles. Nothing dated."
+      },
+      {
+        "query_or_url": "Nadella Build 2026 keynote AI agents \"next\"",
+        "what_found": "Official Build 2026 keynote transcript PDF (2 June 2026) and coverage."
+      },
+      {
+        "query_or_url": "https://www.investing.com/news/transcripts/microsoft-at-morgan-stanley-conference-ais-transformative-role-93CH-4542000",
+        "what_found": "Opened. Only a summary and the start of the transcript came through, and it did not contain the 'next year' line."
+      },
+      {
+        "query_or_url": "https://dig.watch/event/world-economic-forum-2026-at-davos/conversation-with-satya-nadella-ceo-of-microsoft",
+        "what_found": "Opened Davos 2026 conversation with Larry Fink. No dated AI prediction from Nadella found."
+      },
+      {
+        "query_or_url": "https://msthesource.thesourcemediaassets.com/2026/06/06022026_Nadella_TRANSCRIPT_Build-Keynote.pdf",
+        "what_found": "Opened the official Build 2026 keynote transcript. No dated AI prediction, only general hopes for 'the next few months and the next year'."
+      },
+      {
+        "query_or_url": "https://latent.space/p/satya-2026/",
+        "what_found": "Opened the No Priors x Latent Space interview at Build 2026. Only backward-looking 'two years' remarks, no forecast."
+      },
+      {
+        "query_or_url": "Nadella 2026 \"superintelligence\" timeline interview",
+        "what_found": "Sept 2026 X post saying superintelligence must stay under human control, a Nov 2026 piece defending the term, and the March 2026 Copilot/superintelligence reorg memo. No timeline from Nadella."
+      },
+      {
+        "query_or_url": "Nadella earnings call 2026 transcript AI agents \"by the end of\"",
+        "what_found": "Q4 FY2026 earnings call transcript listings (29 July 2026). The 'next year or two' snippet was an analyst's question. Not opened."
+      },
+      {
+        "query_or_url": "Nadella 2026 podcast AI \"in five years\" OR \"by 2030\"",
+        "what_found": "Found the 20VC interview (Oct 2026) with five-year remarks, an All-In Davos five-year market-share remark, and India developers by 2030 (not an AI forecast)."
+      },
+      {
+        "query_or_url": "20VC Harry Stebbings Satya Nadella transcript evals \"five years\"",
+        "what_found": "Found full 20VC transcript pages (996.fm, podhood) dated 26 Oct 2026."
+      },
+      {
+        "query_or_url": "https://www.996.fm/episodes/20vc--ep-55e1f0ea/",
+        "what_found": "Opened the full 20VC transcript. It holds the 'five years from now ... pretty passe' and 'those evals' passages."
+      },
+      {
+        "query_or_url": "https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference",
+        "what_found": "Opened Morgan Stanley's article and transcript excerpt from 4 March 2026. It holds the 'next year is tools use' line."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Nadella made few dated AI forecasts in 2026. His main themes were reliable AI systems, safety and human control, and running many models, mostly without dates. Three dated items were found: two five-year remarks on 20VC in October (AI-native companies becoming ordinary, and company evals becoming common, the latter with the span only in the question) and a 'next year' remark on tool use at Morgan Stanley's conference in March. He gave no dated AGI or superintelligence timeline."
+  },
+  "reply_text": "I found three statements from 2026 that pass the test, and one of them only partly. All three are about how widely AI will be used, not about when AGI arrives. I didn't find any 2026 statement from Nadella giving a date for AGI or superintelligence. I didn't see the claim already on file (100 million patient encounters, 2026-07-29), so it isn't repeated here.\n\n1. **20VC podcast with Harry Stebbings (page dated 26 October 2026):** Nadella said that calling yourself an \"AI native company\" will be \"pretty passe\" five years from now. The page I read is a third-party transcript on 996.fm, not an official one.\n2. **Same interview:** Asked what looks crazy today but will be common in five years, he answered \"those evals\". The five-year span is only in the question, not in his answer, so this one is weak.\n3. **Morgan Stanley TMT Conference (4 March 2026):** He said that in the next year everybody will start relying on tool use to make AI use fewer tokens. This is the transcript excerpt Morgan Stanley published on its own site. The Investing.com transcript I opened was cut short and didn't contain these words.\n\n**Left out:**\n- His \"Looking ahead to 2026\" blog post, where 2026 is called \"a pivotal year for AI\", went up on 29 December 2025. It belongs to 2025.\n- The Dwarkesh podcast (\"maybe it takes five years, ten years, twenty years\") looks like November 2025. I only saw it in a search snippet.\n- Several 2026 items carry a date but aren't AI forecasts: India possibly leading the world in developers by 2030, and at Davos, tech's share of GDP and US market share \"in five years\". I didn't open those pages.\n- His September and October 2026 posts on superintelligence needing human control and an \"emergency brake\" give no dates. I only saw them in news coverage.\n\n**Not checked closely:**\n- I didn't open the Davos transcripts. The 2026 earnings calls showed up in search results but I didn't open them, and the Stratechery interview I only saw in snippets.\n- The 2026 Build keynote and the Latent Space / No Priors interview had nothing dated.\n\nAll 12 searches and all 6 page openings are used.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2026-10-26\",\n      \"quote\": \"This time around, what is considered, Oh, I’m an AI native company and I do this, I think five years from now, it’ll be pretty passe, I would imagine.\",\n      \"what_is_predicted\": \"Being an 'AI native' company will be commonplace rather than special within about five years, as happened with PCs and cloud.\",\n      \"date_or_span\": \"five years from now (c. 2031)\",\n      \"occasion\": \"20VC podcast interview with Harry Stebbings, 'Satya Nadella on Open vs Closed Models: Who Wins'\",\n      \"source_url\": \"https://www.996.fm/episodes/20vc--ep-55e1f0ea/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2026-10-26\",\n      \"quote\": \"You know, it might be that that thing that we just talked about, those evals.\",\n      \"what_is_predicted\": \"Each company owning private AI evals or benchmarks will be common and accepted within five years. The five-year span is in the interviewer's question, not in Nadella's answer.\",\n      \"date_or_span\": \"five years (span named in Stebbings' question: 'What looks crazy today but will be incredibly common and accepted in five years?')\",\n      \"occasion\": \"20VC podcast interview with Harry Stebbings, quick-fire round\",\n      \"source_url\": \"https://www.996.fm/episodes/20vc--ep-55e1f0ea/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2026-03-04\",\n      \"quote\": \"The smart thing that I think everybody is going to start doing in the next year is tools use. That's sort of all software.\",\n      \"what_is_predicted\": \"Within the next year, AI users will widely adopt tool use to make AI more token-efficient.\",\n      \"date_or_span\": \"the next year (c. March 2026 to March 2027)\",\n      \"occasion\": \"Fireside chat with Keith Weiss, Morgan Stanley Technology, Media & Telecom Conference 2026, San Francisco\",\n      \"source_url\": \"https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"The sn scratchpad post 'Looking ahead to 2026' ('2026 will be a pivotal year for AI') is dated 29 December 2025 in several reports (Kotaku, windowsforum, and techstory, which says around 28 December). It belongs to 2025, not 2026. The post itself was not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Dwarkesh Podcast 'How Microsoft is preparing for AGI' (dwarkesh.com/p/satya-nadella-2) appears in a podcast-summary listing from about November 2025. Its snippet has 'maybe it takes five years, ten years, twenty years' (speaker unclear) and Nadella's 'may happen in 20 years, 25 years' about Industrial Revolution-scale growth. Seen in snippets only, not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" AI prediction 2026\", \"what_found\": \"Coverage of the Dec 2025 'Looking ahead to 2026' post, a TechCrunch July 2026 piece, and Davos 2026 coverage. No new dated 2026 prediction.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Stratechery interview (4 June 2026, snippets only), Dwarkesh interviews (2025), CNBC Oct 2026 profile, and a Surface interview. No dated AGI claim.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"CNBC 'emergency brake' story (10 Oct 2026, no date in Nadella's words) and the Morgan Stanley TMT article with the 'next year is tools use' line.\"},\n    {\"query_or_url\": \"snscratchpad Nadella \\\"Looking ahead to 2026\\\"\", \"what_found\": \"Several reports date the post to 28 or 29 December 2025, so it falls outside 2026.\"},\n    {\"query_or_url\": \"Nadella Davos 2026 transcript AI \\\"years\\\"\", \"what_found\": \"Davos 2026 transcripts (dig.watch, All-In on happyscribe, 36kr). In snippets, the five-year lines were the interviewer's questions or about tech's share of GDP and US market share, not AI forecasts.\"},\n    {\"query_or_url\": \"Nadella \\\"emergency brake\\\" observability post October 2026\", \"what_found\": \"Coverage of Nadella's 10 Oct 2026 X post on AI safety principles. Nothing dated.\"},\n    {\"query_or_url\": \"Nadella Build 2026 keynote AI agents \\\"next\\\"\", \"what_found\": \"Official Build 2026 keynote transcript PDF (2 June 2026) and coverage.\"},\n    {\"query_or_url\": \"https://www.investing.com/news/transcripts/microsoft-at-morgan-stanley-conference-ais-transformative-role-93CH-4542000\", \"what_found\": \"Opened. Only a summary and the start of the transcript came through, and it did not contain the 'next year' line.\"},\n    {\"query_or_url\": \"https://dig.watch/event/world-economic-forum-2026-at-davos/conversation-with-satya-nadella-ceo-of-microsoft\", \"what_found\": \"Opened Davos 2026 conversation with Larry Fink. No dated AI prediction from Nadella found.\"},\n    {\"query_or_url\": \"https://msthesource.thesourcemediaassets.com/2026/06/06022026_Nadella_TRANSCRIPT_Build-Keynote.pdf\", \"what_found\": \"Opened the official Build 2026 keynote transcript. No dated AI prediction, only general hopes for 'the next few months and the next year'.\"},\n    {\"query_or_url\": \"https://latent.space/p/satya-2026/\", \"what_found\": \"Opened the No Priors x Latent Space interview at Build 2026. Only backward-looking 'two years' remarks, no forecast.\"},\n    {\"query_or_url\": \"Nadella 2026 \\\"superintelligence\\\" timeline interview\", \"what_found\": \"Sept 2026 X post saying superintelligence must stay under human control, a Nov 2026 piece defending the term, and the March 2026 Copilot/superintelligence reorg memo. No timeline from Nadella.\"},\n    {\"query_or_url\": \"Nadella earnings call 2026 transcript AI agents \\\"by the end of\\\"\", \"what_found\": \"Q4 FY2026 earnings call transcript listings (29 July 2026). The 'next year or two' snippet was an analyst's question. Not opened.\"},\n    {\"query_or_url\": \"Nadella 2026 podcast AI \\\"in five years\\\" OR \\\"by 2030\\\"\", \"what_found\": \"Found the 20VC interview (Oct 2026) with five-year remarks, an All-In Davos five-year market-share remark, and India developers by 2030 (not an AI forecast).\"},\n    {\"query_or_url\": \"20VC Harry Stebbings Satya Nadella transcript evals \\\"five years\\\"\", \"what_found\": \"Found full 20VC transcript pages (996.fm, podhood) dated 26 Oct 2026.\"},\n    {\"query_or_url\": \"https://www.996.fm/episodes/20vc--ep-55e1f0ea/\", \"what_found\": \"Opened the full 20VC transcript. It holds the 'five years from now ... pretty passe' and 'those evals' passages.\"},\n    {\"query_or_url\": \"https://www.morganstanley.com/insights/articles/microsoft-ceo-satya-nadella-ai-capex-tmt-conference\", \"what_found\": \"Opened Morgan Stanley's article and transcript excerpt from 4 March 2026. It holds the 'next year is tools use' line.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Nadella made few dated AI forecasts in 2026. His main themes were reliable AI systems, safety and human control, and running many models, mostly without dates. Three dated items were found: two five-year remarks on 20VC in October (AI-native companies becoming ordinary, and company evals becoming common, the latter with the span only in the question) and a 'next year' remark on tool use at Morgan Stanley's conference in March. He gave no dated AGI or superintelligence timeline.\"\n}\n```"
+}

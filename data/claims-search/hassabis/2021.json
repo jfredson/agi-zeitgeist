@@ -1,0 +1,284 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2021,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5161,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 43422,
+      "cache_read_input_tokens": 216004,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 6786,
+      "output_tokens_details": {
+        "thinking_tokens": 2089
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 4,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2021','\"Demis Hassabis\" 2021 interview AGI \"years\"','\"Demis Hassabis\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2021"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:300].replace('\\n',' '),'\\n')\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2021 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Isomorphic Labs launch Hassabis blog November 2021','Hassabis interview AlphaFold July 2021 \"next\" years','CBMM Hassabis \"Using AI to accelerate scientific discovery\" 2021 transcript']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Isomorphic Labs launch Hassabis blog November 2021"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis interview AlphaFold July 2021 \"next\" years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "CBMM Hassabis \"Using AI to accelerate scientific discovery\" 2021 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.isomorphiclabs.com/articles/introducing-isomorphic-labs\"})\nif isinstance(r,str): r=json.loads(r)\nc=r[0]['content'] if isinstance(r,list) else str(r)\nprint(len(c)); print(c[:6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.isomorphiclabs.com/articles/introducing-isomorphic-labs"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[6000:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis AlphaFold database July 2021 \"100 million\" \"end of the year\"','Hassabis 2021 podcast interview AGI decade','Hassabis Isomorphic Labs interview November 2021 drug discovery \"years\"']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis AlphaFold database July 2021 \"100 million\" \"end of the year\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2021 podcast interview AGI decade"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Isomorphic Labs interview November 2021 drug discovery \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef fetch(u):\n    r=await_ = None\nfor u in [\"https://www.bio-itworld.com/news/2021/07/22/deepmind-releases-open-protein-structure-database-including-complete-human-proteome\",\"https://www.sciencedaily.com/releases/2021/07/210723095647.htm\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    s=json.dumps(r)\n    try: t=r[0]['content'] if isinstance(r,list) else r\n    except: t=r\n    t=str(t)\n    print(\"==\",u,len(t))\n    for k in ['Hassabis','month','100 million','year']:\n        for m in re.finditer(k,t):\n            print('  ',k,':',t[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '))\n            print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bio-itworld.com/news/2021/07/22/deepmind-releases-open-protein-structure-database-including-complete-human-proteome"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.sciencedaily.com/releases/2021/07/210723095647.htm"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis interview 2021 \"artificial general intelligence\" decades Guardian OR Times OR Wired','DeepMind Hassabis 2021 \"AlphaFold\" interview \"in the next\" years drug']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis interview 2021 \"artificial general intelligence\" decades Guardian OR Times OR Wired"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "DeepMind Hassabis 2021 \"AlphaFold\" interview \"in the next\" years drug"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Hassabis 2021 interview \"Isomorphic\" OR \"AlphaFold\" Economist OR \"Exponential View\" OR Sifted OR \"Financial Times\" AI future'\nr=await web_search({\"query\":q}); R[q]=r; show(r)\nr=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\"})\nif isinstance(r,str): r=json.loads(r)\nt=str(r)\nfor k in ['2022','2021','next decade or two','Season 2']:\n    for m in list(re.finditer(k,t))[:3]: print(k,':',t[max(0,m.start()-250):m.start()+250].replace('\\\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2021 interview \"Isomorphic\" OR \"AlphaFold\" Economist OR \"Exponential View\" OR Sifted OR \"Financial Times\" AI future"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2021-07-21",
+        "quote": "He said that over the new few months, the team plans to vastly expand the coverage to almost every sequenced protein known to science—over 100 million structures covering most of the UniProt reference database.",
+        "what_is_predicted": "The AlphaFold Protein Structure Database would grow to cover almost every known protein sequence, over 100 million structures, within the next few months.",
+        "date_or_span": "the next few months (from July 2021)",
+        "occasion": "Press briefing for the AlphaFold Protein Structure Database launch with EMBL-EBI, the day before the 22 July 2021 Bio-IT World report",
+        "source_url": "https://www.bio-itworld.com/news/2021/07/22/deepmind-releases-open-protein-structure-database-including-complete-human-proteome",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2022",
+        "note": "DeepMind: The Podcast S2 Ep9 'The promise of AI with Demis Hassabis' (published 15 March 2022) has Hassabis saying AGI is 'coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two', as transcribed on LessWrong (https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi)."
+      },
+      {
+        "year": "2023-2026",
+        "note": "Search results were full of later timelines (TIME 2025 'five to 10 years', Davos 2026, 20VC, Y Combinator 'like 2030', Stanford). None were opened, and none are from 2021."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2021",
+        "what_found": "Only 2024-2026 coverage and AlphaFold paper listings; nothing said in 2021."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2021 interview AGI \"years\"",
+        "what_found": "AGI-timeline coverage from 2023-2026 (TIME, Fortune 2023, 20VC); nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "60 Minutes 2025, Davos 2026 and other later material; nothing from 2021."
+      },
+      {
+        "query_or_url": "Isomorphic Labs launch Hassabis blog November 2021",
+        "what_found": "Found the Isomorphic Labs launch post (dated 1 November 2021) and CNBC/Fortune coverage."
+      },
+      {
+        "query_or_url": "Hassabis interview AlphaFold July 2021 \"next\" years",
+        "what_found": "The July 2021 AlphaFold Nature paper and later interviews; no dated 2021 prediction in the results."
+      },
+      {
+        "query_or_url": "CBMM Hassabis \"Using AI to accelerate scientific discovery\" 2021 transcript",
+        "what_found": "Video listings for the 2021 Kendrew Lecture and Crick Lecture with abstracts only, no transcripts; the CBMM talk was 5 April 2022."
+      },
+      {
+        "query_or_url": "Hassabis AlphaFold database July 2021 \"100 million\" \"end of the year\"",
+        "what_found": "Bio-IT World and ScienceDaily reports of the July 2021 database launch, mentioning the plan to expand to over 100 million structures in the coming months."
+      },
+      {
+        "query_or_url": "Hassabis 2021 podcast interview AGI decade",
+        "what_found": "LessWrong excerpts from DeepMind: The Podcast S2 (2022) plus later podcasts."
+      },
+      {
+        "query_or_url": "Hassabis Isomorphic Labs interview November 2021 drug discovery \"years\"",
+        "what_found": "Later Endpoints, Bloomberg and Academy of Achievement items; no 2021 interview with a dated forecast."
+      },
+      {
+        "query_or_url": "Hassabis interview 2021 \"artificial general intelligence\" decades Guardian OR Times OR Wired",
+        "what_found": "TIME 2023 and later items only."
+      },
+      {
+        "query_or_url": "DeepMind Hassabis 2021 \"AlphaFold\" interview \"in the next\" years drug",
+        "what_found": "Bloomberg 2023-2025 and Cleo Abram 2025 items only."
+      },
+      {
+        "query_or_url": "Hassabis 2021 interview \"Isomorphic\" OR \"AlphaFold\" Economist OR \"Exponential View\" OR Sifted OR \"Financial Times\" AI future",
+        "what_found": "Fortune's 4 November 2021 Isomorphic report (not opened) and later items."
+      },
+      {
+        "query_or_url": "https://www.isomorphiclabs.com/articles/introducing-isomorphic-labs",
+        "what_found": "Hassabis's own launch post dated 1 November 2021: forward-looking but no date or span ('there is so much more to come')."
+      },
+      {
+        "query_or_url": "https://www.bio-itworld.com/news/2021/07/22/deepmind-releases-open-protein-structure-database-including-complete-human-proteome",
+        "what_found": "Report of the July 2021 briefing paraphrasing Hassabis on expanding to 100 million+ structures 'over the new few months'."
+      },
+      {
+        "query_or_url": "https://www.sciencedaily.com/releases/2021/07/210723095647.htm",
+        "what_found": "The DeepMind/EMBL press release: the 'over the coming months ... over 100 million structures' line is in the company's voice, not attributed to Hassabis."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "what_found": "Confirms the 'next decade or two' AGI remark comes from an episode published 15 March 2022."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2021 Hassabis's public statements centred on AlphaFold and the launch of Isomorphic Labs, not on AGI timelines. The only dated forward-looking item found is the July 2021 plan to expand the AlphaFold database to over 100 million structures 'over the next few months'. It is seen only as a reporter's paraphrase and as company press-release wording, so it is weak. His well-known 'next decade or two' AGI remark dates from a podcast published in March 2022."
+  },
+  "reply_text": "I found one weak candidate for 2021 and nothing about when AGI would arrive. The candidate is a reporter's paraphrase, not Hassabis's own words, so treat it with care.\n\n**The one candidate (July 2021, launch of the AlphaFold protein structure database).** Bio-IT World reported that at the launch press briefing he said that over the new few months, the team plans to vastly expand the coverage to almost every sequenced protein known to science—over 100 million structures. That sentence is the reporter's, not a direct quote. (\"new few months\" is the page's typo for \"next few months.\") The joint DeepMind and EMBL press release says much the same in the company's voice, not under his name: \"over the coming months we plan to vastly expand the coverage to almost every sequenced protein known to science -- over 100 million structures\". It's borderline: it's a plan to release more of the AI's output, and \"the coming months\" is a loose span.\n\n**Other 2021 material:**\n- **Isomorphic Labs launch post (1 November 2021).** I read his own post in full. It looks forward but names no date; for example, he writes that \"there is so much more to come.\"\n- **AGI timing.** The best-known early line is that AGI could come \"in the next decade or two.\" It's from the DeepMind podcast episode published on 15 March 2022, so it belongs to 2022, not 2021.\n- **Lectures.** The 2021 Kendrew and Crick lectures turned up only as video listings with no transcript, so I took nothing from them.\n\nMy plain searches with the year in them mostly returned coverage from 2023 to 2026.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2021-07-21\",\n      \"quote\": \"He said that over the new few months, the team plans to vastly expand the coverage to almost every sequenced protein known to science—over 100 million structures covering most of the UniProt reference database.\",\n      \"what_is_predicted\": \"The AlphaFold Protein Structure Database would grow to cover almost every known protein sequence, over 100 million structures, within the next few months.\",\n      \"date_or_span\": \"the next few months (from July 2021)\",\n      \"occasion\": \"Press briefing for the AlphaFold Protein Structure Database launch with EMBL-EBI, the day before the 22 July 2021 Bio-IT World report\",\n      \"source_url\": \"https://www.bio-itworld.com/news/2021/07/22/deepmind-releases-open-protein-structure-database-including-complete-human-proteome\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2022\", \"note\": \"DeepMind: The Podcast S2 Ep9 'The promise of AI with Demis Hassabis' (published 15 March 2022) has Hassabis saying AGI is 'coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two', as transcribed on LessWrong (https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi).\"},\n    {\"year\": \"2023-2026\", \"note\": \"Search results were full of later timelines (TIME 2025 'five to 10 years', Davos 2026, 20VC, Y Combinator 'like 2030', Stanford). None were opened, and none are from 2021.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2021\", \"what_found\": \"Only 2024-2026 coverage and AlphaFold paper listings; nothing said in 2021.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2021 interview AGI \\\"years\\\"\", \"what_found\": \"AGI-timeline coverage from 2023-2026 (TIME, Fortune 2023, 20VC); nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2021 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"60 Minutes 2025, Davos 2026 and other later material; nothing from 2021.\"},\n    {\"query_or_url\": \"Isomorphic Labs launch Hassabis blog November 2021\", \"what_found\": \"Found the Isomorphic Labs launch post (dated 1 November 2021) and CNBC/Fortune coverage.\"},\n    {\"query_or_url\": \"Hassabis interview AlphaFold July 2021 \\\"next\\\" years\", \"what_found\": \"The July 2021 AlphaFold Nature paper and later interviews; no dated 2021 prediction in the results.\"},\n    {\"query_or_url\": \"CBMM Hassabis \\\"Using AI to accelerate scientific discovery\\\" 2021 transcript\", \"what_found\": \"Video listings for the 2021 Kendrew Lecture and Crick Lecture with abstracts only, no transcripts; the CBMM talk was 5 April 2022.\"},\n    {\"query_or_url\": \"Hassabis AlphaFold database July 2021 \\\"100 million\\\" \\\"end of the year\\\"\", \"what_found\": \"Bio-IT World and ScienceDaily reports of the July 2021 database launch, mentioning the plan to expand to over 100 million structures in the coming months.\"},\n    {\"query_or_url\": \"Hassabis 2021 podcast interview AGI decade\", \"what_found\": \"LessWrong excerpts from DeepMind: The Podcast S2 (2022) plus later podcasts.\"},\n    {\"query_or_url\": \"Hassabis Isomorphic Labs interview November 2021 drug discovery \\\"years\\\"\", \"what_found\": \"Later Endpoints, Bloomberg and Academy of Achievement items; no 2021 interview with a dated forecast.\"},\n    {\"query_or_url\": \"Hassabis interview 2021 \\\"artificial general intelligence\\\" decades Guardian OR Times OR Wired\", \"what_found\": \"TIME 2023 and later items only.\"},\n    {\"query_or_url\": \"DeepMind Hassabis 2021 \\\"AlphaFold\\\" interview \\\"in the next\\\" years drug\", \"what_found\": \"Bloomberg 2023-2025 and Cleo Abram 2025 items only.\"},\n    {\"query_or_url\": \"Hassabis 2021 interview \\\"Isomorphic\\\" OR \\\"AlphaFold\\\" Economist OR \\\"Exponential View\\\" OR Sifted OR \\\"Financial Times\\\" AI future\", \"what_found\": \"Fortune's 4 November 2021 Isomorphic report (not opened) and later items.\"},\n    {\"query_or_url\": \"https://www.isomorphiclabs.com/articles/introducing-isomorphic-labs\", \"what_found\": \"Hassabis's own launch post dated 1 November 2021: forward-looking but no date or span ('there is so much more to come').\"},\n    {\"query_or_url\": \"https://www.bio-itworld.com/news/2021/07/22/deepmind-releases-open-protein-structure-database-including-complete-human-proteome\", \"what_found\": \"Report of the July 2021 briefing paraphrasing Hassabis on expanding to 100 million+ structures 'over the new few months'.\"},\n    {\"query_or_url\": \"https://www.sciencedaily.com/releases/2021/07/210723095647.htm\", \"what_found\": \"The DeepMind/EMBL press release: the 'over the coming months ... over 100 million structures' line is in the company's voice, not attributed to Hassabis.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\", \"what_found\": \"Confirms the 'next decade or two' AGI remark comes from an episode published 15 March 2022.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2021 Hassabis's public statements centred on AlphaFold and the launch of Isomorphic Labs, not on AGI timelines. The only dated forward-looking item found is the July 2021 plan to expand the AlphaFold database to over 100 million structures 'over the next few months'. It is seen only as a reporter's paraphrase and as company press-release wording, so it is weak. His well-known 'next decade or two' AGI remark dates from a podcast published in March 2022.\"\n}\n```"
+}

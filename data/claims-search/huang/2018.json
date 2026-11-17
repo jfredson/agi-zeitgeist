@@ -1,0 +1,342 @@
+{
+  "speaker_id": "huang",
+  "year": 2018,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6363,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7644
+      },
+      "cache_creation_input_tokens": 56718,
+      "cache_read_input_tokens": 338862,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 8241,
+      "output_tokens_details": {
+        "thinking_tokens": 2161
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Jensen Huang\" AI prediction 2018','\"Jensen Huang\" 2018 interview AGI \"years\"','\"Jensen Huang\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2018"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2018 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jensen Huang GTC 2018 keynote transcript','Jensen Huang Computex 2018 self-driving cars interview','Jensen Huang CES 2018 keynote autonomous Level 4']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC 2018 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Computex 2018 self-driving cars interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang CES 2018 keynote autonomous Level 4"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/','https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; P[u]=c; print(u,len(c))\n    for m in re.finditer(r'20[12]\\d|year|decade|level four|Level 4|robotaxi|next ',c):\n        pass\ndef kw(c,pat,w=350):\n    out=[]; last=-1000\n    for m in re.finditer(pat,c):\n        if m.start()-last<w: continue\n        last=m.start(); out.append(c[max(0,m.start()-w):m.start()+w].replace('\\n',' '))\n    return out\nfor u,c in P.items():\n    print('#####',u)\n    for s in kw(c,r'20[12]\\d|years|decade|next year'): print('...',s,'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=json.loads(r) if isinstance(r,str) else r\nif isinstance(rr,list): rr=rr[0]\nprint(rr.get('type'), rr.get('url'), rr.get('error_code'))\nc=rr.get('content',''); P[rr.get('url')]=c; print(len(c))\nfor s in kw(c,r'20[12]\\d|years|decade|next year'): print('...',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(rr.keys()); print(str(rr)[:800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def kw(c,pat,w=400):\n    out=[]; last=-1000\n    for m in re.finditer(pat,c):\n        if m.start()-last<w: continue\n        last=m.start(); out.append(c[max(0,m.start()-w):m.start()+w].replace('\\n',' '))\n    return out\nc=rr['content']['source']['data']; P['vb']=c; print(len(c))\nfor s in kw(c,r'20[12]\\d|years|decade|next year|level four'): print('...',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('Can you talk about Drive AV'); print(c[i:i+1500])\ni=c.find('Airbus'); print(c[i-1200:i+200])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    if 'error_code' in r: print('ERR',u,r['error_code']); return ''\n    ct=r['content']\n    if isinstance(ct,dict): ct=ct.get('source',{}).get('data','') or str(ct)\n    print(u,len(ct)); return ct\nc2=await fetch('https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/'); P['fortune']=c2\nfor s in kw(c2,r'20[12]\\d|years|decade|next year|level'): print('...',s,'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jensen Huang GTC Taiwan May 2018 press Q&A robotaxi','Jensen Huang GTC Europe Munich October 2018 Q&A self-driving','Jensen Huang 2018 interview artificial intelligence future \"Huang:\"']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC Taiwan May 2018 press Q&A robotaxi"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC Europe Munich October 2018 Q&A self-driving"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang 2018 interview artificial intelligence future \"Huang:\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://spectrum.ieee.org/jensen-huang-on-the-uber-tragedy-and-why-nvidia-suspended-testing','https://channellife.com.au/story/gtc18-unrelenting-optimism-jensen-huang']:\n    t=await fetch(u); P[u]=t\n    for s in kw(t,r'20[12]\\d|years|decade|next year|level f|Level'): print('...',s,'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://spectrum.ieee.org/jensen-huang-on-the-uber-tragedy-and-why-nvidia-suspended-testing"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://channellife.com.au/story/gtc18-unrelenting-optimism-jensen-huang"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Huang Nvidia May 2018 robotaxis 2019 self-driving cars 2020 2021','Jensen Huang GTC China September 2018 Q&A autonomous','Jensen Huang 2018 robots \"next decade\" AI interview']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Huang Nvidia May 2018 robotaxis 2019 self-driving cars 2020 2021"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC China September 2018 Q&A autonomous"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang 2018 robots \"next decade\" AI interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.thestreet.com/investing/stocks/nvidia-autonomous-driving-earnings-14587204'\nt=await fetch(u); P[u]=t\nfor s in kw(t,r'20[12]\\d|years|decade|next year|robot|taxi'): print('...',s[:700],'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.thestreet.com/investing/stocks/nvidia-autonomous-driving-earnings-14587204"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2018-01",
+        "quote": "I believe we will achieve–we’ll ship a car with level three capability, if you will—it has all the functionalities of a level four, but the functional safety level and the ability for the car to always be in control will probably be something along the lines of early 2020. And then a level four car will probably be late 2021.",
+        "what_is_predicted": "A level 3 self-driving car using Nvidia's Drive software will ship around early 2020, and a level 4 car around late 2021.",
+        "date_or_span": "early 2020; late 2021",
+        "occasion": "Press Q&A after Nvidia's CES 2018 press event, Las Vegas (VentureBeat edited transcript published 2018-01-12)",
+        "source_url": "https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/",
+        "source_kind": "printed_qa",
+        "already_recorded": "2018-05-10-huang-self-driving-cars-2020-to-2021.toml"
+      },
+      {
+        "date_said": "2018-01",
+        "quote": "A level five car, a robot taxi, will probably be 2019.",
+        "what_is_predicted": "Level 5 geo-fenced robot taxis will arrive in 2019.",
+        "date_or_span": "2019",
+        "occasion": "Press Q&A after Nvidia's CES 2018 press event, Las Vegas (VentureBeat edited transcript published 2018-01-12)",
+        "source_url": "https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/",
+        "source_kind": "printed_qa",
+        "already_recorded": "2018-05-10-huang-driverless-taxis-to-market-about-2019.toml"
+      },
+      {
+        "date_said": "2018-01-08",
+        "quote": "the idea of driving a car that’s completely driverless everywhere in all conditions? That fantasy car won’t be here for five to 10 years.",
+        "what_is_predicted": "A car that drives itself everywhere in all conditions will not arrive for five to ten years.",
+        "date_or_span": "five to 10 years (about 2023–2028)",
+        "occasion": "Fortune Brainstorm Tech dinner on the eve of CES, Bellagio, Las Vegas, interviewed by Adam Lashinsky",
+        "source_url": "https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2017",
+        "note": "Search snippets only, not opened: VentureBeat (2017-11-09) and Times of Israel report Huang dating robot taxis to about 2019–2020 and fully autonomous cars to 2021–2022."
+      },
+      {
+        "year": "2023",
+        "note": "Search snippets only, not opened: TechCrunch, Motley Fool and TechPowerUp report Huang saying AGI or human-rival AI could be about five years away (NYT DealBook, Nov 2023)."
+      },
+      {
+        "year": "2025",
+        "note": "Search snippets only, not opened: Fox Business, CBS and Tom's Hardware report Huang saying there is a '0% chance' AI ends the world by 2030."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2018",
+        "what_found": "Only news from 2024–2026; nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2018 interview AGI \"years\"",
+        "what_found": "AGI coverage from 2023 and 2026 (DealBook, Lex Fridman); nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage of the 2025–26 '0% chance by 2030' remarks and data-centre spending forecasts; nothing from 2018."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC 2018 keynote transcript",
+        "what_found": "Video and PDF links for the GTC 2018 and GTC Europe 2018 keynotes, but no text transcript."
+      },
+      {
+        "query_or_url": "Jensen Huang Computex 2018 self-driving cars interview",
+        "what_found": "VentureBeat's CES 2018 Q&A, Fortune's Brainstorm dinner report and a CNBC Mad Money piece from March 2018."
+      },
+      {
+        "query_or_url": "Jensen Huang CES 2018 keynote autonomous Level 4",
+        "what_found": "The snippet pointed to the VentureBeat Q&A with the level 4 'late 2021' line, which I then opened."
+      },
+      {
+        "query_or_url": "https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/",
+        "what_found": "Opened: edited transcript with the level 3 early 2020, level 4 late 2021 and robot taxi 2019 dates."
+      },
+      {
+        "query_or_url": "https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/",
+        "what_found": "Opened: event report quoting 'That fantasy car won’t be here for five to 10 years.'"
+      },
+      {
+        "query_or_url": "Jensen Huang GTC Taiwan May 2018 press Q&A robotaxi",
+        "what_found": "Only recent robotaxi news; nothing from May 2018."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC Europe Munich October 2018 Q&A self-driving",
+        "what_found": "GTC Europe 2018 keynote video and summaries, IEEE Spectrum's GTC 2018 press-briefing article and ChannelLife's GTC18 piece."
+      },
+      {
+        "query_or_url": "Jensen Huang 2018 interview artificial intelligence future \"Huang:\"",
+        "what_found": "Mostly interviews from later years; a VentureBeat interview appears to date from 2019, not 2018."
+      },
+      {
+        "query_or_url": "https://spectrum.ieee.org/jensen-huang-on-the-uber-tragedy-and-why-nvidia-suspended-testing",
+        "what_found": "Opened: GTC 2018 press-briefing remarks on the Uber crash and AV testing; no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://channellife.com.au/story/gtc18-unrelenting-optimism-jensen-huang",
+        "what_found": "Opened: GTC18 remarks including 'we're good for the next ten years' on GPU scaling, left out as a chip forecast."
+      },
+      {
+        "query_or_url": "Huang Nvidia May 2018 robotaxis 2019 self-driving cars 2020 2021",
+        "what_found": "Coverage from 2017 and January 2018 of the same robotaxi and level 4 dates, plus TheStreet on the May 2018 earnings call."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC China September 2018 Q&A autonomous",
+        "what_found": "Only a GTC China 2018 keynote summary, with no dated predictions in the snippets."
+      },
+      {
+        "query_or_url": "Jensen Huang 2018 robots \"next decade\" AI interview",
+        "what_found": "Only robotics 'next decade' remarks from 2025–2026."
+      },
+      {
+        "query_or_url": "https://www.thestreet.com/investing/stocks/nvidia-autonomous-driving-earnings-14587204",
+        "what_found": "Opened: quotes from the May 2018 earnings call on the AV platform, with no dated robotaxi or level 4 prediction."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Huang's 2018 AI forecasts that I could find were all about self-driving cars and came in the week of CES in January. The CES press Q&A gives robot taxis in 2019, level 3 around early 2020 and level 4 in late 2021, the same claim as the two recorded files dated 2018-05-10. The Fortune dinner adds a new one: a car that drives itself everywhere is five to ten years away. I found no AGI or superintelligence timeline from him in 2018."
+  },
+  "reply_text": "I found two new 2018 predictions from Jensen Huang, both about self-driving cars and both from the week of CES in Las Vegas in January. I found nothing from him in 2018 about AGI or superintelligence, dated or not.\n\n- **CES 2018 press Q&A (VentureBeat's edited transcript).** He said a level 3 car would ship \"something along the lines of early 2020\", a level 4 car \"will probably be late 2021\" and \"a robot taxi, will probably be 2019.\" This is the same claim as your two files dated 2018-05-10. Those files carry a May date, though, and this is January. I've put both file names in `already_recorded`, but you may want to log January as a separate occasion or change the date.\n- **Fortune Brainstorm Tech dinner, 8 January.** He said a car that drives itself everywhere in all conditions \"won't be here for five to 10 years.\" This one is new. I only have it from Fortune's write-up of the evening, not a transcript.\n\n**Left out:**\n- At the GPU Technology Conference (GTC) in March he said \"we're good for the next ten years.\" That was about how fast Nvidia's chips can keep improving, which is a chip forecast, not an AI one.\n- In the CES Q&A he said flying taxis won't be a big part of \"anybody's business in 10 years.\" That's a business forecast.\n- An article on the May 2018 earnings call didn't include the robotaxi or 2020–21 dates. So I couldn't confirm where your May files come from, and I didn't open the call transcript.\n\n**Not opened:** the full GTC, GTC Taiwan, GTC Europe and GTC China keynote videos. I used all 12 searches and 5 of the 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2018-01\", \"quote\": \"I believe we will achieve–we’ll ship a car with level three capability, if you will—it has all the functionalities of a level four, but the functional safety level and the ability for the car to always be in control will probably be something along the lines of early 2020. And then a level four car will probably be late 2021.\", \"what_is_predicted\": \"A level 3 self-driving car using Nvidia's Drive software will ship around early 2020, and a level 4 car around late 2021.\", \"date_or_span\": \"early 2020; late 2021\", \"occasion\": \"Press Q&A after Nvidia's CES 2018 press event, Las Vegas (VentureBeat edited transcript published 2018-01-12)\", \"source_url\": \"https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2018-05-10-huang-self-driving-cars-2020-to-2021.toml\"},\n    {\"date_said\": \"2018-01\", \"quote\": \"A level five car, a robot taxi, will probably be 2019.\", \"what_is_predicted\": \"Level 5 geo-fenced robot taxis will arrive in 2019.\", \"date_or_span\": \"2019\", \"occasion\": \"Press Q&A after Nvidia's CES 2018 press event, Las Vegas (VentureBeat edited transcript published 2018-01-12)\", \"source_url\": \"https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2018-05-10-huang-driverless-taxis-to-market-about-2019.toml\"},\n    {\"date_said\": \"2018-01-08\", \"quote\": \"the idea of driving a car that’s completely driverless everywhere in all conditions? That fantasy car won’t be here for five to 10 years.\", \"what_is_predicted\": \"A car that drives itself everywhere in all conditions will not arrive for five to ten years.\", \"date_or_span\": \"five to 10 years (about 2023–2028)\", \"occasion\": \"Fortune Brainstorm Tech dinner on the eve of CES, Bellagio, Las Vegas, interviewed by Adam Lashinsky\", \"source_url\": \"https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2017\", \"note\": \"Search snippets only, not opened: VentureBeat (2017-11-09) and Times of Israel report Huang dating robot taxis to about 2019–2020 and fully autonomous cars to 2021–2022.\"},\n    {\"year\": \"2023\", \"note\": \"Search snippets only, not opened: TechCrunch, Motley Fool and TechPowerUp report Huang saying AGI or human-rival AI could be about five years away (NYT DealBook, Nov 2023).\"},\n    {\"year\": \"2025\", \"note\": \"Search snippets only, not opened: Fox Business, CBS and Tom's Hardware report Huang saying there is a '0% chance' AI ends the world by 2030.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2018\", \"what_found\": \"Only news from 2024–2026; nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2018 interview AGI \\\"years\\\"\", \"what_found\": \"AGI coverage from 2023 and 2026 (DealBook, Lex Fridman); nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2018 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage of the 2025–26 '0% chance by 2030' remarks and data-centre spending forecasts; nothing from 2018.\"},\n    {\"query_or_url\": \"Jensen Huang GTC 2018 keynote transcript\", \"what_found\": \"Video and PDF links for the GTC 2018 and GTC Europe 2018 keynotes, but no text transcript.\"},\n    {\"query_or_url\": \"Jensen Huang Computex 2018 self-driving cars interview\", \"what_found\": \"VentureBeat's CES 2018 Q&A, Fortune's Brainstorm dinner report and a CNBC Mad Money piece from March 2018.\"},\n    {\"query_or_url\": \"Jensen Huang CES 2018 keynote autonomous Level 4\", \"what_found\": \"The snippet pointed to the VentureBeat Q&A with the level 4 'late 2021' line, which I then opened.\"},\n    {\"query_or_url\": \"https://venturebeat.com/2018/01/12/nvidia-jensen-huang-goes-off-script-with-ces-2018-qa/view-all/\", \"what_found\": \"Opened: edited transcript with the level 3 early 2020, level 4 late 2021 and robot taxi 2019 dates.\"},\n    {\"query_or_url\": \"https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/\", \"what_found\": \"Opened: event report quoting 'That fantasy car won’t be here for five to 10 years.'\"},\n    {\"query_or_url\": \"Jensen Huang GTC Taiwan May 2018 press Q&A robotaxi\", \"what_found\": \"Only recent robotaxi news; nothing from May 2018.\"},\n    {\"query_or_url\": \"Jensen Huang GTC Europe Munich October 2018 Q&A self-driving\", \"what_found\": \"GTC Europe 2018 keynote video and summaries, IEEE Spectrum's GTC 2018 press-briefing article and ChannelLife's GTC18 piece.\"},\n    {\"query_or_url\": \"Jensen Huang 2018 interview artificial intelligence future \\\"Huang:\\\"\", \"what_found\": \"Mostly interviews from later years; a VentureBeat interview appears to date from 2019, not 2018.\"},\n    {\"query_or_url\": \"https://spectrum.ieee.org/jensen-huang-on-the-uber-tragedy-and-why-nvidia-suspended-testing\", \"what_found\": \"Opened: GTC 2018 press-briefing remarks on the Uber crash and AV testing; no dated AI prediction.\"},\n    {\"query_or_url\": \"https://channellife.com.au/story/gtc18-unrelenting-optimism-jensen-huang\", \"what_found\": \"Opened: GTC18 remarks including 'we're good for the next ten years' on GPU scaling, left out as a chip forecast.\"},\n    {\"query_or_url\": \"Huang Nvidia May 2018 robotaxis 2019 self-driving cars 2020 2021\", \"what_found\": \"Coverage from 2017 and January 2018 of the same robotaxi and level 4 dates, plus TheStreet on the May 2018 earnings call.\"},\n    {\"query_or_url\": \"Jensen Huang GTC China September 2018 Q&A autonomous\", \"what_found\": \"Only a GTC China 2018 keynote summary, with no dated predictions in the snippets.\"},\n    {\"query_or_url\": \"Jensen Huang 2018 robots \\\"next decade\\\" AI interview\", \"what_found\": \"Only robotics 'next decade' remarks from 2025–2026.\"},\n    {\"query_or_url\": \"https://www.thestreet.com/investing/stocks/nvidia-autonomous-driving-earnings-14587204\", \"what_found\": \"Opened: quotes from the May 2018 earnings call on the AV platform, with no dated robotaxi or level 4 prediction.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Huang's 2018 AI forecasts that I could find were all about self-driving cars and came in the week of CES in January. The CES press Q&A gives robot taxis in 2019, level 3 around early 2020 and level 4 in late 2021, the same claim as the two recorded files dated 2018-05-10. The Fortune dinner adds a new one: a car that drives itself everywhere is five to ten years away. I found no AGI or superintelligence timeline from him in 2018.\"\n}\n```"
+}

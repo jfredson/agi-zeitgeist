@@ -1,0 +1,281 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2019,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5346,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 46498,
+      "cache_read_input_tokens": 309363,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 6004,
+      "output_tokens_details": {
+        "thinking_tokens": 1520
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 4,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Demis Hassabis\" AI prediction 2019','\"Demis Hassabis\" 2019 interview AGI \"years\"','\"Demis Hassabis\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2019"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\nfor q in qs:\n    if q not in R: R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2019 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis Economist \"World in 2020\" AI scientific discovery','\"DeepMind: The Podcast\" 2019 Hassabis Hannah Fry AGI','Hassabis 2019 interview AGI decades \"Hassabis\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Economist \"World in 2020\" AI scientific discovery"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"DeepMind: The Podcast\" 2019 Hassabis Hannah Fry AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2019 interview AGI decades \"Hassabis\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://worldin.economist.com/article/17385/edition2020demis-hassabis-predicts-ai-will-supercharge-science\"\nf=await web_fetch({\"url\":u})\nif isinstance(f,str): f=json.loads(f)\nprint(str(f)[:300])\nc=f[0]['content'] if isinstance(f,list) else ''\nprint(len(c)); print(c[:6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://worldin.economist.com/article/17385/edition2020demis-hassabis-predicts-ai-will-supercharge-science"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Demis Hassabis predicts AI will supercharge science\"','\"Demis Hassabis: The interview\" DeepMind podcast transcript']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis predicts AI will supercharge science\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis: The interview\" DeepMind podcast transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis Economist essay \"renaissance of discovery\" 2019','Hassabis 2019 \"AGI\" interview \"decades\" DeepMind CEO said']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Economist essay \"renaissance of discovery\" 2019"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2019 \"AGI\" interview \"decades\" DeepMind CEO said"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nfor u in [\"https://cbmm.mit.edu/video/power-self-learning-systems\",\"https://deepmind.google/blog/the-podcast-episode-8-demis-hassabis-the-interview/\"]:\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str): f=json.loads(f)\n    c=f[0]['content'] if isinstance(f,list) else str(f)\n    F[u]=c\n    print(\"==\",u,len(c)); print(c[:1500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://cbmm.mit.edu/video/power-self-learning-systems"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://deepmind.google/blog/the-podcast-episode-8-demis-hassabis-the-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,c in F.items():\n    print(\"==\",u)\n    for kw in ['year','decade','AGI','general intelligence','by 20','within','next ','future']:\n        for m in re.finditer(kw,c):\n            s=c[max(0,m.start()-250):m.end()+250].replace('\\\\n',' ')\n            print('['+kw+']',s); print()\n    print('-----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['economist.com Demis Hassabis \"The World in 2020\" essay','Demis Hassabis 2019 talk transcript AGI \"next decade\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "economist.com Demis Hassabis \"The World in 2020\" essay"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Demis Hassabis 2019 talk transcript AGI \"next decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\"\nf=await web_fetch({\"url\":u})\nif isinstance(f,str): f=json.loads(f)\nc=str(f[0]['content']) if isinstance(f,list) else str(f)\nprint(len(c))\nfor kw in ['2022','2019','Season','season','Ep9','next decade','7:11']:\n    for m in re.finditer(kw,c):\n        print('['+kw+']',c[max(0,m.start()-300):m.end()+300].replace('\\\\n',' ')); print()\n        break"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis 2019 interview \"general intelligence\" \"Hassabis said\" years away']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2022",
+        "note": "LessWrong post 'DeepMind: The Podcast - Excerpts on AGI' (7 Apr 2022) quotes Hassabis in 'The promise of AI with Demis Hassabis' (Season 2, Ep9, early 2022) at 7:11: 'I think that [AGI] it's coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two.' Second-hand transcription by the post author, from 2022, not 2019. https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi"
+      },
+      {
+        "year": "2023-2026",
+        "note": "Search results were dominated by later AGI timelines (e.g. 5-10 years in 2024-25, 2030 plus or minus a year, 2-3 years). None of these pages were opened; not checked."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2019",
+        "what_found": "Found the MIT CBMM seminar of 20 March 2019 and recent articles saying his 2019 MIT slides 'predicted' later AI; otherwise recent AGI-timeline news."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2019 interview AGI \"years\"",
+        "what_found": "Only 2024-2026 AGI timeline coverage plus the CBMM 2019 event page; nothing from 2019 with a timeline."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2026 coverage (60 Minutes, Davos, WSJ profile); nothing from 2019."
+      },
+      {
+        "query_or_url": "Hassabis Economist \"World in 2020\" AI scientific discovery",
+        "what_found": "Found a Google DeepMind post on X pointing to Hassabis's Nov 2019 Economist 'World in 2020' essay (worldin.economist.com article 17385)."
+      },
+      {
+        "query_or_url": "\"DeepMind: The Podcast\" 2019 Hassabis Hannah Fry AGI",
+        "what_found": "Found listings for 'Demis Hassabis: The interview', S1 Ep8, published 17 Sep 2019; no transcript."
+      },
+      {
+        "query_or_url": "Hassabis 2019 interview AGI decades \"Hassabis\"",
+        "what_found": "Only 2023-2026 coverage, plus the CBMM page 'The Power of Self-Learning Systems' (recorded 20 Mar 2019)."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis predicts AI will supercharge science\"",
+        "what_found": "Did not find the Economist essay itself; only later 'golden era of discovery' coverage."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis: The interview\" DeepMind podcast transcript",
+        "what_found": "Only podcast listings and the DeepMind blog page for S1 Ep8; no transcript."
+      },
+      {
+        "query_or_url": "Hassabis Economist essay \"renaissance of discovery\" 2019",
+        "what_found": "Same X post; later pieces citing the 'renaissance of discovery' line; CBMM video page."
+      },
+      {
+        "query_or_url": "economist.com Demis Hassabis \"The World in 2020\" essay",
+        "what_found": "Confirmed The World in 2020 carried outside pieces including one by Hassabis; no openable copy of the essay."
+      },
+      {
+        "query_or_url": "Demis Hassabis 2019 talk transcript AGI \"next decade\"",
+        "what_found": "Found the LessWrong excerpts post (2022 podcast season) and later-year transcripts."
+      },
+      {
+        "query_or_url": "https://worldin.economist.com/article/17385/edition2020demis-hassabis-predicts-ai-will-supercharge-science",
+        "what_found": "Failed to open (url_not_in_prior_context); not quoted. Counted as one of the six page openings."
+      },
+      {
+        "query_or_url": "https://cbmm.mit.edu/video/power-self-learning-systems",
+        "what_found": "Opened the captioned transcript of the 20 Mar 2019 MIT talk; the text I got stops partway through the StarCraft section, and the part I read has no dated forward-looking AI claims."
+      },
+      {
+        "query_or_url": "https://deepmind.google/blog/the-podcast-episode-8-demis-hassabis-the-interview/",
+        "what_found": "Episode page (published 2019-09-17) with a description and reading list only, no transcript."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "what_found": "Excerpts from Season 2 (2022), including Hassabis's 'next decade or two' AGI line; dated 2022, not 2019."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "In 2019 Hassabis gave the MIT CBMM talk (March), the DeepMind podcast interview with Hannah Fry (September) and an essay for The Economist's 'The World in 2020' (November). The talk transcript I read has no dated forward-looking AI claims, though the copy I got stops partway through. No transcript of the podcast turned up, the Economist essay would not open, and no dated prediction from 2019 was found on any opened page. The often-quoted 'next decade or two' AGI remark is from the 2022 podcast season."
+  },
+  "reply_text": "I found no dated AI prediction by Demis Hassabis from 2019 in what I was able to read. The year should be marked quiet. The two likeliest sources from that year had no usable text, so this is a \"not found\", not proof that he made no prediction.\n\n- **MIT talk, 20 March 2019:** MIT's own page has a captioned transcript. I checked it for words about time, such as years, decades and \"within\", and found only looks back at earlier work. The text I received stops in the middle of the StarCraft section, so I didn't see the end of the talk or the questions afterwards. Several recent articles say this talk \"predicted\" AlphaFold and the next five years of AI. Those are later readings of his slides, not his own dated words.\n- **DeepMind podcast interview, 17 September 2019:** DeepMind's page for this episode has only a description and a reading list, no transcript. I found no transcript anywhere else.\n- **Essay for The Economist's \"The World in 2020\", November 2019:** a DeepMind post on X quotes it saying AI \"could usher in a new renaissance of discovery\". That line has no date or time span. The essay itself would not open because the tool rejected the link, so I don't quote from it.\n- **2022, not 2019:** a LessWrong post quotes him saying AGI is coming \"in the next decade or two\". That was in the podcast's second season (episode 9), which came out in early 2022, so it goes under other_years.\n\nIn the searches log I count the failed Economist link as one of my six page openings. That makes four openings, and the eleventh search was refused for hitting the tool limit, so it isn't logged.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2022\", \"note\": \"LessWrong post 'DeepMind: The Podcast - Excerpts on AGI' (7 Apr 2022) quotes Hassabis in 'The promise of AI with Demis Hassabis' (Season 2, Ep9, early 2022) at 7:11: 'I think that [AGI] it's coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two.' Second-hand transcription by the post author, from 2022, not 2019. https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\"},\n    {\"year\": \"2023-2026\", \"note\": \"Search results were dominated by later AGI timelines (e.g. 5-10 years in 2024-25, 2030 plus or minus a year, 2-3 years). None of these pages were opened; not checked.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2019\", \"what_found\": \"Found the MIT CBMM seminar of 20 March 2019 and recent articles saying his 2019 MIT slides 'predicted' later AI; otherwise recent AGI-timeline news.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2019 interview AGI \\\"years\\\"\", \"what_found\": \"Only 2024-2026 AGI timeline coverage plus the CBMM 2019 event page; nothing from 2019 with a timeline.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2019 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2026 coverage (60 Minutes, Davos, WSJ profile); nothing from 2019.\"},\n    {\"query_or_url\": \"Hassabis Economist \\\"World in 2020\\\" AI scientific discovery\", \"what_found\": \"Found a Google DeepMind post on X pointing to Hassabis's Nov 2019 Economist 'World in 2020' essay (worldin.economist.com article 17385).\"},\n    {\"query_or_url\": \"\\\"DeepMind: The Podcast\\\" 2019 Hassabis Hannah Fry AGI\", \"what_found\": \"Found listings for 'Demis Hassabis: The interview', S1 Ep8, published 17 Sep 2019; no transcript.\"},\n    {\"query_or_url\": \"Hassabis 2019 interview AGI decades \\\"Hassabis\\\"\", \"what_found\": \"Only 2023-2026 coverage, plus the CBMM page 'The Power of Self-Learning Systems' (recorded 20 Mar 2019).\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis predicts AI will supercharge science\\\"\", \"what_found\": \"Did not find the Economist essay itself; only later 'golden era of discovery' coverage.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis: The interview\\\" DeepMind podcast transcript\", \"what_found\": \"Only podcast listings and the DeepMind blog page for S1 Ep8; no transcript.\"},\n    {\"query_or_url\": \"Hassabis Economist essay \\\"renaissance of discovery\\\" 2019\", \"what_found\": \"Same X post; later pieces citing the 'renaissance of discovery' line; CBMM video page.\"},\n    {\"query_or_url\": \"economist.com Demis Hassabis \\\"The World in 2020\\\" essay\", \"what_found\": \"Confirmed The World in 2020 carried outside pieces including one by Hassabis; no openable copy of the essay.\"},\n    {\"query_or_url\": \"Demis Hassabis 2019 talk transcript AGI \\\"next decade\\\"\", \"what_found\": \"Found the LessWrong excerpts post (2022 podcast season) and later-year transcripts.\"},\n    {\"query_or_url\": \"https://worldin.economist.com/article/17385/edition2020demis-hassabis-predicts-ai-will-supercharge-science\", \"what_found\": \"Failed to open (url_not_in_prior_context); not quoted. Counted as one of the six page openings.\"},\n    {\"query_or_url\": \"https://cbmm.mit.edu/video/power-self-learning-systems\", \"what_found\": \"Opened the captioned transcript of the 20 Mar 2019 MIT talk; the text I got stops partway through the StarCraft section, and the part I read has no dated forward-looking AI claims.\"},\n    {\"query_or_url\": \"https://deepmind.google/blog/the-podcast-episode-8-demis-hassabis-the-interview/\", \"what_found\": \"Episode page (published 2019-09-17) with a description and reading list only, no transcript.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\", \"what_found\": \"Excerpts from Season 2 (2022), including Hassabis's 'next decade or two' AGI line; dated 2022, not 2019.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"In 2019 Hassabis gave the MIT CBMM talk (March), the DeepMind podcast interview with Hannah Fry (September) and an essay for The Economist's 'The World in 2020' (November). The talk transcript I read has no dated forward-looking AI claims, though the copy I got stops partway through. No transcript of the podcast turned up, the Economist essay would not open, and no dated prediction from 2019 was found on any opened page. The often-quoted 'next decade or two' AGI remark is from the 2022 podcast season.\"\n}\n```"
+}

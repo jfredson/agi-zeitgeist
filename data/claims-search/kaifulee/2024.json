@@ -1,0 +1,260 @@
+{
+  "speaker_id": "kaifulee",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5334,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8033
+      },
+      "cache_creation_input_tokens": 55842,
+      "cache_read_input_tokens": 188407,
+      "inference_geo": "global",
+      "input_tokens": 18,
+      "output_tokens": 7323,
+      "output_tokens_details": {
+        "thinking_tokens": 2231
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Kai-Fu Lee\" AI prediction 2024','\"Kai-Fu Lee\" 2024 interview AGI \"years\"','\"Kai-Fu Lee\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\n    return r\nR[qs[0]]=show(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/\",\n          \"https://www.washingtonpost.com/washington-post-live/2024/06/13/transcript-futurist-summit-age-ai-chinas-chatgpt-moment-with-kai-fu-lee/\",\n          \"https://www.geopolitechs.org/p/kai-fu-lees-latest-remarks-on-llm\",\n          \"https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    P[u]=r[0]['content']; print(u,len(P[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.washingtonpost.com/washington-post-live/2024/06/13/transcript-futurist-summit-age-ai-chinas-chatgpt-moment-with-kai-fu-lee/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.geopolitechs.org/p/kai-fu-lees-latest-remarks-on-llm"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show2(q,r,n=500):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r[:7]:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:n].replace('\\n',' '))\n    return r\nfor q in ['Kai-Fu Lee Peter Diamandis Moonshots podcast 2024 AGI',\n          'Kai-Fu Lee Davos January 2024 AI interview',\n          'Kai-Fu Lee WIRED Big Interview December 2024',\n          'Kai-Fu Lee Bloomberg interview 2024 AI timeline']:\n    R[q]=show2(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee Peter Diamandis Moonshots podcast 2024 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee Davos January 2024 AI interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee WIRED Big Interview December 2024"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee Bloomberg interview 2024 AI timeline"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor u in [\"https://www.linkedin.com/pulse/wef-panel-expanding-universe-generative-models-nicholas-thompson-jknce\",\n          \"https://www.laojinchuhai.com/en/classics/kai-fu-lee-diamandis-2024\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict) and r.get('type','').endswith('error'): print(u,r); continue\n    c = r[0]['content'] if isinstance(r,list) else r['content']['source']['data']\n    if not isinstance(c,str): c=c['source']['data']\n    P[u]=c; print(u,len(c))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.linkedin.com/pulse/wef-panel-expanding-universe-generative-models-nicholas-thompson-jknce"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.laojinchuhai.com/en/classics/kai-fu-lee-diamandis-2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P[\"https://www.laojinchuhai.com/en/classics/kai-fu-lee-diamandis-2024\"][:8400])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-03",
+        "quote": "It’s actually uncannily accurate. People have criticized me for being too aggressive in 2017, 2018, 2019, and I was a little nervous at the time. But when gen AI came out, I think everybody’s on the bandwagon and believing that is the correct pace.",
+        "what_is_predicted": "Lee reaffirms his 2017 forecast that AI will replace about half of human jobs, a forecast Fortune describes as due by 2027.",
+        "date_or_span": "2027 (the date comes from the interviewer's question and Fortune's framing: 'With the timeline of his prediction just three years away'; Lee's quoted words do not name it)",
+        "occasion": "Fortune Innovation Forum, Hong Kong, March 2024, on stage with Fortune editor-in-chief Alyson Shontell",
+        "source_url": "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-03",
+        "quote": "Do I think AI can fake it? Yes. Do I think people will accept the faking AI, at least for the next 50 years? No.",
+        "what_is_predicted": "Lee says that for at least 50 years people will not accept AI that fakes human compassion, empathy and trust. This is borderline because it is about whether people accept AI, not about what AI can do.",
+        "date_or_span": "at least the next 50 years",
+        "occasion": "Fortune Innovation Forum, Hong Kong, March 2024",
+        "source_url": "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-11",
+        "quote": "If you think it’s expensive now, there’s a 99% chance it won’t be next year—and in another year, not only will it be affordable, but it will support your desired applications.",
+        "what_is_predicted": "AI models will become affordable for app builders in 2025, and by about 2026 they will be capable enough to support the applications those builders want.",
+        "date_or_span": "next year (2025) and the year after",
+        "occasion": "36Kr WISE2024 summit, Beijing, 28–29 November 2024, conversation with 36Kr CEO Feng Dagang (edited, translated Q&A)",
+        "source_url": "https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2017",
+        "note": "The Fortune 2024 article cites his April 2017 CNBC remark that AI will 'probably replace 50% of human jobs', which it says he later put at within 10 years."
+      },
+      {
+        "year": "2021",
+        "note": "Search results show the book AI 2041 (with Chen Qiufan), which looks 20 years ahead. A 2024 paperback reissue is a reprint, not new words."
+      },
+      {
+        "year": "2025",
+        "note": "Search results show a 2025 Bloomberg interview (36Kr write-up, July) and a 2025 LatePost interview. They were not opened and are out of scope."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Kai-Fu Lee\" AI prediction 2024",
+        "what_found": "Mostly coverage of his March 2024 reaffirmation of the 50%-of-jobs-by-2027 forecast (Fortune, Cointelegraph, Crypto Times), plus a May 2024 Bloomberg story on China's 'ChatGPT moment'."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" 2024 interview AGI \"years\"",
+        "what_found": "Washington Post Futurist Summit transcript (13 June 2024), a Geopolitechs translation of a June Tencent interview, the KrASIA WISE2024 Q&A, and a Laojin summary of the December Diamandis podcast saying AGI in 5–10 years."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "AI 2041 book pages, the KrASIA WISE2024 Q&A, and business items about a 01.AI IPO; nothing new on dated AI predictions."
+      },
+      {
+        "query_or_url": "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+        "what_found": "Opened. Quotes from the March 2024 Fortune Innovation Forum: 'uncannily accurate' on 50% of jobs by 2027, and people won't accept 'faking AI' for 50 years."
+      },
+      {
+        "query_or_url": "https://www.washingtonpost.com/washington-post-live/2024/06/13/transcript-futurist-summit-age-ai-chinas-chatgpt-moment-with-kai-fu-lee/",
+        "what_found": "Would not open (url_not_accessible); nothing quoted."
+      },
+      {
+        "query_or_url": "https://www.geopolitechs.org/p/kai-fu-lees-latest-remarks-on-llm",
+        "what_found": "Opened. English translation of the June 2024 Tencent interview at the Beijing Academy of AI conference; it is about benchmarks, assistants and retention and holds no dated AI predictions."
+      },
+      {
+        "query_or_url": "https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies",
+        "what_found": "Opened. WISE2024 Q&A (28–29 November 2024) with the '99% chance it won't be [expensive] next year' line, plus undated remarks that OpenAI's iteration will slow and that applications will flourish."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee Peter Diamandis Moonshots podcast 2024 AGI",
+        "what_found": "Listings for Moonshots EP #134 with Lee (5 December 2024) and an FII panel episode (12 November 2024) that included him."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee Davos January 2024 AI interview",
+        "what_found": "Nicholas Thompson's LinkedIn transcript of the January 2024 WEF generative-AI panel with LeCun, Lee, Koller, Ng and Gomez, plus coverage of that panel."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee WIRED Big Interview December 2024",
+        "what_found": "No WIRED interview with Lee found. Found an Exponential View 'AI in 2025' conversation (20 December 2024, paywalled), not opened."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee Bloomberg interview 2024 AI timeline",
+        "what_found": "May 2024 Bloomberg coverage on China's ChatGPT moment and a 2025 Bloomberg interview; nothing new opened."
+      },
+      {
+        "query_or_url": "https://www.linkedin.com/pulse/wef-panel-expanding-universe-generative-models-nicholas-thompson-jknce",
+        "what_found": "Would not open (url_not_allowed); nothing quoted."
+      },
+      {
+        "query_or_url": "https://www.laojinchuhai.com/en/classics/kai-fu-lee-diamandis-2024",
+        "what_found": "Opened. A third-party summary of the 5 December 2024 Diamandis podcast that paraphrases 'AGI in 5–10 years' with no direct quote and mentions an event that seems to be from 2025, so not used."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2024 was a busy year for Lee. He reaffirmed his 50%-of-jobs-by-2027 forecast in March and made near-term cost and application predictions at WISE2024 in late November. The March quotes were seen only in Fortune's news coverage, and the strongest-looking sources, the Washington Post Futurist Summit and Davos transcripts, would not open."
+  },
+  "reply_text": "I found three new 2024 claims, but none comes from a source in Lee's own unedited words. Two were said at Fortune's Innovation Forum in Hong Kong in March 2024. I only saw them in a Fortune news article published 25 May, so they are coverage_only. The third is from an edited, translated Q&A from 36Kr's WISE2024 summit in late November.\n\n- **50% of jobs by 2027 (March).** Asked whether his 2017 forecast still holds with three years left, he said \"It's actually uncannily accurate.\" His quoted words don't name 2027 themselves; the interviewer's question supplies the date. Treat it as a 2024 restatement of a 2017 forecast.\n- **AI faking empathy, next 50 years (March).** He said people won't accept AI that fakes compassion \"for the next 50 years.\" This is about whether people will accept AI, not about what AI can do, so it's a borderline case.\n- **Model costs (November).** He said there is a \"99% chance\" that models seen as too expensive won't be next year, and that a year after that they would support the applications people want.\n\n**Not candidates:**\n- The Diamandis podcast (5 December 2024) is said to contain \"AGI in 5–10 years.\" I only read that on a third-party summary page with no direct quote, and that page also mentions an event from 2025, so I didn't trust it. It may be the same claim as your existing October 2024 AGI file.\n- At WISE2024 he also said \"Over the next year, I'm most optimistic about applications.\" That is close to your 26 November \"flood of apps in 2025\" files, but it reads as optimism rather than a dated prediction, so I left it out.\n\n**Pages that didn't open:** The Washington Post transcript of the June Futurist Summit and Nicholas Thompson's LinkedIn transcript of the January Davos panel both failed. I quote nothing from them; they are the best leads for a follow-up pass. I used all 6 page openings and 7 of the 12 searches.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2024-03\",\n      \"quote\": \"It’s actually uncannily accurate. People have criticized me for being too aggressive in 2017, 2018, 2019, and I was a little nervous at the time. But when gen AI came out, I think everybody’s on the bandwagon and believing that is the correct pace.\",\n      \"what_is_predicted\": \"Lee reaffirms his 2017 forecast that AI will replace about half of human jobs, a forecast Fortune describes as due by 2027.\",\n      \"date_or_span\": \"2027 (the date comes from the interviewer's question and Fortune's framing: 'With the timeline of his prediction just three years away'; Lee's quoted words do not name it)\",\n      \"occasion\": \"Fortune Innovation Forum, Hong Kong, March 2024, on stage with Fortune editor-in-chief Alyson Shontell\",\n      \"source_url\": \"https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2024-03\",\n      \"quote\": \"Do I think AI can fake it? Yes. Do I think people will accept the faking AI, at least for the next 50 years? No.\",\n      \"what_is_predicted\": \"Lee says that for at least 50 years people will not accept AI that fakes human compassion, empathy and trust. This is borderline because it is about whether people accept AI, not about what AI can do.\",\n      \"date_or_span\": \"at least the next 50 years\",\n      \"occasion\": \"Fortune Innovation Forum, Hong Kong, March 2024\",\n      \"source_url\": \"https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2024-11\",\n      \"quote\": \"If you think it’s expensive now, there’s a 99% chance it won’t be next year—and in another year, not only will it be affordable, but it will support your desired applications.\",\n      \"what_is_predicted\": \"AI models will become affordable for app builders in 2025, and by about 2026 they will be capable enough to support the applications those builders want.\",\n      \"date_or_span\": \"next year (2025) and the year after\",\n      \"occasion\": \"36Kr WISE2024 summit, Beijing, 28–29 November 2024, conversation with 36Kr CEO Feng Dagang (edited, translated Q&A)\",\n      \"source_url\": \"https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies\",\n      \"source_kind\": \"printed_qa\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2017\", \"note\": \"The Fortune 2024 article cites his April 2017 CNBC remark that AI will 'probably replace 50% of human jobs', which it says he later put at within 10 years.\"},\n    {\"year\": \"2021\", \"note\": \"Search results show the book AI 2041 (with Chen Qiufan), which looks 20 years ahead. A 2024 paperback reissue is a reprint, not new words.\"},\n    {\"year\": \"2025\", \"note\": \"Search results show a 2025 Bloomberg interview (36Kr write-up, July) and a 2025 LatePost interview. They were not opened and are out of scope.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" AI prediction 2024\", \"what_found\": \"Mostly coverage of his March 2024 reaffirmation of the 50%-of-jobs-by-2027 forecast (Fortune, Cointelegraph, Crypto Times), plus a May 2024 Bloomberg story on China's 'ChatGPT moment'.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Washington Post Futurist Summit transcript (13 June 2024), a Geopolitechs translation of a June Tencent interview, the KrASIA WISE2024 Q&A, and a Laojin summary of the December Diamandis podcast saying AGI in 5–10 years.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"AI 2041 book pages, the KrASIA WISE2024 Q&A, and business items about a 01.AI IPO; nothing new on dated AI predictions.\"},\n    {\"query_or_url\": \"https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/\", \"what_found\": \"Opened. Quotes from the March 2024 Fortune Innovation Forum: 'uncannily accurate' on 50% of jobs by 2027, and people won't accept 'faking AI' for 50 years.\"},\n    {\"query_or_url\": \"https://www.washingtonpost.com/washington-post-live/2024/06/13/transcript-futurist-summit-age-ai-chinas-chatgpt-moment-with-kai-fu-lee/\", \"what_found\": \"Would not open (url_not_accessible); nothing quoted.\"},\n    {\"query_or_url\": \"https://www.geopolitechs.org/p/kai-fu-lees-latest-remarks-on-llm\", \"what_found\": \"Opened. English translation of the June 2024 Tencent interview at the Beijing Academy of AI conference; it is about benchmarks, assistants and retention and holds no dated AI predictions.\"},\n    {\"query_or_url\": \"https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies\", \"what_found\": \"Opened. WISE2024 Q&A (28–29 November 2024) with the '99% chance it won't be [expensive] next year' line, plus undated remarks that OpenAI's iteration will slow and that applications will flourish.\"},\n    {\"query_or_url\": \"Kai-Fu Lee Peter Diamandis Moonshots podcast 2024 AGI\", \"what_found\": \"Listings for Moonshots EP #134 with Lee (5 December 2024) and an FII panel episode (12 November 2024) that included him.\"},\n    {\"query_or_url\": \"Kai-Fu Lee Davos January 2024 AI interview\", \"what_found\": \"Nicholas Thompson's LinkedIn transcript of the January 2024 WEF generative-AI panel with LeCun, Lee, Koller, Ng and Gomez, plus coverage of that panel.\"},\n    {\"query_or_url\": \"Kai-Fu Lee WIRED Big Interview December 2024\", \"what_found\": \"No WIRED interview with Lee found. Found an Exponential View 'AI in 2025' conversation (20 December 2024, paywalled), not opened.\"},\n    {\"query_or_url\": \"Kai-Fu Lee Bloomberg interview 2024 AI timeline\", \"what_found\": \"May 2024 Bloomberg coverage on China's ChatGPT moment and a 2025 Bloomberg interview; nothing new opened.\"},\n    {\"query_or_url\": \"https://www.linkedin.com/pulse/wef-panel-expanding-universe-generative-models-nicholas-thompson-jknce\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted.\"},\n    {\"query_or_url\": \"https://www.laojinchuhai.com/en/classics/kai-fu-lee-diamandis-2024\", \"what_found\": \"Opened. A third-party summary of the 5 December 2024 Diamandis podcast that paraphrases 'AGI in 5–10 years' with no direct quote and mentions an event that seems to be from 2025, so not used.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2024 was a busy year for Lee. He reaffirmed his 50%-of-jobs-by-2027 forecast in March and made near-term cost and application predictions at WISE2024 in late November. The March quotes were seen only in Fortune's news coverage, and the strongest-looking sources, the Washington Post Futurist Summit and Davos transcripts, would not open.\"\n}\n```"
+}

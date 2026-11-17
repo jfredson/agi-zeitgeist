@@ -1,0 +1,20 @@
+[claim]
+id = "2026-09-01-musk-ai-anything-digital-end-of-next-year"
+speaker_id = "musk"
+when = "2026-09-01"
+when_note = "Two news channels' live broadcasts of the meeting carry the release date 2026-09-01 (https://www.youtube.com/watch?v=9JmlDV8TN3U and https://www.youtube.com/watch?v=-FRDn_I50Qg), and The Singju Post's transcript page is dated the same day. The broadcasts describe it as the G20 Innovation Ministerial in Chapel Hill, North Carolina."
+occasion = "Remarks to the G20 Innovation Ministerial, Chapel Hill, North Carolina"
+source_kind = "transcript"
+source_url = "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/"
+source_locator = "after his estimate that AI will add 20 to 30 trillion dollars a year to the global economy"
+checked_how = "Read on the page on 2026-11-17 (curl). The page is The Singju Post's transcript, which is not official; nobody listened to the recording."
+quote = "AI will be able to do anything digital, anything that does not require shaping of atoms by hand, probably by the end of next year."
+prediction = "By the end of 2027 AI will 'probably' be able to do anything digital, meaning anything that does not need matter shaped by hand."
+kind = "capability"
+bar = "By 2027-12-31, AI shown able to do any task that is done on a computer and needs no physical handiwork."
+due = 2027
+due_basis = "'by the end of next year', said 2026-09-01."
+status = "not_yet_due"
+search_ids = ["musk-claims-045", "musk-claims-053"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. Whether 'anything digital' should be read as a forecast of AGI, and so carry the fields that put it on the forecast figures, is left for me to rule; it is entered without them."
+verify = "The words rest on an unofficial transcript and have not been checked against a recording: the captions of the live broadcasts could not be fetched on 2026-11-17 (YouTube refused the requests)."

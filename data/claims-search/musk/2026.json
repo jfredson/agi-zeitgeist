@@ -1,0 +1,310 @@
+{
+  "speaker_id": "musk",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.672,
+  "web_searches": 6,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7705
+      },
+      "cache_creation_input_tokens": 70139,
+      "cache_read_input_tokens": 460468,
+      "inference_geo": "global",
+      "input_tokens": 26,
+      "output_tokens": 8457,
+      "output_tokens_details": {
+        "thinking_tokens": 2373
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 6
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Elon Musk\" AI prediction 2026','\"Elon Musk\" 2026 interview AGI \"years\"','\"Elon Musk\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(R.get(qs[0])), str(R.get(qs[0]))[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Musk G20 2026 North Carolina transcript AI \"shaping of atoms\"','Musk Economist interview July 2026 AI transcript','Musk Forbes interview 2026 AGI \"one to two years\"']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk G20 2026 North Carolina transcript AI \"shaping of atoms\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Economist interview July 2026 AI transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Forbes interview 2026 AGI \"one to two years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://singjupost.com/moonshots-220-w-elon-musk-on-agi-abundance-and-the-future-of-humanity-transcript/',\n'https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/',\n'https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23',\n'https://www.notateslaapp.com/news/4175/elon-musk-discusses-tesla-and-spacex-roadmap-in-forbes-interview',\n'https://www.forbes.com/sites/antoniopequenoiv/2026/09/24/elon-musk-says-spacexs-ai-models-may-surpass-anthropic-and-openais-in-6-months/']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,'ERR',r); continue\n    P[u]=r[0].get('content','')\n    print(u,len(P[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/moonshots-220-w-elon-musk-on-agi-abundance-and-the-future-of-humanity-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.notateslaapp.com/news/4175/elon-musk-discusses-tesla-and-spacex-roadmap-in-forbes-interview"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.forbes.com/sites/antoniopequenoiv/2026/09/24/elon-musk-says-spacexs-ai-models-may-surpass-anthropic-and-openais-in-6-months/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=r['content']['source']['data'] if isinstance(r,dict) and 'content' in r else str(r)\nprint(r.get('url'), len(d))\nimport re\ni=d.find('Topline'); print(d[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['6 months','pole position','cautiously']:\n    for m in re.finditer(k,d): print(k,':',d[max(0,m.start()-600):m.start()+400].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=d.find('---',10); j=d.find('# Elon Musk Says'); print(d[j:j+5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['second derivative','Musk said','Thursday']:\n    for m in list(re.finditer(k,d))[:4]: print(k,':',d[max(0,m.start()-300):m.start()+500].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://podscripts.co/podcasts/moonshots-with-peter-diamandis/elon-musk-on-agi-timeline-us-vs-china-job-markets-clean-energy-humanoid-robots-220'\nr2=await web_fetch({\"url\":u})\nif isinstance(r2,list): t=r2[0].get('content','')\nelse:\n    c=r2.get('content'); t=c['source']['data'] if isinstance(c,dict) else str(r2)\nprint(len(t))\nfor k in ['AGI next year','three to seven','smarter than','surgeon','2030','five years','next year']:\n    for m in list(re.finditer(k,t))[:3]: print(k,':',t[max(0,m.start()-500):m.start()+300].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/moonshots-with-peter-diamandis/elon-musk-on-agi-timeline-us-vs-china-job-markets-clean-energy-humanoid-robots-220"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "x=json.loads(r2)\nx=x[0] if isinstance(x,list) else x\nc=x.get('content'); t=c['source']['data'] if isinstance(c,dict) else c\nprint(len(t))\nfor k in ['AGI next year','three to seven','smarter than','surgeon','2030','next year']:\n    for m in list(re.finditer(k,t))[:3]: print(k,':',t[max(0,m.start()-500):m.start()+300].replace('\\n',' '));print('---')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-09-01",
+        "quote": "And AI will be able to do anything digital, anything that does not require shaping of atoms by hand, probably by the end of next year.",
+        "what_is_predicted": "AI will be able to do any digital task that does not involve physically shaping matter by the end of 2027.",
+        "date_or_span": "end of next year (end of 2027)",
+        "occasion": "Remarks (virtual) at the G20 Innovation Ministerial, Chapel Hill, North Carolina",
+        "source_url": "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09-01",
+        "quote": "So somewhat next year is my prediction: software will be so good, AI software will be so good, that it will be Stockfish-level good, meaning that it is impossible for a human to compete in writing software with AI.",
+        "what_is_predicted": "AI will write software so much better than humans in 2027 that no human can compete.",
+        "date_or_span": "next year (2027)",
+        "occasion": "G20 Innovation Ministerial, Chapel Hill",
+        "source_url": "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09-01",
+        "quote": "And I think it will be extremely good, possibly Stockfish-level, but certainly extremely good at all forms of vision and anything digital, literally in twelve to eighteen months.",
+        "what_is_predicted": "AI will be extremely good at all forms of vision and anything digital within 12 to 18 months.",
+        "date_or_span": "twelve to eighteen months (to about early 2028)",
+        "occasion": "G20 Innovation Ministerial, Chapel Hill",
+        "source_url": "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09-01",
+        "quote": "this is what I wouldn't be willing to put serious money betting against: that there will be at least a billion robots in ten years, and that those robots will be at least five times the output of a human, meaning the billion humanoid robots will be more productive than all humans combined.",
+        "what_is_predicted": "Within ten years there will be at least a billion humanoid robots, together more productive than all humans.",
+        "date_or_span": "ten years (about 2036)",
+        "occasion": "G20 Innovation Ministerial, Chapel Hill",
+        "source_url": "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-07-23",
+        "quote": "In fact, I think AI may exceed the sum of human intelligence in about, in around five years. In five years, Roughly five years is my guess.",
+        "what_is_predicted": "AI will exceed the combined intelligence of all humans in about five years.",
+        "date_or_span": "around five years (about 2031)",
+        "occasion": "Interview with Zanny Minton Beddoes, The Economist, recorded at Tesla Giga Texas",
+        "source_url": "https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-07-23",
+        "quote": "[Beddoes:] So let's unpack that. You're sure that humans will no longer be in control in 10 years time? [Musk:] I think it is unlikely.",
+        "what_is_predicted": "Humans are unlikely to still be in control of AI in ten years (the ten-year span comes from the interviewer's question).",
+        "date_or_span": "10 years (about 2036)",
+        "occasion": "Interview with The Economist",
+        "source_url": "https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-05",
+        "quote": "He predicted that artificial general intelligence will be unequivocally smarter than humans in every metric within one to two years. Looking just five years out, to 2031, he expects digital intelligence to vastly exceed the sum of all human intelligence.",
+        "what_is_predicted": "AGI smarter than humans in every respect within one to two years, and digital intelligence far beyond all human intelligence by 2031 (the article's paraphrase, not Musk's words).",
+        "date_or_span": "one to two years; 2031",
+        "occasion": "Virtual interview when accepting a Forbes top-innovator award",
+        "source_url": "https://www.notateslaapp.com/news/4175/elon-musk-discusses-tesla-and-spacex-roadmap-in-forbes-interview",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "The Moonshots #220 podcast with Peter Diamandis and Dave Blundin is listed by transcript sites as January 6, 2026, but the podscripts.co show notes say 'Recorded on December 22nd, 2025'. Its widely reported 'we'll hit AGI next year in 2026' line belongs to 2025. That line was not on either page I opened (both cut off early), so it is not quoted."
+      },
+      {
+        "year": "2024",
+        "note": "Search results showed the April 2024 X Spaces interview with Nicolai Tangen ('smarter than the smartest human ... by next year, or by 2026'), via Fortune and Yahoo snippets only. I did not open them."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Elon Musk\" AI prediction 2026",
+        "what_found": "Round-up articles on his 2026 predictions (Davos 'end of 2026', G20, Economist) plus older 2024-2025 AGI coverage. A coding error used up this search but its results were kept."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2026 interview AGI \"years\"",
+        "what_found": "Moonshots #220 transcripts and summaries ('AGI in 2026'), a Not a Tesla App report on the Forbes interview, and a summary of a later Isaacson 'Builders' interview."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly coverage of the September 2026 G20 remarks ('anything digital ... by the end of next year', 'Stockfish-level')."
+      },
+      {
+        "query_or_url": "Musk G20 2026 North Carolina transcript AI \"shaping of atoms\"",
+        "what_found": "A full Singju Post transcript of the G20 Innovation Ministerial remarks, plus news coverage."
+      },
+      {
+        "query_or_url": "Musk Economist interview July 2026 AI transcript",
+        "what_found": "Transcript pages for the 23 July 2026 Economist interview (elonmuskarchive.org, sozai.app, RealClearPolitics)."
+      },
+      {
+        "query_or_url": "Musk Forbes interview 2026 AGI \"one to two years\"",
+        "what_found": "The Not a Tesla App report of 20 May 2026 on the Forbes award interview, plus unrelated timeline trackers."
+      },
+      {
+        "query_or_url": "https://singjupost.com/moonshots-220-w-elon-musk-on-agi-abundance-and-the-future-of-humanity-transcript/",
+        "what_found": "Opened, but the text was cut off early (around the space-debris section) before any AGI timeline passage. Nothing quoted."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/",
+        "what_found": "The full G20 transcript; source of four candidates."
+      },
+      {
+        "query_or_url": "https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23",
+        "what_found": "The Economist transcript (cut off partway); source of the 'around five years' and 'unlikely' lines."
+      },
+      {
+        "query_or_url": "https://www.notateslaapp.com/news/4175/elon-musk-discusses-tesla-and-spacex-roadmap-in-forbes-interview",
+        "what_found": "A news report paraphrasing his Forbes interview timelines; no direct quote of his AGI words."
+      },
+      {
+        "query_or_url": "https://www.forbes.com/sites/antoniopequenoiv/2026/09/24/elon-musk-says-spacexs-ai-models-may-surpass-anthropic-and-openais-in-6-months/",
+        "what_found": "Only the headline and summary loaded ('cautiously optimistic', 'In 6 Months'); the article body and Musk's words did not, so nothing quoted."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/moonshots-with-peter-diamandis/elon-musk-on-agi-timeline-us-vs-china-job-markets-clean-energy-humanoid-robots-220",
+        "what_found": "Show notes say the episode was recorded on December 22nd, 2025. The text loaded only partly and did not include the AGI-year line."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2026 Musk kept giving short AI timelines. At the 1 September G20 meeting he said AI will do anything digital by the end of 2027 and be unbeatable at software 'next year'. In the 23 July Economist interview he said AI will pass the combined intelligence of all humans in about five years. The Moonshots 'AGI in 2026' remark was recorded in December 2025, so it belongs to 2025. I did not reach the recorded January Davos claim or the Optimus claims on any page I opened."
+  },
+  "reply_text": "I found three 2026 predictions I can quote from pages I opened, plus one I only saw as a news paraphrase. None of them repeats your three recorded claims, which I didn't come across on any opened page.\n\n- **G20 Innovation Ministerial, Chapel Hill, 1 September 2026 (published transcript).** Musk said AI will do \"anything digital\" \"probably by the end of next year\". He said AI software will be \"Stockfish-level\" good \"next year\", so a person can't compete with it. He said it will be \"extremely good\" at vision and anything digital \"literally in twelve to eighteen months\". He also said there will be over a billion humanoid robots in ten years, producing more than all humans combined. The robot line is about Optimus-type robots, not AI as such, so you may want to drop it.\n- **The Economist interview, recorded 23 July 2026 (transcript).** He said AI may exceed the sum of human intelligence in \"roughly five years\". He also said humans being in control in ten years is \"unlikely\", but the ten-year span was in the interviewer's question, not his own words.\n- **Forbes award appearance, about May 2026 (coverage only).** A Not a Tesla App article reports he said AI will be smarter than humans \"within one to two years\", with no direct quote from him. Treat it as a lead until someone checks the video.\n\n**What I left out:**\n- **Moonshots podcast:** the transcripts say January 6, 2026, but the show notes say it was recorded on 22 December 2025. So its \"AGI in 2026\" line counts for 2025. I didn't see that line on either page I opened, so I haven't quoted it.\n- **Forbes, 24 September 2026:** the article says SpaceX's AI could pass OpenAI and Anthropic \"in about 6 months\", but only the headline and summary loaded, so I couldn't read his words.\n\nI used 6 of 12 searches and all 6 page openings. One search was used up by a coding error. The Moonshots transcript was cut off before its AGI timeline section, and the Economist transcript ended mid-sentence, so both may hold more.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2026-09-01\", \"quote\": \"And AI will be able to do anything digital, anything that does not require shaping of atoms by hand, probably by the end of next year.\", \"what_is_predicted\": \"AI will be able to do any digital task that does not involve physically shaping matter by the end of 2027.\", \"date_or_span\": \"end of next year (end of 2027)\", \"occasion\": \"Remarks (virtual) at the G20 Innovation Ministerial, Chapel Hill, North Carolina\", \"source_url\": \"https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09-01\", \"quote\": \"So somewhat next year is my prediction: software will be so good, AI software will be so good, that it will be Stockfish-level good, meaning that it is impossible for a human to compete in writing software with AI.\", \"what_is_predicted\": \"AI will write software so much better than humans in 2027 that no human can compete.\", \"date_or_span\": \"next year (2027)\", \"occasion\": \"G20 Innovation Ministerial, Chapel Hill\", \"source_url\": \"https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09-01\", \"quote\": \"And I think it will be extremely good, possibly Stockfish-level, but certainly extremely good at all forms of vision and anything digital, literally in twelve to eighteen months.\", \"what_is_predicted\": \"AI will be extremely good at all forms of vision and anything digital within 12 to 18 months.\", \"date_or_span\": \"twelve to eighteen months (to about early 2028)\", \"occasion\": \"G20 Innovation Ministerial, Chapel Hill\", \"source_url\": \"https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09-01\", \"quote\": \"this is what I wouldn't be willing to put serious money betting against: that there will be at least a billion robots in ten years, and that those robots will be at least five times the output of a human, meaning the billion humanoid robots will be more productive than all humans combined.\", \"what_is_predicted\": \"Within ten years there will be at least a billion humanoid robots, together more productive than all humans.\", \"date_or_span\": \"ten years (about 2036)\", \"occasion\": \"G20 Innovation Ministerial, Chapel Hill\", \"source_url\": \"https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-07-23\", \"quote\": \"In fact, I think AI may exceed the sum of human intelligence in about, in around five years. In five years, Roughly five years is my guess.\", \"what_is_predicted\": \"AI will exceed the combined intelligence of all humans in about five years.\", \"date_or_span\": \"around five years (about 2031)\", \"occasion\": \"Interview with Zanny Minton Beddoes, The Economist, recorded at Tesla Giga Texas\", \"source_url\": \"https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-07-23\", \"quote\": \"[Beddoes:] So let's unpack that. You're sure that humans will no longer be in control in 10 years time? [Musk:] I think it is unlikely.\", \"what_is_predicted\": \"Humans are unlikely to still be in control of AI in ten years (the ten-year span comes from the interviewer's question).\", \"date_or_span\": \"10 years (about 2036)\", \"occasion\": \"Interview with The Economist\", \"source_url\": \"https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-05\", \"quote\": \"He predicted that artificial general intelligence will be unequivocally smarter than humans in every metric within one to two years. Looking just five years out, to 2031, he expects digital intelligence to vastly exceed the sum of all human intelligence.\", \"what_is_predicted\": \"AGI smarter than humans in every respect within one to two years, and digital intelligence far beyond all human intelligence by 2031 (the article's paraphrase, not Musk's words).\", \"date_or_span\": \"one to two years; 2031\", \"occasion\": \"Virtual interview when accepting a Forbes top-innovator award\", \"source_url\": \"https://www.notateslaapp.com/news/4175/elon-musk-discusses-tesla-and-spacex-roadmap-in-forbes-interview\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"The Moonshots #220 podcast with Peter Diamandis and Dave Blundin is listed by transcript sites as January 6, 2026, but the podscripts.co show notes say 'Recorded on December 22nd, 2025'. Its widely reported 'we'll hit AGI next year in 2026' line belongs to 2025. That line was not on either page I opened (both cut off early), so it is not quoted.\"},\n    {\"year\": \"2024\", \"note\": \"Search results showed the April 2024 X Spaces interview with Nicolai Tangen ('smarter than the smartest human ... by next year, or by 2026'), via Fortune and Yahoo snippets only. I did not open them.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Elon Musk\\\" AI prediction 2026\", \"what_found\": \"Round-up articles on his 2026 predictions (Davos 'end of 2026', G20, Economist) plus older 2024-2025 AGI coverage. A coding error used up this search but its results were kept.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Moonshots #220 transcripts and summaries ('AGI in 2026'), a Not a Tesla App report on the Forbes interview, and a summary of a later Isaacson 'Builders' interview.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly coverage of the September 2026 G20 remarks ('anything digital ... by the end of next year', 'Stockfish-level').\"},\n    {\"query_or_url\": \"Musk G20 2026 North Carolina transcript AI \\\"shaping of atoms\\\"\", \"what_found\": \"A full Singju Post transcript of the G20 Innovation Ministerial remarks, plus news coverage.\"},\n    {\"query_or_url\": \"Musk Economist interview July 2026 AI transcript\", \"what_found\": \"Transcript pages for the 23 July 2026 Economist interview (elonmuskarchive.org, sozai.app, RealClearPolitics).\"},\n    {\"query_or_url\": \"Musk Forbes interview 2026 AGI \\\"one to two years\\\"\", \"what_found\": \"The Not a Tesla App report of 20 May 2026 on the Forbes award interview, plus unrelated timeline trackers.\"},\n    {\"query_or_url\": \"https://singjupost.com/moonshots-220-w-elon-musk-on-agi-abundance-and-the-future-of-humanity-transcript/\", \"what_found\": \"Opened, but the text was cut off early (around the space-debris section) before any AGI timeline passage. Nothing quoted.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-elon-musk-remarks-at-g20-innovation-summit/\", \"what_found\": \"The full G20 transcript; source of four candidates.\"},\n    {\"query_or_url\": \"https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23\", \"what_found\": \"The Economist transcript (cut off partway); source of the 'around five years' and 'unlikely' lines.\"},\n    {\"query_or_url\": \"https://www.notateslaapp.com/news/4175/elon-musk-discusses-tesla-and-spacex-roadmap-in-forbes-interview\", \"what_found\": \"A news report paraphrasing his Forbes interview timelines; no direct quote of his AGI words.\"},\n    {\"query_or_url\": \"https://www.forbes.com/sites/antoniopequenoiv/2026/09/24/elon-musk-says-spacexs-ai-models-may-surpass-anthropic-and-openais-in-6-months/\", \"what_found\": \"Only the headline and summary loaded ('cautiously optimistic', 'In 6 Months'); the article body and Musk's words did not, so nothing quoted.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/moonshots-with-peter-diamandis/elon-musk-on-agi-timeline-us-vs-china-job-markets-clean-energy-humanoid-robots-220\", \"what_found\": \"Show notes say the episode was recorded on December 22nd, 2025. The text loaded only partly and did not include the AGI-year line.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2026 Musk kept giving short AI timelines. At the 1 September G20 meeting he said AI will do anything digital by the end of 2027 and be unbeatable at software 'next year'. In the 23 July Economist interview he said AI will pass the combined intelligence of all humans in about five years. The Moonshots 'AGI in 2026' remark was recorded in December 2025, so it belongs to 2025. I did not reach the recorded January Davos claim or the Optimus claims on any page I opened.\"\n}\n```"
+}

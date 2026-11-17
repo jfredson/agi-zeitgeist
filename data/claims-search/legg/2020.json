@@ -1,0 +1,218 @@
+{
+  "speaker_id": "legg",
+  "year": 2020,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.3512,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7594
+      },
+      "cache_creation_input_tokens": 30850,
+      "cache_read_input_tokens": 106756,
+      "inference_geo": "global",
+      "input_tokens": 18,
+      "output_tokens": 4274,
+      "output_tokens_details": {
+        "thinking_tokens": 913
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Shane Legg\" AI prediction 2020','\"Shane Legg\" 2020 interview AGI \"years\"','\"Shane Legg\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(r,q):\n    r=json.loads(r) if isinstance(r,str) else r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:250].replace('\\n',' '))\nshow(r,qs[0])\nfor q in qs[1:]:\n    show(await web_search({\"query\":q}),q)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2020 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nimport re\nprint(len(c))\nfor m in re.finditer(r'Legg',c):\n    print('...',c[max(0,m.start()-400):m.start()+400].replace('\\n',' '))\n    print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find(\"In a few decades\")\nrest=c[i:]\nfor m in re.finditer(r'Legg',rest):\n    print('...',rest[max(0,m.start()-300):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['\"Shane Legg\" GPT-3','\"Shane Legg\" podcast 2020','\"ShaneLegg\" twitter AGI 2028 2020','\"Shane Legg\" talk 2020 keynote']\nfor q in qs2:\n    show(await web_search({\"query\":q}),q)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" GPT-3"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" podcast 2020"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"ShaneLegg\" twitter AGI 2028 2020"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" talk 2020 keynote"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['\"Shane Legg\" New Zealand interview Waikato honorary','\"Legg\" DeepMind \"chief scientist\" 2020 AGI decades']\nfor q in qs3:\n    show(await web_search({\"query\":q}),q)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" New Zealand interview Waikato honorary"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Legg\" DeepMind \"chief scientist\" 2020 AGI decades"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2020-10",
+        "quote": "But if we keep moving quickly, who knows?” says Legg. “In a few decades’ time, we might have some very, very capable systems.",
+        "what_is_predicted": "Legg suggests that if progress stays fast, AI systems could be very capable within a few decades.",
+        "date_or_span": "a few decades (from 2020)",
+        "occasion": "Quoted in MIT Technology Review feature 'Artificial general intelligence: Are we close, and does it even make sense to try?' by Will Douglas Heaven, published 2020-10-15; interview date not stated",
+        "source_url": "https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2021",
+        "note": "Search results showed Legg's tweet of 24 Aug 2021 (twitter.com/ShaneLegg/status/1430146229426692097) saying his more serious prediction was 50% AGI by 2028 and 90% by 2040; seen only in search results, not opened."
+      },
+      {
+        "year": "2023",
+        "note": "Dwarkesh Podcast interview (dwarkesh.com/p/shane-legg) and coverage of '50% chance of AGI in 5 years'; seen in search results only."
+      },
+      {
+        "year": "2024",
+        "note": "Tweet of Dec 2024 (x.com/ShaneLegg/status/1867477029559599402): 'predicting a 50% chance of AGI by 2028 for 20 years'; seen in search results only."
+      },
+      {
+        "year": "2025",
+        "note": "Google DeepMind podcast 'The Arrival of AGI' with Hannah Fry (Dec 2025) and tweet x.com/ShaneLegg/status/1999180585407848776 restating 50% AGI by 2028; the Spotify listing shows 'Jan 17, 2020', but the episode is from Dec 2025 (cites a 2023 paper); seen in search results only."
+      },
+      {
+        "year": "c.2011 (undetermined)",
+        "note": "future.fandom.com 'Scenario: Shane Legg' reproduces an older interview by Jonathan Despres predicting an AI boom around 2020 and human-level AI passed in the mid 2020s; older words, not from 2020; seen in search results only."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2020",
+        "what_found": "Mostly later coverage of his 2028 forecast, an older Despres interview on a fandom wiki, and the Oct 2020 MIT Technology Review AGI feature."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2020 interview AGI \"years\"",
+        "what_found": "Coverage from 2023 and later of the 2028 forecast, a LessWrong post of 2022 DeepMind podcast excerpts, and the MIT Technology Review 2020 feature again."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage from 2023 to 2026 and the older fandom interview; nothing said in 2020."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/",
+        "what_found": "Opened; Oct 2020 feature quoting Legg, including one forward-looking line about very capable systems 'in a few decades' time'."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" GPT-3",
+        "what_found": "Nothing from 2020; later papers, profiles and the Dwarkesh interview."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" podcast 2020",
+        "what_found": "Dec 2025 DeepMind podcast (Spotify shows Jan 17, 2020, but the episode is from 2025) and the 2023 Dwarkesh podcast; no 2020 podcast."
+      },
+      {
+        "query_or_url": "\"ShaneLegg\" twitter AGI 2028 2020",
+        "what_found": "Legg tweets from 2021, 2024 and 2025 restating 50% by 2028; none from 2020."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" talk 2020 keynote",
+        "what_found": "TED, USI Dies academicus (2023) and speaker pages; no 2020 talk."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" New Zealand interview Waikato honorary",
+        "what_found": "2018 Waikato Distinguished Alumni lecture and bio pages; nothing from 2020."
+      },
+      {
+        "query_or_url": "\"Legg\" DeepMind \"chief scientist\" 2020 AGI decades",
+        "what_found": "Only the MIT Technology Review 2020 feature and later profiles."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Legg made few public statements in 2020. The one dated forward-looking line found is in MIT Technology Review's October 2020 AGI feature, where he says that in a few decades' time we might have very, very capable systems; this is a hedged quote in a journalist's article. His well-known 50%-by-2028 AGI forecast appears in other years, not in any 2020 source found."
+  },
+  "reply_text": "I found one statement from 2020 that fits your rules, and it's a weak one. It comes from MIT Technology Review's feature on AGI, published 15 October 2020 and written by Will Douglas Heaven. In it Legg is quoted saying: \"But if we keep moving quickly, who knows?… In a few decades' time, we might have some very, very capable systems.\" The time span is \"a few decades\", and the claim is hedged with \"might\". The only source is a journalist's article, not Legg's own words or a printed interview, and the article doesn't say when he spoke to the reporter.\n\nNothing else turned up from 2020. The rest of what he said in that article looks back at the past, so it doesn't count. Search results showed a Spotify listing for \"The Arrival of AGI\" dated Jan 17, 2020, but the episode itself is from December 2025, so I treated the 2020 date as a listing error. I didn't open that page. I found no 2020 podcast, talk, essay or post by Legg with a dated prediction. His well-known \"50% chance of AGI by 2028\" forecast shows up in other years only: in a 2021 tweet, in 2023 interviews and in 2025 posts. I used 9 of 12 searches and 1 of 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2020-10\",\n      \"quote\": \"But if we keep moving quickly, who knows?” says Legg. “In a few decades’ time, we might have some very, very capable systems.\",\n      \"what_is_predicted\": \"Legg suggests that if progress stays fast, AI systems could be very capable within a few decades.\",\n      \"date_or_span\": \"a few decades (from 2020)\",\n      \"occasion\": \"Quoted in MIT Technology Review feature 'Artificial general intelligence: Are we close, and does it even make sense to try?' by Will Douglas Heaven, published 2020-10-15; interview date not stated\",\n      \"source_url\": \"https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2021\", \"note\": \"Search results showed Legg's tweet of 24 Aug 2021 (twitter.com/ShaneLegg/status/1430146229426692097) saying his more serious prediction was 50% AGI by 2028 and 90% by 2040; seen only in search results, not opened.\"},\n    {\"year\": \"2023\", \"note\": \"Dwarkesh Podcast interview (dwarkesh.com/p/shane-legg) and coverage of '50% chance of AGI in 5 years'; seen in search results only.\"},\n    {\"year\": \"2024\", \"note\": \"Tweet of Dec 2024 (x.com/ShaneLegg/status/1867477029559599402): 'predicting a 50% chance of AGI by 2028 for 20 years'; seen in search results only.\"},\n    {\"year\": \"2025\", \"note\": \"Google DeepMind podcast 'The Arrival of AGI' with Hannah Fry (Dec 2025) and tweet x.com/ShaneLegg/status/1999180585407848776 restating 50% AGI by 2028; the Spotify listing shows 'Jan 17, 2020', but the episode is from Dec 2025 (cites a 2023 paper); seen in search results only.\"},\n    {\"year\": \"c.2011 (undetermined)\", \"note\": \"future.fandom.com 'Scenario: Shane Legg' reproduces an older interview by Jonathan Despres predicting an AI boom around 2020 and human-level AI passed in the mid 2020s; older words, not from 2020; seen in search results only.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2020\", \"what_found\": \"Mostly later coverage of his 2028 forecast, an older Despres interview on a fandom wiki, and the Oct 2020 MIT Technology Review AGI feature.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2020 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage from 2023 and later of the 2028 forecast, a LessWrong post of 2022 DeepMind podcast excerpts, and the MIT Technology Review 2020 feature again.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2020 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage from 2023 to 2026 and the older fandom interview; nothing said in 2020.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/\", \"what_found\": \"Opened; Oct 2020 feature quoting Legg, including one forward-looking line about very capable systems 'in a few decades' time'.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" GPT-3\", \"what_found\": \"Nothing from 2020; later papers, profiles and the Dwarkesh interview.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" podcast 2020\", \"what_found\": \"Dec 2025 DeepMind podcast (Spotify shows Jan 17, 2020, but the episode is from 2025) and the 2023 Dwarkesh podcast; no 2020 podcast.\"},\n    {\"query_or_url\": \"\\\"ShaneLegg\\\" twitter AGI 2028 2020\", \"what_found\": \"Legg tweets from 2021, 2024 and 2025 restating 50% by 2028; none from 2020.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" talk 2020 keynote\", \"what_found\": \"TED, USI Dies academicus (2023) and speaker pages; no 2020 talk.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" New Zealand interview Waikato honorary\", \"what_found\": \"2018 Waikato Distinguished Alumni lecture and bio pages; nothing from 2020.\"},\n    {\"query_or_url\": \"\\\"Legg\\\" DeepMind \\\"chief scientist\\\" 2020 AGI decades\", \"what_found\": \"Only the MIT Technology Review 2020 feature and later profiles.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Legg made few public statements in 2020. The one dated forward-looking line found is in MIT Technology Review's October 2020 AGI feature, where he says that in a few decades' time we might have very, very capable systems; this is a hedged quote in a journalist's article. His well-known 50%-by-2028 AGI forecast appears in other years, not in any 2020 source found.\"\n}\n```"
+}

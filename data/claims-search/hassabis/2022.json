@@ -1,0 +1,286 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2022,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5344,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 46294,
+      "cache_read_input_tokens": 316266,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 6977,
+      "output_tokens_details": {
+        "thinking_tokens": 2062
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2022','\"Demis Hassabis\" 2022 interview AGI \"years\"','\"Demis Hassabis\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2022"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r), str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "R={}\ndef show(q,r):\n    r=json.loads(r) if isinstance(r,str) else r\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:250].replace('\\n',' '))\nshow(qs[0],r)\nfor q in qs[1:]:\n    show(q, await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2022 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,dict): print(u,r); return \"\"\n    c=r[0].get('content','')\n    P[u]=c\n    print(u,len(c),r[0].get('title'))\n    return c\ndef grep(c,pats,w=300):\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            s=max(0,m.start()-w); print('>>',p,':',c[s:m.end()+w].replace('\\n',' ')); print()\nc1=await fetch(\"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\")\nprint(c1[:3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content','')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    if not c: print(u, str(r)[:300])\n    P[u]=c; print(u,len(c)); return c\nfor q in ['Lex Fridman podcast 299 Demis Hassabis transcript','\"Hassabis\" Isomorphic Labs 2022 interview drugs clinic years']:\n    show(q, await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman podcast 299 Demis Hassabis transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Hassabis\" Isomorphic Labs 2022 interview drugs clinic years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c2=await fetch(\"https://www.transcriptforest.com/en/lex-fridman-podcast/8703-299-demis-hassabis-deepmind-2022-07-01\")\nc3=await fetch(\"https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/\")\npats=[r'\\bdecade',r'\\b20[2-5]\\d\\b',r'\\b(five|ten|\\d+|two|three|few|couple of) years',r'next year',r'\\bAGI\\b']\ngrep(c3,pats,250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.transcriptforest.com/en/lex-fridman-podcast/8703-299-demis-hassabis-deepmind-2022-07-01"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "grep(c3,[r'Sparrow',r'private beta',r'2023'],400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c3.find('Demis Hassabis stands halfway'); print(c3[i:i+200]); print('....'); print(c3[-3500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c4=await fetch(\"https://podscripts.co/podcasts/lex-fridman-podcast/299-demis-hassabis-deepmind\")\ngrep(c4,[r'\\bdecade',r'\\b20[2-5]\\d\\b',r'(five|ten|\\d+|two|three|couple of|few) years',r'next year'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/lex-fridman-podcast/299-demis-hassabis-deepmind"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['lexfridman.com demis hassabis transcript 299 AGI','\"Hassabis\" 2022 AlphaFold \"next decade\" interview','\"Demis Hassabis\" 2022 \"Pathway\" OR \"Gato\" OR \"Sparrow\" interview AGI timeline']:\n    show(q, await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "lexfridman.com demis hassabis transcript 299 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Hassabis\" 2022 AlphaFold \"next decade\" interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2022 \"Pathway\" OR \"Gato\" OR \"Sparrow\" interview AGI timeline"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c5=await fetch(\"https://time.com/6246119/demis-hassabis-deepmind-interview/\")\ngrep(c5,[r'Sparrow',r'\\bdecade',r'(five|ten|\\d+|two|three|couple of|few) years'],400)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/6246119/demis-hassabis-deepmind-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis July 2022 AlphaFold 200 million structures interview future','\"Hassabis\" 2022 \"AGI\" \"decade\" interview December 2022']:\n    show(q, await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis July 2022 AlphaFold 200 million structures interview future"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Hassabis\" 2022 \"AGI\" \"decade\" interview December 2022"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2022-03-15",
+        "quote": "I think that [AGI] it's coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two",
+        "what_is_predicted": "Hassabis expects artificial general intelligence to arrive within the next ten to twenty years.",
+        "date_or_span": "the next decade or two (roughly 2032–2042)",
+        "occasion": "DeepMind: The Podcast, Season 2, Episode 9, 'The promise of AI with Demis Hassabis', with host Hannah Fry, at 7:11; the post dates the episode to March 15, 2022 (YouTube https://www.youtube.com/watch?v=GdeY-MrXD74)",
+        "source_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "The TIME profile by Billy Perrigo (published 2023-01-12; interview at DeepMind on Nov. 3, 2022) is reported in a search snippet to say DeepMind was considering a 'private beta' of its Sparrow chatbot in 2023. Both copies of the page I opened were cut off before that passage, so the words were not read and are not quoted."
+      },
+      {
+        "year": "2024-2026",
+        "note": "Search results were mostly later timelines: 60 Minutes (2025) 'five to 10 years', Lex Fridman #475 '50% chance... by 2030', and 2026 coverage of 'two to three years'. None were opened and none belong to 2022."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2022",
+        "what_found": "Mostly 2025-2026 news on AGI timelines, plus a LessWrong post of excerpts from DeepMind: The Podcast Season 2 (2022) and the TIME profile dated Jan 2023."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2022 interview AGI \"years\"",
+        "what_found": "Later interviews (TIME 2025, 20VC, others) and a link to the 2023 TIME profile; nothing new from 2022."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2025-2026 coverage of AGI by about 2030; nothing from 2022."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi",
+        "what_found": "Opened; a listener's transcript of Season 2 Episode 9 (dated March 15, 2022) with Hassabis's 'next decade or two' AGI answer at 7:11."
+      },
+      {
+        "query_or_url": "Lex Fridman podcast 299 Demis Hassabis transcript",
+        "what_found": "Transcript pages for episode #299 (July 1, 2022) on transcriptforest and podscripts."
+      },
+      {
+        "query_or_url": "\"Hassabis\" Isomorphic Labs 2022 interview drugs clinic years",
+        "what_found": "Only 2023-2025 drug-trial forecasts; nothing from 2022."
+      },
+      {
+        "query_or_url": "https://www.transcriptforest.com/en/lex-fridman-podcast/8703-299-demis-hassabis-deepmind-2022-07-01",
+        "what_found": "Would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/",
+        "what_found": "Opened; text cut off partway through, with no dated predictions in the part that loaded."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/lex-fridman-podcast/299-demis-hassabis-deepmind",
+        "what_found": "Opened; only about the first 20 minutes of the Lex #299 transcript loaded, with no dated AI prediction in it."
+      },
+      {
+        "query_or_url": "lexfridman.com demis hassabis transcript 299 AGI",
+        "what_found": "Mostly the 2025 episode #475; a cofyt summary says the #299 transcript gives no specific AGI timelines."
+      },
+      {
+        "query_or_url": "\"Hassabis\" 2022 AlphaFold \"next decade\" interview",
+        "what_found": "Later interviews, plus a listing for an MIT CBMM talk on April 5, 2022 (not opened)."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2022 \"Pathway\" OR \"Gato\" OR \"Sparrow\" interview AGI timeline",
+        "what_found": "A snippet of the TIME profile mentioning a Sparrow 'private beta' in 2023, plus later timeline articles."
+      },
+      {
+        "query_or_url": "https://time.com/6246119/demis-hassabis-deepmind-interview/",
+        "what_found": "Opened; also cut off before the Sparrow passage, so that line could not be read."
+      },
+      {
+        "query_or_url": "Hassabis July 2022 AlphaFold 200 million structures interview future",
+        "what_found": "News coverage of the July 2022 AlphaFold release, with impact remarks but no dated predictions in the snippets; not opened."
+      },
+      {
+        "query_or_url": "\"Hassabis\" 2022 \"AGI\" \"decade\" interview December 2022",
+        "what_found": "Only later interviews and the same LessWrong post; nothing new from 2022."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2022 Hassabis's one dated AI forecast found is from DeepMind: The Podcast (Season 2, Episode 9, March 2022), where he said AGI was likely 'in the next decade or two'. It was read in a listener's transcript on LessWrong, not an official transcript. His July 2022 Lex Fridman interview gave no dated timeline in the part I could read, and a likely 2022 remark about releasing Sparrow in 2023 (TIME, interview Nov 2022) could not be read because both copies of the page were cut off."
+  },
+  "reply_text": "I found one dated prediction from Hassabis in 2022: in March he said on DeepMind: The Podcast that AGI was likely \"in the next decade or two.\" The only page I opened that carries the words is a listener's transcript of excerpts on LessWrong, not an official one. I didn't open the podcast video itself.\n\n- **The one candidate.** The LessWrong post dates Season 2, Episode 9 (\"The promise of AI with Demis Hassabis\") to March 15, 2022. At 7:11 the host, Hannah Fry, asks when AGI will come, and the post prints his answer as: \"I think that [AGI] it's coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two.\" The square brackets were added by the transcriber. The post also puts some words in bold, which I left out of the quote. Please check the wording against the video at about 7:11 (link in the JSON).\n- **Lex Fridman Podcast #299 (July 1, 2022).** No dated prediction found. One transcript site would not open. The podscripts.co copy only showed text from about the first 20 minutes of the episode, and nothing dated came up in it.\n- **TIME interview, conducted November 2022 and published January 12, 2023.** A search snippet says DeepMind was considering releasing its Sparrow chatbot in a \"private beta\" sometime in 2023. Both copies of the article I opened cut off before that passage, so I never read the line on a page and have not listed it. It is worth checking by hand, since the interview took place in 2022.\n- **AlphaFold release (July 2022) and an MIT talk (April 5, 2022).** Search results showed only press-call remarks about AlphaFold's impact, with no dates or time spans. I didn't open either.\n\nI ran 10 of the 12 searches and opened 5 of the 6 pages allowed. The first search counted even though my code crashed before printing its results.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2022-03-15\",\n      \"quote\": \"I think that [AGI] it's coming relatively soon in the next you know–I wouldn't be super surprised–in the next decade or two\",\n      \"what_is_predicted\": \"Hassabis expects artificial general intelligence to arrive within the next ten to twenty years.\",\n      \"date_or_span\": \"the next decade or two (roughly 2032–2042)\",\n      \"occasion\": \"DeepMind: The Podcast, Season 2, Episode 9, 'The promise of AI with Demis Hassabis', with host Hannah Fry, at 7:11; the post dates the episode to March 15, 2022 (YouTube https://www.youtube.com/watch?v=GdeY-MrXD74)\",\n      \"source_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"The TIME profile by Billy Perrigo (published 2023-01-12; interview at DeepMind on Nov. 3, 2022) is reported in a search snippet to say DeepMind was considering a 'private beta' of its Sparrow chatbot in 2023. Both copies of the page I opened were cut off before that passage, so the words were not read and are not quoted.\"},\n    {\"year\": \"2024-2026\", \"note\": \"Search results were mostly later timelines: 60 Minutes (2025) 'five to 10 years', Lex Fridman #475 '50% chance... by 2030', and 2026 coverage of 'two to three years'. None were opened and none belong to 2022.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2022\", \"what_found\": \"Mostly 2025-2026 news on AGI timelines, plus a LessWrong post of excerpts from DeepMind: The Podcast Season 2 (2022) and the TIME profile dated Jan 2023.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2022 interview AGI \\\"years\\\"\", \"what_found\": \"Later interviews (TIME 2025, 20VC, others) and a link to the 2023 TIME profile; nothing new from 2022.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2022 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2025-2026 coverage of AGI by about 2030; nothing from 2022.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi\", \"what_found\": \"Opened; a listener's transcript of Season 2 Episode 9 (dated March 15, 2022) with Hassabis's 'next decade or two' AGI answer at 7:11.\"},\n    {\"query_or_url\": \"Lex Fridman podcast 299 Demis Hassabis transcript\", \"what_found\": \"Transcript pages for episode #299 (July 1, 2022) on transcriptforest and podscripts.\"},\n    {\"query_or_url\": \"\\\"Hassabis\\\" Isomorphic Labs 2022 interview drugs clinic years\", \"what_found\": \"Only 2023-2025 drug-trial forecasts; nothing from 2022.\"},\n    {\"query_or_url\": \"https://www.transcriptforest.com/en/lex-fridman-podcast/8703-299-demis-hassabis-deepmind-2022-07-01\", \"what_found\": \"Would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/\", \"what_found\": \"Opened; text cut off partway through, with no dated predictions in the part that loaded.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/lex-fridman-podcast/299-demis-hassabis-deepmind\", \"what_found\": \"Opened; only about the first 20 minutes of the Lex #299 transcript loaded, with no dated AI prediction in it.\"},\n    {\"query_or_url\": \"lexfridman.com demis hassabis transcript 299 AGI\", \"what_found\": \"Mostly the 2025 episode #475; a cofyt summary says the #299 transcript gives no specific AGI timelines.\"},\n    {\"query_or_url\": \"\\\"Hassabis\\\" 2022 AlphaFold \\\"next decade\\\" interview\", \"what_found\": \"Later interviews, plus a listing for an MIT CBMM talk on April 5, 2022 (not opened).\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2022 \\\"Pathway\\\" OR \\\"Gato\\\" OR \\\"Sparrow\\\" interview AGI timeline\", \"what_found\": \"A snippet of the TIME profile mentioning a Sparrow 'private beta' in 2023, plus later timeline articles.\"},\n    {\"query_or_url\": \"https://time.com/6246119/demis-hassabis-deepmind-interview/\", \"what_found\": \"Opened; also cut off before the Sparrow passage, so that line could not be read.\"},\n    {\"query_or_url\": \"Hassabis July 2022 AlphaFold 200 million structures interview future\", \"what_found\": \"News coverage of the July 2022 AlphaFold release, with impact remarks but no dated predictions in the snippets; not opened.\"},\n    {\"query_or_url\": \"\\\"Hassabis\\\" 2022 \\\"AGI\\\" \\\"decade\\\" interview December 2022\", \"what_found\": \"Only later interviews and the same LessWrong post; nothing new from 2022.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2022 Hassabis's one dated AI forecast found is from DeepMind: The Podcast (Season 2, Episode 9, March 2022), where he said AGI was likely 'in the next decade or two'. It was read in a listener's transcript on LessWrong, not an official transcript. His July 2022 Lex Fridman interview gave no dated timeline in the part I could read, and a likely 2022 remark about releasing Sparrow in 2023 (TIME, interview Nov 2022) could not be read because both copies of the page were cut off.\"\n}\n```"
+}

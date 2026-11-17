@@ -1,0 +1,382 @@
+{
+  "speaker_id": "pichai",
+  "year": 2018,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7005,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7654
+      },
+      "cache_creation_input_tokens": 53609,
+      "cache_read_input_tokens": 561974,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 9993,
+      "output_tokens_details": {
+        "thinking_tokens": 3112
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sundar Pichai\" AI prediction 2018','\"Sundar Pichai\" 2018 interview AGI \"years\"','\"Sundar Pichai\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" AI prediction 2018"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2018 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Google I/O 2018 keynote transcript Sundar Pichai',\n'Recode MSNBC \"Revolution\" Pichai Swisher Melber transcript January 2018',\n'Pichai Washington Post interview December 2018 AI \"legitimate\"']\nfor q in qs2:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Google I/O 2018 keynote transcript Sundar Pichai"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Recode MSNBC \"Revolution\" Pichai Swisher Melber transcript January 2018"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Washington Post interview December 2018 AI \"legitimate\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nf=await web_fetch({\"url\":\"https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1\"})\nc=f[0]['content'] if isinstance(f,list) else str(f)\nprint(len(c))\nfor kw in ['later this year','next year','this year','years','decade','by 20','coming weeks','this summer','months','future']:\n    for m in re.finditer(kw,c):\n        print(kw,'::',c[max(0,m.start()-300):m.end()+150].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "heads=[(m.start(),m.group(0)) for m in re.finditer(r'\\*\\*\\*[^*]{3,80}\\*\\*\\*',c)]\nfor h in heads: print(h)\nfor kw in ['pretty please* as an option','by the end of this year the Assistant','next couple of months','rolling out as an experiment','turn it on in the coming weeks','Gmail','Smart Compose','Waymo','Phoenix']:\n    i=c.find(kw); print(kw,i)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[12200:15400]); print('.....'); print(c[33000:34200]); print('....END', c[-800:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "seg=c[3261:12200]\nfor m in re.finditer(r'[^.]*\\b(will|going to|soon|expect)\\b[^.]*\\.',seg):\n    print('-',m.group(0).strip()[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Alphabet Q4 2018 earnings call transcript Pichai AI',\n'Pichai \"AI at Google: our principles\" June 2018',\n'Sundar Pichai 2018 interview AI \"five years\" OR \"10 years\" OR \"decade\"']\nfor q in qs3:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Alphabet Q4 2018 earnings call transcript Pichai AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai \"AI at Google: our principles\" June 2018"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai 2018 interview AI \"five years\" OR \"10 years\" OR \"decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://www.washingtonpost.com/technology/2018/12/12/google-ceo-sundar-pichai-fears-about-artificial-intelligence-are-very-legitimate-he-says-post-interview/\",\n\"https://seekingalpha.com/article/4142459-alphabets-goog-ceo-sundar-pichai-on-q4-2017-results-earnings-call-transcript\"]\nF={}\nfor u in urls:\n    f=await web_fetch({\"url\":u})\n    F[u]=f\n    if isinstance(f,dict): print(u,f); continue\n    t=f[0]['content']; print(u,len(t)); print(t[:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.washingtonpost.com/technology/2018/12/12/google-ceo-sundar-pichai-fears-about-artificial-intelligence-are-very-legitimate-he-says-post-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,f in F.items():\n    print(u, type(f), str(f)[:600])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=json.loads(F[urls[0]]); w=d['content']['source']['data']; print(len(w)); print(w[:6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs4=['abc.xyz 2018 earnings call transcript Sundar Pichai machine learning',\n'Pichai Axios interview December 2018 AI transcript']\nfor q in qs4:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "abc.xyz 2018 earnings call transcript Sundar Pichai machine learning"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Axios interview December 2018 AI transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls2=[\"https://www.fool.com/earnings/call-transcripts/2018/07/23/alphabet-inc-googl-earnings-conference-call-transc.aspx\",\n\"https://www.fool.com/earnings/call-transcripts/2018/10/26/alphabet-inc-goog-googl-q3-2018-earnings-conferenc.aspx\",\n\"https://www.axios.com/2018/12/12/google-sundar-pichai-interview-big-tech-scrutiny\"]\nT={}\nfor u in urls2:\n    f=await web_fetch({\"url\":u})\n    try:\n        d=json.loads(f) if isinstance(f,str) else f\n        if isinstance(d,list): d=d[0]\n        cc=d.get('content')\n        if isinstance(cc,dict): cc=cc.get('source',{}).get('data','')\n        T[u]=cc or ''\n        print(u,len(T[u]), d.get('type'))\n    except Exception as e:\n        print(u,'ERR',str(f)[:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2018/07/23/alphabet-inc-googl-earnings-conference-call-transc.aspx"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2018/10/26/alphabet-inc-goog-googl-q3-2018-earnings-conferenc.aspx"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.axios.com/2018/12/12/google-sundar-pichai-interview-big-tech-scrutiny"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=r'[^.]*\\b(next year|this year|later this|coming weeks|coming months|years|decade|by 20\\d\\d|end of the year|by the end|this fall|soon)\\b[^.]*\\.'\nfor u,t in T.items():\n    print('#####',u)\n    for m in re.finditer(pat,t):\n        s=m.group(0).strip()\n        print('-',s[:350])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t2=T[urls2[0]]; i=t2.find('By the end of this year'); print(t2[i-1200:i+300])\nt3=T[urls2[1]]\nfor kw in ['Duplex','Waymo','Assistant','will ']:\n    for m in re.finditer(kw,t3):\n        print(kw,'::',t3[max(0,m.start()-200):m.end()+200].replace('\\n',' '));print()\n    "
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(T[urls2[2]][:4100])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Pichai Revolution town hall transcript \"electricity or fire\" \"cancer\" OR \"climate change\"'\nR[q]=await web_search({\"query\":q}); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Revolution town hall transcript \"electricity or fire\" \"cancer\" OR \"climate change\""
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2018-05-08",
+        "quote": "His voice will be coming later this year in certain contexts so that you can get responses like this.",
+        "what_is_predicted": "A WaveNet-generated John Legend voice will come to the Google Assistant later in 2018.",
+        "date_or_span": "later this year (2018)",
+        "occasion": "Google I/O 2018 keynote",
+        "source_url": "https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1",
+        "source_kind": "transcript",
+        "already_recorded": "2018-05-08-pichai-john-legend-voice-later-this-year.toml"
+      },
+      {
+        "date_said": "2018-05-08",
+        "quote": "We are rolling out Smart Compose to all our users this month and hope you enjoy using it as well.",
+        "what_is_predicted": "Gmail's machine-learning Smart Compose feature will roll out to all users in May 2018.",
+        "date_or_span": "this month (May 2018)",
+        "occasion": "Google I/O 2018 keynote",
+        "source_url": "https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018-05-08",
+        "quote": "All these features are going to be rolling out to Google Photos users in the next couple of months.",
+        "what_is_predicted": "AI-driven Google Photos features (Suggested Actions, brightness fixes, document-to-PDF, colourising black-and-white photos) will reach users within a couple of months.",
+        "date_or_span": "the next couple of months (from May 2018)",
+        "occasion": "Google I/O 2018 keynote",
+        "source_url": "https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018-05-08",
+        "quote": "This is going to be rolling out as an experiment in the coming weeks, and so stay tuned.",
+        "what_is_predicted": "Google Duplex calls to businesses to update holiday opening hours will start as an experiment within weeks.",
+        "date_or_span": "the coming weeks (from May 2018); borderline span",
+        "occasion": "Google I/O 2018 keynote",
+        "source_url": "https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2018-07-23",
+        "quote": "The Google Assistant is another great product based on machine learning. By the end of this year, it'll be available in more than 30 languages and 80 countries.",
+        "what_is_predicted": "The machine-learning-based Google Assistant will be in more than 30 languages and 80 countries by the end of 2018.",
+        "date_or_span": "by the end of this year (2018)",
+        "occasion": "Alphabet Q2 2018 earnings call, Pichai's prepared remarks",
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2018/07/23/alphabet-inc-googl-earnings-conference-call-transc.aspx",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2019",
+        "note": "The Alphabet Q4 2018 earnings call was held on 2019-02-04 (Seeking Alpha and Motley Fool listings in search results); not opened."
+      },
+      {
+        "year": "2025",
+        "note": "In the Lex Fridman Podcast #471 transcript (search snippet only), Pichai recalls saying around 2017 or 2018 that AI is the most profound technology; this is a later retelling."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sundar Pichai\" AI prediction 2018",
+        "what_found": "Coverage of the January 2018 'more profound than electricity or fire' remark at the Recode/MSNBC town hall; no dated prediction."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2018 interview AGI \"years\"",
+        "what_found": "Only 2024-2025 AGI-timeline items and later retellings; nothing from 2018."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2018 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Recent (2024-2026) interviews only; nothing from 2018."
+      },
+      {
+        "query_or_url": "Google I/O 2018 keynote transcript Sundar Pichai",
+        "what_found": "The Singju Post full transcript of Pichai's I/O 2018 keynote."
+      },
+      {
+        "query_or_url": "Recode MSNBC \"Revolution\" Pichai Swisher Melber transcript January 2018",
+        "what_found": "Podcast and MSNBC video listings for the January town hall; no text transcript."
+      },
+      {
+        "query_or_url": "Pichai Washington Post interview December 2018 AI \"legitimate\"",
+        "what_found": "The Washington Post article of 2018-12-12 and related coverage."
+      },
+      {
+        "query_or_url": "https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1",
+        "what_found": "Opened; Pichai's own lines held four dated product-rollout statements (Smart Compose, Photos, Duplex, John Legend voice)."
+      },
+      {
+        "query_or_url": "Alphabet Q4 2018 earnings call transcript Pichai AI",
+        "what_found": "Transcript listings for the Q4 2018 call (held February 2019) and the Q4 2017 call (held 2018-02-01)."
+      },
+      {
+        "query_or_url": "Pichai \"AI at Google: our principles\" June 2018",
+        "what_found": "The June 7, 2018 principles post and coverage; not opened, as it states principles rather than dated forecasts."
+      },
+      {
+        "query_or_url": "Sundar Pichai 2018 interview AI \"five years\" OR \"10 years\" OR \"decade\"",
+        "what_found": "Only 2023-2025 interviews."
+      },
+      {
+        "query_or_url": "https://www.washingtonpost.com/technology/2018/12/12/google-ceo-sundar-pichai-fears-about-artificial-intelligence-are-very-legitimate-he-says-post-interview/",
+        "what_found": "Opened; it has Pichai quotes on AI risk and self-regulation and a 'mid- to long term' remark, but no dated AI prediction."
+      },
+      {
+        "query_or_url": "abc.xyz 2018 earnings call transcript Sundar Pichai machine learning",
+        "what_found": "Motley Fool transcripts of the Q2 and Q3 2018 calls."
+      },
+      {
+        "query_or_url": "Pichai Axios interview December 2018 AI transcript",
+        "what_found": "The Axios 2018-12-12 interview article."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2018/07/23/alphabet-inc-googl-earnings-conference-call-transc.aspx",
+        "what_found": "Opened; Pichai gave a target of 30+ languages and 80 countries for the Assistant by the end of the year."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2018/10/26/alphabet-inc-goog-googl-q3-2018-earnings-conferenc.aspx",
+        "what_found": "Opened; Assistant at 20 languages and 76 countries; Duplex for Pixel users with no date; no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://www.axios.com/2018/12/12/google-sundar-pichai-interview-big-tech-scrutiny",
+        "what_found": "Opened; remarks on AI concerns and scrutiny, no dated prediction."
+      },
+      {
+        "query_or_url": "Pichai Revolution town hall transcript \"electricity or fire\" \"cancer\" OR \"climate change\"",
+        "what_found": "Coverage of the January town hall only; no transcript and no dated prediction."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Pichai's dated AI statements in 2018 were short-range product launch promises: Smart Compose, Google Photos features, a Duplex experiment and the John Legend voice at I/O in May, plus a year-end Assistant language target on the July earnings call. His big-picture AI remarks that year (the January 'electricity or fire' town hall, the December Washington Post and Axios interviews) carried no dates and said nothing about when AGI would arrive. The Q4 2017 call (held 2018-02-01), the Q1 2018 call and the AI principles post were not opened."
+  },
+  "reply_text": "I found five dated, forward-looking AI statements Pichai made in 2018, including the one you already have. All are short-range product launch promises. I found nothing in 2018 that puts a date on AGI or on what AI will be able to do over the long term.\n\n**What I found**\n- **Google I/O keynote, 8 May 2018** (third-party transcript on singjupost.com, Pichai's sections only). Pichai himself made four dated promises there:\n  - **Smart Compose:** coming to all Gmail users \"this month\".\n  - **Google Photos:** AI features rolling out \"in the next couple of months\".\n  - **Duplex:** the business-hours calls rolling out \"as an experiment in the coming weeks\".\n  - **John Legend's voice:** coming \"later this year\". This is your recorded file.\n- **\"Coming weeks\" is borderline.** I kept the Duplex line because it names a short span, but you may decide it's too vague, closer to \"soon\".\n- **Speaker check.** The same keynote's promise of \"30 languages… by the end of this year\" for the Assistant came from Scott Huffman, and the \"this summer\" launch dates came from Lilian Rincon. I left both out.\n- **Q2 2018 earnings call, 23 July** (Motley Fool transcript). In his prepared remarks Pichai said the Assistant would be in more than 30 languages and 80 countries by the end of the year. At the Q3 call he reported 20 languages and 76 countries. That is a count from October, not a year-end result.\n\n**Checked, nothing dated**\n- **Washington Post interview, December:** he said AI fears are \"very legitimate\". His only time words were \"mid- to long term\", which is not about AGI. The article says he \"vowed to address in the coming year\" YouTube content problems, but that is the reporter's paraphrase and not about AI.\n- **Axios interview, December:** no dated statements.\n- **Q3 2018 earnings call:** Duplex for Pixel users, with no date given.\n- **Recode/MSNBC \"Revolution\" town hall, January** (the \"electricity or fire\" remark): search results showed only news coverage, with no dated predictions.\n\n**Gaps**\n- The first fixed search's results printed only partly because of a parsing error in my code. I recovered them from the saved results and did not run it again.\n- I did not open the AI principles post (June), the Q1 2018 call, or the Q4 2017 call held on 1 February 2018. That last one counts as 2018 and is still unchecked.\n- Seeking Alpha was never fetched.\n- I used all 12 searches and 5 of 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2018-05-08\", \"quote\": \"His voice will be coming later this year in certain contexts so that you can get responses like this.\", \"what_is_predicted\": \"A WaveNet-generated John Legend voice will come to the Google Assistant later in 2018.\", \"date_or_span\": \"later this year (2018)\", \"occasion\": \"Google I/O 2018 keynote\", \"source_url\": \"https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1\", \"source_kind\": \"transcript\", \"already_recorded\": \"2018-05-08-pichai-john-legend-voice-later-this-year.toml\"},\n    {\"date_said\": \"2018-05-08\", \"quote\": \"We are rolling out Smart Compose to all our users this month and hope you enjoy using it as well.\", \"what_is_predicted\": \"Gmail's machine-learning Smart Compose feature will roll out to all users in May 2018.\", \"date_or_span\": \"this month (May 2018)\", \"occasion\": \"Google I/O 2018 keynote\", \"source_url\": \"https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2018-05-08\", \"quote\": \"All these features are going to be rolling out to Google Photos users in the next couple of months.\", \"what_is_predicted\": \"AI-driven Google Photos features (Suggested Actions, brightness fixes, document-to-PDF, colourising black-and-white photos) will reach users within a couple of months.\", \"date_or_span\": \"the next couple of months (from May 2018)\", \"occasion\": \"Google I/O 2018 keynote\", \"source_url\": \"https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2018-05-08\", \"quote\": \"This is going to be rolling out as an experiment in the coming weeks, and so stay tuned.\", \"what_is_predicted\": \"Google Duplex calls to businesses to update holiday opening hours will start as an experiment within weeks.\", \"date_or_span\": \"the coming weeks (from May 2018); borderline span\", \"occasion\": \"Google I/O 2018 keynote\", \"source_url\": \"https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2018-07-23\", \"quote\": \"The Google Assistant is another great product based on machine learning. By the end of this year, it'll be available in more than 30 languages and 80 countries.\", \"what_is_predicted\": \"The machine-learning-based Google Assistant will be in more than 30 languages and 80 countries by the end of 2018.\", \"date_or_span\": \"by the end of this year (2018)\", \"occasion\": \"Alphabet Q2 2018 earnings call, Pichai's prepared remarks\", \"source_url\": \"https://www.fool.com/earnings/call-transcripts/2018/07/23/alphabet-inc-googl-earnings-conference-call-transc.aspx\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2019\", \"note\": \"The Alphabet Q4 2018 earnings call was held on 2019-02-04 (Seeking Alpha and Motley Fool listings in search results); not opened.\"},\n    {\"year\": \"2025\", \"note\": \"In the Lex Fridman Podcast #471 transcript (search snippet only), Pichai recalls saying around 2017 or 2018 that AI is the most profound technology; this is a later retelling.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" AI prediction 2018\", \"what_found\": \"Coverage of the January 2018 'more profound than electricity or fire' remark at the Recode/MSNBC town hall; no dated prediction.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2018 interview AGI \\\"years\\\"\", \"what_found\": \"Only 2024-2025 AGI-timeline items and later retellings; nothing from 2018.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2018 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Recent (2024-2026) interviews only; nothing from 2018.\"},\n    {\"query_or_url\": \"Google I/O 2018 keynote transcript Sundar Pichai\", \"what_found\": \"The Singju Post full transcript of Pichai's I/O 2018 keynote.\"},\n    {\"query_or_url\": \"Recode MSNBC \\\"Revolution\\\" Pichai Swisher Melber transcript January 2018\", \"what_found\": \"Podcast and MSNBC video listings for the January town hall; no text transcript.\"},\n    {\"query_or_url\": \"Pichai Washington Post interview December 2018 AI \\\"legitimate\\\"\", \"what_found\": \"The Washington Post article of 2018-12-12 and related coverage.\"},\n    {\"query_or_url\": \"https://singjupost.com/full-transcript-sundar-pichai-at-google-i-o-2018-developer-conference/?singlepage=1\", \"what_found\": \"Opened; Pichai's own lines held four dated product-rollout statements (Smart Compose, Photos, Duplex, John Legend voice).\"},\n    {\"query_or_url\": \"Alphabet Q4 2018 earnings call transcript Pichai AI\", \"what_found\": \"Transcript listings for the Q4 2018 call (held February 2019) and the Q4 2017 call (held 2018-02-01).\"},\n    {\"query_or_url\": \"Pichai \\\"AI at Google: our principles\\\" June 2018\", \"what_found\": \"The June 7, 2018 principles post and coverage; not opened, as it states principles rather than dated forecasts.\"},\n    {\"query_or_url\": \"Sundar Pichai 2018 interview AI \\\"five years\\\" OR \\\"10 years\\\" OR \\\"decade\\\"\", \"what_found\": \"Only 2023-2025 interviews.\"},\n    {\"query_or_url\": \"https://www.washingtonpost.com/technology/2018/12/12/google-ceo-sundar-pichai-fears-about-artificial-intelligence-are-very-legitimate-he-says-post-interview/\", \"what_found\": \"Opened; it has Pichai quotes on AI risk and self-regulation and a 'mid- to long term' remark, but no dated AI prediction.\"},\n    {\"query_or_url\": \"abc.xyz 2018 earnings call transcript Sundar Pichai machine learning\", \"what_found\": \"Motley Fool transcripts of the Q2 and Q3 2018 calls.\"},\n    {\"query_or_url\": \"Pichai Axios interview December 2018 AI transcript\", \"what_found\": \"The Axios 2018-12-12 interview article.\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2018/07/23/alphabet-inc-googl-earnings-conference-call-transc.aspx\", \"what_found\": \"Opened; Pichai gave a target of 30+ languages and 80 countries for the Assistant by the end of the year.\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2018/10/26/alphabet-inc-goog-googl-q3-2018-earnings-conferenc.aspx\", \"what_found\": \"Opened; Assistant at 20 languages and 76 countries; Duplex for Pixel users with no date; no dated AI prediction.\"},\n    {\"query_or_url\": \"https://www.axios.com/2018/12/12/google-sundar-pichai-interview-big-tech-scrutiny\", \"what_found\": \"Opened; remarks on AI concerns and scrutiny, no dated prediction.\"},\n    {\"query_or_url\": \"Pichai Revolution town hall transcript \\\"electricity or fire\\\" \\\"cancer\\\" OR \\\"climate change\\\"\", \"what_found\": \"Coverage of the January town hall only; no transcript and no dated prediction.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Pichai's dated AI statements in 2018 were short-range product launch promises: Smart Compose, Google Photos features, a Duplex experiment and the John Legend voice at I/O in May, plus a year-end Assistant language target on the July earnings call. His big-picture AI remarks that year (the January 'electricity or fire' town hall, the December Washington Post and Axios interviews) carried no dates and said nothing about when AGI would arrive. The Q4 2017 call (held 2018-02-01), the Q1 2018 call and the AI principles post were not opened.\"\n}\n```"
+}

@@ -1,0 +1,322 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2016,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5775,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7624
+      },
+      "cache_creation_input_tokens": 46049,
+      "cache_read_input_tokens": 388391,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 7472,
+      "output_tokens_details": {
+        "thinking_tokens": 2095
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2016','\"Ilya Sutskever\" 2016 interview AGI \"years\"','\"Ilya Sutskever\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2016"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:400].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2016 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Re-Work deep learning summit Ilya Sutskever interview \"next 5 years\"','OpenAI \"technical goals\" 2016 Sutskever household robot','Ilya Sutskever 2016 email Musk \"closer to building AI\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Re-Work deep learning summit Ilya Sutskever interview \"next 5 years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "OpenAI \"technical goals\" 2016 Sutskever household robot"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever 2016 email Musk \"closer to building AI\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis','https://openai.com/index/openai-technical-goals/']:\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str): f=json.loads(f)\n    if isinstance(f,dict): print(f); continue\n    print(\"==\",u, f[0].get('title')); print(f[0]['content'][:5000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://openai.com/index/openai-technical-goals/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['re-work.co Ilya Sutskever OpenAI Q&A 2016 \"deep learning in the next 5 years\"','Ilya Sutskever \"much deeper models\" \"fewer training cases\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "re-work.co Ilya Sutskever OpenAI Q&A 2016 \"deep learning in the next 5 years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever \"much deeper models\" \"fewer training cases\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://blog.re-work.co/deep-learning-experts-discuss-the-next-5-years/\"})\nif isinstance(f,str): f=json.loads(f)\nif isinstance(f,dict) and 'content' not in f: print(f)\nelse:\n    d=f[0] if isinstance(f,list) else f\n    c=d['content']; c=c['source']['data'] if isinstance(c,dict) else c\n    print(c[:1500]); i=c.find('Sutskever'); print('----',c[i-1500:i+800])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.re-work.co/deep-learning-experts-discuss-the-next-5-years/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Wired 2016 \"Inside OpenAI\" Sutskever','Sutskever 2016 talk Deep Learning Summit San Francisco OpenAI transcript','Ilya Sutskever 2016 interview artificial general intelligence decades']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Wired 2016 \"Inside OpenAI\" Sutskever"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2016 talk Deep Learning Summit San Francisco OpenAI transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever 2016 interview artificial general intelligence decades"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman-and-openai-blogDeepMind\"\nf=await web_fetch({\"url\":u})\nif isinstance(f,str): f=json.loads(f)\nif isinstance(f,dict) and 'content' not in f: print(f)\nelse:\n    d=f[0] if isinstance(f,list) else f\n    c=d['content']; c=c['source']['data'] if isinstance(c,dict) else c\n    print(len(c))\n    import re\n    for m in re.finditer(r'Ilya Sutskever to:[^\\n]*2016',c):\n        print('#####',c[m.start():m.start()+3500]); print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman-and-openai-blogDeepMind"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['2016','Sutskever']:\n    print(k,[m.start() for m in re.finditer(k,c)][:40])\nprint(c[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[11300:16500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[16500:18500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_search({\"query\":'Sutskever February 19 2016 email \"conventionally significant result\" \"6 to 9 months\"'}); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever February 19 2016 email \"conventionally significant result\" \"6 to 9 months\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/?amp=&amp=\"})\nif isinstance(f,str): f=json.loads(f)\nif isinstance(f,dict) and 'content' not in f: print(f)\nelse:\n    d=f[0] if isinstance(f,list) else f\n    c2=d['content']; c2=c2['source']['data'] if isinstance(c2,dict) else c2\n    i=c2.find('conventionally'); print(i); print(c2[max(0,i-2000):i+500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/?amp=&amp="
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2016-02-19",
+        "quote": "We will be able to achieve a conventionally significant result in the next 6 to 9 months, simply because the people we already have are very good. Achieving a field-altering result will be harder, riskier, and take longer.",
+        "what_is_predicted": "OpenAI would produce a conventionally significant AI research result within 6 to 9 months, while a field-altering result would take longer.",
+        "date_or_span": "the next 6 to 9 months (from February 2016, i.e. by roughly August-November 2016)",
+        "occasion": "Private email from Sutskever to Elon Musk (cc Greg Brockman, Sam Altman), Feb 19, 2016 10:28 AM, replying to Musk's 'Followup thoughts'; released in connection with Musk v. Altman and published by OpenAI. Borderline: it forecasts the lab's research output rather than an AI capability.",
+        "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/?amp=&amp=",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2015",
+        "note": "RE•WORK roundtable 'Here's What We Can Expect from Deep Learning in 2016 and Beyond' (published 29 December 2015, https://blog.re-work.co/deep-learning-experts-discuss-the-next-5-years/) has Sutskever answering 'What developments can we expect to see in deep learning in the next 5 years?' with deeper models, learning from fewer training cases, advances in unsupervised learning, and better speech/visual recognition. This is a 2015 statement."
+      },
+      {
+        "year": "2025",
+        "note": "Search results were dominated by coverage of his Dwarkesh Patel interview, with a 5-to-20-year estimate for human-like learning systems or superintelligence. Seen only in search results; not opened."
+      },
+      {
+        "year": "2024",
+        "note": "Coverage of his NeurIPS December 2024 Test of Time talk (reasoning will make AI less predictable). Seen only in search results; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2016",
+        "what_found": "A Substack retrospective on his NIPS 2016 RNN symposium talk, plus 2024-2025 news coverage; none of his own 2016 dated words."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2016 interview AGI \"years\"",
+        "what_found": "Coverage of the 2025 Dwarkesh interview (5-20 years) and the 2023 Dwarkesh transcript; nothing from 2016."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "More coverage of the 2025 5-20 year estimate; nothing from 2016."
+      },
+      {
+        "query_or_url": "Re-Work deep learning summit Ilya Sutskever interview \"next 5 years\"",
+        "what_found": "A LinkedIn Q&A tied to the January 2016 RE•WORK San Francisco summit, with a 'next 5 years' answer."
+      },
+      {
+        "query_or_url": "OpenAI \"technical goals\" 2016 Sutskever household robot",
+        "what_found": "The OpenAI 'technical goals' post of 20 June 2016, co-authored by Sutskever."
+      },
+      {
+        "query_or_url": "Ilya Sutskever 2016 email Musk \"closer to building AI\"",
+        "what_found": "Reports of his 2 January 2016 email and a LessWrong compilation of the lawsuit emails."
+      },
+      {
+        "query_or_url": "https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis",
+        "what_found": "Would not open (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "https://openai.com/index/openai-technical-goals/",
+        "what_found": "Dated June 20, 2016; lists goals (measure progress, household robot, language agent, a single agent for many games) with no dates or time spans."
+      },
+      {
+        "query_or_url": "re-work.co Ilya Sutskever OpenAI Q&A 2016 \"deep learning in the next 5 years\"",
+        "what_found": "The same LinkedIn Q&A plus a 2019 RE•WORK interview."
+      },
+      {
+        "query_or_url": "Ilya Sutskever \"much deeper models\" \"fewer training cases\"",
+        "what_found": "The RE•WORK blog roundtable carrying the same answer."
+      },
+      {
+        "query_or_url": "https://blog.re-work.co/deep-learning-experts-discuss-the-next-5-years/",
+        "what_found": "Published 29 December 2015, so the 'next 5 years' answer is a 2015 statement."
+      },
+      {
+        "query_or_url": "Wired 2016 \"Inside OpenAI\" Sutskever",
+        "what_found": "No Wired 2016 article; it surfaced the LessWrong email archive listing Sutskever emails of Jan 2 and Feb 19, 2016."
+      },
+      {
+        "query_or_url": "Sutskever 2016 talk Deep Learning Summit San Francisco OpenAI transcript",
+        "what_found": "Only the summit announcement and later-year transcripts; no 2016 talk transcript."
+      },
+      {
+        "query_or_url": "Ilya Sutskever 2016 interview artificial general intelligence decades",
+        "what_found": "Later interviews (2023 TED talk, 2025 Dwarkesh); nothing from 2016."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman-and-openai-blogDeepMind",
+        "what_found": "Compilation with his Jan 2, 2016 email ('As we get closer to building AI...', no timeframe) and his Feb 19, 2016 email with the 6-to-9-month forecast."
+      },
+      {
+        "query_or_url": "Sutskever February 19 2016 email \"conventionally significant result\" \"6 to 9 months\"",
+        "what_found": "OpenAI's own page publishing the Feb 19, 2016 email thread."
+      },
+      {
+        "query_or_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/?amp=&amp=",
+        "what_found": "Confirms the Feb 19, 2016 10:28 AM email word for word on OpenAI's own page."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2016 held one borderline dated forecast: a private 19 February 2016 email to Musk, published by OpenAI, saying OpenAI would get a conventionally significant result within 6 to 9 months, while a field-altering result would take longer. It forecasts the lab's research output rather than an AI capability. His public writing that year, the June 2016 'technical goals' post, gave no dates, and the 'next 5 years' Q&A turned out to be published in December 2015."
+  },
+  "reply_text": "I found one candidate for 2016, and it's a weak one. In a private email on 19 February 2016, Sutskever predicted a \"conventionally significant result\" from OpenAI within 6 to 9 months. It has a time span, but it's a forecast about his own lab's research output, not about what AI will be able to do. Read it as borderline. I found no dated forecast of when AGI would arrive.\n\n**The candidate.** The email came out through the Musk v. Altman lawsuit, and I read it on OpenAI's own published page. He was replying to Musk, who had asked for \"something significant in the next 6 to 9 months.\" In the same email he wrote that solving one problem would not be enough for \"full human level AI.\" He said other problems, such as unsupervised learning, transfer learning and lifetime learning, could \"see significant progress in the coming years.\" That has no date and isn't about when AGI arrives, so it isn't listed separately.\n\n**Other 2016 items I checked and left out:**\n- **OpenAI technical goals (20 June 2016).** He co-wrote this blog post with Brockman, Altman and Musk. It names goals such as a household robot, an agent that understands language, and one agent that solves many games, but gives no dates.\n- **Email of 2 January 2016.** He wrote, \"As we get closer to building AI, it will make sense to start being less open.\" It has no date or time span, and it isn't a statement about when AGI arrives.\n- **\"Next 5 years\" Q&A.** His answer predicted much deeper models, learning from fewer examples, progress in unsupervised learning, and better speech and image recognition. But the RE•WORK page I opened was published on 29 December 2015, so it belongs to 2015. The LinkedIn version of the Q&A wouldn't open.\n\n**Gaps.** I didn't find a transcript for his January 2016 RE•WORK talk or his NIPS 2016 talk, so neither was checked. All 12 searches and 6 page openings are used up. The first search ran only once: the script crashed while printing the results, but the results were kept and read. Most results were coverage of his 2024–2025 remarks, such as the \"5 to 20 years\" estimate.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2016-02-19\",\n      \"quote\": \"We will be able to achieve a conventionally significant result in the next 6 to 9 months, simply because the people we already have are very good. Achieving a field-altering result will be harder, riskier, and take longer.\",\n      \"what_is_predicted\": \"OpenAI would produce a conventionally significant AI research result within 6 to 9 months, while a field-altering result would take longer.\",\n      \"date_or_span\": \"the next 6 to 9 months (from February 2016, i.e. by roughly August-November 2016)\",\n      \"occasion\": \"Private email from Sutskever to Elon Musk (cc Greg Brockman, Sam Altman), Feb 19, 2016 10:28 AM, replying to Musk's 'Followup thoughts'; released in connection with Musk v. Altman and published by OpenAI. Borderline: it forecasts the lab's research output rather than an AI capability.\",\n      \"source_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/?amp=&amp=\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2015\", \"note\": \"RE•WORK roundtable 'Here's What We Can Expect from Deep Learning in 2016 and Beyond' (published 29 December 2015, https://blog.re-work.co/deep-learning-experts-discuss-the-next-5-years/) has Sutskever answering 'What developments can we expect to see in deep learning in the next 5 years?' with deeper models, learning from fewer training cases, advances in unsupervised learning, and better speech/visual recognition. This is a 2015 statement.\"},\n    {\"year\": \"2025\", \"note\": \"Search results were dominated by coverage of his Dwarkesh Patel interview, with a 5-to-20-year estimate for human-like learning systems or superintelligence. Seen only in search results; not opened.\"},\n    {\"year\": \"2024\", \"note\": \"Coverage of his NeurIPS December 2024 Test of Time talk (reasoning will make AI less predictable). Seen only in search results; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2016\", \"what_found\": \"A Substack retrospective on his NIPS 2016 RNN symposium talk, plus 2024-2025 news coverage; none of his own 2016 dated words.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2016 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the 2025 Dwarkesh interview (5-20 years) and the 2023 Dwarkesh transcript; nothing from 2016.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2016 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"More coverage of the 2025 5-20 year estimate; nothing from 2016.\"},\n    {\"query_or_url\": \"Re-Work deep learning summit Ilya Sutskever interview \\\"next 5 years\\\"\", \"what_found\": \"A LinkedIn Q&A tied to the January 2016 RE•WORK San Francisco summit, with a 'next 5 years' answer.\"},\n    {\"query_or_url\": \"OpenAI \\\"technical goals\\\" 2016 Sutskever household robot\", \"what_found\": \"The OpenAI 'technical goals' post of 20 June 2016, co-authored by Sutskever.\"},\n    {\"query_or_url\": \"Ilya Sutskever 2016 email Musk \\\"closer to building AI\\\"\", \"what_found\": \"Reports of his 2 January 2016 email and a LessWrong compilation of the lawsuit emails.\"},\n    {\"query_or_url\": \"https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis\", \"what_found\": \"Would not open (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"https://openai.com/index/openai-technical-goals/\", \"what_found\": \"Dated June 20, 2016; lists goals (measure progress, household robot, language agent, a single agent for many games) with no dates or time spans.\"},\n    {\"query_or_url\": \"re-work.co Ilya Sutskever OpenAI Q&A 2016 \\\"deep learning in the next 5 years\\\"\", \"what_found\": \"The same LinkedIn Q&A plus a 2019 RE•WORK interview.\"},\n    {\"query_or_url\": \"Ilya Sutskever \\\"much deeper models\\\" \\\"fewer training cases\\\"\", \"what_found\": \"The RE•WORK blog roundtable carrying the same answer.\"},\n    {\"query_or_url\": \"https://blog.re-work.co/deep-learning-experts-discuss-the-next-5-years/\", \"what_found\": \"Published 29 December 2015, so the 'next 5 years' answer is a 2015 statement.\"},\n    {\"query_or_url\": \"Wired 2016 \\\"Inside OpenAI\\\" Sutskever\", \"what_found\": \"No Wired 2016 article; it surfaced the LessWrong email archive listing Sutskever emails of Jan 2 and Feb 19, 2016.\"},\n    {\"query_or_url\": \"Sutskever 2016 talk Deep Learning Summit San Francisco OpenAI transcript\", \"what_found\": \"Only the summit announcement and later-year transcripts; no 2016 talk transcript.\"},\n    {\"query_or_url\": \"Ilya Sutskever 2016 interview artificial general intelligence decades\", \"what_found\": \"Later interviews (2023 TED talk, 2025 Dwarkesh); nothing from 2016.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman-and-openai-blogDeepMind\", \"what_found\": \"Compilation with his Jan 2, 2016 email ('As we get closer to building AI...', no timeframe) and his Feb 19, 2016 email with the 6-to-9-month forecast.\"},\n    {\"query_or_url\": \"Sutskever February 19 2016 email \\\"conventionally significant result\\\" \\\"6 to 9 months\\\"\", \"what_found\": \"OpenAI's own page publishing the Feb 19, 2016 email thread.\"},\n    {\"query_or_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/?amp=&amp=\", \"what_found\": \"Confirms the Feb 19, 2016 10:28 AM email word for word on OpenAI's own page.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2016 held one borderline dated forecast: a private 19 February 2016 email to Musk, published by OpenAI, saying OpenAI would get a conventionally significant result within 6 to 9 months, while a field-altering result would take longer. It forecasts the lab's research output rather than an AI capability. His public writing that year, the June 2016 'technical goals' post, gave no dates, and the 'next 5 years' Q&A turned out to be published in December 2015.\"\n}\n```"
+}

@@ -1,0 +1,283 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2015,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.0382,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7624
+      },
+      "cache_creation_input_tokens": 131048,
+      "cache_read_input_tokens": 811867,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 6525,
+      "output_tokens_details": {
+        "thinking_tokens": 1699
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Ilya Sutskever\" AI prediction 2015','\"Ilya Sutskever\" 2015 interview AGI \"years\"','\"Ilya Sutskever\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r));print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    for x in json.loads(r) if isinstance(r,str) else r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:400].replace('\\n',' '));print()\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2015 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever \"A Brief Overview of Deep Learning\" 2015','\"Introducing OpenAI\" Brockman Sutskever December 2015','Sutskever 2015 talk deep learning \"Ilya\" RE.WORK OR summit OR lecture']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever \"A Brief Overview of Deep Learning\" 2015"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Introducing OpenAI\" Brockman Sutskever December 2015"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2015 talk deep learning \"Ilya\" RE.WORK OR summit OR lecture"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis\",\"https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf\",\"https://www.cnblogs.com/yymn/p/4501404.html\",\"https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015\"]\nF={}\nfor u in urls:\n    r=await web_fetch({\"url\":u}); F[u]=r\n    if isinstance(r,dict): print(u,\"ERR\",r); continue\n    c=r[0]['content']; print(\"==\",u,len(c)); print(c[:200])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(list(F.keys()))\ndef P(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    return r\nfor u in F:\n    r=P(F[u])\n    if isinstance(r,dict): print(u,r);continue\n    print(u,len(r[0]['content']))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in urls[1:]:\n    r=P(await web_fetch({\"url\":u})); F[u]=r\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; print(\"==\",u,len(c))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnblogs.com/yymn/p/4501404.html"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nc=F[\"https://www.cnblogs.com/yymn/p/4501404.html\"]['content']['source']['data']\ni=c.find('Conclusion'); print(i)\nfor kw in ['year','future','will be','decade','soon','next']:\n    for m in re.finditer(kw,c):\n        s=c[max(0,m.start()-150):m.start()+150].replace('\\n',' ')\n        if 'cnblogs' not in s: print(kw,'::',s);print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('##### The End.');print(c[i:i+1200])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\nd=F[\"https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf\"]['content']['source']['data']\nt=\"\\n\".join(p.extract_text() for p in PdfReader(io.BytesIO(base64.b64decode(d))).pages)\nprint(t[:5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['RE.WORK blog Q&A Ilya Sutskever Research Director OpenAI Deep Learning Summit','Sutskever OpenAI December 2015 interview Wired \"Sutskever said\"','Ilya Sutskever 2015 talk transcript \"deep learning\" future years']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "RE.WORK blog Q&A Ilya Sutskever Research Director OpenAI Deep Learning Summit"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever OpenAI December 2015 interview Wired \"Sutskever said\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever 2015 talk transcript \"deep learning\" future years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in [\"https://www.technologyreview.com/innovator/ilya-sutskever/\",\"https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015\"]:\n    r=P(await web_fetch({\"url\":u})); F[u]=r\n    if isinstance(r,dict) and r.get('type')=='web_fetch_tool_result_error': print(u,r); continue\n    r=r[0] if isinstance(r,list) else r\n    cc=r['content']; cc=cc if isinstance(cc,str) else cc.get('source',{}).get('data','')\n    F[u]=cc; print(\"==\",u,len(cc)); print(cc[:3500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/innovator/ilya-sutskever/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "cc=F[\"https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015\"]\nfor kw in ['year','decade','future','will be able','within','soon','AGI','human-level','predict','2015','Talking Machines']:\n    for m in re.finditer(kw,cc):\n        print(kw,'::',cc[max(0,m.start()-250):m.start()+250].replace('\\n',' '));print('--')\nt2=F[\"https://www.technologyreview.com/innovator/ilya-sutskever/\"]\ni=t2.find('Artificial-intelligence researchers are focusing',3000);print(t2[i-200:i+3000])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [
+      {
+        "date_said": "2015-12-11",
+        "quote": "Because of AI's surprising history, it's hard to predict when human-level AI might come within reach.",
+        "source_url": "https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "In the Dwarkesh Podcast transcript (dwarkesh.com/p/ilya-sutskever), seen as a search snippet, Sutskever says he doesn't remember concrete predictions he made in 2015 and that his thinking then was to make the biggest possible bet on deep learning. This looks back on 2015 and is not a 2015 statement."
+      },
+      {
+        "year": "2025",
+        "note": "Search results (news and commentary, e.g. therundown.ai, theneuron.ai, 36kr) report a 5-to-20-year estimate for human-like learning systems or superintelligence from his second Dwarkesh Podcast interview. Seen only in snippets; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2015",
+        "what_found": "Mostly later material: a Medium summary and the 2023 Dwarkesh transcript looking back at 2015, plus 2024-2025 news; nothing from 2015 itself."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2015 interview AGI \"years\"",
+        "what_found": "Coverage of his 2023 and 2025 Dwarkesh interviews (5-20 year timeline); nothing from 2015."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "More 2025 coverage of the 5-20 year estimate and Wikipedia pages; nothing from 2015."
+      },
+      {
+        "query_or_url": "Sutskever \"A Brief Overview of Deep Learning\" 2015",
+        "what_found": "Links to his January 2015 guest post on Yisong Yue's blog and a cnblogs repost."
+      },
+      {
+        "query_or_url": "\"Introducing OpenAI\" Brockman Sutskever December 2015",
+        "what_found": "The 11 December 2015 OpenAI launch post, including an archived PDF copy."
+      },
+      {
+        "query_or_url": "Sutskever 2015 talk deep learning \"Ilya\" RE.WORK OR summit OR lecture",
+        "what_found": "A RE•WORK Q&A with him as OpenAI Research Director on LinkedIn (December, before the January 2016 summit), the Interconnects post on a 2015 podcast, and later talks."
+      },
+      {
+        "query_or_url": "https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis",
+        "what_found": "Would not open (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf",
+        "what_found": "Wayback copy of 'Introducing OpenAI' (11 December 2015): says it's hard to predict when human-level AI might come within reach; no date given."
+      },
+      {
+        "query_or_url": "https://www.cnblogs.com/yymn/p/4501404.html",
+        "what_found": "Repost of his January 2015 deep-learning guest post; the closing outlook has no date or time span."
+      },
+      {
+        "query_or_url": "https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015",
+        "what_found": "Opened twice because the first result was cut off in my output; 2025 annotated transcript of his Talking Machines podcast interview (dated 2015 by the blogger), technical and with no predictions."
+      },
+      {
+        "query_or_url": "RE.WORK blog Q&A Ilya Sutskever Research Director OpenAI Deep Learning Summit",
+        "what_found": "Snippets show the Q&A was posted ahead of the 28-29 January 2016 RE•WORK summit (the only copy found is on LinkedIn); nothing else from 2015."
+      },
+      {
+        "query_or_url": "Sutskever OpenAI December 2015 interview Wired \"Sutskever said\"",
+        "what_found": "Only recent coverage; no December 2015 interview found."
+      },
+      {
+        "query_or_url": "Ilya Sutskever 2015 talk transcript \"deep learning\" future years",
+        "what_found": "Later transcripts (Lex Fridman 2020, 2023 interviews) and the 2015 MIT Technology Review Innovators Under 35 profile."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/innovator/ilya-sutskever/",
+        "what_found": "18 August 2015 profile by Tom Simonite quoting him that his translation approach should beat existing technology and that deep learning will make a lot of progress; no date or time span."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "In 2015 Sutskever published a technical deep-learning guest post, was profiled by MIT Technology Review, and co-signed the OpenAI launch post. None of the pages I opened contains a dated AI prediction, and the launch post explicitly says it's hard to predict when human-level AI might arrive. A December 2015 RE•WORK Q&A could not be opened and remains unchecked."
+  },
+  "reply_text": "I found no dated AI predictions by Ilya Sutskever from 2015, so this counts as a quiet year. All three fixed searches ran as written. I used 9 of my 12 searches and all 6 page openings. One of those openings was wasted: I opened the Interconnects page twice because the first result was cut off in my output.\n\n- **\"Introducing OpenAI\" (11 December 2015), written by Greg Brockman, Sutskever and the OpenAI team.** I read it in a PDF of the Wayback Machine copy. The post declines to give a date: \"it's hard to predict when human-level AI might come within reach.\" I've listed that under undated because it's about when human-level AI arrives. Note that it's a jointly signed company post, not his words alone. The post's line about spending \"a tiny fraction of this in the next few years\" is a business forecast, so I left it out.\n- **His January 2015 guest post, \"A Brief Overview of Deep Learning\".** I couldn't open the original blog, so I read a copy reposted on cnblogs on 13 May 2015. It looks ahead only in general terms (\"models that do even more computation will probably be very good\"), with no date or time span.\n- **MIT Technology Review's Innovators Under 35 profile (18 August 2015).** It quotes him saying his translation approach \"should beat existing translation technology by a good margin.\" There's no date attached, and the words come through the profile writer, not a transcript.\n- **A 2015 Talking Machines podcast interview.** The transcript on Interconnects (published 2025) is technical and makes no predictions. Its 2015 date comes from the blogger, and I didn't confirm it.\n- **Not checked:** a December 2015 RE•WORK question-and-answer interview is on LinkedIn, but the page wouldn't open. I haven't seen its text, so I can't say whether it holds anything.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [\n    {\"date_said\": \"2015-12-11\", \"quote\": \"Because of AI's surprising history, it's hard to predict when human-level AI might come within reach.\", \"source_url\": \"https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"In the Dwarkesh Podcast transcript (dwarkesh.com/p/ilya-sutskever), seen as a search snippet, Sutskever says he doesn't remember concrete predictions he made in 2015 and that his thinking then was to make the biggest possible bet on deep learning. This looks back on 2015 and is not a 2015 statement.\"},\n    {\"year\": \"2025\", \"note\": \"Search results (news and commentary, e.g. therundown.ai, theneuron.ai, 36kr) report a 5-to-20-year estimate for human-like learning systems or superintelligence from his second Dwarkesh Podcast interview. Seen only in snippets; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2015\", \"what_found\": \"Mostly later material: a Medium summary and the 2023 Dwarkesh transcript looking back at 2015, plus 2024-2025 news; nothing from 2015 itself.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2015 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of his 2023 and 2025 Dwarkesh interviews (5-20 year timeline); nothing from 2015.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2015 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"More 2025 coverage of the 5-20 year estimate and Wikipedia pages; nothing from 2015.\"},\n    {\"query_or_url\": \"Sutskever \\\"A Brief Overview of Deep Learning\\\" 2015\", \"what_found\": \"Links to his January 2015 guest post on Yisong Yue's blog and a cnblogs repost.\"},\n    {\"query_or_url\": \"\\\"Introducing OpenAI\\\" Brockman Sutskever December 2015\", \"what_found\": \"The 11 December 2015 OpenAI launch post, including an archived PDF copy.\"},\n    {\"query_or_url\": \"Sutskever 2015 talk deep learning \\\"Ilya\\\" RE.WORK OR summit OR lecture\", \"what_found\": \"A RE•WORK Q&A with him as OpenAI Research Director on LinkedIn (December, before the January 2016 summit), the Interconnects post on a 2015 podcast, and later talks.\"},\n    {\"query_or_url\": \"https://www.linkedin.com/pulse/qa-ilya-sutskever-research-director-openai-pip-curtis\", \"what_found\": \"Would not open (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"https://273ventures.com/pdf/OpenAI_Website_20151211215507.pdf\", \"what_found\": \"Wayback copy of 'Introducing OpenAI' (11 December 2015): says it's hard to predict when human-level AI might come within reach; no date given.\"},\n    {\"query_or_url\": \"https://www.cnblogs.com/yymn/p/4501404.html\", \"what_found\": \"Repost of his January 2015 deep-learning guest post; the closing outlook has no date or time span.\"},\n    {\"query_or_url\": \"https://www.interconnects.ai/p/ilya-on-deep-learning-in-2015\", \"what_found\": \"Opened twice because the first result was cut off in my output; 2025 annotated transcript of his Talking Machines podcast interview (dated 2015 by the blogger), technical and with no predictions.\"},\n    {\"query_or_url\": \"RE.WORK blog Q&A Ilya Sutskever Research Director OpenAI Deep Learning Summit\", \"what_found\": \"Snippets show the Q&A was posted ahead of the 28-29 January 2016 RE•WORK summit (the only copy found is on LinkedIn); nothing else from 2015.\"},\n    {\"query_or_url\": \"Sutskever OpenAI December 2015 interview Wired \\\"Sutskever said\\\"\", \"what_found\": \"Only recent coverage; no December 2015 interview found.\"},\n    {\"query_or_url\": \"Ilya Sutskever 2015 talk transcript \\\"deep learning\\\" future years\", \"what_found\": \"Later transcripts (Lex Fridman 2020, 2023 interviews) and the 2015 MIT Technology Review Innovators Under 35 profile.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/innovator/ilya-sutskever/\", \"what_found\": \"18 August 2015 profile by Tom Simonite quoting him that his translation approach should beat existing technology and that deep learning will make a lot of progress; no date or time span.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"In 2015 Sutskever published a technical deep-learning guest post, was profiled by MIT Technology Review, and co-signed the OpenAI launch post. None of the pages I opened contains a dated AI prediction, and the launch post explicitly says it's hard to predict when human-level AI might arrive. A December 2015 RE•WORK Q&A could not be opened and remains unchecked.\"\n}\n```"
+}

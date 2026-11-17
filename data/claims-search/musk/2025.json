@@ -1,0 +1,338 @@
+{
+  "speaker_id": "musk",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6168,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7727
+      },
+      "cache_creation_input_tokens": 49190,
+      "cache_read_input_tokens": 414010,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 9395,
+      "output_tokens_details": {
+        "thinking_tokens": 3106
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Elon Musk\" AI prediction 2025','\"Elon Musk\" 2025 interview AGI \"years\"','\"Elon Musk\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',(x.get('content') or '')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,r):\n    r=json.loads(r) if isinstance(r,str) else r\n    print(\"==\",q)\n    for x in r[:8]:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',(x.get('content') or '')[:400].replace('\\n',' '))\nshow(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Elon Musk Y Combinator AI Startup School transcript \"digital superintelligence\"',\n'Joe Rogan Experience 2404 Elon Musk transcript AGI',\n'Elon Musk Jensen Huang US-Saudi Investment Forum transcript AI \"smarter\"']\nfor q in qs2:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Elon Musk Y Combinator AI Startup School transcript \"digital superintelligence\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Joe Rogan Experience 2404 Elon Musk transcript AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Elon Musk Jensen Huang US-Saudi Investment Forum transcript AI \"smarter\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nasync def op(url):\n    r=await web_fetch({\"url\":url})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(url,r); return ''\n    c=r[0].get('content','') ; P[url]=c; print(url,len(c)); return c\ndef kw(c,pats,w=350):\n    for p in pats:\n        for m in re.finditer(p,c):\n            s=max(0,m.start()-w); print('['+p+']',c[s:m.end()+w].replace('\\n',' ')); print('---')\nc1=await op('https://singjupost.com/transcript-of-elon-musk-digital-superintelligence-multiplanetary-life-how-to-be-useful/')\nkw(c1,[r'this year',r'next year',r'years',r'by 20\\d\\d',r'decade'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-of-elon-musk-digital-superintelligence-multiplanetary-life-how-to-be-useful/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def op(url):\n    r=await web_fetch({\"url\":url})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    c=c or ''\n    P[url]=c; print(url,len(c), r.get('type'), r.get('error_code')); return c\n# reuse already fetched result: refetching would cost; instead re-parse from printed? we didn't store. \n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c2=await op('https://singjupost.com/transcript-business-magnate-elon-musk-on-joe-rogan-podcast-2404/')\nkw(c2,[r'AGI',r'next year',r'by 20\\d\\d',r'2030',r'five years',r'superintelligen'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-business-magnate-elon-musk-on-joe-rogan-podcast-2404/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c2[-1500:])\nkw(c2,[r'years'],200)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c3=await op('https://podscripts.co/podcasts/the-joe-rogan-experience/2404-elon-musk')\nkw(c3,[r'AGI',r'2030',r'by the end of next year',r'smarter than any',r'superintelligen'],350)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/the-joe-rogan-experience/2404-elon-musk"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Musk Rogan \"Grok 5\" AGI \"10%\" \"2030\" smarter than all humans combined',\n          'Elon Musk Nikhil Kamath WTF podcast transcript AI robots \"years\"']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Rogan \"Grok 5\" AGI \"10%\" \"2030\" smarter than all humans combined"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Elon Musk Nikhil Kamath WTF podcast transcript AI robots \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c4=await op('https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/')\nkw(c4,[r'20 years',r'AGI',r'next year',r'by 20\\d\\d',r'superintelligen',r'optional'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Musk Huang Kennedy Center November 19 2025 transcript \"work will be optional\" AI',\n          'Elon Musk Baron Investment Conference 2025 transcript Grok 5 AGI']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Huang Kennedy Center November 19 2025 transcript \"work will be optional\" AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Elon Musk Baron Investment Conference 2025 transcript Grok 5 AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c5=await op('https://singjupost.com/transcript-elon-musk-and-jensen-huang-talk-ai-at-u-s-saudi-investment-forum-11-19-25/')\nkw(c5,[r'twenty years',r'next year',r'AGI',r'smarter than',r'by 20\\d\\d',r'five years',r'years from now'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c6=await op('https://singjupost.com/fireside-chat-elon-musk-at-ron-barons-32nd-baron-investment-conference-transcript/')\nkw(c6,[r'AGI',r'artificial general',r'next year',r'by 20\\d\\d',r'2030',r'smarter than'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-elon-musk-and-jensen-huang-talk-ai-at-u-s-saudi-investment-forum-11-19-25/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://singjupost.com/fireside-chat-elon-musk-at-ron-barons-32nd-baron-investment-conference-transcript/'\nprint(u in P, len(P.get(u,'')))\nif u in P: kw(P[u],[r'AGI',r'artificial general',r'next year',r'by 20\\d\\d',r'2030',r'smarter than'],300)"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-06-19",
+        "quote": "I think we’re quite close to digital superintelligence. If it doesn’t happen this year, next year for sure.",
+        "what_is_predicted": "Digital superintelligence (AI smarter than any human) will arrive in 2025 or, failing that, in 2026.",
+        "date_or_span": "this year (2025) or next year (2026)",
+        "occasion": "Fireside chat with Garry Tan at Y Combinator's AI Startup School, San Francisco",
+        "source_url": "https://singjupost.com/transcript-of-elon-musk-digital-superintelligence-multiplanetary-life-how-to-be-useful/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-19",
+        "quote": "Well, say in the long term, where will things end up long term? I don’t know what long term is. Maybe it’s ten, twenty years, something like that. For me that’s long term. My prediction is that work will be optional.",
+        "what_is_predicted": "In answer to a question about AI and jobs, work will become optional within roughly ten to twenty years.",
+        "date_or_span": "ten to twenty years (c. 2035-2045)",
+        "occasion": "Panel with Jensen Huang at the U.S.-Saudi Investment Forum, Kennedy Center, Washington DC",
+        "source_url": "https://singjupost.com/transcript-elon-musk-and-jensen-huang-talk-ai-at-u-s-saudi-investment-forum-11-19-25/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-30",
+        "quote": "But I think it will turn out to be true that in less than 20 years, maybe even as little as, I don’t know, 10 or 15 years, the advancements in AI and robotics will bring us to the point where working is optional",
+        "what_is_predicted": "AI and robotics will make working optional within less than 20 years, possibly 10-15.",
+        "date_or_span": "less than 20 years, maybe 10 or 15 years",
+        "occasion": "People by WTF podcast (Ep. 16) with Nikhil Kamath; the transcript gives November 30, 2025",
+        "source_url": "https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-30",
+        "quote": "And then we’re going to be making this robot Optimus which is, you know, starting production hopefully some of next year at scale.",
+        "what_is_predicted": "Tesla's Optimus humanoid robot will start production at scale during 2026 (borderline: reads as a production plan).",
+        "date_or_span": "next year (2026)",
+        "occasion": "People by WTF podcast (Ep. 16) with Nikhil Kamath",
+        "source_url": "https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Search snippets (cybernews, Electrek, Gary Marcus) say Musk predicted in 2024 that AI smarter than the smartest human would come by 2025 or 2026, including in the Nicolai Tangen interview. Not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Search snippets (Yahoo Tech, IBTimes, Lookonchain, TechFlow) report a G20 Summit remark that AI would do all digital work by 'end of next year', apparently from 2026 by page age. Electrek (2026-03-04) reports Musk saying Tesla will be among companies to make AGI. A Diamandis podcast with 'AGI by next year (2026)' surfaced dated about January 2026. None opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Elon Musk\" AI prediction 2025",
+        "what_found": "Commentary (Electrek 2026, Gary Marcus, Digit, Fox Business) on Musk's AI predictions; no primary 2025 text."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2025 interview AGI \"years\"",
+        "what_found": "Coverage of the leaked xAI staff meeting (AGI possibly 2026), a 36kr Rogan summary, and the Diamandis podcast summary."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Gizmodo on AGI by 2026 (via Business Insider) and several reports of a G20 speech that appear to be from 2026."
+      },
+      {
+        "query_or_url": "Elon Musk Y Combinator AI Startup School transcript \"digital superintelligence\"",
+        "what_found": "Transcript pages for the 19 June 2025 YC fireside chat."
+      },
+      {
+        "query_or_url": "Joe Rogan Experience 2404 Elon Musk transcript AGI",
+        "what_found": "Several transcript sites for the 31 October 2025 episode."
+      },
+      {
+        "query_or_url": "Elon Musk Jensen Huang US-Saudi Investment Forum transcript AI \"smarter\"",
+        "what_found": "Previews of the forum panel and a Google News transcript link (not opened)."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-of-elon-musk-digital-superintelligence-multiplanetary-life-how-to-be-useful/",
+        "what_found": "Opened; it has the superintelligence 'this year … next year for sure' line, but the page was cut off partway through."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-business-magnate-elon-musk-on-joe-rogan-podcast-2404/",
+        "what_found": "Opened but only partly loaded; the only dated forecast was full Starship reusability 'next year' (not AI), and the AI section was missing."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/the-joe-rogan-experience/2404-elon-musk",
+        "what_found": "Would not open (url_not_allowed); nothing quoted."
+      },
+      {
+        "query_or_url": "Musk Rogan \"Grok 5\" AGI \"10%\" \"2030\" smarter than all humans combined",
+        "what_found": "Coverage of Musk giving Grok 5 a 10% chance of AGI (October/November 2025, incl. Baron conference); snippets only."
+      },
+      {
+        "query_or_url": "Elon Musk Nikhil Kamath WTF podcast transcript AI robots \"years\"",
+        "what_found": "Transcript and coverage of the Kamath podcast prediction that work becomes optional in under 20 years."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/",
+        "what_found": "Opened; it has the 'less than 20 years … working is optional' and Optimus 'next year' lines."
+      },
+      {
+        "query_or_url": "Musk Huang Kennedy Center November 19 2025 transcript \"work will be optional\" AI",
+        "what_found": "Transcripts and coverage of the 19 November forum remarks."
+      },
+      {
+        "query_or_url": "Elon Musk Baron Investment Conference 2025 transcript Grok 5 AGI",
+        "what_found": "Transcript link for the 14 November 2025 Baron conference and coverage of Grok 5 for Q1 2026 with a 10% AGI chance."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-elon-musk-and-jensen-huang-talk-ai-at-u-s-saudi-investment-forum-11-19-25/",
+        "what_found": "Opened; it has 'ten, twenty years … work will be optional' and an AI-compute-in-space line (left out as an infrastructure forecast)."
+      },
+      {
+        "query_or_url": "https://singjupost.com/fireside-chat-elon-musk-at-ron-barons-32nd-baron-investment-conference-transcript/",
+        "what_found": "Opening timed out; nothing read or quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2025 Musk's checkable dated AI forecasts include digital superintelligence 'this year … next year for sure' at YC in June, and work becoming optional through AI and robotics within 10-20 years (Saudi forum and Kamath podcast, November). Reported claims about Grok 5's chance of AGI and AGI by 2026 could not be checked against opened primary text because pages failed or the opening budget ran out."
+  },
+  "reply_text": "Two page openings left (if the failed one counted). Opening the forum and Baron transcripts.I found four statements from 2025 that look like candidates. All of them come from transcripts on singjupost.com, which are third-party transcriptions, not official ones. None of them matches the four claims you already have recorded.\n\n- **Y Combinator AI Startup School, 19 June 2025:** Musk said digital superintelligence would arrive this year or next year \"for sure\". This is the clearest dated AGI-type prediction I found.\n- **US–Saudi Investment Forum, 19 November 2025:** He said work would be optional in \"ten, twenty years\". The question he was answering was about AI and jobs.\n- **Nikhil Kamath podcast, 30 November 2025:** He said \"in less than 20 years… 10 or 15 years\" AI and robotics would make working optional.\n- **Same Kamath podcast:** He said Optimus would start production at scale \"hopefully some of next year\". This one is borderline because it reads like a production plan. You may want to drop it.\n\n**Left out on purpose:**\n- At the same forum he said solar-powered AI satellites would be the cheapest way to do AI compute within five years. I treated that as a data-centre forecast, so it is not a candidate.\n- On the Joe Rogan show he predicted full rocket reusability next year. That is not about AI.\n\n**What I could not check:**\n- **Rogan, Joe Rogan Experience #2404 (31 October 2025):** The transcript page loaded only partly, and the AI part was missing. A second transcript site refused the request.\n- **Ron Baron's conference (14 November 2025):** Opening the transcript timed out. That is where he reportedly put a 10% chance on Grok 5 reaching AGI. Reports say Grok 5 was due in the first quarter of 2026, but I saw that only in search snippets.\n- **Other 2025 claims seen only in search snippets:** an \"AGI by 2026\" remark to xAI staff (from leaked-meeting coverage) and a December podcast with Peter Diamandis. I have not quoted any of these.\n\nI counted the failed and timed-out openings against the budget, which used all 6. I ran 10 of the 12 searches.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-06-19\", \"quote\": \"I think we’re quite close to digital superintelligence. If it doesn’t happen this year, next year for sure.\", \"what_is_predicted\": \"Digital superintelligence (AI smarter than any human) will arrive in 2025 or, failing that, in 2026.\", \"date_or_span\": \"this year (2025) or next year (2026)\", \"occasion\": \"Fireside chat with Garry Tan at Y Combinator's AI Startup School, San Francisco\", \"source_url\": \"https://singjupost.com/transcript-of-elon-musk-digital-superintelligence-multiplanetary-life-how-to-be-useful/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-19\", \"quote\": \"Well, say in the long term, where will things end up long term? I don’t know what long term is. Maybe it’s ten, twenty years, something like that. For me that’s long term. My prediction is that work will be optional.\", \"what_is_predicted\": \"In answer to a question about AI and jobs, work will become optional within roughly ten to twenty years.\", \"date_or_span\": \"ten to twenty years (c. 2035-2045)\", \"occasion\": \"Panel with Jensen Huang at the U.S.-Saudi Investment Forum, Kennedy Center, Washington DC\", \"source_url\": \"https://singjupost.com/transcript-elon-musk-and-jensen-huang-talk-ai-at-u-s-saudi-investment-forum-11-19-25/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-30\", \"quote\": \"But I think it will turn out to be true that in less than 20 years, maybe even as little as, I don’t know, 10 or 15 years, the advancements in AI and robotics will bring us to the point where working is optional\", \"what_is_predicted\": \"AI and robotics will make working optional within less than 20 years, possibly 10-15.\", \"date_or_span\": \"less than 20 years, maybe 10 or 15 years\", \"occasion\": \"People by WTF podcast (Ep. 16) with Nikhil Kamath; the transcript gives November 30, 2025\", \"source_url\": \"https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-30\", \"quote\": \"And then we’re going to be making this robot Optimus which is, you know, starting production hopefully some of next year at scale.\", \"what_is_predicted\": \"Tesla's Optimus humanoid robot will start production at scale during 2026 (borderline: reads as a production plan).\", \"date_or_span\": \"next year (2026)\", \"occasion\": \"People by WTF podcast (Ep. 16) with Nikhil Kamath\", \"source_url\": \"https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Search snippets (cybernews, Electrek, Gary Marcus) say Musk predicted in 2024 that AI smarter than the smartest human would come by 2025 or 2026, including in the Nicolai Tangen interview. Not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Search snippets (Yahoo Tech, IBTimes, Lookonchain, TechFlow) report a G20 Summit remark that AI would do all digital work by 'end of next year', apparently from 2026 by page age. Electrek (2026-03-04) reports Musk saying Tesla will be among companies to make AGI. A Diamandis podcast with 'AGI by next year (2026)' surfaced dated about January 2026. None opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Elon Musk\\\" AI prediction 2025\", \"what_found\": \"Commentary (Electrek 2026, Gary Marcus, Digit, Fox Business) on Musk's AI predictions; no primary 2025 text.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the leaked xAI staff meeting (AGI possibly 2026), a 36kr Rogan summary, and the Diamandis podcast summary.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Gizmodo on AGI by 2026 (via Business Insider) and several reports of a G20 speech that appear to be from 2026.\"},\n    {\"query_or_url\": \"Elon Musk Y Combinator AI Startup School transcript \\\"digital superintelligence\\\"\", \"what_found\": \"Transcript pages for the 19 June 2025 YC fireside chat.\"},\n    {\"query_or_url\": \"Joe Rogan Experience 2404 Elon Musk transcript AGI\", \"what_found\": \"Several transcript sites for the 31 October 2025 episode.\"},\n    {\"query_or_url\": \"Elon Musk Jensen Huang US-Saudi Investment Forum transcript AI \\\"smarter\\\"\", \"what_found\": \"Previews of the forum panel and a Google News transcript link (not opened).\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-of-elon-musk-digital-superintelligence-multiplanetary-life-how-to-be-useful/\", \"what_found\": \"Opened; it has the superintelligence 'this year … next year for sure' line, but the page was cut off partway through.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-business-magnate-elon-musk-on-joe-rogan-podcast-2404/\", \"what_found\": \"Opened but only partly loaded; the only dated forecast was full Starship reusability 'next year' (not AI), and the AI section was missing.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/the-joe-rogan-experience/2404-elon-musk\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted.\"},\n    {\"query_or_url\": \"Musk Rogan \\\"Grok 5\\\" AGI \\\"10%\\\" \\\"2030\\\" smarter than all humans combined\", \"what_found\": \"Coverage of Musk giving Grok 5 a 10% chance of AGI (October/November 2025, incl. Baron conference); snippets only.\"},\n    {\"query_or_url\": \"Elon Musk Nikhil Kamath WTF podcast transcript AI robots \\\"years\\\"\", \"what_found\": \"Transcript and coverage of the Kamath podcast prediction that work becomes optional in under 20 years.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/\", \"what_found\": \"Opened; it has the 'less than 20 years … working is optional' and Optimus 'next year' lines.\"},\n    {\"query_or_url\": \"Musk Huang Kennedy Center November 19 2025 transcript \\\"work will be optional\\\" AI\", \"what_found\": \"Transcripts and coverage of the 19 November forum remarks.\"},\n    {\"query_or_url\": \"Elon Musk Baron Investment Conference 2025 transcript Grok 5 AGI\", \"what_found\": \"Transcript link for the 14 November 2025 Baron conference and coverage of Grok 5 for Q1 2026 with a 10% AGI chance.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-elon-musk-and-jensen-huang-talk-ai-at-u-s-saudi-investment-forum-11-19-25/\", \"what_found\": \"Opened; it has 'ten, twenty years … work will be optional' and an AI-compute-in-space line (left out as an infrastructure forecast).\"},\n    {\"query_or_url\": \"https://singjupost.com/fireside-chat-elon-musk-at-ron-barons-32nd-baron-investment-conference-transcript/\", \"what_found\": \"Opening timed out; nothing read or quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2025 Musk's checkable dated AI forecasts include digital superintelligence 'this year … next year for sure' at YC in June, and work becoming optional through AI and robotics within 10-20 years (Saudi forum and Kamath podcast, November). Reported claims about Grok 5's chance of AGI and AGI by 2026 could not be checked against opened primary text because pages failed or the opening budget ran out.\"\n}\n```"
+}

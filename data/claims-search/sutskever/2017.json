@@ -1,0 +1,410 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2017,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7303,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7624
+      },
+      "cache_creation_input_tokens": 52522,
+      "cache_read_input_tokens": 605271,
+      "inference_geo": "global",
+      "input_tokens": 46,
+      "output_tokens": 11324,
+      "output_tokens_details": {
+        "thinking_tokens": 3405
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2017','\"Ilya Sutskever\" 2017 interview AGI \"years\"','\"Ilya Sutskever\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',(x.get('content') or '')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2017"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',(x.get('content') or '')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2017 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever Brockman email 2017 Musk \"Honest thoughts\"','Sutskever 2017 talk \"meta-learning and self-play\"','Sutskever 2017 email OpenAI AGI \"years\" lawsuit exhibit']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever Brockman email 2017 Musk \"Honest thoughts\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2017 talk \"meta-learning and self-play\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2017 email OpenAI AGI \"years\" lawsuit exhibit"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman\"})\nif isinstance(f,dict): print(f)\nelse:\n    c=f[0]['content']; print(len(c))\n    import re\n    for m in re.finditer(r'2017',c):\n        pass\n    i=c.find('2017'); print(c[i-200:i+300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F=json.loads(f) if isinstance(f,str) else f\nd=F[0] if isinstance(F,list) else F\nc=d.get('content',''); print(d.get('type'),len(c))\nfor kw in ['Ilya Sutskever','years','2017']:\n    print(kw, c.count(kw))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(c), list(c.keys()) if isinstance(c,dict) else c)\ndef gettext(d):\n    c=d.get('content')\n    if isinstance(c,dict):\n        for k in ['content','text','source']:\n            if k in c: \n                v=c[k]\n                if isinstance(v,dict): return v.get('data') or v.get('text') or str(v)\n                return v\n    return c\nt=gettext(d); print(type(t), len(str(t)))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T=t\nprint(T.count('2017'), T.count('Ilya'))\nfor m in re.finditer(r'(year|decade|20[1-3]\\d)',T):\n    s=T[max(0,m.start()-150):m.end()+150].replace('\\n',' ')\n    print('--',s)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor m in re.finditer(r'(years|decade|20[1-3]\\d)',T):\n    s=T[max(0,m.start()-200):m.end()+150].replace('\\n',' ')\n    print('--',s)\nprint(T[-600:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    f=await web_fetch({\"url\":u})\n    F=json.loads(f) if isinstance(f,str) else f\n    d=F[0] if isinstance(F,list) else F\n    if d.get('type','').endswith('error'): print(d); return ''\n    return gettext(d)\nT2=await fetch(\"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\")\nprint(len(T2))\nfor m in re.finditer(r'(Ilya Sutskever|From: Ilya)',T2):\n    print('@@',T2[m.start():m.start()+120].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['Jun 12, 2017','Jul 12, 2017','100% agreed']:\n    i=T2.find(k); print('#####',k); print(T2[i-100:i+3000] if k!='100% agreed' else T2[i-400:i+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T2.find('In 6 months, we will accomplish'); print(T2[i:i+1800])\nprint('########')\ni=T2.find('just like physicists would quickly'); print(T2[i-100:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T2.find('The Cerebras design is far ahead'); print(T2[i:i+1500])\nprint('########')\nfor k in ['Honest','Sep 20, 2017']:\n    for m in re.finditer(k,T2): print('@@',T2[m.start()-100:m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['2:08','Sep 2','dictator','Fall 2017']:\n    for m in re.finditer(k,T2): print('@@',k,T2[m.start()-300:m.start()+600].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Honest thoughts\" Sutskever email full text \"AGI dictatorship\" \"Elon\"','Ilya Sutskever 2017 interview OpenAI Dota self-play \"Sutskever said\"','Sutskever NIPS 2017 talk transcript self-play AGI']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Honest thoughts\" Sutskever email full text \"AGI dictatorship\" \"Elon\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever 2017 interview OpenAI Dota self-play \"Sutskever said\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever NIPS 2017 talk transcript self-play AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T3=await fetch(\"https://officechai.com/stories/tense-emails-reveal-how-elon-musk-sam-altman-ilya-sutskever-and-greg-brockman-had-negotiated-over-openais-structure/\")\nprint(len(T3))\ni=T3.find('Honest'); \nfor m in re.finditer(r'(years|decade|20[1-3]\\d|months)',T3):\n    print('--',T3[max(0,m.start()-200):m.end()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://officechai.com/stories/tense-emails-reveal-how-elon-musk-sam-altman-ilya-sutskever-and-greg-brockman-had-negotiated-over-openais-structure/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T2.find('We have a few more cool smaller projects'); j=T2.find('The business of building AGI'); print(T2[i:j])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Sutskever\" 2017 \"AI Frontiers\" OR \"Rework\" OR \"EmTech\" talk OpenAI','\"Sutskever\" August 2017 Dota bot interview \"5v5\" next year']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sutskever\" 2017 \"AI Frontiers\" OR \"Rework\" OR \"EmTech\" talk OpenAI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sutskever\" August 2017 Dota bot interview \"5v5\" next year"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T4=await fetch(\"https://www.technologyreview.com/2017/03/27/152958/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/\")\ni=T4.find('Sutskever'); print(len(T4)); \nfor m in re.finditer('Sutskever',T4): print('--',T4[m.start()-300:m.start()+500].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2017/03/27/152958/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T5=await fetch(\"https://www.inkl.com/news/remember-when-openai-beat-humans-in-dota-2-turns-out-that-was-partly-thanks-to-when-elon-musk-personally-called-satya-nadella-to-secure-a-load-of-discounted-microsoft-computing-power\")\nprint(len(T5))\ni=T5.find('Remember when'); print(T5[i:i+5000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.inkl.com/news/remember-when-openai-beat-humans-in-dota-2-turns-out-that-was-partly-thanks-to-when-elon-musk-personally-called-satya-nadella-to-secure-a-load-of-discounted-microsoft-computing-power"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Sutskever 2017 email \"Montezuma\" Musk Nadella Dota exhibit'\nR[q]=await web_search({\"query\":q}); show(R[q])\nr=json.loads(R[q]) if isinstance(R[q],str) else R[q]\nfor x in r[:8]:\n    c=x.get('content') or ''\n    for m in re.finditer('Montezuma',c): print('>>',x['url'],c[max(0,m.start()-400):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2017 email \"Montezuma\" Musk Nadella Dota exhibit"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2017-06-12",
+        "quote": "We will solve the 1v1 version of the game in 1 month.",
+        "what_is_predicted": "OpenAI's Dota 2 bot will master (win) the 1v1 version of the game within one month.",
+        "date_or_span": "1 month (from June 12, 2017)",
+        "occasion": "Email from Ilya Sutskever to Greg Brockman, Elon Musk and a redacted recipient, subject 'Bi-weekly updates', later published by OpenAI",
+        "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-06-12",
+        "quote": "In 6 months, we will accomplish at least one of: single-handed Rubik’s cube, pen spinning (https://www.youtube.com/watch?v=dDavyRnEPrI), Chinese balls spinning (https://www.youtube.com/watch?v=M9N1duIl4Fc) using the HER algorithm and using a sim2real method [such as https://blog.openai.com/spam-detection-in-the-physical-world/].",
+        "what_is_predicted": "Within six months OpenAI's robot-learning system will do at least one of these with a robot hand: a one-handed Rubik's cube, pen spinning or spinning Chinese balls.",
+        "date_or_span": "6 months (from June 12, 2017)",
+        "occasion": "Email 'Bi-weekly updates' from Ilya Sutskever, published by OpenAI",
+        "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-07-12",
+        "quote": "Within the next three years, robotics should be completely solved, AI should solve a long-standing unproven theorem, programming competitions should be won consistently by AIs, and there should be convincing chatbots (though no one should pass the Turing test).",
+        "what_is_predicted": "By mid-2020 robotics will be solved, AI will prove a long-standing open theorem, AIs will win programming competitions consistently, and chatbots will be convincing but not pass the Turing test.",
+        "date_or_span": "within the next three years (from July 2017)",
+        "occasion": "Email 'The business of building AGI' from Ilya Sutskever to Elon Musk and Greg Brockman (written in the 'we' voice), published by OpenAI",
+        "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-07-12",
+        "quote": "In as little as four years, each overnight experiment will feasibly use so much compute capacity that there’s an actual chance of waking up to AGI, given the right algorithm — and figuring out the algorithm will actually happen within 2–4 further years of experimenting with this compute in a competitive multiagent simulation.",
+        "what_is_predicted": "In as little as four years there will be a real chance of AGI from one overnight experiment, and the right algorithm will be found within two to four more years.",
+        "date_or_span": "as little as four years, plus 2–4 further years (about 2021 to 2025-2027)",
+        "occasion": "Email 'The business of building AGI' from Ilya Sutskever, published by OpenAI",
+        "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-07-12",
+        "quote": "We will completely solve the problem of adversarial examples by the end of August.",
+        "what_is_predicted": "OpenAI will completely solve the problem of adversarial examples (in image classifiers) by the end of August 2017.",
+        "date_or_span": "by the end of August (2017)",
+        "occasion": "'Progress this week' section of the email 'The business of building AGI' from Ilya Sutskever, published by OpenAI",
+        "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2017-03-27",
+        "quote": "“[It] seems far off right now but [was] way more far off five years ago,” he said.",
+        "source_url": "https://www.technologyreview.com/2017/03/27/152958/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2016",
+        "note": "Feb 19, 2016 email from Sutskever to Musk (on the OpenAI page and in the LessWrong archive) says the remaining problems may see 'significant progress in the coming years'. Undated and not this year."
+      },
+      {
+        "year": "2025",
+        "note": "The fixed searches mostly returned his late-2025 Dwarkesh Patel interview, where coverage reports a 5–20 year timeline for human-like learning systems or superintelligence. Not checked in a source, and not this year."
+      },
+      {
+        "year": "2024",
+        "note": "Reuters coverage of his NeurIPS 2024 Test of Time talk, predicting that reasoning AI will be less predictable. Not checked, and not this year."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2017",
+        "what_found": "Only 2024-2025 news (NeurIPS 2024 talk, 'AI will do all the things we can do'); nothing from 2017."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2017 interview AGI \"years\"",
+        "what_found": "Coverage of the 2025 Dwarkesh interview (5-20 years); nothing from 2017."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "More 2025 Dwarkesh coverage; nothing from 2017."
+      },
+      {
+        "query_or_url": "Sutskever Brockman email 2017 Musk \"Honest thoughts\"",
+        "what_found": "Coverage of the Sep 2017 'Honest thoughts' email, plus OpenAI's post that publishes the 2017 emails."
+      },
+      {
+        "query_or_url": "Sutskever 2017 talk \"meta-learning and self-play\"",
+        "what_found": "Fields Institute talk of Dec 14, 2017 (video only) and the MIT 6.S099 version from 2018."
+      },
+      {
+        "query_or_url": "Sutskever 2017 email OpenAI AGI \"years\" lawsuit exhibit",
+        "what_found": "The LessWrong email archive and OpenAI's post containing 'The business of building AGI'."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman",
+        "what_found": "Page opened but the text cut off at 2016 emails; no 2017 text."
+      },
+      {
+        "query_or_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+        "what_found": "Full text of Sutskever's Jun 12 and Jul 12, 2017 emails with the five dated predictions."
+      },
+      {
+        "query_or_url": "\"Honest thoughts\" Sutskever email full text \"AGI dictatorship\" \"Elon\"",
+        "what_found": "Several reprints of the 'Honest thoughts' email."
+      },
+      {
+        "query_or_url": "Ilya Sutskever 2017 interview OpenAI Dota self-play \"Sutskever said\"",
+        "what_found": "Mostly 2018-2025 items; no 2017 interview."
+      },
+      {
+        "query_or_url": "Sutskever NIPS 2017 talk transcript self-play AGI",
+        "what_found": "A NIPS 2017 summary (no dated quote), a 2018 ScaledML transcript and the 2020 Lex Fridman transcript; no 2017 transcript."
+      },
+      {
+        "query_or_url": "https://officechai.com/stories/tense-emails-reveal-how-elon-musk-sam-altman-ilya-sutskever-and-greg-brockman-had-negotiated-over-openais-structure/",
+        "what_found": "Full 'Honest thoughts' email (Sep 20, 2017); no dated AI prediction."
+      },
+      {
+        "query_or_url": "\"Sutskever\" 2017 \"AI Frontiers\" OR \"Rework\" OR \"EmTech\" talk OpenAI",
+        "what_found": "MIT Technology Review coverage of his March 27, 2017 EmTech Digital talk."
+      },
+      {
+        "query_or_url": "\"Sutskever\" August 2017 Dota bot interview \"5v5\" next year",
+        "what_found": "Dota 1v1 coverage; no Sutskever quote with a date."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2017/03/27/152958/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/",
+        "what_found": "EmTech 2017 report; only the undated 'seems far off right now' remark on AGI."
+      },
+      {
+        "query_or_url": "https://www.inkl.com/news/remember-when-openai-beat-humans-in-dota-2-turns-out-that-was-partly-thanks-to-when-elon-musk-personally-called-satya-nadella-to-secure-a-load-of-discounted-microsoft-computing-power",
+        "what_found": "Page would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "Sutskever 2017 email \"Montezuma\" Musk Nadella Dota exhibit",
+        "what_found": "PC Gamer snippet shows the Montezuma's Revenge note was in an April 2018 email from someone else, not Sutskever."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Sutskever's dated 2017 predictions are all in private emails to Elon Musk that OpenAI published in December 2024. The June 12 email gives one-month (Dota 1v1) and six-month (robot hand) targets. The July 12 email ('The business of building AGI') gives three-year goals (robotics solved, theorem proving, programming competitions, chatbots), a chance of AGI in as little as four years with the algorithm 2-4 years later, and a promise to solve adversarial examples by the end of August. His public remarks found for 2017 hold only an undated comment that AGI 'seems far off right now'."
+  },
+  "reply_text": "I found five dated predictions in Sutskever's 2017 words. All of them come from his private emails to Elon Musk, which OpenAI later published, and none from anything he said in public that year. Every quote below is copied from the page I opened, OpenAI's December 2024 post \"Elon Musk wanted an OpenAI for-profit\". That page shows both emails as \"From: Ilya Sutskever\", but the July 12 one is written as \"we\" and appears to speak for him and Greg Brockman too.\n\n**June 12, 2017 email (\"Bi-weekly updates\"):**\n- Dota 2: the bot would win the 1v1 version of the game within a month.\n- Robotics: within six months OpenAI would do at least one of three hand tasks (one-handed Rubik's cube, pen spinning or spinning Chinese balls).\n\n**July 12, 2017 email (\"The business of building AGI\"):**\n- Within three years: robotics completely solved, AI proving a long-standing unproven theorem, AIs winning programming competitions consistently, and convincing chatbots (though none passing the Turing test).\n- AGI: in as little as four years there would be \"an actual chance of waking up to AGI\", and the algorithm would be found within two to four more years after that.\n- Adversarial examples: the email's progress notes say the problem would be completely solved \"by the end of August\".\n\n**Left out by your rules:** the same email forecasts deep learning hardware speeding up 10x a year for four to five years, and says AGI could be built with less than $10B in hardware. Those are hardware and spending forecasts. The GPU and headcount plans are business forecasts. A July 21 path through \"end of 2017\" was written by Brockman, not Sutskever.\n\n**Public statements:** In March 2017 at the EmTech Digital conference he said AGI \"seems far off right now\". I only saw that in an MIT Technology Review report, and it has no date, so it is under undated. The \"Honest thoughts\" email of September 20, 2017 has no dated AI prediction. His December 2017 Fields Institute talk exists only as video, and I didn't find a transcript of his NIPS 2017 talk, so I could check neither. The OpenAI page itself opened fine; the LessWrong copy of the emails cut off before 2017, and one news page (inkl) would not open.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2017-06-12\", \"quote\": \"We will solve the 1v1 version of the game in 1 month.\", \"what_is_predicted\": \"OpenAI's Dota 2 bot will master (win) the 1v1 version of the game within one month.\", \"date_or_span\": \"1 month (from June 12, 2017)\", \"occasion\": \"Email from Ilya Sutskever to Greg Brockman, Elon Musk and a redacted recipient, subject 'Bi-weekly updates', later published by OpenAI\", \"source_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-06-12\", \"quote\": \"In 6 months, we will accomplish at least one of: single-handed Rubik’s cube, pen spinning (https://www.youtube.com/watch?v=dDavyRnEPrI), Chinese balls spinning (https://www.youtube.com/watch?v=M9N1duIl4Fc) using the HER algorithm and using a sim2real method [such as https://blog.openai.com/spam-detection-in-the-physical-world/].\", \"what_is_predicted\": \"Within six months OpenAI's robot-learning system will do at least one of these with a robot hand: a one-handed Rubik's cube, pen spinning or spinning Chinese balls.\", \"date_or_span\": \"6 months (from June 12, 2017)\", \"occasion\": \"Email 'Bi-weekly updates' from Ilya Sutskever, published by OpenAI\", \"source_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-07-12\", \"quote\": \"Within the next three years, robotics should be completely solved, AI should solve a long-standing unproven theorem, programming competitions should be won consistently by AIs, and there should be convincing chatbots (though no one should pass the Turing test).\", \"what_is_predicted\": \"By mid-2020 robotics will be solved, AI will prove a long-standing open theorem, AIs will win programming competitions consistently, and chatbots will be convincing but not pass the Turing test.\", \"date_or_span\": \"within the next three years (from July 2017)\", \"occasion\": \"Email 'The business of building AGI' from Ilya Sutskever to Elon Musk and Greg Brockman (written in the 'we' voice), published by OpenAI\", \"source_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-07-12\", \"quote\": \"In as little as four years, each overnight experiment will feasibly use so much compute capacity that there’s an actual chance of waking up to AGI, given the right algorithm — and figuring out the algorithm will actually happen within 2–4 further years of experimenting with this compute in a competitive multiagent simulation.\", \"what_is_predicted\": \"In as little as four years there will be a real chance of AGI from one overnight experiment, and the right algorithm will be found within two to four more years.\", \"date_or_span\": \"as little as four years, plus 2–4 further years (about 2021 to 2025-2027)\", \"occasion\": \"Email 'The business of building AGI' from Ilya Sutskever, published by OpenAI\", \"source_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-07-12\", \"quote\": \"We will completely solve the problem of adversarial examples by the end of August.\", \"what_is_predicted\": \"OpenAI will completely solve the problem of adversarial examples (in image classifiers) by the end of August 2017.\", \"date_or_span\": \"by the end of August (2017)\", \"occasion\": \"'Progress this week' section of the email 'The business of building AGI' from Ilya Sutskever, published by OpenAI\", \"source_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2017-03-27\", \"quote\": \"“[It] seems far off right now but [was] way more far off five years ago,” he said.\", \"source_url\": \"https://www.technologyreview.com/2017/03/27/152958/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2016\", \"note\": \"Feb 19, 2016 email from Sutskever to Musk (on the OpenAI page and in the LessWrong archive) says the remaining problems may see 'significant progress in the coming years'. Undated and not this year.\"},\n    {\"year\": \"2025\", \"note\": \"The fixed searches mostly returned his late-2025 Dwarkesh Patel interview, where coverage reports a 5–20 year timeline for human-like learning systems or superintelligence. Not checked in a source, and not this year.\"},\n    {\"year\": \"2024\", \"note\": \"Reuters coverage of his NeurIPS 2024 Test of Time talk, predicting that reasoning AI will be less predictable. Not checked, and not this year.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2017\", \"what_found\": \"Only 2024-2025 news (NeurIPS 2024 talk, 'AI will do all the things we can do'); nothing from 2017.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2017 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the 2025 Dwarkesh interview (5-20 years); nothing from 2017.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2017 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"More 2025 Dwarkesh coverage; nothing from 2017.\"},\n    {\"query_or_url\": \"Sutskever Brockman email 2017 Musk \\\"Honest thoughts\\\"\", \"what_found\": \"Coverage of the Sep 2017 'Honest thoughts' email, plus OpenAI's post that publishes the 2017 emails.\"},\n    {\"query_or_url\": \"Sutskever 2017 talk \\\"meta-learning and self-play\\\"\", \"what_found\": \"Fields Institute talk of Dec 14, 2017 (video only) and the MIT 6.S099 version from 2018.\"},\n    {\"query_or_url\": \"Sutskever 2017 email OpenAI AGI \\\"years\\\" lawsuit exhibit\", \"what_found\": \"The LessWrong email archive and OpenAI's post containing 'The business of building AGI'.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/5jjk4CDnj9tA7ugxr/openai-email-archives-from-musk-v-altman\", \"what_found\": \"Page opened but the text cut off at 2016 emails; no 2017 text.\"},\n    {\"query_or_url\": \"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\", \"what_found\": \"Full text of Sutskever's Jun 12 and Jul 12, 2017 emails with the five dated predictions.\"},\n    {\"query_or_url\": \"\\\"Honest thoughts\\\" Sutskever email full text \\\"AGI dictatorship\\\" \\\"Elon\\\"\", \"what_found\": \"Several reprints of the 'Honest thoughts' email.\"},\n    {\"query_or_url\": \"Ilya Sutskever 2017 interview OpenAI Dota self-play \\\"Sutskever said\\\"\", \"what_found\": \"Mostly 2018-2025 items; no 2017 interview.\"},\n    {\"query_or_url\": \"Sutskever NIPS 2017 talk transcript self-play AGI\", \"what_found\": \"A NIPS 2017 summary (no dated quote), a 2018 ScaledML transcript and the 2020 Lex Fridman transcript; no 2017 transcript.\"},\n    {\"query_or_url\": \"https://officechai.com/stories/tense-emails-reveal-how-elon-musk-sam-altman-ilya-sutskever-and-greg-brockman-had-negotiated-over-openais-structure/\", \"what_found\": \"Full 'Honest thoughts' email (Sep 20, 2017); no dated AI prediction.\"},\n    {\"query_or_url\": \"\\\"Sutskever\\\" 2017 \\\"AI Frontiers\\\" OR \\\"Rework\\\" OR \\\"EmTech\\\" talk OpenAI\", \"what_found\": \"MIT Technology Review coverage of his March 27, 2017 EmTech Digital talk.\"},\n    {\"query_or_url\": \"\\\"Sutskever\\\" August 2017 Dota bot interview \\\"5v5\\\" next year\", \"what_found\": \"Dota 1v1 coverage; no Sutskever quote with a date.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2017/03/27/152958/elon-musks-openai-unveils-a-simpler-way-for-machines-to-learn/\", \"what_found\": \"EmTech 2017 report; only the undated 'seems far off right now' remark on AGI.\"},\n    {\"query_or_url\": \"https://www.inkl.com/news/remember-when-openai-beat-humans-in-dota-2-turns-out-that-was-partly-thanks-to-when-elon-musk-personally-called-satya-nadella-to-secure-a-load-of-discounted-microsoft-computing-power\", \"what_found\": \"Page would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"Sutskever 2017 email \\\"Montezuma\\\" Musk Nadella Dota exhibit\", \"what_found\": \"PC Gamer snippet shows the Montezuma's Revenge note was in an April 2018 email from someone else, not Sutskever.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Sutskever's dated 2017 predictions are all in private emails to Elon Musk that OpenAI published in December 2024. The June 12 email gives one-month (Dota 1v1) and six-month (robot hand) targets. The July 12 email ('The business of building AGI') gives three-year goals (robotics solved, theorem proving, programming competitions, chatbots), a chance of AGI in as little as four years with the algorithm 2-4 years later, and a promise to solve adversarial examples by the end of August. His public remarks found for 2017 hold only an undated comment that AGI 'seems far off right now'.\"\n}\n```"
+}

@@ -1,0 +1,298 @@
+{
+  "speaker_id": "huang",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6636,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7713
+      },
+      "cache_creation_input_tokens": 71456,
+      "cache_read_input_tokens": 291666,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 7394,
+      "output_tokens_details": {
+        "thinking_tokens": 2124
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Jensen Huang\" AI prediction 2024','\"Jensen Huang\" 2024 interview AGI \"years\"','\"Jensen Huang\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\nfor q in qs:\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jensen Huang Bg2 podcast Brad Gerstner October 2024 transcript','Jensen Huang World Government Summit Dubai 2024 AI years','Jensen Huang Dreamforce 2024 Benioff agents robots transcript']:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Bg2 podcast Brad Gerstner October 2024 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang World Government Summit Dubai 2024 AI years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Dreamforce 2024 Benioff agents robots transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Jensen Huang\" Bg2 2024 transcript \"Clark Tang\" agents','Jensen Huang HKUST November 2024 honorary doctorate AI years','Jensen Huang Goldman Sachs Communacopia September 2024 transcript']:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" Bg2 2024 transcript \"Clark Tang\" agents"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang HKUST November 2024 honorary doctorate AI years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Goldman Sachs Communacopia September 2024 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://techcrunch.com/2024/03/19/agi-and-hallucinations/','https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade','https://hkust.edu.hk/news/quips-chips-dr-jensen-huang-spots-world-ai']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0].get('content','');P[u]=c\n    print(\"==\",u,len(c))\n    for m in re.finditer(r'(year|decade|20[2-4]\\d|AGI)',c):\n        pass\ndef grep(u,pat,w=350):\n    c=P[u]\n    for m in re.finditer(pat,c):\n        print('...',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '),'\\n')\ngrep('https://techcrunch.com/2024/03/19/agi-and-hallucinations/',r'five years')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techcrunch.com/2024/03/19/agi-and-hallucinations/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://hkust.edu.hk/news/quips-chips-dr-jensen-huang-spots-world-ai"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    r=await_res=None\nasync def f(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content')\n        if isinstance(c,dict): c=c.get('source',{}).get('data','')\n        if not c: print('ERR',u,str(r)[:300]); return\n    else: c=r[0].get('content','')\n    P[u]=c; print(u,len(c))\nfor u in ['https://www.goldmansachs.com/insights/talks-at-gs/jensen-huang','https://blogs.nvidia.com/blog/world-governments-summit/']:\n    await f(u)\ndef grep(u,pat,w=300):\n    c=P[u]\n    for m in re.finditer(pat,c):\n        print('...',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '),'\\n')\nfor u in list(P)[-2:]:\n    print('#####',u); grep(u,r'(\\b\\d+ years|decade|next year|20[2-3]\\d\\b|AGI)',250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.goldmansachs.com/insights/talks-at-gs/jensen-huang"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/world-governments-summit/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Jensen Huang\" Bg2 October 2024 transcript \"Brad Gerstner\" \"Jensen Huang:\"'\nR[q]=await web_search({\"query\":q}); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" Bg2 October 2024 transcript \"Brad Gerstner\" \"Jensen Huang:\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://siepr.stanford.edu/news/nvidias-jensen-huang-incredible-future-ai'\nawait f(u)\ngrep(u,r'(\\b\\w+ years|decade|next year|20[2-3]\\d\\b|AGI)',300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://siepr.stanford.edu/news/nvidias-jensen-huang-incredible-future-ai"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-03-19",
+        "quote": "If we specified AGI to be something very specific, a set of tests where a software program can do very well — or maybe 8% better than most people — I believe we will get there within 5 years,",
+        "what_is_predicted": "If AGI is defined as doing very well on a specific set of tests (bar exam, logic, economics, pre-med exams), AI will get there within five years.",
+        "date_or_span": "within 5 years (c. 2029)",
+        "occasion": "Press Q&A at Nvidia GTC 2024, San Jose",
+        "source_url": "https://techcrunch.com/2024/03/19/agi-and-hallucinations/",
+        "source_kind": "coverage_only",
+        "already_recorded": "2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml"
+      },
+      {
+        "date_said": "2024-03",
+        "quote": "In five years from now, you're probably right in the middle where everything is changing in real-time, and everybody's going, 'Oh, look at that, this is happening.' And so I would say that within the next five to ten years, somewhere in between, it's largely the case.",
+        "what_is_predicted": "Fully AI-generated video games will largely be a reality within five to ten years.",
+        "date_or_span": "next five to ten years (c. 2029-2034)",
+        "occasion": "Panel at Nvidia GPU Technology Conference (GTC) 2024, answering how long until an AI-generated game is released",
+        "source_url": "https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Entrepreneur search result: Cleo Abram 'Huge Conversations' interview recorded 2025-01-07, said to forecast big gains in 'human robotics' within five years; page not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results: Bg2 podcast with Gerstner and Clark Tang (fall 2025, singjupost transcript) and Financial Times remark that China is likely to win the AI race; not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Search results: Lex Fridman podcast #494 ('I think we've achieved AGI'), CBS remark that there is '0% chance' AI destroys the world by 2030, and G20 coverage that the world will reach AGI within two years; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2024",
+        "what_found": "CNBC 'AI computing ramp' (business), SIEPR Stanford summit article, SIGGRAPH coverage, Yahoo piece on passing every test in five years."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2024 interview AGI \"years\"",
+        "what_found": "Many reports of the March 2024 claim that AGI is five years away (GTC Q&A and SIEPR), plus 2026 Lex Fridman coverage."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "HotHardware report of the GTC 2024 games prediction (five to ten years); the rest is mostly 2025-2026 capex and AI-doom coverage."
+      },
+      {
+        "query_or_url": "Jensen Huang Bg2 podcast Brad Gerstner October 2024 transcript",
+        "what_found": "Episode listings for Bg2 Ep17 (2024-10-13); the only transcript found is for the 2025 episode."
+      },
+      {
+        "query_or_url": "Jensen Huang World Government Summit Dubai 2024 AI years",
+        "what_found": "Nvidia blog and coverage of the Feb 2024 sovereign-AI remarks; a $2 trillion data-centre spending forecast (business, excluded)."
+      },
+      {
+        "query_or_url": "Jensen Huang Dreamforce 2024 Benioff agents robots transcript",
+        "what_found": "Coverage of the Sept 2024 Dreamforce appearance about agents; no dated prediction seen."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" Bg2 2024 transcript \"Clark Tang\" agents",
+        "what_found": "Apple/Spotify/dexa listings for Ep17; no accessible 2024 transcript."
+      },
+      {
+        "query_or_url": "Jensen Huang HKUST November 2024 honorary doctorate AI years",
+        "what_found": "HKUST story on the 2024-11-23 fireside chat with Harry Shum."
+      },
+      {
+        "query_or_url": "Jensen Huang Goldman Sachs Communacopia September 2024 transcript",
+        "what_found": "Goldman Sachs Talks at GS page (recorded 2024-09-11) and a Seeking Alpha transcript listing."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" Bg2 October 2024 transcript \"Brad Gerstner\" \"Jensen Huang:\"",
+        "what_found": "Listings and secondary summaries only; no transcript page."
+      },
+      {
+        "query_or_url": "https://techcrunch.com/2024/03/19/agi-and-hallucinations/",
+        "what_found": "Opened; carries the quoted GTC press Q&A line on AGI-as-tests within 5 years."
+      },
+      {
+        "query_or_url": "https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade",
+        "what_found": "Opened; carries the quoted five-to-ten-year AI-games line from a GTC panel; page shows no date."
+      },
+      {
+        "query_or_url": "https://hkust.edu.hk/news/quips-chips-dr-jensen-huang-spots-world-ai",
+        "what_found": "Opened; 2024-11-23 chat with the 'several years away' trustworthy-answers line (undated span, not AGI, so excluded)."
+      },
+      {
+        "query_or_url": "https://www.goldmansachs.com/insights/talks-at-gs/jensen-huang",
+        "what_found": "Opened; episode summary only, transcript is a download link; no prediction text."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/world-governments-summit/",
+        "what_found": "Opened; Nvidia blog on the Feb 2024 Dubai talk; no dated AI prediction by Huang (the 2030 figure is PwC's)."
+      },
+      {
+        "query_or_url": "https://siepr.stanford.edu/news/nvidias-jensen-huang-incredible-future-ai",
+        "what_found": "Opened; reporter's paraphrase of the recorded five-year claim, plus a paraphrased 'about 10 years' million-times computing remark (not his words, about computing power, excluded)."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2024 Huang's dated AI predictions were mostly the five-year 'AI passes human tests / AGI by some definitions' claim, made at SIEPR on 1 March and repeated at the GTC press Q&A on 19 March. A second GTC remark put largely AI-generated games five to ten years out. Both new items rest only on news reports; I found no transcripts for GTC, Bg2 or Goldman Sachs."
+  },
+  "reply_text": "I found two dated AI predictions Jensen Huang made in 2024 that aren't already recorded. One of them is the same claim as a recorded one, repeated at a later event. Both quotes come from news reports only. I didn't find a transcript or recording of either.\n\n1. **Nvidia's GTC developer conference press Q&A, 19 March 2024 (reported by TechCrunch).** He said: \"If we specified AGI to be something very specific, a set of tests where a software program can do very well — or maybe 8% better than most people — I believe we will get there within 5 years.\" This is the same five-year claim as your recorded 2024-03-01 file, said again at a later event. TechCrunch adds that he wouldn't make a prediction unless AGI was defined that specifically.\n\n2. **AI-generated games within five to ten years, GTC 2024 (reported by HotHardware).** He said: \"In five years from now, you're probably right in the middle where everything is changing in real-time, and everybody's going, 'Oh, look at that, this is happening.' And so I would say that within the next five to ten years, somewhere in between, it's largely the case.\" The article shows no date. I took the year and month from the search listing and from the GTC dates, so check the date before filing.\n\n**Left out:**\n- **Hong Kong University of Science and Technology talk, 23 November 2024:** \"I think we are several years away from being able to do that,\" meaning AI answers you can largely trust. \"Several years\" isn't a date, and it's not about AGI.\n- **Stanford SIEPR Economic Summit:** the university's article says \"in about 10 years\" AI's computing capability will be a million times bigger. This is the reporter's paraphrase, not his words, and it's about computing power.\n- **World Governments Summit in Dubai (Feb 2024) and the Goldman Sachs talk (Sep 2024):** the pages I opened had no dated AI predictions. The Goldman Sachs page only links to a transcript, which I didn't read.\n- **BG2 podcast (Oct 2024):** I couldn't find a transcript, so I have no quotes from it.\n- **Robotics claim:** a news piece says he expected big gains in \"human robotics\" within five years. It comes from a January 2025 interview, so it belongs under other years.\n\nI used 10 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2024-03-19\", \"quote\": \"If we specified AGI to be something very specific, a set of tests where a software program can do very well — or maybe 8% better than most people — I believe we will get there within 5 years,\", \"what_is_predicted\": \"If AGI is defined as doing very well on a specific set of tests (bar exam, logic, economics, pre-med exams), AI will get there within five years.\", \"date_or_span\": \"within 5 years (c. 2029)\", \"occasion\": \"Press Q&A at Nvidia GTC 2024, San Jose\", \"source_url\": \"https://techcrunch.com/2024/03/19/agi-and-hallucinations/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml\"},\n    {\"date_said\": \"2024-03\", \"quote\": \"In five years from now, you're probably right in the middle where everything is changing in real-time, and everybody's going, 'Oh, look at that, this is happening.' And so I would say that within the next five to ten years, somewhere in between, it's largely the case.\", \"what_is_predicted\": \"Fully AI-generated video games will largely be a reality within five to ten years.\", \"date_or_span\": \"next five to ten years (c. 2029-2034)\", \"occasion\": \"Panel at Nvidia GPU Technology Conference (GTC) 2024, answering how long until an AI-generated game is released\", \"source_url\": \"https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Entrepreneur search result: Cleo Abram 'Huge Conversations' interview recorded 2025-01-07, said to forecast big gains in 'human robotics' within five years; page not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results: Bg2 podcast with Gerstner and Clark Tang (fall 2025, singjupost transcript) and Financial Times remark that China is likely to win the AI race; not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Search results: Lex Fridman podcast #494 ('I think we've achieved AGI'), CBS remark that there is '0% chance' AI destroys the world by 2030, and G20 coverage that the world will reach AGI within two years; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2024\", \"what_found\": \"CNBC 'AI computing ramp' (business), SIEPR Stanford summit article, SIGGRAPH coverage, Yahoo piece on passing every test in five years.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Many reports of the March 2024 claim that AGI is five years away (GTC Q&A and SIEPR), plus 2026 Lex Fridman coverage.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"HotHardware report of the GTC 2024 games prediction (five to ten years); the rest is mostly 2025-2026 capex and AI-doom coverage.\"},\n    {\"query_or_url\": \"Jensen Huang Bg2 podcast Brad Gerstner October 2024 transcript\", \"what_found\": \"Episode listings for Bg2 Ep17 (2024-10-13); the only transcript found is for the 2025 episode.\"},\n    {\"query_or_url\": \"Jensen Huang World Government Summit Dubai 2024 AI years\", \"what_found\": \"Nvidia blog and coverage of the Feb 2024 sovereign-AI remarks; a $2 trillion data-centre spending forecast (business, excluded).\"},\n    {\"query_or_url\": \"Jensen Huang Dreamforce 2024 Benioff agents robots transcript\", \"what_found\": \"Coverage of the Sept 2024 Dreamforce appearance about agents; no dated prediction seen.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" Bg2 2024 transcript \\\"Clark Tang\\\" agents\", \"what_found\": \"Apple/Spotify/dexa listings for Ep17; no accessible 2024 transcript.\"},\n    {\"query_or_url\": \"Jensen Huang HKUST November 2024 honorary doctorate AI years\", \"what_found\": \"HKUST story on the 2024-11-23 fireside chat with Harry Shum.\"},\n    {\"query_or_url\": \"Jensen Huang Goldman Sachs Communacopia September 2024 transcript\", \"what_found\": \"Goldman Sachs Talks at GS page (recorded 2024-09-11) and a Seeking Alpha transcript listing.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" Bg2 October 2024 transcript \\\"Brad Gerstner\\\" \\\"Jensen Huang:\\\"\", \"what_found\": \"Listings and secondary summaries only; no transcript page.\"},\n    {\"query_or_url\": \"https://techcrunch.com/2024/03/19/agi-and-hallucinations/\", \"what_found\": \"Opened; carries the quoted GTC press Q&A line on AGI-as-tests within 5 years.\"},\n    {\"query_or_url\": \"https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade\", \"what_found\": \"Opened; carries the quoted five-to-ten-year AI-games line from a GTC panel; page shows no date.\"},\n    {\"query_or_url\": \"https://hkust.edu.hk/news/quips-chips-dr-jensen-huang-spots-world-ai\", \"what_found\": \"Opened; 2024-11-23 chat with the 'several years away' trustworthy-answers line (undated span, not AGI, so excluded).\"},\n    {\"query_or_url\": \"https://www.goldmansachs.com/insights/talks-at-gs/jensen-huang\", \"what_found\": \"Opened; episode summary only, transcript is a download link; no prediction text.\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/world-governments-summit/\", \"what_found\": \"Opened; Nvidia blog on the Feb 2024 Dubai talk; no dated AI prediction by Huang (the 2030 figure is PwC's).\"},\n    {\"query_or_url\": \"https://siepr.stanford.edu/news/nvidias-jensen-huang-incredible-future-ai\", \"what_found\": \"Opened; reporter's paraphrase of the recorded five-year claim, plus a paraphrased 'about 10 years' million-times computing remark (not his words, about computing power, excluded).\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2024 Huang's dated AI predictions were mostly the five-year 'AI passes human tests / AGI by some definitions' claim, made at SIEPR on 1 March and repeated at the GTC press Q&A on 19 March. A second GTC remark put largely AI-generated games five to ten years out. Both new items rest only on news reports; I found no transcripts for GTC, Bg2 or Goldman Sachs.\"\n}\n```"
+}

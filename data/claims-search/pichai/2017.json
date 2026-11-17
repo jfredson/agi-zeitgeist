@@ -1,0 +1,308 @@
+{
+  "speaker_id": "pichai",
+  "year": 2017,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6892,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7628
+      },
+      "cache_creation_input_tokens": 69862,
+      "cache_read_input_tokens": 417442,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 6812,
+      "output_tokens_details": {
+        "thinking_tokens": 1833
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 4,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Sundar Pichai\" AI prediction 2017','\"Sundar Pichai\" 2017 interview AGI \"years\"','\"Sundar Pichai\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" AI prediction 2017"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=300):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:n].replace('\\n',' '))\nfor q in qs:\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2017 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sundar Pichai 2016 Founders Letter Alphabet April 2017 \"AI first\"','Google I/O 2017 keynote transcript Sundar Pichai','Sundar Pichai \"Making AI work for everyone\" blog 2017']:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q],400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai 2016 Founders Letter Alphabet April 2017 \"AI first\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Google I/O 2017 keynote transcript Sundar Pichai"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai \"Making AI work for everyone\" blog 2017"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://singjupost.com/google-ceo-sundar-pichais-keynote-at-2017-io-conference-full-transcript/?singlepage=1','https://blog.google/technology/ai/making-ai-work-for-everyone/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; P[u]=c; print(u,len(c))\ndef grep(c,pats,w=300):\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            print('['+p+']',c[max(0,m.start()-w):m.end()+w].replace('\\n',' ')); print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/google-ceo-sundar-pichais-keynote-at-2017-io-conference-full-transcript/?singlepage=1"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/technology/ai/making-ai-work-for-everyone/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sundar Pichai interview 2017 Verge AutoML \"five years\"','Sundar Pichai Alphabet earnings call 2017 transcript machine learning','Sundar Pichai Wuzhen World Internet Conference December 2017 AI']:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q],300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai interview 2017 Verge AutoML \"five years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai Alphabet earnings call 2017 transcript machine learning"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai Wuzhen World Internet Conference December 2017 AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Alphabet 2016 Founders\\' Letter Larry Page Sundar Pichai April 2017','Sundar Pichai 2017 interview AI \"years from now\"']:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q],300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Alphabet 2016 Founders' Letter Larry Page Sundar Pichai April 2017"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai 2017 interview AI \"years from now\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.fool.com/earnings/call-transcripts/2017/10/30/alphabet-inc-goog-googl-q3-2017-earnings-conferenc.aspx','https://www.roic.ai/quote/MUN-ABEC/transcripts/2017-year/2-quarter']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content',{})\n        c=c.get('source',{}).get('data','') if isinstance(c,dict) else str(c)\n        if not c: print(u,'ERR',str(r)[:200]); continue\n    else: c=r[0]['content']\n    P[u]=c; print(u,len(c))\n    grep(c,[r'\\byears?\\b',r'next year',r'decade',r'by 20\\d\\d',r'AGI|general intelligence'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2017/10/30/alphabet-inc-goog-googl-q3-2017-earnings-conferenc.aspx"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.roic.ai/quote/MUN-ABEC/transcripts/2017-year/2-quarter"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=P['https://www.fool.com/earnings/call-transcripts/2017/10/30/alphabet-inc-goog-googl-q3-2017-earnings-conferenc.aspx']\ni=c.find('Sundar Pichai** --'); print(i, c.count('Sundar Pichai'))\ngrep(c,[r'over the next|in the coming|next few years|five years|10 years|ten years|by the end of'],200)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sundar Pichai 2017 \"next five years\" OR \"next 10 years\" artificial intelligence said']:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q],400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai 2017 \"next five years\" OR \"next 10 years\" artificial intelligence said"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Sundar Pichai 2017 Q&A interview transcript AI machine learning \"Pichai:\"'\nR[q]=await web_search({\"query\":q}); show(R[q],300)"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2017-05-17",
+        "quote": "We hope AutoML will take an ability that a few PhDs have today and will make it possible in three to five years for hundreds of thousands of developers to design new neural nets for their particular needs.",
+        "what_is_predicted": "Google hopes that within three to five years AutoML will let hundreds of thousands of developers, not just a few PhDs, design neural networks for their own needs.",
+        "date_or_span": "three to five years from May 2017 (roughly 2020-2022)",
+        "occasion": "Pichai's Google blog post 'Making AI work for everyone', published the day of the Google I/O 2017 keynote",
+        "source_url": "https://blog.google/technology/ai/making-ai-work-for-everyone/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2016",
+        "note": "Search snippets (BuzzFeed, Forbes, CNBC; pages not opened) attribute 'We will move from mobile first to an AI first world' to Pichai's April 2016 founders' letter. It has no date or time span."
+      },
+      {
+        "year": "2025",
+        "note": "Search snippets of the Lex Fridman podcast #471 transcript (lexfridman.com; not opened) suggest Pichai talked about the 20-year AGI timeline DeepMind set when it was founded in 2010 and said 'we will just fall short of that timeline'. Not verified."
+      },
+      {
+        "year": "2023",
+        "note": "CBS 60 Minutes transcript snippet (not opened): Pichai on a '10-year outlook' for 'some form of very capable intelligence'. Not verified."
+      },
+      {
+        "year": "2026",
+        "note": "News snippets (ANI and others; not opened) report Pichai's IIT Kharagpur 75th-anniversary message saying AI moves into everyday work over the next five years. Not verified."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sundar Pichai\" AI prediction 2017",
+        "what_found": "Mostly coverage of the 2017 I/O 'AI-first' theme and later-year predictions; no dated 2017 prediction in the snippets."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2017 interview AGI \"years\"",
+        "what_found": "Results were 2025 material (Lex Fridman podcast, 'AJI' coverage) looking back on 2017; nothing said in 2017."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Results were 2023-2026 interviews (Semafor, Cheeky Pint, CMSWire); nothing from 2017."
+      },
+      {
+        "query_or_url": "Sundar Pichai 2016 Founders Letter Alphabet April 2017 \"AI first\"",
+        "what_found": "Showed that Pichai's founders' letter was April 2016 (the other year), not 2017."
+      },
+      {
+        "query_or_url": "Google I/O 2017 keynote transcript Sundar Pichai",
+        "what_found": "Found the Singju Post full transcript of the 17 May 2017 keynote."
+      },
+      {
+        "query_or_url": "Sundar Pichai \"Making AI work for everyone\" blog 2017",
+        "what_found": "Found Pichai's 17 May 2017 Google blog post."
+      },
+      {
+        "query_or_url": "https://singjupost.com/google-ceo-sundar-pichais-keynote-at-2017-io-conference-full-transcript/?singlepage=1",
+        "what_found": "Opened; the page was cut off partway through the event. In Pichai's opening section I read, the only forward-looking line was an undated one about AI inventing new molecules."
+      },
+      {
+        "query_or_url": "https://blog.google/technology/ai/making-ai-work-for-everyone/",
+        "what_found": "Opened; holds the AutoML 'three to five years' prediction in Pichai's own words."
+      },
+      {
+        "query_or_url": "Sundar Pichai interview 2017 Verge AutoML \"five years\"",
+        "what_found": "No 2017 interview text, only later-year coverage and the I/O transcript again."
+      },
+      {
+        "query_or_url": "Sundar Pichai Alphabet earnings call 2017 transcript machine learning",
+        "what_found": "Listed transcripts for the Q2 and Q3 2017 calls (roic.ai, fool.com, Seeking Alpha)."
+      },
+      {
+        "query_or_url": "Sundar Pichai Wuzhen World Internet Conference December 2017 AI",
+        "what_found": "Only news reports that Pichai spoke at Wuzhen on 3 Dec 2017; none of his words."
+      },
+      {
+        "query_or_url": "Alphabet 2016 Founders' Letter Larry Page Sundar Pichai April 2017",
+        "what_found": "The April 2017 founders' letter was written by Larry Page, not Pichai."
+      },
+      {
+        "query_or_url": "Sundar Pichai 2017 interview AI \"years from now\"",
+        "what_found": "Only later-year material (60 Minutes 2023, All-In, quantum computing); nothing from 2017."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2017/10/30/alphabet-inc-goog-googl-q3-2017-earnings-conferenc.aspx",
+        "what_found": "Opened; it had only the finance chief's remarks, not Pichai's."
+      },
+      {
+        "query_or_url": "https://www.roic.ai/quote/MUN-ABEC/transcripts/2017-year/2-quarter",
+        "what_found": "Would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "Sundar Pichai 2017 \"next five years\" OR \"next 10 years\" artificial intelligence said",
+        "what_found": "Only 2023 and 2026 coverage; nothing from 2017."
+      },
+      {
+        "query_or_url": "Sundar Pichai 2017 Q&A interview transcript AI machine learning \"Pichai:\"",
+        "what_found": "Not run: the search allowance had run out."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2017 Pichai's AI message was mostly the shift from 'mobile-first' to 'AI-first' at Google I/O, with few dated forecasts. The one dated prediction found is in his 17 May 2017 blog post: a hope that AutoML would let hundreds of thousands of developers design neural networks in three to five years. His 2017 earnings-call remarks and the Wuzhen speech in December could not be checked from his own words."
+  },
+  "reply_text": "I found one dated AI prediction by Sundar Pichai from 2017. It's in his own post on Google's blog on 17 May 2017, the day of the Google I/O keynote. He wrote that Google hopes AutoML will let \"hundreds of thousands of developers\" design their own neural networks \"in three to five years\". It's worded as a hope, not a firm forecast, which is worth knowing when you weigh it. Nothing from 2017 was already on your recorded list.\n\n- **The I/O 2017 keynote (Singju Post transcript):** the page opened, but it was cut off partway through the event. In the part I could read, Pichai gave no other dated forecast. His one other forward-looking line, \"I'm entirely confident one day AI will invent new molecules…\", has no date and isn't about AGI, so I left it out. The line about adding Italian, Spanish and Korean to the Assistant by the end of the year was said by Scott Huffman, not Pichai.\n- **Earnings calls:** the Q3 2017 transcript on fool.com opened but only had the finance chief's remarks, not Pichai's. The Q2 2017 transcript on roic.ai would not open. Pichai's 2017 earnings-call remarks are therefore not checked.\n- **The founders' letter:** the one released in April 2017 was written by Larry Page, not Pichai, so it doesn't count.\n- **Search budget:** my code crashed during the first fixed search, and I then ran fixed searches 2 and 3 separately. All three fixed searches ran once each. The search allowance ran out before my last search ran, so it is listed with \"not run\" below.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2017-05-17\",\n      \"quote\": \"We hope AutoML will take an ability that a few PhDs have today and will make it possible in three to five years for hundreds of thousands of developers to design new neural nets for their particular needs.\",\n      \"what_is_predicted\": \"Google hopes that within three to five years AutoML will let hundreds of thousands of developers, not just a few PhDs, design neural networks for their own needs.\",\n      \"date_or_span\": \"three to five years from May 2017 (roughly 2020-2022)\",\n      \"occasion\": \"Pichai's Google blog post 'Making AI work for everyone', published the day of the Google I/O 2017 keynote\",\n      \"source_url\": \"https://blog.google/technology/ai/making-ai-work-for-everyone/\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2016\", \"note\": \"Search snippets (BuzzFeed, Forbes, CNBC; pages not opened) attribute 'We will move from mobile first to an AI first world' to Pichai's April 2016 founders' letter. It has no date or time span.\"},\n    {\"year\": \"2025\", \"note\": \"Search snippets of the Lex Fridman podcast #471 transcript (lexfridman.com; not opened) suggest Pichai talked about the 20-year AGI timeline DeepMind set when it was founded in 2010 and said 'we will just fall short of that timeline'. Not verified.\"},\n    {\"year\": \"2023\", \"note\": \"CBS 60 Minutes transcript snippet (not opened): Pichai on a '10-year outlook' for 'some form of very capable intelligence'. Not verified.\"},\n    {\"year\": \"2026\", \"note\": \"News snippets (ANI and others; not opened) report Pichai's IIT Kharagpur 75th-anniversary message saying AI moves into everyday work over the next five years. Not verified.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" AI prediction 2017\", \"what_found\": \"Mostly coverage of the 2017 I/O 'AI-first' theme and later-year predictions; no dated 2017 prediction in the snippets.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2017 interview AGI \\\"years\\\"\", \"what_found\": \"Results were 2025 material (Lex Fridman podcast, 'AJI' coverage) looking back on 2017; nothing said in 2017.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2017 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Results were 2023-2026 interviews (Semafor, Cheeky Pint, CMSWire); nothing from 2017.\"},\n    {\"query_or_url\": \"Sundar Pichai 2016 Founders Letter Alphabet April 2017 \\\"AI first\\\"\", \"what_found\": \"Showed that Pichai's founders' letter was April 2016 (the other year), not 2017.\"},\n    {\"query_or_url\": \"Google I/O 2017 keynote transcript Sundar Pichai\", \"what_found\": \"Found the Singju Post full transcript of the 17 May 2017 keynote.\"},\n    {\"query_or_url\": \"Sundar Pichai \\\"Making AI work for everyone\\\" blog 2017\", \"what_found\": \"Found Pichai's 17 May 2017 Google blog post.\"},\n    {\"query_or_url\": \"https://singjupost.com/google-ceo-sundar-pichais-keynote-at-2017-io-conference-full-transcript/?singlepage=1\", \"what_found\": \"Opened; the page was cut off partway through the event. In Pichai's opening section I read, the only forward-looking line was an undated one about AI inventing new molecules.\"},\n    {\"query_or_url\": \"https://blog.google/technology/ai/making-ai-work-for-everyone/\", \"what_found\": \"Opened; holds the AutoML 'three to five years' prediction in Pichai's own words.\"},\n    {\"query_or_url\": \"Sundar Pichai interview 2017 Verge AutoML \\\"five years\\\"\", \"what_found\": \"No 2017 interview text, only later-year coverage and the I/O transcript again.\"},\n    {\"query_or_url\": \"Sundar Pichai Alphabet earnings call 2017 transcript machine learning\", \"what_found\": \"Listed transcripts for the Q2 and Q3 2017 calls (roic.ai, fool.com, Seeking Alpha).\"},\n    {\"query_or_url\": \"Sundar Pichai Wuzhen World Internet Conference December 2017 AI\", \"what_found\": \"Only news reports that Pichai spoke at Wuzhen on 3 Dec 2017; none of his words.\"},\n    {\"query_or_url\": \"Alphabet 2016 Founders' Letter Larry Page Sundar Pichai April 2017\", \"what_found\": \"The April 2017 founders' letter was written by Larry Page, not Pichai.\"},\n    {\"query_or_url\": \"Sundar Pichai 2017 interview AI \\\"years from now\\\"\", \"what_found\": \"Only later-year material (60 Minutes 2023, All-In, quantum computing); nothing from 2017.\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2017/10/30/alphabet-inc-goog-googl-q3-2017-earnings-conferenc.aspx\", \"what_found\": \"Opened; it had only the finance chief's remarks, not Pichai's.\"},\n    {\"query_or_url\": \"https://www.roic.ai/quote/MUN-ABEC/transcripts/2017-year/2-quarter\", \"what_found\": \"Would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"Sundar Pichai 2017 \\\"next five years\\\" OR \\\"next 10 years\\\" artificial intelligence said\", \"what_found\": \"Only 2023 and 2026 coverage; nothing from 2017.\"},\n    {\"query_or_url\": \"Sundar Pichai 2017 Q&A interview transcript AI machine learning \\\"Pichai:\\\"\", \"what_found\": \"Not run: the search allowance had run out.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2017 Pichai's AI message was mostly the shift from 'mobile-first' to 'AI-first' at Google I/O, with few dated forecasts. The one dated prediction found is in his 17 May 2017 blog post: a hope that AutoML would let hundreds of thousands of developers design neural networks in three to five years. His 2017 earnings-call remarks and the Wuzhen speech in December could not be checked from his own words.\"\n}\n```"
+}

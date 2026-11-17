@@ -1,0 +1,25 @@
+[claim]
+id = "2020-12-01-musk-full-autonomy-released-next-year"
+speaker_id = "musk"
+when = "2020-12-01"
+when_note = "Axel Springer's own video of the award evening is dated 2020-12-01, and the transcript page says the award was presented that day."
+occasion = "Axel Springer Award 2020 interview with Mathias Döpfner, Berlin"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=AF2HXId2Xhg"
+source_locator = "about 22:48 into Axel Springer's video"
+checked_how = "Read in the automatic captions of Axel Springer's own upload of the award evening (dated 2020-12-01) on 2026-11-17 (yt-dlp) and compared with the fan-made transcript where the words were first found (https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/). Nobody listened. The captions carry the same words with his 'uh's and a repeated 'I'm'."
+quote = "I'm extremely confident of achieving full autonomy and releasing it to the Tesla customer base next year."
+prediction = "Tesla will achieve full autonomy and release it to its customers in 2021. He adds that how long regulatory approval takes is uncertain."
+kind = "capability"
+bar = "Tesla achieving full autonomy, a car that drives itself with no human needed, and releasing it to its customers by the end of 2021. He sets regulatory approval apart as taking an uncertain time, so the test is the release, not the approval."
+due = 2021
+due_basis = "'next year', said 2020-12-01; judged at the end of 2021."
+restates = "2020-07-09-musk-level-5-basic-functionality-this-year"
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "Nothing of the kind was released to customers in 2021. Tesla's own earnings call of 2026-01-28 says the first paid rides with no safety monitor in the car had just happened, in Austin only, in Tesla's own robotaxis. Full autonomy for customers' cars has not come."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-042", "musk-claims-016", "musk-claims-050"]
+notes = "Role at the time: chief executive of Tesla (counted by my ruling of 2026-10-19), Tesla then counting as a company building frontier AI; he had left OpenAI's board in February 2018 and founded xAI only in 2023. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. The search described the question as being about level 5 autonomy; the test here uses only his words."

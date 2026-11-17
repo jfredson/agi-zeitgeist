@@ -1,0 +1,374 @@
+{
+  "speaker_id": "huang",
+  "year": 2017,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6679,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7614
+      },
+      "cache_creation_input_tokens": 55790,
+      "cache_read_input_tokens": 464754,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 8793,
+      "output_tokens_details": {
+        "thinking_tokens": 1914
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Jensen Huang\" AI prediction 2017','\"Jensen Huang\" 2017 interview AGI \"years\"','\"Jensen Huang\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2017"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nr=R[qs[0]]\nprint(type(r)); print(str(r)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2017 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jensen Huang CES 2017 keynote Audi level 4 2020','Jensen Huang GTC 2017 keynote transcript','Jensen Huang Fortune businessperson of the year 2017 interview','Jensen Huang GTC Europe 2017 Pegasus robotaxi level 5']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang CES 2017 keynote Audi level 4 2020"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC 2017 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Fortune businessperson of the year 2017 interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC Europe 2017 Pegasus robotaxi level 5"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://blogs.nvidia.com/blog/2017/01/04/live-nvidia-ces-2017-keynote/','https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/','https://finance.yahoo.com/news/man-leading-ai-revolution-silicon-113033123.html']:\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str): f=json.loads(f)\n    if isinstance(f,list): f=f[0]\n    R[u]=f.get('content','') if 'content' in f else str(f)\n    print(u,len(R[u]),R[u][:200])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/2017/01/04/live-nvidia-ces-2017-keynote/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://blogs.nvidia.com/blog/2017/01/04/live-nvidia-ces-2017-keynote/'\nprint(type(R[u])); print(str(R[u])[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={}\nT[u]=R[u]['source']['data']\nimport re\nt=T[u]; print(len(t))\nfor k in ['2020','three years','year','Level 4','future']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-250):m.end()+150].replace('\\n',' ')); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jensen Huang 2017 MIT Technology Review interview \"software is eating the world\" AI','Jensen Huang Computex 2017 keynote AI autonomous','Jensen Huang 2017 interview \"in 10 years\" OR \"ten years\" AI robots cars','Jensen Huang GTC China 2017 keynote AI']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang 2017 MIT Technology Review interview \"software is eating the world\" AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Computex 2017 keynote AI autonomous"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang 2017 interview \"in 10 years\" OR \"ten years\" AI robots cars"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC China 2017 keynote AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def op(u):\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str):\n        try: f=json.loads(f)\n        except: T[u]=f; return\n    if isinstance(f,list): f=f[0]\n    c=f.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    if c is None: c=str(f)\n    T[u]=c if isinstance(c,str) else str(c)\nfor u in ['https://www.technologyreview.com/2017/05/12/151722/nvidia-ceo-software-is-eating-the-world-but-ai-is-going-to-eat-software/','https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/','https://finance.yahoo.com/news/man-leading-ai-revolution-silicon-113033123.html']:\n    await op(u); print(u,len(T[u]),T[u][:150])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2017/05/12/151722/nvidia-ceo-software-is-eating-the-world-but-ai-is-going-to-eat-software/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://finance.yahoo.com/news/man-leading-ai-revolution-silicon-113033123.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://www.technologyreview.com/2017/05/12/151722/nvidia-ceo-software-is-eating-the-world-but-ai-is-going-to-eat-software/']\ni=t.find('Jensen Huang pred'); print(t[i:i+9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/']\nfor k in ['2020','years','decade','next year','this year','future']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-300):m.end()+150].replace('\\n',' ')); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['Audi','three years','Level 4','level four']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-300):m.end()+300].replace('\\n',' ')); print()\ni=t.find('in the next year');print(t[i-1200:i+600])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://finance.yahoo.com/news/man-leading-ai-revolution-silicon-113033123.html']\ni=t.find('Businessperson'); \nfor k in ['years','decade','20[0-9][0-9]','will be','going to']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-250):m.end()+150].replace('\\n',' ')); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Jensen Huang\" 2017 robotaxis \"fully autonomous\" \"four years\" OR \"2021\" OR \"2020\" said'\nR[q]=await web_search({\"query\":q}); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2017 robotaxis \"fully autonomous\" \"four years\" OR \"2021\" OR \"2020\" said"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in json.loads(R[q])[:5]:\n    c=x['content']; print('##',x['url'],len(c))\n    for m in re.finditer('year|202',c): print('  ',c[max(0,m.start()-200):m.end()+100].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx','https://www.nextbigfuture.com/2017/10/nvidia-ai-and-multi-petaops-chips-for-class-5-automated-cars-within-4-years.html']:\n    await op(u); t=T[u]; print('##',u,len(t))\n    for k in ['road map for growth from driverless','It will take no more']:\n        i=t.find(k)\n        if i>=0: print(t[i-600:i+1800])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nextbigfuture.com/2017/10/nvidia-ai-and-multi-petaops-chips-for-class-5-automated-cars-within-4-years.html"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2017-01-04",
+        "quote": "GPU deep learning has made it possible for us to finally imagine realizing this vision in the next year. We can realize this vision right now.",
+        "what_is_predicted": "AI-driven self-driving cars, the car as 'your most personal robot', could be realized within the next year.",
+        "date_or_span": "the next year (2018)",
+        "occasion": "CES 2017 opening keynote, Las Vegas",
+        "source_url": "https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-08",
+        "quote": "Starting next year, you're going to start to see robot taxis start to come to the road. We're working with a handful, maybe, I guess, about six or seven really exciting robot taxi projects around the world. And you could see them start to go into prototype or beta testing starting now. And then, next year, you'll see a lot more of them. And starting 2019, you'll see them going to real commercial services. And so those are robot taxis, what some in the industry call Level 5s, basically driverless cars.",
+        "what_is_predicted": "Driverless robot taxis come to the road in 2018 and go into real commercial service starting in 2019.",
+        "date_or_span": "2018 / starting 2019",
+        "occasion": "Nvidia Q2 FY2018 earnings call (August 2017), as quoted by The Motley Fool on 2017-08-20",
+        "source_url": "https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-08",
+        "quote": "And then the fully autonomous ... branded cars will start hitting ... around 2020 and 2021, OK?",
+        "what_is_predicted": "Fully autonomous branded cars will start reaching the road around 2020 and 2021.",
+        "date_or_span": "around 2020 and 2021",
+        "occasion": "Nvidia Q2 FY2018 earnings call (August 2017), as quoted, with the article's ellipses, by The Motley Fool",
+        "source_url": "https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-10-26",
+        "quote": "It will take no more than 4 years to have fully autonomous cars on the road. How long it takes for the vast majority of cars on the road to become that, it really just depends,",
+        "what_is_predicted": "Fully autonomous cars will be on the road within four years.",
+        "date_or_span": "no more than 4 years (by about 2021)",
+        "occasion": "Remarks to media after an Nvidia event in Taipei (GTC Taiwan), reported by Reuters",
+        "source_url": "https://www.nextbigfuture.com/2017/10/nvidia-ai-and-multi-petaops-chips-for-class-5-automated-cars-within-4-years.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "Search results (TechCrunch, TechPowerUp, Motley Fool) reported Huang saying AGI or human-rival AI was about five years away, including at the NYT DealBook summit on 2023-11-29; seen in snippets only, not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results showed later statements, e.g. AI creating more millionaires in 5 years, and a 2025 CNBC piece on an old radiologist prediction; seen in snippets only."
+      },
+      {
+        "year": "2026",
+        "note": "Search results showed later statements, e.g. '0% chance' AI destroys the world by 2030 (CBS), 'I think we've achieved AGI' (Lex Fridman), and the world reaching AGI 'within two years' (G20); seen in snippets only."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2017",
+        "what_found": "Mostly 2025-2026 news; one Axios item on the 2017 Fortune Businessperson of the Year award."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2017 interview AGI \"years\"",
+        "what_found": "Only later AGI statements (2023 five-years remark, 2026 'achieved AGI'); nothing from 2017."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2025-2026 items (2030 doom remarks, data-centre spending); nothing from 2017."
+      },
+      {
+        "query_or_url": "Jensen Huang CES 2017 keynote Audi level 4 2020",
+        "what_found": "Nvidia live blog, Singju Post transcript and press coverage of the Audi Level 4 by 2020 announcement."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC 2017 keynote transcript",
+        "what_found": "Video listings for GTC 2017, Taiwan and Japan keynotes; no 2017 text transcript found."
+      },
+      {
+        "query_or_url": "Jensen Huang Fortune businessperson of the year 2017 interview",
+        "what_found": "Fortune's 2017-11-16 profile by Andrew Nusca, reposted on Yahoo Finance."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC Europe 2017 Pegasus robotaxi level 5",
+        "what_found": "Coverage of the October 2017 Drive PX Pegasus announcement for Level 5 robotaxis; product news with no dated quote seen."
+      },
+      {
+        "query_or_url": "Jensen Huang 2017 MIT Technology Review interview \"software is eating the world\" AI",
+        "what_found": "The 2017-05-12 MIT Technology Review Q&A by Tom Simonite."
+      },
+      {
+        "query_or_url": "Jensen Huang Computex 2017 keynote AI autonomous",
+        "what_found": "Computex 2017 keynote slides and recaps; no dated prediction seen."
+      },
+      {
+        "query_or_url": "Jensen Huang 2017 interview \"in 10 years\" OR \"ten years\" AI robots cars",
+        "what_found": "Mostly 2025-2026 items; the MIT Technology Review 2017 Q&A again."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC China 2017 keynote AI",
+        "what_found": "Video links for the GTC China 2017 keynote; no text."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2017 robotaxis \"fully autonomous\" \"four years\" OR \"2021\" OR \"2020\" said",
+        "what_found": "Coverage of the Aug 2017 call (Motley Fool), the Oct 26 2017 Taipei remark (Reuters via TNW, HotHardware, NextBigFuture) and the Nov 9 2017 call (VentureBeat)."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/2017/01/04/live-nvidia-ces-2017-keynote/",
+        "what_found": "Nvidia live blog of CES 2017; 'cars on the road by 2020' is the blogger's paraphrase, not a direct quote (matches the already-recorded Audi claim)."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2017/05/12/151722/nvidia-ceo-software-is-eating-the-world-but-ai-is-going-to-eat-software/",
+        "what_found": "Q&A in his own words; 'AI is going to eat software' has no date; on full driverless autonomy he said 'I'm not exactly sure'; the 'couple of decades' line is about chips, so excluded."
+      },
+      {
+        "query_or_url": "https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/",
+        "what_found": "CES 2017 transcript (first page only, Audi section not included) with the 'in the next year' self-driving remark."
+      },
+      {
+        "query_or_url": "https://finance.yahoo.com/news/man-leading-ai-revolution-silicon-113033123.html",
+        "what_found": "Fortune 2017 profile, cut off in the fetch; no dated AI prediction seen."
+      },
+      {
+        "query_or_url": "https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx",
+        "what_found": "Motley Fool excerpts of Huang on the August 2017 earnings call: robotaxis in commercial service starting 2019, branded fully autonomous cars around 2020-2021."
+      },
+      {
+        "query_or_url": "https://www.nextbigfuture.com/2017/10/nvidia-ai-and-multi-petaops-chips-for-class-5-automated-cars-within-4-years.html",
+        "what_found": "Repost of Reuters quoting Huang in Taipei: 'no more than 4 years to have fully autonomous cars on the road'."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2017 Huang's dated forecasts were all about AI-driven autonomous cars: the CES keynote ('in the next year'), the August earnings call (robotaxis in service from 2019, fully autonomous branded cars around 2020-2021) and Taipei in October ('no more than 4 years'). No 2017 statement about AGI timing was found. A VentureBeat report of the 2017-11-09 earnings call showed a similar next-year, robotaxi, then self-driving-car timeline, but it was seen only in a search snippet and is not listed."
+  },
+  "reply_text": "I found four dated predictions from Jensen Huang in 2017. All of them are about self-driving cars, and none is about AGI. The Audi \"on the road by 2020\" claim you already have shows up only as the blogger's paraphrase on Nvidia's live blog, so it adds no new quote.\n\n- **CES keynote, 4 January (transcript):** he said deep learning made it possible to \"imagine realizing this vision in the next year\". The vision was the car as \"your most personal robot\". This is a separate claim from the recorded Audi one. The Singju Post page I opened seems to hold only the first part of the transcript and doesn't include the Audi section.\n- **Earnings call, August (news report only):** he gave a timeline: robot taxis in commercial service \"starting 2019\", and fully autonomous branded cars around 2020–2021. I saw these words only as excerpts in a Motley Fool article dated 20 August. I didn't open the official call transcript, so the exact day of the call isn't confirmed.\n- **Taipei, 26 October (news report only):** \"It will take no more than 4 years to have fully autonomous cars on the road.\" This comes from a NextBigFuture repost of a Reuters story.\n- **Not quoted:** a VentureBeat report of the 9 November earnings call (\"Next year … Year after that, robot taxis …\") turned up only in a search snippet. I didn't open it, so it isn't listed as a candidate. It's the best page to open next.\n\nThe MIT Technology Review interview from May (\"AI is going to eat software\") had no date in it. Its \"couple of decades\" line is about chip performance, so I left it out. The Fortune profile I opened was cut off and had no forecasts in it.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2017-01-04\", \"quote\": \"GPU deep learning has made it possible for us to finally imagine realizing this vision in the next year. We can realize this vision right now.\", \"what_is_predicted\": \"AI-driven self-driving cars, the car as 'your most personal robot', could be realized within the next year.\", \"date_or_span\": \"the next year (2018)\", \"occasion\": \"CES 2017 opening keynote, Las Vegas\", \"source_url\": \"https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-08\", \"quote\": \"Starting next year, you're going to start to see robot taxis start to come to the road. We're working with a handful, maybe, I guess, about six or seven really exciting robot taxi projects around the world. And you could see them start to go into prototype or beta testing starting now. And then, next year, you'll see a lot more of them. And starting 2019, you'll see them going to real commercial services. And so those are robot taxis, what some in the industry call Level 5s, basically driverless cars.\", \"what_is_predicted\": \"Driverless robot taxis come to the road in 2018 and go into real commercial service starting in 2019.\", \"date_or_span\": \"2018 / starting 2019\", \"occasion\": \"Nvidia Q2 FY2018 earnings call (August 2017), as quoted by The Motley Fool on 2017-08-20\", \"source_url\": \"https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-08\", \"quote\": \"And then the fully autonomous ... branded cars will start hitting ... around 2020 and 2021, OK?\", \"what_is_predicted\": \"Fully autonomous branded cars will start reaching the road around 2020 and 2021.\", \"date_or_span\": \"around 2020 and 2021\", \"occasion\": \"Nvidia Q2 FY2018 earnings call (August 2017), as quoted, with the article's ellipses, by The Motley Fool\", \"source_url\": \"https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2017-10-26\", \"quote\": \"It will take no more than 4 years to have fully autonomous cars on the road. How long it takes for the vast majority of cars on the road to become that, it really just depends,\", \"what_is_predicted\": \"Fully autonomous cars will be on the road within four years.\", \"date_or_span\": \"no more than 4 years (by about 2021)\", \"occasion\": \"Remarks to media after an Nvidia event in Taipei (GTC Taiwan), reported by Reuters\", \"source_url\": \"https://www.nextbigfuture.com/2017/10/nvidia-ai-and-multi-petaops-chips-for-class-5-automated-cars-within-4-years.html\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"Search results (TechCrunch, TechPowerUp, Motley Fool) reported Huang saying AGI or human-rival AI was about five years away, including at the NYT DealBook summit on 2023-11-29; seen in snippets only, not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results showed later statements, e.g. AI creating more millionaires in 5 years, and a 2025 CNBC piece on an old radiologist prediction; seen in snippets only.\"},\n    {\"year\": \"2026\", \"note\": \"Search results showed later statements, e.g. '0% chance' AI destroys the world by 2030 (CBS), 'I think we've achieved AGI' (Lex Fridman), and the world reaching AGI 'within two years' (G20); seen in snippets only.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2017\", \"what_found\": \"Mostly 2025-2026 news; one Axios item on the 2017 Fortune Businessperson of the Year award.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2017 interview AGI \\\"years\\\"\", \"what_found\": \"Only later AGI statements (2023 five-years remark, 2026 'achieved AGI'); nothing from 2017.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2017 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2025-2026 items (2030 doom remarks, data-centre spending); nothing from 2017.\"},\n    {\"query_or_url\": \"Jensen Huang CES 2017 keynote Audi level 4 2020\", \"what_found\": \"Nvidia live blog, Singju Post transcript and press coverage of the Audi Level 4 by 2020 announcement.\"},\n    {\"query_or_url\": \"Jensen Huang GTC 2017 keynote transcript\", \"what_found\": \"Video listings for GTC 2017, Taiwan and Japan keynotes; no 2017 text transcript found.\"},\n    {\"query_or_url\": \"Jensen Huang Fortune businessperson of the year 2017 interview\", \"what_found\": \"Fortune's 2017-11-16 profile by Andrew Nusca, reposted on Yahoo Finance.\"},\n    {\"query_or_url\": \"Jensen Huang GTC Europe 2017 Pegasus robotaxi level 5\", \"what_found\": \"Coverage of the October 2017 Drive PX Pegasus announcement for Level 5 robotaxis; product news with no dated quote seen.\"},\n    {\"query_or_url\": \"Jensen Huang 2017 MIT Technology Review interview \\\"software is eating the world\\\" AI\", \"what_found\": \"The 2017-05-12 MIT Technology Review Q&A by Tom Simonite.\"},\n    {\"query_or_url\": \"Jensen Huang Computex 2017 keynote AI autonomous\", \"what_found\": \"Computex 2017 keynote slides and recaps; no dated prediction seen.\"},\n    {\"query_or_url\": \"Jensen Huang 2017 interview \\\"in 10 years\\\" OR \\\"ten years\\\" AI robots cars\", \"what_found\": \"Mostly 2025-2026 items; the MIT Technology Review 2017 Q&A again.\"},\n    {\"query_or_url\": \"Jensen Huang GTC China 2017 keynote AI\", \"what_found\": \"Video links for the GTC China 2017 keynote; no text.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2017 robotaxis \\\"fully autonomous\\\" \\\"four years\\\" OR \\\"2021\\\" OR \\\"2020\\\" said\", \"what_found\": \"Coverage of the Aug 2017 call (Motley Fool), the Oct 26 2017 Taipei remark (Reuters via TNW, HotHardware, NextBigFuture) and the Nov 9 2017 call (VentureBeat).\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/2017/01/04/live-nvidia-ces-2017-keynote/\", \"what_found\": \"Nvidia live blog of CES 2017; 'cars on the road by 2020' is the blogger's paraphrase, not a direct quote (matches the already-recorded Audi claim).\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2017/05/12/151722/nvidia-ceo-software-is-eating-the-world-but-ai-is-going-to-eat-software/\", \"what_found\": \"Q&A in his own words; 'AI is going to eat software' has no date; on full driverless autonomy he said 'I'm not exactly sure'; the 'couple of decades' line is about chips, so excluded.\"},\n    {\"query_or_url\": \"https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/\", \"what_found\": \"CES 2017 transcript (first page only, Audi section not included) with the 'in the next year' self-driving remark.\"},\n    {\"query_or_url\": \"https://finance.yahoo.com/news/man-leading-ai-revolution-silicon-113033123.html\", \"what_found\": \"Fortune 2017 profile, cut off in the fetch; no dated AI prediction seen.\"},\n    {\"query_or_url\": \"https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx\", \"what_found\": \"Motley Fool excerpts of Huang on the August 2017 earnings call: robotaxis in commercial service starting 2019, branded fully autonomous cars around 2020-2021.\"},\n    {\"query_or_url\": \"https://www.nextbigfuture.com/2017/10/nvidia-ai-and-multi-petaops-chips-for-class-5-automated-cars-within-4-years.html\", \"what_found\": \"Repost of Reuters quoting Huang in Taipei: 'no more than 4 years to have fully autonomous cars on the road'.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2017 Huang's dated forecasts were all about AI-driven autonomous cars: the CES keynote ('in the next year'), the August earnings call (robotaxis in service from 2019, fully autonomous branded cars around 2020-2021) and Taipei in October ('no more than 4 years'). No 2017 statement about AGI timing was found. A VentureBeat report of the 2017-11-09 earnings call showed a similar next-year, robotaxi, then self-driving-car timeline, but it was seen only in a search snippet and is not listed.\"\n}\n```"
+}

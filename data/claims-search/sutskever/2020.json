@@ -1,0 +1,322 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2020,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5085,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7624
+      },
+      "cache_creation_input_tokens": 39011,
+      "cache_read_input_tokens": 309827,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 8069,
+      "output_tokens_details": {
+        "thinking_tokens": 2412
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2020','\"Ilya Sutskever\" 2020 interview AGI \"years\"','\"Ilya Sutskever\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2020 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Ilya Sutskever \"The Batch\" 2021 hopes language and vision','Lex Fridman podcast 94 Ilya Sutskever transcript']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever \"The Batch\" 2021 hopes language and vision"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman podcast 94 Ilya Sutskever transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p1=await web_fetch({\"url\":\"https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision\"})\np2=await web_fetch({\"url\":\"https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-94-ilya-sutskever-deep-learning\"})\ndef getc(p):\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,dict): return 'ERR '+str(p)\n    return p[0].get('content','')\nc1=getc(p1); c2=getc(p2)\ni=c1.find('In 2021'); print(len(c1)); print(c1[max(0,i-1500):i+3000])\nprint(len(c2))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-94-ilya-sutskever-deep-learning"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nprint(re.findall(r'(?:Dec|Jan)[a-z]*\\.? \\d{1,2},? 20\\d\\d|20\\d\\d-\\d\\d-\\d\\d',c1)[:10])\nprint(c1[:800])\nfor kw in ['years','decade','2020','2025','2030','AGI','next','within','self-driving']:\n    for m in re.finditer(kw,c2):\n        print(kw,'::',c2[max(0,m.start()-250):m.start()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['next three months','unknown exactly','AGI','general intelligence','build AGI','soon','close']:\n    for m in re.finditer(kw,c2):\n        print(kw,'::',c2[max(0,m.start()-700):m.start()+500].replace('\\\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c2[-600:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p3=await web_fetch({\"url\":\"https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/94-ilya-sutskever-deep-learning\"})\nc3=getc(p3); print(len(c3)); print(c3[-400:])\nfor kw in ['three months','AGI','unknown exactly when','years','decade','self-driving']:\n    for m in re.finditer(kw,c3):\n        print(kw,'::',c3[max(0,m.start()-500):m.start()+400].replace('\\\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/94-ilya-sutskever-deep-learning"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p4=await web_fetch({\"url\":\"https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning\"})\nc4=getc(p4); print(len(c4)); print(c4[-300:])\nfor kw in ['three months','AGI','unknown exactly','self-driving is','within','years from now','next few years','in the future']:\n    for m in re.finditer(kw,c4):\n        print(kw,'::',c4[max(0,m.start()-600):m.start()+400].replace('\\\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Lex Fridman Ilya Sutskever \"how to build AGI\" self-play transcript 2020','\"Ilya Sutskever\" 2020 talk GPT-3 future','\"ilyasut\" tweet 2020 AI']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman Ilya Sutskever \"how to build AGI\" self-play transcript 2020"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2020 talk GPT-3 future"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"ilyasut\" tweet 2020 AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p5=await web_fetch({\"url\":\"https://transcript.lol/read/youtube/@lexfridman/6522f5af033150beacd17031\"})\nc5=getc(p5); print(len(c5)); print(c5[:400])\nfor kw in ['AGI','years','decade','three months','self-driving']:\n    for m in list(re.finditer(kw,c5))[:6]:\n        print(kw,'::',c5[max(0,m.start()-400):m.start()+300].replace('\\\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://transcript.lol/read/youtube/@lexfridman/6522f5af033150beacd17031"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c5.find('data'); print(c5[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Ilya Sutskever Lex Fridman transcript \"question to AGI\" \"meaning of life\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ilya Sutskever Lex Fridman transcript \"question to AGI\" \"meaning of life\""
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2020-12-30",
+        "quote": "I expect our models to continue to become more competent, so much so that the best models of 2021 will make the best models of 2020 look dull and simple-minded by comparison.",
+        "what_is_predicted": "The best AI models of 2021 will be far more capable than the best models of 2020.",
+        "date_or_span": "2021",
+        "occasion": "Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue",
+        "source_url": "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-12-30",
+        "quote": "In 2021, language models will start to become aware of the visual world.",
+        "what_is_predicted": "Language models will begin to handle images in 2021; the essay adds that the next generation will edit and generate images from text input.",
+        "date_or_span": "2021",
+        "occasion": "Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue",
+        "source_url": "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-12-30",
+        "quote": "This is an aspiration — it has yet to be proven — but I’m hopeful that we’ll see something like it in 2021.",
+        "what_is_predicted": "Models trained on both text and images will begin learning concepts in a more human-like way in 2021. He frames this as a hope, not a firm forecast.",
+        "date_or_span": "2021",
+        "occasion": "Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue",
+        "source_url": "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2020-05",
+        "quote": "So you know, you say today, true human level, language understanding and visual perception, are hard in the sense that there is no way of solving the problem completely in the next three months. So I agree with that statement.",
+        "what_is_predicted": "True human-level language understanding and visual perception will not be fully solved in the next three months.",
+        "date_or_span": "the next three months",
+        "occasion": "Lex Fridman Podcast #94 (May 2020), around 00:25:56",
+        "source_url": "https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "The fixed searches returned coverage of his Dwarkesh Patel interview (dwarkesh.com/p/ilya-sutskever-2), where he calls 2020-2025 the 'age of scaling' and gives a 5-to-20-year timeline. I did not open these pages."
+      },
+      {
+        "year": "2021",
+        "note": "A Scale AI video page, 'What's Next for AI Systems & Language Models With Ilya Sutskever' (learn.scale.com), has a page age that points to about late 2021. I did not open it."
+      },
+      {
+        "year": "2023",
+        "note": "A search result for a Dwarkesh Podcast page (dwarkesh.com/p/ilya-sutskever, 'Building AGI, Alignment, & Future Models', from his time as OpenAI chief scientist) mentioned a 'multi-year window'. I did not open it or confirm its date."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2020",
+        "what_found": "Only 2024-2025 coverage (NeurIPS 2024 talk, Dwarkesh 2025 interview); nothing from 2020."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2020 interview AGI \"years\"",
+        "what_found": "Only coverage of the 2025 Dwarkesh interview and its 5-to-20-year forecast."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Again only 2025 coverage of the age-of-scaling remarks."
+      },
+      {
+        "query_or_url": "Ilya Sutskever \"The Batch\" 2021 hopes language and vision",
+        "what_found": "Found his December 2020 essay in The Batch."
+      },
+      {
+        "query_or_url": "Lex Fridman podcast 94 Ilya Sutskever transcript",
+        "what_found": "Found several transcript pages for the May 2020 episode."
+      },
+      {
+        "query_or_url": "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision",
+        "what_found": "Opened: the essay with three dated predictions about 2021; the page metadata gives 2020-12-30 as the publication date."
+      },
+      {
+        "query_or_url": "https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-94-ilya-sutskever-deep-learning",
+        "what_found": "Opened: machine transcript cut off at about 32 minutes; has a garbled 'next three months' passage."
+      },
+      {
+        "query_or_url": "https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/94-ilya-sutskever-deep-learning",
+        "what_found": "Opened: machine transcript cut off at about 18 minutes; no predictions."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning",
+        "what_found": "Opened: cleaner machine transcript cut off at about 31 minutes; has the 'next three months' passage; AGI segments not reached."
+      },
+      {
+        "query_or_url": "Lex Fridman Ilya Sutskever \"how to build AGI\" self-play transcript 2020",
+        "what_found": "Found clip pages and episode listings but no full transcript of the AGI segment."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2020 talk GPT-3 future",
+        "what_found": "Found The Batch essay again and later-year material (a Scale AI video, a Clearer Thinking podcast)."
+      },
+      {
+        "query_or_url": "\"ilyasut\" tweet 2020 AI",
+        "what_found": "Found 2020 tweets (a link share, a retweet of the OpenAI API launch, an image-GPT note); none had a prediction."
+      },
+      {
+        "query_or_url": "https://transcript.lol/read/youtube/@lexfridman/6522f5af033150beacd17031",
+        "what_found": "Opened: the page loaded only the transcript.lol homepage, with no transcript."
+      },
+      {
+        "query_or_url": "Ilya Sutskever Lex Fridman transcript \"question to AGI\" \"meaning of life\"",
+        "what_found": "Only episode listings; no transcript reaching the AGI segments."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "The main 2020 source is Sutskever's own December 2020 essay in The Batch, which makes three dated predictions about 2021: much stronger models, language models that start to work with images, and (as a hope) more human-like concept learning. His May 2020 Lex Fridman interview adds one weak three-month claim, read only in an unofficial machine transcript. The transcripts I opened stopped before the AGI segments, so any timing remarks there are unchecked."
+  },
+  "reply_text": "Opening The Batch essay and a Lex Fridman transcript.I found four dated predictions from 2020. Three come from Sutskever's own short essay in The Batch, published 30 December 2020. The fourth comes from his May 2020 appearance on the Lex Fridman Podcast. It is weak, and the only text I could read is a machine transcript.\n\n**The Batch essay (his own words; publication date read from the page's metadata)**\n- He expected \"the best models of 2021 will make the best models of 2020 look dull and simple-minded by comparison.\"\n- He wrote \"In 2021, language models will start to become aware of the visual world,\" and that the next generation would edit and generate images from text.\n- He said models that see text and images together might learn concepts more as humans do, calling this \"an aspiration\" he hoped to see \"in 2021.\" This one is a hope rather than a firm forecast.\n\n**Lex Fridman Podcast #94**\n- He agreed that true human-level language understanding and visual perception could not be fully solved \"in the next three months.\" He then said his guess beyond that was as good as anyone's.\n- **Where the words come from:** the wording comes from podscripts.co, an unofficial machine transcript. A second machine transcript (swellai) has a garbled version of the same passage, and I did not check against the recording.\n- **Episode date:** May 2020. The Apple Podcasts listing in a search result gives 8 May 2020, but I didn't open that page, so check the exact day.\n\n**Gaps**\n- **Where his timing remarks would be:** all three transcript pages I opened stop at about the 32-minute mark. The \"How to build AGI?\" (1:13:41) and \"Question to AGI\" (1:25:00) segments are later, so I could not read them. I found no undated AGI-timing quote for 2020.\n- **Page that failed:** one page I opened (transcript.lol) loaded only the site's homepage.\n- **Searches:** the three fixed searches returned only 2025 news about his \"age of scaling\" and \"5 to 20 years\" remarks.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2020-12-30\", \"quote\": \"I expect our models to continue to become more competent, so much so that the best models of 2021 will make the best models of 2020 look dull and simple-minded by comparison.\", \"what_is_predicted\": \"The best AI models of 2021 will be far more capable than the best models of 2020.\", \"date_or_span\": \"2021\", \"occasion\": \"Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue\", \"source_url\": \"https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-12-30\", \"quote\": \"In 2021, language models will start to become aware of the visual world.\", \"what_is_predicted\": \"Language models will begin to handle images in 2021; the essay adds that the next generation will edit and generate images from text input.\", \"date_or_span\": \"2021\", \"occasion\": \"Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue\", \"source_url\": \"https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-12-30\", \"quote\": \"This is an aspiration — it has yet to be proven — but I’m hopeful that we’ll see something like it in 2021.\", \"what_is_predicted\": \"Models trained on both text and images will begin learning concepts in a more human-like way in 2021. He frames this as a hope, not a firm forecast.\", \"date_or_span\": \"2021\", \"occasion\": \"Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue\", \"source_url\": \"https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2020-05\", \"quote\": \"So you know, you say today, true human level, language understanding and visual perception, are hard in the sense that there is no way of solving the problem completely in the next three months. So I agree with that statement.\", \"what_is_predicted\": \"True human-level language understanding and visual perception will not be fully solved in the next three months.\", \"date_or_span\": \"the next three months\", \"occasion\": \"Lex Fridman Podcast #94 (May 2020), around 00:25:56\", \"source_url\": \"https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"The fixed searches returned coverage of his Dwarkesh Patel interview (dwarkesh.com/p/ilya-sutskever-2), where he calls 2020-2025 the 'age of scaling' and gives a 5-to-20-year timeline. I did not open these pages.\"},\n    {\"year\": \"2021\", \"note\": \"A Scale AI video page, 'What's Next for AI Systems & Language Models With Ilya Sutskever' (learn.scale.com), has a page age that points to about late 2021. I did not open it.\"},\n    {\"year\": \"2023\", \"note\": \"A search result for a Dwarkesh Podcast page (dwarkesh.com/p/ilya-sutskever, 'Building AGI, Alignment, & Future Models', from his time as OpenAI chief scientist) mentioned a 'multi-year window'. I did not open it or confirm its date.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2020\", \"what_found\": \"Only 2024-2025 coverage (NeurIPS 2024 talk, Dwarkesh 2025 interview); nothing from 2020.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2020 interview AGI \\\"years\\\"\", \"what_found\": \"Only coverage of the 2025 Dwarkesh interview and its 5-to-20-year forecast.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2020 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Again only 2025 coverage of the age-of-scaling remarks.\"},\n    {\"query_or_url\": \"Ilya Sutskever \\\"The Batch\\\" 2021 hopes language and vision\", \"what_found\": \"Found his December 2020 essay in The Batch.\"},\n    {\"query_or_url\": \"Lex Fridman podcast 94 Ilya Sutskever transcript\", \"what_found\": \"Found several transcript pages for the May 2020 episode.\"},\n    {\"query_or_url\": \"https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision\", \"what_found\": \"Opened: the essay with three dated predictions about 2021; the page metadata gives 2020-12-30 as the publication date.\"},\n    {\"query_or_url\": \"https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-94-ilya-sutskever-deep-learning\", \"what_found\": \"Opened: machine transcript cut off at about 32 minutes; has a garbled 'next three months' passage.\"},\n    {\"query_or_url\": \"https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/94-ilya-sutskever-deep-learning\", \"what_found\": \"Opened: machine transcript cut off at about 18 minutes; no predictions.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning\", \"what_found\": \"Opened: cleaner machine transcript cut off at about 31 minutes; has the 'next three months' passage; AGI segments not reached.\"},\n    {\"query_or_url\": \"Lex Fridman Ilya Sutskever \\\"how to build AGI\\\" self-play transcript 2020\", \"what_found\": \"Found clip pages and episode listings but no full transcript of the AGI segment.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2020 talk GPT-3 future\", \"what_found\": \"Found The Batch essay again and later-year material (a Scale AI video, a Clearer Thinking podcast).\"},\n    {\"query_or_url\": \"\\\"ilyasut\\\" tweet 2020 AI\", \"what_found\": \"Found 2020 tweets (a link share, a retweet of the OpenAI API launch, an image-GPT note); none had a prediction.\"},\n    {\"query_or_url\": \"https://transcript.lol/read/youtube/@lexfridman/6522f5af033150beacd17031\", \"what_found\": \"Opened: the page loaded only the transcript.lol homepage, with no transcript.\"},\n    {\"query_or_url\": \"Ilya Sutskever Lex Fridman transcript \\\"question to AGI\\\" \\\"meaning of life\\\"\", \"what_found\": \"Only episode listings; no transcript reaching the AGI segments.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"The main 2020 source is Sutskever's own December 2020 essay in The Batch, which makes three dated predictions about 2021: much stronger models, language models that start to work with images, and (as a hope) more human-like concept learning. His May 2020 Lex Fridman interview adds one weak three-month claim, read only in an unofficial machine transcript. The transcripts I opened stopped before the AGI segments, so any timing remarks there are unchecked.\"\n}\n```"
+}

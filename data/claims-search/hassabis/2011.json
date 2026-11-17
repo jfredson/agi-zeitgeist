@@ -1,0 +1,268 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2011,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.3846,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7672
+      },
+      "cache_creation_input_tokens": 31712,
+      "cache_read_input_tokens": 254075,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 5257,
+      "output_tokens_details": {
+        "thinking_tokens": 1027
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Demis Hassabis\" AI prediction 2011','\"Demis Hassabis\" 2011 interview AGI \"years\"','\"Demis Hassabis\" 2011 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"##\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2011"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r));print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q});R[q]=r;print(\"##\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2011 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2011 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/\"})\nc=r[0]['content'] if isinstance(r,list) else r\nprint(str(c)[:6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis \"Systems Neuroscience and AGI\" Winter Intelligence 2011','Hassabis \"Winter Intelligence\" Oxford 2011 transcript']:\n    r=await web_search({\"query\":q});print(\"##\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"Systems Neuroscience and AGI\" Winter Intelligence 2011"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"Winter Intelligence\" Oxford 2011 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in [\"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\",\"https://www.youtube.com/watch?v=IjG_Fx3D0o0\"]:\n    r=await web_fetch({\"url\":u});P[u]=r\n    c=r[0]['content'] if isinstance(r,list) else str(r)\n    print(\"##\",u,len(c));print(c[:4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.youtube.com/watch?v=IjG_Fx3D0o0"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=P[\"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\"]\nc=r[0]['content']['source']['data'] if isinstance(r,list) else json.loads(r) if False else None\nif c is None:\n    d=r if isinstance(r,dict) else json.loads(r); c=d['content']['source']['data']\ni=c.find('# Systems Neuroscience and AGI\\n\\nAuthor');print(c[i+1500:i+8000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "j=c.find('## Interim milestones [#]');print(c[j:j+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.fhi.ox.ac.uk/winter-intelligence-conference-2011-2/\"})\nd=r[0] if isinstance(r,list) else r\ns=str(d.get('content'));k=s.find('Hassabis');print(s[:300]);print(s[max(0,k-1500):k+400])\nfor q in ['Hassabis \"AGI-11\" OR \"AGI 2011\" Mountain View talk','\"Hassabis\" \"Singularity Summit 2011\"']:\n    rr=await web_search({\"query\":q});print(\"##\",q);show(rr)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fhi.ox.ac.uk/winter-intelligence-conference-2011-2/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s=r if isinstance(r,str) else str(r);k=s.find('Hassabis');print(s[:300]);print(s[max(0,k-1200):k+300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(s[max(0,k-2600):k-1150])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis AGI-11 conference Google Mountain View August 2011','\"Demis Hassabis\" 2011 lecture neuroscience artificial intelligence talk']:\n    rr=await web_search({\"query\":q});print(\"##\",q);show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis AGI-11 conference Google Mountain View August 2011"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2011 lecture neuroscience artificial intelligence talk"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://archive.org/details/DemisHassabisOnComputationalNeuroscience\"})\ns=str(r);print(s[:2500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://archive.org/details/DemisHassabisOnComputationalNeuroscience"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2011-01-16",
+        "quote": "System with transfer learning and conceptual knowledge acquisition capabilities will appear in the next 5 years",
+        "what_is_predicted": "AI systems that can transfer learning between tasks and acquire concepts will appear within five years.",
+        "date_or_span": "next 5 years (c. 2016)",
+        "occasion": "Talk 'Combining Systems Neuroscience and Machine Learning to Build AGI' (video titled 'Systems neuroscience and AGI'), FHI Winter Intelligence Conference, Oxford, Predictions slide",
+        "source_url": "https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/",
+        "source_kind": "coverage_only",
+        "already_recorded": "2011-01-hassabis-transfer-learning-concepts-five-years.toml"
+      },
+      {
+        "date_said": "2011-01-16",
+        "quote": "Probably ~20+ years for full human-level AGI but lots of interesting technologies will be built on the way",
+        "what_is_predicted": "Full human-level AGI is probably more than twenty years away.",
+        "date_or_span": "~20+ years (c. 2031 or later)",
+        "occasion": "Same FHI Winter Intelligence Conference talk, Oxford, Predictions slide",
+        "source_url": "https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/",
+        "source_kind": "coverage_only",
+        "already_recorded": "2011-01-hassabis-human-level-agi-twenty-plus-years.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2010",
+        "note": "Internet Archive item 'Demis Hassabis On Computational Neuroscience' is his Singularity Summit 2010 talk (archive.org/details/DemisHassabisOnComputationalNeuroscience); nothing quoted."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2011",
+        "what_found": "Mostly 2023-2026 news; a whatishappening.org summary of a 'Dec 2011' talk on systems neuroscience and AGI."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2011 interview AGI \"years\"",
+        "what_found": "Recent timeline news, plus the whatishappening.org snippet saying human-level AGI is 20+ years away (snippet only)."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2011 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2026 statements; nothing from 2011."
+      },
+      {
+        "query_or_url": "https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/",
+        "what_found": "Fetch failed (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "Hassabis \"Systems Neuroscience and AGI\" Winter Intelligence 2011",
+        "what_found": "Found the FHI YouTube video and Tom Rochette's notes on the talk's slides."
+      },
+      {
+        "query_or_url": "Hassabis \"Winter Intelligence\" Oxford 2011 transcript",
+        "what_found": "Found the FHI conference programme page; no transcript."
+      },
+      {
+        "query_or_url": "https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/",
+        "what_found": "Third-party notes on the talk's slides, with a Predictions section holding the 5-year and ~20+-year lines."
+      },
+      {
+        "query_or_url": "https://www.youtube.com/watch?v=IjG_Fx3D0o0",
+        "what_found": "Bot-protection page; only the title, FHI channel, 12 Dec 2011 upload date and description came back."
+      },
+      {
+        "query_or_url": "https://www.fhi.ox.ac.uk/winter-intelligence-conference-2011-2/",
+        "what_found": "Programme shows Hassabis's talk on Sunday 16 January 2011, 15:30-16:30, Jesus College, Oxford."
+      },
+      {
+        "query_or_url": "Hassabis AGI-11 conference Google Mountain View August 2011",
+        "what_found": "AGI-11 conference pages and videos; no sign Hassabis spoke."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2011 lecture neuroscience artificial intelligence talk",
+        "what_found": "Same Oxford video, an Internet Archive recording and later lectures; no new 2011 occasion."
+      },
+      {
+        "query_or_url": "https://archive.org/details/DemisHassabisOnComputationalNeuroscience",
+        "what_found": "The recording is from the Singularity Summit 2010, not 2011."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Hassabis's only 2011 public statement found is his 16 January 2011 talk at the FHI Winter Intelligence Conference in Oxford. Its closing Predictions slide said transfer-learning and concept-learning systems would appear within five years and full human-level AGI was probably 20+ years away; both are already recorded. These lines were read only in a third-party summary of the slides, because the video would not open."
+  },
+  "reply_text": "I found two 2011 predictions by Demis Hassabis. Both are already on your recorded list, and I found nothing new.\n\n**Where they come from:** Hassabis gave a talk called \"Combining Systems Neuroscience and Machine Learning to Build AGI\" at the Future of Humanity Institute's Winter Intelligence Conference in Oxford. The conference's own schedule page puts it on Sunday 16 January 2011, 15:30–16:30.\n\n**How strong the source is:** The YouTube recording (uploaded 12 Dec 2011, which is probably why some sites call it a \"Dec 2011\" talk) wouldn't play past a bot-protection page, so I never heard his actual words. The quotes below come from Tom Rochette's blog. He says the page holds \"most of the content of the slides\". That makes it a third-party summary of the slides, not a transcript, so I marked it coverage_only. Someone needs to watch the video to confirm his exact wording.\n\n**What the slides predict:**\n- Systems that can carry learning over to new tasks and pick up concepts will appear \"in the next 5 years\".\n- Full human-level AGI is \"Probably ~20+ years\" away.\n\n**Other searching:**\n- One page summarising the talk (whatishappening.org) was blocked, so I didn't quote it.\n- A search for the AGI-11 conference (August 2011, Google) found no talk by Hassabis.\n- An Internet Archive recording on neuroscience turned out to be from the 2010 Singularity Summit, so it's listed under other_years.\n- I used 7 of 12 searches and 5 of 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2011-01-16\", \"quote\": \"System with transfer learning and conceptual knowledge acquisition capabilities will appear in the next 5 years\", \"what_is_predicted\": \"AI systems that can transfer learning between tasks and acquire concepts will appear within five years.\", \"date_or_span\": \"next 5 years (c. 2016)\", \"occasion\": \"Talk 'Combining Systems Neuroscience and Machine Learning to Build AGI' (video titled 'Systems neuroscience and AGI'), FHI Winter Intelligence Conference, Oxford, Predictions slide\", \"source_url\": \"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2011-01-hassabis-transfer-learning-concepts-five-years.toml\"},\n    {\"date_said\": \"2011-01-16\", \"quote\": \"Probably ~20+ years for full human-level AGI but lots of interesting technologies will be built on the way\", \"what_is_predicted\": \"Full human-level AGI is probably more than twenty years away.\", \"date_or_span\": \"~20+ years (c. 2031 or later)\", \"occasion\": \"Same FHI Winter Intelligence Conference talk, Oxford, Predictions slide\", \"source_url\": \"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2011-01-hassabis-human-level-agi-twenty-plus-years.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2010\", \"note\": \"Internet Archive item 'Demis Hassabis On Computational Neuroscience' is his Singularity Summit 2010 talk (archive.org/details/DemisHassabisOnComputationalNeuroscience); nothing quoted.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2011\", \"what_found\": \"Mostly 2023-2026 news; a whatishappening.org summary of a 'Dec 2011' talk on systems neuroscience and AGI.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2011 interview AGI \\\"years\\\"\", \"what_found\": \"Recent timeline news, plus the whatishappening.org snippet saying human-level AGI is 20+ years away (snippet only).\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2011 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2026 statements; nothing from 2011.\"},\n    {\"query_or_url\": \"https://www.whatishappening.org/demis-hassabis-deepmind-dec-2011/\", \"what_found\": \"Fetch failed (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"Hassabis \\\"Systems Neuroscience and AGI\\\" Winter Intelligence 2011\", \"what_found\": \"Found the FHI YouTube video and Tom Rochette's notes on the talk's slides.\"},\n    {\"query_or_url\": \"Hassabis \\\"Winter Intelligence\\\" Oxford 2011 transcript\", \"what_found\": \"Found the FHI conference programme page; no transcript.\"},\n    {\"query_or_url\": \"https://blog.tomrochette.com/agi/presentations/systems-neuroscience-and-agi/\", \"what_found\": \"Third-party notes on the talk's slides, with a Predictions section holding the 5-year and ~20+-year lines.\"},\n    {\"query_or_url\": \"https://www.youtube.com/watch?v=IjG_Fx3D0o0\", \"what_found\": \"Bot-protection page; only the title, FHI channel, 12 Dec 2011 upload date and description came back.\"},\n    {\"query_or_url\": \"https://www.fhi.ox.ac.uk/winter-intelligence-conference-2011-2/\", \"what_found\": \"Programme shows Hassabis's talk on Sunday 16 January 2011, 15:30-16:30, Jesus College, Oxford.\"},\n    {\"query_or_url\": \"Hassabis AGI-11 conference Google Mountain View August 2011\", \"what_found\": \"AGI-11 conference pages and videos; no sign Hassabis spoke.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2011 lecture neuroscience artificial intelligence talk\", \"what_found\": \"Same Oxford video, an Internet Archive recording and later lectures; no new 2011 occasion.\"},\n    {\"query_or_url\": \"https://archive.org/details/DemisHassabisOnComputationalNeuroscience\", \"what_found\": \"The recording is from the Singularity Summit 2010, not 2011.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Hassabis's only 2011 public statement found is his 16 January 2011 talk at the FHI Winter Intelligence Conference in Oxford. Its closing Predictions slide said transfer-learning and concept-learning systems would appear within five years and full human-level AGI was probably 20+ years away; both are already recorded. These lines were read only in a third-party summary of the slides, because the video would not open.\"\n}\n```"
+}

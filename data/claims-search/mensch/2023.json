@@ -1,0 +1,348 @@
+{
+  "speaker_id": "mensch",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6372,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7609
+      },
+      "cache_creation_input_tokens": 55887,
+      "cache_read_input_tokens": 417595,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 8705,
+      "output_tokens_details": {
+        "thinking_tokens": 2047
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Arthur Mensch\" AI prediction 2023','\"Arthur Mensch\" 2023 interview AGI \"years\"','\"Arthur Mensch\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:400].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Mistral AI strategic memo 2023 pitch \"Mensch\"','\"Arthur Mensch\" interview December 2023 Mixtral open source','\"Arthur Mensch\" entretien 2023 intelligence artificielle \"dans cinq ans\" OR \"d\\'ici\"']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mistral AI strategic memo 2023 pitch \"Mensch\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" interview December 2023 Mixtral open source"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" entretien 2023 intelligence artificielle \"dans cinq ans\" OR \"d'ici\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in [\"https://nicoguyon.substack.com/p/arthur-mensch-au-senat\",\"https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588\"]:\n    r=await web_fetch({\"url\":u}); \n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(\"==\",u,r.get('type'),r.get('error_code'),len(F[u]))\n    print(F[u][:3500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://nicoguyon.substack.com/p/arthur-mensch-au-senat"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(F[\"https://nicoguyon.substack.com/p/arthur-mensch-au-senat\"])); print(str(F[\"https://nicoguyon.substack.com/p/arthur-mensch-au-senat\"])[:4000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\ns=json.dumps(r,ensure_ascii=False) if not isinstance(r,str) else r\nF[u]=s\nprint(len(s))\nimport re\nfor k in ['2024','2025','2026','end of','by the','years','Q3','Q4']:\n    for m in re.finditer(k,s):\n        print(k,'|',s[max(0,m.start()-250):m.start()+250].replace('\\\\n',' '))\n        print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['No Priors \"Mistral 7B and the Open Source Revolution\" transcript','a16z \"Safety in Numbers: Keeping AI Open\" Mensch transcript']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "No Priors \"Mistral 7B and the Open Source Revolution\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "a16z \"Safety in Numbers: Keeping AI Open\" Mensch transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/mistral-7b-and-the-open-source-revolution-with-arthur-mensch-ceo-mistral-ai\",\"https://a16z.com/podcast/safety-in-numbers-keeping-ai-open/\",\"https://glasp.co/youtube/p/safety-in-numbers-keeping-ai-open\"]\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    s=json.dumps(r,ensure_ascii=False)\n    try:\n        c=r['content']; s=c if isinstance(c,str) else c.get('source',{}).get('data',s)\n    except Exception: pass\n    F[u]=s\n    print(\"==\",u,len(s), r.get('error_code') if isinstance(r,dict) else '')\npat=r'(\\b20\\d\\d\\b|years?\\b|next decade|decade|AGI|months|by the end|in five|in ten|in two|in three|next year|horizon)'\nfor u in urls:\n    s=F[u]; print(\"#####\",u)\n    seen=set()\n    for m in re.finditer(pat,s):\n        st=m.start()//300\n        if st in seen: continue\n        seen.add(st)\n        print('|',s[max(0,m.start()-250):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/mistral-7b-and-the-open-source-revolution-with-arthur-mensch-ceo-mistral-ai"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://a16z.com/podcast/safety-in-numbers-keeping-ai-open/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://glasp.co/youtube/p/safety-in-numbers-keeping-ai-open"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s=F[urls[0]]\nfor k in ['2024','coming','next year','end of the year','by the end','will be able','in the future','few years','soon','GPT-4','GPT4']:\n    for m in re.finditer(k,s):\n        print(k,'|',s[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=s.find('00:07:17'); print(s[i:i+1800]); print('=====')\ni=s.find('existential or species risk'); print(s[i:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Mensch\" Mistral December 2023 open-source model \"GPT-4\" \"2024\" interview','\"Arthur Mensch\" 2023 \"France Inter\" OR \"Les Echos\" OR \"Le Monde\" Mistral modèle 2024']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mensch\" Mistral December 2023 open-source model \"GPT-4\" \"2024\" interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2023 \"France Inter\" OR \"Les Echos\" OR \"Le Monde\" Mistral modèle 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://startupnews.fyi/2023/12/19/mistral-ai-to-open-source-gpt-4-level-model-in-2024/\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content') if isinstance(r,dict) else None\ns=c if isinstance(c,str) else (c or {}).get('source',{}).get('data',json.dumps(r)[:3000])\nF[u]=s\ni=s.find('# Mistral AI to Open'); print(r.get('error_code'),len(s)); print(s[i:i+3500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://startupnews.fyi/2023/12/19/mistral-ai-to-open-source-gpt-4-level-model-in-2024/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['GPT-4','radio','Mensch']:\n    for m in re.finditer(k,s):\n        print(k,'|',s[max(0,m.start()-400):m.start()+400].replace('\\n',' '));print('---')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-06",
+        "quote": "At the end of 2023, we will train a family of text-generating models that can beat ChatGPT 3.5 and Bard March 2023 by a large margin, as well as all open source solutions.",
+        "what_is_predicted": "Mistral's models will beat ChatGPT 3.5, the March 2023 version of Bard and all open-source models by the end of 2023.",
+        "date_or_span": "end of 2023",
+        "occasion": "Mistral AI 'strategic memo' for the seed round (leaked June 2023). A company document from the three founders, not signed by Mensch personally.",
+        "source_url": "https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-06",
+        "quote": "mistral.ai will become a research leader in the generative AI field, eventually offering the best technology within 4 years.",
+        "what_is_predicted": "Mistral will offer the best generative AI technology within four years.",
+        "date_or_span": "within 4 years (about 2027)",
+        "occasion": "Mistral AI 'strategic memo' for the seed round (leaked June 2023). A company document, not signed by Mensch personally.",
+        "source_url": "https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-06",
+        "quote": "At the end of Q2 2024, we intend to ● be distributing the best open-source text-generative model, with text and visual output",
+        "what_is_predicted": "By the end of Q2 2024 Mistral will be distributing the best open-source text-generating model, with text and visual output.",
+        "date_or_span": "end of Q2 2024",
+        "occasion": "Mistral AI 'strategic memo' for the seed round (leaked June 2023). A company document, not signed by Mensch personally.",
+        "source_url": "https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-12",
+        "quote": "Arthur Mensch, CEO of Mistral, declared on French national radio that Mistral AI will release an open-source GPT-4 level model in 2024.",
+        "what_is_predicted": "Mistral will release an open-source model at GPT-4 level in 2024.",
+        "date_or_span": "2024",
+        "occasion": "French national radio appearance, about mid-December 2023. Known only from a reporter's paraphrase (Analytics India Magazine, reposted by StartupNews) that rests on a tweet dated 18 December 2023. These are not Mensch's own words.",
+        "source_url": "https://startupnews.fyi/2023/12/19/mistral-ai-to-open-source-gpt-4-level-model-in-2024/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2023-11-09",
+        "quote": "If we can make a model which is growingly intelligent, then maybe you're at a singularity level. There's no evidence whatsoever that we are on the way of doing that,",
+        "source_url": "https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/mistral-7b-and-the-open-source-revolution-with-arthur-mensch-ceo-mistral-ai"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Senate hearing summarised on the Comptoir IA substack (post dated 28 May 2024), including a 5-year claim about robots running Mistral. TIME interview from May 2024."
+      },
+      {
+        "year": "2026",
+        "note": "French National Assembly hearing (12/13 May 2026): Europe has about two years to build its own AI infrastructure, and AI will take 10% of Europe's payroll within 3 to 4 years. Seen only in search results."
+      },
+      {
+        "year": "2024",
+        "note": "Coverage (Futurism/Yahoo) of a New York Times interview in which he called the push for AGI 'very religious'. Seen in search results only; looks to be 2024."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Arthur Mensch\" AI prediction 2023",
+        "what_found": "TIME interview from 2024, X profile, Wikipedia and later coverage; nothing from 2023 with a date attached."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2023 interview AGI \"years\"",
+        "what_found": "Coverage of his 'AGI is like building God' remarks (appears to be 2024) and profile pages; nothing dated from 2023."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly his 2026 National Assembly 'two years' warning and a 2025 podcast; nothing from 2023."
+      },
+      {
+        "query_or_url": "Mistral AI strategic memo 2023 pitch \"Mensch\"",
+        "what_found": "Sifted coverage and the SlideShare copy of the June 2023 strategic memo."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" interview December 2023 Mixtral open source",
+        "what_found": "a16z podcast (11 Dec 2023) and No Priors podcast (9 Nov 2023) listings."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" entretien 2023 intelligence artificielle \"dans cinq ans\" OR \"d'ici\"",
+        "what_found": "A substack on his Senate hearing (turned out to be 2024) and coverage of the 2026 National Assembly hearing."
+      },
+      {
+        "query_or_url": "No Priors \"Mistral 7B and the Open Source Revolution\" transcript",
+        "what_found": "Episode pages and a podscripts transcript, dated 9 Nov 2023."
+      },
+      {
+        "query_or_url": "a16z \"Safety in Numbers: Keeping AI Open\" Mensch transcript",
+        "what_found": "a16z episode page and a Glasp summary page."
+      },
+      {
+        "query_or_url": "\"Mensch\" Mistral December 2023 open-source model \"GPT-4\" \"2024\" interview",
+        "what_found": "Several reports that he said on French national radio Mistral would open-source a GPT-4-level model in 2024."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2023 \"France Inter\" OR \"Les Echos\" OR \"Le Monde\" Mistral modèle 2024",
+        "what_found": "No primary page for the 2023 radio interview; only later profiles."
+      },
+      {
+        "query_or_url": "https://nicoguyon.substack.com/p/arthur-mensch-au-senat",
+        "what_found": "Opened; the post is dated 28 May 2024, so the Senate hearing is out of scope."
+      },
+      {
+        "query_or_url": "https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588",
+        "what_found": "Opened; the memo text has dated targets for Mistral's models (end of 2023, Q2 2024, within 4 years) plus fundraising plans, which I left out."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/mistral-7b-and-the-open-source-revolution-with-arthur-mensch-ceo-mistral-ai",
+        "what_found": "Opened; a machine-made transcript with an undated remark that there is no evidence of a path to a singularity, and no dated AI predictions."
+      },
+      {
+        "query_or_url": "https://a16z.com/podcast/safety-in-numbers-keeping-ai-open/",
+        "what_found": "Opened; episode page dated 11 Dec 2023 with no transcript."
+      },
+      {
+        "query_or_url": "https://glasp.co/youtube/p/safety-in-numbers-keeping-ai-open",
+        "what_found": "Opened; an AI-written summary (its 'next five years' line is not his words) and only a short piece of transcript."
+      },
+      {
+        "query_or_url": "https://startupnews.fyi/2023/12/19/mistral-ai-to-open-source-gpt-4-level-model-in-2024/",
+        "what_found": "Opened; a reporter's paraphrase of the radio remark about a GPT-4-level model in 2024, with no direct quote."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2023 the only dated AI claims tied to Mensch are product targets: the founders' June 2023 fundraising memo (beat GPT-3.5 by end of 2023, best open-source model by Q2 2024, best technology within 4 years) and a December 2023 radio remark, known only from a paraphrase, about an open-source GPT-4-level model in 2024. In his 2023 podcast interviews he made no dated predictions about AGI and said there was no evidence of a path to a singularity."
+  },
+  "reply_text": "I found three dated forward-looking claims from 2023, but none is a clean, individually attributed quote from Arthur Mensch. Two come from Mistral's June 2023 fundraising memo. The memo is a company document from the three founders and isn't signed by him personally. The third (an open-source GPT-4-level model in 2024) I only saw as a reporter's paraphrase, with no direct quote and no primary source.\n\n**Candidates**\n- **Fundraising memo (leaked June 2023, hosted on SlideShare).** The memo says Mistral will train models at the end of 2023 that \"can beat ChatGPT 3.5 and Bard March 2023 by a large margin.\" It also says Mistral will offer \"the best technology within 4 years.\" These are product targets set for the company's own AI models. It also says that by the end of Q2 2024 Mistral intends to be distributing \"the best open-source text-generative model.\" I left out its fundraising plans (€200M in Q3 2024 to train models beyond GPT-4) because they are business forecasts. The June 2023 date is my guess from the SlideShare thumbnail filename and from public coverage of the seed round.\n- **French national radio, around mid-December 2023.** A news repost (from Analytics India Magazine) says he \"declared on French national radio that Mistral AI will release an open-source GPT-4 level model in 2024.\" That rests on a tweet dated 18 December 2023. I never opened the broadcast or a transcript, and I ran out of page openings before I could look for them.\n\n**Undated:** On the No Priors podcast (9 November 2023), he said there is \"no evidence whatsoever\" that AI is on the way to a singularity. That transcript was made by a machine and garbles names (for example \"Arthur Munch\", \"Mistraw\"), so check the exact wording against the recording.\n\n**What I ruled out**\n- The Senate hearing blog post turned out to be from May 2024.\n- The a16z podcast page (December 2023) has no transcript.\n- The Glasp page's \"next five years\" line is an AI-written summary, not his words.\n- Several other dated statements in the results are from 2024 to 2026.\n\nI used 10 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2023-06\", \"quote\": \"At the end of 2023, we will train a family of text-generating models that can beat ChatGPT 3.5 and Bard March 2023 by a large margin, as well as all open source solutions.\", \"what_is_predicted\": \"Mistral's models will beat ChatGPT 3.5, the March 2023 version of Bard and all open-source models by the end of 2023.\", \"date_or_span\": \"end of 2023\", \"occasion\": \"Mistral AI 'strategic memo' for the seed round (leaked June 2023). A company document from the three founders, not signed by Mensch personally.\", \"source_url\": \"https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-06\", \"quote\": \"mistral.ai will become a research leader in the generative AI field, eventually offering the best technology within 4 years.\", \"what_is_predicted\": \"Mistral will offer the best generative AI technology within four years.\", \"date_or_span\": \"within 4 years (about 2027)\", \"occasion\": \"Mistral AI 'strategic memo' for the seed round (leaked June 2023). A company document, not signed by Mensch personally.\", \"source_url\": \"https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-06\", \"quote\": \"At the end of Q2 2024, we intend to ● be distributing the best open-source text-generative model, with text and visual output\", \"what_is_predicted\": \"By the end of Q2 2024 Mistral will be distributing the best open-source text-generating model, with text and visual output.\", \"date_or_span\": \"end of Q2 2024\", \"occasion\": \"Mistral AI 'strategic memo' for the seed round (leaked June 2023). A company document, not signed by Mensch personally.\", \"source_url\": \"https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-12\", \"quote\": \"Arthur Mensch, CEO of Mistral, declared on French national radio that Mistral AI will release an open-source GPT-4 level model in 2024.\", \"what_is_predicted\": \"Mistral will release an open-source model at GPT-4 level in 2024.\", \"date_or_span\": \"2024\", \"occasion\": \"French national radio appearance, about mid-December 2023. Known only from a reporter's paraphrase (Analytics India Magazine, reposted by StartupNews) that rests on a tweet dated 18 December 2023. These are not Mensch's own words.\", \"source_url\": \"https://startupnews.fyi/2023/12/19/mistral-ai-to-open-source-gpt-4-level-model-in-2024/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2023-11-09\", \"quote\": \"If we can make a model which is growingly intelligent, then maybe you're at a singularity level. There's no evidence whatsoever that we are on the way of doing that,\", \"source_url\": \"https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/mistral-7b-and-the-open-source-revolution-with-arthur-mensch-ceo-mistral-ai\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Senate hearing summarised on the Comptoir IA substack (post dated 28 May 2024), including a 5-year claim about robots running Mistral. TIME interview from May 2024.\"},\n    {\"year\": \"2026\", \"note\": \"French National Assembly hearing (12/13 May 2026): Europe has about two years to build its own AI infrastructure, and AI will take 10% of Europe's payroll within 3 to 4 years. Seen only in search results.\"},\n    {\"year\": \"2024\", \"note\": \"Coverage (Futurism/Yahoo) of a New York Times interview in which he called the push for AGI 'very religious'. Seen in search results only; looks to be 2024.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" AI prediction 2023\", \"what_found\": \"TIME interview from 2024, X profile, Wikipedia and later coverage; nothing from 2023 with a date attached.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of his 'AGI is like building God' remarks (appears to be 2024) and profile pages; nothing dated from 2023.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly his 2026 National Assembly 'two years' warning and a 2025 podcast; nothing from 2023.\"},\n    {\"query_or_url\": \"Mistral AI strategic memo 2023 pitch \\\"Mensch\\\"\", \"what_found\": \"Sifted coverage and the SlideShare copy of the June 2023 strategic memo.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" interview December 2023 Mixtral open source\", \"what_found\": \"a16z podcast (11 Dec 2023) and No Priors podcast (9 Nov 2023) listings.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" entretien 2023 intelligence artificielle \\\"dans cinq ans\\\" OR \\\"d'ici\\\"\", \"what_found\": \"A substack on his Senate hearing (turned out to be 2024) and coverage of the 2026 National Assembly hearing.\"},\n    {\"query_or_url\": \"No Priors \\\"Mistral 7B and the Open Source Revolution\\\" transcript\", \"what_found\": \"Episode pages and a podscripts transcript, dated 9 Nov 2023.\"},\n    {\"query_or_url\": \"a16z \\\"Safety in Numbers: Keeping AI Open\\\" Mensch transcript\", \"what_found\": \"a16z episode page and a Glasp summary page.\"},\n    {\"query_or_url\": \"\\\"Mensch\\\" Mistral December 2023 open-source model \\\"GPT-4\\\" \\\"2024\\\" interview\", \"what_found\": \"Several reports that he said on French national radio Mistral would open-source a GPT-4-level model in 2024.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2023 \\\"France Inter\\\" OR \\\"Les Echos\\\" OR \\\"Le Monde\\\" Mistral modèle 2024\", \"what_found\": \"No primary page for the 2023 radio interview; only later profiles.\"},\n    {\"query_or_url\": \"https://nicoguyon.substack.com/p/arthur-mensch-au-senat\", \"what_found\": \"Opened; the post is dated 28 May 2024, so the Senate hearing is out of scope.\"},\n    {\"query_or_url\": \"https://www.slideshare.net/slideshow/mistral-ai-strategic-memopdf/258558588\", \"what_found\": \"Opened; the memo text has dated targets for Mistral's models (end of 2023, Q2 2024, within 4 years) plus fundraising plans, which I left out.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/mistral-7b-and-the-open-source-revolution-with-arthur-mensch-ceo-mistral-ai\", \"what_found\": \"Opened; a machine-made transcript with an undated remark that there is no evidence of a path to a singularity, and no dated AI predictions.\"},\n    {\"query_or_url\": \"https://a16z.com/podcast/safety-in-numbers-keeping-ai-open/\", \"what_found\": \"Opened; episode page dated 11 Dec 2023 with no transcript.\"},\n    {\"query_or_url\": \"https://glasp.co/youtube/p/safety-in-numbers-keeping-ai-open\", \"what_found\": \"Opened; an AI-written summary (its 'next five years' line is not his words) and only a short piece of transcript.\"},\n    {\"query_or_url\": \"https://startupnews.fyi/2023/12/19/mistral-ai-to-open-source-gpt-4-level-model-in-2024/\", \"what_found\": \"Opened; a reporter's paraphrase of the radio remark about a GPT-4-level model in 2024, with no direct quote.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2023 the only dated AI claims tied to Mensch are product targets: the founders' June 2023 fundraising memo (beat GPT-3.5 by end of 2023, best open-source model by Q2 2024, best technology within 4 years) and a December 2023 radio remark, known only from a paraphrase, about an open-source GPT-4-level model in 2024. In his 2023 podcast interviews he made no dated predictions about AGI and said there was no evidence of a path to a singularity.\"\n}\n```"
+}

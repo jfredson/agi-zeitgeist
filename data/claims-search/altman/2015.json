@@ -1,0 +1,374 @@
+{
+  "speaker_id": "altman",
+  "year": 2015,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5765,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7672
+      },
+      "cache_creation_input_tokens": 42535,
+      "cache_read_input_tokens": 400282,
+      "inference_geo": "global",
+      "input_tokens": 38,
+      "output_tokens": 8680,
+      "output_tokens_details": {
+        "thinking_tokens": 2422
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sam Altman\" AI prediction 2015','\"Sam Altman\" 2015 interview AGI \"years\"','\"Sam Altman\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"##\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\nprint(\"##1\"); show(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2015 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['blog.samaltman.com machine intelligence part 1','Sam Altman Steven Levy OpenAI interview December 2015 Backchannel','Sam Altman 2015 self-driving cars \"years\" interview']:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "blog.samaltman.com machine intelligence part 1"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman Steven Levy OpenAI interview December 2015 Backchannel"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman 2015 self-driving cars \"years\" interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages={}\nfor u in ['https://blog.samaltman.com/machine-intelligence-part-1','https://blog.samaltman.com/machine-intelligence-part-2','https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    pages[u]=p.get('content','') or str(p)\n    print(u,len(pages[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.samaltman.com/machine-intelligence-part-1"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.samaltman.com/machine-intelligence-part-2"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in pages: print(u, repr(pages[u][:300]))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in pages: print(u, type(pages[u]), str(pages[u])[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t1=pages['https://blog.samaltman.com/machine-intelligence-part-1']['source']['data']\ni=t1.find('Development of'); print(len(t1)); print(t1[i-600:i+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nprint(re.findall(r'(?:2015|February|Feb)[^\\n]{0,80}',t1)[:10])\nt3=pages['https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/']['source']['data']\ni=t3.find('# Elon'); print(t3[i:i+4500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t3.find('Elon Musk and Sam Altman discussed everything from alien life to nuclear fusion onstage \\n'); i=t3.rfind('Elon Musk and Sam Altman discussed'); print(t3[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"machine intelligence, part 2\" Sam Altman blog','\"How Elon Musk and Y Combinator Plan to Stop Computers From Taking Over\"','Sam Altman 2015 \"lead to the end of the world\" \"great companies\" conference']:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"machine intelligence, part 2\" Sam Altman blog"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"How Elon Musk and Y Combinator Plan to Stop Computers From Taking Over\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman 2015 \"lead to the end of the world\" \"great companies\" conference"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://blog.samaltman.com/machine-intelligence-part-2','https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    c=p.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    pages[u]=c or str(p)\n    print(u,len(pages[u]), pages[u][:200])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.samaltman.com/machine-intelligence-part-2"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t2=pages['https://blog.samaltman.com/machine-intelligence-part-2']\nkw=r'(year|decade|soon|close|far|time|20\\d\\d|will )'\ni=t2.find('THE NEED'); print(t2[i:i+7500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t2[i+7500:i+10500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t4=pages['https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a']\nfor m in re.finditer(r'(year|decade|soon|20\\d\\d|far away|close|Altman:)',t4):\n    pass\ni=t4.find('Steven Levy'); \nparas=[p for p in t4.split('\\n') if re.search(r'(years|decade|20[1-9]\\d|far |close|soon|future|will be)',p)]\nfor p in paras: print('-',p[:700])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "j=t4.find('However long it takes'); print(t4[j-700:j+300])\nj=t4.find('science fiction stuff'); print(t4[j-400:j])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Business Insider Sam Altman Airbnb Open Air 2015 machine learning end of the world','Musk Altman Vanity Fair New Establishment Summit 2015 transcript AI']:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Business Insider Sam Altman Airbnb Open Air 2015 machine learning end of the world"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Altman Vanity Fair New Establishment Summit 2015 transcript AI"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2015",
+        "quote": "superhuman machine intelligence (SMI) is probably still decades away [1], and we have very pressing problems now.",
+        "what_is_predicted": "Superhuman machine intelligence will probably take decades to arrive.",
+        "date_or_span": "decades",
+        "occasion": "Blog post 'Machine intelligence, part 2' (page shows no date; reposts describe it as a 2015 post, commonly dated 2015-03-02, not verified on page)",
+        "source_url": "https://blog.samaltman.com/machine-intelligence-part-2",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2015",
+        "quote": "At some point in the next century, we are going to have the most randomness ever injected into the system.",
+        "what_is_predicted": "Superhuman machine intelligence will bring an unprecedented disruption sometime within the next century.",
+        "date_or_span": "the next century",
+        "occasion": "Blog post 'Machine intelligence, part 2', closing section",
+        "source_url": "https://blog.samaltman.com/machine-intelligence-part-2",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2015",
+        "quote": "It’s hard to look at the rate or improvement in the last 40 years and think that 40 years for now we’re not going to be somewhere crazy.",
+        "what_is_predicted": "Machine intelligence will be somewhere 'crazy' 40 years from 2015.",
+        "date_or_span": "40 years from now (c. 2055)",
+        "occasion": "Blog post 'Machine intelligence, part 1' (page shows no date; commonly dated 2015-02-25, not verified on page)",
+        "source_url": "https://blog.samaltman.com/machine-intelligence-part-1",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2015-12-11",
+        "quote": "However long it takes to build. We’ll be as frugal as we can but this is probably a multi-decade project that requires a lot of people and a lot of hardware.",
+        "what_is_predicted": "Building OpenAI's human-positive AI will probably take decades. Borderline: this answers 'Over what period of time?' about the $1B funding commitment.",
+        "date_or_span": "multiple decades",
+        "occasion": "Steven Levy Q&A with Altman and Musk at the OpenAI launch, Backchannel/Medium",
+        "source_url": "https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2015-10-06",
+        "quote": "“Self-driving cars are going to get here much faster than people think,” Altman said. He thought we’d see them in three to four years.",
+        "what_is_predicted": "Self-driving cars would be on the road within three to four years (about 2018-2019).",
+        "date_or_span": "three to four years",
+        "occasion": "Onstage with Elon Musk at the Vanity Fair New Establishment Summit, San Francisco",
+        "source_url": "https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2015",
+        "quote": "As mentioned earlier, it is probably still somewhat far away, especially in its ability to build killer robots with no help at all from humans.  But recursive self-improvement is a powerful force, and so it’s difficult to have strong opinions about machine intelligence being ten or one hundred years away.",
+        "source_url": "https://blog.samaltman.com/machine-intelligence-part-1"
+      },
+      {
+        "date_said": "2015-12-11",
+        "quote": "Well, there’s all the science fiction stuff, which I think is years off, like The Terminator or something like that. I’m not worried about that any time in the short term.",
+        "source_url": "https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a"
+      },
+      {
+        "date_said": "2015-12-11",
+        "quote": "As time rolls on and we get closer to something that surpasses human intelligence, there is some question how much Google will share.",
+        "source_url": "https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Fixed searches mostly returned coverage of later forecasts (superintelligence by 2030, by 2035 at OpenAI's 10th anniversary). None was opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2015",
+        "what_found": "Coverage of the 2015 'end of the world' remark and a prediction-tracker page citing the 2015 self-driving-cars forecast."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2015 interview AGI \"years\"",
+        "what_found": "Only later material (Reflections post, 2025-2026 interviews); nothing from 2015."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2023-2025 news on superintelligence by 2030/2035; nothing from 2015."
+      },
+      {
+        "query_or_url": "blog.samaltman.com machine intelligence part 1",
+        "what_found": "Found Altman's 2015 'Machine intelligence' posts, parts 1 and 2, and reposts."
+      },
+      {
+        "query_or_url": "Sam Altman Steven Levy OpenAI interview December 2015 Backchannel",
+        "what_found": "Did not surface the Levy interview; mostly unrelated pages."
+      },
+      {
+        "query_or_url": "Sam Altman 2015 self-driving cars \"years\" interview",
+        "what_found": "TechCrunch report of 6 Oct 2015 Vanity Fair Summit with the three-to-four-year forecast."
+      },
+      {
+        "query_or_url": "\"machine intelligence, part 2\" Sam Altman blog",
+        "what_found": "Surfaced the part 2 URL so it could be opened."
+      },
+      {
+        "query_or_url": "\"How Elon Musk and Y Combinator Plan to Stop Computers From Taking Over\"",
+        "what_found": "Found the Medium/Backchannel Q&A of 11 Dec 2015."
+      },
+      {
+        "query_or_url": "Sam Altman 2015 \"lead to the end of the world\" \"great companies\" conference",
+        "what_found": "Coverage tracing the remark to Airbnb Open Air, June 2015; undated, not about when AGI arrives, not opened."
+      },
+      {
+        "query_or_url": "Business Insider Sam Altman Airbnb Open Air 2015 machine learning end of the world",
+        "what_found": "Only secondary mentions of the Business Insider report; the original was not surfaced."
+      },
+      {
+        "query_or_url": "Musk Altman Vanity Fair New Establishment Summit 2015 transcript AI",
+        "what_found": "No transcript found; SFGate confirms the event date of 6 Oct 2015."
+      },
+      {
+        "query_or_url": "https://blog.samaltman.com/machine-intelligence-part-1",
+        "what_found": "Opened; full essay read, with the 40-year line and the 'ten or one hundred years' line."
+      },
+      {
+        "query_or_url": "https://blog.samaltman.com/machine-intelligence-part-2",
+        "what_found": "First attempt failed (URL not yet in context); after a search it opened, with 'probably still decades away' and the 'next century' line."
+      },
+      {
+        "query_or_url": "https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/",
+        "what_found": "Opened; the three-to-four-year figure is the reporter's paraphrase."
+      },
+      {
+        "query_or_url": "https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a",
+        "what_found": "Opened; Q&A dated 11 Dec 2015 with 'multi-decade project' and 'years off' lines."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2015 Altman wrote his two-part 'Machine intelligence' essay, which says superhuman AI is 'probably still decades away' and that machine intelligence will be somewhere 'crazy' in 40 years. In December, at OpenAI's launch, he called it 'probably a multi-decade project.' His only short-range forecast that year was self-driving cars in three to four years (October, Vanity Fair Summit), and that exists only as TechCrunch's paraphrase."
+  },
+  "reply_text": "I found five dated statements from 2015, plus three undated lines about when superhuman AI would arrive. All of the quotes were read on pages I opened. The best sources are Altman's own two-part blog essay \"Machine intelligence\" and Steven Levy's Q&A interview at the OpenAI launch. The self-driving-car forecast exists only as a TechCrunch paraphrase, not as his own words.\n\n- **Dates of the blog posts:** neither page I opened shows a posting date. They are dated 2015 here because a LessWrong repost calls them \"Sam Altman's 2015 Blog Posts.\" Many people cite them as February 25 and March 2, 2015, but I did not confirm that on a page.\n- **Self-driving cars:** the \"three to four years\" figure is TechCrunch's paraphrase, not a direct quote. \"He thought we'd see them in three to four years\", at the Vanity Fair New Establishment Summit on Oct. 6, 2015, in San Francisco.\n- **Borderline items:** the \"multi-decade project\" line answers a funding question (\"Over what period of time?\"), so you may decide it is a spending forecast and drop it. The \"next century\" line is rhetorical, and I kept it only because it names a span.\n- **Left out:** the well-known June 2015 Airbnb Open Air line (\"AI will probably most likely lead to the end of the world…\") gives no date. It is also not about when superhuman AI arrives, and I never opened the original Business Insider report, so it is not in the list.\n- **Budget:** I used 11 of 12 searches and 5 of 6 page openings. One opening returned an error and is counted. The first search's results printed only partly because of a bug in my code; I fixed the code without running that search again.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2015\", \"quote\": \"superhuman machine intelligence (SMI) is probably still decades away [1], and we have very pressing problems now.\", \"what_is_predicted\": \"Superhuman machine intelligence will probably take decades to arrive.\", \"date_or_span\": \"decades\", \"occasion\": \"Blog post 'Machine intelligence, part 2' (page shows no date; reposts describe it as a 2015 post, commonly dated 2015-03-02, not verified on page)\", \"source_url\": \"https://blog.samaltman.com/machine-intelligence-part-2\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2015\", \"quote\": \"At some point in the next century, we are going to have the most randomness ever injected into the system.\", \"what_is_predicted\": \"Superhuman machine intelligence will bring an unprecedented disruption sometime within the next century.\", \"date_or_span\": \"the next century\", \"occasion\": \"Blog post 'Machine intelligence, part 2', closing section\", \"source_url\": \"https://blog.samaltman.com/machine-intelligence-part-2\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2015\", \"quote\": \"It’s hard to look at the rate or improvement in the last 40 years and think that 40 years for now we’re not going to be somewhere crazy.\", \"what_is_predicted\": \"Machine intelligence will be somewhere 'crazy' 40 years from 2015.\", \"date_or_span\": \"40 years from now (c. 2055)\", \"occasion\": \"Blog post 'Machine intelligence, part 1' (page shows no date; commonly dated 2015-02-25, not verified on page)\", \"source_url\": \"https://blog.samaltman.com/machine-intelligence-part-1\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2015-12-11\", \"quote\": \"However long it takes to build. We’ll be as frugal as we can but this is probably a multi-decade project that requires a lot of people and a lot of hardware.\", \"what_is_predicted\": \"Building OpenAI's human-positive AI will probably take decades. Borderline: this answers 'Over what period of time?' about the $1B funding commitment.\", \"date_or_span\": \"multiple decades\", \"occasion\": \"Steven Levy Q&A with Altman and Musk at the OpenAI launch, Backchannel/Medium\", \"source_url\": \"https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2015-10-06\", \"quote\": \"“Self-driving cars are going to get here much faster than people think,” Altman said. He thought we’d see them in three to four years.\", \"what_is_predicted\": \"Self-driving cars would be on the road within three to four years (about 2018-2019).\", \"date_or_span\": \"three to four years\", \"occasion\": \"Onstage with Elon Musk at the Vanity Fair New Establishment Summit, San Francisco\", \"source_url\": \"https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2015\", \"quote\": \"As mentioned earlier, it is probably still somewhat far away, especially in its ability to build killer robots with no help at all from humans.  But recursive self-improvement is a powerful force, and so it’s difficult to have strong opinions about machine intelligence being ten or one hundred years away.\", \"source_url\": \"https://blog.samaltman.com/machine-intelligence-part-1\"},\n    {\"date_said\": \"2015-12-11\", \"quote\": \"Well, there’s all the science fiction stuff, which I think is years off, like The Terminator or something like that. I’m not worried about that any time in the short term.\", \"source_url\": \"https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a\"},\n    {\"date_said\": \"2015-12-11\", \"quote\": \"As time rolls on and we get closer to something that surpasses human intelligence, there is some question how much Google will share.\", \"source_url\": \"https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Fixed searches mostly returned coverage of later forecasts (superintelligence by 2030, by 2035 at OpenAI's 10th anniversary). None was opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2015\", \"what_found\": \"Coverage of the 2015 'end of the world' remark and a prediction-tracker page citing the 2015 self-driving-cars forecast.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2015 interview AGI \\\"years\\\"\", \"what_found\": \"Only later material (Reflections post, 2025-2026 interviews); nothing from 2015.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2015 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2023-2025 news on superintelligence by 2030/2035; nothing from 2015.\"},\n    {\"query_or_url\": \"blog.samaltman.com machine intelligence part 1\", \"what_found\": \"Found Altman's 2015 'Machine intelligence' posts, parts 1 and 2, and reposts.\"},\n    {\"query_or_url\": \"Sam Altman Steven Levy OpenAI interview December 2015 Backchannel\", \"what_found\": \"Did not surface the Levy interview; mostly unrelated pages.\"},\n    {\"query_or_url\": \"Sam Altman 2015 self-driving cars \\\"years\\\" interview\", \"what_found\": \"TechCrunch report of 6 Oct 2015 Vanity Fair Summit with the three-to-four-year forecast.\"},\n    {\"query_or_url\": \"\\\"machine intelligence, part 2\\\" Sam Altman blog\", \"what_found\": \"Surfaced the part 2 URL so it could be opened.\"},\n    {\"query_or_url\": \"\\\"How Elon Musk and Y Combinator Plan to Stop Computers From Taking Over\\\"\", \"what_found\": \"Found the Medium/Backchannel Q&A of 11 Dec 2015.\"},\n    {\"query_or_url\": \"Sam Altman 2015 \\\"lead to the end of the world\\\" \\\"great companies\\\" conference\", \"what_found\": \"Coverage tracing the remark to Airbnb Open Air, June 2015; undated, not about when AGI arrives, not opened.\"},\n    {\"query_or_url\": \"Business Insider Sam Altman Airbnb Open Air 2015 machine learning end of the world\", \"what_found\": \"Only secondary mentions of the Business Insider report; the original was not surfaced.\"},\n    {\"query_or_url\": \"Musk Altman Vanity Fair New Establishment Summit 2015 transcript AI\", \"what_found\": \"No transcript found; SFGate confirms the event date of 6 Oct 2015.\"},\n    {\"query_or_url\": \"https://blog.samaltman.com/machine-intelligence-part-1\", \"what_found\": \"Opened; full essay read, with the 40-year line and the 'ten or one hundred years' line.\"},\n    {\"query_or_url\": \"https://blog.samaltman.com/machine-intelligence-part-2\", \"what_found\": \"First attempt failed (URL not yet in context); after a search it opened, with 'probably still decades away' and the 'next century' line.\"},\n    {\"query_or_url\": \"https://techcrunch.com/2015/10/06/elon-musk-sam-altman-say-self-driving-cars-are-going-to-be-on-the-road-in-just-a-few-years/\", \"what_found\": \"Opened; the three-to-four-year figure is the reporter's paraphrase.\"},\n    {\"query_or_url\": \"https://medium.com/backchannel/how-elon-musk-and-y-combinator-plan-to-stop-computers-from-taking-over-17e0e27dd02a\", \"what_found\": \"Opened; Q&A dated 11 Dec 2015 with 'multi-decade project' and 'years off' lines.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2015 Altman wrote his two-part 'Machine intelligence' essay, which says superhuman AI is 'probably still decades away' and that machine intelligence will be somewhere 'crazy' in 40 years. In December, at OpenAI's launch, he called it 'probably a multi-decade project.' His only short-range forecast that year was self-driving cars in three to four years (October, Vanity Fair Summit), and that exists only as TechCrunch's paraphrase.\"\n}\n```"
+}

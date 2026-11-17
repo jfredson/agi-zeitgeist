@@ -1,0 +1,426 @@
+{
+  "speaker_id": "altman",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6458,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7899
+      },
+      "cache_creation_input_tokens": 52371,
+      "cache_read_input_tokens": 394626,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 10742,
+      "output_tokens_details": {
+        "thinking_tokens": 3260
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Sam Altman\" AI prediction 2025','\"Sam Altman\" 2025 interview AGI \"years\"','\"Sam Altman\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"==\",q)\n    for x in r[:8]: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r),str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(r,n=8,c=300):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:n]: print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'\\n   ',x.get('content','')[:c].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://blog.samaltman.com/\"})\nif isinstance(p,str): p=json.loads(p)\nc=p[0]['content'] if isinstance(p,list) else str(p)\nprint(len(c))\nimport re\nfor m in re.finditer(r'\\n#+ [^\\n]+',c): print(m.start(),m.group().strip())"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.samaltman.com/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[:3000])\nfor kw in ['202','decade','years','2035','2030','next year']:\n    for m in re.finditer(kw,c): print(kw,'::',c[max(0,m.start()-200):m.start()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=p['content']['source']['data'] if isinstance(p,dict) else c\nfor m in re.finditer(r'## \\[([^\\]]*)\\]\\(([^)]*)\\)',d): print(m.start(),m.group(1),m.group(2))\nfor m in re.finditer(r'(January|February|March|April|May|June|July|August|September|October|November|December) \\d+, 20\\d\\d|\\d{4}-\\d\\d-\\d\\d|Posted[^\\n]{0,120}',d): print(m.group())"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(d[28276:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(d[17891:28276])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Altman Axel Springer interview superintelligence 2030 Welt transcript','\"Ten years\" Sam Altman OpenAI superintelligence 2035 blog December 2025','Big Technology Podcast Sam Altman December 2025 transcript']:\n    r=await web_search({\"query\":q});print(\"==\",q);show(r,6,250)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman Axel Springer interview superintelligence 2030 Welt transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ten years\" Sam Altman OpenAI superintelligence 2035 blog December 2025"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Big Technology Podcast Sam Altman December 2025 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    try: return p['content']['source']['data'] if isinstance(p.get('content'),dict) else p.get('content') or str(p)\n    except Exception: return str(p)\nT=await fetch(\"https://openai.com/index/ten-years/\")\nP=await fetch(\"https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html\")\nprint(len(T),len(P))\ndef kw(t,ks,w=250):\n    for k in ks:\n        for m in re.finditer(k,t): print('['+k+']',t[max(0,m.start()-w):m.start()+w].replace('\\n',' '));print()\nkw(T,['ten more years','202','decade','years'],200)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://openai.com/index/ten-years/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T.find('In ten more years');print(T[i-100:i+700])\nkw(P,['2030','decade','years','next year','202'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Big Technology Kantrowitz Altman transcript \"perfect memory\" 2026','Sam Altman Sequoia AI Ascent 2025 transcript \"2026\" \"2027\"','Sam Altman Cleo Abram interview transcript GPT-5 2025']:\n    r=await web_search({\"query\":q});print(\"==\",q);show(r,6,250)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Big Technology Kantrowitz Altman transcript \"perfect memory\" 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman Sequoia AI Ascent 2025 transcript \"2026\" \"2027\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman Cleo Abram interview transcript GPT-5 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "B=await fetch(\"https://podscripts.co/podcasts/big-technology-podcast/sam-altman-how-openai-wins-ai-buildout-logic-ipo-in-2026?show_ads=true\")\nS=await fetch(\"https://substack.com/home/post/p-163421711\")\nC=await fetch(\"https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/\")\nprint(len(B),len(S),len(C))\npat=r'20[23]\\d|next year|this year|years|decade|month'\ndef hits(t,w=220,maxn=40):\n    n=0\n    for m in re.finditer(pat,t):\n        n+=1\n        if n>maxn: break\n        print('*',t[max(0,m.start()-w):m.start()+w].replace('\\n',' '))\nhits(S)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/big-technology-podcast/sam-altman-how-openai-wins-ai-buildout-logic-ipo-in-2026?show_ads=true"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://substack.com/home/post/p-163421711"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(B)\nprint(C[:600])\nhits(C,250,60)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=C.find('So let’s make it five years');print(C[i:i+2500])\ni=C.find('next two years');print('\\n----\\n',C[i-900:i+100])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-02",
+        "quote": "In a decade, perhaps everyone on earth will be capable of accomplishing more than the most impactful person can today.",
+        "what_is_predicted": "Within ten years, AGI-era tools may let anyone accomplish more than today's most impactful person.",
+        "date_or_span": "a decade (to about 2035)",
+        "occasion": "Blog essay 'Three Observations' (the opened front page shows no post dates; the February 2025 date is from memory, not from the page)",
+        "source_url": "https://blog.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-06-10",
+        "quote": "2026 will likely see the arrival of systems that can figure out novel insights.",
+        "what_is_predicted": "AI systems that can produce novel insights will likely arrive in 2026.",
+        "date_or_span": "2026",
+        "occasion": "Blog essay 'The Gentle Singularity'",
+        "source_url": "https://blog.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": "2025-06-10-altman-2026-systems-novel-insights.toml"
+      },
+      {
+        "date_said": "2025-06-10",
+        "quote": "2027 may see the arrival of robots that can do tasks in the real world.",
+        "what_is_predicted": "Robots that can do real-world tasks may arrive in 2027.",
+        "date_or_span": "2027",
+        "occasion": "Blog essay 'The Gentle Singularity'",
+        "source_url": "https://blog.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": "2025-06-10-altman-2027-robots-real-world-tasks.toml"
+      },
+      {
+        "date_said": "2025-06-10",
+        "quote": "Generally speaking, the ability for one person to get much more done in 2030 than they could in 2020 will be a striking change, and one many people will figure out how to benefit from.",
+        "what_is_predicted": "Because of AI, one person will be able to get much more done in 2030 than in 2020.",
+        "date_or_span": "2030",
+        "occasion": "Blog essay 'The Gentle Singularity'",
+        "source_url": "https://blog.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-06-10",
+        "quote": "In the 2030s, intelligence and energy—ideas, and the ability to make ideas happen—are going to become wildly abundant.",
+        "what_is_predicted": "Intelligence (AI) and energy will become wildly abundant during the 2030s.",
+        "date_or_span": "the 2030s",
+        "occasion": "Blog essay 'The Gentle Singularity'",
+        "source_url": "https://blog.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-06-10",
+        "quote": "It’s hard to even imagine today what we will have discovered by 2035; maybe we will go from solving high-energy physics one year to beginning space colonization the next year",
+        "what_is_predicted": "A loose guess that AI-driven discovery by 2035 could be very large, possibly including solving high-energy physics; worded as a 'maybe'.",
+        "date_or_span": "by 2035",
+        "occasion": "Blog essay 'The Gentle Singularity'",
+        "source_url": "https://blog.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-05",
+        "quote": "Next year is a year where I would expect AIs discovering new stuff. And maybe we have AIs make some very large scientific discoveries or assist humans in doing that...",
+        "what_is_predicted": "In 2026 AIs will discover new things, possibly making or helping with large scientific discoveries.",
+        "date_or_span": "next year (2026)",
+        "occasion": "Interview at Sequoia AI Ascent 2025; quoted in a Claude-written Sequoia post dated May 12, 2025",
+        "source_url": "https://substack.com/home/post/p-163421711",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-05",
+        "quote": "And then 2027, I would guess, is the year where that all moves from the sort of intellectual realm to the physical world. And robots go from a curiosity to a serious economic creator of value.",
+        "what_is_predicted": "In 2027 AI moves into the physical world and robots begin to create serious economic value.",
+        "date_or_span": "2027",
+        "occasion": "Interview at Sequoia AI Ascent 2025; quoted in a Claude-written Sequoia post dated May 12, 2025",
+        "source_url": "https://substack.com/home/post/p-163421711",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-08-08",
+        "quote": "But I would bet that by late 2027, most people agree that there has been an AI-driven significant new discovery.",
+        "what_is_predicted": "By late 2027 most people will agree that a general-purpose AI model has made a significant scientific discovery.",
+        "date_or_span": "by late 2027 (also 'over the next two years')",
+        "occasion": "Huge Conversations podcast with Cleo Abram, 'Sam Altman Shows Me GPT 5... And What's Next'; answering Patrick Collison's question",
+        "source_url": "https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-09",
+        "quote": "But I would certainly say by the end of this decade, so, by 2030, if we don't have models that are extraordinarily capable and do things that we ourselves cannot do, I'd be very surprised.",
+        "what_is_predicted": "By 2030 there will be AI models able to do things humans cannot do, which the interview frames as superintelligence.",
+        "date_or_span": "by 2030 / end of this decade",
+        "occasion": "Axel Springer Global Reporters Network interview in Berlin (Axel Springer Award); POLITICO Magazine Q&A via Yahoo, published Sept 25, 2025",
+        "source_url": "https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-12-11",
+        "quote": "In ten more years, I believe we are almost certain to build superintelligence.",
+        "what_is_predicted": "OpenAI is almost certain to build superintelligence within ten years.",
+        "date_or_span": "ten more years (by about 2035)",
+        "occasion": "'Ten years' post on openai.com for OpenAI's tenth anniversary, signed Sam Altman",
+        "source_url": "https://openai.com/index/ten-years/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-12-11",
+        "quote": "In some other sense, the people of 2035 will be capable of doing things that I just don’t think we can easily imagine right now.",
+        "what_is_predicted": "With superintelligence, people in 2035 will be able to do things that are hard to imagine now.",
+        "date_or_span": "2035",
+        "occasion": "'Ten years' post on openai.com",
+        "source_url": "https://openai.com/index/ten-years/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-06-10",
+        "quote": "We are past the event horizon; the takeoff has started. Humanity is close to building digital superintelligence, and at least so far it’s much less weird than it seems like it should be.",
+        "source_url": "https://blog.samaltman.com/"
+      },
+      {
+        "date_said": "2025-02",
+        "quote": "Systems that start to point to AGI* are coming into view, and so we think it’s important to understand the moment we are in.",
+        "source_url": "https://blog.samaltman.com/"
+      },
+      {
+        "date_said": "2025-09",
+        "quote": "I think in another couple of years, it will become very plausible for AI to make, for example, scientific discoveries that humans cannot make on their own. To me, that'll start to feel like something we could properly call superintelligence.",
+        "source_url": "https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "The blog.samaltman.com front page now opens with a 2026 post (a family photo dated 2026-02-28 and a response to a Molotov attack); I saw no dated AI prediction in it."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2025",
+        "what_found": "News on the Dec 2025 Big Technology Podcast memory remarks, TIME on the Reflections post, and the blog front page."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2025 interview AGI \"years\"",
+        "what_found": "The Jan 2025 Bloomberg interview, an AEI piece on his February 2025 post, and secondary claims about AGI within five years and robots within 2-3 years."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage of the Sept 2025 Axel Springer 'by 2030' remark and the Dec 2025 'Ten years' superintelligence remark."
+      },
+      {
+        "query_or_url": "https://blog.samaltman.com/",
+        "what_found": "Front page carrying Three Observations, The Gentle Singularity, Abundant Intelligence, Sora 2 and a 2026 post; no post dates printed."
+      },
+      {
+        "query_or_url": "Altman Axel Springer interview superintelligence 2030 Welt transcript",
+        "what_found": "Pointed to the POLITICO Q&A republished on Yahoo."
+      },
+      {
+        "query_or_url": "\"Ten years\" Sam Altman OpenAI superintelligence 2035 blog December 2025",
+        "what_found": "Found the openai.com 'Ten years' post dated Dec 11, 2025."
+      },
+      {
+        "query_or_url": "Big Technology Podcast Sam Altman December 2025 transcript",
+        "what_found": "Dec 18, 2025 episode listings and coverage only."
+      },
+      {
+        "query_or_url": "https://openai.com/index/ten-years/",
+        "what_found": "Altman's signed post with the 'ten more years... superintelligence' and 'people of 2035' lines."
+      },
+      {
+        "query_or_url": "https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html",
+        "what_found": "POLITICO Q&A from Sept 25, 2025 with the 'by 2030' answer and the 'another couple of years' remark."
+      },
+      {
+        "query_or_url": "Big Technology Kantrowitz Altman transcript \"perfect memory\" 2026",
+        "what_found": "Transcript and coverage links for the Dec 2025 podcast."
+      },
+      {
+        "query_or_url": "Sam Altman Sequoia AI Ascent 2025 transcript \"2026\" \"2027\"",
+        "what_found": "Sequoia's Inference substack post and secondary write-ups of the 2025/2026/2027 roadmap."
+      },
+      {
+        "query_or_url": "Sam Altman Cleo Abram interview transcript GPT-5 2025",
+        "what_found": "A third-party transcript of the Aug 8, 2025 Huge Conversations episode."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/big-technology-podcast/sam-altman-how-openai-wins-ai-buildout-logic-ipo-in-2026?show_ads=true",
+        "what_found": "Did not open (url_not_allowed); nothing quoted from it."
+      },
+      {
+        "query_or_url": "https://substack.com/home/post/p-163421711",
+        "what_found": "Sequoia's Claude-written summary of the AI Ascent 2025 talk, quoting the 2025/next year/2027 roadmap."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/",
+        "what_found": "Third-party transcript with the 'by late 2027' AI-discovery bet."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2025 was a busy year for dated Altman predictions. His own essays (Three Observations, The Gentle Singularity, and OpenAI's 'Ten years' post) put markers on 2026, 2027, 2030, the 2030s and 2035, ending with superintelligence 'almost certain' within ten years. In interviews he bet on an AI-driven significant discovery by late 2027 (Cleo Abram) and said he would be very surprised not to have models beyond human ability by 2030 (Axel Springer/POLITICO); the Sequoia AI Ascent roadmap was seen only in a Claude-written summary, and the December Big Technology Podcast transcript could not be opened."
+  },
+  "reply_text": "I found seven new dated AI predictions Altman made in 2025, plus two lines that are already in your files. The strongest come from his own writing and from printed interviews:\n- **\"Ten years\" (OpenAI, 11 December):** he believes OpenAI is \"almost certain to build superintelligence\" within ten more years.\n- **Axel Springer / POLITICO interview (25 September):** he said he'd be \"very surprised\" if models that \"do things that we ourselves cannot do\" don't exist by 2030.\n- **Cleo Abram podcast (8 August):** he bet that by late 2027 most people will agree AI has made a significant new discovery.\n\nThings you should check:\n- **Blog dates:** The blog front page I opened doesn't print post dates. The February date for \"Three Observations\" is from my memory, not the page. The 10 June date for \"The Gentle Singularity\" matches your existing file.\n- **Cleo Abram transcript:** This is a third-party transcript, not an official one. It has some likely mishearings, for example \"early 2025\" next to \"late 2026, sorry, early 2026\".\n- **Sequoia AI Ascent (May):** The only page I saw is Sequoia's own post, and it says Claude wrote it from the talk transcript. Treat the quoted words as coverage only. They predict the same 2026 and 2027 steps as your 10 June files, but this is a separate, earlier occasion. I left `already_recorded` empty for these.\n- **Big Technology Podcast (December):** The transcript page was blocked (url_not_allowed), so I quote nothing from it. News reports say Altman linked \"perfect memory\" in AI to 2026, but I couldn't confirm his words.\n\nI ran 9 of the 12 searches. I didn't use the last 3 because all 6 page openings were spent, and I don't quote from search snippets.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-02\", \"quote\": \"In a decade, perhaps everyone on earth will be capable of accomplishing more than the most impactful person can today.\", \"what_is_predicted\": \"Within ten years, AGI-era tools may let anyone accomplish more than today's most impactful person.\", \"date_or_span\": \"a decade (to about 2035)\", \"occasion\": \"Blog essay 'Three Observations' (the opened front page shows no post dates; the February 2025 date is from memory, not from the page)\", \"source_url\": \"https://blog.samaltman.com/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-06-10\", \"quote\": \"2026 will likely see the arrival of systems that can figure out novel insights.\", \"what_is_predicted\": \"AI systems that can produce novel insights will likely arrive in 2026.\", \"date_or_span\": \"2026\", \"occasion\": \"Blog essay 'The Gentle Singularity'\", \"source_url\": \"https://blog.samaltman.com/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2025-06-10-altman-2026-systems-novel-insights.toml\"},\n    {\"date_said\": \"2025-06-10\", \"quote\": \"2027 may see the arrival of robots that can do tasks in the real world.\", \"what_is_predicted\": \"Robots that can do real-world tasks may arrive in 2027.\", \"date_or_span\": \"2027\", \"occasion\": \"Blog essay 'The Gentle Singularity'\", \"source_url\": \"https://blog.samaltman.com/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2025-06-10-altman-2027-robots-real-world-tasks.toml\"},\n    {\"date_said\": \"2025-06-10\", \"quote\": \"Generally speaking, the ability for one person to get much more done in 2030 than they could in 2020 will be a striking change, and one many people will figure out how to benefit from.\", \"what_is_predicted\": \"Because of AI, one person will be able to get much more done in 2030 than in 2020.\", \"date_or_span\": \"2030\", \"occasion\": \"Blog essay 'The Gentle Singularity'\", \"source_url\": \"https://blog.samaltman.com/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-06-10\", \"quote\": \"In the 2030s, intelligence and energy—ideas, and the ability to make ideas happen—are going to become wildly abundant.\", \"what_is_predicted\": \"Intelligence (AI) and energy will become wildly abundant during the 2030s.\", \"date_or_span\": \"the 2030s\", \"occasion\": \"Blog essay 'The Gentle Singularity'\", \"source_url\": \"https://blog.samaltman.com/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-06-10\", \"quote\": \"It’s hard to even imagine today what we will have discovered by 2035; maybe we will go from solving high-energy physics one year to beginning space colonization the next year\", \"what_is_predicted\": \"A loose guess that AI-driven discovery by 2035 could be very large, possibly including solving high-energy physics; worded as a 'maybe'.\", \"date_or_span\": \"by 2035\", \"occasion\": \"Blog essay 'The Gentle Singularity'\", \"source_url\": \"https://blog.samaltman.com/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-05\", \"quote\": \"Next year is a year where I would expect AIs discovering new stuff. And maybe we have AIs make some very large scientific discoveries or assist humans in doing that...\", \"what_is_predicted\": \"In 2026 AIs will discover new things, possibly making or helping with large scientific discoveries.\", \"date_or_span\": \"next year (2026)\", \"occasion\": \"Interview at Sequoia AI Ascent 2025; quoted in a Claude-written Sequoia post dated May 12, 2025\", \"source_url\": \"https://substack.com/home/post/p-163421711\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-05\", \"quote\": \"And then 2027, I would guess, is the year where that all moves from the sort of intellectual realm to the physical world. And robots go from a curiosity to a serious economic creator of value.\", \"what_is_predicted\": \"In 2027 AI moves into the physical world and robots begin to create serious economic value.\", \"date_or_span\": \"2027\", \"occasion\": \"Interview at Sequoia AI Ascent 2025; quoted in a Claude-written Sequoia post dated May 12, 2025\", \"source_url\": \"https://substack.com/home/post/p-163421711\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-08-08\", \"quote\": \"But I would bet that by late 2027, most people agree that there has been an AI-driven significant new discovery.\", \"what_is_predicted\": \"By late 2027 most people will agree that a general-purpose AI model has made a significant scientific discovery.\", \"date_or_span\": \"by late 2027 (also 'over the next two years')\", \"occasion\": \"Huge Conversations podcast with Cleo Abram, 'Sam Altman Shows Me GPT 5... And What's Next'; answering Patrick Collison's question\", \"source_url\": \"https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-09\", \"quote\": \"But I would certainly say by the end of this decade, so, by 2030, if we don't have models that are extraordinarily capable and do things that we ourselves cannot do, I'd be very surprised.\", \"what_is_predicted\": \"By 2030 there will be AI models able to do things humans cannot do, which the interview frames as superintelligence.\", \"date_or_span\": \"by 2030 / end of this decade\", \"occasion\": \"Axel Springer Global Reporters Network interview in Berlin (Axel Springer Award); POLITICO Magazine Q&A via Yahoo, published Sept 25, 2025\", \"source_url\": \"https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-12-11\", \"quote\": \"In ten more years, I believe we are almost certain to build superintelligence.\", \"what_is_predicted\": \"OpenAI is almost certain to build superintelligence within ten years.\", \"date_or_span\": \"ten more years (by about 2035)\", \"occasion\": \"'Ten years' post on openai.com for OpenAI's tenth anniversary, signed Sam Altman\", \"source_url\": \"https://openai.com/index/ten-years/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-12-11\", \"quote\": \"In some other sense, the people of 2035 will be capable of doing things that I just don’t think we can easily imagine right now.\", \"what_is_predicted\": \"With superintelligence, people in 2035 will be able to do things that are hard to imagine now.\", \"date_or_span\": \"2035\", \"occasion\": \"'Ten years' post on openai.com\", \"source_url\": \"https://openai.com/index/ten-years/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2025-06-10\", \"quote\": \"We are past the event horizon; the takeoff has started. Humanity is close to building digital superintelligence, and at least so far it’s much less weird than it seems like it should be.\", \"source_url\": \"https://blog.samaltman.com/\"},\n    {\"date_said\": \"2025-02\", \"quote\": \"Systems that start to point to AGI* are coming into view, and so we think it’s important to understand the moment we are in.\", \"source_url\": \"https://blog.samaltman.com/\"},\n    {\"date_said\": \"2025-09\", \"quote\": \"I think in another couple of years, it will become very plausible for AI to make, for example, scientific discoveries that humans cannot make on their own. To me, that'll start to feel like something we could properly call superintelligence.\", \"source_url\": \"https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"The blog.samaltman.com front page now opens with a 2026 post (a family photo dated 2026-02-28 and a response to a Molotov attack); I saw no dated AI prediction in it.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2025\", \"what_found\": \"News on the Dec 2025 Big Technology Podcast memory remarks, TIME on the Reflections post, and the blog front page.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"The Jan 2025 Bloomberg interview, an AEI piece on his February 2025 post, and secondary claims about AGI within five years and robots within 2-3 years.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage of the Sept 2025 Axel Springer 'by 2030' remark and the Dec 2025 'Ten years' superintelligence remark.\"},\n    {\"query_or_url\": \"https://blog.samaltman.com/\", \"what_found\": \"Front page carrying Three Observations, The Gentle Singularity, Abundant Intelligence, Sora 2 and a 2026 post; no post dates printed.\"},\n    {\"query_or_url\": \"Altman Axel Springer interview superintelligence 2030 Welt transcript\", \"what_found\": \"Pointed to the POLITICO Q&A republished on Yahoo.\"},\n    {\"query_or_url\": \"\\\"Ten years\\\" Sam Altman OpenAI superintelligence 2035 blog December 2025\", \"what_found\": \"Found the openai.com 'Ten years' post dated Dec 11, 2025.\"},\n    {\"query_or_url\": \"Big Technology Podcast Sam Altman December 2025 transcript\", \"what_found\": \"Dec 18, 2025 episode listings and coverage only.\"},\n    {\"query_or_url\": \"https://openai.com/index/ten-years/\", \"what_found\": \"Altman's signed post with the 'ten more years... superintelligence' and 'people of 2035' lines.\"},\n    {\"query_or_url\": \"https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html\", \"what_found\": \"POLITICO Q&A from Sept 25, 2025 with the 'by 2030' answer and the 'another couple of years' remark.\"},\n    {\"query_or_url\": \"Big Technology Kantrowitz Altman transcript \\\"perfect memory\\\" 2026\", \"what_found\": \"Transcript and coverage links for the Dec 2025 podcast.\"},\n    {\"query_or_url\": \"Sam Altman Sequoia AI Ascent 2025 transcript \\\"2026\\\" \\\"2027\\\"\", \"what_found\": \"Sequoia's Inference substack post and secondary write-ups of the 2025/2026/2027 roadmap.\"},\n    {\"query_or_url\": \"Sam Altman Cleo Abram interview transcript GPT-5 2025\", \"what_found\": \"A third-party transcript of the Aug 8, 2025 Huge Conversations episode.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/big-technology-podcast/sam-altman-how-openai-wins-ai-buildout-logic-ipo-in-2026?show_ads=true\", \"what_found\": \"Did not open (url_not_allowed); nothing quoted from it.\"},\n    {\"query_or_url\": \"https://substack.com/home/post/p-163421711\", \"what_found\": \"Sequoia's Claude-written summary of the AI Ascent 2025 talk, quoting the 2025/next year/2027 roadmap.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/\", \"what_found\": \"Third-party transcript with the 'by late 2027' AI-discovery bet.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2025 was a busy year for dated Altman predictions. His own essays (Three Observations, The Gentle Singularity, and OpenAI's 'Ten years' post) put markers on 2026, 2027, 2030, the 2030s and 2035, ending with superintelligence 'almost certain' within ten years. In interviews he bet on an AI-driven significant discovery by late 2027 (Cleo Abram) and said he would be very surprised not to have models beyond human ability by 2030 (Axel Springer/POLITICO); the Sequoia AI Ascent roadmap was seen only in a Claude-written summary, and the December Big Technology Podcast transcript could not be opened.\"\n}\n```"
+}

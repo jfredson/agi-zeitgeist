@@ -1,0 +1,340 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6015,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7826
+      },
+      "cache_creation_input_tokens": 44722,
+      "cache_read_input_tokens": 404482,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 9340,
+      "output_tokens_details": {
+        "thinking_tokens": 3143
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2024','\"Demis Hassabis\" 2024 interview AGI \"years\"','\"Demis Hassabis\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    r=json.loads(R[q]) if isinstance(R[q],str) else R[q]\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); \n    r=json.loads(r) if isinstance(r,str) else r\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    r=await web_search({\"query\":q}); \n    r=json.loads(r) if isinstance(r,str) else r\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Dwarkesh Patel Demis Hassabis transcript 2024','Hannah Fry Demis Hassabis \"Unreasonably effective AI\" podcast transcript','Demis Hassabis Nobel lecture December 2024 transcript','Demis Hassabis Wired interview Levy 2024 Astra AGI']\nfor q in qs2:\n    r=await web_search({\"query\":q}); \n    r=json.loads(r) if isinstance(r,str) else r\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dwarkesh Patel Demis Hassabis transcript 2024"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hannah Fry Demis Hassabis \"Unreasonably effective AI\" podcast transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Demis Hassabis Nobel lecture December 2024 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Demis Hassabis Wired interview Levy 2024 Astra AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nurls=['https://www.dwarkesh.com/p/demis-hassabis','https://www.nobelprize.org/prizes/chemistry/2024/hassabis/1924974-transcript-from-an-interview-with-demis-hassabis/','https://ytscribe.com/v/pZybROKrj2Q','https://www.axios.com/2024/10/21/ai-deepmind-ceo-demis-hassabis']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') or ''\n    print(u, r.get('type'), r.get('error_code'), len(P[u]), r.get('title'))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/demis-hassabis"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/1924974-transcript-from-an-interview-with-demis-hassabis/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ytscribe.com/v/pZybROKrj2Q"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.axios.com/2024/10/21/ai-deepmind-ceo-demis-hassabis"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":urls[0]}) if False else None\nprint(P[urls[0]])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(u):\n    c=P[u]\n    if isinstance(c,dict): return c.get('source',{}).get('data','')\n    return str(c)\nfor u in urls: print(u,len(txt(u)))\nt=txt(urls[0])\ni=t.find('Timelines and intelligence explosion**')\nprint(t[i:i+6000] if i>0 else t[-3000:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw=re.compile(r'(year|decade|AGI|20\\d\\d|soon|next|future|will be)',re.I)\nfor u in urls[1:]:\n    t=txt(u)\n    print('=====',u)\n    if 'axios' in u: print(t); continue\n    for m in re.finditer(r'[^.?!\\n]*\\b(years?|decade|AGI|20[2-5]\\d)\\b[^.?!\\n]*[.?!]',t):\n        print('-',m.group(0).strip()[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=txt(urls[1]); i=t.find('The next 10 years'); print(t[:600]); print('...'); print(t[i-1500:i+700])\ny=txt(urls[2])\nfor k in ['years','decade','agi','next year','soon']:\n    for m in re.finditer(k,y,re.I):\n        print(k,'>>',y[max(0,m.start()-250):m.start()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=y.find('two three four years'); print(y[i-900:i+600]); print('----END----'); print(y[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(y[:800])\nqs3=['Hassabis Nobel press conference October 2024 AGI decade','Hassabis Dwarkesh \"timelines\" \"Legg\" 2030 transcript']\nfor q in qs3:\n    r=await web_search({\"query\":q}); \n    r=json.loads(r) if isinstance(r,str) else r\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Nobel press conference October 2024 AGI decade"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Dwarkesh \"timelines\" \"Legg\" 2030 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','')\n    z=txt(u); print(len(z))\n    for k in ['decade','203','2028','year','soon']:\n        for m in re.finditer(k,z):\n            print(k,'>>',z[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Hassabis 2024 interview \"next five years\" OR \"next 10 years\" OR \"next decade\" AI'\nr=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r; R[q]=r\nfor x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2024 interview \"next five years\" OR \"next 10 years\" OR \"next decade\" AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Hard Fork\" Hassabis transcript February 2024 Gemini'\nr=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r; R[q]=r\nfor x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Hard Fork\" Hassabis transcript February 2024 Gemini"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.tapesearch.com/episode/google-deepmind-c-e-o-demis-hassabis-on-the-path-from-chatbots-to-a-g-i/JCKmoBJzya5p3Mr2ybMjsi'\nr=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\nif isinstance(r,list): r=r[0]\nP[u]=r.get('content',''); h=txt(u); print(r.get('error_code'),len(h)); print(h[:500])\nfor k in ['decade','year','202','2030']:\n    for m in re.finditer(k,h):\n        print(k,'>>',h[max(0,m.start()-300):m.start()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.tapesearch.com/episode/google-deepmind-c-e-o-demis-hassabis-on-the-path-from-chatbots-to-a-g-i/JCKmoBJzya5p3Mr2ybMjsi"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-08",
+        "quote": "it's okay today because I don't think the systems are that powerful but in two three four years time especially when you start getting agent like systems or agentic behaviors um then I think uh you know if it's something's misused by someone or perhaps even a rogue nation state uh there could be serious harm",
+        "what_is_predicted": "Within two to four years AI systems, especially agent-like ones, will be powerful enough that misuse by a bad actor or rogue state could cause serious harm.",
+        "date_or_span": "two to four years (c. 2026-2028)",
+        "occasion": "Google DeepMind: The Podcast with Hannah Fry, episode 'Unreasonably Effective AI with Demis Hassabis' (the 14 Aug 2024 release date comes from a search-result title; I didn't open that page)",
+        "source_url": "https://ytscribe.com/v/pZybROKrj2Q",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-02-28",
+        "quote": "in the next decade",
+        "what_is_predicted": "AGI-like systems could arrive within the next decade; the reviewer says Hassabis implied they are on track for 2030.",
+        "date_or_span": "the next decade / 2030",
+        "occasion": "Dwarkesh Patel podcast, timelines segment (~24:00); seen only in Zvi Mowshowitz's write-up because the podcast page cut off before this section",
+        "source_url": "https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Many search results (Yahoo Tech, YourStory, 36kr, Trending Topics and others) report Hassabis now saying AGI could come in two to three years, around 2028; I didn't open these pages."
+      },
+      {
+        "year": "2025",
+        "note": "Search listings showed the CBS 60 Minutes transcript, an NBC story ('five to 10 years'), a TIME interview and a Queens' College Cambridge interview; I didn't open them."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2024",
+        "what_found": "Mostly 2026 news on his 2-3 year AGI estimate, plus Wikipedia pages."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2024 interview AGI \"years\"",
+        "what_found": "Recent 2025-2026 coverage; nothing clearly from 2024."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Recent AGI-timeline news and a 2023 Fortune piece; nothing from 2024."
+      },
+      {
+        "query_or_url": "Dwarkesh Patel Demis Hassabis transcript 2024",
+        "what_found": "The Dwarkesh transcript page (28 Feb 2024) and Zvi's notes."
+      },
+      {
+        "query_or_url": "Hannah Fry Demis Hassabis \"Unreasonably effective AI\" podcast transcript",
+        "what_found": "A ytscribe transcript and a biocomm listing dating the episode to 14 Aug 2024."
+      },
+      {
+        "query_or_url": "Demis Hassabis Nobel lecture December 2024 transcript",
+        "what_found": "The Nobel lecture page and PDF, and a NobelPrize.org interview transcript."
+      },
+      {
+        "query_or_url": "Demis Hassabis Wired interview Levy 2024 Astra AGI",
+        "what_found": "An Axios interview from 21 Oct 2024, plus pages from 2025."
+      },
+      {
+        "query_or_url": "Hassabis Nobel press conference October 2024 AGI decade",
+        "what_found": "The Nobel press release and recent 36kr pieces; no transcript of the press conference."
+      },
+      {
+        "query_or_url": "Hassabis Dwarkesh \"timelines\" \"Legg\" 2030 transcript",
+        "what_found": "The Shane Legg episode and trackers; no complete Hassabis transcript."
+      },
+      {
+        "query_or_url": "Hassabis 2024 interview \"next five years\" OR \"next 10 years\" OR \"next decade\" AI",
+        "what_found": "Pages from 2025-2026 and Zvi's Substack."
+      },
+      {
+        "query_or_url": "\"Hard Fork\" Hassabis transcript February 2024 Gemini",
+        "what_found": "Listings for the Hard Fork episode of 23 Feb 2024, including Tapesearch."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/demis-hassabis",
+        "what_found": "The transcript from 28 Feb 2024, cut off at about 21:35, before the timelines section."
+      },
+      {
+        "query_or_url": "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/1924974-transcript-from-an-interview-with-demis-hassabis/",
+        "what_found": "A Nobel interview whose only 'next 10 years' line is about interdisciplinary science, not an AI prediction."
+      },
+      {
+        "query_or_url": "https://ytscribe.com/v/pZybROKrj2Q",
+        "what_found": "A partial automatic transcript of the Hannah Fry episode containing the 'two three four years' misuse-risk line."
+      },
+      {
+        "query_or_url": "https://www.axios.com/2024/10/21/ai-deepmind-ceo-demis-hassabis",
+        "what_found": "A 21 Oct 2024 interview with no dated predictions (AI 'overhyped in the near term', 'underrated in the long term')."
+      },
+      {
+        "query_or_url": "https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/",
+        "what_found": "Zvi's notes reporting Hassabis implied AGI-like systems are on track for 2030 and 'in the next decade'."
+      },
+      {
+        "query_or_url": "https://www.tapesearch.com/episode/google-deepmind-c-e-o-demis-hassabis-on-the-path-from-chatbots-to-a-g-i/JCKmoBJzya5p3Mr2ybMjsi",
+        "what_found": "Confirms the Hard Fork date of 23 Feb 2024, but only the first few seconds of transcript loaded."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "I found one new dated 2024 prediction: in the August Hannah Fry podcast, Hassabis said AI systems could become dangerous if misused within two to four years, once they become agent-like, though I read it only in a third-party automatic transcript. His 2030 / 'next decade' AGI timing on the Dwarkesh podcast (28 Feb) I saw only in Zvi Mowshowitz's write-up, not in his own words, and it may be the same claim as your 23 February files. I couldn't confirm the six already-recorded claims in any page I opened."
+  },
+  "reply_text": "I found one new dated AI prediction from Hassabis in 2024 and one weaker item that I saw only in someone else's write-up. None of the six claims you have already recorded turned up in pages I could read.\n\n1. **New, August 2024 (Google DeepMind podcast with Hannah Fry, \"Unreasonably Effective AI\").** He said today's AI systems aren't powerful enough for misuse to be a serious problem, but that \"in two three four years time\", once systems become agent-like, misuse could cause \"serious harm\". I read this in a third-party automatic transcript of the YouTube video, so the wording is unpunctuated and should be checked against the recording. The 14 August 2024 date comes from a search-result title; I didn't open that page.\n\n2. **February 2024 (Dwarkesh Patel podcast, published 28 February).** The podcast page cut off before the section on timelines, so I never read his own words. Zvi Mowshowitz's write-up says Hassabis suggested AGI-like systems are on track for 2030 and quotes him as not being surprised \"in the next decade.\" Treat this as secondary only. It reads like the same claims as your \"within decade\" and \"twenty-year plan\" files, but those are dated 23 February, which is the Hard Fork episode, so it may be a separate occasion.\n\nThe other pages had nothing that qualified:\n- **Hard Fork, 23 February:** the transcript page only showed the first few seconds, so I couldn't check your recorded claims.\n- **Nobel interview transcript:** has a \"next 10 years\" line, but it is advice on interdisciplinary science, not a prediction about AI.\n- **Axios, October:** no dated predictions.\n- **Not reached:** the Nobel lecture and the Google I/O / Gemini 2.0 pages behind your May and December files.\n\nMost search results were 2026 news about his newer \"two to three years\" AGI estimate, which I've noted under other_years without opening.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2024-08\", \"quote\": \"it's okay today because I don't think the systems are that powerful but in two three four years time especially when you start getting agent like systems or agentic behaviors um then I think uh you know if it's something's misused by someone or perhaps even a rogue nation state uh there could be serious harm\", \"what_is_predicted\": \"Within two to four years AI systems, especially agent-like ones, will be powerful enough that misuse by a bad actor or rogue state could cause serious harm.\", \"date_or_span\": \"two to four years (c. 2026-2028)\", \"occasion\": \"Google DeepMind: The Podcast with Hannah Fry, episode 'Unreasonably Effective AI with Demis Hassabis' (the 14 Aug 2024 release date comes from a search-result title; I didn't open that page)\", \"source_url\": \"https://ytscribe.com/v/pZybROKrj2Q\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2024-02-28\", \"quote\": \"in the next decade\", \"what_is_predicted\": \"AGI-like systems could arrive within the next decade; the reviewer says Hassabis implied they are on track for 2030.\", \"date_or_span\": \"the next decade / 2030\", \"occasion\": \"Dwarkesh Patel podcast, timelines segment (~24:00); seen only in Zvi Mowshowitz's write-up because the podcast page cut off before this section\", \"source_url\": \"https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Many search results (Yahoo Tech, YourStory, 36kr, Trending Topics and others) report Hassabis now saying AGI could come in two to three years, around 2028; I didn't open these pages.\"},\n    {\"year\": \"2025\", \"note\": \"Search listings showed the CBS 60 Minutes transcript, an NBC story ('five to 10 years'), a TIME interview and a Queens' College Cambridge interview; I didn't open them.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2024\", \"what_found\": \"Mostly 2026 news on his 2-3 year AGI estimate, plus Wikipedia pages.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Recent 2025-2026 coverage; nothing clearly from 2024.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Recent AGI-timeline news and a 2023 Fortune piece; nothing from 2024.\"},\n    {\"query_or_url\": \"Dwarkesh Patel Demis Hassabis transcript 2024\", \"what_found\": \"The Dwarkesh transcript page (28 Feb 2024) and Zvi's notes.\"},\n    {\"query_or_url\": \"Hannah Fry Demis Hassabis \\\"Unreasonably effective AI\\\" podcast transcript\", \"what_found\": \"A ytscribe transcript and a biocomm listing dating the episode to 14 Aug 2024.\"},\n    {\"query_or_url\": \"Demis Hassabis Nobel lecture December 2024 transcript\", \"what_found\": \"The Nobel lecture page and PDF, and a NobelPrize.org interview transcript.\"},\n    {\"query_or_url\": \"Demis Hassabis Wired interview Levy 2024 Astra AGI\", \"what_found\": \"An Axios interview from 21 Oct 2024, plus pages from 2025.\"},\n    {\"query_or_url\": \"Hassabis Nobel press conference October 2024 AGI decade\", \"what_found\": \"The Nobel press release and recent 36kr pieces; no transcript of the press conference.\"},\n    {\"query_or_url\": \"Hassabis Dwarkesh \\\"timelines\\\" \\\"Legg\\\" 2030 transcript\", \"what_found\": \"The Shane Legg episode and trackers; no complete Hassabis transcript.\"},\n    {\"query_or_url\": \"Hassabis 2024 interview \\\"next five years\\\" OR \\\"next 10 years\\\" OR \\\"next decade\\\" AI\", \"what_found\": \"Pages from 2025-2026 and Zvi's Substack.\"},\n    {\"query_or_url\": \"\\\"Hard Fork\\\" Hassabis transcript February 2024 Gemini\", \"what_found\": \"Listings for the Hard Fork episode of 23 Feb 2024, including Tapesearch.\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/demis-hassabis\", \"what_found\": \"The transcript from 28 Feb 2024, cut off at about 21:35, before the timelines section.\"},\n    {\"query_or_url\": \"https://www.nobelprize.org/prizes/chemistry/2024/hassabis/1924974-transcript-from-an-interview-with-demis-hassabis/\", \"what_found\": \"A Nobel interview whose only 'next 10 years' line is about interdisciplinary science, not an AI prediction.\"},\n    {\"query_or_url\": \"https://ytscribe.com/v/pZybROKrj2Q\", \"what_found\": \"A partial automatic transcript of the Hannah Fry episode containing the 'two three four years' misuse-risk line.\"},\n    {\"query_or_url\": \"https://www.axios.com/2024/10/21/ai-deepmind-ceo-demis-hassabis\", \"what_found\": \"A 21 Oct 2024 interview with no dated predictions (AI 'overhyped in the near term', 'underrated in the long term').\"},\n    {\"query_or_url\": \"https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/\", \"what_found\": \"Zvi's notes reporting Hassabis implied AGI-like systems are on track for 2030 and 'in the next decade'.\"},\n    {\"query_or_url\": \"https://www.tapesearch.com/episode/google-deepmind-c-e-o-demis-hassabis-on-the-path-from-chatbots-to-a-g-i/JCKmoBJzya5p3Mr2ybMjsi\", \"what_found\": \"Confirms the Hard Fork date of 23 Feb 2024, but only the first few seconds of transcript loaded.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"I found one new dated 2024 prediction: in the August Hannah Fry podcast, Hassabis said AI systems could become dangerous if misused within two to four years, once they become agent-like, though I read it only in a third-party automatic transcript. His 2030 / 'next decade' AGI timing on the Dwarkesh podcast (28 Feb) I saw only in Zvi Mowshowitz's write-up, not in his own words, and it may be the same claim as your 23 February files. I couldn't confirm the six already-recorded claims in any page I opened.\"\n}\n```"
+}

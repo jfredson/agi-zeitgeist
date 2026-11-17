@@ -1,0 +1,19 @@
+[claim]
+id = "2025-08-08-altman-significant-ai-discovery-by-late-2027"
+speaker_id = "altman"
+when = "2025-08-08"
+when_note = "Cleo Abram's own upload of the episode is dated 2025-08-08, and the transcript page gives the same date."
+occasion = "Huge Conversations podcast with Cleo Abram, 'Sam Altman Shows Me GPT 5... And What's Next', answering a question sent in by Patrick Collison"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=hmtuvNfytjM"
+source_locator = "about 11:43 into the video"
+checked_how = "Read in the automatic captions of Cleo Abram's own upload (yt-dlp) on 2026-11-17 and compared with the transcript page where the words were first found (https://singjupost.com/transcript-openai-ceo-sam-altmans-interview-on-huge-conversations-podcast/); nobody listened. The captions read 'by late 27' and repeat 'I would'; otherwise the same."
+quote = "I would bet that by late 2027, most people agree that there has been an AI-driven significant new discovery."
+prediction = "Asked in which year a general-purpose large language model will make a significant scientific discovery (the question set aside mathematics and special-purpose models such as AlphaFold), he says most people will agree it happens 'at some point over the next two years', that 'the definition of significant matters a lot', and that he would bet most people agree by late 2027."
+kind = "capability"
+bar = "A significant new scientific discovery made by a general-purpose AI model, outside mathematics, shown by a dated record by 2027-12-31. He gives no definition of 'significant' and no count for 'most people agree'; the plainest reading is a discovery that scientists in its field, outside the model's maker, report as significant."
+due = 2027
+due_basis = "'by late 2027'; judged at 2027-12-31."
+status = "not_yet_due"
+search_ids = ["altman-claims-039", "altman-claims-042"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. Related recorded claims: 2025-06-10-altman-2026-systems-novel-insights and 2025-10-29-altman-small-new-discoveries-in-2026, which name 2026 and a smaller thing."

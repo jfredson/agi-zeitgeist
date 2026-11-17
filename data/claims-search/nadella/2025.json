@@ -1,0 +1,338 @@
+{
+  "speaker_id": "nadella",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6231,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7671
+      },
+      "cache_creation_input_tokens": 50096,
+      "cache_read_input_tokens": 506859,
+      "inference_geo": "global",
+      "input_tokens": 42,
+      "output_tokens": 9054,
+      "output_tokens_details": {
+        "thinking_tokens": 2326
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Satya Nadella\" AI prediction 2025','\"Satya Nadella\" 2025 interview AGI \"years\"','\"Satya Nadella\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"##\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r));print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"##\",q)\n    for x in r: print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:400].replace('\\n',' '))\nshow(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q});R[q]=r;show(q,r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://www.dwarkesh.com/p/satya-nadella\",\"https://www.dwarkesh.com/p/satya-nadella-2\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u,len(P[u]), r.get('error_code') if isinstance(r,dict) else '')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/satya-nadella"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/satya-nadella-2"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(r.keys() if isinstance(r,dict) else type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef txt(r):\n    c=r['content']\n    return c['source']['data'] if isinstance(c,dict) else c\n# refetch not needed: store. need first one too -> lost; I only kept r for second. \nT2=txt(r); print(len(T2))\nkw=r'(next (year|decade|five|ten|\\d+)|by 20\\d\\d|20\\d\\d|\\b\\d+ years|end of (the|this) decade|years from now|in (five|ten|two|three|20|10|5) years|AGI)'\nfor m in re.finditer(kw,T2):\n    pass\ndef ctx(T,pat,w=300):\n    out=[]\n    last=-1000\n    for m in re.finditer(pat,T):\n        if m.start()-last<w: continue\n        last=m.start()\n        out.append(T[max(0,m.start()-w):m.end()+w].replace('\\n',' '))\n    return out\nfor s in ctx(T2,r'(next (year|decade|five|ten|seven|\\d+)|by 20\\d\\d|\\b20[2-5]\\d\\b|\\b\\d+ years|end of (the|this) decade|years from now|in (five|ten|two|three|20|10|5) years)',250): print('>>',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(T2[-1500:])\nfor s in ctx(T2,r'(decade|seven years|ten years|five years|by the end|will be (able|doing)|AGI)',250): print('>>',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T2.find('**Satya Nadella 00:04:17**'); j=T2.find('**Dylan Patel 00:08:28**'); print(T2[i:j])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r1=await web_fetch({\"url\":\"https://www.dwarkesh.com/p/satya-nadella\"})\nif isinstance(r1,list): r1=r1[0]\nT1=txt(r1); print(len(T1)); print(T1[-300:])\nfor q in ['Nadella sn scratchpad \"Looking Ahead\" 2026 blog','Satya Nadella Build 2025 keynote transcript']:\n    s=await web_search({\"query\":q}); R[q]=s; show(q,s)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/satya-nadella"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r1=json.loads(r1) if isinstance(r1,str) else r1\nif isinstance(r1,list): r1=r1[0]\nT1=txt(r1); print(len(T1)); print(T1[-300:])\nfor q in ['Nadella sn scratchpad \"Looking Ahead\" 2026 blog','Satya Nadella Build 2025 keynote transcript']:\n    s=await web_search({\"query\":q}); R[q]=s; show(q,s)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella sn scratchpad \"Looking Ahead\" 2026 blog"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Build 2025 keynote transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "m=re.search(r'(Feb \\d+, 2025)',T1);print(m and m.group(1))\npat=r'(next (year|decade|five|ten|seven|two|three|\\d+)|by 20\\d\\d|\\b20[2-5]\\d\\b|\\b\\w+ years|end of (the|this) decade|decade|years from now)'\nfor s in ctx(T1,pat,280): \n    if 'meta-' in s[:100]: continue\n    print('>>',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T1.find('Before I get to what Microsoft'); print(T1[i-200:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in [\"https://snscratchpad.com/posts/looking-ahead-2026/?v=1\",\"https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf\"]:\n    x=await web_fetch({\"url\":u}); x=json.loads(x) if isinstance(x,str) else x\n    if isinstance(x,list): x=x[0]\n    try: F[u]=txt(x)\n    except Exception as e: F[u]=''; print(u,str(x)[:300])\n    print(u,len(F[u]))\nB=F[\"https://snscratchpad.com/posts/looking-ahead-2026/?v=1\"]; print(B[:5000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://snscratchpad.com/posts/looking-ahead-2026/?v=1"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "Bd=F[\"https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf\"]\npat=r'(next (year|decade|week|month|five|ten|two|three|\\d+)|by 20\\d\\d|\\b20[2-5]\\d\\b|\\b(five|ten|two|three|few|\\d+) years|end of (the|this) (decade|year)|this decade|later this year|coming (months|weeks))'\nfor s in ctx(Bd,pat,220):\n    # find speaker\n    print('>>',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(Bd[:1500]); print(Bd.count('SATYA'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\npdf=PdfReader(io.BytesIO(base64.b64decode(Bd)))\nBt=\"\\n\".join(p.extract_text() for p in pdf.pages); print(len(pdf.pages),len(Bt))\nfor s in ctx(Bt,pat,260): print('>>',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['snscratchpad \"Looking ahead to 2026\" Nadella','Satya Nadella BG2 podcast Altman transcript November 2025','Satya Nadella Ignite 2025 keynote transcript']:\n    s=await web_search({\"query\":q}); R[q]=s; show(q,s)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "snscratchpad \"Looking ahead to 2026\" Nadella"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella BG2 podcast Altman transcript November 2025"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Ignite 2025 keynote transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['snscratchpad.com Satya Nadella posts']:\n    s=await web_search({\"query\":q}); R[q]=s; show(q,s)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "snscratchpad.com Satya Nadella posts"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://www.linkedin.com/posts/satyanadella_looking-ahead-to-2026-activity-7411490079984250880-Vb5v\"\nx=await web_fetch({\"url\":u}); x=json.loads(x) if isinstance(x,str) else x\nif isinstance(x,list): x=x[0]\ntry: L=txt(x)\nexcept Exception: L=''; print(str(x)[:300])\nprint(len(L))\ni=L.find('Looking Ahead'); print(L[:200]); \nfor s in ctx(L,r'(2026|pivotal|year ahead|decade)',400)[:8]: print('>>',s,'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.linkedin.com/posts/satyanadella_looking-ahead-to-2026-activity-7411490079984250880-Vb5v"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-11-12",
+        "quote": "The point is, what took 70 years, maybe 150 years for the Industrial Revolution, may happen in 20 years, 25 years. I would love to compress what happened in 200 years of the Industrial Revolution into a 20-year period, if we're lucky.",
+        "what_is_predicted": "Nadella says the spread of AI through the economy, which took the Industrial Revolution 70 to 150 years, may happen within about 20 to 25 years; he hedges it with 'may' and 'if we're lucky'.",
+        "date_or_span": "20 to 25 years (about a 20-year period)",
+        "occasion": "Dwarkesh Podcast, 'Satya Nadella — How Microsoft is preparing for AGI', with Dwarkesh Patel and Dylan Patel, published Nov 12, 2025 (Nadella at 00:06:45)",
+        "source_url": "https://www.dwarkesh.com/p/satya-nadella-2",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-05-19",
+        "quote": "Just this year we have sim-shipped 15 models from OpenAI on Azure, giving same-day access when a new model drops and Sora is coming next week.",
+        "what_is_predicted": "OpenAI's Sora video model will be available on Azure the following week.",
+        "date_or_span": "next week (week after May 19, 2025)",
+        "occasion": "Microsoft Build 2025 opening keynote, Seattle",
+        "source_url": "https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf",
+        "source_kind": "transcript",
+        "already_recorded": "2025-05-19-nadella-sora-on-azure-next-week.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "A search result listed an official Microsoft Build keynote transcript dated 2026-06-02 (msthesource .../2026/06/06022026_Nadella_TRANSCRIPT_Build-Keynote.pdf); not opened."
+      },
+      {
+        "year": "2026",
+        "note": "A Yahoo Finance article dated by search result to about 2026 covered Nadella on the 20VC podcast saying most AI token usage will be commodity usage; not opened, year not confirmed."
+      },
+      {
+        "year": "2026",
+        "note": "A Morgan Stanley article on Nadella at its TMT conference carried the snippet 'everybody is going to start doing in the next year is tools use'; the page age suggests early 2026 rather than 2025, but it was not opened and the date was not confirmed."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Satya Nadella\" AI prediction 2025",
+        "what_found": "Secondary roundups (digit.in, lilys.ai, licenseq) of Nadella's 2025 remarks on AI agents and SaaS, plus a Korea JoongAng Ilbo interview translation and an AI Prediction Index entry on the Fairwater datacenter (a business forecast)."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2025 interview AGI \"years\"",
+        "what_found": "Both Dwarkesh Podcast interviews of 2025 (Feb 19 and Nov 12) and coverage of them."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Skilling pledges for India by 2030 (business), coverage of the 'Looking ahead to 2026' blog, a CNBC piece on 30% of Microsoft code written by AI, a Morgan Stanley TMT article, and the Nov Dwarkesh transcript."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/satya-nadella-2",
+        "what_found": "Opened; transcript of the Nov 12, 2025 interview, cut off at about 00:20, holding the '20 years, 25 years' line; other timed remarks are business (OpenAI model use 'for the next seven years')."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/satya-nadella",
+        "what_found": "Opened twice (the first copy was lost to a parsing error on my side); transcript of the Feb 19, 2025 interview, cut off at about 0:21, holding the AGI 'benchmark hacking' and 10% growth remarks with no dated AI prediction."
+      },
+      {
+        "query_or_url": "Nadella sn scratchpad \"Looking Ahead\" 2026 blog",
+        "what_found": "News coverage of the Dec 29, 2025 'Looking ahead to 2026' essay; the essay's own URL appeared only inside a forum post."
+      },
+      {
+        "query_or_url": "Satya Nadella Build 2025 keynote transcript",
+        "what_found": "The official Microsoft Build 2025 keynote transcript PDF and the Microsoft Source speeches page."
+      },
+      {
+        "query_or_url": "https://snscratchpad.com/posts/looking-ahead-2026/?v=1",
+        "what_found": "Fetch refused (URL not in prior context); not quoted."
+      },
+      {
+        "query_or_url": "https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf",
+        "what_found": "Opened; Nadella's only dated forward line is 'Sora is coming next week'; the 'next 12 months' and 'next year' lines are Kevin Scott's."
+      },
+      {
+        "query_or_url": "snscratchpad \"Looking ahead to 2026\" Nadella",
+        "what_found": "More coverage of the Dec 29 essay; no first-party page in the results."
+      },
+      {
+        "query_or_url": "Satya Nadella BG2 podcast Altman transcript November 2025",
+        "what_found": "BG2 pod with Altman (Oct 31, 2025) and a third-party transcript on spoken.md; not opened."
+      },
+      {
+        "query_or_url": "Satya Nadella Ignite 2025 keynote transcript",
+        "what_found": "Coverage reports that Judson Althoff gave the Ignite 2025 keynote in Nadella's place; also listed a Mumbai AI Tour keynote transcript (Dec 12, 2025), not opened."
+      },
+      {
+        "query_or_url": "snscratchpad.com Satya Nadella posts",
+        "what_found": "Nadella's X and LinkedIn posts linking the Dec 29 essay, plus coverage reporting it calls 2026 'a pivotal year for AI'."
+      },
+      {
+        "query_or_url": "https://www.linkedin.com/posts/satyanadella_looking-ahead-to-2026-activity-7411490079984250880-Vb5v",
+        "what_found": "Fetch refused (URL not allowed); not quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In the transcripts I opened, Nadella's 2025 talk is mostly about how AI spreads through the economy rather than dated capability claims, and he plays down AGI milestones. The one new dated item is his hedged Nov 2025 remark that an Industrial-Revolution-scale change may happen in 20 to 25 years; the Build 'Sora next week' line is already recorded. His Dec 29, 2025 essay 'Looking Ahead to 2026' could not be opened and should be checked directly."
+  },
+  "reply_text": "Base64 PDF; decode and extract.I found one new dated prediction from Nadella in 2025, plus the Sora claim you already have. A third likely source, his 29 December 2025 essay \"Looking Ahead to 2026\", wouldn't open, so I've quoted nothing from it.\n\n- **The new one:** in the Dwarkesh Podcast interview published 12 November 2025, Nadella said the economic spread that \"took 70 years, maybe 150 years for the Industrial Revolution, may happen in 20 years, 25 years.\" He hedged it with \"may\" and \"if we're lucky\". It's about AI's effect on the economy rather than a capability, so it only just qualifies.\n- **The Sora claim:** the official Build keynote transcript for 19 May 2025 says \"Sora is coming next week\". That matches 2025-05-19-nadella-sora-on-azure-next-week.toml. Other dated lines in that transcript were spoken by Kevin Scott or Sam Altman, so I left them out.\n- **The February Dwarkesh interview:** in the part I could read, Nadella calls self-declared AGI milestones \"nonsensical benchmark hacking\" and sets out 10% world growth as the real test. He attaches no date, so I didn't list it.\n- **The December essay:** news reports say it calls 2026 \"a pivotal year for AI\". I couldn't open it: the essay's own address wasn't one my search results had returned, and LinkedIn blocked the fetch. Checking that page directly would settle whether it holds a dated prediction.\n\nThings to know when you check:\n- Both Dwarkesh transcripts cut off about 20 minutes in, so their later sections are unchecked.\n- I fetched the February transcript twice because a parsing error on my side lost the first copy. That used up a page opening I couldn't spare.\n- I used 9 of the 12 searches and all 6 page openings. With no openings left, further searches couldn't produce anything I could quote, so I stopped.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2025-11-12\",\n      \"quote\": \"The point is, what took 70 years, maybe 150 years for the Industrial Revolution, may happen in 20 years, 25 years. I would love to compress what happened in 200 years of the Industrial Revolution into a 20-year period, if we're lucky.\",\n      \"what_is_predicted\": \"Nadella says the spread of AI through the economy, which took the Industrial Revolution 70 to 150 years, may happen within about 20 to 25 years; he hedges it with 'may' and 'if we're lucky'.\",\n      \"date_or_span\": \"20 to 25 years (about a 20-year period)\",\n      \"occasion\": \"Dwarkesh Podcast, 'Satya Nadella — How Microsoft is preparing for AGI', with Dwarkesh Patel and Dylan Patel, published Nov 12, 2025 (Nadella at 00:06:45)\",\n      \"source_url\": \"https://www.dwarkesh.com/p/satya-nadella-2\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2025-05-19\",\n      \"quote\": \"Just this year we have sim-shipped 15 models from OpenAI on Azure, giving same-day access when a new model drops and Sora is coming next week.\",\n      \"what_is_predicted\": \"OpenAI's Sora video model will be available on Azure the following week.\",\n      \"date_or_span\": \"next week (week after May 19, 2025)\",\n      \"occasion\": \"Microsoft Build 2025 opening keynote, Seattle\",\n      \"source_url\": \"https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"2025-05-19-nadella-sora-on-azure-next-week.toml\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"A search result listed an official Microsoft Build keynote transcript dated 2026-06-02 (msthesource .../2026/06/06022026_Nadella_TRANSCRIPT_Build-Keynote.pdf); not opened.\"},\n    {\"year\": \"2026\", \"note\": \"A Yahoo Finance article dated by search result to about 2026 covered Nadella on the 20VC podcast saying most AI token usage will be commodity usage; not opened, year not confirmed.\"},\n    {\"year\": \"2026\", \"note\": \"A Morgan Stanley article on Nadella at its TMT conference carried the snippet 'everybody is going to start doing in the next year is tools use'; the page age suggests early 2026 rather than 2025, but it was not opened and the date was not confirmed.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" AI prediction 2025\", \"what_found\": \"Secondary roundups (digit.in, lilys.ai, licenseq) of Nadella's 2025 remarks on AI agents and SaaS, plus a Korea JoongAng Ilbo interview translation and an AI Prediction Index entry on the Fairwater datacenter (a business forecast).\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Both Dwarkesh Podcast interviews of 2025 (Feb 19 and Nov 12) and coverage of them.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Skilling pledges for India by 2030 (business), coverage of the 'Looking ahead to 2026' blog, a CNBC piece on 30% of Microsoft code written by AI, a Morgan Stanley TMT article, and the Nov Dwarkesh transcript.\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/satya-nadella-2\", \"what_found\": \"Opened; transcript of the Nov 12, 2025 interview, cut off at about 00:20, holding the '20 years, 25 years' line; other timed remarks are business (OpenAI model use 'for the next seven years').\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/satya-nadella\", \"what_found\": \"Opened twice (the first copy was lost to a parsing error on my side); transcript of the Feb 19, 2025 interview, cut off at about 0:21, holding the AGI 'benchmark hacking' and 10% growth remarks with no dated AI prediction.\"},\n    {\"query_or_url\": \"Nadella sn scratchpad \\\"Looking Ahead\\\" 2026 blog\", \"what_found\": \"News coverage of the Dec 29, 2025 'Looking ahead to 2026' essay; the essay's own URL appeared only inside a forum post.\"},\n    {\"query_or_url\": \"Satya Nadella Build 2025 keynote transcript\", \"what_found\": \"The official Microsoft Build 2025 keynote transcript PDF and the Microsoft Source speeches page.\"},\n    {\"query_or_url\": \"https://snscratchpad.com/posts/looking-ahead-2026/?v=1\", \"what_found\": \"Fetch refused (URL not in prior context); not quoted.\"},\n    {\"query_or_url\": \"https://msthesource.thesourcemediaassets.com/2025/05/05192025-Microsoft-Build-Keynote-Satya-Nadella.pdf\", \"what_found\": \"Opened; Nadella's only dated forward line is 'Sora is coming next week'; the 'next 12 months' and 'next year' lines are Kevin Scott's.\"},\n    {\"query_or_url\": \"snscratchpad \\\"Looking ahead to 2026\\\" Nadella\", \"what_found\": \"More coverage of the Dec 29 essay; no first-party page in the results.\"},\n    {\"query_or_url\": \"Satya Nadella BG2 podcast Altman transcript November 2025\", \"what_found\": \"BG2 pod with Altman (Oct 31, 2025) and a third-party transcript on spoken.md; not opened.\"},\n    {\"query_or_url\": \"Satya Nadella Ignite 2025 keynote transcript\", \"what_found\": \"Coverage reports that Judson Althoff gave the Ignite 2025 keynote in Nadella's place; also listed a Mumbai AI Tour keynote transcript (Dec 12, 2025), not opened.\"},\n    {\"query_or_url\": \"snscratchpad.com Satya Nadella posts\", \"what_found\": \"Nadella's X and LinkedIn posts linking the Dec 29 essay, plus coverage reporting it calls 2026 'a pivotal year for AI'.\"},\n    {\"query_or_url\": \"https://www.linkedin.com/posts/satyanadella_looking-ahead-to-2026-activity-7411490079984250880-Vb5v\", \"what_found\": \"Fetch refused (URL not allowed); not quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In the transcripts I opened, Nadella's 2025 talk is mostly about how AI spreads through the economy rather than dated capability claims, and he plays down AGI milestones. The one new dated item is his hedged Nov 2025 remark that an Industrial-Revolution-scale change may happen in 20 to 25 years; the Build 'Sora next week' line is already recorded. His Dec 29, 2025 essay 'Looking Ahead to 2026' could not be opened and should be checked directly.\"\n}\n```"
+}

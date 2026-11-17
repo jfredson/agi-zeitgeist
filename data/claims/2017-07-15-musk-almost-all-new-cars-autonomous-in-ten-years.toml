@@ -1,0 +1,19 @@
+[claim]
+id = "2017-07-15-musk-almost-all-new-cars-autonomous-in-ten-years"
+speaker_id = "musk"
+when = "2017-07-15"
+when_note = "The National Governors Association's own video of the closing session of its 2017 summer meeting, which it describes as featuring 'the official NGA 2017 Summer Meeting interview with Elon Musk', was uploaded on 2017-07-15 (https://www.youtube.com/watch?v=2C-A797y8dA); the copy whose captions were read is titled 'Elon Musk, National Governors Association, July 15, 2017'."
+occasion = "Interview at the National Governors Association's 2017 summer meeting, with Governor Brian Sandoval"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=O4b63Viqqlk"
+source_locator = "about 18:10 into this copy of the interview (Space SPAN's upload)"
+checked_how = "Read in the automatic captions of a copy of the interview (Space SPAN's upload) on 2026-11-17 (yt-dlp) and compared with The Singju Post's transcript page, where the words were first found; they agree. The captions of the association's own video could not be fetched (YouTube refused the request). Nobody listened."
+quote = "I think almost all cars produced will be autonomous in 10 years, almost all."
+prediction = "In ten years almost all cars produced will be autonomous; 'it will be rare to find one that is not'. He adds that new production is only about a twentieth of the fleet, so the cars on the road change more slowly."
+kind = "deployment"
+bar = "Almost all new cars produced in 2027 able to drive themselves, shown by industry production figures."
+due = 2027
+due_basis = "'in 10 years', said 2017-07-15, runs to July 2027; judged at the end of 2027."
+status = "not_yet_due"
+search_ids = ["musk-claims-038", "musk-claims-049"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (my ruling of 2026-10-19). Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. First found at https://singjupost.com/elon-musk-interview-2017-the-future-the-world-technology-transcript/ ."

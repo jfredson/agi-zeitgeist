@@ -1,0 +1,414 @@
+{
+  "speaker_id": "amodei",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.8523,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8174
+      },
+      "cache_creation_input_tokens": 73768,
+      "cache_read_input_tokens": 849075,
+      "inference_geo": "global",
+      "input_tokens": 44,
+      "output_tokens": 9671,
+      "output_tokens_details": {
+        "thinking_tokens": 2528
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Dario Amodei\" AI prediction 2026','\"Dario Amodei\" 2026 interview AGI \"years\"','\"Dario Amodei\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Amodei India AI Impact Summit speech February 2026',\n'Amodei \"no idea what\\'s coming\" six months',\n'Dario Amodei interview October 2026',\n'Dario Amodei essay November 2026']\nfor q in qs2:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei India AI Impact Summit speech February 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei \"no idea what's coming\" six months"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dario Amodei interview October 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dario Amodei essay November 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def full(q,url,n=3000):\n    r=R[q]; r=json.loads(r) if isinstance(r,str) else r\n    for x in r:\n        if x.get('url')==url: print(x['content'][:n])\nfull('Dario Amodei essay November 2026','https://oncodaily.com/stories/celebrities/dario-amodei-about-cancer')\nprint('-----')\nfull('Dario Amodei essay November 2026','https://blog.mean.ceo/dario-amodei-news-november-2026/')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Anthropic roadshow video Amodei \"relics of the past\"','Amodei CBS Sunday Morning \"slow down\" interview transcript']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Anthropic roadshow video Amodei \"relics of the past\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei CBS Sunday Morning \"slow down\" interview transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html','https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/','https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-on-ai-risks/']:\n    r=await web_fetch({\"url\":u}); P[u]=r\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; print('==',u,len(c))\nimport re\ndef grep(u,pats,w=400):\n    c=P[u][0]['content']\n    for p in pats:\n        for m in re.finditer(p,c,re.I):\n            print('>>',c[max(0,m.start()-w):m.end()+w].replace('\\n',' ')); print()\ngrep('https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html',['relics'])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(list(P)); \nfor u in P:\n    r=P[u]; r=json.loads(r) if isinstance(r,str) else r; P[u]=r\n    print(u, type(r), (r[0]['content'][:200] if isinstance(r,list) else r))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): return c.get('source',{}).get('data','') or str(c)\n    return c or str(r)\ndef grep2(t,pats,w=500):\n    for p in pats:\n        for m in re.finditer(p,t,re.I):\n            print('>>',t[max(0,m.start()-w):m.end()+w].replace('\\n',' ')); print()\nT={}\nfor u in ['https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/','https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-on-ai-risks/']:\n    r=await web_fetch({\"url\":u}); T[u]=txt(r); print('==',u,len(T[u]), T[u][:200] if len(T[u])<300 else '')\ngrep2(T['https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/'],['relics','\\\\d\\\\d:\\\\d\\\\d'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-on-ai-risks/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ngrep2(T['https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/'],['relics','year','decade'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-on-ai-risks/']\ni=t.find('Amodei'); \nbody=t[t.find('# '):]\ngrep2(t,['year','decade','month','by 20'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s=t.find('Updated on: September 14'); print(t[s:s+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Amodei Jamie Dimon JPMorgan conversation November 2026 AI','Anthropic founders letter IPO Amodei powerful AI','Amodei \"Code with Claude\" 2026 keynote prediction']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei Jamie Dimon JPMorgan conversation November 2026 AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Anthropic founders letter IPO Amodei powerful AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei \"Code with Claude\" 2026 keynote prediction"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://ipo.anthropic.com/documents/us/founders-letter.pdf','https://ulisten.ai/channels/claude/code-with-claude-2026-opening-keynote_GMIWm5y90xA/transcript']:\n    r=await web_fetch({\"url\":u}); T[u]=txt(r); print('==',u,len(T[u]), T[u][:300] if len(T[u])<400 else '')\nt=T['https://ipo.anthropic.com/documents/us/founders-letter.pdf']\ngrep2(t,[r'\\byears?\\b','decade','by 20\\d\\d','months'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ipo.anthropic.com/documents/us/founders-letter.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ulisten.ai/channels/claude/code-with-claude-2026-opening-keynote_GMIWm5y90xA/transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\nb=base64.b64decode(t); rd=PdfReader(io.BytesIO(b)); ft=\"\\n\".join(p.extract_text() for p in rd.pages)\nprint(len(ft), len(rd.pages)); T['fl']=ft\ngrep2(ft,[r'\\byears?\\b','decade','20\\d\\d','months'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=T['https://ulisten.ai/channels/claude/code-with-claude-2026-opening-keynote_GMIWm5y90xA/transcript']\ngrep2(k,['billion','one person','next year','by the end of','2027','2026','years'],350)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(k.count('Dario')); grep2(k,['Dario'],200)\nbody=k[k.find('📜 Transcript'):]; print(len(body))\ngrep2(body,[r'\\bwill\\b.{0,80}(year|month)'],200)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://darioamodei.com/post/we-must-pace-the-frontier'\nr=await web_fetch({\"url\":u}); T[u]=txt(r); e=T[u]; print(len(e)); print(e[:300])\ngrep2(e,[r'\\b(next|within|in)\\s+(a|one|two|three|five|ten|\\d+)[^.]{0,30}(years?|months?|decade)', r'by (the end of )?20\\d\\d', r'20(2[6-9]|3\\d)', 'decade'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://darioamodei.com/post/we-must-pace-the-frontier"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "grep2(e,['powerful AI','superintelligen','country of geniuses','few years','soon'],250)"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-11-10",
+        "quote": "cancer, Alzheimer's, heart disease, mental illness — these will be relics of the past in, I think, less than a decade.",
+        "what_is_predicted": "Amodei predicts cancer, Alzheimer's, heart disease and mental illness will be gone within ten years, in the context of AI's impact on medicine.",
+        "date_or_span": "less than a decade (by about 2036)",
+        "occasion": "Anthropic IPO roadshow video (42 minutes), released 10 November 2026; cellcog.ai, which says it read the captions file, places the line at 40:38",
+        "source_url": "https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09",
+        "quote": "A focused effort to improve our interpretability techniques, even faster than we currently are, could make profound progress in 1–2 years",
+        "what_is_predicted": "A focused push on interpretability research could make profound progress within one to two years.",
+        "date_or_span": "1–2 years",
+        "occasion": "Essay 'We Must Pace the Frontier' (September 2026)",
+        "source_url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09",
+        "quote": "Building up a much broader and more ingenious stable of evaluations, along with interpretability analysis to cross-check them, would be hugely valuable, and a lot of progress could be made on this in 1-2 years.",
+        "what_is_predicted": "Much progress on AI safety evaluations could be made within one to two years.",
+        "date_or_span": "1-2 years",
+        "occasion": "Essay 'We Must Pace the Frontier' (September 2026)",
+        "source_url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09",
+        "quote": "If we execute these measures well, I believe they would slow China’s progress enough to widen America’s lead significantly over the next 3–5 years — the window when AI becomes geopolitically most important.",
+        "what_is_predicted": "AI will reach its point of greatest geopolitical importance in the next three to five years. The surrounding forecast is about export-control policy, so this is borderline.",
+        "date_or_span": "next 3–5 years",
+        "occasion": "Essay 'We Must Pace the Frontier' (September 2026)",
+        "source_url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-09",
+        "quote": "I believe that AI could cure most major diseases in the next 5–10 years",
+        "what_is_predicted": "AI could cure most major diseases within five to ten years.",
+        "date_or_span": "next 5–10 years",
+        "occasion": "Essay 'We Must Pace the Frontier' (September 2026)",
+        "source_url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+        "source_kind": "own_words",
+        "already_recorded": "2026-09-12-amodei-pace-cure-most-major-diseases-five-to-ten-years.toml"
+      },
+      {
+        "date_said": "2026-09",
+        "quote": "it’s my worry that in 6–12 months such a swarm could be capable of taking over the entire internet with a persistent botnet",
+        "what_is_predicted": "Within six to twelve months a misaligned swarm of AI agents could be able to take over the internet with a persistent botnet.",
+        "date_or_span": "6–12 months",
+        "occasion": "Essay 'We Must Pace the Frontier' (September 2026)",
+        "source_url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+        "source_kind": "own_words",
+        "already_recorded": "2026-09-12-amodei-pace-swarm-could-take-over-internet-six-to-twelve-months.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Machines of Loving Grace (October 2024) says powerful AI 'could come as early as 2026'. Seen in search results and quoted on cellcog.ai; it is a 2024 statement."
+      },
+      {
+        "year": "2025",
+        "note": "A blog post (shashi.co, seen only as a search snippet) says Amodei repeated at Code with Claude, May 2026, his roughly year-old prediction of a one-person billion-dollar company in 2026. I did not read his own words."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Dario Amodei\" AI prediction 2026",
+        "what_found": "Coverage of the Davos, Adolescence, Dwarkesh and diseases claims, all already recorded."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2026 interview AGI \"years\"",
+        "what_found": "Dwarkesh podcast (February 2026) and Davos coverage, already recorded."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Dwarkesh transcript and the Forbes Adolescence story, already recorded."
+      },
+      {
+        "query_or_url": "Amodei India AI Impact Summit speech February 2026",
+        "what_found": "News on the 19 February New Delhi speech (risks, India's growth); no dated AI prediction seen."
+      },
+      {
+        "query_or_url": "Amodei \"no idea what's coming\" six months",
+        "what_found": "Only YouTube recaps and a blog."
+      },
+      {
+        "query_or_url": "Dario Amodei interview October 2026",
+        "what_found": "Profiles, the September CBS 'slow down' interview and an IPO podcast list."
+      },
+      {
+        "query_or_url": "Dario Amodei essay November 2026",
+        "what_found": "Pointed to the 10 November IPO roadshow video line about diseases."
+      },
+      {
+        "query_or_url": "Anthropic roadshow video Amodei \"relics of the past\"",
+        "what_found": "Several reports of the line, one with a timestamp."
+      },
+      {
+        "query_or_url": "Amodei CBS Sunday Morning \"slow down\" interview transcript",
+        "what_found": "CBS articles on the 13 September interview."
+      },
+      {
+        "query_or_url": "Amodei Jamie Dimon JPMorgan conversation November 2026 AI",
+        "what_found": "Reports of the 13 November Dimon fireside chat (compute, safety); no dated prediction in snippets."
+      },
+      {
+        "query_or_url": "Anthropic founders letter IPO Amodei powerful AI",
+        "what_found": "The founders' letter PDF on the IPO site."
+      },
+      {
+        "query_or_url": "Amodei \"Code with Claude\" 2026 keynote prediction",
+        "what_found": "A keynote transcript and a blog post on the one-person billion-dollar company remark."
+      },
+      {
+        "query_or_url": "https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html",
+        "what_found": "Business Insider article quoting the roadshow line about diseases being gone in under a decade."
+      },
+      {
+        "query_or_url": "https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/",
+        "what_found": "Places the line at 40:38 in the video (read from captions) and notes the prospectus does not contain it."
+      },
+      {
+        "query_or_url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-on-ai-risks/",
+        "what_found": "CBS Sunday Morning story; no dated predictions."
+      },
+      {
+        "query_or_url": "https://ipo.anthropic.com/documents/us/founders-letter.pdf",
+        "what_found": "Founders' letter (signed by all founders); no dated forward predictions."
+      },
+      {
+        "query_or_url": "https://ulisten.ai/channels/claude/code-with-claude-2026-opening-keynote_GMIWm5y90xA/transcript",
+        "what_found": "6 May keynote transcript; Amodei does not speak in it."
+      },
+      {
+        "query_or_url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+        "what_found": "September 2026 essay: two recorded claims plus three new dated lines."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Most of Amodei's dated 2026 predictions are already recorded (Davos, Adolescence, Dwarkesh, June policy and Mythos remarks, the September pace essay). New this time: the November IPO roadshow line that major diseases will be gone in under a decade, which I saw only in coverage. Also new are three dated lines in the September essay on interpretability, evaluations and the 3–5 year geopolitical window."
+  },
+  "reply_text": "I found four 2026 predictions that aren't on your recorded list. One is from Anthropic's November IPO roadshow video, but I only read it in articles that quote the video, not in a transcript. The other three are in Amodei's September essay \"We Must Pace the Frontier\". I opened that essay and copied the wording from it.\n\n- **Roadshow video, 10 November (articles only).** Business Insider, via AOL, prints the line from the 42-minute video. A second article says it comes at 40:38 and that its authors read the video's captions file. The line resembles the recorded 2026-09-12 diseases claim, but it was said on a different occasion and uses different words, so I left `already_recorded` empty.\n- **The essay's other dated lines.** These are about interpretability (1–2 years), evaluations (1–2 years) and a 3–5 year window of AI geopolitics. Two things to weigh: the 1–2 year lines say what \"a focused effort… could\" achieve rather than flatly predicting it, and the 3–5 year line is mostly about export controls, with the AI part in a closing clause.\n- **Same essay, already recorded.** It also holds the recorded 5–10 year diseases claim and the 6–12 month swarm claim.\n- **No dated predictions.** The CBS \"Sunday Morning\" interview (13 September), the founders' letter in the IPO filing, and the May \"Code with Claude\" keynote transcript (Amodei doesn't speak in it).\n- **Not checked.** A blog post says that around the May event Amodei repeated his 2025 forecast of a billion-dollar company run by one person in 2026. I saw that only in a search snippet and never read his words. The 13 November talk with Jamie Dimon and the Dwarkesh transcript are also unopened.\n\nThe first search's results printed with an error but the search did run.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2026-11-10\", \"quote\": \"cancer, Alzheimer's, heart disease, mental illness — these will be relics of the past in, I think, less than a decade.\", \"what_is_predicted\": \"Amodei predicts cancer, Alzheimer's, heart disease and mental illness will be gone within ten years, in the context of AI's impact on medicine.\", \"date_or_span\": \"less than a decade (by about 2036)\", \"occasion\": \"Anthropic IPO roadshow video (42 minutes), released 10 November 2026; cellcog.ai, which says it read the captions file, places the line at 40:38\", \"source_url\": \"https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09\", \"quote\": \"A focused effort to improve our interpretability techniques, even faster than we currently are, could make profound progress in 1–2 years\", \"what_is_predicted\": \"A focused push on interpretability research could make profound progress within one to two years.\", \"date_or_span\": \"1–2 years\", \"occasion\": \"Essay 'We Must Pace the Frontier' (September 2026)\", \"source_url\": \"https://darioamodei.com/post/we-must-pace-the-frontier\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09\", \"quote\": \"Building up a much broader and more ingenious stable of evaluations, along with interpretability analysis to cross-check them, would be hugely valuable, and a lot of progress could be made on this in 1-2 years.\", \"what_is_predicted\": \"Much progress on AI safety evaluations could be made within one to two years.\", \"date_or_span\": \"1-2 years\", \"occasion\": \"Essay 'We Must Pace the Frontier' (September 2026)\", \"source_url\": \"https://darioamodei.com/post/we-must-pace-the-frontier\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09\", \"quote\": \"If we execute these measures well, I believe they would slow China’s progress enough to widen America’s lead significantly over the next 3–5 years — the window when AI becomes geopolitically most important.\", \"what_is_predicted\": \"AI will reach its point of greatest geopolitical importance in the next three to five years. The surrounding forecast is about export-control policy, so this is borderline.\", \"date_or_span\": \"next 3–5 years\", \"occasion\": \"Essay 'We Must Pace the Frontier' (September 2026)\", \"source_url\": \"https://darioamodei.com/post/we-must-pace-the-frontier\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-09\", \"quote\": \"I believe that AI could cure most major diseases in the next 5–10 years\", \"what_is_predicted\": \"AI could cure most major diseases within five to ten years.\", \"date_or_span\": \"next 5–10 years\", \"occasion\": \"Essay 'We Must Pace the Frontier' (September 2026)\", \"source_url\": \"https://darioamodei.com/post/we-must-pace-the-frontier\", \"source_kind\": \"own_words\", \"already_recorded\": \"2026-09-12-amodei-pace-cure-most-major-diseases-five-to-ten-years.toml\"},\n    {\"date_said\": \"2026-09\", \"quote\": \"it’s my worry that in 6–12 months such a swarm could be capable of taking over the entire internet with a persistent botnet\", \"what_is_predicted\": \"Within six to twelve months a misaligned swarm of AI agents could be able to take over the internet with a persistent botnet.\", \"date_or_span\": \"6–12 months\", \"occasion\": \"Essay 'We Must Pace the Frontier' (September 2026)\", \"source_url\": \"https://darioamodei.com/post/we-must-pace-the-frontier\", \"source_kind\": \"own_words\", \"already_recorded\": \"2026-09-12-amodei-pace-swarm-could-take-over-internet-six-to-twelve-months.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Machines of Loving Grace (October 2024) says powerful AI 'could come as early as 2026'. Seen in search results and quoted on cellcog.ai; it is a 2024 statement.\"},\n    {\"year\": \"2025\", \"note\": \"A blog post (shashi.co, seen only as a search snippet) says Amodei repeated at Code with Claude, May 2026, his roughly year-old prediction of a one-person billion-dollar company in 2026. I did not read his own words.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" AI prediction 2026\", \"what_found\": \"Coverage of the Davos, Adolescence, Dwarkesh and diseases claims, all already recorded.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Dwarkesh podcast (February 2026) and Davos coverage, already recorded.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Dwarkesh transcript and the Forbes Adolescence story, already recorded.\"},\n    {\"query_or_url\": \"Amodei India AI Impact Summit speech February 2026\", \"what_found\": \"News on the 19 February New Delhi speech (risks, India's growth); no dated AI prediction seen.\"},\n    {\"query_or_url\": \"Amodei \\\"no idea what's coming\\\" six months\", \"what_found\": \"Only YouTube recaps and a blog.\"},\n    {\"query_or_url\": \"Dario Amodei interview October 2026\", \"what_found\": \"Profiles, the September CBS 'slow down' interview and an IPO podcast list.\"},\n    {\"query_or_url\": \"Dario Amodei essay November 2026\", \"what_found\": \"Pointed to the 10 November IPO roadshow video line about diseases.\"},\n    {\"query_or_url\": \"Anthropic roadshow video Amodei \\\"relics of the past\\\"\", \"what_found\": \"Several reports of the line, one with a timestamp.\"},\n    {\"query_or_url\": \"Amodei CBS Sunday Morning \\\"slow down\\\" interview transcript\", \"what_found\": \"CBS articles on the 13 September interview.\"},\n    {\"query_or_url\": \"Amodei Jamie Dimon JPMorgan conversation November 2026 AI\", \"what_found\": \"Reports of the 13 November Dimon fireside chat (compute, safety); no dated prediction in snippets.\"},\n    {\"query_or_url\": \"Anthropic founders letter IPO Amodei powerful AI\", \"what_found\": \"The founders' letter PDF on the IPO site.\"},\n    {\"query_or_url\": \"Amodei \\\"Code with Claude\\\" 2026 keynote prediction\", \"what_found\": \"A keynote transcript and a blog post on the one-person billion-dollar company remark.\"},\n    {\"query_or_url\": \"https://www.aol.com/articles/dario-amodei-says-ai-cure-172853000.html\", \"what_found\": \"Business Insider article quoting the roadshow line about diseases being gone in under a decade.\"},\n    {\"query_or_url\": \"https://cellcog.ai/blog/anthropic-roadshow-video-amd-cancer-claims/\", \"what_found\": \"Places the line at 40:38 in the video (read from captions) and notes the prospectus does not contain it.\"},\n    {\"query_or_url\": \"https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-on-ai-risks/\", \"what_found\": \"CBS Sunday Morning story; no dated predictions.\"},\n    {\"query_or_url\": \"https://ipo.anthropic.com/documents/us/founders-letter.pdf\", \"what_found\": \"Founders' letter (signed by all founders); no dated forward predictions.\"},\n    {\"query_or_url\": \"https://ulisten.ai/channels/claude/code-with-claude-2026-opening-keynote_GMIWm5y90xA/transcript\", \"what_found\": \"6 May keynote transcript; Amodei does not speak in it.\"},\n    {\"query_or_url\": \"https://darioamodei.com/post/we-must-pace-the-frontier\", \"what_found\": \"September 2026 essay: two recorded claims plus three new dated lines.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Most of Amodei's dated 2026 predictions are already recorded (Davos, Adolescence, Dwarkesh, June policy and Mythos remarks, the September pace essay). New this time: the November IPO roadshow line that major diseases will be gone in under a decade, which I saw only in coverage. Also new are three dated lines in the September essay on interpretability, evaluations and the 3–5 year geopolitical window.\"\n}\n```"
+}

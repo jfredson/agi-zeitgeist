@@ -1,0 +1,408 @@
+{
+  "speaker_id": "huang",
+  "year": 2022,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7804,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7689
+      },
+      "cache_creation_input_tokens": 63969,
+      "cache_read_input_tokens": 586907,
+      "inference_geo": "global",
+      "input_tokens": 44,
+      "output_tokens": 11151,
+      "output_tokens_details": {
+        "thinking_tokens": 3031
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Jensen Huang\" AI prediction 2022','\"Jensen Huang\" 2022 interview AGI \"years\"','\"Jensen Huang\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2022"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    if q not in R or True:\n        pass\nR2={}\nfor q in qs:\n    r=R.get(q) or await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R2[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2022 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nc=R2[qs[0]][0]['content']; print(len(c))\nfor m in re.finditer(r'(years|decade|20[2-4]\\d|next year)',c):\n    print('...',c[max(0,m.start()-300):m.end()+150].replace('\\n',' '))\n    print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Jensen Huang GTC March 2022 keynote transcript','Stratechery interview Jensen Huang September 2022','Jensen Huang GTC September 2022 keynote transcript \"next decade\"','Jensen Huang 2022 \"million-x\" AI next ten years']\nfor q in qs2:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R2[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC March 2022 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Stratechery interview Jensen Huang September 2022"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC September 2022 keynote transcript \"next decade\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang 2022 \"million-x\" AI next ten years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence/','https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-building-the-omniverse-cloud/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if 'content' in r else str(r)\n    print(u,len(P[u]),P[u][:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,v in P.items():\n    print(u,type(v)); print(str(v)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={u:v['source']['data'] for u,v in P.items()}\nfor u,t in T.items():\n    print('#####',u,len(t))\n    for m in re.finditer(r'(\\d+ years|ten years|five years|decade|20[2-4]\\d|next year|by the end)',t):\n        print('...',t[max(0,m.start()-350):m.end()+200].replace('\\n',' '))\n        print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[list(T)[0]]\ni=t.find('The full interview with Huang is below')\nbody=t[i:]\nprint(len(body))\nfor m in re.finditer(r'(years|decade|million-x|next wave|in the future|someday|eventually)',body):\n    print('...',body[max(0,m.start()-300):m.end()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(body[-600:])\nt2=T[list(T)[1]]\ni=t2.find('Monday'); \nfor m in re.finditer(r'(years|decade|in the future|someday|eventually|20[2-4]\\d)',t2[3000:]):\n    s=3000+m.start()\n    print('...',t2[max(0,s-300):s+200].replace('\\n',' '));print()\nprint(t2[-500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'(will be|is going to|are going to|next)',body):\n    s=m.start()\n    print('...',body[max(0,s-200):s+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','') or str(c)\n    if c is None: c=str(r)\n    T[u]=c; return c\nfor u in ['https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-building-the-omniverse-cloud/','https://www.hpcwire.com/bigdatawire/2022/03/22/nvidia-ceo-touts-a-million-x-speedup-in-ai/']:\n    c=await fetch(u); print(u,len(c))\n    for m in re.finditer(r'(\\d+ years|ten years|five years|decade|20[2-4]\\d|next year|by the end|million-x)',c):\n        s=m.start(); print('...',c[max(0,s-300):s+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-building-the-omniverse-cloud/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.hpcwire.com/bigdatawire/2022/03/22/nvidia-ceo-touts-a-million-x-speedup-in-ai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=T['https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-building-the-omniverse-cloud/']\ni=c.find('#### GPUs at GTC'); b=c[i:]\nprint(len(b)); print(b[-700:])\nfor m in re.finditer(r'(going to|will |future|someday|eventually)',b):\n    s=m.start(); print('...',b[max(0,s-250):s+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Huang GTC 2022 keynote \"next million-x\" decade AI','blogs.nvidia.com 2022 keynote GTC Huang \"Ada Lovelace\" Omniverse recap','Jensen Huang Computex 2022 keynote AI \"years\"']\nfor q in qs3:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R2[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','')\n        for m in re.finditer(r'(next million|next decade|ten years|10 years|five years|by 20)',c):\n            print('   >>',c[max(0,m.start()-150):m.end()+120].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Huang GTC 2022 keynote \"next million-x\" decade AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "blogs.nvidia.com 2022 keynote GTC Huang \"Ada Lovelace\" Omniverse recap"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Computex 2022 keynote AI \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/','https://blogs.nvidia.com/blog/2022/09/20/keynote-gtc-nvidia-ceo/']:\n    c=await fetch(u); print('#####',u,len(c)); print(c[:300].replace('\\n',' '))\n    for m in re.finditer(r'(million-X|next decade|ten years|years|20[2-3]\\d|next year|will )',c):\n        s=m.start(); print('...',c[max(0,s-250):s+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/2022/09/20/keynote-gtc-nvidia-ceo/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=T['https://blogs.nvidia.com/blog/2022/09/20/keynote-gtc-nvidia-ceo/']\ni=c.find('## **Thor'); print(c[i:i+1500])\ni=c.find('natural language'); \nfor m in re.finditer(r'(language model|NeMo|BioNeMo)',c): print('>>',c[max(0,m.start()-200):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Huang\" Nvidia 2022 interview \"ten years from now\" AI','Jensen Huang December 2022 ChatGPT comments AI future']:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R2[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','')\n        for m in re.finditer(r'(ten years from now|next decade|10 years|five years|by 20\\d\\d)',c):\n            print('   >>',c[max(0,m.start()-150):m.end()+120].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Huang\" Nvidia 2022 interview \"ten years from now\" AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang December 2022 ChatGPT comments AI future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence/']\nprint('10 years away' in t, 'robotics' in t)\nx=R2['\"Huang\" Nvidia 2022 interview \"ten years from now\" AI'][0]['content']\ni=x.find('10 years away'); print(x[max(0,i-1500):i+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence-2/'\nc=await fetch(u); print(len(c), '10 years away' in c)\nfor kw in ['10 years away','years away','robotics is','next stage']:\n    for m in re.finditer(re.escape(kw),c):\n        print('>>',c[max(0,m.start()-1200):m.start()+1500]); print('----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence-2/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('full interview'); print(c[i:i+300]); print(c[-800:])\nfor m in re.finditer(r'(years|decade)',c): print('>>',c[max(0,m.start()-200):m.start()+150].replace('\\n',' '))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2022-03-22",
+        "quote": "Accelerating across the full stack and at data center scale, we will strive for yet another million-X in the next decade,",
+        "what_is_predicted": "Nvidia aims to deliver another million-fold speed-up in (AI) computing over the next ten years, following the million-X it claims for the past decade in AI.",
+        "date_or_span": "the next decade (2022-2032)",
+        "occasion": "GTC Spring 2022 keynote, closing remarks",
+        "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2022-03-22",
+        "quote": "Hyperion 8 will ship in Mercedes-Benz cars starting in 2024, followed by Jaguar Land Rover in 2025, Huang said.",
+        "what_is_predicted": "Nvidia's Hyperion 8 self-driving platform will be in Mercedes-Benz cars from 2024.",
+        "date_or_span": "2024",
+        "occasion": "GTC Spring 2022 keynote (paraphrased in Nvidia blog wrap-up)",
+        "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+        "source_kind": "coverage_only",
+        "already_recorded": "2022-03-22-huang-hyperion-8-in-mercedes-cars-2024.toml"
+      },
+      {
+        "date_said": "2022-03-22",
+        "quote": "Hyperion 8 will ship in Mercedes-Benz cars starting in 2024, followed by Jaguar Land Rover in 2025, Huang said.",
+        "what_is_predicted": "Nvidia's Hyperion 8 self-driving platform will be in Jaguar Land Rover cars from 2025.",
+        "date_or_span": "2025",
+        "occasion": "GTC Spring 2022 keynote (paraphrased in Nvidia blog wrap-up)",
+        "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+        "source_kind": "coverage_only",
+        "already_recorded": "2022-03-22-huang-hyperion-8-in-jlr-cars-2025.toml"
+      },
+      {
+        "date_said": "2022-03-22",
+        "quote": "featuring the coming DRIVE Atlan SoC for double the performance of the current DRIVE Orin-based architecture, which will ship starting in 2026.",
+        "what_is_predicted": "The Hyperion 9 self-driving platform built on DRIVE Atlan will ship from 2026. Borderline: these are the blog writer's words after 'Huang announced Hyperion 9', and it is close to a product roadmap. The September 2022 keynote post says Thor replaced Atlan on the DRIVE roadmap.",
+        "date_or_span": "2026",
+        "occasion": "GTC Spring 2022 keynote (Nvidia blog wrap-up)",
+        "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2022-03-22",
+        "quote": "BYD, the second-largest EV maker globally, will adopt the DRIVE Orin computer for cars starting production in the first half of 2023, Huang announced.",
+        "what_is_predicted": "BYD cars using Nvidia's DRIVE Orin AV/AI computer will start production in the first half of 2023. Borderline: a customer production plan, paraphrased by the blog.",
+        "date_or_span": "first half of 2023",
+        "occasion": "GTC Spring 2022 keynote (Nvidia blog wrap-up)",
+        "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "PC Gamer headline (search result only, not opened): Huang says fully AI-generated games may be less than ten years away."
+      },
+      {
+        "year": "2025",
+        "note": "Entrepreneur (search result only, not opened): Huang says the next 10 years will be about the 'application science of AI'."
+      },
+      {
+        "year": "2026",
+        "note": "Many search results on Huang saying 'I think we've achieved AGI' (Lex Fridman podcast) and on '0% chance' AI destroys the world by 2030; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2022",
+        "what_found": "The March 2022 Stratechery interview, plus mostly 2024-2026 news."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2022 interview AGI \"years\"",
+        "what_found": "Only 2026 coverage of Huang saying AGI is achieved; nothing from 2022."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only late-2026 coverage of the '0% chance by 2030' remark."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC March 2022 keynote transcript",
+        "what_found": "Video and transcript listings; nothing clearly a 2022 transcript."
+      },
+      {
+        "query_or_url": "Stratechery interview Jensen Huang September 2022",
+        "what_found": "Found the September 22, 2022 Stratechery Omniverse Cloud interview."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC September 2022 keynote transcript \"next decade\"",
+        "what_found": "Mostly later GTC coverage; nothing usable from 2022."
+      },
+      {
+        "query_or_url": "Jensen Huang 2022 \"million-x\" AI next ten years",
+        "what_found": "BigDATAwire March 22, 2022 article on the million-X speed-up."
+      },
+      {
+        "query_or_url": "Huang GTC 2022 keynote \"next million-x\" decade AI",
+        "what_found": "Nvidia blog keynote wrap-up with the 'another million-X in the next decade' quote."
+      },
+      {
+        "query_or_url": "blogs.nvidia.com 2022 keynote GTC Huang \"Ada Lovelace\" Omniverse recap",
+        "what_found": "Coverage of the September 2022 GTC keynote (Ada, Omniverse Cloud, DRIVE Thor)."
+      },
+      {
+        "query_or_url": "Jensen Huang Computex 2022 keynote AI \"years\"",
+        "what_found": "Computex results were from 2023-2024, not 2022."
+      },
+      {
+        "query_or_url": "\"Huang\" Nvidia 2022 interview \"ten years from now\" AI",
+        "what_found": "Snippet of the March 2022 Stratechery interview mentioning 'AI is always 10 years away', plus later-year items."
+      },
+      {
+        "query_or_url": "Jensen Huang December 2022 ChatGPT comments AI future",
+        "what_found": "Only 2023-2026 items (ChatGPT 'iPhone moment', robotics ChatGPT moment)."
+      },
+      {
+        "query_or_url": "https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence/",
+        "what_found": "Opened, but the Q&A text stopped partway (around Clara/DRIVE); no dated AI prediction in the visible part."
+      },
+      {
+        "query_or_url": "https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-building-the-omniverse-cloud/",
+        "what_found": "Opened; forward-looking but undated remarks on future games, AI democratizing software, and a future 'graphics delivery network'."
+      },
+      {
+        "query_or_url": "https://www.hpcwire.com/bigdatawire/2022/03/22/nvidia-ceo-touts-a-million-x-speedup-in-ai/",
+        "what_found": "Opened; quotes on the past million-X speed-up and 'Now AI will revolutionize all industries', no date."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+        "what_found": "Opened; the million-X next-decade quote, plus Hyperion 8 (2024/2025), Hyperion 9 (2026) and BYD (first half 2023) dates."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/2022/09/20/keynote-gtc-nvidia-ceo/",
+        "what_found": "Opened; DRIVE Thor replaces Atlan, chip availability dates (business, excluded), no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence-2/",
+        "what_found": "Opened; only the article intro with a link to the full interview, no extra Huang words."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2022 Huang's dated forward claims came mostly from the March GTC keynote: a goal of another million-X AI computing speed-up in the next decade, and DRIVE Hyperion shipping dates for Mercedes (2024), JLR (2025), Hyperion 9 (2026) and BYD (first half 2023). The two Stratechery interviews were forward-looking but undated, and there was no AGI timing statement. All the dated items come from Nvidia's own blog summaries, not transcripts."
+  },
+  "reply_text": "I found one dated AI prediction from Huang in 2022 that is new, plus two shipping dates already in your files. Two more automotive dates are borderline. None of them are Huang's words in a transcript. They come from Nvidia's own wrap-up posts on its GTC keynotes, so each is marked coverage_only.\n\n- **The one new candidate, and it's borderline.** At the March 22, 2022 GTC keynote, Nvidia's blog quotes Huang as saying Nvidia \"will strive for yet another million-X in the next decade\". He means a millionfold speed-up in AI computing. It is stated as a goal (\"strive\"), and it is about compute speed, which sits close to the chips rule. Keep or drop it on that basis.\n- **Already recorded.** The same blog post says Hyperion 8 ships in Mercedes-Benz cars from 2024 and Jaguar Land Rover cars from 2025. That is the post's summary of what Huang said, not a direct quote of him.\n- **Two borderline automotive dates.** The blog also says Hyperion 9 would ship from 2026 and that BYD would use Drive Orin in cars from the first half of 2023. Both are in the writer's words after \"Huang announced\", and both lean toward product or customer plans. Nvidia's September 2022 keynote post says the new Thor chip replaced Atlan on its Drive roadmap. Atlan was the chip inside Hyperion 9, so that 2026 date was effectively withdrawn.\n- **Nothing else qualifies.** I found no 2022 statement on when AGI or superintelligence arrives. Both 2022 Stratechery interviews (March and September) are forward-looking but carry no dates, and the March one cut off partway through the version I could open. A search snippet suggests that interview includes an exchange about \"AI is always 10 years away\", but I couldn't open that part, so I haven't quoted it. The September 2022 dates I saw (Grace Hopper in the first half of 2023, H100 cloud instances \"next year\") are chip launches, so they stay out.\n\nI used all 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2022-03-22\", \"quote\": \"Accelerating across the full stack and at data center scale, we will strive for yet another million-X in the next decade,\", \"what_is_predicted\": \"Nvidia aims to deliver another million-fold speed-up in (AI) computing over the next ten years, following the million-X it claims for the past decade in AI.\", \"date_or_span\": \"the next decade (2022-2032)\", \"occasion\": \"GTC Spring 2022 keynote, closing remarks\", \"source_url\": \"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2022-03-22\", \"quote\": \"Hyperion 8 will ship in Mercedes-Benz cars starting in 2024, followed by Jaguar Land Rover in 2025, Huang said.\", \"what_is_predicted\": \"Nvidia's Hyperion 8 self-driving platform will be in Mercedes-Benz cars from 2024.\", \"date_or_span\": \"2024\", \"occasion\": \"GTC Spring 2022 keynote (paraphrased in Nvidia blog wrap-up)\", \"source_url\": \"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2022-03-22-huang-hyperion-8-in-mercedes-cars-2024.toml\"},\n    {\"date_said\": \"2022-03-22\", \"quote\": \"Hyperion 8 will ship in Mercedes-Benz cars starting in 2024, followed by Jaguar Land Rover in 2025, Huang said.\", \"what_is_predicted\": \"Nvidia's Hyperion 8 self-driving platform will be in Jaguar Land Rover cars from 2025.\", \"date_or_span\": \"2025\", \"occasion\": \"GTC Spring 2022 keynote (paraphrased in Nvidia blog wrap-up)\", \"source_url\": \"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2022-03-22-huang-hyperion-8-in-jlr-cars-2025.toml\"},\n    {\"date_said\": \"2022-03-22\", \"quote\": \"featuring the coming DRIVE Atlan SoC for double the performance of the current DRIVE Orin-based architecture, which will ship starting in 2026.\", \"what_is_predicted\": \"The Hyperion 9 self-driving platform built on DRIVE Atlan will ship from 2026. Borderline: these are the blog writer's words after 'Huang announced Hyperion 9', and it is close to a product roadmap. The September 2022 keynote post says Thor replaced Atlan on the DRIVE roadmap.\", \"date_or_span\": \"2026\", \"occasion\": \"GTC Spring 2022 keynote (Nvidia blog wrap-up)\", \"source_url\": \"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2022-03-22\", \"quote\": \"BYD, the second-largest EV maker globally, will adopt the DRIVE Orin computer for cars starting production in the first half of 2023, Huang announced.\", \"what_is_predicted\": \"BYD cars using Nvidia's DRIVE Orin AV/AI computer will start production in the first half of 2023. Borderline: a customer production plan, paraphrased by the blog.\", \"date_or_span\": \"first half of 2023\", \"occasion\": \"GTC Spring 2022 keynote (Nvidia blog wrap-up)\", \"source_url\": \"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"PC Gamer headline (search result only, not opened): Huang says fully AI-generated games may be less than ten years away.\"},\n    {\"year\": \"2025\", \"note\": \"Entrepreneur (search result only, not opened): Huang says the next 10 years will be about the 'application science of AI'.\"},\n    {\"year\": \"2026\", \"note\": \"Many search results on Huang saying 'I think we've achieved AGI' (Lex Fridman podcast) and on '0% chance' AI destroys the world by 2030; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2022\", \"what_found\": \"The March 2022 Stratechery interview, plus mostly 2024-2026 news.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2022 interview AGI \\\"years\\\"\", \"what_found\": \"Only 2026 coverage of Huang saying AGI is achieved; nothing from 2022.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2022 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only late-2026 coverage of the '0% chance by 2030' remark.\"},\n    {\"query_or_url\": \"Jensen Huang GTC March 2022 keynote transcript\", \"what_found\": \"Video and transcript listings; nothing clearly a 2022 transcript.\"},\n    {\"query_or_url\": \"Stratechery interview Jensen Huang September 2022\", \"what_found\": \"Found the September 22, 2022 Stratechery Omniverse Cloud interview.\"},\n    {\"query_or_url\": \"Jensen Huang GTC September 2022 keynote transcript \\\"next decade\\\"\", \"what_found\": \"Mostly later GTC coverage; nothing usable from 2022.\"},\n    {\"query_or_url\": \"Jensen Huang 2022 \\\"million-x\\\" AI next ten years\", \"what_found\": \"BigDATAwire March 22, 2022 article on the million-X speed-up.\"},\n    {\"query_or_url\": \"Huang GTC 2022 keynote \\\"next million-x\\\" decade AI\", \"what_found\": \"Nvidia blog keynote wrap-up with the 'another million-X in the next decade' quote.\"},\n    {\"query_or_url\": \"blogs.nvidia.com 2022 keynote GTC Huang \\\"Ada Lovelace\\\" Omniverse recap\", \"what_found\": \"Coverage of the September 2022 GTC keynote (Ada, Omniverse Cloud, DRIVE Thor).\"},\n    {\"query_or_url\": \"Jensen Huang Computex 2022 keynote AI \\\"years\\\"\", \"what_found\": \"Computex results were from 2023-2024, not 2022.\"},\n    {\"query_or_url\": \"\\\"Huang\\\" Nvidia 2022 interview \\\"ten years from now\\\" AI\", \"what_found\": \"Snippet of the March 2022 Stratechery interview mentioning 'AI is always 10 years away', plus later-year items.\"},\n    {\"query_or_url\": \"Jensen Huang December 2022 ChatGPT comments AI future\", \"what_found\": \"Only 2023-2026 items (ChatGPT 'iPhone moment', robotics ChatGPT moment).\"},\n    {\"query_or_url\": \"https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence/\", \"what_found\": \"Opened, but the Q&A text stopped partway (around Clara/DRIVE); no dated AI prediction in the visible part.\"},\n    {\"query_or_url\": \"https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-building-the-omniverse-cloud/\", \"what_found\": \"Opened; forward-looking but undated remarks on future games, AI democratizing software, and a future 'graphics delivery network'.\"},\n    {\"query_or_url\": \"https://www.hpcwire.com/bigdatawire/2022/03/22/nvidia-ceo-touts-a-million-x-speedup-in-ai/\", \"what_found\": \"Opened; quotes on the past million-X speed-up and 'Now AI will revolutionize all industries', no date.\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\", \"what_found\": \"Opened; the million-X next-decade quote, plus Hyperion 8 (2024/2025), Hyperion 9 (2026) and BYD (first half 2023) dates.\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/2022/09/20/keynote-gtc-nvidia-ceo/\", \"what_found\": \"Opened; DRIVE Thor replaces Atlan, chip availability dates (business, excluded), no dated AI prediction.\"},\n    {\"query_or_url\": \"https://stratechery.com/2022/an-interview-with-nvidia-ceo-jensen-huang-about-manufacturing-intelligence-2/\", \"what_found\": \"Opened; only the article intro with a link to the full interview, no extra Huang words.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2022 Huang's dated forward claims came mostly from the March GTC keynote: a goal of another million-X AI computing speed-up in the next decade, and DRIVE Hyperion shipping dates for Mercedes (2024), JLR (2025), Hyperion 9 (2026) and BYD (first half 2023). The two Stratechery interviews were forward-looking but undated, and there was no AGI timing statement. All the dated items come from Nvidia's own blog summaries, not transcripts.\"\n}\n```"
+}

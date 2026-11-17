@@ -1,0 +1,20 @@
+[claim]
+id = "2025-06-10-altman-2030s-intelligence-energy-wildly-abundant"
+speaker_id = "altman"
+when = "2025-06-10"
+when_note = "The page prints no date; the blog's feed gives published 2025-06-10T21:12:47Z."
+occasion = "Blog post 'The Gentle Singularity' on his own site"
+source_kind = "own_words"
+source_url = "https://blog.samaltman.com/the-gentle-singularity"
+source_locator = "the sentence beginning 'In the 2030s', after 'we are about to find out'"
+checked_how = "Read on the page on 2026-11-17 (curl); the date was taken from the feed."
+quote = "In the 2030s, intelligence and energy—ideas, and the ability to make ideas happen—are going to become wildly abundant."
+prediction = "During the 2030s intelligence and energy, which he glosses as ideas and the ability to make ideas happen, will become wildly abundant."
+kind = "capability"
+bar = "None an outsider could run: 'wildly abundant' names no amount or price of intelligence or energy."
+due = 2039
+due_basis = "'In the 2030s': the decade ends on 2039-12-31."
+status = "unfalsifiable"
+verdict_why = "No amount or price is named, so no dated record could show abundance arriving or failing to arrive. Decided at entry."
+search_ids = ["altman-claims-038"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17."

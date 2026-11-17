@@ -1,0 +1,344 @@
+{
+  "speaker_id": "kaifulee",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6851,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7640
+      },
+      "cache_creation_input_tokens": 62752,
+      "cache_read_input_tokens": 512473,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 7934,
+      "output_tokens_details": {
+        "thinking_tokens": 2367
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Kai-Fu Lee\" AI prediction 2023','\"Kai-Fu Lee\" 2023 interview AGI \"years\"','\"Kai-Fu Lee\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(q,r):\n    r=json.loads(r) if isinstance(r,str) else r\n    print(\"==\",q)\n    for x in r:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:400].replace('\\n',' '))\nfor q in qs[:1]: show(q,R[q])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Kai-Fu Lee 01.AI Yi-34B interview November 2023','Kai-Fu Lee \"AI 2.0\" 2023 speech \"years\"','Kai-Fu Lee ChatGPT 2023 interview jobs \"five years\"']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee 01.AI Yi-34B interview November 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee \"AI 2.0\" 2023 speech \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee ChatGPT 2023 interview jobs \"five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://spectrum.ieee.org/kai-fu-lee-ai-jobs','https://www.bailliegifford.com/en/uk/individual-investors/insights/ic-article/2023-q1-trust-46-ai-prophet-10019424/','https://pandaily.com/ai-first-applications-are-the-favorites-of-the-future-says-kai-fu-lee/','https://www.bloomberg.com/news/videos/2023-11-10/lee-moratorium-on-ai-development-would-be-huge-mistake-video']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if 'content' in r else str(r)\n    print(u,len(P[u]),r.get('retrieved_at'), P[u][:200] if len(P[u])<500 else '')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://spectrum.ieee.org/kai-fu-lee-ai-jobs"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r), r[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(r):\n    d=json.loads(r) if isinstance(r,str) else r\n    if isinstance(d,list): d=d[0]\n    c=d.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return c or str(d)\nP={}\nP[urls[0]]=txt(r)\nfor u in urls[1:]:\n    rr=await web_fetch({\"url\":u}); P[u]=txt(rr); print(u,len(P[u]),P[u][:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bailliegifford.com/en/uk/individual-investors/insights/ic-article/2023-q1-trust-46-ai-prophet-10019424/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://pandaily.com/ai-first-applications-are-the-favorites-of-the-future-says-kai-fu-lee/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bloomberg.com/news/videos/2023-11-10/lee-moratorium-on-ai-development-would-be-huge-mistake-video"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P[urls[2]]); print(P[urls[3]])\nimport re\nb=P[urls[1]]\ni=b.find('# AI Superpowers'); print(b[i:i+14000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Kai-Fu Lee WIRED interview 2023 Yi open source China','Kai-Fu Lee 2023 podcast transcript AI 2.0 ChatGPT','Kai-Fu Lee 2023 \"AGI\" OR \"superintelligence\" timeline']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee WIRED interview 2023 Yi open source China"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee 2023 podcast transcript AI 2.0 ChatGPT"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee 2023 \"AGI\" OR \"superintelligence\" timeline"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in R:\n    for x in json.loads(R[q]) if isinstance(R[q],str) else R[q]:\n        if 'technode' in x['url'] or 'time.com/collections' in x['url']:\n            print(x['url']); print(x['content'][:2500]); print('---')\n    "
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_fetch({\"url\":\"https://time.com/collections/time100-ai/6310603/kai-fu-lee/\"}); t=txt(rr)\ni=t.find('# Kai-Fu Lee'); print(t[i:i+4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/collections/time100-ai/6310603/kai-fu-lee/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['Charlie Campbell','already achieved','decades','years','2030','203']:\n    for m in re.finditer(k,t): print(k,':',t[max(0,m.start()-300):m.start()+400].replace('\\n',' ')); print('..')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find(\"Lee is more than an entrepreneur\"); print(t[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Kai-Fu Lee Bloomberg New Economy Forum 2023 AI jobs years','李开复 2023 演讲 AI 2.0 未来 年']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kai-Fu Lee Bloomberg New Economy Forum 2023 AI jobs years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "李开复 2023 演讲 AI 2.0 未来 年"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_fetch({\"url\":\"https://news.marsbit.co/20230317132052832656.html\"}); m=txt(rr)\nprint(len(m))\nfor k in ['2-3','年内','未来','十年','二十年','2030','AGI','通用人工智能']:\n    for x in re.finditer(k,m): print(k,':',m[max(0,x.start()-200):x.start()+250].replace('\\n',' ')); print('..')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.marsbit.co/20230317132052832656.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=m.find('3月1'); print(m[i-300:i+500])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-03-14",
+        "quote": "基础大模型需要超级巨量数据和超级算力，未来 2-3年，只要全世界的数据能储存起来，一定有科研机构会突破，做出来最伟大的基础模型。",
+        "what_is_predicted": "Within the next two to three years, provided the world's data can be stored, some research institution will break through and build the greatest foundation model.",
+        "date_or_span": "the next 2-3 years (roughly 2025-2026)",
+        "occasion": "Kai-Fu Lee's talk on AI 2.0 at a media meeting at Sinovation Ventures headquarters, Beijing, on the morning of March 14, 2023. The talk was written up in the first person by Chuangyebang (创业邦, author 赵晓晓) and republished by Marsbit on 2023-03-17.",
+        "source_url": "https://news.marsbit.co/20230317132052832656.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2023-09-07",
+        "quote": "“by some measures, we’ve already achieved it,” Lee tells TIME. “By other measures, it’s within grasp.”",
+        "source_url": "https://time.com/collections/time100-ai/6310603/kai-fu-lee/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2018",
+        "note": "The Baillie Gifford Trust article (April 2023) retells the AI Superpowers forecast that AI could technically automate up to half of US jobs by 2040. Those are the book's words, not his 2023 words."
+      },
+      {
+        "year": "2022",
+        "note": "IEEE Spectrum interview 'AI's Threats to Jobs and Human Happiness Are Real' (published 2022-05-12, modified 2023-11-08); opened, not counted for 2023."
+      },
+      {
+        "year": "2024",
+        "note": "Search snippet only, not opened: a Yahoo Finance story says Lee called his forecast that AI would displace 50% of jobs by 2027 'uncannily accurate'."
+      },
+      {
+        "year": "2026",
+        "note": "Search snippet only, not opened: Bloomberg Weekend interview in which Lee expects company org charts to change within five years."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Kai-Fu Lee\" AI prediction 2023",
+        "what_found": "The Baillie Gifford 2023 interview, TechNode posts on 01.AI, and a Pandaily write-up of his May 2023 Zhongguancun keynote."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" 2023 interview AGI \"years\"",
+        "what_found": "Mostly older interviews (60 Minutes 2019, McKinsey) and a 2025 36Kr interview; nothing new from 2023."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "AI 2041 book pages and 2026 IPO news; no 2023 statements."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee 01.AI Yi-34B interview November 2023",
+        "what_found": "TechCrunch, Bloomberg and SCMP coverage of the Yi-34B launch and Lee's X posts; business and launch news, no dated AI forecasts in the snippets."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee \"AI 2.0\" 2023 speech \"years\"",
+        "what_found": "The Pandaily snippet mentions use cases unlikely to appear 'in the next three to five years', but the subject isn't clear and the page didn't render."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee ChatGPT 2023 interview jobs \"five years\"",
+        "what_found": "The IEEE Spectrum interview (turned out to be 2022), a Bloomberg video from November 10, 2023, and the 2026 Bloomberg interview."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee WIRED interview 2023 Yi open source China",
+        "what_found": "More Yi-34B launch coverage; no WIRED interview turned up."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee 2023 podcast transcript AI 2.0 ChatGPT",
+        "what_found": "TechNode on his March 14, 2023 AI 2.0 talk; the other transcripts are from 2019-2021."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee 2023 \"AGI\" OR \"superintelligence\" timeline",
+        "what_found": "The TIME100 AI 2023 profile with his AGI comment."
+      },
+      {
+        "query_or_url": "Kai-Fu Lee Bloomberg New Economy Forum 2023 AI jobs years",
+        "what_found": "The Bloomberg 2023 video page and a 2024 story on his 2027 jobs forecast."
+      },
+      {
+        "query_or_url": "李开复 2023 演讲 AI 2.0 未来 年",
+        "what_found": "Chinese write-ups of the March 14 talk (the 'next 2-3 years' line) and of the May 28 Zhongguancun Forum talk ('within 3-5 years', 'the next twenty years'); the May items are snippets only, not opened."
+      },
+      {
+        "query_or_url": "https://spectrum.ieee.org/kai-fu-lee-ai-jobs",
+        "what_found": "Opened; published 2022-05-12, so not 2023."
+      },
+      {
+        "query_or_url": "https://www.bailliegifford.com/en/uk/individual-investors/insights/ic-article/2023-q1-trust-46-ai-prophet-10019424/",
+        "what_found": "Opened; a 2023 interview on data, chips and jobs with no dated AI prediction in Lee's own 2023 words."
+      },
+      {
+        "query_or_url": "https://pandaily.com/ai-first-applications-are-the-favorites-of-the-future-says-kai-fu-lee/",
+        "what_found": "Opened, but only the metadata loaded, with no article text; nothing quoted."
+      },
+      {
+        "query_or_url": "https://www.bloomberg.com/news/videos/2023-11-10/lee-moratorium-on-ai-development-would-be-huge-mistake-video",
+        "what_found": "Opened; only the video description, no transcript."
+      },
+      {
+        "query_or_url": "https://time.com/collections/time100-ai/6310603/kai-fu-lee/",
+        "what_found": "Opened; the TIME100 AI profile (2023-09-07) has Lee's undated AGI remark. The page also carried a block of sponsored text, which I ignored."
+      },
+      {
+        "query_or_url": "https://news.marsbit.co/20230317132052832656.html",
+        "what_found": "Opened; first-person write-up of the March 14, 2023 talk, including the 'next 2-3 years' foundation-model line and a statement that AI 2.0 does not mean AGI has arrived."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2023 Lee launched 01.AI and talked mostly about 'AI 2.0' as a platform shift. The only dated AI forecast I could confirm on an opened page is from his March 14 talk: within 2-3 years someone would build the greatest foundation model. He also told TIME AGI is 'within grasp' by some measures, with no date. Dated claims from his May 28 Zhongguancun Forum talk ('3-5 years', 'next twenty years') appear only in search snippets and still need checking."
+  },
+  "reply_text": "I found one dated 2023 prediction. Kai-Fu Lee said that within the next two to three years some research institution would build the greatest foundation model. That comes from a Chinese write-up of his March 14, 2023 media talk in Beijing, which I opened on the aggregator Marsbit. The text is in his voice in the first person, but it was put together by the outlet Chuangyebang (创业邦) and isn't an official transcript, so I've labelled it coverage_only.\n\n- **Undated AGI line:** In his TIME100 AI profile (September 7, 2023), Lee told TIME AGI is \"within grasp\" by some measures. There's no date attached, so it goes under undated. The TIME page also had a block of sponsored ad text mixed in; I ignored it.\n- **Pages with nothing to record:**\n  - The Baillie Gifford interview (April 2023) only repeats his 2018 forecast that AI could automate half of US jobs by 2040.\n  - The IEEE Spectrum interview turned out to be from May 2022.\n  - The Pandaily page and the Bloomberg video page opened without the article or talk text.\n- **Leads I couldn't check:** Search snippets show two dated claims from his May 28, 2023 Zhongguancun Forum talk: \"within 3–5 years\" for AI 2.0 platforms, and \"the next twenty years\" for five industry changes. I ran out of page openings before I could open either one, so I haven't recorded them. They're the best next step.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-03-14\",\n      \"quote\": \"基础大模型需要超级巨量数据和超级算力，未来 2-3年，只要全世界的数据能储存起来，一定有科研机构会突破，做出来最伟大的基础模型。\",\n      \"what_is_predicted\": \"Within the next two to three years, provided the world's data can be stored, some research institution will break through and build the greatest foundation model.\",\n      \"date_or_span\": \"the next 2-3 years (roughly 2025-2026)\",\n      \"occasion\": \"Kai-Fu Lee's talk on AI 2.0 at a media meeting at Sinovation Ventures headquarters, Beijing, on the morning of March 14, 2023. The talk was written up in the first person by Chuangyebang (创业邦, author 赵晓晓) and republished by Marsbit on 2023-03-17.\",\n      \"source_url\": \"https://news.marsbit.co/20230317132052832656.html\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2023-09-07\",\n      \"quote\": \"“by some measures, we’ve already achieved it,” Lee tells TIME. “By other measures, it’s within grasp.”\",\n      \"source_url\": \"https://time.com/collections/time100-ai/6310603/kai-fu-lee/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2018\", \"note\": \"The Baillie Gifford Trust article (April 2023) retells the AI Superpowers forecast that AI could technically automate up to half of US jobs by 2040. Those are the book's words, not his 2023 words.\"},\n    {\"year\": \"2022\", \"note\": \"IEEE Spectrum interview 'AI's Threats to Jobs and Human Happiness Are Real' (published 2022-05-12, modified 2023-11-08); opened, not counted for 2023.\"},\n    {\"year\": \"2024\", \"note\": \"Search snippet only, not opened: a Yahoo Finance story says Lee called his forecast that AI would displace 50% of jobs by 2027 'uncannily accurate'.\"},\n    {\"year\": \"2026\", \"note\": \"Search snippet only, not opened: Bloomberg Weekend interview in which Lee expects company org charts to change within five years.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" AI prediction 2023\", \"what_found\": \"The Baillie Gifford 2023 interview, TechNode posts on 01.AI, and a Pandaily write-up of his May 2023 Zhongguancun keynote.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly older interviews (60 Minutes 2019, McKinsey) and a 2025 36Kr interview; nothing new from 2023.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"AI 2041 book pages and 2026 IPO news; no 2023 statements.\"},\n    {\"query_or_url\": \"Kai-Fu Lee 01.AI Yi-34B interview November 2023\", \"what_found\": \"TechCrunch, Bloomberg and SCMP coverage of the Yi-34B launch and Lee's X posts; business and launch news, no dated AI forecasts in the snippets.\"},\n    {\"query_or_url\": \"Kai-Fu Lee \\\"AI 2.0\\\" 2023 speech \\\"years\\\"\", \"what_found\": \"The Pandaily snippet mentions use cases unlikely to appear 'in the next three to five years', but the subject isn't clear and the page didn't render.\"},\n    {\"query_or_url\": \"Kai-Fu Lee ChatGPT 2023 interview jobs \\\"five years\\\"\", \"what_found\": \"The IEEE Spectrum interview (turned out to be 2022), a Bloomberg video from November 10, 2023, and the 2026 Bloomberg interview.\"},\n    {\"query_or_url\": \"Kai-Fu Lee WIRED interview 2023 Yi open source China\", \"what_found\": \"More Yi-34B launch coverage; no WIRED interview turned up.\"},\n    {\"query_or_url\": \"Kai-Fu Lee 2023 podcast transcript AI 2.0 ChatGPT\", \"what_found\": \"TechNode on his March 14, 2023 AI 2.0 talk; the other transcripts are from 2019-2021.\"},\n    {\"query_or_url\": \"Kai-Fu Lee 2023 \\\"AGI\\\" OR \\\"superintelligence\\\" timeline\", \"what_found\": \"The TIME100 AI 2023 profile with his AGI comment.\"},\n    {\"query_or_url\": \"Kai-Fu Lee Bloomberg New Economy Forum 2023 AI jobs years\", \"what_found\": \"The Bloomberg 2023 video page and a 2024 story on his 2027 jobs forecast.\"},\n    {\"query_or_url\": \"李开复 2023 演讲 AI 2.0 未来 年\", \"what_found\": \"Chinese write-ups of the March 14 talk (the 'next 2-3 years' line) and of the May 28 Zhongguancun Forum talk ('within 3-5 years', 'the next twenty years'); the May items are snippets only, not opened.\"},\n    {\"query_or_url\": \"https://spectrum.ieee.org/kai-fu-lee-ai-jobs\", \"what_found\": \"Opened; published 2022-05-12, so not 2023.\"},\n    {\"query_or_url\": \"https://www.bailliegifford.com/en/uk/individual-investors/insights/ic-article/2023-q1-trust-46-ai-prophet-10019424/\", \"what_found\": \"Opened; a 2023 interview on data, chips and jobs with no dated AI prediction in Lee's own 2023 words.\"},\n    {\"query_or_url\": \"https://pandaily.com/ai-first-applications-are-the-favorites-of-the-future-says-kai-fu-lee/\", \"what_found\": \"Opened, but only the metadata loaded, with no article text; nothing quoted.\"},\n    {\"query_or_url\": \"https://www.bloomberg.com/news/videos/2023-11-10/lee-moratorium-on-ai-development-would-be-huge-mistake-video\", \"what_found\": \"Opened; only the video description, no transcript.\"},\n    {\"query_or_url\": \"https://time.com/collections/time100-ai/6310603/kai-fu-lee/\", \"what_found\": \"Opened; the TIME100 AI profile (2023-09-07) has Lee's undated AGI remark. The page also carried a block of sponsored text, which I ignored.\"},\n    {\"query_or_url\": \"https://news.marsbit.co/20230317132052832656.html\", \"what_found\": \"Opened; first-person write-up of the March 14, 2023 talk, including the 'next 2-3 years' foundation-model line and a statement that AI 2.0 does not mean AGI has arrived.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2023 Lee launched 01.AI and talked mostly about 'AI 2.0' as a platform shift. The only dated AI forecast I could confirm on an opened page is from his March 14 talk: within 2-3 years someone would build the greatest foundation model. He also told TIME AGI is 'within grasp' by some measures, with no date. Dated claims from his May 28 Zhongguancun Forum talk ('3-5 years', 'next twenty years') appear only in search snippets and still need checking.\"\n}\n```"
+}

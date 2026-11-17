@@ -1,0 +1,340 @@
+{
+  "speaker_id": "musk",
+  "year": 2016,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6775,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7635
+      },
+      "cache_creation_input_tokens": 60338,
+      "cache_read_input_tokens": 539426,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 8388,
+      "output_tokens_details": {
+        "thinking_tokens": 2353
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Elon Musk\" AI prediction 2016','\"Elon Musk\" 2016 interview AGI \"years\"','\"Elon Musk\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" AI prediction 2016"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=8,c=400):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:n]:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:c].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2016 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Musk Code Conference 2016 full transcript Walt Mossberg Kara Swisher',\n          'Musk October 19 2016 conference call transcript full self-driving \"Los Angeles to New York\"',\n          'Musk January 10 2016 press call \"less than two years away from complete autonomy\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr,8,300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Code Conference 2016 full transcript Walt Mossberg Kara Swisher"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk October 19 2016 conference call transcript full self-driving \"Los Angeles to New York\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk January 10 2016 press call \"less than two years away from complete autonomy\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"http://shitelonsays.com/transcript/interview-at-code-conference-2016-2016-06-01\"})\nif isinstance(p,dict): print(p)\nelse:\n    t=p[0]['content']; print(len(t))\n    import re\n    for kw in ['two years','autonom','solved','year','decade','AI ','artificial','lace','simulation']:\n        for m in re.finditer(kw,t):\n            pass\n    idx=[m.start() for m in re.finditer(r'two years|solved problem|autonom|artificial|AI |years|neural lace',t)]\n    print(len(idx))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "http://shitelonsays.com/transcript/interview-at-code-conference-2016-2016-06-01"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pp=json.loads(p) if isinstance(p,str) else p\nif isinstance(pp,dict): print(pp)\nelse:\n    t=pp[0]['content']; print(len(t))\n    for m in re.finditer(r'two years|solved problem|complete autonomy|neural lace|years|next year',t):\n        print('>>',t[max(0,m.start()-300):m.start()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"autonomous driving to be basically a solved problem\" Musk Code 2016 transcript',\n          'Tesla \"Master Plan, Part Deux\" Musk blog 2016 self-driving',\n          'Musk October 2016 Tesla call transcript \"end of next year\" self-driving demonstration']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr,8,300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"autonomous driving to be basically a solved problem\" Musk Code 2016 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla \"Master Plan, Part Deux\" Musk blog 2016 self-driving"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk October 2016 Tesla call transcript \"end of next year\" self-driving demonstration"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://www.xautoworld.com/tesla/transcript-elon-musk-autopilot-2-conference-call/\",\n\"https://www.industryweek.com/leadership/companies-executives/article/21973346/musks-future-driverless-roads-by-2019-mars-colonization-by-2025\",\n\"https://www.teslasiliconvalley.com/blog//master-plan-part-deux\",\n\"https://www.malaymail.com/news/drive/2016/01/11/teslas-musk-sees-self-driving-car-from-la-to-new-york-in-two-years/1038513\"]\ndocs={}\nfor u in urls:\n    p=await web_fetch({\"url\":u}); pp=json.loads(p) if isinstance(p,str) else p\n    if isinstance(pp,list): pp=pp[0]\n    c=pp.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    docs[u]=c or ''\n    print(u,pp.get('type'),pp.get('error_code'),len(docs[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.xautoworld.com/tesla/transcript-elon-musk-autopilot-2-conference-call/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.industryweek.com/leadership/companies-executives/article/21973346/musks-future-driverless-roads-by-2019-mars-colonization-by-2025"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.teslasiliconvalley.com/blog//master-plan-part-deux"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.malaymail.com/news/drive/2016/01/11/teslas-musk-sees-self-driving-car-from-la-to-new-york-in-two-years/1038513"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(docs[urls[0]])\ndef kw(t,pat,w=350):\n    for m in re.finditer(pat,t):\n        print('>>',t[max(0,m.start()-w):m.start()+w].replace('\\n',' '));print()\nkw(docs[urls[1]],r'two years|regulators|solved|artificial|AI |lace|2019')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nkw(docs[urls[1]],r'two years|regulators|solved|artificial|AI\\b|lace|2019',300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=docs[urls[1]]; i=t.find('never been shy'); print(t[i-100:i+900])\nt=docs[urls[2]]; kw(t,r'Autonomy|regulat|billion miles|years|fully self-driving',400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=docs[urls[3]]; i=t.find('SAN FRANCISCO'); print(t[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('SAN FRANCISCO',i+200); print(t[i:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw(t,r'optimistic|two years|complete autonomy|regulat',500)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Musk Code 2016 artificial intelligence neural lace \"house cat\" transcript']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr,8,400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Code 2016 artificial intelligence neural lace \"house cat\" transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://www.cnbc.com/2016/10/19/all-tesla-vehicles-being-produced-now-have-full-self-driving-hardware.html\"\np=await web_fetch({\"url\":u}); pp=json.loads(p) if isinstance(p,str) else p\nif isinstance(pp,list): pp=pp[0]\nc=pp.get('content'); \nif isinstance(c,dict): c=c.get('source',{}).get('data','')\nprint(pp.get('type'),pp.get('error_code'),len(c or ''))\nkw(c or '',r'next year|demonstration|LA to New York|2017',400)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2016/10/19/all-tesla-vehicles-being-produced-now-have-full-self-driving-hardware.html"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2016-06-01",
+        "quote": "We’re less than two years away from complete autonomy. Regulators however will take at least another year; they’ll want to see billions of miles of data.",
+        "what_is_predicted": "Cars (Tesla's, in context) will reach complete autonomous driving in under two years, with regulatory approval taking at least a year more.",
+        "date_or_span": "less than two years (by about mid-2018), plus at least another year for regulators",
+        "occasion": "Interview with Kara Swisher and Walt Mossberg at Recode's Code Conference 2016, Rancho Palos Verdes, CA",
+        "source_url": "https://www.industryweek.com/leadership/companies-executives/article/21973346/musks-future-driverless-roads-by-2019-mars-colonization-by-2025",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2016-10-19",
+        "quote": "a demonstration drive of full autonomy from LA to New York by the end of next year.",
+        "what_is_predicted": "Tesla's goal was to demonstrate a fully self-driving car trip from Los Angeles to New York by the end of 2017.",
+        "date_or_span": "end of next year (end of 2017)",
+        "occasion": "Tesla press call with reporters announcing full self-driving hardware in all new cars",
+        "source_url": "https://www.cnbc.com/2016/10/19/all-tesla-vehicles-being-produced-now-have-full-self-driving-hardware.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2016-01-10",
+        "quote": "I might be slightly optimistic on that, but I don’t think significantly optimistic that we can do that in two years,",
+        "what_is_predicted": "Within two years a customer will be able to summon a Tesla to drive itself from Los Angeles to New York.",
+        "date_or_span": "two years (by about January 2018)",
+        "occasion": "Tesla press conference on the Summon software update",
+        "source_url": "https://www.malaymail.com/news/drive/2016/01/11/teslas-musk-sees-self-driving-car-from-la-to-new-york-in-two-years/1038513",
+        "source_kind": "coverage_only",
+        "already_recorded": "2016-01-10-musk-summon-anywhere-two-years.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2014",
+        "note": "A LessWrong post titled 'Musk on AGI Timeframes' showed up in search results only; not opened."
+      },
+      {
+        "year": "2024-2026",
+        "note": "Search results were full of later forecasts (AI smarter than humans 'by next year' in 2024; Economist interview on AI passing combined human intelligence around 2031 and losing control within a decade; 'Stockfish-level' AI by end of next year). Seen in snippets only; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Elon Musk\" AI prediction 2016",
+        "what_found": "Lookback articles and prediction trackers pointing to the January 2016 summon claim and the June 2016 Code Conference self-driving claim; none of his own words."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2016 interview AGI \"years\"",
+        "what_found": "Mostly 2023-2025 AGI pieces and a 2014 LessWrong post; nothing on AGI from 2016."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2026 coverage of later forecasts; nothing from 2016."
+      },
+      {
+        "query_or_url": "Musk Code Conference 2016 full transcript Walt Mossberg Kara Swisher",
+        "what_found": "A fan transcript at shitelonsays.com, Recode's video page and YouTube clips."
+      },
+      {
+        "query_or_url": "Musk October 19 2016 conference call transcript full self-driving \"Los Angeles to New York\"",
+        "what_found": "Reuters factbox and news coverage of the October 19 call, plus the Malay Mail report of the January 2016 press call."
+      },
+      {
+        "query_or_url": "Musk January 10 2016 press call \"less than two years away from complete autonomy\"",
+        "what_found": "Shows the 'less than two years away from complete autonomy' quote is from June 2016 (Code), not the January call."
+      },
+      {
+        "query_or_url": "\"autonomous driving to be basically a solved problem\" Musk Code 2016 transcript",
+        "what_found": "Bloomberg's Code 2016 story reprinted by IndustryWeek, plus later commentary repeating the quote."
+      },
+      {
+        "query_or_url": "Tesla \"Master Plan, Part Deux\" Musk blog 2016 self-driving",
+        "what_found": "Copies of and coverage on the July 20, 2016 Master Plan Part Deux post."
+      },
+      {
+        "query_or_url": "Musk October 2016 Tesla call transcript \"end of next year\" self-driving demonstration",
+        "what_found": "TechCrunch, CNBC and an xautoworld transcript of the October 19, 2016 call."
+      },
+      {
+        "query_or_url": "Musk Code 2016 artificial intelligence neural lace \"house cat\" transcript",
+        "what_found": "Coverage of his neural lace and 'house cats' remarks at Code 2016 with no date or time span attached."
+      },
+      {
+        "query_or_url": "http://shitelonsays.com/transcript/interview-at-code-conference-2016-2016-06-01",
+        "what_found": "Unfinished fan transcript: has the space/Mars section and the start of the Tesla section, but stops before the self-driving and AI remarks."
+      },
+      {
+        "query_or_url": "https://www.xautoworld.com/tesla/transcript-elon-musk-autopilot-2-conference-call/",
+        "what_found": "Would not open (verification page only); not quoted."
+      },
+      {
+        "query_or_url": "https://www.industryweek.com/leadership/companies-executives/article/21973346/musks-future-driverless-roads-by-2019-mars-colonization-by-2025",
+        "what_found": "Bloomberg report dated June 2, 2016 quoting Musk at Code: 'less than two years away from complete autonomy', regulators at least another year."
+      },
+      {
+        "query_or_url": "https://www.teslasiliconvalley.com/blog//master-plan-part-deux",
+        "what_found": "Copy of Master Plan Part Deux on a Tesla owners' club site: approval needs about 6 billion miles, but no date for full self-driving."
+      },
+      {
+        "query_or_url": "https://www.malaymail.com/news/drive/2016/01/11/teslas-musk-sees-self-driving-car-from-la-to-new-york-in-two-years/1038513",
+        "what_found": "Report of the January 10, 2016 press conference with the two-year LA-to-New York summon quote (the already-recorded claim)."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2016/10/19/all-tesla-vehicles-being-produced-now-have-full-self-driving-hardware.html",
+        "what_found": "CNBC report of the October 19, 2016 call quoting the LA-to-New York self-driving demo goal for the end of next year."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Musk's dated AI forecasts in 2016 were all about Tesla self-driving: the two-year LA-to-New York summon claim in January (already recorded), 'less than two years away from complete autonomy' at the Code Conference in June, and a coast-to-coast self-driving demo by the end of 2017, set in October. All three were found only in news reports, because the Code transcript I opened is unfinished and the October call transcript would not open. His remarks on AI risk and neural lace that year carried no date or time span, and I found nothing on when AGI would arrive."
+  },
+  "reply_text": "Musk's 2016 record holds two new dated self-driving forecasts. I found both only in news reports, not in his own words, and found nothing dated about AGI or AI in general.\n\n- **June 1, Code Conference:** Bloomberg's report, reprinted by IndustryWeek, quotes him saying full self-driving is less than two years off, with regulators taking at least another year.\n- **October 19, Autopilot hardware press call:** CNBC quotes him saying the goal is a fully self-driving demonstration from LA to New York by the end of 2017.\n- **January 10, press call:** Malay Mail (Reuters) quotes his two-year forecast for summoning a car from LA to New York. That looks like the claim already in your summon-anywhere file. The same report says, in its own words rather than his, that he thought fully self-driving cars would be technically possible within 24 to 36 months. I left that out because there is no direct quote.\n\nThings to know before checking:\n- **Code Conference transcript:** The fan transcript I opened (shitelonsays.com) is unfinished and stops before the self-driving section, so I couldn't check the June quote against his own words.\n- **AI risk at the same talk:** Coverage of his \"neural lace\" and \"house cats\" remarks gave no date or time span, so nothing qualified.\n- **October call transcript:** One site with a transcript of the call (xautoworld.com) wouldn't open; it showed a \"verifying your request\" page instead.\n- **Master Plan, Part Deux (July 20):** I read a copy on a Tesla owners' club site, not tesla.com. It puts a mileage figure on regulatory approval but gives no date, so it isn't listed.\n- **Budget:** I used all 6 page openings and 10 of the 12 searches. One search was wasted: its results were lost to a coding error before I could read them, so it ran once with nothing found.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2016-06-01\",\n      \"quote\": \"We’re less than two years away from complete autonomy. Regulators however will take at least another year; they’ll want to see billions of miles of data.\",\n      \"what_is_predicted\": \"Cars (Tesla's, in context) will reach complete autonomous driving in under two years, with regulatory approval taking at least a year more.\",\n      \"date_or_span\": \"less than two years (by about mid-2018), plus at least another year for regulators\",\n      \"occasion\": \"Interview with Kara Swisher and Walt Mossberg at Recode's Code Conference 2016, Rancho Palos Verdes, CA\",\n      \"source_url\": \"https://www.industryweek.com/leadership/companies-executives/article/21973346/musks-future-driverless-roads-by-2019-mars-colonization-by-2025\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2016-10-19\",\n      \"quote\": \"a demonstration drive of full autonomy from LA to New York by the end of next year.\",\n      \"what_is_predicted\": \"Tesla's goal was to demonstrate a fully self-driving car trip from Los Angeles to New York by the end of 2017.\",\n      \"date_or_span\": \"end of next year (end of 2017)\",\n      \"occasion\": \"Tesla press call with reporters announcing full self-driving hardware in all new cars\",\n      \"source_url\": \"https://www.cnbc.com/2016/10/19/all-tesla-vehicles-being-produced-now-have-full-self-driving-hardware.html\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2016-01-10\",\n      \"quote\": \"I might be slightly optimistic on that, but I don’t think significantly optimistic that we can do that in two years,\",\n      \"what_is_predicted\": \"Within two years a customer will be able to summon a Tesla to drive itself from Los Angeles to New York.\",\n      \"date_or_span\": \"two years (by about January 2018)\",\n      \"occasion\": \"Tesla press conference on the Summon software update\",\n      \"source_url\": \"https://www.malaymail.com/news/drive/2016/01/11/teslas-musk-sees-self-driving-car-from-la-to-new-york-in-two-years/1038513\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"2016-01-10-musk-summon-anywhere-two-years.toml\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2014\", \"note\": \"A LessWrong post titled 'Musk on AGI Timeframes' showed up in search results only; not opened.\"},\n    {\"year\": \"2024-2026\", \"note\": \"Search results were full of later forecasts (AI smarter than humans 'by next year' in 2024; Economist interview on AI passing combined human intelligence around 2031 and losing control within a decade; 'Stockfish-level' AI by end of next year). Seen in snippets only; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Elon Musk\\\" AI prediction 2016\", \"what_found\": \"Lookback articles and prediction trackers pointing to the January 2016 summon claim and the June 2016 Code Conference self-driving claim; none of his own words.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2016 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2023-2025 AGI pieces and a 2014 LessWrong post; nothing on AGI from 2016.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2016 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2026 coverage of later forecasts; nothing from 2016.\"},\n    {\"query_or_url\": \"Musk Code Conference 2016 full transcript Walt Mossberg Kara Swisher\", \"what_found\": \"A fan transcript at shitelonsays.com, Recode's video page and YouTube clips.\"},\n    {\"query_or_url\": \"Musk October 19 2016 conference call transcript full self-driving \\\"Los Angeles to New York\\\"\", \"what_found\": \"Reuters factbox and news coverage of the October 19 call, plus the Malay Mail report of the January 2016 press call.\"},\n    {\"query_or_url\": \"Musk January 10 2016 press call \\\"less than two years away from complete autonomy\\\"\", \"what_found\": \"Shows the 'less than two years away from complete autonomy' quote is from June 2016 (Code), not the January call.\"},\n    {\"query_or_url\": \"\\\"autonomous driving to be basically a solved problem\\\" Musk Code 2016 transcript\", \"what_found\": \"Bloomberg's Code 2016 story reprinted by IndustryWeek, plus later commentary repeating the quote.\"},\n    {\"query_or_url\": \"Tesla \\\"Master Plan, Part Deux\\\" Musk blog 2016 self-driving\", \"what_found\": \"Copies of and coverage on the July 20, 2016 Master Plan Part Deux post.\"},\n    {\"query_or_url\": \"Musk October 2016 Tesla call transcript \\\"end of next year\\\" self-driving demonstration\", \"what_found\": \"TechCrunch, CNBC and an xautoworld transcript of the October 19, 2016 call.\"},\n    {\"query_or_url\": \"Musk Code 2016 artificial intelligence neural lace \\\"house cat\\\" transcript\", \"what_found\": \"Coverage of his neural lace and 'house cats' remarks at Code 2016 with no date or time span attached.\"},\n    {\"query_or_url\": \"http://shitelonsays.com/transcript/interview-at-code-conference-2016-2016-06-01\", \"what_found\": \"Unfinished fan transcript: has the space/Mars section and the start of the Tesla section, but stops before the self-driving and AI remarks.\"},\n    {\"query_or_url\": \"https://www.xautoworld.com/tesla/transcript-elon-musk-autopilot-2-conference-call/\", \"what_found\": \"Would not open (verification page only); not quoted.\"},\n    {\"query_or_url\": \"https://www.industryweek.com/leadership/companies-executives/article/21973346/musks-future-driverless-roads-by-2019-mars-colonization-by-2025\", \"what_found\": \"Bloomberg report dated June 2, 2016 quoting Musk at Code: 'less than two years away from complete autonomy', regulators at least another year.\"},\n    {\"query_or_url\": \"https://www.teslasiliconvalley.com/blog//master-plan-part-deux\", \"what_found\": \"Copy of Master Plan Part Deux on a Tesla owners' club site: approval needs about 6 billion miles, but no date for full self-driving.\"},\n    {\"query_or_url\": \"https://www.malaymail.com/news/drive/2016/01/11/teslas-musk-sees-self-driving-car-from-la-to-new-york-in-two-years/1038513\", \"what_found\": \"Report of the January 10, 2016 press conference with the two-year LA-to-New York summon quote (the already-recorded claim).\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2016/10/19/all-tesla-vehicles-being-produced-now-have-full-self-driving-hardware.html\", \"what_found\": \"CNBC report of the October 19, 2016 call quoting the LA-to-New York self-driving demo goal for the end of next year.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Musk's dated AI forecasts in 2016 were all about Tesla self-driving: the two-year LA-to-New York summon claim in January (already recorded), 'less than two years away from complete autonomy' at the Code Conference in June, and a coast-to-coast self-driving demo by the end of 2017, set in October. All three were found only in news reports, because the Code transcript I opened is unfinished and the October call transcript would not open. His remarks on AI risk and neural lace that year carried no date or time span, and I found nothing on when AGI would arrive.\"\n}\n```"
+}

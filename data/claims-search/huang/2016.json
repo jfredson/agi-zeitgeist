@@ -1,0 +1,330 @@
+{
+  "speaker_id": "huang",
+  "year": 2016,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6462,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 61064,
+      "cache_read_input_tokens": 331497,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 7721,
+      "output_tokens_details": {
+        "thinking_tokens": 1971
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Jensen Huang\" AI prediction 2016','\"Jensen Huang\" 2016 interview AGI \"years\"','\"Jensen Huang\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2016"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))\nshow(r)\nres={}\nfor q in qs[1:]:\n    res[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(res[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2016 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jensen Huang GTC Europe 2016 keynote Amsterdam self-driving','\"Accelerating AI with GPUs\" Jensen Huang blog','Jensen Huang Fortune 2016 interview deep learning Businessperson of the Year','Jensen Huang GTC 2016 keynote transcript deep learning']:\n    res[q]=await web_search({\"query\":q}); print(\"==\",q); show(res[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC Europe 2016 keynote Amsterdam self-driving"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Accelerating AI with GPUs\" Jensen Huang blog"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Fortune 2016 interview deep learning Businessperson of the Year"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC 2016 keynote transcript deep learning"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages={}\nfor u in ['https://fortune.com/2016/03/22/artificial-intelligence-nvidia/','https://blogs.nvidia.com/blog/intelligent-industrial-revolution/','https://blogs.nvidia.com/blog/accelerating-ai-artificial-intelligence-gpus/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    pages[u]=p.get('content','') if isinstance(p,dict) else ''\n    print(u,len(pages[u]),p.get('error_code') if isinstance(p,dict) else '')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2016/03/22/artificial-intelligence-nvidia/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/intelligent-industrial-revolution/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/accelerating-ai-artificial-intelligence-gpus/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(repr(p)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ntxt={u:c['source']['data'] for u,c in pages.items()}\nfor u,t in txt.items():\n    print(\"=====\",u,len(t))\n    for m in re.finditer(r'[^.\\n]*\\b(20[12]\\d|years?|decade|next|future|will)\\b[^.\\n]*[.\\n]',t):\n        s=m.group(0).strip()\n        if len(s)>40: print(' *',s[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def ctx(t,s,n=900):\n    i=t.find(s); print(t[max(0,i-n):i+n] if i>=0 else 'NOTFOUND'); print('-----')\nF=txt['https://fortune.com/2016/03/22/artificial-intelligence-nvidia/']\nctx(F,'In another five years',1500)\nctx(F,'over the next 10 years',800)\nB=txt['https://blogs.nvidia.com/blog/intelligent-industrial-revolution/']\nctx(B,'1 billion cameras',700)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Jen-Hsun Huang 2016 self-driving cars \"years\" interview','Jen-Hsun Huang CES 2016 keynote Drive PX 2 autonomous cars prediction','Jen-Hsun Huang GTC China 2016 Beijing keynote AI']:\n    res[q]=await web_search({\"query\":q}); print(\"==\",q); show(res[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jen-Hsun Huang 2016 self-driving cars \"years\" interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jen-Hsun Huang CES 2016 keynote Drive PX 2 autonomous cars prediction"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jen-Hsun Huang GTC China 2016 Beijing keynote AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Nvidia Q3 fiscal 2017 earnings call transcript Huang Tesla \"2021\"','Huang Baidu World 2016 speech self-driving \"years\"']:\n    res[q]=await web_search({\"query\":q}); print(\"==\",q); show(res[q])\nc=json.loads(res['Jen-Hsun Huang 2016 self-driving cars \"years\" interview']) if isinstance(res['Jen-Hsun Huang 2016 self-driving cars \"years\" interview'],str) else res['Jen-Hsun Huang 2016 self-driving cars \"years\" interview']"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nvidia Q3 fiscal 2017 earnings call transcript Huang Tesla \"2021\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Huang Baidu World 2016 speech self-driving \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.roic.ai/quote/NVDA/transcripts/2017-year/3-quarter'\np=await web_fetch({\"url\":u})\nif isinstance(p,str): p=json.loads(p)\nif isinstance(p,list): p=p[0]\nc=p.get('content')\nt=c['source']['data'] if isinstance(c,dict) else (c or '')\ntxt[u]=t; print(len(t), p.get('error_code'))\nfor kw in ['2021','2020','2018','2019','next year','years','decade']:\n    for m in re.finditer(kw,t):\n        print(kw,'::',t[max(0,m.start()-300):m.start()+300].replace('\\n',' ')); print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.roic.ai/quote/NVDA/transcripts/2017-year/3-quarter"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['Tesla','not going to happen','self-driving','autonomous','five years']:\n    for m in re.finditer(kw,t):\n        print(kw,'::',t[max(0,m.start()-400):m.start()+500].replace('\\n',' ')); print('--')\nprint(t[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.carscoops.com/2016/11/nvidia-ceo-claims-teslas-autopilot-is-5/','https://www.fool.com/investing/2016/09/07/why-baidu-and-nvidia-are-teaming-up-on-self-drivin.aspx']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    c=p.get('content'); tt=c['source']['data'] if isinstance(c,dict) else (c or '')\n    txt[u]=tt; print('=====',u,len(tt),p.get('error_code'))\n    for kw in ['Huang','years','202','\"']:\n        pass\n    for m in re.finditer(r'Huang|years|202\\d',tt):\n        print(' ::',tt[max(0,m.start()-250):m.start()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.carscoops.com/2016/11/nvidia-ceo-claims-teslas-autopilot-is-5/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/investing/2016/09/07/why-baidu-and-nvidia-are-teaming-up-on-self-drivin.aspx"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2016-11-10",
+        "quote": "basically five years ahead. Anybody who's talking about 2021... that's just a non-starter anymore. And I think that's probably the most significant bit in the automotive industry. I just don't – anybody who is talking about autonomous capabilities in 2020 and 2021 is at the moment re-evaluating in a very significant way.",
+        "what_is_predicted": "Huang suggests that AI-driven autonomous driving capability, through Tesla's Nvidia-powered Autopilot hardware, is arriving well before the 2020-2021 dates the rest of the car industry had been naming.",
+        "date_or_span": "five years ahead; 2020 and 2021",
+        "occasion": "Nvidia Q3 fiscal 2017 earnings call (Nov 10, 2016), as reported by Carscoops on Nov 12, 2016 (the report credits Electrek)",
+        "source_url": "https://www.carscoops.com/2016/11/nvidia-ceo-claims-teslas-autopilot-is-5/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2017",
+        "note": "Search snippets pointed to a VentureBeat CES 2017 interview (level-4 cars 'probably by about three years') and a Nov 2017 earnings call (self-driving cars on roads within three years). I did not open either."
+      },
+      {
+        "year": "2018",
+        "note": "A search snippet showed a Fortune Brainstorm Tech piece from Jan 2018 in which a fully autonomous 'fantasy car' was said to be five to 10 years away. I did not open it."
+      },
+      {
+        "year": "2023",
+        "note": "A search snippet showed TechPowerUp reporting Huang saying AGI was within five years. I did not open it."
+      },
+      {
+        "year": "2026",
+        "note": "Search snippets showed Huang on the Lex Fridman podcast saying 'I think we've achieved AGI', and on CBS putting the chance that AI destroys the world by 2030 at 0%. I did not open either for this year's work."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2016",
+        "what_found": "Only 2025-2026 news, mostly Huang citing Hinton's 2016 radiologist prediction; nothing Huang said in 2016."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2016 interview AGI \"years\"",
+        "what_found": "Only 2023-2026 AGI coverage (TechPowerUp five-year AGI piece, Lex Fridman 'achieved AGI'); nothing from 2016."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2025-2026 items (0% chance AI destroys the world by 2030, spending forecasts); nothing from 2016."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC Europe 2016 keynote Amsterdam self-driving",
+        "what_found": "Video listings for the GTC Europe 2016 and GTC 2016 keynotes and an Nvidia blog tag page; no transcript."
+      },
+      {
+        "query_or_url": "\"Accelerating AI with GPUs\" Jensen Huang blog",
+        "what_found": "Huang's own Nvidia blog posts from Jan 12, 2016 and Oct 24, 2016 ('The Intelligent Industrial Revolution')."
+      },
+      {
+        "query_or_url": "Jensen Huang Fortune 2016 interview deep learning Businessperson of the Year",
+        "what_found": "Fortune's March 22, 2016 question-and-answer interview with Huang."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC 2016 keynote transcript deep learning",
+        "what_found": "Only transcripts of later GTC keynotes; none for 2016."
+      },
+      {
+        "query_or_url": "Jen-Hsun Huang 2016 self-driving cars \"years\" interview",
+        "what_found": "A Carscoops Nov 2016 report of Huang's Tesla 'five years ahead / 2021' remarks, plus 2017-2018 items."
+      },
+      {
+        "query_or_url": "Jen-Hsun Huang CES 2016 keynote Drive PX 2 autonomous cars prediction",
+        "what_found": "News on the Drive PX 2 unveiling at CES 2016; no dated predictions in the snippets."
+      },
+      {
+        "query_or_url": "Jen-Hsun Huang GTC China 2016 Beijing keynote AI",
+        "what_found": "Press releases and tweets on the GTC China and GTC Taiwan 2016 keynotes; no transcript."
+      },
+      {
+        "query_or_url": "Nvidia Q3 fiscal 2017 earnings call transcript Huang Tesla \"2021\"",
+        "what_found": "A roic.ai transcript of the Nov 10, 2016 call whose snippet included 'It's not going to happen in 2021'."
+      },
+      {
+        "query_or_url": "Huang Baidu World 2016 speech self-driving \"years\"",
+        "what_found": "Coverage of the Nvidia-Baidu self-driving partnership; the five-year timelines in it are Baidu's, not Huang's."
+      },
+      {
+        "query_or_url": "https://fortune.com/2016/03/22/artificial-intelligence-nvidia/",
+        "what_found": "Opened the full interview; its one dated line ('In another five years, if mechanical inclination is the only thing you have going, you're dead') is about car companies, not AI, so it is left out."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/intelligent-industrial-revolution/",
+        "what_found": "Opened Huang's Oct 24, 2016 post; it has only undated 'soon/someday' lines and a count of a billion cameras by 2020, which is not an AI prediction."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/accelerating-ai-artificial-intelligence-gpus/",
+        "what_found": "Opened Huang's Jan 12, 2016 post; its only forward line is 'We expect another 10x boost in the next few years', which is about GPU speed and gives no date."
+      },
+      {
+        "query_or_url": "https://www.roic.ai/quote/NVDA/transcripts/2017-year/3-quarter",
+        "what_found": "Opened the Nov 10, 2016 earnings-call transcript, but it is cut off; the Tesla/2021 exchange is not on the page I got."
+      },
+      {
+        "query_or_url": "https://www.carscoops.com/2016/11/nvidia-ceo-claims-teslas-autopilot-is-5/",
+        "what_found": "Opened the report; it quotes Huang's 'five years ahead ... 2021 ... non-starter' remarks."
+      },
+      {
+        "query_or_url": "https://www.fool.com/investing/2016/09/07/why-baidu-and-nvidia-are-teaming-up-on-self-drivin.aspx",
+        "what_found": "Opened the report; Huang's quote from Baidu World 2016 gives no date or span."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2016 Huang talked about AI mostly through deep learning and self-driving cars. His own blog posts and the Fortune interview give no dated AI predictions. The one dated item I found is his November 2016 earnings-call remark that Tesla's Nvidia-powered Autopilot was 'five years ahead' and that talk of 2021 was 'a non-starter'; I could only read it in news coverage because the transcript I opened is cut off."
+  },
+  "reply_text": "Opening the earnings call transcript (Nov 10, 2016).I found one 2016 candidate, and I saw it only in a news report. On Nvidia's November 10, 2016 earnings call, Huang said Tesla's Autopilot hardware was \"basically five years ahead\" and that talk of self-driving in 2021 was \"a non-starter.\" The earnings-call transcript I opened is cut off before the analyst Q&A, so I could not read those words in an official record. The quote comes from Carscoops, which credits Electrek.\n\n- **Already-recorded claim:** I did not come across the September 28, 2016 \"self-driving cars on road in a couple of years\" line from GTC Europe in anything I opened.\n- **Left out:** In the March 2016 Fortune interview, Huang said that \"in another five years, if mechanical inclination is the only thing you have going, you're dead.\" That is a forecast about car companies, not about AI. A line in his October 2016 blog post saying there would be a billion cameras by 2020 counts devices, not AI. A \"10x boost in the next few years\" in his January 2016 post is about GPU speed and gives no date.\n- **Not quoted:** Carscoops also says Huang thought the self-driving AI problem could be solved as early as 2017. That is the reporter's wording, not his, so I did not quote it as his.\n- **Budget:** All 12 searches and all 6 page openings are used.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2016-11-10\",\n      \"quote\": \"basically five years ahead. Anybody who's talking about 2021... that's just a non-starter anymore. And I think that's probably the most significant bit in the automotive industry. I just don't – anybody who is talking about autonomous capabilities in 2020 and 2021 is at the moment re-evaluating in a very significant way.\",\n      \"what_is_predicted\": \"Huang suggests that AI-driven autonomous driving capability, through Tesla's Nvidia-powered Autopilot hardware, is arriving well before the 2020-2021 dates the rest of the car industry had been naming.\",\n      \"date_or_span\": \"five years ahead; 2020 and 2021\",\n      \"occasion\": \"Nvidia Q3 fiscal 2017 earnings call (Nov 10, 2016), as reported by Carscoops on Nov 12, 2016 (the report credits Electrek)\",\n      \"source_url\": \"https://www.carscoops.com/2016/11/nvidia-ceo-claims-teslas-autopilot-is-5/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2017\", \"note\": \"Search snippets pointed to a VentureBeat CES 2017 interview (level-4 cars 'probably by about three years') and a Nov 2017 earnings call (self-driving cars on roads within three years). I did not open either.\"},\n    {\"year\": \"2018\", \"note\": \"A search snippet showed a Fortune Brainstorm Tech piece from Jan 2018 in which a fully autonomous 'fantasy car' was said to be five to 10 years away. I did not open it.\"},\n    {\"year\": \"2023\", \"note\": \"A search snippet showed TechPowerUp reporting Huang saying AGI was within five years. I did not open it.\"},\n    {\"year\": \"2026\", \"note\": \"Search snippets showed Huang on the Lex Fridman podcast saying 'I think we've achieved AGI', and on CBS putting the chance that AI destroys the world by 2030 at 0%. I did not open either for this year's work.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2016\", \"what_found\": \"Only 2025-2026 news, mostly Huang citing Hinton's 2016 radiologist prediction; nothing Huang said in 2016.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2016 interview AGI \\\"years\\\"\", \"what_found\": \"Only 2023-2026 AGI coverage (TechPowerUp five-year AGI piece, Lex Fridman 'achieved AGI'); nothing from 2016.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2016 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2025-2026 items (0% chance AI destroys the world by 2030, spending forecasts); nothing from 2016.\"},\n    {\"query_or_url\": \"Jensen Huang GTC Europe 2016 keynote Amsterdam self-driving\", \"what_found\": \"Video listings for the GTC Europe 2016 and GTC 2016 keynotes and an Nvidia blog tag page; no transcript.\"},\n    {\"query_or_url\": \"\\\"Accelerating AI with GPUs\\\" Jensen Huang blog\", \"what_found\": \"Huang's own Nvidia blog posts from Jan 12, 2016 and Oct 24, 2016 ('The Intelligent Industrial Revolution').\"},\n    {\"query_or_url\": \"Jensen Huang Fortune 2016 interview deep learning Businessperson of the Year\", \"what_found\": \"Fortune's March 22, 2016 question-and-answer interview with Huang.\"},\n    {\"query_or_url\": \"Jensen Huang GTC 2016 keynote transcript deep learning\", \"what_found\": \"Only transcripts of later GTC keynotes; none for 2016.\"},\n    {\"query_or_url\": \"Jen-Hsun Huang 2016 self-driving cars \\\"years\\\" interview\", \"what_found\": \"A Carscoops Nov 2016 report of Huang's Tesla 'five years ahead / 2021' remarks, plus 2017-2018 items.\"},\n    {\"query_or_url\": \"Jen-Hsun Huang CES 2016 keynote Drive PX 2 autonomous cars prediction\", \"what_found\": \"News on the Drive PX 2 unveiling at CES 2016; no dated predictions in the snippets.\"},\n    {\"query_or_url\": \"Jen-Hsun Huang GTC China 2016 Beijing keynote AI\", \"what_found\": \"Press releases and tweets on the GTC China and GTC Taiwan 2016 keynotes; no transcript.\"},\n    {\"query_or_url\": \"Nvidia Q3 fiscal 2017 earnings call transcript Huang Tesla \\\"2021\\\"\", \"what_found\": \"A roic.ai transcript of the Nov 10, 2016 call whose snippet included 'It's not going to happen in 2021'.\"},\n    {\"query_or_url\": \"Huang Baidu World 2016 speech self-driving \\\"years\\\"\", \"what_found\": \"Coverage of the Nvidia-Baidu self-driving partnership; the five-year timelines in it are Baidu's, not Huang's.\"},\n    {\"query_or_url\": \"https://fortune.com/2016/03/22/artificial-intelligence-nvidia/\", \"what_found\": \"Opened the full interview; its one dated line ('In another five years, if mechanical inclination is the only thing you have going, you're dead') is about car companies, not AI, so it is left out.\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/intelligent-industrial-revolution/\", \"what_found\": \"Opened Huang's Oct 24, 2016 post; it has only undated 'soon/someday' lines and a count of a billion cameras by 2020, which is not an AI prediction.\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/accelerating-ai-artificial-intelligence-gpus/\", \"what_found\": \"Opened Huang's Jan 12, 2016 post; its only forward line is 'We expect another 10x boost in the next few years', which is about GPU speed and gives no date.\"},\n    {\"query_or_url\": \"https://www.roic.ai/quote/NVDA/transcripts/2017-year/3-quarter\", \"what_found\": \"Opened the Nov 10, 2016 earnings-call transcript, but it is cut off; the Tesla/2021 exchange is not on the page I got.\"},\n    {\"query_or_url\": \"https://www.carscoops.com/2016/11/nvidia-ceo-claims-teslas-autopilot-is-5/\", \"what_found\": \"Opened the report; it quotes Huang's 'five years ahead ... 2021 ... non-starter' remarks.\"},\n    {\"query_or_url\": \"https://www.fool.com/investing/2016/09/07/why-baidu-and-nvidia-are-teaming-up-on-self-drivin.aspx\", \"what_found\": \"Opened the report; Huang's quote from Baidu World 2016 gives no date or span.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2016 Huang talked about AI mostly through deep learning and self-driving cars. His own blog posts and the Fortune interview give no dated AI predictions. The one dated item I found is his November 2016 earnings-call remark that Tesla's Nvidia-powered Autopilot was 'five years ahead' and that talk of 2021 was 'a non-starter'; I could only read it in news coverage because the transcript I opened is cut off.\"\n}\n```"
+}

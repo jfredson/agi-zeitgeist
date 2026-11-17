@@ -1,0 +1,328 @@
+{
+  "speaker_id": "altman",
+  "year": 2019,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6532,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7696
+      },
+      "cache_creation_input_tokens": 56384,
+      "cache_read_input_tokens": 472514,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 7830,
+      "output_tokens_details": {
+        "thinking_tokens": 2515
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sam Altman\" AI prediction 2019','\"Sam Altman\" 2019 interview AGI \"years\"','\"Sam Altman\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2019"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2019 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sam Altman radiologists \"read my scan\" 2019','Sam Altman StrictlyVC 2019 Connie Loizos AGI','Sam Altman 2019 blog samaltman.com AI']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman radiologists \"read my scan\" 2019"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman StrictlyVC 2019 Connie Loizos AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman 2019 blog samaltman.com AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nimport re\nfor u in ['https://www.cnbc.com/2019/02/26/sam-altman-on-ai-jobs-may-go-away-but-massive-abundance-likely.html','https://techcrunch.com/2019/05/18/sam-altmans-leap-of-faith/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    P[u]=r[0]['content']; print(u,len(P[u]))\nprint(P[list(P)[0]][:6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2019/02/26/sam-altman-on-ai-jobs-may-go-away-but-massive-abundance-likely.html"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techcrunch.com/2019/05/18/sam-altmans-leap-of-faith/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sam Altman January 2019 AGI 2025','Altman Microsoft OpenAI $1 billion July 2019 interview artificial general intelligence \"Altman said\"','Sam Altman 2019 podcast interview OpenAI AGI decade']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman January 2019 AGI 2025"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman Microsoft OpenAI $1 billion July 2019 interview artificial general intelligence \"Altman said\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman 2019 podcast interview OpenAI AGI decade"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    pass\nfor u in ['https://www.irishtimes.com/business/innovation/how-1bn-from-microsoft-could-help-to-mimic-the-brain-1.3970784','https://podcastnotes.org/strictlyvc/altman-2/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content'); \n        if isinstance(c,dict): c=c.get('source',{}).get('data','')\n        if not c: print(u,r); continue\n    else: c=r[0]['content']\n    P[u]=c; print('=====',u,len(c))\n    i=c.find('As the waitress'); print(c[max(0,i):max(0,i)+9000] if i>=0 else c[:7000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.irishtimes.com/business/innovation/how-1bn-from-microsoft-could-help-to-mimic-the-brain-1.3970784"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcastnotes.org/strictlyvc/altman-2/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=P['https://podcastnotes.org/strictlyvc/altman-2/']; i=c.find('Intro'); \nj=c.find('# Sam Altman in Conversation'); print(c[j:j+7000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['Connie Loizos','AGI','year','decade']:\n    print(k,[m.start() for m in re.finditer(k,c)][:10])\ni=c.find('Host');print(c[i-200:i+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['OpenAI LP Hacker News sama comment March 2019 AGI','\"Altman\" 2019 talk \"AGI\" \"10 years\" OR \"next decade\" OR \"2030\" OpenAI CEO']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "OpenAI LP Hacker News sama comment March 2019 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Altman\" 2019 talk \"AGI\" \"10 years\" OR \"next decade\" OR \"2030\" OpenAI CEO"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://news.ycombinator.com/item?id=19359928'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,dict):\n    c=r.get('content'); c=c.get('source',{}).get('data','') if isinstance(c,dict) else c\nelse: c=r[0]['content']\nP[u]=c; print(len(c))\nfor m in re.finditer(r'sama ',c):\n    print('---',c[m.start():m.start()+1200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.ycombinator.com/item?id=19359928"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['sama','years','decade','Altman']:\n    print(k,[m.start() for m in re.finditer(k,c)][:20])\nprint(c[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Altman\" \"New Work Summit\" 2019 artificial intelligence'\nR[q]=await web_search({\"query\":q}); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Altman\" \"New Work Summit\" 2019 artificial intelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://wevegotreceipts.com/pundits/sam-altman'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,dict):\n    c=r.get('content'); c=c.get('source',{}).get('data','') if isinstance(c,dict) else c\n    if not c: print(r)\nelse: c=r[0]['content']\nfor m in re.finditer('2019',c or ''):\n    print('---',c[max(0,m.start()-300):m.start()+500].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://wevegotreceipts.com/pundits/sam-altman"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2019-02-25",
+        "quote": "We have to be ready for a world where global GDP goes up 50 percent a year for a couple of decades",
+        "what_is_predicted": "Borderline: Altman says the world should prepare for AI-driven material abundance in which global GDP grows 50 percent a year for about two decades; it is framed as something to be ready for, not as a firm forecast, and it is about the economy rather than an AI capability.",
+        "date_or_span": "a couple of decades (no start date given)",
+        "occasion": "New York Times New Work Summit, Half Moon Bay, California (CNBC reports it as 'Monday night' in an article dated 2019-02-26)",
+        "source_url": "https://www.cnbc.com/2019/02/26/sam-altman-on-ai-jobs-may-go-away-but-massive-abundance-likely.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2015",
+        "note": "The wevegotreceipts.com Altman page lists two 2015 predictions of self-driving cars 'in 3-4 years' (Jan 1 and Oct 6, 2015); I saw these only on that tracker page, not at a primary source."
+      },
+      {
+        "year": "2025",
+        "note": "A search snippet for the Bloomberg 2025 interview has Altman recalling that he had once thought AGI would come in 2025, 'a totally random number'. It is a later retelling and the page was not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2019",
+        "what_found": "Mostly 2025 news about AGI by 2030; one Hacker News comment and the wevegotreceipts page point to his Feb 2019 radiologist remark."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2019 interview AGI \"years\"",
+        "what_found": "Only interviews from other years (2023-2026); nothing from 2019."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "All results were about his 2025 'by 2030' and 'within the decade' superintelligence remarks; nothing from 2019."
+      },
+      {
+        "query_or_url": "Sam Altman radiologists \"read my scan\" 2019",
+        "what_found": "Found the CNBC 2019-02-26 article on his New Work Summit remarks."
+      },
+      {
+        "query_or_url": "Sam Altman StrictlyVC 2019 Connie Loizos AGI",
+        "what_found": "Found the TechCrunch 2019-05-18 write-up and a Podcast Notes summary of the May 2019 StrictlyVC interview."
+      },
+      {
+        "query_or_url": "Sam Altman 2019 blog samaltman.com AI",
+        "what_found": "Blog posts from other years only; no 2019 AI post came up."
+      },
+      {
+        "query_or_url": "Sam Altman January 2019 AGI 2025",
+        "what_found": "Only his January 2025 'Reflections' coverage; no source for the recorded 2019-01-05 claim came up."
+      },
+      {
+        "query_or_url": "Altman Microsoft OpenAI $1 billion July 2019 interview artificial general intelligence \"Altman said\"",
+        "what_found": "Coverage of the July 2019 Microsoft deal, including an Irish Times reprint of the New York Times interview story."
+      },
+      {
+        "query_or_url": "Sam Altman 2019 podcast interview OpenAI AGI decade",
+        "what_found": "Mostly 2023-2026 podcasts; the only 2019 result was the TechCrunch StrictlyVC piece again."
+      },
+      {
+        "query_or_url": "OpenAI LP Hacker News sama comment March 2019 AGI",
+        "what_found": "The March 2019 Hacker News OpenAI LP thread and comments under it."
+      },
+      {
+        "query_or_url": "\"Altman\" 2019 talk \"AGI\" \"10 years\" OR \"next decade\" OR \"2030\" OpenAI CEO",
+        "what_found": "Only 2023-2025 timeline coverage; nothing from 2019."
+      },
+      {
+        "query_or_url": "\"Altman\" \"New Work Summit\" 2019 artificial intelligence",
+        "what_found": "Confirmed he spoke at the summit on Feb 25, 2019; no transcript or other source turned up."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2019/02/26/sam-altman-on-ai-jobs-may-go-away-but-massive-abundance-likely.html",
+        "what_found": "Opened; it has his radiologist remark, the line 'Entire classes of jobs will go away and not come back' and the GDP 'couple of decades' line, which is the candidate."
+      },
+      {
+        "query_or_url": "https://techcrunch.com/2019/05/18/sam-altmans-leap-of-faith/",
+        "what_found": "Opened; it quotes him on making money from AGI and capturing 'the light cone of all future value', with no timeline."
+      },
+      {
+        "query_or_url": "https://www.irishtimes.com/business/innovation/how-1bn-from-microsoft-could-help-to-mimic-the-brain-1.3970784",
+        "what_found": "Opened the New York Times story reprint from July/Aug 2019; it quotes him that AGI 'will be the most important technological development in human history', with no date given."
+      },
+      {
+        "query_or_url": "https://podcastnotes.org/strictlyvc/altman-2/",
+        "what_found": "Opened, but only site menus came through; the notes themselves were not on the page."
+      },
+      {
+        "query_or_url": "https://news.ycombinator.com/item?id=19359928",
+        "what_found": "Opened the OpenAI LP thread, but usernames were stripped, so I couldn't attribute any comment to Altman."
+      },
+      {
+        "query_or_url": "https://wevegotreceipts.com/pundits/sam-altman",
+        "what_found": "Opened; it lists only the radiologist remark for 2019 and two self-driving predictions for 2015."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2019 was Altman's move from Y Combinator to OpenAI CEO. His public AI remarks that year (the NYT New Work Summit in February, StrictlyVC in May, the Microsoft deal interviews in July) were large-scale claims about AGI's importance and wealth with almost no dates attached. The only remark with a span of time is a hedged comment on GDP growing 50 percent a year 'for a couple of decades', which I saw only in CNBC's coverage. I did not find a source for the recorded 2019-01-05 claim."
+  },
+  "reply_text": "I found one weak candidate for 2019 and no firm, dated AI prediction. In a CNBC report of the New York Times New Work Summit on February 25, 2019, Altman said the world must be \"ready for\" global GDP growing 50 percent a year \"for a couple of decades.\" That gives a span of time, but he framed it as something to prepare for rather than a forecast, and it is about the economy that AI would produce. I saw it only in that news report, and a checker may well reject it. I didn't come across the claim already on file (2019-01-05, AGI by 2025), so I couldn't confirm or add to it.\n\n- **Radiologist line (Feb 2019):** this is the one people usually cite, but it describes the present (\"are already much worse\") and names no date.\n- **StrictlyVC interview (May 2019):** TechCrunch's write-up quotes him on AGI (\"ask it to figure out a way to make an investment return,\" \"capture the light cone of all future value\"), but none of it gives a date. I didn't watch the video of the full interview. The Podcast Notes summary page returned only site menus and none of the notes.\n- **Microsoft deal (Jul 2019):** the New York Times story, reprinted in the Irish Times, quotes him on AGI without any timeline. It reports in its own words that Altman \"admits OpenAI may never get there.\"\n- **OpenAI LP Hacker News thread (Mar 2019):** the page I opened had the usernames stripped, so I couldn't tell which comments were his.\n\nA note on how the searches ran: my code crashed after the first fixed search, but that search had already finished and I didn't run it again. All three fixed searches ran once each, and I used all 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2019-02-25\",\n      \"quote\": \"We have to be ready for a world where global GDP goes up 50 percent a year for a couple of decades\",\n      \"what_is_predicted\": \"Borderline: Altman says the world should prepare for AI-driven material abundance in which global GDP grows 50 percent a year for about two decades; it is framed as something to be ready for, not as a firm forecast, and it is about the economy rather than an AI capability.\",\n      \"date_or_span\": \"a couple of decades (no start date given)\",\n      \"occasion\": \"New York Times New Work Summit, Half Moon Bay, California (CNBC reports it as 'Monday night' in an article dated 2019-02-26)\",\n      \"source_url\": \"https://www.cnbc.com/2019/02/26/sam-altman-on-ai-jobs-may-go-away-but-massive-abundance-likely.html\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2015\", \"note\": \"The wevegotreceipts.com Altman page lists two 2015 predictions of self-driving cars 'in 3-4 years' (Jan 1 and Oct 6, 2015); I saw these only on that tracker page, not at a primary source.\"},\n    {\"year\": \"2025\", \"note\": \"A search snippet for the Bloomberg 2025 interview has Altman recalling that he had once thought AGI would come in 2025, 'a totally random number'. It is a later retelling and the page was not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2019\", \"what_found\": \"Mostly 2025 news about AGI by 2030; one Hacker News comment and the wevegotreceipts page point to his Feb 2019 radiologist remark.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2019 interview AGI \\\"years\\\"\", \"what_found\": \"Only interviews from other years (2023-2026); nothing from 2019.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2019 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"All results were about his 2025 'by 2030' and 'within the decade' superintelligence remarks; nothing from 2019.\"},\n    {\"query_or_url\": \"Sam Altman radiologists \\\"read my scan\\\" 2019\", \"what_found\": \"Found the CNBC 2019-02-26 article on his New Work Summit remarks.\"},\n    {\"query_or_url\": \"Sam Altman StrictlyVC 2019 Connie Loizos AGI\", \"what_found\": \"Found the TechCrunch 2019-05-18 write-up and a Podcast Notes summary of the May 2019 StrictlyVC interview.\"},\n    {\"query_or_url\": \"Sam Altman 2019 blog samaltman.com AI\", \"what_found\": \"Blog posts from other years only; no 2019 AI post came up.\"},\n    {\"query_or_url\": \"Sam Altman January 2019 AGI 2025\", \"what_found\": \"Only his January 2025 'Reflections' coverage; no source for the recorded 2019-01-05 claim came up.\"},\n    {\"query_or_url\": \"Altman Microsoft OpenAI $1 billion July 2019 interview artificial general intelligence \\\"Altman said\\\"\", \"what_found\": \"Coverage of the July 2019 Microsoft deal, including an Irish Times reprint of the New York Times interview story.\"},\n    {\"query_or_url\": \"Sam Altman 2019 podcast interview OpenAI AGI decade\", \"what_found\": \"Mostly 2023-2026 podcasts; the only 2019 result was the TechCrunch StrictlyVC piece again.\"},\n    {\"query_or_url\": \"OpenAI LP Hacker News sama comment March 2019 AGI\", \"what_found\": \"The March 2019 Hacker News OpenAI LP thread and comments under it.\"},\n    {\"query_or_url\": \"\\\"Altman\\\" 2019 talk \\\"AGI\\\" \\\"10 years\\\" OR \\\"next decade\\\" OR \\\"2030\\\" OpenAI CEO\", \"what_found\": \"Only 2023-2025 timeline coverage; nothing from 2019.\"},\n    {\"query_or_url\": \"\\\"Altman\\\" \\\"New Work Summit\\\" 2019 artificial intelligence\", \"what_found\": \"Confirmed he spoke at the summit on Feb 25, 2019; no transcript or other source turned up.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2019/02/26/sam-altman-on-ai-jobs-may-go-away-but-massive-abundance-likely.html\", \"what_found\": \"Opened; it has his radiologist remark, the line 'Entire classes of jobs will go away and not come back' and the GDP 'couple of decades' line, which is the candidate.\"},\n    {\"query_or_url\": \"https://techcrunch.com/2019/05/18/sam-altmans-leap-of-faith/\", \"what_found\": \"Opened; it quotes him on making money from AGI and capturing 'the light cone of all future value', with no timeline.\"},\n    {\"query_or_url\": \"https://www.irishtimes.com/business/innovation/how-1bn-from-microsoft-could-help-to-mimic-the-brain-1.3970784\", \"what_found\": \"Opened the New York Times story reprint from July/Aug 2019; it quotes him that AGI 'will be the most important technological development in human history', with no date given.\"},\n    {\"query_or_url\": \"https://podcastnotes.org/strictlyvc/altman-2/\", \"what_found\": \"Opened, but only site menus came through; the notes themselves were not on the page.\"},\n    {\"query_or_url\": \"https://news.ycombinator.com/item?id=19359928\", \"what_found\": \"Opened the OpenAI LP thread, but usernames were stripped, so I couldn't attribute any comment to Altman.\"},\n    {\"query_or_url\": \"https://wevegotreceipts.com/pundits/sam-altman\", \"what_found\": \"Opened; it lists only the radiologist remark for 2019 and two self-driving predictions for 2015.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2019 was Altman's move from Y Combinator to OpenAI CEO. His public AI remarks that year (the NYT New Work Summit in February, StrictlyVC in May, the Microsoft deal interviews in July) were large-scale claims about AGI's importance and wealth with almost no dates attached. The only remark with a span of time is a hedged comment on GDP growing 50 percent a year 'for a couple of decades', which I saw only in CNBC's coverage. I did not find a source for the recorded 2019-01-05 claim.\"\n}\n```"
+}

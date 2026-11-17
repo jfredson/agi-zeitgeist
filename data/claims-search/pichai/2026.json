@@ -1,0 +1,348 @@
+{
+  "speaker_id": "pichai",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7483,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7684
+      },
+      "cache_creation_input_tokens": 68380,
+      "cache_read_input_tokens": 672054,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 9092,
+      "output_tokens_details": {
+        "thinking_tokens": 2316
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Sundar Pichai\" AI prediction 2026','\"Sundar Pichai\" 2026 interview AGI \"years\"','\"Sundar Pichai\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Pichai Decoder Nilay Patel 2026 transcript AGI','Sundar Pichai Gemini 3.5 Pro \"coming\" weeks 2026','Sundar Pichai I/O 2026 keynote transcript']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Decoder Nilay Patel 2026 transcript AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai Gemini 3.5 Pro \"coming\" weeks 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sundar Pichai I/O 2026 keynote transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://blog.google/innovation-and-ai/sundar-pichai-io-2026/','https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode','https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else str(r)\n    print(u,len(P[u]), r.get('error_code') if isinstance(r,dict) else '')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\npat=re.compile(r'(next month|this summer|later this year|by the end of|next year|in \\d+ years|years|decade|20[23]\\d|coming weeks|soon|AGI|singularity|month)',re.I)\ndef grep(t,w=250):\n    seen=-1000\n    for m in pat.finditer(t):\n        if m.start()-seen<w: continue\n        seen=m.start()\n        print('...',t[max(0,m.start()-w):m.start()+w].replace('\\n',' '),'\\n')\ngrep(P['https://blog.google/innovation-and-ai/sundar-pichai-io-2026/'])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P['https://blog.google/innovation-and-ai/sundar-pichai-io-2026/']\nfor k in ['3.5','Omni','agent','Spark','summer']:\n    for m in re.finditer(re.escape(k),t):\n        print(k,'::',t[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '),'\\n')\n        break\ni=t.find('## Gemini models'); print(t[i:i+5000] if i>0 else t.find('Gemini models'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P['https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode']\nprint(t[:600])\ngrep(t,350)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P['https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google']\ni=t.find('Transcript'); print(t[i:i+300])\npat=re.compile(r\"(next year|in a year|years|decade|20[23]\\d|AGI|by the end|months)\",re.I)\ngrep(t[i:],350)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['published','2026-0','Apr','Mar ']:\n    for m in list(re.finditer(k,t))[:3]: print(k,'::',t[max(0,m.start()-80):m.start()+120].replace('\\\\n',' '))\nj=t.find('[00:28:28.20]')\ngrep(t[j:],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(len(t), j); print(t[j:j+6000].replace('\\\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=t.find('[00:09:35.17]'); print(t[k-1200:k+1800].replace('\\\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Pichai Davos 2026 AI interview','Alphabet Q3 2026 earnings call Pichai remarks Gemini 4','Pichai \"quantum\" OR \"AGI\" interview September 2026']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Davos 2026 AI interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Alphabet Q3 2026 earnings call Pichai remarks Gemini 4"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai \"quantum\" OR \"AGI\" interview September 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/','https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment','https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode/transcript']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else str(r)\n    print(u,len(P[u]), r.get('error_code') if isinstance(r,dict) else '')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode/transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=re.compile(r\"(next 12 months|next year|months|in a year|years|decade|20[23]\\d|AGI|RSI|by the end|later this year|coming weeks|early next)\",re.I)\nt=P['https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/']\nk=t.find('Editor'); grep(t[k if k>0 else 3000:],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P['https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment']\npat=re.compile(r\"(three years|next year|in a year|\\d+ years|years from now|decade|20[23]\\d|AGI|by the end|this summer|later this year|flip phone)\",re.I)\ngrep(t[2000:],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P['https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode/transcript']\ni=t.find('Public transcript'); print(t[i:i+11000].replace('\\\\n','\\n')[:9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[1500:11311].replace('\\\\n','\\n'))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-10-28",
+        "quote": "I would expect the next 12 months to see continued acceleration because of RSI.",
+        "what_is_predicted": "Pichai expects AI model progress at Google to keep accelerating over the next 12 months because of recursive self-improvement (AI helping to train and launch models).",
+        "date_or_span": "next 12 months (to about October 2027)",
+        "occasion": "Alphabet Q3 2026 earnings call, CEO prepared remarks",
+        "source_url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-04-07",
+        "quote": "The models are going to be dramatically different in a year’s time.",
+        "what_is_predicted": "AI models will be dramatically more capable within one year.",
+        "date_or_span": "one year (to about April 2027)",
+        "occasion": "Cheeky Pint podcast with John Collison and Elad Gil (episode published 7 April 2026)",
+        "source_url": "https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-05",
+        "quote": "the way I would answer that question three years from now, whether you and I call it AGI or not doesn't matter because it'll be very, very powerful and we have to prepare for it.",
+        "what_is_predicted": "In three years AI will be very, very powerful, whether or not it is called AGI.",
+        "date_or_span": "three years from now (about 2029)",
+        "occasion": "Decoder with Nilay Patel, recorded just after Google I/O 2026, published 26 May 2026",
+        "source_url": "https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-05",
+        "quote": "He added agents will work 24/7 across devices, and they’ll be very common three years from now, with today’s tech looking primitive like flip phones.",
+        "what_is_predicted": "AI agents working around the clock across devices will be very common in three years, and today's AI will look primitive.",
+        "date_or_span": "three years from now (about 2029)",
+        "occasion": "The Rundown AI exclusive interview at Google I/O 2026 (newsletter dated 22 May 2026)",
+        "source_url": "https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "A BBC 'The Interview' with Pichai was aired on 1 January 2026 (Internet Archive search result). His quantum line ('where AI was five years ago') appears in a 1 December 2025 article tied to a BBC Newsnight interview, so it likely belongs to 2025, and it is about quantum, not AI. Seen only in search snippets."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sundar Pichai\" AI prediction 2026",
+        "what_found": "Cheeky Pint transcript, coverage of the missed Gemini 3.5 Pro release, an India AI Impact Summit item and a Stanford commencement item."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2026 interview AGI \"years\"",
+        "what_found": "Coverage of the post-I/O Decoder interview saying three to five years is the rough industry consensus for AGI; a BBC interview aired 1 January 2026."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "A third-party India AI Impact Summit transcript with a 'next decade or two decades' line, a Fortune piece on space data centres (infrastructure, excluded) and a Motley Fool AGI roundup."
+      },
+      {
+        "query_or_url": "Pichai Decoder Nilay Patel 2026 transcript AGI",
+        "what_found": "The 26 May 2026 Decoder episode 'How Sundar Pichai is rethinking Google for the AI era' and a Blumify transcript page."
+      },
+      {
+        "query_or_url": "Sundar Pichai Gemini 3.5 Pro \"coming\" weeks 2026",
+        "what_found": "News reports that Pichai said at I/O on 19 May 'give us until next month' for Gemini 3.5 Pro; not verified on a primary page."
+      },
+      {
+        "query_or_url": "Sundar Pichai I/O 2026 keynote transcript",
+        "what_found": "Google's blog transcripts of the I/O keynote, the AI Impact Summit speech, the Stanford commencement and the June investor presentation."
+      },
+      {
+        "query_or_url": "Pichai Davos 2026 AI interview",
+        "what_found": "The Rundown's I/O interview ('flip phone' in three years) and a Big Technology Podcast item from October on RSI; nothing quotable from Davos."
+      },
+      {
+        "query_or_url": "Alphabet Q3 2026 earnings call Pichai remarks Gemini 4",
+        "what_found": "The Q3 2026 earnings remarks (28 October), including the next-12-months RSI line."
+      },
+      {
+        "query_or_url": "Pichai \"quantum\" OR \"AGI\" interview September 2026",
+        "what_found": "The quantum 'five years' quote (not AI, likely 2025) and repeat coverage of the Decoder AGI timeline."
+      },
+      {
+        "query_or_url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "what_found": "The I/O keynote transcript with the already-recorded Ask YouTube and Docs Live 'this summer' lines and a Gemini Omni API 'in the coming weeks' line; the fetched text was cut off before the Gemini models section."
+      },
+      {
+        "query_or_url": "https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode",
+        "what_found": "A Decoder summary page with a quoted transcript line at 45:38 about 'three years from now'; the AGI timing in the summary is paraphrase."
+      },
+      {
+        "query_or_url": "https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google",
+        "what_found": "The Cheeky Pint transcript dated 7 April 2026, with the line about models being dramatically different 'in a year's time'; the fetched text stopped at about minute 28."
+      },
+      {
+        "query_or_url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
+        "what_found": "Pichai's Q3 2026 earnings remarks (28 October), including 'I would expect the next 12 months to see continued acceleration because of RSI.'"
+      },
+      {
+        "query_or_url": "https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment",
+        "what_found": "Only the reporter's paraphrase of Pichai saying agents will be very common in three years; no direct quote."
+      },
+      {
+        "query_or_url": "https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode/transcript",
+        "what_found": "Only the first three minutes of the transcript are visible; the AGI section is behind a sign-in."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2026 Pichai gave short-range dated forecasts about AI progress: models dramatically different in a year (April), AI very powerful three years out (Decoder, May), agents common in three years (I/O, coverage only) and continued acceleration over the next 12 months from self-improvement (Q3 earnings, October). The Gemini 3.5 Pro 'next month' promise at I/O is widely reported but was not verified on a primary page I opened."
+  },
+  "reply_text": "I found four 2026 predictions from Pichai that carry a date or a time span, and none of them is one of the two you've already recorded. Two come from Google's own pages, one from a third-party machine transcript and one only from a news report. I used 9 of the 12 searches and all 6 page openings.\n\n1. **28 October, Q3 earnings call** (Google's edited transcript of his remarks): \"I would expect the next 12 months to see continued acceleration because of RSI.\" Earlier in the same paragraph he says AI is \"helping us increase our training and launch velocity.\"\n2. **7 April, Cheeky Pint podcast** (the episode's published transcript): \"The models are going to be dramatically different in a year's time.\"\n3. **Late May, Decoder with Nilay Patel** (recorded just after I/O, published 26 May): \"the way I would answer that question three years from now, whether you and I call it AGI or not doesn't matter because it'll be very, very powerful and we have to prepare for it.\" I saw this only as a quoted line, timestamped 45:38, on Blumify's machine-transcript page. The full transcript was behind a sign-in. Check it against the video or The Verge's transcript before you use it.\n4. **I/O week, The Rundown interview** (newsletter dated 22 May): only the reporter's paraphrase, not Pichai's words. It says AI agents will be \"very common three years from now\" and today's technology will look as primitive as flip phones.\n\n**What I left out:**\n- **Gemini 3.5 Pro \"next month\":** news reports say Pichai told the I/O audience on 19 May to \"give us until next month.\" The I/O keynote page I opened was cut off before the Gemini models section, so I never read those words. This is a strong lead worth checking against the keynote video.\n- **Gemini Omni API \"in the coming weeks\":** this line is on the I/O page, but \"coming weeks\" is as vague as \"soon.\"\n- **AGI timing on Decoder:** Blumify's summary has him saying AGI is \"sooner rather than later\" and that people argue over \"three or five years.\" That is the summary's wording, not a transcript, so I didn't list it as undated either.\n- **Search in 10 years (Cheeky Pint):** asked whether Search will exist in 10 years, he said \"Search would be an agent manager.\" The 10 years was in the interviewer's question, not his answer.\n- **Business, infrastructure and non-AI forecasts:** spending, data centres in space and a quantum computing prediction.\n\n**Not checked:**\n- A Big Technology Podcast appearance around 23 October about self-improving AI (\"RSI\").\n- His India AI Impact Summit speech (19 February), where a third-party transcript shows a line about \"the next decade or two decades.\"\n- The June investor presentation and the Q2 earnings remarks.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2026-10-28\", \"quote\": \"I would expect the next 12 months to see continued acceleration because of RSI.\", \"what_is_predicted\": \"Pichai expects AI model progress at Google to keep accelerating over the next 12 months because of recursive self-improvement (AI helping to train and launch models).\", \"date_or_span\": \"next 12 months (to about October 2027)\", \"occasion\": \"Alphabet Q3 2026 earnings call, CEO prepared remarks\", \"source_url\": \"https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-04-07\", \"quote\": \"The models are going to be dramatically different in a year’s time.\", \"what_is_predicted\": \"AI models will be dramatically more capable within one year.\", \"date_or_span\": \"one year (to about April 2027)\", \"occasion\": \"Cheeky Pint podcast with John Collison and Elad Gil (episode published 7 April 2026)\", \"source_url\": \"https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-05\", \"quote\": \"the way I would answer that question three years from now, whether you and I call it AGI or not doesn't matter because it'll be very, very powerful and we have to prepare for it.\", \"what_is_predicted\": \"In three years AI will be very, very powerful, whether or not it is called AGI.\", \"date_or_span\": \"three years from now (about 2029)\", \"occasion\": \"Decoder with Nilay Patel, recorded just after Google I/O 2026, published 26 May 2026\", \"source_url\": \"https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-05\", \"quote\": \"He added agents will work 24/7 across devices, and they’ll be very common three years from now, with today’s tech looking primitive like flip phones.\", \"what_is_predicted\": \"AI agents working around the clock across devices will be very common in three years, and today's AI will look primitive.\", \"date_or_span\": \"three years from now (about 2029)\", \"occasion\": \"The Rundown AI exclusive interview at Google I/O 2026 (newsletter dated 22 May 2026)\", \"source_url\": \"https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"A BBC 'The Interview' with Pichai was aired on 1 January 2026 (Internet Archive search result). His quantum line ('where AI was five years ago') appears in a 1 December 2025 article tied to a BBC Newsnight interview, so it likely belongs to 2025, and it is about quantum, not AI. Seen only in search snippets.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" AI prediction 2026\", \"what_found\": \"Cheeky Pint transcript, coverage of the missed Gemini 3.5 Pro release, an India AI Impact Summit item and a Stanford commencement item.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the post-I/O Decoder interview saying three to five years is the rough industry consensus for AGI; a BBC interview aired 1 January 2026.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"A third-party India AI Impact Summit transcript with a 'next decade or two decades' line, a Fortune piece on space data centres (infrastructure, excluded) and a Motley Fool AGI roundup.\"},\n    {\"query_or_url\": \"Pichai Decoder Nilay Patel 2026 transcript AGI\", \"what_found\": \"The 26 May 2026 Decoder episode 'How Sundar Pichai is rethinking Google for the AI era' and a Blumify transcript page.\"},\n    {\"query_or_url\": \"Sundar Pichai Gemini 3.5 Pro \\\"coming\\\" weeks 2026\", \"what_found\": \"News reports that Pichai said at I/O on 19 May 'give us until next month' for Gemini 3.5 Pro; not verified on a primary page.\"},\n    {\"query_or_url\": \"Sundar Pichai I/O 2026 keynote transcript\", \"what_found\": \"Google's blog transcripts of the I/O keynote, the AI Impact Summit speech, the Stanford commencement and the June investor presentation.\"},\n    {\"query_or_url\": \"Pichai Davos 2026 AI interview\", \"what_found\": \"The Rundown's I/O interview ('flip phone' in three years) and a Big Technology Podcast item from October on RSI; nothing quotable from Davos.\"},\n    {\"query_or_url\": \"Alphabet Q3 2026 earnings call Pichai remarks Gemini 4\", \"what_found\": \"The Q3 2026 earnings remarks (28 October), including the next-12-months RSI line.\"},\n    {\"query_or_url\": \"Pichai \\\"quantum\\\" OR \\\"AGI\\\" interview September 2026\", \"what_found\": \"The quantum 'five years' quote (not AI, likely 2025) and repeat coverage of the Decoder AGI timeline.\"},\n    {\"query_or_url\": \"https://blog.google/innovation-and-ai/sundar-pichai-io-2026/\", \"what_found\": \"The I/O keynote transcript with the already-recorded Ask YouTube and Docs Live 'this summer' lines and a Gemini Omni API 'in the coming weeks' line; the fetched text was cut off before the Gemini models section.\"},\n    {\"query_or_url\": \"https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode\", \"what_found\": \"A Decoder summary page with a quoted transcript line at 45:38 about 'three years from now'; the AGI timing in the summary is paraphrase.\"},\n    {\"query_or_url\": \"https://cheekypint.substack.com/p/the-history-and-future-of-ai-at-google\", \"what_found\": \"The Cheeky Pint transcript dated 7 April 2026, with the line about models being dramatically different 'in a year's time'; the fetched text stopped at about minute 28.\"},\n    {\"query_or_url\": \"https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/\", \"what_found\": \"Pichai's Q3 2026 earnings remarks (28 October), including 'I would expect the next 12 months to see continued acceleration because of RSI.'\"},\n    {\"query_or_url\": \"https://therundown.ai/p/exclusive-interview-sundar-pichai-on-ai-flip-phone-moment\", \"what_found\": \"Only the reporter's paraphrase of Pichai saying agents will be very common in three years; no direct quote.\"},\n    {\"query_or_url\": \"https://blumify.io/t/youtube/ANV3tE5ywv0/how-sundar-pichai-is-rethinking-google-for-the-ai-era-decode/transcript\", \"what_found\": \"Only the first three minutes of the transcript are visible; the AGI section is behind a sign-in.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2026 Pichai gave short-range dated forecasts about AI progress: models dramatically different in a year (April), AI very powerful three years out (Decoder, May), agents common in three years (I/O, coverage only) and continued acceleration over the next 12 months from self-improvement (Q3 earnings, October). The Gemini 3.5 Pro 'next month' promise at I/O is widely reported but was not verified on a primary page I opened.\"\n}\n```"
+}

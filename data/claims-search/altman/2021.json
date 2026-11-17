@@ -1,0 +1,358 @@
+{
+  "speaker_id": "altman",
+  "year": 2021,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4812,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7728
+      },
+      "cache_creation_input_tokens": 31664,
+      "cache_read_input_tokens": 349227,
+      "inference_geo": "global",
+      "input_tokens": 42,
+      "output_tokens": 8143,
+      "output_tokens_details": {
+        "thinking_tokens": 2045
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Sam Altman\" AI prediction 2021','\"Sam Altman\" 2021 interview AGI \"years\"','\"Sam Altman\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r[:8]: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2021"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nr=R[qs[0]]; print(type(r)); print(str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r[:8]: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2021 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in R[qs[0]][:4]: print(x['url'],'\\n',x['content'][:1500],'\\n---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "a=await web_fetch({\"url\":\"https://x.com/sama/status/1436028666887086104\"})\nb=await web_fetch({\"url\":\"https://moores.samaltman.com/\"})\nfor z in (a,b):\n    if isinstance(z,dict): print(z); continue\n    c=z[0]['content']; print(len(c)); print(c[:2500]); print('=====')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/sama/status/1436028666887086104"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://moores.samaltman.com/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for z in (a,b):\n    z=json.loads(z) if isinstance(z,str) else z\n    if isinstance(z,dict): print(z); continue\n    c=z[0]['content']; print(len(c)); print(c[:2500]); print('=====')\nA=a;B=b"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Moore\\'s Law for Everything\" Sam Altman','Ezra Klein Show Sam Altman transcript June 2021']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Moore's Law for Everything\" Sam Altman"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Ezra Klein Show Sam Altman transcript June 2021"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor q in R:\n  for x in R[q]:\n    if any(k in x['url'] for k in ['lesswrong','governance.ai','centerconsulting','greaterwrong']):\n        c=x['content']; print(x['url'],len(c))\n        for m in re.finditer(r'(year|decade|20[23]\\d)',c):\n            print('  ..',c[max(0,m.start()-200):m.start()+100].replace('\\n',' '))\n        print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "z=await web_fetch({\"url\":\"https://www.nytimes.com/2021/06/11/podcasts/transcript-ezra-klein-interviews-sam-altman.html\"})\nz=json.loads(z) if isinstance(z,str) else z\nif isinstance(z,dict): print(z)\nelse:\n    NYT=z[0]['content']; print(len(NYT)); print(NYT[:800])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nytimes.com/2021/06/11/podcasts/transcript-ezra-klein-interviews-sam-altman.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='nytimes transcript ezra klein interviews sam altman'\nprint(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "nytimes transcript ezra klein interviews sam altman"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "x=R[q][1]; c=x['content']; print(len(c))\nfor m in re.finditer(r'(\\byears?\\b|decade|20[23]\\d)',c):\n    print('..',c[max(0,m.start()-300):m.start()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "z=await web_fetch({\"url\":x['url']})\nz=json.loads(z) if isinstance(z,str) else z\nif isinstance(z,dict): print(z)\nelse:\n    NYT=z[0]['content']; print(len(NYT)); print(NYT[:500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/out?url=https%3A%2F%2Fwww.nytimes.com%2F2021%2F06%2F11%2Fpodcasts%2Ftranscript-ezra-klein-interviews-sam-altman.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='moores.samaltman.com \"computer programs that can think\"'\nprint(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "moores.samaltman.com \"computer programs that can think\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "z=await web_fetch({\"url\":\"https://moores.samaltman.com/\"})\nz=json.loads(z) if isinstance(z,str) else z\nif isinstance(z,dict): print(z)\nelse:\n    E=z[0]['content']; print(len(E))\n    for m in re.finditer(r'(\\byears?\\b|decade|20[23]\\d)',E):\n        print('..',E[max(0,m.start()-250):m.start()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://moores.samaltman.com/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Altman \"costs of intelligence and energy are going to be on a path towards near-zero\"'\nprint(\"==\",q); R[q]=show(await web_search({\"query\":q}))\nfor x in R[q][:8]:\n    c=x['content']; i=c.find('by 2030'); print(x['url'], i, c[max(0,i-300):i+200].replace('\\n',' ') if i>=0 else '')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman \"costs of intelligence and energy are going to be on a path towards near-zero\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['futunn','vaultwealth','star-treks']:\n  for x in R[q]:\n    if u in x['url']:\n        c=x['content']; i=c.find('2030'); print(x['url'],len(c),i, c[max(0,i-400):i+200].replace('\\n',' ')); print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Business Insider Altman \"feeling good\" 2021 prediction intelligence energy near-zero 2030'\nprint(\"==\",q); R[q]=show(await web_search({\"query\":q}))\nfor x in R[q][:8]:\n    c=x['content']; i=c.find('this decade'); print(x['url'], i, c[max(0,i-200):i+200].replace('\\n',' ') if i>=0 else '')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Business Insider Altman \"feeling good\" 2021 prediction intelligence energy near-zero 2030"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "z=await web_fetch({\"url\":\"https://tech.yahoo.com/ai/articles/openais-sam-altman-said-hes-135514130.html\"})\nz=json.loads(z) if isinstance(z,str) else z\nif isinstance(z,dict) and z.get('type')=='web_fetch_tool_result_error': print(z)\nelse:\n    c=z['content'] if isinstance(z,dict) else z[0]['content']\n    c=c['source']['data'] if isinstance(c,dict) else c\n    print(len(c)); i=c.find('near-zero'); print(c[max(0,i-1500):i+1500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://tech.yahoo.com/ai/articles/openais-sam-altman-said-hes-135514130.html"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2021-03-16",
+        "quote": "In the next five years, computer programs that can think will read legal documents and give medical advice.",
+        "what_is_predicted": "Within five years, thinking computer programs will read legal documents and give medical advice.",
+        "date_or_span": "the next five years (to about 2026)",
+        "occasion": "Essay 'Moore's Law for Everything' on his own site",
+        "source_url": "https://moores.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": "2021-03-16-altman-five-years-legal-documents-medical-advice.toml"
+      },
+      {
+        "date_said": "2021-03-16",
+        "quote": "In the next decade, they will do assembly-line work and maybe even become companions.",
+        "what_is_predicted": "Within the next decade, AI programs will do assembly-line work and maybe become companions.",
+        "date_or_span": "the next decade (to about 2031)",
+        "occasion": "Essay 'Moore's Law for Everything' on his own site",
+        "source_url": "https://moores.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": "2021-03-16-altman-next-decade-assembly-line-companions.toml"
+      },
+      {
+        "date_said": "2021-03-16",
+        "quote": "And in the decades after that, they will do almost everything, including making new scientific discoveries that will expand our concept of “everything.”",
+        "what_is_predicted": "In the decades after the coming one, thinking computer programs will do almost everything, including making new scientific discoveries.",
+        "date_or_span": "the decades after the next decade (open-ended span after about 2031)",
+        "occasion": "Essay 'Moore's Law for Everything' on his own site",
+        "source_url": "https://moores.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2021-03-16",
+        "quote": "The technological progress we make in the next 100 years will be far larger than all we’ve made since we first controlled fire and invented the wheel.",
+        "what_is_predicted": "Technological progress over the next century (in the essay's 'AI Revolution' section) will exceed all progress since fire and the wheel; borderline, since the sentence says technology, not AI by name.",
+        "date_or_span": "the next 100 years",
+        "occasion": "Essay 'Moore's Law for Everything', Part 1 'The AI Revolution'",
+        "source_url": "https://moores.samaltman.com/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "Search results show an X post from December 2023 ('feeling good about this prediction! what a difference 27 months makes...', x.com/sama/status/1739007757381226888) looking back on the September 2021 tweet; Benzinga and Business Insider/Yahoo covered it. Not opened."
+      },
+      {
+        "year": "2022",
+        "note": "GovAI seminar on 9 February 2022 with William Gale discussing the essay (governance.ai/post/sam-altman-william-g-gale); seen only as a search result."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2021",
+        "what_found": "Snippets of the 9 September 2021 X thread 'Technology prediction for the 2020s' (cost of intelligence towards near-zero, 'by 2030'), the 13 June 2021 tweet on the price of computer-based work (no date), and CNBC coverage of the March 2021 essay."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2021 interview AGI \"years\"",
+        "what_found": "Mostly 2023-2025 coverage and blog posts; nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2025 coverage (superintelligence by 2030/2035); nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Moore's Law for Everything\" Sam Altman",
+        "what_found": "Commentary on the essay and a GovAI 2022 seminar page; no direct essay URL."
+      },
+      {
+        "query_or_url": "Ezra Klein Show Sam Altman transcript June 2021",
+        "what_found": "LessWrong linkpost pointing to the NYT transcript dated 11 June 2021."
+      },
+      {
+        "query_or_url": "nytimes transcript ezra klein interviews sam altman",
+        "what_found": "A LessWrong redirect to the NYT transcript; the snippet had no dated AI claims."
+      },
+      {
+        "query_or_url": "moores.samaltman.com \"computer programs that can think\"",
+        "what_found": "The essay's own URL, moores.samaltman.com."
+      },
+      {
+        "query_or_url": "Altman \"costs of intelligence and energy are going to be on a path towards near-zero\"",
+        "what_found": "The X status URL of the 9 September 2021 reply tweet and coverage from December 2023; X pages could not be opened."
+      },
+      {
+        "query_or_url": "Business Insider Altman \"feeling good\" 2021 prediction intelligence energy near-zero 2030",
+        "what_found": "Yahoo/Business Insider and Benzinga pieces from December 2023 on the September 2021 tweet."
+      },
+      {
+        "query_or_url": "https://x.com/sama/status/1436028666887086104",
+        "what_found": "Would not open (url_not_allowed); nothing quoted."
+      },
+      {
+        "query_or_url": "https://moores.samaltman.com/ (first attempt)",
+        "what_found": "Refused because the URL had not yet appeared in a search result."
+      },
+      {
+        "query_or_url": "https://www.nytimes.com/2021/06/11/podcasts/transcript-ezra-klein-interviews-sam-altman.html",
+        "what_found": "Refused (url_not_in_prior_context); nothing quoted."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/out?url=https%3A%2F%2Fwww.nytimes.com%2F2021%2F06%2F11%2Fpodcasts%2Ftranscript-ezra-klein-interviews-sam-altman.html",
+        "what_found": "Would not open (url_not_accessible); nothing quoted."
+      },
+      {
+        "query_or_url": "https://moores.samaltman.com/",
+        "what_found": "Full essay dated 16 March 2021, with the five-year, next-decade and 'decades after that' forecasts and the 100-year technology line."
+      },
+      {
+        "query_or_url": "https://tech.yahoo.com/ai/articles/openais-sam-altman-said-hes-135514130.html",
+        "what_found": "Would not open (url_not_accessible); the September 2021 tweet stays unverified."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Altman's main 2021 forecasts are in his 16 March essay 'Moore's Law for Everything': five years for legal documents and medical advice, a decade for assembly-line work and companions (both already recorded), and 'the decades after that' for almost everything. A 9 September 2021 X thread appears to predict that by 2030 it will be clear AI will push the cost of intelligence towards near-zero, but the tweet and its coverage would not open, so it is unverified and not listed. The June 2021 Ezra Klein interview transcript could not be opened."
+  },
+  "reply_text": "Opening the Yahoo/Business Insider page with my last page opening.I found two 2021 forecasts from Sam Altman that aren't recorded yet. Both are in his own essay, \"Moore's Law for Everything\" (16 March 2021), which I opened in full. A third forecast, from a September 2021 tweet, I could not verify, so I haven't listed it as a candidate.\n\n- **New candidate 1:** right after the two recorded claims, the essay says \"in the decades after that, they will do almost everything\". The time frame is open-ended (\"the decades after that\"), so you should decide whether it meets the dating rule.\n- **New candidate 2:** \"The technological progress we make in the next 100 years will be far larger than all we've made since we first controlled fire and invented the wheel.\" It sits in the essay's \"The AI Revolution\" section, but the sentence is about technology in general rather than AI by name, so it's borderline.\n- **Already recorded:** the same paragraph contains both recorded claims (five years: legal documents and medical advice; next decade: assembly-line work and companions). The essay's $13,500-per-adult figure is an economic forecast, so I left it out.\n- **Unverified, 9 September 2021:** a tweet thread headed \"Technology prediction for the 2020s\" (x.com/sama/status/1436028666887086104 and …668082462748) appears to say that by 2030 it will be clear AI will push the cost of intelligence towards near-zero. X pages wouldn't open, and the Yahoo/Business Insider write-up couldn't be reached. I saw the words only in search snippets, so I don't quote them. Benzinga's write-up (benzinga.com/news/23/12/36381266/…, not opened) is the most direct way to check it.\n- **Not reached:** the New York Times transcript of the June 2021 Ezra Klein interview wouldn't open (both direct and through LessWrong's redirect), so it hasn't been checked for dated claims.\n\nI used 10 of the 12 searches and all 6 page openings; four of the openings failed.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2021-03-16\",\n      \"quote\": \"In the next five years, computer programs that can think will read legal documents and give medical advice.\",\n      \"what_is_predicted\": \"Within five years, thinking computer programs will read legal documents and give medical advice.\",\n      \"date_or_span\": \"the next five years (to about 2026)\",\n      \"occasion\": \"Essay 'Moore's Law for Everything' on his own site\",\n      \"source_url\": \"https://moores.samaltman.com/\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"2021-03-16-altman-five-years-legal-documents-medical-advice.toml\"\n    },\n    {\n      \"date_said\": \"2021-03-16\",\n      \"quote\": \"In the next decade, they will do assembly-line work and maybe even become companions.\",\n      \"what_is_predicted\": \"Within the next decade, AI programs will do assembly-line work and maybe become companions.\",\n      \"date_or_span\": \"the next decade (to about 2031)\",\n      \"occasion\": \"Essay 'Moore's Law for Everything' on his own site\",\n      \"source_url\": \"https://moores.samaltman.com/\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"2021-03-16-altman-next-decade-assembly-line-companions.toml\"\n    },\n    {\n      \"date_said\": \"2021-03-16\",\n      \"quote\": \"And in the decades after that, they will do almost everything, including making new scientific discoveries that will expand our concept of “everything.”\",\n      \"what_is_predicted\": \"In the decades after the coming one, thinking computer programs will do almost everything, including making new scientific discoveries.\",\n      \"date_or_span\": \"the decades after the next decade (open-ended span after about 2031)\",\n      \"occasion\": \"Essay 'Moore's Law for Everything' on his own site\",\n      \"source_url\": \"https://moores.samaltman.com/\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2021-03-16\",\n      \"quote\": \"The technological progress we make in the next 100 years will be far larger than all we’ve made since we first controlled fire and invented the wheel.\",\n      \"what_is_predicted\": \"Technological progress over the next century (in the essay's 'AI Revolution' section) will exceed all progress since fire and the wheel; borderline, since the sentence says technology, not AI by name.\",\n      \"date_or_span\": \"the next 100 years\",\n      \"occasion\": \"Essay 'Moore's Law for Everything', Part 1 'The AI Revolution'\",\n      \"source_url\": \"https://moores.samaltman.com/\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"Search results show an X post from December 2023 ('feeling good about this prediction! what a difference 27 months makes...', x.com/sama/status/1739007757381226888) looking back on the September 2021 tweet; Benzinga and Business Insider/Yahoo covered it. Not opened.\"},\n    {\"year\": \"2022\", \"note\": \"GovAI seminar on 9 February 2022 with William Gale discussing the essay (governance.ai/post/sam-altman-william-g-gale); seen only as a search result.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2021\", \"what_found\": \"Snippets of the 9 September 2021 X thread 'Technology prediction for the 2020s' (cost of intelligence towards near-zero, 'by 2030'), the 13 June 2021 tweet on the price of computer-based work (no date), and CNBC coverage of the March 2021 essay.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2021 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2023-2025 coverage and blog posts; nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2021 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2025 coverage (superintelligence by 2030/2035); nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Moore's Law for Everything\\\" Sam Altman\", \"what_found\": \"Commentary on the essay and a GovAI 2022 seminar page; no direct essay URL.\"},\n    {\"query_or_url\": \"Ezra Klein Show Sam Altman transcript June 2021\", \"what_found\": \"LessWrong linkpost pointing to the NYT transcript dated 11 June 2021.\"},\n    {\"query_or_url\": \"nytimes transcript ezra klein interviews sam altman\", \"what_found\": \"A LessWrong redirect to the NYT transcript; the snippet had no dated AI claims.\"},\n    {\"query_or_url\": \"moores.samaltman.com \\\"computer programs that can think\\\"\", \"what_found\": \"The essay's own URL, moores.samaltman.com.\"},\n    {\"query_or_url\": \"Altman \\\"costs of intelligence and energy are going to be on a path towards near-zero\\\"\", \"what_found\": \"The X status URL of the 9 September 2021 reply tweet and coverage from December 2023; X pages could not be opened.\"},\n    {\"query_or_url\": \"Business Insider Altman \\\"feeling good\\\" 2021 prediction intelligence energy near-zero 2030\", \"what_found\": \"Yahoo/Business Insider and Benzinga pieces from December 2023 on the September 2021 tweet.\"},\n    {\"query_or_url\": \"https://x.com/sama/status/1436028666887086104\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted.\"},\n    {\"query_or_url\": \"https://moores.samaltman.com/ (first attempt)\", \"what_found\": \"Refused because the URL had not yet appeared in a search result.\"},\n    {\"query_or_url\": \"https://www.nytimes.com/2021/06/11/podcasts/transcript-ezra-klein-interviews-sam-altman.html\", \"what_found\": \"Refused (url_not_in_prior_context); nothing quoted.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/out?url=https%3A%2F%2Fwww.nytimes.com%2F2021%2F06%2F11%2Fpodcasts%2Ftranscript-ezra-klein-interviews-sam-altman.html\", \"what_found\": \"Would not open (url_not_accessible); nothing quoted.\"},\n    {\"query_or_url\": \"https://moores.samaltman.com/\", \"what_found\": \"Full essay dated 16 March 2021, with the five-year, next-decade and 'decades after that' forecasts and the 100-year technology line.\"},\n    {\"query_or_url\": \"https://tech.yahoo.com/ai/articles/openais-sam-altman-said-hes-135514130.html\", \"what_found\": \"Would not open (url_not_accessible); the September 2021 tweet stays unverified.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Altman's main 2021 forecasts are in his 16 March essay 'Moore's Law for Everything': five years for legal documents and medical advice, a decade for assembly-line work and companions (both already recorded), and 'the decades after that' for almost everything. A 9 September 2021 X thread appears to predict that by 2030 it will be clear AI will push the cost of intelligence towards near-zero, but the tweet and its coverage would not open, so it is unverified and not listed. The June 2021 Ezra Klein interview transcript could not be opened.\"\n}\n```"
+}

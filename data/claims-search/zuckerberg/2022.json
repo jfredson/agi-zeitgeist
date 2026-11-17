@@ -1,0 +1,338 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2022,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.535,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 39330,
+      "cache_read_input_tokens": 376259,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 7648,
+      "output_tokens_details": {
+        "thinking_tokens": 1615
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mark Zuckerberg\" AI prediction 2022','\"Mark Zuckerberg\" 2022 interview AGI \"years\"','\"Mark Zuckerberg\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r[:8]: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2022"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r[:8]: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2022 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg \"Inside the Lab\" metaverse AI universal speech translator February 2022',\n          'Meta second quarter 2022 earnings call transcript Zuckerberg AI recommended content \"end of next year\"',\n          'Lex Fridman podcast 267 Mark Zuckerberg transcript']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg \"Inside the Lab\" metaverse AI universal speech translator February 2022"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Meta second quarter 2022 earnings call transcript Zuckerberg AI recommended content \"end of next year\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman podcast 267 Mark Zuckerberg transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf',\n          'https://about.fb.com/news/2022/02/inside-the-lab-building-for-the-metaverse-with-ai/']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content',''); P[u]=c\n    print(\"==\",u,r.get('type'),len(c))\n    for kw in ['next year','by the end','years','decade','2023','2024','2025','2030']:\n        for m in re.finditer(kw,c):\n            print(kw,':',c[max(0,m.start()-300):m.end()+150].replace('\\n',' '));print('-')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(json.dumps(r)[:600])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\npdf=base64.b64decode(r['content']['source']['data'])\ntxt=\"\\n\".join(p.extract_text() for p in PdfReader(io.BytesIO(pdf)).pages)\nP['q2']=txt\ndef kw(c,kws,w=350):\n    for k in kws:\n        for m in re.finditer(k,c):\n            print('['+k+']',c[max(0,m.start()-w):m.end()+200].replace('\\n',' '));print('-')\nkw(txt,['next year','end of','AI system','AGI'])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=txt.find('about 15% of content');\nprint(txt[:300]); \nfor m in re.finditer(r'(Mark Zuckerberg|Susan Li|Dave Wehner|Deborah Crawford)',txt[:i]): last=m\nprint(last.group(), last.start(), i)\nprint(txt[i-1500:i-900])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://about.fb.com/news/2022/02/inside-the-lab-building-for-the-metaverse-with-ai/'\nr=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\nif isinstance(r,list): r=r[0]\nc=r.get('content'); c=c if isinstance(c,str) else json.dumps(c)[:20000]\nP[u]=c; print(len(c)); print(c[:1500])\nkw(c,['year','decade','lifetime','Zuckerberg'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://about.fb.com/news/2022/02/inside-the-lab-building-for-the-metaverse-with-ai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=r['content']['source']['data'] if isinstance(r.get('content'),dict) else c\nprint(len(d)); j=d.find('\\n---',5); print(d[j:j+4000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=d.find('Inside the Lab',j+4000); k=d.find('Takeaways') if 'Takeaways' in d else k\nprint(d[k:k+4500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Meta Q3 2022 earnings call transcript Zuckerberg AI Reels recommendations',\n          'Zuckerberg Joe Rogan August 2022 transcript AI',\n          'Zuckerberg Facebook post January 2022 AI Research SuperCluster \"metaverse\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Meta Q3 2022 earnings call transcript Zuckerberg AI Reels recommendations"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Joe Rogan August 2022 transcript AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Facebook post January 2022 AI Research SuperCluster \"metaverse\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict):\n        s=c.get('source',{})\n        if s.get('type')=='base64':\n            pdf=base64.b64decode(s['data']); c=\"\\n\".join(p.extract_text() or '' for p in PdfReader(io.BytesIO(pdf)).pages)\n        else: c=s.get('data','')\n    return r.get('type'),c or ''\nt,q3=await fetch('https://s21.q4cdn.com/399680738/files/doc_financials/2022/q3/Meta-Q3-2022-Earnings-Call-Transcript.pdf')\nprint(t,len(q3)); kw(q3,['next year','end of next','by the end','years','decade','2023'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q3/Meta-Q3-2022-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t,lex=await fetch('https://podscript.ai/podcasts/lex-fridman-podcast/267-mark-zuckerberg-meta-facebook-instagram-and-the-metaverse/')\nprint(t,len(lex)); kw(lex,['AGI','general intelligence','in five years','in 10 years','ten years','decade','by 20','next year'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscript.ai/podcasts/lex-fridman-podcast/267-mark-zuckerberg-meta-facebook-instagram-and-the-metaverse/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw(lex,[r'\\bAI\\b','years'],200); print(lex[-600:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg Meta Connect 2022 keynote transcript AI \"next decade\"',\n          'Zuckerberg Rogan 1863 transcript AI \"years\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Meta Connect 2022 keynote transcript AI \"next decade\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Rogan 1863 transcript AI \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t,cn=await fetch('https://www.cnbc.com/2022/06/22/cnbc-exclusive-cnbc-transcript-meta-founder-chairman-ceo-mark-zuckerberg-speaks-with-cnbcs-jim-cramer-on-mad-money-today.html')\nprint(t,len(cn)); kw(cn,[r'\\bAI\\b','artificial','years','next year','decade'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2022/06/22/cnbc-exclusive-cnbc-transcript-meta-founder-chairman-ceo-mark-zuckerberg-speaks-with-cnbcs-jim-cramer-on-mad-money-today.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t,jr=await fetch('https://podscripts.co/podcasts/the-joe-rogan-experience/1863-mark-zuckerberg')\nprint(t,len(jr)); kw(jr,[r'\\bAI\\b','artificial intelligence','in five years','in 10 years','by 20','decade'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/the-joe-rogan-experience/1863-mark-zuckerberg"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2022-07-27",
+        "quote": "Right now, about 15% of content in a person’s Facebook feed and a little more than that of their  Instagram feed is recommended by our AI from people, groups, or accounts that you don’t follow. We  expect these numbers to more than double by the end of next year.",
+        "what_is_predicted": "The share of Facebook and Instagram feed content recommended by Meta's AI from accounts users don't follow will more than double from about 15% by the end of 2023.",
+        "date_or_span": "by the end of next year (end of 2023)",
+        "occasion": "Meta Platforms Q2 2022 earnings conference call, Zuckerberg's prepared remarks",
+        "source_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024-2025",
+        "note": "Results for the fixed searches were mostly about later claims: AI agents in 5-7 years, personal superintelligence, the 2024 AGI goal and Joe Rogan #2255 in 2025. None of these pages were opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2022",
+        "what_found": "Only coverage from 2024-2025; nothing from 2022."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2022 interview AGI \"years\"",
+        "what_found": "Mostly 2024-2025 AGI coverage, plus a 2022 Stratechery metaverse interview that I did not open."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Recent coverage from 2024-2025; nothing from 2022."
+      },
+      {
+        "query_or_url": "Zuckerberg \"Inside the Lab\" metaverse AI universal speech translator February 2022",
+        "what_found": "Pages about Meta's February 23, 2022 AI event, including the Meta newsroom post."
+      },
+      {
+        "query_or_url": "Meta second quarter 2022 earnings call transcript Zuckerberg AI recommended content \"end of next year\"",
+        "what_found": "The official Q2 2022 transcript PDF on Meta's investor site."
+      },
+      {
+        "query_or_url": "Lex Fridman podcast 267 Mark Zuckerberg transcript",
+        "what_found": "Transcript and listing pages for the February 2022 episode."
+      },
+      {
+        "query_or_url": "Meta Q3 2022 earnings call transcript Zuckerberg AI Reels recommendations",
+        "what_found": "The official Q3 2022 transcript PDF."
+      },
+      {
+        "query_or_url": "Zuckerberg Joe Rogan August 2022 transcript AI",
+        "what_found": "Coverage and transcript listings for Rogan #1863 (2022)."
+      },
+      {
+        "query_or_url": "Zuckerberg Facebook post January 2022 AI Research SuperCluster \"metaverse\"",
+        "what_found": "News and the Meta newsroom post on the AI supercomputer; this is infrastructure, so excluded and not opened."
+      },
+      {
+        "query_or_url": "Zuckerberg Meta Connect 2022 keynote transcript AI \"next decade\"",
+        "what_found": "No Connect 2022 transcript; found a CNBC Mad Money transcript from June 2022."
+      },
+      {
+        "query_or_url": "Zuckerberg Rogan 1863 transcript AI \"years\"",
+        "what_found": "A podscripts.co transcript page for Rogan #1863."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf",
+        "what_found": "Opened; it holds Zuckerberg's dated forecast for the share of AI-recommended feed content."
+      },
+      {
+        "query_or_url": "https://about.fb.com/news/2022/02/inside-the-lab-building-for-the-metaverse-with-ai/",
+        "what_found": "Opened; a newsroom summary not in Zuckerberg's own words, with no dated AI claim."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q3/Meta-Q3-2022-Earnings-Call-Transcript.pdf",
+        "what_found": "Opened; only spending, headcount and metaverse forecasts, no dated AI claim."
+      },
+      {
+        "query_or_url": "https://podscript.ai/podcasts/lex-fridman-podcast/267-mark-zuckerberg-meta-facebook-instagram-and-the-metaverse/",
+        "what_found": "Opened; covers only about the first 29 minutes, with dated statements about VR and avatars, not AI."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2022/06/22/cnbc-exclusive-cnbc-transcript-meta-founder-chairman-ceo-mark-zuckerberg-speaks-with-cnbcs-jim-cramer-on-mad-money-today.html",
+        "what_found": "Would not open; nothing quoted."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/the-joe-rogan-experience/1863-mark-zuckerberg",
+        "what_found": "Opened; only an undated remark that the headset will eventually track legs with an AI model, plus AR/VR timelines."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In what I could open, Zuckerberg's 2022 statements were mostly about the metaverse, VR and AR. The one dated AI forecast I found is from the Q2 2022 earnings call: AI-recommended feed content would more than double by the end of 2023. It is a product metric, so it sits close to the business-forecast line. I found no dated or undated statement about when AGI would arrive."
+  },
+  "reply_text": "Opening the official Q2 2022 transcript and the Inside the Lab pages.I found one dated forecast about AI from Mark Zuckerberg in 2022. It sits close to the line between an AI prediction and a business forecast, so you may decide to drop it. Nothing he said that year that I could see gave a date for AGI or superintelligence.\n\n**The one candidate.** It comes from Meta's Q2 2022 earnings call on July 27, 2022. I read it in the company's official transcript (PDF) and checked that it falls within Zuckerberg's prepared remarks. He said that about 15% of a person's Facebook feed, and a bit more on Instagram, \"is recommended by our AI\" from accounts they don't follow. He then said \"We expect these numbers to more than double by the end of next year.\" That makes it a dated claim about what Meta's recommendation AI will do by the end of 2023. It isn't about spending, revenue, headcount or chips, but it is a product metric given on an earnings call.\n\n**What else I checked:**\n- **Q3 2022 earnings call (official transcript):** the dated forward-looking statements are about 2023 spending on AI capacity, capital spending, headcount and Reality Labs. Those are business forecasts and stay out. His \"next 5 to 10 years\" remark is about metaverse products, not AI.\n- **Lex Fridman podcast #267 (February 2022):** the transcript page I opened covered only about the first 29 minutes. In that part, his dated statements are about VR building blocks and photorealistic avatars, not AI.\n- **Joe Rogan #1863 (August 2022):** the transcript page I opened has an undated line about tracking legs with an AI model and a five-year scene about AR glasses. I counted neither.\n- **\"Inside the Lab\" (February 23, 2022):** Meta's newsroom post is not in Zuckerberg's own words and has no dated AI claim.\n- **CNBC \"Mad Money\" interview transcript (June 2022):** it would not open, so I haven't quoted it.\n- **Not read:** the January 2022 AI supercomputer announcement shows up only in search results. It is about infrastructure anyway, which is excluded.\n\nI used 11 of the 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2022-07-27\",\n      \"quote\": \"Right now, about 15% of content in a person’s Facebook feed and a little more than that of their  Instagram feed is recommended by our AI from people, groups, or accounts that you don’t follow. We  expect these numbers to more than double by the end of next year.\",\n      \"what_is_predicted\": \"The share of Facebook and Instagram feed content recommended by Meta's AI from accounts users don't follow will more than double from about 15% by the end of 2023.\",\n      \"date_or_span\": \"by the end of next year (end of 2023)\",\n      \"occasion\": \"Meta Platforms Q2 2022 earnings conference call, Zuckerberg's prepared remarks\",\n      \"source_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024-2025\", \"note\": \"Results for the fixed searches were mostly about later claims: AI agents in 5-7 years, personal superintelligence, the 2024 AGI goal and Joe Rogan #2255 in 2025. None of these pages were opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2022\", \"what_found\": \"Only coverage from 2024-2025; nothing from 2022.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2022 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2024-2025 AGI coverage, plus a 2022 Stratechery metaverse interview that I did not open.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2022 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Recent coverage from 2024-2025; nothing from 2022.\"},\n    {\"query_or_url\": \"Zuckerberg \\\"Inside the Lab\\\" metaverse AI universal speech translator February 2022\", \"what_found\": \"Pages about Meta's February 23, 2022 AI event, including the Meta newsroom post.\"},\n    {\"query_or_url\": \"Meta second quarter 2022 earnings call transcript Zuckerberg AI recommended content \\\"end of next year\\\"\", \"what_found\": \"The official Q2 2022 transcript PDF on Meta's investor site.\"},\n    {\"query_or_url\": \"Lex Fridman podcast 267 Mark Zuckerberg transcript\", \"what_found\": \"Transcript and listing pages for the February 2022 episode.\"},\n    {\"query_or_url\": \"Meta Q3 2022 earnings call transcript Zuckerberg AI Reels recommendations\", \"what_found\": \"The official Q3 2022 transcript PDF.\"},\n    {\"query_or_url\": \"Zuckerberg Joe Rogan August 2022 transcript AI\", \"what_found\": \"Coverage and transcript listings for Rogan #1863 (2022).\"},\n    {\"query_or_url\": \"Zuckerberg Facebook post January 2022 AI Research SuperCluster \\\"metaverse\\\"\", \"what_found\": \"News and the Meta newsroom post on the AI supercomputer; this is infrastructure, so excluded and not opened.\"},\n    {\"query_or_url\": \"Zuckerberg Meta Connect 2022 keynote transcript AI \\\"next decade\\\"\", \"what_found\": \"No Connect 2022 transcript; found a CNBC Mad Money transcript from June 2022.\"},\n    {\"query_or_url\": \"Zuckerberg Rogan 1863 transcript AI \\\"years\\\"\", \"what_found\": \"A podscripts.co transcript page for Rogan #1863.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf\", \"what_found\": \"Opened; it holds Zuckerberg's dated forecast for the share of AI-recommended feed content.\"},\n    {\"query_or_url\": \"https://about.fb.com/news/2022/02/inside-the-lab-building-for-the-metaverse-with-ai/\", \"what_found\": \"Opened; a newsroom summary not in Zuckerberg's own words, with no dated AI claim.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2022/q3/Meta-Q3-2022-Earnings-Call-Transcript.pdf\", \"what_found\": \"Opened; only spending, headcount and metaverse forecasts, no dated AI claim.\"},\n    {\"query_or_url\": \"https://podscript.ai/podcasts/lex-fridman-podcast/267-mark-zuckerberg-meta-facebook-instagram-and-the-metaverse/\", \"what_found\": \"Opened; covers only about the first 29 minutes, with dated statements about VR and avatars, not AI.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2022/06/22/cnbc-exclusive-cnbc-transcript-meta-founder-chairman-ceo-mark-zuckerberg-speaks-with-cnbcs-jim-cramer-on-mad-money-today.html\", \"what_found\": \"Would not open; nothing quoted.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/the-joe-rogan-experience/1863-mark-zuckerberg\", \"what_found\": \"Opened; only an undated remark that the headset will eventually track legs with an AI model, plus AR/VR timelines.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In what I could open, Zuckerberg's 2022 statements were mostly about the metaverse, VR and AR. The one dated AI forecast I found is from the Q2 2022 earnings call: AI-recommended feed content would more than double by the end of 2023. It is a product metric, so it sits close to the business-forecast line. I found no dated or undated statement about when AGI would arrive.\"\n}\n```"
+}

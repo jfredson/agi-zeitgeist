@@ -1,0 +1,336 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.3457,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7709
+      },
+      "cache_creation_input_tokens": 145403,
+      "cache_read_input_tokens": 1620093,
+      "inference_geo": "global",
+      "input_tokens": 38,
+      "output_tokens": 10224,
+      "output_tokens_details": {
+        "thinking_tokens": 3059
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Mark Zuckerberg\" AI prediction 2026','\"Mark Zuckerberg\" 2026 interview AGI \"years\"','\"Mark Zuckerberg\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))\nshow(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Meta second quarter 2026 earnings call transcript Zuckerberg \"personal agent\"','Zuckerberg NBC News Joanna Stern interview 2026 transcript']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Meta second quarter 2026 earnings call transcript Zuckerberg \"personal agent\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg NBC News Joanna Stern interview 2026 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nfor u in ['https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf','https://epublications.marquette.edu/zuckerberg_files_transcripts/index.html']:\n    F[u]=await web_fetch({\"url\":u})\n    f=F[u]; f=json.loads(f) if isinstance(f,str) else f\n    F[u]=f\n    if isinstance(f,list): print(u,len(f[0]['content']))\n    else: print(u,f)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://epublications.marquette.edu/zuckerberg_files_transcripts/index.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64, io\nu='https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf'\nd=F[u]['content']['source']['data']\npdf=base64.b64decode(d)\nopen('/tmp/q2.pdf','wb').write(pdf)\nimport pypdf\nr=pypdf.PdfReader('/tmp/q2.pdf')\ntxt='\\n'.join(p.extract_text() for p in r.pages)\nopen('/tmp/q2.txt','w').write(txt)\nprint(len(txt))\nfor kw in ['five years','years','next year','by 20','decade','superintelligence','2027','2028','2030']:\n    for m in re.finditer(kw,txt):\n        print(kw,'::',txt[max(0,m.start()-300):m.end()+200].replace('\\n',' '))\n        print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=txt.find(\"I think that it’s extremely unlikely\")\nprint(txt[i-200:i+900])\nprint(\"=====\")\nfor kw in ['this year','end of the year','by the end','months','next year','2026']:\n    for m in re.finditer(kw,txt):\n        print(kw,'::',txt[max(0,m.start()-250):m.end()+150].replace('\\n',' '))\n        print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=txt.find(\"op-ed\");print(txt[i-100:i+900])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg op-ed July 2026 superintelligence \"next few years\" optimistic','Zuckerberg Q4 2025 earnings call transcript January 28 2026 \"2026 is going to be the year\"']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg op-ed July 2026 superintelligence \"next few years\" optimistic"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Q4 2025 earnings call transcript January 28 2026 \"2026 is going to be the year\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=F['https://epublications.marquette.edu/zuckerberg_files_transcripts/index.html']\nc=f['content'] if isinstance(f,dict) else f[0]['content']\nc=c if isinstance(c,str) else str(c)\nprint(len(c))\nfor m in re.finditer(r'2026\\)',c):\n    print(c[max(0,m.start()-200):m.end()].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for n in ['2277','2278','2272','2273','2238','2232','2265','2269']:\n    i=c.find('zuckerberg_files_transcripts/'+n+')')\n    seg=c[max(0,i-400):i+50]\n    print(n, re.findall(r'https://epublications[^\\s\\)\"]*viewcontent[^\\s\\)\"]*',seg)[-1:] )"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3267&context=zuckerberg_files_transcripts',\n'https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3262&context=zuckerberg_files_transcripts',\n'https://www.meta.com/thefutureisforeveryone/']\nT={}\nfor u in urls:\n    f=await web_fetch({\"url\":u})\n    f=json.loads(f) if isinstance(f,str) else f\n    if isinstance(f,dict) and f.get('type','').endswith('error'):\n        print(u,'ERR',f.get('error_code')); continue\n    if isinstance(f,list): f=f[0]\n    cc=f['content']\n    if isinstance(cc,dict) and cc.get('source',{}).get('type')=='base64':\n        b=base64.b64decode(cc['source']['data']); open('/tmp/x.pdf','wb').write(b)\n        t='\\n'.join(p.extract_text() or '' for p in pypdf.PdfReader('/tmp/x.pdf').pages)\n    else: t=cc if isinstance(cc,str) else str(cc)\n    T[u]=t\n    print(u,len(t),t[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3267&context=zuckerberg_files_transcripts"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3262&context=zuckerberg_files_transcripts"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.meta.com/thefutureisforeveryone/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://www.meta.com/thefutureisforeveryone/']\nt=json.loads(t.replace(\"'\",'\"')) if False else t\nimport ast\ntry:\n    t=ast.literal_eval(t)['source']['data']\nexcept Exception as e: print(e)\nprint(len(t))\nfor kw in ['next few years','years','decade','20[23]\\\\d','will be able','soon','by the end']:\n    for m in re.finditer(kw,t):\n        print(kw,'::',t[max(0,m.start()-250):m.end()+250].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[:600])\nfor kw in ['2026','July','August','published','Published']:\n    for m in re.finditer(kw,t): print(kw,'::',t[max(0,m.start()-100):m.end()+100].replace('\\n',' '))\ni=t.find('Priscilla and I started');print(t[i-600:i+500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg Jacklyn Dallas Muse 2030 interview','Zuckerberg Alex Heath Muse interview September 2026 Sources']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Jacklyn Dallas Muse 2030 interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Alex Heath Muse interview September 2026 Sources"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://singjupost.com/transcript-mark-zuckerberg-interview-on-metas-muse-ai-agent-sources-podcast/'\nf=await web_fetch({\"url\":u})\nf=json.loads(f) if isinstance(f,str) else f\nif isinstance(f,list): f=f[0]\ncc=f.get('content')\ns=cc if isinstance(cc,str) else (cc.get('source',{}).get('data') if isinstance(cc,dict) else str(cc))\nprint(f.get('type'),len(s or ''))\nS=s\nfor kw in ['years','decade','20[23]\\\\d','next year','this year','by the end','treatment','disease','superintelligence']:\n    for m in re.finditer(kw,S):\n        print(kw,'::',S[max(0,m.start()-300):m.end()+200].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-mark-zuckerberg-interview-on-metas-muse-ai-agent-sources-podcast/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=S.find('Empowering Individuals: Rare Diseases');print(S[i:i+2500]);print('...END',S[-600:])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-07-29",
+        "quote": "I think that it’s extremely unlikely if you look out five years from now, for example, that -- or whatever period of time you want, that you don’t have billions of people with a personal agent that understands your goals, and that is just working on your behalf 24/7 to achieve your goals.",
+        "what_is_predicted": "Within about five years, billions of people will have a personal AI agent that understands their goals and works for them around the clock.",
+        "date_or_span": "five years from now (c. 2031)",
+        "occasion": "Meta Platforms Q2 2026 earnings conference call, answer in the question-and-answer session",
+        "source_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026",
+        "quote": "When Priscilla and I started this work, our goal was to help scientists cure or prevent all diseases this century, and now with advances in AI we expect this will be possible much sooner.",
+        "what_is_predicted": "Thanks to AI, curing or preventing all diseases will be possible well before the end of this century.",
+        "date_or_span": "this century (sooner than 2100)",
+        "occasion": "Essay 'The Future is for Everyone: The Path to a Positive AI Future' on meta.com. The page carries no date; the Marquette Zuckerberg Files index lists it on 2026-08-10, and a related WSJ op-ed on 2026-07-28.",
+        "source_url": "https://www.meta.com/thefutureisforeveryone/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2026",
+        "quote": "In the next few years, people will be able to use superintelligence beyond human capacity to create and discover extraordinary new things, build new businesses, express new ideas, learn new concepts, and advance our health and quality of life.",
+        "source_url": "https://www.meta.com/thefutureisforeveryone/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results showed a 2025-07-14 CNBC report that the first Meta supercluster (Prometheus) would come online in 2026. This is infrastructure, not an AI capability, and I did not open it."
+      },
+      {
+        "year": "2025",
+        "note": "A search result showed a Yahoo report from LlamaCon (April 2025) that Zuckerberg wants AI to do half of Meta's coding by 2026. Not opened."
+      },
+      {
+        "year": "2025",
+        "note": "A Calcalist snippet from about a year ago quoted him on superintelligence timing ('a few years' versus 'five or seven'). Snippet only, not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2026",
+        "what_found": "Coverage of the Q2 2026 call claim (billions of personal agents in five years) and of the January Q4 2025 call ('major AI acceleration', AI changing work in 2026)."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2026 interview AGI \"years\"",
+        "what_found": "NBC/Joanna Stern interview coverage (September 2026), the Complex interview, Newsweek coverage of the five-year agent claim, and a 2025 Marquette transcript."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "SiliconANGLE on agent progress being slower than hoped, the Breitbart op-ed quote, a 2025 CNBC supercluster story and a 2025 LlamaCon coding story."
+      },
+      {
+        "query_or_url": "Meta second quarter 2026 earnings call transcript Zuckerberg \"personal agent\"",
+        "what_found": "The official Meta investor-relations transcript PDF and several third-party copies."
+      },
+      {
+        "query_or_url": "Zuckerberg NBC News Joanna Stern interview 2026 transcript",
+        "what_found": "NBC articles from 23 September 2026 and the Marquette Zuckerberg Transcripts index."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf",
+        "what_found": "Opened. Contains the five-year personal-agent quote and a mention that he had just published an op-ed."
+      },
+      {
+        "query_or_url": "https://epublications.marquette.edu/zuckerberg_files_transcripts/index.html",
+        "what_found": "Opened. Lists his 2026 public statements, including the Jan 28 and Apr 29 earnings posts, the Jul 28 WSJ op-ed, the Aug 10 'Future is for Everyone', the Sep 8 Heath and Janzen interviews, the Sep 23 Connect keynote, the Sep 24 Jacklyn Dallas interview and the Oct 12 Collison interview."
+      },
+      {
+        "query_or_url": "Zuckerberg op-ed July 2026 superintelligence \"next few years\" optimistic",
+        "what_found": "The essay at meta.com/thefutureisforeveryone and coverage of the WSJ op-ed."
+      },
+      {
+        "query_or_url": "Zuckerberg Q4 2025 earnings call transcript January 28 2026 \"2026 is going to be the year\"",
+        "what_found": "Transcript listings including the official IR PDF. Not opened, so the recorded January claim was not re-verified."
+      },
+      {
+        "query_or_url": "https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3267&context=zuckerberg_files_transcripts",
+        "what_found": "Failed: url_not_accessible. This is the PDF link next to the Jacklyn Dallas 'Muse, 2030' entry in the Marquette index."
+      },
+      {
+        "query_or_url": "https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3262&context=zuckerberg_files_transcripts",
+        "what_found": "Failed: url_not_accessible. This is the PDF link next to the Alex Heath Sep 8 entry in the Marquette index."
+      },
+      {
+        "query_or_url": "https://www.meta.com/thefutureisforeveryone/",
+        "what_found": "Opened. Undated essay with the 'next few years' superintelligence line and the 'cure or prevent all diseases this century... much sooner' line."
+      },
+      {
+        "query_or_url": "Zuckerberg Jacklyn Dallas Muse 2030 interview",
+        "what_found": "Only translated summaries (chaincatcher, futunn) and a Neuron article. No English transcript opened."
+      },
+      {
+        "query_or_url": "Zuckerberg Alex Heath Muse interview September 2026 Sources",
+        "what_found": "The sources.news episode page, a singjupost transcript and coverage."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-mark-zuckerberg-interview-on-metas-muse-ai-agent-sources-podcast/",
+        "what_found": "Opened, but the text returned stops at about 23 minutes. No dated AI prediction in the part I read."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2026 Zuckerberg mostly spoke about personal agents and 'personal superintelligence'. The clearest dated forecast is from the 29 July Q2 earnings call: billions of people will have a personal AI agent within about five years. His 'The Future is for Everyone' essay adds a looser claim that AI will make curing or preventing all diseases possible 'much sooner' than this century, and an undated line that superintelligence beyond human capacity will be usable 'in the next few years'. Several promising 2026 transcripts (the Jacklyn Dallas '2030' interview, the Connect keynote, the Collison interview) were not read because their PDFs would not open or I ran out of page openings."
+  },
+  "reply_text": "I found two dated AI predictions Zuckerberg made in 2026, both in pages I opened and read, and one undated statement about when superintelligence arrives. Neither of the two claims already on file showed up in a page I opened, so neither is marked as a repeat.\n\n**Candidates**\n- **Q2 2026 earnings call, 29 July.** The official transcript PDF on Meta's investor site has him saying billions of people will have a personal AI agent within five years. News coverage reported the same point: Meta is \"trying to sell investors on his prediction for the future — one where billions of people will have their own personal AI agents in the next five years.\"\n- **\"The Future is for Everyone\" essay on meta.com.** He writes that he and Priscilla Chan set out to help cure or prevent all diseases this century, and that AI should make this possible \"much sooner.\" The time limit is \"this century.\" This is a fair candidate but not a strong one: he is setting an earlier goal against a new expectation, and \"much sooner\" names no year. The page itself carries no date. The Marquette \"Zuckerberg Files\" index lists it on 10 August 2026, and a related Wall Street Journal op-ed (\"The AI Future Is for Everyone\") on 28 July 2026. I did not open the WSJ version.\n\n**Undated**\n- The same essay opens by saying that \"in the next few years\" people will be able to use superintelligence beyond human capacity. Your rules treat \"a few years\" as undated, and this one is about when superintelligence arrives, so it goes under undated.\n\n**What I couldn't check**\n- **On-file claim of 28 January.** The line \"2026 is going to be the year that AI starts to dramatically change the way that we work\" (Q4 2025 earnings call) appeared only in search snippets. I did not open a page with it, so I did not list it.\n- **On-file claim of 8 September (Sources podcast with Alex Heath).** I opened a third-party transcript on singjupost.com, but the text I received cuts off at about 23 minutes. The part I read has no dated prediction and nothing about AI designing treatments.\n- **Two Marquette transcript PDFs failed to open.** One is the Jacklyn Dallas interview of 24 September 2026, titled \"Mark Zuckerberg on Muse, 2030, and What Comes Next!\". The other is the 8 September Alex Heath interview. The Dallas interview is the most likely place left for a dated claim, but the only versions I saw were machine-translated summaries, so I quoted nothing from it.\n- **Not opened at all:** the Meta Connect keynote (23 September), the John Collison interview (12 October), the Q1 2026 call (29 April) and the NBC interview with Joanna Stern.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2026-07-29\",\n      \"quote\": \"I think that it’s extremely unlikely if you look out five years from now, for example, that -- or whatever period of time you want, that you don’t have billions of people with a personal agent that understands your goals, and that is just working on your behalf 24/7 to achieve your goals.\",\n      \"what_is_predicted\": \"Within about five years, billions of people will have a personal AI agent that understands their goals and works for them around the clock.\",\n      \"date_or_span\": \"five years from now (c. 2031)\",\n      \"occasion\": \"Meta Platforms Q2 2026 earnings conference call, answer in the question-and-answer session\",\n      \"source_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2026\",\n      \"quote\": \"When Priscilla and I started this work, our goal was to help scientists cure or prevent all diseases this century, and now with advances in AI we expect this will be possible much sooner.\",\n      \"what_is_predicted\": \"Thanks to AI, curing or preventing all diseases will be possible well before the end of this century.\",\n      \"date_or_span\": \"this century (sooner than 2100)\",\n      \"occasion\": \"Essay 'The Future is for Everyone: The Path to a Positive AI Future' on meta.com. The page carries no date; the Marquette Zuckerberg Files index lists it on 2026-08-10, and a related WSJ op-ed on 2026-07-28.\",\n      \"source_url\": \"https://www.meta.com/thefutureisforeveryone/\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2026\",\n      \"quote\": \"In the next few years, people will be able to use superintelligence beyond human capacity to create and discover extraordinary new things, build new businesses, express new ideas, learn new concepts, and advance our health and quality of life.\",\n      \"source_url\": \"https://www.meta.com/thefutureisforeveryone/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results showed a 2025-07-14 CNBC report that the first Meta supercluster (Prometheus) would come online in 2026. This is infrastructure, not an AI capability, and I did not open it.\"},\n    {\"year\": \"2025\", \"note\": \"A search result showed a Yahoo report from LlamaCon (April 2025) that Zuckerberg wants AI to do half of Meta's coding by 2026. Not opened.\"},\n    {\"year\": \"2025\", \"note\": \"A Calcalist snippet from about a year ago quoted him on superintelligence timing ('a few years' versus 'five or seven'). Snippet only, not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2026\", \"what_found\": \"Coverage of the Q2 2026 call claim (billions of personal agents in five years) and of the January Q4 2025 call ('major AI acceleration', AI changing work in 2026).\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"NBC/Joanna Stern interview coverage (September 2026), the Complex interview, Newsweek coverage of the five-year agent claim, and a 2025 Marquette transcript.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"SiliconANGLE on agent progress being slower than hoped, the Breitbart op-ed quote, a 2025 CNBC supercluster story and a 2025 LlamaCon coding story.\"},\n    {\"query_or_url\": \"Meta second quarter 2026 earnings call transcript Zuckerberg \\\"personal agent\\\"\", \"what_found\": \"The official Meta investor-relations transcript PDF and several third-party copies.\"},\n    {\"query_or_url\": \"Zuckerberg NBC News Joanna Stern interview 2026 transcript\", \"what_found\": \"NBC articles from 23 September 2026 and the Marquette Zuckerberg Transcripts index.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf\", \"what_found\": \"Opened. Contains the five-year personal-agent quote and a mention that he had just published an op-ed.\"},\n    {\"query_or_url\": \"https://epublications.marquette.edu/zuckerberg_files_transcripts/index.html\", \"what_found\": \"Opened. Lists his 2026 public statements, including the Jan 28 and Apr 29 earnings posts, the Jul 28 WSJ op-ed, the Aug 10 'Future is for Everyone', the Sep 8 Heath and Janzen interviews, the Sep 23 Connect keynote, the Sep 24 Jacklyn Dallas interview and the Oct 12 Collison interview.\"},\n    {\"query_or_url\": \"Zuckerberg op-ed July 2026 superintelligence \\\"next few years\\\" optimistic\", \"what_found\": \"The essay at meta.com/thefutureisforeveryone and coverage of the WSJ op-ed.\"},\n    {\"query_or_url\": \"Zuckerberg Q4 2025 earnings call transcript January 28 2026 \\\"2026 is going to be the year\\\"\", \"what_found\": \"Transcript listings including the official IR PDF. Not opened, so the recorded January claim was not re-verified.\"},\n    {\"query_or_url\": \"https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3267&context=zuckerberg_files_transcripts\", \"what_found\": \"Failed: url_not_accessible. This is the PDF link next to the Jacklyn Dallas 'Muse, 2030' entry in the Marquette index.\"},\n    {\"query_or_url\": \"https://epublications.marquette.edu/cgi/viewcontent.cgi?article=3262&context=zuckerberg_files_transcripts\", \"what_found\": \"Failed: url_not_accessible. This is the PDF link next to the Alex Heath Sep 8 entry in the Marquette index.\"},\n    {\"query_or_url\": \"https://www.meta.com/thefutureisforeveryone/\", \"what_found\": \"Opened. Undated essay with the 'next few years' superintelligence line and the 'cure or prevent all diseases this century... much sooner' line.\"},\n    {\"query_or_url\": \"Zuckerberg Jacklyn Dallas Muse 2030 interview\", \"what_found\": \"Only translated summaries (chaincatcher, futunn) and a Neuron article. No English transcript opened.\"},\n    {\"query_or_url\": \"Zuckerberg Alex Heath Muse interview September 2026 Sources\", \"what_found\": \"The sources.news episode page, a singjupost transcript and coverage.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-mark-zuckerberg-interview-on-metas-muse-ai-agent-sources-podcast/\", \"what_found\": \"Opened, but the text returned stops at about 23 minutes. No dated AI prediction in the part I read.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2026 Zuckerberg mostly spoke about personal agents and 'personal superintelligence'. The clearest dated forecast is from the 29 July Q2 earnings call: billions of people will have a personal AI agent within about five years. His 'The Future is for Everyone' essay adds a looser claim that AI will make curing or preventing all diseases possible 'much sooner' than this century, and an undated line that superintelligence beyond human capacity will be usable 'in the next few years'. Several promising 2026 transcripts (the Jacklyn Dallas '2030' interview, the Connect keynote, the Collison interview) were not read because their PDFs would not open or I ran out of page openings.\"\n}\n```"
+}

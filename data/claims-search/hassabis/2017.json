@@ -1,0 +1,300 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2017,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5639,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7615
+      },
+      "cache_creation_input_tokens": 47725,
+      "cache_read_input_tokens": 274539,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 7513,
+      "output_tokens_details": {
+        "thinking_tokens": 1891
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 3,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2017','\"Demis Hassabis\" 2017 interview AGI \"years\"','\"Demis Hassabis\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2017"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,r):\n    r=json.loads(r) if isinstance(r,str) else r\n    print(\"==\",q)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2017 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis AlphaGo Zero 2017 \"ten years\" scientific','Hassabis Asilomar 2017 superintelligence panel transcript','Hassabis 2017 interview Guardian OR \"Financial Times\" OR Verge AI general']:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis AlphaGo Zero 2017 \"ten years\" scientific"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Asilomar 2017 superintelligence panel transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2017 interview Guardian OR \"Financial Times\" OR Verge AI general"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef ctx(q,url,kw,w=400):\n    for x in R[q]:\n        if x['url']==url:\n            c=x['content']\n            for m in re.finditer(kw,c):\n                print('...',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '),'\\n')\nctx('Hassabis AlphaGo Zero 2017 \"ten years\" scientific','https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/','Hassabis')\nctx('Hassabis Asilomar 2017 superintelligence panel transcript','https://medium.com/aifromscratch/video-superintelligence-panel-at-beneficial-ai-2017-fli-5b0f0a64e82','Hassabis|Demis')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Guardian October 2017 AlphaGo Zero Hassabis \"10 years\" scientific experts','futureoflife.org superintelligence science or fiction panel transcript Hassabis Musk','Hassabis 2017 \"AI scientist\" OR \"Nobel\" OR \"decades\" interview Wired OR \"The Verge\" OR \"Bloomberg\"']:\n    R[q]=show(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Guardian October 2017 AlphaGo Zero Hassabis \"10 years\" scientific experts"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "futureoflife.org superintelligence science or fiction panel transcript Hassabis Musk"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2017 \"AI scientist\" OR \"Nobel\" OR \"decades\" interview Wired OR \"The Verge\" OR \"Bloomberg\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q,u,k in [('Guardian October 2017 AlphaGo Zero Hassabis \"10 years\" scientific experts','https://www.foxnews.com/tech/googles-artificial-intelligence-computer-no-longer-constrained-by-limits-of-human-knowledge.print','years|Hassabis'),\n('futureoflife.org superintelligence science or fiction panel transcript Hassabis Musk','https://www.marketingaiinstitute.com/blog/what-elon-musk-nick-bostrom-and-demis-hassabis-think-about-better-than-human-artificial-intelligence','Hassabis'),\n('futureoflife.org superintelligence science or fiction panel transcript Hassabis Musk','https://www.illustratedcuriosity.com/technology/a-i/video-a-discussion-with-elon-musk-other-great-minds-on-superintelligence-science-or-fiction/','Demis|Hassabis')]:\n    print('#####',u); ctx(q,u,k,300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in ['https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/','https://www.marketingaiinstitute.com/blog/what-elon-musk-nick-bostrom-and-demis-hassabis-think-about-better-than-human-artificial-intelligence']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; F[u]=c\n    print('#####',u,len(c))\n    for m in re.finditer('Hassabis|years|decade',c):\n        print('...',c[max(0,m.start()-250):m.end()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.marketingaiinstitute.com/blog/what-elon-musk-nick-bostrom-and-demis-hassabis-think-about-better-than-human-artificial-intelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show2(q,r):\n    r=json.loads(r) if isinstance(r,str) else r\n    print(\"==\",q)\n    for x in r:\n        c=x.get('content','')\n        hits=[c[max(0,m.start()-150):m.end()+150].replace('\\n',' ') for m in re.finditer(r'years|decade',c)][:2]\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        for h in hits: print('    >',h)\n    return r\nfor q in ['theguardian.com 2017 AlphaGo Zero Hassabis \"it\\'s more powerful\"','Hassabis \"Future of Go Summit\" Wuzhen 2017 speech AI science']:\n    R[q]=show2(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "theguardian.com 2017 AlphaGo Zero Hassabis \"it's more powerful\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"Future of Go Summit\" Wuzhen 2017 speech AI science"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs'\nr=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\nc=r[0]['content'] if isinstance(r,list) else (r.get('content',{}).get('source',{}).get('data') if isinstance(r.get('content'),dict) else str(r))\nprint(len(c))\nfor m in re.finditer(r'Guardian|October|decade|long way|Hassabis said|I hope',c):\n    print('...',c[max(0,m.start()-300):m.end()+400].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[:2728])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Hassabis 2017 \"general AI\" OR AGI \"decades away\" OR \"many decades\" interview'\nR[q]=show2(q,await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis 2017 \"general AI\" OR AGI \"decades away\" OR \"many decades\" interview"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2017-10-18",
+        "quote": "Hassabis is hopeful that within 10 years AI will play an important role in solving important problems in science, medicine, or other fields. “I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine,” he says.",
+        "what_is_predicted": "Within ten years, AI algorithms like AlphaGo Zero will be routinely working with scientists to advance science and medicine.",
+        "date_or_span": "within 10 years (about 2027); the span is the reporter's paraphrase, and the quoted words have no date",
+        "occasion": "Press interview on the release of the AlphaGo Zero paper in Nature",
+        "source_url": "https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2017-10",
+        "quote": "In the next decade, Hassabis believes that AlphaGo’s descendants will work alongside humans as scientific and medical experts.",
+        "what_is_predicted": "In the next decade, systems descended from AlphaGo will work alongside humans as scientific and medical experts.",
+        "date_or_span": "the next decade (to about 2027); reporter's paraphrase",
+        "occasion": "AlphaGo Zero announcement; Guardian story reprinted by the South China Morning Post (same occasion as the item above)",
+        "source_url": "https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results showed NBC News and others reporting his view that AGI will emerge in five to ten years; not opened."
+      },
+      {
+        "year": "2023",
+        "note": "A Fortune search snippet quoted 'very capable, very general systems in the next few years'; not opened."
+      },
+      {
+        "year": "2026",
+        "note": "36kr and other recent results report him narrowing AGI to two to three years; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2017",
+        "what_found": "Mostly recent coverage; the Academy of Achievement page mentions a 2017 award but no dated 2017 AI forecast."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2017 interview AGI \"years\"",
+        "what_found": "Only 2023-2026 interviews about AGI timelines."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Recent AGI-timeline news only."
+      },
+      {
+        "query_or_url": "Hassabis AlphaGo Zero 2017 \"ten years\" scientific",
+        "what_found": "MIT Technology Review, 18 Oct 2017, with the within-10-years paraphrase."
+      },
+      {
+        "query_or_url": "Hassabis Asilomar 2017 superintelligence panel transcript",
+        "what_found": "Medium and Sam Harris pages linking the panel video; no transcript with his words."
+      },
+      {
+        "query_or_url": "Hassabis 2017 interview Guardian OR \"Financial Times\" OR Verge AI general",
+        "what_found": "Recent pieces and the MIT CBMM 'Towards General Artificial Intelligence' talk; nothing dated 2017 with a forecast."
+      },
+      {
+        "query_or_url": "Guardian October 2017 AlphaGo Zero Hassabis \"10 years\" scientific experts",
+        "what_found": "The MIT TR piece again, plus a Fox News print page with no dated forecast from him."
+      },
+      {
+        "query_or_url": "futureoflife.org superintelligence science or fiction panel transcript Hassabis Musk",
+        "what_found": "Write-ups of the 7 Jan 2017 Beneficial AI panel, without his timing statements."
+      },
+      {
+        "query_or_url": "Hassabis 2017 \"AI scientist\" OR \"Nobel\" OR \"decades\" interview Wired OR \"The Verge\" OR \"Bloomberg\"",
+        "what_found": "A 2016 Bloomberg interview and 2024 Nobel coverage; nothing from 2017."
+      },
+      {
+        "query_or_url": "theguardian.com 2017 AlphaGo Zero Hassabis \"it's more powerful\"",
+        "what_found": "SCMP reprint of the Guardian AlphaGo Zero story with the next-decade paraphrase."
+      },
+      {
+        "query_or_url": "Hassabis \"Future of Go Summit\" Wuzhen 2017 speech AI science",
+        "what_found": "His arrival tweet and event pages; no forecast."
+      },
+      {
+        "query_or_url": "Hassabis 2017 \"general AI\" OR AGI \"decades away\" OR \"many decades\" interview",
+        "what_found": "Only 2023-2026 timeline coverage."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/",
+        "what_found": "Opened; the 10-year span is the reporter's paraphrase, followed by his own undated quote."
+      },
+      {
+        "query_or_url": "https://www.marketingaiinstitute.com/blog/what-elon-musk-nick-bostrom-and-demis-hassabis-think-about-better-than-human-artificial-intelligence",
+        "what_found": "Opened; describes the Asilomar panel but gives no Hassabis timeline."
+      },
+      {
+        "query_or_url": "https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs",
+        "what_found": "Opened (cut off part-way, no date shown); has the next-decade paraphrase."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2017 the only dated AI forecast found is from the AlphaGo Zero announcement in October, when news reports said Hassabis expected AI to be working with scientists and doctors within a decade. Both reports frame the span in the reporter's words, and his quoted words have no date. No 2017 statement on when AGI arrives was found."
+  },
+  "reply_text": "I found one dated forecast from Hassabis in 2017, and only in news reports. On the day AlphaGo Zero was announced, two reports said he expected AI to be working with scientists within ten years, or in the next decade. In both, the time span is the reporter's wording, not his.\n\n**Where it appears**\n- **MIT Technology Review, 18 October 2017 (Will Knight).** The reporter's sentence is: \"Hassabis is hopeful that within 10 years AI will play an important role in solving important problems in science, medicine, or other fields.\" The quote that follows it has no date in it: \"I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine.\"\n- **South China Morning Post, reprinting a Guardian story, October 2017.** It says: \"In the next decade, Hassabis believes that AlphaGo's descendants will work alongside humans as scientific and medical experts.\" That is also the paper's paraphrase. The page cut off part-way and showed no publication date, so the October date comes from my own knowledge, not the page.\n\n**What I didn't find**\n- **Beneficial AI 2017 panel (Asilomar, 7 January).** The write-up I opened describes the panel but quotes no timeline from Hassabis. I didn't find a transcript.\n- **Future of Go Summit (May 2017).** My search only turned up his tweet about arriving, with no forecast.\n- **Undated statements about when AGI arrives:** none found for 2017.\n- **Other years:** most search results were about 2023 to 2026, when he gave AGI timelines such as \"five to ten years\" and \"two to three years.\"\n\n**Leads I couldn't check**\n- A search preview of the same article showed a longer version with two more lines: that human-level AI is \"still a long way off,\" and that \"the next decade\" is more realistic for drug and materials work. Those lines weren't on the truncated page I opened, so I haven't quoted them. Fetching the Guardian original, which I didn't get to, may confirm them.\n- His July 2017 paper in Neuron (\"Neuroscience-Inspired Artificial Intelligence\") and a full Asilomar transcript are the most likely places for more of his own words.\n\nI used all 12 searches and 3 of the 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2017-10-18\",\n      \"quote\": \"Hassabis is hopeful that within 10 years AI will play an important role in solving important problems in science, medicine, or other fields. “I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine,” he says.\",\n      \"what_is_predicted\": \"Within ten years, AI algorithms like AlphaGo Zero will be routinely working with scientists to advance science and medicine.\",\n      \"date_or_span\": \"within 10 years (about 2027); the span is the reporter's paraphrase, and the quoted words have no date\",\n      \"occasion\": \"Press interview on the release of the AlphaGo Zero paper in Nature\",\n      \"source_url\": \"https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2017-10\",\n      \"quote\": \"In the next decade, Hassabis believes that AlphaGo’s descendants will work alongside humans as scientific and medical experts.\",\n      \"what_is_predicted\": \"In the next decade, systems descended from AlphaGo will work alongside humans as scientific and medical experts.\",\n      \"date_or_span\": \"the next decade (to about 2027); reporter's paraphrase\",\n      \"occasion\": \"AlphaGo Zero announcement; Guardian story reprinted by the South China Morning Post (same occasion as the item above)\",\n      \"source_url\": \"https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results showed NBC News and others reporting his view that AGI will emerge in five to ten years; not opened.\"},\n    {\"year\": \"2023\", \"note\": \"A Fortune search snippet quoted 'very capable, very general systems in the next few years'; not opened.\"},\n    {\"year\": \"2026\", \"note\": \"36kr and other recent results report him narrowing AGI to two to three years; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2017\", \"what_found\": \"Mostly recent coverage; the Academy of Achievement page mentions a 2017 award but no dated 2017 AI forecast.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2017 interview AGI \\\"years\\\"\", \"what_found\": \"Only 2023-2026 interviews about AGI timelines.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2017 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Recent AGI-timeline news only.\"},\n    {\"query_or_url\": \"Hassabis AlphaGo Zero 2017 \\\"ten years\\\" scientific\", \"what_found\": \"MIT Technology Review, 18 Oct 2017, with the within-10-years paraphrase.\"},\n    {\"query_or_url\": \"Hassabis Asilomar 2017 superintelligence panel transcript\", \"what_found\": \"Medium and Sam Harris pages linking the panel video; no transcript with his words.\"},\n    {\"query_or_url\": \"Hassabis 2017 interview Guardian OR \\\"Financial Times\\\" OR Verge AI general\", \"what_found\": \"Recent pieces and the MIT CBMM 'Towards General Artificial Intelligence' talk; nothing dated 2017 with a forecast.\"},\n    {\"query_or_url\": \"Guardian October 2017 AlphaGo Zero Hassabis \\\"10 years\\\" scientific experts\", \"what_found\": \"The MIT TR piece again, plus a Fox News print page with no dated forecast from him.\"},\n    {\"query_or_url\": \"futureoflife.org superintelligence science or fiction panel transcript Hassabis Musk\", \"what_found\": \"Write-ups of the 7 Jan 2017 Beneficial AI panel, without his timing statements.\"},\n    {\"query_or_url\": \"Hassabis 2017 \\\"AI scientist\\\" OR \\\"Nobel\\\" OR \\\"decades\\\" interview Wired OR \\\"The Verge\\\" OR \\\"Bloomberg\\\"\", \"what_found\": \"A 2016 Bloomberg interview and 2024 Nobel coverage; nothing from 2017.\"},\n    {\"query_or_url\": \"theguardian.com 2017 AlphaGo Zero Hassabis \\\"it's more powerful\\\"\", \"what_found\": \"SCMP reprint of the Guardian AlphaGo Zero story with the next-decade paraphrase.\"},\n    {\"query_or_url\": \"Hassabis \\\"Future of Go Summit\\\" Wuzhen 2017 speech AI science\", \"what_found\": \"His arrival tweet and event pages; no forecast.\"},\n    {\"query_or_url\": \"Hassabis 2017 \\\"general AI\\\" OR AGI \\\"decades away\\\" OR \\\"many decades\\\" interview\", \"what_found\": \"Only 2023-2026 timeline coverage.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/\", \"what_found\": \"Opened; the 10-year span is the reporter's paraphrase, followed by his own undated quote.\"},\n    {\"query_or_url\": \"https://www.marketingaiinstitute.com/blog/what-elon-musk-nick-bostrom-and-demis-hassabis-think-about-better-than-human-artificial-intelligence\", \"what_found\": \"Opened; describes the Asilomar panel but gives no Hassabis timeline.\"},\n    {\"query_or_url\": \"https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs\", \"what_found\": \"Opened (cut off part-way, no date shown); has the next-decade paraphrase.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2017 the only dated AI forecast found is from the AlphaGo Zero announcement in October, when news reports said Hassabis expected AI to be working with scientists and doctors within a decade. Both reports frame the span in the reporter's words, and his quoted words have no date. No 2017 statement on when AGI arrives was found.\"\n}\n```"
+}
