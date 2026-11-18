@@ -1,0 +1,240 @@
+{
+  "speaker_id": "altman",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.603,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7927
+      },
+      "cache_creation_input_tokens": 71032,
+      "cache_read_input_tokens": 276206,
+      "inference_geo": "global",
+      "input_tokens": 20,
+      "output_tokens": 6128,
+      "output_tokens_details": {
+        "thinking_tokens": 1732
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sam Altman\" AI prediction 2026','\"Sam Altman\" 2026 interview AGI \"years\"','\"Sam Altman\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:500].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Sam Altman blog.samaltman.com 2026 post','Sam Altman India AI Impact Summit February 2026 speech','Sam Altman Singularity University Summit July 2026 transcript six months','Sam Altman podcast 2026 transcript robots \"two or three years\"']\nfor q in qs2:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman blog.samaltman.com 2026 post"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman India AI Impact Summit February 2026 speech"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman Singularity University Summit July 2026 transcript six months"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman podcast 2026 transcript robots \"two or three years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nurls=['https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest','https://stripe.com/sessions/2026/a-conversation-with-sam-altman','https://fortune.com/2026/10/05/can-superintelligence-be-controlled-sam-altman-openai-ai-safety-doomsday-risk-delayed-ipo/','https://cryptobriefing.com/sam-altman-ai-progress-six-months-two-years/','https://www.digit.in/news/general/india-ai-impact-summit-2026-openai-ceo-sam-altman-calls-for-urgent-ai-regulations-as-superintelligence-nears.html']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    P[u]=r[0].get('content',''); print(u,len(P[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://stripe.com/sessions/2026/a-conversation-with-sam-altman"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2026/10/05/can-superintelligence-be-controlled-sam-altman-openai-ai-safety-doomsday-risk-delayed-ipo/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://cryptobriefing.com/sam-altman-ai-progress-six-months-two-years/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.digit.in/news/general/india-ai-impact-summit-2026-openai-ceo-sam-altman-calls-for-urgent-ai-regulations-as-superintelligence-nears.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def get(u):\n    r=await_cache[u]\nawait_cache={}\ntexts={}\n# re-extract content from earlier fetch results isn't stored; refetch not allowed. Check P\nprint(P.keys())"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=r['content']['source']['data']\ni=d.find('He also predicted'); print(d[i-200:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest'\nrr=await web_fetch({\"url\":u})\nif isinstance(rr,str): rr=json.loads(rr)\nif isinstance(rr,list): rr=rr[0]\nt=rr['content']['source']['data'] if isinstance(rr.get('content'),dict) else rr.get('content','')\nprint(len(t))\nfor k in ['two or three years','ChatGPT moment','chat GBT','next six months','next 12 months','years','2030','2028','2027','decade']:\n    for m in re.finditer(re.escape(k),t):\n        print('##',k,':',t[max(0,m.start()-400):m.end()+250].replace('\\n',' '))\n        print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-07",
+        "quote": "since doing that I think our progress has been remarkable and just given what we see in the pipeline will be much more remarkable over the next 12 months.",
+        "what_is_predicted": "Altman forecasts that OpenAI's model progress over the next 12 months will be much more remarkable than its recent progress.",
+        "date_or_span": "the next 12 months (to about mid-2027)",
+        "occasion": "Invest Like the Best podcast with Patrick O'Shaughnessy, EP.484, 'How to Make an Abundant Future'",
+        "source_url": "https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2026-07",
+        "quote": "On the positive side, in some sense, we are about to create a genie that can grant any wish.",
+        "source_url": "https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results kept returning The Gentle Singularity (blog.samaltman.com, June 2025: '2026 will likely see the arrival of systems that can figure out novel insights') and a September 2025 Die Welt interview quoted in Fortune about AI beyond human ability by 2030. Both are from 2025, not this year."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2026",
+        "what_found": "Mostly the 2025 Gentle Singularity post, plus news of a July 2026 Singularity University Summit remark about the next six months and of the August 2026 TIME interview about AGI."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2026 interview AGI \"years\"",
+        "what_found": "Coverage of the TIME interview (internal AGI by end of 2026, already recorded) and of the July 2026 Invest Like the Best interview with a robotics 'ChatGPT moment' in two or three years."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "More coverage of the TIME AGI claim and the Fortune 5 October 2026 interview."
+      },
+      {
+        "query_or_url": "Sam Altman blog.samaltman.com 2026 post",
+        "what_found": "His only 2026 blog post was apparently the 10 April post after the attack on his home; no dated prediction appeared in the listings."
+      },
+      {
+        "query_or_url": "Sam Altman India AI Impact Summit February 2026 speech",
+        "what_found": "News reports on his 19 February 2026 New Delhi speech, including the Digit article."
+      },
+      {
+        "query_or_url": "Sam Altman Singularity University Summit July 2026 transcript six months",
+        "what_found": "Only secondary reports of the 'next six months' quote and his late-July 'we are now, like, in the singularity' remark; no transcript found."
+      },
+      {
+        "query_or_url": "Sam Altman podcast 2026 transcript robots \"two or three years\"",
+        "what_found": "Found the Stripe Sessions 2026 transcript page and transcript pages for Invest Like the Best EP.484, where the robotics two-to-three-year remark appears in listings."
+      },
+      {
+        "query_or_url": "https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest",
+        "what_found": "Machine transcript of Invest Like the Best EP.484, cut off at about 35,000 characters before the robotics section; holds the 'next 12 months' line. I opened it twice: the first time the text was printed but not saved, so the second opening was spent getting it back."
+      },
+      {
+        "query_or_url": "https://stripe.com/sessions/2026/a-conversation-with-sam-altman",
+        "what_found": "Official Stripe Sessions transcript, about 29 April 2026 ('day 119'); the part I read had only undated remarks such as being '10% of the way there' on non-coding work."
+      },
+      {
+        "query_or_url": "https://fortune.com/2026/10/05/can-superintelligence-be-controlled-sam-altman-openai-ai-safety-doomsday-risk-delayed-ipo/",
+        "what_found": "Fortune magazine profile and interview; no dated AI-capability forecast in Altman's own quoted words."
+      },
+      {
+        "query_or_url": "https://cryptobriefing.com/sam-altman-ai-progress-six-months-two-years/",
+        "what_found": "The page would not open, so the Singularity University Summit 'next six months' quote is not verified."
+      },
+      {
+        "query_or_url": "https://www.digit.in/news/general/india-ai-impact-summit-2026-openai-ceo-sam-altman-calls-for-urgent-ai-regulations-as-superintelligence-nears.html",
+        "what_found": "Paraphrase only: an early form of superintelligence within the next few years, and more intellectual output inside data centres than outside by end of 2028. No direct quotation, so not listed as a candidate."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "The recorded 2026 claims (TIME on internal AGI and the September and October items) were seen only in news coverage, not in his own words. The one new dated line I could read on an opened page is a 12-month progress forecast from Invest Like the Best, in a low-quality machine transcript and borderline as a prediction about AI. Strong leads I could not verify: the 'ChatGPT moment for robotics in two or three years' remark from the same podcast, the Singularity University Summit 'next six months' quote, and the India summit superintelligence and 2028 remarks, which Digit gives only as paraphrase."
+  },
+  "reply_text": "I found one new dated prediction for 2026, and it's a weak one. I also found nothing that clearly matches any of your eight recorded claims, though one paraphrase may cover the same ground as the late-2028 file.\n\n**The candidate:** On Invest Like the Best (EP.484, July 2026), Altman says OpenAI's progress \"will be much more remarkable over the next 12 months.\" Three caveats:\n- **Weak source.** The text comes from a third-party machine transcript with obvious errors (\"chat GBT\", \"Hall of Pain\" for the \"jalapeño\" chip, \"Kimmy\"/\"Chemie\" for Kimi). It is not an official transcript, so check the quote against the audio before using it.\n- **Borderline wording.** He's talking about OpenAI's own progress, so you may decide it isn't really a prediction about AI.\n- **Uncertain date.** The July 28 date comes only from search listings; the page I opened shows no date.\n\n**Seen but not usable as quotes:**\n- **Robots in two or three years.** Several search results say that in the same podcast Altman expects a \"ChatGPT moment\" for robotics \"in the next two or three years.\" The transcript page cut off before that part, and I had no page openings left. It's the strongest lead still open.\n- **Singularity University Summit, July 2026.** News reports quote him saying models will progress faster in the next six months than in the past two years. The only report I tried wouldn't open.\n- **India AI Impact Summit speech, 19 February.** Digit reports, in its own words only, that he expects an early form of superintelligence \"within the next few years\" and more intellectual output inside data centres than outside by the end of 2028. The 2028 point may be the same claim as your file dated 2026-03-11 (more thinking capacity in data centres by late 2028), but the dates differ by three weeks, so I left the matching field empty.\n- **Fortune interview (5 October).** The \"10% risk … by the end of the decade\" line is the writer's paraphrase of his reply to other people's estimates, not his forecast. His one quoted \"I think that will happen\" is about lab leaders meeting, not about AI.\n- **Stripe Sessions (29 April).** The part of the transcript I read had no dated AI prediction.\n\nOne process note: in my first round I printed the page text but didn't save it, so I spent my sixth and last page opening re-opening the podcast transcript.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2026-07\",\n      \"quote\": \"since doing that I think our progress has been remarkable and just given what we see in the pipeline will be much more remarkable over the next 12 months.\",\n      \"what_is_predicted\": \"Altman forecasts that OpenAI's model progress over the next 12 months will be much more remarkable than its recent progress.\",\n      \"date_or_span\": \"the next 12 months (to about mid-2027)\",\n      \"occasion\": \"Invest Like the Best podcast with Patrick O'Shaughnessy, EP.484, 'How to Make an Abundant Future'\",\n      \"source_url\": \"https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2026-07\",\n      \"quote\": \"On the positive side, in some sense, we are about to create a genie that can grant any wish.\",\n      \"source_url\": \"https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results kept returning The Gentle Singularity (blog.samaltman.com, June 2025: '2026 will likely see the arrival of systems that can figure out novel insights') and a September 2025 Die Welt interview quoted in Fortune about AI beyond human ability by 2030. Both are from 2025, not this year.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2026\", \"what_found\": \"Mostly the 2025 Gentle Singularity post, plus news of a July 2026 Singularity University Summit remark about the next six months and of the August 2026 TIME interview about AGI.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the TIME interview (internal AGI by end of 2026, already recorded) and of the July 2026 Invest Like the Best interview with a robotics 'ChatGPT moment' in two or three years.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"More coverage of the TIME AGI claim and the Fortune 5 October 2026 interview.\"},\n    {\"query_or_url\": \"Sam Altman blog.samaltman.com 2026 post\", \"what_found\": \"His only 2026 blog post was apparently the 10 April post after the attack on his home; no dated prediction appeared in the listings.\"},\n    {\"query_or_url\": \"Sam Altman India AI Impact Summit February 2026 speech\", \"what_found\": \"News reports on his 19 February 2026 New Delhi speech, including the Digit article.\"},\n    {\"query_or_url\": \"Sam Altman Singularity University Summit July 2026 transcript six months\", \"what_found\": \"Only secondary reports of the 'next six months' quote and his late-July 'we are now, like, in the singularity' remark; no transcript found.\"},\n    {\"query_or_url\": \"Sam Altman podcast 2026 transcript robots \\\"two or three years\\\"\", \"what_found\": \"Found the Stripe Sessions 2026 transcript page and transcript pages for Invest Like the Best EP.484, where the robotics two-to-three-year remark appears in listings.\"},\n    {\"query_or_url\": \"https://podcasttranscript.ai/library/sam-altman-how-to-make-an-abundant-future-invest\", \"what_found\": \"Machine transcript of Invest Like the Best EP.484, cut off at about 35,000 characters before the robotics section; holds the 'next 12 months' line. I opened it twice: the first time the text was printed but not saved, so the second opening was spent getting it back.\"},\n    {\"query_or_url\": \"https://stripe.com/sessions/2026/a-conversation-with-sam-altman\", \"what_found\": \"Official Stripe Sessions transcript, about 29 April 2026 ('day 119'); the part I read had only undated remarks such as being '10% of the way there' on non-coding work.\"},\n    {\"query_or_url\": \"https://fortune.com/2026/10/05/can-superintelligence-be-controlled-sam-altman-openai-ai-safety-doomsday-risk-delayed-ipo/\", \"what_found\": \"Fortune magazine profile and interview; no dated AI-capability forecast in Altman's own quoted words.\"},\n    {\"query_or_url\": \"https://cryptobriefing.com/sam-altman-ai-progress-six-months-two-years/\", \"what_found\": \"The page would not open, so the Singularity University Summit 'next six months' quote is not verified.\"},\n    {\"query_or_url\": \"https://www.digit.in/news/general/india-ai-impact-summit-2026-openai-ceo-sam-altman-calls-for-urgent-ai-regulations-as-superintelligence-nears.html\", \"what_found\": \"Paraphrase only: an early form of superintelligence within the next few years, and more intellectual output inside data centres than outside by end of 2028. No direct quotation, so not listed as a candidate.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"The recorded 2026 claims (TIME on internal AGI and the September and October items) were seen only in news coverage, not in his own words. The one new dated line I could read on an opened page is a 12-month progress forecast from Invest Like the Best, in a low-quality machine transcript and borderline as a prediction about AI. Strong leads I could not verify: the 'ChatGPT moment for robotics in two or three years' remark from the same podcast, the Singularity University Summit 'next six months' quote, and the India summit superintelligence and 2028 remarks, which Digit gives only as paraphrase.\"\n}\n```"
+}

@@ -1,0 +1,296 @@
+{
+  "speaker_id": "legg",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5256,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7594
+      },
+      "cache_creation_input_tokens": 49246,
+      "cache_read_input_tokens": 320643,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 6257,
+      "output_tokens_details": {
+        "thinking_tokens": 1136
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Shane Legg\" AI prediction 2026','\"Shane Legg\" 2026 interview AGI \"years\"','\"Shane Legg\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:600].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"DeepMind Institute\" Shane Legg essay AGI','Shane Legg Financial Times interview DeepMind Institute minimal AGI 2028','\"Shane Legg\" January 2026 minimal AGI podcast']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"DeepMind Institute\" Shane Legg essay AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg Financial Times interview DeepMind Institute minimal AGI 2028"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" January 2026 minimal AGI podcast"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://institute.deepmind.com/','https://x.com/ShaneLegg/status/2100229706641539248']:\n    r=await web_fetch({\"url\":u}); P[u]=r\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0].get('content',''); print(\"==\",u,len(c)); print(c[:3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://institute.deepmind.com/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def pc(u):\n    r=P[u]\n    if isinstance(r,str):\n        try: r=json.loads(r)\n        except: return r\n    if isinstance(r,dict): return str(r)\n    return r[0].get('content','')\nprint(P.keys())\nc=pc('https://institute.deepmind.com/'); print(len(c)); print(c[:4000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef text(u):\n    r=P[u]\n    if isinstance(r,str):\n        try: r=json.loads(r)\n        except: return r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return c if c else str(r)\nfor u in ['https://institute.deepmind.com/essays/introducing-the-deepmind-institute/','https://institute.deepmind.com/essays/the-economics-of-intelligence/']:\n    P[u]=await web_fetch({\"url\":u})\n    t=text(u); print(\"==\",u,len(t))\n    for m in re.finditer(r'[^.\\n]*\\b(20[2-4]\\d|year|decade|soon|horizon|imminent|near)\\b[^.\\n]*',t):\n        print(' -',m.group(0).strip()[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://institute.deepmind.com/essays/introducing-the-deepmind-institute/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://institute.deepmind.com/essays/the-economics-of-intelligence/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=text('https://institute.deepmind.com/essays/introducing-the-deepmind-institute/')\ni=t.find('Sep 16, 2026'); print(t[i:i+7000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t2=text('https://institute.deepmind.com/essays/the-economics-of-intelligence/')\nfor k in ['AGI will','within','next','by 20','years','soon','expect','predict','forecast']:\n    for m in re.finditer(k,t2):\n        print(k,'::',t2[max(0,m.start()-200):m.start()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Shane Legg podcast 2026 AGI timeline interview transcript','Shane Legg FT interview \"comfortable\" minimal AGI 2028 ft.com','Shane Legg talk keynote 2026 AGI \"2028\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg podcast 2026 AGI timeline interview transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg FT interview \"comfortable\" minimal AGI 2028 ft.com"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg talk keynote 2026 AGI \"2028\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "us=['https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/','https://www.nzinitiative.org.nz/reports-and-media/opinion/new-zealand-ignores-the-kiwi-who-saw-the-future-coming','https://aimultiple.com/artificial-general-intelligence-singularity-timing']\nfor u in us:\n    P[u]=await web_fetch({\"url\":u})\nt=text(us[0]); i=t.find('Sept 16'); print(t[i:i+3000] if i>=0 else t[:3000])\nprint('=====')\nt=text(us[1]); i=t.find('2028'); print(t[max(0,i-2500):i+1500])\nprint('=====')\nt=text(us[2]); \nfor m in re.finditer('Legg',t): print(t[max(0,m.start()-300):m.start()+700].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.nzinitiative.org.nz/reports-and-media/opinion/new-zealand-ignores-the-kiwi-who-saw-the-future-coming"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://aimultiple.com/artificial-general-intelligence-singularity-timing"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=text(us[0])\nfor k in ['comfortable','premature','capabilities get ahead']:\n    for m in re.finditer(k,t): print(k,'::',t[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()\nt=text(us[2]); print(len(t)); print(t[:500])\nfor m in re.finditer('(?i)legg|january 2026',t): print(t[max(0,m.start()-300):m.start()+600].replace('\\n',' '));print('--')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-09-16",
+        "quote": "Legg remains “comfortable” with his forecast of a 50% chance of achieving “minimal” AGI by 2028, the report said.",
+        "what_is_predicted": "Legg said he still holds his forecast of a 50% chance that 'minimal' AGI will be achieved by 2028.",
+        "date_or_span": "by 2028",
+        "occasion": "Financial Times interview at the launch of the DeepMind Institute, as reported by Reuters",
+        "source_url": "https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2026-09-16",
+        "quote": "While AI can still sometimes fail at basic tasks and lacks the consistency and creativity to meet the bar of full AGI, we expect those gaps to be closed soon.",
+        "source_url": "https://institute.deepmind.com/essays/introducing-the-deepmind-institute/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Google DeepMind podcast with Hannah Fry ('The Arrival of AGI', 11 December 2025): search results show him restating 50% minimal AGI by 2028; the-decoder and nextbigfuture covered it in December 2025. Not opened."
+      },
+      {
+        "year": "2023",
+        "note": "Dwarkesh Podcast transcript at dwarkesh.com/p/shane-legg; the search snippet shows 'a 50% chance that we have AGI by 2028'. Not opened."
+      },
+      {
+        "year": "2009",
+        "note": "A NZ Herald opinion piece by Oliver Hartwich (30 July 2026, opened) says Legg has put AGI-by-2028 at 50/50 since 2009, and that 'in a recent interview' he confirmed it. It doesn't name that interview."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2026",
+        "what_found": "University of Auckland notice of a 4 December 2026 lecture, plus FT/Reuters-based coverage of the 16 September DeepMind Institute launch."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2026 interview AGI \"years\"",
+        "what_found": "Mostly coverage of the December 2025 DeepMind podcast, the NZ Initiative opinion piece, and an X post about the institute launch."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Roundup sites repeating the 50%-by-2028 figure; no new 2026 statement."
+      },
+      {
+        "query_or_url": "\"DeepMind Institute\" Shane Legg essay AGI",
+        "what_found": "DeepMind Institute site, launch essay, economics essay and Legg's X post."
+      },
+      {
+        "query_or_url": "Shane Legg Financial Times interview DeepMind Institute minimal AGI 2028",
+        "what_found": "Several reprints of the Reuters summary of the FT interview; the FT article itself didn't turn up."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" January 2026 minimal AGI podcast",
+        "what_found": "Results all point to the 11 December 2025 Google DeepMind podcast, not a January 2026 appearance."
+      },
+      {
+        "query_or_url": "Shane Legg podcast 2026 AGI timeline interview transcript",
+        "what_found": "Dwarkesh 2023 interview and the December 2025 DeepMind podcast; no 2026 podcast found."
+      },
+      {
+        "query_or_url": "Shane Legg FT interview \"comfortable\" minimal AGI 2028 ft.com",
+        "what_found": "More Reuters reprints; no ft.com page."
+      },
+      {
+        "query_or_url": "Shane Legg talk keynote 2026 AGI \"2028\"",
+        "what_found": "Speaker-bureau page and the Auckland 'AGI Incoming' lecture notice; no 2026 talk transcript."
+      },
+      {
+        "query_or_url": "https://institute.deepmind.com/",
+        "what_found": "Institute homepage listing the essays; no prediction on it."
+      },
+      {
+        "query_or_url": "https://institute.deepmind.com/essays/introducing-the-deepmind-institute/",
+        "what_found": "Launch essay dated 16 September 2026 by Legg, Manyika and Hassabis; says the gaps to full AGI will close 'soon', with no date."
+      },
+      {
+        "query_or_url": "https://institute.deepmind.com/essays/the-economics-of-intelligence/",
+        "what_found": "29 October 2026 essay by Imas, Koh and Legg on coordination and economic change; no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/",
+        "what_found": "Reuters summary of the FT interview, including the 'comfortable' with 50% minimal AGI by 2028 line."
+      },
+      {
+        "query_or_url": "https://www.nzinitiative.org.nz/reports-and-media/opinion/new-zealand-ignores-the-kiwi-who-saw-the-future-coming",
+        "what_found": "30 July 2026 opinion piece by Oliver Hartwich retelling Legg's 2028 forecast; none of Legg's own words."
+      },
+      {
+        "query_or_url": "https://aimultiple.com/artificial-general-intelligence-singularity-timing",
+        "what_found": "Page opened, but the fetched text had no mention of Legg, so the 'January 2026' claim couldn't be checked."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Legg's main 2026 event was launching the DeepMind Institute on 16 September. In the FT interview that day, as reported by Reuters, he said he was still 'comfortable' with his long-held forecast of a 50% chance of minimal AGI by 2028. I saw that only in coverage. His own co-signed launch essay says only that the gaps to full AGI will close 'soon', and no other dated 2026 statement turned up."
+  },
+  "reply_text": "I found one 2026 candidate, and I only saw it in news coverage, not in Legg's own words. On 16 September 2026 he launched the DeepMind Institute. Reuters, summarising a Financial Times interview I couldn't open, reported that he remained \"comfortable\" with his forecast of a 50% chance of \"minimal\" AGI by 2028. Only those two quoted words are presented as his. The rest is Reuters' paraphrase of the FT, and the forecast itself is an old one he said he still holds.\n\n- **His own 2026 writing:** the institute's launch essay (16 September, signed by Legg, James Manyika and Demis Hassabis) gives no date. It says \"we expect those gaps to be closed soon\", meaning the gaps between today's AI and full AGI. I've listed it under undated.\n- **No dated claims:** the 29 October economics essay he co-wrote contains no dated prediction about AI.\n- **Other years:** the podcast interviews that state the 2028 forecast are from 2025 (Google DeepMind podcast, 11 December 2025) and 2023 (Dwarkesh Patel). Two secondary sites seem to treat that 2025 podcast as a 2026 statement. That includes AIMultiple's line about a \"January 2026\" prediction, which wasn't in the page text I fetched.\n- **Gaps:** I didn't open his 16 September X post or the FT article itself. His Auckland lecture, \"AGI Incoming\", is set for 4 December 2026 and hasn't happened yet. I used 9 of 12 searches and all 6 page openings. One opening went to the institute's homepage, which has no prediction on it.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2026-09-16\",\n      \"quote\": \"Legg remains “comfortable” with his forecast of a 50% chance of achieving “minimal” AGI by 2028, the report said.\",\n      \"what_is_predicted\": \"Legg said he still holds his forecast of a 50% chance that 'minimal' AGI will be achieved by 2028.\",\n      \"date_or_span\": \"by 2028\",\n      \"occasion\": \"Financial Times interview at the launch of the DeepMind Institute, as reported by Reuters\",\n      \"source_url\": \"https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2026-09-16\",\n      \"quote\": \"While AI can still sometimes fail at basic tasks and lacks the consistency and creativity to meet the bar of full AGI, we expect those gaps to be closed soon.\",\n      \"source_url\": \"https://institute.deepmind.com/essays/introducing-the-deepmind-institute/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Google DeepMind podcast with Hannah Fry ('The Arrival of AGI', 11 December 2025): search results show him restating 50% minimal AGI by 2028; the-decoder and nextbigfuture covered it in December 2025. Not opened.\"},\n    {\"year\": \"2023\", \"note\": \"Dwarkesh Podcast transcript at dwarkesh.com/p/shane-legg; the search snippet shows 'a 50% chance that we have AGI by 2028'. Not opened.\"},\n    {\"year\": \"2009\", \"note\": \"A NZ Herald opinion piece by Oliver Hartwich (30 July 2026, opened) says Legg has put AGI-by-2028 at 50/50 since 2009, and that 'in a recent interview' he confirmed it. It doesn't name that interview.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2026\", \"what_found\": \"University of Auckland notice of a 4 December 2026 lecture, plus FT/Reuters-based coverage of the 16 September DeepMind Institute launch.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly coverage of the December 2025 DeepMind podcast, the NZ Initiative opinion piece, and an X post about the institute launch.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Roundup sites repeating the 50%-by-2028 figure; no new 2026 statement.\"},\n    {\"query_or_url\": \"\\\"DeepMind Institute\\\" Shane Legg essay AGI\", \"what_found\": \"DeepMind Institute site, launch essay, economics essay and Legg's X post.\"},\n    {\"query_or_url\": \"Shane Legg Financial Times interview DeepMind Institute minimal AGI 2028\", \"what_found\": \"Several reprints of the Reuters summary of the FT interview; the FT article itself didn't turn up.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" January 2026 minimal AGI podcast\", \"what_found\": \"Results all point to the 11 December 2025 Google DeepMind podcast, not a January 2026 appearance.\"},\n    {\"query_or_url\": \"Shane Legg podcast 2026 AGI timeline interview transcript\", \"what_found\": \"Dwarkesh 2023 interview and the December 2025 DeepMind podcast; no 2026 podcast found.\"},\n    {\"query_or_url\": \"Shane Legg FT interview \\\"comfortable\\\" minimal AGI 2028 ft.com\", \"what_found\": \"More Reuters reprints; no ft.com page.\"},\n    {\"query_or_url\": \"Shane Legg talk keynote 2026 AGI \\\"2028\\\"\", \"what_found\": \"Speaker-bureau page and the Auckland 'AGI Incoming' lecture notice; no 2026 talk transcript.\"},\n    {\"query_or_url\": \"https://institute.deepmind.com/\", \"what_found\": \"Institute homepage listing the essays; no prediction on it.\"},\n    {\"query_or_url\": \"https://institute.deepmind.com/essays/introducing-the-deepmind-institute/\", \"what_found\": \"Launch essay dated 16 September 2026 by Legg, Manyika and Hassabis; says the gaps to full AGI will close 'soon', with no date.\"},\n    {\"query_or_url\": \"https://institute.deepmind.com/essays/the-economics-of-intelligence/\", \"what_found\": \"29 October 2026 essay by Imas, Koh and Legg on coordination and economic change; no dated AI prediction.\"},\n    {\"query_or_url\": \"https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/\", \"what_found\": \"Reuters summary of the FT interview, including the 'comfortable' with 50% minimal AGI by 2028 line.\"},\n    {\"query_or_url\": \"https://www.nzinitiative.org.nz/reports-and-media/opinion/new-zealand-ignores-the-kiwi-who-saw-the-future-coming\", \"what_found\": \"30 July 2026 opinion piece by Oliver Hartwich retelling Legg's 2028 forecast; none of Legg's own words.\"},\n    {\"query_or_url\": \"https://aimultiple.com/artificial-general-intelligence-singularity-timing\", \"what_found\": \"Page opened, but the fetched text had no mention of Legg, so the 'January 2026' claim couldn't be checked.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Legg's main 2026 event was launching the DeepMind Institute on 16 September. In the FT interview that day, as reported by Reuters, he said he was still 'comfortable' with his long-held forecast of a 50% chance of minimal AGI by 2028. I saw that only in coverage. His own co-signed launch essay says only that the gaps to full AGI will close 'soon', and no other dated 2026 statement turned up.\"\n}\n```"
+}

@@ -1,0 +1,356 @@
+{
+  "speaker_id": "suleyman",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7934,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8036
+      },
+      "cache_creation_input_tokens": 70023,
+      "cache_read_input_tokens": 644835,
+      "inference_geo": "global",
+      "input_tokens": 38,
+      "output_tokens": 11207,
+      "output_tokens_details": {
+        "thinking_tokens": 3551
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mustafa Suleyman\" AI prediction 2023','\"Mustafa Suleyman\" 2023 interview AGI \"years\"','\"Mustafa Suleyman\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:250].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(\"ERR\",r); return \"\"\n    c=r[0].get('content',''); F[u]=c; print(u,len(c)); return c\npat=r\"(year|decade|20[2-4]\\d|month|by the end|next \\w+ years)\"\ndef grep(c,p=pat,w=250):\n    for m in re.finditer(p,c,flags=re.I):\n        pass\n    out=[];last=-1000\n    for m in re.finditer(p,c,flags=re.I):\n        if m.start()-last<w: continue\n        last=m.start(); out.append(c[max(0,m.start()-w):m.start()+w].replace('\\n',' '))\n    return out\nc=await fetch(\"https://www.technologyreview.com/2023/09/15/1079624/deepmind-inflection-generative-ai-whats-next-mustafa-suleyman/\")\nfor s in grep(c): print('--',s)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2023/09/15/1079624/deepmind-inflection-generative-ai-whats-next-mustafa-suleyman/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content','')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    if not c: print(\"ERR\",str(r)[:300])\n    F[u]=c; print(u,len(c)); return c\nc=await fetch(\"https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/\")\nprint(c[:600])\npat2=r\"(\\byears?\\b|decade|20[2-4]\\d|months)\"\nfor s in grep(c,pat2,200): print('--',s)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in [\"eight, ten\",\"1,000x\",\"next year\",\"blown away\"]:\n    for m in re.finditer(re.escape(k),c):\n        print('>>',c[max(0,m.start()-900):m.start()+500].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[-3000:])\nfor m in re.finditer(r\"Mustafa Suleyman:\\*\\*\",c): pass\nprint(len(re.findall(r\"Mustafa Suleyman:\",c)))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('## Highlights'); j=c.find(\"Rob’s intro\")\nh=c[i:j]\nfor s in grep(h,r\"(\\byears?\\b|decade|months|next year)\",300): print('--',s);print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Suleyman \"modern Turing test\" \"$1 million\" MIT Technology Review 2023',\n'Suleyman \"Coming Wave\" interview transcript \"next five years\" 2023',\n'Mustafa Suleyman Diary of a CEO 2023 transcript AI \"years\"']\nfor q in qs2:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman \"modern Turing test\" \"$1 million\" MIT Technology Review 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman \"Coming Wave\" interview transcript \"next five years\" 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman Diary of a CEO 2023 transcript AI \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u1=\"https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/\"\nc1=await fetch(u1)\ni=c1.find('# Mustafa Suleyman: My new'); body=c1[i:i+12000]\nfor s in grep(body,r\"(\\byears?\\b|decade|months|next year|20[2-4]\\d)\",350): print('--',s);print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=body.find('I call systems like this'); print(body[k:k+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u2=\"https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman\"\nc2=await fetch(u2)\nprint(c2[:400])\nfor s in grep(c2,r\"(\\b(two|three|four|five|ten|twenty|thirty|\\d+) years|decade|next year|20[2-5]\\d|months)\",350): print('--',s);print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c3=await fetch(\"https://blog.biocomm.ai/2023/09/16/mustafa-suleyman-the-ai-pioneer-reveals-the-future-in-the-coming-wave-intelligence-squared-16-sept-2023/\")\nfor s in grep(c3,r\"(\\b(two|three|four|five|ten|twenty|thirty|\\d+) years|decade|next year|20[2-5]\\d|months)\",350): print('--',s);print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.biocomm.ai/2023/09/16/mustafa-suleyman-the-ai-pioneer-reveals-the-future-in-the-coming-wave-intelligence-squared-16-sept-2023/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=c3.find('10:39'); print(c3[k:k+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Suleyman Bremmer \"AI Power Paradox\" Foreign Affairs \"years\"',\n'Mustafa Suleyman Guardian interview September 2023 Coming Wave AI \"within\"',\n'Jordan Harbinger 972 Mustafa Suleyman Coming Wave date']\nfor q in qs3:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman Bremmer \"AI Power Paradox\" Foreign Affairs \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman Guardian interview September 2023 Coming Wave AI \"within\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jordan Harbinger 972 Mustafa Suleyman Coming Wave date"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u4=\"https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/\"\nc4=await fetch(u4)\nk=c4.find('The AI Power Paradox – Foreign Affairs'); b4=c4[k:]\nfor s in grep(b4,r\"(\\b(two|three|four|five|ten|twenty|\\d+) years|couple of years|decade|next year|20[2-5]\\d|months)\",400): print('--',s);print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=b4.find('Future large language models'); print(b4[k:k+500])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-07-14",
+        "quote": "Something like this could be as little as two years away.",
+        "what_is_predicted": "An AI able to pass his Modern Turing Test (turning a $100,000 investment into $1 million on a retail web platform within a few months, with humans approving only a few steps) could exist in about two years.",
+        "date_or_span": "two years (c. mid-2025)",
+        "occasion": "Essay by Suleyman, 'My new Turing test would see if AI can make $1 million', MIT Technology Review",
+        "source_url": "https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-08-16",
+        "quote": "Models that can handle tens of trillions of parameters are coming in the next couple of years. “Brain scale” models with more than 100 trillion parameters—roughly the number of synapses in the human brain—will be viable within five years.",
+        "what_is_predicted": "AI models with tens of trillions of parameters will arrive within about two years, and models with more than 100 trillion parameters will be workable within five years.",
+        "date_or_span": "next couple of years; within five years (by c. 2028)",
+        "occasion": "Foreign Affairs essay 'The AI Power Paradox', co-written with Ian Bremmer (Sept/Oct 2023 issue, published Aug 16, 2023)",
+        "source_url": "https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-08-16",
+        "quote": "Future large language models will probably follow this efficiency trajectory, becoming available in open-source form just two or three years after leading AI labs spend hundreds of millions of dollars developing them.",
+        "what_is_predicted": "Frontier-level language models will become available as open source two to three years after the leading labs build them.",
+        "date_or_span": "two or three years",
+        "occasion": "Foreign Affairs essay 'The AI Power Paradox', co-written with Ian Bremmer (published Aug 16, 2023); read on a third-party copy",
+        "source_url": "https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/",
+        "source_kind": "own_words",
+        "already_recorded": "2023-08-29-suleyman-gpt-4-class-open-source-two-to-three-years.toml"
+      },
+      {
+        "date_said": "2023-09-01",
+        "quote": "We’re going to be training models that are 1,000x larger than they currently are in the next three years.",
+        "what_is_predicted": "Within three years, AI models 1,000 times larger than 2023's frontier models will be trained (borderline: this is about model scale, close to a compute forecast).",
+        "date_or_span": "next three years (by c. 2026)",
+        "occasion": "80,000 Hours Podcast #162 with Rob Wiblin",
+        "source_url": "https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-09",
+        "quote": "And I think that over the next 30 years, we are going to have humanoid robotics, we're going to have physical tools within our everyday system that we can rely on.",
+        "what_is_predicted": "Humanoid robots that can do many physical tasks will exist within 30 years.",
+        "date_or_span": "next 30 years (also '2050, we will definitely have robots')",
+        "occasion": "The Diary of a CEO podcast with Steven Bartlett (2023 episode; transcript page dated Mar 2024; exact air date not shown on the page)",
+        "source_url": "https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman",
+        "source_kind": "transcript",
+        "already_recorded": "2023-09-04-suleyman-humanoid-robotics-next-30-years.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Jordan Harbinger Show ep. 972 (published April 2, 2024; seen only in search results) has 'very doable in the next three to five years'; Davos 2024 coverage (Business Insider via ANU mailing list) has AI acting as entrepreneur/inventor within five years; Dec 2024 coverage has AGI possibly within two to five hardware generations."
+      },
+      {
+        "year": "2025",
+        "note": "Search results showed coverage of 'Soon to me is sometime in the next ten years' (WSJ, July 2025) and of white-collar task automation within 12-18 months (FT interview); not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mustafa Suleyman\" AI prediction 2023",
+        "what_found": "Axios containment piece, MIT Technology Review Q&A, an Intelligence Squared transcript repost, and 2024 'AI runs businesses in five years' coverage."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2023 interview AGI \"years\"",
+        "what_found": "80,000 Hours podcast page (Sept 1, 2023) plus later-year coverage of AGI timelines."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly 2024-2025 coverage; also the 80,000 Hours page and the Intelligence Squared repost."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2023/09/15/1079624/deepmind-inflection-generative-ai-whats-next-mustafa-suleyman/",
+        "what_found": "Full printed Q&A opened; talks about 'interactive AI' but gives no dated prediction."
+      },
+      {
+        "query_or_url": "https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/",
+        "what_found": "Highlights and the start of the transcript; found the 1,000x-in-three-years line and the recorded 'naive open source in 20 years' remark; the page cuts off at the timelines section."
+      },
+      {
+        "query_or_url": "Suleyman \"modern Turing test\" \"$1 million\" MIT Technology Review 2023",
+        "what_found": "Located his July 14, 2023 MIT Technology Review essay."
+      },
+      {
+        "query_or_url": "Suleyman \"Coming Wave\" interview transcript \"next five years\" 2023",
+        "what_found": "80,000 Hours page, a book PDF on archive.org, and the Jordan Harbinger transcript (2024)."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman Diary of a CEO 2023 transcript AI \"years\"",
+        "what_found": "A Diary of a CEO transcript on fireflies.ai; a search result showed a 'next five years' line at 31:45 (not verified)."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/",
+        "what_found": "Opened his essay; it holds the 'as little as two years away' line for passing the Modern Turing Test."
+      },
+      {
+        "query_or_url": "https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman",
+        "what_found": "Transcript up to 28:13; found the humanoid-robotics-in-30-years line (already recorded) and '2050, we will definitely have robots'; the rest of the episode is not on the page."
+      },
+      {
+        "query_or_url": "https://blog.biocomm.ai/2023/09/16/mustafa-suleyman-the-ai-pioneer-reveals-the-future-in-the-coming-wave-intelligence-squared-16-sept-2023/",
+        "what_found": "Partial transcript of the Intelligence Squared talk (Sept 16, 2023); 'within the next three to five years... human level capability' is the host's restatement, and the page cuts off at about 11 minutes before his answer."
+      },
+      {
+        "query_or_url": "Suleyman Bremmer \"AI Power Paradox\" Foreign Affairs \"years\"",
+        "what_found": "Found the Foreign Affairs essay and a third-party copy of it."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman Guardian interview September 2023 Coming Wave AI \"within\"",
+        "what_found": "Book publicity items (Marketplace, Lawfare podcast, Built In excerpt); none opened."
+      },
+      {
+        "query_or_url": "Jordan Harbinger 972 Mustafa Suleyman Coming Wave date",
+        "what_found": "Confirmed the Harbinger episode was published April 2, 2024, so it falls outside 2023."
+      },
+      {
+        "query_or_url": "https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/",
+        "what_found": "Full essay text; holds the parameter-scale predictions and the open-source two-to-three-year line; its 2035 opening is a hypothetical scenario, so left out."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2023 was the year of The Coming Wave book tour, and Suleyman made many dated predictions that year. New ones found here: the Modern Turing Test being 'as little as two years away' (MIT Technology Review, July 2023), parameter-scale predictions in the co-written Foreign Affairs essay, and a 1,000x-larger-models-in-three-years line on 80,000 Hours. The Foreign Affairs essay also has the open-source two-to-three-year claim 13 days before the recorded date, and the full 80,000 Hours, Diary of a CEO and Intelligence Squared transcripts were cut off, so they may hold more."
+  },
+  "reply_text": "Now the Diary of a CEO transcript and the Intelligence Squared page.I found three new dated predictions from 2023 that aren't on your list. Two more items match recorded claims. One is an earlier 2023 version of a recorded claim; the other repeats one. The biggest gap is that I couldn't read the full 80,000 Hours and Diary of a CEO transcripts or most of the Intelligence Squared talk, so I may have missed claims there.\n\n**New candidates:**\n- **14 July 2023, MIT Technology Review essay (his own byline):** \"Something like this could be as little as two years away.\" \"This\" is an AI passing his \"Modern Turing Test\": turning $100,000 into $1 million on a retail web platform within a few months, with humans approving only a few steps.\n- **16 August 2023, Foreign Affairs essay written with Ian Bremmer:** models with tens of trillions of parameters \"in the next couple of years,\" and \"brain scale\" models (over 100 trillion parameters) \"within five years.\" I read this on a third-party copy, not on foreignaffairs.com. Because it's co-written, the words can't be credited to Suleyman alone.\n- **1 September 2023, 80,000 Hours podcast:** models \"1,000x larger than they currently are in the next three years.\" This one is borderline. It's about model scale, which is close to the compute forecasts your rules exclude. I left out the next sentence about Inflection's own plans because that's a company plan.\n\n**Matches to recorded claims:**\n- **Open-source models (`2023-08-29-suleyman-gpt-4-class-open-source-two-to-three-years.toml`):** the same Foreign Affairs essay already says future models will reach open source \"just two or three years\" after the big labs build them. That's 13 days before your recorded date.\n- **Humanoid robots in 30 years (`2023-09-04-suleyman-humanoid-robotics-next-30-years.toml`):** I found it in a Diary of a CEO transcript on a third-party site. The page is dated March 2024, but the conversation is from 2023. The page doesn't show the air date, so I took 4 September 2023 from your file name.\n\n**Left out:**\n- The essay's opening scene (\"It's 2035, and artificial intelligence is everywhere\") is a hypothetical.\n- The MIT Technology Review interview of 15 September has no dated prediction.\n- At Intelligence Squared (16 September), \"within the next three to five years… human level capability\" was the host restating his view, and the page cuts off before his answer.\n- The 80,000 Hours \"eight, ten, or twelve years\" timing for misaligned AI is the host's paraphrase, not his words.\n\n**Pages I couldn't fully read:** The 80,000 Hours page stops just as the \"timelines for AI capabilities\" section begins. The Diary of a CEO page stops at 28:13, so the \"next five years\" line a search result placed at 31:45 is unchecked. The Intelligence Squared page stops at about 11 minutes. These are the best places to look next.\n\nI used 9 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2023-07-14\", \"quote\": \"Something like this could be as little as two years away.\", \"what_is_predicted\": \"An AI able to pass his Modern Turing Test (turning a $100,000 investment into $1 million on a retail web platform within a few months, with humans approving only a few steps) could exist in about two years.\", \"date_or_span\": \"two years (c. mid-2025)\", \"occasion\": \"Essay by Suleyman, 'My new Turing test would see if AI can make $1 million', MIT Technology Review\", \"source_url\": \"https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-08-16\", \"quote\": \"Models that can handle tens of trillions of parameters are coming in the next couple of years. “Brain scale” models with more than 100 trillion parameters—roughly the number of synapses in the human brain—will be viable within five years.\", \"what_is_predicted\": \"AI models with tens of trillions of parameters will arrive within about two years, and models with more than 100 trillion parameters will be workable within five years.\", \"date_or_span\": \"next couple of years; within five years (by c. 2028)\", \"occasion\": \"Foreign Affairs essay 'The AI Power Paradox', co-written with Ian Bremmer (Sept/Oct 2023 issue, published Aug 16, 2023)\", \"source_url\": \"https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-08-16\", \"quote\": \"Future large language models will probably follow this efficiency trajectory, becoming available in open-source form just two or three years after leading AI labs spend hundreds of millions of dollars developing them.\", \"what_is_predicted\": \"Frontier-level language models will become available as open source two to three years after the leading labs build them.\", \"date_or_span\": \"two or three years\", \"occasion\": \"Foreign Affairs essay 'The AI Power Paradox', co-written with Ian Bremmer (published Aug 16, 2023); read on a third-party copy\", \"source_url\": \"https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2023-08-29-suleyman-gpt-4-class-open-source-two-to-three-years.toml\"},\n    {\"date_said\": \"2023-09-01\", \"quote\": \"We’re going to be training models that are 1,000x larger than they currently are in the next three years.\", \"what_is_predicted\": \"Within three years, AI models 1,000 times larger than 2023's frontier models will be trained (borderline: this is about model scale, close to a compute forecast).\", \"date_or_span\": \"next three years (by c. 2026)\", \"occasion\": \"80,000 Hours Podcast #162 with Rob Wiblin\", \"source_url\": \"https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-09\", \"quote\": \"And I think that over the next 30 years, we are going to have humanoid robotics, we're going to have physical tools within our everyday system that we can rely on.\", \"what_is_predicted\": \"Humanoid robots that can do many physical tasks will exist within 30 years.\", \"date_or_span\": \"next 30 years (also '2050, we will definitely have robots')\", \"occasion\": \"The Diary of a CEO podcast with Steven Bartlett (2023 episode; transcript page dated Mar 2024; exact air date not shown on the page)\", \"source_url\": \"https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman\", \"source_kind\": \"transcript\", \"already_recorded\": \"2023-09-04-suleyman-humanoid-robotics-next-30-years.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Jordan Harbinger Show ep. 972 (published April 2, 2024; seen only in search results) has 'very doable in the next three to five years'; Davos 2024 coverage (Business Insider via ANU mailing list) has AI acting as entrepreneur/inventor within five years; Dec 2024 coverage has AGI possibly within two to five hardware generations.\"},\n    {\"year\": \"2025\", \"note\": \"Search results showed coverage of 'Soon to me is sometime in the next ten years' (WSJ, July 2025) and of white-collar task automation within 12-18 months (FT interview); not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" AI prediction 2023\", \"what_found\": \"Axios containment piece, MIT Technology Review Q&A, an Intelligence Squared transcript repost, and 2024 'AI runs businesses in five years' coverage.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"80,000 Hours podcast page (Sept 1, 2023) plus later-year coverage of AGI timelines.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly 2024-2025 coverage; also the 80,000 Hours page and the Intelligence Squared repost.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2023/09/15/1079624/deepmind-inflection-generative-ai-whats-next-mustafa-suleyman/\", \"what_found\": \"Full printed Q&A opened; talks about 'interactive AI' but gives no dated prediction.\"},\n    {\"query_or_url\": \"https://80000hours.org/podcast/episodes/mustafa-suleyman-getting-washington-and-silicon-valley-to-tame-ai/\", \"what_found\": \"Highlights and the start of the transcript; found the 1,000x-in-three-years line and the recorded 'naive open source in 20 years' remark; the page cuts off at the timelines section.\"},\n    {\"query_or_url\": \"Suleyman \\\"modern Turing test\\\" \\\"$1 million\\\" MIT Technology Review 2023\", \"what_found\": \"Located his July 14, 2023 MIT Technology Review essay.\"},\n    {\"query_or_url\": \"Suleyman \\\"Coming Wave\\\" interview transcript \\\"next five years\\\" 2023\", \"what_found\": \"80,000 Hours page, a book PDF on archive.org, and the Jordan Harbinger transcript (2024).\"},\n    {\"query_or_url\": \"Mustafa Suleyman Diary of a CEO 2023 transcript AI \\\"years\\\"\", \"what_found\": \"A Diary of a CEO transcript on fireflies.ai; a search result showed a 'next five years' line at 31:45 (not verified).\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2023/07/14/1076296/mustafa-suleyman-my-new-turing-test-would-see-if-ai-can-make-1-million/\", \"what_found\": \"Opened his essay; it holds the 'as little as two years away' line for passing the Modern Turing Test.\"},\n    {\"query_or_url\": \"https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman\", \"what_found\": \"Transcript up to 28:13; found the humanoid-robotics-in-30-years line (already recorded) and '2050, we will definitely have robots'; the rest of the episode is not on the page.\"},\n    {\"query_or_url\": \"https://blog.biocomm.ai/2023/09/16/mustafa-suleyman-the-ai-pioneer-reveals-the-future-in-the-coming-wave-intelligence-squared-16-sept-2023/\", \"what_found\": \"Partial transcript of the Intelligence Squared talk (Sept 16, 2023); 'within the next three to five years... human level capability' is the host's restatement, and the page cuts off at about 11 minutes before his answer.\"},\n    {\"query_or_url\": \"Suleyman Bremmer \\\"AI Power Paradox\\\" Foreign Affairs \\\"years\\\"\", \"what_found\": \"Found the Foreign Affairs essay and a third-party copy of it.\"},\n    {\"query_or_url\": \"Mustafa Suleyman Guardian interview September 2023 Coming Wave AI \\\"within\\\"\", \"what_found\": \"Book publicity items (Marketplace, Lawfare podcast, Built In excerpt); none opened.\"},\n    {\"query_or_url\": \"Jordan Harbinger 972 Mustafa Suleyman Coming Wave date\", \"what_found\": \"Confirmed the Harbinger episode was published April 2, 2024, so it falls outside 2023.\"},\n    {\"query_or_url\": \"https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/\", \"what_found\": \"Full essay text; holds the parameter-scale predictions and the open-source two-to-three-year line; its 2035 opening is a hypothetical scenario, so left out.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2023 was the year of The Coming Wave book tour, and Suleyman made many dated predictions that year. New ones found here: the Modern Turing Test being 'as little as two years away' (MIT Technology Review, July 2023), parameter-scale predictions in the co-written Foreign Affairs essay, and a 1,000x-larger-models-in-three-years line on 80,000 Hours. The Foreign Affairs essay also has the open-source two-to-three-year claim 13 days before the recorded date, and the full 80,000 Hours, Diary of a CEO and Intelligence Squared transcripts were cut off, so they may hold more.\"\n}\n```"
+}

@@ -1,0 +1,350 @@
+{
+  "speaker_id": "lecun",
+  "year": 2022,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5707,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7702
+      },
+      "cache_creation_input_tokens": 38371,
+      "cache_read_input_tokens": 338710,
+      "inference_geo": "global",
+      "input_tokens": 38,
+      "output_tokens": 9548,
+      "output_tokens_details": {
+        "thinking_tokens": 2726
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Yann LeCun\" AI prediction 2022','\"Yann LeCun\" 2022 interview AGI \"years\"','\"Yann LeCun\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" AI prediction 2022"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\nfor q in qs:\n    r=R[q]\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2022 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor q in qs:\n    for x in R[q]:\n        c=x.get('content','')\n        for m in re.finditer(r'[^.\\n]*(years|decade|20[23]\\d)[^.\\n]*',c):\n            s=m.group(0)\n            if 'LeCun' in c and ('2022' in x['url'] or 'meta.com' in x['url'] or 'longterm' in x['url']):\n                print(x['url'][:60],'::',s[:250])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in R[qs[0]]:\n    if 'longterm' in x['url']:\n        for l in x['content'].split('\\n'):\n            if '2022' in l or '2023' in l: print(l[:400])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['ZDNet LeCun 2022 interview \"true intelligence\" Tiernan Ray',\n'Lex Fridman podcast 258 Yann LeCun transcript dark matter of intelligence',\n'\"LeCun\" 2022 \"human-level AI\" \"decades\" OR \"years\" interview',\n'\"LeCun\" \"Inside the Lab\" 2022 human-level AI \"years\"']\nfor q in qs2:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ZDNet LeCun 2022 interview \"true intelligence\" Tiernan Ray"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman podcast 258 Yann LeCun transcript dark matter of intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" 2022 \"human-level AI\" \"decades\" OR \"years\" interview"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" \"Inside the Lab\" 2022 human-level AI \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in R:\n    for x in R[q]:\n        if any(k in x['url'] for k in ['ai.meta.com/blog/yann','swellai','lfplibrary','enacast','scifuture','flipboard']):\n            c=x.get('content','')\n            print('##',x['url'],len(c))\n            for m in re.finditer(r'[^.\\n]*\\b(years|decade|decades|20[123]\\d|next year)\\b[^.\\n]*',c):\n                print('  ',m.group(0)[:300])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/',\n          'https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/',\n          'https://ai.enacast.com/c/lex/e/f24c0b67-b4b7-40f2-b013-dc7d81fa74df/transcript']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u, r.get('type'), len(P[u]), r.get('error_code'))\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ai.enacast.com/c/lex/e/f24c0b67-b4b7-40f2-b013-dc7d81fa74df/transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(c):\n    if isinstance(c,dict):\n        s=c.get('source',{}); return s.get('data','') if isinstance(s,dict) else str(c)\n    return c\n# refetch content from r objects: stored only content; re-do using stored? need raw. Re-store:\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={u:txt(c) for u,c in P.items()}\nfor u,t in T.items():\n    print('##',u,len(t))\n    tt=t.replace('\\n',' ')\n    for m in re.finditer(r'.{0,300}\\b(years|decade|decades|20[123]\\d|next year)\\b.{0,200}',tt):\n        print('  >>',m.group(0))\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "tt=T[list(T)[0]].replace('\\n',' ')\ni=tt.find('in 10 or 15 years'); print(tt[i-200:i+700])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['zdnet.com \"LeCun\" \"most of today\\'s AI approaches will never lead to true intelligence\"',\n'\"LeCun\" ChatGPT December 2022 \"not particularly innovative\" OR \"within\" \"years\" tweet',\n'\"LeCun\" 2022 \"five years\" OR \"ten years\" OR \"10 years\" AI assistants OR \"human-level\"']\nfor q in qs3:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "zdnet.com \"LeCun\" \"most of today's AI approaches will never lead to true intelligence\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" ChatGPT December 2022 \"not particularly innovative\" OR \"within\" \"years\" tweet"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" 2022 \"five years\" OR \"ten years\" OR \"10 years\" AI assistants OR \"human-level\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in R[qs3[0]]:\n    c=x.get('content','')\n    print('##',x['url'],len(c))\n    for m in re.finditer(r'.{0,250}\\b(years|decade|decades|20[123]\\d|next year)\\b.{0,200}',c.replace('\\n',' ')):\n        print('  >>',m.group(0))\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://zd.net/3Uv4VcG','https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-258-yann-lecun-dark-matter-of-intelligence-and-self-supervised-learning']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    T[u]=txt(r.get('content','')) if isinstance(r,dict) else ''\n    print(u, r.get('type'), r.get('error_code'), len(T[u]), r.get('url'))\n    tt=T[u].replace('\\n',' ')\n    for m in re.finditer(r'.{0,300}\\b(years|decade|decades|20[123]\\d|next year)\\b.{0,250}',tt):\n        print('  >>',m.group(0))\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://zd.net/3Uv4VcG"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-258-yann-lecun-dark-matter-of-intelligence-and-self-supervised-learning"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs4=['Tiernan Ray LeCun interview September 2022 zdnet energy-based models \"LeCun\"',\n'\"LeCun\" 2022 talk \"human-level AI\" \"not just around the corner\" OR \"will take\" years']\nfor q in qs4:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        c=x.get('content','')\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        for m in re.finditer(r'.{0,200}\\b(years|decade|decades|20[23]\\d|next year)\\b.{0,150}',c.replace('\\n',' ')):\n            if 'LeCun' in m.group(0) or '\"' in m.group(0) or '“' in m.group(0): print('   >>',m.group(0))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tiernan Ray LeCun interview September 2022 zdnet energy-based models \"LeCun\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" 2022 talk \"human-level AI\" \"not just around the corner\" OR \"will take\" years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://openreview.net/pdf?id=BZ5a1r-kVsf'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nT[u]=txt(r.get('content','')) if isinstance(r,dict) else ''\nprint(r.get('type'), r.get('error_code'), len(T[u]))\ntt=re.sub(r'\\s+',' ',T[u])\nfor m in re.finditer(r'.{0,300}\\b(years|decade|decades|20[23]\\d|next year)\\b.{0,250}',tt):\n    print('  >>',m.group(0)); print()\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://openreview.net/pdf?id=BZ5a1r-kVsf"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2022-06",
+        "quote": "He says that in 10 or 15 years people won’t be carrying smartphones in their pockets, but augmented-reality glasses fitted with virtual assistants that will guide humans through their day. “For those to be most useful to us, they basically have to have more or less human-level intelligence,” he says.",
+        "what_is_predicted": "Within 10 to 15 years, AR glasses with AI virtual assistants that guide people through their day will replace smartphones.",
+        "date_or_span": "10 or 15 years (from mid-2022, so about 2032-2037)",
+        "occasion": "Interview with MIT Technology Review (Melissa Heikkilä and Will Douglas Heaven) for the article 'Yann LeCun has a bold new vision for the future of AI', published 24 June 2022",
+        "source_url": "https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "A search snippet showed an X post by @ylecun (status 1846574605894340950, about Oct 2024) saying reaching human-level AI 'will take several years if not a decade'. Not opened."
+      },
+      {
+        "year": "2024",
+        "note": "A search snippet showed TechCrunch, 16 Oct 2024, reporting LeCun saying world-model AI will take 'years ... if not a decade'. Not opened."
+      },
+      {
+        "year": "2016",
+        "note": "The longtermwiki.com track-record page (search snippet) lists a 2016 LeCun claim that radiologists would not be replaced within 5 years. Not opened, and outside 2022."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Yann LeCun\" AI prediction 2022",
+        "what_found": "MIT Technology Review June 2022 profile, Meta AI blog Feb 2022, the openreview 'Path Towards Autonomous Machine Intelligence' PDF, and later commentary."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2022 interview AGI \"years\"",
+        "what_found": "Mostly 2024-2025 material (Lex Fridman 2024, TIME, Forbes) plus the 2022 MIT TR profile; nothing new dated 2022."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2022 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2026 items (5-10 year AGI comments, the TechCrunch 2025 'new paradigm within 5 years' story); nothing from 2022."
+      },
+      {
+        "query_or_url": "ZDNet LeCun 2022 interview \"true intelligence\" Tiernan Ray",
+        "what_found": "References to the Sept 2022 ZDNet interview (ZDNET tweet with short link, Flipboard, scifuture response) but no direct zdnet.com page."
+      },
+      {
+        "query_or_url": "Lex Fridman podcast 258 Yann LeCun transcript dark matter of intelligence",
+        "what_found": "Transcript pages for Lex Fridman #258 (enacast, swellai, lfplibrary)."
+      },
+      {
+        "query_or_url": "\"LeCun\" 2022 \"human-level AI\" \"decades\" OR \"years\" interview",
+        "what_found": "Mostly 2024 coverage (TechCrunch, Forbes, TIME); no 2022 dated claim."
+      },
+      {
+        "query_or_url": "\"LeCun\" \"Inside the Lab\" 2022 human-level AI \"years\"",
+        "what_found": "The Meta AI blog post for the 23 Feb 2022 Inside the Lab event, plus secondary pages."
+      },
+      {
+        "query_or_url": "zdnet.com \"LeCun\" \"most of today's AI approaches will never lead to true intelligence\"",
+        "what_found": "Reprints and aggregator listings (healthleadersmedia, CACM, LinkedIn) dated 24-27 Sept 2022; no snippet text with dated predictions."
+      },
+      {
+        "query_or_url": "\"LeCun\" ChatGPT December 2022 \"not particularly innovative\" OR \"within\" \"years\" tweet",
+        "what_found": "Coverage of LeCun's January 2023 'not particularly innovative' remarks on ChatGPT; outside 2022 and not a dated prediction."
+      },
+      {
+        "query_or_url": "\"LeCun\" 2022 \"five years\" OR \"ten years\" OR \"10 years\" AI assistants OR \"human-level\"",
+        "what_found": "Only 2024-2025 items about human-level AI in 5-10 years; nothing from 2022."
+      },
+      {
+        "query_or_url": "Tiernan Ray LeCun interview September 2022 zdnet energy-based models \"LeCun\"",
+        "what_found": "A LeCun tweet pointing to an earlier (~April 2022) ZDNet interview, a Chinese translation of that interview (laitimes), and a Sept 2022 Berkeley EECS colloquium listing; no dated prediction in the snippets."
+      },
+      {
+        "query_or_url": "\"LeCun\" 2022 talk \"human-level AI\" \"not just around the corner\" OR \"will take\" years",
+        "what_found": "Only 2024-2026 statements (X posts, TNW, TechCrunch) on human-level AI taking years or a decade."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/",
+        "what_found": "Opened; holds the reporters' paraphrase that in 10 or 15 years AR glasses with virtual assistants will replace smartphones, followed by LeCun's direct quote on human-level intelligence."
+      },
+      {
+        "query_or_url": "https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/",
+        "what_found": "Opened; Meta AI blog post (23 Feb 2022) in the lab's voice saying world models 'could be argued' to be the main AI challenge 'over the next decades'; no dated prediction."
+      },
+      {
+        "query_or_url": "https://ai.enacast.com/c/lex/e/f24c0b67-b4b7-40f2-b013-dc7d81fa74df/transcript",
+        "what_found": "Opened; partial Lex Fridman #258 transcript where LeCun calls learning predictive world models 'the big challenge of AI for the next decade'. That frames a research problem rather than predicting an outcome, so it is not listed as a candidate."
+      },
+      {
+        "query_or_url": "https://zd.net/3Uv4VcG",
+        "what_found": "Failed: the tool refused it (url_not_in_prior_context); nothing read."
+      },
+      {
+        "query_or_url": "https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-258-yann-lecun-dark-matter-of-intelligence-and-self-supervised-learning",
+        "what_found": "Opened; same partial Lex #258 transcript (cut off at about 33k characters); only the 'next decade' challenge line, nothing more."
+      },
+      {
+        "query_or_url": "https://openreview.net/pdf?id=BZ5a1r-kVsf",
+        "what_found": "Failed: url_not_accessible; LeCun's June 2022 position paper not read."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "LeCun's 2022 public statements were mostly about his new path to human-level AI: the February Inside the Lab talk, the Lex Fridman #258 podcast, the June 'Path Towards Autonomous Machine Intelligence' paper and the September ZDNet interview. They argue about approach, not timelines. The only dated forward claim found is the MIT Technology Review paraphrase (June 2022) that AR glasses with AI assistants will replace smartphones within 10-15 years, and it is coverage only. The full Lex #258 transcript, the June paper and the September ZDNet interview could not be read in full and are still unchecked."
+  },
+  "reply_text": "Let me open the MIT TR article, the Meta blog, and the Lex transcript.I found one candidate for 2022, and it is a weak one. On 24 June 2022, MIT Technology Review reported that LeCun predicted AR glasses with AI virtual assistants would replace smartphones within 10 to 15 years. The timeline is the reporters' paraphrase. LeCun's own quoted words in that passage say only that the assistants would need \"more or less human-level intelligence,\" with no date. So it is listed as coverage_only.\n\n- **Lex Fridman podcast #258 (early 2022):** LeCun said \"the big challenge of AI for the next decade is how do we get machines to learn predictive models of the world.\" That names a research problem for the decade, not something AI will do by then, so I left it out. Both transcripts I opened (enacast and swellai) stop after about 33,000 characters, so the rest of the episode is unchecked. Any timeline question later in the conversation is still open.\n- **Meta AI blog, 23 February 2022:** It says training world models \"could be argued\" to be \"the main challenge toward real progress in AI over the next decades.\" That isn't a dated prediction, and the post is in the lab's voice rather than clearly LeCun's own.\n- **What I couldn't open:** LeCun's June 2022 paper \"A Path Towards Autonomous Machine Intelligence\" on openreview would not load. The September 2022 ZDNet interview was only reachable through a short link, and the fetch tool refused it. Neither has been checked.\n- **Other years:** The dated \"years, if not a decade\" statements about human-level AI all come from 2024. I saw them only in search snippets.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2022-06\",\n      \"quote\": \"He says that in 10 or 15 years people won’t be carrying smartphones in their pockets, but augmented-reality glasses fitted with virtual assistants that will guide humans through their day. “For those to be most useful to us, they basically have to have more or less human-level intelligence,” he says.\",\n      \"what_is_predicted\": \"Within 10 to 15 years, AR glasses with AI virtual assistants that guide people through their day will replace smartphones.\",\n      \"date_or_span\": \"10 or 15 years (from mid-2022, so about 2032-2037)\",\n      \"occasion\": \"Interview with MIT Technology Review (Melissa Heikkilä and Will Douglas Heaven) for the article 'Yann LeCun has a bold new vision for the future of AI', published 24 June 2022\",\n      \"source_url\": \"https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"A search snippet showed an X post by @ylecun (status 1846574605894340950, about Oct 2024) saying reaching human-level AI 'will take several years if not a decade'. Not opened.\"},\n    {\"year\": \"2024\", \"note\": \"A search snippet showed TechCrunch, 16 Oct 2024, reporting LeCun saying world-model AI will take 'years ... if not a decade'. Not opened.\"},\n    {\"year\": \"2016\", \"note\": \"The longtermwiki.com track-record page (search snippet) lists a 2016 LeCun claim that radiologists would not be replaced within 5 years. Not opened, and outside 2022.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" AI prediction 2022\", \"what_found\": \"MIT Technology Review June 2022 profile, Meta AI blog Feb 2022, the openreview 'Path Towards Autonomous Machine Intelligence' PDF, and later commentary.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2022 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2024-2025 material (Lex Fridman 2024, TIME, Forbes) plus the 2022 MIT TR profile; nothing new dated 2022.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2022 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2026 items (5-10 year AGI comments, the TechCrunch 2025 'new paradigm within 5 years' story); nothing from 2022.\"},\n    {\"query_or_url\": \"ZDNet LeCun 2022 interview \\\"true intelligence\\\" Tiernan Ray\", \"what_found\": \"References to the Sept 2022 ZDNet interview (ZDNET tweet with short link, Flipboard, scifuture response) but no direct zdnet.com page.\"},\n    {\"query_or_url\": \"Lex Fridman podcast 258 Yann LeCun transcript dark matter of intelligence\", \"what_found\": \"Transcript pages for Lex Fridman #258 (enacast, swellai, lfplibrary).\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" 2022 \\\"human-level AI\\\" \\\"decades\\\" OR \\\"years\\\" interview\", \"what_found\": \"Mostly 2024 coverage (TechCrunch, Forbes, TIME); no 2022 dated claim.\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" \\\"Inside the Lab\\\" 2022 human-level AI \\\"years\\\"\", \"what_found\": \"The Meta AI blog post for the 23 Feb 2022 Inside the Lab event, plus secondary pages.\"},\n    {\"query_or_url\": \"zdnet.com \\\"LeCun\\\" \\\"most of today's AI approaches will never lead to true intelligence\\\"\", \"what_found\": \"Reprints and aggregator listings (healthleadersmedia, CACM, LinkedIn) dated 24-27 Sept 2022; no snippet text with dated predictions.\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" ChatGPT December 2022 \\\"not particularly innovative\\\" OR \\\"within\\\" \\\"years\\\" tweet\", \"what_found\": \"Coverage of LeCun's January 2023 'not particularly innovative' remarks on ChatGPT; outside 2022 and not a dated prediction.\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" 2022 \\\"five years\\\" OR \\\"ten years\\\" OR \\\"10 years\\\" AI assistants OR \\\"human-level\\\"\", \"what_found\": \"Only 2024-2025 items about human-level AI in 5-10 years; nothing from 2022.\"},\n    {\"query_or_url\": \"Tiernan Ray LeCun interview September 2022 zdnet energy-based models \\\"LeCun\\\"\", \"what_found\": \"A LeCun tweet pointing to an earlier (~April 2022) ZDNet interview, a Chinese translation of that interview (laitimes), and a Sept 2022 Berkeley EECS colloquium listing; no dated prediction in the snippets.\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" 2022 talk \\\"human-level AI\\\" \\\"not just around the corner\\\" OR \\\"will take\\\" years\", \"what_found\": \"Only 2024-2026 statements (X posts, TNW, TechCrunch) on human-level AI taking years or a decade.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/\", \"what_found\": \"Opened; holds the reporters' paraphrase that in 10 or 15 years AR glasses with virtual assistants will replace smartphones, followed by LeCun's direct quote on human-level intelligence.\"},\n    {\"query_or_url\": \"https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/\", \"what_found\": \"Opened; Meta AI blog post (23 Feb 2022) in the lab's voice saying world models 'could be argued' to be the main AI challenge 'over the next decades'; no dated prediction.\"},\n    {\"query_or_url\": \"https://ai.enacast.com/c/lex/e/f24c0b67-b4b7-40f2-b013-dc7d81fa74df/transcript\", \"what_found\": \"Opened; partial Lex Fridman #258 transcript where LeCun calls learning predictive world models 'the big challenge of AI for the next decade'. That frames a research problem rather than predicting an outcome, so it is not listed as a candidate.\"},\n    {\"query_or_url\": \"https://zd.net/3Uv4VcG\", \"what_found\": \"Failed: the tool refused it (url_not_in_prior_context); nothing read.\"},\n    {\"query_or_url\": \"https://www.swellai.com/transcripts/lex-fridman-podcast-transcript/-258-yann-lecun-dark-matter-of-intelligence-and-self-supervised-learning\", \"what_found\": \"Opened; same partial Lex #258 transcript (cut off at about 33k characters); only the 'next decade' challenge line, nothing more.\"},\n    {\"query_or_url\": \"https://openreview.net/pdf?id=BZ5a1r-kVsf\", \"what_found\": \"Failed: url_not_accessible; LeCun's June 2022 position paper not read.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"LeCun's 2022 public statements were mostly about his new path to human-level AI: the February Inside the Lab talk, the Lex Fridman #258 podcast, the June 'Path Towards Autonomous Machine Intelligence' paper and the September ZDNet interview. They argue about approach, not timelines. The only dated forward claim found is the MIT Technology Review paraphrase (June 2022) that AR glasses with AI assistants will replace smartphones within 10-15 years, and it is coverage only. The full Lex #258 transcript, the June paper and the September ZDNet interview could not be read in full and are still unchecked.\"\n}\n```"
+}

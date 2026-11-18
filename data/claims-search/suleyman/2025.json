@@ -1,0 +1,428 @@
+{
+  "speaker_id": "suleyman",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.8134,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8213
+      },
+      "cache_creation_input_tokens": 65493,
+      "cache_read_input_tokens": 541617,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 12872,
+      "output_tokens_details": {
+        "thinking_tokens": 4408
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mustafa Suleyman\" AI prediction 2025','\"Mustafa Suleyman\" 2025 interview AGI \"years\"','\"Mustafa Suleyman\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Suleyman \"Seemingly Conscious AI\" essay mustafa-suleyman.ai','\"Towards Humanist Superintelligence\" Suleyman microsoft.ai','Suleyman Moonshots Diamandis \"two to seven year\"']\nfor q in qs2:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman \"Seemingly Conscious AI\" essay mustafa-suleyman.ai"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Towards Humanist Superintelligence\" Suleyman microsoft.ai"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman Moonshots Diamandis \"two to seven year\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming','https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u,len(P[u]), r.get('error_code') if isinstance(r,dict) else '')\ndef kw(t,pats,w=300):\n    for p in pats:\n        for m in re.finditer(p,t):\n            print('>>',p,':',t[max(0,m.start()-w):m.end()+w].replace('\\n',' '));print()\nkw(P['https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming'],[r'years',r'decade',r'20\\d\\d'])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,c in P.items(): print(u, c.keys() if isinstance(c,dict) else type(c)); \nc=list(P.values())[0]; print({k:(str(v)[:200]) for k,v in c.items()})"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={}\nfor u,c in P.items():\n    s=c['source']; \n    T[u]=s['data'] if isinstance(s,dict) else s\n    print(u,len(T[u]))\nkw(T['https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming'],[r'years',r'decade',r'20\\d\\d'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216']\nprint(t[:600])\nkw(t,[r'\\byears?\\b',r'decade',r'20[2-5]\\d',r'next year'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('it is basically making a pretty simple'); i=t.find('modern Turing test was something I proposed')\nprint(t[i:i+2600]); print('-----')\nj=t.find('Do you have timelines in your m'); print(t[j-200:j+2500]); print('-----')\nk=t.find('MAI Diagn'); print(t[k:k+1800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['microsoft.ai news towards-humanist-superintelligence','Suleyman Wall Street Journal July 2025 \"next ten years\" superintelligence','Suleyman 2025 podcast transcript \"in the next\" years AI Wired OR \"Big Technology\" OR CNBC']\nfor q in qs3:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "microsoft.ai news towards-humanist-superintelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman Wall Street Journal July 2025 \"next ten years\" superintelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman 2025 podcast transcript \"in the next\" years AI Wired OR \"Big Technology\" OR CNBC"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    r=await_ = None\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    if r.get('type')=='web_fetch_tool_result_error': print('ERR',r); return ''\n    c=r.get('content',r)\n    if isinstance(c,dict):\n        s=c.get('source',{}); c=s['data'] if isinstance(s,dict) else s\n    return c\nu1='https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman'\nu2='https://www.videoageinternational.net/2025/07/21/news/super-ai-is-10-years-away/'\nT[u1]=await fetch(u1); T[u2]=await fetch(u2)\nprint(len(T[u1]),len(T[u2])); print(T[u1][:500])\nprint(T[u2][:3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.videoageinternational.net/2025/07/21/news/super-ai-is-10-years-away/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "a=T[u2]; i=a.find('Today, in an interview',3000); print(a[i:i+1800])\nkw(T[u1],[r'\\byears?\\b',r'decade',r'20[2-5]\\d',r'next year'],280)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs4=['Mustafa Suleyman 2025 podcast transcript AI \"five years\" OR \"ten years\" OR \"2030\"','Suleyman \"Silicon Valley Girl\" OR \"Possible podcast\" OR \"Decoder\" 2025 Suleyman superintelligence timeline']\nfor q in qs4:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman 2025 podcast transcript AI \"five years\" OR \"ten years\" OR \"2030\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman \"Silicon Valley Girl\" OR \"Possible podcast\" OR \"Decoder\" 2025 Suleyman superintelligence timeline"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u3='https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/'\nT[u3]=await fetch(u3); s=T[u3]; print(len(s))\nkw(s,[r'\\b\\d+ years?\\b',r'\\b(?:five|ten|two|three|four|20|15|30) (?:to \\w+ )?years',r'decade',r'20[3-5]\\d',r'next year'],220)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=s.find('Imagine it’s 2040'); print(s[i:i+3200])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Mustafa Suleyman interview June 2025 OR May 2025 OR March 2025 AI agents years'\nr=await web_search({\"query\":q}); R[q]=r; show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman interview June 2025 OR May 2025 OR March 2025 AI agents years"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-08-19",
+        "quote": "This is not far away. Such a system can be built with technologies that exist today along with some that will mature over the next 2-3 years.",
+        "what_is_predicted": "AI that appears conscious can be built with today's technology plus technology that will mature within two to three years.",
+        "date_or_span": "next 2-3 years",
+        "occasion": "Essay 'We must build AI for people; not to be a person' (Seemingly Conscious AI is Coming) on his personal site",
+        "source_url": "https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-12-16",
+        "quote": "So, you know, obviously, at the same time, agents don't really work yet. The action stuff is still progressing. It's getting better and better every minute. Starting point is 00:13:54 But it's pretty clear that in the next couple of years, those things come into view and they're going to be very, very good.",
+        "what_is_predicted": "AI agents that take actions will become very good within the next couple of years.",
+        "date_or_span": "next couple of years",
+        "occasion": "Moonshots with Peter Diamandis EP #216 (recorded 5 Dec 2025, published 16 Dec 2025); transcript has no speaker labels, so the line is attributed to Suleyman from context",
+        "source_url": "https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-12",
+        "quote": "And I think that that is very low probability from what I see today, but it's one that we have to take seriously in the next like 10 years or so.",
+        "what_is_predicted": "A recursively self-improving AI takeoff is a low-probability risk that must be taken seriously within about ten years.",
+        "date_or_span": "next like 10 years or so",
+        "occasion": "Big Technology Podcast, 'Could LLMs Be The Route To Superintelligence?'",
+        "source_url": "https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-14",
+        "quote": "Yeah, I mean it’s very hard to miniaturize that today. So it’s still a bit of a way off. But by 2040, definitely.",
+        "what_is_predicted": "A personal AI with a camera and ambient awareness, worn in the ear, will exist by 2040.",
+        "date_or_span": "by 2040",
+        "occasion": "Silicon Valley Girl podcast with Marina Mogilko (answering the host's 'Imagine it's 2040' prompt)",
+        "source_url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-14",
+        "quote": "Yeah, we’ll definitely have self-driving cars by 2040 that basically do most of that.",
+        "what_is_predicted": "Self-driving cars will run most household errands by 2040.",
+        "date_or_span": "by 2040",
+        "occasion": "Silicon Valley Girl podcast with Marina Mogilko",
+        "source_url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-14",
+        "quote": "I mean, 15 years is a pretty long way out, so it probably will be humanoid.",
+        "what_is_predicted": "The household robot of about 2040 will probably be humanoid.",
+        "date_or_span": "15 years (to 2040)",
+        "occasion": "Silicon Valley Girl podcast with Marina Mogilko",
+        "source_url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-07",
+        "quote": "Soon to me is sometime in the next ten years.",
+        "what_is_predicted": "Super-intelligence or AGI (as the report frames it) will arrive sometime in the next ten years.",
+        "date_or_span": "next ten years",
+        "occasion": "Wall Street Journal interview (Tim Higgins), about 20 July 2025, quoted by VideoAge",
+        "source_url": "https://www.videoageinternational.net/2025/07/21/news/super-ai-is-10-years-away/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-14",
+        "quote": "Yeah, I mean I think achieving human-level performance at most tasks, I wouldn’t say all knowledge tasks. That feels quite likely in the next five years, I think.",
+        "what_is_predicted": "AI will reach human-level performance on most tasks within five years.",
+        "date_or_span": "next five years",
+        "occasion": "Silicon Valley Girl podcast with Marina Mogilko",
+        "source_url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": "2025-11-14-suleyman-human-level-most-tasks-five-years.toml"
+      },
+      {
+        "date_said": "2025-11-14",
+        "quote": "It’ll be much more ambient in five to 10 years.",
+        "what_is_predicted": "Computing will be much more ambient within five to ten years.",
+        "date_or_span": "five to 10 years",
+        "occasion": "Silicon Valley Girl podcast with Marina Mogilko",
+        "source_url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": "2025-11-14-suleyman-computing-more-ambient-five-to-ten-years.toml"
+      },
+      {
+        "date_said": "2025-11-12",
+        "quote": "These things are going to be zero marginal cost in a decade.",
+        "what_is_predicted": "Access to knowledge, AI companions and related AI services will cost almost nothing within a decade.",
+        "date_or_span": "in a decade",
+        "occasion": "Big Technology Podcast",
+        "source_url": "https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman",
+        "source_kind": "transcript",
+        "already_recorded": "2025-11-12-suleyman-knowledge-and-companions-zero-marginal-cost-in-a-decade.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Marketing AI Institute post on a Masters of Scale interview says he expected AI to 'nail memory' by 2025; seen in a search snippet only."
+      },
+      {
+        "year": "2024",
+        "note": "Business Insider / Cointelegraph coverage (January 2024): AI could invent and run businesses within five years; seen in search snippets only."
+      },
+      {
+        "year": "2026",
+        "note": "Fortune and Yahoo coverage of a Financial Times interview, which Fortune places 'earlier this year', apparently early 2026: most white-collar computer tasks automated within 12-18 months; seen in search snippets only, not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Silicon Valley Girl RSS feed mentions an episode with 'His two-year timeline for recursive self-improving superintelligence', apparently a later episode; seen in a snippet only, not verified."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mustafa Suleyman\" AI prediction 2025",
+        "what_found": "Coverage of the 18-month white-collar automation claim (seems to be 2026), the Bloomberg December 2025 interview, the Silicon Valley Girl transcript and the August 2025 SCAI essay coverage."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2025 interview AGI \"years\"",
+        "what_found": "Bloomberg December 2025, VideoAge on the July 2025 WSJ interview, the Moonshots transcript and the Silicon Valley Girl transcript."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "A LessWrong roundup of the recorded end-of-next-year long-horizon claim, plus older 2024 and 2023 coverage."
+      },
+      {
+        "query_or_url": "Suleyman \"Seemingly Conscious AI\" essay mustafa-suleyman.ai",
+        "what_found": "The essay URL on his own site, dated August 2025."
+      },
+      {
+        "query_or_url": "\"Towards Humanist Superintelligence\" Suleyman microsoft.ai",
+        "what_found": "Coverage of the 6 November 2025 essay; the essay's own URL was not shown in full, so it was not opened."
+      },
+      {
+        "query_or_url": "Suleyman Moonshots Diamandis \"two to seven year\"",
+        "what_found": "The Moonshots EP #216 transcript on podscripts."
+      },
+      {
+        "query_or_url": "https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming",
+        "what_found": "Opened; contains the 'over the next 2-3 years' line."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216",
+        "what_found": "Opened; the page text stops around 31 minutes in and has no speaker labels; contains the 'next couple of years' agents line; the 'two to seven year time frame' phrase seems to be the host's."
+      },
+      {
+        "query_or_url": "microsoft.ai news towards-humanist-superintelligence",
+        "what_found": "Only news coverage of the Humanist Superintelligence essay, not the essay itself."
+      },
+      {
+        "query_or_url": "Suleyman Wall Street Journal July 2025 \"next ten years\" superintelligence",
+        "what_found": "The VideoAge and Techmeme entries for the July 2025 WSJ interview."
+      },
+      {
+        "query_or_url": "Suleyman 2025 podcast transcript \"in the next\" years AI Wired OR \"Big Technology\" OR CNBC",
+        "what_found": "The Big Technology podcast transcript of 12 November 2025."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman",
+        "what_found": "Opened; contains the 'next like 10 years or so' and 'zero marginal cost in a decade' lines, plus business-plan lines that were left out."
+      },
+      {
+        "query_or_url": "https://www.videoageinternational.net/2025/07/21/news/super-ai-is-10-years-away/",
+        "what_found": "Opened; a news report quoting the WSJ's line from him, 'Soon to me is sometime in the next ten years.'"
+      },
+      {
+        "query_or_url": "Mustafa Suleyman 2025 podcast transcript AI \"five years\" OR \"ten years\" OR \"2030\"",
+        "what_found": "Mostly 2023-2024 interviews, plus the Bloomberg and Silicon Valley Girl material already seen."
+      },
+      {
+        "query_or_url": "Suleyman \"Silicon Valley Girl\" OR \"Possible podcast\" OR \"Decoder\" 2025 Suleyman superintelligence timeline",
+        "what_found": "Silicon Valley Girl coverage and RSS feed; mention of a later Decoder/FT round of interviews."
+      },
+      {
+        "query_or_url": "https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/",
+        "what_found": "Opened; a full transcript with the recorded five-year and ambient lines, plus new 2040 lines given in reply to the host's 'Imagine it's 2040' prompt."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman interview June 2025 OR May 2025 OR March 2025 AI agents years",
+        "what_found": "Nothing new from the first half of 2025 beyond the recorded April 4 event."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Most of his 2025 statements with a stated time span come from the second half of the year: the August essay on seemingly conscious AI, the July WSJ interview, and November-December podcasts (Big Technology, Silicon Valley Girl, Bloomberg, Moonshots). New finds beyond the recorded list are a 2-3 year span for building seemingly conscious AI, agents becoming very good within a couple of years, a 10-year horizon for self-improving takeoff risk, and several 'by 2040' household AI forecasts. A ten-year superintelligence line from the WSJ was seen only in news coverage."
+  },
+  "reply_text": "I found 8 new candidates for 2025 that aren't on your recorded list. I read every quote below on a page I opened. One of them, the Wall Street Journal line, I only saw in a news article that quotes the Journal. I didn't open the Journal itself.\n\n**New candidates**\n- **His essay \"Seemingly Conscious AI is Coming\" (19 August 2025, on his own site).** He wrote that an AI that seems conscious can be built with today's technology plus some \"that will mature over the next 2-3 years.\"\n- **Moonshots podcast (published 16 December 2025, recorded 5 December).** On agents, he said \"in the next couple of years, those things come into view and they're going to be very, very good.\" The podscripts transcript doesn't say who is speaking. It reads as Suleyman, since the host then sums it up as agents passing his \"modern Turing test\" by 2027.\n- **Big Technology podcast (12 November 2025).** He called a self-improving AI \"takeoff\" that replaces humans \"very low probability\" but something to \"take seriously in the next like 10 years or so.\" This is a warning about a risk more than a forecast that it will happen.\n- **Silicon Valley Girl podcast (14 November 2025), three lines.** All three came after the host said \"Imagine it's 2040,\" which is a hypothetical setup. I kept them because his own words name a date or span:\n  - an AI in your ear with ambient awareness: \"by 2040, definitely\"\n  - \"we'll definitely have self-driving cars by 2040\"\n  - a home robot that \"probably will be humanoid,\" because \"15 years is a pretty long way out\"\n- **Wall Street Journal, about 20 July 2025, news coverage only.** VideoAge quotes the Journal quoting him: \"Soon to me is sometime in the next ten years.\" VideoAge links it to super-intelligence or AGI, but I couldn't check the original wording. The point is close to the recorded April claim that AGI is \"a decade or so away,\" but it's a different occasion.\n\n**Already recorded claims I came across:** human-level performance on most tasks in five years, computing \"much more ambient in five to 10 years\", and knowledge and companions at zero marginal cost \"in a decade.\"\n\n**Left out:** company plans (\"over the next two or three years… build out one of the top labs\", selling agents \"in five years time\"), economic remarks (value \"in the next five to 10 years\", a \"10, 20 year lag\" before services get cheaper), and lines with no set date (\"in a few years' time… closed loop\").\n\n**Searches:** I ran all 12 searches and opened 5 of the 6 pages allowed. Most of the \"18 months for white-collar automation\" coverage traces to a Financial Times interview that seems to be from early 2026, so I listed it under other years.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-08-19\", \"quote\": \"This is not far away. Such a system can be built with technologies that exist today along with some that will mature over the next 2-3 years.\", \"what_is_predicted\": \"AI that appears conscious can be built with today's technology plus technology that will mature within two to three years.\", \"date_or_span\": \"next 2-3 years\", \"occasion\": \"Essay 'We must build AI for people; not to be a person' (Seemingly Conscious AI is Coming) on his personal site\", \"source_url\": \"https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-12-16\", \"quote\": \"So, you know, obviously, at the same time, agents don't really work yet. The action stuff is still progressing. It's getting better and better every minute. Starting point is 00:13:54 But it's pretty clear that in the next couple of years, those things come into view and they're going to be very, very good.\", \"what_is_predicted\": \"AI agents that take actions will become very good within the next couple of years.\", \"date_or_span\": \"next couple of years\", \"occasion\": \"Moonshots with Peter Diamandis EP #216 (recorded 5 Dec 2025, published 16 Dec 2025); transcript has no speaker labels, so the line is attributed to Suleyman from context\", \"source_url\": \"https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-12\", \"quote\": \"And I think that that is very low probability from what I see today, but it's one that we have to take seriously in the next like 10 years or so.\", \"what_is_predicted\": \"A recursively self-improving AI takeoff is a low-probability risk that must be taken seriously within about ten years.\", \"date_or_span\": \"next like 10 years or so\", \"occasion\": \"Big Technology Podcast, 'Could LLMs Be The Route To Superintelligence?'\", \"source_url\": \"https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-14\", \"quote\": \"Yeah, I mean it’s very hard to miniaturize that today. So it’s still a bit of a way off. But by 2040, definitely.\", \"what_is_predicted\": \"A personal AI with a camera and ambient awareness, worn in the ear, will exist by 2040.\", \"date_or_span\": \"by 2040\", \"occasion\": \"Silicon Valley Girl podcast with Marina Mogilko (answering the host's 'Imagine it's 2040' prompt)\", \"source_url\": \"https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-14\", \"quote\": \"Yeah, we’ll definitely have self-driving cars by 2040 that basically do most of that.\", \"what_is_predicted\": \"Self-driving cars will run most household errands by 2040.\", \"date_or_span\": \"by 2040\", \"occasion\": \"Silicon Valley Girl podcast with Marina Mogilko\", \"source_url\": \"https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-14\", \"quote\": \"I mean, 15 years is a pretty long way out, so it probably will be humanoid.\", \"what_is_predicted\": \"The household robot of about 2040 will probably be humanoid.\", \"date_or_span\": \"15 years (to 2040)\", \"occasion\": \"Silicon Valley Girl podcast with Marina Mogilko\", \"source_url\": \"https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-07\", \"quote\": \"Soon to me is sometime in the next ten years.\", \"what_is_predicted\": \"Super-intelligence or AGI (as the report frames it) will arrive sometime in the next ten years.\", \"date_or_span\": \"next ten years\", \"occasion\": \"Wall Street Journal interview (Tim Higgins), about 20 July 2025, quoted by VideoAge\", \"source_url\": \"https://www.videoageinternational.net/2025/07/21/news/super-ai-is-10-years-away/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11-14\", \"quote\": \"Yeah, I mean I think achieving human-level performance at most tasks, I wouldn’t say all knowledge tasks. That feels quite likely in the next five years, I think.\", \"what_is_predicted\": \"AI will reach human-level performance on most tasks within five years.\", \"date_or_span\": \"next five years\", \"occasion\": \"Silicon Valley Girl podcast with Marina Mogilko\", \"source_url\": \"https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2025-11-14-suleyman-human-level-most-tasks-five-years.toml\"},\n    {\"date_said\": \"2025-11-14\", \"quote\": \"It’ll be much more ambient in five to 10 years.\", \"what_is_predicted\": \"Computing will be much more ambient within five to ten years.\", \"date_or_span\": \"five to 10 years\", \"occasion\": \"Silicon Valley Girl podcast with Marina Mogilko\", \"source_url\": \"https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2025-11-14-suleyman-computing-more-ambient-five-to-ten-years.toml\"},\n    {\"date_said\": \"2025-11-12\", \"quote\": \"These things are going to be zero marginal cost in a decade.\", \"what_is_predicted\": \"Access to knowledge, AI companions and related AI services will cost almost nothing within a decade.\", \"date_or_span\": \"in a decade\", \"occasion\": \"Big Technology Podcast\", \"source_url\": \"https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman\", \"source_kind\": \"transcript\", \"already_recorded\": \"2025-11-12-suleyman-knowledge-and-companions-zero-marginal-cost-in-a-decade.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Marketing AI Institute post on a Masters of Scale interview says he expected AI to 'nail memory' by 2025; seen in a search snippet only.\"},\n    {\"year\": \"2024\", \"note\": \"Business Insider / Cointelegraph coverage (January 2024): AI could invent and run businesses within five years; seen in search snippets only.\"},\n    {\"year\": \"2026\", \"note\": \"Fortune and Yahoo coverage of a Financial Times interview, which Fortune places 'earlier this year', apparently early 2026: most white-collar computer tasks automated within 12-18 months; seen in search snippets only, not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Silicon Valley Girl RSS feed mentions an episode with 'His two-year timeline for recursive self-improving superintelligence', apparently a later episode; seen in a snippet only, not verified.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" AI prediction 2025\", \"what_found\": \"Coverage of the 18-month white-collar automation claim (seems to be 2026), the Bloomberg December 2025 interview, the Silicon Valley Girl transcript and the August 2025 SCAI essay coverage.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Bloomberg December 2025, VideoAge on the July 2025 WSJ interview, the Moonshots transcript and the Silicon Valley Girl transcript.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"A LessWrong roundup of the recorded end-of-next-year long-horizon claim, plus older 2024 and 2023 coverage.\"},\n    {\"query_or_url\": \"Suleyman \\\"Seemingly Conscious AI\\\" essay mustafa-suleyman.ai\", \"what_found\": \"The essay URL on his own site, dated August 2025.\"},\n    {\"query_or_url\": \"\\\"Towards Humanist Superintelligence\\\" Suleyman microsoft.ai\", \"what_found\": \"Coverage of the 6 November 2025 essay; the essay's own URL was not shown in full, so it was not opened.\"},\n    {\"query_or_url\": \"Suleyman Moonshots Diamandis \\\"two to seven year\\\"\", \"what_found\": \"The Moonshots EP #216 transcript on podscripts.\"},\n    {\"query_or_url\": \"https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming\", \"what_found\": \"Opened; contains the 'over the next 2-3 years' line.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/moonshots-with-peter-diamandis/mustafa-suleyman-the-agi-race-is-fake-building-safe-superintelligence-the-1m-agentic-economy-ep-216\", \"what_found\": \"Opened; the page text stops around 31 minutes in and has no speaker labels; contains the 'next couple of years' agents line; the 'two to seven year time frame' phrase seems to be the host's.\"},\n    {\"query_or_url\": \"microsoft.ai news towards-humanist-superintelligence\", \"what_found\": \"Only news coverage of the Humanist Superintelligence essay, not the essay itself.\"},\n    {\"query_or_url\": \"Suleyman Wall Street Journal July 2025 \\\"next ten years\\\" superintelligence\", \"what_found\": \"The VideoAge and Techmeme entries for the July 2025 WSJ interview.\"},\n    {\"query_or_url\": \"Suleyman 2025 podcast transcript \\\"in the next\\\" years AI Wired OR \\\"Big Technology\\\" OR CNBC\", \"what_found\": \"The Big Technology podcast transcript of 12 November 2025.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/big-technology-podcast/could-llms-be-the-route-to-superintelligence-with-mustafa-suleyman\", \"what_found\": \"Opened; contains the 'next like 10 years or so' and 'zero marginal cost in a decade' lines, plus business-plan lines that were left out.\"},\n    {\"query_or_url\": \"https://www.videoageinternational.net/2025/07/21/news/super-ai-is-10-years-away/\", \"what_found\": \"Opened; a news report quoting the WSJ's line from him, 'Soon to me is sometime in the next ten years.'\"},\n    {\"query_or_url\": \"Mustafa Suleyman 2025 podcast transcript AI \\\"five years\\\" OR \\\"ten years\\\" OR \\\"2030\\\"\", \"what_found\": \"Mostly 2023-2024 interviews, plus the Bloomberg and Silicon Valley Girl material already seen.\"},\n    {\"query_or_url\": \"Suleyman \\\"Silicon Valley Girl\\\" OR \\\"Possible podcast\\\" OR \\\"Decoder\\\" 2025 Suleyman superintelligence timeline\", \"what_found\": \"Silicon Valley Girl coverage and RSS feed; mention of a later Decoder/FT round of interviews.\"},\n    {\"query_or_url\": \"https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/\", \"what_found\": \"Opened; a full transcript with the recorded five-year and ambient lines, plus new 2040 lines given in reply to the host's 'Imagine it's 2040' prompt.\"},\n    {\"query_or_url\": \"Mustafa Suleyman interview June 2025 OR May 2025 OR March 2025 AI agents years\", \"what_found\": \"Nothing new from the first half of 2025 beyond the recorded April 4 event.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Most of his 2025 statements with a stated time span come from the second half of the year: the August essay on seemingly conscious AI, the July WSJ interview, and November-December podcasts (Big Technology, Silicon Valley Girl, Bloomberg, Moonshots). New finds beyond the recorded list are a 2-3 year span for building seemingly conscious AI, agents becoming very good within a couple of years, a 10-year horizon for self-improving takeoff risk, and several 'by 2040' household AI forecasts. A ten-year superintelligence line from the WSJ was seen only in news coverage.\"\n}\n```"
+}

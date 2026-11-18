@@ -1,0 +1,358 @@
+{
+  "speaker_id": "legg",
+  "year": 2011,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5409,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7671
+      },
+      "cache_creation_input_tokens": 42661,
+      "cache_read_input_tokens": 331892,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 8056,
+      "output_tokens_details": {
+        "thinking_tokens": 1923
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Shane Legg\" AI prediction 2011','\"Shane Legg\" 2011 interview AGI \"years\"','\"Shane Legg\" 2011 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"##\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2011"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r[:8]:\n        if x.get('type')!='web_search_result': print(x);continue\n        print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:250].replace('\\n',' '))\nprint(\"## 1\");show(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q});print(\"##\",q);show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2011 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2011 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_search({\"query\":\"vetta.org \\\"Goodbye 2011, hello 2012\\\" Legg\"});show(rr)\nrr=await web_search({\"query\":\"Shane Legg interview Jonathan Despres\"});show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "vetta.org \"Goodbye 2011, hello 2012\" Legg"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg interview Jonathan Despres"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages={}\nfor u in [\"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\",\"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\",\"https://future.fandom.com/wiki/Scenario:_Shane_Legg\"]:\n    p=await web_fetch({\"url\":u})\n    p=json.loads(p) if isinstance(p,str) else p\n    if isinstance(p,list): p=p[0]\n    pages[u]=p.get('content','') if 'content' in p else str(p)\n    print(u,len(pages[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://future.fandom.com/wiki/Scenario:_Shane_Legg"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(p)); print(str(p)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "txt={u:(c['source']['data'] if isinstance(c,dict) else c) for u,c in pages.items()}\nfor u,t in txt.items(): print(u,len(t))\nprint(txt[\"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\"][:6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(txt[\"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\"][6000:15434])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=txt[\"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\"]\ni=t.find('Q&A with Shane Legg');print(t[:12000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(txt[\"https://future.fandom.com/wiki/Scenario:_Shane_Legg\"])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://www.vetta.org/2011/\"})\np=json.loads(p) if isinstance(p,str) else p\nif isinstance(p,list): p=p[0]\nc=p.get('content');t=c['source']['data'] if isinstance(c,dict) else str(p)\ni=t.find('# ');print(t[:9000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.vetta.org/2011/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in [\"vetta.org 2011 Shane Legg blog AIQ\",\"\\\"Jonathan Despres\\\" interview \\\"Shane Legg\\\" singularity 2025 2040\",\"vetta.org 2011/01 Shane Legg\"]:\n    rr=await web_search({\"query\":q});print(\"##\",q);show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "vetta.org 2011 Shane Legg blog AIQ"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jonathan Despres\" interview \"Shane Legg\" singularity 2025 2040"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "vetta.org 2011/01 Shane Legg"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://www.vetta.org/2011/01/technological-themes/\"})\np=json.loads(p) if isinstance(p,str) else p\nif isinstance(p,list): p=p[0]\nc=p.get('content');t=c['source']['data'] if isinstance(c,dict) else str(p)\ni=t.find('# Technological');print(t[i:i+14000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.vetta.org/2011/01/technological-themes/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(len(t));i=t.find('Technological themes');print(t[i:i+15000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in [\"Shane Legg \\\"AI is now where the internet was in 1988\\\"\",\"Shane Legg \\\"boom in AI around 2020\\\"\"]:\n    rr=await web_search({\"query\":q});print(\"##\",q);show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg \"AI is now where the internet was in 1988\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg \"boom in AI around 2020\""
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2011-01-31",
+        "quote": "Thus my pick for the theme from 2025 to 2040 is machine intelligence.",
+        "what_is_predicted": "Machine intelligence will be the defining technological theme of the period 2025 to 2040.",
+        "date_or_span": "2025 to 2040",
+        "occasion": "Blog post 'Technological themes' on vetta.org (his own blog)",
+        "source_url": "https://www.vetta.org/2011/01/technological-themes/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2011-06-17",
+        "quote": "2018, 2028, 2050",
+        "what_is_predicted": "A 50% chance that human-level machine intelligence is developed by 2028, assuming no global catastrophe (the middle figure of his answer).",
+        "date_or_span": "2028",
+        "occasion": "Email Q&A 'Q&A with Shane Legg on risks from AI' published by XiXiDu on LessWrong, answering Q1 asking for the years of 10%/50%/90% chance",
+        "source_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2011-06-17",
+        "quote": "2018, 2028, 2050",
+        "what_is_predicted": "A 10% chance that human-level machine intelligence is developed by 2018 (first figure).",
+        "date_or_span": "2018",
+        "occasion": "LessWrong email Q&A, Q1",
+        "source_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+        "source_kind": "printed_qa",
+        "already_recorded": "2011-06-17-legg-ten-percent-by-2018.toml"
+      },
+      {
+        "date_said": "2011-06-17",
+        "quote": "2018, 2028, 2050",
+        "what_is_predicted": "A 90% chance that human-level machine intelligence is developed by 2050 (third figure).",
+        "date_or_span": "2050",
+        "occasion": "LessWrong email Q&A, Q1",
+        "source_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+        "source_kind": "printed_qa",
+        "already_recorded": "2011-06-17-legg-ninety-percent-by-2050.toml"
+      },
+      {
+        "date_said": "2011-12-31",
+        "quote": "I’ve decided to once again leave my prediction for when human level AGI will arrive unchanged.  That is, I give it a log-normal distribution with a mean of 2028 and a mode of 2025, under the assumption that nothing crazy happens like a nuclear war.",
+        "what_is_predicted": "Human-level AGI arrival follows a log-normal distribution with mean 2028 and mode 2025, barring catastrophe.",
+        "date_or_span": "mean 2028, mode 2025",
+        "occasion": "Blog post 'Goodbye 2011, hello 2012' on vetta.org",
+        "source_url": "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2011-12-31",
+        "quote": "I’d also like to add to this prediction that I expect to see an impressive proto-AGI within the next 8 years.",
+        "what_is_predicted": "An impressive proto-AGI with learnt basic vision, sound processing, movement control and language will appear within eight years.",
+        "date_or_span": "within the next 8 years (by about end of 2019)",
+        "occasion": "Blog post 'Goodbye 2011, hello 2012' on vetta.org",
+        "source_url": "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/",
+        "source_kind": "own_words",
+        "already_recorded": "2011-12-31-legg-proto-agi-within-eight-years.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "unknown (page undated)",
+        "note": "Interview by Jonathan Despres on future.fandom.com/wiki/Scenario:_Shane_Legg says 'I expect a boom in AI around 2020', 'Human level AI will be passed in the mid 2020's', and that things get 'really crazy' after human-level AGI, 'some time from 2025 to 2040'. The page has no date, so it is not counted for 2011."
+      },
+      {
+        "year": "2012",
+        "note": "Legg's replies on the vetta.org 'Goodbye 2011, hello 2012' post dated 2 and 8 January 2012 discuss the proto-AGI forecast (e.g. it may be impossible to falsify; reasons for the 8-year view) and fall outside 2011."
+      },
+      {
+        "year": "2023",
+        "note": "Search results show news coverage (Futurism, IBTimes, Dwarkesh Patel podcast) of Legg repeating the 50%-by-2028 view; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2011",
+        "what_found": "Mostly 2023 news retelling his 2011 50%-by-2028 view, plus a TIME profile citing the 2011 LessWrong interview."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2011 interview AGI \"years\"",
+        "what_found": "Turned up the LessWrong 'Q&A with Shane Legg on risks from AI' page plus the same 2023 coverage."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2011 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Turned up the undated Jonathan Despres interview on future.fandom.com and pointers to the vetta.org 'Goodbye 2011, hello 2012' post."
+      },
+      {
+        "query_or_url": "vetta.org \"Goodbye 2011, hello 2012\" Legg",
+        "what_found": "Confirmed the vetta.org post URL and the PredictionBook entry for the proto-AGI forecast."
+      },
+      {
+        "query_or_url": "Shane Legg interview Jonathan Despres",
+        "what_found": "Only the fandom page and its interview index, with no date."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+        "what_found": "Opened: the Q&A dated 17 June 2011 with the answer '2018, 2028, 2050' to the 10%/50%/90% question."
+      },
+      {
+        "query_or_url": "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/",
+        "what_found": "Opened: the post dated 31 December 2011 with the log-normal mean 2028 / mode 2025 forecast and the proto-AGI-within-8-years forecast."
+      },
+      {
+        "query_or_url": "https://future.fandom.com/wiki/Scenario:_Shane_Legg",
+        "what_found": "Opened: the Despres interview with dated AI forecasts, but the page carries no date."
+      },
+      {
+        "query_or_url": "https://www.vetta.org/2011/",
+        "what_found": "The fetch was refused (url_not_in_prior_context), so nothing was read."
+      },
+      {
+        "query_or_url": "vetta.org 2011 Shane Legg blog AIQ",
+        "what_found": "The AIQ post of 16 November 2011 and its papers, which are about measuring intelligence, not forecasts."
+      },
+      {
+        "query_or_url": "\"Jonathan Despres\" interview \"Shane Legg\" singularity 2025 2040",
+        "what_found": "Only the same undated fandom page and its index."
+      },
+      {
+        "query_or_url": "vetta.org 2011/01 Shane Legg",
+        "what_found": "Found the 'Technological themes' post of 31 January 2011."
+      },
+      {
+        "query_or_url": "https://www.vetta.org/2011/01/technological-themes/",
+        "what_found": "Opened: the post naming machine intelligence as the theme for 2025 to 2040, plus a 4 February 2011 reply saying this would include 'fledgeling AGIs'."
+      },
+      {
+        "query_or_url": "Shane Legg \"AI is now where the internet was in 1988\"",
+        "what_found": "No date found for the Despres interview."
+      },
+      {
+        "query_or_url": "Shane Legg \"boom in AI around 2020\"",
+        "what_found": "A 2015 H+ Magazine page repeats the Despres interview text; still no date for the interview."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Legg wrote down AI forecasts three times in 2011, all in his own words: a January blog post naming machine intelligence the theme of 2025 to 2040, a June LessWrong email Q&A giving 10%/50%/90% years of 2018/2028/2050, and a 31 December blog post with a log-normal forecast (mean 2028, mode 2025) plus a proto-AGI within 8 years. The 50%-by-2028, the 2025-2040 theme and the mean-2028/mode-2025 forecast are not in the recorded list. The undated Despres interview has more dated forecasts, but its year could not be confirmed."
+  },
+  "reply_text": "Now open the main pages.I found five candidates from 2011, all on pages I opened. Two match claims you've already recorded and three are new. Each comes from Legg's own blog or from a published email Q&A.\n\n**New, not in your recorded list:**\n1. **50% by 2028 (17 June 2011, LessWrong Q&A).** He was asked for the years by which he'd give 10%, 50% and 90% odds of human-level machine intelligence. He answered \"2018, 2028, 2050\". You've recorded the 10% and 90% parts but not the 50% one, which is the figure most often cited later.\n2. **The 2025–2040 \"theme\" (31 January 2011, vetta.org post \"Technological themes\").** He wrote: \"Thus my pick for the theme from 2025 to 2040 is machine intelligence.\" In a reply below the post on 4 February 2011, he said this would range from specialised machine-learning systems \"to fledgeling AGIs.\"\n3. **Mean of 2028 and most likely year 2025 (31 December 2011, vetta.org post \"Goodbye 2011, hello 2012\").** This is the same post as your recorded proto-AGI claim, but it's a separate statement: a log-normal spread for human-level AGI with a mean of 2028 and a mode (most likely year) of 2025. He made it on the condition that nothing like a nuclear war happens.\n\n**Things to watch when checking:**\n- The 31 December post is stamped \"2:49 am\" with no time zone. Comments on the post run from 31 December 2011 into January 2012, so later remarks on it don't belong to 2011.\n- The LessWrong Q&A was done by email and published on 17 June 2011. The exact day Legg answered isn't shown.\n- An interview by Jonathan Despres on the future.fandom.com wiki has dated claims: an AI boom around 2020, human-level AI passed in the mid-2020s, and things getting \"really crazy\" sometime from 2025 to 2040. The page carries no date and I couldn't find one, so I left it under other_years rather than as a 2011 candidate.\n- I didn't count his Q6 answer (\"my number 1 risk for this century\") because it ranks risks rather than predicting something AI will do. His Q8 milestone answer has no date.\n- My first tool call broke after the first fixed search had already run, so I reused that result rather than run it again. One page opening was refused, so I used 10 of 12 searches and 5 of 6 openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2011-01-31\", \"quote\": \"Thus my pick for the theme from 2025 to 2040 is machine intelligence.\", \"what_is_predicted\": \"Machine intelligence will be the defining technological theme of the period 2025 to 2040.\", \"date_or_span\": \"2025 to 2040\", \"occasion\": \"Blog post 'Technological themes' on vetta.org (his own blog)\", \"source_url\": \"https://www.vetta.org/2011/01/technological-themes/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2011-06-17\", \"quote\": \"2018, 2028, 2050\", \"what_is_predicted\": \"A 50% chance that human-level machine intelligence is developed by 2028, assuming no global catastrophe (the middle figure of his answer).\", \"date_or_span\": \"2028\", \"occasion\": \"Email Q&A 'Q&A with Shane Legg on risks from AI' published by XiXiDu on LessWrong, answering Q1 asking for the years of 10%/50%/90% chance\", \"source_url\": \"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2011-06-17\", \"quote\": \"2018, 2028, 2050\", \"what_is_predicted\": \"A 10% chance that human-level machine intelligence is developed by 2018 (first figure).\", \"date_or_span\": \"2018\", \"occasion\": \"LessWrong email Q&A, Q1\", \"source_url\": \"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2011-06-17-legg-ten-percent-by-2018.toml\"},\n    {\"date_said\": \"2011-06-17\", \"quote\": \"2018, 2028, 2050\", \"what_is_predicted\": \"A 90% chance that human-level machine intelligence is developed by 2050 (third figure).\", \"date_or_span\": \"2050\", \"occasion\": \"LessWrong email Q&A, Q1\", \"source_url\": \"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2011-06-17-legg-ninety-percent-by-2050.toml\"},\n    {\"date_said\": \"2011-12-31\", \"quote\": \"I’ve decided to once again leave my prediction for when human level AGI will arrive unchanged.  That is, I give it a log-normal distribution with a mean of 2028 and a mode of 2025, under the assumption that nothing crazy happens like a nuclear war.\", \"what_is_predicted\": \"Human-level AGI arrival follows a log-normal distribution with mean 2028 and mode 2025, barring catastrophe.\", \"date_or_span\": \"mean 2028, mode 2025\", \"occasion\": \"Blog post 'Goodbye 2011, hello 2012' on vetta.org\", \"source_url\": \"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2011-12-31\", \"quote\": \"I’d also like to add to this prediction that I expect to see an impressive proto-AGI within the next 8 years.\", \"what_is_predicted\": \"An impressive proto-AGI with learnt basic vision, sound processing, movement control and language will appear within eight years.\", \"date_or_span\": \"within the next 8 years (by about end of 2019)\", \"occasion\": \"Blog post 'Goodbye 2011, hello 2012' on vetta.org\", \"source_url\": \"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2011-12-31-legg-proto-agi-within-eight-years.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"unknown (page undated)\", \"note\": \"Interview by Jonathan Despres on future.fandom.com/wiki/Scenario:_Shane_Legg says 'I expect a boom in AI around 2020', 'Human level AI will be passed in the mid 2020's', and that things get 'really crazy' after human-level AGI, 'some time from 2025 to 2040'. The page has no date, so it is not counted for 2011.\"},\n    {\"year\": \"2012\", \"note\": \"Legg's replies on the vetta.org 'Goodbye 2011, hello 2012' post dated 2 and 8 January 2012 discuss the proto-AGI forecast (e.g. it may be impossible to falsify; reasons for the 8-year view) and fall outside 2011.\"},\n    {\"year\": \"2023\", \"note\": \"Search results show news coverage (Futurism, IBTimes, Dwarkesh Patel podcast) of Legg repeating the 50%-by-2028 view; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2011\", \"what_found\": \"Mostly 2023 news retelling his 2011 50%-by-2028 view, plus a TIME profile citing the 2011 LessWrong interview.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2011 interview AGI \\\"years\\\"\", \"what_found\": \"Turned up the LessWrong 'Q&A with Shane Legg on risks from AI' page plus the same 2023 coverage.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2011 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Turned up the undated Jonathan Despres interview on future.fandom.com and pointers to the vetta.org 'Goodbye 2011, hello 2012' post.\"},\n    {\"query_or_url\": \"vetta.org \\\"Goodbye 2011, hello 2012\\\" Legg\", \"what_found\": \"Confirmed the vetta.org post URL and the PredictionBook entry for the proto-AGI forecast.\"},\n    {\"query_or_url\": \"Shane Legg interview Jonathan Despres\", \"what_found\": \"Only the fandom page and its interview index, with no date.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\", \"what_found\": \"Opened: the Q&A dated 17 June 2011 with the answer '2018, 2028, 2050' to the 10%/50%/90% question.\"},\n    {\"query_or_url\": \"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\", \"what_found\": \"Opened: the post dated 31 December 2011 with the log-normal mean 2028 / mode 2025 forecast and the proto-AGI-within-8-years forecast.\"},\n    {\"query_or_url\": \"https://future.fandom.com/wiki/Scenario:_Shane_Legg\", \"what_found\": \"Opened: the Despres interview with dated AI forecasts, but the page carries no date.\"},\n    {\"query_or_url\": \"https://www.vetta.org/2011/\", \"what_found\": \"The fetch was refused (url_not_in_prior_context), so nothing was read.\"},\n    {\"query_or_url\": \"vetta.org 2011 Shane Legg blog AIQ\", \"what_found\": \"The AIQ post of 16 November 2011 and its papers, which are about measuring intelligence, not forecasts.\"},\n    {\"query_or_url\": \"\\\"Jonathan Despres\\\" interview \\\"Shane Legg\\\" singularity 2025 2040\", \"what_found\": \"Only the same undated fandom page and its index.\"},\n    {\"query_or_url\": \"vetta.org 2011/01 Shane Legg\", \"what_found\": \"Found the 'Technological themes' post of 31 January 2011.\"},\n    {\"query_or_url\": \"https://www.vetta.org/2011/01/technological-themes/\", \"what_found\": \"Opened: the post naming machine intelligence as the theme for 2025 to 2040, plus a 4 February 2011 reply saying this would include 'fledgeling AGIs'.\"},\n    {\"query_or_url\": \"Shane Legg \\\"AI is now where the internet was in 1988\\\"\", \"what_found\": \"No date found for the Despres interview.\"},\n    {\"query_or_url\": \"Shane Legg \\\"boom in AI around 2020\\\"\", \"what_found\": \"A 2015 H+ Magazine page repeats the Despres interview text; still no date for the interview.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Legg wrote down AI forecasts three times in 2011, all in his own words: a January blog post naming machine intelligence the theme of 2025 to 2040, a June LessWrong email Q&A giving 10%/50%/90% years of 2018/2028/2050, and a 31 December blog post with a log-normal forecast (mean 2028, mode 2025) plus a proto-AGI within 8 years. The 50%-by-2028, the 2025-2040 theme and the mean-2028/mode-2025 forecast are not in the recorded list. The undated Despres interview has more dated forecasts, but its year could not be confirmed.\"\n}\n```"
+}

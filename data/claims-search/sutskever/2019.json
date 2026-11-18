@@ -1,0 +1,300 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2019,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5379,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7624
+      },
+      "cache_creation_input_tokens": 41682,
+      "cache_read_input_tokens": 311483,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 7856,
+      "output_tokens_details": {
+        "thinking_tokens": 2484
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2019','\"Ilya Sutskever\" 2019 interview AGI \"years\"','\"Ilya Sutskever\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2019"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2019 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['iHuman documentary Sutskever AGI quote','Sutskever 2019 talk transcript GPT-2 OpenAI','Sutskever 2019 podcast interview deep learning future']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "iHuman documentary Sutskever AGI quote"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2019 talk transcript GPT-2 OpenAI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever 2019 podcast interview deep learning future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\npages={}\nfor u in ['https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/','https://whatishappening.org/ilya-sutskever-openai-jul-2019/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,dict): print(u,p); continue\n    c=p[0].get('content',''); pages[u]=c\n    print('=====',u,len(c)); print(c[:4000])\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://whatishappening.org/ilya-sutskever-openai-jul-2019/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['New Yorker \"The Next Word\" Seabrook Sutskever 2019','Sutskever ScaledML 2019 talk','iHuman 2019 Sutskever \"human-level AI in 5 years\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "New Yorker \"The Next Word\" Seabrook Sutskever 2019"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever ScaledML 2019 talk"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "iHuman 2019 Sutskever \"human-level AI in 5 years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://scrapsfromtheloft.com/movies/ihuman-2019-transcript/','https://inquiringreader.org/texts/2019-12-16-the-next-word/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,dict):\n        c=p.get('content',{})\n        c=c.get('source',{}).get('data','') if isinstance(c,dict) else str(c)\n        if not c: print(u,str(p)[:300]); continue\n    else: c=p[0].get('content','')\n    pages[u]=c; print('=====',u,len(c))\n    for kw in ['Sutskever','Ilya','five years','human-level','years','AGI']:\n        for m in re.finditer(kw,c):\n            pass\n    idxs=[m.start() for m in re.finditer(r'Sutskever|Ilya|human-level|five years|ten years',c)]\n    last=-1000\n    for i in idxs:\n        if i-last>600:\n            print('...',c[max(0,i-500):i+700].replace('\\n',' ')); last=i\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://scrapsfromtheloft.com/movies/ihuman-2019-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://inquiringreader.org/texts/2019-12-16-the-next-word/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=pages['https://scrapsfromtheloft.com/movies/ihuman-2019-transcript/']\nfor kw in ['Maybe we','solar panels','human level','smartest friend','for the AIs']:\n    for m in re.finditer(kw,c):\n        print('##',kw,'::',c[max(0,m.start()-600):m.start()+400].replace('\\n',' '))\nc2=pages['https://inquiringreader.org/texts/2019-12-16-the-next-word/']\nprint(c2[:1500])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['human-level','50 or 100','fifty','obsolete','endgame','Earth will be covered','dictatorships']:\n    for m in re.finditer(kw,c):\n        print('##',kw,'::',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '))\nprint(c[-800:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Seabrook \"The Next Word\" newyorker Sutskever \"give it the compute\"','\"Sutskever\" 2019 \"Lex Fridman\" OR \"Karen Hao\" AGI timeline interview']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Seabrook \"The Next Word\" newyorker Sutskever \"give it the compute\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sutskever\" 2019 \"Lex Fridman\" OR \"Karen Hao\" AGI timeline interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://gwern.net/scaling-hypothesis'\np=await web_fetch({\"url\":u})\nif isinstance(p,str): p=json.loads(p)\nif isinstance(p,dict):\n    cc=p.get('content',{}); c3=cc.get('source',{}).get('data','') if isinstance(cc,dict) else str(cc)\nelse: c3=p[0].get('content','')\nprint(len(c3))\nfor m in re.finditer(r'Sutskever',c3):\n    print('##',c3[max(0,m.start()-200):m.start()+900].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://gwern.net/scaling-hypothesis"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'Ilya|compute, give|alchemy',c3):\n    print('##',c3[max(0,m.start()-300):m.start()+900].replace('\\n',' '));print()\nprint(c3[:300])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2019",
+        "quote": "We haven’t created the human-level thinking machine yet, but we get closer and closer. Maybe we’ll get to human-level AI in 5 years from now, or maybe it’ll take 50 or 100 years from now—it almost doesn’t matter.",
+        "what_is_predicted": "Human-level AI might arrive anywhere from 5 to 50 or 100 years out; he says the timing almost doesn't matter.",
+        "date_or_span": "5 years, or 50 or 100 years, from the time of the interview",
+        "occasion": "Interview in the documentary iHuman (dir. Tonje Hessen Schei), premiered at IDFA in November 2019 according to Wikipedia; dailydoc timestamp 59:07-59:14. The filming date is unknown and could be before 2019.",
+        "source_url": "https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2020",
+        "note": "Lex Fridman Podcast #94 with Sutskever (2020) came up in search results (happyscribe and swellai transcripts); not opened or used for 2019."
+      },
+      {
+        "year": "2025",
+        "note": "Search results were dominated by the November 2025 Dwarkesh Patel interview, in which press reports say he gave a 5-20 year timeline for human-like learning systems or superintelligence; not opened."
+      },
+      {
+        "year": "2024",
+        "note": "December 2024 NeurIPS Test of Time talk ('pre-training as we know it will end'; reasoning will be less predictable), seen in news coverage only."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2019",
+        "what_found": "Only 2024-2026 coverage (NeurIPS 2024, 2025 University of Toronto convocation); nothing from 2019."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2019 interview AGI \"years\"",
+        "what_found": "Coverage of the 2025 Dwarkesh interview with a 5-20 year timeline; nothing from 2019."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Again 2025 Dwarkesh coverage plus Wikipedia; nothing from 2019."
+      },
+      {
+        "query_or_url": "iHuman documentary Sutskever AGI quote",
+        "what_found": "Pointed to the 2019 film iHuman, with a dailydoc quote collection and a stop.ai quote dated Nov 2019."
+      },
+      {
+        "query_or_url": "Sutskever 2019 talk transcript GPT-2 OpenAI",
+        "what_found": "OpenAI's August 2019 GPT-2 report, a New Yorker October 2019 quote, and a summary of the VB Transform July 2019 talk."
+      },
+      {
+        "query_or_url": "Sutskever 2019 podcast interview deep learning future",
+        "what_found": "Lex Fridman #94 transcripts (2020)."
+      },
+      {
+        "query_or_url": "https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/",
+        "what_found": "Opened; timestamped iHuman quotes including the '5 years ... 50 or 100 years' line about human-level AI."
+      },
+      {
+        "query_or_url": "https://whatishappening.org/ilya-sutskever-openai-jul-2019/",
+        "what_found": "Opened; a summary of the VB Transform 2019 talk with no direct quotes and no dated predictions."
+      },
+      {
+        "query_or_url": "New Yorker \"The Next Word\" Seabrook Sutskever 2019",
+        "what_found": "Listings for the October 2019 New Yorker article and a reprint page."
+      },
+      {
+        "query_or_url": "Sutskever ScaledML 2019 talk",
+        "what_found": "ScaledML March 2019 GPT-2 talk on YouTube, with no transcript."
+      },
+      {
+        "query_or_url": "iHuman 2019 Sutskever \"human-level AI in 5 years\"",
+        "what_found": "A scrapsfromtheloft iHuman transcript and Wikipedia's IDFA premiere date of 23 November 2019."
+      },
+      {
+        "query_or_url": "https://scrapsfromtheloft.com/movies/ihuman-2019-transcript/",
+        "what_found": "Opened; transcript without speaker names and cut off before 59:07; holds an unattributed line on 'dramatically more intelligent systems in 10 or 15 years'."
+      },
+      {
+        "query_or_url": "https://inquiringreader.org/texts/2019-12-16-the-next-word/",
+        "what_found": "Opened; only the start of the page came back, with no Sutskever quotes."
+      },
+      {
+        "query_or_url": "Seabrook \"The Next Word\" newyorker Sutskever \"give it the compute\"",
+        "what_found": "Gwern's Scaling Hypothesis cites the New Yorker 2019 line 'give it the compute, give it the data' (not a dated forecast)."
+      },
+      {
+        "query_or_url": "\"Sutskever\" 2019 \"Lex Fridman\" OR \"Karen Hao\" AGI timeline interview",
+        "what_found": "Lex #94 summaries and a note that Karen Hao interviewed him in 2019 for an MIT Technology Review profile; no 2019 quotes found."
+      },
+      {
+        "query_or_url": "https://gwern.net/scaling-hypothesis",
+        "what_found": "Opened; page came back cut off with no Sutskever text."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "The only 2019 item that fits is Sutskever's line in the documentary iHuman (premiered November 2019) that human-level AI might come in 5 years or 50 to 100 years, which he says almost doesn't matter. It was seen only in a third-party quote collection, and the filming date is unknown. Other 2019 occasions (VB Transform, ScaledML GPT-2 talk, New Yorker 'The Next Word') produced no dated forecasts on pages I opened."
+  },
+  "reply_text": "I found one possible 2019 prediction, and it still needs checking against the film. In the documentary *iHuman*, Sutskever gives a wide range for when human-level AI arrives. I have no direct quote with a date from any other 2019 occasion, and nothing was already recorded for this year.\n\n**The candidate.** A quote collection on dailydoc.com, with timestamps, attributes this to Sutskever at 59:07–59:14 of *iHuman*: \"We haven't created the human-level thinking machine yet, but we get closer and closer. Maybe we'll get to human-level AI in 5 years from now, or maybe it'll take 50 or 100 years from now—it almost doesn't matter.\"\n\nThree caveats:\n- **I could not confirm the words in a transcript.** The transcript page I opened (scrapsfromtheloft.com) cut off before that point in the film. It also doesn't name speakers. The only page that carries the words is a third-party write-up, so I marked it coverage_only. Someone should watch the film at about 59:07.\n- **The date is uncertain.** The film premiered at the IDFA festival in Amsterdam (Wikipedia gives 23 November 2019). I don't know when the interview was filmed, so it might come from an earlier year.\n- **It may not count as a forecast.** The span runs from 5 to 100 years, and he says the timing \"almost doesn't matter.\" It's up to you whether that counts.\n\n**A line I couldn't attribute.** In the transcript, right after a passage that the dailydoc page attributes to Sutskever, someone says \"You're gonna see dramatically more intelligent systems in 10 or 15 years from now…\". The transcript doesn't say who is speaking, and dailydoc's version of his quote stops just before this line. I left it out, but checking the film around 15:39 would settle it.\n\n**Other 2019 occasions I checked:**\n- **His VB Transform talk with Greg Brockman (July 2019):** the only page I opened was someone's summary notes. They describe his hopes for reasoning but give no dates and no exact quotes.\n- **His ScaledML talk on GPT-2 (March 2019):** I found a YouTube recording but no transcript, and I didn't watch it.\n- **The New Yorker article \"The Next Word\" (October 2019):** the copy I opened held only the start of the page and none of his words, and the gwern.net page I opened was cut off before his quotes.\n- **Lex Fridman podcast #94:** this was recorded in 2020, so it belongs to another year.\n\nI used 11 of 12 searches and 5 of 6 page openings. My first code run crashed while printing the results of the first search, but the search ran only once and I used its saved results.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2019\",\n      \"quote\": \"We haven’t created the human-level thinking machine yet, but we get closer and closer. Maybe we’ll get to human-level AI in 5 years from now, or maybe it’ll take 50 or 100 years from now—it almost doesn’t matter.\",\n      \"what_is_predicted\": \"Human-level AI might arrive anywhere from 5 to 50 or 100 years out; he says the timing almost doesn't matter.\",\n      \"date_or_span\": \"5 years, or 50 or 100 years, from the time of the interview\",\n      \"occasion\": \"Interview in the documentary iHuman (dir. Tonje Hessen Schei), premiered at IDFA in November 2019 according to Wikipedia; dailydoc timestamp 59:07-59:14. The filming date is unknown and could be before 2019.\",\n      \"source_url\": \"https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2020\", \"note\": \"Lex Fridman Podcast #94 with Sutskever (2020) came up in search results (happyscribe and swellai transcripts); not opened or used for 2019.\"},\n    {\"year\": \"2025\", \"note\": \"Search results were dominated by the November 2025 Dwarkesh Patel interview, in which press reports say he gave a 5-20 year timeline for human-like learning systems or superintelligence; not opened.\"},\n    {\"year\": \"2024\", \"note\": \"December 2024 NeurIPS Test of Time talk ('pre-training as we know it will end'; reasoning will be less predictable), seen in news coverage only.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2019\", \"what_found\": \"Only 2024-2026 coverage (NeurIPS 2024, 2025 University of Toronto convocation); nothing from 2019.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2019 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the 2025 Dwarkesh interview with a 5-20 year timeline; nothing from 2019.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2019 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Again 2025 Dwarkesh coverage plus Wikipedia; nothing from 2019.\"},\n    {\"query_or_url\": \"iHuman documentary Sutskever AGI quote\", \"what_found\": \"Pointed to the 2019 film iHuman, with a dailydoc quote collection and a stop.ai quote dated Nov 2019.\"},\n    {\"query_or_url\": \"Sutskever 2019 talk transcript GPT-2 OpenAI\", \"what_found\": \"OpenAI's August 2019 GPT-2 report, a New Yorker October 2019 quote, and a summary of the VB Transform July 2019 talk.\"},\n    {\"query_or_url\": \"Sutskever 2019 podcast interview deep learning future\", \"what_found\": \"Lex Fridman #94 transcripts (2020).\"},\n    {\"query_or_url\": \"https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/\", \"what_found\": \"Opened; timestamped iHuman quotes including the '5 years ... 50 or 100 years' line about human-level AI.\"},\n    {\"query_or_url\": \"https://whatishappening.org/ilya-sutskever-openai-jul-2019/\", \"what_found\": \"Opened; a summary of the VB Transform 2019 talk with no direct quotes and no dated predictions.\"},\n    {\"query_or_url\": \"New Yorker \\\"The Next Word\\\" Seabrook Sutskever 2019\", \"what_found\": \"Listings for the October 2019 New Yorker article and a reprint page.\"},\n    {\"query_or_url\": \"Sutskever ScaledML 2019 talk\", \"what_found\": \"ScaledML March 2019 GPT-2 talk on YouTube, with no transcript.\"},\n    {\"query_or_url\": \"iHuman 2019 Sutskever \\\"human-level AI in 5 years\\\"\", \"what_found\": \"A scrapsfromtheloft iHuman transcript and Wikipedia's IDFA premiere date of 23 November 2019.\"},\n    {\"query_or_url\": \"https://scrapsfromtheloft.com/movies/ihuman-2019-transcript/\", \"what_found\": \"Opened; transcript without speaker names and cut off before 59:07; holds an unattributed line on 'dramatically more intelligent systems in 10 or 15 years'.\"},\n    {\"query_or_url\": \"https://inquiringreader.org/texts/2019-12-16-the-next-word/\", \"what_found\": \"Opened; only the start of the page came back, with no Sutskever quotes.\"},\n    {\"query_or_url\": \"Seabrook \\\"The Next Word\\\" newyorker Sutskever \\\"give it the compute\\\"\", \"what_found\": \"Gwern's Scaling Hypothesis cites the New Yorker 2019 line 'give it the compute, give it the data' (not a dated forecast).\"},\n    {\"query_or_url\": \"\\\"Sutskever\\\" 2019 \\\"Lex Fridman\\\" OR \\\"Karen Hao\\\" AGI timeline interview\", \"what_found\": \"Lex #94 summaries and a note that Karen Hao interviewed him in 2019 for an MIT Technology Review profile; no 2019 quotes found.\"},\n    {\"query_or_url\": \"https://gwern.net/scaling-hypothesis\", \"what_found\": \"Opened; page came back cut off with no Sutskever text.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"The only 2019 item that fits is Sutskever's line in the documentary iHuman (premiered November 2019) that human-level AI might come in 5 years or 50 to 100 years, which he says almost doesn't matter. It was seen only in a third-party quote collection, and the filming date is unknown. Other 2019 occasions (VB Transform, ScaledML GPT-2 talk, New Yorker 'The Next Word') produced no dated forecasts on pages I opened.\"\n}\n```"
+}

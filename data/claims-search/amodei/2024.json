@@ -1,0 +1,310 @@
+{
+  "speaker_id": "amodei",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4828,
+  "web_searches": 8,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7842
+      },
+      "cache_creation_input_tokens": 33868,
+      "cache_read_input_tokens": 316849,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 8499,
+      "output_tokens_details": {
+        "thinking_tokens": 2890
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 8
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Dario Amodei\" AI prediction 2024','\"Dario Amodei\" 2024 interview AGI \"years\"','\"Dario Amodei\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Machines of Loving Grace Dario Amodei essay','Lex Fridman Dario Amodei transcript 452']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Machines of Loving Grace Dario Amodei essay"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman Dario Amodei transcript 452"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nlex=await web_fetch({\"url\":\"https://lexfridman.com/dario-amodei-transcript/\"})\ness=await web_fetch({\"url\":\"https://darioamodei.com/machines-of-loving-grace\"})\ndef txt(r):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): return \"ERR \"+str(r)\n    return r[0]['content']\nL=txt(lex); E=txt(ess)\nprint(len(L),L[:200]); print(len(E),E[:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://lexfridman.com/dario-amodei-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://darioamodei.com/machines-of-loving-grace"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "d=json.loads(lex) if isinstance(lex,str) else lex\nc=d['content']; print(c.keys() if isinstance(c,dict) else type(c))\nL=c['source'].get('data') or str(c)\nprint(len(L))\nfor kw in ['2026','2027','2025','SWE-bench','90%','years']:\n    for m in re.finditer(kw,L):\n        print(kw,'::',L[max(0,m.start()-300):m.start()+300].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=L.find('by 2026 or 2027'); print(L[i-1500:i+50])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_search({\"query\":\"darioamodei.com machines-of-loving-grace\"}); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "darioamodei.com machines-of-loving-grace"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "lw=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/DxvzLngnWHhvdCGLf/dario-amodei-machines-of-loving-grace\"})\nd=json.loads(lw) if isinstance(lw,str) else lw\nif isinstance(d,list): d=d[0]\nc=d.get('content'); W=c if isinstance(c,str) else (c.get('source',{}).get('data') or str(c))\nprint(len(W)); print(W[:600])\nfor kw in ['2026','5-10 years','10 years','compressed 21st','within a decade','7-12','years']:\n    for m in re.finditer(kw,W):\n        print(kw,'::',W[max(0,m.start()-350):m.start()+250].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/DxvzLngnWHhvdCGLf/dario-amodei-machines-of-loving-grace"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(set(re.findall(r'https?://[^\\s\\)\\]]*darioamodei[^\\s\\)\\]]*',W)))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "es=await web_fetch({\"url\":\"https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework\"})\nd=json.loads(es) if isinstance(es,str) else es\nif isinstance(d,list): d=d[0]\nprint(d.get('type'),d.get('error_code'))\nc=d.get('content'); E=c if isinstance(c,str) else ((c or {}).get('source',{}).get('data') or str(c))\nprint(len(E))\nfor kw in ['2026','5-10 years','7-12','within a few years','within 5','by 2030','by 20','next 5','next 10']:\n    for m in re.finditer(kw,E):\n        print(kw,'::',E[max(0,m.start()-400):m.start()+250].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(E[-300:])\nfor m in re.finditer(r'(\\d+-\\d+ years|within \\w+ years|\\d+ years)',E):\n    print(E[max(0,m.start()-200):m.start()+120].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Dario Amodei\" In Good Company Nicolai Tangen transcript','\"Amodei\" 2024 interview transcript Anthropic CEO powerful AI']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" In Good Company Nicolai Tangen transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Amodei\" 2024 interview transcript Anthropic CEO powerful AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "cn=await web_fetch({\"url\":\"https://www.cnbc.com/2024/04/23/cnbc-exclusive-cnbc-transcript-anthropic-co-founder-ceo-dario-amodei-speaks-with-cnbcs-andrew-ross-sorkin-on-squawk-box-today.html\"})\nd=json.loads(cn) if isinstance(cn,str) else cn\nif isinstance(d,list): d=d[0]\nc=d.get('content'); C=c if isinstance(c,str) else ((c or {}).get('source',{}).get('data') or str(c))\nprint(d.get('type'),len(C))\ni=C.find('WHEN:'); print(C[:200])\nfor kw in ['year','202','decade','month']:\n    for m in re.finditer(kw,C):\n        print(kw,'::',C[max(0,m.start()-300):m.start()+200].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2024/04/23/cnbc-exclusive-cnbc-transcript-anthropic-co-founder-ceo-dario-amodei-speaks-with-cnbcs-andrew-ross-sorkin-on-squawk-box-today.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=C.find('AMODEI: Yeah, so I mean, I think -- I think'); print(C[i:i+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['October','2024']:\n    m=re.search(kw,E); print(kw, E[max(0,m.start()-100):m.start()+100] if m else None)\nm=re.search('Lex Fridman Podcast',L); print(L[:600])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-11-11",
+        "quote": "If you just kind of eyeball the rate at which these capabilities are increasing, it does make you think that we’ll get there by 2026 or 2027.",
+        "what_is_predicted": "Extrapolating capability curves (from high-school to undergraduate to PhD level), AI reaches the level he is describing by 2026 or 2027.",
+        "date_or_span": "2026 or 2027",
+        "occasion": "Lex Fridman Podcast #452 (opening clip of the episode)",
+        "source_url": "https://lexfridman.com/dario-amodei-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-10",
+        "quote": "I think it could come as early as 2026, though there are also ways it could take much longer.",
+        "what_is_predicted": "Powerful AI, as defined in the essay, could arrive as early as 2026.",
+        "date_or_span": "as early as 2026",
+        "occasion": "Essay 'Machines of Loving Grace: How AI Could Transform the World for the Better', dated October 2024 on the page",
+        "source_url": "https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-10",
+        "quote": "Thus, it’s my guess that powerful AI could at least 10x the rate of these discoveries, giving us the next 50-100 years of biological progress in 5-10 years.",
+        "what_is_predicted": "Once powerful AI exists, it could compress 50-100 years of biological progress into 5-10 years.",
+        "date_or_span": "5-10 years (counted from the arrival of powerful AI)",
+        "occasion": "Essay 'Machines of Loving Grace', biology section",
+        "source_url": "https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "A LinkedIn post summarising Amodei's predictions for 2024 on Logan Bartlett's podcast is dated about October 2023 (1137 days old); seen only as a search result, not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Search results showed a 2026 Dwarkesh Patel interview ('We are near the end of the exponential') with 1-3 year timelines for a 'country of geniuses'; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Dario Amodei\" AI prediction 2024",
+        "what_found": "Mostly later coverage and summaries (Bloomberg October 2024 newsletter on the essay, a LinkedIn post from 2023, prediction-tracker sites); no primary pages."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2024 interview AGI \"years\"",
+        "what_found": "Results were dominated by the 2026 Dwarkesh interview and posts about it; nothing from 2024."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "The 2026 Dwarkesh interview again, the Bloomberg October 2024 newsletter and recent news; no primary 2024 pages."
+      },
+      {
+        "query_or_url": "Machines of Loving Grace Dario Amodei essay",
+        "what_found": "Commentary and Amodei's X post announcing the essay; no direct link to the essay."
+      },
+      {
+        "query_or_url": "Lex Fridman Dario Amodei transcript 452",
+        "what_found": "The official transcript page on lexfridman.com."
+      },
+      {
+        "query_or_url": "https://lexfridman.com/dario-amodei-transcript/",
+        "what_found": "Opened; published 2024-11-11, but only the first part loaded. It holds the '2026 or 2027' line plus compute-cluster forecasts (left out as business forecasts)."
+      },
+      {
+        "query_or_url": "https://darioamodei.com/machines-of-loving-grace",
+        "what_found": "Refused by the fetch tool (url_not_in_prior_context); nothing read."
+      },
+      {
+        "query_or_url": "darioamodei.com machines-of-loving-grace",
+        "what_found": "LessWrong and EA Forum crossposts of the essay."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/DxvzLngnWHhvdCGLf/dario-amodei-machines-of-loving-grace",
+        "what_found": "Link post plus comments only (no essay text); it gave the darioamodei.com link."
+      },
+      {
+        "query_or_url": "https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework",
+        "what_found": "Opened the essay, dated October 2024 on the page; only part of it loaded. It holds 'as early as 2026' and '50-100 years of biological progress in 5-10 years'."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" In Good Company Nicolai Tangen transcript",
+        "what_found": "Podcast listings for the In Good Company episode, about June 2024 judging by listing age, not opened; likely the source of the recorded 2024-06-26 claims."
+      },
+      {
+        "query_or_url": "\"Amodei\" 2024 interview transcript Anthropic CEO powerful AI",
+        "what_found": "Found CNBC's transcript of the 23 April 2024 Squawk Box interview, plus later transcripts."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2024/04/23/cnbc-exclusive-cnbc-transcript-anthropic-co-founder-ceo-dario-amodei-speaks-with-cnbcs-andrew-ross-sorkin-on-squawk-box-today.html",
+        "what_found": "Opened; only training-cost forecasts (left out as business) and 'probably relatively soon' models do many tasks better than humans (undated, and he calls AGI not a coherent concept), so no candidate."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2024 was a busy year for Amodei's public timelines. Besides the eight claims already recorded (Ezra Klein in April, a June interview, SWE-bench in November), the October essay 'Machines of Loving Grace' says powerful AI could come 'as early as 2026' and could compress 50-100 years of biology into 5-10 years. In the 11 November Lex Fridman transcript he says that extrapolating the capability curves points to 'by 2026 or 2027'."
+  },
+  "reply_text": "I found three new dated predictions from 2024, along with several near-misses and items I left out on purpose. Two are in Amodei's essay \"Machines of Loving Grace\" (October 2024) and one is in the Lex Fridman Podcast #452 transcript (11 November 2024). I didn't come across any of the eight claims you've already recorded, so none are marked as already_recorded.\n\n**What I left out and why:**\n- **Business forecasts.** On CNBC's Squawk Box (23 April 2024) he said training costs would grow from about $1 billion next year to $5–10 billion in 2025–2026. On Lex Fridman he forecast compute clusters, including clusters able to run \"millions\" of model copies within two to three years. Both are spending or compute plans, so they stay out.\n- **Undated but close.** On CNBC he said models would \"probably relatively soon\" do many tasks better than humans. I didn't list it under undated because in the same interview he says AGI is not \"a fully coherent concept\". You may want to look at it yourself.\n\n**Gaps in what I could read:**\n- Only about the first 29,000 characters of the Lex Fridman transcript loaded. The line I quote is the episode's opening clip, and the same words are said again later in the \"AGI\" section, which I couldn't read. The SWE-bench claim you already have is also beyond what loaded.\n- Only about the first 35,000 characters of the essay loaded, so its later sections weren't checked. The first time I tried to open the essay, the tool refused it.\n- Two items in the JSON aren't from 2024. A LinkedIn post about the Logan Bartlett interview is dated about October 2023; Dwarkesh Patel and other interview results were from 2026. Both are noted under other_years.\n- I used 8 of 12 searches and 5 of 6 page openings, counting the refused one. The first fixed search ran once; my code broke while printing its results, but I read them from the saved output without searching again.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2024-11-11\", \"quote\": \"If you just kind of eyeball the rate at which these capabilities are increasing, it does make you think that we’ll get there by 2026 or 2027.\", \"what_is_predicted\": \"Extrapolating capability curves (from high-school to undergraduate to PhD level), AI reaches the level he is describing by 2026 or 2027.\", \"date_or_span\": \"2026 or 2027\", \"occasion\": \"Lex Fridman Podcast #452 (opening clip of the episode)\", \"source_url\": \"https://lexfridman.com/dario-amodei-transcript/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2024-10\", \"quote\": \"I think it could come as early as 2026, though there are also ways it could take much longer.\", \"what_is_predicted\": \"Powerful AI, as defined in the essay, could arrive as early as 2026.\", \"date_or_span\": \"as early as 2026\", \"occasion\": \"Essay 'Machines of Loving Grace: How AI Could Transform the World for the Better', dated October 2024 on the page\", \"source_url\": \"https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2024-10\", \"quote\": \"Thus, it’s my guess that powerful AI could at least 10x the rate of these discoveries, giving us the next 50-100 years of biological progress in 5-10 years.\", \"what_is_predicted\": \"Once powerful AI exists, it could compress 50-100 years of biological progress into 5-10 years.\", \"date_or_span\": \"5-10 years (counted from the arrival of powerful AI)\", \"occasion\": \"Essay 'Machines of Loving Grace', biology section\", \"source_url\": \"https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"A LinkedIn post summarising Amodei's predictions for 2024 on Logan Bartlett's podcast is dated about October 2023 (1137 days old); seen only as a search result, not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Search results showed a 2026 Dwarkesh Patel interview ('We are near the end of the exponential') with 1-3 year timelines for a 'country of geniuses'; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" AI prediction 2024\", \"what_found\": \"Mostly later coverage and summaries (Bloomberg October 2024 newsletter on the essay, a LinkedIn post from 2023, prediction-tracker sites); no primary pages.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Results were dominated by the 2026 Dwarkesh interview and posts about it; nothing from 2024.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"The 2026 Dwarkesh interview again, the Bloomberg October 2024 newsletter and recent news; no primary 2024 pages.\"},\n    {\"query_or_url\": \"Machines of Loving Grace Dario Amodei essay\", \"what_found\": \"Commentary and Amodei's X post announcing the essay; no direct link to the essay.\"},\n    {\"query_or_url\": \"Lex Fridman Dario Amodei transcript 452\", \"what_found\": \"The official transcript page on lexfridman.com.\"},\n    {\"query_or_url\": \"https://lexfridman.com/dario-amodei-transcript/\", \"what_found\": \"Opened; published 2024-11-11, but only the first part loaded. It holds the '2026 or 2027' line plus compute-cluster forecasts (left out as business forecasts).\"},\n    {\"query_or_url\": \"https://darioamodei.com/machines-of-loving-grace\", \"what_found\": \"Refused by the fetch tool (url_not_in_prior_context); nothing read.\"},\n    {\"query_or_url\": \"darioamodei.com machines-of-loving-grace\", \"what_found\": \"LessWrong and EA Forum crossposts of the essay.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/DxvzLngnWHhvdCGLf/dario-amodei-machines-of-loving-grace\", \"what_found\": \"Link post plus comments only (no essay text); it gave the darioamodei.com link.\"},\n    {\"query_or_url\": \"https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework\", \"what_found\": \"Opened the essay, dated October 2024 on the page; only part of it loaded. It holds 'as early as 2026' and '50-100 years of biological progress in 5-10 years'.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" In Good Company Nicolai Tangen transcript\", \"what_found\": \"Podcast listings for the In Good Company episode, about June 2024 judging by listing age, not opened; likely the source of the recorded 2024-06-26 claims.\"},\n    {\"query_or_url\": \"\\\"Amodei\\\" 2024 interview transcript Anthropic CEO powerful AI\", \"what_found\": \"Found CNBC's transcript of the 23 April 2024 Squawk Box interview, plus later transcripts.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2024/04/23/cnbc-exclusive-cnbc-transcript-anthropic-co-founder-ceo-dario-amodei-speaks-with-cnbcs-andrew-ross-sorkin-on-squawk-box-today.html\", \"what_found\": \"Opened; only training-cost forecasts (left out as business) and 'probably relatively soon' models do many tasks better than humans (undated, and he calls AGI not a coherent concept), so no candidate.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2024 was a busy year for Amodei's public timelines. Besides the eight claims already recorded (Ezra Klein in April, a June interview, SWE-bench in November), the October essay 'Machines of Loving Grace' says powerful AI could come 'as early as 2026' and could compress 50-100 years of biology into 5-10 years. In the 11 November Lex Fridman transcript he says that extrapolating the capability curves points to 'by 2026 or 2027'.\"\n}\n```"
+}

@@ -1,0 +1,334 @@
+{
+  "speaker_id": "nadella",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.697,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7704
+      },
+      "cache_creation_input_tokens": 61108,
+      "cache_read_input_tokens": 494141,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 8624,
+      "output_tokens_details": {
+        "thinking_tokens": 2814
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Satya Nadella\" AI prediction 2023','\"Satya Nadella\" 2023 interview AGI \"years\"','\"Satya Nadella\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=300):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:n].replace('\\n',' '))\nfor q in qs:\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q2=['Freakonomics \"Satya Nadella\" transcript 2023',\n'Nadella Wired interview 2023 Steven Levy AI',\n'Nadella Ignite 2023 keynote transcript',\n'Nadella Verge interview February 2023 Bing \"Google dance\" transcript']\nfor q in q2:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q],250)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Freakonomics \"Satya Nadella\" transcript 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella Wired interview 2023 Steven Levy AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella Ignite 2023 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nadella Verge interview February 2023 Bing \"Google dance\" transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(\"ERR\",r); return \"\"\n    c=r[0].get('content',''); P[u]=c; print(u,len(c)); return c\nkw=r\"(\\b20[2-5]\\d\\b|years?|decade|next year|within|by the end|AGI|superintelligen|month)\"\ndef grep(c,pat=kw,w=250):\n    for m in re.finditer(pat,c):\n        pass\n    idx=[m.start() for m in re.finditer(pat,c)]\n    last=-10**9\n    for i in idx:\n        if i-last<w: continue\n        last=i\n        print('>>',c[max(0,i-w):i+w].replace('\\n',' '))\nc=await fetch(\"https://freakonomics.com/podcast/satya-nadellas-intelligence-is-not-artificial/\")\ngrep(c,r\"(\\b20[2-5]\\d\\b|\\bdecade|next year|within|by the end|AGI|superintelligen|\\d+ years|five years|ten years|10 years)\")"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://freakonomics.com/podcast/satya-nadellas-intelligence-is-not-artificial/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        try: c=r['content']['source']['data']\n        except Exception: print(\"ERR\",str(r)[:300]); return \"\"\n    else: c=r[0].get('content','')\n    if not isinstance(c,str): c=str(c)\n    P[u]=c; print(u,len(c)); return c\npat=r\"(\\b20[2-5]\\d\\b|\\bdecade|next year|this year|within|by the end|AGI|superintelligen|\\d+ years|five years|ten years|10 years|months)\"\nc=await fetch(\"https://www.npr.org/2023/12/22/1221128925/microsoft-ceo-satya-nadella-discusses-the-promise-and-potential-perils-of-ai\")\ngrep(c,pat,300)\nfor q in ['wired.com \"Satya Nadella\" big interview 2023 \"singularity\"']:\n    R[q]=await web_search({\"query\":q}); show(R[q],200)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.npr.org/2023/12/22/1221128925/microsoft-ceo-satya-nadella-discusses-the-promise-and-potential-perils-of-ai"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "wired.com \"Satya Nadella\" big interview 2023 \"singularity\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r\"NADELLA:[^\\n]*\",c):\n    s=m.group(0)\n    if re.search(r\"\\bwill\\b|going to|'2\\d|year\",s): print('*',s[:700],'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['news.microsoft.com transcript Satya Nadella Ignite 2023 keynote \"Satya Nadella:\"',\n          'wired.com/story satya nadella microsoft interview 2023 \"Levy\"']:\n    R[q]=await web_search({\"query\":q}); print('==',q); show(R[q],200)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "news.microsoft.com transcript Satya Nadella Ignite 2023 keynote \"Satya Nadella:\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "wired.com/story satya nadella microsoft interview 2023 \"Levy\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=await fetch(\"https://news.microsoft.com/source/speeches/\")\nfor m in re.finditer(r\"\\[([^\\]]*2023[^\\]]*)\\]\\((http[^)]+)\\)\",c): print(m.group(1)[:100],m.group(2))\ni=c.find('2023'); print(c[i-200:i+3000] if i>0 else c[:1500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.microsoft.com/source/speeches/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Ignite 2023\" Satya Nadella keynote transcript pdf news.microsoft.com',\n          'Microsoft 2023 annual report Satya Nadella shareholder letter \"Dear shareholders\"']:\n    R[q]=await web_search({\"query\":q}); print('==',q); show(R[q],300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ignite 2023\" Satya Nadella keynote transcript pdf news.microsoft.com"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Microsoft 2023 annual report Satya Nadella shareholder letter \"Dear shareholders\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "a=await fetch(\"https://www.microsoft.com/investor/reports/ar23/index.html\")\ngrep(a,pat,350)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.microsoft.com/investor/reports/ar23/index.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in [\"reshape\",\"later this year\",\"Just like you boot up\"]:\n    i=a.find(k); print(k,'::',a[i-300:i+400].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "w=await fetch(\"https://www.weforum.org/press/2023/01/satya-nadella-says-ai-golden-age-is-here-and-it-s-good-for-humanity/\")\ngrep(w,pat+r\"|\\bwill\\b\",300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.weforum.org/press/2023/01/satya-nadella-says-ai-golden-age-is-here-and-it-s-good-for-humanity/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "n=await fetch(\"https://www.cnbc.com/2023/02/07/microsoft-ceo-satya-nadella-calls-ai-search-biggest-thing-in-15-years.html\")\ngrep(n,pat+r\"|\\bwill\\b\",250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2023/02/07/microsoft-ceo-satya-nadella-calls-ai-search-biggest-thing-in-15-years.html"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-10",
+        "quote": "Just last month, I was excited to announce that we will make Microsoft 365 Copilot generally available to our commercial customers later this year.",
+        "what_is_predicted": "Microsoft 365 Copilot would become generally available to commercial customers before the end of 2023.",
+        "date_or_span": "later this year (2023)",
+        "occasion": "Satya Nadella's shareholder letter in the Microsoft Annual Report 2023 (the page shows no date; October 19, 2023 comes only from a search snippet of a LinkedIn repost)",
+        "source_url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "source_kind": "own_words",
+        "already_recorded": "2023-10-nadella-m365-copilot-generally-available-this-year.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results showed Dwarkesh Podcast interviews ('Microsoft's AGI plan & quantum breakthrough' and 'How Microsoft is preparing for AGI') with AGI and timeline talk; not opened, and outside 2023."
+      },
+      {
+        "year": "2026",
+        "note": "Search snippets (Cloud Wars, Business Chief) report a Nadella blog post saying 2026 will be a pivotal year for AI; not opened, and outside 2023."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Satya Nadella\" AI prediction 2023",
+        "what_found": "Coverage of the 2023 shareholder letter, the NPR December 2023 interview, the WEF Davos press release and a CNBC Bing-launch article."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2023 interview AGI \"years\"",
+        "what_found": "The CNBC February 2023 interview, Freakonomics June 2023 and the Dwarkesh Podcast pages (2025)."
+      },
+      {
+        "query_or_url": "Satya Nadella 2023 AI by 20 OR next year OR within OR end of the decade",
+        "what_found": "The NPR December 2023 interview and later material (2025 and 2026 blog coverage); no dated 2023 AI forecast in the snippets. The double quotes in the given query were dropped when this was run."
+      },
+      {
+        "query_or_url": "Freakonomics \"Satya Nadella\" transcript 2023",
+        "what_found": "Freakonomics episode 547, 'Satya Nadella's Intelligence Is Not Artificial', aired June 21, 2023."
+      },
+      {
+        "query_or_url": "Nadella Wired interview 2023 Steven Levy AI",
+        "what_found": "Only secondary coverage and social posts about the Wired Big Interview of June 2023; no wired.com address."
+      },
+      {
+        "query_or_url": "Nadella Ignite 2023 keynote transcript",
+        "what_found": "Coverage and YouTube pages for the November 15, 2023 Ignite keynote; no official transcript address."
+      },
+      {
+        "query_or_url": "Nadella Verge interview February 2023 Bing \"Google dance\" transcript",
+        "what_found": "Secondary coverage of the Verge interview ('make Google dance'); no forward-dated AI claims in the snippets."
+      },
+      {
+        "query_or_url": "wired.com \"Satya Nadella\" big interview 2023 \"singularity\"",
+        "what_found": "Steven Levy's X post and unrelated pages; no wired.com article address."
+      },
+      {
+        "query_or_url": "news.microsoft.com transcript Satya Nadella Ignite 2023 keynote \"Satya Nadella:\"",
+        "what_found": "The Microsoft Source speeches index and coverage; no direct Ignite 2023 transcript address."
+      },
+      {
+        "query_or_url": "wired.com/story satya nadella microsoft interview 2023 \"Levy\"",
+        "what_found": "A Magzter copy of the Wired July–August 2023 story and secondary coverage; no wired.com address."
+      },
+      {
+        "query_or_url": "\"Ignite 2023\" Satya Nadella keynote transcript pdf news.microsoft.com",
+        "what_found": "Only LinkedIn posts and coverage; no transcript PDF."
+      },
+      {
+        "query_or_url": "Microsoft 2023 annual report Satya Nadella shareholder letter \"Dear shareholders\"",
+        "what_found": "The Microsoft Annual Report 2023 page holding Nadella's letter."
+      },
+      {
+        "query_or_url": "https://freakonomics.com/podcast/satya-nadellas-intelligence-is-not-artificial/",
+        "what_found": "Opened; the transcript text I could read covered search competition, AI safety and regulation, with no dated AI forecast."
+      },
+      {
+        "query_or_url": "https://www.npr.org/2023/12/22/1221128925/microsoft-ceo-satya-nadella-discusses-the-promise-and-potential-perils-of-ai",
+        "what_found": "Opened; it has '23, I think, will be looked at as the year we started using AI, which looks back rather than forecasting; no dated forecast."
+      },
+      {
+        "query_or_url": "https://news.microsoft.com/source/speeches/",
+        "what_found": "Opened; the first page lists only 2026 speeches, so it gave no 2023 transcript links."
+      },
+      {
+        "query_or_url": "https://www.microsoft.com/investor/reports/ar23/index.html",
+        "what_found": "Opened; Nadella's letter says Microsoft 365 Copilot will be generally available 'later this year' (already recorded)."
+      },
+      {
+        "query_or_url": "https://www.weforum.org/press/2023/01/satya-nadella-says-ai-golden-age-is-here-and-it-s-good-for-humanity/",
+        "what_found": "Opened; a WEF press release on his Davos session (January 18, 2023) with 'AI is just at the beginning of the S-curve' and quantum and sustainability goals, but no dated AI forecast."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2023/02/07/microsoft-ceo-satya-nadella-calls-ai-search-biggest-thing-in-15-years.html",
+        "what_found": "Opened; it compares AI search to the 2007–2008 cloud shift and has no forward-dated AI forecast."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2023 Nadella mostly talked about AI as here now ('a new age of AI', 'the year we started using AI') rather than giving dated forecasts. The only dated AI claim I found on a page I opened is the annual letter's pledge that Microsoft 365 Copilot would be generally available later in 2023, which is already recorded. I used all searches and page openings without reaching the Build, Inspire and Ignite 2023 keynote transcripts or the Wired interview, so those remain unchecked."
+  },
+  "reply_text": "I found one dated AI forecast from Nadella in 2023, and it is already in your recorded list. In his 2023 annual letter to shareholders he wrote that Microsoft \"will make Microsoft 365 Copilot generally available to our commercial customers later this year.\" That matches `2023-10-nadella-m365-copilot-generally-available-this-year.toml`. I did not come across the Security Copilot claim (2023-07-25) on any page I opened.\n\n**Pages I opened that had nothing new:**\n- **The rest of the annual letter.** It says the \"next generation of AI will reshape every software category and every business,\" but gives no date and isn't about AGI, so I left it out. The goal to \"train and certify 10 million people by 2025\" is a company skills-training target, not something AI will do, so it's out too.\n- **NPR interview (December 2023).** His line \"'23, I think, will be looked at as the year we started using AI\" describes how 2023 will be remembered. It doesn't forecast anything AI will do, so I didn't count it.\n- **Freakonomics Radio, Davos and CNBC.** The Freakonomics episode (June 2023) has no dated forecast in the part of the transcript I could read. The Davos press release (January 2023) and the CNBC Bing-launch article (February 2023) have none either. Both of those are news coverage, not his own words.\n- **Wasted openings.** Microsoft's speeches index only showed 2026 transcripts on its first page, so I never got the 2023 keynote transcripts. I couldn't find the Wired interview at its original address, so I didn't open it.\n\n**Things to check:**\n- **Letter date.** The annual-report page I opened doesn't show a date. \"October 19, 2023\" comes only from a search snippet of a LinkedIn repost, so I gave the date as 2023-10. The letter's \"just last month\" fits Microsoft's September 21 Copilot announcement.\n- **Search wording.** I removed the double quotes from one of the fixed queries when I ran it (`Satya Nadella 2023 AI by 20 OR next year OR within OR end of the decade`).\n- **Not searched.** I used all 12 searches and all 6 page openings without reaching the Build 2023, Inspire or Ignite 2023 keynote transcripts, the Wired interview text or the 2023 earnings-call transcripts. Those are the most likely places for other 2023 claims.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-10\",\n      \"quote\": \"Just last month, I was excited to announce that we will make Microsoft 365 Copilot generally available to our commercial customers later this year.\",\n      \"what_is_predicted\": \"Microsoft 365 Copilot would become generally available to commercial customers before the end of 2023.\",\n      \"date_or_span\": \"later this year (2023)\",\n      \"occasion\": \"Satya Nadella's shareholder letter in the Microsoft Annual Report 2023 (the page shows no date; October 19, 2023 comes only from a search snippet of a LinkedIn repost)\",\n      \"source_url\": \"https://www.microsoft.com/investor/reports/ar23/index.html\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"2023-10-nadella-m365-copilot-generally-available-this-year.toml\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results showed Dwarkesh Podcast interviews ('Microsoft's AGI plan & quantum breakthrough' and 'How Microsoft is preparing for AGI') with AGI and timeline talk; not opened, and outside 2023.\"},\n    {\"year\": \"2026\", \"note\": \"Search snippets (Cloud Wars, Business Chief) report a Nadella blog post saying 2026 will be a pivotal year for AI; not opened, and outside 2023.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" AI prediction 2023\", \"what_found\": \"Coverage of the 2023 shareholder letter, the NPR December 2023 interview, the WEF Davos press release and a CNBC Bing-launch article.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"The CNBC February 2023 interview, Freakonomics June 2023 and the Dwarkesh Podcast pages (2025).\"},\n    {\"query_or_url\": \"Satya Nadella 2023 AI by 20 OR next year OR within OR end of the decade\", \"what_found\": \"The NPR December 2023 interview and later material (2025 and 2026 blog coverage); no dated 2023 AI forecast in the snippets. The double quotes in the given query were dropped when this was run.\"},\n    {\"query_or_url\": \"Freakonomics \\\"Satya Nadella\\\" transcript 2023\", \"what_found\": \"Freakonomics episode 547, 'Satya Nadella's Intelligence Is Not Artificial', aired June 21, 2023.\"},\n    {\"query_or_url\": \"Nadella Wired interview 2023 Steven Levy AI\", \"what_found\": \"Only secondary coverage and social posts about the Wired Big Interview of June 2023; no wired.com address.\"},\n    {\"query_or_url\": \"Nadella Ignite 2023 keynote transcript\", \"what_found\": \"Coverage and YouTube pages for the November 15, 2023 Ignite keynote; no official transcript address.\"},\n    {\"query_or_url\": \"Nadella Verge interview February 2023 Bing \\\"Google dance\\\" transcript\", \"what_found\": \"Secondary coverage of the Verge interview ('make Google dance'); no forward-dated AI claims in the snippets.\"},\n    {\"query_or_url\": \"wired.com \\\"Satya Nadella\\\" big interview 2023 \\\"singularity\\\"\", \"what_found\": \"Steven Levy's X post and unrelated pages; no wired.com article address.\"},\n    {\"query_or_url\": \"news.microsoft.com transcript Satya Nadella Ignite 2023 keynote \\\"Satya Nadella:\\\"\", \"what_found\": \"The Microsoft Source speeches index and coverage; no direct Ignite 2023 transcript address.\"},\n    {\"query_or_url\": \"wired.com/story satya nadella microsoft interview 2023 \\\"Levy\\\"\", \"what_found\": \"A Magzter copy of the Wired July–August 2023 story and secondary coverage; no wired.com address.\"},\n    {\"query_or_url\": \"\\\"Ignite 2023\\\" Satya Nadella keynote transcript pdf news.microsoft.com\", \"what_found\": \"Only LinkedIn posts and coverage; no transcript PDF.\"},\n    {\"query_or_url\": \"Microsoft 2023 annual report Satya Nadella shareholder letter \\\"Dear shareholders\\\"\", \"what_found\": \"The Microsoft Annual Report 2023 page holding Nadella's letter.\"},\n    {\"query_or_url\": \"https://freakonomics.com/podcast/satya-nadellas-intelligence-is-not-artificial/\", \"what_found\": \"Opened; the transcript text I could read covered search competition, AI safety and regulation, with no dated AI forecast.\"},\n    {\"query_or_url\": \"https://www.npr.org/2023/12/22/1221128925/microsoft-ceo-satya-nadella-discusses-the-promise-and-potential-perils-of-ai\", \"what_found\": \"Opened; it has '23, I think, will be looked at as the year we started using AI, which looks back rather than forecasting; no dated forecast.\"},\n    {\"query_or_url\": \"https://news.microsoft.com/source/speeches/\", \"what_found\": \"Opened; the first page lists only 2026 speeches, so it gave no 2023 transcript links.\"},\n    {\"query_or_url\": \"https://www.microsoft.com/investor/reports/ar23/index.html\", \"what_found\": \"Opened; Nadella's letter says Microsoft 365 Copilot will be generally available 'later this year' (already recorded).\"},\n    {\"query_or_url\": \"https://www.weforum.org/press/2023/01/satya-nadella-says-ai-golden-age-is-here-and-it-s-good-for-humanity/\", \"what_found\": \"Opened; a WEF press release on his Davos session (January 18, 2023) with 'AI is just at the beginning of the S-curve' and quantum and sustainability goals, but no dated AI forecast.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2023/02/07/microsoft-ceo-satya-nadella-calls-ai-search-biggest-thing-in-15-years.html\", \"what_found\": \"Opened; it compares AI search to the 2007–2008 cloud shift and has no forward-dated AI forecast.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2023 Nadella mostly talked about AI as here now ('a new age of AI', 'the year we started using AI') rather than giving dated forecasts. The only dated AI claim I found on a page I opened is the annual letter's pledge that Microsoft 365 Copilot would be generally available later in 2023, which is already recorded. I used all searches and page openings without reaching the Build, Inspire and Ignite 2023 keynote transcripts or the Wired interview, so those remain unchecked.\"\n}\n```"
+}

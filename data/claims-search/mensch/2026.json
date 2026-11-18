@@ -1,0 +1,324 @@
+{
+  "speaker_id": "mensch",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.57,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7609
+      },
+      "cache_creation_input_tokens": 46398,
+      "cache_read_input_tokens": 443957,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 7952,
+      "output_tokens_details": {
+        "thinking_tokens": 1679
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Arthur Mensch\" AI prediction 2026','\"Arthur Mensch\" 2026 interview AGI \"years\"','\"Arthur Mensch\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    r=json.loads(R[q]) if isinstance(R[q],str) else R[q]\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:400].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=400):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r:\n        if not isinstance(x,dict): print(x); continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:n].replace('\\n',' '))\n    return r\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\n    print(\"==\",q); R[q]=show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Mensch Mistral Davos 2026 interview transcript','Arthur Mensch VivaTech 2026 AI','Mistral CEO Mensch podcast transcript 2026 \"years\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}),300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mensch Mistral Davos 2026 interview transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch VivaTech 2026 AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mistral CEO Mensch podcast transcript 2026 \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nurls=['https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch',\n'https://blumify.io/t/youtube/QY1OaiAFiY0/who-controls-ai-the-open-source-imperative-arthur-mensch-mis',\n'https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript']\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u, r.get('type'), r.get('error_code'), len(P[u]), r.get('title'))\nkw=r'(\\byears?\\b|20[2-4]\\d|decade|next year|AGI|superintelligen|months)'\ndef grep(t,pat=kw,w=250):\n    for m in re.finditer(pat,t):\n        pass\n    out=[];last=-1000\n    for m in re.finditer(pat,t):\n        if m.start()-last<w: continue\n        last=m.start()\n        out.append(t[max(0,m.start()-w):m.start()+w].replace('\\n',' '))\n    return out"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blumify.io/t/youtube/QY1OaiAFiY0/who-controls-ai-the-open-source-imperative-arthur-mensch-mis"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":urls[0]}) if False else None\nprint(str(P)[:100])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,v in P.items(): print(type(v), list(v.keys()) if isinstance(v,dict) else str(v)[:200])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={}\nfor u,v in P.items():\n    s=v['source']; print(v['title'], type(s), list(s.keys()) if isinstance(s,dict) else '')\n    T[u]=s.get('data') if isinstance(s,dict) else s\n    print(len(T[u] or ''))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[urls[0]]\nprint(t[:600])\npat=r'(\\d+ years|next (two|three|five|ten|few) years|20[2-4]\\d|decade|next year|AGI|superintelligen|\\d+ months|this year)'\nfor s in grep(t,pat,300): print('--',s)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for p in ['20 years','next two years','two years','next decade','five years','end of the','by 20','ten years']:\n    for s in grep(t,re.escape(p),500): print('##',p,'--',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[-1500:])\nfor s in grep(t,r'(entire economy|replatforming|going to take|will take|might take)',400): print('--',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[urls[1]]\nprint(t[:1500])\npat=r'(\\d+ (to \\d+ )?years|next (two|three|five|ten|few) years|20[2-4]\\d|decade|next year|AGI|superintelligen|\\d+ months|this year)'\nfor s in grep(t,pat,350): print('--',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('## Quotes'); print(t[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[urls[2]]\ni=t.find('Transcript'); print(t[:800])\npat=r'(\\d+ years|next (two|three|five|ten|few) years|20[2-4]\\d|decade|next year|AGI|superintelligen|\\d+ months|this year|one-year)'\nfor s in grep(t,pat,350): print('--',s,'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['etn Arthur Mensch full interview AGI singularity existential risk','Arthur Mensch 20VC 2026 Harry Stebbings Mistral IPO','Arthur Mensch Le Monde entretien septembre 2026 IA']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}),400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "etn Arthur Mensch full interview AGI singularity existential risk"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch 20VC 2026 Harry Stebbings Mistral IPO"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch Le Monde entretien septembre 2026 IA"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u2=['https://20vc.substack.com/p/20vc-newsletter-15th-november-2026','https://www.cnbc.com/2026/02/18/ai-mistral-software-switch-ceo-india-ai-impact-summit.html','https://www.cnbc.com/2026/06/12/tech-download-mistral-mensch-agentic-ai-chips.html']\nfor u in u2:\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data') if isinstance(c.get('source'),dict) else str(c)\n    T[u]=c or ''\n    print(u, r.get('type'), r.get('error_code'), len(T[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://20vc.substack.com/p/20vc-newsletter-15th-november-2026"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2026/02/18/ai-mistral-software-switch-ceo-india-ai-impact-summit.html"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cnbc.com/2026/06/12/tech-download-mistral-mensch-agentic-ai-chips.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[u2[0]]\ni=t.find('Mensch'); print(t[i-200:i+7000])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-01-14",
+        "quote": "And that replatforming is going to be, I think it's going to take a decade because it takes a while to get enterprises to adopt these things.",
+        "what_is_predicted": "Moving enterprise software onto AI systems (AI interfaces on top of a context engine and plain databases) will take about ten years.",
+        "date_or_span": "a decade",
+        "occasion": "Big Technology Podcast, episode 'Who Wins if AI Models Commoditize? — With Mistral CEO Arthur Mensch' (episode date January 14, 2026)",
+        "source_url": "https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2026-01-14",
+        "quote": "It's never going to exist.",
+        "source_url": "https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "The ulisten.ai 20VC transcript 'Arthur Mensch: Open vs Closed' (E1146) is dated Apr 29, 2024, not 2026. Search results also showed the 2024 New York Times 'AGI is like building God' remarks (Futurism, Fortune) and an Elad Gil interview of about the same age with 'in three years this is going to look very different'. I did not open those two."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Arthur Mensch\" AI prediction 2026",
+        "what_found": "Leads: CNBC Feb 18 India summit (50% of enterprise software), CNBC Tech Download June 12, Startup Fortune 'two years' for Europe, a RAISE Summit 2026 transcript and a Le Monde Sept 2026 write-up."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2026 interview AGI \"years\"",
+        "what_found": "Abu Dhabi Oct 2026 fireside coverage, a Global Advisors quote page, the RAISE transcript summary with '5 to 10 years', and old 2024 'AGI is God' coverage."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "The Big Technology Podcast transcript (Jan 14, 2026); its snippets mention 'next two years' and 'might take 20 years'."
+      },
+      {
+        "query_or_url": "Mensch Mistral Davos 2026 interview transcript",
+        "what_found": "Bloomberg Davos Jan 22 'China lag is a fairy tale' (revenue forecast, out of scope), a BFM French Tech video, the 20VC Nov 2026 newsletter and an etn. X post."
+      },
+      {
+        "query_or_url": "Arthur Mensch VivaTech 2026 AI",
+        "what_found": "Only event coverage of the June 18 VivaTech stage with Macron and Jensen Huang; no transcript."
+      },
+      {
+        "query_or_url": "Mistral CEO Mensch podcast transcript 2026 \"years\"",
+        "what_found": "The Big Technology Podcast transcript again, a 2024 20VC transcript and an older Elad Gil interview."
+      },
+      {
+        "query_or_url": "etn Arthur Mensch full interview AGI singularity existential risk",
+        "what_found": "The etn. X post (Oct 2026), a Dealroom summary saying he dismisses the singularity, and a CNBC June 3 video on 'the future of AGI'; none opened."
+      },
+      {
+        "query_or_url": "Arthur Mensch 20VC 2026 Harry Stebbings Mistral IPO",
+        "what_found": "20VC episode of Nov 9 2026 ('Why Energy Is Not the Bottleneck'), its newsletter and a Dealroom summary."
+      },
+      {
+        "query_or_url": "Arthur Mensch Le Monde entretien septembre 2026 IA",
+        "what_found": "Le Monde Sept 24 interview (via Pause IA blog), a Le Monde op-ed 'Produire ou subir', a May Assemblée nationale hearing and the 'two years to act' coverage; none opened."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch",
+        "what_found": "Transcript dated January 14, 2026, cut off at about 31:35; holds the 'take a decade' line and the AGI 'never going to exist' exchange, but not the '20 years' or 'next two years' snippet lines."
+      },
+      {
+        "query_or_url": "https://blumify.io/t/youtube/QY1OaiAFiY0/who-controls-ai-the-open-source-imperative-arthur-mensch-mis",
+        "what_found": "AI-written summary of a 6-minute RAISE Summit 2026 talk (published 20 July 2026); the '5 to 10 years' framing is in the summary, and Mensch's quoted words ('it's going to succeed') carry no date."
+      },
+      {
+        "query_or_url": "https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript",
+        "what_found": "A 20VC transcript from April 2024, so it is outside this year."
+      },
+      {
+        "query_or_url": "https://20vc.substack.com/p/20vc-newsletter-15th-november-2026",
+        "what_found": "The host's seven takeaways from the Nov 2026 Mensch episode (energy costs, inference market, IPO); no verbatim dated AI forecast, and the full transcript PDF was not opened."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2026/02/18/ai-mistral-software-switch-ceo-india-ai-impact-summit.html",
+        "what_found": "The page would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "https://www.cnbc.com/2026/06/12/tech-download-mistral-mensch-agentic-ai-chips.html",
+        "what_found": "The page would not open (url_not_accessible); not quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Mensch spoke widely in 2026 (Big Technology Podcast, Davos, India AI Impact Summit, VivaTech, RAISE, Le Monde, Abu Dhabi, 20VC), mostly on sovereignty, open source and enterprise adoption, and he kept dismissing AGI as a goal. The only dated forward-looking AI line found on a page I opened is a January 2026 estimate that moving enterprise software onto AI will take a decade, which is borderline as it partly concerns business adoption. Other dated lines ('might take 20 years', '5 to 10 years') were seen only in snippets or AI-written summaries and were not verified."
+  },
+  "reply_text": "I found one dated prediction from Arthur Mensch in 2026, and it is a borderline one. I found no dated forecast from him about AGI or superintelligence. He spoke often in 2026, but most of the pages I could open were summaries or news, not his own words.\n\n**The candidate.** It comes from the Big Technology Podcast episode dated 14 January 2026. In the transcript Mensch says the shift of enterprise software onto AI systems \"is going to take a decade\". It is borderline because it is partly a forecast about business adoption rather than about what AI can do. Please check whether it passes your rule 2.\n\n**The AGI line, and why it may not be his.** The same transcript has the words \"It's never going to exist.\" That page has no speaker labels, and the sentence comes straight after the interviewer's question \"Not yet or you just don't believe in that concept at all.\" So it could be the end of the question rather than Mensch's answer. Check the recording before using it.\n\n**Seen only in search snippets, not quoted:**\n- **Same podcast, second line:** a snippet shows \"it might take 20 years\" about the economy running on AI. The transcript page I opened stops at about 31 minutes, before that line.\n- **RAISE Summit, July 2026:** the page's AI-written summary says both speakers expect open source to dominate \"in 5 to 10 years\". Mensch's own quoted words there carry no date.\n- **20VC, November 2026:** the newsletter gives only the host's takeaways, with no dated AI forecast. The full transcript is a PDF I did not open.\n\n**Pages that would not open:** the two CNBC articles (18 February, India AI Impact Summit; 12 June, Tech Download). One 20VC transcript I opened turned out to be from April 2024, so it is listed under other_years.\n\n**Leads I did not open:** his Davos interviews with Bloomberg and BFM (22 January), his Assemblée nationale hearing in May, the \"two years for Europe\" warning, the Le Monde interview (24 September), the October etn. interview on AGI and the singularity, and the Abu Dhabi fireside chat. The \"two years\" warning looks like a sovereignty and policy deadline rather than an AI forecast. I used 9 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2026-01-14\",\n      \"quote\": \"And that replatforming is going to be, I think it's going to take a decade because it takes a while to get enterprises to adopt these things.\",\n      \"what_is_predicted\": \"Moving enterprise software onto AI systems (AI interfaces on top of a context engine and plain databases) will take about ten years.\",\n      \"date_or_span\": \"a decade\",\n      \"occasion\": \"Big Technology Podcast, episode 'Who Wins if AI Models Commoditize? — With Mistral CEO Arthur Mensch' (episode date January 14, 2026)\",\n      \"source_url\": \"https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2026-01-14\",\n      \"quote\": \"It's never going to exist.\",\n      \"source_url\": \"https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch\"\n    }\n  ],\n  \"other_years\": [\n    {\n      \"year\": \"2024\",\n      \"note\": \"The ulisten.ai 20VC transcript 'Arthur Mensch: Open vs Closed' (E1146) is dated Apr 29, 2024, not 2026. Search results also showed the 2024 New York Times 'AGI is like building God' remarks (Futurism, Fortune) and an Elad Gil interview of about the same age with 'in three years this is going to look very different'. I did not open those two.\"\n    }\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" AI prediction 2026\", \"what_found\": \"Leads: CNBC Feb 18 India summit (50% of enterprise software), CNBC Tech Download June 12, Startup Fortune 'two years' for Europe, a RAISE Summit 2026 transcript and a Le Monde Sept 2026 write-up.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"Abu Dhabi Oct 2026 fireside coverage, a Global Advisors quote page, the RAISE transcript summary with '5 to 10 years', and old 2024 'AGI is God' coverage.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"The Big Technology Podcast transcript (Jan 14, 2026); its snippets mention 'next two years' and 'might take 20 years'.\"},\n    {\"query_or_url\": \"Mensch Mistral Davos 2026 interview transcript\", \"what_found\": \"Bloomberg Davos Jan 22 'China lag is a fairy tale' (revenue forecast, out of scope), a BFM French Tech video, the 20VC Nov 2026 newsletter and an etn. X post.\"},\n    {\"query_or_url\": \"Arthur Mensch VivaTech 2026 AI\", \"what_found\": \"Only event coverage of the June 18 VivaTech stage with Macron and Jensen Huang; no transcript.\"},\n    {\"query_or_url\": \"Mistral CEO Mensch podcast transcript 2026 \\\"years\\\"\", \"what_found\": \"The Big Technology Podcast transcript again, a 2024 20VC transcript and an older Elad Gil interview.\"},\n    {\"query_or_url\": \"etn Arthur Mensch full interview AGI singularity existential risk\", \"what_found\": \"The etn. X post (Oct 2026), a Dealroom summary saying he dismisses the singularity, and a CNBC June 3 video on 'the future of AGI'; none opened.\"},\n    {\"query_or_url\": \"Arthur Mensch 20VC 2026 Harry Stebbings Mistral IPO\", \"what_found\": \"20VC episode of Nov 9 2026 ('Why Energy Is Not the Bottleneck'), its newsletter and a Dealroom summary.\"},\n    {\"query_or_url\": \"Arthur Mensch Le Monde entretien septembre 2026 IA\", \"what_found\": \"Le Monde Sept 24 interview (via Pause IA blog), a Le Monde op-ed 'Produire ou subir', a May Assemblée nationale hearing and the 'two years to act' coverage; none opened.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/big-technology-podcast/who-wins-if-ai-models-commoditize-with-mistral-ceo-arthur-mensch\", \"what_found\": \"Transcript dated January 14, 2026, cut off at about 31:35; holds the 'take a decade' line and the AGI 'never going to exist' exchange, but not the '20 years' or 'next two years' snippet lines.\"},\n    {\"query_or_url\": \"https://blumify.io/t/youtube/QY1OaiAFiY0/who-controls-ai-the-open-source-imperative-arthur-mensch-mis\", \"what_found\": \"AI-written summary of a 6-minute RAISE Summit 2026 talk (published 20 July 2026); the '5 to 10 years' framing is in the summary, and Mensch's quoted words ('it's going to succeed') carry no date.\"},\n    {\"query_or_url\": \"https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript\", \"what_found\": \"A 20VC transcript from April 2024, so it is outside this year.\"},\n    {\"query_or_url\": \"https://20vc.substack.com/p/20vc-newsletter-15th-november-2026\", \"what_found\": \"The host's seven takeaways from the Nov 2026 Mensch episode (energy costs, inference market, IPO); no verbatim dated AI forecast, and the full transcript PDF was not opened.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2026/02/18/ai-mistral-software-switch-ceo-india-ai-impact-summit.html\", \"what_found\": \"The page would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"https://www.cnbc.com/2026/06/12/tech-download-mistral-mensch-agentic-ai-chips.html\", \"what_found\": \"The page would not open (url_not_accessible); not quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Mensch spoke widely in 2026 (Big Technology Podcast, Davos, India AI Impact Summit, VivaTech, RAISE, Le Monde, Abu Dhabi, 20VC), mostly on sovereignty, open source and enterprise adoption, and he kept dismissing AGI as a goal. The only dated forward-looking AI line found on a page I opened is a January 2026 estimate that moving enterprise software onto AI will take a decade, which is borderline as it partly concerns business adoption. Other dated lines ('might take 20 years', '5 to 10 years') were seen only in snippets or AI-written summaries and were not verified.\"\n}\n```"
+}

@@ -1,0 +1,249 @@
+{
+  "speaker_id": "legg",
+  "year": 2019,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4282,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7594
+      },
+      "cache_creation_input_tokens": 36106,
+      "cache_read_input_tokens": 154759,
+      "inference_geo": "global",
+      "input_tokens": 22,
+      "output_tokens": 5334,
+      "output_tokens_details": {
+        "thinking_tokens": 1215
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 2,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Shane Legg\" AI prediction 2019','\"Shane Legg\" 2019 interview AGI \"years\"','\"Shane Legg\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        c=x.get('content','')\n        import re\n        for m in re.finditer(r'2019',c):\n            print('   ...',c[max(0,m.start()-150):m.start()+150].replace('\\n',' '))\n            break"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2019"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef show(r):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x['title'],x['url'],x.get('page_age'))\n        c=x.get('content','')\n        for m in list(re.finditer(r'2019',c))[:2]:\n            print('   ...',c[max(0,m.start()-200):m.start()+200].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2019 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"DeepMind: The Podcast\" 2019 \"Shane Legg\" episode transcript','\"Shane Legg\" Waikato distinguished alumni public lecture','\"Shane Legg\" 2019 talk OR keynote OR lecture AGI']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"DeepMind: The Podcast\" 2019 \"Shane Legg\" episode transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Waikato distinguished alumni public lecture"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2019 talk OR keynote OR lecture AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://deepmind-the-podcast.simplecast.com/episodes/towards-the-future\"})\nc=p[0]['content'] if isinstance(p,list) else str(p)\nprint(len(c))\nfor m in re.finditer(r'Shane|Legg',c):\n    print('...',c[max(0,m.start()-300):m.start()+500].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://deepmind-the-podcast.simplecast.com/episodes/towards-the-future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Towards the future\" DeepMind podcast Hannah Fry transcript Shane Legg AGI','\"Shane Legg\" 2019 interview']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)\n    for x in json.loads(rr) if isinstance(rr,str) else rr:\n        c=x.get('content','')\n        for m in list(re.finditer(r'Shane',c))[:3]:\n            print('  >>',x['url'][:60],c[max(0,m.start()-150):m.start()+250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Towards the future\" DeepMind podcast Hannah Fry transcript Shane Legg AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2019 interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['ShaneLegg tweet 2019 AGI','\"Dr Shane Legg\" Distinguished Alumni Award public lecture Waikato']:\n    rr=await web_search({\"query\":q}); print(\"==\",q)\n    for x in json.loads(rr) if isinstance(rr,str) else rr:\n        c=x.get('content','')\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        for m in list(re.finditer(r'2019|2018|2020',c))[:2]:\n            print('   ..',c[max(0,m.start()-200):m.start()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ShaneLegg tweet 2019 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dr Shane Legg\" Distinguished Alumni Award public lecture Waikato"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_search({\"query\":'\"Shane Legg\" said 2019 artificial general intelligence DeepMind co-founder'})\nfor x in json.loads(rr) if isinstance(rr,str) else rr:\n    c=x.get('content','')\n    print('-',x.get('title'),x.get('url'),x.get('page_age'))\n    for m in list(re.finditer(r'2019',c))[:2]:\n        print('   ..',c[max(0,m.start()-200):m.start()+150].replace('\\n',' '))\np=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\"})\nc=p[0]['content'] if isinstance(p,list) else str(p)\nfor k in ['2019','2011','proto']:\n    for m in list(re.finditer(k,c))[:3]:\n        print(k,'>>',c[max(0,m.start()-250):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" said 2019 artificial general intelligence DeepMind co-founder"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2011",
+        "note": "LessWrong 'Q&A with Shane Legg on risks from AI' (17 Jun 2011) gives 10%/50%/90% years for human-level machine intelligence as '2018, 2028, 2050'. A comment there reproduces his vetta.org post of 31 Dec 2011: AGI log-normal with mean 2028 and mode 2025, and 'an impressive proto-AGI within the next 8 years' (i.e. about 2019). Seen at https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai; the original vetta.org post was not opened."
+      },
+      {
+        "year": "2018",
+        "note": "Waikato 2018 Distinguished Alumni Award lecture 'Where is Artificial General Intelligence taking us?' (YouTube so1Ca-WAayE); seen only in search results, not opened."
+      },
+      {
+        "year": "2021",
+        "note": "Search result for X post 1430146229426692097 restating 50% by 2028 and 90% by 2040; not opened."
+      },
+      {
+        "year": "2023",
+        "note": "Search results for coverage of the Dwarkesh Patel interview and a TED talk (50% AGI by 2028); not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results for X posts and the Hannah Fry podcast 'The Arrival of AGI' restating 50% by 2028; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2019",
+        "what_found": "The 2011 LessWrong Q&A, later tweets and 2023 coverage; nothing said in 2019."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2019 interview AGI \"years\"",
+        "what_found": "2023 coverage, a 2022 LessWrong post on podcast excerpts and the 2011 Q&A; nothing from 2019."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "TIME100 2023, 2023 coverage of a 5-year AGI prediction, and a Grokipedia line about a proto-AGI forecast for 2019 (made in 2011)."
+      },
+      {
+        "query_or_url": "\"DeepMind: The Podcast\" 2019 \"Shane Legg\" episode transcript",
+        "what_found": "Season 1 aired Aug-Sep 2019; Episode 7 'Towards the future' lists Legg only under further reading, not as an interviewee."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Waikato distinguished alumni public lecture",
+        "what_found": "The lecture was given in 2018."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2019 talk OR keynote OR lecture AGI",
+        "what_found": "A 14 Jun 2019 tweet praising another person's AGI talk; no prediction."
+      },
+      {
+        "query_or_url": "https://deepmind-the-podcast.simplecast.com/episodes/towards-the-future",
+        "what_found": "The page opened but returned no content or transcript."
+      },
+      {
+        "query_or_url": "\"Towards the future\" DeepMind podcast Hannah Fry transcript Shane Legg AGI",
+        "what_found": "Episode notes confirm the interviewees were Kavukcuoglu, Back, Hadsell, Shanahan and Hassabis, not Legg."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2019 interview",
+        "what_found": "Only the 2019 tweet, the 2023 Dwarkesh interview and the 2011 Q&A."
+      },
+      {
+        "query_or_url": "ShaneLegg tweet 2019 AGI",
+        "what_found": "Only the June 2019 tweet praising a talk; the other tweets are from 2021-2025."
+      },
+      {
+        "query_or_url": "\"Dr Shane Legg\" Distinguished Alumni Award public lecture Waikato",
+        "what_found": "Confirms the award and lecture were in 2018."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" said 2019 artificial general intelligence DeepMind co-founder",
+        "what_found": "Only mentions of the 2019 CBE; no 2019 statements."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+        "what_found": "Opened; holds the 2011 Q&A and a comment quoting his Dec 2011 proto-AGI 'within the next 8 years' forecast."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "I found no forward-looking, dated AI prediction by Shane Legg from 2019. His only public traces that year were a CBE and a tweet praising someone else's talk. The 2019 DeepMind podcast lists him only as further reading, though I could not open a transcript to confirm he does not speak. The prediction most tied to 2019 is his December 2011 forecast of a proto-AGI 'within the next 8 years', which belongs to 2011."
+  },
+  "reply_text": "I found no forward-looking, dated AI prediction by Shane Legg from 2019.\n\n- **What I checked:** I ran the three fixed searches exactly as written, then seven more searches aimed at likely 2019 occasions. I opened two pages.\n- **His 2019 public record is thin.** He was made a CBE in the 2019 Birthday Honours. He posted a June 2019 tweet that only praised someone else's AGI talk; I saw it in search results but didn't open it.\n- **DeepMind: The Podcast, Episode 7 \"Towards the future\" (10 Sept 2019):** Legg isn't listed among the people interviewed. His 2010 talk and his paper with Hutter appear only under \"further reading\". The episode page I opened came back empty, so I can't confirm whether he speaks in it.\n- **The Waikato Distinguished Alumni lecture was in 2018,** not 2019.\n- **Things that point to 2019 but were said in other years:** On 31 December 2011 he wrote that he expected \"an impressive proto-AGI within the next 8 years\", which points to about 2019. I read this quote in a LessWrong comment that reproduces his blog post, not on his own blog. His 2011 LessWrong Q&A, his tweets from 2021 and 2025, and the 2023 coverage are all outside this year.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2011\", \"note\": \"LessWrong 'Q&A with Shane Legg on risks from AI' (17 Jun 2011) gives 10%/50%/90% years for human-level machine intelligence as '2018, 2028, 2050'. A comment there reproduces his vetta.org post of 31 Dec 2011: AGI log-normal with mean 2028 and mode 2025, and 'an impressive proto-AGI within the next 8 years' (i.e. about 2019). Seen at https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai; the original vetta.org post was not opened.\"},\n    {\"year\": \"2018\", \"note\": \"Waikato 2018 Distinguished Alumni Award lecture 'Where is Artificial General Intelligence taking us?' (YouTube so1Ca-WAayE); seen only in search results, not opened.\"},\n    {\"year\": \"2021\", \"note\": \"Search result for X post 1430146229426692097 restating 50% by 2028 and 90% by 2040; not opened.\"},\n    {\"year\": \"2023\", \"note\": \"Search results for coverage of the Dwarkesh Patel interview and a TED talk (50% AGI by 2028); not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results for X posts and the Hannah Fry podcast 'The Arrival of AGI' restating 50% by 2028; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2019\", \"what_found\": \"The 2011 LessWrong Q&A, later tweets and 2023 coverage; nothing said in 2019.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2019 interview AGI \\\"years\\\"\", \"what_found\": \"2023 coverage, a 2022 LessWrong post on podcast excerpts and the 2011 Q&A; nothing from 2019.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2019 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"TIME100 2023, 2023 coverage of a 5-year AGI prediction, and a Grokipedia line about a proto-AGI forecast for 2019 (made in 2011).\"},\n    {\"query_or_url\": \"\\\"DeepMind: The Podcast\\\" 2019 \\\"Shane Legg\\\" episode transcript\", \"what_found\": \"Season 1 aired Aug-Sep 2019; Episode 7 'Towards the future' lists Legg only under further reading, not as an interviewee.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Waikato distinguished alumni public lecture\", \"what_found\": \"The lecture was given in 2018.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2019 talk OR keynote OR lecture AGI\", \"what_found\": \"A 14 Jun 2019 tweet praising another person's AGI talk; no prediction.\"},\n    {\"query_or_url\": \"https://deepmind-the-podcast.simplecast.com/episodes/towards-the-future\", \"what_found\": \"The page opened but returned no content or transcript.\"},\n    {\"query_or_url\": \"\\\"Towards the future\\\" DeepMind podcast Hannah Fry transcript Shane Legg AGI\", \"what_found\": \"Episode notes confirm the interviewees were Kavukcuoglu, Back, Hadsell, Shanahan and Hassabis, not Legg.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2019 interview\", \"what_found\": \"Only the 2019 tweet, the 2023 Dwarkesh interview and the 2011 Q&A.\"},\n    {\"query_or_url\": \"ShaneLegg tweet 2019 AGI\", \"what_found\": \"Only the June 2019 tweet praising a talk; the other tweets are from 2021-2025.\"},\n    {\"query_or_url\": \"\\\"Dr Shane Legg\\\" Distinguished Alumni Award public lecture Waikato\", \"what_found\": \"Confirms the award and lecture were in 2018.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" said 2019 artificial general intelligence DeepMind co-founder\", \"what_found\": \"Only mentions of the 2019 CBE; no 2019 statements.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\", \"what_found\": \"Opened; holds the 2011 Q&A and a comment quoting his Dec 2011 proto-AGI 'within the next 8 years' forecast.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"I found no forward-looking, dated AI prediction by Shane Legg from 2019. His only public traces that year were a CBE and a tweet praising someone else's talk. The 2019 DeepMind podcast lists him only as further reading, though I could not open a transcript to confirm he does not speak. The prediction most tied to 2019 is his December 2011 forecast of a proto-AGI 'within the next 8 years', which belongs to 2011.\"\n}\n```"
+}

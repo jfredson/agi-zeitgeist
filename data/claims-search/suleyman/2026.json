@@ -1,0 +1,364 @@
+{
+  "speaker_id": "suleyman",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7311,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8037
+      },
+      "cache_creation_input_tokens": 56855,
+      "cache_read_input_tokens": 651086,
+      "inference_geo": "global",
+      "input_tokens": 44,
+      "output_tokens": 10823,
+      "output_tokens_details": {
+        "thinking_tokens": 3349
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mustafa Suleyman\" AI prediction 2026','\"Mustafa Suleyman\" 2026 interview AGI \"years\"','\"Mustafa Suleyman\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=350):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x['title'],'|',x['url'],'|',x.get('page_age')); print('   ',x['content'][:n].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def full(q,url,n=3000):\n    for x in json.loads(R[q]) if isinstance(R[q],str) else R[q]:\n        if x.get('url')==url: print(x['content'][:n])\nfull(qs[0],\"https://www.ibtimes.co.uk/microsoft-ai-ceo-mustafa-suleyman-predicts-personal-ai-companions-everyone-within-five-years-1772888\",2500)\nprint('=====')\nfull(qs[2],\"https://www.windowslatest.com/2026/10/07/ai-wont-take-your-job-anytime-soon-microsofts-ai-boss-says-only-5-of-human-work-will-be-replaced-in-10-years/\",2500)\nprint('=====')\nfull(qs[2],\"https://forum.gnoppix.org/t/mustafa-suleyman-ai-development-won-t-hit-a-wall-anytime-soon-here-s-why/5521\",2000)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['MIT Technology Review Suleyman \"won\\'t hit a wall anytime soon\"',\n          'Suleyman Davos 2026 transcript Microsoft AI \"five years\"',\n          '\"Rest Is Politics\" Leading Mustafa Suleyman conscious transcript']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "MIT Technology Review Suleyman \"won't hit a wall anytime soon\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman Davos 2026 transcript Microsoft AI \"five years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Rest Is Politics\" Leading Mustafa Suleyman conscious transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/\",\n          \"https://www.windowscentral.com/artificial-intelligence/microsoft-ai-chief-intimate-ai-companion-in-5-years\",\n          \"https://podscripts.co/podcasts/the-rest-is-politics-leading/208-mustafa-suleyman-is-ai-actually-conscious\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,dict): print(u,r); continue\n    P[u]=r[0]['content']; print(u,len(P[u]),r[0].get('title'))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def getc(r):\n    d=json.loads(r) if isinstance(r,str) else r\n    if isinstance(d,list): d=d[0]\n    c=d.get('content')\n    if isinstance(c,dict): return c['source']['data']\n    return c if c else str(d)\nu0=\"https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/\"\nP[u0]=getc(r); print(len(P[u0]))\nfor u in [\"https://www.windowscentral.com/artificial-intelligence/microsoft-ai-chief-intimate-ai-companion-in-5-years\",\n          \"https://podscripts.co/podcasts/the-rest-is-politics-leading/208-mustafa-suleyman-is-ai-actually-conscious\"]:\n    rr=await web_fetch({\"url\":u}); P[u]=getc(rr); print(u,len(P[u]))\nimport re\nt=P[u0]; i=t.find('compute explosion'); print(t[:200])\nfor k in re.finditer(r'(20[2-4]\\d|years|decade|next year|by the end)',t):\n    pass\nprint(t[1500:9000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.windowscentral.com/artificial-intelligence/microsoft-ai-chief-intimate-ai-companion-in-5-years"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/the-rest-is-politics-leading/208-mustafa-suleyman-is-ai-actually-conscious"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[9000:13500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "w=P[\"https://www.windowscentral.com/artificial-intelligence/microsoft-ai-chief-intimate-ai-companion-in-5-years\"]\ni=w.find('# Microsoft'); print(w[i:i+5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer('five years',w): print(m.start())\ni=w.find('five years'); print(w[max(0,i-3000):i+3500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'(?i)five years|5 years|companion',w): print(m.start(), w[max(0,m.start()-200):m.start()+250].replace('\\n',' ')); print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P[\"https://podscripts.co/podcasts/the-rest-is-politics-leading/208-mustafa-suleyman-is-ai-actually-conscious\"])\nfor q in ['\"everybody will have their own AI companion\" Suleyman',\n          'Mustafa Suleyman Build 2026 keynote MAI superintelligence transcript']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"everybody will have their own AI companion\" Suleyman"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman Build 2026 keynote MAI superintelligence transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in [\"https://microsoft.ai/news/microsoft-build-2026-mai-keynote-transcript/\",\n          \"https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it\"]:\n    rr=await web_fetch({\"url\":u}); P[u]=getc(rr); print(u,len(P[u])); print(P[u][:300])\npat=r'(?i)(\\b20[2-4]\\d\\b|next year|this year|years|decade|months|within)'\ndef hits(t,w=300):\n    last=-1000\n    for m in re.finditer(pat,t):\n        if m.start()-last<w: continue\n        last=m.start(); print('>>',t[max(0,m.start()-w):m.start()+w].replace('\\n',' '))\nhits(P[\"https://microsoft.ai/news/microsoft-build-2026-mai-keynote-transcript/\"],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://microsoft.ai/news/microsoft-build-2026-mai-keynote-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "b=P[\"https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it\"]\ni=b.find('Transcript'); \nm=re.search(r'(?i)published|20\\d\\d-\\d\\d-\\d\\d|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \\d{1,2},? 2026',b); print(m and b[m.start()-100:m.start()+100])\nhits(b[3000:],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['superintelligence','AGI','next year','decade','five years','5 years','10 years','two years','2 years','by 20','2027','2028','2030']:\n    for m in re.finditer(re.escape(kw),b):\n        print(kw,'>>',b[max(0,m.start()-350):m.start()+300].replace('\\n',' ')); print()\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Suleyman \"AI companion\" \"five years\" slow_developer clip January 2026 interview source',\n          'Mustafa Suleyman podcast interview 2026 superintelligence timeline \"years away\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],500)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman \"AI companion\" \"five years\" slow_developer clip January 2026 interview source"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman podcast interview 2026 superintelligence timeline \"years away\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['aterial','next year']:\n    for m in re.finditer(kw,b): print(b[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()\nprint(b[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://x.com/slow_developer/status/2011805570806776293\"\nrr=await web_fetch({\"url\":u}); P[u]=getc(rr); print(P[u][:2500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/slow_developer/status/2011805570806776293"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q1=\"What does all this get us? I believe it will drive the transition from chatbots to nearly human-level agents—semiautonomous systems capable of writing code for days, carrying out weeks- and months-long projects, making calls, negotiating contracts, managing logistics.\"\nq2=\"Put all this together and we’re looking at something like another 1,000x in effective compute by the end of 2028.\"\nq3=\"In the next few years, we’ll see three more orders of magnitude of compute applied to frontier models.\"\nq4=\"And we're, in the next 3 years, going to do another 100 to 1,000x, 2 orders of magnitude or 3 orders of magnitude more computation applied to these models.\"\nprint(q1 in t, q2 in t, q3 in P[\"https://microsoft.ai/news/microsoft-build-2026-mai-keynote-transcript/\"], q4 in b)"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-04-08",
+        "quote": "Put all this together and we’re looking at something like another 1,000x in effective compute by the end of 2028.",
+        "what_is_predicted": "Effective compute for AI will grow by roughly another 1,000 times by the end of 2028; this is an industry-wide compute/scaling forecast, so the checker may class it as an infrastructure forecast and exclude it.",
+        "date_or_span": "by the end of 2028",
+        "occasion": "Opinion essay by Suleyman, 'Mustafa Suleyman: AI development won’t hit a wall anytime soon—here’s why', MIT Technology Review",
+        "source_url": "https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-04-08",
+        "quote": "What does all this get us? I believe it will drive the transition from chatbots to nearly human-level agents—semiautonomous systems capable of writing code for days, carrying out weeks- and months-long projects, making calls, negotiating contracts, managing logistics.",
+        "what_is_predicted": "The compute growth he forecasts will move AI from chatbots to nearly human-level semi-autonomous agents; the sentence itself names no date, and its timing comes only from the preceding paragraph (end of 2028, and 2030).",
+        "date_or_span": "implied by preceding paragraph: by end of 2028 / by 2030",
+        "occasion": "Opinion essay by Suleyman, MIT Technology Review",
+        "source_url": "https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-10",
+        "quote": "And we're, in the next 3 years, going to do another 100 to 1,000x, 2 orders of magnitude or 3 orders of magnitude more computation applied to these models.",
+        "what_is_predicted": "Compute applied to frontier AI models will grow another 100 to 1,000 times over the next three years; this is a compute/scaling forecast and may be excluded as infrastructure.",
+        "date_or_span": "the next 3 years",
+        "occasion": "The Builders with Walter Isaacson podcast (taping date 2026-10-12 per an iHeart listing seen only in a search snippet; transcript page said 'Published 18 days ago')",
+        "source_url": "https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Search results surfaced a January 2024 Business Insider report (via an ANU mailing-list post) on Suleyman saying AI could act as an entrepreneur and inventor within five years; not opened."
+      },
+      {
+        "year": "2023",
+        "note": "An 80,000 Hours podcast page (episode #162) surfaced in search with a 'five, 10, 15, 20 years away' remark about dangerous capabilities; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mustafa Suleyman\" AI prediction 2026",
+        "what_found": "Mostly news on the February 2026 FT '12-18 months' white-collar claim (already recorded) plus January 2026 reports of a 'personal AI companion within five years' remark."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2026 interview AGI \"years\"",
+        "what_found": "More coverage of the white-collar 12-18 months claim and a listing for his September 2026 Rest Is Politics: Leading episode."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Fortune and others on the 12-18 months claim, an October 2026 Windows Latest piece on him sharing Acemoglu's 5% forecast, and a forum rewrite of his April MIT Technology Review essay."
+      },
+      {
+        "query_or_url": "MIT Technology Review Suleyman \"won't hit a wall anytime soon\"",
+        "what_found": "Located his 8 April 2026 MIT Technology Review essay."
+      },
+      {
+        "query_or_url": "Suleyman Davos 2026 transcript Microsoft AI \"five years\"",
+        "what_found": "News reports (Windows Central, IBTimes) of the 'AI companion in five years' remark; no official transcript found."
+      },
+      {
+        "query_or_url": "\"Rest Is Politics\" Leading Mustafa Suleyman conscious transcript",
+        "what_found": "Episode 208 dated 27 Sep 2026, with a podscripts transcript link."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/",
+        "what_found": "Full essay in his own words, with the 1,000x effective compute by end of 2028 forecast and the agents sentence."
+      },
+      {
+        "query_or_url": "https://www.windowscentral.com/artificial-intelligence/microsoft-ai-chief-intimate-ai-companion-in-5-years",
+        "what_found": "Only metadata and headline loaded (published 2026-01-20); the article body with his quote did not render, so I have not quoted it."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/the-rest-is-politics-leading/208-mustafa-suleyman-is-ai-actually-conscious",
+        "what_found": "Would not open (url_not_allowed)."
+      },
+      {
+        "query_or_url": "\"everybody will have their own AI companion\" Suleyman",
+        "what_found": "Reports trace the companion quote to an X clip around 15-16 January 2026, which predates Davos, so the original occasion and date are unclear."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman Build 2026 keynote MAI superintelligence transcript",
+        "what_found": "Official Microsoft AI Build 2026 keynote transcript and a Happy Scribe transcript of The Builders podcast."
+      },
+      {
+        "query_or_url": "https://microsoft.ai/news/microsoft-build-2026-mai-keynote-transcript/",
+        "what_found": "Keynote of 2 June 2026; its only forward line is 'In the next few years, we’ll see three more orders of magnitude of compute applied to frontier models.' That timing is undated and the subject is compute, so it is not listed."
+      },
+      {
+        "query_or_url": "https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it",
+        "what_found": "Partial transcript (about the first 17 minutes) with the 'next 3 years' compute line; the materials-science line in a search snippet (already recorded 2026-10-12) was not on the loaded part."
+      },
+      {
+        "query_or_url": "Suleyman \"AI companion\" \"five years\" slow_developer clip January 2026 interview source",
+        "what_found": "The X post by @slow_developer carrying the clip, plus the same news reports; the original source of the clip was not identified."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman podcast interview 2026 superintelligence timeline \"years away\"",
+        "what_found": "An iHeart listing showing The Builders interview was taped 12 October 2026, plus aggregator pages; nothing new in his own words."
+      },
+      {
+        "query_or_url": "https://x.com/slow_developer/status/2011805570806776293",
+        "what_found": "Would not open (url_not_allowed)."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Suleyman's 2026 record is dominated by the February FT interview claims (already recorded) and his autumn podcast remarks (also recorded). The only new dated lines found on opened pages are compute-scaling forecasts in his April MIT Technology Review essay (1,000x effective compute by end of 2028, said to drive nearly human-level agents) and on The Builders podcast (100-1,000x more compute in the next 3 years); these may fall under the infrastructure exclusion. The widely reported January 2026 'AI companion for everyone in five years' remark could not be verified: no page I opened showed his words, and the original occasion and date are unclear."
+  },
+  "reply_text": "I found three new dated forecasts from 2026. All three are about how much computing power AI will use, so you may decide they're business forecasts and drop them. I found no new dated prediction about what AI will be able to do that I could quote from a page I opened.\n\n**Where the three come from**\n- **His MIT Technology Review essay (8 April 2026), his own words.** He wrote that the world was \"looking at something like another 1,000x in effective compute by the end of 2028.\" In the next paragraph he said this would drive \"the transition from chatbots to nearly human-level agents.\" That second sentence names no date itself; it gets one only from the paragraph before.\n- **The Builders podcast with Walter Isaacson, from a transcript.** He said compute applied to models would grow \"another 100 to 1,000x\" in \"the next 3 years.\" The 12 October 2026 taping date comes only from a search snippet of a podcast listing I didn't open. This seems to be the same session as your existing 2026-10-12 materials file, but that part of the transcript didn't load for me.\n- **His Build 2026 keynote (2 June), official transcript.** He said \"three more orders of magnitude of compute\" would come \"in the next few years.\" That timing is too vague to count, so I've left it in the search log only.\n\n**What's already recorded or set aside**\n- **The February \"12 to 18 months\" white-collar claim** turned up in many news reports. You already have it.\n- **The \"AI companion for everyone in five years\" quote** is widely reported for January 2026, but I couldn't confirm it:\n  - The Windows Central page loaded without its article text, and the X post and podscripts pages wouldn't open, so I haven't quoted it.\n  - When it was said is unclear. IBTimes ties it to Davos on 20 January, but other coverage traces it to an X video clip posted around 15–16 January, before Davos. The original recording may be older.\n- **A forum post** listing predictions for 2026, 2030 and the early 2030s appears to be an AI-written rewrite of the April essay. Those lines aren't in the essay, so I ignored it.\n\nI used all 12 searches and all 6 page openings (two of the openings failed).\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2026-04-08\", \"quote\": \"Put all this together and we’re looking at something like another 1,000x in effective compute by the end of 2028.\", \"what_is_predicted\": \"Effective compute for AI will grow by roughly another 1,000 times by the end of 2028; this is an industry-wide compute/scaling forecast, so the checker may class it as an infrastructure forecast and exclude it.\", \"date_or_span\": \"by the end of 2028\", \"occasion\": \"Opinion essay by Suleyman, 'Mustafa Suleyman: AI development won’t hit a wall anytime soon—here’s why', MIT Technology Review\", \"source_url\": \"https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-04-08\", \"quote\": \"What does all this get us? I believe it will drive the transition from chatbots to nearly human-level agents—semiautonomous systems capable of writing code for days, carrying out weeks- and months-long projects, making calls, negotiating contracts, managing logistics.\", \"what_is_predicted\": \"The compute growth he forecasts will move AI from chatbots to nearly human-level semi-autonomous agents; the sentence itself names no date, and its timing comes only from the preceding paragraph (end of 2028, and 2030).\", \"date_or_span\": \"implied by preceding paragraph: by end of 2028 / by 2030\", \"occasion\": \"Opinion essay by Suleyman, MIT Technology Review\", \"source_url\": \"https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-10\", \"quote\": \"And we're, in the next 3 years, going to do another 100 to 1,000x, 2 orders of magnitude or 3 orders of magnitude more computation applied to these models.\", \"what_is_predicted\": \"Compute applied to frontier AI models will grow another 100 to 1,000 times over the next three years; this is a compute/scaling forecast and may be excluded as infrastructure.\", \"date_or_span\": \"the next 3 years\", \"occasion\": \"The Builders with Walter Isaacson podcast (taping date 2026-10-12 per an iHeart listing seen only in a search snippet; transcript page said 'Published 18 days ago')\", \"source_url\": \"https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Search results surfaced a January 2024 Business Insider report (via an ANU mailing-list post) on Suleyman saying AI could act as an entrepreneur and inventor within five years; not opened.\"},\n    {\"year\": \"2023\", \"note\": \"An 80,000 Hours podcast page (episode #162) surfaced in search with a 'five, 10, 15, 20 years away' remark about dangerous capabilities; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" AI prediction 2026\", \"what_found\": \"Mostly news on the February 2026 FT '12-18 months' white-collar claim (already recorded) plus January 2026 reports of a 'personal AI companion within five years' remark.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"More coverage of the white-collar 12-18 months claim and a listing for his September 2026 Rest Is Politics: Leading episode.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Fortune and others on the 12-18 months claim, an October 2026 Windows Latest piece on him sharing Acemoglu's 5% forecast, and a forum rewrite of his April MIT Technology Review essay.\"},\n    {\"query_or_url\": \"MIT Technology Review Suleyman \\\"won't hit a wall anytime soon\\\"\", \"what_found\": \"Located his 8 April 2026 MIT Technology Review essay.\"},\n    {\"query_or_url\": \"Suleyman Davos 2026 transcript Microsoft AI \\\"five years\\\"\", \"what_found\": \"News reports (Windows Central, IBTimes) of the 'AI companion in five years' remark; no official transcript found.\"},\n    {\"query_or_url\": \"\\\"Rest Is Politics\\\" Leading Mustafa Suleyman conscious transcript\", \"what_found\": \"Episode 208 dated 27 Sep 2026, with a podscripts transcript link.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/\", \"what_found\": \"Full essay in his own words, with the 1,000x effective compute by end of 2028 forecast and the agents sentence.\"},\n    {\"query_or_url\": \"https://www.windowscentral.com/artificial-intelligence/microsoft-ai-chief-intimate-ai-companion-in-5-years\", \"what_found\": \"Only metadata and headline loaded (published 2026-01-20); the article body with his quote did not render, so I have not quoted it.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/the-rest-is-politics-leading/208-mustafa-suleyman-is-ai-actually-conscious\", \"what_found\": \"Would not open (url_not_allowed).\"},\n    {\"query_or_url\": \"\\\"everybody will have their own AI companion\\\" Suleyman\", \"what_found\": \"Reports trace the companion quote to an X clip around 15-16 January 2026, which predates Davos, so the original occasion and date are unclear.\"},\n    {\"query_or_url\": \"Mustafa Suleyman Build 2026 keynote MAI superintelligence transcript\", \"what_found\": \"Official Microsoft AI Build 2026 keynote transcript and a Happy Scribe transcript of The Builders podcast.\"},\n    {\"query_or_url\": \"https://microsoft.ai/news/microsoft-build-2026-mai-keynote-transcript/\", \"what_found\": \"Keynote of 2 June 2026; its only forward line is 'In the next few years, we’ll see three more orders of magnitude of compute applied to frontier models.' That timing is undated and the subject is compute, so it is not listed.\"},\n    {\"query_or_url\": \"https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it\", \"what_found\": \"Partial transcript (about the first 17 minutes) with the 'next 3 years' compute line; the materials-science line in a search snippet (already recorded 2026-10-12) was not on the loaded part.\"},\n    {\"query_or_url\": \"Suleyman \\\"AI companion\\\" \\\"five years\\\" slow_developer clip January 2026 interview source\", \"what_found\": \"The X post by @slow_developer carrying the clip, plus the same news reports; the original source of the clip was not identified.\"},\n    {\"query_or_url\": \"Mustafa Suleyman podcast interview 2026 superintelligence timeline \\\"years away\\\"\", \"what_found\": \"An iHeart listing showing The Builders interview was taped 12 October 2026, plus aggregator pages; nothing new in his own words.\"},\n    {\"query_or_url\": \"https://x.com/slow_developer/status/2011805570806776293\", \"what_found\": \"Would not open (url_not_allowed).\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Suleyman's 2026 record is dominated by the February FT interview claims (already recorded) and his autumn podcast remarks (also recorded). The only new dated lines found on opened pages are compute-scaling forecasts in his April MIT Technology Review essay (1,000x effective compute by end of 2028, said to drive nearly human-level agents) and on The Builders podcast (100-1,000x more compute in the next 3 years); these may fall under the infrastructure exclusion. The widely reported January 2026 'AI companion for everyone in five years' remark could not be verified: no page I opened showed his words, and the original occasion and date are unclear.\"\n}\n```"
+}

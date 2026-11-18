@@ -1,0 +1,314 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2014,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6235,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 61712,
+      "cache_read_input_tokens": 230580,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 7435,
+      "output_tokens_details": {
+        "thinking_tokens": 1997
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Mark Zuckerberg\" AI prediction 2014','\"Mark Zuckerberg\" 2014 interview AGI \"years\"','\"Mark Zuckerberg\" 2014 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"##\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2014"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nr=R[qs[0]]\nprint(type(r), str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    for x in json.loads(r) if isinstance(r,str) else r:\n        print(' -',x.get('title'),x.get('url'),x.get('page_age'));print('   ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"##\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2014 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2014 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg 2014 earnings call transcript \"artificial intelligence\"','Zuckerberg Q&A November 2014 \"artificial intelligence\" transcript','zuckerberg files transcript 2014 \"artificial intelligence\"']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"##\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg 2014 earnings call transcript \"artificial intelligence\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Q&A November 2014 \"artificial intelligence\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "zuckerberg files transcript 2014 \"artificial intelligence\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Facebook Q4 2013 earnings call transcript Zuckerberg January 29 2014 \"artificial intelligence\"','Zuckerberg Q3 2014 earnings call transcript \"artificial intelligence\" \"10 years\"']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"##\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook Q4 2013 earnings call transcript Zuckerberg January 29 2014 \"artificial intelligence\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Q3 2014 earnings call transcript \"artificial intelligence\" \"10 years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nfor u in ['https://www.adweek.com/performance-marketing/4q-earnings-call-zuckerberg-artificial-intelligence/','https://singjupost.com/facebooks-fb-ceo-mark-zuckerberg-q2-2014-results-earnings-call-transcript/?singlepage=1']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    c=r[0]['content'] if isinstance(r,list) else str(r); F[u]=c\n    print(\"##\",u,len(c))\n    for m in re.finditer(r'(?i)(artificial intelligence|\\bAI\\b|years)',c):\n        print('  ..',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '))\n        print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.adweek.com/performance-marketing/4q-earnings-call-zuckerberg-artificial-intelligence/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/facebooks-fb-ceo-mark-zuckerberg-q2-2014-results-earnings-call-transcript/?singlepage=1"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in [\"Facebook's Plan For Artificial Intelligence: Transcribe Your Calls, Decipher Your Photos\",'Facebook Q3 2014 earnings call transcript Zuckerberg October 28 2014']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"##\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook's Plan For Artificial Intelligence: Transcribe Your Calls, Decipher Your Photos"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook Q3 2014 earnings call transcript Zuckerberg October 28 2014"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.huffpost.com/entry/facebooks-plan-for-artificial-intelligence_n_4690949','https://www.insidermonkey.com/blog/facebook-inc-fb-earnings-call-transcript-2014-q3-337362/']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    c=r[0]['content'] if isinstance(r,list) else str(r); F[u]=c\n    print(\"##\",u,len(c))\n    for m in re.finditer(r'(?i)(artificial intelligence|\\bAI\\b|years|decade)',c):\n        print('  ..',c[max(0,m.start()-400):m.start()+400].replace('\\n',' '))\n        print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.huffpost.com/entry/facebooks-plan-for-artificial-intelligence_n_4690949"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.insidermonkey.com/blog/facebook-inc-fb-earnings-call-transcript-2014-q3-337362/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg October 2014 earnings call AI \"understanding the world\" \"10 years\" deep learning','Zuckerberg town hall Q&A November 6 2014 artificial intelligence answer Joshua Murphy']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"##\",q)\n    for x in json.loads(r):\n        c=x.get('content','')\n        print(' -',x.get('title'),x.get('url'),x.get('page_age'))\n        for m in re.finditer(r'(?i)(artificial intelligence|\\bAI\\b)',c[:20000]):\n            print('    ..',c[max(0,m.start()-200):m.start()+200].replace('\\n',' ')); break"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg October 2014 earnings call AI \"understanding the world\" \"10 years\" deep learning"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg town hall Q&A November 6 2014 artificial intelligence answer Joshua Murphy"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/','https://tech.co/news/5-best-things-we-learned-from-mark-zuckerbergs-town-hall-meeting-2014-11']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    c=r[0]['content'] if isinstance(r,list) else str(r); F[u]=c\n    print(\"##\",u,len(c))\n    i=c.find('Zuckerberg')\n    for m in re.finditer(r'(?i)(artificial intelligence|\\bAI\\b|years|decade)',c):\n        print('  ..',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '))\n        print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://tech.co/news/5-best-things-we-learned-from-mark-zuckerbergs-town-hall-meeting-2014-11"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2014-10-22",
+        "quote": "I think 10 years from now computers will be better than humans at reading, listening, talking, and other things.",
+        "what_is_predicted": "Within ten years computers will outperform humans at reading, listening and talking.",
+        "date_or_span": "10 years from 2014 (about 2024)",
+        "occasion": "Q&A at Tsinghua University, Beijing, held mostly in Mandarin; the quote is Quartz's English translation as reprinted by VentureBeat (the page notes the phrase 'artificial intelligence' was said in English)",
+        "source_url": "https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2014-01-29",
+        "quote": "It’s going to fit into our strategy over a longer, maybe five- or 10-year period.",
+        "what_is_predicted": "Facebook's new AI research group under Yann LeCun will pay off in Facebook's strategy over five to ten years (weak: about where AI fits in strategy, not something AI will achieve).",
+        "date_or_span": "five to 10 years (about 2019-2024)",
+        "occasion": "Facebook Q4 2013 earnings call, answering an analyst from Robert W. Baird & Co.; excerpt printed by Adweek (article paywalled after the excerpt)",
+        "source_url": "https://www.adweek.com/performance-marketing/4q-earnings-call-zuckerberg-artificial-intelligence/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2015",
+        "note": "Search snippet (mign.io) cites a June 2015 Facebook Q&A: goal over the next five to ten years to beat human level at the primary senses; page not opened."
+      },
+      {
+        "year": "2016",
+        "note": "Search snippets (Computerworld, PCWorld, BigDATAwire) report an April 2016 claim that computers will beat humans at basic perception within 5-10 years; pages not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2014",
+        "what_found": "Mostly 2016 and 2024-2026 coverage; nothing with 2014 words."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2014 interview AGI \"years\"",
+        "what_found": "Later interviews, a Marquette Zuckerberg Files index of 2014 events, and a 2015 Q&A citation; no 2014 AGI statement."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2014 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only recent (2024-2026) coverage; nothing from 2014."
+      },
+      {
+        "query_or_url": "Zuckerberg 2014 earnings call transcript \"artificial intelligence\"",
+        "what_found": "Q2 2014 call transcripts (Seeking Alpha, singjupost) and a link to HuffPost's Jan 2014 article."
+      },
+      {
+        "query_or_url": "Zuckerberg Q&A November 2014 \"artificial intelligence\" transcript",
+        "what_found": "TechCrunch preview of the 6 Nov 2014 Q&A listing an AI question; no answer text."
+      },
+      {
+        "query_or_url": "zuckerberg files transcript 2014 \"artificial intelligence\"",
+        "what_found": "Marquette Zuckerberg Files index pages; no 2014 AI text in the snippets."
+      },
+      {
+        "query_or_url": "Facebook Q4 2013 earnings call transcript Zuckerberg January 29 2014 \"artificial intelligence\"",
+        "what_found": "Adweek article on the Q4 2013 call (29 Jan 2014) about AI."
+      },
+      {
+        "query_or_url": "Zuckerberg Q3 2014 earnings call transcript \"artificial intelligence\" \"10 years\"",
+        "what_found": "Later-year transcripts and the HuffPost Jan 2014 article link."
+      },
+      {
+        "query_or_url": "https://www.adweek.com/performance-marketing/4q-earnings-call-zuckerberg-artificial-intelligence/",
+        "what_found": "Opened; prints a short call excerpt with the 'five- or 10-year period' line, then a paywall."
+      },
+      {
+        "query_or_url": "https://singjupost.com/facebooks-fb-ceo-mark-zuckerberg-q2-2014-results-earnings-call-transcript/?singlepage=1",
+        "what_found": "Opened; only AI line is 'over the next few years' (undated, not about AGI), so left out."
+      },
+      {
+        "query_or_url": "Facebook's Plan For Artificial Intelligence: Transcribe Your Calls, Decipher Your Photos",
+        "what_found": "HuffPost 29 Jan 2014 article and the Seeking Alpha / Insider Monkey Q3 2014 transcripts."
+      },
+      {
+        "query_or_url": "Facebook Q3 2014 earnings call transcript Zuckerberg October 28 2014",
+        "what_found": "Seeking Alpha, Insider Monkey and Marquette listings of the 28 Oct 2014 call."
+      },
+      {
+        "query_or_url": "https://www.huffpost.com/entry/facebooks-plan-for-artificial-intelligence_n_4690949",
+        "what_found": "Opened; reporter's paraphrase only ('Five years from now, he predicted...'), no direct forecast quote."
+      },
+      {
+        "query_or_url": "https://www.insidermonkey.com/blog/facebook-inc-fb-earnings-call-transcript-2014-q3-337362/",
+        "what_found": "Opened; only page 1 of 20, covering 3/5/10-year company goals with no AI forecast."
+      },
+      {
+        "query_or_url": "Zuckerberg October 2014 earnings call AI \"understanding the world\" \"10 years\" deep learning",
+        "what_found": "VentureBeat article on the Oct 2014 Tsinghua Q&A, plus 2016 coverage."
+      },
+      {
+        "query_or_url": "Zuckerberg town hall Q&A November 6 2014 artificial intelligence answer Joshua Murphy",
+        "what_found": "Tech.co write-up of the Nov 2014 town hall; other results are 2015 or later."
+      },
+      {
+        "query_or_url": "https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/",
+        "what_found": "Opened; prints Quartz's translation with the '10 years from now computers will be better than humans' line."
+      },
+      {
+        "query_or_url": "https://tech.co/news/5-best-things-we-learned-from-mark-zuckerbergs-town-hall-meeting-2014-11",
+        "what_found": "Opened; no AI answer in the article body."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2014 has one clear dated AI forecast: at Tsinghua in October, Zuckerberg said computers would beat humans at reading, listening and talking within 10 years. It is known only through Quartz's translation as reprinted by VentureBeat. There is also a weaker January earnings-call line placing Facebook's new AI lab in a five- to ten-year strategy, and nothing on when AGI will arrive."
+  },
+  "reply_text": "Let me open the Adweek Q4 call piece and the Q2 2014 transcript.I found two candidates for 2014. Neither is in Zuckerberg's own published words: I read both only in news reports, so each is marked `coverage_only`.\n\n- **The strong one (22 Oct 2014, Tsinghua University Q&A in Beijing).** He said that 10 years from then, computers would be better than humans at reading, listening and talking. He spoke mostly in Chinese. The quote is Quartz's English translation, which VentureBeat reprinted. The phrase \"artificial intelligence\" was said in English. I could not open the Quartz article, the original recording or a transcript, so the wording is a translation.\n- **The weak one (29 Jan 2014, Q4 2013 earnings call).** Adweek printed a short excerpt in which he says the new AI research group fits into a strategy over \"maybe five- or 10-year period.\" It looks forward and names a span, but it describes where AI fits in Facebook's plans more than what AI will achieve. Adweek's article is paywalled after that excerpt. HuffPost reported, only in its own words, that he expected Facebook's AI work to reshape the experience about five years out. That paraphrase can't be quoted.\n\nWhat I checked and left out:\n- **Q2 2014 earnings call (23 Jul).** He said \"over the next few years\" AI work would add value for users. \"Next few years\" counts as undated and isn't about AGI, so it stays out.\n- **Q3 2014 earnings call (28 Oct).** The page I opened showed only the first of 20 pages, with no AI forecast in it.\n- **First public town hall (6 Nov).** The write-up I opened had no AI answer in it.\n\nI didn't find any 2014 statement about when AGI or superintelligence will arrive. I used 9 of the 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2014-10-22\",\n      \"quote\": \"I think 10 years from now computers will be better than humans at reading, listening, talking, and other things.\",\n      \"what_is_predicted\": \"Within ten years computers will outperform humans at reading, listening and talking.\",\n      \"date_or_span\": \"10 years from 2014 (about 2024)\",\n      \"occasion\": \"Q&A at Tsinghua University, Beijing, held mostly in Mandarin; the quote is Quartz's English translation as reprinted by VentureBeat (the page notes the phrase 'artificial intelligence' was said in English)\",\n      \"source_url\": \"https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2014-01-29\",\n      \"quote\": \"It’s going to fit into our strategy over a longer, maybe five- or 10-year period.\",\n      \"what_is_predicted\": \"Facebook's new AI research group under Yann LeCun will pay off in Facebook's strategy over five to ten years (weak: about where AI fits in strategy, not something AI will achieve).\",\n      \"date_or_span\": \"five to 10 years (about 2019-2024)\",\n      \"occasion\": \"Facebook Q4 2013 earnings call, answering an analyst from Robert W. Baird & Co.; excerpt printed by Adweek (article paywalled after the excerpt)\",\n      \"source_url\": \"https://www.adweek.com/performance-marketing/4q-earnings-call-zuckerberg-artificial-intelligence/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2015\", \"note\": \"Search snippet (mign.io) cites a June 2015 Facebook Q&A: goal over the next five to ten years to beat human level at the primary senses; page not opened.\"},\n    {\"year\": \"2016\", \"note\": \"Search snippets (Computerworld, PCWorld, BigDATAwire) report an April 2016 claim that computers will beat humans at basic perception within 5-10 years; pages not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2014\", \"what_found\": \"Mostly 2016 and 2024-2026 coverage; nothing with 2014 words.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2014 interview AGI \\\"years\\\"\", \"what_found\": \"Later interviews, a Marquette Zuckerberg Files index of 2014 events, and a 2015 Q&A citation; no 2014 AGI statement.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2014 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only recent (2024-2026) coverage; nothing from 2014.\"},\n    {\"query_or_url\": \"Zuckerberg 2014 earnings call transcript \\\"artificial intelligence\\\"\", \"what_found\": \"Q2 2014 call transcripts (Seeking Alpha, singjupost) and a link to HuffPost's Jan 2014 article.\"},\n    {\"query_or_url\": \"Zuckerberg Q&A November 2014 \\\"artificial intelligence\\\" transcript\", \"what_found\": \"TechCrunch preview of the 6 Nov 2014 Q&A listing an AI question; no answer text.\"},\n    {\"query_or_url\": \"zuckerberg files transcript 2014 \\\"artificial intelligence\\\"\", \"what_found\": \"Marquette Zuckerberg Files index pages; no 2014 AI text in the snippets.\"},\n    {\"query_or_url\": \"Facebook Q4 2013 earnings call transcript Zuckerberg January 29 2014 \\\"artificial intelligence\\\"\", \"what_found\": \"Adweek article on the Q4 2013 call (29 Jan 2014) about AI.\"},\n    {\"query_or_url\": \"Zuckerberg Q3 2014 earnings call transcript \\\"artificial intelligence\\\" \\\"10 years\\\"\", \"what_found\": \"Later-year transcripts and the HuffPost Jan 2014 article link.\"},\n    {\"query_or_url\": \"https://www.adweek.com/performance-marketing/4q-earnings-call-zuckerberg-artificial-intelligence/\", \"what_found\": \"Opened; prints a short call excerpt with the 'five- or 10-year period' line, then a paywall.\"},\n    {\"query_or_url\": \"https://singjupost.com/facebooks-fb-ceo-mark-zuckerberg-q2-2014-results-earnings-call-transcript/?singlepage=1\", \"what_found\": \"Opened; only AI line is 'over the next few years' (undated, not about AGI), so left out.\"},\n    {\"query_or_url\": \"Facebook's Plan For Artificial Intelligence: Transcribe Your Calls, Decipher Your Photos\", \"what_found\": \"HuffPost 29 Jan 2014 article and the Seeking Alpha / Insider Monkey Q3 2014 transcripts.\"},\n    {\"query_or_url\": \"Facebook Q3 2014 earnings call transcript Zuckerberg October 28 2014\", \"what_found\": \"Seeking Alpha, Insider Monkey and Marquette listings of the 28 Oct 2014 call.\"},\n    {\"query_or_url\": \"https://www.huffpost.com/entry/facebooks-plan-for-artificial-intelligence_n_4690949\", \"what_found\": \"Opened; reporter's paraphrase only ('Five years from now, he predicted...'), no direct forecast quote.\"},\n    {\"query_or_url\": \"https://www.insidermonkey.com/blog/facebook-inc-fb-earnings-call-transcript-2014-q3-337362/\", \"what_found\": \"Opened; only page 1 of 20, covering 3/5/10-year company goals with no AI forecast.\"},\n    {\"query_or_url\": \"Zuckerberg October 2014 earnings call AI \\\"understanding the world\\\" \\\"10 years\\\" deep learning\", \"what_found\": \"VentureBeat article on the Oct 2014 Tsinghua Q&A, plus 2016 coverage.\"},\n    {\"query_or_url\": \"Zuckerberg town hall Q&A November 6 2014 artificial intelligence answer Joshua Murphy\", \"what_found\": \"Tech.co write-up of the Nov 2014 town hall; other results are 2015 or later.\"},\n    {\"query_or_url\": \"https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/\", \"what_found\": \"Opened; prints Quartz's translation with the '10 years from now computers will be better than humans' line.\"},\n    {\"query_or_url\": \"https://tech.co/news/5-best-things-we-learned-from-mark-zuckerbergs-town-hall-meeting-2014-11\", \"what_found\": \"Opened; no AI answer in the article body.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2014 has one clear dated AI forecast: at Tsinghua in October, Zuckerberg said computers would beat humans at reading, listening and talking within 10 years. It is known only through Quartz's translation as reprinted by VentureBeat. There is also a weaker January earnings-call line placing Facebook's new AI lab in a five- to ten-year strategy, and nothing on when AGI will arrive.\"\n}\n```"
+}

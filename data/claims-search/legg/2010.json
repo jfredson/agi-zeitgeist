@@ -1,0 +1,356 @@
+{
+  "speaker_id": "legg",
+  "year": 2010,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6046,
+  "web_searches": 8,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7678
+      },
+      "cache_creation_input_tokens": 50203,
+      "cache_read_input_tokens": 439823,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 9272,
+      "output_tokens_details": {
+        "thinking_tokens": 3184
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 8
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Shane Legg\" AI prediction 2010','\"Shane Legg\" 2010 interview AGI \"years\"','\"Shane Legg\" 2010 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2010"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:300].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2010 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2010 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://www.vetta.org/2010/12/goodbye-2010/\"})\nc=p[0]['content'] if isinstance(p,list) else str(p)\nprint(c[:6000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.vetta.org/2010/12/goodbye-2010/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[6000:12000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://future.fandom.com/wiki/Scenario:_Shane_Legg\"})\nc2=p[0]['content'] if isinstance(p,list) else str(p)\nimport re\nprint(len(c2)); print(c2[:5000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://future.fandom.com/wiki/Scenario:_Shane_Legg"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['vetta.org 2010 Shane Legg blog','\"Shane Legg\" \"Singularity Summit 2010\"','\"Shane Legg\" \"AGI-10\" OR \"AGI 2010\" talk']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "vetta.org 2010 Shane Legg blog"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" \"Singularity Summit 2010\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" \"AGI-10\" OR \"AGI 2010\" talk"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages={}\nfor u in [\"https://www.vetta.org/2009/12/the-teenies/\",\"https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/\",\"http://www.vetta.org/2010/08/summit-201/\"]:\n    p=await web_fetch({\"url\":u})\n    t=p[0]['content'] if isinstance(p,list) else str(p)\n    pages[u]=json.loads(t)['content']['source']['data'] if t.startswith('{') else t\n    print(u,len(pages[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.vetta.org/2009/12/the-teenies/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "http://www.vetta.org/2010/08/summit-201/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=pages[\"https://www.vetta.org/2009/12/the-teenies/\"]\nprint(t[:16130])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=pages[\"https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/\"]\nprint(t[:19445])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=pages[\"http://www.vetta.org/2010/08/summit-201/\"]\nprint(t[:9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nseg=t[9000:]\nfor m in re.finditer(r'Shane Legg\\]\\(http://www.vetta.org\\) says:\\s*\\n\\s*\\n\\s*\\[([^\\]]+)\\][^\\n]*\\n(.{0,1500})',seg,re.S):\n    print('##',m.group(1)); print(m.group(2)[:1500]); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Singularity Summit 2010 AGI panel Legg Goertzel Yudkowsky Tooby transcript','\"Shane Legg\" interview 2010 machine super intelligence neuroscience Gatsby']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Singularity Summit 2010 AGI panel Legg Goertzel Yudkowsky Tooby transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" interview 2010 machine super intelligence neuroscience Gatsby"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://www.bobblum.com/ESSAYS/COMPSCI/ss10.html\"})\nt=p[0]['content'] if isinstance(p,list) else str(p)\nfor m in re.finditer(r'(?i)legg',t):\n    print('--',t[max(0,m.start()-300):m.start()+1500].replace('\\\\n','\\n'))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bobblum.com/ESSAYS/COMPSCI/ss10.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('**SHANE LEGG'); \nif i<0: i=[m.start() for m in re.finditer('LEGG',t)][-1]\nprint(t[i-100:i+3500].replace('\\\\n','\\n'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "idx=[m.start() for m in re.finditer('LEGG|Legg',t)]\nprint(idx, len(t))\nfor i in idx[2:]:\n    print('====',t[i-200:i+3000].replace('\\\\n','\\n'))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2010-12-10",
+        "quote": "Basically, I gave it a log-normal distribution with a mean of 2028, and a mode of 2025.",
+        "what_is_predicted": "Roughly human-level AGI, with an expected (mean) year of 2028.",
+        "date_or_span": "2028 (mean)",
+        "occasion": "Blog post 'Goodbye 2010' on vetta.org (annual review of predictions); he adds that he decided 'to play it safe and keep the prediction unmoved at 2028'.",
+        "source_url": "https://www.vetta.org/2010/12/goodbye-2010/",
+        "source_kind": "own_words",
+        "already_recorded": "2010-12-10-legg-human-level-agi-mean-2028.toml"
+      },
+      {
+        "date_said": "2010-12-10",
+        "quote": "Basically, I gave it a log-normal distribution with a mean of 2028, and a mode of 2025.",
+        "what_is_predicted": "Roughly human-level AGI, with a most likely (mode) year of 2025.",
+        "date_or_span": "2025 (mode)",
+        "occasion": "Blog post 'Goodbye 2010' on vetta.org.",
+        "source_url": "https://www.vetta.org/2010/12/goodbye-2010/",
+        "source_kind": "own_words",
+        "already_recorded": "2010-12-10-legg-human-level-agi-mode-2025.toml"
+      },
+      {
+        "date_said": "2010-12-10",
+        "quote": "the upper end should be a bit higher at 2045, i.e. at a CDF of 0.95. It seems that I got the lower end right, however, as the CDF is about 0.05 at 2018. With 5% at each end, that gives the 90% interval.",
+        "what_is_predicted": "A 90% credible interval for roughly human-level AGI running from 2018 to 2045 (correcting the 2009 upper bound of 2036).",
+        "date_or_span": "2018 to 2045",
+        "occasion": "Blog post 'Goodbye 2010' on vetta.org.",
+        "source_url": "https://www.vetta.org/2010/12/goodbye-2010/",
+        "source_kind": "own_words",
+        "already_recorded": "2010-12-10-legg-human-level-agi-90-percent-by-2045.toml"
+      },
+      {
+        "date_said": "2010-08-23",
+        "quote": "I liked the focus on neuroscience this time. I think it will be a major driving force behind AGI over the next 20 years.",
+        "what_is_predicted": "Neuroscience will be a major driver of AGI development over the next twenty years.",
+        "date_or_span": "the next 20 years (to about 2030)",
+        "occasion": "Blog post 'Summit 2010' on vetta.org, written after the 2010 Singularity Summit.",
+        "source_url": "http://www.vetta.org/2010/08/summit-201/",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2010-08-23",
+        "quote": "As I think AGI is approaching, we seriously need much deeper and broader thinking on these topics.",
+        "source_url": "http://www.vetta.org/2010/08/summit-201/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2009",
+        "note": "'Tick, tock, tick, tock... BING' (vetta.org, December 2009): human-level AGI with mode about 2025, expected value 2028, and a 90% region of 2018 to 2036; also 10^18 FLOPS by 2020. https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/"
+      },
+      {
+        "year": "2009",
+        "note": "'The Teenies' (vetta.org, December 2009): 'More groups will start AGI projects, particularly from 2015 onwards', with small AGIs 'nowhere near human level intelligence' that decade. https://www.vetta.org/2009/12/the-teenies/"
+      },
+      {
+        "year": "unknown (comment date not shown on page; likely Dec 2010 or later)",
+        "note": "In his reply to a comment under 'Goodbye 2010' he describes his prediction as 'a significant proportion of the population will be saying this by the late 2020's or early 2030's', and says 'super human machine intelligence will then only be a few years away' after AGI. The fetched page shows no comment dates, so this is not counted as a 2010 candidate."
+      },
+      {
+        "year": "unknown (probably January 2010)",
+        "note": "His comments under 'The Teenies' show no dates on the fetched page; a search snippet dated other comments of his there to 5 and 6 January 2010. One says 'In 15-25 years I think we will have the hardware to simulate a system the size of the brain' but that brains won't be scannable in enough detail. Another says machine translation and face recognition may not be truly solved until something close to AGI exists. Neither is counted, because the date can't be confirmed on the page and the first is a hardware claim."
+      },
+      {
+        "year": "unknown",
+        "note": "Interview by Jonathan Despres on future.fandom.com (no date on page; probably about 2008-09): 'Human level AI will be passed in the mid 2020's' and 'a boom in AI around 2020'. https://future.fandom.com/wiki/Scenario:_Shane_Legg"
+      },
+      {
+        "year": "2011",
+        "note": "Search results point to the LessWrong Q&A on AI risk (answer '2018, 2028, 2050'); not opened."
+      },
+      {
+        "year": "2021",
+        "note": "Search result for an X post in which he says he has held about 50% by 2028 and 90% by 2040 since 1999, citing the Goodbye 2010 post; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2010",
+        "what_found": "Mostly later coverage of the 2028 forecast, a 2021 X post citing the Goodbye 2010 post, and the 2026 Auckland news item."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2010 interview AGI \"years\"",
+        "what_found": "2023 coverage, the 2011 LessWrong Q&A, and DeepMind podcast excerpts; nothing new from 2010."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2010 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Turned up the 'Goodbye 2010' vetta.org post (10 Dec 2010) and an undated fandom interview."
+      },
+      {
+        "query_or_url": "https://www.vetta.org/2010/12/goodbye-2010/",
+        "what_found": "Opened; his own post with the mean 2028 / mode 2025 / 90%-to-2045 forecast, plus comment replies that show no dates."
+      },
+      {
+        "query_or_url": "https://future.fandom.com/wiki/Scenario:_Shane_Legg",
+        "what_found": "Opened; undated interview with forecasts for the mid-2020s, so not counted for 2010."
+      },
+      {
+        "query_or_url": "vetta.org 2010 Shane Legg blog",
+        "what_found": "Found the 'Summit 2010' post (Aug 2010), the 'Teenies' and 'Tick tock' posts with Jan 2010 comment dates in snippets, and the March 2010 Oxford Martin seminar listing."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" \"Singularity Summit 2010\"",
+        "what_found": "Reports and videos of his 2010 talk on universal measures of intelligence and the AGI panel; no transcript."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" \"AGI-10\" OR \"AGI 2010\" talk",
+        "what_found": "Nothing new from 2010; the Tick tock post link came up again."
+      },
+      {
+        "query_or_url": "https://www.vetta.org/2009/12/the-teenies/",
+        "what_found": "Opened; December 2009 predictions post; comment dates not visible in the fetched text."
+      },
+      {
+        "query_or_url": "https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/",
+        "what_found": "Opened; December 2009 post with the original 2025/2028/2018-2036 forecast; nothing datable to 2010 that is a prediction."
+      },
+      {
+        "query_or_url": "http://www.vetta.org/2010/08/summit-201/",
+        "what_found": "Opened; 23 Aug 2010 post saying neuroscience will drive AGI over the next 20 years and 'AGI is approaching'; his 2010 comment replies hold no dated forecasts."
+      },
+      {
+        "query_or_url": "Singularity Summit 2010 AGI panel Legg Goertzel Yudkowsky Tooby transcript",
+        "what_found": "Audio and video listings only, plus Bob Blum's attendee notes; no transcript."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" interview 2010 machine super intelligence neuroscience Gatsby",
+        "what_found": "Background pages and a Halloween 2009 talk PDF; no 2010 interview."
+      },
+      {
+        "query_or_url": "https://www.bobblum.com/ESSAYS/COMPSCI/ss10.html",
+        "what_found": "Opened; the fetched text was cut off before the section on his talk, so there was nothing to quote."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2010 Legg's dated AI forecasts appear on his vetta.org blog. The 10 December 'Goodbye 2010' post restated human-level AGI with mean 2028, mode 2025 and a 90% interval of 2018 to 2045 (all already recorded). The one new item is the 23 August 'Summit 2010' line that neuroscience will be a major driving force behind AGI over the next 20 years."
+  },
+  "reply_text": "I found one new 2010 prediction. I also met the three claims you already have, all in Shane Legg's own blog post of 10 December 2010.\n\n- **Already recorded:** \"Goodbye 2010\" on vetta.org restates his human-level AGI forecast: a mean of 2028, a mode of 2025, and an upper bound of 2045 for the 90% range. It also says he chose to keep 2028 rather than bring it closer.\n- **New:** in his \"Summit 2010\" post of 23 August 2010, he wrote that neuroscience \"will be a major driving force behind AGI over the next 20 years.\"\n\nThings I left out of the candidate list:\n\n- **Undated:** the same August post says \"I think AGI is approaching\", with no date attached.\n- **Not about AI:** the December post also says he is now \"slightly more confident\" there will be \"a decent understanding of how cortex works before the end of the decade.\" That is a brain-science forecast, so it isn't a candidate. The post's supercomputer figure (10^18 FLOPS around 2018) is a hardware forecast, so it stays out as well.\n- **No visible date:** a few of his blog comments do look forward with dates, but the pages I opened show no date on them. One is \"late 2020's or early 2030's\", replying under the December post. Another, \"in 15-25 years\" for hardware to simulate a brain, sits under a December 2009 post; search snippets dated his comments there to January 2010, but the page itself didn't show it. I've put these under other_years.\n- **Not my words to quote:** two of the AI predictions came from a search snippet and the page wouldn't load past it. Rival forecasts in the comments are by other people.\n- **Couldn't check:** one attendee's notes on the 2010 Singularity Summit cut off before the section on his talk. I also couldn't get a transcript of the 2010 AGI panel he sat on, so his spoken words that year are unchecked.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2010-12-10\", \"quote\": \"Basically, I gave it a log-normal distribution with a mean of 2028, and a mode of 2025.\", \"what_is_predicted\": \"Roughly human-level AGI, with an expected (mean) year of 2028.\", \"date_or_span\": \"2028 (mean)\", \"occasion\": \"Blog post 'Goodbye 2010' on vetta.org (annual review of predictions); he adds that he decided 'to play it safe and keep the prediction unmoved at 2028'.\", \"source_url\": \"https://www.vetta.org/2010/12/goodbye-2010/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2010-12-10-legg-human-level-agi-mean-2028.toml\"},\n    {\"date_said\": \"2010-12-10\", \"quote\": \"Basically, I gave it a log-normal distribution with a mean of 2028, and a mode of 2025.\", \"what_is_predicted\": \"Roughly human-level AGI, with a most likely (mode) year of 2025.\", \"date_or_span\": \"2025 (mode)\", \"occasion\": \"Blog post 'Goodbye 2010' on vetta.org.\", \"source_url\": \"https://www.vetta.org/2010/12/goodbye-2010/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2010-12-10-legg-human-level-agi-mode-2025.toml\"},\n    {\"date_said\": \"2010-12-10\", \"quote\": \"the upper end should be a bit higher at 2045, i.e. at a CDF of 0.95. It seems that I got the lower end right, however, as the CDF is about 0.05 at 2018. With 5% at each end, that gives the 90% interval.\", \"what_is_predicted\": \"A 90% credible interval for roughly human-level AGI running from 2018 to 2045 (correcting the 2009 upper bound of 2036).\", \"date_or_span\": \"2018 to 2045\", \"occasion\": \"Blog post 'Goodbye 2010' on vetta.org.\", \"source_url\": \"https://www.vetta.org/2010/12/goodbye-2010/\", \"source_kind\": \"own_words\", \"already_recorded\": \"2010-12-10-legg-human-level-agi-90-percent-by-2045.toml\"},\n    {\"date_said\": \"2010-08-23\", \"quote\": \"I liked the focus on neuroscience this time. I think it will be a major driving force behind AGI over the next 20 years.\", \"what_is_predicted\": \"Neuroscience will be a major driver of AGI development over the next twenty years.\", \"date_or_span\": \"the next 20 years (to about 2030)\", \"occasion\": \"Blog post 'Summit 2010' on vetta.org, written after the 2010 Singularity Summit.\", \"source_url\": \"http://www.vetta.org/2010/08/summit-201/\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2010-08-23\", \"quote\": \"As I think AGI is approaching, we seriously need much deeper and broader thinking on these topics.\", \"source_url\": \"http://www.vetta.org/2010/08/summit-201/\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2009\", \"note\": \"'Tick, tock, tick, tock... BING' (vetta.org, December 2009): human-level AGI with mode about 2025, expected value 2028, and a 90% region of 2018 to 2036; also 10^18 FLOPS by 2020. https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/\"},\n    {\"year\": \"2009\", \"note\": \"'The Teenies' (vetta.org, December 2009): 'More groups will start AGI projects, particularly from 2015 onwards', with small AGIs 'nowhere near human level intelligence' that decade. https://www.vetta.org/2009/12/the-teenies/\"},\n    {\"year\": \"unknown (comment date not shown on page; likely Dec 2010 or later)\", \"note\": \"In his reply to a comment under 'Goodbye 2010' he describes his prediction as 'a significant proportion of the population will be saying this by the late 2020's or early 2030's', and says 'super human machine intelligence will then only be a few years away' after AGI. The fetched page shows no comment dates, so this is not counted as a 2010 candidate.\"},\n    {\"year\": \"unknown (probably January 2010)\", \"note\": \"His comments under 'The Teenies' show no dates on the fetched page; a search snippet dated other comments of his there to 5 and 6 January 2010. One says 'In 15-25 years I think we will have the hardware to simulate a system the size of the brain' but that brains won't be scannable in enough detail. Another says machine translation and face recognition may not be truly solved until something close to AGI exists. Neither is counted, because the date can't be confirmed on the page and the first is a hardware claim.\"},\n    {\"year\": \"unknown\", \"note\": \"Interview by Jonathan Despres on future.fandom.com (no date on page; probably about 2008-09): 'Human level AI will be passed in the mid 2020's' and 'a boom in AI around 2020'. https://future.fandom.com/wiki/Scenario:_Shane_Legg\"},\n    {\"year\": \"2011\", \"note\": \"Search results point to the LessWrong Q&A on AI risk (answer '2018, 2028, 2050'); not opened.\"},\n    {\"year\": \"2021\", \"note\": \"Search result for an X post in which he says he has held about 50% by 2028 and 90% by 2040 since 1999, citing the Goodbye 2010 post; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2010\", \"what_found\": \"Mostly later coverage of the 2028 forecast, a 2021 X post citing the Goodbye 2010 post, and the 2026 Auckland news item.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2010 interview AGI \\\"years\\\"\", \"what_found\": \"2023 coverage, the 2011 LessWrong Q&A, and DeepMind podcast excerpts; nothing new from 2010.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2010 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Turned up the 'Goodbye 2010' vetta.org post (10 Dec 2010) and an undated fandom interview.\"},\n    {\"query_or_url\": \"https://www.vetta.org/2010/12/goodbye-2010/\", \"what_found\": \"Opened; his own post with the mean 2028 / mode 2025 / 90%-to-2045 forecast, plus comment replies that show no dates.\"},\n    {\"query_or_url\": \"https://future.fandom.com/wiki/Scenario:_Shane_Legg\", \"what_found\": \"Opened; undated interview with forecasts for the mid-2020s, so not counted for 2010.\"},\n    {\"query_or_url\": \"vetta.org 2010 Shane Legg blog\", \"what_found\": \"Found the 'Summit 2010' post (Aug 2010), the 'Teenies' and 'Tick tock' posts with Jan 2010 comment dates in snippets, and the March 2010 Oxford Martin seminar listing.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" \\\"Singularity Summit 2010\\\"\", \"what_found\": \"Reports and videos of his 2010 talk on universal measures of intelligence and the AGI panel; no transcript.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" \\\"AGI-10\\\" OR \\\"AGI 2010\\\" talk\", \"what_found\": \"Nothing new from 2010; the Tick tock post link came up again.\"},\n    {\"query_or_url\": \"https://www.vetta.org/2009/12/the-teenies/\", \"what_found\": \"Opened; December 2009 predictions post; comment dates not visible in the fetched text.\"},\n    {\"query_or_url\": \"https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/\", \"what_found\": \"Opened; December 2009 post with the original 2025/2028/2018-2036 forecast; nothing datable to 2010 that is a prediction.\"},\n    {\"query_or_url\": \"http://www.vetta.org/2010/08/summit-201/\", \"what_found\": \"Opened; 23 Aug 2010 post saying neuroscience will drive AGI over the next 20 years and 'AGI is approaching'; his 2010 comment replies hold no dated forecasts.\"},\n    {\"query_or_url\": \"Singularity Summit 2010 AGI panel Legg Goertzel Yudkowsky Tooby transcript\", \"what_found\": \"Audio and video listings only, plus Bob Blum's attendee notes; no transcript.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" interview 2010 machine super intelligence neuroscience Gatsby\", \"what_found\": \"Background pages and a Halloween 2009 talk PDF; no 2010 interview.\"},\n    {\"query_or_url\": \"https://www.bobblum.com/ESSAYS/COMPSCI/ss10.html\", \"what_found\": \"Opened; the fetched text was cut off before the section on his talk, so there was nothing to quote.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2010 Legg's dated AI forecasts appear on his vetta.org blog. The 10 December 'Goodbye 2010' post restated human-level AGI with mean 2028, mode 2025 and a 90% interval of 2018 to 2045 (all already recorded). The one new item is the 23 August 'Summit 2010' line that neuroscience will be a major driving force behind AGI over the next 20 years.\"\n}\n```"
+}

@@ -1,0 +1,354 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.3078,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7746
+      },
+      "cache_creation_input_tokens": 130171,
+      "cache_read_input_tokens": 1551372,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 11824,
+      "output_tokens_details": {
+        "thinking_tokens": 5202
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Mark Zuckerberg\" AI prediction 2024','\"Mark Zuckerberg\" 2024 interview AGI \"years\"','\"Mark Zuckerberg\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r: print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:300].replace('\\n',' '))\nshow(qs[0],r)\nfor q in qs[1:]:\n    r=await web_search({\"query\":q});R[q]=r;show(q,r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Dwarkesh Patel Mark Zuckerberg Llama 3 transcript','Meta second quarter 2024 earnings call transcript Zuckerberg','Zuckerberg Verge interview Alex Heath general intelligence January 2024']:\n    r=await web_search({\"query\":q});R[q]=r;show(q,r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dwarkesh Patel Mark Zuckerberg Llama 3 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Meta second quarter 2024 earnings call transcript Zuckerberg"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Verge interview Alex Heath general intelligence January 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nasync def op(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print('ERR',r); return ''\n    c=r[0].get('content',''); P[u]=c; print(u,len(c)); return c\npat=re.compile(r\"(next year|this year|end of (the|this) (year|decade)|20[2-4]\\d|\\b(next|few|couple|five|ten|\\d+) (years|months)|decade|within)\",re.I)\ndef kw(c,n=60,w=350):\n    seen=-10**9;k=0\n    for m in pat.finditer(c):\n        if m.start()-seen<w: continue\n        seen=m.start();k+=1\n        print('>>',c[max(0,m.start()-w):m.start()+150].replace('\\n',' '));print()\n        if k>=n:break\nc1=await op('https://www.dwarkesh.com/p/mark-zuckerberg')\nc2=await op('https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/mark-zuckerberg"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def op(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict):\n        s=c.get('source',{})\n        if s.get('type')=='base64':\n            import base64,io\n            from pypdf import PdfReader\n            rd=PdfReader(io.BytesIO(base64.b64decode(s['data'])))\n            c='\\n'.join(p.extract_text() for p in rd.pages)\n        else: c=s.get('data','')\n    P[u]=c or ''; print(u,len(P[u])); return P[u]\nc1=await op('https://www.dwarkesh.com/p/mark-zuckerberg')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/mark-zuckerberg"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c1[-1500:])\ni=c1.find('350,000 by the end');print(c1[i:i+200])\nkw(c1[c1.find('## Transcript'):],n=40,w=300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg Verge interview \"general intelligence\" Heath January 18 2024 theverge.com','Acquired podcast Zuckerberg transcript AI \"next year\"','Zuckerberg 2024 \"five to seven years\" OR \"5 to 7 years\" AI']:\n    r=await web_search({\"query\":q});R[q]=r;show(q,r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Verge interview \"general intelligence\" Heath January 18 2024 theverge.com"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Acquired podcast Zuckerberg transcript AI \"next year\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg 2024 \"five to seven years\" OR \"5 to 7 years\" AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c3=await op('https://podcasts.happyscribe.com/acquired/the-mark-zuckerberg-interview')\nprint(c3[:300]); print(c3[-300:])\npat=re.compile(r\"(next year|this year|end of (the|this) (year|decade)|20[2-4]\\d|\\b(next|few|couple|five|ten|\\d+) (years|months)|decade|within|AGI|general intelligence|superintelligence)\",re.I)\nkw(c3,n=40,w=300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcasts.happyscribe.com/acquired/the-mark-zuckerberg-interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c3[-1200:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c3.find('00:17:26');print(c3[i:i+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c4=await op('https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf')\npat=re.compile(r\"(next year|this year|end of (the|this) (year|decade)|20[2-4]\\d|\\b(next|few|couple|five|ten|\\d+) (years|months)|decade|within|general intelligence|superintelligence)\",re.I)\nkw(c4,n=40,w=250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for s in ['A few years ago I would have predicted','Ross Sandler: Great','we're already starting to work on Llama 4','I don't think that this stuff is going to get finished']:\n    i=c4.find(s);print('##',c4[i-300:i+1600].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for s in [\"A few years ago I would have predicted\",\"Ross Sandler: Great\",\"starting to work on Llama 4\",\"this stuff is going to get finished\"]:\n    i=c4.find(s);print('##',c4[i-300:i+1500].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Meta first quarter 2024 results conference call transcript Zuckerberg Llama Meta AI','Zuckerberg Llama 3.3 reel December 2024 \"Llama 4\" next year']:\n    r=await web_search({\"query\":q});R[q]=r;show(q,r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Meta first quarter 2024 results conference call transcript Zuckerberg Llama Meta AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Llama 3.3 reel December 2024 \"Llama 4\" next year"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c5=await op('https://s21.q4cdn.com/399680738/files/doc_financials/2024/q1/META-Q1-2024-Earnings-Call-Transcript.pdf')\ni=c5.find('Susan Li')\nkw(c5,n=40,w=250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q1/META-Q1-2024-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for s in [\"405\",\"holographic\",\"smart AI\",\"Meta AI really just launched\",\"several years\",\"years\"]:\n    for m in list(re.finditer(re.escape(s),c5))[:3]:\n        i=m.start();print('##',s,':',c5[i-400:i+500].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for s in [\"later this year\",\"coming months\",\"multimodal\",\"agents\"]:\n    for m in list(re.finditer(re.escape(s),c5))[:2]:\n        i=m.start();print('##',s,':',c5[i-400:i+300].replace('\\n',' '));print()"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-04-18",
+        "quote": "Hopefully, sometime later in the year we'll get to roll out the 405B. For where it is right now in training, it is already at around 85 MMLU and we expect that it's going to have leading benchmarks on a bunch of the benchmarks.",
+        "what_is_predicted": "Meta will release the 405-billion-parameter Llama 3 model later in 2024, and it will lead several benchmarks.",
+        "date_or_span": "later in 2024",
+        "occasion": "Dwarkesh Podcast interview released alongside Llama 3",
+        "source_url": "https://www.dwarkesh.com/p/mark-zuckerberg",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-07-31",
+        "quote": "Llama 3 is already competitive with the most advanced models, and we're already starting to work on Llama 4, which we're aiming to be the most advanced in the industry next year.",
+        "what_is_predicted": "Llama 4 will be the most advanced model in the industry in 2025.",
+        "date_or_span": "next year (2025)",
+        "occasion": "Meta second-quarter 2024 earnings call, prepared remarks",
+        "source_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf",
+        "source_kind": "transcript",
+        "already_recorded": "2024-07-23-zuckerberg-llama-most-advanced-next-year.toml"
+      },
+      {
+        "date_said": "2024-07-31",
+        "quote": "last quarter we started broadly rolling out our assistant, Meta AI, and it is on track to achieve our goal of becoming the most used AI assistant by the end of the year.",
+        "what_is_predicted": "Meta AI will be the most used AI assistant by the end of 2024.",
+        "date_or_span": "end of 2024",
+        "occasion": "Meta second-quarter 2024 earnings call, prepared remarks (repeated in Q&A as 'by the end of this year')",
+        "source_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf",
+        "source_kind": "transcript",
+        "already_recorded": "2024-07-23-zuckerberg-meta-ai-most-used-by-end-of-year.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search snippets only, not opened: the Joe Rogan podcast (January 2025) said that in 2025 AI could act as a mid-level engineer, and the second Dwarkesh interview (dwarkesh.com/p/mark-zuckerberg-2, 2025) said most code for Meta's AI efforts will be written by AI in the next 12 to 18 months."
+      },
+      {
+        "year": "2023",
+        "note": "The Marquette archive lists a 27 September 2023 Verge interview with Alex Heath; seen in search results only."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2024",
+        "what_found": "Mostly coverage: an X post on 'billions of personalized AI agents' (Rundown interview, 23 July 2024), a Motley Fool piece on Meta AI being most used by year end, and many later 2025-26 articles."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2024 interview AGI \"years\"",
+        "what_found": "Acquired fall 2024 episode, coverage of the January 2024 AGI announcement (Verge, Forbes, Live Science), and the Rundown interview page."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage of the second-quarter 2024 call (Meta AI most used by end of 2024), plus unrelated 2025 items."
+      },
+      {
+        "query_or_url": "Dwarkesh Patel Mark Zuckerberg Llama 3 transcript",
+        "what_found": "Dwarkesh transcript URL (18 April 2024) and the Marquette transcript archive."
+      },
+      {
+        "query_or_url": "Meta second quarter 2024 earnings call transcript Zuckerberg",
+        "what_found": "Meta investor-relations PDF transcript for the second-quarter 2024 call."
+      },
+      {
+        "query_or_url": "Zuckerberg Verge interview Alex Heath general intelligence January 2024",
+        "what_found": "Only coverage (Axios, Fortune, X post); no Verge article URL was returned, so it was not opened."
+      },
+      {
+        "query_or_url": "Zuckerberg Verge interview \"general intelligence\" Heath January 18 2024 theverge.com",
+        "what_found": "Again only coverage of the January 2024 AGI goal; no Verge URL."
+      },
+      {
+        "query_or_url": "Acquired podcast Zuckerberg transcript AI \"next year\"",
+        "what_found": "HappyScribe transcript of the Acquired fall 2024 interview; also 2025 items (Rogan, second Dwarkesh interview)."
+      },
+      {
+        "query_or_url": "Zuckerberg 2024 \"five to seven years\" OR \"5 to 7 years\" AI",
+        "what_found": "A timesofai.com piece (9 August 2024) on AI agents in 5-7 years, not opened; other hits are 2026 coverage of a 'personal AI agents within five years' earnings-call remark."
+      },
+      {
+        "query_or_url": "Meta first quarter 2024 results conference call transcript Zuckerberg Llama Meta AI",
+        "what_found": "Meta investor-relations PDF transcript for the first-quarter 2024 call."
+      },
+      {
+        "query_or_url": "Zuckerberg Llama 3.3 reel December 2024 \"Llama 4\" next year",
+        "what_found": "Coverage saying a 6 December 2024 Instagram post said Llama 4 comes next year; the post was not opened, so it is not listed."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/mark-zuckerberg",
+        "what_found": "Opened twice (first result lost to a parsing error); transcript cut off at about 00:23, holding the '405B later in the year' line."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf",
+        "what_found": "Opened twice (first parse failed); holds the Llama 4 'most advanced next year' and Meta AI 'most used by end of year' lines, the Llama 4 compute forecast and the undated AR-versus-smart-AI remark."
+      },
+      {
+        "query_or_url": "https://podcasts.happyscribe.com/acquired/the-mark-zuckerberg-interview",
+        "what_found": "Cut off at about 00:19:49; only an undated remark that full-scale AI will probably now arrive before AR holograms."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2024/q1/META-Q1-2024-Earnings-Call-Transcript.pdf",
+        "what_found": "No dated AI prediction; 'building the leading AI... is likely going to take several years' is undated and business-framed."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2024 Zuckerberg's dated AI predictions were short-range Meta product claims: the 405B Llama 3 model shipping later that year (Dwarkesh, April), Llama 4 being the industry's most advanced model in 2025, and Meta AI being the most used assistant by the end of 2024 (open letter and July earnings call). He talked about building general intelligence but gave no dated or undated AGI arrival claim on the pages opened. The Dwarkesh and Acquired transcripts were cut off and the December Llama 3.3 post was not opened, so some claims may have been missed."
+  },
+  "reply_text": "I found two 2024 predictions that aren't already recorded and that meet all four conditions. Both come from pages I opened.\n\n- **Dwarkesh Patel podcast, 18 April 2024:** Zuckerberg said Meta hoped to release the 405-billion-parameter Llama 3 model \"later in the year\" and expected it to lead several benchmarks.\n- **Second-quarter earnings call, 31 July 2024:** he said Llama 4 was being aimed at being \"the most advanced in the industry next year.\" This is the same claim as the recorded open-letter file from 23 July, said again on a new occasion, so I've marked it as already recorded.\n\nThe same call also repeated the recorded claim that Meta AI would be the most used assistant by the end of 2024.\n\n**Gaps you should know about:**\n- **Cut-off transcripts:** two pages came back incomplete. The Dwarkesh transcript stops at about the 23-minute mark, so the later sections on energy limits and an \"intelligence explosion\" went unread. The Acquired transcript stops at about 20 minutes. A complete copy of either could hold more dated claims.\n- **Page openings:** I used all six, but two were spent re-opening the same two pages after a parsing mistake. In effect I read four pages: the Dwarkesh transcript, the Acquired transcript, and the first- and second-quarter call transcripts.\n- **Not opened:** Zuckerberg's 6 December 2024 Instagram post (Llama 3.3) apparently says Llama 4 comes \"next year,\" but I saw that only in news snippets. The 18 January 2024 Verge interview and AGI video, the July 2024 Jensen Huang talk and the Rowan Cheung interview were also not opened. I've listed none of these as candidates.\n- **Left out on purpose:**\n  - The claim that training Llama 4 needs almost 10 times Llama 3's compute is a spending forecast.\n  - \"Building the leading AI… is likely going to take several years\" (first-quarter call) is undated and not about AGI.\n  - Two remarks that smart AI will now come before holographic AR glasses (second-quarter call and Acquired) give no date and don't clearly concern AGI, so I left them out of `undated` too.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2024-04-18\",\n      \"quote\": \"Hopefully, sometime later in the year we'll get to roll out the 405B. For where it is right now in training, it is already at around 85 MMLU and we expect that it's going to have leading benchmarks on a bunch of the benchmarks.\",\n      \"what_is_predicted\": \"Meta will release the 405-billion-parameter Llama 3 model later in 2024, and it will lead several benchmarks.\",\n      \"date_or_span\": \"later in 2024\",\n      \"occasion\": \"Dwarkesh Podcast interview released alongside Llama 3\",\n      \"source_url\": \"https://www.dwarkesh.com/p/mark-zuckerberg\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2024-07-31\",\n      \"quote\": \"Llama 3 is already competitive with the most advanced models, and we're already starting to work on Llama 4, which we're aiming to be the most advanced in the industry next year.\",\n      \"what_is_predicted\": \"Llama 4 will be the most advanced model in the industry in 2025.\",\n      \"date_or_span\": \"next year (2025)\",\n      \"occasion\": \"Meta second-quarter 2024 earnings call, prepared remarks\",\n      \"source_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"2024-07-23-zuckerberg-llama-most-advanced-next-year.toml\"\n    },\n    {\n      \"date_said\": \"2024-07-31\",\n      \"quote\": \"last quarter we started broadly rolling out our assistant, Meta AI, and it is on track to achieve our goal of becoming the most used AI assistant by the end of the year.\",\n      \"what_is_predicted\": \"Meta AI will be the most used AI assistant by the end of 2024.\",\n      \"date_or_span\": \"end of 2024\",\n      \"occasion\": \"Meta second-quarter 2024 earnings call, prepared remarks (repeated in Q&A as 'by the end of this year')\",\n      \"source_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"2024-07-23-zuckerberg-meta-ai-most-used-by-end-of-year.toml\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search snippets only, not opened: the Joe Rogan podcast (January 2025) said that in 2025 AI could act as a mid-level engineer, and the second Dwarkesh interview (dwarkesh.com/p/mark-zuckerberg-2, 2025) said most code for Meta's AI efforts will be written by AI in the next 12 to 18 months.\"},\n    {\"year\": \"2023\", \"note\": \"The Marquette archive lists a 27 September 2023 Verge interview with Alex Heath; seen in search results only.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2024\", \"what_found\": \"Mostly coverage: an X post on 'billions of personalized AI agents' (Rundown interview, 23 July 2024), a Motley Fool piece on Meta AI being most used by year end, and many later 2025-26 articles.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Acquired fall 2024 episode, coverage of the January 2024 AGI announcement (Verge, Forbes, Live Science), and the Rundown interview page.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage of the second-quarter 2024 call (Meta AI most used by end of 2024), plus unrelated 2025 items.\"},\n    {\"query_or_url\": \"Dwarkesh Patel Mark Zuckerberg Llama 3 transcript\", \"what_found\": \"Dwarkesh transcript URL (18 April 2024) and the Marquette transcript archive.\"},\n    {\"query_or_url\": \"Meta second quarter 2024 earnings call transcript Zuckerberg\", \"what_found\": \"Meta investor-relations PDF transcript for the second-quarter 2024 call.\"},\n    {\"query_or_url\": \"Zuckerberg Verge interview Alex Heath general intelligence January 2024\", \"what_found\": \"Only coverage (Axios, Fortune, X post); no Verge article URL was returned, so it was not opened.\"},\n    {\"query_or_url\": \"Zuckerberg Verge interview \\\"general intelligence\\\" Heath January 18 2024 theverge.com\", \"what_found\": \"Again only coverage of the January 2024 AGI goal; no Verge URL.\"},\n    {\"query_or_url\": \"Acquired podcast Zuckerberg transcript AI \\\"next year\\\"\", \"what_found\": \"HappyScribe transcript of the Acquired fall 2024 interview; also 2025 items (Rogan, second Dwarkesh interview).\"},\n    {\"query_or_url\": \"Zuckerberg 2024 \\\"five to seven years\\\" OR \\\"5 to 7 years\\\" AI\", \"what_found\": \"A timesofai.com piece (9 August 2024) on AI agents in 5-7 years, not opened; other hits are 2026 coverage of a 'personal AI agents within five years' earnings-call remark.\"},\n    {\"query_or_url\": \"Meta first quarter 2024 results conference call transcript Zuckerberg Llama Meta AI\", \"what_found\": \"Meta investor-relations PDF transcript for the first-quarter 2024 call.\"},\n    {\"query_or_url\": \"Zuckerberg Llama 3.3 reel December 2024 \\\"Llama 4\\\" next year\", \"what_found\": \"Coverage saying a 6 December 2024 Instagram post said Llama 4 comes next year; the post was not opened, so it is not listed.\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/mark-zuckerberg\", \"what_found\": \"Opened twice (first result lost to a parsing error); transcript cut off at about 00:23, holding the '405B later in the year' line.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2024/q2/META-Q2-2024-Earnings-Call-Transcript.pdf\", \"what_found\": \"Opened twice (first parse failed); holds the Llama 4 'most advanced next year' and Meta AI 'most used by end of year' lines, the Llama 4 compute forecast and the undated AR-versus-smart-AI remark.\"},\n    {\"query_or_url\": \"https://podcasts.happyscribe.com/acquired/the-mark-zuckerberg-interview\", \"what_found\": \"Cut off at about 00:19:49; only an undated remark that full-scale AI will probably now arrive before AR holograms.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2024/q1/META-Q1-2024-Earnings-Call-Transcript.pdf\", \"what_found\": \"No dated AI prediction; 'building the leading AI... is likely going to take several years' is undated and business-framed.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2024 Zuckerberg's dated AI predictions were short-range Meta product claims: the 405B Llama 3 model shipping later that year (Dwarkesh, April), Llama 4 being the industry's most advanced model in 2025, and Meta AI being the most used assistant by the end of 2024 (open letter and July earnings call). He talked about building general intelligence but gave no dated or undated AGI arrival claim on the pages opened. The Dwarkesh and Acquired transcripts were cut off and the December Llama 3.3 post was not opened, so some claims may have been missed.\"\n}\n```"
+}

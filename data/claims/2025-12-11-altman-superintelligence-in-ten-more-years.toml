@@ -1,0 +1,23 @@
+[claim]
+id = "2025-12-11-altman-superintelligence-in-ten-more-years"
+speaker_id = "altman"
+when = "2025-12-11"
+occasion = "'Ten years', his post on openai.com for OpenAI's tenth anniversary"
+source_kind = "own_words"
+source_url = "https://openai.com/index/ten-years/"
+source_locator = "the sentence after 'overall line of sight towards our mission', near the end"
+checked_how = "Read on the page on 2026-11-17 in the built-in browser (the page refuses a plain fetch); the page's date line reads 'December 11, 2025'."
+quote = "In ten more years, I believe we are almost certain to build superintelligence."
+prediction = "He believes OpenAI is almost certain to build superintelligence within ten more years."
+kind = "timing"
+bar = "None in the source: the post does not say what superintelligence is or how anyone would know it had been built, and no plain reading supplies a test."
+due = 2035
+due_basis = "'In ten more years', said 2025-12-11, runs to December 2035; judged at the end of 2035."
+restates = "2024-09-23-altman-superintelligence-few-thousand-days"
+status = "unfalsifiable"
+verdict_why = "Superintelligence is a named stage with no definition in the source, so no outsider could test it. Decided at entry."
+arrives = "superintelligence"
+arrives_term = "superintelligence"
+form = "by"
+search_ids = ["altman-claims-041"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. The earlier claim it restates ran to 2034 at its later end; this one runs to 2035."

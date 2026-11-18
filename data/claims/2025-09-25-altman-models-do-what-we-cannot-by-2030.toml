@@ -1,0 +1,23 @@
+[claim]
+id = "2025-09-25-altman-models-do-what-we-cannot-by-2030"
+speaker_id = "altman"
+when = "2025-09-25"
+when_note = "The date line of Yahoo's copy of the POLITICO Magazine piece, 'Thu, September 25, 2025'. The interview was held in Berlin, where he received the Axel Springer Award, on a day the page does not give."
+occasion = "Interview with Jan Philipp Burgard for the Axel Springer Global Reporters Network, printed by POLITICO Magazine as 'When Sam Altman Predicts a Superintelligence Might Arrive'"
+source_kind = "printed_qa"
+source_url = "https://tech.yahoo.com/ai/chatgpt/articles/sam-altman-predicts-superintelligence-might-190046806.html"
+source_locator = "the opening paragraph, which quotes his answer to 'When exactly do you think there will be a superintelligence that is smarter than humans in all respects?'"
+checked_how = "Read on the page on 2026-11-17 (curl), in Yahoo's copy of the POLITICO Magazine piece; the piece says the conversation was edited for length and clarity."
+quote = "by 2030, if we don't have models that are extraordinarily capable and do things that we ourselves cannot do, I'd be very surprised"
+prediction = "Asked when there will be a superintelligence smarter than humans in all respects, he says he would be very surprised if, by the end of this decade, 'so, by 2030', there were not models that are extraordinarily capable and do things that people themselves cannot do."
+kind = "timing"
+bar = "None an outsider could run: 'extraordinarily capable' and 'things that we ourselves cannot do' name no particular thing, and he does not take up the questioner's 'smarter than humans in all respects'."
+due = 2030
+due_basis = "'by the end of this decade, so, by 2030'; judged at 2030-12-31."
+status = "unfalsifiable"
+verdict_why = "His words name no thing the models must do, so no dated record could settle it. Decided at entry."
+arrives = "beyond_people"
+arrives_term = "models that do things that we ourselves cannot do"
+form = "by"
+search_ids = ["altman-claims-040"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17."

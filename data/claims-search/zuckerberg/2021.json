@@ -1,0 +1,297 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2021,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.1118,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 127614,
+      "cache_read_input_tokens": 1148085,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 7700,
+      "output_tokens_details": {
+        "thinking_tokens": 2304
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mark Zuckerberg\" AI prediction 2021','\"Mark Zuckerberg\" 2021 interview AGI \"years\"','\"Mark Zuckerberg\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:200].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2021"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=250):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:n].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    print(\"==\",q); show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2021 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg founder\\'s letter 2021 Meta metaverse \"AI\"','Zuckerberg Connect 2021 keynote transcript AI \"next decade\"','Facebook Q3 2021 earnings call transcript Zuckerberg AI']:\n    print(\"==\",q); show(await web_search({\"query\":q}),200)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg founder's letter 2021 Meta metaverse \"AI\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Connect 2021 keynote transcript AI \"next decade\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook Q3 2021 earnings call transcript Zuckerberg AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nurls=['https://s21.q4cdn.com/399680738/files/doc_financials/2021/q3/FB-Q3-2021-Earnings-Call-Transcript.pdf',\n'https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript',\n'https://about.fb.com/news/2021/10/founders-letter/',\n'https://stratechery.com/2021/an-interview-with-mark-zuckerberg-about-the-metaverse/']\npages={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; pages[u]=c; print(u,len(c))\npat=re.compile(r\"(\\bAI\\b|artificial intelligence|intelligen)\",re.I)\ntpat=re.compile(r\"(year|decade|20\\d\\d|next|within|by the end)\",re.I)\nfor u,c in pages.items():\n    print(\"#####\",u)\n    sents=re.split(r'(?<=[.!?])\\s+',c)\n    for i,s in enumerate(sents):\n        if pat.search(s) and tpat.search(s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2021/q3/FB-Q3-2021-Earnings-Call-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def parse(r):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): return None, r\n    return r[0].get('content'), None\nc,e=parse(r); pages[urls[0]]=c; print(len(c) if c else e)\nfor u in urls[1:]:\n    c,e=parse(await web_fetch({\"url\":u}))\n    if c: pages[u]=c; print(u,len(c))\n    else: print(u,e)\nfor u,c in pages.items():\n    print(\"#####\",u)\n    sents=re.split(r'(?<=[.!?])\\s+',c)\n    for s in sents:\n        if pat.search(s) and tpat.search(s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://about.fb.com/news/2021/10/founders-letter/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://stratechery.com/2021/an-interview-with-mark-zuckerberg-about-the-metaverse/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64, io\nd=json.loads(r) if isinstance(r,str) else r\ndata=d[0]['content']['source']['data'] if isinstance(d,list) else d['content']['source']['data']\nfrom pypdf import PdfReader\ntxt=\"\\n\".join(p.extract_text() for p in PdfReader(io.BytesIO(base64.b64decode(data))).pages)\npages[urls[0]]=txt\nfor u,c in pages.items(): print(u, type(c), len(c) if isinstance(c,str) else '')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(e), list(e.keys()) if isinstance(e,dict) else '')\ncc=e.get('content'); print(type(cc)); \nif isinstance(cc,str): pages[urls[3]]=cc; print(len(cc), e.get('url'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(e['url'], list(cc.keys()), str(cc)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages[urls[3]]=cc['source']['data']\npat=re.compile(r\"(\\bAI\\b|artificial intelligence|intelligen|machine learning)\",re.I)\ntpat=re.compile(r\"(year|decade|20[0-9]\\d|next|within|by the end)\",re.I)\nfor u in [urls[0],urls[3]]:\n    c=pages[u]; print(\"#####\",u,len(c))\n    for s in re.split(r'(?<=[.!?])\\s+',c.replace('\\n',' ')):\n        if pat.search(s) and tpat.search(s): print('-',s[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=pages[urls[0]].replace('\\n',' ')\nfor m in re.finditer(r\"\\bAI\\b\",c):\n    pass\nsents=re.split(r'(?<=[.!?])\\s+',c)\nfor i,s in enumerate(sents):\n    if re.search(r\"\\bAI\\b|intelligen\",s): print(i,'-',s[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=pages[urls[3]].replace('\\n',' ')\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r\"\\bAI\\b|intelligen|machine learning|neural|EMG\",s,re.I): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Zuckerberg Ego4D 2021 post AI assistant glasses','Zuckerberg Verge interview July 2021 metaverse Casey Newton transcript AI','Zuckerberg Q2 2021 earnings call AI \"next five years\"']:\n    print(\"==\",q); show(await web_search({\"query\":q}),300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Ego4D 2021 post AI assistant glasses"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Verge interview July 2021 metaverse Casey Newton transcript AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Q2 2021 earnings call AI \"next five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def get_text(res):\n    if isinstance(res,str): res=json.loads(res)\n    if isinstance(res,list): res=res[0]\n    if res.get('type','').endswith('error'): return None, res.get('error_code')\n    c=res.get('content')\n    if isinstance(c,dict):\n        s=c.get('source',{}); \n        if s.get('type')=='text': return s.get('data'),None\n        if s.get('type')=='base64':\n            return \"\\n\".join(p.extract_text() for p in PdfReader(io.BytesIO(base64.b64decode(s['data']))).pages),None\n    return c,None\nfor u in ['https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript','https://www.theverge.com/22588022/mark-zuckerberg-facebook-ceo-metaverse-interview']:\n    t,err=get_text(await web_fetch({\"url\":u}))\n    if t: pages[u]=t; print(u,len(t))\n    else: print(u,'ERR',err)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.theverge.com/22588022/mark-zuckerberg-facebook-ceo-metaverse-interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=pages['https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript'].replace('\\n',' ')\nprint(c[:300]); print(c[-300:])\nfor s in re.split(r'(?<=[.!?])\\s+',c):\n    if re.search(r\"\\bAI\\b|intelligen|machine learning\",s,re.I) or (re.search(r\"decade|years|20[23]\\d\",s)): print('-',s[:400])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2016",
+        "note": "A search result (BigDATAwire/HPCwire, 2016-04-29) reports Zuckerberg predicting AI with human-level perception within 5 to 10 years. Seen only in search results; page not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Many search results report that on a Q2 2026 earnings call he said billions of people will have personal AI agents within five years (Yahoo Finance, TechCrunch, The Next Web). Not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search results mention 2025 statements: AI writing half of Meta's code by 2026, 2025 as a big year for AI, and the July 2025 'personal superintelligence' letter. Not opened."
+      },
+      {
+        "year": "2024",
+        "note": "Search results mention the 2024 Dwarkesh Podcast interview and the January 2024 AGI goal (Slashdot/The Verge). Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2021",
+        "what_found": "Only coverage from 2025-2026 (the five-year personal-agents claim); nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2021 interview AGI \"years\"",
+        "what_found": "Turned up the October 2021 Stratechery metaverse interview, plus later AGI coverage from 2024-2025."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "A 2016 article on AI perception in 5-10 years, plus later items; nothing said in 2021."
+      },
+      {
+        "query_or_url": "Zuckerberg founder's letter 2021 Meta metaverse \"AI\"",
+        "what_found": "Found the Founder's Letter (2021-10-28) on about.fb.com; the search preview shows a metaverse forecast, not an AI one."
+      },
+      {
+        "query_or_url": "Zuckerberg Connect 2021 keynote transcript AI \"next decade\"",
+        "what_found": "Found the Rev transcript of the Connect 2021 event and the Founder's Letter again."
+      },
+      {
+        "query_or_url": "Facebook Q3 2021 earnings call transcript Zuckerberg AI",
+        "what_found": "Found the official Q3 2021 transcript PDF on the investor-relations site."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2021/q3/FB-Q3-2021-Earnings-Call-Transcript.pdf",
+        "what_found": "Opened and read: AI comes up only as present-day moderation (90-plus percent of content found by AI) and as planned 2022 AI/ML investment, which is a business forecast; no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://about.fb.com/news/2021/10/founders-letter/",
+        "what_found": "Fetch was attempted, but my code discarded the returned text, so I did not read it; nothing quoted."
+      },
+      {
+        "query_or_url": "https://stratechery.com/2021/an-interview-with-mark-zuckerberg-about-the-metaverse/",
+        "what_found": "Opened and read: AI mentioned only in the past and present tense (the AI capacity for content moderation in early years); no forward-looking AI claim with a date."
+      },
+      {
+        "query_or_url": "https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript",
+        "what_found": "Fetched twice; the first result was discarded unread, and the second shows only the first few minutes of the event with no AI prediction."
+      },
+      {
+        "query_or_url": "Zuckerberg Ego4D 2021 post AI assistant glasses",
+        "what_found": "Only news coverage of Ego4D (October 2021) and AI-glasses stories from 2025; no 2021 words of his own with a date."
+      },
+      {
+        "query_or_url": "Zuckerberg Verge interview July 2021 metaverse Casey Newton transcript AI",
+        "what_found": "Found the July 22, 2021 Verge interview (a metaverse interview) through the Marquette archive."
+      },
+      {
+        "query_or_url": "Zuckerberg Q2 2021 earnings call AI \"next five years\"",
+        "what_found": "Only coverage from 2025-2026; nothing from 2021."
+      },
+      {
+        "query_or_url": "https://www.theverge.com/22588022/mark-zuckerberg-facebook-ceo-metaverse-interview",
+        "what_found": "Would not open (url_not_in_prior_context); not read and not quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Zuckerberg's 2021 was dominated by the metaverse and the Meta rebrand. In the 2021 pages I read (the Q3 earnings call and the Stratechery interview), AI appears only as present-day content moderation and as an investment line, with no dated AI prediction. Some of the year was not checked, because the full Connect keynote, the Founder's Letter text and the Verge interview were not read."
+  },
+  "reply_text": "I found no dated AI prediction from Mark Zuckerberg in 2021. All three fixed searches ran, and the pages I read show him talking about AI only in the present tense. That year he was mostly making the case for the metaverse.\n\n- **What I read in full:** the official Q3 2021 earnings-call transcript (25 October) and the Stratechery interview (28 October). In both, AI comes up only as present-tense content moderation and as a spending line in the 2022 budget. A spending line is a business forecast, so it doesn't count.\n- **Connect 2021 keynote:** the Rev transcript page I opened ends a few minutes into the event, so I couldn't check the rest of the keynote.\n- **Two pages I didn't read:**\n  - The Founder's Letter and an earlier copy of the Connect transcript were fetched, but my code threw the results away. I read neither, so nothing from them is quoted.\n  - The Verge interview from July 2021 wouldn't open. That interview and the full Connect keynote are the obvious next places to check.\n- **Founder's Letter forecast, from a search preview only:** it says the metaverse will reach a billion people \"within the next decade\". That is about the metaverse, not AI, so it would be left out even if confirmed.\n- **Searches and page openings:** I used 9 of the 12 searches. A tool bug may have counted some page openings, so I stopped opening pages. That leaves the year not fully covered, which is why `quiet_year` is false even though nothing was found.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2016\", \"note\": \"A search result (BigDATAwire/HPCwire, 2016-04-29) reports Zuckerberg predicting AI with human-level perception within 5 to 10 years. Seen only in search results; page not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Many search results report that on a Q2 2026 earnings call he said billions of people will have personal AI agents within five years (Yahoo Finance, TechCrunch, The Next Web). Not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search results mention 2025 statements: AI writing half of Meta's code by 2026, 2025 as a big year for AI, and the July 2025 'personal superintelligence' letter. Not opened.\"},\n    {\"year\": \"2024\", \"note\": \"Search results mention the 2024 Dwarkesh Podcast interview and the January 2024 AGI goal (Slashdot/The Verge). Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2021\", \"what_found\": \"Only coverage from 2025-2026 (the five-year personal-agents claim); nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2021 interview AGI \\\"years\\\"\", \"what_found\": \"Turned up the October 2021 Stratechery metaverse interview, plus later AGI coverage from 2024-2025.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2021 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"A 2016 article on AI perception in 5-10 years, plus later items; nothing said in 2021.\"},\n    {\"query_or_url\": \"Zuckerberg founder's letter 2021 Meta metaverse \\\"AI\\\"\", \"what_found\": \"Found the Founder's Letter (2021-10-28) on about.fb.com; the search preview shows a metaverse forecast, not an AI one.\"},\n    {\"query_or_url\": \"Zuckerberg Connect 2021 keynote transcript AI \\\"next decade\\\"\", \"what_found\": \"Found the Rev transcript of the Connect 2021 event and the Founder's Letter again.\"},\n    {\"query_or_url\": \"Facebook Q3 2021 earnings call transcript Zuckerberg AI\", \"what_found\": \"Found the official Q3 2021 transcript PDF on the investor-relations site.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2021/q3/FB-Q3-2021-Earnings-Call-Transcript.pdf\", \"what_found\": \"Opened and read: AI comes up only as present-day moderation (90-plus percent of content found by AI) and as planned 2022 AI/ML investment, which is a business forecast; no dated AI prediction.\"},\n    {\"query_or_url\": \"https://about.fb.com/news/2021/10/founders-letter/\", \"what_found\": \"Fetch was attempted, but my code discarded the returned text, so I did not read it; nothing quoted.\"},\n    {\"query_or_url\": \"https://stratechery.com/2021/an-interview-with-mark-zuckerberg-about-the-metaverse/\", \"what_found\": \"Opened and read: AI mentioned only in the past and present tense (the AI capacity for content moderation in early years); no forward-looking AI claim with a date.\"},\n    {\"query_or_url\": \"https://www.rev.com/transcripts/meta-facebook-connect-2021-metaverse-event-transcript\", \"what_found\": \"Fetched twice; the first result was discarded unread, and the second shows only the first few minutes of the event with no AI prediction.\"},\n    {\"query_or_url\": \"Zuckerberg Ego4D 2021 post AI assistant glasses\", \"what_found\": \"Only news coverage of Ego4D (October 2021) and AI-glasses stories from 2025; no 2021 words of his own with a date.\"},\n    {\"query_or_url\": \"Zuckerberg Verge interview July 2021 metaverse Casey Newton transcript AI\", \"what_found\": \"Found the July 22, 2021 Verge interview (a metaverse interview) through the Marquette archive.\"},\n    {\"query_or_url\": \"Zuckerberg Q2 2021 earnings call AI \\\"next five years\\\"\", \"what_found\": \"Only coverage from 2025-2026; nothing from 2021.\"},\n    {\"query_or_url\": \"https://www.theverge.com/22588022/mark-zuckerberg-facebook-ceo-metaverse-interview\", \"what_found\": \"Would not open (url_not_in_prior_context); not read and not quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Zuckerberg's 2021 was dominated by the metaverse and the Meta rebrand. In the 2021 pages I read (the Q3 earnings call and the Stratechery interview), AI appears only as present-day content moderation and as an investment line, with no dated AI prediction. Some of the year was not checked, because the full Connect keynote, the Founder's Letter text and the Verge interview were not read.\"\n}\n```"
+}

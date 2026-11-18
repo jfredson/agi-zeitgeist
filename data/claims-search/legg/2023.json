@@ -1,0 +1,344 @@
+{
+  "speaker_id": "legg",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6169,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7620
+      },
+      "cache_creation_input_tokens": 49527,
+      "cache_read_input_tokens": 433950,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 8615,
+      "output_tokens_details": {
+        "thinking_tokens": 2539
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Shane Legg\" AI prediction 2023','\"Shane Legg\" 2023 interview AGI \"years\"','\"Shane Legg\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"##\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q})\n    print(\"##\",q); show(rr)\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Dwarkesh Patel Shane Legg transcript 2028 AGI','Shane Legg 80% AGI 2037','Shane Legg October 2023 AGI \"next year\"']:\n    rr=await web_search({\"query\":q})\n    print(\"##\",q); show(rr)\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dwarkesh Patel Shane Legg transcript 2028 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg 80% AGI 2037"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg October 2023 AGI \"next year\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages={}\nfor u in ['https://www.dwarkesh.com/p/shane-legg','https://x.com/ShaneLegg/status/1693673161353478474','https://www.technologyreview.com/2023/11/16/1083498/google-deepmind-what-is-artificial-general-intelligence-agi/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    pages[u]=p.get('content','') if isinstance(p,dict) else ''\n    print(u,p.get('type'),p.get('error_code'),len(pages[u]))\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/shane-legg"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/ShaneLegg/status/1693673161353478474"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2023/11/16/1083498/google-deepmind-what-is-artificial-general-intelligence-agi/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(str(p)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nT={u:(c['source']['data'] if isinstance(c,dict) else c) for u,c in pages.items()}\nfor u,t in T.items(): print(u,len(t))\nd=T['https://www.dwarkesh.com/p/shane-legg']\nfor kw in ['2028','2025','year','decade','five','ten ','next ']:\n    for m in re.finditer(kw,d):\n        pass\nidx=[m.start() for m in re.finditer(r'2028|2025|2030|next year|decade|\\bfive\\b|ten years|few years|years',d)]\nprint(len(idx))\nlast=-1000\nfor i in idx:\n    if i-last>600:\n        print('....',d[max(0,i-400):i+400].replace('\\n',' '));last=i\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=d.find('Transcript');print(i)\nprint(d[i:i+200])\nfor kw in ['50%','chance','multimodal','Timelines','timeline','predict']:\n    for m in re.finditer(kw,d): print(kw,m.start(),d[max(0,m.start()-300):m.start()+300].replace('\\n',' '));print()\nprint(d[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "m=T['https://www.technologyreview.com/2023/11/16/1083498/google-deepmind-what-is-artificial-general-intelligence-agi/']\nfor mm in re.finditer(r'Legg',m):\n    print(m[max(0,mm.start()-200):mm.start()+500].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Shane Legg\" \"AGI by 2028\" transcript \"0:34\"','\"Shane Legg\" 2023 talk AGI \"not next year\"','Shane Legg Dwarkesh \"log-normal\" OR \"mode\" 2025 2028 timelines transcript']:\n    rr=await web_search({\"query\":q})\n    print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" \"AGI by 2028\" transcript \"0:34\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2023 talk AGI \"not next year\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg Dwarkesh \"log-normal\" OR \"mode\" 2025 2028 timelines transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/','https://time.com/collections/time100-ai/6310659/shane-legg/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    c=p.get('content','')\n    T[u]=c['source']['data'] if isinstance(c,dict) else c\n    print(u,p.get('type'),p.get('error_code'),len(T[u]))\ne=T['https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/']\nfor mm in re.finditer(r'2028|2029|five years|next year|decade|2025',e):\n    print(e[max(0,mm.start()-500):mm.start()+400].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/collections/time100-ai/6310659/shane-legg/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for mm in re.finditer(r'multimodal|Multimodal',e):\n    print(e[max(0,mm.start()-300):mm.start()+500].replace('\\n',' '));print('---')\nt=T['https://time.com/collections/time100-ai/6310659/shane-legg/']\ni=t.find('Will Henshall');print(t[i:i+4000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[i+4000:i+6500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Shane Legg\" interview October 2023 AGI timeline \"two years\"','\"Shane Legg\" Gary Marcus bet 2023 \"13 years\"']:\n    rr=await web_search({\"query\":q})\n    print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" interview October 2023 AGI timeline \"two years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Gary Marcus bet 2023 \"13 years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://thezvi.wordpress.com/2023/08/24/ai-26-fine-tuning-time/'\np=await web_fetch({\"url\":u})\nif isinstance(p,str): p=json.loads(p)\nif isinstance(p,list): p=p[0]\nc=p.get('content','');z=c['source']['data'] if isinstance(c,dict) else c\nprint(p.get('type'),p.get('error_code'),len(z))\nfor mm in re.finditer(r'Legg|13 years',z):\n    print(z[max(0,mm.start()-600):mm.start()+900]);print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://thezvi.wordpress.com/2023/08/24/ai-26-fine-tuning-time/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['Shane','80%','CDF','Marcus']:\n    for mm in re.finditer(kw,z): print(kw,mm.start())\nprint(z[-800:])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-10-26",
+        "quote": "I think there’s a 50% chance that we have AGI by 2028. Now, it’s just a 50% chance.",
+        "what_is_predicted": "Legg gives a 50% chance that AGI will be reached by 2028.",
+        "date_or_span": "by 2028",
+        "occasion": "Dwarkesh Podcast interview with Dwarkesh Patel, published 26 Oct 2023 (Timelines section, timestamps cited by the blog as 0:36:34 and 0:37:04)",
+        "source_url": "https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-09-07",
+        "quote": "Legg estimates that there is a 70% chance that he and others will have solved this problem by 2028.",
+        "what_is_predicted": "The TIME reporter says Legg gives a 70% chance that the AGI technical safety (alignment) problem is solved by 2028.",
+        "date_or_span": "by 2028",
+        "occasion": "TIME100 AI 2023 profile by Will Henshall, based on an interview with Legg",
+        "source_url": "https://time.com/collections/time100-ai/6310659/shane-legg/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2011",
+        "note": "TIME (opened) says Legg told LessWrong in 2011 that there was a 50% chance of human-level machine intelligence by 2028; search snippets also mention his December 2011 vetta.org post (log-normal, mean 2028, mode 2025)."
+      },
+      {
+        "year": "2009",
+        "note": "Search snippets (Grokipedia, theagiclock.com) say he first published the mode-2025 / mean-2028 forecast on his blog in 2009. Not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Search snippets (the-decoder.com, nextbigfuture.com) report a late-2025 interview: 50% chance of 'minimal AGI' by 2028, roughly two years away. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2023",
+        "what_found": "News coverage from November 2023 of the 50%-by-2028 claim (marketsandmarkets, IBTimes), the TIME100 AI profile, and the e-Discovery Team / EDRM blog posts."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2023 interview AGI \"years\"",
+        "what_found": "The same coverage, plus an MIT Technology Review piece from November 2023 on DeepMind's levels-of-AGI paper."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Secondary write-ups of the 2028 claim; aisafety.info says he gave 80% within 13 years in 2023."
+      },
+      {
+        "query_or_url": "Dwarkesh Patel Shane Legg transcript 2028 AGI",
+        "what_found": "The Dwarkesh transcript page (26 Oct 2023) and Legg's 27 Oct post on X thanking Dwarkesh for the interview 'last week'."
+      },
+      {
+        "query_or_url": "Shane Legg 80% AGI 2037",
+        "what_found": "Legg's August 2023 replies to Gary Marcus on X (80% in 13 years; about 30% for the next 3 years), seen only in snippets."
+      },
+      {
+        "query_or_url": "Shane Legg October 2023 AGI \"next year\"",
+        "what_found": "Nothing new for 2023; no source for the recorded 2023-10-17 claim."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" \"AGI by 2028\" transcript \"0:34\"",
+        "what_found": "A snippet shows the Dwarkesh page does hold the 50%-by-2028 passage, which my opened copy cut off."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2023 talk AGI \"not next year\"",
+        "what_found": "Only more coverage of the Dwarkesh interview; no separate source for 'not next year'."
+      },
+      {
+        "query_or_url": "Shane Legg Dwarkesh \"log-normal\" OR \"mode\" 2025 2028 timelines transcript",
+        "what_found": "Restatements of the 2011 log-normal forecast; nothing new from 2023."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" interview October 2023 AGI timeline \"two years\"",
+        "what_found": "Coverage of his late-2025 interview only (noted under other_years)."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Gary Marcus bet 2023 \"13 years\"",
+        "what_found": "Two of Legg's posts from August 2023 on X ('My AGI occurring CDF hits 80% in 13 years'; 'For the next 3 years I'm at about 30%') and Zvi's newsletter of 24 Aug 2023, seen only in snippets."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/shane-legg",
+        "what_found": "The official transcript, but my copy stopped around 0:25, before the Timelines section at 0:34:03, so no timeline quote could be read there."
+      },
+      {
+        "query_or_url": "https://x.com/ShaneLegg/status/1693673161353478474",
+        "what_found": "Would not open (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2023/11/16/1083498/google-deepmind-what-is-artificial-general-intelligence-agi/",
+        "what_found": "Legg quotes on defining AGI; no dated forecast."
+      },
+      {
+        "query_or_url": "https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/",
+        "what_found": "Blog post reprinting the Dwarkesh passage 'I think there’s a 50% chance that we have AGI by 2028', with timestamps."
+      },
+      {
+        "query_or_url": "https://time.com/collections/time100-ai/6310659/shane-legg/",
+        "what_found": "TIME profile of 7 Sep 2023: the reporter says Legg gives a 70% chance alignment is solved by 2028 and still holds the 2028 forecast he first made 20+ years ago."
+      },
+      {
+        "query_or_url": "https://thezvi.wordpress.com/2023/08/24/ai-26-fine-tuning-time/",
+        "what_found": "Opened, but my copy stopped before the part about Legg and Marcus; nothing quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2023 Legg repeated his long-held forecast of a 50% chance of AGI by 2028, mainly on the Dwarkesh Podcast in October; that quote is checked here only through a blog that reprints the transcript, because my copy of the official page cut off before that section. TIME's September profile adds, in the reporter's words, a 70% chance that alignment is solved by 2028. His August 2023 posts on X (80% AGI within 13 years, about 30% within 3) were seen only in search snippets and need checking on X."
+  },
+  "reply_text": "I found two candidates for 2023. Neither comes from a page carrying Legg's own full transcript, so both are marked coverage_only.\n\n1. **Dwarkesh Podcast, 26 October 2023: a 50% chance of AGI by 2028.** I opened Dwarkesh Patel's own transcript page, but the copy I got stopped around the 25-minute mark. The Timelines section starts at 34:03, so it wasn't in what I received. The quote below comes from a blog post (e-Discovery Team, 17 November 2023) that reprints that passage and gives its timestamps (0:36:34 and 0:37:04). Please check the wording against the audio or the full transcript.\n2. **TIME100 AI profile, 7 September 2023: a 70% chance the AI safety (alignment) problem is solved by 2028.** These are the reporter's words, not a direct quote from Legg.\n\nWhat I left out:\n- **August 2023 posts on X, replying to Gary Marcus.** Search results show Legg putting AGI at 80% within 13 years, and about 30% for the next 3 years. X wouldn't let me open the posts, and the newsletter post I opened to try to see them (Zvi Mowshowitz, 24 August 2023) cut off before that part. I haven't quoted them. They are probably the strongest leads still unchecked.\n- **The already-recorded claim (2023-10-17, \"not next year or the year after\").** I didn't come across it. Legg posted on 27 October that the Dwarkesh interview happened \"last week\", so that claim may come from the same conversation, but I couldn't confirm it.\n- **Things that failed the rules.** In the reprinted Dwarkesh passage, his \"for the coming years\" line about models improving has no date. A TIME line about needing new alignment methods \"another one or two generations after\" Gemini names no time span.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-10-26\",\n      \"quote\": \"I think there’s a 50% chance that we have AGI by 2028. Now, it’s just a 50% chance.\",\n      \"what_is_predicted\": \"Legg gives a 50% chance that AGI will be reached by 2028.\",\n      \"date_or_span\": \"by 2028\",\n      \"occasion\": \"Dwarkesh Podcast interview with Dwarkesh Patel, published 26 Oct 2023 (Timelines section, timestamps cited by the blog as 0:36:34 and 0:37:04)\",\n      \"source_url\": \"https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2023-09-07\",\n      \"quote\": \"Legg estimates that there is a 70% chance that he and others will have solved this problem by 2028.\",\n      \"what_is_predicted\": \"The TIME reporter says Legg gives a 70% chance that the AGI technical safety (alignment) problem is solved by 2028.\",\n      \"date_or_span\": \"by 2028\",\n      \"occasion\": \"TIME100 AI 2023 profile by Will Henshall, based on an interview with Legg\",\n      \"source_url\": \"https://time.com/collections/time100-ai/6310659/shane-legg/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2011\", \"note\": \"TIME (opened) says Legg told LessWrong in 2011 that there was a 50% chance of human-level machine intelligence by 2028; search snippets also mention his December 2011 vetta.org post (log-normal, mean 2028, mode 2025).\"},\n    {\"year\": \"2009\", \"note\": \"Search snippets (Grokipedia, theagiclock.com) say he first published the mode-2025 / mean-2028 forecast on his blog in 2009. Not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Search snippets (the-decoder.com, nextbigfuture.com) report a late-2025 interview: 50% chance of 'minimal AGI' by 2028, roughly two years away. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2023\", \"what_found\": \"News coverage from November 2023 of the 50%-by-2028 claim (marketsandmarkets, IBTimes), the TIME100 AI profile, and the e-Discovery Team / EDRM blog posts.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"The same coverage, plus an MIT Technology Review piece from November 2023 on DeepMind's levels-of-AGI paper.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Secondary write-ups of the 2028 claim; aisafety.info says he gave 80% within 13 years in 2023.\"},\n    {\"query_or_url\": \"Dwarkesh Patel Shane Legg transcript 2028 AGI\", \"what_found\": \"The Dwarkesh transcript page (26 Oct 2023) and Legg's 27 Oct post on X thanking Dwarkesh for the interview 'last week'.\"},\n    {\"query_or_url\": \"Shane Legg 80% AGI 2037\", \"what_found\": \"Legg's August 2023 replies to Gary Marcus on X (80% in 13 years; about 30% for the next 3 years), seen only in snippets.\"},\n    {\"query_or_url\": \"Shane Legg October 2023 AGI \\\"next year\\\"\", \"what_found\": \"Nothing new for 2023; no source for the recorded 2023-10-17 claim.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" \\\"AGI by 2028\\\" transcript \\\"0:34\\\"\", \"what_found\": \"A snippet shows the Dwarkesh page does hold the 50%-by-2028 passage, which my opened copy cut off.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2023 talk AGI \\\"not next year\\\"\", \"what_found\": \"Only more coverage of the Dwarkesh interview; no separate source for 'not next year'.\"},\n    {\"query_or_url\": \"Shane Legg Dwarkesh \\\"log-normal\\\" OR \\\"mode\\\" 2025 2028 timelines transcript\", \"what_found\": \"Restatements of the 2011 log-normal forecast; nothing new from 2023.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" interview October 2023 AGI timeline \\\"two years\\\"\", \"what_found\": \"Coverage of his late-2025 interview only (noted under other_years).\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Gary Marcus bet 2023 \\\"13 years\\\"\", \"what_found\": \"Two of Legg's posts from August 2023 on X ('My AGI occurring CDF hits 80% in 13 years'; 'For the next 3 years I'm at about 30%') and Zvi's newsletter of 24 Aug 2023, seen only in snippets.\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/shane-legg\", \"what_found\": \"The official transcript, but my copy stopped around 0:25, before the Timelines section at 0:34:03, so no timeline quote could be read there.\"},\n    {\"query_or_url\": \"https://x.com/ShaneLegg/status/1693673161353478474\", \"what_found\": \"Would not open (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2023/11/16/1083498/google-deepmind-what-is-artificial-general-intelligence-agi/\", \"what_found\": \"Legg quotes on defining AGI; no dated forecast.\"},\n    {\"query_or_url\": \"https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/\", \"what_found\": \"Blog post reprinting the Dwarkesh passage 'I think there’s a 50% chance that we have AGI by 2028', with timestamps.\"},\n    {\"query_or_url\": \"https://time.com/collections/time100-ai/6310659/shane-legg/\", \"what_found\": \"TIME profile of 7 Sep 2023: the reporter says Legg gives a 70% chance alignment is solved by 2028 and still holds the 2028 forecast he first made 20+ years ago.\"},\n    {\"query_or_url\": \"https://thezvi.wordpress.com/2023/08/24/ai-26-fine-tuning-time/\", \"what_found\": \"Opened, but my copy stopped before the part about Legg and Marcus; nothing quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2023 Legg repeated his long-held forecast of a 50% chance of AGI by 2028, mainly on the Dwarkesh Podcast in October; that quote is checked here only through a blog that reprints the transcript, because my copy of the official page cut off before that section. TIME's September profile adds, in the reporter's words, a 70% chance that alignment is solved by 2028. His August 2023 posts on X (80% AGI within 13 years, about 30% within 3) were seen only in search snippets and need checking on X.\"\n}\n```"
+}

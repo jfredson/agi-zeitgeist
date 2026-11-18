@@ -1,0 +1,352 @@
+{
+  "speaker_id": "mensch",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6732,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7704
+      },
+      "cache_creation_input_tokens": 57358,
+      "cache_read_input_tokens": 505810,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 9253,
+      "output_tokens_details": {
+        "thinking_tokens": 1904
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Arthur Mensch\" AI prediction 2024','\"Arthur Mensch\" 2024 interview AGI \"years\"','\"Arthur Mensch\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    r=R[q]\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Arthur Mensch\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of\",\"https://time.com/7007040/mistral-ai-ceo-arthur-mensch-interview/\",\"https://www.mckinsey.com/featured-insights/insights-on-europe/podcasts-and-videos/creating-a-european-ai-unicorn-interview-with-arthur-mensch-ceo-of-mistral-ai\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u,len(P[u]),r.get('error_code') if isinstance(r,dict) else '')\nimport re\nkw=r\"year|decade|20[2-4]\\d|month|AGI|soon|future|will be|going to\"\ndef show(u,pat=kw,w=300):\n    t=P[u]\n    for m in re.finditer(pat,t):\n        pass\nfor u in P:\n    t=P[u]\n    print(\"=====\",u, t[:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/7007040/mistral-ai-ceo-arthur-mensch-interview/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.mckinsey.com/featured-insights/insights-on-europe/podcasts-and-videos/creating-a-european-ai-unicorn-interview-with-arthur-mensch-ceo-of-mistral-ai"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,v in P.items(): print(u,type(v), str(v)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={u:v['source']['data'] for u,v in P.items()}\npat=r\"(?i)\\b(years?|decade|months?|20[2-4]\\d|AGI|next year)\\b\"\nfor u,t in T.items():\n    print(\"=====\",u,len(t))\n    last=-1000\n    for m in re.finditer(pat,t):\n        if m.start()-last<400: continue\n        last=m.start()\n        print('...',t[max(0,m.start()-350):m.start()+250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[\"https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of\"]\ni=t.find(\"When do you think we hit a moment\"); print(t[i:i+1800])\nt2=T[\"https://time.com/7007040/mistral-ai-ceo-arthur-mensch-interview/\"]\nfor k in [\"foreseeable\",\"predictable\",\"50 years\",\"AGI\",\"general intelligence\"]:\n    for m in re.finditer(k,t2): print('##',t2[max(0,m.start()-700):m.start()+400].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in [\"oreseeable\",\"redictable\",\"fifty\",\"50 years\",\"next\"]:\n    for m in re.finditer(k,t2): print('##',k,t2[max(0,m.start()-900):m.start()+500].replace('\\n',' '))\nprint(len(t2))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t2.find(\"Our business model is to build\"); print(t2[i:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t2.find(\"But we expect to bring extr\"); print(t2[i:i+9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Arthur Mensch interview transcript 2024 \"Mensch:\"','Arthur Mensch New York Times interview April 2024 AGI \"two years\"','Arthur Mensch Vivatech 2024 robots five years','Arthur Mensch podcast 2024 agents \"in five years\"']\nfor q in qs2:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:250].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch interview transcript 2024 \"Mensch:\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch New York Times interview April 2024 AGI \"two years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch Vivatech 2024 robots five years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch podcast 2024 agents \"in five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in [\"https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript\",\"https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/\"]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content','')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    T[u]=c\n    print(u,len(c),r.get('error_code'))\n    last=-1000\n    for m in re.finditer(r\"(?i)\\b(years?|decade|20[2-4]\\d|AGI|next year|months)\\b\",c):\n        if m.start()-last<300: continue\n        last=m.start()\n        print('...',c[max(0,m.start()-300):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=T[\"https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript\"]\nprint(c[-1500:])\nfor m in re.finditer(r\"(?i)(future|five|ten |three|agent|AGI|superintell)\",c):\n    print('>>',c[max(0,m.start()-200):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Arthur Mensch Sénat audition 2024 intelligence artificielle \"ans\"','Arthur Mensch Davos 2024 AI panel','Arthur Mensch \"dans cinq ans\" OR \"d\\'ici\" IA 2024 entretien']\nfor q in qs3:\n    r=await web_search({\"query\":q})\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch Sénat audition 2024 intelligence artificielle \"ans\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch Davos 2024 AI panel"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Arthur Mensch \"dans cinq ans\" OR \"d'ici\" IA 2024 entretien"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://www.senat.fr/compte-rendu-commissions/20240520/affeco.html\"\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content','')\nif isinstance(c,dict): c=c.get('source',{}).get('data','')\nT[u]=c\nprint(len(c), r.get('error_code'))\ns=c.find(\"Audition de M. Arthur Mensch, cofondateur de l'entreprise Mistral AI\\n\")\nprint(s)\nlast=-1000\nfor m in re.finditer(r\"(?i)(\\bans?\\b|années|décennie|20[2-4]\\d|d'ici|AGI|générale|prochain)\",c):\n    if m.start()-last<250: continue\n    last=m.start()\n    print('...',c[max(0,m.start()-250):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.senat.fr/compte-rendu-commissions/20240520/affeco.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find(\"## Mercredi 22 mai 2024\"); print(i); print(c[-800:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=T[\"https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/\"]\ni=f.find(\"That's the motivation\"); print(f[i-1500:i+700])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-03-22",
+        "quote": "I guess it depends on the task. There's already a few tasks on which the model are actually better. And so I expect this to unfold pretty quickly, actually. So hard to say a date, but I would say in three years this is going to look very different, especially if we find a way to deploy agent and to evaluate them and make them robust and reliable.",
+        "what_is_predicted": "Asked when models will beat humans at most office tasks, Mensch says that in about three years the picture will look very different, especially if AI agents are made reliable.",
+        "date_or_span": "in three years (from early 2024)",
+        "occasion": "Public discussion with Elad Gil; transcript posted on Elad Gil's blog on 22 March 2024 (recording date not confirmed)",
+        "source_url": "https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-05-02",
+        "quote": "Well, I think for many of our mundane tasks, we will be empowered by tools that can either do them for us or help us do them more quickly. Which means we’ll be able to focus on other things models cannot do and will never be replaced, which includes human relationship management, thinking outside of the box, creative thinking, and inventing new ideas. Generally, the kind of work that we will do in three to five years should be more rewarding than the kind of work we’re doing today.",
+        "what_is_predicted": "Within three to five years, AI tools will do or speed up many everyday work tasks, making work more rewarding.",
+        "date_or_span": "in three to five years (answer to 'the next three to five years' question)",
+        "occasion": "McKinsey interview 'Creating a European AI unicorn', with Stéphane Bout and Eric Hazan",
+        "source_url": "https://www.mckinsey.com/featured-insights/insights-on-europe/podcasts-and-videos/creating-a-european-ai-unicorn-interview-with-arthur-mensch-ceo-of-mistral-ai",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-05-22",
+        "quote": "That's the motivation for proposing an alternative to the natural course of things, which would be to leave the keys to this technology to the four companies that have captured most of the value of tech in the last 20 years and which, thanks to their dominant position, can largely capture most of the added value of the new industrial revolution that's coming in the next 20 years.",
+        "what_is_predicted": "AI is a new industrial revolution that will unfold over the next 20 years (said while arguing about who will capture its value).",
+        "date_or_span": "the next 20 years",
+        "occasion": "French Senate Economic Affairs Committee hearing, 22 May 2024; English rendering printed by The French Tech Journal on 24 June 2024 (part of the page is behind a member sign-in)",
+        "source_url": "https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results showed CNBC Davos coverage (January 2025) of Mensch saying AI would move from models to 'systems' that year; not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Search results showed coverage of a 12-13 May 2026 French National Assembly hearing where Mensch gave Europe two years to build its own AI infrastructure and said AI could take 10% of European payroll within three to four years; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Arthur Mensch\" AI prediction 2024",
+        "what_found": "Scaleway ai-PULSE post (Mensch talk, no dated forecast in the preview), TIME August 2024 interview, McKinsey May 2024 interview, and secondary AGI-tracker pages."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2024 interview AGI \"years\"",
+        "what_found": "Elad Gil blog discussion (March 2024), coverage of the April 2024 New York Times interview by Fortune, Futurism and Yahoo, and the McKinsey and TIME interviews."
+      },
+      {
+        "query_or_url": "\"Arthur Mensch\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly 2025-2026 items (CNBC Davos 2025, 2026 Assembly hearing) and TIME100 pages; nothing new for 2024."
+      },
+      {
+        "query_or_url": "Arthur Mensch interview transcript 2024 \"Mensch:\"",
+        "what_found": "20VC episode of 29 April 2024 with a uListen transcript, and the French Tech Journal Senate spotlight (June 2024)."
+      },
+      {
+        "query_or_url": "Arthur Mensch New York Times interview April 2024 AGI \"two years\"",
+        "what_found": "Only secondary coverage of the New York Times interview; no transcript page."
+      },
+      {
+        "query_or_url": "Arthur Mensch Vivatech 2024 robots five years",
+        "what_found": "VivaTech 2024 event listings only; no source for the robots claim."
+      },
+      {
+        "query_or_url": "Arthur Mensch podcast 2024 agents \"in five years\"",
+        "what_found": "Big Technology Podcast transcript page (date unclear, probably 2025) and recent 2026 items; nothing usable for 2024."
+      },
+      {
+        "query_or_url": "Arthur Mensch Sénat audition 2024 intelligence artificielle \"ans\"",
+        "what_found": "Official Senate record for the week of 20 May 2024 (hearing on 22 May 2024), plus 2026 Assembly hearing coverage."
+      },
+      {
+        "query_or_url": "Arthur Mensch Davos 2024 AI panel",
+        "what_found": "Only Davos 2025 coverage; no 2024 Davos appearance found."
+      },
+      {
+        "query_or_url": "Arthur Mensch \"dans cinq ans\" OR \"d'ici\" IA 2024 entretien",
+        "what_found": "A Comptoir IA Substack summary of the Senate hearing whose preview carried the five-year robots line (not opened, not quoted), plus 2026 Assembly coverage."
+      },
+      {
+        "query_or_url": "https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of",
+        "what_found": "Full transcript dated 22 March 2024 containing the 'in three years' answer on office tasks."
+      },
+      {
+        "query_or_url": "https://time.com/7007040/mistral-ai-ceo-arthur-mensch-interview/",
+        "what_found": "Printed Q&A (interview done in May, published 4 August 2024); the page cut off partway through, and the visible part had only business forecasts (capital efficiency 2024-2025)."
+      },
+      {
+        "query_or_url": "https://www.mckinsey.com/featured-insights/insights-on-europe/podcasts-and-videos/creating-a-european-ai-unicorn-interview-with-arthur-mensch-ceo-of-mistral-ai",
+        "what_found": "Printed Q&A dated 2 May 2024 with the 'three to five years' answer about work."
+      },
+      {
+        "query_or_url": "https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript",
+        "what_found": "20VC transcript of 29 April 2024; only the first ~19 minutes loaded and held no dated AI forecast."
+      },
+      {
+        "query_or_url": "https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/",
+        "what_found": "English Q&A built from the May 2024 Senate hearing; contains the 'next 20 years' industrial revolution line; rest of the page is behind a sign-in."
+      },
+      {
+        "query_or_url": "https://www.senat.fr/compte-rendu-commissions/20240520/affeco.html",
+        "what_found": "Official Senate record for the week; the fetched text cut off before the Mensch hearing section, so nothing could be quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Mensch's 2024 dated remarks were short-horizon views on AI changing work: models outdoing people at office tasks 'in three years' (Elad Gil, March) and more rewarding work 'in three to five years' (McKinsey, May), plus a vaguer 'next 20 years' industrial revolution line from the May Senate hearing. None of the three recorded 2024 claims (school agents, workplace revolution in two years, robots in five years) could be confirmed on a page opened here. The Senate record cut off before his section, and the New York Times interview was seen only through other outlets' coverage."
+  },
+  "reply_text": "I found three 2024 candidates that fit your rules. None of them matches the three claims you already have recorded, and I could not confirm any of those three on a page I opened. I ran 10 of the 12 searches and used all 6 page openings.\n\n- **Elad Gil discussion (blog post dated 22 March 2024):** Gil asked when models would beat humans at most office tasks. Mensch said \"in three years this is going to look very different\". He also said it was \"hard to say a date\", so this is a weak forecast. The post went up on 22 March; I couldn't confirm the date of the recording itself.\n- **McKinsey interview (2 May 2024):** He said work \"in three to five years\" should be more rewarding because AI tools will take over everyday tasks.\n- **French Tech Journal (24 June 2024):** He spoke of \"the new industrial revolution that's coming in the next 20 years\". This is the journal's English version of what he told the French Senate in May. The span is tied to his point about which companies would capture the value, so it is a marginal fit.\n\nGaps:\n- **5 March 2024 robots claim (on file):** the 22 May 2024 Senate hearing is the likely source. The official Senate record cut off before his section, so I could not quote it. I saw the robots line only in a search-result preview from a Substack (Comptoir IA) summary of the hearing, which I did not open.\n- **Other two recorded claims:** the 12 April New York Times interview reached me only through Fortune and Futurism summaries in search results. I found nothing for the 26 March school-agent claim.\n- **Partial pages:** the TIME interview (August 2024) cut off partway through. A search preview showed a \"Not in the foreseeable future\" answer that I couldn't see on the page, so I haven't quoted it. The 20VC podcast transcript (29 April) stopped at about 19 minutes and had nothing usable.\n- **Excluded:** his TIME line about staying capital-efficient in 2024–2025 is a business forecast. Nothing about when AGI arrives turned up in 2024.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2024-03-22\",\n      \"quote\": \"I guess it depends on the task. There's already a few tasks on which the model are actually better. And so I expect this to unfold pretty quickly, actually. So hard to say a date, but I would say in three years this is going to look very different, especially if we find a way to deploy agent and to evaluate them and make them robust and reliable.\",\n      \"what_is_predicted\": \"Asked when models will beat humans at most office tasks, Mensch says that in about three years the picture will look very different, especially if AI agents are made reliable.\",\n      \"date_or_span\": \"in three years (from early 2024)\",\n      \"occasion\": \"Public discussion with Elad Gil; transcript posted on Elad Gil's blog on 22 March 2024 (recording date not confirmed)\",\n      \"source_url\": \"https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2024-05-02\",\n      \"quote\": \"Well, I think for many of our mundane tasks, we will be empowered by tools that can either do them for us or help us do them more quickly. Which means we’ll be able to focus on other things models cannot do and will never be replaced, which includes human relationship management, thinking outside of the box, creative thinking, and inventing new ideas. Generally, the kind of work that we will do in three to five years should be more rewarding than the kind of work we’re doing today.\",\n      \"what_is_predicted\": \"Within three to five years, AI tools will do or speed up many everyday work tasks, making work more rewarding.\",\n      \"date_or_span\": \"in three to five years (answer to 'the next three to five years' question)\",\n      \"occasion\": \"McKinsey interview 'Creating a European AI unicorn', with Stéphane Bout and Eric Hazan\",\n      \"source_url\": \"https://www.mckinsey.com/featured-insights/insights-on-europe/podcasts-and-videos/creating-a-european-ai-unicorn-interview-with-arthur-mensch-ceo-of-mistral-ai\",\n      \"source_kind\": \"printed_qa\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2024-05-22\",\n      \"quote\": \"That's the motivation for proposing an alternative to the natural course of things, which would be to leave the keys to this technology to the four companies that have captured most of the value of tech in the last 20 years and which, thanks to their dominant position, can largely capture most of the added value of the new industrial revolution that's coming in the next 20 years.\",\n      \"what_is_predicted\": \"AI is a new industrial revolution that will unfold over the next 20 years (said while arguing about who will capture its value).\",\n      \"date_or_span\": \"the next 20 years\",\n      \"occasion\": \"French Senate Economic Affairs Committee hearing, 22 May 2024; English rendering printed by The French Tech Journal on 24 June 2024 (part of the page is behind a member sign-in)\",\n      \"source_url\": \"https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/\",\n      \"source_kind\": \"printed_qa\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results showed CNBC Davos coverage (January 2025) of Mensch saying AI would move from models to 'systems' that year; not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Search results showed coverage of a 12-13 May 2026 French National Assembly hearing where Mensch gave Europe two years to build its own AI infrastructure and said AI could take 10% of European payroll within three to four years; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" AI prediction 2024\", \"what_found\": \"Scaleway ai-PULSE post (Mensch talk, no dated forecast in the preview), TIME August 2024 interview, McKinsey May 2024 interview, and secondary AGI-tracker pages.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Elad Gil blog discussion (March 2024), coverage of the April 2024 New York Times interview by Fortune, Futurism and Yahoo, and the McKinsey and TIME interviews.\"},\n    {\"query_or_url\": \"\\\"Arthur Mensch\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly 2025-2026 items (CNBC Davos 2025, 2026 Assembly hearing) and TIME100 pages; nothing new for 2024.\"},\n    {\"query_or_url\": \"Arthur Mensch interview transcript 2024 \\\"Mensch:\\\"\", \"what_found\": \"20VC episode of 29 April 2024 with a uListen transcript, and the French Tech Journal Senate spotlight (June 2024).\"},\n    {\"query_or_url\": \"Arthur Mensch New York Times interview April 2024 AGI \\\"two years\\\"\", \"what_found\": \"Only secondary coverage of the New York Times interview; no transcript page.\"},\n    {\"query_or_url\": \"Arthur Mensch Vivatech 2024 robots five years\", \"what_found\": \"VivaTech 2024 event listings only; no source for the robots claim.\"},\n    {\"query_or_url\": \"Arthur Mensch podcast 2024 agents \\\"in five years\\\"\", \"what_found\": \"Big Technology Podcast transcript page (date unclear, probably 2025) and recent 2026 items; nothing usable for 2024.\"},\n    {\"query_or_url\": \"Arthur Mensch Sénat audition 2024 intelligence artificielle \\\"ans\\\"\", \"what_found\": \"Official Senate record for the week of 20 May 2024 (hearing on 22 May 2024), plus 2026 Assembly hearing coverage.\"},\n    {\"query_or_url\": \"Arthur Mensch Davos 2024 AI panel\", \"what_found\": \"Only Davos 2025 coverage; no 2024 Davos appearance found.\"},\n    {\"query_or_url\": \"Arthur Mensch \\\"dans cinq ans\\\" OR \\\"d'ici\\\" IA 2024 entretien\", \"what_found\": \"A Comptoir IA Substack summary of the Senate hearing whose preview carried the five-year robots line (not opened, not quoted), plus 2026 Assembly coverage.\"},\n    {\"query_or_url\": \"https://blog.eladgil.com/p/discussion-w-arthur-mensch-ceo-of\", \"what_found\": \"Full transcript dated 22 March 2024 containing the 'in three years' answer on office tasks.\"},\n    {\"query_or_url\": \"https://time.com/7007040/mistral-ai-ceo-arthur-mensch-interview/\", \"what_found\": \"Printed Q&A (interview done in May, published 4 August 2024); the page cut off partway through, and the visible part had only business forecasts (capital efficiency 2024-2025).\"},\n    {\"query_or_url\": \"https://www.mckinsey.com/featured-insights/insights-on-europe/podcasts-and-videos/creating-a-european-ai-unicorn-interview-with-arthur-mensch-ceo-of-mistral-ai\", \"what_found\": \"Printed Q&A dated 2 May 2024 with the 'three to five years' answer about work.\"},\n    {\"query_or_url\": \"https://ulisten.ai/channels/20vc/arthur-mensch-open-vs-closed-who-wins-and-mistrals-position_e7Y84vpWhkU/transcript\", \"what_found\": \"20VC transcript of 29 April 2024; only the first ~19 minutes loaded and held no dated AI forecast.\"},\n    {\"query_or_url\": \"https://www.frenchtechjournal.com/spotlight-interview-mistral-ai-arthur-mensch/\", \"what_found\": \"English Q&A built from the May 2024 Senate hearing; contains the 'next 20 years' industrial revolution line; rest of the page is behind a sign-in.\"},\n    {\"query_or_url\": \"https://www.senat.fr/compte-rendu-commissions/20240520/affeco.html\", \"what_found\": \"Official Senate record for the week; the fetched text cut off before the Mensch hearing section, so nothing could be quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Mensch's 2024 dated remarks were short-horizon views on AI changing work: models outdoing people at office tasks 'in three years' (Elad Gil, March) and more rewarding work 'in three to five years' (McKinsey, May), plus a vaguer 'next 20 years' industrial revolution line from the May Senate hearing. None of the three recorded 2024 claims (school agents, workplace revolution in two years, robots in five years) could be confirmed on a page opened here. The Senate record cut off before his section, and the New York Times interview was seen only through other outlets' coverage.\"\n}\n```"
+}

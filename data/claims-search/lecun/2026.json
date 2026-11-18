@@ -1,0 +1,366 @@
+{
+  "speaker_id": "lecun",
+  "year": 2026,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.0738,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8020
+      },
+      "cache_creation_input_tokens": 116079,
+      "cache_read_input_tokens": 956323,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 9600,
+      "output_tokens_details": {
+        "thinking_tokens": 2500
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Yann LeCun\" AI prediction 2026','\"Yann LeCun\" 2026 interview AGI \"years\"','\"Yann LeCun\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" AI prediction 2026"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef show(r,n=600,kw=None):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('##',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','')\n        if kw:\n            for m in re.finditer(kw,c,re.I):\n                print('   ..',c[max(0,m.start()-250):m.end()+250].replace('\\n',' '))\n        else: print(c[:n].replace('\\n',' '))\nshow(R[qs[0]],kw=r'year|decade|20[23]\\d')\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"=====\",q); show(r,kw=r'within|next year|years|decade|20[23]\\d')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2026 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show2(r,kw,w=200,maxhits=4):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('##',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        c=x.get('content','');h=0\n        for m in re.finditer(kw,c,re.I):\n            print('   ..',c[max(0,m.start()-w):m.end()+w].replace('\\n',' ')); h+=1\n            if h>=maxhits: break\nqs2=['Yann LeCun Kyunghyang interview October 2026','Yann LeCun Axios interview May 2026','Yann LeCun podcast 2026 world models AMI Labs years']\nfor q in qs2:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"=====\",q); show2(r,r'within|next year|\\d+ years|decade|by 20[23]\\d|years from now')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun Kyunghyang interview October 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun Axios interview May 2026"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun podcast 2026 world models AMI Labs years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030','https://www.khan.co.kr/en/article/202610121551017/','https://www.koreaherald.com/article/10899735','https://medium.com/chief-scientist/alexy-talks-with-yann-lecun-about-a-new-global-model-d659b43ef0fa']\nimport asyncio\nF={}\nres=await asyncio.gather(*[web_fetch({\"url\":u}) for u in urls])\nfor u,r in zip(urls,res):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,'ERR',r); continue\n    F[u]=r[0]['content']; print(u,len(F[u]),r[0].get('title'))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.khan.co.kr/en/article/202610121551017/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.koreaherald.com/article/10899735"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://medium.com/chief-scientist/alexy-talks-with-yann-lecun-about-a-new-global-model-d659b43ef0fa"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Yann LeCun AI Impact Summit New Delhi February 2026 human-level AI years','Yann LeCun VivaTech 2026 session human-level intelligence','Yann LeCun Fortune October 2026 Amodei deluded superintelligence']\nfor q in qs3:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"=====\",q); show2(r,r'within|next year|\\d+ years|five years|ten years|decade|by 20[23]\\d|years from now|two years',w=220,maxhits=3)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun AI Impact Summit New Delhi February 2026 human-level AI years"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun VivaTech 2026 session human-level intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun Fortune October 2026 Amodei deluded superintelligence"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs3:\n    r=json.loads(R[q])\n    for x in r:\n        if any(k in x['url'] for k in ['frenchtech','fortune.com/2026/10','luxsure','linkcentre','vivatech.com/news/beyond','e-marketing']):\n            c=x['content']; print('##',x['url'],len(c)); \n            for m in re.finditer(r'year|decade|20[23]\\d',c):\n                print('  ..',c[max(0,m.start()-150):m.end()+120].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Steven Levy Yann LeCun interview 2026 Wired world models'\nr=await web_search({\"query\":q}); R[q]=r\nshow2(r,r'within|next year|\\d+ years|five years|ten years|decade|by 20[23]\\d|years from now|two years',w=220,maxhits=3)\nf=await web_fetch({\"url\":\"https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/\"})\nif isinstance(f,str): f=json.loads(f)\ndef text_of(f):\n    if isinstance(f,list): return f[0]['content']\n    c=f.get('content')\n    if isinstance(c,dict): return c['source']['data']\n    return str(f)\nT=text_of(f); F['fortune']=T; print(len(T))\nfor m in re.finditer(r'year|decade|20[23]\\d|soon',T):\n    print('  ..',T[max(0,m.start()-250):m.end()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Steven Levy Yann LeCun interview 2026 Wired world models"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=T.find('The thing I want people'); print(T[i-600:i+900])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Yann LeCun 2026 podcast transcript human-level AI \"five years\" OR \"ten years\" OR \"2030\"'\nr=await web_search({\"query\":q}); R[q]=r\nshow2(r,r'within|next year|five years|ten years|decade|by 20[23]\\d|years from now|two years|2030',w=220,maxhits=3)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun 2026 podcast transcript human-level AI \"five years\" OR \"ten years\" OR \"2030\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://www.brown.edu/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer\"})\nif isinstance(f,str): f=json.loads(f)\nB=text_of(f); print(len(B))\nfor m in re.finditer(r'year|decade|20[23]\\d',B):\n    print('  ..',B[max(0,m.start()-300):m.end()+150].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.brown.edu/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "N=res[0]['content']['source']['data'] if isinstance(res[0],dict) else res[0][0]['content']\nN=N.replace('\\xa0',' ')\nfor k in ['Ten years from now','next four years','cat or a rat','decade or more','prototypes within','entirely possible','years away, if not','within the next few years']:\n    i=N.find(k); print(k,'->',repr(N[max(0,i-200):i+200]) if i>=0 else 'NOT FOUND'); print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r0=json.loads(res[0]) if isinstance(res[0],str) else res[0]\nN=text_of(r0).replace('\\xa0',' ')\nfor k in ['Ten years from now','next four years','cat or a rat','decade or more','prototypes within','entirely possible','years away, if not','2030 estimate']:\n    i=N.find(k); print(k,'->',repr(N[max(0,i-200):i+200]) if i>=0 else 'NOT FOUND'); print()\nprint(N[-400:])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2026-07",
+        "quote": "I think, in the next four years or so, we’re going to see another revolution that will open the doors to real-world things, not just language.",
+        "what_is_predicted": "Within about four years a new AI revolution will extend AI beyond language to the real world.",
+        "date_or_span": "the next four years or so",
+        "occasion": "Nebius Science interview 'Meet Yann LeCun's Lab and the AI World of 2030' by Stepan Kravchenko, published 2026-07-13",
+        "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-07",
+        "quote": "Something like that, on the order of a cat or a rat in terms of their understanding of the physical world.",
+        "what_is_predicted": "By 2030 AI systems will understand the physical world at about the level of a cat or a rat.",
+        "date_or_span": "2030 (the year is in the interviewer's question: 'What is your 2030 estimate? Cat, rat, insect?')",
+        "occasion": "Nebius Science interview, published 2026-07-13",
+        "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-07",
+        "quote": "And it may take a decade or more. But there are going to be useful applications of this concept within two to three years.",
+        "what_is_predicted": "World-model AI will have useful applications within two to three years, though human-level abstraction may take a decade or more.",
+        "date_or_span": "within two to three years; a decade or more",
+        "occasion": "Nebius Science interview, published 2026-07-13",
+        "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-07",
+        "quote": "Probably before that. We’ll have prototypes within a year or so.",
+        "what_is_predicted": "AMI will have prototype industrial uses of its JEPA world models within about a year.",
+        "date_or_span": "within a year or so",
+        "occasion": "Nebius Science interview, published 2026-07-13",
+        "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-07",
+        "quote": "Yes, entirely possible.",
+        "what_is_predicted": "Fully autonomous level-5 self-driving cars that work in all conditions are possible by 2030.",
+        "date_or_span": "2030 (the year is in the interviewer's question: 'Fully autonomous, level-5 self-driving cars that can operate under all conditions. Possible by 2030?')",
+        "occasion": "Nebius Science interview, published 2026-07-13",
+        "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2026-04-01",
+        "quote": "At the very best, we might be convinced that we're on a good path towards human intelligence — but not yet at human intelligence — within five years,",
+        "what_is_predicted": "AI will not reach human-level intelligence within five years; at best it will be on a good path.",
+        "date_or_span": "within five years",
+        "occasion": "Lecture at Brown University, reported by Brown News on 2026-04-01",
+        "source_url": "https://www.brown.edu/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer",
+        "source_kind": "coverage_only",
+        "already_recorded": "2026-04-01-lecun-not-human-level-within-five-years.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "The 80,000 Hours AGI guide quotes LeCun 'It's not centuries. It may not be decades. It's several years.' from a 2025 Johns Hopkins Bloomberg Center interview (seen in a search snippet only)."
+      },
+      {
+        "year": "2024",
+        "note": "TIME interview by Billy Perrigo (time.com/6694432), originally from 2024; the snippet shows a 2026 modified date but it is not 2026 speech (snippet only)."
+      },
+      {
+        "year": "2025",
+        "note": "A 36kr article from about late 2025 paraphrases LeCun as predicting an embodied-AGI prototype within 10 years (snippet only, paraphrase)."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Yann LeCun\" AI prediction 2026",
+        "what_found": "News on the AI Impact Summit, the AMI Labs Wikipedia page, the VivaTech digest, Axios coverage and AGI-timeline listicles; no own-words dated quote in snippets."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2026 interview AGI \"years\"",
+        "what_found": "MIT Technology Review 2026-01-22 'not next year or two years' (already recorded), the 80,000 Hours page citing a 2025 quote, the Capacity summit report and the Forbes 2026-01-27 piece."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2026 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "MIT Technology Review again, the Nebius Science 2030 interview (prototypes within a year) and listicles."
+      },
+      {
+        "query_or_url": "Yann LeCun Kyunghyang interview October 2026",
+        "what_found": "Coverage of the 12 October Seoul industrial-AI press briefing and the Fortune 1 October interview."
+      },
+      {
+        "query_or_url": "Yann LeCun Axios interview May 2026",
+        "what_found": "Axios 2026-05-04 advice piece and its Fortune/Inc follow-ups; job and hype views, no dated AI-capability prediction in snippets."
+      },
+      {
+        "query_or_url": "Yann LeCun podcast 2026 world models AMI Labs years",
+        "what_found": "AMI funding coverage and an ECCV 2026 invited-talk listing; no transcripts."
+      },
+      {
+        "query_or_url": "Yann LeCun AI Impact Summit New Delhi February 2026 human-level AI years",
+        "what_found": "French Tech Journal and DQ India reports; he rejected 'within 10 years' claims made by others, and DQ paraphrases human-level AI as possible within younger people's lifetimes."
+      },
+      {
+        "query_or_url": "Yann LeCun VivaTech 2026 session human-level intelligence",
+        "what_found": "Reports on his 17 June VivaTech session with Steven Levy; only reporter paraphrase (e.g. he does not promise human-level AI by 2027)."
+      },
+      {
+        "query_or_url": "Yann LeCun Fortune October 2026 Amodei deluded superintelligence",
+        "what_found": "The Fortune 2026-10-01 interview and pickups."
+      },
+      {
+        "query_or_url": "Steven Levy Yann LeCun interview 2026 Wired world models",
+        "what_found": "Only the 2023 Wired interview; nothing from 2026."
+      },
+      {
+        "query_or_url": "Yann LeCun 2026 podcast transcript human-level AI \"five years\" OR \"ten years\" OR \"2030\"",
+        "what_found": "The Brown lecture report (within five years) plus older podcast transcripts."
+      },
+      {
+        "query_or_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+        "what_found": "Opened; printed Q&A dated 2026-07-13 with several dated forecasts (text returned was cut off near the end)."
+      },
+      {
+        "query_or_url": "https://www.khan.co.kr/en/article/202610121551017/",
+        "what_found": "Opened; Seoul briefing of 12 October 2026, no dated prediction."
+      },
+      {
+        "query_or_url": "https://www.koreaherald.com/article/10899735",
+        "what_found": "Opened; same briefing, no dated prediction."
+      },
+      {
+        "query_or_url": "https://medium.com/chief-scientist/alexy-talks-with-yann-lecun-about-a-new-global-model-d659b43ef0fa",
+        "what_found": "Would not open (url_not_accessible); not quoted."
+      },
+      {
+        "query_or_url": "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/",
+        "what_found": "Opened; views on AI risk, first AMI product debuting 'soon'; no dated prediction."
+      },
+      {
+        "query_or_url": "https://www.brown.edu/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer",
+        "what_found": "Opened; confirms the 'within five years' quote already recorded."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2026 was a busy year for LeCun, with AMI Labs' launch and talks in New Delhi, at Brown, at VivaTech, in Seoul, and in Fortune and Axios interviews. The new dated material comes from the July Nebius Science Q&A: a real-world AI revolution in about four years, cat- or rat-level physical understanding by 2030, useful world-model uses in two to three years, AMI prototypes within a year, and level-5 self-driving possible by 2030. The Brown lecture matches a claim already recorded; the other pages I opened had no new dated predictions."
+  },
+  "reply_text": "I found five new dated predictions from 2026, all from one interview. I also confirmed one claim you already have. The rest of the year's coverage I opened had no new dated predictions.\n\n**New: the Nebius Science interview** (Stepan Kravchenko, published 13 July 2026, a printed question-and-answer). I opened this page myself and the quotes in the JSON are copied from it. The site prints non-breaking spaces between words, and I've written them as normal spaces. The page I got back was cut off before the end, so anything later in the interview is unchecked. In it LeCun:\n- expects \"another revolution\" that takes AI into real-world things \"in the next four years or so\";\n- puts AI's grasp of the physical world at about cat or rat level by 2030. The year 2030 comes from the interviewer's question, not from him.\n- expects useful world-model applications \"within two to three years\";\n- says AMI will have prototypes \"within a year or so.\" This is close to your recorded 15 May claims about results within 18 months, but it was said on a different occasion, so I left it unmarked. You may decide it repeats one of them.\n- answers \"Yes, entirely possible\" when asked whether fully self-driving (level-5) cars are possible by 2030. Again the year is the interviewer's.\n\n**Already recorded:** the Brown University lecture quote (\"within five years\") is on Brown's own news page dated 1 April 2026. It is a news write-up, not a transcript, and it matches your `2026-04-01-lecun-not-human-level-within-five-years.toml`.\n\n**Opened, nothing dated:** the Seoul press briefing of 12 October (Kyunghyang Shinmun and Korea Herald) and the Fortune interview of 1 October. In the briefing he said there will be no sudden moment when a superhuman AI appears, but gave no date. In Fortune he would only say AMI's first product is coming \"soon.\"\n\n**Not checked:** I only saw search snippets for the New Delhi AI Impact Summit (February), VivaTech (17 June), Axios (4 May) and MIT Technology Review (22 January). I did not open those pages, so they are not quoted and the January claims are not re-confirmed here. The Medium interview would not open.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2026-07\", \"quote\": \"I think, in the next four years or so, we’re going to see another revolution that will open the doors to real-world things, not just language.\", \"what_is_predicted\": \"Within about four years a new AI revolution will extend AI beyond language to the real world.\", \"date_or_span\": \"the next four years or so\", \"occasion\": \"Nebius Science interview 'Meet Yann LeCun's Lab and the AI World of 2030' by Stepan Kravchenko, published 2026-07-13\", \"source_url\": \"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-07\", \"quote\": \"Something like that, on the order of a cat or a rat in terms of their understanding of the physical world.\", \"what_is_predicted\": \"By 2030 AI systems will understand the physical world at about the level of a cat or a rat.\", \"date_or_span\": \"2030 (the year is in the interviewer's question: 'What is your 2030 estimate? Cat, rat, insect?')\", \"occasion\": \"Nebius Science interview, published 2026-07-13\", \"source_url\": \"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-07\", \"quote\": \"And it may take a decade or more. But there are going to be useful applications of this concept within two to three years.\", \"what_is_predicted\": \"World-model AI will have useful applications within two to three years, though human-level abstraction may take a decade or more.\", \"date_or_span\": \"within two to three years; a decade or more\", \"occasion\": \"Nebius Science interview, published 2026-07-13\", \"source_url\": \"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-07\", \"quote\": \"Probably before that. We’ll have prototypes within a year or so.\", \"what_is_predicted\": \"AMI will have prototype industrial uses of its JEPA world models within about a year.\", \"date_or_span\": \"within a year or so\", \"occasion\": \"Nebius Science interview, published 2026-07-13\", \"source_url\": \"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-07\", \"quote\": \"Yes, entirely possible.\", \"what_is_predicted\": \"Fully autonomous level-5 self-driving cars that work in all conditions are possible by 2030.\", \"date_or_span\": \"2030 (the year is in the interviewer's question: 'Fully autonomous, level-5 self-driving cars that can operate under all conditions. Possible by 2030?')\", \"occasion\": \"Nebius Science interview, published 2026-07-13\", \"source_url\": \"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2026-04-01\", \"quote\": \"At the very best, we might be convinced that we're on a good path towards human intelligence — but not yet at human intelligence — within five years,\", \"what_is_predicted\": \"AI will not reach human-level intelligence within five years; at best it will be on a good path.\", \"date_or_span\": \"within five years\", \"occasion\": \"Lecture at Brown University, reported by Brown News on 2026-04-01\", \"source_url\": \"https://www.brown.edu/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2026-04-01-lecun-not-human-level-within-five-years.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"The 80,000 Hours AGI guide quotes LeCun 'It's not centuries. It may not be decades. It's several years.' from a 2025 Johns Hopkins Bloomberg Center interview (seen in a search snippet only).\"},\n    {\"year\": \"2024\", \"note\": \"TIME interview by Billy Perrigo (time.com/6694432), originally from 2024; the snippet shows a 2026 modified date but it is not 2026 speech (snippet only).\"},\n    {\"year\": \"2025\", \"note\": \"A 36kr article from about late 2025 paraphrases LeCun as predicting an embodied-AGI prototype within 10 years (snippet only, paraphrase).\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" AI prediction 2026\", \"what_found\": \"News on the AI Impact Summit, the AMI Labs Wikipedia page, the VivaTech digest, Axios coverage and AGI-timeline listicles; no own-words dated quote in snippets.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2026 interview AGI \\\"years\\\"\", \"what_found\": \"MIT Technology Review 2026-01-22 'not next year or two years' (already recorded), the 80,000 Hours page citing a 2025 quote, the Capacity summit report and the Forbes 2026-01-27 piece.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2026 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"MIT Technology Review again, the Nebius Science 2030 interview (prototypes within a year) and listicles.\"},\n    {\"query_or_url\": \"Yann LeCun Kyunghyang interview October 2026\", \"what_found\": \"Coverage of the 12 October Seoul industrial-AI press briefing and the Fortune 1 October interview.\"},\n    {\"query_or_url\": \"Yann LeCun Axios interview May 2026\", \"what_found\": \"Axios 2026-05-04 advice piece and its Fortune/Inc follow-ups; job and hype views, no dated AI-capability prediction in snippets.\"},\n    {\"query_or_url\": \"Yann LeCun podcast 2026 world models AMI Labs years\", \"what_found\": \"AMI funding coverage and an ECCV 2026 invited-talk listing; no transcripts.\"},\n    {\"query_or_url\": \"Yann LeCun AI Impact Summit New Delhi February 2026 human-level AI years\", \"what_found\": \"French Tech Journal and DQ India reports; he rejected 'within 10 years' claims made by others, and DQ paraphrases human-level AI as possible within younger people's lifetimes.\"},\n    {\"query_or_url\": \"Yann LeCun VivaTech 2026 session human-level intelligence\", \"what_found\": \"Reports on his 17 June VivaTech session with Steven Levy; only reporter paraphrase (e.g. he does not promise human-level AI by 2027).\"},\n    {\"query_or_url\": \"Yann LeCun Fortune October 2026 Amodei deluded superintelligence\", \"what_found\": \"The Fortune 2026-10-01 interview and pickups.\"},\n    {\"query_or_url\": \"Steven Levy Yann LeCun interview 2026 Wired world models\", \"what_found\": \"Only the 2023 Wired interview; nothing from 2026.\"},\n    {\"query_or_url\": \"Yann LeCun 2026 podcast transcript human-level AI \\\"five years\\\" OR \\\"ten years\\\" OR \\\"2030\\\"\", \"what_found\": \"The Brown lecture report (within five years) plus older podcast transcripts.\"},\n    {\"query_or_url\": \"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\", \"what_found\": \"Opened; printed Q&A dated 2026-07-13 with several dated forecasts (text returned was cut off near the end).\"},\n    {\"query_or_url\": \"https://www.khan.co.kr/en/article/202610121551017/\", \"what_found\": \"Opened; Seoul briefing of 12 October 2026, no dated prediction.\"},\n    {\"query_or_url\": \"https://www.koreaherald.com/article/10899735\", \"what_found\": \"Opened; same briefing, no dated prediction.\"},\n    {\"query_or_url\": \"https://medium.com/chief-scientist/alexy-talks-with-yann-lecun-about-a-new-global-model-d659b43ef0fa\", \"what_found\": \"Would not open (url_not_accessible); not quoted.\"},\n    {\"query_or_url\": \"https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/\", \"what_found\": \"Opened; views on AI risk, first AMI product debuting 'soon'; no dated prediction.\"},\n    {\"query_or_url\": \"https://www.brown.edu/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer\", \"what_found\": \"Opened; confirms the 'within five years' quote already recorded.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2026 was a busy year for LeCun, with AMI Labs' launch and talks in New Delhi, at Brown, at VivaTech, in Seoul, and in Fortune and Axios interviews. The new dated material comes from the July Nebius Science Q&A: a real-world AI revolution in about four years, cat- or rat-level physical understanding by 2030, useful world-model uses in two to three years, AMI prototypes within a year, and level-5 self-driving possible by 2030. The Brown lecture matches a claim already recorded; the other pages I opened had no new dated predictions.\"\n}\n```"
+}

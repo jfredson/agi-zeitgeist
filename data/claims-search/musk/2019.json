@@ -1,0 +1,398 @@
+{
+  "speaker_id": "musk",
+  "year": 2019,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6083,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7635
+      },
+      "cache_creation_input_tokens": 39598,
+      "cache_read_input_tokens": 569222,
+      "inference_geo": "global",
+      "input_tokens": 52,
+      "output_tokens": 9811,
+      "output_tokens_details": {
+        "thinking_tokens": 2822
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Elon Musk\" AI prediction 2019','\"Elon Musk\" 2019 interview AGI \"years\"','\"Elon Musk\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" AI prediction 2019"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r), str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(q,r):\n    r=json.loads(r) if isinstance(r,str) else r\n    print(\"==\",q)\n    for x in r: print(' -',x.get('title'),x.get('url'),x.get('page_age'))\n    return r\nR[qs[0]]=show(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=show(q,await web_search({\"query\":q}))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2019 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Lex Fridman Elon Musk Tesla Autopilot podcast transcript 2019',\n'Tesla Autonomy Day April 2019 transcript Musk \"feature complete\"',\n'Jack Ma Elon Musk debate World AI Conference 2019 transcript',\n'ARK Invest podcast Elon Musk February 2019 \"feature complete\" full self-driving this year']\nfor q in qs2:\n    R[q]=show(q,await web_search({\"query\":q}))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman Elon Musk Tesla Autopilot podcast transcript 2019"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla Autonomy Day April 2019 transcript Musk \"feature complete\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jack Ma Elon Musk debate World AI Conference 2019 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ARK Invest podcast Elon Musk February 2019 \"feature complete\" full self-driving this year"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/elon-musk-tesla-autopilot',\n'https://lexfridman.com/wordpress/wp-content/uploads/2019/11/elon_musk_lex_fridman_2_transcript.pdf',\n'https://englishspeecheschannel.com/english-speeches/elon-musk-and-jack-ma/',\n'https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast',\n'https://www.fool.com/earnings/call-transcripts/2019/04/25/tesla-inc-tsla-q1-2019-earnings-call-transcript.aspx']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u, r.get('type'), r.get('error_code'), len(P[u]))\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/elon-musk-tesla-autopilot"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://lexfridman.com/wordpress/wp-content/uploads/2019/11/elon_musk_lex_fridman_2_transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://englishspeecheschannel.com/english-speeches/elon-musk-and-jack-ma/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2019/04/25/tesla-inc-tsla-q1-2019-earnings-call-transcript.aspx"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(str(r)[:800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nT={}\nfor u,c in P.items():\n    d=c.get('source',{}).get('data') if isinstance(c,dict) else None\n    if d is None: d=json.dumps(c)[:200]\n    T[u]=d; print(u,len(d))\ndef kw(u,pats,w=350):\n    t=T[u]\n    for p in pats:\n        for m in re.finditer(p,t,re.I):\n            print('['+p+']',t[max(0,m.start()-w):m.end()+w].replace('\\n',' ')); print('---')\nkw(urls[0],[r'next year',r'this year',r'feature complete',r'end of'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[urls[0]]; print(t[:300]); kw(urls[0],[r'year',r'month',r'2020'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw(urls[0],[r'six months',r'intervene',r'end of this',r'probably'],600)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=urls[1]; print(T[u][:300]); kw(u,[r'next year',r'this year',r'years',r'decade',r'20[0-9]{2}'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\nb=base64.b64decode(T[u]); rd=PdfReader(io.BytesIO(b))\ntxt=\"\\n\".join(p.extract_text() or '' for p in rd.pages); T[u]=txt; print(len(txt)); print(txt[:400])\nkw(u,[r'next year',r'this year',r' years',r'decade',r'20[0-9]{2}'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=txt.find('21:38'); print(txt[i:i+900]); i=txt.find('30:33'); print(txt[i:i+1300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=urls[2]; t=T[u]; i=t.find('Musk'); print(t[:6862])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[urls[3]]; i=t.find('# '); print(t[i:i+4000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[800:4969])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[:800]); u=urls[4]; kw(u,[r'feature complete',r'next year',r'this year',r'end of the year',r'robotaxi',r'2020'],350)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[u]; i=t.find('1 million robotaxis'); print(t[i-2500:i-1800]); \nfor m in re.finditer(r'(self-driving|autonom|Autopilot)',t): pass\nkw(u,[r'end of this year',r'later this year',r'by the end',r'next year'],400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[i-1800:i+300]); print(len(t)); print(t[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Tesla Autonomy Investor Day 2019 full transcript Musk \"robotaxis\"',\n'Tesla Q3 2019 earnings call transcript Musk \"feature complete\"',\n'Musk tweet 2019 \"feature complete\" full self-driving \"this year\"']\nfor q in qs3:\n    R[q]=show(q,await web_search({\"query\":q}))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla Autonomy Investor Day 2019 full transcript Musk \"robotaxis\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla Q3 2019 earnings call transcript Musk \"feature complete\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk tweet 2019 \"feature complete\" full self-driving \"this year\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx'\nr=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\nif isinstance(r,list): r=r[0]\nc=r.get('content'); d=c.get('source',{}).get('data') if isinstance(c,dict) else str(c); T[u]=d; print(r.get('type'),len(d))\nkw(u,[r'feature complete',r'next year',r'end of (the|this) year',r'robotaxi',r'2020'],400)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[u]; i=t.find('feature-complete Full Self-Driving'); j=t.rfind('**',0,i); print(t[t.rfind('-- *',0,i)-60:t.rfind('-- *',0,i)+60]); print(t[i-900:i+50])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('Earnings Call'); print(t[i-100:i+150])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "m=re.search(r'Q3 2019 Earnings Call\\s+\\S+ \\d+, 2019',t); print(m.group(0) if m else None)"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2019-02-13",
+        "quote": "Elon told us that he is certain that Autopilot will be “feature-complete” for self-driving by the end of this year",
+        "what_is_predicted": "Tesla Autopilot would be feature-complete for full self-driving by the end of 2019.",
+        "date_or_span": "end of 2019",
+        "occasion": "ARK Invest FYI podcast, recorded 13 Feb 2019 in Fremont; ARK takeaways post dated 27 Feb 2019",
+        "source_url": "https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2019-02-13",
+        "quote": "he believes that, by year-end 2020, people will be able to relinquish all responsibility to Autopilot and fall asleep while being transported from point to point, pending regulatory approval",
+        "what_is_predicted": "By the end of 2020, Tesla owners could give Autopilot full responsibility and sleep while it drives, subject to regulatory approval.",
+        "date_or_span": "year-end 2020",
+        "occasion": "ARK Invest FYI podcast, recorded 13 Feb 2019; ARK takeaways post dated 27 Feb 2019 (interviewer's paraphrase)",
+        "source_url": "https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2019-04-24",
+        "quote": "And in 2020, we expect to have 1 million robotaxis on the road with the hardware necessary for full self-driving.",
+        "what_is_predicted": "Tesla would have 1 million robotaxis on the road in 2020.",
+        "date_or_span": "2020",
+        "occasion": "Tesla Q1 2019 earnings call, Musk's opening remarks (repeating the Autonomy Day claim)",
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2019/04/25/tesla-inc-tsla-q1-2019-earnings-call-transcript.aspx",
+        "source_kind": "transcript",
+        "already_recorded": "2019-04-22-musk-million-robotaxis-next-year.toml"
+      },
+      {
+        "date_said": "2019-10-23",
+        "quote": "I do -- while it's going to be tight, it still does appear that we will be at least in limited -- in early access release of a feature-complete Full Self-Driving feature this year. So, it's not for sure, but it appears to be on track for at least an early access release of a fully functional Full Self-Driving by the end of this year.",
+        "what_is_predicted": "Tesla would ship at least an early-access release of feature-complete Full Self-Driving by the end of 2019.",
+        "date_or_span": "end of 2019",
+        "occasion": "Tesla Q3 2019 earnings call, Musk's opening remarks",
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2014",
+        "note": "Search result title (Entrepreneur): Musk predicted AI would be 'seriously dangerous' by 2019 — an older statement, not opened."
+      },
+      {
+        "year": "2023-2025",
+        "note": "Fixed searches mostly returned later claims (AGI in ~3 years; AI smarter than the smartest human by next year, Fortune 2024-04-09; AI doing all digital work by end of next year, 2025 coverage). None opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Elon Musk\" AI prediction 2019",
+        "what_found": "Retrospective lists (Medium, Quartz, Wikipedia list of autonomy predictions) and recent news; nothing first-hand from 2019."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2019 interview AGI \"years\"",
+        "what_found": "Mostly 2023-2025 AGI-timeline coverage; nothing from 2019."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Recent 2025 coverage (G20, digital work by end of next year); nothing from 2019."
+      },
+      {
+        "query_or_url": "Lex Fridman Elon Musk Tesla Autopilot podcast transcript 2019",
+        "what_found": "HappyScribe transcript of the April 2019 episode and the official Rev PDF of the Nov 2019 episode."
+      },
+      {
+        "query_or_url": "Tesla Autonomy Day April 2019 transcript Musk \"feature complete\"",
+        "what_found": "Coverage of Autonomy Day (CleanTechnica, New Atlas) and the Q1 2019 earnings-call transcript."
+      },
+      {
+        "query_or_url": "Jack Ma Elon Musk debate World AI Conference 2019 transcript",
+        "what_found": "Medium write-ups, Caixin, CGTN, and a partial transcript on englishspeecheschannel."
+      },
+      {
+        "query_or_url": "ARK Invest podcast Elon Musk February 2019 \"feature complete\" full self-driving this year",
+        "what_found": "ARK takeaways post plus CNBC/CleanTechnica coverage of the Feb 2019 podcast."
+      },
+      {
+        "query_or_url": "Tesla Autonomy Investor Day 2019 full transcript Musk \"robotaxis\"",
+        "what_found": "No full Autonomy Day transcript; CNBC coverage and an SEC 8-K exhibit."
+      },
+      {
+        "query_or_url": "Tesla Q3 2019 earnings call transcript Musk \"feature complete\"",
+        "what_found": "Motley Fool Q3 2019 transcript and others."
+      },
+      {
+        "query_or_url": "Musk tweet 2019 \"feature complete\" full self-driving \"this year\"",
+        "what_found": "Fan wiki and Wikipedia lists plus CNBC/Fox coverage; no tweet page opened."
+      },
+      {
+        "query_or_url": "https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/elon-musk-tesla-autopilot",
+        "what_found": "Page stops around minute 18, mid-sentence ('at least six months or somethin'), so no full forecast could be quoted."
+      },
+      {
+        "query_or_url": "https://lexfridman.com/wordpress/wp-content/uploads/2019/11/elon_musk_lex_fridman_2_transcript.pdf",
+        "what_found": "Nov 2019 episode: talks about digital superintelligence and the singularity but names no date or span."
+      },
+      {
+        "query_or_url": "https://englishspeecheschannel.com/english-speeches/elon-musk-and-jack-ma/",
+        "what_found": "Partial transcript (rest behind a paywall): Musk says AI 'will be much smarter than the smartest human', with no timing given."
+      },
+      {
+        "query_or_url": "https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast",
+        "what_found": "ARK's paraphrase of Musk: feature-complete by end of 2019, hands-off sleeping by end of 2020."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2019/04/25/tesla-inc-tsla-q1-2019-earnings-call-transcript.aspx",
+        "what_found": "Musk's opening remarks: 1 million robotaxis in 2020 (page cut off early in the Q&A)."
+      },
+      {
+        "query_or_url": "https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx",
+        "what_found": "Musk (call held 23 Oct 2019): early-access feature-complete FSD by end of 2019."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Musk's dated AI predictions in 2019 were all about Tesla self-driving: feature-complete FSD by the end of 2019 (Feb, via ARK's paraphrase; Oct, in his own words on the earnings call), sleeping while Autopilot drives by end-2020 (ARK paraphrase), and 1 million robotaxis in 2020 (Apr 24 call, same claim as the recorded Autonomy Day file). His 2019 remarks on superintelligence (Jack Ma debate, Lex Fridman in November) gave no timing."
+  },
+  "reply_text": "Now the Jack Ma, ARK and Q1 call pages.I found three new dated AI predictions from Musk in 2019, plus one that repeats the claim you already have. All of them are about Tesla's self-driving software. I found nothing dated in 2019 on when AGI or superintelligence will arrive.\n\n**What I found**\n- **ARK Invest podcast, recorded 13 Feb 2019:** ARK's write-up says he was certain Autopilot would be \"feature-complete\" for self-driving by the end of 2019. It also says he expected people could fall asleep in the car by the end of 2020, pending regulators. These are ARK's words, not his, except for the two-word quote \"feature-complete\", so I've marked both as coverage only.\n- **Q1 2019 earnings call, 24 Apr 2019:** in his opening remarks Musk said Tesla expected 1 million robotaxis on the road in 2020. This is the same claim as your 2019-04-22 file, repeated two days later.\n- **Q3 2019 earnings call, 23 Oct 2019:** Musk said an early-access release of feature-complete Full Self-Driving looked on track for the end of 2019. This one is in his own words in the call transcript.\n\n**What I couldn't confirm**\n- **Lex Fridman podcast, April 2019:** the transcript page stops partway through the episode, in the middle of a sentence about how many months drivers would still need to keep hands on the wheel. I haven't used it.\n- **Debate with Jack Ma, Shanghai, Aug 2019:** Musk said AI \"will be much smarter than the smartest human\" but gave no timing, not even \"soon\". It didn't meet the rule for the undated list, so I left it out.\n- **Lex Fridman podcast, Nov 2019:** \"sooner rather than later\" is about Neuralink, not about when superintelligence arrives, so it doesn't count either.\n\n**Not checked:** I didn't open a transcript of Autonomy Day itself or of the January and July 2019 earnings calls. I used all 6 page openings and 10 of the 12 searches.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2019-02-13\", \"quote\": \"Elon told us that he is certain that Autopilot will be “feature-complete” for self-driving by the end of this year\", \"what_is_predicted\": \"Tesla Autopilot would be feature-complete for full self-driving by the end of 2019.\", \"date_or_span\": \"end of 2019\", \"occasion\": \"ARK Invest FYI podcast, recorded 13 Feb 2019 in Fremont; ARK takeaways post dated 27 Feb 2019\", \"source_url\": \"https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2019-02-13\", \"quote\": \"he believes that, by year-end 2020, people will be able to relinquish all responsibility to Autopilot and fall asleep while being transported from point to point, pending regulatory approval\", \"what_is_predicted\": \"By the end of 2020, Tesla owners could give Autopilot full responsibility and sleep while it drives, subject to regulatory approval.\", \"date_or_span\": \"year-end 2020\", \"occasion\": \"ARK Invest FYI podcast, recorded 13 Feb 2019; ARK takeaways post dated 27 Feb 2019 (interviewer's paraphrase)\", \"source_url\": \"https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2019-04-24\", \"quote\": \"And in 2020, we expect to have 1 million robotaxis on the road with the hardware necessary for full self-driving.\", \"what_is_predicted\": \"Tesla would have 1 million robotaxis on the road in 2020.\", \"date_or_span\": \"2020\", \"occasion\": \"Tesla Q1 2019 earnings call, Musk's opening remarks (repeating the Autonomy Day claim)\", \"source_url\": \"https://www.fool.com/earnings/call-transcripts/2019/04/25/tesla-inc-tsla-q1-2019-earnings-call-transcript.aspx\", \"source_kind\": \"transcript\", \"already_recorded\": \"2019-04-22-musk-million-robotaxis-next-year.toml\"},\n    {\"date_said\": \"2019-10-23\", \"quote\": \"I do -- while it's going to be tight, it still does appear that we will be at least in limited -- in early access release of a feature-complete Full Self-Driving feature this year. So, it's not for sure, but it appears to be on track for at least an early access release of a fully functional Full Self-Driving by the end of this year.\", \"what_is_predicted\": \"Tesla would ship at least an early-access release of feature-complete Full Self-Driving by the end of 2019.\", \"date_or_span\": \"end of 2019\", \"occasion\": \"Tesla Q3 2019 earnings call, Musk's opening remarks\", \"source_url\": \"https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2014\", \"note\": \"Search result title (Entrepreneur): Musk predicted AI would be 'seriously dangerous' by 2019 — an older statement, not opened.\"},\n    {\"year\": \"2023-2025\", \"note\": \"Fixed searches mostly returned later claims (AGI in ~3 years; AI smarter than the smartest human by next year, Fortune 2024-04-09; AI doing all digital work by end of next year, 2025 coverage). None opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Elon Musk\\\" AI prediction 2019\", \"what_found\": \"Retrospective lists (Medium, Quartz, Wikipedia list of autonomy predictions) and recent news; nothing first-hand from 2019.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2019 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2023-2025 AGI-timeline coverage; nothing from 2019.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2019 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Recent 2025 coverage (G20, digital work by end of next year); nothing from 2019.\"},\n    {\"query_or_url\": \"Lex Fridman Elon Musk Tesla Autopilot podcast transcript 2019\", \"what_found\": \"HappyScribe transcript of the April 2019 episode and the official Rev PDF of the Nov 2019 episode.\"},\n    {\"query_or_url\": \"Tesla Autonomy Day April 2019 transcript Musk \\\"feature complete\\\"\", \"what_found\": \"Coverage of Autonomy Day (CleanTechnica, New Atlas) and the Q1 2019 earnings-call transcript.\"},\n    {\"query_or_url\": \"Jack Ma Elon Musk debate World AI Conference 2019 transcript\", \"what_found\": \"Medium write-ups, Caixin, CGTN, and a partial transcript on englishspeecheschannel.\"},\n    {\"query_or_url\": \"ARK Invest podcast Elon Musk February 2019 \\\"feature complete\\\" full self-driving this year\", \"what_found\": \"ARK takeaways post plus CNBC/CleanTechnica coverage of the Feb 2019 podcast.\"},\n    {\"query_or_url\": \"Tesla Autonomy Investor Day 2019 full transcript Musk \\\"robotaxis\\\"\", \"what_found\": \"No full Autonomy Day transcript; CNBC coverage and an SEC 8-K exhibit.\"},\n    {\"query_or_url\": \"Tesla Q3 2019 earnings call transcript Musk \\\"feature complete\\\"\", \"what_found\": \"Motley Fool Q3 2019 transcript and others.\"},\n    {\"query_or_url\": \"Musk tweet 2019 \\\"feature complete\\\" full self-driving \\\"this year\\\"\", \"what_found\": \"Fan wiki and Wikipedia lists plus CNBC/Fox coverage; no tweet page opened.\"},\n    {\"query_or_url\": \"https://www.happyscribe.com/public/lex-fridman-podcast-artificial-intelligence-ai/elon-musk-tesla-autopilot\", \"what_found\": \"Page stops around minute 18, mid-sentence ('at least six months or somethin'), so no full forecast could be quoted.\"},\n    {\"query_or_url\": \"https://lexfridman.com/wordpress/wp-content/uploads/2019/11/elon_musk_lex_fridman_2_transcript.pdf\", \"what_found\": \"Nov 2019 episode: talks about digital superintelligence and the singularity but names no date or span.\"},\n    {\"query_or_url\": \"https://englishspeecheschannel.com/english-speeches/elon-musk-and-jack-ma/\", \"what_found\": \"Partial transcript (rest behind a paywall): Musk says AI 'will be much smarter than the smartest human', with no timing given.\"},\n    {\"query_or_url\": \"https://www.ark-invest.com/articles/analyst-research/elon-musk-podcast\", \"what_found\": \"ARK's paraphrase of Musk: feature-complete by end of 2019, hands-off sleeping by end of 2020.\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2019/04/25/tesla-inc-tsla-q1-2019-earnings-call-transcript.aspx\", \"what_found\": \"Musk's opening remarks: 1 million robotaxis in 2020 (page cut off early in the Q&A).\"},\n    {\"query_or_url\": \"https://www.fool.com/earnings/call-transcripts/2019/10/24/tesla-inc-tsla-q3-2019-earnings-call-transcript.aspx\", \"what_found\": \"Musk (call held 23 Oct 2019): early-access feature-complete FSD by end of 2019.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Musk's dated AI predictions in 2019 were all about Tesla self-driving: feature-complete FSD by the end of 2019 (Feb, via ARK's paraphrase; Oct, in his own words on the earnings call), sleeping while Autopilot drives by end-2020 (ARK paraphrase), and 1 million robotaxis in 2020 (Apr 24 call, same claim as the recorded Autonomy Day file). His 2019 remarks on superintelligence (Jack Ma debate, Lex Fridman in November) gave no timing.\"\n}\n```"
+}

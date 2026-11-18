@@ -1,0 +1,24 @@
+[claim]
+id = "2017-04-24-musk-sleep-in-the-car-about-two-years"
+speaker_id = "musk"
+when = "2017-04-24"
+when_note = "TED's own page for the talk gives 'recordedOn' 2017-04-24 (TED2017) and published 2017-04-30; TED's upload to YouTube is dated 2017-05-03."
+occasion = "TED conversation with Chris Anderson, 'The future we're building -- and boring'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=zIwLWfaAg-8"
+source_locator = "about 17:05 into TED's video"
+checked_how = "Read in the captions of TED's own upload (TED's transcript, with speaker initials) on 2026-11-17 (yt-dlp) and compared with The Singju Post's transcript page, where the words were first found; the two agree word for word. Nobody listened."
+quote = "I think that's about two years."
+prediction = "Asked when, leaving regulation aside, someone will be able to buy a Tesla, take their hands off the wheel, go to sleep and wake up to find they have arrived, safely, he says about two years."
+kind = "capability"
+bar = "A Tesla on sale that its owner can sleep in while it drives the whole trip safely, with nobody supervising, by the end of 2019. The question set regulation aside, so the test is the technology being shown, not its approval."
+due = 2019
+due_basis = "'about two years', said 2017-04-24, runs to April 2019; judged at the end of 2019."
+status = "missed"
+verdict_on = 2026-01-28
+verdict_why = "No Tesla on sale in 2019 could be left to drive with its owner asleep. Tesla's own earnings call of 2026-01-28 says the first paid rides with no safety monitor in the car had just happened, in Austin only, in Tesla's own robotaxis. A car that a buyer can sleep in has not come."
+verdict_source = "https://www.youtube.com/watch?v=oK0UZEE9GPo"
+evidence_by = "maker"
+direction = "not_come"
+search_ids = ["musk-claims-035", "musk-claims-016", "musk-claims-048"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (my ruling of 2026-10-19). Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. First found at https://singjupost.com/elon-musk-the-future-were-building-and-boring-at-ted-transcript/?singlepage=1 ; the claim now rests on TED's recording and transcript."

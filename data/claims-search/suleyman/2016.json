@@ -1,0 +1,350 @@
+{
+  "speaker_id": "suleyman",
+  "year": 2016,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5566,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7623
+      },
+      "cache_creation_input_tokens": 45276,
+      "cache_read_input_tokens": 337043,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 7634,
+      "output_tokens_details": {
+        "thinking_tokens": 1602
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Mustafa Suleyman\" AI prediction 2016','\"Mustafa Suleyman\" 2016 interview AGI \"years\"','\"Mustafa Suleyman\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" AI prediction 2016"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:250].replace('\\n',' '))\nfor q in qs:\n    print(\"==\",q); show(R[q]) if q in R else None\nfor q in qs[1:]:\n    if q not in R:\n        R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2016 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Suleyman DeepMind Disrupt London 2016 artificial intelligence','DeepMind Suleyman 2016 general intelligence \"decades\"','Suleyman DeepMind Health 2016 interview \"five years\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman DeepMind Disrupt London 2016 artificial intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "DeepMind Suleyman 2016 general intelligence \"decades\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman DeepMind Health 2016 interview \"five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nurls=['https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off','https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/','https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/']\nF={}\nfor u in urls:\n    r=await web_fetch({\"url\":u}); \n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r; c=r.get('content','') or ''\n    print(\"==\",u,r.get('type'),r.get('error_code'),len(c))\n    print(c[:4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=F[urls[0]]; print(r.keys()); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(u):\n    r=F[u]; c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return c or str(r)\nt=txt(urls[0]); i=t.find('took the stage at our Disrupt London event today'); \ni=t.find('---',10); print(t[i:i+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('The goal of DeepMind'); \nj=[m.start() for m in re.finditer('The goal of DeepMind',t)]; print(j)\nprint(t[j[-1]-600:j[-1]+4500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in urls[1:]:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r\n    if r.get('type','').endswith('error'): print(u,r); continue\n    t2=txt(u)\n    for k in ['decades','years','Suleyman said','\"']:\n        pass\n    idx=[m.start() for m in re.finditer('Suleyman',t2)]\n    print(\"==\",u,len(t2),idx[:20])\n    s=idx[2] if len(idx)>2 else 0\n    print(t2[max(0,s-1500):s+4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t2=txt(urls[1]); print(t2[:2400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Suleyman DeepMind O\\'Reilly AI conference 2016 keynote \"decades away\"','Mustafa Suleyman 2016 Wired interview DeepMind future AI','Mustafa Suleyman 2016 Guardian DeepMind NHS AI \"years\"']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman DeepMind O'Reilly AI conference 2016 keynote \"decades away\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman 2016 Wired interview DeepMind future AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman 2016 Guardian DeepMind NHS AI \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.oreilly.com/radar/a-conversation-with-google-deepmind-cofounder-mustafa-suleyman/','https://techcrunch.com/2016/11/22/patient-data-api-pivotal-to-deepminds-push-into-uks-nhs/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r\n    if r.get('type','').endswith('error'): print(u,r); continue\n    t3=txt(u); print(\"==\",u,len(t3))\n    for m in re.finditer(r'(year|decade|by 20\\d\\d|next|future|general)',t3):\n        print('...',t3[max(0,m.start()-250):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.oreilly.com/radar/a-conversation-with-google-deepmind-cofounder-mustafa-suleyman/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://techcrunch.com/2016/11/22/patient-data-api-pivotal-to-deepminds-push-into-uks-nhs/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['DeepMind Suleyman 2016 \"next decade\" artificial intelligence healthcare','Suleyman DeepMind Health launch February 2016 Royal Society of Medicine AI future']:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "DeepMind Suleyman 2016 \"next decade\" artificial intelligence healthcare"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Suleyman DeepMind Health launch February 2016 Royal Society of Medicine AI future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.mign.io/en/articles/57894/'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nF[u]=r\nif r.get('type','').endswith('error'): print(r)\nelse:\n    t4=txt(u)\n    for m in re.finditer('Suleyman',t4): print('...',t4[max(0,m.start()-100):m.start()+600].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.mign.io/en/articles/57894/"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2016-12-05",
+        "quote": "I think when we say that [general artificial intelligence] is 20 years out, or decades away, what we are saying is that it is so far out that we can't really measure it.",
+        "what_is_predicted": "General AI is about 20 years or decades away, too far off to measure. Same remark printed by TechCrunch (5 Dec 2016, techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off) as: \"when we say it's 20 years out or decades way, we say that it so far out, we can't really measure it.\"",
+        "date_or_span": "20 years / decades",
+        "occasion": "TechCrunch Disrupt London 2016, on-stage conversation with Jordan Crook",
+        "source_url": "https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2016-12-05",
+        "quote": "We're decades and decades away from the kind of risks that the board initially envisaged.",
+        "what_is_predicted": "The risks from full general-purpose learning systems that DeepMind's ethics board was set up for will not arrive for decades.",
+        "date_or_span": "decades and decades",
+        "occasion": "TechCrunch Disrupt London 2016",
+        "source_url": "https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2016-10-10",
+        "quote": "many decades away from encountering that sort of labor replacement at scale.",
+        "what_is_predicted": "AI will not replace human labour at large scale for many decades.",
+        "date_or_span": "many decades",
+        "occasion": "O'Reilly Next:Economy 2016 conference, San Francisco",
+        "source_url": "https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Search results (Yahoo Finance, Fortune, Forbes) on his Financial Times interview predicting most white-collar tasks automated within 12 to 18 months; also an X post saying only about 5% of what humans do will be replaced by AI in 10 years."
+      },
+      {
+        "year": "2025",
+        "note": "Search result from VideoAge citing a Wall Street Journal interview: 'Soon to me is sometime in the next ten years' (about superintelligence)."
+      },
+      {
+        "year": "2024",
+        "note": "Search results: Business Insider via an ANU mailing-list archive (AI could act like an entrepreneur within five years, Jan 2024); LinkedIn post ('within the next five years, certainly before the end of the decade'); December 2024 coverage of AGI in 5 to 7 years."
+      },
+      {
+        "year": "2018",
+        "note": "Bloomberg video page (Sooner Than You Think, Paris) whose search snippet says 'many decades away'; not opened."
+      },
+      {
+        "year": "2017",
+        "note": "Digital Health interview (March 2017) snippet mentions a five-year goal for outcome-based payment; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mustafa Suleyman\" AI prediction 2016",
+        "what_found": "Only 2024-2026 coverage (12-18 month automation claim) and biography pages; nothing from 2016."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2016 interview AGI \"years\"",
+        "what_found": "Mostly 2023-2025 items; also the TechCrunch Nov 2016 Disrupt London speaker announcement."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2016 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2024-2026 forecasts; nothing from 2016."
+      },
+      {
+        "query_or_url": "Suleyman DeepMind Disrupt London 2016 artificial intelligence",
+        "what_found": "TechCrunch 5 Dec 2016 article 'general AI is still a long way off'."
+      },
+      {
+        "query_or_url": "DeepMind Suleyman 2016 general intelligence \"decades\"",
+        "what_found": "Android Authority, Techworld and Hacker News items on the Disrupt remark, plus the Fortune Oct 2016 jobs article."
+      },
+      {
+        "query_or_url": "Suleyman DeepMind Health 2016 interview \"five years\"",
+        "what_found": "TechCrunch Nov 2016 NHS piece and a 2017 Digital Health interview; the 'five years' hits were the contract term."
+      },
+      {
+        "query_or_url": "Suleyman DeepMind O'Reilly AI conference 2016 keynote \"decades away\"",
+        "what_found": "The same Disrupt and Fortune items again, plus a 2018 Bloomberg video."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman 2016 Wired interview DeepMind future AI",
+        "what_found": "O'Reilly Next:Economy 2016 highlight page (11 Oct 2016); no Wired 2016 interview."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman 2016 Guardian DeepMind NHS AI \"years\"",
+        "what_found": "Biography pages and coverage of the NHS deal; no dated AI forecasts."
+      },
+      {
+        "query_or_url": "DeepMind Suleyman 2016 \"next decade\" artificial intelligence healthcare",
+        "what_found": "Academic papers on the DeepMind NHS deal and The Coming Wave (2023); nothing from 2016."
+      },
+      {
+        "query_or_url": "Suleyman DeepMind Health launch February 2016 Royal Society of Medicine AI future",
+        "what_found": "Only biography pages noting the Feb 2016 DeepMind Health launch; no quotes."
+      },
+      {
+        "query_or_url": "https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off",
+        "what_found": "Opened; prints the '20 years out or decades way' quote from Disrupt London, 5 Dec 2016."
+      },
+      {
+        "query_or_url": "https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/",
+        "what_found": "Opened; prints a fuller version of the 20-years quote and the 'decades and decades away' ethics-board quote."
+      },
+      {
+        "query_or_url": "https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/",
+        "what_found": "Opened; dated 10 Oct 2016, quotes 'many decades away from encountering that sort of labor replacement at scale' from an O'Reilly conference."
+      },
+      {
+        "query_or_url": "https://www.oreilly.com/radar/a-conversation-with-google-deepmind-cofounder-mustafa-suleyman/",
+        "what_found": "Opened; a video-only highlight from Next:Economy 2016 with no transcript text."
+      },
+      {
+        "query_or_url": "https://techcrunch.com/2016/11/22/patient-data-api-pivotal-to-deepminds-push-into-uks-nhs/",
+        "what_found": "Opened; Suleyman interview on the Royal Free deal; the only timeframe is the five-year contract, so no AI forecast."
+      },
+      {
+        "query_or_url": "https://www.mign.io/en/articles/57894/",
+        "what_found": "Opened; a tracker of AI leaders' predictions; the Suleyman quotes I read were all from 2025-2026."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2016 Suleyman's timeframes were all long and cautious. At TechCrunch Disrupt London in December he put general AI '20 years out, or decades away' and said its risks were 'decades and decades away'. At an O'Reilly conference in October he said large-scale labour replacement was 'many decades away'. All three quotes are known only from news coverage, not transcripts or his own writing."
+  },
+  "reply_text": "I found three forward-looking statements by Mustafa Suleyman from 2016, all with \"decades\" timeframes. All three come from news reports quoting him, not from his own posts or transcripts.\n\n1. **5 December 2016, TechCrunch Disrupt London (on stage with Jordan Crook).** He said general AI is still decades away. Two outlets printed this differently:\n   - Techworld: \"I think when we say that [general artificial intelligence] is 20 years out, or decades away, what we are saying is that it is so far out that we can't really measure it.\" The square brackets are Techworld's.\n   - TechCrunch (published 5 December 2016): \"when we say it's 20 years out or decades way, we say that it so far out, we can't really measure it.\" The typos are as printed.\n\n   These are the same remark, so I've given them one candidate entry and put the TechCrunch wording in its summary. The text I got from the Techworld page didn't show a publication date. I dated its quote by the event, since Techworld says it was spoken at Disrupt London.\n2. **Same talk, reported by Techworld.** On DeepMind's ethics board he said: \"We're decades and decades away from the kind of risks that the board initially envisaged.\"\n3. **10 October 2016, O'Reilly conference in San Francisco, reported by Fortune.** Fortune quotes only a fragment: AI is \"many decades away from encountering that sort of labor replacement at scale.\" O'Reilly's own page for this talk (Next:Economy 2016) has only a video and no transcript, so I couldn't check the wording against a recording.\n\nNothing else turned up. The other 2016 material I opened was a TechCrunch interview about the NHS deal, and the only timeframe in it was the length of the contract. Most search results were about his 2024–2026 forecasts, such as the \"12 to 18 months\" claim about white-collar tasks.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2016-12-05\", \"quote\": \"I think when we say that [general artificial intelligence] is 20 years out, or decades away, what we are saying is that it is so far out that we can't really measure it.\", \"what_is_predicted\": \"General AI is about 20 years or decades away, too far off to measure. Same remark printed by TechCrunch (5 Dec 2016, techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off) as: \\\"when we say it's 20 years out or decades way, we say that it so far out, we can't really measure it.\\\"\", \"date_or_span\": \"20 years / decades\", \"occasion\": \"TechCrunch Disrupt London 2016, on-stage conversation with Jordan Crook\", \"source_url\": \"https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2016-12-05\", \"quote\": \"We're decades and decades away from the kind of risks that the board initially envisaged.\", \"what_is_predicted\": \"The risks from full general-purpose learning systems that DeepMind's ethics board was set up for will not arrive for decades.\", \"date_or_span\": \"decades and decades\", \"occasion\": \"TechCrunch Disrupt London 2016\", \"source_url\": \"https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2016-10-10\", \"quote\": \"many decades away from encountering that sort of labor replacement at scale.\", \"what_is_predicted\": \"AI will not replace human labour at large scale for many decades.\", \"date_or_span\": \"many decades\", \"occasion\": \"O'Reilly Next:Economy 2016 conference, San Francisco\", \"source_url\": \"https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Search results (Yahoo Finance, Fortune, Forbes) on his Financial Times interview predicting most white-collar tasks automated within 12 to 18 months; also an X post saying only about 5% of what humans do will be replaced by AI in 10 years.\"},\n    {\"year\": \"2025\", \"note\": \"Search result from VideoAge citing a Wall Street Journal interview: 'Soon to me is sometime in the next ten years' (about superintelligence).\"},\n    {\"year\": \"2024\", \"note\": \"Search results: Business Insider via an ANU mailing-list archive (AI could act like an entrepreneur within five years, Jan 2024); LinkedIn post ('within the next five years, certainly before the end of the decade'); December 2024 coverage of AGI in 5 to 7 years.\"},\n    {\"year\": \"2018\", \"note\": \"Bloomberg video page (Sooner Than You Think, Paris) whose search snippet says 'many decades away'; not opened.\"},\n    {\"year\": \"2017\", \"note\": \"Digital Health interview (March 2017) snippet mentions a five-year goal for outcome-based payment; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" AI prediction 2016\", \"what_found\": \"Only 2024-2026 coverage (12-18 month automation claim) and biography pages; nothing from 2016.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2016 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2023-2025 items; also the TechCrunch Nov 2016 Disrupt London speaker announcement.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2016 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2024-2026 forecasts; nothing from 2016.\"},\n    {\"query_or_url\": \"Suleyman DeepMind Disrupt London 2016 artificial intelligence\", \"what_found\": \"TechCrunch 5 Dec 2016 article 'general AI is still a long way off'.\"},\n    {\"query_or_url\": \"DeepMind Suleyman 2016 general intelligence \\\"decades\\\"\", \"what_found\": \"Android Authority, Techworld and Hacker News items on the Disrupt remark, plus the Fortune Oct 2016 jobs article.\"},\n    {\"query_or_url\": \"Suleyman DeepMind Health 2016 interview \\\"five years\\\"\", \"what_found\": \"TechCrunch Nov 2016 NHS piece and a 2017 Digital Health interview; the 'five years' hits were the contract term.\"},\n    {\"query_or_url\": \"Suleyman DeepMind O'Reilly AI conference 2016 keynote \\\"decades away\\\"\", \"what_found\": \"The same Disrupt and Fortune items again, plus a 2018 Bloomberg video.\"},\n    {\"query_or_url\": \"Mustafa Suleyman 2016 Wired interview DeepMind future AI\", \"what_found\": \"O'Reilly Next:Economy 2016 highlight page (11 Oct 2016); no Wired 2016 interview.\"},\n    {\"query_or_url\": \"Mustafa Suleyman 2016 Guardian DeepMind NHS AI \\\"years\\\"\", \"what_found\": \"Biography pages and coverage of the NHS deal; no dated AI forecasts.\"},\n    {\"query_or_url\": \"DeepMind Suleyman 2016 \\\"next decade\\\" artificial intelligence healthcare\", \"what_found\": \"Academic papers on the DeepMind NHS deal and The Coming Wave (2023); nothing from 2016.\"},\n    {\"query_or_url\": \"Suleyman DeepMind Health launch February 2016 Royal Society of Medicine AI future\", \"what_found\": \"Only biography pages noting the Feb 2016 DeepMind Health launch; no quotes.\"},\n    {\"query_or_url\": \"https://techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off\", \"what_found\": \"Opened; prints the '20 years out or decades way' quote from Disrupt London, 5 Dec 2016.\"},\n    {\"query_or_url\": \"https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/\", \"what_found\": \"Opened; prints a fuller version of the 20-years quote and the 'decades and decades away' ethics-board quote.\"},\n    {\"query_or_url\": \"https://fortune.com/2016/10/10/google-artificial-intelligence-deepmind-jobs/\", \"what_found\": \"Opened; dated 10 Oct 2016, quotes 'many decades away from encountering that sort of labor replacement at scale' from an O'Reilly conference.\"},\n    {\"query_or_url\": \"https://www.oreilly.com/radar/a-conversation-with-google-deepmind-cofounder-mustafa-suleyman/\", \"what_found\": \"Opened; a video-only highlight from Next:Economy 2016 with no transcript text.\"},\n    {\"query_or_url\": \"https://techcrunch.com/2016/11/22/patient-data-api-pivotal-to-deepminds-push-into-uks-nhs/\", \"what_found\": \"Opened; Suleyman interview on the Royal Free deal; the only timeframe is the five-year contract, so no AI forecast.\"},\n    {\"query_or_url\": \"https://www.mign.io/en/articles/57894/\", \"what_found\": \"Opened; a tracker of AI leaders' predictions; the Suleyman quotes I read were all from 2025-2026.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2016 Suleyman's timeframes were all long and cautious. At TechCrunch Disrupt London in December he put general AI '20 years out, or decades away' and said its risks were 'decades and decades away'. At an O'Reilly conference in October he said large-scale labour replacement was 'many decades away'. All three quotes are known only from news coverage, not transcripts or his own writing.\"\n}\n```"
+}

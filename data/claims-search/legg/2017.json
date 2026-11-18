@@ -1,0 +1,325 @@
+{
+  "speaker_id": "legg",
+  "year": 2017,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5692,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7594
+      },
+      "cache_creation_input_tokens": 47588,
+      "cache_read_input_tokens": 420531,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 6351,
+      "output_tokens_details": {
+        "thinking_tokens": 1398
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 5,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Shane Legg\" AI prediction 2017','\"Shane Legg\" 2017 interview AGI \"years\"','\"Shane Legg\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2017"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]];print(type(r));print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('--',x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:500].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q});R[q]=r;print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2017 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Shane Legg\" Asilomar 2017 Beneficial AI','\"Shane Legg\" Business Insider January 2017 DeepMind','\"Shane Legg\" 2017 talk human-level AI timeline']:\n    r=await web_search({\"query\":q});R[q]=r;print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Asilomar 2017 Beneficial AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Business Insider January 2017 DeepMind"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2017 talk human-level AI timeline"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html\"})\nif isinstance(r,list): r=r[0]\nc=r.get('content','') if isinstance(r,dict) else str(r)\nprint(r.get('type'),r.get('error_code'),len(c))\nimport re\nfor k in ['year','20','predict','AGI','human']:\n    for m in re.finditer(k,c):\n        pass\nprint(c[:4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "x=json.loads(r) if isinstance(r,str) else r\nif isinstance(x,list): x=x[0]\nc=x.get('content','');print(x.get('type'),x.get('error_code'),len(c));print(c[:5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(json.dumps(x)[:5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['businessinsider DeepMind elusive third cofounder Shane Legg machines stay on our side','\"Shane Legg\" Asilomar talk transcript \"longer-term issues\"','\"Shane Legg\" 2017 said AGI decade']:\n    r=await web_search({\"query\":q});R[q]=r;print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "businessinsider DeepMind elusive third cofounder Shane Legg machines stay on our side"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Asilomar talk transcript \"longer-term issues\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2017 said AGI decade"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def fetch(u):\n    r=await_=None\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    x=json.loads(r) if isinstance(r,str) else r\n    if isinstance(x,list): x=x[0]\n    c=x.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return x,c or ''\nx,c=await fetch(\"https://en.wikipedia.org/wiki/Shane_Legg\")\nprint(x.get('type'),len(c))\nfor m in re.finditer(r'businessinsider[^\\s\\)\\]\"]*|insider\\.com[^\\s\\)\\]\"]*',c): print(m.group())\nfor m in re.finditer(r'2017',c): print(c[max(0,m.start()-300):m.start()+200].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://en.wikipedia.org/wiki/Shane_Legg"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor m in re.finditer(r'https?://[^\\s\\)\\]\"]*insider[^\\s\\)\\]\"]*',c): print(m.group())\nfor m in re.finditer(r'2017|predict|2028',c): print(c[max(0,m.start()-300):m.start()+200].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "x,c=await fetch(\"https://www.insider.com/shane-legg-google-deepmind-third-cofounder-artificial-intelligence-2017-1\")\nprint(x.get('type'),x.get('error_code'),len(c))\ni=c.find('Legg');print(c[i-200:i+9000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.insider.com/shane-legg-google-deepmind-third-cofounder-artificial-intelligence-2017-1"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sam Shead \"Legg\" DeepMind third cofounder 2017 artificial general intelligence','\"Shane Legg\" 2017 podcast OR lecture OR keynote AGI']:\n    r=await web_search({\"query\":q});R[q]=r;print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Shead \"Legg\" DeepMind third cofounder 2017 artificial general intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2017 podcast OR lecture OR keynote AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in json.loads(R['\"Shane Legg\" 2017 podcast OR lecture OR keynote AGI']) if isinstance(R['\"Shane Legg\" 2017 podcast OR lecture OR keynote AGI'],str) else R['\"Shane Legg\" 2017 podcast OR lecture OR keynote AGI']:\n    if 'N8dIAaKLT9I' in x['url']: print(x)\nx,c=await fetch(\"https://www.youtube.com/watch?v=N8dIAaKLT9I\")\nprint(x.get('type'),x.get('error_code'),len(c));print(c[:3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.youtube.com/watch?v=N8dIAaKLT9I"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "x,c=await fetch(\"https://futureoflife.org/event/bai-2017/\")\nprint(x.get('type'),x.get('error_code'),len(c))\nfor m in re.finditer('Legg',c): print(c[max(0,m.start()-400):m.start()+400].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://futureoflife.org/event/bai-2017/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Asilomar 2017 panel Amodei Soares Legg Krakovna transcript'\nr=await web_search({\"query\":q});R[q]=r;show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Asilomar 2017 panel Amodei Soares Legg Krakovna transcript"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2011",
+        "note": "Seen only in a search snippet: arXiv 1605.04232 quotes Legg's end-of-2011 forecast (log-normal distribution, mean 2028, mode 2025, a proto-AGI expected within 8 years). The snippet attributes it to the 2011 LessWrong Q&A (Wikipedia, which I opened, dates that Q&A 17 June 2011). I did not open either page."
+      },
+      {
+        "year": "2021",
+        "note": "Seen only in a search snippet: a Legg tweet of Aug 2021 (twitter.com/ShaneLegg/status/1430146229426692097) restating 50% by 2028 and 90% by 2040, which he says he has held since 1999. Not opened."
+      },
+      {
+        "year": "2023",
+        "note": "Seen only in search snippets: news coverage (Futurism, IBTimes) of his Dwarkesh Patel interview restating a 50% chance of AGI by 2028. Not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Seen only in search snippets: the Google DeepMind podcast with Hannah Fry ('The Arrival of AGI'), with minimal AGI around 2028 according to secondary summaries. Not opened."
+      },
+      {
+        "year": "unknown (likely pre-2010)",
+        "note": "Seen only in a search snippet: a fandom wiki page holds a Jonathan Despres interview with lines like 'Human level AI will be passed in the mid 2020's'. It is undated and not from 2017. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2017",
+        "what_found": "Secondary pages restating his 2011 and later 50%-by-2028 forecast; nothing from 2017."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2017 interview AGI \"years\"",
+        "what_found": "2021-2025 podcast summaries and an undated fandom interview; nothing from 2017."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2017 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "2023 and 2025 coverage plus a Wikipedia list of 2017 AI events; no 2017 statement by Legg."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Asilomar 2017 Beneficial AI",
+        "what_found": "Confirms Legg attended and spoke at Asilomar in January 2017 (bios PDF, FLI event page)."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Business Insider January 2017 DeepMind",
+        "what_found": "Sam Shead's 26 Jan 2017 Business Insider profile of Legg (Yahoo copy, Wikipedia citation)."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2017 talk human-level AI timeline",
+        "what_found": "The fandom interview and the 2011 LessWrong Q&A; nothing from 2017."
+      },
+      {
+        "query_or_url": "businessinsider DeepMind elusive third cofounder Shane Legg machines stay on our side",
+        "what_found": "Only citations to the BI article; no readable text."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Asilomar talk transcript \"longer-term issues\"",
+        "what_found": "Programme listings showing Legg's talk had no slides or video linked; no transcript."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2017 said AGI decade",
+        "what_found": "Only 2023 and later coverage."
+      },
+      {
+        "query_or_url": "https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html",
+        "what_found": "Page opened but showed only 'Something went wrong' and navigation; no article text."
+      },
+      {
+        "query_or_url": "https://en.wikipedia.org/wiki/Shane_Legg",
+        "what_found": "Gave the insider.com URL for the 26 Jan 2017 Shead article; no 2017 prediction."
+      },
+      {
+        "query_or_url": "https://www.insider.com/shane-legg-google-deepmind-third-cofounder-artificial-intelligence-2017-1",
+        "what_found": "Would not open (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "Sam Shead \"Legg\" DeepMind third cofounder 2017 artificial general intelligence",
+        "what_found": "Only the Yahoo stub and Wikipedia/Wikiwand citations again."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2017 podcast OR lecture OR keynote AGI",
+        "what_found": "Mostly 2021-2025 podcasts, plus a YouTube clip uploaded Aug 2017 that excerpts an older lecture."
+      },
+      {
+        "query_or_url": "https://www.youtube.com/watch?v=N8dIAaKLT9I",
+        "what_found": "YouTube showed a bot-check page; only metadata (published Aug 21, 2017), which points to an older full 'Machine Super Intelligence' lecture; no transcript."
+      },
+      {
+        "query_or_url": "https://futureoflife.org/event/bai-2017/",
+        "what_found": "Lists Legg's Asilomar talk (no media linked) and his technical research agenda panel video; no transcript."
+      },
+      {
+        "query_or_url": "Asilomar 2017 panel Amodei Soares Legg Krakovna transcript",
+        "what_found": "Only programme listings and Krakovna highlight videos; no transcript of Legg's words."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "I found no dated AI prediction by Shane Legg from 2017 on any page I could open. His known 2017 appearances were the Business Insider profile of 26 January 2017, which would not open in readable form, and his talk and panel at Asilomar in January 2017, which have no transcript. All timeline statements found belong to 2011, 2021, 2023 or 2025."
+  },
+  "reply_text": "I found no dated AI prediction by Shane Legg from 2017, so this is a quiet year.\n\n- **Fixed searches:** all three ran exactly as written. They turned up only his statements from other years (2011, 2021, 2023, 2025) and later summaries of his long-held \"50% by 2028\" estimate.\n- **Business Insider profile (26 January 2017):** this is the main 2017 interview with him, by Sam Shead. I couldn't read the text. The Yahoo copy opened as a page with an error and no article, and the insider.com link was blocked. Whether it contains a dated prediction is still unknown.\n- **Asilomar Beneficial AI conference (January 2017):** the organisers' page lists a talk by Legg and a panel he was on. The talk has no video or slides linked. The panel has a video but I found no transcript, so there are no words I could quote.\n- **YouTube clip:** \"The Existential Threat of AI\" was uploaded on 21 August 2017, but it is an excerpt from an older lecture. YouTube showed a bot-check page, so I only saw the title, channel, date and description.\n\nI used all 12 searches and 5 of the 6 page openings.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2011\", \"note\": \"Seen only in a search snippet: arXiv 1605.04232 quotes Legg's end-of-2011 forecast (log-normal distribution, mean 2028, mode 2025, a proto-AGI expected within 8 years). The snippet attributes it to the 2011 LessWrong Q&A (Wikipedia, which I opened, dates that Q&A 17 June 2011). I did not open either page.\"},\n    {\"year\": \"2021\", \"note\": \"Seen only in a search snippet: a Legg tweet of Aug 2021 (twitter.com/ShaneLegg/status/1430146229426692097) restating 50% by 2028 and 90% by 2040, which he says he has held since 1999. Not opened.\"},\n    {\"year\": \"2023\", \"note\": \"Seen only in search snippets: news coverage (Futurism, IBTimes) of his Dwarkesh Patel interview restating a 50% chance of AGI by 2028. Not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Seen only in search snippets: the Google DeepMind podcast with Hannah Fry ('The Arrival of AGI'), with minimal AGI around 2028 according to secondary summaries. Not opened.\"},\n    {\"year\": \"unknown (likely pre-2010)\", \"note\": \"Seen only in a search snippet: a fandom wiki page holds a Jonathan Despres interview with lines like 'Human level AI will be passed in the mid 2020's'. It is undated and not from 2017. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2017\", \"what_found\": \"Secondary pages restating his 2011 and later 50%-by-2028 forecast; nothing from 2017.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2017 interview AGI \\\"years\\\"\", \"what_found\": \"2021-2025 podcast summaries and an undated fandom interview; nothing from 2017.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2017 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"2023 and 2025 coverage plus a Wikipedia list of 2017 AI events; no 2017 statement by Legg.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Asilomar 2017 Beneficial AI\", \"what_found\": \"Confirms Legg attended and spoke at Asilomar in January 2017 (bios PDF, FLI event page).\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Business Insider January 2017 DeepMind\", \"what_found\": \"Sam Shead's 26 Jan 2017 Business Insider profile of Legg (Yahoo copy, Wikipedia citation).\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2017 talk human-level AI timeline\", \"what_found\": \"The fandom interview and the 2011 LessWrong Q&A; nothing from 2017.\"},\n    {\"query_or_url\": \"businessinsider DeepMind elusive third cofounder Shane Legg machines stay on our side\", \"what_found\": \"Only citations to the BI article; no readable text.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Asilomar talk transcript \\\"longer-term issues\\\"\", \"what_found\": \"Programme listings showing Legg's talk had no slides or video linked; no transcript.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2017 said AGI decade\", \"what_found\": \"Only 2023 and later coverage.\"},\n    {\"query_or_url\": \"https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html\", \"what_found\": \"Page opened but showed only 'Something went wrong' and navigation; no article text.\"},\n    {\"query_or_url\": \"https://en.wikipedia.org/wiki/Shane_Legg\", \"what_found\": \"Gave the insider.com URL for the 26 Jan 2017 Shead article; no 2017 prediction.\"},\n    {\"query_or_url\": \"https://www.insider.com/shane-legg-google-deepmind-third-cofounder-artificial-intelligence-2017-1\", \"what_found\": \"Would not open (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"Sam Shead \\\"Legg\\\" DeepMind third cofounder 2017 artificial general intelligence\", \"what_found\": \"Only the Yahoo stub and Wikipedia/Wikiwand citations again.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2017 podcast OR lecture OR keynote AGI\", \"what_found\": \"Mostly 2021-2025 podcasts, plus a YouTube clip uploaded Aug 2017 that excerpts an older lecture.\"},\n    {\"query_or_url\": \"https://www.youtube.com/watch?v=N8dIAaKLT9I\", \"what_found\": \"YouTube showed a bot-check page; only metadata (published Aug 21, 2017), which points to an older full 'Machine Super Intelligence' lecture; no transcript.\"},\n    {\"query_or_url\": \"https://futureoflife.org/event/bai-2017/\", \"what_found\": \"Lists Legg's Asilomar talk (no media linked) and his technical research agenda panel video; no transcript.\"},\n    {\"query_or_url\": \"Asilomar 2017 panel Amodei Soares Legg Krakovna transcript\", \"what_found\": \"Only programme listings and Krakovna highlight videos; no transcript of Legg's words.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"I found no dated AI prediction by Shane Legg from 2017 on any page I could open. His known 2017 appearances were the Business Insider profile of 26 January 2017, which would not open in readable form, and his talk and panel at Asilomar in January 2017, which have no transcript. All timeline statements found belong to 2011, 2021, 2023 or 2025.\"\n}\n```"
+}

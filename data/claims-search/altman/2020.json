@@ -1,0 +1,308 @@
+{
+  "speaker_id": "altman",
+  "year": 2020,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5833,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7672
+      },
+      "cache_creation_input_tokens": 48439,
+      "cache_read_input_tokens": 357266,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 7974,
+      "output_tokens_details": {
+        "thinking_tokens": 2680
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 4,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Sam Altman\" AI prediction 2020','\"Sam Altman\" 2020 interview AGI \"years\"','\"Sam Altman\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"##\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'),(x.get('content') or '')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print('-',x.get('title'),x.get('url'),x.get('page_age'),(x.get('content') or '')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2020 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sam Altman 2020 podcast interview OpenAI GPT-3 future','blog.samaltman.com 2020','Sam Altman tweet 2020 GPT-3 hype AGI']:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman 2020 podcast interview OpenAI GPT-3 future"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "blog.samaltman.com 2020"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman tweet 2020 GPT-3 hype AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\npages={}\nfor u in ['https://www.diamandis.com/podcast/sam-altman','https://hbr.org/podcast/2020/10/how-gpt-3-is-shaping-our-ai-future']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    c=p.get('content','') if isinstance(p,dict) else ''\n    pages[u]=c\n    print(\"##\",u,len(c),p.get('error_code') if isinstance(p,dict) else '')\n    print(c[:2500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.diamandis.com/podcast/sam-altman"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(c)); print(str(c)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(p):\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,list): p=p[0]\n    c=p.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return c or str(p)[:300]\nd=str(c['source']['data'])\ni=d.find('Skip to content'); \nfor kw in ['2020','2021','10 years','Episode','You will learn']:\n    for m in re.finditer(kw,d): print(kw,':',d[max(0,m.start()-200):m.start()+300].replace('\\n',' ')); print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":'https://hbr.org/podcast/2020/10/how-gpt-3-is-shaping-our-ai-future'})\nh=txt(p); print(len(h))\nfor kw in ['years','decade','20[23]\\d','AGI']:\n    for m in list(re.finditer(kw,h))[:12]: print(kw,':',h[max(0,m.start()-300):m.start()+300].replace('\\n',' ')); print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://hbr.org/podcast/2020/10/how-gpt-3-is-shaping-our-ai-future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Altman Azeem Azhar GPT-3 interview 2020 AGI quote','\"sama\" tweet 2020 AI \"next decade\" OR \"in ten years\" OR \"by 2030\"','Sam Altman December 2020 interview AI future decade']:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman Azeem Azhar GPT-3 interview 2020 AGI quote"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"sama\" tweet 2020 AI \"next decade\" OR \"in ten years\" OR \"by 2030\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman December 2020 interview AI future decade"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":'https://hbr.org/podcast/2023/05/azeems-picks-sam-altman-on-how-gpts-are-shaping-our-ai-future'})\nH=txt(p); print(len(H))\nfor kw in ['year','decade','20[123]\\d','around the corner','next ','will be']:\n    for m in list(re.finditer(kw,H))[:25]:\n        s=H[max(0,m.start()-250):m.start()+250].replace('\\n',' ')\n        if 'meta-' in s: continue\n        print(kw,':',s); print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://hbr.org/podcast/2023/05/azeems-picks-sam-altman-on-how-gpts-are-shaping-our-ai-future"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "turns=re.split(r'(?=AZEEM AZHAR:|SAM ALTMAN ?:)',H)\nfor t in turns:\n    if t.startswith('SAM') and re.search(r'year|decade|month|century|20\\d\\d|soon|AGI|superintelligen|lifetime|long',t,re.I):\n        print(t[:1800].replace('\\n',' ')); print('======')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sam Altman 2020 talk OpenAI AGI timeline interview transcript','Sam Altman tweet 2020 AI \"years\" prediction sama status']:\n    rr=await web_search({\"query\":q}); print(\"##\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman 2020 talk OpenAI AGI timeline interview transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sam Altman tweet 2020 AI \"years\" prediction sama status"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":'https://rescale.com/blog/fireside-chat-with-sam-altman/'})\nR=txt(p); print(len(R))\nfor kw in ['20[12]\\d','Big Compute']:\n    for m in list(re.finditer(kw,R))[:10]: print(R[max(0,m.start()-150):m.start()+150].replace('\\n',' ')); print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://rescale.com/blog/fireside-chat-with-sam-altman/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=R.find('#### Contents'); T=R[R.find('**Shawn:**'):]\nturns=re.split(r'(?=\\*\\*\\w+:\\*\\*|\\n\\w+: )',T)\nfor t in turns:\n    if re.match(r'\\s*(\\*\\*)?Sam',t) and re.search(r'year|decade|month|20\\d\\d|AGI|general intelligence|soon|by the time|will ',t,re.I):\n        print(t.strip()[:2200].replace('\\n',' ')); print('=====')"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2020-02",
+        "quote": "That has been growing about 8x per year for about eight years now. And I think it’s gonna keep going like that for about five years.",
+        "what_is_predicted": "The size of the largest AI training runs (how big the biggest models can be made, by whatever compute means) will keep growing about 8x per year for about five more years.",
+        "date_or_span": "about five years (from February 2020, i.e. to roughly 2025)",
+        "occasion": "Fireside chat at Rescale's inaugural Big Compute conference, SFJazz, San Francisco, February 11-12, 2020 (video upload date 2020-02-19; transcript posted 2020-02-24)",
+        "source_url": "https://rescale.com/blog/fireside-chat-with-sam-altman/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2020-10",
+        "quote": "This is not AGI, this is not mean AGI is around the corner. But it does mean that something powerful in this direction is going to happen, and we should have a conversation about how that’s going to go.",
+        "source_url": "https://hbr.org/podcast/2023/05/azeems-picks-sam-altman-on-how-gpts-are-shaping-our-ai-future"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2021",
+        "note": "Peter Diamandis podcast 'The Rise of OpenAI w/ Sam Altman' (segment '10 years from now, we'll be talking to AI') — the page says it was filmed in early 2021; diamandis.com/podcast/sam-altman."
+      },
+      {
+        "year": "2021",
+        "note": "Tweet by @sama saying that 'by 2030' it will become clear that AI plus energy will push costs of intelligence toward zero (x.com/sama/status/1436028668082462748), seen in search results only."
+      },
+      {
+        "year": "2025",
+        "note": "Many search results concern 2025 statements (for example 'by 2030' superintelligence, Axel Springer interview, The Gentle Singularity); not this year."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2020",
+        "what_found": "Only recent (2025) coverage and his blog's retrospective mentions of 2020; nothing said in 2020."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2020 interview AGI \"years\"",
+        "what_found": "Recent AGI-timeline coverage from 2023-2025; nothing from 2020."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "All results about his 2025 'by 2030' prediction; nothing from 2020."
+      },
+      {
+        "query_or_url": "Sam Altman 2020 podcast interview OpenAI GPT-3 future",
+        "what_found": "Found the October 2020 Exponential View (HBR) episode with Azeem Azhar, its 2023 rerun with transcript, and the Diamandis podcast."
+      },
+      {
+        "query_or_url": "blog.samaltman.com 2020",
+        "what_found": "Blog index pages and a January 2020 'How To Invest In Startups' tweet; no AI prediction found."
+      },
+      {
+        "query_or_url": "Sam Altman tweet 2020 GPT-3 hype AGI",
+        "what_found": "July 2020 'The GPT-3 hype is way too much' tweet (snippets only, not opened; no date or span in it)."
+      },
+      {
+        "query_or_url": "https://www.diamandis.com/podcast/sam-altman",
+        "what_found": "Opened; the page says the episode was filmed in early 2021, so not 2020; no transcript."
+      },
+      {
+        "query_or_url": "https://hbr.org/podcast/2020/10/how-gpt-3-is-shaping-our-ai-future",
+        "what_found": "Opened; 2020-10-07 episode page with show notes only, no transcript."
+      },
+      {
+        "query_or_url": "Altman Azeem Azhar GPT-3 interview 2020 AGI quote",
+        "what_found": "Pointed to HBR's 2023 'Azeem's Picks' rerun page, which carries a transcript of the 2020 conversation."
+      },
+      {
+        "query_or_url": "\"sama\" tweet 2020 AI \"next decade\" OR \"in ten years\" OR \"by 2030\"",
+        "what_found": "Only a 2021 tweet and later items; nothing from 2020."
+      },
+      {
+        "query_or_url": "Sam Altman December 2020 interview AI future decade",
+        "what_found": "Only 2025-2026 coverage; nothing from 2020."
+      },
+      {
+        "query_or_url": "https://hbr.org/podcast/2023/05/azeems-picks-sam-altman-on-how-gpts-are-shaping-our-ai-future",
+        "what_found": "Opened; transcript of the 2020 conversation; only an undated 'not AGI ... not around the corner' remark, no dated prediction."
+      },
+      {
+        "query_or_url": "Sam Altman 2020 talk OpenAI AGI timeline interview transcript",
+        "what_found": "Found Rescale's 'Fireside Chat with Sam Altman' transcript plus later Lex Fridman and other transcripts."
+      },
+      {
+        "query_or_url": "Sam Altman tweet 2020 AI \"years\" prediction sama status",
+        "what_found": "A May 2020 non-AI '10 years' career tweet and later tweets; no 2020 AI prediction."
+      },
+      {
+        "query_or_url": "https://rescale.com/blog/fireside-chat-with-sam-altman/",
+        "what_found": "Opened; February 2020 Big Compute transcript holding the five-year compute-scaling forecast and a 'next few years' language-AI remark."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "The only dated forward-looking AI statement found is from Altman's February 2020 Big Compute fireside chat: he expected the size of the largest AI training runs to keep growing about 8x per year for about five years. It is borderline because it concerns compute rather than a capability. His October 2020 Exponential View interview held only an undated remark that GPT-3 does not mean AGI is around the corner. His July 2020 GPT-3 'hype' tweet was seen only in snippets and carries no date."
+  },
+  "reply_text": "I found one dated AI prediction from Sam Altman in 2020, and it's a borderline case. Two other items didn't make the bar.\n\n**The candidate.** At Rescale's Big Compute conference in San Francisco (February 11–12, 2020), Rescale's official transcript records Altman saying that the computing power used to train the biggest AI models \"has been growing about 8x per year for about eight years now. And I think it's gonna keep going like that for about five years.\" You should decide whether it counts. It's about how big AI models can get across the whole field, not about any company's spending. But it's close to the \"chips/data-centre\" category you exclude.\n\n**Not included:**\n- In the same talk he said \"we are going to see an explosion in the next few years\" of language AI. \"A few years\" has no date and isn't about when AGI arrives, so I left it out.\n- In the October 2020 Exponential View podcast with Azeem Azhar, he said GPT-3 \"is not AGI\" and does not mean \"AGI is around the corner\". That's an undated remark on AGI timing, so it goes under undated. I read it in HBR's transcript of the 2023 rerun, which plays the 2020 recording. HBR's original 2020 episode page has no transcript, and I didn't open Exponential View's members-only transcript.\n- His July 2020 \"The GPT-3 hype is way too much\" tweet showed up only in search snippets. I didn't open it, so I haven't quoted it, and it has no date anyway.\n- I found no AI predictions in his 2020 blog posts. That source still has gaps.\n\n**Other years.** The Peter Diamandis podcast with a \"10 years from now, we'll be talking to AI\" segment was filmed in early 2021, according to the page. The \"by 2030\" tweet about costs falling toward zero is from 2021.\n\nI used 9 of 12 searches and 4 of 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2020-02\",\n      \"quote\": \"That has been growing about 8x per year for about eight years now. And I think it’s gonna keep going like that for about five years.\",\n      \"what_is_predicted\": \"The size of the largest AI training runs (how big the biggest models can be made, by whatever compute means) will keep growing about 8x per year for about five more years.\",\n      \"date_or_span\": \"about five years (from February 2020, i.e. to roughly 2025)\",\n      \"occasion\": \"Fireside chat at Rescale's inaugural Big Compute conference, SFJazz, San Francisco, February 11-12, 2020 (video upload date 2020-02-19; transcript posted 2020-02-24)\",\n      \"source_url\": \"https://rescale.com/blog/fireside-chat-with-sam-altman/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2020-10\",\n      \"quote\": \"This is not AGI, this is not mean AGI is around the corner. But it does mean that something powerful in this direction is going to happen, and we should have a conversation about how that’s going to go.\",\n      \"source_url\": \"https://hbr.org/podcast/2023/05/azeems-picks-sam-altman-on-how-gpts-are-shaping-our-ai-future\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2021\", \"note\": \"Peter Diamandis podcast 'The Rise of OpenAI w/ Sam Altman' (segment '10 years from now, we'll be talking to AI') — the page says it was filmed in early 2021; diamandis.com/podcast/sam-altman.\"},\n    {\"year\": \"2021\", \"note\": \"Tweet by @sama saying that 'by 2030' it will become clear that AI plus energy will push costs of intelligence toward zero (x.com/sama/status/1436028668082462748), seen in search results only.\"},\n    {\"year\": \"2025\", \"note\": \"Many search results concern 2025 statements (for example 'by 2030' superintelligence, Axel Springer interview, The Gentle Singularity); not this year.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2020\", \"what_found\": \"Only recent (2025) coverage and his blog's retrospective mentions of 2020; nothing said in 2020.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2020 interview AGI \\\"years\\\"\", \"what_found\": \"Recent AGI-timeline coverage from 2023-2025; nothing from 2020.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2020 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"All results about his 2025 'by 2030' prediction; nothing from 2020.\"},\n    {\"query_or_url\": \"Sam Altman 2020 podcast interview OpenAI GPT-3 future\", \"what_found\": \"Found the October 2020 Exponential View (HBR) episode with Azeem Azhar, its 2023 rerun with transcript, and the Diamandis podcast.\"},\n    {\"query_or_url\": \"blog.samaltman.com 2020\", \"what_found\": \"Blog index pages and a January 2020 'How To Invest In Startups' tweet; no AI prediction found.\"},\n    {\"query_or_url\": \"Sam Altman tweet 2020 GPT-3 hype AGI\", \"what_found\": \"July 2020 'The GPT-3 hype is way too much' tweet (snippets only, not opened; no date or span in it).\"},\n    {\"query_or_url\": \"https://www.diamandis.com/podcast/sam-altman\", \"what_found\": \"Opened; the page says the episode was filmed in early 2021, so not 2020; no transcript.\"},\n    {\"query_or_url\": \"https://hbr.org/podcast/2020/10/how-gpt-3-is-shaping-our-ai-future\", \"what_found\": \"Opened; 2020-10-07 episode page with show notes only, no transcript.\"},\n    {\"query_or_url\": \"Altman Azeem Azhar GPT-3 interview 2020 AGI quote\", \"what_found\": \"Pointed to HBR's 2023 'Azeem's Picks' rerun page, which carries a transcript of the 2020 conversation.\"},\n    {\"query_or_url\": \"\\\"sama\\\" tweet 2020 AI \\\"next decade\\\" OR \\\"in ten years\\\" OR \\\"by 2030\\\"\", \"what_found\": \"Only a 2021 tweet and later items; nothing from 2020.\"},\n    {\"query_or_url\": \"Sam Altman December 2020 interview AI future decade\", \"what_found\": \"Only 2025-2026 coverage; nothing from 2020.\"},\n    {\"query_or_url\": \"https://hbr.org/podcast/2023/05/azeems-picks-sam-altman-on-how-gpts-are-shaping-our-ai-future\", \"what_found\": \"Opened; transcript of the 2020 conversation; only an undated 'not AGI ... not around the corner' remark, no dated prediction.\"},\n    {\"query_or_url\": \"Sam Altman 2020 talk OpenAI AGI timeline interview transcript\", \"what_found\": \"Found Rescale's 'Fireside Chat with Sam Altman' transcript plus later Lex Fridman and other transcripts.\"},\n    {\"query_or_url\": \"Sam Altman tweet 2020 AI \\\"years\\\" prediction sama status\", \"what_found\": \"A May 2020 non-AI '10 years' career tweet and later tweets; no 2020 AI prediction.\"},\n    {\"query_or_url\": \"https://rescale.com/blog/fireside-chat-with-sam-altman/\", \"what_found\": \"Opened; February 2020 Big Compute transcript holding the five-year compute-scaling forecast and a 'next few years' language-AI remark.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"The only dated forward-looking AI statement found is from Altman's February 2020 Big Compute fireside chat: he expected the size of the largest AI training runs to keep growing about 8x per year for about five years. It is borderline because it concerns compute rather than a capability. His October 2020 Exponential View interview held only an undated remark that GPT-3 does not mean AGI is around the corner. His July 2020 GPT-3 'hype' tweet was seen only in snippets and carries no date.\"\n}\n```"
+}

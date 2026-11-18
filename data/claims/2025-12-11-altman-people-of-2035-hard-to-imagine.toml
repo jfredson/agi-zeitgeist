@@ -1,0 +1,19 @@
+[claim]
+id = "2025-12-11-altman-people-of-2035-hard-to-imagine"
+speaker_id = "altman"
+when = "2025-12-11"
+occasion = "'Ten years', his post on openai.com for OpenAI's tenth anniversary"
+source_kind = "own_words"
+source_url = "https://openai.com/index/ten-years/"
+source_locator = "two sentences after 'In ten more years, I believe we are almost certain to build superintelligence'"
+checked_how = "Read on the page on 2026-11-17 in the built-in browser (the page refuses a plain fetch); the page's date line reads 'December 11, 2025'."
+quote = "the people of 2035 will be capable of doing things that I just don't think we can easily imagine right now"
+prediction = "After saying superintelligence is almost certain within ten years, he says the people of 2035 will be capable of doing things that cannot easily be imagined now."
+kind = "capability"
+bar = "None an outsider could run: things that cannot be imagined now cannot be named in advance."
+due = 2035
+due_basis = "'the people of 2035'; judged at 2035-12-31."
+status = "unfalsifiable"
+verdict_why = "No thing is named, so no dated record could settle it. Decided at entry."
+search_ids = ["altman-claims-041"]
+notes = "Role at the time: chief executive of OpenAI (co-chair from its founding in 2015 to March 2019, chief executive since), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17."

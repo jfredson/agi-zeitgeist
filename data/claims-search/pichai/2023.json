@@ -1,0 +1,422 @@
+{
+  "speaker_id": "pichai",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.8625,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7681
+      },
+      "cache_creation_input_tokens": 61555,
+      "cache_read_input_tokens": 1052937,
+      "inference_geo": "global",
+      "input_tokens": 58,
+      "output_tokens": 11196,
+      "output_tokens_details": {
+        "thinking_tokens": 3272
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sundar Pichai\" AI prediction 2023','\"Sundar Pichai\" 2023 interview AGI \"years\"','\"Sundar Pichai\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    r=json.loads(R[q]) if isinstance(R[q],str) else R[q]\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    r=await web_search({\"query\":q})\n    r=json.loads(r) if isinstance(r,str) else r\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef show(r,keys):\n    for x in r:\n        c=x.get('content','')\n        for k in keys:\n            for m in re.finditer(k,c):\n                print(x['url'][:70],'::',c[max(0,m.start()-200):m.end()+200].replace('\\n',' '));print()\nshow(R[qs[0]][:1],['decade','year','AGI'])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://www.technologyreview.com/2023/12/06/1084539/google-ceo-sundar-pichai-on-gemini-and-the-coming-age-of-ai/\",\"https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/\"]:\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if isinstance(r,dict) else ''\n    print(u, r.get('type'), r.get('error_code'), len(P[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.technologyreview.com/2023/12/06/1084539/google-ceo-sundar-pichai-on-gemini-and-the-coming-age-of-ai/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://example.com\"}) if False else None\nprint(P)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "S={}\nfor q in ['Hard Fork Sundar Pichai transcript March 2023','Pichai \"Google turns 25\" letter 2023 AI \"next 25 years\"','Pichai Emily Chang Bloomberg interview November 2023 AI']:\n    r=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r\n    S[q]=r; print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hard Fork Sundar Pichai transcript March 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai \"Google turns 25\" letter 2023 AI \"next 25 years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Pichai Emily Chang Bloomberg interview November 2023 AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q,r in S.items():\n    for x in r:\n        c=x.get('content','')\n        for m in re.finditer(r'blog\\.google[^\\s\\)\"]*|nytimes\\.com[^\\s\\)\"]*',c): print(x['url'][:50],m.group())\nshow(S['Hard Fork Sundar Pichai transcript March 2023'][:5],['AGI','years from now','next year'])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['blog.google Sundar Pichai Google 25th birthday reflections future','nytimes Hard Fork transcript Sundar Pichai Bard A.I. whiplash']:\n    r=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r\n    S[q]=r; print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "blog.google Sundar Pichai Google 25th birthday reflections future"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "nytimes Hard Fork transcript Sundar Pichai Bard A.I. whiplash"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    return r.get('error_code'), c or ''\ne,c=await fetch(\"https://blog.google/company-news/inside-google/message-ceo/google-25th-birthday-sundar-pichai/\")\nP['g25']=c; print(e,len(c))\nfor k in ['year','decade','will ','AI']:\n    pass\ni=c.find('AI'); print(c[i-3000:i+6000] if i>0 else c[:3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/company-news/inside-google/message-ceo/google-25th-birthday-sundar-pichai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'(next|years|decade|will )',c):\n    pass\nidx=[m.start() for m in re.finditer(r'\\bAI\\b|next 25|decade|years ahead|future',c)]\nprint(len(idx))\ns=c.find('25'); \nseg=c[idx[0]-200:idx[-1]+400] if idx else ''\nprint(seg[:7000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s=c.find('Sep 05, 2023'); s = s if s>0 else c.find('Questions, shrugs',3000)\ni=c.find('I recently'); \nj=c.find('quarter century',5000)\nprint(c.find('2023'), )\nbody_start=c.find('rotary')\nprint(body_start)\nprint(c[body_start-1500:body_start+9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['biggest technological shift','moonshot','next 25','shrug']:\n    print(k,[m.start() for m in re.finditer(k,c)])\nk=c.find('biggest technological shift'); print(c[k-6000:k+5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[19000:24500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[24500:29000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Introducing Gemini\" \"A note from Google and Alphabet CEO Sundar Pichai\" blog.google','Google I/O 2023 keynote Sundar Pichai blog.google \"Making AI more helpful for everyone\"']:\n    r=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r\n    S[q]=r; print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Introducing Gemini\" \"A note from Google and Alphabet CEO Sundar Pichai\" blog.google"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Google I/O 2023 keynote Sundar Pichai blog.google \"Making AI more helpful for everyone\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "e1,g=await fetch(\"https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/\")\ne2,io=await fetch(\"https://blog.google/innovation-and-ai/technology/ai/google-io-2023-keynote-sundar-pichai/\")\nP['gem']=g;P['io']=io\nprint(e1,len(g),e2,len(io))\ndef kw(t,keys,w=300):\n    for k in keys:\n        for m in re.finditer(k,t):\n            print('['+k+']',t[max(0,m.start()-w):m.end()+w].replace('\\n',' '));print('--')\nkw(g,['next year','early next','2024','coming months','coming weeks','years','decade'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2023-keynote-sundar-pichai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "a=g.find('Every technology shift'); a = a if a>0 else g.find('Nearly eight years')-1500\nb=g.find('By Demis Hassabis')\nprint(g[a:b])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw(io,['later this year','next year','coming weeks','coming months','this year','years','decade','Gemini'],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=io.find('## **PaLM 2 and Gemini**'); print(io[k:k+5000]); print('...END:',io[-600:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"Sundar Pichai\" Hard Fork 2023 transcript \"AGI\" Kevin Roose Casey Newton Bard'\nr=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r\nS[q]=r\nfor x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\nshow(r,['AGI'])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sundar Pichai\" Hard Fork 2023 transcript \"AGI\" Kevin Roose Casey Newton Bard"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in r[:1]+S['Hard Fork Sundar Pichai transcript March 2023'][2:4]:\n    print(x['url']); kw(x.get('content',''),['year','AGI','decade','soon'],200)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in R[qs[0]]:\n    if 'fortune.com/2023/05' in x['url'] or 'fool.com' in x['url'] or 'yourstory' in x['url']:\n        print(x['url']); kw(x.get('content',''),['years','decade','next year','by 20'],200)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in S['blog.google Sundar Pichai Google 25th birthday reflections future']:\n    if 'npr' in x['url'] or 'gigazine' in x['url']: print(x['url'], x.get('content','')[:600].replace('\\n',' '))\nfor x in R[qs[0]]:\n    if 'fortune.com/2023/05' in x['url']: print(x.get('content','')[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Verge Decoder Sundar Pichai Nilay Patel May 2023 interview transcript'\nr=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r\nS[q]=r\nfor x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Verge Decoder Sundar Pichai Nilay Patel May 2023 interview transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "e,f=await fetch(\"https://fortune.com/2023/05/12/sundar-pichai-a-i-labor-market-disruptions/\")\nprint(e,len(f))\nk=f.find('Artificial intelligence tools have captured'); print(f[k:k+4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://fortune.com/2023/05/12/sundar-pichai-a-i-labor-market-disruptions/"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-04-16",
+        "quote": "AI will impact everything. So, for example, you could be a radiologist. You know, if I-- if I-- if you think about five to 10 years from now, you're gonna have a AI collaborator with you. It may triage.",
+        "what_is_predicted": "Within five to ten years, professionals such as radiologists will work with an AI collaborator that triages cases and flags things they missed.",
+        "date_or_span": "five to 10 years from now (about 2028-2033)",
+        "occasion": "CBS 60 Minutes interview with Scott Pelley",
+        "source_url": "https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-12-06",
+        "quote": "I think a year out from now, anybody starting on something in Google Docs will expect something different. And if you give it to them, and later put them back in the version of Google Docs we had, let’s say, in 2022, they will find it so out of date.",
+        "what_is_predicted": "Within about a year, AI features in Google Docs will be so expected that the pre-AI version will feel out of date to users.",
+        "date_or_span": "a year out from now (about end of 2024)",
+        "occasion": "MIT Technology Review Q&A with Mat Honan, held the day before the Gemini launch and published 2023-12-06",
+        "source_url": "https://www.technologyreview.com/2023/12/06/1084539/google-ceo-sundar-pichai-on-gemini-and-the-coming-age-of-ai/",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-05-12",
+        "quote": "So, A.I. will make the profession better in certain ways, might have some unintended consequences, but I’m willing to almost bet 10 years from now, maybe there are more lawyers.",
+        "what_is_predicted": "Ten years on, AI will have improved the legal profession without shrinking it, and there may be more lawyers than now (a forecast about AI's effect on jobs, so borderline on criterion 2).",
+        "date_or_span": "10 years from now (about 2033)",
+        "occasion": "Interview with The Verge's Nilay Patel (Decoder), published 2023-05-12, as quoted by Fortune",
+        "source_url": "https://fortune.com/2023/05/12/sundar-pichai-a-i-labor-market-disruptions/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2016",
+        "note": "MIT Technology Review's introduction quotes his first founder's letter as CEO (2016): '[w]e will move from mobile first to an AI first world.'"
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sundar Pichai\" AI prediction 2023",
+        "what_found": "MIT Technology Review Dec 2023 Q&A, Fortune and Motley Fool coverage, and the Wikipedia page."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2023 interview AGI \"years\"",
+        "what_found": "CBS 60 Minutes transcript (April 2023), coverage from CNBC and Fortune, and 2025 interview pages; no dated 2023 AGI statement."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly 2024-2025 items and an aggregator page; nothing usable for 2023."
+      },
+      {
+        "query_or_url": "Hard Fork Sundar Pichai transcript March 2023",
+        "what_found": "Podcast listings and coverage of the March 31 Hard Fork episode; no transcript page."
+      },
+      {
+        "query_or_url": "Pichai \"Google turns 25\" letter 2023 AI \"next 25 years\"",
+        "what_found": "Coverage of his Sept 2023 Google-at-25 letter; no direct link to the letter."
+      },
+      {
+        "query_or_url": "Pichai Emily Chang Bloomberg interview November 2023 AI",
+        "what_found": "Bloomberg audio and video pages and YouTube links for the Nov 2023 interview; no text transcript; not opened."
+      },
+      {
+        "query_or_url": "blog.google Sundar Pichai Google 25th birthday reflections future",
+        "what_found": "Found the blog.google URL of the 25th-birthday letter."
+      },
+      {
+        "query_or_url": "nytimes Hard Fork transcript Sundar Pichai Bard A.I. whiplash",
+        "what_found": "Podcast listings and coverage only; no NYT transcript."
+      },
+      {
+        "query_or_url": "\"Introducing Gemini\" \"A note from Google and Alphabet CEO Sundar Pichai\" blog.google",
+        "what_found": "Found the Dec 2023 Gemini launch post on blog.google."
+      },
+      {
+        "query_or_url": "Google I/O 2023 keynote Sundar Pichai blog.google \"Making AI more helpful for everyone\"",
+        "what_found": "Found the I/O 2023 keynote post on blog.google."
+      },
+      {
+        "query_or_url": "\"Sundar Pichai\" Hard Fork 2023 transcript \"AGI\" Kevin Roose Casey Newton Bard",
+        "what_found": "No transcript; only coverage pages."
+      },
+      {
+        "query_or_url": "Verge Decoder Sundar Pichai Nilay Patel May 2023 interview transcript",
+        "what_found": "Podcast listings for the May 2023 Decoder episode; no transcript page found."
+      },
+      {
+        "query_or_url": "https://www.technologyreview.com/2023/12/06/1084539/google-ceo-sundar-pichai-on-gemini-and-the-coming-age-of-ai/",
+        "what_found": "Full printed Q&A; contains the 'a year out from now' Google Docs prediction, plus a 'next decade ahead' line that I left out because it is about society coping with AI, not AI doing something."
+      },
+      {
+        "query_or_url": "https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/",
+        "what_found": "60 Minutes transcript with the 'five to 10 years from now' AI collaborator prediction."
+      },
+      {
+        "query_or_url": "https://blog.google/company-news/inside-google/message-ceo/google-25th-birthday-sundar-pichai/",
+        "what_found": "Google-at-25 letter (2023-09-05); the page text was cut off partway through the AI section, so the part about the future was not seen; no dated prediction in the part read."
+      },
+      {
+        "query_or_url": "https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/",
+        "what_found": "His note in the Gemini launch post was read in full; it calls AI 'the most profound in our lifetimes' but gives no date, so I left it out."
+      },
+      {
+        "query_or_url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2023-keynote-sundar-pichai/",
+        "what_found": "I/O keynote post confirms 'roll out Magic Editor in Google Photos later this year' (already recorded); the page was cut off before the Gemini paragraph."
+      },
+      {
+        "query_or_url": "https://fortune.com/2023/05/12/sundar-pichai-a-i-labor-market-disruptions/",
+        "what_found": "Fortune coverage quoting the Verge interview, including '10 years from now, maybe there are more lawyers.'"
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2023 Pichai mostly made broad claims about how big AI would be. The few dated predictions were short-range or medium-range: AI collaborators for professionals such as radiologists in five to ten years (60 Minutes), AI-assisted Google Docs feeling standard within a year (MIT Technology Review), and possibly more lawyers in ten years (Verge interview, seen only in Fortune's coverage). No dated or undated statement about when AGI arrives turned up, and three blog.google pages were cut off, so parts of them went unread."
+  },
+  "reply_text": "Let me open the MIT Technology Review Q&A and the CBS 60 Minutes transcript.I found three dated AI predictions by Pichai from 2023. Neither of the two claims you've already recorded came up in a form I could reuse:\n\n- **Magic Editor \"later this year\":** I did see these words in the I/O 2023 keynote post, so that file is confirmed.\n- **Gemini \"throughout 2024\":** this appeared only in MIT Technology Review's own introduction, not in Pichai's words, so I didn't list it again.\n\n**The three candidates:**\n1. **60 Minutes (CBS, aired 16 April).** Pichai said that \"five to 10 years from now\" a radiologist would have an AI collaborator. CBS's transcript is an edited version of the broadcast.\n2. **MIT Technology Review Q&A (published 6 December).** He said that \"a year out from now\" anyone opening Google Docs would expect AI help, and would find the 2022 version \"so out of date.\"\n3. **Lawyers \"10 years from now.\"** He said he would \"almost bet\" there may be more lawyers in ten years. I only saw this quoted in Fortune's write-up of his 12 May interview with The Verge's Decoder podcast. I didn't open The Verge's page, so the source is marked coverage-only. This is also a forecast about AI's effect on jobs rather than about what AI will do, so it's a judgement call whether to keep it.\n\n**Lines I left out:**\n- \"the next decade ahead\" (MIT Technology Review): it's about society coping with AI, not AI doing something.\n- AI as \"the most profound in our lifetimes\" (Gemini launch post): no real date.\n- \"Ultra … available next year\" (MIT Technology Review): those are the editor's words in brackets, not his.\n\n**Pages that were cut short:** Three blog.google pages came back truncated, so their later sections are unchecked. These were his Google-at-25 letter (cut off before its section on the future), the I/O keynote (cut off before the Gemini part) and the Gemini launch post (his note was read in full). I found no transcript of his March Hard Fork podcast or the Decoder interview, and I didn't open the November Bloomberg interview.\n\n**Search bookkeeping:** A coding error cut the first round short after only the first fixed search had run. I then ran the other two once each, so each fixed search ran exactly once. I used all 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2023-04-16\", \"quote\": \"AI will impact everything. So, for example, you could be a radiologist. You know, if I-- if I-- if you think about five to 10 years from now, you're gonna have a AI collaborator with you. It may triage.\", \"what_is_predicted\": \"Within five to ten years, professionals such as radiologists will work with an AI collaborator that triages cases and flags things they missed.\", \"date_or_span\": \"five to 10 years from now (about 2028-2033)\", \"occasion\": \"CBS 60 Minutes interview with Scott Pelley\", \"source_url\": \"https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-12-06\", \"quote\": \"I think a year out from now, anybody starting on something in Google Docs will expect something different. And if you give it to them, and later put them back in the version of Google Docs we had, let’s say, in 2022, they will find it so out of date.\", \"what_is_predicted\": \"Within about a year, AI features in Google Docs will be so expected that the pre-AI version will feel out of date to users.\", \"date_or_span\": \"a year out from now (about end of 2024)\", \"occasion\": \"MIT Technology Review Q&A with Mat Honan, held the day before the Gemini launch and published 2023-12-06\", \"source_url\": \"https://www.technologyreview.com/2023/12/06/1084539/google-ceo-sundar-pichai-on-gemini-and-the-coming-age-of-ai/\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-05-12\", \"quote\": \"So, A.I. will make the profession better in certain ways, might have some unintended consequences, but I’m willing to almost bet 10 years from now, maybe there are more lawyers.\", \"what_is_predicted\": \"Ten years on, AI will have improved the legal profession without shrinking it, and there may be more lawyers than now (a forecast about AI's effect on jobs, so borderline on criterion 2).\", \"date_or_span\": \"10 years from now (about 2033)\", \"occasion\": \"Interview with The Verge's Nilay Patel (Decoder), published 2023-05-12, as quoted by Fortune\", \"source_url\": \"https://fortune.com/2023/05/12/sundar-pichai-a-i-labor-market-disruptions/\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2016\", \"note\": \"MIT Technology Review's introduction quotes his first founder's letter as CEO (2016): '[w]e will move from mobile first to an AI first world.'\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" AI prediction 2023\", \"what_found\": \"MIT Technology Review Dec 2023 Q&A, Fortune and Motley Fool coverage, and the Wikipedia page.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"CBS 60 Minutes transcript (April 2023), coverage from CNBC and Fortune, and 2025 interview pages; no dated 2023 AGI statement.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly 2024-2025 items and an aggregator page; nothing usable for 2023.\"},\n    {\"query_or_url\": \"Hard Fork Sundar Pichai transcript March 2023\", \"what_found\": \"Podcast listings and coverage of the March 31 Hard Fork episode; no transcript page.\"},\n    {\"query_or_url\": \"Pichai \\\"Google turns 25\\\" letter 2023 AI \\\"next 25 years\\\"\", \"what_found\": \"Coverage of his Sept 2023 Google-at-25 letter; no direct link to the letter.\"},\n    {\"query_or_url\": \"Pichai Emily Chang Bloomberg interview November 2023 AI\", \"what_found\": \"Bloomberg audio and video pages and YouTube links for the Nov 2023 interview; no text transcript; not opened.\"},\n    {\"query_or_url\": \"blog.google Sundar Pichai Google 25th birthday reflections future\", \"what_found\": \"Found the blog.google URL of the 25th-birthday letter.\"},\n    {\"query_or_url\": \"nytimes Hard Fork transcript Sundar Pichai Bard A.I. whiplash\", \"what_found\": \"Podcast listings and coverage only; no NYT transcript.\"},\n    {\"query_or_url\": \"\\\"Introducing Gemini\\\" \\\"A note from Google and Alphabet CEO Sundar Pichai\\\" blog.google\", \"what_found\": \"Found the Dec 2023 Gemini launch post on blog.google.\"},\n    {\"query_or_url\": \"Google I/O 2023 keynote Sundar Pichai blog.google \\\"Making AI more helpful for everyone\\\"\", \"what_found\": \"Found the I/O 2023 keynote post on blog.google.\"},\n    {\"query_or_url\": \"\\\"Sundar Pichai\\\" Hard Fork 2023 transcript \\\"AGI\\\" Kevin Roose Casey Newton Bard\", \"what_found\": \"No transcript; only coverage pages.\"},\n    {\"query_or_url\": \"Verge Decoder Sundar Pichai Nilay Patel May 2023 interview transcript\", \"what_found\": \"Podcast listings for the May 2023 Decoder episode; no transcript page found.\"},\n    {\"query_or_url\": \"https://www.technologyreview.com/2023/12/06/1084539/google-ceo-sundar-pichai-on-gemini-and-the-coming-age-of-ai/\", \"what_found\": \"Full printed Q&A; contains the 'a year out from now' Google Docs prediction, plus a 'next decade ahead' line that I left out because it is about society coping with AI, not AI doing something.\"},\n    {\"query_or_url\": \"https://www.cbsnews.com/news/google-artificial-intelligence-future-60-minutes-transcript-2023-04-16/\", \"what_found\": \"60 Minutes transcript with the 'five to 10 years from now' AI collaborator prediction.\"},\n    {\"query_or_url\": \"https://blog.google/company-news/inside-google/message-ceo/google-25th-birthday-sundar-pichai/\", \"what_found\": \"Google-at-25 letter (2023-09-05); the page text was cut off partway through the AI section, so the part about the future was not seen; no dated prediction in the part read.\"},\n    {\"query_or_url\": \"https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/\", \"what_found\": \"His note in the Gemini launch post was read in full; it calls AI 'the most profound in our lifetimes' but gives no date, so I left it out.\"},\n    {\"query_or_url\": \"https://blog.google/innovation-and-ai/technology/ai/google-io-2023-keynote-sundar-pichai/\", \"what_found\": \"I/O keynote post confirms 'roll out Magic Editor in Google Photos later this year' (already recorded); the page was cut off before the Gemini paragraph.\"},\n    {\"query_or_url\": \"https://fortune.com/2023/05/12/sundar-pichai-a-i-labor-market-disruptions/\", \"what_found\": \"Fortune coverage quoting the Verge interview, including '10 years from now, maybe there are more lawyers.'\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2023 Pichai mostly made broad claims about how big AI would be. The few dated predictions were short-range or medium-range: AI collaborators for professionals such as radiologists in five to ten years (60 Minutes), AI-assisted Google Docs feeling standard within a year (MIT Technology Review), and possibly more lawyers in ten years (Verge interview, seen only in Fortune's coverage). No dated or undated statement about when AGI arrives turned up, and three blog.google pages were cut off, so parts of them went unread.\"\n}\n```"
+}

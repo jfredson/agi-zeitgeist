@@ -1,0 +1,386 @@
+{
+  "speaker_id": "suleyman",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6938,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8325
+      },
+      "cache_creation_input_tokens": 49264,
+      "cache_read_input_tokens": 542651,
+      "inference_geo": "global",
+      "input_tokens": 48,
+      "output_tokens": 12436,
+      "output_tokens_details": {
+        "thinking_tokens": 4100
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mustafa Suleyman\" AI prediction 2024','\"Mustafa Suleyman\" 2024 interview AGI \"years\"','\"Mustafa Suleyman\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\nfor q in qs:\n    r=R[q]\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mustafa Suleyman\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef show(q,urlpart,n=3000):\n    for x in R[q]:\n        if urlpart in x['url']:\n            print(x['url'],'\\n',x['content'][:n],'\\n----')\nshow(qs[2],'cointelegraph',1500)\nshow(qs[2],'weforum',2500)\nshow(qs[2],'biocomm',2500)\nshow(qs[0],'theaiinsider',1500)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "extra=['Mustafa Suleyman TED 2024 \"What is an AI anyway\" transcript',\n'Mustafa Suleyman Copilot October 2024 interview \"next year\" memory']\nfor q in extra:\n    r=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r; R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman TED 2024 \"What is an AI anyway\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman Copilot October 2024 interview \"next year\" memory"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in ['https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/','https://www.npr.org/2024/12/20/1220579281/the-future-of-ai-with-mustafa-suleyman']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    F[u]=r.get('content','') or str(r)\n    print(u,len(F[u]),F[u][:300])\nkw=r'year|decade|20[23]\\d|month|soon|next|within|AGI|superintelligen'\nfor u,t in F.items():\n    print('=====',u)\n    for s in re.split(r'(?<=[.?!])\\s+',t):\n        if re.search(kw,s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,v in F.items():\n    print(u,type(v), str(v)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F['https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/']=F['https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/']['source']['data']\nu='https://www.npr.org/2024/12/20/1220579281/the-future-of-ai-with-mustafa-suleyman'\nr=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\nif isinstance(r,list): r=r[0]\nc=r.get('content',r)\nif isinstance(c,dict): c=c.get('source',{}).get('data',str(c))\nF[u]=c\nfor u,t in F.items():\n    print('=====',u,len(t))\n    for s in re.split(r'(?<=[.?!])\\s+',t):\n        if re.search(kw,s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.npr.org/2024/12/20/1220579281/the-future-of-ai-with-mustafa-suleyman"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw=r'year|decade|20[23]\\d|month|soon|next|within|AGI|superintelligen'\nprint(F['https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/'])\nt=F[u]; print(type(t), len(str(t)))\nfor s in re.split(r'(?<=[.?!])\\s+',str(t)):\n    if re.search(kw,s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "nu='https://www.npr.org/2024/12/20/1220579281/the-future-of-ai-with-mustafa-suleyman'\nt=str(F[nu]); print(len(t)); print(t[:800])\nfor s in re.split(r'(?<=[.?!])\\s+',t):\n    if re.search(kw,s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in R[qs[1]]:\n    if 'hypebeast' in x['url'] or 'digitalinformation' in x['url'] or 'lilys' in x['url']:\n        t=x['content']; print('=====',x['url'],len(t))\n        for s in re.split(r'(?<=[.?!])\\s+',t):\n            if re.search(kw,s): print('-',s[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content',r)\n    if isinstance(c,dict): c=c.get('source',{}).get('data',str(c))\n    return str(c)\nhu='https://hypebeast.com/2024/12/interview-mustafa-suleyman-microsoft-ai-ceo-technology-impact-on-culture'\nF[hu]=await fetch(hu); t=F[hu]; print(len(t))\nfor s in re.split(r'(?<=[.?!])\\s+',t):\n    if re.search(kw+r'|future|will ',s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://hypebeast.com/2024/12/interview-mustafa-suleyman-microsoft-ai-ceo-technology-impact-on-culture"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=t.find('Godfather'); print(t[i-200:i+1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['Hinton','2100','take over','next 10','ten years']:\n    i=t.find(k); print(k,i)\ni=t.find('2100'); print(t[max(0,i-1500):i+400] if i>0 else t[-6000:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "extra=['Mustafa Suleyman \"An AI companion for everyone\" October 2024',\n'Mustafa Suleyman Chris Anderson TED 2024 autonomy \"five to 10 years\" transcript']\nfor q in extra:\n    r=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r; R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman \"An AI companion for everyone\" October 2024"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman Chris Anderson TED 2024 autonomy \"five to 10 years\" transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "kw2=kw+r'|will '\nfor q in extra:\n    for x in R[q]:\n        if any(k in x['url'] for k in ['microsoft.ai/news','source/asia','madrona','davos-2024-how','trevor']):\n            tt=x['content']; print('=====',x['url'],len(tt))\n            for s in re.split(r'(?<=[.?!])\\s+',tt):\n                if re.search(kw,s): print('-',s[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "mu='https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/'\ndu='https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/'\nF[mu]=await fetch(mu); F[du]=await fetch(du)\nfor u in [mu,du]:\n    tt=F[u]; print('=====',u,len(tt)); print(tt[:300])\n    for s in re.split(r'(?<=[.?!])\\s+',tt):\n        if re.search(r'year|decade|20[23]\\d|month|AGI|superintelligen|next generation',s): print('-',s[:500])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "tt=F[mu]\nfor k in ['next 18 months','everyone’s going to build an AI by 2030','recursive self-improvement, that','high-confidence','2028 or 2030 or']:\n    i=tt.find(k); print('#####',k); print(tt[max(0,i-1500):i+700])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"What Now\" Trevor Noah Mustafa Suleyman episode date'\nr=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r; R[q]=r\nfor x in r:\n    print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    m=re.findall(r'[^.]*(?:20[23]\\d)[^.]*\\.',x['content'])[:3]; print('   ',m)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"What Now\" Trevor Noah Mustafa Suleyman episode date"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Mustafa Suleyman 2024 podcast transcript \"in the next five years\"'\nr=await web_search({\"query\":q}); r=json.loads(r) if isinstance(r,str) else r; R[q]=r\nfor x in r:\n    print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    for s in re.split(r'(?<=[.?!])\\s+',x['content']):\n        if re.search(r'next (five|5|ten|10|two|three)|20[23]\\d',s) and 'Suleyman' not in s[:0]: print('   -',s[:200])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Mustafa Suleyman 2024 podcast transcript \"in the next five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "eu='https://microsoft.ai/news/an-ai-companion-for-everyone/'\nF[eu]=await fetch(eu); tt=F[eu]; print(len(tt))\nfor s in re.split(r'(?<=[.?!])\\s+',tt):\n    if re.search(r'year|decade|20[23]\\d|month|soon|next|AGI|superintelligen|will ',s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://microsoft.ai/news/an-ai-companion-for-everyone/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['Because very soon','These factual inaccuracies']:\n    i=F[du].find(k); print(F[du][i:i+260]); print()\nfor q in [\"I’m pretty sure in the next 18 months we’re going to have AIs with very, very good memory, if not infinite and perfect, but very good ability to retrieve over arbitrary documents\",\n\"everyone’s going to build an AI by 2030 just as everyone built a website and everyone built an app\",\n\"recursive self-improvement, that is clearly going to raise the risk level in five to 10 years time\",\"if you disagree with me on 2030, then just roll it out to 2035\",\"that was some of the things that we launched yesterday\"]:\n    print(q in F[mu])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-10-02",
+        "quote": "everyone’s going to build an AI by 2030 just as everyone built a website and everyone built an app.",
+        "what_is_predicted": "By 2030 every organisation (every brand, business and influencer) will have built its own AI, as each once built a website and an app.",
+        "date_or_span": "by 2030 (he added: 'if you disagree with me on 2030, then just roll it out to 2035')",
+        "occasion": "Madrona IA Summit 2024 fireside chat with Soma Somasegar (transcript published 2024-10-10; he refers to the Copilot launch 'yesterday', i.e. 1 October 2024)",
+        "source_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-10-02",
+        "quote": "I’m pretty sure in the next 18 months we’re going to have AIs with very, very good memory, if not infinite and perfect, but very good ability to retrieve over arbitrary documents.",
+        "what_is_predicted": "Within 18 months AIs will have very good memory and retrieval over arbitrary documents.",
+        "date_or_span": "next 18 months",
+        "occasion": "Madrona IA Summit 2024 fireside chat",
+        "source_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+        "source_kind": "transcript",
+        "already_recorded": "2024-09-18-suleyman-ai-memory-workable-in-18-months.toml"
+      },
+      {
+        "date_said": "2024-10-02",
+        "quote": "But likewise, recursive self-improvement, that is clearly going to raise the risk level in five to 10 years time and probably needs to be a capability that will be looked at I think by regulators in a sensible way.",
+        "what_is_predicted": "Recursive self-improvement in AI will raise the risk level within five to ten years.",
+        "date_or_span": "five to 10 years",
+        "occasion": "Madrona IA Summit 2024 fireside chat",
+        "source_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+        "source_kind": "transcript",
+        "already_recorded": "2024-04-suleyman-self-improving-ai-five-to-ten-years.toml"
+      },
+      {
+        "date_said": "2024-01-17",
+        "quote": "Because very soon, in the next three to five years, there will be AIs that are really equivalent to digital people.",
+        "what_is_predicted": "Within three to five years there will be AIs equivalent to digital people.",
+        "date_or_span": "next three to five years",
+        "occasion": "WEF Davos 2024 session 'How to Trust Technology'",
+        "source_url": "https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/",
+        "source_kind": "transcript",
+        "already_recorded": "2024-01-17-suleyman-ais-equivalent-to-digital-people-three-to-five-years.toml"
+      },
+      {
+        "date_said": "2024-01-17",
+        "quote": "These factual inaccuracies are going to go from today, when they're hovering around sort of 80, 85%, all the way up to 90, 99 to 99.9%, right, in order of magnitude improvement over the next three years.",
+        "what_is_predicted": "Model factual accuracy will rise from about 80-85% to 99-99.9% within three years.",
+        "date_or_span": "next three years",
+        "occasion": "WEF Davos 2024 session 'How to Trust Technology'",
+        "source_url": "https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/",
+        "source_kind": "transcript",
+        "already_recorded": "2024-01-17-suleyman-factual-accuracy-99-percent-three-years.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search results show many 2025 items: 'What Now? with Trevor Noah' (aired 18 Sept 2025, per Podchaser), Bloomberg weekend interview, Silicon Valley Girl podcast, Moonshots with Peter Diamandis, and the '12-18 months white-collar automation' remark. None were opened."
+      },
+      {
+        "year": "2023",
+        "note": "Diary of a CEO interview ('possible at some point in the next five years') appears in a Fireflies blog dated Mar 2024. It is a retelling of a 2023 interview and was not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mustafa Suleyman\" AI prediction 2024",
+        "what_found": "Mostly 2025 coverage of the 12-18 month white-collar automation remark, a Fortune Jan 2024 Davos piece and a July 2024 profile."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2024 interview AGI \"years\"",
+        "what_found": "Dec 2024 Hypebeast interview and coverage of the Verge Decoder AGI 'five to seven years' remark (already recorded)."
+      },
+      {
+        "query_or_url": "\"Mustafa Suleyman\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Coverage of the Jan 2024 Davos modern-Turing-test remark (recorded), a WEF Radio Davos write-up and a Times Techies (Nov 2024) tweet roundup on memory in 2025."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman TED 2024 \"What is an AI anyway\" transcript",
+        "what_found": "TED 2024 talk transcript pages and an NPR TED Radio Hour episode from Dec 2024."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman Copilot October 2024 interview \"next year\" memory",
+        "what_found": "Mostly 2025 items. Nothing new from 2024."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman \"An AI companion for everyone\" October 2024",
+        "what_found": "His 1 Oct 2024 essay on microsoft.ai and a Microsoft Source Asia release from 6 Nov 2024 (snippet says only 'soon')."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman Chris Anderson TED 2024 autonomy \"five to 10 years\" transcript",
+        "what_found": "Madrona IA Summit 2024 transcript, WEF Davos 2024 'How to Trust Technology' transcript, and a Trevor Noah podcast transcript."
+      },
+      {
+        "query_or_url": "\"What Now\" Trevor Noah Mustafa Suleyman episode date",
+        "what_found": "The Trevor Noah episode aired 18 Sept 2025, so it falls outside 2024."
+      },
+      {
+        "query_or_url": "Mustafa Suleyman 2024 podcast transcript \"in the next five years\"",
+        "what_found": "Davos 2024 'Hard Power of AI' (source of the recorded modern-Turing-test claim), plus 2023 and 2025 interviews."
+      },
+      {
+        "query_or_url": "https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/",
+        "what_found": "Only the first page of the TED 2024 transcript loaded, with no dated predictions."
+      },
+      {
+        "query_or_url": "https://www.npr.org/2024/12/20/1220579281/the-future-of-ai-with-mustafa-suleyman",
+        "what_found": "TED Radio Hour episode page with a short description and no transcript."
+      },
+      {
+        "query_or_url": "https://hypebeast.com/2024/12/interview-mustafa-suleyman-microsoft-ai-ceo-technology-impact-on-culture",
+        "what_found": "Printed Q&A from 9 Dec 2024 on the Copilot companion, with no dated claims in the part that loaded. The Hinton 'take over' answer seen in a search snippet was not in the loaded text, so it is not quoted."
+      },
+      {
+        "query_or_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+        "what_found": "Full transcript of the Oct 2024 IA Summit chat, with the 'everyone builds an AI by 2030', 18-month memory and 5-10 year self-improvement risk claims."
+      },
+      {
+        "query_or_url": "https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/",
+        "what_found": "Transcript of the 17 Jan 2024 Davos session, confirming the two recorded claims (digital people in 3-5 years; 99% factual accuracy in 3 years)."
+      },
+      {
+        "query_or_url": "https://microsoft.ai/news/an-ai-companion-for-everyone/",
+        "what_found": "His 1 Oct 2024 essay. It has forward-looking companion language but no date or span ('a long journey that will take years')."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2024 was a busy year for Suleyman, and most of his dated claims are already recorded. The one new find is from the Madrona IA Summit transcript (about 2 Oct 2024): 'everyone's going to build an AI by 2030', with a fallback to 2035. The same talk repeats his 18-month memory and 5-10 year self-improvement timelines, and the Davos transcript confirms two recorded January claims."
+  },
+  "reply_text": "I found two new 2024 claims, both from one printed transcript of Suleyman's IA Summit fireside chat with Madrona's Soma Somasegar (published 10 October 2024). He says in the talk that the Copilot launch was \"yesterday\", which dates it to 2 October 2024. I'm inferring that date from the October 1 launch; the page doesn't print it.\n\n- **New:** \"everyone's going to build an AI by 2030 just as everyone built a website and everyone built an app.\" He added, \"if you disagree with me on 2030, then just roll it out to 2035.\"\n- **Same as recorded claims, but said at this new event:**\n  - \"in the next 18 months we're going to have AIs with very, very good memory.\" This matches the 2024-09-18 memory file.\n  - \"recursive self-improvement, that is clearly going to raise the risk level in five to 10 years time.\" I've matched this to the 2024-04 self-improvement file, but the wording is different, so please check that it counts as the same claim.\n- **Recorded claims I met again:** the official WEF transcript of the 17 January 2024 Davos session carries the \"digital people\" (three to five years) and \"factual accuracy\" (next three years) lines.\n\nThings I couldn't use:\n- **Hypebeast, 9 December 2024:** a search snippet showed a line about Hinton and AI \"taking over\", with \"next 10 years\" and \"before 2100\". The page I opened didn't contain that passage, so I haven't quoted it. It's worth checking by hand.\n- **TED 2024 talk:** the transcript page I opened (Singjupost) showed only the first page.\n- **NPR TED Radio Hour (December 2024):** I opened the page, but it had no transcript.\n- **\"An AI companion for everyone\" (1 October 2024):** his own essay has no dated claims.\n- **Undated:** none. No undated AGI or superintelligence timing remark turned up on any page I opened.\n\nI used 9 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2024-10-02\", \"quote\": \"everyone’s going to build an AI by 2030 just as everyone built a website and everyone built an app.\", \"what_is_predicted\": \"By 2030 every organisation (every brand, business and influencer) will have built its own AI, as each once built a website and an app.\", \"date_or_span\": \"by 2030 (he added: 'if you disagree with me on 2030, then just roll it out to 2035')\", \"occasion\": \"Madrona IA Summit 2024 fireside chat with Soma Somasegar (transcript published 2024-10-10; he refers to the Copilot launch 'yesterday', i.e. 1 October 2024)\", \"source_url\": \"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2024-10-02\", \"quote\": \"I’m pretty sure in the next 18 months we’re going to have AIs with very, very good memory, if not infinite and perfect, but very good ability to retrieve over arbitrary documents.\", \"what_is_predicted\": \"Within 18 months AIs will have very good memory and retrieval over arbitrary documents.\", \"date_or_span\": \"next 18 months\", \"occasion\": \"Madrona IA Summit 2024 fireside chat\", \"source_url\": \"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2024-09-18-suleyman-ai-memory-workable-in-18-months.toml\"},\n    {\"date_said\": \"2024-10-02\", \"quote\": \"But likewise, recursive self-improvement, that is clearly going to raise the risk level in five to 10 years time and probably needs to be a capability that will be looked at I think by regulators in a sensible way.\", \"what_is_predicted\": \"Recursive self-improvement in AI will raise the risk level within five to ten years.\", \"date_or_span\": \"five to 10 years\", \"occasion\": \"Madrona IA Summit 2024 fireside chat\", \"source_url\": \"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2024-04-suleyman-self-improving-ai-five-to-ten-years.toml\"},\n    {\"date_said\": \"2024-01-17\", \"quote\": \"Because very soon, in the next three to five years, there will be AIs that are really equivalent to digital people.\", \"what_is_predicted\": \"Within three to five years there will be AIs equivalent to digital people.\", \"date_or_span\": \"next three to five years\", \"occasion\": \"WEF Davos 2024 session 'How to Trust Technology'\", \"source_url\": \"https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2024-01-17-suleyman-ais-equivalent-to-digital-people-three-to-five-years.toml\"},\n    {\"date_said\": \"2024-01-17\", \"quote\": \"These factual inaccuracies are going to go from today, when they're hovering around sort of 80, 85%, all the way up to 90, 99 to 99.9%, right, in order of magnitude improvement over the next three years.\", \"what_is_predicted\": \"Model factual accuracy will rise from about 80-85% to 99-99.9% within three years.\", \"date_or_span\": \"next three years\", \"occasion\": \"WEF Davos 2024 session 'How to Trust Technology'\", \"source_url\": \"https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/\", \"source_kind\": \"transcript\", \"already_recorded\": \"2024-01-17-suleyman-factual-accuracy-99-percent-three-years.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search results show many 2025 items: 'What Now? with Trevor Noah' (aired 18 Sept 2025, per Podchaser), Bloomberg weekend interview, Silicon Valley Girl podcast, Moonshots with Peter Diamandis, and the '12-18 months white-collar automation' remark. None were opened.\"},\n    {\"year\": \"2023\", \"note\": \"Diary of a CEO interview ('possible at some point in the next five years') appears in a Fireflies blog dated Mar 2024. It is a retelling of a 2023 interview and was not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" AI prediction 2024\", \"what_found\": \"Mostly 2025 coverage of the 12-18 month white-collar automation remark, a Fortune Jan 2024 Davos piece and a July 2024 profile.\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Dec 2024 Hypebeast interview and coverage of the Verge Decoder AGI 'five to seven years' remark (already recorded).\"},\n    {\"query_or_url\": \"\\\"Mustafa Suleyman\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Coverage of the Jan 2024 Davos modern-Turing-test remark (recorded), a WEF Radio Davos write-up and a Times Techies (Nov 2024) tweet roundup on memory in 2025.\"},\n    {\"query_or_url\": \"Mustafa Suleyman TED 2024 \\\"What is an AI anyway\\\" transcript\", \"what_found\": \"TED 2024 talk transcript pages and an NPR TED Radio Hour episode from Dec 2024.\"},\n    {\"query_or_url\": \"Mustafa Suleyman Copilot October 2024 interview \\\"next year\\\" memory\", \"what_found\": \"Mostly 2025 items. Nothing new from 2024.\"},\n    {\"query_or_url\": \"Mustafa Suleyman \\\"An AI companion for everyone\\\" October 2024\", \"what_found\": \"His 1 Oct 2024 essay on microsoft.ai and a Microsoft Source Asia release from 6 Nov 2024 (snippet says only 'soon').\"},\n    {\"query_or_url\": \"Mustafa Suleyman Chris Anderson TED 2024 autonomy \\\"five to 10 years\\\" transcript\", \"what_found\": \"Madrona IA Summit 2024 transcript, WEF Davos 2024 'How to Trust Technology' transcript, and a Trevor Noah podcast transcript.\"},\n    {\"query_or_url\": \"\\\"What Now\\\" Trevor Noah Mustafa Suleyman episode date\", \"what_found\": \"The Trevor Noah episode aired 18 Sept 2025, so it falls outside 2024.\"},\n    {\"query_or_url\": \"Mustafa Suleyman 2024 podcast transcript \\\"in the next five years\\\"\", \"what_found\": \"Davos 2024 'Hard Power of AI' (source of the recorded modern-Turing-test claim), plus 2023 and 2025 interviews.\"},\n    {\"query_or_url\": \"https://singjupost.com/what-is-an-ai-anyway-mustafa-suleyman-transcript/\", \"what_found\": \"Only the first page of the TED 2024 transcript loaded, with no dated predictions.\"},\n    {\"query_or_url\": \"https://www.npr.org/2024/12/20/1220579281/the-future-of-ai-with-mustafa-suleyman\", \"what_found\": \"TED Radio Hour episode page with a short description and no transcript.\"},\n    {\"query_or_url\": \"https://hypebeast.com/2024/12/interview-mustafa-suleyman-microsoft-ai-ceo-technology-impact-on-culture\", \"what_found\": \"Printed Q&A from 9 Dec 2024 on the Copilot companion, with no dated claims in the part that loaded. The Hinton 'take over' answer seen in a search snippet was not in the loaded text, so it is not quoted.\"},\n    {\"query_or_url\": \"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\", \"what_found\": \"Full transcript of the Oct 2024 IA Summit chat, with the 'everyone builds an AI by 2030', 18-month memory and 5-10 year self-improvement risk claims.\"},\n    {\"query_or_url\": \"https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/\", \"what_found\": \"Transcript of the 17 Jan 2024 Davos session, confirming the two recorded claims (digital people in 3-5 years; 99% factual accuracy in 3 years).\"},\n    {\"query_or_url\": \"https://microsoft.ai/news/an-ai-companion-for-everyone/\", \"what_found\": \"His 1 Oct 2024 essay. It has forward-looking companion language but no date or span ('a long journey that will take years').\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2024 was a busy year for Suleyman, and most of his dated claims are already recorded. The one new find is from the Madrona IA Summit transcript (about 2 Oct 2024): 'everyone's going to build an AI by 2030', with a fallback to 2035. The same talk repeats his 18-month memory and 5-10 year self-improvement timelines, and the Davos transcript confirms two recorded January claims.\"\n}\n```"
+}

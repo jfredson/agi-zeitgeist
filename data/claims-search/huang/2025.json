@@ -1,0 +1,304 @@
+{
+  "speaker_id": "huang",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6164,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7686
+      },
+      "cache_creation_input_tokens": 54950,
+      "cache_read_input_tokens": 372130,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 8857,
+      "output_tokens_details": {
+        "thinking_tokens": 3026
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Jensen Huang\" AI prediction 2025','\"Jensen Huang\" 2025 interview AGI \"years\"','\"Jensen Huang\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=400):\n    r=json.loads(r) if isinstance(r,str) else r\n    for x in r:\n        if x.get('type')!='web_search_result': print(x);continue\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:n].replace('\\n',' '))\nfor q in qs:\n    if q not in R: R[q]=await web_search({\"query\":q})\n    print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Jensen Huang Bg2 podcast Brad Gerstner 2025 transcript',\n'Jensen Huang Joe Rogan Experience transcript December 2025',\n'Jensen Huang humanoid robots \"five years\" 2025',\n'Jensen Huang CES 2025 keynote transcript robotics \"ChatGPT moment\"']\nfor q in qs2:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Bg2 podcast Brad Gerstner 2025 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang Joe Rogan Experience transcript December 2025"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang humanoid robots \"five years\" 2025"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang CES 2025 keynote transcript robotics \"ChatGPT moment\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=['https://finance.yahoo.com/news/nvidia-ceo-humanoid-robot-revolution-100134721.html',\n'https://stratechery.com/2025/an-interview-with-nvidia-ceo-jensen-huang-about-chip-controls-ai-factories-and-enterprise-pragmatism/',\n'https://singjupost.com/transcript-nvidias-jensen-huang-on-joe-rogan-podcast-2422/',\n'https://singjupost.com/transcript-nvidia-ceo-jensen-huang-on-openai-future-of-compute-and-the-american-dream-bg2-pod/']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') if 'content' in r else str(r)\n    print(u,len(P[u]),P[u][:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://finance.yahoo.com/news/nvidia-ceo-humanoid-robot-revolution-100134721.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,v in P.items(): print(u,type(v), str(v)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(v):\n    if isinstance(v,dict):\n        s=v.get('source',{}); return s.get('data','') if isinstance(s,dict) else str(v)\n    return v\nP[urls[0]]=txt(P[urls[0]])\nfor u in urls[1:]:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=txt(r.get('content',str(r)))\n    print(u,len(P[u]))\nimport re\nt=P[urls[0]]; i=t.find('Nvidia CEO Jensen Huang believes'); print(t[i:i+3000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://stratechery.com/2025/an-interview-with-nvidia-ceo-jensen-huang-about-chip-controls-ai-factories-and-enterprise-pragmatism/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-nvidias-jensen-huang-on-joe-rogan-podcast-2422/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-nvidia-ceo-jensen-huang-on-openai-future-of-compute-and-the-american-dream-bg2-pod/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'years-away|five years|few years',t): print(t[max(0,m.start()-600):m.start()+300].replace('\\n',' '));print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=r'(\\b(19|20)\\d\\d\\b|five years|ten years|\\d+ years|next year|decade|years from now|in a year|AGI|superintelligen|by the end of)'\nfor u in urls[1:]:\n    t=P[u]; print('#####',u)\n    for m in re.finditer(pat,t):\n        print('>>',t[max(0,m.start()-300):m.start()+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P[urls[2]]\nfor k in ['90','percent','Best Case','page/2','Next Page','Pages:']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-200):m.start()+1200].replace('\\n',' ')[:1400]);print()\nprint(t[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['\"Jensen Huang\" Rogan 90% of knowledge AI generated \"years\"',\n'Jensen Huang All-In summit July 2025 transcript millionaires \"five years\"']\nfor q in qs3:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q],600)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" Rogan 90% of knowledge AI generated \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang All-In summit July 2025 transcript millionaires \"five years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://podscripts.co/podcasts/the-joe-rogan-experience/2422-jensen-huang','https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia']:\n    r=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    P[u]=txt(r.get('content',str(r))); print(u,len(P[u]))\nt=P['https://podscripts.co/podcasts/the-joe-rogan-experience/2422-jensen-huang']\nfor k in ['90%','two or three years','next two decades','AGI','superintelligence','10 years','ten years','five years']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-700):m.start()+400].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/the-joe-rogan-experience/2422-jensen-huang"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P['https://podscripts.co/podcasts/the-joe-rogan-experience/2422-jensen-huang'])\nt=P['https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia']\nfor k in ['years-away','five years','Huang said','said']:\n    for m in re.finditer(k,t): print(k,'>>',t[max(0,m.start()-500):m.start()+300].replace('\\n',' '));print()\n    "
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-03",
+        "quote": "When, literally, humanoid robots are wandering round, which is not five years away. This is five-years-away problem, this is a few-years-away problem.",
+        "what_is_predicted": "Humanoid robots will be in wide use (Reuters: in manufacturing facilities) in less than five years.",
+        "date_or_span": "less than five years (from March 2025)",
+        "occasion": "Remarks to reporters around the Nvidia GTC 2025 keynote, San Jose (keynote on Tuesday 18 March 2025)",
+        "source_url": "https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Lex Fridman Podcast #494 'I think we've achieved AGI' (TechRadar, Tom's Guide, Yahoo/Fortune via search snippets); Benzinga dates it to March 2025, but the episode number and the dates on the coverage point to 2026. Not opened."
+      },
+      {
+        "year": "2026",
+        "note": "CBS News interview with Jo Ling Kent: '0% chance' AI destroys the world by the end of the decade (search results dated about 2 months ago). Not opened."
+      },
+      {
+        "year": "2026",
+        "note": "G20 talk (startuphub.ai, URL path /2026/): world practically at AGI now and will reach it within two years. Not opened."
+      },
+      {
+        "year": "2023",
+        "note": "At the NYT DealBook Summit, said AGI could arrive within five years (mentioned in Benzinga snippet)."
+      },
+      {
+        "year": "2024",
+        "note": "Said at GTC that AGI is 5 years away (TechCrunch); five-year 'pass every test' remark (Yahoo, during the $2T milestone). Search snippets only."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2025",
+        "what_found": "CES 2025 keynote coverage, 'China will win AI race' coverage, and many reports of the July 2025 All-In 'more millionaires in five years' remark."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2025 interview AGI \"years\"",
+        "what_found": "Mostly 2026 'AGI achieved' coverage (Lex Fridman #494, G20), the May 2025 Stratechery interview, and older 2023/2024 'AGI in five years' items."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "2026 CBS '0% chance AI destroys world by 2030' coverage and data-centre capex forecasts (business, excluded)."
+      },
+      {
+        "query_or_url": "Jensen Huang Bg2 podcast Brad Gerstner 2025 transcript",
+        "what_found": "Singjupost transcript of the 26 September 2025 Bg2 episode."
+      },
+      {
+        "query_or_url": "Jensen Huang Joe Rogan Experience transcript December 2025",
+        "what_found": "Rogan #2422 (3 December 2025) transcript pages at singjupost and scripod, plus podcast notes."
+      },
+      {
+        "query_or_url": "Jensen Huang humanoid robots \"five years\" 2025",
+        "what_found": "Reuters and other March 2025 GTC coverage: humanoid robots less than five years from wide use in manufacturing."
+      },
+      {
+        "query_or_url": "Jensen Huang CES 2025 keynote transcript robotics \"ChatGPT moment\"",
+        "what_found": "CES 2025 coverage of 'ChatGPT moment for general robotics is just around the corner' (undated, not AGI, so excluded); stockanalysis transcript not opened."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" Rogan 90% of knowledge AI generated \"years\"",
+        "what_found": "Snippets from several outlets carry a Rogan line about 90% of the world's knowledge being generated by AI in two or three years; no page carrying it was opened successfully."
+      },
+      {
+        "query_or_url": "Jensen Huang All-In summit July 2025 transcript millionaires \"five years\"",
+        "what_found": "Only news coverage of the 'more millionaires in five years' remark; no transcript found and nothing opened."
+      },
+      {
+        "query_or_url": "https://finance.yahoo.com/news/nvidia-ceo-humanoid-robot-revolution-100134721.html",
+        "what_found": "Only the Reuters summary sentence (less than five years from wide use in manufacturing) loaded; no direct quote."
+      },
+      {
+        "query_or_url": "https://stratechery.com/2025/an-interview-with-nvidia-ceo-jensen-huang-about-chip-controls-ai-factories-and-enterprise-pragmatism/",
+        "what_found": "19 May 2025 printed Q&A; robotics 'a couple years from now' (undated, not AGI) and a 'next five, ten years' GDP expansion remark (economic), both excluded."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-nvidias-jensen-huang-on-joe-rogan-podcast-2422/",
+        "what_found": "Partial Rogan transcript (cut off during the consciousness section); best-case answer for 'next two decades' is undated; the 90% line is not in the loaded part."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-nvidia-ceo-jensen-huang-on-openai-future-of-compute-and-the-american-dream-bg2-pod/",
+        "what_found": "Bg2 transcript part; dated lines are about AI revenue and capex (business forecasts, excluded)."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/the-joe-rogan-experience/2422-jensen-huang",
+        "what_found": "Would not open (url_not_allowed); nothing quoted from it."
+      },
+      {
+        "query_or_url": "https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia",
+        "what_found": "Direct quote on humanoid robots at GTC 2025, printed with an apparent internal contradiction ('not five years away' / 'This is five-years-away problem')."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2025 Huang made a few short-horizon predictions; the only one confirmed on an opened page is that humanoid robots are less than five years from wide use (GTC, March 2025), seen only in news coverage, with tech.co's quote apparently garbled. His December 2025 Rogan remark that 90% of the world's knowledge will likely be AI-generated in two or three years is an unconfirmed lead, seen only in search snippets. Most 'AGI has arrived' and 'by 2030' items in search results appear to date from 2026."
+  },
+  "reply_text": "I found one 2025 prediction from Jensen Huang that meets all four tests, and I could only read it in news coverage, not in his own words. A second, clearer prediction from his December 2025 Joe Rogan interview is a strong lead, but I couldn't open a page that carries it, so it isn't listed.\n\n**The one candidate: humanoid robots, GTC, March 2025.** Reuters, as printed by Yahoo Finance, says Huang believes humanoid robots are less than five years away from seeing wide use in manufacturing facilities. That sentence is the reporter's summary, and the Yahoo page I opened showed nothing beyond it. Tech.co does print his words, but they contradict themselves: \"When, literally, humanoid robots are wandering round, which is not five years away. This is five-years-away problem, this is a few-years-away problem.\" In search snippets (not pages I opened), other outlets print the second sentence as \"This is not five-years-away problem\", so tech.co's version is probably a transcription slip. Please check it against a recording. It doesn't match any of the three recorded claims.\n\n**Not listed:**\n- **Rogan lead (December 3, 2025):** Several search snippets carry a line about AI generating \"90% of the world's knowledge\" in \"maybe two or three years\". The one transcript page I opened was cut off before that point. The podscripts page wouldn't open (\"url_not_allowed\"), and that failed attempt used my last opening.\n- **\"More millionaires in five years\" (All-In podcast, July 2025):** I only saw this in search snippets. It's also arguably a forecast about wealth rather than about what AI will do.\n- **Stratechery interview (May 19, 2025):** His \"a couple years from now\" about robotics is undated and not about AGI. His \"next five, ten years\" line is about GDP and a new industry, which is economics rather than AI.\n- **Bg2 podcast (September 2025):** The dated lines there are about revenue and data-centre spending, which are business forecasts and stay out.\n\n**Other years:** The \"I think we've achieved AGI\" remark on Lex Fridman's podcast (#494) sits on pages dated in 2026, although Benzinga places it in March 2025. The \"0% chance AI destroys the world by 2030\" interview with CBS and the G20 claim that AGI comes \"within two years\" also look like 2026.\n\nI used 9 of 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-03\", \"quote\": \"When, literally, humanoid robots are wandering round, which is not five years away. This is five-years-away problem, this is a few-years-away problem.\", \"what_is_predicted\": \"Humanoid robots will be in wide use (Reuters: in manufacturing facilities) in less than five years.\", \"date_or_span\": \"less than five years (from March 2025)\", \"occasion\": \"Remarks to reporters around the Nvidia GTC 2025 keynote, San Jose (keynote on Tuesday 18 March 2025)\", \"source_url\": \"https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Lex Fridman Podcast #494 'I think we've achieved AGI' (TechRadar, Tom's Guide, Yahoo/Fortune via search snippets); Benzinga dates it to March 2025, but the episode number and the dates on the coverage point to 2026. Not opened.\"},\n    {\"year\": \"2026\", \"note\": \"CBS News interview with Jo Ling Kent: '0% chance' AI destroys the world by the end of the decade (search results dated about 2 months ago). Not opened.\"},\n    {\"year\": \"2026\", \"note\": \"G20 talk (startuphub.ai, URL path /2026/): world practically at AGI now and will reach it within two years. Not opened.\"},\n    {\"year\": \"2023\", \"note\": \"At the NYT DealBook Summit, said AGI could arrive within five years (mentioned in Benzinga snippet).\"},\n    {\"year\": \"2024\", \"note\": \"Said at GTC that AGI is 5 years away (TechCrunch); five-year 'pass every test' remark (Yahoo, during the $2T milestone). Search snippets only.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2025\", \"what_found\": \"CES 2025 keynote coverage, 'China will win AI race' coverage, and many reports of the July 2025 All-In 'more millionaires in five years' remark.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Mostly 2026 'AGI achieved' coverage (Lex Fridman #494, G20), the May 2025 Stratechery interview, and older 2023/2024 'AGI in five years' items.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"2026 CBS '0% chance AI destroys world by 2030' coverage and data-centre capex forecasts (business, excluded).\"},\n    {\"query_or_url\": \"Jensen Huang Bg2 podcast Brad Gerstner 2025 transcript\", \"what_found\": \"Singjupost transcript of the 26 September 2025 Bg2 episode.\"},\n    {\"query_or_url\": \"Jensen Huang Joe Rogan Experience transcript December 2025\", \"what_found\": \"Rogan #2422 (3 December 2025) transcript pages at singjupost and scripod, plus podcast notes.\"},\n    {\"query_or_url\": \"Jensen Huang humanoid robots \\\"five years\\\" 2025\", \"what_found\": \"Reuters and other March 2025 GTC coverage: humanoid robots less than five years from wide use in manufacturing.\"},\n    {\"query_or_url\": \"Jensen Huang CES 2025 keynote transcript robotics \\\"ChatGPT moment\\\"\", \"what_found\": \"CES 2025 coverage of 'ChatGPT moment for general robotics is just around the corner' (undated, not AGI, so excluded); stockanalysis transcript not opened.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" Rogan 90% of knowledge AI generated \\\"years\\\"\", \"what_found\": \"Snippets from several outlets carry a Rogan line about 90% of the world's knowledge being generated by AI in two or three years; no page carrying it was opened successfully.\"},\n    {\"query_or_url\": \"Jensen Huang All-In summit July 2025 transcript millionaires \\\"five years\\\"\", \"what_found\": \"Only news coverage of the 'more millionaires in five years' remark; no transcript found and nothing opened.\"},\n    {\"query_or_url\": \"https://finance.yahoo.com/news/nvidia-ceo-humanoid-robot-revolution-100134721.html\", \"what_found\": \"Only the Reuters summary sentence (less than five years from wide use in manufacturing) loaded; no direct quote.\"},\n    {\"query_or_url\": \"https://stratechery.com/2025/an-interview-with-nvidia-ceo-jensen-huang-about-chip-controls-ai-factories-and-enterprise-pragmatism/\", \"what_found\": \"19 May 2025 printed Q&A; robotics 'a couple years from now' (undated, not AGI) and a 'next five, ten years' GDP expansion remark (economic), both excluded.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-nvidias-jensen-huang-on-joe-rogan-podcast-2422/\", \"what_found\": \"Partial Rogan transcript (cut off during the consciousness section); best-case answer for 'next two decades' is undated; the 90% line is not in the loaded part.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-nvidia-ceo-jensen-huang-on-openai-future-of-compute-and-the-american-dream-bg2-pod/\", \"what_found\": \"Bg2 transcript part; dated lines are about AI revenue and capex (business forecasts, excluded).\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/the-joe-rogan-experience/2422-jensen-huang\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted from it.\"},\n    {\"query_or_url\": \"https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia\", \"what_found\": \"Direct quote on humanoid robots at GTC 2025, printed with an apparent internal contradiction ('not five years away' / 'This is five-years-away problem').\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2025 Huang made a few short-horizon predictions; the only one confirmed on an opened page is that humanoid robots are less than five years from wide use (GTC, March 2025), seen only in news coverage, with tech.co's quote apparently garbled. His December 2025 Rogan remark that 90% of the world's knowledge will likely be AI-generated in two or three years is an unconfirmed lead, seen only in search snippets. Most 'AGI has arrived' and 'by 2030' items in search results appear to date from 2026.\"\n}\n```"
+}

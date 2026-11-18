@@ -1,0 +1,21 @@
+[claim]
+id = "2020-12-01-musk-all-new-cars-full-autonomy-in-ten-years"
+speaker_id = "musk"
+when = "2020-12-01"
+when_note = "Axel Springer's own video of the award evening is dated 2020-12-01, and the transcript page says the award was presented that day."
+occasion = "Axel Springer Award 2020 interview with Mathias Döpfner, Berlin"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=AF2HXId2Xhg"
+source_locator = "about 21:28 into Axel Springer's video"
+checked_how = "Read in the automatic captions of Axel Springer's own upload of the award evening (dated 2020-12-01) on 2026-11-17 (yt-dlp) and compared with the fan-made transcript where the words were first found (https://elonmuskinterviews.wordpress.com/2020/12/11/axel-springer-award-2020/). Nobody listened. The captions read '10 years from now almost all cars will be will have a full autonomy capability uh that all new costs produced'; the quote keeps the transcript's tidier wording, and the meaning is the same."
+quote = "ten years from now, almost all cars will have full autonomy capability. All new cars produced."
+prediction = "Ten years on, almost all new cars produced will be capable of full autonomy."
+kind = "deployment"
+bar = "Almost all new cars produced in 2030 capable of full autonomy, shown by industry production figures."
+due = 2030
+due_basis = "'ten years from now', said 2020-12-01, runs to December 2030; judged at the end of 2030."
+restates = "2017-07-15-musk-almost-all-new-cars-autonomous-in-ten-years"
+same_span = true
+status = "not_yet_due"
+search_ids = ["musk-claims-042", "musk-claims-050"]
+notes = "Role at the time: chief executive of Tesla (counted by my ruling of 2026-10-19), Tesla then counting as a company building frontier AI; he had left OpenAI's board in February 2018 and founded xAI only in 2023. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. The same ten-year span as his 2017 claim, said again three years later, which moves the year from 2027 to 2030."

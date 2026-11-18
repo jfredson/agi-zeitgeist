@@ -1,0 +1,312 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2019,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.1434,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 131789,
+      "cache_read_input_tokens": 1153572,
+      "inference_geo": "global",
+      "input_tokens": 32,
+      "output_tokens": 7682,
+      "output_tokens_details": {
+        "thinking_tokens": 1400
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Mark Zuckerberg\" AI prediction 2019','\"Mark Zuckerberg\" 2019 interview AGI \"years\"','\"Mark Zuckerberg\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2019"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\nprint(\"== 1\"); show(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2019 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Zuckerberg Harari conversation transcript 2019 artificial intelligence',\n'Zuckerberg Zittrain conversation transcript 2019',\n'Zuckerberg 2019 earnings call transcript AI proactively hate speech',\n'Zuckerberg Georgetown speech 2019 transcript AI']\nfor q in qs2:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Harari conversation transcript 2019 artificial intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Zittrain conversation transcript 2019"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg 2019 earnings call transcript AI proactively hate speech"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Georgetown speech 2019 transcript AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re,asyncio\nurls=['https://about.fb.com/wp-content/uploads/2019/04/transcript_-marks-personal-challenge-yuval-noah-harari.pdf',\n'https://about.fb.com/wp-content/uploads/2019/02/transcript_zuckerberg_zittrain.pdf',\n\"https://s21.q4cdn.com/399680738/files/doc_financials/2019/Q1/Q1-'19-earnings-call-transcript-(1).pdf\",\n'https://abcnews.go.com/Business/interview-facebook-ceo-mark-zuckerberg-transcript/story?id=62152829']\nres=await asyncio.gather(*[web_fetch({\"url\":u}) for u in urls])\ndocs={}\nfor u,r in zip(urls,res):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    docs[u]=r[0]['content']; print(u,len(docs[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://about.fb.com/wp-content/uploads/2019/02/transcript_zuckerberg_zittrain.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://abcnews.go.com/Business/interview-facebook-ceo-mark-zuckerberg-transcript/story?id=62152829"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2019/Q1/Q1-'19-earnings-call-transcript-(1).pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://about.fb.com/wp-content/uploads/2019/04/transcript_-marks-personal-challenge-yuval-noah-harari.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\nfor u,r in zip(urls,res):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict) and isinstance(r.get('content'),dict):\n        data=base64.b64decode(r['content']['source']['data'])\n        txt=\"\\n\".join(p.extract_text() or '' for p in PdfReader(io.BytesIO(data)).pages)\n        docs[u]=txt\n    elif isinstance(r,dict): print(\"ERR\",u,str(r)[:200])\nfor u,t in docs.items(): print(u[:80],len(t))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,r in zip(urls,res):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict) and isinstance(r.get('content'),dict):\n        src=r['content']['source']\n        if src.get('type')=='base64':\n            data=base64.b64decode(src['data'])\n            docs[u]=\"\\n\".join(p.extract_text() or '' for p in PdfReader(io.BytesIO(data)).pages)\n        else:\n            docs[u]=src.get('data','')\nfor u,t in docs.items(): print(u[:80],len(t), type(t))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat=re.compile(r\"(\\b(next|coming|few|five|ten|\\d+|several|couple of)\\s+(years?|decades?)|by 20\\d\\d|end of (this|the) (year|decade)|within|over the next|\\b20[2-3]\\d\\b)\",re.I)\nfor u,t in docs.items():\n    t=re.sub(r'\\s+',' ',t)\n    print(\"=====\",u[:70])\n    for m in pat.finditer(t):\n        s=t[max(0,m.start()-300):m.end()+250]\n        if re.search(r'\\bAI\\b|artificial intelligence|machine learning|algorithm|systems',s,re.I):\n            print(\"...\",s,\"\\n\")"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=docs[urls[2]]\ni=t.find(\"On safety, I think given\")\nprint(t[:400]); print(\"-----\"); print(t[i:i+1800])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "j=t.find(\"I don't know that in every category\")\nprint(t[j:j+400])\na=docs[urls[3]]\nfor kw in [\"AI\",\"artificial\"]:\n    for m in re.finditer(r'\\b'+kw,a):\n        print(\"..\",re.sub(r'\\s+',' ',a[max(0,m.start()-300):m.end()+300]),\"\\n\")"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in urls[:2]:\n    t=re.sub(r'\\s+',' ',docs[u])\n    segs=re.split(r'(Mark Zuckerberg:|Jonathan Zittrain:|Yuval Noah Harari:)',t)\n    for k in range(1,len(segs)-1,2):\n        if segs[k]=='Mark Zuckerberg:':\n            s=segs[k+1]\n            if re.search(r'\\bAI\\b|artificial intelligence|machine learning',s) and re.search(r'year|decade|will',s):\n                for m in re.finditer(r'[^.?!]*(\\bAI\\b|artificial intelligence|machine learning)[^.?!]*[.?!]',s):\n                    if re.search(r'year|decade|going to|will',m.group(0)): print(\"-\",m.group(0).strip()[:400])\n    print(\"=======\")"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Facebook fourth quarter 2018 results conference call transcript Zuckerberg January 30 2019',\n'Facebook third quarter 2019 earnings call transcript Zuckerberg October 30 2019 AI',\n'Zuckerberg 2019 \"next decade\" artificial intelligence Facebook post']\nfor q in qs3:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook fourth quarter 2018 results conference call transcript Zuckerberg January 30 2019"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook third quarter 2019 earnings call transcript Zuckerberg October 30 2019 AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg 2019 \"next decade\" artificial intelligence Facebook post"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u2=['https://s21.q4cdn.com/399680738/files/doc_financials/2018/Q4/Q4-18-earnings-call-transcript.pdf',\n'https://s21.q4cdn.com/399680738/files/doc_financials/2019/q3/Q3-2019-FB-Earnings-Transcript.pdf']\nres2=await asyncio.gather(*[web_fetch({\"url\":u}) for u in u2])\nfor u,r in zip(u2,res2):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict):\n        src=c['source']\n        if src.get('type')=='base64':\n            docs[u]=\"\\n\".join(p.extract_text() or '' for p in PdfReader(io.BytesIO(base64.b64decode(src['data']))).pages)\n        else: docs[u]=src.get('data','')\n    elif isinstance(c,str): docs[u]=c\n    else: print(\"ERR\",u,str(r)[:300])\n    print(u,len(docs.get(u,'')))\nfor u in u2:\n    t=re.sub(r'\\s+',' ',docs.get(u,''))\n    print(\"=====\",u[-40:], t[:200])\n    for m in pat.finditer(t):\n        s=t[max(0,m.start()-350):m.end()+250]\n        if re.search(r'\\bAI\\b|artificial intelligence|machine learning|proactive',s,re.I):\n            print(\"...\",s,\"\\n\")"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2018/Q4/Q4-18-earnings-call-transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2019/q3/Q3-2019-FB-Earnings-Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=re.sub(r'\\s+',' ',docs[u2[0]]); i=t.find(\"now, increasingly, we're building AI\"); print(t[i-100:i+1200]); print(\"======\")\nt=re.sub(r'\\s+',' ',docs[u2[1]])\nfor m in re.finditer(r'\\bAI\\b',t): print(\"..\",t[max(0,m.start()-250):m.end()+500],\"\\n\")"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2019-04-24",
+        "quote": "I don't know that in every category we're going to be able to get to 99 percent; certainly not in the next six months or a year.  But my hope would be that we can get to 90-plus percent on most of these categories within the next couple of years.",
+        "what_is_predicted": "Facebook's AI systems would proactively flag 90-plus percent of removed harmful content in most categories within about two years, though not 99 percent in every category within six months to a year.",
+        "date_or_span": "the next six months or a year; within the next couple of years (roughly by 2021)",
+        "occasion": "Facebook Q1 2019 earnings conference call, answer in Q&A; the same answer refers to 'building AI systems that can either identify things and handle them proactively'",
+        "source_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2019/Q1/Q1-'19-earnings-call-transcript-(1).pdf",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Fixed-search results showed news coverage of 2025 statements (LlamaCon remark about AI writing half of Meta's code, Dwarkesh Patel interview, Stratechery interview); not opened."
+      },
+      {
+        "year": "2026",
+        "note": "Fixed-search results showed coverage of a long essay on 'personal superintelligence' and a Newsweek piece on personal AI agents 'within the next five years'; not opened."
+      },
+      {
+        "year": "2016",
+        "note": "Search results showed Fortune/CBS coverage of his 2016 personal challenge to build a home AI assistant and a 10-year roadmap including AI; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2019",
+        "what_found": "Mostly 2025-2026 coverage of later AI essays and interviews; nothing from 2019 (search ran once; a printing error in my code was fixed and the stored result reused)."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2019 interview AGI \"years\"",
+        "what_found": "ABC News full transcript of the April 2019 Stephanopoulos interview plus later-year interviews."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2019 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Later-year coverage and a Fortune piece dated 2020-01-09 on ending his annual challenges; nothing from 2019."
+      },
+      {
+        "query_or_url": "Zuckerberg Harari conversation transcript 2019 artificial intelligence",
+        "what_found": "Facebook newsroom page and official transcript PDF of the April 2019 Harari conversation."
+      },
+      {
+        "query_or_url": "Zuckerberg Zittrain conversation transcript 2019",
+        "what_found": "Official transcript PDF of the February 2019 Harvard conversation with Jonathan Zittrain."
+      },
+      {
+        "query_or_url": "Zuckerberg 2019 earnings call transcript AI proactively hate speech",
+        "what_found": "Q1 2019 earnings call transcript PDF on Facebook's investor site, plus Q2 and Q4 2019 call transcripts."
+      },
+      {
+        "query_or_url": "Zuckerberg Georgetown speech 2019 transcript AI",
+        "what_found": "Washington Post and Facebook newsroom texts of the October 2019 Georgetown speech; not opened."
+      },
+      {
+        "query_or_url": "https://about.fb.com/wp-content/uploads/2019/04/transcript_-marks-personal-challenge-yuval-noah-harari.pdf",
+        "what_found": "Full Harari conversation; much AI discussion but no dated AI forecast by Zuckerberg."
+      },
+      {
+        "query_or_url": "https://about.fb.com/wp-content/uploads/2019/02/transcript_zuckerberg_zittrain.pdf",
+        "what_found": "Full Zittrain conversation; no dated AI forecast found."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2019/Q1/Q1-'19-earnings-call-transcript-(1).pdf",
+        "what_found": "Q1 2019 call; contains the 'within the next couple of years' proactive-detection forecast."
+      },
+      {
+        "query_or_url": "https://abcnews.go.com/Business/interview-facebook-ceo-mark-zuckerberg-transcript/story?id=62152829",
+        "what_found": "April 2019 ABC interview; only present-tense AI claims (99% of ISIS/Al-Qaeda content found by AI), no dated forecast."
+      },
+      {
+        "query_or_url": "Facebook fourth quarter 2018 results conference call transcript Zuckerberg January 30 2019",
+        "what_found": "Investor-site PDF of the Q4 2018 call held 30 January 2019."
+      },
+      {
+        "query_or_url": "Facebook third quarter 2019 earnings call transcript Zuckerberg October 30 2019 AI",
+        "what_found": "Investor-site PDF of the Q3 2019 call."
+      },
+      {
+        "query_or_url": "Zuckerberg 2019 \"next decade\" artificial intelligence Facebook post",
+        "what_found": "Only 2016 and 2025-2026 material; nothing from 2019."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2018/Q4/Q4-18-earnings-call-transcript.pdf",
+        "what_found": "Q4 2018 call (30 Jan 2019); describes current AI moderation work only, no dated forecast."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2019/q3/Q3-2019-FB-Earnings-Transcript.pdf",
+        "what_found": "Q3 2019 call; says AI won't bring review costs down 'any time in the near future' (undated, cost-related, not listed)."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2019 Zuckerberg talked about AI mostly as a tool for finding harmful content, and almost always in the present tense. One dated forecast turned up, on the April 2019 earnings call: AI-driven proactive detection would reach 90-plus percent in most categories within a couple of years. His long 2019 conversations with Zittrain and Harari, and the ABC interview, had no dated AI predictions."
+  },
+  "reply_text": "I found one candidate for 2019. On Facebook's first-quarter 2019 earnings call (24 April 2019), Zuckerberg talked about the AI systems that find harmful posts before anyone reports them. He said they likely wouldn't reach 99% in every category \"in the next six months or a year.\" He hoped they would reach \"90-plus percent on most of these categories within the next couple of years.\" The quote comes from Facebook's own investor-relations transcript (a PDF), which I opened. One thing to judge: \"a couple of years\" sits close to the \"a few years\" wording your rules treat as undated. I kept it because the same answer also names six months and a year.\n\n**Pages I opened that had nothing to list:**\n- **Conversation with Yuval Noah Harari (April 2019, Facebook's transcript PDF):** a lot about AI, but nothing with a date or a timeframe.\n- **Conversation with Jonathan Zittrain at Harvard (February 2019, Facebook's transcript PDF):** no dated AI forecast.\n- **ABC interview with George Stephanopoulos (April 2019):** only describes what the AI systems already did, for example removing 99% of ISIS and Al-Qaeda content before anyone sees it.\n- **Fourth-quarter 2018 earnings call (held 30 January 2019):** describes current AI work only.\n- **Third-quarter 2019 earnings call (30 October 2019):** he said he didn't \"foresee any time in the near future that AI is going to make it so that this -- the cost comes down.\" That has no date and is about review costs, not AGI, so I left it out.\n\n**Not checked:** the October 2019 Georgetown speech, the October 2019 Libra hearing, the second-quarter 2019 call and his 2019 Facebook posts. All 6 page openings were used and 10 of the 12 searches. The first fixed search ran once; my code crashed while printing it and I read the saved result rather than running it again.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2019-04-24\",\n      \"quote\": \"I don't know that in every category we're going to be able to get to 99 percent; certainly not in the next six months or a year.  But my hope would be that we can get to 90-plus percent on most of these categories within the next couple of years.\",\n      \"what_is_predicted\": \"Facebook's AI systems would proactively flag 90-plus percent of removed harmful content in most categories within about two years, though not 99 percent in every category within six months to a year.\",\n      \"date_or_span\": \"the next six months or a year; within the next couple of years (roughly by 2021)\",\n      \"occasion\": \"Facebook Q1 2019 earnings conference call, answer in Q&A; the same answer refers to 'building AI systems that can either identify things and handle them proactively'\",\n      \"source_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2019/Q1/Q1-'19-earnings-call-transcript-(1).pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Fixed-search results showed news coverage of 2025 statements (LlamaCon remark about AI writing half of Meta's code, Dwarkesh Patel interview, Stratechery interview); not opened.\"},\n    {\"year\": \"2026\", \"note\": \"Fixed-search results showed coverage of a long essay on 'personal superintelligence' and a Newsweek piece on personal AI agents 'within the next five years'; not opened.\"},\n    {\"year\": \"2016\", \"note\": \"Search results showed Fortune/CBS coverage of his 2016 personal challenge to build a home AI assistant and a 10-year roadmap including AI; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2019\", \"what_found\": \"Mostly 2025-2026 coverage of later AI essays and interviews; nothing from 2019 (search ran once; a printing error in my code was fixed and the stored result reused).\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2019 interview AGI \\\"years\\\"\", \"what_found\": \"ABC News full transcript of the April 2019 Stephanopoulos interview plus later-year interviews.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2019 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Later-year coverage and a Fortune piece dated 2020-01-09 on ending his annual challenges; nothing from 2019.\"},\n    {\"query_or_url\": \"Zuckerberg Harari conversation transcript 2019 artificial intelligence\", \"what_found\": \"Facebook newsroom page and official transcript PDF of the April 2019 Harari conversation.\"},\n    {\"query_or_url\": \"Zuckerberg Zittrain conversation transcript 2019\", \"what_found\": \"Official transcript PDF of the February 2019 Harvard conversation with Jonathan Zittrain.\"},\n    {\"query_or_url\": \"Zuckerberg 2019 earnings call transcript AI proactively hate speech\", \"what_found\": \"Q1 2019 earnings call transcript PDF on Facebook's investor site, plus Q2 and Q4 2019 call transcripts.\"},\n    {\"query_or_url\": \"Zuckerberg Georgetown speech 2019 transcript AI\", \"what_found\": \"Washington Post and Facebook newsroom texts of the October 2019 Georgetown speech; not opened.\"},\n    {\"query_or_url\": \"https://about.fb.com/wp-content/uploads/2019/04/transcript_-marks-personal-challenge-yuval-noah-harari.pdf\", \"what_found\": \"Full Harari conversation; much AI discussion but no dated AI forecast by Zuckerberg.\"},\n    {\"query_or_url\": \"https://about.fb.com/wp-content/uploads/2019/02/transcript_zuckerberg_zittrain.pdf\", \"what_found\": \"Full Zittrain conversation; no dated AI forecast found.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2019/Q1/Q1-'19-earnings-call-transcript-(1).pdf\", \"what_found\": \"Q1 2019 call; contains the 'within the next couple of years' proactive-detection forecast.\"},\n    {\"query_or_url\": \"https://abcnews.go.com/Business/interview-facebook-ceo-mark-zuckerberg-transcript/story?id=62152829\", \"what_found\": \"April 2019 ABC interview; only present-tense AI claims (99% of ISIS/Al-Qaeda content found by AI), no dated forecast.\"},\n    {\"query_or_url\": \"Facebook fourth quarter 2018 results conference call transcript Zuckerberg January 30 2019\", \"what_found\": \"Investor-site PDF of the Q4 2018 call held 30 January 2019.\"},\n    {\"query_or_url\": \"Facebook third quarter 2019 earnings call transcript Zuckerberg October 30 2019 AI\", \"what_found\": \"Investor-site PDF of the Q3 2019 call.\"},\n    {\"query_or_url\": \"Zuckerberg 2019 \\\"next decade\\\" artificial intelligence Facebook post\", \"what_found\": \"Only 2016 and 2025-2026 material; nothing from 2019.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2018/Q4/Q4-18-earnings-call-transcript.pdf\", \"what_found\": \"Q4 2018 call (30 Jan 2019); describes current AI moderation work only, no dated forecast.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2019/q3/Q3-2019-FB-Earnings-Transcript.pdf\", \"what_found\": \"Q3 2019 call; says AI won't bring review costs down 'any time in the near future' (undated, cost-related, not listed).\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2019 Zuckerberg talked about AI mostly as a tool for finding harmful content, and almost always in the present tense. One dated forecast turned up, on the April 2019 earnings call: AI-driven proactive detection would reach 90-plus percent in most categories within a couple of years. His long 2019 conversations with Zittrain and Harari, and the ABC interview, had no dated AI predictions.\"\n}\n```"
+}

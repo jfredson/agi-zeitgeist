@@ -1,0 +1,363 @@
+{
+  "speaker_id": "legg",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6104,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7675
+      },
+      "cache_creation_input_tokens": 46328,
+      "cache_read_input_tokens": 478963,
+      "inference_geo": "global",
+      "input_tokens": 42,
+      "output_tokens": 9140,
+      "output_tokens_details": {
+        "thinking_tokens": 2521
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Shane Legg\" AI prediction 2025','\"Shane Legg\" 2025 interview AGI \"years\"','\"Shane Legg\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nimport json\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs[1:]:\n    R[q]=await web_search({\"query\":q})\nfor q in qs:\n    r=R[q]\n    if isinstance(r,str): r=json.loads(r)\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    for x in R[q]:\n        c=x.get('content','')\n        if 'lesswrong' in x['url'] or 'x.com/ShaneLegg' in x['url']:\n            i=c.find('Legg')\n            while i!=-1:\n                print(x['url'],':',c[max(0,i-600):i+400].replace('\\n',' '));print('---')\n                i=c.find('Legg',i+400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s=await web_search({\"query\":\"\\\"Shane Legg\\\" \\\"50% chance of AGI in the next 3 years\\\"\"})\ns=json.loads(s) if isinstance(s,str) else s\nfor x in s:\n    print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    c=x.get('content','');i=c.find('next 3 years')\n    print('   ',c[max(0,i-500):i+200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" \"50% chance of AGI in the next 3 years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for x in s:\n    if 'controlai' in x['url'] or 'linkedin' in x['url']:\n        c=x['content']\n        for k in ['next 3 years','2028']:\n            i=c.find(k)\n            if i!=-1: print(x['url'],k,':',c[max(0,i-1200):i+600].replace('\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s2=await web_search({\"query\":\"ShaneLegg x.com \\\"Still seems about right to me\\\" AGI 2028\"})\ns2=json.loads(s2) if isinstance(s2,str) else s2\nfor x in s2:\n    print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    c=x.get('content','');i=c.find('about right')\n    print('   ',c[max(0,i-500):i+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ShaneLegg x.com \"Still seems about right to me\" AGI 2028"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "urls=[\"https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915\",\n\"https://x.com/ShaneLegg/status/1999180585407848776\",\n\"https://x.com/ShaneLegg/status/1877674960770007042\",\n\"https://www.linkedin.com/posts/shanelegg_agi-activity-7404935040796721152-rFPt\"]\nF={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r\n    print(u, r.get('type'), r.get('error_code'), len(r.get('content','') or ''), r.get('title'))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/ShaneLegg/status/1999180585407848776"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/ShaneLegg/status/1877674960770007042"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.linkedin.com/posts/shanelegg_agi-activity-7404935040796721152-rFPt"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=F[urls[0]]; print({k:(v if k!='content' else None) for k,v in r.items()}); print(repr(r.get('content'))[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T=r['content']['source']['data']; print(len(T))\nimport re\nfor k in ['2028','two years','decade','years','2030','next year','year from now']:\n    for m in re.finditer(k,T):\n        pass\nfor m in re.finditer(r'2028|two years|decade|year from now|next year|2030|ten years|five years|20 years',T):\n    print(m.start(), T[max(0,m.start()-500):m.start()+300].replace('\\n',' '));print('-----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(T[4300:10881])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def S(q):\n    s=await web_search({\"query\":q}); s=json.loads(s) if isinstance(s,str) else s\n    print(\"==\",q)\n    for x in s:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:250].replace('\\n',' '))\n    return s\ns3=await S('\"Shane Legg\" Hannah Fry transcript \"minimal AGI\" \"50%\" 2028')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" Hannah Fry transcript \"minimal AGI\" \"50%\" 2028"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s4=await S('\"The Arrival of AGI\" Shane Legg full transcript \"Hannah Fry\" \"golden age\"')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"The Arrival of AGI\" Shane Legg full transcript \"Hannah Fry\" \"golden age\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u=\"https://podwise.ai/dashboard/episodes/6381665\"\nr=await web_fetch({\"url\":u}); r=json.loads(r) if isinstance(r,str) else r\nif isinstance(r,list): r=r[0]\nc=r.get('content')\nif isinstance(c,dict): c=c.get('source',{}).get('data','')\nP=c or ''\nprint(r.get('type'),r.get('error_code'),len(P))\nfor m in re.finditer(r'2028|two years|decade|year from now|next year|2030|ten years|five years|50-50|fifty',P):\n    print(m.start(), P[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print('-----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podwise.ai/dashboard/episodes/6381665"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P[11600:29465])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s5=await S('\"Shane Legg\" talk OR keynote OR panel 2025 AGI timeline -\"Hannah Fry\"')\ns6=await S('\"Shane Legg\" \"Gemini 9\" OR \"50/50\" transcript 2028 podcast')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" talk OR keynote OR panel 2025 AGI timeline -\"Hannah Fry\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" \"Gemini 9\" OR \"50/50\" transcript 2028 podcast"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u2=\"https://podwise.ai/dashboard/episodes/6406921\"\nr=await web_fetch({\"url\":u2}); r=json.loads(r) if isinstance(r,str) else r\nif isinstance(r,list): r=r[0]\nc=r.get('content')\nif isinstance(c,dict): c=c.get('source',{}).get('data','')\nP2=c or ''\nprint(r.get('type'),r.get('error_code'),len(P2))\ni=P2.find('## Questions this episode answers'); j=P2.find('[Ask this episode anything')\nQ=P2[i:j]\nfor m in re.finditer(r'2028|year|decade|50',Q):\n    print(m.start(), Q[max(0,m.start()-300):m.start()+250].replace('\\n',' '));print('-----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podwise.ai/dashboard/episodes/6406921"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "k=P2.find('## Chapters'); \nfor m in re.finditer(r'2028|decade|next few years|years',P2[j:]):\n    print(P2[j+max(0,m.start()-400):j+m.start()+300].replace('\\n',' '));print('----')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "s7=await S('ShaneLegg \"Still seems about right to me\" \"next 3 years\"')"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ShaneLegg \"Still seems about right to me\" \"next 3 years\""
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-12-11",
+        "quote": "We're not there yet, but it could be one year, it could be five years, I'm guessing probably about two or so.",
+        "what_is_predicted": "Minimal AGI, an agent that can do the cognitive things people typically can, will arrive in about two years.",
+        "date_or_span": "about two years (from December 2025)",
+        "occasion": "Google DeepMind: The Podcast, 'The Arrival of AGI' with Hannah Fry",
+        "source_url": "https://podwise.ai/dashboard/episodes/6406921",
+        "source_kind": "transcript",
+        "already_recorded": "2025-12-11-legg-minimal-agi-about-two-years.toml"
+      },
+      {
+        "date_said": "2025-12-11",
+        "quote": "We're not there yet, but it could be one year, it could be five years. I'm guessing probably about two or so.",
+        "what_is_predicted": "Minimal AGI will arrive somewhere between one and five years from now.",
+        "date_or_span": "one to five years (from December 2025)",
+        "occasion": "Google DeepMind: The Podcast, 'The Arrival of AGI' with Hannah Fry",
+        "source_url": "https://podwise.ai/dashboard/episodes/6381665",
+        "source_kind": "transcript",
+        "already_recorded": "2025-12-11-legg-minimal-agi-one-to-five-years.toml"
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-12-11",
+        "quote": "As we reach that, and I think that's coming in a few years, unclear exactly, the AIs will be a lot more reliable",
+        "source_url": "https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915"
+      },
+      {
+        "date_said": "2025-12-11",
+        "quote": "In terms of AGI itself, my guess is that some years from now, AIs will become so generally capable in so many different ways, people will just talk about them as being AGI",
+        "source_url": "https://podwise.ai/dashboard/episodes/6381665"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Search snippet of X post https://x.com/ShaneLegg/status/1867477029559599402 (reply dated Dec 13, 2024 in the thread): 'I've been predicting a 50% chance of AGI by 2028 for 20 years.' Not opened."
+      },
+      {
+        "year": "2011",
+        "note": "A 2011 vetta.org blog prediction (mode 2025, mean 2028; proto-AGI within 8 years) was seen only as quoted in a third-party X post and aggregator snippets."
+      },
+      {
+        "year": "unknown",
+        "note": "'Still seems about right to me. Of course this now means a 50% chance of AGI in the next 3 years!' is quoted on controlai.org/quotes and a ControlAI newsletter (about Feb 2025) and in LessWrong's '2025 in AI predictions'. The original post was not found or opened and its date is unconfirmed (it may be late 2024 or early 2025)."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2025",
+        "what_found": "Coverage of the Dec 2025 Hannah Fry podcast (the-decoder, BusinessToday, NextBigFuture), a Jan 2025 Legg X reply, and old 2011 prediction retellings."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2025 interview AGI \"years\"",
+        "what_found": "The Decoder coverage of minimal AGI in about two years and a spoken.md transcript page for the Dec 2025 podcast."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "LessWrong '2025 in AI predictions' quoting Legg's '50% chance of AGI in the next 3 years', plus aggregator pages."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" \"50% chance of AGI in the next 3 years\"",
+        "what_found": "ControlAI quote pages carrying the line without a date, and a snippet of Legg's Dec 2025 LinkedIn post ('50% chance we'll see #AGI by 2028')."
+      },
+      {
+        "query_or_url": "ShaneLegg x.com \"Still seems about right to me\" AGI 2028",
+        "what_found": "Snippets of Legg X posts from Dec 2024 and Dec 2025 (the latter: 'publicly held the same prediction since 2009: there's a 50% chance we'll see #AGI by 2028')."
+      },
+      {
+        "query_or_url": "https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915",
+        "what_found": "Opened; only the first few minutes of the transcript are free, including one undated 'coming in a few years' line."
+      },
+      {
+        "query_or_url": "https://x.com/ShaneLegg/status/1999180585407848776",
+        "what_found": "Would not open (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "https://x.com/ShaneLegg/status/1877674960770007042",
+        "what_found": "Would not open (url_not_allowed); the Jan 2025 'we might get there in the coming years' was seen only in a snippet and is not quoted."
+      },
+      {
+        "query_or_url": "https://www.linkedin.com/posts/shanelegg_agi-activity-7404935040796721152-rFPt",
+        "what_found": "Would not open (url_not_allowed); the '50% chance we'll see #AGI by 2028' line is not quoted."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" Hannah Fry transcript \"minimal AGI\" \"50%\" 2028",
+        "what_found": "More coverage of the Dec 2025 podcast; no full transcript."
+      },
+      {
+        "query_or_url": "\"The Arrival of AGI\" Shane Legg full transcript \"Hannah Fry\" \"golden age\"",
+        "what_found": "A podwise.ai episode page (11 Dec 2025) with a partial question-and-answer transcript."
+      },
+      {
+        "query_or_url": "https://podwise.ai/dashboard/episodes/6381665",
+        "what_found": "Opened; transcribed answers include the 'one year … five years … about two or so' minimal-AGI line; '50-50 by 2028' and 'full AGI within a decade' appear only in podwise's own summary."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" talk OR keynote OR panel 2025 AGI timeline -\"Hannah Fry\"",
+        "what_found": "No other 2025 talks or interviews surfaced; results were all about the Fry podcast."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" \"Gemini 9\" OR \"50/50\" transcript 2028 podcast",
+        "what_found": "A second podwise page for the YouTube version of the episode, plus older 2021 and 2023 coverage."
+      },
+      {
+        "query_or_url": "https://podwise.ai/dashboard/episodes/6406921",
+        "what_found": "Opened; the same minimal-AGI timing answer in slightly different wording; the 2028 and decade claims appear only in a chapter summary at 00:49:20."
+      },
+      {
+        "query_or_url": "ShaneLegg \"Still seems about right to me\" \"next 3 years\"",
+        "what_found": "Only ControlAI pages again; the original post and its date were not found."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Legg's dated 2025 statements I could verify all come from his 11 December 2025 Google DeepMind podcast with Hannah Fry, where he put minimal AGI at one to five years away, 'probably about two'; both claims are already recorded. His '50% chance of AGI by 2028' was seen only in snippets of his X and LinkedIn posts that would not open and in podwise's summary, and 'full AGI within a decade' only in that summary, so I have not quoted either. No other 2025 talks, essays or hearings surfaced."
+  },
+  "reply_text": "I found no new dated predictions from Shane Legg in 2025. The only dated claim whose wording I could read on a page I opened is already in your recorded files. That page is podwise.ai's partial third-party transcript of his 11 December 2025 Google DeepMind podcast with Hannah Fry. In it Legg says minimal AGI \"could be one year, it could be five years, I'm guessing probably about two or so\". That matches `2025-12-11-legg-minimal-agi-about-two-years.toml` and `2025-12-11-legg-minimal-agi-one-to-five-years.toml`.\n\n**Claims I could not confirm in his own words:**\n- **\"50% chance of AGI by 2028\":** this is the most-reported line from that episode. I saw it only in podwise's own summary and chapter notes, and in search snippets of Legg's X and LinkedIn posts. Both sites refused to open, so I have not quoted it.\n- **Full AGI \"within a decade\" (already recorded):** this also appears only in podwise's summary, not in his transcribed words.\n- **\"50% chance of AGI in the next 3 years!\":** this undated post is quoted by ControlAI and LessWrong. I could not open the original or confirm its date, so it is left out.\n\n**Other things to check:**\n- **Two undated lines about when AGI arrives.** \"I think that's coming in a few years, unclear exactly\" is on spoken.md. \"Some years from now, AIs will become so generally capable … people will just talk about them as being AGI\" is on podwise.\n- **The two transcripts don't match word for word.** Spoken.md and the two podwise pages word the same passages a little differently, so a checker may find small differences against the audio.\n- **Budget.** I used 9 of the 12 searches and all 6 page openings. Three of the openings failed: two X posts and one LinkedIn post that sites refused to open.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-12-11\", \"quote\": \"We're not there yet, but it could be one year, it could be five years, I'm guessing probably about two or so.\", \"what_is_predicted\": \"Minimal AGI, an agent that can do the cognitive things people typically can, will arrive in about two years.\", \"date_or_span\": \"about two years (from December 2025)\", \"occasion\": \"Google DeepMind: The Podcast, 'The Arrival of AGI' with Hannah Fry\", \"source_url\": \"https://podwise.ai/dashboard/episodes/6406921\", \"source_kind\": \"transcript\", \"already_recorded\": \"2025-12-11-legg-minimal-agi-about-two-years.toml\"},\n    {\"date_said\": \"2025-12-11\", \"quote\": \"We're not there yet, but it could be one year, it could be five years. I'm guessing probably about two or so.\", \"what_is_predicted\": \"Minimal AGI will arrive somewhere between one and five years from now.\", \"date_or_span\": \"one to five years (from December 2025)\", \"occasion\": \"Google DeepMind: The Podcast, 'The Arrival of AGI' with Hannah Fry\", \"source_url\": \"https://podwise.ai/dashboard/episodes/6381665\", \"source_kind\": \"transcript\", \"already_recorded\": \"2025-12-11-legg-minimal-agi-one-to-five-years.toml\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2025-12-11\", \"quote\": \"As we reach that, and I think that's coming in a few years, unclear exactly, the AIs will be a lot more reliable\", \"source_url\": \"https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915\"},\n    {\"date_said\": \"2025-12-11\", \"quote\": \"In terms of AGI itself, my guess is that some years from now, AIs will become so generally capable in so many different ways, people will just talk about them as being AGI\", \"source_url\": \"https://podwise.ai/dashboard/episodes/6381665\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Search snippet of X post https://x.com/ShaneLegg/status/1867477029559599402 (reply dated Dec 13, 2024 in the thread): 'I've been predicting a 50% chance of AGI by 2028 for 20 years.' Not opened.\"},\n    {\"year\": \"2011\", \"note\": \"A 2011 vetta.org blog prediction (mode 2025, mean 2028; proto-AGI within 8 years) was seen only as quoted in a third-party X post and aggregator snippets.\"},\n    {\"year\": \"unknown\", \"note\": \"'Still seems about right to me. Of course this now means a 50% chance of AGI in the next 3 years!' is quoted on controlai.org/quotes and a ControlAI newsletter (about Feb 2025) and in LessWrong's '2025 in AI predictions'. The original post was not found or opened and its date is unconfirmed (it may be late 2024 or early 2025).\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2025\", \"what_found\": \"Coverage of the Dec 2025 Hannah Fry podcast (the-decoder, BusinessToday, NextBigFuture), a Jan 2025 Legg X reply, and old 2011 prediction retellings.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"The Decoder coverage of minimal AGI in about two years and a spoken.md transcript page for the Dec 2025 podcast.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"LessWrong '2025 in AI predictions' quoting Legg's '50% chance of AGI in the next 3 years', plus aggregator pages.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" \\\"50% chance of AGI in the next 3 years\\\"\", \"what_found\": \"ControlAI quote pages carrying the line without a date, and a snippet of Legg's Dec 2025 LinkedIn post ('50% chance we'll see #AGI by 2028').\"},\n    {\"query_or_url\": \"ShaneLegg x.com \\\"Still seems about right to me\\\" AGI 2028\", \"what_found\": \"Snippets of Legg X posts from Dec 2024 and Dec 2025 (the latter: 'publicly held the same prediction since 2009: there's a 50% chance we'll see #AGI by 2028').\"},\n    {\"query_or_url\": \"https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915\", \"what_found\": \"Opened; only the first few minutes of the transcript are free, including one undated 'coming in a few years' line.\"},\n    {\"query_or_url\": \"https://x.com/ShaneLegg/status/1999180585407848776\", \"what_found\": \"Would not open (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"https://x.com/ShaneLegg/status/1877674960770007042\", \"what_found\": \"Would not open (url_not_allowed); the Jan 2025 'we might get there in the coming years' was seen only in a snippet and is not quoted.\"},\n    {\"query_or_url\": \"https://www.linkedin.com/posts/shanelegg_agi-activity-7404935040796721152-rFPt\", \"what_found\": \"Would not open (url_not_allowed); the '50% chance we'll see #AGI by 2028' line is not quoted.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" Hannah Fry transcript \\\"minimal AGI\\\" \\\"50%\\\" 2028\", \"what_found\": \"More coverage of the Dec 2025 podcast; no full transcript.\"},\n    {\"query_or_url\": \"\\\"The Arrival of AGI\\\" Shane Legg full transcript \\\"Hannah Fry\\\" \\\"golden age\\\"\", \"what_found\": \"A podwise.ai episode page (11 Dec 2025) with a partial question-and-answer transcript.\"},\n    {\"query_or_url\": \"https://podwise.ai/dashboard/episodes/6381665\", \"what_found\": \"Opened; transcribed answers include the 'one year … five years … about two or so' minimal-AGI line; '50-50 by 2028' and 'full AGI within a decade' appear only in podwise's own summary.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" talk OR keynote OR panel 2025 AGI timeline -\\\"Hannah Fry\\\"\", \"what_found\": \"No other 2025 talks or interviews surfaced; results were all about the Fry podcast.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" \\\"Gemini 9\\\" OR \\\"50/50\\\" transcript 2028 podcast\", \"what_found\": \"A second podwise page for the YouTube version of the episode, plus older 2021 and 2023 coverage.\"},\n    {\"query_or_url\": \"https://podwise.ai/dashboard/episodes/6406921\", \"what_found\": \"Opened; the same minimal-AGI timing answer in slightly different wording; the 2028 and decade claims appear only in a chapter summary at 00:49:20.\"},\n    {\"query_or_url\": \"ShaneLegg \\\"Still seems about right to me\\\" \\\"next 3 years\\\"\", \"what_found\": \"Only ControlAI pages again; the original post and its date were not found.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Legg's dated 2025 statements I could verify all come from his 11 December 2025 Google DeepMind podcast with Hannah Fry, where he put minimal AGI at one to five years away, 'probably about two'; both claims are already recorded. His '50% chance of AGI by 2028' was seen only in snippets of his X and LinkedIn posts that would not open and in podwise's summary, and 'full AGI within a decade' only in that summary, so I have not quoted either. No other 2025 talks, essays or hearings surfaced.\"\n}\n```"
+}

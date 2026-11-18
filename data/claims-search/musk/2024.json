@@ -1,0 +1,330 @@
+{
+  "speaker_id": "musk",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.641,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7778
+      },
+      "cache_creation_input_tokens": 49823,
+      "cache_read_input_tokens": 532519,
+      "inference_geo": "global",
+      "input_tokens": 38,
+      "output_tokens": 9763,
+      "output_tokens_details": {
+        "thinking_tokens": 2989
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Elon Musk\" AI prediction 2024','\"Elon Musk\" 2024 interview AGI \"years\"','\"Elon Musk\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"##\",q)\n    for x in r[:8]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=8,c=400):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:n]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:c].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"##\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Elon Musk\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://www.aipredictionindex.com/who/elon-musk/\",\"https://lexfridman.com/elon-musk-and-neuralink-team-transcript/\"]:\n    r=await web_fetch({\"url\":u}); P[u]=r\n    if isinstance(r,dict): print(u,r); continue\n    print(u,len(r[0]['content']))\nc=P[\"https://www.aipredictionindex.com/who/elon-musk/\"][0]['content']\nimport re\nfor m in re.finditer(r'2024',c):\n    print(c[max(0,m.start()-300):m.start()+200].replace('\\n',' ')); print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.aipredictionindex.com/who/elon-musk/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in list(P):\n    r=P[u]\n    if isinstance(r,str): r=json.loads(r); P[u]=r\n    if isinstance(r,dict): print(u,r); continue\n    print(u,len(r[0]['content']))\nc=P[\"https://www.aipredictionindex.com/who/elon-musk/\"][0]['content']\nfor m in re.finditer(r'2024',c):\n    print(c[max(0,m.start()-250):m.start()+150].replace('\\n',' ')); print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def txt(r):\n    c=r['content']\n    return c['source']['data'] if isinstance(c,dict) else c\nc=txt(P[\"https://www.aipredictionindex.com/who/elon-musk/\"])\nfor m in re.finditer(r'Said ([A-Z][a-z]{2} \\d+, )?2024',c):\n    seg=c[max(0,m.start()-700):m.start()+250]\n    q=re.findall(r'> “(.*?)”\\n',seg)\n    src=re.findall(r'Deadline [^\\[]*\\[(.*?)\\]\\((.*?)\\)',c[m.start():m.start()+400])\n    print(m.group(0),'|',q[-1][:250] if q else '', '|',src[:1]); print('--')\nL=P[\"https://lexfridman.com/elon-musk-and-neuralink-team-transcript/\"]\nprint(type(L), str(L)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor m in re.finditer(r'Said ([A-Z][a-z]{2} \\d+, )?2024',c):\n    seg=c[max(0,m.start()-700):m.start()+250]\n    q=re.findall(r'> “(.*?)”\\n',seg)\n    src=re.findall(r'Deadline [^\\[]*\\[(.*?)\\]\\((.*?)\\)',c[m.start():m.start()+400])\n    print(m.group(0),'|',q[-1][:250] if q else '', '|',src[:1]); print('--')\nL=P[\"https://lexfridman.com/elon-musk-and-neuralink-team-transcript/\"]\nprint(type(L), str(L)[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Lex Fridman podcast 438 Elon Musk Neuralink transcript',\n'Musk Kurzweil reply \"smarter than all humans combined\" 2029 March 2024',\n'Musk Future Investment Initiative October 2024 AI \"smarter\" transcript',\n'Tesla Q1 2024 earnings call transcript Musk Optimus FSD']\nimport asyncio\nres=await asyncio.gather(*[web_search({\"query\":q}) for q in qs2])\nfor q,r in zip(qs2,res):\n    R[q]=r; print(\"##\",q); show(r,6,250)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Future Investment Initiative October 2024 AI \"smarter\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk Kurzweil reply \"smarter than all humans combined\" 2029 March 2024"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Tesla Q1 2024 earnings call transcript Musk Optimus FSD"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman podcast 438 Elon Musk Neuralink transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "us=[\"https://lexfridman.com/elon-musk-and-neuralink-team-transcript/\",\"https://x.com/elonmusk/status/1767738797276451090?lang=en\",\"https://www.rev.com/transcripts/tesla-q1-2024-earnings-conference-call\"]\nfs=await asyncio.gather(*[web_fetch({\"url\":u}) for u in us])\nT={}\nfor u,r in zip(us,fs):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    if r.get('type','').endswith('error'): print(u,r); continue\n    T[u]=txt(r); print(u,len(T[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.rev.com/transcripts/tesla-q1-2024-earnings-conference-call"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://x.com/elonmusk/status/1767738797276451090?lang=en"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://lexfridman.com/elon-musk-and-neuralink-team-transcript/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def kw(t,pats,w=350):\n    for p in pats:\n        for m in re.finditer(p,t):\n            print('['+p+']',t[max(0,m.start()-w):m.start()+w].replace('\\n',' ')); print('--')\nt=T[us[0]]; print(t[-300:])\nkw(t,[r'next year',r'20[23]\\d',r'years',r'smarter than'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T[us[2]]\nkw(t,[r'next year',r'end of this year',r'Optimus in limited',r'20[23]\\d(?!\\d)',r'years'],350)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Musk FII Riyadh October 29 2024 AI \"smarter than\" \"next year\" humanoid robots',\n'Musk VivaTech May 2024 AI \"no jobs\" interview']\nres=await asyncio.gather(*[web_search({\"query\":q}) for q in qs3])\nfor q,r in zip(qs3,res):\n    R[q]=r; print(\"##\",q); show(r,7,350)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk FII Riyadh October 29 2024 AI \"smarter than\" \"next year\" humanoid robots"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Musk VivaTech May 2024 AI \"no jobs\" interview"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "us2=[\"https://www.bangkokpost.com/world/2892372/musk-10-billion-humanoid-robots-by-2040\",\"https://www.foxbusiness.com/media/elon-musk-predicts-ai-will-likely-smarter-all-humans-combined-2029\"]\nfs=await asyncio.gather(*[web_fetch({\"url\":u}) for u in us2])\nfor u,r in zip(us2,fs):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    if r.get('type','').endswith('error'): print(u,r); continue\n    T[u]=txt(r); t=T[u]; print(u,len(t))\n    i=t.find('Musk'); \n    body=re.sub(r'\\s+',' ',t)\n    for m in re.finditer(r'Musk',body):\n        pass\n    print(body[:200])\n    kw(body,[r'“[^”]{20,400}”',r'\"[^\"]{20,400}\"'],0)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.foxbusiness.com/media/elon-musk-predicts-ai-will-likely-smarter-all-humans-combined-2029"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bangkokpost.com/world/2892372/musk-10-billion-humanoid-robots-by-2040"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(re.sub(r'\\s+',' ',T[us2[0]]))\nb=re.sub(r'\\s+',' ',T[us2[1]])\ni=b.find('Elon Musk said Tuesday'); print(b[i:i+2500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for p in ['smarter than any single human','combined.','conservative']:\n    for m in re.finditer(re.escape(p),b):\n        print(b[max(0,m.start()-400):m.start()+200]); print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=b.find('\"AI will probably be smarter'); print(b[i:i+400])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "raw=T[us2[1]]; j=raw.find('By 2029'); print(repr(raw[j:j+700]))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-03-12",
+        "quote": "AI will probably be smarter than any single human next year,",
+        "what_is_predicted": "AI will be smarter than any single human in 2025.",
+        "date_or_span": "next year (2025)",
+        "occasion": "Post on X replying to a Joe Rogan podcast clip of Ray Kurzweil; Fox Business says he posted it 'Tuesday' in an article dated 2024-03-13",
+        "source_url": "https://www.foxbusiness.com/media/elon-musk-predicts-ai-will-likely-smarter-all-humans-combined-2029",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2024-07-22",
+        "quote": "Tesla will have genuinely useful humanoid robots in low production for Tesla internal use next year and, hopefully, high production for other companies in 2026",
+        "what_is_predicted": "Tesla's Optimus humanoid robots will be in low production for Tesla's own use in 2025 and in high production for other companies in 2026.",
+        "date_or_span": "next year (2025); 2026",
+        "occasion": "Post on X in July 2024, quoted in a Bangkok Post report on the Future Investment Initiative, Riyadh, 29 Oct 2024",
+        "source_url": "https://www.bangkokpost.com/world/2892372/musk-10-billion-humanoid-robots-by-2040",
+        "source_kind": "coverage_only",
+        "already_recorded": "2024-07-23-musk-optimus-outside-customers-2026.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search snippets (TheStreet, Tribune India) report Davos remarks in January 2025: AI smarter than any human by the end of that year or no later than the next, and smarter than all humanity combined around 2030-2031. Snippets (IBTimes, Yahoo Finance) also report a 2025 G20 remark that AI will do all digital work by the end of next year. Not opened."
+      },
+      {
+        "year": "2025",
+        "note": "The aipredictionindex.com Musk page lists a 2025-06-16 Y Combinator AI Startup School remark (digital superintelligence this year or next) and 2025-10 X posts on a Grok 5 AGI claim and Grok-made games and movies."
+      },
+      {
+        "year": "2017",
+        "note": "A Goodreads blog snippet reports a 2017 X post giving 2030-2040 for AI being better than humans at everything. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Elon Musk\" AI prediction 2024",
+        "what_found": "Coverage of the 8 Apr 2024 interview on X (already recorded), a Gary Marcus Substack post and the AI Prediction Index page; ran once, but my code failed while printing the results, which I then read from what was saved."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2024 interview AGI \"years\"",
+        "what_found": "Only news coverage of the 8 Apr 2024 interview on X (smarter than the smartest human by 2025/2026), already recorded."
+      },
+      {
+        "query_or_url": "\"Elon Musk\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Same April coverage, plus a Quartz snippet on the Oct 2024 FII 'AI could go bad by the end of the decade' remark and 2025 G20 coverage."
+      },
+      {
+        "query_or_url": "https://www.aipredictionindex.com/who/elon-musk/",
+        "what_found": "Opened; the page was cut off and showed only two 2024 entries: the 22 Jul X post on Optimus (already recorded) and the 10 Oct 'We, Robot' Cybercab-production-in-2026 quote (left out as a production plan)."
+      },
+      {
+        "query_or_url": "Lex Fridman podcast 438 Elon Musk Neuralink transcript",
+        "what_found": "Found the official transcript page for the 2 Aug 2024 episode."
+      },
+      {
+        "query_or_url": "Musk Kurzweil reply \"smarter than all humans combined\" 2029 March 2024",
+        "what_found": "Found the X post URL and coverage (Fox Business, BusinessToday, Interesting Engineering) of the 12 Mar 2024 post."
+      },
+      {
+        "query_or_url": "Musk Future Investment Initiative October 2024 AI \"smarter\" transcript",
+        "what_found": "Nothing usable from the 2024 event; results were mostly 2025 pieces."
+      },
+      {
+        "query_or_url": "Tesla Q1 2024 earnings call transcript Musk Optimus FSD",
+        "what_found": "Rev.com transcript; a snippet showed Optimus 'sell it externally by the end of next year', but the opened page did not."
+      },
+      {
+        "query_or_url": "https://lexfridman.com/elon-musk-and-neuralink-team-transcript/",
+        "what_found": "Opened but cut off at about 14 minutes; only a Neuralink bandwidth remark ('five years from now... a megabit'), which is not about AI."
+      },
+      {
+        "query_or_url": "https://x.com/elonmusk/status/1767738797276451090?lang=en",
+        "what_found": "Would not open (url_not_allowed); not quoted."
+      },
+      {
+        "query_or_url": "https://www.rev.com/transcripts/tesla-q1-2024-earnings-conference-call",
+        "what_found": "Opened but cut off; only a chip forecast (about 85,000 H100s by year end, left out) and an undated remark about exceeding human reliability."
+      },
+      {
+        "query_or_url": "Musk FII Riyadh October 29 2024 AI \"smarter than\" \"next year\" humanoid robots",
+        "what_found": "Bangkok Post report: 10 billion humanoid robots by 2040 (paraphrased only)."
+      },
+      {
+        "query_or_url": "Musk VivaTech May 2024 AI \"no jobs\" interview",
+        "what_found": "Only coverage of the undated 'probably none of us will have a job' remark; nothing opened."
+      },
+      {
+        "query_or_url": "https://www.bangkokpost.com/world/2892372/musk-10-billion-humanoid-robots-by-2040",
+        "what_found": "Opened; paraphrase of the 2040 robot figure and a direct quote of the July 2024 Optimus post."
+      },
+      {
+        "query_or_url": "https://www.foxbusiness.com/media/elon-musk-predicts-ai-will-likely-smarter-all-humans-combined-2029",
+        "what_found": "Opened; text cut off after 'By 2029', so only the first sentence of the post could be quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2024 Musk repeatedly gave short AGI timelines: in a 12 March X post (AI smarter than any single human next year, with a 2029 line seen only in snippets) and in the already-recorded 8 April interview on X. Besides these he gave dated Optimus and Grok predictions, mostly already recorded. The one new candidate, the March post, comes from a Fox Business report, not a page of Musk's own; transcripts of the Lex Fridman podcast and the Tesla earnings call were cut off and gave nothing new."
+  },
+  "reply_text": "I found one new 2024 prediction that's worth checking, but only through a news report, and one claim you already have. Everything else in 2024 was already in your list, was only in search snippets, or didn't meet the rules.\n\n- **New, news report only:** on 12 March 2024 Musk posted on X, replying to a clip of Ray Kurzweil on Joe Rogan's podcast: \"AI will probably be smarter than any single human next year.\" Fox Business printed this; the post on X itself would not open. The article's text was cut off right after the words \"By 2029,\" so I could not read the next sentence. Search snippets give it as \"By 2029, AI is probably smarter than all humans combined,\" but that isn't quoted here because I didn't read it on an opened page. The first sentence is close to your 8 April file but comes from a different occasion a month earlier, so I left it unmarked.\n- **Already recorded:** a Bangkok Post article about the Riyadh investment conference (29 October 2024) quotes Musk's July X post saying Tesla will have useful humanoid robots for its own use \"next year\" and, \"hopefully, high production for other companies in 2026\". This matches `2024-07-23-musk-optimus-outside-customers-2026.toml`. The same article says he predicted at least 10 billion humanoid robots by 2040, but only in the reporter's words, so it isn't listed.\n- **Left out:**\n  - **Robotaxi production:** a \"Cybercab\" production-in-2026 quote from the October 2024 robotaxi event, seen only on a third-party tracker site. It's a production plan, which your rules treat as a business forecast.\n  - **Tesla earnings call:** his April 2024 forecast of about 85,000 H100s (Nvidia AI chips) by year end, which is a chip plan.\n  - **Neuralink:** a remark on Lex Fridman's podcast (episode #438, 2 August 2024) about brain-implant speed, which is about the implant, not AI.\n\n**Gaps a checker should know about:**\n- The Lex Fridman transcript and the earnings-call transcript both cut off early (at about 14 minutes and about 20,000 characters).\n- The Optimus \"sell externally by the end of next year\" line from the April call appeared only in a snippet.\n- I opened no page for the October investment-conference remarks on AI (\"could go bad by the end of the decade\"), the May VivaTech jobs remarks, or the 8 April interview on X.\n\nI used 9 of 12 searches and all 6 page openings (one opening, the X post, was refused). The first fixed search ran once but my code failed while printing it; I read its results from what was saved and didn't run it again.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2024-03-12\", \"quote\": \"AI will probably be smarter than any single human next year,\", \"what_is_predicted\": \"AI will be smarter than any single human in 2025.\", \"date_or_span\": \"next year (2025)\", \"occasion\": \"Post on X replying to a Joe Rogan podcast clip of Ray Kurzweil; Fox Business says he posted it 'Tuesday' in an article dated 2024-03-13\", \"source_url\": \"https://www.foxbusiness.com/media/elon-musk-predicts-ai-will-likely-smarter-all-humans-combined-2029\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2024-07-22\", \"quote\": \"Tesla will have genuinely useful humanoid robots in low production for Tesla internal use next year and, hopefully, high production for other companies in 2026\", \"what_is_predicted\": \"Tesla's Optimus humanoid robots will be in low production for Tesla's own use in 2025 and in high production for other companies in 2026.\", \"date_or_span\": \"next year (2025); 2026\", \"occasion\": \"Post on X in July 2024, quoted in a Bangkok Post report on the Future Investment Initiative, Riyadh, 29 Oct 2024\", \"source_url\": \"https://www.bangkokpost.com/world/2892372/musk-10-billion-humanoid-robots-by-2040\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"2024-07-23-musk-optimus-outside-customers-2026.toml\"}\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search snippets (TheStreet, Tribune India) report Davos remarks in January 2025: AI smarter than any human by the end of that year or no later than the next, and smarter than all humanity combined around 2030-2031. Snippets (IBTimes, Yahoo Finance) also report a 2025 G20 remark that AI will do all digital work by the end of next year. Not opened.\"},\n    {\"year\": \"2025\", \"note\": \"The aipredictionindex.com Musk page lists a 2025-06-16 Y Combinator AI Startup School remark (digital superintelligence this year or next) and 2025-10 X posts on a Grok 5 AGI claim and Grok-made games and movies.\"},\n    {\"year\": \"2017\", \"note\": \"A Goodreads blog snippet reports a 2017 X post giving 2030-2040 for AI being better than humans at everything. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Elon Musk\\\" AI prediction 2024\", \"what_found\": \"Coverage of the 8 Apr 2024 interview on X (already recorded), a Gary Marcus Substack post and the AI Prediction Index page; ran once, but my code failed while printing the results, which I then read from what was saved.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Only news coverage of the 8 Apr 2024 interview on X (smarter than the smartest human by 2025/2026), already recorded.\"},\n    {\"query_or_url\": \"\\\"Elon Musk\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Same April coverage, plus a Quartz snippet on the Oct 2024 FII 'AI could go bad by the end of the decade' remark and 2025 G20 coverage.\"},\n    {\"query_or_url\": \"https://www.aipredictionindex.com/who/elon-musk/\", \"what_found\": \"Opened; the page was cut off and showed only two 2024 entries: the 22 Jul X post on Optimus (already recorded) and the 10 Oct 'We, Robot' Cybercab-production-in-2026 quote (left out as a production plan).\"},\n    {\"query_or_url\": \"Lex Fridman podcast 438 Elon Musk Neuralink transcript\", \"what_found\": \"Found the official transcript page for the 2 Aug 2024 episode.\"},\n    {\"query_or_url\": \"Musk Kurzweil reply \\\"smarter than all humans combined\\\" 2029 March 2024\", \"what_found\": \"Found the X post URL and coverage (Fox Business, BusinessToday, Interesting Engineering) of the 12 Mar 2024 post.\"},\n    {\"query_or_url\": \"Musk Future Investment Initiative October 2024 AI \\\"smarter\\\" transcript\", \"what_found\": \"Nothing usable from the 2024 event; results were mostly 2025 pieces.\"},\n    {\"query_or_url\": \"Tesla Q1 2024 earnings call transcript Musk Optimus FSD\", \"what_found\": \"Rev.com transcript; a snippet showed Optimus 'sell it externally by the end of next year', but the opened page did not.\"},\n    {\"query_or_url\": \"https://lexfridman.com/elon-musk-and-neuralink-team-transcript/\", \"what_found\": \"Opened but cut off at about 14 minutes; only a Neuralink bandwidth remark ('five years from now... a megabit'), which is not about AI.\"},\n    {\"query_or_url\": \"https://x.com/elonmusk/status/1767738797276451090?lang=en\", \"what_found\": \"Would not open (url_not_allowed); not quoted.\"},\n    {\"query_or_url\": \"https://www.rev.com/transcripts/tesla-q1-2024-earnings-conference-call\", \"what_found\": \"Opened but cut off; only a chip forecast (about 85,000 H100s by year end, left out) and an undated remark about exceeding human reliability.\"},\n    {\"query_or_url\": \"Musk FII Riyadh October 29 2024 AI \\\"smarter than\\\" \\\"next year\\\" humanoid robots\", \"what_found\": \"Bangkok Post report: 10 billion humanoid robots by 2040 (paraphrased only).\"},\n    {\"query_or_url\": \"Musk VivaTech May 2024 AI \\\"no jobs\\\" interview\", \"what_found\": \"Only coverage of the undated 'probably none of us will have a job' remark; nothing opened.\"},\n    {\"query_or_url\": \"https://www.bangkokpost.com/world/2892372/musk-10-billion-humanoid-robots-by-2040\", \"what_found\": \"Opened; paraphrase of the 2040 robot figure and a direct quote of the July 2024 Optimus post.\"},\n    {\"query_or_url\": \"https://www.foxbusiness.com/media/elon-musk-predicts-ai-will-likely-smarter-all-humans-combined-2029\", \"what_found\": \"Opened; text cut off after 'By 2029', so only the first sentence of the post could be quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2024 Musk repeatedly gave short AGI timelines: in a 12 March X post (AI smarter than any single human next year, with a 2029 line seen only in snippets) and in the already-recorded 8 April interview on X. Besides these he gave dated Optimus and Grok predictions, mostly already recorded. The one new candidate, the March post, comes from a Fox Business report, not a page of Musk's own; transcripts of the Lex Fridman podcast and the Tesla earnings call were cut off and gave nothing new.\"\n}\n```"
+}

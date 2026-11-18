@@ -1,0 +1,336 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6878,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7979
+      },
+      "cache_creation_input_tokens": 69062,
+      "cache_read_input_tokens": 345503,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 9167,
+      "output_tokens_details": {
+        "thinking_tokens": 3058
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2025','\"Demis Hassabis\" 2025 interview AGI \"years\"','\"Demis Hassabis\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,'ERR',r); return ''\n    c=r[0].get('content',''); P[u]=c; print(u,len(c)); return c\ndef grep(c,pats,w=350):\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            s=max(0,m.start()-w); print('>>',c[s:m.end()+w].replace('\\n',' ')); print()\nfor u in [\"https://aletteraday.substack.com/p/letters-314315-demis-hassabis-and\",\"https://time.com/7277608/demis-hassabis-interview-time100-2025/\"]:\n    await fetch(u)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://aletteraday.substack.com/p/letters-314315-demis-hassabis-and"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/7277608/demis-hassabis-interview-time100-2025/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis SXSW London June 2025 AGI','Hassabis Guardian interview August 2025 \"Industrial Revolution\" \"10 times faster\"','Hassabis Axios AI+ Summit December 2025 transcript']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis SXSW London June 2025 AGI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Guardian interview August 2025 \"Industrial Revolution\" \"10 times faster\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Axios AI+ Summit December 2025 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content','')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    P[u]=c; print(u,len(c)); return c\nc1=await fetch(\"https://www.axios.com/2025/12/05/ai-deepmind-hassabis-gemini\")\nc2=await fetch(\"https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/\")\ni=c1.find('Hassabis'); print(c1[i-200:i+4000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.axios.com/2025/12/05/ai-deepmind-hassabis-gemini"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c1)\ngrep(c2,[r'\\byears?\\b',r'decade',r'20[23]\\d',r'next year'],w=400)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['theguardian.com Demis Hassabis interview 2025 \"AGI\"','Hassabis Amodei Paris February 2025 Economist conversation transcript','Hassabis \"Big Technology\" podcast January 2025 transcript AGI']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "theguardian.com Demis Hassabis interview 2025 \"AGI\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Amodei Paris February 2025 Economist conversation transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis \"Big Technology\" podcast January 2025 transcript AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c3=await fetch(\"https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis\")\nc4=await fetch(\"https://singjupost.com/transcript-of-demis-hassabis-google-co-founder-sergey-brin-agi-by-2030/\")\nprint(c3[:600])\ngrep(c3,[r'\\byears\\b',r'decade',r'20[23]\\d',r'next year'],w=300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://singjupost.com/transcript-of-demis-hassabis-google-co-founder-sergey-brin-agi-by-2030/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c4[:400])\ngrep(c4,[r'20[23]\\d',r'\\byears\\b',r'next year',r'decade'],w=350)"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-01",
+        "quote": "I think we're probably three to five years away.",
+        "what_is_predicted": "AGI will arrive in roughly three to five years.",
+        "date_or_span": "three to five years (c. 2028-2030)",
+        "occasion": "Big Technology Q&A with Alex Kantrowitz, published 23 January 2025, answering 'So a couple years till we hit AGI?'",
+        "source_url": "https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-05",
+        "quote": "I'm just after.",
+        "what_is_predicted": "AGI will arrive just after 2030 rather than before.",
+        "date_or_span": "just after 2030",
+        "occasion": "Google I/O 2025 live interview with Sergey Brin, hosted by Alex Kantrowitz, answering 'AGI before 2030 or after 2030?'",
+        "source_url": "https://singjupost.com/transcript-of-demis-hassabis-google-co-founder-sergey-brin-agi-by-2030/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-09",
+        "quote": "So I think that we are maybe, I would say sort of five to 10 years away from having an AGI system that's capable of doing those things.",
+        "what_is_predicted": "An AGI system with consistent PhD-level general capability is five to ten years away.",
+        "date_or_span": "five to ten years",
+        "occasion": "All-In Summit interview with David Friedberg (transcript page dates it 13 September 2025)",
+        "source_url": "https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-09",
+        "quote": "But I feel if I was to bet, I think there are probably one or two missing breakthroughs that are still required and will come over the next five or so years.",
+        "what_is_predicted": "The one or two research breakthroughs still needed for AGI will come within about five years.",
+        "date_or_span": "the next five or so years",
+        "occasion": "All-In Summit interview with David Friedberg",
+        "source_url": "https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-09",
+        "quote": "I think in the next couple of years there'll be a sort of real wow moment with robotics.",
+        "what_is_predicted": "AI-driven robotics will have a breakthrough 'wow moment' within about two years.",
+        "date_or_span": "the next couple of years",
+        "occasion": "All-In Summit interview with David Friedberg",
+        "source_url": "https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-09",
+        "quote": "And I think we could reduce down drug discovery from taking years, sometimes a decade to do, down to maybe weeks or even days over the next 10 years.",
+        "what_is_predicted": "AI tools will cut drug discovery from years to weeks or days within ten years.",
+        "date_or_span": "the next 10 years",
+        "occasion": "All-In Summit interview with David Friedberg, speaking about Isomorphic Labs",
+        "source_url": "https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-12-04",
+        "quote": "Quite close. I think we're like 5 to 10 years away if you were to ask me",
+        "what_is_predicted": "AGI is five to ten years away.",
+        "date_or_span": "5 to 10 years",
+        "occasion": "Interview with Mike Allen at the Axios AI+ SF Summit, San Francisco (Thursday before the 5 December article)",
+        "source_url": "https://www.axios.com/2025/12/05/ai-deepmind-hassabis-gemini",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-01",
+        "quote": "I think we're getting closer and closer, but we're still probably a handful of years away.",
+        "source_url": "https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "At the January 2026 Davos panel with Dario Amodei (transcript on aletteraday.substack.com) Hassabis said 'I think I'm still on the same timeline' and spoke of 'my timelines of five to ten years away'. Search snippets also mention a later 2026 WSJ Magazine interview moving AGI to two to three years; I did not open it."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2025",
+        "what_found": "Mostly later news recaps (36kr, Fortune June 2025, CNBC March 2025, Fortune 2026); no primary pages."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2025 interview AGI \"years\"",
+        "what_found": "Pointed to the TIME100 April 2025 profile, the Axios December 2025 summit piece, CNBC/NBC March 17 briefing reports and 2026 WSJ Magazine coverage."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Pointed to the aletteraday transcript of the Paris 2025 and Davos 2026 Hassabis-Amodei talks, plus 2026 coverage."
+      },
+      {
+        "query_or_url": "https://aletteraday.substack.com/p/letters-314315-demis-hassabis-and",
+        "what_found": "Opened; the January 2026 Davos transcript was readable but the 2025 Paris transcript is behind a paywall, so nothing usable for 2025."
+      },
+      {
+        "query_or_url": "https://time.com/7277608/demis-hassabis-interview-time100-2025/",
+        "what_found": "Opened; a profile (published 15 April 2025), not a Q&A. AGI timing is paraphrased, and its only timing fragment ('a few years away', about automating AI research) is undated, so I didn't use it."
+      },
+      {
+        "query_or_url": "Hassabis SXSW London June 2025 AGI",
+        "what_found": "Coverage of his June 2025 SXSW London talk about AGI's impact; no dated forecast seen in snippets."
+      },
+      {
+        "query_or_url": "Hassabis Guardian interview August 2025 \"Industrial Revolution\" \"10 times faster\"",
+        "what_found": "Second-hand reports of the August 2025 Guardian interview ('10 times bigger than the Industrial Revolution'), a comparison with no date attached; the Guardian page itself didn't come up."
+      },
+      {
+        "query_or_url": "Hassabis Axios AI+ Summit December 2025 transcript",
+        "what_found": "Axios articles on the December 2025 summit and a transcript of the September 2025 All-In Summit interview."
+      },
+      {
+        "query_or_url": "https://www.axios.com/2025/12/05/ai-deepmind-hassabis-gemini",
+        "what_found": "Opened; news report quoting him on AGI being 5 to 10 years away."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/",
+        "what_found": "Opened; full All-In Summit transcript with dated forecasts on AGI, missing breakthroughs, robotics and drug discovery."
+      },
+      {
+        "query_or_url": "theguardian.com Demis Hassabis interview 2025 \"AGI\"",
+        "what_found": "Didn't surface the Guardian page; mostly repeats of earlier results."
+      },
+      {
+        "query_or_url": "Hassabis Amodei Paris February 2025 Economist conversation transcript",
+        "what_found": "Listings for the 18 February 2025 Economist conversation in Paris; the only transcript found is the paywalled aletteraday post."
+      },
+      {
+        "query_or_url": "Hassabis \"Big Technology\" podcast January 2025 transcript AGI",
+        "what_found": "Found the Big Technology Q&A of 23 January 2025 and the Google I/O 2025 transcript with Sergey Brin."
+      },
+      {
+        "query_or_url": "https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis",
+        "what_found": "Opened; the free part of the Q&A has the 'three to five years' AGI answer; the rest is paywalled."
+      },
+      {
+        "query_or_url": "https://singjupost.com/transcript-of-demis-hassabis-google-co-founder-sergey-brin-agi-by-2030/",
+        "what_found": "Opened; I/O 2025 transcript with his answer 'I'm just after' on AGI before or after 2030."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2025 Hassabis kept dating AGI to roughly five to ten years (All-In in September, Axios in December). He also said 'three to five years' in a January Q&A and 'just after' 2030 at Google I/O in May. He gave shorter dated forecasts for missing breakthroughs (about five years), a robotics 'wow moment' (a couple of years) and much faster drug discovery (ten years); none of the seven new items is on the recorded list, though the robotics line repeats the recorded April claim's gist."
+  },
+  "reply_text": "I found seven new dated predictions from 2025 that aren't on your recorded list, plus one undated AGI remark. None of them is a recorded claim met again, though the All-In robotics line says nearly the same thing as your April robotics file. Six of the seven come from a transcript or a printed Q&A; one comes only from news coverage.\n\n- **January (Big Technology Q&A, published 23 January).** Asked whether AGI was a couple of years off, he said \"I think we're probably three to five years away.\" Earlier in the same piece he said AGI was \"still probably a handful of years away,\" which I've listed as undated. The post went up on 23 January 2025, but I can't confirm the day the interview was recorded.\n- **Google I/O, May 2025 (third-party transcript).** Asked whether AGI would come before or after 2030, he said \"I'm just after.\" The transcript doesn't give the day. I believe the session was on 20 May but didn't confirm it, so I've dated it 2025-05.\n- **All-In Summit, September 2025 (third-party transcript).** He gave four dated forecasts:\n  - AGI is \"sort of five to 10 years away\".\n  - One or two missing breakthroughs \"will come over the next five or so years\".\n  - There will be \"a sort of real wow moment with robotics\" in \"the next couple of years\". This is close to your April robotics file.\n  - Drug discovery could fall from years \"down to maybe weeks or even days over the next 10 years\".\n  \n  The transcript page dates the interview 13 September.\n- **Axios AI+ Summit, 4 December 2025 (news coverage only).** He said AGI is \"Quite close. I think we're like 5 to 10 years away if you were to ask me,\" speaking to Mike Allen at the Axios AI+ SF Summit in San Francisco on Thursday.\n\n**Left out:**\n- **Isomorphic Labs (All-In).** He said its drug programmes would enter a pre-clinical phase \"sometime next year\". That's the company's own pipeline plan, so I treated it as a business forecast.\n- **TIME100 profile, April.** It paraphrases him on AGI and quotes only the fragment \"a few years away\", about an agent that could automate AI research. That isn't dated, and it isn't about AGI arriving.\n- **Davos and Paris debates with Dario Amodei.** The 2025 Paris transcript is behind a paywall, so I didn't use it. The January 2026 Davos text belongs under other years.\n- **CNBC, 17 March.** I saw this report only in search snippets and didn't open the page, so I haven't quoted it.\n\nI used 9 of the 12 searches and all 6 page openings.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-01\", \"quote\": \"I think we're probably three to five years away.\", \"what_is_predicted\": \"AGI will arrive in roughly three to five years.\", \"date_or_span\": \"three to five years (c. 2028-2030)\", \"occasion\": \"Big Technology Q&A with Alex Kantrowitz, published 23 January 2025, answering 'So a couple years till we hit AGI?'\", \"source_url\": \"https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-05\", \"quote\": \"I'm just after.\", \"what_is_predicted\": \"AGI will arrive just after 2030 rather than before.\", \"date_or_span\": \"just after 2030\", \"occasion\": \"Google I/O 2025 live interview with Sergey Brin, hosted by Alex Kantrowitz, answering 'AGI before 2030 or after 2030?'\", \"source_url\": \"https://singjupost.com/transcript-of-demis-hassabis-google-co-founder-sergey-brin-agi-by-2030/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-09\", \"quote\": \"So I think that we are maybe, I would say sort of five to 10 years away from having an AGI system that's capable of doing those things.\", \"what_is_predicted\": \"An AGI system with consistent PhD-level general capability is five to ten years away.\", \"date_or_span\": \"five to ten years\", \"occasion\": \"All-In Summit interview with David Friedberg (transcript page dates it 13 September 2025)\", \"source_url\": \"https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-09\", \"quote\": \"But I feel if I was to bet, I think there are probably one or two missing breakthroughs that are still required and will come over the next five or so years.\", \"what_is_predicted\": \"The one or two research breakthroughs still needed for AGI will come within about five years.\", \"date_or_span\": \"the next five or so years\", \"occasion\": \"All-In Summit interview with David Friedberg\", \"source_url\": \"https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-09\", \"quote\": \"I think in the next couple of years there'll be a sort of real wow moment with robotics.\", \"what_is_predicted\": \"AI-driven robotics will have a breakthrough 'wow moment' within about two years.\", \"date_or_span\": \"the next couple of years\", \"occasion\": \"All-In Summit interview with David Friedberg\", \"source_url\": \"https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-09\", \"quote\": \"And I think we could reduce down drug discovery from taking years, sometimes a decade to do, down to maybe weeks or even days over the next 10 years.\", \"what_is_predicted\": \"AI tools will cut drug discovery from years to weeks or days within ten years.\", \"date_or_span\": \"the next 10 years\", \"occasion\": \"All-In Summit interview with David Friedberg, speaking about Isomorphic Labs\", \"source_url\": \"https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-12-04\", \"quote\": \"Quite close. I think we're like 5 to 10 years away if you were to ask me\", \"what_is_predicted\": \"AGI is five to ten years away.\", \"date_or_span\": \"5 to 10 years\", \"occasion\": \"Interview with Mike Allen at the Axios AI+ SF Summit, San Francisco (Thursday before the 5 December article)\", \"source_url\": \"https://www.axios.com/2025/12/05/ai-deepmind-hassabis-gemini\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2025-01\", \"quote\": \"I think we're getting closer and closer, but we're still probably a handful of years away.\", \"source_url\": \"https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"At the January 2026 Davos panel with Dario Amodei (transcript on aletteraday.substack.com) Hassabis said 'I think I'm still on the same timeline' and spoke of 'my timelines of five to ten years away'. Search snippets also mention a later 2026 WSJ Magazine interview moving AGI to two to three years; I did not open it.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2025\", \"what_found\": \"Mostly later news recaps (36kr, Fortune June 2025, CNBC March 2025, Fortune 2026); no primary pages.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Pointed to the TIME100 April 2025 profile, the Axios December 2025 summit piece, CNBC/NBC March 17 briefing reports and 2026 WSJ Magazine coverage.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Pointed to the aletteraday transcript of the Paris 2025 and Davos 2026 Hassabis-Amodei talks, plus 2026 coverage.\"},\n    {\"query_or_url\": \"https://aletteraday.substack.com/p/letters-314315-demis-hassabis-and\", \"what_found\": \"Opened; the January 2026 Davos transcript was readable but the 2025 Paris transcript is behind a paywall, so nothing usable for 2025.\"},\n    {\"query_or_url\": \"https://time.com/7277608/demis-hassabis-interview-time100-2025/\", \"what_found\": \"Opened; a profile (published 15 April 2025), not a Q&A. AGI timing is paraphrased, and its only timing fragment ('a few years away', about automating AI research) is undated, so I didn't use it.\"},\n    {\"query_or_url\": \"Hassabis SXSW London June 2025 AGI\", \"what_found\": \"Coverage of his June 2025 SXSW London talk about AGI's impact; no dated forecast seen in snippets.\"},\n    {\"query_or_url\": \"Hassabis Guardian interview August 2025 \\\"Industrial Revolution\\\" \\\"10 times faster\\\"\", \"what_found\": \"Second-hand reports of the August 2025 Guardian interview ('10 times bigger than the Industrial Revolution'), a comparison with no date attached; the Guardian page itself didn't come up.\"},\n    {\"query_or_url\": \"Hassabis Axios AI+ Summit December 2025 transcript\", \"what_found\": \"Axios articles on the December 2025 summit and a transcript of the September 2025 All-In Summit interview.\"},\n    {\"query_or_url\": \"https://www.axios.com/2025/12/05/ai-deepmind-hassabis-gemini\", \"what_found\": \"Opened; news report quoting him on AGI being 5 to 10 years away.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-demis-hassabis-on-ai-creativity-and-a-golden-age-of-science-all-in-summit/\", \"what_found\": \"Opened; full All-In Summit transcript with dated forecasts on AGI, missing breakthroughs, robotics and drug discovery.\"},\n    {\"query_or_url\": \"theguardian.com Demis Hassabis interview 2025 \\\"AGI\\\"\", \"what_found\": \"Didn't surface the Guardian page; mostly repeats of earlier results.\"},\n    {\"query_or_url\": \"Hassabis Amodei Paris February 2025 Economist conversation transcript\", \"what_found\": \"Listings for the 18 February 2025 Economist conversation in Paris; the only transcript found is the paywalled aletteraday post.\"},\n    {\"query_or_url\": \"Hassabis \\\"Big Technology\\\" podcast January 2025 transcript AGI\", \"what_found\": \"Found the Big Technology Q&A of 23 January 2025 and the Google I/O 2025 transcript with Sergey Brin.\"},\n    {\"query_or_url\": \"https://www.bigtechnology.com/p/google-deepmind-ceo-demis-hassabis\", \"what_found\": \"Opened; the free part of the Q&A has the 'three to five years' AGI answer; the rest is paywalled.\"},\n    {\"query_or_url\": \"https://singjupost.com/transcript-of-demis-hassabis-google-co-founder-sergey-brin-agi-by-2030/\", \"what_found\": \"Opened; I/O 2025 transcript with his answer 'I'm just after' on AGI before or after 2030.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2025 Hassabis kept dating AGI to roughly five to ten years (All-In in September, Axios in December). He also said 'three to five years' in a January Q&A and 'just after' 2030 at Google I/O in May. He gave shorter dated forecasts for missing breakthroughs (about five years), a robotics 'wow moment' (a couple of years) and much faster drug discovery (ten years); none of the seven new items is on the recorded list, though the robotics line repeats the recorded April claim's gist.\"\n}\n```"
+}

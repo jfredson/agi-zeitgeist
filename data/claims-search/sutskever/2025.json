@@ -1,0 +1,270 @@
+{
+  "speaker_id": "sutskever",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.576,
+  "web_searches": 8,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7652
+      },
+      "cache_creation_input_tokens": 57964,
+      "cache_read_input_tokens": 267759,
+      "inference_geo": "global",
+      "input_tokens": 22,
+      "output_tokens": 7628,
+      "output_tokens_details": {
+        "thinking_tokens": 2461
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 8
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Ilya Sutskever\" AI prediction 2025','\"Ilya Sutskever\" 2025 interview AGI \"years\"','\"Ilya Sutskever\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('-',x.get('title'),x.get('url'),x.get('page_age'))\n        print('  ',x.get('content','')[:250].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ilya Sutskever\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever \"three, five, maybe ten years\"','Sutskever University of Toronto convocation speech transcript','Dwarkesh Patel Ilya Sutskever transcript \"age of research\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever \"three, five, maybe ten years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever University of Toronto convocation speech transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dwarkesh Patel Ilya Sutskever transcript \"age of research\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pages={}\nfor u in ['https://www.dwarkesh.com/p/ilya-sutskever-2','https://the-decoder.com/openai-co-founder-ilya-sutskever-believes-ai-will-shape-everyones-life-whether-you-like-it-or-not/','https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    if isinstance(p,dict): print(u,p); continue\n    c=p[0].get('content',''); pages[u]=c; print(u,len(c))\nimport re\ndef kw(u,pats,w=400):\n    c=pages[u]\n    for pat in pats:\n        for m in re.finditer(pat,c):\n            print('>>',pat,':',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '));print()\nkw('https://the-decoder.com/openai-co-founder-ilya-sutskever-believes-ai-will-shape-everyones-life-whether-you-like-it-or-not/',['three, five'],800)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/ilya-sutskever-2"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://the-decoder.com/openai-co-founder-ilya-sutskever-believes-ai-will-shape-everyones-life-whether-you-like-it-or-not/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "p=await web_fetch({\"url\":\"https://www.dwarkesh.com/p/ilya-sutskever-2\"})\nif isinstance(p,str): p=json.loads(p)\nd=p if isinstance(p,dict) else p[0]\nc=d['content']['source']['data'] if isinstance(d.get('content'),dict) else d.get('content','')\nprint(len(c))\nfor pat in ['5 to 20','five to twenty','20 years','years','2030','decade']:\n    for m in re.finditer(pat,c):\n        print('>>',pat,':',c[max(0,m.start()-500):m.end()+300].replace('\\n',' '));print()\n    if pat=='20 years':break"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/ilya-sutskever-2"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Sutskever Dwarkesh transcript \"I think like 5 to 20\"','Sutskever Dwarkesh \"How long until\" \"5 to 20\" human learns']:\n    rr=await web_search({\"query\":q}); print(\"==\",q)\n    rr=json.loads(rr) if isinstance(rr,str) else rr\n    for x in rr:\n        cc=x.get('content','')\n        i=cc.find('20')\n        print('-',x.get('title'),x.get('url'))\n        for m in re.finditer(r'5 to 20|5-20|five to twenty',cc):\n            print('   ',cc[max(0,m.start()-300):m.end()+150].replace('\\n',' ')); break"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever Dwarkesh transcript \"I think like 5 to 20\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Sutskever Dwarkesh \"How long until\" \"5 to 20\" human learns"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def getc(u):\n    return u\nres={}\nfor u in ['https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi','https://podscripts.co/podcasts/dwarkesh-podcast/ilya-sutskever-were-moving-from-the-age-of-scaling-to-the-age-of-research']:\n    p=await web_fetch({\"url\":u})\n    if isinstance(p,str): p=json.loads(p)\n    d=p if isinstance(p,dict) else p[0]\n    cc=d.get('content')\n    if isinstance(cc,dict): cc=cc.get('source',{}).get('data','')\n    if not cc: print(u,str(d)[:300]); continue\n    res[u]=cc; print(u,len(cc))\n    for pat in ['5 to 20','years']:\n        for m in re.finditer(pat,cc):\n            print('  >>',pat,':',cc[max(0,m.start()-500):m.end()+400].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podscripts.co/podcasts/dwarkesh-podcast/ilya-sutskever-were-moving-from-the-age-of-scaling-to-the-age-of-research"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "cc=res['https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi']\ni=cc.find('November 28th, 2025');print(cc[i-700:i+120])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-11-25",
+        "quote": "I think like 5 to 20.",
+        "what_is_predicted": "A system that can learn as well as a human, and as a result become superhuman, will arrive in 5 to 20 years (he answered 'Mhm' when Dwarkesh asked '5 to 20 years?').",
+        "date_or_span": "5 to 20 years",
+        "occasion": "Dwarkesh Podcast, 'Ilya Sutskever — We're moving from the age of scaling to the age of research', timestamp 01:22:26. The official dwarkesh.com transcript page opened but was cut off before this point, so the words were read in a timestamped transcript excerpt reproduced in a third-party Substack essay.",
+        "source_url": "https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi",
+        "source_kind": "transcript",
+        "already_recorded": "2025-11-25-sutskever-human-like-learner-5-to-20-years.toml"
+      },
+      {
+        "date_said": "2025-06-06",
+        "quote": "as AI continues to improve in one year in two years in three years the intuition will become stronger and a lot of the things that we are talking about now they will become much more real they’ll become less imaginary",
+        "what_is_predicted": "Over the next one to three years AI will keep improving, so that today's talk of an extreme AI future will come to seem much more real.",
+        "date_or_span": "in one year, two years, three years",
+        "occasion": "Convocation speech on receiving an honorary Doctor of Science, University of Toronto (official video youtu.be/zuZ2zaotrJs); word-for-word transcript posted by blog.biocomm.ai. Borderline: the forecast is about perception and intuition rather than a specific capability.",
+        "source_url": "https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-06-06",
+        "quote": "the day will come when AI will do all of our all the things that we can do not just some of them but all of them",
+        "source_url": "https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "First Dwarkesh interview: 'How long until AGI? It’s a hard question to answer. I hesitate to give you a number.' Seen quoted in the narrascaping Substack essay, not opened at source."
+      },
+      {
+        "year": "2024",
+        "note": "Search results (theneurondaily.com) cover a late-2024 talk, 'Ilya predicts the future of AI'. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Ilya Sutskever\" AI prediction 2025",
+        "what_found": "News coverage of the June 2025 Toronto convocation speech and the November 2025 Dwarkesh interview."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2025 interview AGI \"years\"",
+        "what_found": "Many write-ups of the Dwarkesh interview's 5-to-20-year forecast."
+      },
+      {
+        "query_or_url": "\"Ilya Sutskever\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "More Dwarkesh write-ups, plus Daily8 coverage presenting 'three, five, maybe ten years' as his superintelligence forecast."
+      },
+      {
+        "query_or_url": "Sutskever \"three, five, maybe ten years\"",
+        "what_found": "Traced the phrase to news coverage of the June 2025 Toronto speech."
+      },
+      {
+        "query_or_url": "Sutskever University of Toronto convocation speech transcript",
+        "what_found": "The official video link and transcript pages (biocomm, podwise)."
+      },
+      {
+        "query_or_url": "Dwarkesh Patel Ilya Sutskever transcript \"age of research\"",
+        "what_found": "The official transcript page at dwarkesh.com and several mirrors."
+      },
+      {
+        "query_or_url": "Sutskever Dwarkesh transcript \"I think like 5 to 20\"",
+        "what_found": "A Substack essay quoting the timestamped exchange; podscripts.co transcript."
+      },
+      {
+        "query_or_url": "Sutskever Dwarkesh \"How long until\" \"5 to 20\" human learns",
+        "what_found": "Only more coverage of the same 5-to-20-year answer."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/ilya-sutskever-2",
+        "what_found": "Opened twice. The page text was cut off at about minute 25, before the timeline question; it confirms 'from 2020 to 2025, it was the age of scaling'."
+      },
+      {
+        "query_or_url": "https://the-decoder.com/openai-co-founder-ilya-sutskever-believes-ai-will-shape-everyones-life-whether-you-like-it-or-not/",
+        "what_found": "News article that presents 'three, five, maybe ten years' as his own timeline (coverage only)."
+      },
+      {
+        "query_or_url": "https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/",
+        "what_found": "Full transcript of the Toronto speech; the 3/5/10 numbers are given as what 'some people say'."
+      },
+      {
+        "query_or_url": "https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi",
+        "what_found": "Timestamped Dwarkesh transcript excerpt with the '5 to 20' exchange, plus his November 28, 2025 X post on scaling."
+      },
+      {
+        "query_or_url": "https://podscripts.co/podcasts/dwarkesh-podcast/ilya-sutskever-were-moving-from-the-age-of-scaling-to-the-age-of-research",
+        "what_found": "Machine transcript, cut off around minute 29 before the timeline exchange."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Sutskever's main dated forecast of 2025 was the already-recorded 5-to-20-year estimate, from the Dwarkesh Podcast on November 25, for a system that learns as well as a human. The only other dated line was a borderline one-to-three-year remark in his June 6 Toronto speech. News reports that he forecast superintelligence in 'three, five, maybe ten years' misattribute numbers he gave as what other people say."
+  },
+  "reply_text": "I found one new candidate for 2025 and met the claim you already have. The new one is weak: a short time span from Sutskever's June 6 University of Toronto speech.\n\n**The recorded claim (2025-11-25, Dwarkesh Podcast).** Asked when a system that \"can learn as well as a human\" and then becomes superhuman would arrive, Sutskever said \"I think like 5 to 20\", and answered \"Mhm\" when asked \"5 to 20 years?\" I couldn't read this on Dwarkesh's own transcript page: it stopped at about minute 25 both times I opened it. The timestamped exchange (01:22:14–01:22:29) appears in a third-party Substack essay. Its earlier excerpts match the official page word for word, but you may want to check this one against the video.\n\n**The new candidate (Toronto speech).** He said things will feel \"much more real\" in one to three years as AI improves. This is a forecast about intuition and perception, not a capability, so it is a borderline fit. The source is a third-party word-for-word transcript of the official YouTube video, without punctuation.\n\n**A misreading to watch for.** The Decoder, Hans India and Daily8 all report that he predicted superintelligence in \"three, five, maybe ten years\". In the transcript he gives those numbers as other people's guesses (\"some people say it's in three some people say it's in five 10 numbers are being thrown around\") and then says \"it's a bit hard to predict the future\". His own line in that passage, \"the day will come…\", has no date, so I put it under undated.\n\n**Two things that don't qualify.** In a November 28 post on X, he said scaling \"won't stall\" but \"something important will continue to be missing\". This has no date and isn't about when AGI arrives. I saw it only quoted in that Substack essay and didn't open the post itself. In the Dwarkesh interview he also called 2020–2025 \"the age of scaling\", which describes the past rather than predicting anything.\n\nI used 8 of the 12 searches and all 6 page openings. Two openings went to Dwarkesh's transcript page, because the first time the text came back in a form my script couldn't read.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2025-11-25\",\n      \"quote\": \"I think like 5 to 20.\",\n      \"what_is_predicted\": \"A system that can learn as well as a human, and as a result become superhuman, will arrive in 5 to 20 years (he answered 'Mhm' when Dwarkesh asked '5 to 20 years?').\",\n      \"date_or_span\": \"5 to 20 years\",\n      \"occasion\": \"Dwarkesh Podcast, 'Ilya Sutskever — We're moving from the age of scaling to the age of research', timestamp 01:22:26. The official dwarkesh.com transcript page opened but was cut off before this point, so the words were read in a timestamped transcript excerpt reproduced in a third-party Substack essay.\",\n      \"source_url\": \"https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"2025-11-25-sutskever-human-like-learner-5-to-20-years.toml\"\n    },\n    {\n      \"date_said\": \"2025-06-06\",\n      \"quote\": \"as AI continues to improve in one year in two years in three years the intuition will become stronger and a lot of the things that we are talking about now they will become much more real they’ll become less imaginary\",\n      \"what_is_predicted\": \"Over the next one to three years AI will keep improving, so that today's talk of an extreme AI future will come to seem much more real.\",\n      \"date_or_span\": \"in one year, two years, three years\",\n      \"occasion\": \"Convocation speech on receiving an honorary Doctor of Science, University of Toronto (official video youtu.be/zuZ2zaotrJs); word-for-word transcript posted by blog.biocomm.ai. Borderline: the forecast is about perception and intuition rather than a specific capability.\",\n      \"source_url\": \"https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2025-06-06\",\n      \"quote\": \"the day will come when AI will do all of our all the things that we can do not just some of them but all of them\",\n      \"source_url\": \"https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2023\", \"note\": \"First Dwarkesh interview: 'How long until AGI? It’s a hard question to answer. I hesitate to give you a number.' Seen quoted in the narrascaping Substack essay, not opened at source.\"},\n    {\"year\": \"2024\", \"note\": \"Search results (theneurondaily.com) cover a late-2024 talk, 'Ilya predicts the future of AI'. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" AI prediction 2025\", \"what_found\": \"News coverage of the June 2025 Toronto convocation speech and the November 2025 Dwarkesh interview.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Many write-ups of the Dwarkesh interview's 5-to-20-year forecast.\"},\n    {\"query_or_url\": \"\\\"Ilya Sutskever\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"More Dwarkesh write-ups, plus Daily8 coverage presenting 'three, five, maybe ten years' as his superintelligence forecast.\"},\n    {\"query_or_url\": \"Sutskever \\\"three, five, maybe ten years\\\"\", \"what_found\": \"Traced the phrase to news coverage of the June 2025 Toronto speech.\"},\n    {\"query_or_url\": \"Sutskever University of Toronto convocation speech transcript\", \"what_found\": \"The official video link and transcript pages (biocomm, podwise).\"},\n    {\"query_or_url\": \"Dwarkesh Patel Ilya Sutskever transcript \\\"age of research\\\"\", \"what_found\": \"The official transcript page at dwarkesh.com and several mirrors.\"},\n    {\"query_or_url\": \"Sutskever Dwarkesh transcript \\\"I think like 5 to 20\\\"\", \"what_found\": \"A Substack essay quoting the timestamped exchange; podscripts.co transcript.\"},\n    {\"query_or_url\": \"Sutskever Dwarkesh \\\"How long until\\\" \\\"5 to 20\\\" human learns\", \"what_found\": \"Only more coverage of the same 5-to-20-year answer.\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/ilya-sutskever-2\", \"what_found\": \"Opened twice. The page text was cut off at about minute 25, before the timeline question; it confirms 'from 2020 to 2025, it was the age of scaling'.\"},\n    {\"query_or_url\": \"https://the-decoder.com/openai-co-founder-ilya-sutskever-believes-ai-will-shape-everyones-life-whether-you-like-it-or-not/\", \"what_found\": \"News article that presents 'three, five, maybe ten years' as his own timeline (coverage only).\"},\n    {\"query_or_url\": \"https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/\", \"what_found\": \"Full transcript of the Toronto speech; the 3/5/10 numbers are given as what 'some people say'.\"},\n    {\"query_or_url\": \"https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi\", \"what_found\": \"Timestamped Dwarkesh transcript excerpt with the '5 to 20' exchange, plus his November 28, 2025 X post on scaling.\"},\n    {\"query_or_url\": \"https://podscripts.co/podcasts/dwarkesh-podcast/ilya-sutskever-were-moving-from-the-age-of-scaling-to-the-age-of-research\", \"what_found\": \"Machine transcript, cut off around minute 29 before the timeline exchange.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Sutskever's main dated forecast of 2025 was the already-recorded 5-to-20-year estimate, from the Dwarkesh Podcast on November 25, for a system that learns as well as a human. The only other dated line was a borderline one-to-three-year remark in his June 6 Toronto speech. News reports that he forecast superintelligence in 'three, five, maybe ten years' misattribute numbers he gave as what other people say.\"\n}\n```"
+}

@@ -1,0 +1,364 @@
+{
+  "speaker_id": "lecun",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7026,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7974
+      },
+      "cache_creation_input_tokens": 64640,
+      "cache_read_input_tokens": 296043,
+      "inference_geo": "global",
+      "input_tokens": 22,
+      "output_tokens": 10507,
+      "output_tokens_details": {
+        "thinking_tokens": 3682
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Yann LeCun\" AI prediction 2025','\"Yann LeCun\" 2025 interview AGI \"years\"','\"Yann LeCun\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Yann LeCun leaving Meta AMI interview December 2025 world models \"years\"','Yann LeCun podcast transcript 2025 \"human-level\" \"years\"','LeCun October 2025 talk LLMs \"five years\" world models']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun leaving Meta AMI interview December 2025 world models \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun podcast transcript 2025 \"human-level\" \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun October 2025 talk LLMs \"five years\" world models"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nasync def fetch(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print('ERR',u,r); return ''\n    c=r[0].get('content',''); F[u]=c; print(u,len(c),r[0].get('title')); return c\ndef grep(c,pats,w=400):\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            s=max(0,m.start()-w); print('>>',p,':',c[s:m.end()+w].replace('\\n',' ')); print()\nfor u in ['https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence','https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent','https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions']:\n    await fetch(u)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun Financial Times interview December 2025 world models \"12 months\"','Yann LeCun MIT symposium October 2025 \"three to five years\" world models','Yann LeCun Facebook post November 2025 leaving Meta AMI \"next big revolution\"']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun Financial Times interview December 2025 world models \"12 months\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun MIT symposium October 2025 \"three to five years\" world models"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun Facebook post November 2025 leaving Meta AMI \"next big revolution\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch2(u):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content')\n        if isinstance(c,dict): c=c.get('source',{}).get('data','')\n        if not c: print('ERR',r.get('error_code')); return ''\n    else: c=r[0].get('content','')\n    F[u]=c; print(u,len(c)); return c\nc1=await fetch2('https://www.axios.com/2025/11/17/ai-world-models-digital-twins')\ngrep(c1,['LeCun','five years'],300)\nc2=await fetch2('https://www.implicator.ai/yann-lecun-didnt-retire-he-escaped/')\ngrep(c2,['12 months','months','years'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.axios.com/2025/11/17/ai-world-models-digital-twins"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.implicator.ai/yann-lecun-didnt-retire-he-escaped/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun \"AI Frontier International Symposium\" 2025 Seoul','Yann LeCun December 2025 podcast transcript world models \"years\" AMI Labs']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun \"AI Frontier International Symposium\" 2025 Seoul"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun December 2025 podcast transcript world models \"years\" AMI Labs"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c3=await fetch2('https://www.asiae.co.kr/en/article/2025102711524920018')\ngrep(c3,['year','decade'],250)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.asiae.co.kr/en/article/2025102711524920018"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-01",
+        "quote": "So, what’s going to happen over the next two years is that there’s going to be progress using the current paradigm, LLMs with words with things bolted on it.",
+        "what_is_predicted": "Over the next two years, AI progress will come from LLMs with added parts rather than a new paradigm.",
+        "date_or_span": "the next two years",
+        "occasion": "The Six Five 'View from Davos' video interview at WEF 2025 with Patrick Moorhead and Daniel Newman",
+        "source_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-01",
+        "quote": "After that, so I expect to see some early progress on this sort of new paradigm within three to five years.",
+        "what_is_predicted": "Early progress on a new AI paradigm beyond LLMs will appear within three to five years.",
+        "date_or_span": "within three to five years",
+        "occasion": "The Six Five 'View from Davos' video interview at WEF 2025",
+        "source_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+        "source_kind": "transcript",
+        "already_recorded": "2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml"
+      },
+      {
+        "date_said": "2025-01",
+        "quote": "And perhaps in five years we’ll know if we’re on the good path towards something like human level intelligence.",
+        "what_is_predicted": "Within about five years it will be known whether the new approach is on track to human-level intelligence.",
+        "date_or_span": "in five years",
+        "occasion": "The Six Five 'View from Davos' video interview at WEF 2025",
+        "source_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-04-04",
+        "quote": "So no question it will happen. It's not going to happen next year. It's not going to happen two years from now. It may happen or happen to some degree within the next ten years.",
+        "what_is_predicted": "Human-level machine intelligence will not arrive within two years but may arrive, at least partly, within ten years.",
+        "date_or_span": "not next year or in two years; possibly within ten years",
+        "occasion": "AI Inside podcast with Jason Howell and Jeff Jarvis (recorded 4 April, published 9 April 2025)",
+        "source_url": "https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence",
+        "source_kind": "printed_qa",
+        "already_recorded": "2025-04-09-lecun-as-smart-as-humans-not-within-two-years.toml"
+      },
+      {
+        "date_said": "2025-04-04",
+        "quote": "If all of the things that we are working on at the moment turn out to be successful, then maybe within ten years, we'll have a good handle on whether we can reach that goal.",
+        "what_is_predicted": "If Meta's current research succeeds, within ten years it will be clear whether human-level intelligence is reachable.",
+        "date_or_span": "within ten years",
+        "occasion": "AI Inside podcast (recorded 4 April, published 9 April 2025)",
+        "source_url": "https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-01-07",
+        "quote": "Yann said, “False.” I asked him 10 years? He said, “False”.",
+        "what_is_predicted": "LeCun rejected the statement that an AI agent will do and write research accepted at a conference such as NeurIPS within the next 5 years, and also within 10 years.",
+        "date_or_span": "within 5 years; within 10 years",
+        "occasion": "CES 2025 fireside chat moderated by Rajeev Chand (Wing VC); the statement was the moderator's and LeCun answered true or false",
+        "source_url": "https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-01-07",
+        "quote": "Yann said, “Depends on whether you’re myopic or not.” Joking aside, he was positive on the opportunities in robotics and anticipated a ChatGPT moment within 3-5 years.",
+        "what_is_predicted": "Per the moderator's paraphrase, a 'ChatGPT moment' for general robotics will come within 3-5 years.",
+        "date_or_span": "within 3-5 years",
+        "occasion": "CES 2025 fireside chat moderated by Rajeev Chand (Wing VC); the time span is the moderator's paraphrase, not LeCun's quoted words",
+        "source_url": "https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-10",
+        "quote": "I've been not making friends in various corners of Silicon Valley, including at Meta, saying that within three to five years, this [world models, not LLMs] will be the dominant model for AI architectures, and nobody in their right mind would use LLMs of the type that we have today",
+        "what_is_predicted": "Within three to five years world models, not LLMs, will be the dominant AI architecture and today's LLMs will be out of use.",
+        "date_or_span": "within three to five years",
+        "occasion": "Symposium at MIT, October 2025, as quoted by Axios citing a Wall Street Journal profile; close to the January 'LLMs not central within five years' claim but said at a later event",
+        "source_url": "https://www.axios.com/2025/11/17/ai-world-models-digital-twins",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-04-04",
+        "quote": "There's no question in my mind that at some point, we'll have machines that are more intelligent than us.",
+        "source_url": "https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Search snippets only, pages not opened: a Forbes piece of 27 Jan 2026 says LeCun does not expect human-level AI this year or next; Capacity reports him calling AGI years away at the India AI Impact Summit 2026."
+      },
+      {
+        "year": "unclear (late 2025 or early 2026)",
+        "note": "implicator.ai reports a Financial Times interview giving 'baby versions within 12 months', animal-level AI in five to seven years and human-level within a decade. It is all the article's paraphrase with no direct quote, and the interview date is not confirmed, so none of it is recorded here."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Yann LeCun\" AI prediction 2025",
+        "what_found": "Links to the January Davos coverage (new paradigm in 3-5 years) and the Wing VC CES write-up."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2025 interview AGI \"years\"",
+        "what_found": "AI Inside (April 2025) and Six Five Davos interview pages, plus older interviews."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "The AI Inside printed Q&A, a GTC 2025 recap and Forbes 2026 coverage."
+      },
+      {
+        "query_or_url": "Yann LeCun leaving Meta AMI interview December 2025 world models \"years\"",
+        "what_found": "Coverage of his Meta exit and the FT interview, mostly paraphrase; a mention of the MIT symposium quote."
+      },
+      {
+        "query_or_url": "Yann LeCun podcast transcript 2025 \"human-level\" \"years\"",
+        "what_found": "Older Lex Fridman transcripts; AI Inside and Six Five Davos again."
+      },
+      {
+        "query_or_url": "LeCun October 2025 talk LLMs \"five years\" world models",
+        "what_found": "Reports of the 27 Oct 2025 Seoul keynote ('LLMs useless within five years') and the March Newsweek interview."
+      },
+      {
+        "query_or_url": "LeCun Financial Times interview December 2025 world models \"12 months\"",
+        "what_found": "Only secondary reports of the FT interview; no direct timeline quote."
+      },
+      {
+        "query_or_url": "Yann LeCun MIT symposium October 2025 \"three to five years\" world models",
+        "what_found": "Axios and others carrying the MIT symposium quote by way of the WSJ."
+      },
+      {
+        "query_or_url": "Yann LeCun Facebook post November 2025 leaving Meta AMI \"next big revolution\"",
+        "what_found": "Coverage of his departure post; the quoted goal has no date or time span."
+      },
+      {
+        "query_or_url": "LeCun \"AI Frontier International Symposium\" 2025 Seoul",
+        "what_found": "Asia Business Daily and BusinessKorea reports of the 27 Oct 2025 keynote."
+      },
+      {
+        "query_or_url": "Yann LeCun December 2025 podcast transcript world models \"years\" AMI Labs",
+        "what_found": "Startup and funding news; no transcript with a dated AI forecast."
+      },
+      {
+        "query_or_url": "https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence",
+        "what_found": "Opened: the full printed Q&A of the AI Inside interview (recorded 4 April 2025), with the two-year and ten-year lines."
+      },
+      {
+        "query_or_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+        "what_found": "Opened: the full Davos 2025 transcript with the two-year, three-to-five-year and five-year lines."
+      },
+      {
+        "query_or_url": "https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions",
+        "what_found": "Opened: the moderator's CES 2025 write-up, mostly paraphrase, with LeCun's one-word true/false answers."
+      },
+      {
+        "query_or_url": "https://www.axios.com/2025/11/17/ai-world-models-digital-twins",
+        "what_found": "Opened: carries the MIT symposium (October 2025) three-to-five-years quote, citing the WSJ."
+      },
+      {
+        "query_or_url": "https://www.implicator.ai/yann-lecun-didnt-retire-he-escaped/",
+        "what_found": "Opened: paraphrases the FT interview timeline; no direct LeCun timeline quote."
+      },
+      {
+        "query_or_url": "https://www.asiae.co.kr/en/article/2025102711524920018",
+        "what_found": "Would not open (url_not_allowed); nothing quoted from it."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2025 was a busy year for LeCun's forecasts, built around a repeated three-to-five-year window for a post-LLM, world-model paradigm and a firm 'not within two years, maybe within ten' on human-level AI. Beyond the recorded claims, the Davos Six Five transcript adds a two-year LLM outlook and a five-year 'we'll know' line, and AI Inside adds a ten-year 'good handle' line. The October MIT and Seoul statements were reached only through news coverage or not at all, and the Seoul page would not open."
+  },
+  "reply_text": "Using last fetch on the Seoul keynote report.I found eight dated statements from 2025. Three are new and come from transcripts or printed interviews I opened. One more is new but I only saw it in news coverage. Two match claims you already have. The last two come from a moderator's write-up, where LeCun's answers are mostly paraphrased.\n\n**New, his own words on the page:**\n- **Six Five \"View from Davos\" interview (January 2025, WEF).** Over the next two years, progress will come from LLMs with extra parts \"bolted on\". Also: \"perhaps in five years we'll know if we're on the good path towards something like human level intelligence.\" The exact day isn't on the page. The video sits with Six Five's WEF25 coverage, around 21–23 January.\n- **AI Inside podcast (recorded 4 April, published 9 April).** If Meta's research succeeds, \"maybe within ten years, we'll have a good handle on whether we can reach that goal\" of human-level intelligence. The line just before it is the claim you already have. You may want to fold this one into that file.\n\n**Same claim as your files:**\n- In the same Davos interview he says early progress on the new paradigm will come \"within three to five years\". That matches your 2025-01-23 file, though your file probably comes from a different Davos session.\n- The AI Inside lines \"not going to happen next year… two years from now… may happen… within the next ten years\" match your 2025-04-09 file.\n\n**Weaker sources:**\n- **MIT symposium (October 2025), news coverage only.** \"Within three to five years\" world models, not LLMs, will be the dominant AI architecture. I read it on Axios, which was itself relying on a Wall Street Journal profile. It closely repeats your January \"LLMs not central within five years\" claim, but at a later event, so I left it as a new entry.\n- **CES fireside chat (January 2025), moderator's write-up.** The moderator put two true/false statements to him. \"An AI agent will have research accepted at a conference such as NeurIPS within five years\": he answered \"False\", and \"False\" again for ten years. Those one-word answers are his only quoted words. The other statement was that a \"ChatGPT moment\" for robotics is around the corner. His own reply was a joke; the claim that he expected it \"within 3-5 years\" is the moderator's paraphrase. Treat both as weak.\n\n**Not used:**\n- The October Seoul keynote (\"LLMs will be obsolete within 5 years\") is a likely missing claim. The article's page refused to open, so I quote nothing from it. It is the obvious next page to open by hand.\n- An article summarising a Financial Times interview gives a timeline (\"baby versions within 12 months\", animal-level AI in five to seven years). It is all the article's paraphrase, and I couldn't confirm when the interview took place, so I left it out.\n- I ran 11 of 12 searches and used all 6 page openings, one of which failed.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-01\", \"quote\": \"So, what’s going to happen over the next two years is that there’s going to be progress using the current paradigm, LLMs with words with things bolted on it.\", \"what_is_predicted\": \"Over the next two years, AI progress will come from LLMs with added parts rather than a new paradigm.\", \"date_or_span\": \"the next two years\", \"occasion\": \"The Six Five 'View from Davos' video interview at WEF 2025 with Patrick Moorhead and Daniel Newman\", \"source_url\": \"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-01\", \"quote\": \"After that, so I expect to see some early progress on this sort of new paradigm within three to five years.\", \"what_is_predicted\": \"Early progress on a new AI paradigm beyond LLMs will appear within three to five years.\", \"date_or_span\": \"within three to five years\", \"occasion\": \"The Six Five 'View from Davos' video interview at WEF 2025\", \"source_url\": \"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\", \"source_kind\": \"transcript\", \"already_recorded\": \"2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml\"},\n    {\"date_said\": \"2025-01\", \"quote\": \"And perhaps in five years we’ll know if we’re on the good path towards something like human level intelligence.\", \"what_is_predicted\": \"Within about five years it will be known whether the new approach is on track to human-level intelligence.\", \"date_or_span\": \"in five years\", \"occasion\": \"The Six Five 'View from Davos' video interview at WEF 2025\", \"source_url\": \"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-04-04\", \"quote\": \"So no question it will happen. It's not going to happen next year. It's not going to happen two years from now. It may happen or happen to some degree within the next ten years.\", \"what_is_predicted\": \"Human-level machine intelligence will not arrive within two years but may arrive, at least partly, within ten years.\", \"date_or_span\": \"not next year or in two years; possibly within ten years\", \"occasion\": \"AI Inside podcast with Jason Howell and Jeff Jarvis (recorded 4 April, published 9 April 2025)\", \"source_url\": \"https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2025-04-09-lecun-as-smart-as-humans-not-within-two-years.toml\"},\n    {\"date_said\": \"2025-04-04\", \"quote\": \"If all of the things that we are working on at the moment turn out to be successful, then maybe within ten years, we'll have a good handle on whether we can reach that goal.\", \"what_is_predicted\": \"If Meta's current research succeeds, within ten years it will be clear whether human-level intelligence is reachable.\", \"date_or_span\": \"within ten years\", \"occasion\": \"AI Inside podcast (recorded 4 April, published 9 April 2025)\", \"source_url\": \"https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-01-07\", \"quote\": \"Yann said, “False.” I asked him 10 years? He said, “False”.\", \"what_is_predicted\": \"LeCun rejected the statement that an AI agent will do and write research accepted at a conference such as NeurIPS within the next 5 years, and also within 10 years.\", \"date_or_span\": \"within 5 years; within 10 years\", \"occasion\": \"CES 2025 fireside chat moderated by Rajeev Chand (Wing VC); the statement was the moderator's and LeCun answered true or false\", \"source_url\": \"https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-01-07\", \"quote\": \"Yann said, “Depends on whether you’re myopic or not.” Joking aside, he was positive on the opportunities in robotics and anticipated a ChatGPT moment within 3-5 years.\", \"what_is_predicted\": \"Per the moderator's paraphrase, a 'ChatGPT moment' for general robotics will come within 3-5 years.\", \"date_or_span\": \"within 3-5 years\", \"occasion\": \"CES 2025 fireside chat moderated by Rajeev Chand (Wing VC); the time span is the moderator's paraphrase, not LeCun's quoted words\", \"source_url\": \"https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-10\", \"quote\": \"I've been not making friends in various corners of Silicon Valley, including at Meta, saying that within three to five years, this [world models, not LLMs] will be the dominant model for AI architectures, and nobody in their right mind would use LLMs of the type that we have today\", \"what_is_predicted\": \"Within three to five years world models, not LLMs, will be the dominant AI architecture and today's LLMs will be out of use.\", \"date_or_span\": \"within three to five years\", \"occasion\": \"Symposium at MIT, October 2025, as quoted by Axios citing a Wall Street Journal profile; close to the January 'LLMs not central within five years' claim but said at a later event\", \"source_url\": \"https://www.axios.com/2025/11/17/ai-world-models-digital-twins\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2025-04-04\", \"quote\": \"There's no question in my mind that at some point, we'll have machines that are more intelligent than us.\", \"source_url\": \"https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Search snippets only, pages not opened: a Forbes piece of 27 Jan 2026 says LeCun does not expect human-level AI this year or next; Capacity reports him calling AGI years away at the India AI Impact Summit 2026.\"},\n    {\"year\": \"unclear (late 2025 or early 2026)\", \"note\": \"implicator.ai reports a Financial Times interview giving 'baby versions within 12 months', animal-level AI in five to seven years and human-level within a decade. It is all the article's paraphrase with no direct quote, and the interview date is not confirmed, so none of it is recorded here.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" AI prediction 2025\", \"what_found\": \"Links to the January Davos coverage (new paradigm in 3-5 years) and the Wing VC CES write-up.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"AI Inside (April 2025) and Six Five Davos interview pages, plus older interviews.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"The AI Inside printed Q&A, a GTC 2025 recap and Forbes 2026 coverage.\"},\n    {\"query_or_url\": \"Yann LeCun leaving Meta AMI interview December 2025 world models \\\"years\\\"\", \"what_found\": \"Coverage of his Meta exit and the FT interview, mostly paraphrase; a mention of the MIT symposium quote.\"},\n    {\"query_or_url\": \"Yann LeCun podcast transcript 2025 \\\"human-level\\\" \\\"years\\\"\", \"what_found\": \"Older Lex Fridman transcripts; AI Inside and Six Five Davos again.\"},\n    {\"query_or_url\": \"LeCun October 2025 talk LLMs \\\"five years\\\" world models\", \"what_found\": \"Reports of the 27 Oct 2025 Seoul keynote ('LLMs useless within five years') and the March Newsweek interview.\"},\n    {\"query_or_url\": \"LeCun Financial Times interview December 2025 world models \\\"12 months\\\"\", \"what_found\": \"Only secondary reports of the FT interview; no direct timeline quote.\"},\n    {\"query_or_url\": \"Yann LeCun MIT symposium October 2025 \\\"three to five years\\\" world models\", \"what_found\": \"Axios and others carrying the MIT symposium quote by way of the WSJ.\"},\n    {\"query_or_url\": \"Yann LeCun Facebook post November 2025 leaving Meta AMI \\\"next big revolution\\\"\", \"what_found\": \"Coverage of his departure post; the quoted goal has no date or time span.\"},\n    {\"query_or_url\": \"LeCun \\\"AI Frontier International Symposium\\\" 2025 Seoul\", \"what_found\": \"Asia Business Daily and BusinessKorea reports of the 27 Oct 2025 keynote.\"},\n    {\"query_or_url\": \"Yann LeCun December 2025 podcast transcript world models \\\"years\\\" AMI Labs\", \"what_found\": \"Startup and funding news; no transcript with a dated AI forecast.\"},\n    {\"query_or_url\": \"https://jasonhowell.substack.com/p/meta-ai-chief-yann-lacun-human-intelligence\", \"what_found\": \"Opened: the full printed Q&A of the AI Inside interview (recorded 4 April 2025), with the two-year and ten-year lines.\"},\n    {\"query_or_url\": \"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\", \"what_found\": \"Opened: the full Davos 2025 transcript with the two-year, three-to-five-year and five-year lines.\"},\n    {\"query_or_url\": \"https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions\", \"what_found\": \"Opened: the moderator's CES 2025 write-up, mostly paraphrase, with LeCun's one-word true/false answers.\"},\n    {\"query_or_url\": \"https://www.axios.com/2025/11/17/ai-world-models-digital-twins\", \"what_found\": \"Opened: carries the MIT symposium (October 2025) three-to-five-years quote, citing the WSJ.\"},\n    {\"query_or_url\": \"https://www.implicator.ai/yann-lecun-didnt-retire-he-escaped/\", \"what_found\": \"Opened: paraphrases the FT interview timeline; no direct LeCun timeline quote.\"},\n    {\"query_or_url\": \"https://www.asiae.co.kr/en/article/2025102711524920018\", \"what_found\": \"Would not open (url_not_allowed); nothing quoted from it.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2025 was a busy year for LeCun's forecasts, built around a repeated three-to-five-year window for a post-LLM, world-model paradigm and a firm 'not within two years, maybe within ten' on human-level AI. Beyond the recorded claims, the Davos Six Five transcript adds a two-year LLM outlook and a five-year 'we'll know' line, and AI Inside adds a ten-year 'good handle' line. The October MIT and Seoul statements were reached only through news coverage or not at all, and the Seoul page would not open.\"\n}\n```"
+}

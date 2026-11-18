@@ -1,0 +1,24 @@
+[claim]
+id = "2017-04-24-musk-cross-country-fully-autonomous-end-of-year"
+speaker_id = "musk"
+when = "2017-04-24"
+when_note = "TED's own page for the talk gives 'recordedOn' 2017-04-24 (TED2017) and published 2017-04-30; TED's upload to YouTube is dated 2017-05-03."
+occasion = "TED conversation with Chris Anderson, 'The future we're building -- and boring'"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=zIwLWfaAg-8"
+source_locator = "about 15:08 into TED's video"
+checked_how = "Read in the captions of TED's own upload (TED's transcript, with speaker initials) on 2026-11-17 (yt-dlp) and compared with The Singju Post's transcript page, where the words were first found; the two agree word for word. Nobody listened."
+quote = "I think we're still on track for being able to go cross-country from LA to New York by the end of the year, fully autonomous."
+prediction = "A Tesla will drive itself across the country from Los Angeles to New York by the end of 2017, fully autonomous. Asked whether someone will not have to touch the wheel 'by the end of 2017', he says yes: 'November or December of this year', from a parking lot in California to a parking lot in New York."
+kind = "capability"
+bar = "A Tesla driving from a car park in California to one in New York with nobody touching the controls, by 2017-12-31."
+due = 2017
+due_basis = "'by the end of the year'; the interviewer asks 'by the end of 2017?' and he agrees."
+status = "missed"
+verdict_on = 2018-02-07
+verdict_why = "No such drive was made in 2017. On Tesla's earnings call of 2018-02-07, asked about the coast-to-coast drive, he said 'obviously I missed the mark on that front' and that it could have been done only with code written for the one route. The Drive reported on 2026-01-22 that a private team in a 2024 Tesla Model S had just driven from Los Angeles to New York with no disengagements, about eight years after the date."
+verdict_source = "https://bullfincher.io/companies/tesla/earnings-call/fy2017-q4"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-035", "musk-claims-036", "musk-claims-037", "musk-claims-048"]
+notes = "Role at the time: co-chair of OpenAI (December 2015 to February 2018), a company that builds frontier AI models. The claim is about Tesla, of which he was also chief executive; Tesla's own years count only from 2019 to 2021 (my ruling of 2026-10-19). Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. An earlier recorded claim, 2016-01-10-musk-summon-anywhere-two-years, is about summoning a car across the country within two years; this one is a demonstration drive by the end of 2017, so it is entered as its own claim. The Drive's report: https://www.thedrive.com/news/a-tesla-actually-drove-itself-from-los-angeles-to-new-york-exclusive First found at https://singjupost.com/elon-musk-the-future-were-building-and-boring-at-ted-transcript/?singlepage=1 ; the claim now rests on TED's recording and transcript."

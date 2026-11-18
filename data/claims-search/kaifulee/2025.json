@@ -1,0 +1,376 @@
+{
+  "speaker_id": "kaifulee",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6517,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7863
+      },
+      "cache_creation_input_tokens": 50909,
+      "cache_read_input_tokens": 515405,
+      "inference_geo": "global",
+      "input_tokens": 40,
+      "output_tokens": 11195,
+      "output_tokens_details": {
+        "thinking_tokens": 3672
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Kai-Fu Lee\" AI prediction 2025','\"Kai-Fu Lee\" 2025 interview AGI \"years\"','\"Kai-Fu Lee\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    for x in json.loads(r): print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',x.get('content','')[:300].replace('\\n',' '),'\\n')\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nallr=[x for q in R for x in json.loads(R[q])]\nseen=set()\nfor x in allr:\n    u=x['url']\n    if u in seen: continue\n    seen.add(u)\n    if any(k in u for k in ['mvark','venturebeat','pandaily','kr-asia','exponentialview','theventurelens','aibase.com/news/15785']):\n        c=x['content']\n        print('##',u,len(c))\n        for m in re.finditer(r'(year|decade|20[2-4]\\d|AGI)',c):\n            pass\n        sents=re.split(r'(?<=[.!?])\\s+',c)\n        for s in sents:\n            if re.search(r'(years?|decade|202[5-9]|203\\d|AGI|superintelligence)',s): print('-',s[:250])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in [\"http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html\",\"https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026\",\"https://pandaily.com/kai-fu-lee-ai-agents-will-revolutionize-business-organization-making-company-building-like-assembling-blocks\"]:\n    r=await web_fetch({\"url\":u}); F[u]=r\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; print('##',u,len(c))\n    for s in re.split(r'(?<=[.!?”\"])\\s+',c):\n        if re.search(r'(years?\\b|decade|202[5-9]|203\\d|AGI|superintelligence|next year)',s): print('-',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def P(r):\n    try: r=json.loads(r)\n    except Exception: return r if isinstance(r,str) else str(r)\n    if isinstance(r,list): r=r[0]\n    return r.get('content') or json.dumps(r)\ndef scan(u,c,pat=r'(years?\\b|decade|202[5-9]|203\\d|AGI|superintelligence|next year)'):\n    print('##',u,len(c))\n    for s in re.split(r'(?<=[.!?”\"])\\s+',c):\n        if re.search(pat,s): print('-',s[:400])\nus=[\"http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html\",\"https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026\",\"https://pandaily.com/kai-fu-lee-ai-agents-will-revolutionize-business-organization-making-company-building-like-assembling-blocks\"]\nF[us[0]]=P(r)\nfor u in us[1:]:\n    F[u]=P(await web_fetch({\"url\":u}))\nfor u in us: scan(u,F[u])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://pandaily.com/kai-fu-lee-ai-agents-will-revolutionize-business-organization-making-company-building-like-assembling-blocks"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r), str(r)[:300])\nfor u in us[1:]: print(type(F[u]), str(F[u])[:200])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def T(x):\n    if isinstance(x,str): x=json.loads(x)\n    if isinstance(x,list): x=x[0]\n    c=x.get('content',x)\n    if isinstance(c,dict): c=c['source']['data']\n    return c\nF[us[0]]=T(r)\nfor u in us[1:]: F[u]=T({'content':F[u]})\nfor u in us: scan(u,F[u])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[us[0]]; i=c.find('Q:'); print(c[i:i+9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[us[1]]; i=c.find('What’s Inside'); print(c[i:i+6000])\nprint('=====');print(F[us[2]][-1100:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['\"Kai-Fu Lee\" TED AI 2025 Steven Levy agents','李开复 2025 AGI 年 预测','\"Kai-Fu Lee\" podcast 2025 transcript AI','\"Kai-Fu Lee\" Fortune interview 2025 AI agents years']\nfor q in qs2:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" TED AI 2025 Steven Levy agents"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "李开复 2025 AGI 年 预测"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" podcast 2025 transcript AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Kai-Fu Lee\" Fortune interview 2025 AI agents years"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "us2=[\"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\",\"https://m.thepaper.cn/newsDetail_forward_30532818\",\"https://finance.yahoo.com/news/ai-agents-poised-replace-humans-093000261.html\"]\nfor u in us2:\n    try: F[u]=T(await web_fetch({\"url\":u}))\n    except Exception as e: F[u]='ERR '+str(e)\n    print(u,len(F[u]),F[u][:200])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://m.thepaper.cn/newsDetail_forward_30532818"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://finance.yahoo.com/news/ai-agents-poised-replace-humans-093000261.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[us2[0]]; i=c.find('人民日报专访'); \nfor s in re.split(r'(?<=[。！？])',c):\n    if re.search(r'(\\d+\\s*年|年内|今年|明年|未来|十年|AGI|通用人工智能|超级智能|将|会)',s) and len(s)<600: print('-',s.strip()[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('在对谈中'); print(c[i-600:i+900])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(F[us2[1]][-2300:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=F[us2[2]]; i=c.find('Artificial intelligence agents are emerging'); print(c[i-300:i+5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('The basic unit',c.find('Oops'));print(c[i-500:i+4000] if i>0 else 'none')\nprint(re.findall(r'[^.]*\\b(?:years?|decade|20\\d\\d)\\b[^.]*\\.',c[c.find('Oops'):])[:20])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('September 11, 2025');print(c[i:i+4500])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-02-07",
+        "quote": "能够自主学习新事物并自我迭代，大语言模型所展现的这种能力，使我们看到了在未来十年内打造出AGI（通用人工智能）的希望，即创造出一种在总体智能水平上超越任何人类的智能体。",
+        "what_is_predicted": "AGI that is smarter overall than any human may be built within ten years.",
+        "date_or_span": "within the next ten years",
+        "occasion": "Interview with People's Daily English app, reposted by Lee; republished on Sina Tech 2025-02-07. The interview date is not shown; the recorded file dates it 2025-01-16.",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml",
+        "source_kind": "printed_qa",
+        "already_recorded": "2025-01-16-kaifulee-agi-smarter-than-any-human-within-decade.toml"
+      },
+      {
+        "date_said": "2025-02-07",
+        "quote": "我敢打赌，现在全球已经有数千万数据标注师，但是五年内，人工智能会创造十倍于此的新工作机会。",
+        "what_is_predicted": "Within five years AI will create ten times as many new jobs as today's tens of millions of data labellers.",
+        "date_or_span": "within five years",
+        "occasion": "Same People's Daily interview, reposted by Lee",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml",
+        "source_kind": "printed_qa",
+        "already_recorded": "2025-01-16-kaifulee-ai-creates-tenfold-new-jobs-in-five-years.toml"
+      },
+      {
+        "date_said": "2025-02-07",
+        "quote": "我期待2025年能成为中国 AI-First 应用真正崛起并跻身世界顶尖阵营的一年。",
+        "what_is_predicted": "Chinese AI-first apps will rise and join the world's top tier in 2025.",
+        "date_or_span": "2025",
+        "occasion": "Same People's Daily interview, reposted by Lee",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml",
+        "source_kind": "printed_qa",
+        "already_recorded": "2025-01-16-kaifulee-chinese-ai-apps-among-best-in-2025.toml"
+      },
+      {
+        "date_said": "2025-02-07",
+        "quote": "2025 年将会是 AI-First 应用爆发的元年",
+        "what_is_predicted": "2025 will be the first year of an explosion in AI-first applications.",
+        "date_or_span": "2025",
+        "occasion": "Lee's own summary bullets at the top of his repost of the People's Daily interview. Close to the recorded 'Chinese AI apps among best in 2025' claim, but broader (AI-first apps in general).",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-03-29",
+        "quote": "2025年将是AI-first应用（指离开大模型就无法存在的应用）爆发、大模型“落地为王”的元年",
+        "what_is_predicted": "2025 will be the year AI-first apps explode and deployment of large models becomes what matters.",
+        "date_or_span": "2025",
+        "occasion": "2025 Zhongguancun Forum, Future AI Pioneers Forum keynote. The Paper reporter's indirect paraphrase, not a direct quote; repeats the February claim.",
+        "source_url": "https://m.thepaper.cn/newsDetail_forward_30532818",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-10",
+        "quote": "predicted that 2026 will be the year AI agents become the fundamental unit of work",
+        "what_is_predicted": "In 2026 AI agents will become the basic unit of work.",
+        "date_or_span": "2026",
+        "occasion": "TED AI San Francisco 2025, video conversation with Steven Levy. These are blogger Alastair Goldfisher's words; no direct quote from Lee carrying the date was seen.",
+        "source_url": "https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11",
+        "quote": "So I don't think there's going to be a huge breakout change-the-world technology in China, that's not likely.",
+        "what_is_predicted": "China is unlikely to produce a world-changing AI breakthrough in the coming year.",
+        "date_or_span": "next year (2026). The time frame is in the interviewer's question ('going into next year?'), not in Lee's answer. Weak.",
+        "occasion": "Bloomberg TV interview; unofficial Q&A transcript on a personal blog posted 2025-11-19",
+        "source_url": "http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-02-07",
+        "quote": "不久的将来，人类制作的每一个视频以及说过的每一句话，都有可能成为人工智能的学习素材，进而打造出一个超级智能大脑。",
+        "source_url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Recode China AI Substack interview (about 724 days old, so late 2024) has a search snippet with an assumption that AGI 'might emerge in seven years'. Not opened."
+      },
+      {
+        "year": "2024",
+        "note": "Exponential View 'AI in 2025' piece and podcast with Azeem Azhar (podcast listed as published 2025-01-02, probably recorded in December 2024) predicts agents and AI-first apps in 2025. Not opened."
+      },
+      {
+        "year": "earlier",
+        "note": "At TED AI 2025, Levy retold Lee's old forecast that speech transcription would reach human-level accuracy 'within five years'. This is a retelling of an older prediction, not a 2025 claim."
+      },
+      {
+        "year": "2026",
+        "note": "Search results show 2026 coverage (Caixin, Crypto Briefing, Fortune) of predictions such as agents reshaping company org charts within five years / by 2031. Not opened and outside this year."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Kai-Fu Lee\" AI prediction 2025",
+        "what_found": "Exponential View 'AI in 2025' podcast, Bloomberg March 2025 piece on three models surviving, an X post on DeepSeek, AIbase items on 2025 as the year of AI applications."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" 2025 interview AGI \"years\"",
+        "what_found": "Recode China AI (late 2024), VentureBeat and Venture Lens on TED AI 2025, the Bloomberg Q&A transcript blog post."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "TED AI coverage, a 36Kr/KrASIA interview, AIbase report saying the AI ecosystem would become healthy 'within two years', and 2026 items."
+      },
+      {
+        "query_or_url": "http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html",
+        "what_found": "Opened: full Q&A transcript of a Bloomberg interview; one weak 'next year' answer, no dated AGI claim."
+      },
+      {
+        "query_or_url": "https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026",
+        "what_found": "Opened: TED AI 2025 write-up paraphrasing the '2026 year of agents' prediction; Lee's direct quotes carry no date."
+      },
+      {
+        "query_or_url": "https://pandaily.com/kai-fu-lee-ai-agents-will-revolutionize-business-organization-making-company-building-like-assembling-blocks",
+        "what_found": "Opened: only page metadata loaded (December 2025 conference talk on agents); no quotable body text."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" TED AI 2025 Steven Levy agents",
+        "what_found": "Same TED AI write-up, plus SCMP/Yahoo report of a September 2025 UBS summit talk on agents."
+      },
+      {
+        "query_or_url": "李开复 2025 AGI 年 预测",
+        "what_found": "Zhongguancun Forum (29 March) coverage and the People's Daily interview repost."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" podcast 2025 transcript AI",
+        "what_found": "Mostly older podcasts; a LateTalk podcast dated 2025-01-14 is listed on a collection site (not opened)."
+      },
+      {
+        "query_or_url": "\"Kai-Fu Lee\" Fortune interview 2025 AI agents years",
+        "what_found": "SCMP UBS-summit piece, a December 2025 China-US Focus video interview, and 2026 coverage."
+      },
+      {
+        "query_or_url": "https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml",
+        "what_found": "Opened: Lee's repost of the full People's Daily Q&A, with the AGI-within-ten-years, tenfold-jobs and 2025 AI-first app claims."
+      },
+      {
+        "query_or_url": "https://m.thepaper.cn/newsDetail_forward_30532818",
+        "what_found": "Opened: The Paper report on the Zhongguancun Forum keynote; the 2025 claim appears only as a paraphrase."
+      },
+      {
+        "query_or_url": "https://finance.yahoo.com/news/ai-agents-poised-replace-humans-093000261.html",
+        "what_found": "Opened: SCMP report dated 2025-09-11 on the UBS summit; body cut off after the first sentence; only the undated 'basic unit of a company will evolve' quote was visible."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2025 Lee's dated AI forecasts sat in his People's Daily interview: AGI within ten years, tenfold new jobs in five years, and 2025 as the breakout year for (Chinese) AI-first apps. All three are already recorded except the general AI-first 2025 line. Later in the year the talks moved to agents (2026 as 'the year of agents' at TED AI, agents as the basic unit of a company), but the dated versions I found are reporters' paraphrases, not Lee's own words. The Bloomberg transcript adds only a weak 'next year' answer whose time frame comes from the question."
+  },
+  "reply_text": "I found seven quotes from 2025. Three match claims you've already recorded. The others are either reporters' paraphrases or have a time frame that only comes from the interviewer's question. I found no new prediction in Lee's own words that clearly meets all four tests.\n\n- **Already recorded (People's Daily English interview).** Lee reposted the interview himself on WeChat, and Sina republished that post on 2025-02-07. It contains three recorded claims word for word: AGI within ten years, AI creating ten times as many new jobs within five years, and Chinese AI-first apps reaching the world's top tier in 2025. I dated them by the post, not 2025-01-16. I didn't see the interview date, so please check that against your files.\n- **Same post, one line not on your list.** Lee's own summary at the top says 2025 will be the first year of an explosion in AI-first apps. It is close to your \"among best in 2025\" file, so you'll need to decide whether it is the same claim.\n- **Coverage only.**\n  - At the Zhongguancun Forum (29 March), The Paper reports him saying the same thing about 2025. Those words are the reporter's paraphrase.\n  - At TED AI San Francisco (October), a blogger reports him predicting 2026 as the year AI agents become \"the fundamental unit of work.\" I never found Lee's own words for that.\n- **Weak, with the date from the question.** In a Bloomberg interview (third-party transcript on a personal blog, posted 2025-11-19), the interviewer asks about \"going into next year.\" Lee says he doesn't expect a \"huge breakout change-the-world technology\" from China. The time frame comes from the question, not from him.\n\n**Gaps:** I used all six page openings and 7 of the 12 searches. The SCMP report on his September UBS summit talk (via Yahoo) cut off after its first sentence. The Pandaily page on his December conference talk showed only metadata. I didn't open the sources behind your 2025-10-02 and 2025-10-30 files, so I couldn't confirm those.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2025-02-07\", \"quote\": \"能够自主学习新事物并自我迭代，大语言模型所展现的这种能力，使我们看到了在未来十年内打造出AGI（通用人工智能）的希望，即创造出一种在总体智能水平上超越任何人类的智能体。\", \"what_is_predicted\": \"AGI that is smarter overall than any human may be built within ten years.\", \"date_or_span\": \"within the next ten years\", \"occasion\": \"Interview with People's Daily English app, reposted by Lee; republished on Sina Tech 2025-02-07. The interview date is not shown; the recorded file dates it 2025-01-16.\", \"source_url\": \"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2025-01-16-kaifulee-agi-smarter-than-any-human-within-decade.toml\"},\n    {\"date_said\": \"2025-02-07\", \"quote\": \"我敢打赌，现在全球已经有数千万数据标注师，但是五年内，人工智能会创造十倍于此的新工作机会。\", \"what_is_predicted\": \"Within five years AI will create ten times as many new jobs as today's tens of millions of data labellers.\", \"date_or_span\": \"within five years\", \"occasion\": \"Same People's Daily interview, reposted by Lee\", \"source_url\": \"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2025-01-16-kaifulee-ai-creates-tenfold-new-jobs-in-five-years.toml\"},\n    {\"date_said\": \"2025-02-07\", \"quote\": \"我期待2025年能成为中国 AI-First 应用真正崛起并跻身世界顶尖阵营的一年。\", \"what_is_predicted\": \"Chinese AI-first apps will rise and join the world's top tier in 2025.\", \"date_or_span\": \"2025\", \"occasion\": \"Same People's Daily interview, reposted by Lee\", \"source_url\": \"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"2025-01-16-kaifulee-chinese-ai-apps-among-best-in-2025.toml\"},\n    {\"date_said\": \"2025-02-07\", \"quote\": \"2025 年将会是 AI-First 应用爆发的元年\", \"what_is_predicted\": \"2025 will be the first year of an explosion in AI-first applications.\", \"date_or_span\": \"2025\", \"occasion\": \"Lee's own summary bullets at the top of his repost of the People's Daily interview. Close to the recorded 'Chinese AI apps among best in 2025' claim, but broader (AI-first apps in general).\", \"source_url\": \"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\", \"source_kind\": \"own_words\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-03-29\", \"quote\": \"2025年将是AI-first应用（指离开大模型就无法存在的应用）爆发、大模型“落地为王”的元年\", \"what_is_predicted\": \"2025 will be the year AI-first apps explode and deployment of large models becomes what matters.\", \"date_or_span\": \"2025\", \"occasion\": \"2025 Zhongguancun Forum, Future AI Pioneers Forum keynote. The Paper reporter's indirect paraphrase, not a direct quote; repeats the February claim.\", \"source_url\": \"https://m.thepaper.cn/newsDetail_forward_30532818\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-10\", \"quote\": \"predicted that 2026 will be the year AI agents become the fundamental unit of work\", \"what_is_predicted\": \"In 2026 AI agents will become the basic unit of work.\", \"date_or_span\": \"2026\", \"occasion\": \"TED AI San Francisco 2025, video conversation with Steven Levy. These are blogger Alastair Goldfisher's words; no direct quote from Lee carrying the date was seen.\", \"source_url\": \"https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026\", \"source_kind\": \"coverage_only\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2025-11\", \"quote\": \"So I don't think there's going to be a huge breakout change-the-world technology in China, that's not likely.\", \"what_is_predicted\": \"China is unlikely to produce a world-changing AI breakthrough in the coming year.\", \"date_or_span\": \"next year (2026). The time frame is in the interviewer's question ('going into next year?'), not in Lee's answer. Weak.\", \"occasion\": \"Bloomberg TV interview; unofficial Q&A transcript on a personal blog posted 2025-11-19\", \"source_url\": \"http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html\", \"source_kind\": \"transcript\", \"already_recorded\": \"\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2025-02-07\", \"quote\": \"不久的将来，人类制作的每一个视频以及说过的每一句话，都有可能成为人工智能的学习素材，进而打造出一个超级智能大脑。\", \"source_url\": \"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Recode China AI Substack interview (about 724 days old, so late 2024) has a search snippet with an assumption that AGI 'might emerge in seven years'. Not opened.\"},\n    {\"year\": \"2024\", \"note\": \"Exponential View 'AI in 2025' piece and podcast with Azeem Azhar (podcast listed as published 2025-01-02, probably recorded in December 2024) predicts agents and AI-first apps in 2025. Not opened.\"},\n    {\"year\": \"earlier\", \"note\": \"At TED AI 2025, Levy retold Lee's old forecast that speech transcription would reach human-level accuracy 'within five years'. This is a retelling of an older prediction, not a 2025 claim.\"},\n    {\"year\": \"2026\", \"note\": \"Search results show 2026 coverage (Caixin, Crypto Briefing, Fortune) of predictions such as agents reshaping company org charts within five years / by 2031. Not opened and outside this year.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" AI prediction 2025\", \"what_found\": \"Exponential View 'AI in 2025' podcast, Bloomberg March 2025 piece on three models surviving, an X post on DeepSeek, AIbase items on 2025 as the year of AI applications.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Recode China AI (late 2024), VentureBeat and Venture Lens on TED AI 2025, the Bloomberg Q&A transcript blog post.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"TED AI coverage, a 36Kr/KrASIA interview, AIbase report saying the AI ecosystem would become healthy 'within two years', and 2026 items.\"},\n    {\"query_or_url\": \"http://mvark.blogspot.com/2025/11/kai-fu-lee-on-china-us-ai-race-q.html\", \"what_found\": \"Opened: full Q&A transcript of a Bloomberg interview; one weak 'next year' answer, no dated AGI claim.\"},\n    {\"query_or_url\": \"https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026\", \"what_found\": \"Opened: TED AI 2025 write-up paraphrasing the '2026 year of agents' prediction; Lee's direct quotes carry no date.\"},\n    {\"query_or_url\": \"https://pandaily.com/kai-fu-lee-ai-agents-will-revolutionize-business-organization-making-company-building-like-assembling-blocks\", \"what_found\": \"Opened: only page metadata loaded (December 2025 conference talk on agents); no quotable body text.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" TED AI 2025 Steven Levy agents\", \"what_found\": \"Same TED AI write-up, plus SCMP/Yahoo report of a September 2025 UBS summit talk on agents.\"},\n    {\"query_or_url\": \"李开复 2025 AGI 年 预测\", \"what_found\": \"Zhongguancun Forum (29 March) coverage and the People's Daily interview repost.\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" podcast 2025 transcript AI\", \"what_found\": \"Mostly older podcasts; a LateTalk podcast dated 2025-01-14 is listed on a collection site (not opened).\"},\n    {\"query_or_url\": \"\\\"Kai-Fu Lee\\\" Fortune interview 2025 AI agents years\", \"what_found\": \"SCMP UBS-summit piece, a December 2025 China-US Focus video interview, and 2026 coverage.\"},\n    {\"query_or_url\": \"https://finance.sina.com.cn/tech/roll/2025-02-07/doc-ineirsei0160634.shtml\", \"what_found\": \"Opened: Lee's repost of the full People's Daily Q&A, with the AGI-within-ten-years, tenfold-jobs and 2025 AI-first app claims.\"},\n    {\"query_or_url\": \"https://m.thepaper.cn/newsDetail_forward_30532818\", \"what_found\": \"Opened: The Paper report on the Zhongguancun Forum keynote; the 2025 claim appears only as a paraphrase.\"},\n    {\"query_or_url\": \"https://finance.yahoo.com/news/ai-agents-poised-replace-humans-093000261.html\", \"what_found\": \"Opened: SCMP report dated 2025-09-11 on the UBS summit; body cut off after the first sentence; only the undated 'basic unit of a company will evolve' quote was visible.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2025 Lee's dated AI forecasts sat in his People's Daily interview: AGI within ten years, tenfold new jobs in five years, and 2025 as the breakout year for (Chinese) AI-first apps. All three are already recorded except the general AI-first 2025 line. Later in the year the talks moved to agents (2026 as 'the year of agents' at TED AI, agents as the basic unit of a company), but the dated versions I found are reporters' paraphrases, not Lee's own words. The Bloomberg transcript adds only a weak 'next year' answer whose time frame comes from the question.\"\n}\n```"
+}

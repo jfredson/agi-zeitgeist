@@ -1,0 +1,254 @@
+{
+  "speaker_id": "altman",
+  "year": 2024,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.057,
+  "web_searches": 6,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7752
+      },
+      "cache_creation_input_tokens": 126596,
+      "cache_read_input_tokens": 1034775,
+      "inference_geo": "global",
+      "input_tokens": 30,
+      "output_tokens": 7849,
+      "output_tokens_details": {
+        "thinking_tokens": 2927
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 6
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sam Altman\" AI prediction 2024','\"Sam Altman\" 2024 interview AGI \"years\"','\"Sam Altman\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r[:8]:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace(\"\\n\",\" \"))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2024"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:8]:\n        print(\"-\",x.get('title'),x.get('url'),x.get('page_age'))\n        print(\"  \",x.get('content','')[:400].replace(\"\\n\",\" \"))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2024 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Altman DealBook Summit 2024 transcript AGI 2025 agents','Altman Garry Tan \"How To Build The Future\" transcript AGI 2025','Bill Gates Unconfuse Me Sam Altman transcript']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman DealBook Summit 2024 transcript AGI 2025 agents"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman Garry Tan \"How To Build The Future\" transcript AGI 2025"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Bill Gates Unconfuse Me Sam Altman transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nurls=['https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf',\n'https://pickscribe.com/v/xXCBz_8hM9w',\n'https://variety.com/2024/biz/news/openai-sam-altman-superintelligence-dealbook-1236234815/',\n'https://www.weforum.org/stories/2024/01/davos-2024-sam-altman-on-the-future-of-ai/']\npages={}\nfor u in urls:\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str): f=json.loads(f)\n    if isinstance(f,dict): print(u,f); continue\n    pages[u]=f[0].get('content','')\n    print(u,len(pages[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://pickscribe.com/v/xXCBz_8hM9w"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://variety.com/2024/biz/news/openai-sam-altman-superintelligence-dealbook-1236234815/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.weforum.org/stories/2024/01/davos-2024-sam-altman-on-the-future-of-ai/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64, io\nprint(list(pages.keys()), [len(v) for v in pages.values()])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "raw={}\nfor u in [urls[0],urls[1]]:\n    f=await web_fetch({\"url\":u})\n    if isinstance(f,str): f=json.loads(f)\n    raw[u]=f\n    print(u, type(f), (f.keys() if isinstance(f,dict) else len(f)))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://pickscribe.com/v/xXCBz_8hM9w"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "from pypdf import PdfReader\nd=raw[urls[0]]['content']\npdf=PdfReader(io.BytesIO(base64.b64decode(d['source']['data'])))\ngates=\"\\n\".join(p.extract_text() for p in pdf.pages)\nc=raw[urls[1]]['content']\nprint(type(c), str(c)[:200] if not isinstance(c,str) else c[:200])\nyc=c if isinstance(c,str) else (c.get('text') or json.dumps(c))\nprint(len(gates),len(yc))\ndef kw(t,words,w=350):\n    for m in re.finditer(\"|\".join(words),t):\n        s=max(0,m.start()-w); print(\"...\",t[s:m.end()+w].replace(\"\\n\",\" \"),\"\\n\")\nkw(gates,[r\"next two years\",r\"five or ten years\",r\"next year\",r\"\\b20[23]\\d\\b\",r\"decade\",r\"two years\",r\"years\"])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=gates.find(\"When you look at the next two years\"); print(gates[i:i+2600])\nj=gates.find(\"Go discover new physics\"); print(\"=====\",gates[j-900:j+300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(gates[:1200])\ncd=c['source']['data']; yc=cd\nkw(yc,[r\"2025\",r\"next year\",r\"thousand days\",r\"\\bAGI\\b\"],250)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(len(yc)); print(yc[-1500:])\nkw(yc,[r\"excited about\",r\"in 2025\",r\"few thousand\",r\"years\"],200)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=yc.find(\"tell us  about it\"); print(yc[i-600:i+1300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=yc.find(\"I can see a path\"); print(yc[i-700:i+1400])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2024-11",
+        "quote": "I can see a path where the work we are doing just keeps compounding and the rate of progress we've made over the last three years continuous for the next three or six or nine or whatever um you know nine years would be like 3500 days or whatever if we can keep this rate of improvement or even increase it that system will be quite capable of doing a lot of things",
+        "what_is_predicted": "If the last three years' rate of progress continues for the next three to nine years, the resulting AI system will be quite capable of doing a lot of things, which he links to superintelligence being 'thousands of days away'.",
+        "date_or_span": "the next three or six or nine years (~3500 days)",
+        "occasion": "Y Combinator 'How To Build The Future' interview with Garry Tan (video posted 2024-11-08, per Garry Tan's X post seen in search results)",
+        "source_url": "https://pickscribe.com/v/xXCBz_8hM9w",
+        "source_kind": "transcript",
+        "already_recorded": "2024-09-23-altman-superintelligence-few-thousand-days.toml"
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2023",
+        "note": "Unconfuse Me with Bill Gates, Episode 6 (official Gates Notes transcript PDF, 'Date aired: January 11, 2024'). Gates says in the intro that he recorded the conversation before Altman's November 2023 firing, so the words were said in 2023. Altman: 'I think it's worth always putting it in context of this technology that, at least for the next five or ten years, will be on a very steep improvement curve. These are the stupidest the models will ever be.' Asked by Gates about key milestones 'the next two years', Altman named multimodality, reasoning ability, reliability and customizability/personalization. Source: https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf"
+      },
+      {
+        "year": "2025",
+        "note": "Search results show the 'Reflections' blog post (blog.samaltman.com/reflections, January 2025) and coverage of a September 2025 Axel Springer interview where he said he would be very surprised not to have extraordinarily capable models by 2030. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2024",
+        "what_found": "WEF Davos 2024 story, Yahoo roundup, coverage of the 'few thousand days' essay and a March 2024 '95% of marketing' item; no primary pages."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2024 interview AGI \"years\"",
+        "what_found": "Coverage of DealBook (Dec 2024, AGI sooner than expected), the YC Garry Tan interview (Nov 2024), and the book 'Our AI Journey' quoting AGI in about 5 years; coverage only."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2024 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly September 2025 'by 2030' coverage plus 'Intelligence Age' coverage; nothing new for 2024."
+      },
+      {
+        "query_or_url": "Altman DealBook Summit 2024 transcript AGI 2025 agents",
+        "what_found": "Variety and other coverage of the 2024-12-04 DealBook remarks; no transcript found."
+      },
+      {
+        "query_or_url": "Altman Garry Tan \"How To Build The Future\" transcript AGI 2025",
+        "what_found": "Garry Tan's X post dated 2024-11-08, Spotify listing, and pickscribe/HappyScribe transcripts."
+      },
+      {
+        "query_or_url": "Bill Gates Unconfuse Me Sam Altman transcript",
+        "what_found": "Official Gates Notes transcript PDF for Episode 6."
+      },
+      {
+        "query_or_url": "https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf",
+        "what_found": "Opened twice because of my handling error. Aired 2024-01-11 but recorded before November 2023; holds the 'next five or ten years' line (put under 2023)."
+      },
+      {
+        "query_or_url": "https://pickscribe.com/v/xXCBz_8hM9w",
+        "what_found": "Opened twice because of my handling error. Auto-generated transcript of the YC interview, with the 'next three or six or nine' passage; the text stops before the end of the interview."
+      },
+      {
+        "query_or_url": "https://variety.com/2024/biz/news/openai-sam-altman-superintelligence-dealbook-1236234815/",
+        "what_found": "Opened, but I did not save or read the text because of a scripting error; nothing quoted."
+      },
+      {
+        "query_or_url": "https://www.weforum.org/stories/2024/01/davos-2024-sam-altman-on-the-future-of-ai/",
+        "what_found": "Opened, but I did not save or read the text because of a scripting error; nothing quoted."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "The only 2024 candidate I could check on an opened page is Altman's November 2024 YC interview, where he repeats the September 'thousands of days' superintelligence claim as a span of the next three to nine years; the page is an unofficial auto-generated transcript. The Bill Gates podcast aired in January 2024 but was recorded in 2023, so it belongs to 2023. DealBook (December 2024, AGI sooner than expected, possibly 2025) and the 'AGI in 2025' remark from the YC interview were seen only in news coverage and search snippets, not checked."
+  },
+  "reply_text": "I found one 2024 candidate. It comes from an unofficial auto-generated transcript, and it repeats a claim you already have, so it adds little that's new.\n\n- **The candidate.** It's from Altman's Y Combinator \"How To Build The Future\" interview with Garry Tan, which Tan posted on 2024-11-08. Asked about the \"few thousand days\" line in his September essay, Altman says progress could continue \"for the next three or six or nine or whatever\" years and that such a system \"will be quite capable of doing a lot of things\". The only page I opened is pickscribe's automatic transcript of the YouTube video, so the wording should be checked against the recording. I've marked it as the same claim as 2024-09-23-altman-superintelligence-few-thousand-days.toml.\n- **The Bill Gates podcast doesn't count for 2024.** The official Unconfuse Me transcript aired 2024-01-11, but Gates says on the same page that it was recorded before Altman's November 2023 removal. So the \"next five or ten years\" line goes under 2023.\n- **I lost four page openings to a scripting mistake.** I opened the Gates PDF, the YC transcript, Variety's DealBook article and the World Economic Forum's Davos 2024 page, but saved none of the text and never read the last two. I reopened the Gates and YC pages, which used up all six openings. Nothing is quoted from the Variety or WEF pages.\n- **Leads I couldn't check.** News coverage says that at the New York Times DealBook Summit (2024-12-04) Altman predicted AGI sooner than most people expect, with first examples possibly in 2025. Coverage of the YC interview reports \"AGI\" as his answer for what he's most excited about in 2025, but the transcript I opened is cut off before the end. A book, *Our AI Journey*, quotes him on AGI in about five years and AI doing 95% of agency marketing work, with no interview date given. I saw all of these only in search snippets, so none is listed as a candidate.\n- **Other dates.** The \"Reflections\" blog post is from January 2025, and the \"by 2030\" interview coverage is from September 2025.\n\nI ran the three fixed searches and three more, so six of the twelve searches went unused. With no page openings left, more searches couldn't have produced a quotable source.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2024-11\",\n      \"quote\": \"I can see a path where the work we are doing just keeps compounding and the rate of progress we've made over the last three years continuous for the next three or six or nine or whatever um you know nine years would be like 3500 days or whatever if we can keep this rate of improvement or even increase it that system will be quite capable of doing a lot of things\",\n      \"what_is_predicted\": \"If the last three years' rate of progress continues for the next three to nine years, the resulting AI system will be quite capable of doing a lot of things, which he links to superintelligence being 'thousands of days away'.\",\n      \"date_or_span\": \"the next three or six or nine years (~3500 days)\",\n      \"occasion\": \"Y Combinator 'How To Build The Future' interview with Garry Tan (video posted 2024-11-08, per Garry Tan's X post seen in search results)\",\n      \"source_url\": \"https://pickscribe.com/v/xXCBz_8hM9w\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"2024-09-23-altman-superintelligence-few-thousand-days.toml\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\n      \"year\": \"2023\",\n      \"note\": \"Unconfuse Me with Bill Gates, Episode 6 (official Gates Notes transcript PDF, 'Date aired: January 11, 2024'). Gates says in the intro that he recorded the conversation before Altman's November 2023 firing, so the words were said in 2023. Altman: 'I think it's worth always putting it in context of this technology that, at least for the next five or ten years, will be on a very steep improvement curve. These are the stupidest the models will ever be.' Asked by Gates about key milestones 'the next two years', Altman named multimodality, reasoning ability, reliability and customizability/personalization. Source: https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf\"\n    },\n    {\n      \"year\": \"2025\",\n      \"note\": \"Search results show the 'Reflections' blog post (blog.samaltman.com/reflections, January 2025) and coverage of a September 2025 Axel Springer interview where he said he would be very surprised not to have extraordinarily capable models by 2030. Not opened.\"\n    }\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2024\", \"what_found\": \"WEF Davos 2024 story, Yahoo roundup, coverage of the 'few thousand days' essay and a March 2024 '95% of marketing' item; no primary pages.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2024 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of DealBook (Dec 2024, AGI sooner than expected), the YC Garry Tan interview (Nov 2024), and the book 'Our AI Journey' quoting AGI in about 5 years; coverage only.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2024 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly September 2025 'by 2030' coverage plus 'Intelligence Age' coverage; nothing new for 2024.\"},\n    {\"query_or_url\": \"Altman DealBook Summit 2024 transcript AGI 2025 agents\", \"what_found\": \"Variety and other coverage of the 2024-12-04 DealBook remarks; no transcript found.\"},\n    {\"query_or_url\": \"Altman Garry Tan \\\"How To Build The Future\\\" transcript AGI 2025\", \"what_found\": \"Garry Tan's X post dated 2024-11-08, Spotify listing, and pickscribe/HappyScribe transcripts.\"},\n    {\"query_or_url\": \"Bill Gates Unconfuse Me Sam Altman transcript\", \"what_found\": \"Official Gates Notes transcript PDF for Episode 6.\"},\n    {\"query_or_url\": \"https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/f0d6c3f0-00cc-4ab6-93cc-7f1d7fd3246e/Unconfuse-Me-with-Bill-Gates-episode-6-TGN-transcript.pdf\", \"what_found\": \"Opened twice because of my handling error. Aired 2024-01-11 but recorded before November 2023; holds the 'next five or ten years' line (put under 2023).\"},\n    {\"query_or_url\": \"https://pickscribe.com/v/xXCBz_8hM9w\", \"what_found\": \"Opened twice because of my handling error. Auto-generated transcript of the YC interview, with the 'next three or six or nine' passage; the text stops before the end of the interview.\"},\n    {\"query_or_url\": \"https://variety.com/2024/biz/news/openai-sam-altman-superintelligence-dealbook-1236234815/\", \"what_found\": \"Opened, but I did not save or read the text because of a scripting error; nothing quoted.\"},\n    {\"query_or_url\": \"https://www.weforum.org/stories/2024/01/davos-2024-sam-altman-on-the-future-of-ai/\", \"what_found\": \"Opened, but I did not save or read the text because of a scripting error; nothing quoted.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"The only 2024 candidate I could check on an opened page is Altman's November 2024 YC interview, where he repeats the September 'thousands of days' superintelligence claim as a span of the next three to nine years; the page is an unofficial auto-generated transcript. The Bill Gates podcast aired in January 2024 but was recorded in 2023, so it belongs to 2023. DealBook (December 2024, AGI sooner than expected, possibly 2025) and the 'AGI in 2025' remark from the YC interview were seen only in news coverage and search snippets, not checked.\"\n}\n```"
+}

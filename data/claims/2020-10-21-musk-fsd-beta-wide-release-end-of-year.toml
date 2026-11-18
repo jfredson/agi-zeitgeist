@@ -1,0 +1,23 @@
+[claim]
+id = "2020-10-21-musk-fsd-beta-wide-release-end-of-year"
+speaker_id = "musk"
+when = "2020-10-21"
+occasion = "Tesla's third-quarter 2020 earnings call"
+source_kind = "transcript"
+source_url = "https://www.fool.com/earnings/call-transcripts/2020/10/22/tesla-tsla-q3-2020-earnings-call-transcript/"
+source_locator = "his remarks on the Full Self-Driving beta, after 'we put it out there last night'"
+checked_how = "Read in The Motley Fool's transcript of the call on 2026-11-17 (curl); nobody listened to the recording."
+quote = "just gradually step it up until we have, hopefully, a wide release by the end of this year"
+prediction = "Having put the Full Self-Driving beta out to a first group the night before, Tesla will release it to more people step by step and, 'hopefully', have a wide release by the end of 2020."
+kind = "deployment"
+bar = "Tesla's Full Self-Driving beta released widely to its customers, not only to a small test group, by 2020-12-31."
+due = 2020
+due_basis = "'by the end of this year', said 2020-10-21."
+status = "missed"
+verdict_on = 2021-01-27
+verdict_why = "On Tesla's earnings call of 2021-01-27 he said there were 'almost 1,000 people in the beta at this point', so there had been no wide release by the end of 2020. The wide release came about two years late: InsideEVs reported on 2023-01-26 that Tesla's fourth-quarter 2022 shareholder letter said 'We have now released FSD Beta to nearly all customers in the US and Canada who bought FSD (approximately 400,000)'."
+verdict_source = "https://www.fool.com/earnings/call-transcripts/2021/01/27/tesla-tsla-q4-2020-earnings-call-transcript/"
+evidence_by = "maker"
+direction = "later"
+search_ids = ["musk-claims-040", "musk-claims-041", "musk-claims-047"]
+notes = "Role at the time: chief executive of Tesla (counted by my ruling of 2026-10-19), Tesla then counting as a company building frontier AI; he had left OpenAI's board in February 2018 and founded xAI only in 2023. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. The report of the wide release: https://insideevs.com/news/633328/tesla-fsd-beta-now-active-to-400000-cars-us-canada/"

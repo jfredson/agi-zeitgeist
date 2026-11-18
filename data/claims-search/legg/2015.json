@@ -1,0 +1,292 @@
+{
+  "speaker_id": "legg",
+  "year": 2015,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5411,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7594
+      },
+      "cache_creation_input_tokens": 49664,
+      "cache_read_input_tokens": 259491,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 6039,
+      "output_tokens_details": {
+        "thinking_tokens": 1649
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 3,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Shane Legg\" AI prediction 2015','\"Shane Legg\" 2015 interview AGI \"years\"','\"Shane Legg\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nfor q in qs:\n    r=await web_search({\"query\":q})\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),x.get('url'),x.get('page_age'))\n        print(x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" AI prediction 2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        if x.get('type')!='web_search_result': print(x); continue\n        print('--',x['title'],x['url'],x.get('page_age'))\n        c=x['content']\n        i=c.find('Legg')\n        print(c[max(0,i-200):i+500].replace('\\n',' '))\nshow(r)\nfor q in qs[1:]:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2015 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Shane Legg Puerto Rico 2015 Future of Life conference talk','Shane Legg DeepMind interview 2015 artificial general intelligence','\"Shane Legg\" 2015 talk keynote DeepMind']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg Puerto Rico 2015 Future of Life conference talk"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg DeepMind interview 2015 artificial general intelligence"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2015 talk keynote DeepMind"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://www.edge.org/memberbio/shane_legg\"})\nc=f[0]['content'] if isinstance(f,list) else str(f)\nprint(c[:3000])\nimport re\nprint(re.findall(r'https?://[^\\s\\)\\]\"]*response[^\\s\\)\\]\"]*',c))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.edge.org/memberbio/shane_legg"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://www.edge.org/response-detail/26258\"})\nc=json.dumps(f) if not isinstance(f,str) else f\nd=json.loads(c)\nd=d[0] if isinstance(d,list) else d\ntxt=d['content']['source']['data'] if isinstance(d['content'],dict) else d['content']\ni=txt.find('General Purpose Learning'); print(txt[i:i+7000])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.edge.org/response-detail/26258"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Human level AI will be passed in the mid-2020s\" Legg','Shane Legg DeepMind New Zealand interview 2015','\"Shane Legg\" 2015 superintelligence risk interview \"decades\"']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Human level AI will be passed in the mid-2020s\" Legg"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Shane Legg DeepMind New Zealand interview 2015"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" 2015 superintelligence risk interview \"decades\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Shane Legg\" lecture 2015 video artificial intelligence DeepMind Atari','\"Shane Legg\" said 2015 \"human level\" AI']:\n    rr=await web_search({\"query\":q}); print(\"==\",q); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" lecture 2015 video artificial intelligence DeepMind Atari"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" said 2015 \"human level\" AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "f=await web_fetch({\"url\":\"https://futureoflife.org/event/ai-safety-conference-in-puerto-rico/\"})\ns=json.dumps(f)\nfor m in re.finditer('Legg',s): print(s[max(0,m.start()-400):m.start()+400].replace('\\\\n',' ')); print('---')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://futureoflife.org/event/ai-safety-conference-in-puerto-rico/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "rr=await web_search({\"query\":\"\\\"Shane Legg\\\" DeepMind co-founder says 2015 machines\"}); show(rr)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Shane Legg\" DeepMind co-founder says 2015 machines"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2015",
+        "quote": "While difficult, we think these problems can be overcome, but that it will take a generation of talented researchers equipped with plentiful computational resources and inspired by insights from machine learning and systems neuroscience.",
+        "what_is_predicted": "The remaining hard technical problems on the way to ambitious (human-level) AI will take about a generation of researchers to solve, so human-level AI is not imminent.",
+        "date_or_span": "a generation",
+        "occasion": "Edge.org 2015 Annual Question 'What do you think about machines that think?', response titled 'General Purpose Learning Machines'. Written as 'we'; a search snippet of the same page showed Demis Hassabis's name above Legg's, so it may be co-authored, but I could not confirm this on the page I opened. The page shows no exact publication date.",
+        "source_url": "https://www.edge.org/response-detail/26258",
+        "source_kind": "own_words",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2015",
+        "quote": "As with many trends, some people have started to become a little bit too optimistic about the rate of progress, going as far as predicting that a solution to human level artificial intelligence might be just around the corner. It's not.",
+        "source_url": "https://www.edge.org/response-detail/26258"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2011",
+        "note": "Search snippets (arXiv 1605.04232; the LessWrong 'Q&A with Shane Legg on risks from AI') show the 2011 prediction: a log-normal distribution with mean 2028 and mode 2025, and a proto-AGI within 8 years. I did not open these pages."
+      },
+      {
+        "year": "2008",
+        "note": "'Human level AI will be passed in the mid-2020s' comes from the Jonathan Despres interview, which a future.fandom.com page carries. Mitchell and other papers date it to 2008 and Birhane gave 2016, as seen in search snippets. Not opened."
+      },
+      {
+        "year": "2021",
+        "note": "Search snippet of a Legg tweet dated Aug 24, 2021 saying his more serious estimate is 50% by 2028 and 90% by 2040, held roughly since 1999. Not opened."
+      },
+      {
+        "year": "2023",
+        "note": "News coverage (IBTimes, MarketsandMarkets snippets) of the 2023 Futurism interview repeating the 50% chance of AGI by about 2028. Not opened."
+      },
+      {
+        "year": "2025",
+        "note": "Snippets on the Hannah Fry DeepMind podcast and NextBigFuture describing 'minimal AGI' around 2028 and full AGI a few years later. Not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Shane Legg\" AI prediction 2015",
+        "what_found": "Only retellings of the 2009–2011 '2028' prediction and 2023 coverage; nothing said in 2015."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2015 interview AGI \"years\"",
+        "what_found": "The 2011 LessWrong Q&A, the 2021 DeepMind podcast and the fandom Despres interview; nothing from 2015."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "The Despres interview, 2023 coverage and a 2026 Auckland news item; nothing from 2015."
+      },
+      {
+        "query_or_url": "Shane Legg Puerto Rico 2015 Future of Life conference talk",
+        "what_found": "FLI pages listing Legg as a panelist at the January 2–5, 2015 Puerto Rico conference."
+      },
+      {
+        "query_or_url": "Shane Legg DeepMind interview 2015 artificial general intelligence",
+        "what_found": "Edge.org member page listing his 2015 Annual Question response 'General Purpose Learning Machines'."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2015 talk keynote DeepMind",
+        "what_found": "A 2014 ICCSW keynote abstract and later talks; nothing from 2015 with his words."
+      },
+      {
+        "query_or_url": "\"Human level AI will be passed in the mid-2020s\" Legg",
+        "what_found": "The quote is traced to the Despres interview and dated 2008 by most sources (2016 by Birhane), so it is not from 2015."
+      },
+      {
+        "query_or_url": "Shane Legg DeepMind New Zealand interview 2015",
+        "what_found": "No 2015 NZ interview; only later NZ opinion pieces."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" 2015 superintelligence risk interview \"decades\"",
+        "what_found": "Later material (TIME 2023, Dwarkesh, a 2014 H+ video post); nothing from 2015."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" lecture 2015 video artificial intelligence DeepMind Atari",
+        "what_found": "The 2015 Nature DQN paper (co-author, no forecast) and an undated YouTube clip; nothing usable."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" said 2015 \"human level\" AI",
+        "what_found": "Paper references and the 2008 'mid-2020s' quote again; nothing from 2015."
+      },
+      {
+        "query_or_url": "\"Shane Legg\" DeepMind co-founder says 2015 machines",
+        "what_found": "The Edge response page again; the snippet shows Demis Hassabis named on the page with Legg, suggesting a joint response."
+      },
+      {
+        "query_or_url": "https://www.edge.org/memberbio/shane_legg",
+        "what_found": "Opened; lists his 2015 response 'General Purpose Learning Machines' at response-detail/26258."
+      },
+      {
+        "query_or_url": "https://www.edge.org/response-detail/26258",
+        "what_found": "Opened; full essay text, including the 'a generation' line and the 'It's not' line on human-level AI being 'just around the corner'."
+      },
+      {
+        "query_or_url": "https://futureoflife.org/event/ai-safety-conference-in-puerto-rico/",
+        "what_found": "Opened; Legg appears only as an organising-committee member, panelist and in the group photo, with none of his words."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Legg's only 2015 forward-looking statement I could find on a page I opened is the Edge.org 2015 Annual Question essay 'General Purpose Learning Machines', which may be co-written with Demis Hassabis. It says human-level AI is not 'just around the corner' and that the remaining problems will take 'a generation' of researchers. He was a panelist at FLI's January 2015 Puerto Rico conference, but I found none of his words from it, and his well-known numeric AGI dates come from other years."
+  },
+  "reply_text": "I found one candidate for Shane Legg in 2015, and it's a weak one. It comes from the Edge.org answer to the 2015 Annual Question (\"What do you think about machines that think?\"), called \"General Purpose Learning Machines.\" I read it on Edge's own site. Two things to check before you use it:\n\n- **It may not be his alone.** The essay is written as \"we,\" and one search snippet showed Demis Hassabis's name above Legg's on the page. So it may be a joint essay. The page I opened didn't show the top of the page, so I couldn't confirm this myself.\n- **The time span is loose.** The only time-related wording is \"a generation of talented researchers.\" I'm treating \"a generation\" as a length of time, but you could reasonably rule it out under rule 3. The page also gives no exact date, only that it's the 2015 Annual Question.\n\nThe same essay says human-level AI is not \"just around the corner.\" That has no date, so I put it under undated.\n\nNothing else turned up from 2015. Legg was on a panel at the Future of Life Institute's Puerto Rico conference (January 2–5, 2015), but the event page I opened has none of his words. His well-known line \"Human level AI will be passed in the mid-2020s\" is dated to 2008 by some sources and 2016 by others, so it goes under other_years.\n\nI used all 12 searches and 3 of the 6 page openings. The first search ran once; only my printing of its results failed, and I read the saved results rather than running it again.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2015\",\n      \"quote\": \"While difficult, we think these problems can be overcome, but that it will take a generation of talented researchers equipped with plentiful computational resources and inspired by insights from machine learning and systems neuroscience.\",\n      \"what_is_predicted\": \"The remaining hard technical problems on the way to ambitious (human-level) AI will take about a generation of researchers to solve, so human-level AI is not imminent.\",\n      \"date_or_span\": \"a generation\",\n      \"occasion\": \"Edge.org 2015 Annual Question 'What do you think about machines that think?', response titled 'General Purpose Learning Machines'. Written as 'we'; a search snippet of the same page showed Demis Hassabis's name above Legg's, so it may be co-authored, but I could not confirm this on the page I opened. The page shows no exact publication date.\",\n      \"source_url\": \"https://www.edge.org/response-detail/26258\",\n      \"source_kind\": \"own_words\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2015\",\n      \"quote\": \"As with many trends, some people have started to become a little bit too optimistic about the rate of progress, going as far as predicting that a solution to human level artificial intelligence might be just around the corner. It's not.\",\n      \"source_url\": \"https://www.edge.org/response-detail/26258\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2011\", \"note\": \"Search snippets (arXiv 1605.04232; the LessWrong 'Q&A with Shane Legg on risks from AI') show the 2011 prediction: a log-normal distribution with mean 2028 and mode 2025, and a proto-AGI within 8 years. I did not open these pages.\"},\n    {\"year\": \"2008\", \"note\": \"'Human level AI will be passed in the mid-2020s' comes from the Jonathan Despres interview, which a future.fandom.com page carries. Mitchell and other papers date it to 2008 and Birhane gave 2016, as seen in search snippets. Not opened.\"},\n    {\"year\": \"2021\", \"note\": \"Search snippet of a Legg tweet dated Aug 24, 2021 saying his more serious estimate is 50% by 2028 and 90% by 2040, held roughly since 1999. Not opened.\"},\n    {\"year\": \"2023\", \"note\": \"News coverage (IBTimes, MarketsandMarkets snippets) of the 2023 Futurism interview repeating the 50% chance of AGI by about 2028. Not opened.\"},\n    {\"year\": \"2025\", \"note\": \"Snippets on the Hannah Fry DeepMind podcast and NextBigFuture describing 'minimal AGI' around 2028 and full AGI a few years later. Not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Shane Legg\\\" AI prediction 2015\", \"what_found\": \"Only retellings of the 2009–2011 '2028' prediction and 2023 coverage; nothing said in 2015.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2015 interview AGI \\\"years\\\"\", \"what_found\": \"The 2011 LessWrong Q&A, the 2021 DeepMind podcast and the fandom Despres interview; nothing from 2015.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2015 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"The Despres interview, 2023 coverage and a 2026 Auckland news item; nothing from 2015.\"},\n    {\"query_or_url\": \"Shane Legg Puerto Rico 2015 Future of Life conference talk\", \"what_found\": \"FLI pages listing Legg as a panelist at the January 2–5, 2015 Puerto Rico conference.\"},\n    {\"query_or_url\": \"Shane Legg DeepMind interview 2015 artificial general intelligence\", \"what_found\": \"Edge.org member page listing his 2015 Annual Question response 'General Purpose Learning Machines'.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2015 talk keynote DeepMind\", \"what_found\": \"A 2014 ICCSW keynote abstract and later talks; nothing from 2015 with his words.\"},\n    {\"query_or_url\": \"\\\"Human level AI will be passed in the mid-2020s\\\" Legg\", \"what_found\": \"The quote is traced to the Despres interview and dated 2008 by most sources (2016 by Birhane), so it is not from 2015.\"},\n    {\"query_or_url\": \"Shane Legg DeepMind New Zealand interview 2015\", \"what_found\": \"No 2015 NZ interview; only later NZ opinion pieces.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" 2015 superintelligence risk interview \\\"decades\\\"\", \"what_found\": \"Later material (TIME 2023, Dwarkesh, a 2014 H+ video post); nothing from 2015.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" lecture 2015 video artificial intelligence DeepMind Atari\", \"what_found\": \"The 2015 Nature DQN paper (co-author, no forecast) and an undated YouTube clip; nothing usable.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" said 2015 \\\"human level\\\" AI\", \"what_found\": \"Paper references and the 2008 'mid-2020s' quote again; nothing from 2015.\"},\n    {\"query_or_url\": \"\\\"Shane Legg\\\" DeepMind co-founder says 2015 machines\", \"what_found\": \"The Edge response page again; the snippet shows Demis Hassabis named on the page with Legg, suggesting a joint response.\"},\n    {\"query_or_url\": \"https://www.edge.org/memberbio/shane_legg\", \"what_found\": \"Opened; lists his 2015 response 'General Purpose Learning Machines' at response-detail/26258.\"},\n    {\"query_or_url\": \"https://www.edge.org/response-detail/26258\", \"what_found\": \"Opened; full essay text, including the 'a generation' line and the 'It's not' line on human-level AI being 'just around the corner'.\"},\n    {\"query_or_url\": \"https://futureoflife.org/event/ai-safety-conference-in-puerto-rico/\", \"what_found\": \"Opened; Legg appears only as an organising-committee member, panelist and in the group photo, with none of his words.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Legg's only 2015 forward-looking statement I could find on a page I opened is the Edge.org 2015 Annual Question essay 'General Purpose Learning Machines', which may be co-written with Demis Hassabis. It says human-level AI is not 'just around the corner' and that the remaining problems will take 'a generation' of researchers. He was a panelist at FLI's January 2015 Puerto Rico conference, but I found none of his words from it, and his well-known numeric AGI dates come from other years.\"\n}\n```"
+}

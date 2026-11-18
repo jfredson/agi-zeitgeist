@@ -1,0 +1,320 @@
+{
+  "speaker_id": "hassabis",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.545,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7744
+      },
+      "cache_creation_input_tokens": 43166,
+      "cache_read_input_tokens": 415356,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 7299,
+      "output_tokens_details": {
+        "thinking_tokens": 1781
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Demis Hassabis\" AI prediction 2023','\"Demis Hassabis\" 2023 interview AGI \"years\"','\"Demis Hassabis\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('  ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Demis Hassabis\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis TIME interview January 2023 Sparrow private beta \"2023\"','Hassabis Verge Decoder interview transcript July 2023 AGI decade','Hassabis Wired interview Gemini June 2023 AlphaGo']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis TIME interview January 2023 Sparrow private beta \"2023\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Verge Decoder interview transcript July 2023 AGI decade"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Wired interview Gemini June 2023 AlphaGo"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/\"})\nc=r[0]['content'] if isinstance(r,list) else str(r)\nimport re\nfor k in ['Sparrow','2023','years','decade','AGI']:\n    for m in re.finditer(k,c):\n        print(k,':',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '));print('--')\n        break\nprint(len(c))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c2=c.encode().decode('unicode_escape',errors='ignore') if '\\\\u' in c else c\nfor k in ['parrow','private beta','chatbot','within','next year','soon','2024','2030','decade','in a few']:\n    for m in re.finditer(k,c2):\n        print(k,':',c2[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c2.find('Prisma Labs'); print(c2[i:i+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Hassabis Guardian interview October 2023 AI risk climate crisis','Hassabis December 2023 Gemini interview AGI \"decade\" transcript','Hassabis Neue Zürcher Zeitung interview 2023 AGI']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Guardian interview October 2023 AI risk climate crisis"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis December 2023 Gemini interview AGI \"decade\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hassabis Neue Zürcher Zeitung interview 2023 AGI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in [\"https://ubiquity.acm.org/article.cfm?id=3627105\",\"https://tech.slashdot.org/story/23/10/26/0024259/ai-risk-must-be-treated-as-seriously-as-climate-crisis-says-google-deepmind-chief\",\"https://cbmm.mit.edu/news-events/news/deepmind%E2%80%99s-ceo-helped-take-ai-mainstream-now-he%E2%80%99s-urging-caution-time\"]:\n    r=await web_fetch({\"url\":u})\n    t=r[0]['content'] if isinstance(r,list) else json.dumps(r)\n    P[u]=t; print(u,len(t))\ndef grep(t,keys,w=350):\n    for k in keys:\n        for m in re.finditer(k,t):\n            print('['+k+']',t[max(0,m.start()-w):m.start()+w].replace('\\n',' '));print('--')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ubiquity.acm.org/article.cfm?id=3627105"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://tech.slashdot.org/story/23/10/26/0024259/ai-risk-must-be-treated-as-seriously-as-climate-crisis-says-google-deepmind-chief"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://cbmm.mit.edu/news-events/news/deepmind%E2%80%99s-ceo-helped-take-ai-mainstream-now-he%E2%80%99s-urging-caution-time"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(P[\"https://ubiquity.acm.org/article.cfm?id=3627105\"][:8053])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in list(P)[1:]:\n    t=P[u]\n    if '\\\\u' in t: t=t.encode().decode('unicode_escape',errors='ignore')\n    P[u]=t\n    print('#####',u); grep(t,['parrow','private beta','within','next year','decade','years away','few years','soon'],300)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in list(P)[1:]:\n    t=P[u]; i=t.find('Hassabis'); print('#####',u); print(t[i-200:i+3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P[list(P)[2]]; print([m.start() for m in re.finditer('(?i)sparrow|beta',t)]); print(t[-1500:])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.lesswrong.com/posts/dCk7DwarzkiooB2RT/linkpost-time-article-deepmind-s-ceo-helped-take-ai-mainstream-now-he-s-urging-caution\"})\nt=r[0]['content'] if isinstance(r,list) else json.dumps(r)\nif '\\\\u' in t: t=t.encode().decode('unicode_escape',errors='ignore')\nprint(len(t)); grep(t,['(?i)sparrow','decade','years'],400)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/dCk7DwarzkiooB2RT/linkpost-time-article-deepmind-s-ceo-helped-take-ai-mainstream-now-he-s-urging-caution"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['wired.com Hassabis Gemini \"more capable than ChatGPT\" Will Knight']:\n    r=await web_search({\"query\":q}); R[q]=r; print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "wired.com Hassabis Gemini \"more capable than ChatGPT\" Will Knight"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":\"https://www.xirisgroup.com/post/google-deepminds-ceo-says-its-next-algorithm-will-eclipse-chatgpt\"})\nt=r[0]['content'] if isinstance(r,list) else json.dumps(r)\nif '\\\\u' in t: t=t.encode().decode('unicode_escape',errors='ignore')\nprint(len(t)); grep(t,['months','year','decade','will be','soon'],300)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.xirisgroup.com/post/google-deepminds-ceo-says-its-next-algorithm-will-eclipse-chatgpt"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-01-12",
+        "quote": "He says that DeepMind is also considering releasing its own chatbot, called Sparrow, for a “private beta” some time in 2023.",
+        "what_is_predicted": "DeepMind might release its Sparrow chatbot as a private beta during 2023; this is the reporter's summary, and only the words \"private beta\" are marked as his.",
+        "date_or_span": "some time in 2023",
+        "occasion": "TIME interview and profile by Billy Perrigo, 'DeepMind's CEO Helped Take AI Mainstream. Now He's Urging Caution' (January 2023)",
+        "source_url": "https://www.lesswrong.com/posts/dCk7DwarzkiooB2RT/linkpost-time-article-deepmind-s-ceo-helped-take-ai-mainstream-now-he-s-urging-caution",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Search snippets only, not opened: Lex Fridman transcript (lexfridman.com/demis-hassabis-2-transcript) with a 50% chance of AGI by 2030, and a 60 Minutes appearance (science.org blog 'The End of Disease') on curing disease 'within the next decade or so'."
+      },
+      {
+        "year": "2026",
+        "note": "Search snippets only, not opened: news of a WSJ interview in which his AGI estimate moves to two to three years, and of a Davos talk giving five to ten years with about a 50% chance by the end of the decade."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Demis Hassabis\" AI prediction 2023",
+        "what_found": "Lasker award article, recent news about later timelines, the TIME100 AI 2023 profile and a Fortune 3 May 2023 piece on the WSJ festival (already recorded)."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2023 interview AGI \"years\"",
+        "what_found": "Coverage of the May 2023 'few years' AGI remark (already recorded), the ACM Ubiquity NZZ interview and the January 2023 TIME profile."
+      },
+      {
+        "query_or_url": "\"Demis Hassabis\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly news from 2025-2026; the only 2023 hit was the Fortune May 2023 article."
+      },
+      {
+        "query_or_url": "Hassabis TIME interview January 2023 Sparrow private beta \"2023\"",
+        "what_found": "Several reports of the TIME line about a Sparrow private beta in 2023, plus the TIME page URL."
+      },
+      {
+        "query_or_url": "Hassabis Verge Decoder interview transcript July 2023 AGI decade",
+        "what_found": "No 2023 Verge transcript came up, only later interviews and summaries."
+      },
+      {
+        "query_or_url": "Hassabis Wired interview Gemini June 2023 AlphaGo",
+        "what_found": "News about the June 2023 Wired interview on Gemini using AlphaGo-style methods; no dated words seen."
+      },
+      {
+        "query_or_url": "Hassabis Guardian interview October 2023 AI risk climate crisis",
+        "what_found": "Coverage of the 24 October 2023 Guardian interview, including a Slashdot excerpt."
+      },
+      {
+        "query_or_url": "Hassabis December 2023 Gemini interview AGI \"decade\" transcript",
+        "what_found": "Only interviews from 2024-2025; nothing from December 2023."
+      },
+      {
+        "query_or_url": "Hassabis Neue Zürcher Zeitung interview 2023 AGI",
+        "what_found": "The ACM Ubiquity list entry for the NZZ interview translation, plus later news."
+      },
+      {
+        "query_or_url": "wired.com Hassabis Gemini \"more capable than ChatGPT\" Will Knight",
+        "what_found": "Reprints and reports of the Wired piece; a Medium snippet says Gemini 'could be released as soon as this winter', but in the blogger's words."
+      },
+      {
+        "query_or_url": "https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/",
+        "what_found": "Opened, but the text cut off before the Sparrow passage; the visible part has 'on the cusp' with no date."
+      },
+      {
+        "query_or_url": "https://ubiquity.acm.org/article.cfm?id=3627105",
+        "what_found": "Opened: the NZZ interview of 6 February 2023 in translation; Hassabis gives no dated forecast, and the Bard 'coming weeks' line is the editor's."
+      },
+      {
+        "query_or_url": "https://tech.slashdot.org/story/23/10/26/0024259/ai-risk-must-be-treated-as-seriously-as-climate-crisis-says-google-deepmind-chief",
+        "what_found": "Opened: Guardian excerpt where god-like AI is 'a long time away' and the 'next few generations' may carry risk; no dated forecast."
+      },
+      {
+        "query_or_url": "https://cbmm.mit.edu/news-events/news/deepmind%E2%80%99s-ceo-helped-take-ai-mainstream-now-he%E2%80%99s-urging-caution-time",
+        "what_found": "Opened: only the opening paragraphs of the TIME article, with no Sparrow passage."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/dCk7DwarzkiooB2RT/linkpost-time-article-deepmind-s-ceo-helped-take-ai-mainstream-now-he-s-urging-caution",
+        "what_found": "Opened: a linkpost repeating the TIME sentence on a Sparrow private beta 'some time in 2023'."
+      },
+      {
+        "query_or_url": "https://www.xirisgroup.com/post/google-deepminds-ceo-says-its-next-algorithm-will-eclipse-chatgpt",
+        "what_found": "Opened: only a teaser of the Wired Gemini article, with no dated words."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Besides the four claims already on file, the only dated forward-looking line found for 2023 is TIME's January report that DeepMind was considering a Sparrow private beta 'some time in 2023'. It is the reporter's summary of a product plan, not his own words. The NZZ (February) and Guardian (October) interviews have nothing dated, and the full Wired Gemini text could not be read."
+  },
+  "reply_text": "I found one new 2023 candidate, and it is weak. Six pages opened and none of them had Hassabis making a dated AI forecast in his own words. I didn't open the pages behind any of the four claims already on file, so none of them turn up again here.\n\n- **The one candidate: a private beta of the Sparrow chatbot \"some time in 2023\".** It comes from TIME's interview of 12 January 2023, which reported that DeepMind was \"considering releasing\" the chatbot then. I only read it on LessWrong, which reposts TIME's text, because TIME's own page cut off before that passage and so did a second copy on the MIT CBMM site. The sentence is the journalist's summary. Only the words \"private beta\" are marked as his. It is also a company product plan rather than a forecast about what AI can do. A Sparrow beta never seems to have shipped.\n- **The Swiss newspaper interview (NZZ, 6 February 2023; English translation by ACM Ubiquity, October 2023):** nothing with a date. He says today's large models lack memory and planning and that a true general AI is not there yet. The only date is the editor's note that Bard would come out \"in the coming weeks\", which aren't Hassabis's words.\n- **The Guardian, October 2023:** I only saw the Slashdot excerpt of it. He says \"god-like\" AI is \"a long time away\", which has no date. He also says current systems \"aren't of risk but the next few generations may be\" — that is about risk, not about when something arrives.\n- **The June 2023 Wired interview on Gemini:** the copy I opened was only a teaser. A Medium post in the search results says Gemini \"could be released as soon as this winter\", but those are the blogger's words and I didn't see the original. All six page openings and 10 of the 12 searches are used.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-01-12\",\n      \"quote\": \"He says that DeepMind is also considering releasing its own chatbot, called Sparrow, for a “private beta” some time in 2023.\",\n      \"what_is_predicted\": \"DeepMind might release its Sparrow chatbot as a private beta during 2023; this is the reporter's summary, and only the words \\\"private beta\\\" are marked as his.\",\n      \"date_or_span\": \"some time in 2023\",\n      \"occasion\": \"TIME interview and profile by Billy Perrigo, 'DeepMind's CEO Helped Take AI Mainstream. Now He's Urging Caution' (January 2023)\",\n      \"source_url\": \"https://www.lesswrong.com/posts/dCk7DwarzkiooB2RT/linkpost-time-article-deepmind-s-ceo-helped-take-ai-mainstream-now-he-s-urging-caution\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Search snippets only, not opened: Lex Fridman transcript (lexfridman.com/demis-hassabis-2-transcript) with a 50% chance of AGI by 2030, and a 60 Minutes appearance (science.org blog 'The End of Disease') on curing disease 'within the next decade or so'.\"},\n    {\"year\": \"2026\", \"note\": \"Search snippets only, not opened: news of a WSJ interview in which his AGI estimate moves to two to three years, and of a Davos talk giving five to ten years with about a 50% chance by the end of the decade.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" AI prediction 2023\", \"what_found\": \"Lasker award article, recent news about later timelines, the TIME100 AI 2023 profile and a Fortune 3 May 2023 piece on the WSJ festival (already recorded).\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"Coverage of the May 2023 'few years' AGI remark (already recorded), the ACM Ubiquity NZZ interview and the January 2023 TIME profile.\"},\n    {\"query_or_url\": \"\\\"Demis Hassabis\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly news from 2025-2026; the only 2023 hit was the Fortune May 2023 article.\"},\n    {\"query_or_url\": \"Hassabis TIME interview January 2023 Sparrow private beta \\\"2023\\\"\", \"what_found\": \"Several reports of the TIME line about a Sparrow private beta in 2023, plus the TIME page URL.\"},\n    {\"query_or_url\": \"Hassabis Verge Decoder interview transcript July 2023 AGI decade\", \"what_found\": \"No 2023 Verge transcript came up, only later interviews and summaries.\"},\n    {\"query_or_url\": \"Hassabis Wired interview Gemini June 2023 AlphaGo\", \"what_found\": \"News about the June 2023 Wired interview on Gemini using AlphaGo-style methods; no dated words seen.\"},\n    {\"query_or_url\": \"Hassabis Guardian interview October 2023 AI risk climate crisis\", \"what_found\": \"Coverage of the 24 October 2023 Guardian interview, including a Slashdot excerpt.\"},\n    {\"query_or_url\": \"Hassabis December 2023 Gemini interview AGI \\\"decade\\\" transcript\", \"what_found\": \"Only interviews from 2024-2025; nothing from December 2023.\"},\n    {\"query_or_url\": \"Hassabis Neue Zürcher Zeitung interview 2023 AGI\", \"what_found\": \"The ACM Ubiquity list entry for the NZZ interview translation, plus later news.\"},\n    {\"query_or_url\": \"wired.com Hassabis Gemini \\\"more capable than ChatGPT\\\" Will Knight\", \"what_found\": \"Reprints and reports of the Wired piece; a Medium snippet says Gemini 'could be released as soon as this winter', but in the blogger's words.\"},\n    {\"query_or_url\": \"https://time.com/collections/davos-2023/6246119/demis-hassabis-deepmind-interview/\", \"what_found\": \"Opened, but the text cut off before the Sparrow passage; the visible part has 'on the cusp' with no date.\"},\n    {\"query_or_url\": \"https://ubiquity.acm.org/article.cfm?id=3627105\", \"what_found\": \"Opened: the NZZ interview of 6 February 2023 in translation; Hassabis gives no dated forecast, and the Bard 'coming weeks' line is the editor's.\"},\n    {\"query_or_url\": \"https://tech.slashdot.org/story/23/10/26/0024259/ai-risk-must-be-treated-as-seriously-as-climate-crisis-says-google-deepmind-chief\", \"what_found\": \"Opened: Guardian excerpt where god-like AI is 'a long time away' and the 'next few generations' may carry risk; no dated forecast.\"},\n    {\"query_or_url\": \"https://cbmm.mit.edu/news-events/news/deepmind%E2%80%99s-ceo-helped-take-ai-mainstream-now-he%E2%80%99s-urging-caution-time\", \"what_found\": \"Opened: only the opening paragraphs of the TIME article, with no Sparrow passage.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/dCk7DwarzkiooB2RT/linkpost-time-article-deepmind-s-ceo-helped-take-ai-mainstream-now-he-s-urging-caution\", \"what_found\": \"Opened: a linkpost repeating the TIME sentence on a Sparrow private beta 'some time in 2023'.\"},\n    {\"query_or_url\": \"https://www.xirisgroup.com/post/google-deepminds-ceo-says-its-next-algorithm-will-eclipse-chatgpt\", \"what_found\": \"Opened: only a teaser of the Wired Gemini article, with no dated words.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Besides the four claims already on file, the only dated forward-looking line found for 2023 is TIME's January report that DeepMind was considering a Sparrow private beta 'some time in 2023'. It is the reporter's summary of a product plan, not his own words. The NZZ (February) and Guardian (October) interviews have nothing dated, and the full Wired Gemini text could not be read.\"\n}\n```"
+}

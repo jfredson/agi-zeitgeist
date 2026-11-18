@@ -1,0 +1,311 @@
+{
+  "speaker_id": "lecun",
+  "year": 2021,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.4835,
+  "web_searches": 12,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7702
+      },
+      "cache_creation_input_tokens": 32050,
+      "cache_read_input_tokens": 287563,
+      "inference_geo": "global",
+      "input_tokens": 34,
+      "output_tokens": 7278,
+      "output_tokens_details": {
+        "thinking_tokens": 1739
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 4,
+        "web_search_requests": 12
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Yann LeCun\" AI prediction 2021','\"Yann LeCun\" 2021 interview AGI \"years\"','\"Yann LeCun\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" AI prediction 2021"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2021 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['LeCun \"dark matter of intelligence\" self-supervised learning 2021','Yann LeCun interview 2021 self-supervised learning \"human-level\"','Yann LeCun 2021 podcast transcript']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "LeCun \"dark matter of intelligence\" self-supervised learning 2021"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun interview 2021 self-supervised learning \"human-level\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun 2021 podcast transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Yann LeCun interview 2021 self-supervised learning \"human-level\"','Yann LeCun 2021 podcast transcript']:\n    for x in R[q]:\n        if any(k in x['url'] for k in ['venturebeat','tapesearch','eye-on','walrus']):\n            print(x['url'],x['content'][:1500],'\\n---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://www.tapesearch.com/episode/getting-ai-to-think-and-learn-like-humans-with-daniel-kahneman-and-yann-lecun/7nZTM39P7C4dbBSFRS4LNo','https://walrus-assets.s3.amazonaws.com/Transcripts/Transcript-Yann-Lecunn-ConversationPiecePodcast.pdf']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    P[u]=r.get('content','') ; print(u,r.get('type'),len(P[u]))\nimport re\nfor u,c in P.items():\n    for k in ['year','decade','2030','2025','2022','2020','2021','human-level','AGI','October']:\n        for m in re.finditer(k,c):\n            print(u[-20:],k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.tapesearch.com/episode/getting-ai-to-think-and-learn-like-humans-with-daniel-kahneman-and-yann-lecun/7nZTM39P7C4dbBSFRS4LNo"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://walrus-assets.s3.amazonaws.com/Transcripts/Transcript-Yann-Lecunn-ConversationPiecePodcast.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u,c in P.items():\n    print(type(c), str(c)[:300])\n"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nt1=P[list(P)[0]]['source']['data']\nfrom pypdf import PdfReader\npdf=base64.b64decode(P[list(P)[1]]['source']['data'])\nt2=\"\\n\".join(p.extract_text() for p in PdfReader(io.BytesIO(pdf)).pages)\nprint(len(t1),len(t2))\nfor name,c in [('tape',t1),('walrus',t2)]:\n    for k in ['years','decade','203','202','human-level','human level','AGI','October','Walrus Talks']:\n        for m in re.finditer(k,c):\n            print(name,k,'::',c[max(0,m.start()-250):m.start()+250].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['ZDNet LeCun 2021 interview energy-based models','Yann LeCun 2021 talk \"common sense\" machines \"years\" Kantrowitz Kahneman transcript']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q]: print('   ',x['content'][:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "ZDNet LeCun 2021 interview energy-based models"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Yann LeCun 2021 talk \"common sense\" machines \"years\" Kantrowitz Kahneman transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"LeCun\" 2021 interview \"human-level AI\" \"decades\"','\"Yann LeCun\" interview \"2021\" Spectrum OR Fortune OR Wired OR \"Le Monde\" self-driving cars \"years\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q]: print('   ',x['content'][:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"LeCun\" 2021 interview \"human-level AI\" \"decades\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Yann LeCun\" interview \"2021\" Spectrum OR Fortune OR Wired OR \"Le Monde\" self-driving cars \"years\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://spectrum.ieee.org/artificial-intelligence-quotes/yann-lecun'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nc=r.get('content'); \nif isinstance(c,dict): c=c.get('source',{}).get('data','')\nprint(len(c)); i=c.find('LeCun'); print(c[:200]); \nfor m in re.finditer('LeCun',c): print(c[max(0,m.start()-600):m.start()+400].replace('\\n',' '),'\\n----')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://spectrum.ieee.org/artificial-intelligence-quotes/yann-lecun"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c.find('YANN LECUN**'); print(c[i:i+700])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Self-supervised learning: The dark matter of intelligence\" ai.facebook.com blog','Kantrowitz Kahneman LeCun Big Technology podcast December 2021 transcript']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))\n    for x in R[q]: print('   ',x['content'][:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Self-supervised learning: The dark matter of intelligence\" ai.facebook.com blog"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Kantrowitz Kahneman LeCun Big Technology podcast December 2021 transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,list): r=r[0]\nprint(r.get('type'),r.get('error_code'),r.get('url'))\nc=r.get('content','')\nif isinstance(c,dict): c=c.get('source',{}).get('data','')\nprint(len(c)); print(c[:300])\nfor k in ['year','decade','future','March','2021','human-level','will ']:\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-250):m.start()+250].replace('\\n',' '),'\\n')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='\"ylecun\" 2021 \"human-level AI\" OR AGI \"years\" tweet'\nprint(\"==\",q); R[q]=show(await web_search({\"query\":q}))\nfor x in R[q]: print('   ',x['content'][:300].replace('\\n',' '))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2017",
+        "note": "IEEE Spectrum's quote page for its October 2021 AI special issue (spectrum.ieee.org/artificial-intelligence-quotes/yann-lecun) carries a LeCun quote about learning predictive world models; the page attributes it to an October 2017 article. It says what is missing, not what will happen when."
+      },
+      {
+        "year": "2022",
+        "note": "Search results showed several 2022 occasions: the Lex Fridman podcast #258 (January 2022), the VentureBeat report of a Meta AI event (March 21, 2022), the ZDNet/Tiernan Ray interview (around April 2022) and the June 2022 'A Path Towards Autonomous Machine Intelligence' paper. None were opened for this year."
+      },
+      {
+        "year": "unknown (2020 or 2021)",
+        "note": "The Walrus Talks at Home: INTELLIGENCE transcript (PDF) says only that he spoke 'in October', with no year. He calls building common-sense intelligence 'the challenge of the, of the next few years'. This is undated and not about when AGI arrives, so it is not listed."
+      },
+      {
+        "year": "2024",
+        "note": "A search result shows an X post (status 1846574605894340950) saying human-level AI 'will take several years if not a decade'. That is outside 2021 and the post was not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Yann LeCun\" AI prediction 2021",
+        "what_found": "Later write-ups (a Substack prediction audit, Medium pieces, a 2022 MIT Technology Review article); no statement from 2021."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2021 interview AGI \"years\"",
+        "what_found": "Material from 2022-2025 (Lex Fridman, TIME, AI Business, LessWrong); nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only timeline claims from 2024-2025 (X post, TechCrunch 2025, OfficeChai); nothing from 2021."
+      },
+      {
+        "query_or_url": "LeCun \"dark matter of intelligence\" self-supervised learning 2021",
+        "what_found": "Pointers to the March 2021 blog post written with Ishan Misra (his X post, a Lifeboat explainer) but not the post itself."
+      },
+      {
+        "query_or_url": "Yann LeCun interview 2021 self-supervised learning \"human-level\"",
+        "what_found": "VentureBeat piece dated March 21, 2022 and Lex Fridman transcripts; nothing from 2021."
+      },
+      {
+        "query_or_url": "Yann LeCun 2021 podcast transcript",
+        "what_found": "Found the Big Technology Podcast with Daniel Kahneman (8 December 2021) on Tapesearch and a Walrus Talks transcript PDF."
+      },
+      {
+        "query_or_url": "https://www.tapesearch.com/episode/getting-ai-to-think-and-learn-like-humans-with-daniel-kahneman-and-yann-lecun/7nZTM39P7C4dbBSFRS4LNo",
+        "what_found": "Opened: confirms the 8 December 2021 date, but the page shows only one host line from the transcript and none of LeCun's words."
+      },
+      {
+        "query_or_url": "https://walrus-assets.s3.amazonaws.com/Transcripts/Transcript-Yann-Lecunn-ConversationPiecePodcast.pdf",
+        "what_found": "Opened: talk dated only 'October' with no year; has the line about 'the next few years' but no dated forecast."
+      },
+      {
+        "query_or_url": "ZDNet LeCun 2021 interview energy-based models",
+        "what_found": "An April 2021 X post on energy-based models (not a forecast) and a ZDNet interview from around 2022."
+      },
+      {
+        "query_or_url": "Yann LeCun 2021 talk \"common sense\" machines \"years\" Kantrowitz Kahneman transcript",
+        "what_found": "Lex Fridman transcripts, Gary Marcus posts and the Walrus PDF again; no 2021 transcript."
+      },
+      {
+        "query_or_url": "\"LeCun\" 2021 interview \"human-level AI\" \"decades\"",
+        "what_found": "Material from 2023-2025 (Hacker News, LessWrong, TechCrunch 2024, AI Inside 2025); nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Yann LeCun\" interview \"2021\" Spectrum OR Fortune OR Wired OR \"Le Monde\" self-driving cars \"years\"",
+        "what_found": "IEEE Spectrum quote page from the October 2021 issue, plus Fortune pieces from 2023 and 2026."
+      },
+      {
+        "query_or_url": "https://spectrum.ieee.org/artificial-intelligence-quotes/yann-lecun",
+        "what_found": "Opened: the LeCun quote is attributed to October 2017 and is not a forecast."
+      },
+      {
+        "query_or_url": "\"Self-supervised learning: The dark matter of intelligence\" ai.facebook.com blog",
+        "what_found": "Secondary summaries and an X post pointing to the March 2021 blog post; not the post itself."
+      },
+      {
+        "query_or_url": "Kantrowitz Kahneman LeCun Big Technology podcast December 2021 transcript",
+        "what_found": "Listings (Apple, Megaphone, ListenNotes, his X post of 8 December 2021) confirm the date; no readable transcript."
+      },
+      {
+        "query_or_url": "https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/",
+        "what_found": "Would not open (url_not_in_prior_context); not quoted."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "I found no dated AI forecast from LeCun that I could confirm he made in 2021. His main 2021 occasions were the March 2021 blog post on self-supervised learning with Ishan Misra (would not open) and the Big Technology Podcast with Daniel Kahneman on 8 December 2021 (no readable transcript). Most of his well-known timeline remarks found here come from 2022 onward."
+  },
+  "reply_text": "I found no dated AI prediction from Yann LeCun that I could confirm he made in 2021. All three fixed searches ran, but none of them turned up a 2021 statement. That makes this a quiet year, though the search wasn't exhaustive.\n\n- **Best lead:** On 8 December 2021 he appeared with Daniel Kahneman on the Big Technology Podcast (Alex Kantrowitz). The listing on Tapesearch confirms the date, but the page I opened only showed one host line from the transcript. I read nothing LeCun said in that episode, so I have nothing to quote from it.\n- **Undated talk:** I opened the Walrus Talks transcript (PDF). It doesn't give the year of the talk, only \"October\". He calls building common-sense intelligence \"the challenge of the, of the next few years\". That isn't about when AGI arrives, so it doesn't qualify even as an undated item.\n- **Other years:** The IEEE Spectrum quote page I opened is from its October 2021 issue, but the LeCun quote on it dates from October 2017 and contains no prediction. Several other search results came from other years (2022, 2024, 2025).\n- **Limits:** The 2021 Facebook AI blog post \"Self-supervised learning: The dark matter of intelligence\" (March 2021, with Ishan Misra) wouldn't open. All 12 searches are used, plus one more that didn't run because the limit was reached. I opened 4 of the 6 pages allowed. The obvious next step is a full transcript of the December 2021 podcast, along with his 2021 tweets.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2017\", \"note\": \"IEEE Spectrum's quote page for its October 2021 AI special issue (spectrum.ieee.org/artificial-intelligence-quotes/yann-lecun) carries a LeCun quote about learning predictive world models; the page attributes it to an October 2017 article. It says what is missing, not what will happen when.\"},\n    {\"year\": \"2022\", \"note\": \"Search results showed several 2022 occasions: the Lex Fridman podcast #258 (January 2022), the VentureBeat report of a Meta AI event (March 21, 2022), the ZDNet/Tiernan Ray interview (around April 2022) and the June 2022 'A Path Towards Autonomous Machine Intelligence' paper. None were opened for this year.\"},\n    {\"year\": \"unknown (2020 or 2021)\", \"note\": \"The Walrus Talks at Home: INTELLIGENCE transcript (PDF) says only that he spoke 'in October', with no year. He calls building common-sense intelligence 'the challenge of the, of the next few years'. This is undated and not about when AGI arrives, so it is not listed.\"},\n    {\"year\": \"2024\", \"note\": \"A search result shows an X post (status 1846574605894340950) saying human-level AI 'will take several years if not a decade'. That is outside 2021 and the post was not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" AI prediction 2021\", \"what_found\": \"Later write-ups (a Substack prediction audit, Medium pieces, a 2022 MIT Technology Review article); no statement from 2021.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2021 interview AGI \\\"years\\\"\", \"what_found\": \"Material from 2022-2025 (Lex Fridman, TIME, AI Business, LessWrong); nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" 2021 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only timeline claims from 2024-2025 (X post, TechCrunch 2025, OfficeChai); nothing from 2021.\"},\n    {\"query_or_url\": \"LeCun \\\"dark matter of intelligence\\\" self-supervised learning 2021\", \"what_found\": \"Pointers to the March 2021 blog post written with Ishan Misra (his X post, a Lifeboat explainer) but not the post itself.\"},\n    {\"query_or_url\": \"Yann LeCun interview 2021 self-supervised learning \\\"human-level\\\"\", \"what_found\": \"VentureBeat piece dated March 21, 2022 and Lex Fridman transcripts; nothing from 2021.\"},\n    {\"query_or_url\": \"Yann LeCun 2021 podcast transcript\", \"what_found\": \"Found the Big Technology Podcast with Daniel Kahneman (8 December 2021) on Tapesearch and a Walrus Talks transcript PDF.\"},\n    {\"query_or_url\": \"https://www.tapesearch.com/episode/getting-ai-to-think-and-learn-like-humans-with-daniel-kahneman-and-yann-lecun/7nZTM39P7C4dbBSFRS4LNo\", \"what_found\": \"Opened: confirms the 8 December 2021 date, but the page shows only one host line from the transcript and none of LeCun's words.\"},\n    {\"query_or_url\": \"https://walrus-assets.s3.amazonaws.com/Transcripts/Transcript-Yann-Lecunn-ConversationPiecePodcast.pdf\", \"what_found\": \"Opened: talk dated only 'October' with no year; has the line about 'the next few years' but no dated forecast.\"},\n    {\"query_or_url\": \"ZDNet LeCun 2021 interview energy-based models\", \"what_found\": \"An April 2021 X post on energy-based models (not a forecast) and a ZDNet interview from around 2022.\"},\n    {\"query_or_url\": \"Yann LeCun 2021 talk \\\"common sense\\\" machines \\\"years\\\" Kantrowitz Kahneman transcript\", \"what_found\": \"Lex Fridman transcripts, Gary Marcus posts and the Walrus PDF again; no 2021 transcript.\"},\n    {\"query_or_url\": \"\\\"LeCun\\\" 2021 interview \\\"human-level AI\\\" \\\"decades\\\"\", \"what_found\": \"Material from 2023-2025 (Hacker News, LessWrong, TechCrunch 2024, AI Inside 2025); nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Yann LeCun\\\" interview \\\"2021\\\" Spectrum OR Fortune OR Wired OR \\\"Le Monde\\\" self-driving cars \\\"years\\\"\", \"what_found\": \"IEEE Spectrum quote page from the October 2021 issue, plus Fortune pieces from 2023 and 2026.\"},\n    {\"query_or_url\": \"https://spectrum.ieee.org/artificial-intelligence-quotes/yann-lecun\", \"what_found\": \"Opened: the LeCun quote is attributed to October 2017 and is not a forecast.\"},\n    {\"query_or_url\": \"\\\"Self-supervised learning: The dark matter of intelligence\\\" ai.facebook.com blog\", \"what_found\": \"Secondary summaries and an X post pointing to the March 2021 blog post; not the post itself.\"},\n    {\"query_or_url\": \"Kantrowitz Kahneman LeCun Big Technology podcast December 2021 transcript\", \"what_found\": \"Listings (Apple, Megaphone, ListenNotes, his X post of 8 December 2021) confirm the date; no readable transcript.\"},\n    {\"query_or_url\": \"https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/\", \"what_found\": \"Would not open (url_not_in_prior_context); not quoted.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"I found no dated AI forecast from LeCun that I could confirm he made in 2021. His main 2021 occasions were the March 2021 blog post on self-supervised learning with Ishan Misra (would not open) and the Big Technology Podcast with Daniel Kahneman on 8 December 2021 (no readable transcript). Most of his well-known timeline remarks found here come from 2022 onward.\"\n}\n```"
+}

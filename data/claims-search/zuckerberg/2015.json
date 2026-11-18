@@ -1,0 +1,304 @@
+{
+  "speaker_id": "zuckerberg",
+  "year": 2015,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5826,
+  "web_searches": 7,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 53446,
+      "cache_read_input_tokens": 464696,
+      "inference_geo": "global",
+      "input_tokens": 36,
+      "output_tokens": 7615,
+      "output_tokens_details": {
+        "thinking_tokens": 1871
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 7
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Mark Zuckerberg\" AI prediction 2015','\"Mark Zuckerberg\" 2015 interview AGI \"years\"','\"Mark Zuckerberg\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" AI prediction 2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nr=R[qs[0]];print(type(r));print(str(r)[:500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r: print(x.get('title'),x.get('url'),x.get('page_age'));print('  ',x.get('content','')[:400].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q});R[q]=r\n    print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2015 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Mark Zuckerberg\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nasync def fetch(u,pats,w=600):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(\"ERR\",r);return None\n    c=r[0].get('content','');print(u,len(c),r[0].get('title'))\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            print('--',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '))\n    return c\nc1=await fetch(\"https://www.pcworld.com/article/414651/zuckerberg-sees-better-than-human-ai-in-next-10-years.html\",[r\"10 years|ten years|five\"],500)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.pcworld.com/article/414651/zuckerberg-sees-better-than-human-ai-in-next-10-years.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def fetch(u,pats,w=600):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    c=r.get('content','')\n    if isinstance(c,dict): c=c.get('source',{}).get('data','')\n    if not c: print(\"ERR\",str(r)[:300]);return None\n    print(u,len(c),r.get('title'))\n    for p in pats:\n        for m in re.finditer(p,c,flags=re.I):\n            print('--',c[max(0,m.start()-w):m.end()+w].replace('\\n',' '))\n    return c\nc2=await fetch(\"https://www.forbes.com/sites/kathleenchaykowski/2015/09/15/four-highlights-from-facebook-ceo-mark-zuckerbergs-qa/\",[r\"artificial intelligence|years\"],500)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.forbes.com/sites/kathleenchaykowski/2015/09/15/four-highlights-from-facebook-ceo-mark-zuckerbergs-qa/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=c2.find('Here are the four');j=c2.find('Here are the four',i+100)\nk=c2.find('artificial intelligence', 3000)\nidx=[m.start() for m in re.finditer(r'AI|intelligen|machine',c2)]\nprint(idx[:30])\nprint(c2[c2.find('# Four Highlights'):][:5000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c2[4300:12500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for p in [r'Menlo Park',r'Zuckerberg said',r'senses|perception|computer']:\n    for m in re.finditer(p,c2): print(m.start(), c2[max(0,m.start()-300):m.start()+500].replace('\\n',' '));print('///')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['Zuckerberg Facebook Q&A June 30 2015 \"next five to 10 years\" human senses',\n'Facebook Q3 2015 earnings call transcript Zuckerberg artificial intelligence \"five to ten years\"',\n'Zuckerberg September 2015 town hall Q&A artificial intelligence \"10 years\"']\nimport asyncio\nres=await asyncio.gather(*[web_search({\"query\":q}) for q in qs2])\nfor q,r in zip(qs2,res):\n    R[q]=r;print(\"==\",q);show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg September 2015 town hall Q&A artificial intelligence \"10 years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Facebook Q3 2015 earnings call transcript Zuckerberg artificial intelligence \"five to ten years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Zuckerberg Facebook Q&A June 30 2015 \"next five to 10 years\" human senses"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pats=[r'years',r'artificial intelligence|\\bAI\\b']\nc3=await fetch(\"https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q315_Earnings_Conference_Call_Transcript.pdf\",[r'year'],500)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q315_Earnings_Conference_Call_Transcript.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c3[:300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nopen('/tmp/q3.pdf','wb').write(base64.b64decode(c3))\nimport pypdf\nt=\"\\n\".join(p.extract_text() for p in pypdf.PdfReader('/tmp/q3.pdf').pages)\nopen('/tmp/q3.txt','w').write(t)\nfor m in re.finditer(r'years|artificial intelligence|\\bAI\\b',t):\n    print('--',t[max(0,m.start()-400):m.end()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_search({\"query\":\"Fast Company \\\"Inside Mark Zuckerberg's bold plan for the future of Facebook\\\" 2015\"});R['fc']=r;show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Fast Company \"Inside Mark Zuckerberg's bold plan for the future of Facebook\" 2015"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c4=await fetch(\"https://www.fastcompany.com/3052885/mark-zuckerberg-facebook\",[r'five to 10|10 years|ten years|next decade|years from now|human level|senses'],600)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fastcompany.com/3052885/mark-zuckerberg-facebook"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'year|AI\\b|intelligence',c4): print('--',c4[max(0,m.start()-300):m.end()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c5=await fetch(\"https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years\",[r'10 years|ten years|our goal'],700)\nc6=await fetch(\"https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html\",[r'five to 10|10 years|senses'],600)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2015-06-30",
+        "quote": "If we could build computers that could understand what's in an image and could tell a blind person who otherwise couldn't see that image, that would be pretty amazing as well. This is all within our reach and I hope we can deliver it in the next 10 years",
+        "what_is_predicted": "Zuckerberg hoped Facebook would, within ten years, deliver AI that understands images well enough to describe them to blind people, as part of a goal of AI better than humans at the primary senses.",
+        "date_or_span": "the next 10 years (from mid-2015)",
+        "occasion": "Public Facebook town-hall Q&A that Zuckerberg answered in writing on Facebook",
+        "source_url": "https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2015-11",
+        "quote": "One of our goals for the next five to 10 years is to basically get better than human level at all of the primary human senses: vision, hearing, language, general cognition",
+        "what_is_predicted": "Zuckerberg set a goal for Facebook's AI to beat human level at vision, hearing, language and general cognition within five to ten years.",
+        "date_or_span": "the next five to 10 years (from late 2015)",
+        "occasion": "Interview with Harry McCracken for the Fast Company cover story 'Inside Mark Zuckerberg's Bold Plan For The Future Of Facebook', published 2015-11-16",
+        "source_url": "https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2016",
+        "note": "On the Q1 2016 results call (27 April 2016), reported by PCWorld (opened), he said Facebook would understand photos, videos and links 'I think in a five or 10-year period', and the headline says better-than-human perception within 10 years. The same occasion appears as an official transcript PDF on s21.q4cdn.com (not opened)."
+      },
+      {
+        "year": "2016",
+        "note": "A search snippet from ecns.cn (not opened) gives remarks at a March 2016 talk with Jack Ma: computers better than people at senses, 'a lot of progress in 10 years'."
+      },
+      {
+        "year": "2014",
+        "note": "A search snippet of the Q3 2014 results call transcript (Seeking Alpha, not opened) describes a 10-year focus that includes 'big leaps in AIs'."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Mark Zuckerberg\" AI prediction 2015",
+        "what_found": "Mostly recent coverage, plus a PCWorld item on 'better than human' AI in 10 years that proved to be from April 2016."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2015 interview AGI \"years\"",
+        "what_found": "A tracker page citing a June 2015 Q&A with a 'five to ten years' line, a Forbes report on a September 2015 Q&A, and otherwise recent AGI coverage."
+      },
+      {
+        "query_or_url": "\"Mark Zuckerberg\" 2015 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only recent (2024-2026) material; nothing from 2015."
+      },
+      {
+        "query_or_url": "https://www.pcworld.com/article/414651/zuckerberg-sees-better-than-human-ai-in-next-10-years.html",
+        "what_found": "Dated 28 April 2016, reporting the Q1 2016 results call, so it belongs under other_years."
+      },
+      {
+        "query_or_url": "https://www.forbes.com/sites/kathleenchaykowski/2015/09/15/four-highlights-from-facebook-ceo-mark-zuckerbergs-qa/",
+        "what_found": "Only the page frame and description loaded (a 15 September 2015 streamed Q&A touching on AI); no article text to quote."
+      },
+      {
+        "query_or_url": "Zuckerberg Facebook Q&A June 30 2015 \"next five to 10 years\" human senses",
+        "what_found": "Pointed to the June 2015 Q&A coverage, the November 2015 Fast Company interview, and 2016 items."
+      },
+      {
+        "query_or_url": "Facebook Q3 2015 earnings call transcript Zuckerberg artificial intelligence \"five to ten years\"",
+        "what_found": "Found the official Q3 2015 transcript PDF and a report on an October 2015 IIT Delhi town hall."
+      },
+      {
+        "query_or_url": "Zuckerberg September 2015 town hall Q&A artificial intelligence \"10 years\"",
+        "what_found": "Coverage of the 30 June 2015 Q&A in CSMonitor, Computing.co.uk and Forbes."
+      },
+      {
+        "query_or_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q315_Earnings_Conference_Call_Transcript.pdf",
+        "what_found": "Official Q3 2015 call transcript; the only AI forward look is M 'over time will use AI', with no date or span."
+      },
+      {
+        "query_or_url": "Fast Company \"Inside Mark Zuckerberg's bold plan for the future of Facebook\" 2015",
+        "what_found": "Found the Fast Company article URL, published 16 November 2015."
+      },
+      {
+        "query_or_url": "https://www.fastcompany.com/3052885/mark-zuckerberg-facebook",
+        "what_found": "The paywall cut the article off after the opening; the AI quote was not on the part that loaded."
+      },
+      {
+        "query_or_url": "https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years",
+        "what_found": "Report of the June 2015 Facebook Q&A quoting Zuckerberg's 'next 10 years' line."
+      },
+      {
+        "query_or_url": "https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html",
+        "what_found": "Business Insider repost quoting the Fast Company interview line 'One of our goals for the next five to 10 years...'."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2015 Zuckerberg twice put a date on AI goals: in the 30 June Facebook Q&A he said he hoped to deliver AI image understanding 'in the next 10 years', and in a Fast Company interview published 16 November he named a five-to-ten-year goal of better-than-human AI at the primary senses. I saw both only in news reports. The Q3 2015 call transcript had no dated AI prediction, and I found no 2015 statement on when AGI would arrive."
+  },
+  "reply_text": "I found two dated AI predictions Mark Zuckerberg made in 2015. I saw both only in news reports, not on a page of his own, so a checker should still go to the original source.\n\n1. **30 June 2015, Facebook town-hall Q&A** (Computing.co.uk report). He talked about AI that can describe a photo to a blind person, then said \"This is all within our reach and I hope we can deliver it in the next 10 years.\" The article says he wrote this in a Q&A on Facebook's own website, but I didn't open that post. Two cautions: the report may have shortened the passage, so it isn't clear exactly what \"it\" covers. And the line usually headlined from this session, \"Our goal is to build AI systems that are better than humans at our primary senses,\" has no date attached in what I read.\n2. **Fast Company interview, published 16 November 2015**. \"One of our goals for the next five to 10 years is to basically get better than human level at all of the primary human senses: vision, hearing, language, general cognition.\" I opened the Fast Company article, but the paywall cut it off before this line. I read the quote in a Business Insider repost on Yahoo Finance Singapore. The exact interview date isn't given.\n\nRuled out or not checked:\n- **3rd-quarter results call, 4 November 2015.** I read the official transcript. The only AI forward look is that the assistant M \"over time will use AI to help people complete tasks,\" which has no date.\n- **The widely quoted \"five or 10-year\" perception prediction** (PCWorld) is from the 27 April 2016 results call, so it's listed under other years.\n- **Not checked:** the 28 October 2015 town hall at IIT Delhi and the 15 September 2015 Q&A. I didn't open the IIT Delhi report, and the Forbes article on the September Q&A loaded without its text. I didn't find any 2015 statement on when AGI would arrive.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2015-06-30\",\n      \"quote\": \"If we could build computers that could understand what's in an image and could tell a blind person who otherwise couldn't see that image, that would be pretty amazing as well. This is all within our reach and I hope we can deliver it in the next 10 years\",\n      \"what_is_predicted\": \"Zuckerberg hoped Facebook would, within ten years, deliver AI that understands images well enough to describe them to blind people, as part of a goal of AI better than humans at the primary senses.\",\n      \"date_or_span\": \"the next 10 years (from mid-2015)\",\n      \"occasion\": \"Public Facebook town-hall Q&A that Zuckerberg answered in writing on Facebook\",\n      \"source_url\": \"https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2015-11\",\n      \"quote\": \"One of our goals for the next five to 10 years is to basically get better than human level at all of the primary human senses: vision, hearing, language, general cognition\",\n      \"what_is_predicted\": \"Zuckerberg set a goal for Facebook's AI to beat human level at vision, hearing, language and general cognition within five to ten years.\",\n      \"date_or_span\": \"the next five to 10 years (from late 2015)\",\n      \"occasion\": \"Interview with Harry McCracken for the Fast Company cover story 'Inside Mark Zuckerberg's Bold Plan For The Future Of Facebook', published 2015-11-16\",\n      \"source_url\": \"https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2016\", \"note\": \"On the Q1 2016 results call (27 April 2016), reported by PCWorld (opened), he said Facebook would understand photos, videos and links 'I think in a five or 10-year period', and the headline says better-than-human perception within 10 years. The same occasion appears as an official transcript PDF on s21.q4cdn.com (not opened).\"},\n    {\"year\": \"2016\", \"note\": \"A search snippet from ecns.cn (not opened) gives remarks at a March 2016 talk with Jack Ma: computers better than people at senses, 'a lot of progress in 10 years'.\"},\n    {\"year\": \"2014\", \"note\": \"A search snippet of the Q3 2014 results call transcript (Seeking Alpha, not opened) describes a 10-year focus that includes 'big leaps in AIs'.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" AI prediction 2015\", \"what_found\": \"Mostly recent coverage, plus a PCWorld item on 'better than human' AI in 10 years that proved to be from April 2016.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2015 interview AGI \\\"years\\\"\", \"what_found\": \"A tracker page citing a June 2015 Q&A with a 'five to ten years' line, a Forbes report on a September 2015 Q&A, and otherwise recent AGI coverage.\"},\n    {\"query_or_url\": \"\\\"Mark Zuckerberg\\\" 2015 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only recent (2024-2026) material; nothing from 2015.\"},\n    {\"query_or_url\": \"https://www.pcworld.com/article/414651/zuckerberg-sees-better-than-human-ai-in-next-10-years.html\", \"what_found\": \"Dated 28 April 2016, reporting the Q1 2016 results call, so it belongs under other_years.\"},\n    {\"query_or_url\": \"https://www.forbes.com/sites/kathleenchaykowski/2015/09/15/four-highlights-from-facebook-ceo-mark-zuckerbergs-qa/\", \"what_found\": \"Only the page frame and description loaded (a 15 September 2015 streamed Q&A touching on AI); no article text to quote.\"},\n    {\"query_or_url\": \"Zuckerberg Facebook Q&A June 30 2015 \\\"next five to 10 years\\\" human senses\", \"what_found\": \"Pointed to the June 2015 Q&A coverage, the November 2015 Fast Company interview, and 2016 items.\"},\n    {\"query_or_url\": \"Facebook Q3 2015 earnings call transcript Zuckerberg artificial intelligence \\\"five to ten years\\\"\", \"what_found\": \"Found the official Q3 2015 transcript PDF and a report on an October 2015 IIT Delhi town hall.\"},\n    {\"query_or_url\": \"Zuckerberg September 2015 town hall Q&A artificial intelligence \\\"10 years\\\"\", \"what_found\": \"Coverage of the 30 June 2015 Q&A in CSMonitor, Computing.co.uk and Forbes.\"},\n    {\"query_or_url\": \"https://s21.q4cdn.com/399680738/files/doc_financials/2015/Q315_Earnings_Conference_Call_Transcript.pdf\", \"what_found\": \"Official Q3 2015 call transcript; the only AI forward look is M 'over time will use AI', with no date or span.\"},\n    {\"query_or_url\": \"Fast Company \\\"Inside Mark Zuckerberg's bold plan for the future of Facebook\\\" 2015\", \"what_found\": \"Found the Fast Company article URL, published 16 November 2015.\"},\n    {\"query_or_url\": \"https://www.fastcompany.com/3052885/mark-zuckerberg-facebook\", \"what_found\": \"The paywall cut the article off after the opening; the AI quote was not on the part that loaded.\"},\n    {\"query_or_url\": \"https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years\", \"what_found\": \"Report of the June 2015 Facebook Q&A quoting Zuckerberg's 'next 10 years' line.\"},\n    {\"query_or_url\": \"https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html\", \"what_found\": \"Business Insider repost quoting the Fast Company interview line 'One of our goals for the next five to 10 years...'.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2015 Zuckerberg twice put a date on AI goals: in the 30 June Facebook Q&A he said he hoped to deliver AI image understanding 'in the next 10 years', and in a Fast Company interview published 16 November he named a five-to-ten-year goal of better-than-human AI at the primary senses. I saw both only in news reports. The Q3 2015 call transcript had no dated AI prediction, and I found no 2015 statement on when AGI would arrive.\"\n}\n```"
+}

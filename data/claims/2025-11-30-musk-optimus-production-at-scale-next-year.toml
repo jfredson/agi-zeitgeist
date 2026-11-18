@@ -1,0 +1,19 @@
+[claim]
+id = "2025-11-30-musk-optimus-production-at-scale-next-year"
+speaker_id = "musk"
+when = "2025-11-30"
+when_note = "Nikhil Kamath's own upload of the episode is dated 2025-11-30, and the transcript page gives the same date."
+occasion = "People by WTF podcast (episode 16) with Nikhil Kamath"
+source_kind = "transcript"
+source_url = "https://www.youtube.com/watch?v=Rni7Fz7208c"
+source_locator = "about 22:51 into the video"
+checked_how = "Read in the automatic captions of Nikhil Kamath's own upload (yt-dlp) on 2026-11-17 and compared with the transcript page where the words were first found (https://singjupost.com/transcript-elon-musks-interview-on-people-by-wtf-w-nikhil-kamath/); nobody listened. The captions read 'hopefully sometime next year um at scale' and the transcript 'hopefully some of next year at scale'; the quote is the words both carry, with '...' where they differ."
+quote = "this robot Optimus which is, you know, starting production hopefully ... next year ... at scale"
+prediction = "Tesla's Optimus humanoid robot will start production at scale during 2026, 'hopefully'."
+kind = "deployment"
+bar = "Tesla starting production of Optimus at scale during 2026, shown by Tesla's own production figures. 'At scale' is given no number; the plainest reading is a production line making robots in volume, not prototypes."
+due = 2026
+due_basis = "'next year', said 2025-11-30; judged at 2026-12-31."
+status = "not_yet_due"
+search_ids = ["musk-claims-044", "musk-claims-052"]
+notes = "Role at the time: founder and head of xAI (from 2023), a company that builds frontier AI models. Found by the scripted year-by-year search of 2026-11-16 (data/claims-search/) and checked on the page on 2026-11-17. The claim is about Tesla, of which he is also chief executive. Related recorded claims about Optimus: 2024-07-23-musk-optimus-outside-customers-2026, 2025-01-29-musk-several-thousand-optimus-this-year and 2026-04-22-musk-optimus-useful-outside-tesla-next-year."

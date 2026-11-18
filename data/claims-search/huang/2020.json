@@ -1,0 +1,285 @@
+{
+  "speaker_id": "huang",
+  "year": 2020,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.5955,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7585
+      },
+      "cache_creation_input_tokens": 55000,
+      "cache_read_input_tokens": 349337,
+      "inference_geo": "global",
+      "input_tokens": 26,
+      "output_tokens": 7027,
+      "output_tokens_details": {
+        "thinking_tokens": 1801
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Jensen Huang\" AI prediction 2020','\"Jensen Huang\" 2020 interview AGI \"years\"','\"Jensen Huang\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" AI prediction 2020"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'|',(x.get('content') or '')[:150].replace('\\n',' '))\n    return r\nR[qs[0]]=show(R[qs[0]])\nfor q in qs[1:]:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2020 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Jensen Huang\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Nvidia Arm acquisition Huang \"trillions of computers running AI\"',\n          'Jensen Huang GTC October 2020 keynote transcript AI \"decade\"',\n          'Jensen Huang GTC 2020 kitchen keynote transcript']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Nvidia Arm acquisition Huang \"trillions of computers running AI\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC October 2020 keynote transcript AI \"decade\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC 2020 kitchen keynote transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nF={}\nfor u in ['https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai',\n          'https://analyticsindiamag.com/ai-features/top-quotes-by-jensen-huang-from-nvidia-gtc-2020',\n          'https://medium.com/syncedreview/jenson-huangs-kitchen-keynote-outlines-nvidia-s-vision-for-the-age-of-ai-654b9e24866d']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; F[u]=c; print('==',u,len(c))\n    for m in re.finditer(r'(years ahead|decade|trillion|will |20[23]\\d)',c):\n        pass\nfor u,c in F.items():\n    print('#####',u); print(c[:200])\n    for s in re.split(r'(?<=[.!?”\"])\\s+',c):\n        if re.search(r'years ahead|decade|trillions|in \\w+ years|20[2-4]\\d|next year|future',s): print(' *',s[:400])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://analyticsindiamag.com/ai-features/top-quotes-by-jensen-huang-from-nvidia-gtc-2020"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://medium.com/syncedreview/jenson-huangs-kitchen-keynote-outlines-nvidia-s-vision-for-the-age-of-ai-654b9e24866d"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['blogs.nvidia.com 2020 GTC keynote Huang \"trillions of intelligent things\" \"everything that moves will be autonomous\"',\n          'Jensen Huang 2020 interview AI \"ten years\" OR \"10 years\" OR \"next decade\"',\n          'Jensen Huang May 2020 GTC keynote recap blog AI \"decade\"']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "blogs.nvidia.com 2020 GTC keynote Huang \"trillions of intelligent things\" \"everything that moves will be autonomous\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang 2020 interview AI \"ten years\" OR \"10 years\" OR \"next decade\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang May 2020 GTC keynote recap blog AI \"decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def grab(u,pat=r'years ahead|decade|trillions|in \\w+ years|\\b20[2-4]\\d\\b|next year|next \\d+|someday|will soon|AGI|general intelligence'):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content'); \n        if isinstance(c,dict): c=c.get('source',{}).get('data','')\n        if not c: print('ERR',u,str(r)[:300]); return None\n    else: c=r[0]['content']\n    F[u]=c; print('==',u,len(c))\n    for s in re.split(r'(?<=[.!?”\"])\\s+',c):\n        if re.search(pat,s,re.I): print(' *',s[:350].replace('\\n',' '))\n    return c\nc=await grab('https://blogs.nvidia.com/blog/2020/09/13/jensen-employee-letter-arm/')\nc2=await grab('https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "async def grab(u,pat=r'years ahead|decade|trillions|in \\w+ years|\\b20[2-4]\\d\\b|next year|next \\d+|someday|will soon|AGI|general intelligence'):\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content'); \n        if isinstance(c,dict): c=c.get('source',{}).get('data','')\n        if not c: print('ERR',u,str(r)[:300]); return None\n    else: c=r[0]['content']\n    F[u]=c; print('==',u,len(c))\n    for s in re.split(r'(?<=[.!?”\"])\\s+',c):\n        if re.search(pat,s,re.I): print(' *',s[:350].replace('\\n',' '))\n    return c\nc=await grab('https://blogs.nvidia.com/blog/2020/09/13/jensen-employee-letter-arm/')\nc2=await grab('https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://blogs.nvidia.com/blog/2020/09/13/jensen-employee-letter-arm/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['VentureBeat Jensen Huang interview 2020 metaverse Arm Q&A',\n          'Jensen Huang GTC China December 2020 keynote AI']:\n    print(\"==\",q); R[q]=show(await web_search({\"query\":q}))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "VentureBeat Jensen Huang interview 2020 metaverse Arm Q&A"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Jensen Huang GTC China December 2020 keynote AI"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "c=await grab('https://venturebeat.com/2020/10/06/nvidia-ceo-jensen-huang-compares-the-omniverse-and-the-metaverse/',\n r'years|decade|trillions|\\b20[2-4]\\d\\b|next year|someday|soon|AGI|general intelligence|future')"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://venturebeat.com/2020/10/06/nvidia-ceo-jensen-huang-compares-the-omniverse-and-the-metaverse/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(c[-2600:])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2021",
+        "note": "Time interview by Eben Shapiro, published 2021-04-18 (https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/), contains 'We're in this new world where, over the next 10 years, we're going to see the automation of automation.' Seen on the opened page; belongs to 2021."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Jensen Huang\" AI prediction 2020",
+        "what_found": "Only 2025-2026 news (job-loss remarks, China AI race, '0% chance' by 2030); nothing from 2020. The search ran once; a code error while printing was fixed by reading the stored results, not by searching again."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2020 interview AGI \"years\"",
+        "what_found": "Only coverage of the 2026 Lex Fridman podcast on AGI; nothing from 2020."
+      },
+      {
+        "query_or_url": "\"Jensen Huang\" 2020 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2025-2026 items (the '0% chance AI destroys the world by 2030' remarks, the Cleo Abram interview); nothing from 2020."
+      },
+      {
+        "query_or_url": "Nvidia Arm acquisition Huang \"trillions of computers running AI\"",
+        "what_found": "September 2020 Arm-deal coverage, plus links to Nvidia's press release and an SEC 8-K exhibit."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC October 2020 keynote transcript AI \"decade\"",
+        "what_found": "Recent keynote transcripts (rev.com) and the Analytics India Magazine article 'Top Quotes By Jensen Huang From Nvidia GTC 2020'."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC 2020 kitchen keynote transcript",
+        "what_found": "May 2020 kitchen keynote videos and recaps; no text transcript found."
+      },
+      {
+        "query_or_url": "blogs.nvidia.com 2020 GTC keynote Huang \"trillions of intelligent things\" \"everything that moves will be autonomous\"",
+        "what_found": "Recaps listing the October 2020 keynote chapter titles; no transcript."
+      },
+      {
+        "query_or_url": "Jensen Huang 2020 interview AI \"ten years\" OR \"10 years\" OR \"next decade\"",
+        "what_found": "A Time interview (turned out to be from 2021) and later interviews; nothing from 2020."
+      },
+      {
+        "query_or_url": "Jensen Huang May 2020 GTC keynote recap blog AI \"decade\"",
+        "what_found": "Mostly 2025-2026 GTC coverage, plus the same Analytics India Magazine 2020 article."
+      },
+      {
+        "query_or_url": "VentureBeat Jensen Huang interview 2020 metaverse Arm Q&A",
+        "what_found": "VentureBeat pieces from 2020-05-22 (DeanBeat) and 2020-10-06 (Omniverse vs metaverse)."
+      },
+      {
+        "query_or_url": "Jensen Huang GTC China December 2020 keynote AI",
+        "what_found": "Nothing specific to a GTC China 2020 keynote; generic GTC pages."
+      },
+      {
+        "query_or_url": "https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai",
+        "what_found": "Official release dated 2020-09-13 quoting Huang: 'In the years ahead, trillions of computers running AI will create a new internet-of-things that is thousands of times larger than today's internet-of-people.' No date or span, so not a candidate."
+      },
+      {
+        "query_or_url": "https://analyticsindiamag.com/ai-features/top-quotes-by-jensen-huang-from-nvidia-gtc-2020",
+        "what_found": "News-report list of keynote quotes. The only time-bound ones are about graphics ('the next 20 would seem nothing short of science fiction') or a business forecast ('in a couple of 2-3 years, Nvidia GPU will represent 90%…'); the AI lines say 'someday'. None qualify."
+      },
+      {
+        "query_or_url": "https://medium.com/syncedreview/jenson-huangs-kitchen-keynote-outlines-nvidia-s-vision-for-the-age-of-ai-654b9e24866d",
+        "what_found": "Synced recap of the October 2020 GTC keynote; product announcements and 'age of AI' framing, no dated AI prediction."
+      },
+      {
+        "query_or_url": "https://blogs.nvidia.com/blog/2020/09/13/jensen-employee-letter-arm/",
+        "what_found": "Huang's own letter to employees, 2020-09-13: 'Someday, trillions of computers running AI will create a new internet…' No date, not about AGI."
+      },
+      {
+        "query_or_url": "https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/",
+        "what_found": "Time interview published 2021-04-18 with an 'over the next 10 years' line; filed under other_years."
+      },
+      {
+        "query_or_url": "https://venturebeat.com/2020/10/06/nvidia-ceo-jensen-huang-compares-the-omniverse-and-the-metaverse/",
+        "what_found": "October 2020 interview about Omniverse; only an undated 'Someday, it's going to become this active world' about simulation, no dated AI prediction."
+      }
+    ],
+    "quiet_year": true,
+    "summary": "In 2020 Huang talked about AI mostly through the Arm deal (September) and two virtual 'kitchen' GTC keynotes (May and October), calling AI 'the most powerful technology force of our time' and saying 'someday' trillions of AI devices would exist. None of the 2020 words I read on opened pages give a date or span for an AI outcome, and none address when AGI arrives. The one dated AI forecast I found ('over the next 10 years… the automation of automation') is from a Time interview of April 2021."
+  },
+  "reply_text": "I didn't find any dated AI predictions from Jensen Huang in 2020, so I've marked it a quiet year. I used 11 of 12 searches and all 6 page openings.\n\n- **Fixed searches:** all three ran exactly once. They brought back only news from 2025–2026. My first search hit a code error while printing the results, so I read the results already returned instead of running it again.\n- **Arm deal, 13 September 2020:** this was the main occasion I could find. Nvidia's press release quotes Huang saying \"In the years ahead, trillions of computers running AI will create a new internet-of-things that is thousands of times larger than today's internet-of-people.\" His letter to employees that day uses \"Someday\" instead. Neither gives a date or a length of time, and neither is about when AGI arrives, so neither qualifies, not even as undated.\n- **GTC keynotes, May and October 2020:** I saw these only in news coverage, not in a transcript. Analytics India Magazine lists quotes from that year's GTC keynote, though its 10 September date doesn't match the October GTC. One quote is \"the next 20 would seem nothing short of science fiction,\" but it is about graphics hardware, not AI. Another, \"in a couple of 2-3 years, Nvidia GPU will represent 90%…\", is a business forecast. The rest say \"someday.\" So nothing qualifies.\n- **Another year:** Time's interview with \"over the next 10 years, we're going to see the automation of automation\" turned out to be from 18 April 2021. It goes under other years.\n- **Not checked:** I didn't open the May 2020 VentureBeat column where Huang was asked whether the metaverse would come soon, or any GTC China talk from that year.\n\n```json\n{\n  \"candidates\": [],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2021\", \"note\": \"Time interview by Eben Shapiro, published 2021-04-18 (https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/), contains 'We're in this new world where, over the next 10 years, we're going to see the automation of automation.' Seen on the opened page; belongs to 2021.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" AI prediction 2020\", \"what_found\": \"Only 2025-2026 news (job-loss remarks, China AI race, '0% chance' by 2030); nothing from 2020. The search ran once; a code error while printing was fixed by reading the stored results, not by searching again.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2020 interview AGI \\\"years\\\"\", \"what_found\": \"Only coverage of the 2026 Lex Fridman podcast on AGI; nothing from 2020.\"},\n    {\"query_or_url\": \"\\\"Jensen Huang\\\" 2020 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2025-2026 items (the '0% chance AI destroys the world by 2030' remarks, the Cleo Abram interview); nothing from 2020.\"},\n    {\"query_or_url\": \"Nvidia Arm acquisition Huang \\\"trillions of computers running AI\\\"\", \"what_found\": \"September 2020 Arm-deal coverage, plus links to Nvidia's press release and an SEC 8-K exhibit.\"},\n    {\"query_or_url\": \"Jensen Huang GTC October 2020 keynote transcript AI \\\"decade\\\"\", \"what_found\": \"Recent keynote transcripts (rev.com) and the Analytics India Magazine article 'Top Quotes By Jensen Huang From Nvidia GTC 2020'.\"},\n    {\"query_or_url\": \"Jensen Huang GTC 2020 kitchen keynote transcript\", \"what_found\": \"May 2020 kitchen keynote videos and recaps; no text transcript found.\"},\n    {\"query_or_url\": \"blogs.nvidia.com 2020 GTC keynote Huang \\\"trillions of intelligent things\\\" \\\"everything that moves will be autonomous\\\"\", \"what_found\": \"Recaps listing the October 2020 keynote chapter titles; no transcript.\"},\n    {\"query_or_url\": \"Jensen Huang 2020 interview AI \\\"ten years\\\" OR \\\"10 years\\\" OR \\\"next decade\\\"\", \"what_found\": \"A Time interview (turned out to be from 2021) and later interviews; nothing from 2020.\"},\n    {\"query_or_url\": \"Jensen Huang May 2020 GTC keynote recap blog AI \\\"decade\\\"\", \"what_found\": \"Mostly 2025-2026 GTC coverage, plus the same Analytics India Magazine 2020 article.\"},\n    {\"query_or_url\": \"VentureBeat Jensen Huang interview 2020 metaverse Arm Q&A\", \"what_found\": \"VentureBeat pieces from 2020-05-22 (DeanBeat) and 2020-10-06 (Omniverse vs metaverse).\"},\n    {\"query_or_url\": \"Jensen Huang GTC China December 2020 keynote AI\", \"what_found\": \"Nothing specific to a GTC China 2020 keynote; generic GTC pages.\"},\n    {\"query_or_url\": \"https://nvidianews.nvidia.com/news/nvidia-to-acquire-arm-for-40-billion-creating-worlds-premier-computing-company-for-the-age-of-ai\", \"what_found\": \"Official release dated 2020-09-13 quoting Huang: 'In the years ahead, trillions of computers running AI will create a new internet-of-things that is thousands of times larger than today's internet-of-people.' No date or span, so not a candidate.\"},\n    {\"query_or_url\": \"https://analyticsindiamag.com/ai-features/top-quotes-by-jensen-huang-from-nvidia-gtc-2020\", \"what_found\": \"News-report list of keynote quotes. The only time-bound ones are about graphics ('the next 20 would seem nothing short of science fiction') or a business forecast ('in a couple of 2-3 years, Nvidia GPU will represent 90%…'); the AI lines say 'someday'. None qualify.\"},\n    {\"query_or_url\": \"https://medium.com/syncedreview/jenson-huangs-kitchen-keynote-outlines-nvidia-s-vision-for-the-age-of-ai-654b9e24866d\", \"what_found\": \"Synced recap of the October 2020 GTC keynote; product announcements and 'age of AI' framing, no dated AI prediction.\"},\n    {\"query_or_url\": \"https://blogs.nvidia.com/blog/2020/09/13/jensen-employee-letter-arm/\", \"what_found\": \"Huang's own letter to employees, 2020-09-13: 'Someday, trillions of computers running AI will create a new internet…' No date, not about AGI.\"},\n    {\"query_or_url\": \"https://time.com/5955412/artificial-intelligence-nvidia-jensen-huang/\", \"what_found\": \"Time interview published 2021-04-18 with an 'over the next 10 years' line; filed under other_years.\"},\n    {\"query_or_url\": \"https://venturebeat.com/2020/10/06/nvidia-ceo-jensen-huang-compares-the-omniverse-and-the-metaverse/\", \"what_found\": \"October 2020 interview about Omniverse; only an undated 'Someday, it's going to become this active world' about simulation, no dated AI prediction.\"}\n  ],\n  \"quiet_year\": true,\n  \"summary\": \"In 2020 Huang talked about AI mostly through the Arm deal (September) and two virtual 'kitchen' GTC keynotes (May and October), calling AI 'the most powerful technology force of our time' and saying 'someday' trillions of AI devices would exist. None of the 2020 words I read on opened pages give a date or span for an AI outcome, and none address when AGI arrives. The one dated AI forecast I found ('over the next 10 years… the automation of automation') is from a Time interview of April 2021.\"\n}\n```"
+}

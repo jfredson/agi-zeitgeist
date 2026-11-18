@@ -1,0 +1,336 @@
+{
+  "speaker_id": "amodei",
+  "year": 2025,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7216,
+  "web_searches": 11,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 8341
+      },
+      "cache_creation_input_tokens": 68139,
+      "cache_read_input_tokens": 478124,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 8758,
+      "output_tokens_details": {
+        "thinking_tokens": 2464
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 11
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Dario Amodei\" AI prediction 2025','\"Dario Amodei\" 2025 interview AGI \"years\"','\"Dario Amodei\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q)\n    for x in r[:8]: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" AI prediction 2025"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:3000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r,n=8,c=300):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r[:n]: print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'),'\\n  ',x.get('content','')[:c].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2025 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Amodei \"60 Minutes\" Anderson Cooper transcript AI','Amodei DealBook Summit 2025 Sorkin AI','Amodei INBOUND 2025 Dharmesh AI next 18 months','Amodei Dreamforce 2025 Benioff code']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r,6,250)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei \"60 Minutes\" Anderson Cooper transcript AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei DealBook Summit 2025 Sorkin AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei INBOUND 2025 Dharmesh AI next 18 months"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei Dreamforce 2025 Benioff code"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "P={}\nfor u in ['https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/','https://unbound.hubspot.com/blog/inside-anthropics-vision-how-ai-will-transform-business-in-18-months','https://www.aydin.org/en/dario-amodei-on-the-risk-of-an-ai-bubble-regulation-and-agi/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    P[u]=r[0]['content']; print(u,len(P[u]),r[0].get('retrieved_at'))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://unbound.hubspot.com/blog/inside-anthropics-vision-how-ai-will-transform-business-in-18-months"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.aydin.org/en/dario-amodei-on-the-risk-of-an-ai-bubble-regulation-and-agi/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Amodei DealBook transcript \"country of geniuses\" 2026 2027','\"Statement from Dario Amodei\" October 2025 American AI leadership']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r,6,400)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Amodei DealBook transcript \"country of geniuses\" 2026 2027"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Statement from Dario Amodei\" October 2025 American AI leadership"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Dario Amodei DealBook Summit December 2025 full transcript Sorkin','anthropic.com statement Dario Amodei commitment American AI leadership']:\n    r=await web_search({\"query\":q}); R[q]=r\n    print(\"==\",q); show(r,7,300)"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dario Amodei DealBook Summit December 2025 full transcript Sorkin"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "anthropic.com statement Dario Amodei commitment American AI leadership"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nfor u in ['https://sources.news/p/anthropics-ai-bubble-yolo-warning','https://finance.yahoo.com/news/anthropic-ceo-some-ai-companies-yoloing-pulling-the-risk-dial-too-far-223738240.html']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict):\n        c=r.get('content')\n        txt=c['source']['data'] if isinstance(c,dict) and 'source' in c else str(r)[:300]\n    else: txt=r[0]['content']\n    P[u]=txt; print('=====',u,len(txt))\n    for m in re.finditer(r'(year|20\\d\\d|decade|month)',txt):\n        pass\n    # print paragraphs mentioning Amodei quotes with time words\n    for para in txt.split('\\n'):\n        if re.search(r'(years?|20[2-3]\\d|decade|months)',para) and ('\"' in para or '“' in para): print('*',para[:700])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://sources.news/p/anthropics-ai-bubble-yolo-warning"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://finance.yahoo.com/news/anthropic-ceo-some-ai-companies-yoloing-pulling-the-risk-dial-too-far-223738240.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=P['https://sources.news/p/anthropics-ai-bubble-yolo-warning']; i=t.find('# Anthropic'); print(t[i:i+5000])\ny=P['https://finance.yahoo.com/news/anthropic-ceo-some-ai-companies-yoloing-pulling-the-risk-dial-too-far-223738240.html']\nfor k in ['Amodei said','he said','\"']:\n    pass\nfor para in y.split('\\n'):\n    if 'Amodei' in para or '“' in para: print('>',para[:600])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=y.find('YOLO'); \nfor m in re.finditer(r'said|“',y): pass\nj=y.find('DECEMBER 03'); print(y[j-200:j+4000] if j>0 else y[8000:12000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for kw in ['risk dial','Sorkin','technolog']:\n    for m in re.finditer(kw,y): print(kw, y[max(0,m.start()-300):m.start()+600].replace('\\n',' ')); print('---')"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://www.teamday.ai/ai/dario-amodei-marc-benioff-dreamforce-2025'\nr=await web_fetch({\"url\":u})\nif isinstance(r,str): r=json.loads(r)\nif isinstance(r,dict):\n    c=r.get('content'); txt=c['source']['data'] if isinstance(c,dict) and 'source' in c else str(r)[:500]\nelse: txt=r[0]['content']\nP[u]=txt; print(len(txt))\nfor para in txt.split('\\n'):\n    if re.search(r'(years?\\b|20[2-3]\\d|decade|months|next year)',para): print('*',para[:600])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.teamday.ai/ai/dario-amodei-marc-benioff-dreamforce-2025"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2025-09-04",
+        "quote": "If the exponential continues for only maybe one to three more years, then we'll start to go beyond the frontier of human knowledge. And then things really go crazy.",
+        "what_is_predicted": "If current progress continues, AI will start to go beyond the frontier of human knowledge within about one to three years.",
+        "date_or_span": "one to three more years (from September 2025)",
+        "occasion": "INBOUND 2025 main-stage talk with HubSpot CEO Yamini Rangan, San Francisco, 'How AI Will Transform Business in the Next 18 Months' (the Sept 4 date comes from HubSpot's developer guide, seen only as a search snippet; the recap itself is dated 2025-10-10)",
+        "source_url": "https://unbound.hubspot.com/blog/inside-anthropics-vision-how-ai-will-transform-business-in-18-months",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-16",
+        "quote": "The idea would be, at the point that we can get the AI systems to this level of power where they're able to work with the best human scientists, could we get 10 times the rate of progress and therefore compress all the medical progress that was gonna happen throughout the entire 21st century in five or 10 years?",
+        "what_is_predicted": "Once AI can work alongside the best human scientists, a century of medical progress might be compressed into five to ten years; he frames this as a possibility ('could we'), so it is on the edge of the hypothetical exclusion.",
+        "date_or_span": "five or 10 years (counted from when AI reaches that level)",
+        "occasion": "CBS 60 Minutes interview with Anderson Cooper, broadcast 2025-11-16",
+        "source_url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2025-11-16",
+        "quote": "Anderson Cooper: You've said, \"AI could wipe out half of all entry-level white-collar jobs and spike unemployment to 10% to 20% in the next one to five years.\" Dario Amodei: Yes.",
+        "what_is_predicted": "He confirms his earlier warning that AI could eliminate half of entry-level white-collar jobs and push unemployment to 10-20% within one to five years.",
+        "date_or_span": "the next one to five years",
+        "occasion": "CBS 60 Minutes interview with Anderson Cooper",
+        "source_url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/",
+        "source_kind": "transcript",
+        "already_recorded": "2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs.toml"
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2025-11-16",
+        "quote": "I, I believe it will reach that level, that it will be smarter than most or all humans in most or all ways.",
+        "source_url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Dwarkesh Patel podcast 'We are near the end of the exponential' (Feb 2026): 'country of geniuses' in 1-3 years and 90% confidence by 2035; seen only in search snippets (dwarkesh.com/p/dario-amodei-2, X posts), not opened."
+      },
+      {
+        "year": "2026",
+        "note": "January 2026 essay ('The Adolescence of Technology', per Axios coverage 2026-01-26) frames a 'country of geniuses' materializing in ~2027 as a 'suppose' scenario; seen only in a search snippet."
+      },
+      {
+        "year": "2026",
+        "note": "Davos January 2026 remark quoted by 80000hours.org ('If the exponential continues...'); seen only in a search snippet."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Dario Amodei\" AI prediction 2025",
+        "what_found": "Mostly 2026 retrospectives on the Davos 2025 and March 2025 coding claims, plus prediction-tracker sites; no new primary source."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2025 interview AGI \"years\"",
+        "what_found": "Results dominated by the February 2026 Dwarkesh podcast (1-3 years, 90% by 2035); that is a 2026 item."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2025 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Davos 2025/2026 conversation write-ups and Dwarkesh 2026 pages; nothing new from 2025 opened."
+      },
+      {
+        "query_or_url": "Amodei \"60 Minutes\" Anderson Cooper transcript AI",
+        "what_found": "CBS News transcript page for the 2025-11-16 broadcast."
+      },
+      {
+        "query_or_url": "Amodei DealBook Summit 2025 Sorkin AI",
+        "what_found": "News coverage of the 2025-12-03 DealBook 'YOLOing' remarks; no transcript."
+      },
+      {
+        "query_or_url": "Amodei INBOUND 2025 Dharmesh AI next 18 months",
+        "what_found": "HubSpot recap of the INBOUND 2025 talk with Yamini Rangan, plus event listings."
+      },
+      {
+        "query_or_url": "Amodei Dreamforce 2025 Benioff code",
+        "what_found": "Recaps of the October 2025 Dreamforce appearance (90% of code at Anthropic is a present-tense claim) and a teamday.ai summary page."
+      },
+      {
+        "query_or_url": "Amodei DealBook transcript \"country of geniuses\" 2026 2027",
+        "what_found": "Mostly Dwarkesh 2026 and the Axios January 2026 essay coverage; no DealBook transcript."
+      },
+      {
+        "query_or_url": "\"Statement from Dario Amodei\" October 2025 American AI leadership",
+        "what_found": "A YouTube copy and coverage of the October 2025 statement; the anthropic.com page address did not appear."
+      },
+      {
+        "query_or_url": "Dario Amodei DealBook Summit December 2025 full transcript Sorkin",
+        "what_found": "Coverage only (Yahoo Finance, Inc., Sources newsletter); no transcript."
+      },
+      {
+        "query_or_url": "anthropic.com statement Dario Amodei commitment American AI leadership",
+        "what_found": "Secondary coverage of the October 2025 statement; no dated AI forecast shown in snippets, and the statement was not opened."
+      },
+      {
+        "query_or_url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/",
+        "what_found": "Full 60 Minutes transcript dated 2025-11-16 with the 'five or 10 years' medical-progress line, a confirmation of the 1-5 year jobs warning, and an undated 'smarter than most or all humans' line."
+      },
+      {
+        "query_or_url": "https://unbound.hubspot.com/blog/inside-anthropics-vision-how-ai-will-transform-business-in-18-months",
+        "what_found": "HubSpot recap (dated 2025-10-10) quoting the 'one to three more years' line from INBOUND 2025."
+      },
+      {
+        "query_or_url": "https://www.aydin.org/en/dario-amodei-on-the-risk-of-an-ai-bubble-regulation-and-agi/",
+        "what_found": "Page did not open properly; only the site homepage loaded, so nothing was quoted."
+      },
+      {
+        "query_or_url": "https://sources.news/p/anthropics-ai-bubble-yolo-warning",
+        "what_found": "Partly paywalled DealBook write-up; the only dated line is about revenue ('By 2027 or 2028 I need to make $200 billion a year'), a business figure attributed to others, so excluded."
+      },
+      {
+        "query_or_url": "https://finance.yahoo.com/news/anthropic-ceo-some-ai-companies-yoloing-pulling-the-risk-dial-too-far-223738240.html",
+        "what_found": "Only navigation and metadata loaded ('Oops, something went wrong'); the article text was not available."
+      },
+      {
+        "query_or_url": "https://www.teamday.ai/ai/dario-amodei-marc-benioff-dreamforce-2025",
+        "what_found": "Summary of the Dreamforce 2025 conversation (video dated 2025-10-19) with no dated forecasts."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "Most of Amodei's dated 2025 forecasts are already recorded. Two possible new items came from later in the year: a 'one to three more years' line at INBOUND 2025 (seen only in HubSpot's recap) and a 'five or 10 years' compressed-medical-progress line on 60 Minutes, which is worded as a possibility. 60 Minutes also repeated the recorded one-to-five-year jobs warning; DealBook, Dreamforce and the October statement gave nothing usable."
+  },
+  "reply_text": "I found two new dated statements from 2025 and confirmed that one recorded claim was repeated. The new INBOUND line comes only from a recap written by the event's organiser, HubSpot, not from a transcript. The new 60 Minutes line is worded as a possibility (\"could we…\"), so it's on the edge of your hypothetical rule; you may want to drop it.\n\n- **INBOUND 2025 (September, San Francisco):** HubSpot's recap of his talk quotes him saying AI will \"go beyond the frontier of human knowledge\" if progress continues for \"maybe one to three more years\". I didn't open the YouTube recording.\n- **60 Minutes (16 November 2025), CBS's own transcript:** he describes compressing a century of medical progress into \"five or 10 years\" once AI can work with top scientists. In the same interview Anderson Cooper read back the earlier warning that AI could wipe out half of entry-level white-collar jobs in one to five years, and Amodei answered \"Yes.\" That is the recorded Axios claim, so I've marked it as such.\n- **DealBook Summit (3 December 2025):** nothing usable. The only dated line is about company revenue, so it's out. The Sources newsletter was paywalled partway through, and the Yahoo article's text didn't load.\n- **Dreamforce (October 2025):** the page I opened had no dated quotes.\n- **Not checked:** the October 2025 statement on American AI leadership. I didn't have its page address on anthropic.com, and coverage of it showed no timeline.\n\nSeveral search results that looked like 2025 were actually from 2026 (the Dwarkesh podcast, the January 2026 essay, Davos 2026); they're listed under other_years. I used 11 of 12 searches and all 6 page openings. One opening (aydin.org) only loaded the site's homepage.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2025-09-04\",\n      \"quote\": \"If the exponential continues for only maybe one to three more years, then we'll start to go beyond the frontier of human knowledge. And then things really go crazy.\",\n      \"what_is_predicted\": \"If current progress continues, AI will start to go beyond the frontier of human knowledge within about one to three years.\",\n      \"date_or_span\": \"one to three more years (from September 2025)\",\n      \"occasion\": \"INBOUND 2025 main-stage talk with HubSpot CEO Yamini Rangan, San Francisco, 'How AI Will Transform Business in the Next 18 Months' (the Sept 4 date comes from HubSpot's developer guide, seen only as a search snippet; the recap itself is dated 2025-10-10)\",\n      \"source_url\": \"https://unbound.hubspot.com/blog/inside-anthropics-vision-how-ai-will-transform-business-in-18-months\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2025-11-16\",\n      \"quote\": \"The idea would be, at the point that we can get the AI systems to this level of power where they're able to work with the best human scientists, could we get 10 times the rate of progress and therefore compress all the medical progress that was gonna happen throughout the entire 21st century in five or 10 years?\",\n      \"what_is_predicted\": \"Once AI can work alongside the best human scientists, a century of medical progress might be compressed into five to ten years; he frames this as a possibility ('could we'), so it is on the edge of the hypothetical exclusion.\",\n      \"date_or_span\": \"five or 10 years (counted from when AI reaches that level)\",\n      \"occasion\": \"CBS 60 Minutes interview with Anderson Cooper, broadcast 2025-11-16\",\n      \"source_url\": \"https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2025-11-16\",\n      \"quote\": \"Anderson Cooper: You've said, \\\"AI could wipe out half of all entry-level white-collar jobs and spike unemployment to 10% to 20% in the next one to five years.\\\" Dario Amodei: Yes.\",\n      \"what_is_predicted\": \"He confirms his earlier warning that AI could eliminate half of entry-level white-collar jobs and push unemployment to 10-20% within one to five years.\",\n      \"date_or_span\": \"the next one to five years\",\n      \"occasion\": \"CBS 60 Minutes interview with Anderson Cooper\",\n      \"source_url\": \"https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs.toml\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2025-11-16\",\n      \"quote\": \"I, I believe it will reach that level, that it will be smarter than most or all humans in most or all ways.\",\n      \"source_url\": \"https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Dwarkesh Patel podcast 'We are near the end of the exponential' (Feb 2026): 'country of geniuses' in 1-3 years and 90% confidence by 2035; seen only in search snippets (dwarkesh.com/p/dario-amodei-2, X posts), not opened.\"},\n    {\"year\": \"2026\", \"note\": \"January 2026 essay ('The Adolescence of Technology', per Axios coverage 2026-01-26) frames a 'country of geniuses' materializing in ~2027 as a 'suppose' scenario; seen only in a search snippet.\"},\n    {\"year\": \"2026\", \"note\": \"Davos January 2026 remark quoted by 80000hours.org ('If the exponential continues...'); seen only in a search snippet.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" AI prediction 2025\", \"what_found\": \"Mostly 2026 retrospectives on the Davos 2025 and March 2025 coding claims, plus prediction-tracker sites; no new primary source.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2025 interview AGI \\\"years\\\"\", \"what_found\": \"Results dominated by the February 2026 Dwarkesh podcast (1-3 years, 90% by 2035); that is a 2026 item.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2025 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Davos 2025/2026 conversation write-ups and Dwarkesh 2026 pages; nothing new from 2025 opened.\"},\n    {\"query_or_url\": \"Amodei \\\"60 Minutes\\\" Anderson Cooper transcript AI\", \"what_found\": \"CBS News transcript page for the 2025-11-16 broadcast.\"},\n    {\"query_or_url\": \"Amodei DealBook Summit 2025 Sorkin AI\", \"what_found\": \"News coverage of the 2025-12-03 DealBook 'YOLOing' remarks; no transcript.\"},\n    {\"query_or_url\": \"Amodei INBOUND 2025 Dharmesh AI next 18 months\", \"what_found\": \"HubSpot recap of the INBOUND 2025 talk with Yamini Rangan, plus event listings.\"},\n    {\"query_or_url\": \"Amodei Dreamforce 2025 Benioff code\", \"what_found\": \"Recaps of the October 2025 Dreamforce appearance (90% of code at Anthropic is a present-tense claim) and a teamday.ai summary page.\"},\n    {\"query_or_url\": \"Amodei DealBook transcript \\\"country of geniuses\\\" 2026 2027\", \"what_found\": \"Mostly Dwarkesh 2026 and the Axios January 2026 essay coverage; no DealBook transcript.\"},\n    {\"query_or_url\": \"\\\"Statement from Dario Amodei\\\" October 2025 American AI leadership\", \"what_found\": \"A YouTube copy and coverage of the October 2025 statement; the anthropic.com page address did not appear.\"},\n    {\"query_or_url\": \"Dario Amodei DealBook Summit December 2025 full transcript Sorkin\", \"what_found\": \"Coverage only (Yahoo Finance, Inc., Sources newsletter); no transcript.\"},\n    {\"query_or_url\": \"anthropic.com statement Dario Amodei commitment American AI leadership\", \"what_found\": \"Secondary coverage of the October 2025 statement; no dated AI forecast shown in snippets, and the statement was not opened.\"},\n    {\"query_or_url\": \"https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/\", \"what_found\": \"Full 60 Minutes transcript dated 2025-11-16 with the 'five or 10 years' medical-progress line, a confirmation of the 1-5 year jobs warning, and an undated 'smarter than most or all humans' line.\"},\n    {\"query_or_url\": \"https://unbound.hubspot.com/blog/inside-anthropics-vision-how-ai-will-transform-business-in-18-months\", \"what_found\": \"HubSpot recap (dated 2025-10-10) quoting the 'one to three more years' line from INBOUND 2025.\"},\n    {\"query_or_url\": \"https://www.aydin.org/en/dario-amodei-on-the-risk-of-an-ai-bubble-regulation-and-agi/\", \"what_found\": \"Page did not open properly; only the site homepage loaded, so nothing was quoted.\"},\n    {\"query_or_url\": \"https://sources.news/p/anthropics-ai-bubble-yolo-warning\", \"what_found\": \"Partly paywalled DealBook write-up; the only dated line is about revenue ('By 2027 or 2028 I need to make $200 billion a year'), a business figure attributed to others, so excluded.\"},\n    {\"query_or_url\": \"https://finance.yahoo.com/news/anthropic-ceo-some-ai-companies-yoloing-pulling-the-risk-dial-too-far-223738240.html\", \"what_found\": \"Only navigation and metadata loaded ('Oops, something went wrong'); the article text was not available.\"},\n    {\"query_or_url\": \"https://www.teamday.ai/ai/dario-amodei-marc-benioff-dreamforce-2025\", \"what_found\": \"Summary of the Dreamforce 2025 conversation (video dated 2025-10-19) with no dated forecasts.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"Most of Amodei's dated 2025 forecasts are already recorded. Two possible new items came from later in the year: a 'one to three more years' line at INBOUND 2025 (seen only in HubSpot's recap) and a 'five or 10 years' compressed-medical-progress line on 60 Minutes, which is worded as a possibility. 60 Minutes also repeated the recorded one-to-five-year jobs warning; DealBook, Dreamforce and the October statement gave nothing usable.\"\n}\n```"
+}

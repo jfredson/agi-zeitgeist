@@ -1,0 +1,257 @@
+search_id,speaker_id,year,query,where_searched,what_found,date_searched
+,legg,2010,"""Shane Legg"" AI prediction 2010",Claude API web search,"Mostly later coverage of the 2028 forecast, a 2021 X post citing the Goodbye 2010 post, and the 2026 Auckland news item.",2026-11-16
+,legg,2010,"""Shane Legg"" 2010 interview AGI ""years""",Claude API web search,"2023 coverage, the 2011 LessWrong Q&A, and DeepMind podcast excerpts; nothing new from 2010.",2026-11-16
+,legg,2010,"""Shane Legg"" 2010 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Turned up the 'Goodbye 2010' vetta.org post (10 Dec 2010) and an undated fandom interview.,2026-11-16
+,legg,2010,https://www.vetta.org/2010/12/goodbye-2010/,Claude API web fetch,"Opened; his own post with the mean 2028 / mode 2025 / 90%-to-2045 forecast, plus comment replies that show no dates.",2026-11-16
+,legg,2010,https://future.fandom.com/wiki/Scenario:_Shane_Legg,Claude API web fetch,"Opened; undated interview with forecasts for the mid-2020s, so not counted for 2010.",2026-11-16
+,legg,2010,vetta.org 2010 Shane Legg blog,Claude API web search,"Found the 'Summit 2010' post (Aug 2010), the 'Teenies' and 'Tick tock' posts with Jan 2010 comment dates in snippets, and the March 2010 Oxford Martin seminar listing.",2026-11-16
+,legg,2010,"""Shane Legg"" ""Singularity Summit 2010""",Claude API web search,Reports and videos of his 2010 talk on universal measures of intelligence and the AGI panel; no transcript.,2026-11-16
+,legg,2010,"""Shane Legg"" ""AGI-10"" OR ""AGI 2010"" talk",Claude API web search,Nothing new from 2010; the Tick tock post link came up again.,2026-11-16
+,legg,2010,https://www.vetta.org/2009/12/the-teenies/,Claude API web fetch,Opened; December 2009 predictions post; comment dates not visible in the fetched text.,2026-11-16
+,legg,2010,https://www.vetta.org/2009/12/tick-tock-tick-tock-bing/,Claude API web fetch,Opened; December 2009 post with the original 2025/2028/2018-2036 forecast; nothing datable to 2010 that is a prediction.,2026-11-16
+,legg,2010,http://www.vetta.org/2010/08/summit-201/,Claude API web fetch,Opened; 23 Aug 2010 post saying neuroscience will drive AGI over the next 20 years and 'AGI is approaching'; his 2010 comment replies hold no dated forecasts.,2026-11-16
+,legg,2010,Singularity Summit 2010 AGI panel Legg Goertzel Yudkowsky Tooby transcript,Claude API web search,"Audio and video listings only, plus Bob Blum's attendee notes; no transcript.",2026-11-16
+,legg,2010,"""Shane Legg"" interview 2010 machine super intelligence neuroscience Gatsby",Claude API web search,Background pages and a Halloween 2009 talk PDF; no 2010 interview.,2026-11-16
+,legg,2010,https://www.bobblum.com/ESSAYS/COMPSCI/ss10.html,Claude API web fetch,"Opened; the fetched text was cut off before the section on his talk, so there was nothing to quote.",2026-11-16
+,legg,2011,"""Shane Legg"" AI prediction 2011",Claude API web search,"Mostly 2023 news retelling his 2011 50%-by-2028 view, plus a TIME profile citing the 2011 LessWrong interview.",2026-11-16
+,legg,2011,"""Shane Legg"" 2011 interview AGI ""years""",Claude API web search,Turned up the LessWrong 'Q&A with Shane Legg on risks from AI' page plus the same 2023 coverage.,2026-11-16
+,legg,2011,"""Shane Legg"" 2011 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,"Turned up the undated Jonathan Despres interview on future.fandom.com and pointers to the vetta.org 'Goodbye 2011, hello 2012' post.",2026-11-16
+,legg,2011,"vetta.org ""Goodbye 2011, hello 2012"" Legg",Claude API web search,Confirmed the vetta.org post URL and the PredictionBook entry for the proto-AGI forecast.,2026-11-16
+,legg,2011,Shane Legg interview Jonathan Despres,Claude API web search,"Only the fandom page and its interview index, with no date.",2026-11-16
+,legg,2011,https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai,Claude API web fetch,"Opened: the Q&A dated 17 June 2011 with the answer '2018, 2028, 2050' to the 10%/50%/90% question.",2026-11-16
+,legg,2011,https://www.vetta.org/2011/12/goodbye-2011-hello-2012/,Claude API web fetch,Opened: the post dated 31 December 2011 with the log-normal mean 2028 / mode 2025 forecast and the proto-AGI-within-8-years forecast.,2026-11-16
+,legg,2011,https://future.fandom.com/wiki/Scenario:_Shane_Legg,Claude API web fetch,"Opened: the Despres interview with dated AI forecasts, but the page carries no date.",2026-11-16
+,legg,2011,https://www.vetta.org/2011/,Claude API web fetch,"The fetch was refused (url_not_in_prior_context), so nothing was read.",2026-11-16
+,legg,2011,vetta.org 2011 Shane Legg blog AIQ,Claude API web search,"The AIQ post of 16 November 2011 and its papers, which are about measuring intelligence, not forecasts.",2026-11-16
+,legg,2011,"""Jonathan Despres"" interview ""Shane Legg"" singularity 2025 2040",Claude API web search,Only the same undated fandom page and its index.,2026-11-16
+,legg,2011,vetta.org 2011/01 Shane Legg,Claude API web search,Found the 'Technological themes' post of 31 January 2011.,2026-11-16
+,legg,2011,https://www.vetta.org/2011/01/technological-themes/,Claude API web fetch,"Opened: the post naming machine intelligence as the theme for 2025 to 2040, plus a 4 February 2011 reply saying this would include 'fledgeling AGIs'.",2026-11-16
+,legg,2011,"Shane Legg ""AI is now where the internet was in 1988""",Claude API web search,No date found for the Despres interview.,2026-11-16
+,legg,2011,"Shane Legg ""boom in AI around 2020""",Claude API web search,A 2015 H+ Magazine page repeats the Despres interview text; still no date for the interview.,2026-11-16
+,legg,2012,"""Shane Legg"" AI prediction 2012",Claude API web search,"Dwarkesh podcast and news coverage citing his 2011 blog post; the vetta.org 'Goodbye 2011, hello 2012' post itself; nothing first said in 2012.",2026-11-16
+,legg,2012,"""Shane Legg"" 2012 interview AGI ""years""",Claude API web search,"LessWrong Q&A (2011), the Future Wikia interview (undated) and later podcasts; no 2012 interview.",2026-11-16
+,legg,2012,"""Shane Legg"" 2012 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,"2023 and later coverage, plus the undated Future Wikia interview; nothing from 2012.",2026-11-16
+,legg,2012,vetta.org 2012 Shane Legg blog,Claude API web search,"Snippets showing Legg's comments on the 'Goodbye 2011' post dated January 2012, and that the blog's only 2012 post was 'Neil Armstrong' (28 Aug 2012).",2026-11-16
+,legg,2012,"""Shane Legg"" interview Jonathan Despres",Claude API web search,The Future Wikia interview page and index; no date given.,2026-11-16
+,legg,2012,"""Shane Legg"" ""2012"" talk OR lecture AGI Singularity",Claude API web search,A list of Singularity Summit talks (2009/2010 talks) and an Oxford Martin seminar page; no 2012 talk found.,2026-11-16
+,legg,2012,https://www.vetta.org/2011/12/goodbye-2011-hello-2012/,Claude API web fetch,"Opened: the post and its comments, including Legg's replies; the fetched text had no comment timestamps.",2026-11-16
+,legg,2012,https://www.vetta.org/,Claude API web fetch,"Opened: the blog homepage; the only 2012 post is about Neil Armstrong, with no AI prediction; older posts carry 2010-2011 forecasts.",2026-11-16
+,legg,2012,https://future.fandom.com/wiki/Scenario:_Shane_Legg,Claude API web fetch,"Opened: interview with timeline claims (mid-2020s human-level AI, 2025-2040) but no date.",2026-11-16
+,legg,2012,https://www.oxfordmartin.ox.ac.uk/events/seminar-dr-shane-legg-what-can-the-architecture-of-the-brain-teach-us-about-artificial-intelligence,Claude API web fetch,"Opened: an event page for a 10 March 2010 seminar; only an abstract, no prediction, not 2012.",2026-11-16
+,legg,2012,"""Shane Legg says"" ""January, 2012"" proto-AGI",Claude API web search,"Snippets giving comment timestamps: Legg replied on 2 Jan 2012 (3:17 and 3:38 am) and 8 Jan 2012 (1:20 am, the computer-performance reply; 11:27 am).",2026-11-16
+,legg,2012,"""Shane Legg"" AGI-12 Oxford December 2012",Claude API web search,"The AGI-12 conference committees page (Oxford, 8-10 Dec 2012); no Legg talk or words found.",2026-11-16
+,legg,2012,"""Despres"" interview ""Shane Legg"" date future wikia",Claude API web search,No date found for the Despres interview; a 2018 paper cites the page as accessed in 2018.,2026-11-16
+,legg,2012,"""Shane Legg"" 2012 lesswrong comment AGI timeline",Claude API web search,LessWrong posts from other years and a Legg X post looking back on an old blog comment; nothing from 2012.,2026-11-16
+,legg,2012,"""Legg"" DeepMind 2012 ""human level"" AI interview OR talk",Claude API web search,"Later coverage (Time 2023, Dwarkesh, Yahoo on DeepMind's third co-founder); nothing from 2012.",2026-11-16
+,legg,2013,"""Shane Legg"" AI prediction 2013",Claude API web search,"Only 2023 coverage of his 2011 prediction of a 50% chance of AGI by 2028, plus an arXiv review quoting an undated year-end blog prediction; nothing from 2013.",2026-11-16
+,legg,2013,"""Shane Legg"" 2013 interview AGI ""years""",Claude API web search,"2011 LessWrong Q&A, a 2021 LessWrong post of DeepMind podcast excerpts, an undated fandom interview and 2023-2025 coverage; nothing from 2013.",2026-11-16
+,legg,2013,"""Shane Legg"" 2013 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,"TIME100 2023, a 2026 Auckland news item and other recent pages; nothing from 2013.",2026-11-16
+,legg,2013,vetta.org Shane Legg 2013 post,Claude API web search,vetta.org PDFs of papers and a January 2014 Hacker News thread; no 2013 blog post.,2026-11-16
+,legg,2013,"""Shane Legg"" talk 2013 DeepMind artificial general intelligence lecture",Claude API web search,H+ Magazine's Jan 2014 repost of a 2009 lecture and a 2014 ICCSW keynote abstract; no 2013 talk.,2026-11-16
+,legg,2013,"""Legg"" vetta ""2013"" AGI",Claude API web search,Results about other people named Legg; nothing relevant.,2026-11-16
+,legg,2013,"""Shane Legg"" December 2013",Claude API web search,Unrelated people and a mention of DeepMind's December 2013 Atari DQN result; no statement by Legg.,2026-11-16
+,legg,2013,"""Shane Legg"" said 2013 machine intelligence future",Claude API web search,Coverage of the 2028 forecast attributed to 2011 or earlier; nothing from 2013.,2026-11-16
+,legg,2013,"""Shane Legg"" Google DeepMind acquisition January 2014 predicted human-level AI",Claude API web search,2014 acquisition coverage that requotes the 2011 Kruel interview; nothing from 2013.,2026-11-16
+,legg,2013,https://en.wikipedia.org/wiki/Shane_Legg,Claude API web fetch,Opened; biography with no 2013 statements; cites the 17 June 2011 LessWrong Q&A.,2026-11-16
+,legg,2013,https://future.fandom.com/wiki/Scenario:_Shane_Legg,Claude API web fetch,"Opened; undated, probably pre-DeepMind interview with timeline predictions (mid-2020s, 2025-2040); not usable for 2013.",2026-11-16
+,legg,2013,https://www.vetta.org/,Claude API web fetch,Refused to open (url_not_in_prior_context); nothing quoted.,2026-11-16
+,legg,2013,"Oxford Martin seminar Shane Legg ""architecture of the brain"" artificial intelligence",Claude API web search,Snippet dates the seminar to 10 March 2010; no prediction in it.,2026-11-16
+,legg,2013,"""Shane Legg"" interview 2013 DeepMind Technologies founder AI",Claude API web search,Dwarkesh 2023 transcript snippet recalling 'Back in 2013 or so' about a safety hire; no 2013 prediction.,2026-11-16
+,legg,2013,"""Shane Legg"" 2013 ""human level"" AI timeline estimate",Claude API web search,Timeline surveys and reviews; no 2013 statement by Legg.,2026-11-16
+,legg,2014,"""Shane Legg"" AI prediction 2014",Claude API web search,"Mostly 2023 coverage of his 50%-by-2028 AGI view, plus Wikipedia and arXiv reviews; nothing dated 2014.",2026-11-16
+,legg,2014,"""Shane Legg"" 2014 interview AGI ""years""",Claude API web search,"The 2011 LessWrong Q&A, the DeepMind podcast, a recent NZ Initiative piece and a fandom 'Scenario' page; no 2014 interview.",2026-11-16
+,legg,2014,"""Shane Legg"" 2014 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,A fandom page with an undated interview by Jonathan Despres and 2023 to 2025 coverage; nothing shown to be from 2014.,2026-11-16
+,legg,2014,Shane Legg DeepMind Google acquisition 2014 interview artificial general intelligence,Claude API web search,"Found the 2014 ICCSW keynote listing (Dagstuhl PDF), along with profiles and later coverage.",2026-11-16
+,legg,2014,Shane Legg talk 2014 machine super intelligence,Claude API web search,"The H+ Magazine repost of 2014-01-31 of an older lecture, a YouTube upload saying the lecture was from 2009, and the ICCSW'14 keynotes page.",2026-11-16
+,legg,2014,"""Shane Legg"" 2014 vetta.org",Claude API web search,"A Hacker News thread of Jan 2014 about the acquisition, his old papers on vetta.org, and an Oxford Martin seminar listing.",2026-11-16
+,legg,2014,"""Shane Legg"" 2014 quoted artificial intelligence risk ""this century""",Claude API web search,"A HuffPost UK article of 2014 retelling his 2011 'number 1 risk for this century' remark, and HN threads from 2015.",2026-11-16
+,legg,2014,"""Legg"" DeepMind 2014 human-level AI decades interview newspaper",Claude API web search,TIME100 profile and the 2011 LessWrong Q&A; no 2014 interview.,2026-11-16
+,legg,2014,Oxford Martin seminar Shane Legg architecture of the brain artificial intelligence,Claude API web search,The Oxford Martin seminar listing; the snippet showed no date and no forecast.,2026-11-16
+,legg,2014,https://drops.dagstuhl.de/storage/01oasics/oasics-vol043-iccsw2014/OASIcs.ICCSW.2014.1/OASIcs.ICCSW.2014.1.pdf,Claude API web fetch,"Came back as base64 PDF data; the printout was cut off and no readable text was extracted, so nothing quoted.",2026-11-16
+,legg,2014,https://www.oxfordmartin.ox.ac.uk/events/seminar-dr-shane-legg-what-can-the-architecture-of-the-brain-teach-us-about-artificial-intelligence,Claude API web fetch,"Opened, but the returned content was lost to my own handling error, so nothing is reported from it.",2026-11-16
+,legg,2014,https://www.huffingtonpost.co.uk/entry/google-ai_n_4683343,Claude API web fetch,Would not open (url_not_allowed); not quoted.,2026-11-16
+,legg,2014,Shane Legg Imperial College ICCSW 2014 keynote video DeepMind,Claude API web search,Dagstuhl and Semantic Scholar entries for the 2014 ICCSW talk; no video or transcript.,2026-11-16
+,legg,2014,"""Shane Legg"" 2014 speaker conference artificial general intelligence talk",Claude API web search,A YouTube listing for a Kea UK event with Legg on 17 Sep 2014.,2026-11-16
+,legg,2014,https://www.youtube.com/watch?v=2WIk1B1eZiE,Claude API web fetch,Opened a second time (an opening wasted by my mistake); same description-only result.,2026-11-16
+,legg,2014,http://iccsw.doc.ic.ac.uk/2014/keynotes.html,Claude API web fetch,"Third-person abstract of his ICCSW'14 keynote on DeepMind's history, research approach and agent demos; no forecast.",2026-11-16
+,legg,2014,https://www.youtube.com/watch?v=2WIk1B1eZiE,Claude API web fetch,Opened a second time (an opening wasted by my mistake); same description-only result.,2026-11-16
+,legg,2015,"""Shane Legg"" AI prediction 2015",Claude API web search,Only retellings of the 2009–2011 '2028' prediction and 2023 coverage; nothing said in 2015.,2026-11-16
+,legg,2015,"""Shane Legg"" 2015 interview AGI ""years""",Claude API web search,"The 2011 LessWrong Q&A, the 2021 DeepMind podcast and the fandom Despres interview; nothing from 2015.",2026-11-16
+,legg,2015,"""Shane Legg"" 2015 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,"The Despres interview, 2023 coverage and a 2026 Auckland news item; nothing from 2015.",2026-11-16
+,legg,2015,Shane Legg Puerto Rico 2015 Future of Life conference talk,Claude API web search,"FLI pages listing Legg as a panelist at the January 2–5, 2015 Puerto Rico conference.",2026-11-16
+,legg,2015,Shane Legg DeepMind interview 2015 artificial general intelligence,Claude API web search,Edge.org member page listing his 2015 Annual Question response 'General Purpose Learning Machines'.,2026-11-16
+,legg,2015,"""Shane Legg"" 2015 talk keynote DeepMind",Claude API web search,A 2014 ICCSW keynote abstract and later talks; nothing from 2015 with his words.,2026-11-16
+,legg,2015,https://www.edge.org/memberbio/shane_legg,Claude API web fetch,Opened; lists his 2015 response 'General Purpose Learning Machines' at response-detail/26258.,2026-11-16
+,legg,2015,https://www.edge.org/response-detail/26258,Claude API web fetch,"Opened; full essay text, including the 'a generation' line and the 'It's not' line on human-level AI being 'just around the corner'.",2026-11-16
+,legg,2015,"""Human level AI will be passed in the mid-2020s"" Legg",Claude API web search,"The quote is traced to the Despres interview and dated 2008 by most sources (2016 by Birhane), so it is not from 2015.",2026-11-16
+,legg,2015,Shane Legg DeepMind New Zealand interview 2015,Claude API web search,No 2015 NZ interview; only later NZ opinion pieces.,2026-11-16
+,legg,2015,"""Shane Legg"" 2015 superintelligence risk interview ""decades""",Claude API web search,"Later material (TIME 2023, Dwarkesh, a 2014 H+ video post); nothing from 2015.",2026-11-16
+,legg,2015,"""Shane Legg"" lecture 2015 video artificial intelligence DeepMind Atari",Claude API web search,"The 2015 Nature DQN paper (co-author, no forecast) and an undated YouTube clip; nothing usable.",2026-11-16
+,legg,2015,"""Shane Legg"" said 2015 ""human level"" AI",Claude API web search,Paper references and the 2008 'mid-2020s' quote again; nothing from 2015.,2026-11-16
+,legg,2015,https://futureoflife.org/event/ai-safety-conference-in-puerto-rico/,Claude API web fetch,"Opened; Legg appears only as an organising-committee member, panelist and in the group photo, with none of his words.",2026-11-16
+,legg,2015,"""Shane Legg"" DeepMind co-founder says 2015 machines",Claude API web search,"The Edge response page again; the snippet shows Demis Hassabis named on the page with Legg, suggesting a joint response.",2026-11-16
+,legg,2016,"""Shane Legg"" AI prediction 2016",Claude API web search,Only later restatements of his 50%-by-2028 AGI forecast. Nothing said in 2016.,2026-11-16
+,legg,2016,"""Shane Legg"" 2016 interview AGI ""years""",Claude API web search,"2011 LessWrong Q&A, 2022 DeepMind podcast, 2023 coverage. Nothing from 2016.",2026-11-16
+,legg,2016,"""Shane Legg"" 2016 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,An older interview on a fandom wiki and 2023–2026 coverage. Nothing from 2016.,2026-11-16
+,legg,2016,Shane Legg DeepMind interview 2016,Claude API web search,2023 Dwarkesh and TED interviews. No 2016 interview.,2026-11-16
+,legg,2016,"""Shane Legg"" talk 2016 artificial general intelligence",Claude API web search,"Speaker bios, the 2023 TED talk, 2023 Gary Marcus post. No 2016 talk.",2026-11-16
+,legg,2016,"""Shane Legg"" Business Insider DeepMind cofounder",Claude API web search,Business Insider profile of Jan 2017 (Yahoo syndication).,2026-11-16
+,legg,2016,edge.org Shane Legg response,Claude API web search,Edge member bio and later tweets. No 2016 Edge response found.,2026-11-16
+,legg,2016,vetta.org Shane Legg blog AGI prediction,Claude API web search,vetta.org posts from 2009 and 2011 and a 2021 tweet. No 2016 post.,2026-11-16
+,legg,2016,"""Shane Legg"" AlphaGo 2016 said",Claude API web search,Later reflections on AlphaGo (2023–2024). No 2016 quotes.,2026-11-16
+,legg,2016,https://en.wikipedia.org/wiki/Shane_Legg,Claude API web fetch,Opened. Cites the Jan 2017 Business Insider profile and an NZ Herald piece it dates to Jan 2016. No 2016 prediction.,2026-11-16
+,legg,2016,https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html,Claude API web fetch,"Opened. Business Insider profile, 26 Jan 2017. Says Legg rarely gives quotes, names a Bloomberg interview of 5 Dec 2016, and quotes only the 2011 LessWrong interview.",2026-11-16
+,legg,2016,https://www.bloomberg.com/news/articles/2016-12-05/google-deepmind-makes-ai-training-platform-publicly-available,Claude API web fetch,Would not open (url_not_allowed). Not quoted.,2026-11-16
+,legg,2016,https://web.archive.org/web/20190430134314/https://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=11384274,Claude API web fetch,Would not open (url_not_allowed).,2026-11-16
+,legg,2016,Bloomberg December 2016 DeepMind Lab open source Shane Legg,Claude API web search,"DeepMind Lab release coverage and paper (Legg a co-author), plus the DeepMind 2016 round-up blog. No Legg prediction in the snippets.",2026-11-16
+,legg,2016,"""Soaring Kiwis"" Shane Legg NZ Herald",Claude API web search,"The NZ Herald profile, live URL.",2026-11-16
+,legg,2016,https://www.nzherald.co.nz/business/soaring-kiwis-programmed-early-for-success/MDNQXUMMG2VQB45HQXEG6NIWSI/,Claude API web fetch,"Opened. Page dated 9 Jan 2015. Biography, no AI prediction.",2026-11-16
+,legg,2016,https://deepmind.google/blog/deepminds-work-in-2016-a-round-up/,Claude API web fetch,"Opened. Published 3 Jan 2017. No dated AI prediction, only a plan to play more AlphaGo games in 2017.",2026-11-16
+,legg,2016,"""Shane Legg"" keynote OR lecture OR panel 2016",Claude API web search,"Speaker bios, a 2009 lecture video, recent items. No 2016 talk.",2026-11-16
+,legg,2017,"""Shane Legg"" AI prediction 2017",Claude API web search,Secondary pages restating his 2011 and later 50%-by-2028 forecast; nothing from 2017.,2026-11-16
+,legg,2017,"""Shane Legg"" 2017 interview AGI ""years""",Claude API web search,2021-2025 podcast summaries and an undated fandom interview; nothing from 2017.,2026-11-16
+,legg,2017,"""Shane Legg"" 2017 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,2023 and 2025 coverage plus a Wikipedia list of 2017 AI events; no 2017 statement by Legg.,2026-11-16
+,legg,2017,"""Shane Legg"" Asilomar 2017 Beneficial AI",Claude API web search,"Confirms Legg attended and spoke at Asilomar in January 2017 (bios PDF, FLI event page).",2026-11-16
+,legg,2017,"""Shane Legg"" Business Insider January 2017 DeepMind",Claude API web search,"Sam Shead's 26 Jan 2017 Business Insider profile of Legg (Yahoo copy, Wikipedia citation).",2026-11-16
+,legg,2017,"""Shane Legg"" 2017 talk human-level AI timeline",Claude API web search,The fandom interview and the 2011 LessWrong Q&A; nothing from 2017.,2026-11-16
+,legg,2017,https://sg.finance.yahoo.com/news/google-ai-lab-deepmind-little-083000865.html,Claude API web fetch,Page opened but showed only 'Something went wrong' and navigation; no article text.,2026-11-16
+,legg,2017,businessinsider DeepMind elusive third cofounder Shane Legg machines stay on our side,Claude API web search,Only citations to the BI article; no readable text.,2026-11-16
+,legg,2017,"""Shane Legg"" Asilomar talk transcript ""longer-term issues""",Claude API web search,Programme listings showing Legg's talk had no slides or video linked; no transcript.,2026-11-16
+,legg,2017,"""Shane Legg"" 2017 said AGI decade",Claude API web search,Only 2023 and later coverage.,2026-11-16
+,legg,2017,https://en.wikipedia.org/wiki/Shane_Legg,Claude API web fetch,Gave the insider.com URL for the 26 Jan 2017 Shead article; no 2017 prediction.,2026-11-16
+,legg,2017,https://www.insider.com/shane-legg-google-deepmind-third-cofounder-artificial-intelligence-2017-1,Claude API web fetch,Would not open (url_not_allowed); not quoted.,2026-11-16
+,legg,2017,"Sam Shead ""Legg"" DeepMind third cofounder 2017 artificial general intelligence",Claude API web search,Only the Yahoo stub and Wikipedia/Wikiwand citations again.,2026-11-16
+,legg,2017,"""Shane Legg"" 2017 podcast OR lecture OR keynote AGI",Claude API web search,"Mostly 2021-2025 podcasts, plus a YouTube clip uploaded Aug 2017 that excerpts an older lecture.",2026-11-16
+,legg,2017,https://www.youtube.com/watch?v=N8dIAaKLT9I,Claude API web fetch,"YouTube showed a bot-check page; only metadata (published Aug 21, 2017), which points to an older full 'Machine Super Intelligence' lecture; no transcript.",2026-11-16
+,legg,2017,https://futureoflife.org/event/bai-2017/,Claude API web fetch,Lists Legg's Asilomar talk (no media linked) and his technical research agenda panel video; no transcript.,2026-11-16
+,legg,2017,Asilomar 2017 panel Amodei Soares Legg Krakovna transcript,Claude API web search,Only programme listings and Krakovna highlight videos; no transcript of Legg's words.,2026-11-16
+,legg,2018,"""Shane Legg"" AI prediction 2018",Claude API web search,"Only retrospective items: the 2011 LessWrong Q&A, a 2021 tweet and later summaries; nothing said in 2018.",2026-11-16
+,legg,2018,"""Shane Legg"" 2018 interview AGI ""years""",Claude API web search,"Coverage from 2023 and 2025 of the 2028 forecast, the 2011 LessWrong Q&A and the DeepMind podcast excerpts; nothing from 2018.",2026-11-16
+,legg,2018,"""Shane Legg"" 2018 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Coverage from 2023 and 2025 and an undated fan-wiki interview; nothing from 2018.,2026-11-16
+,legg,2018,Shane Legg talk 2018 DeepMind AGI,Claude API web search,"A Hacker News comment of 20 Dec 2018 citing his 2011 blog post, plus later podcasts.",2026-11-16
+,legg,2018,"""Shane Legg"" 2018 podcast OR keynote OR lecture",Claude API web search,Found the 2018 Waikato Distinguished Alumni Award lecture video on YouTube (so1Ca-WAayE).,2026-11-16
+,legg,2018,"""Shane Legg"" said 2018 artificial general intelligence",Claude API web search,The same Waikato video plus later material.,2026-11-16
+,legg,2018,Shane Legg Waikato Distinguished Alumni 2018,Claude API web search,The Waikato 2018 annual report and award-recipient pages confirming the 2018 award.,2026-11-16
+,legg,2018,Shane Legg Waikato lecture artificial general intelligence journey,Claude API web search,No transcript or coverage of the 2018 lecture's content.,2026-11-16
+,legg,2018,https://www.youtube.com/watch?v=so1Ca-WAayE,Claude API web fetch,"Bot-protection page; only the title, Waikato channel, 16 May 2018 date and description were recovered, with no transcript.",2026-11-16
+,legg,2018,https://news.ycombinator.com/item?id=18722143,Claude API web fetch,A 20 Dec 2018 HN comment by another user linking Legg's 2011 vetta.org post; not Legg's own 2018 words.,2026-11-16
+,legg,2018,"""Shane Legg"" Hamilton lecture May 2018 DeepMind AGI Stuff",Claude API web search,No 2018 news coverage; a DeepMind talks page and later podcasts.,2026-11-16
+,legg,2018,ShaneLegg twitter 2018 AGI,Claude API web search,"Later tweets; a search snippet of a reply shows a 31 Jul 2018 Legg tweet giving study advice, which is not a prediction.",2026-11-16
+,legg,2018,"""Legg"" DeepMind co-founder 2018 interview artificial general intelligence decade",Claude API web search,Only coverage from 2023 and 2025.,2026-11-16
+,legg,2018,https://www.waikato.ac.nz/assets/Uploads/About-us/Governance-and-reporting/Annual-reports/University-of-Waikato-Annual-Report-2018.pdf,Claude API web fetch,"Opened, but its text was not read because of a handling error, so nothing can be quoted from it.",2026-11-16
+,legg,2018,https://cms.its.waikato.ac.nz/alumni/distinguished-alumni/previous-distinguished-alumni,Claude API web fetch,Would not open (url_not_allowed).,2026-11-16
+,legg,2018,"""Shane Legg"" 2018 New Zealand AGI lecture news",Claude API web search,Recent NZ items and the same Waikato video; no 2018 coverage of what he said.,2026-11-16
+,legg,2018,https://theagiclock.com/experts/shane-legg/,Claude API web fetch,Only metadata (a one-line bio saying he has held a 2028 timeline); no dated statements.,2026-11-16
+,legg,2019,"""Shane Legg"" AI prediction 2019",Claude API web search,"The 2011 LessWrong Q&A, later tweets and 2023 coverage; nothing said in 2019.",2026-11-16
+,legg,2019,"""Shane Legg"" 2019 interview AGI ""years""",Claude API web search,"2023 coverage, a 2022 LessWrong post on podcast excerpts and the 2011 Q&A; nothing from 2019.",2026-11-16
+,legg,2019,"""Shane Legg"" 2019 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,"TIME100 2023, 2023 coverage of a 5-year AGI prediction, and a Grokipedia line about a proto-AGI forecast for 2019 (made in 2011).",2026-11-16
+,legg,2019,"""DeepMind: The Podcast"" 2019 ""Shane Legg"" episode transcript",Claude API web search,"Season 1 aired Aug-Sep 2019; Episode 7 'Towards the future' lists Legg only under further reading, not as an interviewee.",2026-11-16
+,legg,2019,"""Shane Legg"" Waikato distinguished alumni public lecture",Claude API web search,The lecture was given in 2018.,2026-11-16
+,legg,2019,"""Shane Legg"" 2019 talk OR keynote OR lecture AGI",Claude API web search,A 14 Jun 2019 tweet praising another person's AGI talk; no prediction.,2026-11-16
+,legg,2019,https://deepmind-the-podcast.simplecast.com/episodes/towards-the-future,Claude API web fetch,The page opened but returned no content or transcript.,2026-11-16
+,legg,2019,"""Towards the future"" DeepMind podcast Hannah Fry transcript Shane Legg AGI",Claude API web search,"Episode notes confirm the interviewees were Kavukcuoglu, Back, Hadsell, Shanahan and Hassabis, not Legg.",2026-11-16
+,legg,2019,"""Shane Legg"" 2019 interview",Claude API web search,"Only the 2019 tweet, the 2023 Dwarkesh interview and the 2011 Q&A.",2026-11-16
+,legg,2019,ShaneLegg tweet 2019 AGI,Claude API web search,Only the June 2019 tweet praising a talk; the other tweets are from 2021-2025.,2026-11-16
+,legg,2019,"""Dr Shane Legg"" Distinguished Alumni Award public lecture Waikato",Claude API web search,Confirms the award and lecture were in 2018.,2026-11-16
+,legg,2019,"""Shane Legg"" said 2019 artificial general intelligence DeepMind co-founder",Claude API web search,Only mentions of the 2019 CBE; no 2019 statements.,2026-11-16
+,legg,2019,https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai,Claude API web fetch,Opened; holds the 2011 Q&A and a comment quoting his Dec 2011 proto-AGI 'within the next 8 years' forecast.,2026-11-16
+,legg,2020,"""Shane Legg"" AI prediction 2020",Claude API web search,"Mostly later coverage of his 2028 forecast, an older Despres interview on a fandom wiki, and the Oct 2020 MIT Technology Review AGI feature.",2026-11-16
+,legg,2020,"""Shane Legg"" 2020 interview AGI ""years""",Claude API web search,"Coverage from 2023 and later of the 2028 forecast, a LessWrong post of 2022 DeepMind podcast excerpts, and the MIT Technology Review 2020 feature again.",2026-11-16
+,legg,2020,"""Shane Legg"" 2020 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Coverage from 2023 to 2026 and the older fandom interview; nothing said in 2020.,2026-11-16
+,legg,2020,https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/,Claude API web fetch,"Opened; Oct 2020 feature quoting Legg, including one forward-looking line about very capable systems 'in a few decades' time'.",2026-11-16
+,legg,2020,"""Shane Legg"" GPT-3",Claude API web search,"Nothing from 2020; later papers, profiles and the Dwarkesh interview.",2026-11-16
+,legg,2020,"""Shane Legg"" podcast 2020",Claude API web search,"Dec 2025 DeepMind podcast (Spotify shows Jan 17, 2020, but the episode is from 2025) and the 2023 Dwarkesh podcast; no 2020 podcast.",2026-11-16
+,legg,2020,"""ShaneLegg"" twitter AGI 2028 2020",Claude API web search,"Legg tweets from 2021, 2024 and 2025 restating 50% by 2028; none from 2020.",2026-11-16
+,legg,2020,"""Shane Legg"" talk 2020 keynote",Claude API web search,"TED, USI Dies academicus (2023) and speaker pages; no 2020 talk.",2026-11-16
+,legg,2020,"""Shane Legg"" New Zealand interview Waikato honorary",Claude API web search,2018 Waikato Distinguished Alumni lecture and bio pages; nothing from 2020.,2026-11-16
+,legg,2020,"""Legg"" DeepMind ""chief scientist"" 2020 AGI decades",Claude API web search,Only the MIT Technology Review 2020 feature and later profiles.,2026-11-16
+,legg,2021,"""Shane Legg"" AI prediction 2021",Claude API web search,"Turned up Legg's X post of 2021-08-24 replying to @Abebab with 50% by 2028 / 90% by 2040 AGI odds (snippet only), plus coverage of his 2023 interview.",2026-11-16
+,legg,2021,"""Shane Legg"" 2021 interview AGI ""years""",Claude API web search,"Mostly the 2023 Dwarkesh interview and later coverage, plus the LessWrong post of DeepMind podcast excerpts.",2026-11-16
+,legg,2021,"""Shane Legg"" 2021 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Nothing from 2021; results were later news pages and aggregator pages.,2026-11-16
+,legg,2021,https://x.com/ShaneLegg/status/1430146229426692097?lang=en,Claude API web fetch,Would not open (url_not_allowed).,2026-11-16
+,legg,2021,https://twitter.com/ShaneLegg/status/1430146229426692097,Claude API web fetch,Would not open (url_not_allowed).,2026-11-16
+,legg,2021,"""Shane Legg"" ""50% by 2028"" ""90% by 2040""",Claude API web search,Only the same X post (snippet) and later coverage.,2026-11-16
+,legg,2021,"Abeba Birhane ""general AI"" ""here soon"" Shane Legg August 2021",Claude API web search,The same X post thread; the snippet shows Birhane's 2021-08-21 post quoting an older Legg comment.,2026-11-16
+,legg,2021,"""Shane Legg"" 2021 talk OR podcast OR lecture artificial general intelligence",Claude API web search,The DeepMind podcast 'The road to AGI' episode (2022) and later podcasts; no 2021 talk.,2026-11-16
+,legg,2021,ShaneLegg tweet 2021 AGI,Claude API web search,The same 2021-08-24 X post and other Legg posts from other years.,2026-11-16
+,legg,2021,"""Legg"" DeepMind AGI timeline 2021 ""Shane"" said",Claude API web search,Later coverage of his 2028 forecast; nothing new from 2021.,2026-11-16
+,legg,2021,"""Shane Legg"" ""2021"" AGI ""decade""",Claude API web search,Nothing relevant from 2021.,2026-11-16
+,legg,2021,https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi,Claude API web fetch,"Opened; it dates the Legg podcast forecast ('2030-ish ... 50-50') to an episode published 2022-02-15, so it belongs to 2022.",2026-11-16
+,legg,2021,"""roughly held since 1999"" Legg",Claude API web search,Only the X post again; no copy of it elsewhere that I could open.,2026-11-16
+,legg,2021,"""Shane Legg"" 2021 ""AGI"" interview Wired OR Guardian OR ""Financial Times""",Claude API web search,Only recent coverage of the DeepMind Institute; no 2021 interview.,2026-11-16
+,legg,2022,"""Shane Legg"" AI prediction 2022",Claude API web search,Mostly 2023 coverage of the 2028 prediction; one 2022 Substack post pointing to the 2022 podcast.,2026-11-16
+,legg,2022,"""Shane Legg"" 2022 interview AGI ""years""",Claude API web search,"The LessWrong excerpt of the Feb 2022 podcast episode 'The road to AGI', plus 2023 and 2025 items.",2026-11-16
+,legg,2022,"""Shane Legg"" 2022 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Coverage from 2023 and 2025 and an older interview with Jonathan Despres; nothing new from 2022.,2026-11-16
+,legg,2022,https://www.lesswrong.com/posts/SbAgRYo8tkHwhd9Qx/deepmind-the-podcast-excerpts-on-agi,Claude API web fetch,"Opened: excerpts of S2 Ep5 with timestamps, including Legg's 2030-ish 50-50 answer and his decade/three-decades remark.",2026-11-16
+,legg,2022,"""Shane Legg"" tweet AGI 2022 Gato",Claude API web search,"A May 25, 2022 tweet about who coined the term AGI, which makes no prediction; the rest is from other years.",2026-11-16
+,legg,2022,"""Shane Legg"" ""DeepMind: The Podcast"" road to AGI transcript",Claude API web search,"The LessWrong excerpt again, plus listings for the 2025 episode; no official transcript of the 2022 episode.",2026-11-16
+,legg,2022,"""Shane Legg"" 2022 talk OR keynote OR lecture AGI",Claude API web search,The 2023 TED talk and speaker-agency pages; no 2022 talk.,2026-11-16
+,legg,2022,"ShaneLegg x.com 2022 AGI timelines ""50%""",Claude API web search,"Tweets from 2021, 2024 and 2025 and a LinkedIn post; none from 2022.",2026-11-16
+,legg,2022,"""Legg"" DeepMind podcast ""2030-ish"" ""50-50""",Claude API web search,Only the LessWrong excerpt carries the wording.,2026-11-16
+,legg,2022,"""Shane Legg"" 2022 AI safety alignment interview future",Claude API web search,The 2023 Dwarkesh interview and the 2023 TIME100 profile; nothing from 2022.,2026-11-16
+,legg,2022,https://aifuture.substack.com/p/how-far-are-we-from-artificial-general,Claude API web fetch,Opened: a 2022 post that paraphrases the same podcast (50/50 by 2030) and contains no new Legg words.,2026-11-16
+,legg,2022,https://www.youtube.com/watch?v=Uy4OYU7PQYA,Claude API web fetch,"Opened: YouTube blocked the page; the title, channel, Feb 14, 2022 upload date and description came through, but no transcript.",2026-11-16
+,legg,2022,"""@ShaneLegg"" 2022 reply AGI ""2028"" OR ""2030"" twitter",Claude API web search,"Tweets from 2021, 2023, 2024 and 2025; nothing from 2022.",2026-11-16
+,legg,2023,"""Shane Legg"" AI prediction 2023",Claude API web search,"News coverage from November 2023 of the 50%-by-2028 claim (marketsandmarkets, IBTimes), the TIME100 AI profile, and the e-Discovery Team / EDRM blog posts.",2026-11-16
+,legg,2023,"""Shane Legg"" 2023 interview AGI ""years""",Claude API web search,"The same coverage, plus an MIT Technology Review piece from November 2023 on DeepMind's levels-of-AGI paper.",2026-11-16
+,legg,2023,"""Shane Legg"" 2023 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Secondary write-ups of the 2028 claim; aisafety.info says he gave 80% within 13 years in 2023.,2026-11-16
+,legg,2023,Dwarkesh Patel Shane Legg transcript 2028 AGI,Claude API web search,The Dwarkesh transcript page (26 Oct 2023) and Legg's 27 Oct post on X thanking Dwarkesh for the interview 'last week'.,2026-11-16
+,legg,2023,Shane Legg 80% AGI 2037,Claude API web search,"Legg's August 2023 replies to Gary Marcus on X (80% in 13 years; about 30% for the next 3 years), seen only in snippets.",2026-11-16
+,legg,2023,"Shane Legg October 2023 AGI ""next year""",Claude API web search,Nothing new for 2023; no source for the recorded 2023-10-17 claim.,2026-11-16
+,legg,2023,https://www.dwarkesh.com/p/shane-legg,Claude API web fetch,"The official transcript, but my copy stopped around 0:25, before the Timelines section at 0:34:03, so no timeline quote could be read there.",2026-11-16
+,legg,2023,https://x.com/ShaneLegg/status/1693673161353478474,Claude API web fetch,Would not open (url_not_allowed); not quoted.,2026-11-16
+,legg,2023,https://www.technologyreview.com/2023/11/16/1083498/google-deepmind-what-is-artificial-general-intelligence-agi/,Claude API web fetch,Legg quotes on defining AGI; no dated forecast.,2026-11-16
+,legg,2023,"""Shane Legg"" ""AGI by 2028"" transcript ""0:34""",Claude API web search,"A snippet shows the Dwarkesh page does hold the 50%-by-2028 passage, which my opened copy cut off.",2026-11-16
+,legg,2023,"""Shane Legg"" 2023 talk AGI ""not next year""",Claude API web search,Only more coverage of the Dwarkesh interview; no separate source for 'not next year'.,2026-11-16
+,legg,2023,"Shane Legg Dwarkesh ""log-normal"" OR ""mode"" 2025 2028 timelines transcript",Claude API web search,Restatements of the 2011 log-normal forecast; nothing new from 2023.,2026-11-16
+,legg,2023,https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/,Claude API web fetch,"Blog post reprinting the Dwarkesh passage 'I think there’s a 50% chance that we have AGI by 2028', with timestamps.",2026-11-16
+,legg,2023,https://time.com/collections/time100-ai/6310659/shane-legg/,Claude API web fetch,TIME profile of 7 Sep 2023: the reporter says Legg gives a 70% chance alignment is solved by 2028 and still holds the 2028 forecast he first made 20+ years ago.,2026-11-16
+,legg,2023,"""Shane Legg"" interview October 2023 AGI timeline ""two years""",Claude API web search,Coverage of his late-2025 interview only (noted under other_years).,2026-11-16
+,legg,2023,"""Shane Legg"" Gary Marcus bet 2023 ""13 years""",Claude API web search,"Two of Legg's posts from August 2023 on X ('My AGI occurring CDF hits 80% in 13 years'; 'For the next 3 years I'm at about 30%') and Zvi's newsletter of 24 Aug 2023, seen only in snippets.",2026-11-16
+,legg,2023,https://thezvi.wordpress.com/2023/08/24/ai-26-fine-tuning-time/,Claude API web fetch,"Opened, but my copy stopped before the part about Legg and Marcus; nothing quoted.",2026-11-16
+,legg,2024,"""Shane Legg"" AI prediction 2024",Claude API web search,"LessWrong '2024 in AI predictions' (quoting the 2023 Dwarkesh line), Legg's 13 Dec 2024 X reply, How I Built This (Apr 2024), AI Business SXSW 2024 report, Legg's Nov 2024 X post about 'the coming decades'.",2026-11-16
+,legg,2024,"""Shane Legg"" 2024 interview AGI ""years""",Claude API web search,"The same X reply and SXSW article, plus 2025 coverage of the Hannah Fry podcast (minimal AGI by 2028).",2026-11-16
+,legg,2024,"""Shane Legg"" 2024 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Mostly secondary roundups and Wikipedia; nothing new from 2024.,2026-11-16
+,legg,2024,https://x.com/ShaneLegg/status/1867477029559599402,Claude API web fetch,"Would not open (url_not_allowed). The snippet shows a 13 Dec 2024 reply, 'I've been predicting a 50% chance of AGI by 2028 for 20 years', not used as a candidate.",2026-11-16
+,legg,2024,https://x.com/ShaneLegg/status/1858923723861979542,Claude API web fetch,"Would not open (url_not_allowed). The snippet shows a ~Nov 2024 post saying AI and AGI will transform science 'in the coming decades', not used.",2026-11-16
+,legg,2024,https://wnyc.org/story/ai-is-smarter-than-you-think-with-shane-legg-of-google-deepmind/,Claude API web fetch,"How I Built This episode page (11 Apr 2024) with a description only, no transcript; says he 'stands by that prediction'.",2026-11-16
+,legg,2024,https://aibusiness.com/responsible-ai/deepmind-co-founder-practical-agi-is-decades-away-sxsw-2024,Claude API web fetch,Report on SXSW 2024 (12 Mar 2024): he stood by 50-50 AGI by 2028; practical uses 'decades away'; AGI 'soon'. The text was cut off partway.,2026-11-16
+,legg,2024,"""Shane Legg"" ""How I Built This"" transcript",Claude API web search,"Podcast listings only (Player.fm, Apple, iHeart); no transcript text.",2026-11-16
+,legg,2024,"""Shane Legg"" ""50% chance that we have AGI by 2028""",Claude API web search,"Traces this line to the Dwarkesh Podcast (2023), not 2024.",2026-11-16
+,legg,2024,"""Shane Legg"" SXSW 2024 Semafor Albergotti AGI 2028",Claude API web search,"SXSW session listing, Legg's 12 Mar 2024 X post about the talk, and the Semafor Tech newsletter of 13 Mar 2024.",2026-11-16
+,legg,2024,https://player.fm/series/how-i-built-this-with-guy-raz-1324390/ai-is-smarter-than-you-think-with-shane-legg-of-google-deepmind,Claude API web fetch,Would not open (url_not_accessible).,2026-11-16
+,legg,2024,https://www.semafor.com/newsletter/03/13/2024/adobe-firefly-repeats-the-same-blunders-as-google-gemini,Claude API web fetch,"Albergotti's account of the SXSW interview: Legg says the 50/50-by-2028 figure is 'still about right'. Only direct quote: 'This is a deep, deep change.'",2026-11-16
+,legg,2024,"""Shane Legg"" podcast 2024 AGI timeline transcript",Claude API web search,Mostly the 2023 Dwarkesh episode and the 2025 Google DeepMind podcast; no new 2024 transcript.,2026-11-16
+,legg,2024,"""Shane Legg"" 2024 talk keynote AGI",Claude API web search,"USI 28th Dies academicus talk (6 May 2024; not opened, page budget used up) and a TED talk I believe is from 2023.",2026-11-16
+,legg,2024,"""ShaneLegg"" ""AGI by 2028"" ""for 20 years""",Claude API web search,"The same Dec 2024 X reply (snippet only), plus 2021 and 2025 posts from other years.",2026-11-16
+,legg,2025,"""Shane Legg"" AI prediction 2025",Claude API web search,"Coverage of the Dec 2025 Hannah Fry podcast (the-decoder, BusinessToday, NextBigFuture), a Jan 2025 Legg X reply, and old 2011 prediction retellings.",2026-11-16
+,legg,2025,"""Shane Legg"" 2025 interview AGI ""years""",Claude API web search,The Decoder coverage of minimal AGI in about two years and a spoken.md transcript page for the Dec 2025 podcast.,2026-11-16
+,legg,2025,"""Shane Legg"" 2025 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,"LessWrong '2025 in AI predictions' quoting Legg's '50% chance of AGI in the next 3 years', plus aggregator pages.",2026-11-16
+,legg,2025,"""Shane Legg"" ""50% chance of AGI in the next 3 years""",Claude API web search,"ControlAI quote pages carrying the line without a date, and a snippet of Legg's Dec 2025 LinkedIn post ('50% chance we'll see #AGI by 2028').",2026-11-16
+,legg,2025,"ShaneLegg x.com ""Still seems about right to me"" AGI 2028",Claude API web search,Snippets of Legg X posts from Dec 2024 and Dec 2025 (the latter: 'publicly held the same prediction since 2009: there's a 50% chance we'll see #AGI by 2028').,2026-11-16
+,legg,2025,https://spoken.md/episode/the-arrival-of-agi-with-shane-legg-co-founder-of-deepmind-1000740871915,Claude API web fetch,"Opened; only the first few minutes of the transcript are free, including one undated 'coming in a few years' line.",2026-11-16
+,legg,2025,https://x.com/ShaneLegg/status/1999180585407848776,Claude API web fetch,Would not open (url_not_allowed); not quoted.,2026-11-16
+,legg,2025,https://x.com/ShaneLegg/status/1877674960770007042,Claude API web fetch,Would not open (url_not_allowed); the Jan 2025 'we might get there in the coming years' was seen only in a snippet and is not quoted.,2026-11-16
+,legg,2025,https://www.linkedin.com/posts/shanelegg_agi-activity-7404935040796721152-rFPt,Claude API web fetch,Would not open (url_not_allowed); the '50% chance we'll see #AGI by 2028' line is not quoted.,2026-11-16
+,legg,2025,"""Shane Legg"" Hannah Fry transcript ""minimal AGI"" ""50%"" 2028",Claude API web search,More coverage of the Dec 2025 podcast; no full transcript.,2026-11-16
+,legg,2025,"""The Arrival of AGI"" Shane Legg full transcript ""Hannah Fry"" ""golden age""",Claude API web search,A podwise.ai episode page (11 Dec 2025) with a partial question-and-answer transcript.,2026-11-16
+,legg,2025,https://podwise.ai/dashboard/episodes/6381665,Claude API web fetch,Opened; transcribed answers include the 'one year … five years … about two or so' minimal-AGI line; '50-50 by 2028' and 'full AGI within a decade' appear only in podwise's own summary.,2026-11-16
+,legg,2025,"""Shane Legg"" talk OR keynote OR panel 2025 AGI timeline -""Hannah Fry""",Claude API web search,No other 2025 talks or interviews surfaced; results were all about the Fry podcast.,2026-11-16
+,legg,2025,"""Shane Legg"" ""Gemini 9"" OR ""50/50"" transcript 2028 podcast",Claude API web search,"A second podwise page for the YouTube version of the episode, plus older 2021 and 2023 coverage.",2026-11-16
+,legg,2025,https://podwise.ai/dashboard/episodes/6406921,Claude API web fetch,Opened; the same minimal-AGI timing answer in slightly different wording; the 2028 and decade claims appear only in a chapter summary at 00:49:20.,2026-11-16
+,legg,2025,"ShaneLegg ""Still seems about right to me"" ""next 3 years""",Claude API web search,Only ControlAI pages again; the original post and its date were not found.,2026-11-16
+,legg,2026,"""Shane Legg"" AI prediction 2026",Claude API web search,"University of Auckland notice of a 4 December 2026 lecture, plus FT/Reuters-based coverage of the 16 September DeepMind Institute launch.",2026-11-16
+,legg,2026,"""Shane Legg"" 2026 interview AGI ""years""",Claude API web search,"Mostly coverage of the December 2025 DeepMind podcast, the NZ Initiative opinion piece, and an X post about the institute launch.",2026-11-16
+,legg,2026,"""Shane Legg"" 2026 AI ""by 20"" OR ""next year"" OR ""within"" OR ""end of the decade""",Claude API web search,Roundup sites repeating the 50%-by-2028 figure; no new 2026 statement.,2026-11-16
+,legg,2026,"""DeepMind Institute"" Shane Legg essay AGI",Claude API web search,"DeepMind Institute site, launch essay, economics essay and Legg's X post.",2026-11-16
+,legg,2026,Shane Legg Financial Times interview DeepMind Institute minimal AGI 2028,Claude API web search,Several reprints of the Reuters summary of the FT interview; the FT article itself didn't turn up.,2026-11-16
+,legg,2026,"""Shane Legg"" January 2026 minimal AGI podcast",Claude API web search,"Results all point to the 11 December 2025 Google DeepMind podcast, not a January 2026 appearance.",2026-11-16
+,legg,2026,https://institute.deepmind.com/,Claude API web fetch,Institute homepage listing the essays; no prediction on it.,2026-11-16
+,legg,2026,https://institute.deepmind.com/essays/introducing-the-deepmind-institute/,Claude API web fetch,"Launch essay dated 16 September 2026 by Legg, Manyika and Hassabis; says the gaps to full AGI will close 'soon', with no date.",2026-11-16
+,legg,2026,https://institute.deepmind.com/essays/the-economics-of-intelligence/,Claude API web fetch,"29 October 2026 essay by Imas, Koh and Legg on coordination and economic change; no dated AI prediction.",2026-11-16
+,legg,2026,Shane Legg podcast 2026 AGI timeline interview transcript,Claude API web search,Dwarkesh 2023 interview and the December 2025 DeepMind podcast; no 2026 podcast found.,2026-11-16
+,legg,2026,"Shane Legg FT interview ""comfortable"" minimal AGI 2028 ft.com",Claude API web search,More Reuters reprints; no ft.com page.,2026-11-16
+,legg,2026,"Shane Legg talk keynote 2026 AGI ""2028""",Claude API web search,Speaker-bureau page and the Auckland 'AGI Incoming' lecture notice; no 2026 talk transcript.,2026-11-16
+,legg,2026,https://wsau.com/2026/09/16/deepmind-co-founder-warns-ai-capabilities-must-not-outrun-safety-controls-ft-reports/,Claude API web fetch,"Reuters summary of the FT interview, including the 'comfortable' with 50% minimal AGI by 2028 line.",2026-11-16
+,legg,2026,https://www.nzinitiative.org.nz/reports-and-media/opinion/new-zealand-ignores-the-kiwi-who-saw-the-future-coming,Claude API web fetch,30 July 2026 opinion piece by Oliver Hartwich retelling Legg's 2028 forecast; none of Legg's own words.,2026-11-16
+,legg,2026,https://aimultiple.com/artificial-general-intelligence-singularity-timing,Claude API web fetch,"Page opened, but the fetched text had no mention of Legg, so the 'January 2026' claim couldn't be checked.",2026-11-16

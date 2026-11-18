@@ -1,0 +1,384 @@
+{
+  "speaker_id": "amodei",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.6573,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7695
+      },
+      "cache_creation_input_tokens": 46471,
+      "cache_read_input_tokens": 618202,
+      "inference_geo": "global",
+      "input_tokens": 50,
+      "output_tokens": 10554,
+      "output_tokens_details": {
+        "thinking_tokens": 2741
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Dario Amodei\" AI prediction 2023','\"Dario Amodei\" 2023 interview AGI \"years\"','\"Dario Amodei\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r), str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in qs:\n    if q not in R or isinstance(R[q],str):\n        r=R.get(q) or await web_search({\"query\":q})\n        if isinstance(r,str): r=json.loads(r)\n        R[q]=r\n    print(\"==\",q)\n    for x in R[q]:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Dario Amodei\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Logan Bartlett Show Dario Amodei transcript 2023','Dario Amodei 2023 podcast interview Anthropic CEO \"Claude 2\"','Dario Amodei AI Safety Summit Bletchley November 2023 speech']:\n    r=json.loads(await web_search({\"query\":q})); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Logan Bartlett Show Dario Amodei transcript 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dario Amodei 2023 podcast interview Anthropic CEO \"Claude 2\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dario Amodei AI Safety Summit Bletchley November 2023 speech"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\ndef show(q,url,kw=None,n=3000):\n    for x in R[q]:\n        if x['url']==url:\n            c=x['content']\n            if kw:\n                for k in kw:\n                    for m in re.finditer(k,c):\n                        print('>>',c[max(0,m.start()-300):m.start()+300].replace('\\n',' '));print()\n            else: print(c[:n])\nshow('Dario Amodei AI Safety Summit Bletchley November 2023 speech','https://www.anthropic.com/news/uk-ai-safety-summit',None,4000)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "show('Dario Amodei 2023 podcast interview Anthropic CEO \"Claude 2\"','https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment',None,2500)\nprint('-----')\nshow('Dario Amodei 2023 podcast interview Anthropic CEO \"Claude 2\"','https://techcrunch.com/2023/08/03/anthropics-dario-amodei-discusses-building-safer-ai-and-more-at-techcrunch-disrupt-2023',None,1500)\nprint('-----')\nshow(qs[0],'https://www.marketingaiinstitute.com/blog/ai-predictions',None,1500)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "F={}\nfor u in ['https://www.anthropic.com/news/uk-ai-safety-summit','https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment','https://theloganbartlettshow.substack.com/p/dario-amodeis-ai-predictions-through']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): r=r[0]\n    F[u]=r.get('content','') if 'content' in r else str(r)\n    print(u,len(F[u]),r.get('type'))\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.anthropic.com/news/uk-ai-safety-summit"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://theloganbartlettshow.substack.com/p/dario-amodeis-ai-predictions-through"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=await web_fetch({\"url\":'https://www.anthropic.com/news/uk-ai-safety-summit'})\nprint(type(r), str(r)[:600])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.anthropic.com/news/uk-ai-safety-summit"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={u:(v['source']['data'] if isinstance(v,dict) else v) for u,v in F.items()}\nfor u,t in T.items(): print(u,len(t))\nt=T['https://www.anthropic.com/news/uk-ai-safety-summit']\ni=t.find('Before I get'); print(t[i:i+6000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(t[i+6000:i+9000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment']\nfor k in ['year','decade','202','month','AGI','human-level','soon']:\n    for m in re.finditer(k,t):\n        print(k,'>>',t[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "j=t.find('Short-term risks'); print(t[j-200:j+1500]); j=t.find('as we go 2 or 3'); print(t[j-300:j+300])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://theloganbartlettshow.substack.com/p/dario-amodeis-ai-predictions-through']; i=t.find('Episode Memo'); print(t[i:i+4000])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['\"Amodei\" Logan Bartlett \"Dyson spheres\" transcript','\"Ep 20\" \"Anthropic CEO Dario Amodei on the Future of AGI, Leading Anthropic, and AI Doom Chances\"','Dario Amodei Senate Judiciary written testimony July 2023 \"2-3 years\" pdf']:\n    r=json.loads(await web_search({\"query\":q})); R[q]=r\n    print(\"==\",q)\n    for x in r: print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Amodei\" Logan Bartlett \"Dyson spheres\" transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Ep 20\" \"Anthropic CEO Dario Amodei on the Future of AGI, Leading Anthropic, and AI Doom Chances\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Dario Amodei Senate Judiciary written testimony July 2023 \"2-3 years\" pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "q='Dario Amodei Senate Judiciary written testimony July 2023 \"2-3 years\" pdf'\nshow(q,'https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf',['year','202'])\nshow('\"Ep 20\" \"Anthropic CEO Dario Amodei on the Future of AGI, Leading Anthropic, and AI Doom Chances\"','https://unsupervised-learning.simplecast.com/episodes/ul-with-dario-draft-BWv4MtLs',None,1500)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in ['https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf','https://www.dwarkesh.com/p/dario-amodei']:\n    r=await web_fetch({\"url\":u})\n    r=json.loads(r) if isinstance(r,str) else r\n    if isinstance(r,list): r=r[0]\n    c=r.get('content')\n    if isinstance(c,dict): c=c.get('source',{}).get('data',str(c))\n    T[u]=c if c else str(r)[:500]\n    print(u,len(T[u]))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.dwarkesh.com/p/dario-amodei"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf']\nprint(t[:300])\nfor k in ['2-3 years','2 to 3 years','two to three','next few years','years']:\n    for m in re.finditer(k,t):\n        print(k,'>>',t[max(0,m.start()-350):m.start()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import base64,io\nfrom pypdf import PdfReader\npdf=PdfReader(io.BytesIO(base64.b64decode(t)))\ntxt=\"\\n\".join(p.extract_text() for p in pdf.pages); T['senate_txt']=txt\nprint(len(txt))\nfor k in ['2-3 years','2 to 3','two to three','next few years','decade','202[4-9]','by the end']:\n    for m in re.finditer(k,txt):\n        print(k,'>>',txt[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "print(txt[:200]); print(repr(txt[2000:2600]))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import fitz\ndoc=fitz.open(stream=base64.b64decode(t),filetype='pdf')\ntxt=\"\\n\".join(p.get_text() for p in doc); T['senate_txt']=txt\nfor k in ['2-3 years','2 to 3','two to three','next few years','decade','by the end']:\n    for m in re.finditer(k,txt):\n        print(k,'>>',txt[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import pdfplumber\nwith pdfplumber.open(io.BytesIO(base64.b64decode(t))) as p:\n    txt=\"\\n\".join((pg.extract_text(x_tolerance=1) or '') for pg in p.pages)\nT['senate_txt']=txt; print(txt[:200])\nfor k in ['2-3 years','2 to 3','two to three','next few years','decade','by the end']:\n    for m in re.finditer(k,txt):\n        print(k,'>>',txt[max(0,m.start()-400):m.start()+300].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=T['https://www.dwarkesh.com/p/dario-amodei']; print(t[:300])\nfor k in ['two or three years','2 or 3 years','three years','years','202[4-9]','decade']:\n    for m in re.finditer(k,t):\n        print(k,'>>',t[max(0,m.start()-350):m.start()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for k in ['educated','within a few years','AGI','human level','human-level']:\n    for m in re.finditer(k,t):\n        print(k,'>>',t[max(0,m.start()-600):m.start()+400].replace('\\n',' '));print()\nprint(t[-800:])"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-07",
+        "quote": "But again, as we go 2 or 3 years into the future, I’m a little concerned that the stakes get high enough that it becomes very hard to keep these open source models safe.",
+        "what_is_predicted": "Within two to three years AI models will be powerful enough that open-source versions become very hard to keep safe.",
+        "date_or_span": "2 or 3 years (from mid-2023)",
+        "occasion": "Interview with Jeremy Kahn at Fortune Brainstorm Tech, July 2023; transcript published by Fortune 2023-09-26",
+        "source_url": "https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-07",
+        "quote": "Medium-term risks I think in a, you know, couple of years as models get better at things like science, engineering, biology, you can just do bad things. Very bad things with the models that you wouldn’t have been able to do without them.",
+        "what_is_predicted": "In about two years AI models will be good enough at science, engineering and biology to enable seriously harmful misuse that was not possible without them (borderline on dating: 'a couple of years').",
+        "date_or_span": "a couple of years (from mid-2023)",
+        "occasion": "Interview with Jeremy Kahn at Fortune Brainstorm Tech, July 2023; transcript published by Fortune 2023-09-26",
+        "source_url": "https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment",
+        "source_kind": "printed_qa",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-07-25",
+        "quote": "However, a straightforward extrapolation of today’s systems to those we expect to see in 2-3 years suggests a substantial risk that AI systems will be able to fill in all the missing pieces, if appropriate guardrails and mitigations are not put in place.",
+        "what_is_predicted": "Within two to three years AI systems may be able to supply all the missing steps for producing biological weapons unless guardrails are in place.",
+        "date_or_span": "2-3 years",
+        "occasion": "Written testimony, Senate Judiciary Subcommittee on Privacy, Technology, and the Law, hearing 'Oversight of A.I.: Principles for Regulation'",
+        "source_url": "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf",
+        "source_kind": "own_words",
+        "already_recorded": "2023-07-25-amodei-senate-bio-two-to-three-years.toml"
+      },
+      {
+        "date_said": "2023-07-25",
+        "quote": "Simply put, a straightforward extrapolation of the pace of progress suggests that, in 2-3 years, AI systems may facilitate extraordinary insights in broad swaths of many science and engineering disciplines.",
+        "what_is_predicted": "Within two to three years AI systems may produce extraordinary insights across many science and engineering fields.",
+        "date_or_span": "2-3 years",
+        "occasion": "Written testimony, Senate Judiciary Subcommittee on Privacy, Technology, and the Law",
+        "source_url": "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf",
+        "source_kind": "own_words",
+        "already_recorded": "2023-07-25-amodei-senate-science-insights-two-to-three-years.toml"
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2023-08-08",
+        "quote": "I think these different thresholds have different answers, although I suspect they will all come within a few years.",
+        "source_url": "https://www.dwarkesh.com/p/dario-amodei"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2026",
+        "note": "Searches returned mostly 2026 coverage (Dwarkesh 'end of the exponential' episode, 1-3 year 'country of geniuses' timeline, 'by 2035'); not opened."
+      },
+      {
+        "year": "2024",
+        "note": "TechCrunch coverage of the October 2024 essay 'Machines of Loving Grace' appeared in results; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Dario Amodei\" AI prediction 2023",
+        "what_found": "Logan Bartlett Show episode memo (Oct 2023), a Marketing AI Institute write-up of the 2023 Dwarkesh interview, and later-year coverage."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2023 interview AGI \"years\"",
+        "what_found": "Almost entirely 2026 Dwarkesh-interview coverage; nothing new from 2023."
+      },
+      {
+        "query_or_url": "\"Dario Amodei\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Mostly 2025-2026 coverage; nothing new from 2023."
+      },
+      {
+        "query_or_url": "Logan Bartlett Show Dario Amodei transcript 2023",
+        "what_found": "Podcast listings for EP 82 (Oct 2023) and the Unsupervised Learning Ep 20 listing; no transcript."
+      },
+      {
+        "query_or_url": "Dario Amodei 2023 podcast interview Anthropic CEO \"Claude 2\"",
+        "what_found": "Dwarkesh 2023 episode page, a Fortune Brainstorm Tech transcript, and a TechCrunch Disrupt 2023 announcement."
+      },
+      {
+        "query_or_url": "Dario Amodei AI Safety Summit Bletchley November 2023 speech",
+        "what_found": "Anthropic's page of his prepared UK AI Safety Summit remarks (1 Nov 2023) and LessWrong copies."
+      },
+      {
+        "query_or_url": "\"Amodei\" Logan Bartlett \"Dyson spheres\" transcript",
+        "what_found": "No transcript of the Logan Bartlett episode; only the show's memo and unrelated pages."
+      },
+      {
+        "query_or_url": "\"Ep 20\" \"Anthropic CEO Dario Amodei on the Future of AGI, Leading Anthropic, and AI Doom Chances\"",
+        "what_found": "Unsupervised Learning episode dated 16 Oct 2023; listing pages only, no transcript."
+      },
+      {
+        "query_or_url": "Dario Amodei Senate Judiciary written testimony July 2023 \"2-3 years\" pdf",
+        "what_found": "The Senate Judiciary PDF of his written testimony for 25 July 2023."
+      },
+      {
+        "query_or_url": "https://www.anthropic.com/news/uk-ai-safety-summit",
+        "what_found": "Opened: full prepared remarks; the only forward-looking line is about compute growth over 'the next few years' (undated business forecast, excluded); no dated AI capability prediction."
+      },
+      {
+        "query_or_url": "https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment",
+        "what_found": "Opened: printed transcript of the July 2023 Brainstorm Tech interview with two dated forward-looking statements."
+      },
+      {
+        "query_or_url": "https://theloganbartlettshow.substack.com/p/dario-amodeis-ai-predictions-through",
+        "what_found": "Opened: the host's paraphrase of Amodei's predictions (2024, 2025, 5-10 years) with no direct quotes from him, so not usable."
+      },
+      {
+        "query_or_url": "https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf",
+        "what_found": "Opened: written testimony confirming both recorded two-to-three-year claims (bio and science insights)."
+      },
+      {
+        "query_or_url": "https://www.dwarkesh.com/p/dario-amodei",
+        "what_found": "Opened: the transcript was cut off at about minute 27; it had the undated 'within a few years' line, but the recorded 'well-educated human' passage was not in the part returned."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "2023 held dated predictions around his July Senate testimony (two already recorded, confirmed from the PDF) and the July Fortune Brainstorm Tech interview, which adds a 2-3 year claim about open-source models becoming hard to keep safe and a borderline 'couple of years' claim about medium-term misuse risks. The Dwarkesh 'two or three years' claim already on file could not be checked because the page returned was cut off, and the Logan Bartlett and Unsupervised Learning podcasts (Oct 2023) were found only as summaries or listings, not transcripts."
+  },
+  "reply_text": "I found two new dated predictions from Dario Amodei in 2023, both in one interview. I also confirmed the two Senate testimony claims you already have. I couldn't confirm the Dwarkesh claim you already have.\n\n- **New, from Fortune's Brainstorm Tech conference in July 2023.** Fortune printed the question-and-answer transcript on 2023-09-26, and it gives only \"July\" as the date. In it he said open-source models could become very hard to keep safe \"2 or 3 years into the future.\" He also placed \"medium-term\" misuse risks in \"a couple of years.\" That second one is borderline, because \"a couple of years\" sits close to the \"a few years\" phrasing your rules treat as undated.\n- **Already recorded, Senate testimony of 2023-07-25.** I opened the written testimony PDF and its wording matches both recorded files.\n- **Already recorded, Dwarkesh podcast of 2023-08-08.** The page I opened was cut off before the \"two to three years\" passage, so I don't list that claim. The part I could read had one undated line on when AGI-level thresholds arrive: \"within a few years.\"\n- **Not candidates.** Two other occasions gave nothing usable:\n  - UK AI Safety Summit remarks (1 November 2023): the only forward-looking line is about computing power growth over \"the next few years,\" which is an undated business forecast.\n  - Logan Bartlett Show (October 2023): the episode page has only the host's summary, not Amodei's words.\n\nI ran 10 of the 12 searches and opened all 6 pages. The 10 searches include one repeated, uncounted run of the first search after a code error, which only the tool log shows. The last 2 searches would have been useless with no page openings left to check results. One page (the Anthropic summit remarks) was opened twice because of a code error; the log below lists it once. The Unsupervised Learning podcast of 16 October 2023 and a full Logan Bartlett transcript still need checking.\n\n```json\n{\n  \"candidates\": [\n    {\"date_said\": \"2023-07\", \"quote\": \"But again, as we go 2 or 3 years into the future, I’m a little concerned that the stakes get high enough that it becomes very hard to keep these open source models safe.\", \"what_is_predicted\": \"Within two to three years AI models will be powerful enough that open-source versions become very hard to keep safe.\", \"date_or_span\": \"2 or 3 years (from mid-2023)\", \"occasion\": \"Interview with Jeremy Kahn at Fortune Brainstorm Tech, July 2023; transcript published by Fortune 2023-09-26\", \"source_url\": \"https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-07\", \"quote\": \"Medium-term risks I think in a, you know, couple of years as models get better at things like science, engineering, biology, you can just do bad things. Very bad things with the models that you wouldn’t have been able to do without them.\", \"what_is_predicted\": \"In about two years AI models will be good enough at science, engineering and biology to enable seriously harmful misuse that was not possible without them (borderline on dating: 'a couple of years').\", \"date_or_span\": \"a couple of years (from mid-2023)\", \"occasion\": \"Interview with Jeremy Kahn at Fortune Brainstorm Tech, July 2023; transcript published by Fortune 2023-09-26\", \"source_url\": \"https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment\", \"source_kind\": \"printed_qa\", \"already_recorded\": \"\"},\n    {\"date_said\": \"2023-07-25\", \"quote\": \"However, a straightforward extrapolation of today’s systems to those we expect to see in 2-3 years suggests a substantial risk that AI systems will be able to fill in all the missing pieces, if appropriate guardrails and mitigations are not put in place.\", \"what_is_predicted\": \"Within two to three years AI systems may be able to supply all the missing steps for producing biological weapons unless guardrails are in place.\", \"date_or_span\": \"2-3 years\", \"occasion\": \"Written testimony, Senate Judiciary Subcommittee on Privacy, Technology, and the Law, hearing 'Oversight of A.I.: Principles for Regulation'\", \"source_url\": \"https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf\", \"source_kind\": \"own_words\", \"already_recorded\": \"2023-07-25-amodei-senate-bio-two-to-three-years.toml\"},\n    {\"date_said\": \"2023-07-25\", \"quote\": \"Simply put, a straightforward extrapolation of the pace of progress suggests that, in 2-3 years, AI systems may facilitate extraordinary insights in broad swaths of many science and engineering disciplines.\", \"what_is_predicted\": \"Within two to three years AI systems may produce extraordinary insights across many science and engineering fields.\", \"date_or_span\": \"2-3 years\", \"occasion\": \"Written testimony, Senate Judiciary Subcommittee on Privacy, Technology, and the Law\", \"source_url\": \"https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf\", \"source_kind\": \"own_words\", \"already_recorded\": \"2023-07-25-amodei-senate-science-insights-two-to-three-years.toml\"}\n  ],\n  \"undated\": [\n    {\"date_said\": \"2023-08-08\", \"quote\": \"I think these different thresholds have different answers, although I suspect they will all come within a few years.\", \"source_url\": \"https://www.dwarkesh.com/p/dario-amodei\"}\n  ],\n  \"other_years\": [\n    {\"year\": \"2026\", \"note\": \"Searches returned mostly 2026 coverage (Dwarkesh 'end of the exponential' episode, 1-3 year 'country of geniuses' timeline, 'by 2035'); not opened.\"},\n    {\"year\": \"2024\", \"note\": \"TechCrunch coverage of the October 2024 essay 'Machines of Loving Grace' appeared in results; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" AI prediction 2023\", \"what_found\": \"Logan Bartlett Show episode memo (Oct 2023), a Marketing AI Institute write-up of the 2023 Dwarkesh interview, and later-year coverage.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"Almost entirely 2026 Dwarkesh-interview coverage; nothing new from 2023.\"},\n    {\"query_or_url\": \"\\\"Dario Amodei\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Mostly 2025-2026 coverage; nothing new from 2023.\"},\n    {\"query_or_url\": \"Logan Bartlett Show Dario Amodei transcript 2023\", \"what_found\": \"Podcast listings for EP 82 (Oct 2023) and the Unsupervised Learning Ep 20 listing; no transcript.\"},\n    {\"query_or_url\": \"Dario Amodei 2023 podcast interview Anthropic CEO \\\"Claude 2\\\"\", \"what_found\": \"Dwarkesh 2023 episode page, a Fortune Brainstorm Tech transcript, and a TechCrunch Disrupt 2023 announcement.\"},\n    {\"query_or_url\": \"Dario Amodei AI Safety Summit Bletchley November 2023 speech\", \"what_found\": \"Anthropic's page of his prepared UK AI Safety Summit remarks (1 Nov 2023) and LessWrong copies.\"},\n    {\"query_or_url\": \"\\\"Amodei\\\" Logan Bartlett \\\"Dyson spheres\\\" transcript\", \"what_found\": \"No transcript of the Logan Bartlett episode; only the show's memo and unrelated pages.\"},\n    {\"query_or_url\": \"\\\"Ep 20\\\" \\\"Anthropic CEO Dario Amodei on the Future of AGI, Leading Anthropic, and AI Doom Chances\\\"\", \"what_found\": \"Unsupervised Learning episode dated 16 Oct 2023; listing pages only, no transcript.\"},\n    {\"query_or_url\": \"Dario Amodei Senate Judiciary written testimony July 2023 \\\"2-3 years\\\" pdf\", \"what_found\": \"The Senate Judiciary PDF of his written testimony for 25 July 2023.\"},\n    {\"query_or_url\": \"https://www.anthropic.com/news/uk-ai-safety-summit\", \"what_found\": \"Opened: full prepared remarks; the only forward-looking line is about compute growth over 'the next few years' (undated business forecast, excluded); no dated AI capability prediction.\"},\n    {\"query_or_url\": \"https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment\", \"what_found\": \"Opened: printed transcript of the July 2023 Brainstorm Tech interview with two dated forward-looking statements.\"},\n    {\"query_or_url\": \"https://theloganbartlettshow.substack.com/p/dario-amodeis-ai-predictions-through\", \"what_found\": \"Opened: the host's paraphrase of Amodei's predictions (2024, 2025, 5-10 years) with no direct quotes from him, so not usable.\"},\n    {\"query_or_url\": \"https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf\", \"what_found\": \"Opened: written testimony confirming both recorded two-to-three-year claims (bio and science insights).\"},\n    {\"query_or_url\": \"https://www.dwarkesh.com/p/dario-amodei\", \"what_found\": \"Opened: the transcript was cut off at about minute 27; it had the undated 'within a few years' line, but the recorded 'well-educated human' passage was not in the part returned.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"2023 held dated predictions around his July Senate testimony (two already recorded, confirmed from the PDF) and the July Fortune Brainstorm Tech interview, which adds a 2-3 year claim about open-source models becoming hard to keep safe and a borderline 'couple of years' claim about medium-term misuse risks. The Dwarkesh 'two or three years' claim already on file could not be checked because the page returned was cut off, and the Logan Bartlett and Unsupervised Learning podcasts (Oct 2023) were found only as summaries or listings, not transcripts.\"\n}\n```"
+}

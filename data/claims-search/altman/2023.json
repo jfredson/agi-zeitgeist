@@ -1,0 +1,314 @@
+{
+  "speaker_id": "altman",
+  "year": 2023,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.7876,
+  "web_searches": 10,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7699
+      },
+      "cache_creation_input_tokens": 84299,
+      "cache_read_input_tokens": 409024,
+      "inference_geo": "global",
+      "input_tokens": 24,
+      "output_tokens": 9211,
+      "output_tokens_details": {
+        "thinking_tokens": 3233
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 10
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\nqs=['\"Sam Altman\" AI prediction 2023','\"Sam Altman\" 2023 interview AGI \"years\"','\"Sam Altman\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" AI prediction 2023"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]\nprint(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def show(r):\n    if isinstance(r,str): r=json.loads(r)\n    for x in r:\n        print('-',x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:300].replace('\\n',' '))\nshow(R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2023 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Sam Altman\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs2=['openai.com \"Planning for AGI and beyond\" Altman February 2023',\n'Altman Senate Judiciary hearing May 16 2023 transcript',\n'Hard Fork Sam Altman interview November 2023 transcript',\n'Lex Fridman podcast 367 Sam Altman transcript']\nfor q in qs2:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "openai.com \"Planning for AGI and beyond\" Altman February 2023"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman Senate Judiciary hearing May 16 2023 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Hard Fork Sam Altman interview November 2023 transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Lex Fridman podcast 367 Sam Altman transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nurls=['https://www.techpolicy.press/transcript-senate-judiciary-subcommittee-hearing-on-oversight-of-ai/',\n'https://podcasts.happyscribe.com/the-daily/hard-fork-an-interview-with-sam-altman',\n'https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety',\n'https://lawwu.github.io/transcripts/transcript_L_Guz73e6fw.html']\nP={}\nfor u in urls:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,'ERR',r); continue\n    P[u]=r[0]['content']; print(u,len(P[u]))\npat=re.compile(r\"(next (year|decade|few years|\\w+ years)|in (\\w+|\\d+) years|by 20\\d\\d|20[2-4]\\d|end of (the|this) decade|this decade|within|years from now|\\w+ years)\",re.I)\ndef kw(u,win=250,extra=None):\n    t=P[u]\n    for m in pat.finditer(t):\n        s=t[max(0,m.start()-win):m.end()+win].replace('\\n',' ')\n        print('>>',s); print()\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.techpolicy.press/transcript-senate-judiciary-subcommittee-hearing-on-oversight-of-ai/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://podcasts.happyscribe.com/the-daily/hard-fork-an-interview-with-sam-altman"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://lawwu.github.io/transcripts/transcript_L_Guz73e6fw.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "t=r['content']['source']['data'] if isinstance(r,dict) else r[0]['content']\nP['lex']=t; print(len(t))\nfor m in pat.finditer(t):\n    print('>>',t[max(0,m.start()-300):m.end()+200].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs3=['Altman WSJ Tech Live October 2023 AGI \"reasonably close-ish future\"',\n'Altman Hawking Fellowship Cambridge Union November 2023 AGI decade',\n'Altman 2023 interview transcript AGI \"this decade\" OR \"next decade\"']\nfor q in qs3:\n    R[q]=await web_search({\"query\":q}); print(\"==\",q); show(R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman WSJ Tech Live October 2023 AGI \"reasonably close-ish future\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman Hawking Fellowship Cambridge Union November 2023 AGI decade"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Altman 2023 interview transcript AGI \"this decade\" OR \"next decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def get(u):\n    r=await_res=None\nfor u in ['https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/','https://time.com/6342827/ceo-of-the-year-2023-sam-altman/']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): t=r[0].get('content','')\n    else:\n        c=r.get('content'); t=c['source']['data'] if isinstance(c,dict) else str(r)\n    P[u]=t; print(u,len(t))\n    for m in re.finditer(r\"(year|decade|202\\d|203\\d|AGI|superintelligence)\",t):\n        pass\n"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://time.com/6342827/ceo-of-the-year-2023-sam-altman/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "pat2=re.compile(r\"(next (year|decade|few years|\\w+ years)|in (\\w+|\\d+) years|by 20\\d\\d|20[2-4]\\d|end of (the|this) decade|this decade|years from now|four or five|\\w+ years|next year)\",re.I)\nfor u in ['https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/','https://time.com/6342827/ceo-of-the-year-2023-sam-altman/']:\n    t=P[u]; print('#####',u); last=-1000\n    for m in pat2.finditer(t):\n        if m.start()-last<300: continue\n        last=m.start()\n        print('>>',t[max(0,m.start()-350):m.end()+250].replace('\\n',' '));print()"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for u in P:\n  if 'time.com' not in u: continue\n  t=P[u]; print('####',u)\n  for m in re.finditer(r\"(AGI|superintelligen|will be|going to)\",t):\n    s=t[max(0,m.start()-200):m.end()+200].replace('\\n',' ')\n    if 'PMI' in s or 'Project Management' in s: continue\n    print('>>',s);print()"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2023-01",
+        "quote": "But I still think given the magnitude of the economic impact we expect here more gradual is better and so putting out a very weak and imperfect system like ChatGPT and then making it a little better this year a little better later this year a little better next year, that seems much better than the alternative.",
+        "what_is_predicted": "OpenAI would improve ChatGPT step by step during 2023 and again in 2024, rather than releasing a much stronger system all at once.",
+        "date_or_span": "this year (2023), later this year, next year (2024)",
+        "occasion": "StrictlyVC interview with Connie Loizos (recorded mid-January 2023; video posted about 18 January 2023)",
+        "source_url": "https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-12-12",
+        "quote": "I think 2023 was the year we started to see that, and in 2024, we’ll see way more of it, and by the time the end of this decade rolls around, I think the world is going to be in an unbelievably better place",
+        "what_is_predicted": "AI will make the world more abundant, with much more of this in 2024 and the world unbelievably better by the end of the decade ('that' refers back to his line about AI creating a path where the world gets much more abundant and much better every year).",
+        "date_or_span": "2024; by the end of this decade",
+        "occasion": "Onstage conversation with TIME Editor-in-Chief Sam Jacobs at A Year in TIME, Plaza Hotel, New York, 12 December 2023",
+        "source_url": "https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      },
+      {
+        "date_said": "2023-11",
+        "quote": "Altman thinks AGI—a system that surpasses humans in most regards—could be reached sometime in the next four or five years.",
+        "what_is_predicted": "According to TIME, Altman thinks AGI could arrive within four or five years. These are TIME's words, not a quotation of Altman.",
+        "date_or_span": "the next four or five years (about 2027-2028)",
+        "occasion": "TIME CEO of the Year 2023 profile by Naina Bajekal and Billy Perrigo, published 6 December 2023, based on interviews including one with Altman on 30 November; the article doesn't say when he gave this view",
+        "source_url": "https://time.com/6342827/ceo-of-the-year-2023-sam-altman/",
+        "source_kind": "coverage_only",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [
+      {
+        "date_said": "2023-01",
+        "quote": "The world I think we're heading to and the safest world, the one I most hope for, is the short timeline slow takeoff.",
+        "source_url": "https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety"
+      }
+    ],
+    "other_years": [
+      {
+        "year": "2024",
+        "note": "Search results showed the 'reasonably close-ish future' AGI line in coverage of Davos and a Bloomberg interview (Jan 2024). It is not a 2023 statement and I did not open those pages."
+      },
+      {
+        "year": "2024",
+        "note": "Search snippet for the transcript of Lex Fridman podcast #2 (lexfridman.com/sam-altman-2-transcript, March 2024) shows 'by the end of this decade' quite capable systems; I did not open it."
+      },
+      {
+        "year": "2025",
+        "note": "Search results were mostly about the 'Reflections' blog post (January 2025) and an Axel Springer interview (Sept 2025) predicting superintelligence by 2030; not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Sam Altman\" AI prediction 2023",
+        "what_found": "Mostly 2025 round-ups of his predictions; a Decoder piece on the October 2023 'superhuman persuasion' tweet; nothing dated from 2023 to open."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2023 interview AGI \"years\"",
+        "what_found": "TIME's CEO of the Year profile with the 'four or five years' paraphrase, the LessWrong StrictlyVC transcript, and a Forbes interview from February 2023."
+      },
+      {
+        "query_or_url": "\"Sam Altman\" 2023 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "Only 2025 coverage (superintelligence by 2030 or 2035); nothing from 2023."
+      },
+      {
+        "query_or_url": "openai.com \"Planning for AGI and beyond\" Altman February 2023",
+        "what_found": "Copies and mentions of the 24 February 2023 post; the post itself was not opened."
+      },
+      {
+        "query_or_url": "Altman Senate Judiciary hearing May 16 2023 transcript",
+        "what_found": "TechPolicy.Press rush transcript, the Senate written testimony, and the congress.gov hearing record."
+      },
+      {
+        "query_or_url": "Hard Fork Sam Altman interview November 2023 transcript",
+        "what_found": "HappyScribe transcript of the Hard Fork interview as replayed on The Daily (recorded two days before his removal)."
+      },
+      {
+        "query_or_url": "Lex Fridman podcast 367 Sam Altman transcript",
+        "what_found": "Several transcript mirrors for episode #367 (March 2023)."
+      },
+      {
+        "query_or_url": "https://www.techpolicy.press/transcript-senate-judiciary-subcommittee-hearing-on-oversight-of-ai/",
+        "what_found": "Opened; the text cut off early in the questioning, and Altman's parts that I saw (opening statement and first answer) had no dated prediction."
+      },
+      {
+        "query_or_url": "https://podcasts.happyscribe.com/the-daily/hard-fork-an-interview-with-sam-altman",
+        "what_found": "Opened; the text cut off at about 16 minutes, and the part I saw (including his comments on AGI as a term) had no dated prediction."
+      },
+      {
+        "query_or_url": "https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety",
+        "what_found": "Opened; the StrictlyVC transcript has the 'this year … next year' line and the undated 'short timeline slow takeoff' line."
+      },
+      {
+        "query_or_url": "https://lawwu.github.io/transcripts/transcript_L_Guz73e6fw.html",
+        "what_found": "Opened; the text cut off before the AGI chapter, and the part I saw had no dated Altman prediction."
+      },
+      {
+        "query_or_url": "Altman WSJ Tech Live October 2023 AGI \"reasonably close-ish future\"",
+        "what_found": "The 'reasonably close-ish future' line turned out to be from Davos in January 2024, so it is not a 2023 statement."
+      },
+      {
+        "query_or_url": "Altman Hawking Fellowship Cambridge Union November 2023 AGI decade",
+        "what_found": "Coverage and video of the 1 November 2023 Cambridge Union talk; no transcript found, so not opened."
+      },
+      {
+        "query_or_url": "Altman 2023 interview transcript AGI \"this decade\" OR \"next decade\"",
+        "what_found": "Found TIME's 'A Year in TIME' write-up (December 2023); the other results were from 2024-2025."
+      },
+      {
+        "query_or_url": "https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/",
+        "what_found": "Opened; TIME's report quotes his 2024 and end-of-decade line."
+      },
+      {
+        "query_or_url": "https://time.com/6342827/ceo-of-the-year-2023-sam-altman/",
+        "what_found": "Opened; it has TIME's paraphrase that he thinks AGI could come in the next four or five years, but no direct quote from him on timing."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2023 Altman mostly avoided giving dates for AGI. He called it a blurry, gradual transition and said he hoped for 'short timelines, slow takeoff'. The dated statements I found are a staged-release line at StrictlyVC (better this year and next year), a December TIME event quote about 2024 and the end of the decade, and TIME's paraphrase that he thinks AGI could come within four or five years. The recorded May 2023 'Governance of superintelligence' claim was not re-checked."
+  },
+  "reply_text": "I found two 2023 statements with a date or time span attached and one TIME paraphrase. None of them repeats the claim you've already recorded. I didn't reach that one: I had no page openings left for \"Governance of superintelligence\" (2023-05-22), so it isn't re-reported.\n\n- **StrictlyVC with Connie Loizos, January 2023.** This one carries the best weight. Altman described making ChatGPT \"a little better this year … a little better next year\". It's mainly a plan for staged releases, so you may decide it's borderline. The page is a LessWrong poster's lightly edited version of an automated transcript, so check it against the YouTube video.\n- **A Year in TIME, 12 December 2023.** He said things would improve more in 2024 and that by the end of the decade \"the world is going to be in an unbelievably better place\". This is about what AI's progress will bring rather than a specific capability, and it comes only from TIME's report of the event.\n- **TIME's CEO of the Year profile (6 December 2023).** It says Altman thinks AGI \"could be reached sometime in the next four or five years\". Those are the reporters' words, not a quote from him. I've listed it as coverage only; you may decide it doesn't meet the \"his own words\" rule.\n\nGaps in what I read:\n- **Senate hearing (16 May) and Hard Fork (recorded mid-November):** the pages opened, but each transcript cut off early (the Hard Fork one at about 16 minutes). Nothing dated appeared in what I saw, but most of each transcript went unread.\n- **Lex Fridman #367:** the transcript cut off before the AGI chapter.\n- **Unchecked:** \"Planning for AGI and beyond\" (24 February) and TIME's June 2023 interview (time.com/6288584).\n\nI used 10 of 12 searches and all 6 page openings. In my first call, a printing error stopped the code after the first fixed search. Its results were already saved, so I printed them from memory and didn't run that search again.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2023-01\",\n      \"quote\": \"But I still think given the magnitude of the economic impact we expect here more gradual is better and so putting out a very weak and imperfect system like ChatGPT and then making it a little better this year a little better later this year a little better next year, that seems much better than the alternative.\",\n      \"what_is_predicted\": \"OpenAI would improve ChatGPT step by step during 2023 and again in 2024, rather than releasing a much stronger system all at once.\",\n      \"date_or_span\": \"this year (2023), later this year, next year (2024)\",\n      \"occasion\": \"StrictlyVC interview with Connie Loizos (recorded mid-January 2023; video posted about 18 January 2023)\",\n      \"source_url\": \"https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2023-12-12\",\n      \"quote\": \"I think 2023 was the year we started to see that, and in 2024, we’ll see way more of it, and by the time the end of this decade rolls around, I think the world is going to be in an unbelievably better place\",\n      \"what_is_predicted\": \"AI will make the world more abundant, with much more of this in 2024 and the world unbelievably better by the end of the decade ('that' refers back to his line about AI creating a path where the world gets much more abundant and much better every year).\",\n      \"date_or_span\": \"2024; by the end of this decade\",\n      \"occasion\": \"Onstage conversation with TIME Editor-in-Chief Sam Jacobs at A Year in TIME, Plaza Hotel, New York, 12 December 2023\",\n      \"source_url\": \"https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    },\n    {\n      \"date_said\": \"2023-11\",\n      \"quote\": \"Altman thinks AGI—a system that surpasses humans in most regards—could be reached sometime in the next four or five years.\",\n      \"what_is_predicted\": \"According to TIME, Altman thinks AGI could arrive within four or five years. These are TIME's words, not a quotation of Altman.\",\n      \"date_or_span\": \"the next four or five years (about 2027-2028)\",\n      \"occasion\": \"TIME CEO of the Year 2023 profile by Naina Bajekal and Billy Perrigo, published 6 December 2023, based on interviews including one with Altman on 30 November; the article doesn't say when he gave this view\",\n      \"source_url\": \"https://time.com/6342827/ceo-of-the-year-2023-sam-altman/\",\n      \"source_kind\": \"coverage_only\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [\n    {\n      \"date_said\": \"2023-01\",\n      \"quote\": \"The world I think we're heading to and the safest world, the one I most hope for, is the short timeline slow takeoff.\",\n      \"source_url\": \"https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety\"\n    }\n  ],\n  \"other_years\": [\n    {\"year\": \"2024\", \"note\": \"Search results showed the 'reasonably close-ish future' AGI line in coverage of Davos and a Bloomberg interview (Jan 2024). It is not a 2023 statement and I did not open those pages.\"},\n    {\"year\": \"2024\", \"note\": \"Search snippet for the transcript of Lex Fridman podcast #2 (lexfridman.com/sam-altman-2-transcript, March 2024) shows 'by the end of this decade' quite capable systems; I did not open it.\"},\n    {\"year\": \"2025\", \"note\": \"Search results were mostly about the 'Reflections' blog post (January 2025) and an Axel Springer interview (Sept 2025) predicting superintelligence by 2030; not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Sam Altman\\\" AI prediction 2023\", \"what_found\": \"Mostly 2025 round-ups of his predictions; a Decoder piece on the October 2023 'superhuman persuasion' tweet; nothing dated from 2023 to open.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2023 interview AGI \\\"years\\\"\", \"what_found\": \"TIME's CEO of the Year profile with the 'four or five years' paraphrase, the LessWrong StrictlyVC transcript, and a Forbes interview from February 2023.\"},\n    {\"query_or_url\": \"\\\"Sam Altman\\\" 2023 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"Only 2025 coverage (superintelligence by 2030 or 2035); nothing from 2023.\"},\n    {\"query_or_url\": \"openai.com \\\"Planning for AGI and beyond\\\" Altman February 2023\", \"what_found\": \"Copies and mentions of the 24 February 2023 post; the post itself was not opened.\"},\n    {\"query_or_url\": \"Altman Senate Judiciary hearing May 16 2023 transcript\", \"what_found\": \"TechPolicy.Press rush transcript, the Senate written testimony, and the congress.gov hearing record.\"},\n    {\"query_or_url\": \"Hard Fork Sam Altman interview November 2023 transcript\", \"what_found\": \"HappyScribe transcript of the Hard Fork interview as replayed on The Daily (recorded two days before his removal).\"},\n    {\"query_or_url\": \"Lex Fridman podcast 367 Sam Altman transcript\", \"what_found\": \"Several transcript mirrors for episode #367 (March 2023).\"},\n    {\"query_or_url\": \"https://www.techpolicy.press/transcript-senate-judiciary-subcommittee-hearing-on-oversight-of-ai/\", \"what_found\": \"Opened; the text cut off early in the questioning, and Altman's parts that I saw (opening statement and first answer) had no dated prediction.\"},\n    {\"query_or_url\": \"https://podcasts.happyscribe.com/the-daily/hard-fork-an-interview-with-sam-altman\", \"what_found\": \"Opened; the text cut off at about 16 minutes, and the part I saw (including his comments on AGI as a term) had no dated prediction.\"},\n    {\"query_or_url\": \"https://www.lesswrong.com/posts/PTzsEQXkCfig9A6AS/transcript-of-sam-altman-s-interview-touching-on-ai-safety\", \"what_found\": \"Opened; the StrictlyVC transcript has the 'this year … next year' line and the undated 'short timeline slow takeoff' line.\"},\n    {\"query_or_url\": \"https://lawwu.github.io/transcripts/transcript_L_Guz73e6fw.html\", \"what_found\": \"Opened; the text cut off before the AGI chapter, and the part I saw had no dated Altman prediction.\"},\n    {\"query_or_url\": \"Altman WSJ Tech Live October 2023 AGI \\\"reasonably close-ish future\\\"\", \"what_found\": \"The 'reasonably close-ish future' line turned out to be from Davos in January 2024, so it is not a 2023 statement.\"},\n    {\"query_or_url\": \"Altman Hawking Fellowship Cambridge Union November 2023 AGI decade\", \"what_found\": \"Coverage and video of the 1 November 2023 Cambridge Union talk; no transcript found, so not opened.\"},\n    {\"query_or_url\": \"Altman 2023 interview transcript AGI \\\"this decade\\\" OR \\\"next decade\\\"\", \"what_found\": \"Found TIME's 'A Year in TIME' write-up (December 2023); the other results were from 2024-2025.\"},\n    {\"query_or_url\": \"https://time.com/6344160/a-year-in-time-ceo-interview-sam-altman/\", \"what_found\": \"Opened; TIME's report quotes his 2024 and end-of-decade line.\"},\n    {\"query_or_url\": \"https://time.com/6342827/ceo-of-the-year-2023-sam-altman/\", \"what_found\": \"Opened; it has TIME's paraphrase that he thinks AGI could come in the next four or five years, but no direct quote from him on timing.\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2023 Altman mostly avoided giving dates for AGI. He called it a blurry, gradual transition and said he hoped for 'short timelines, slow takeoff'. The dated statements I found are a staged-release line at StrictlyVC (better this year and next year), a December TIME event quote about 2024 and the end of the decade, and TIME's paraphrase that he thinks AGI could come within four or five years. The recorded May 2023 'Governance of superintelligence' claim was not re-checked.\"\n}\n```"
+}

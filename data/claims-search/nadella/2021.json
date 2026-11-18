@@ -1,0 +1,286 @@
+{
+  "speaker_id": "nadella",
+  "year": 2021,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-16",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 1.0736,
+  "web_searches": 9,
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 7647
+      },
+      "cache_creation_input_tokens": 131476,
+      "cache_read_input_tokens": 920720,
+      "inference_geo": "global",
+      "input_tokens": 28,
+      "output_tokens": 7096,
+      "output_tokens_details": {
+        "thinking_tokens": 1915
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 6,
+        "web_search_requests": 9
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "qs=['\"Satya Nadella\" AI prediction 2021','\"Satya Nadella\" 2021 interview AGI \"years\"','\"Satya Nadella\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"']\nR={}\nfor q in qs:\n    r=await web_search({\"query\":q})\n    R[q]=r\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:200].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" AI prediction 2021"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "r=R[qs[0]]; print(type(r)); print(str(r)[:1500])"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import json\ndef show(q,r):\n    if isinstance(r,str): r=json.loads(r)\n    print(\"==\",q)\n    for x in r:\n        print(x.get('title'),'|',x.get('url'),'|',x.get('page_age'))\n        print('   ',x.get('content','')[:200].replace('\\n',' '))\nshow(qs[0],R[qs[0]])\nfor q in qs[1:]:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2021 interview AGI \"years\""
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "\"Satya Nadella\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Satya Nadella Build 2021 keynote transcript','Microsoft annual report 2021 shareholder letter Satya Nadella','Satya Nadella Ignite 2021 keynote transcript AI','Satya Nadella 2021 interview artificial intelligence \"next decade\"']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Build 2021 keynote transcript"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Microsoft annual report 2021 shareholder letter Satya Nadella"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Ignite 2021 keynote transcript AI"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella 2021 interview artificial intelligence \"next decade\""
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "import re\nP={}\nfor u in ['https://news.microsoft.com/speeches/satya-nadella-microsoft-build-2021/','https://msftstories.thesourcemediaassets.com/2021/03/03022021-Ignite-Keynote-Satya-Nadella.pdf','https://www.microsoft.com/investor/reports/ar21/index.html']:\n    r=await web_fetch({\"url\":u})\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,dict): print(u,r); continue\n    c=r[0]['content']; P[u]=c; print('==',u,len(c))\n    for m in re.finditer(r'(?i)(\\b20[2-5]\\d\\b|decade|next year|years|AGI|general intelligence|by the end|ten years|five years)',c):\n        s=c[max(0,m.start()-200):m.end()+150].replace('\\n',' ')\n        print('  ..',s)"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.microsoft.com/speeches/satya-nadella-microsoft-build-2021/"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://msftstories.thesourcemediaassets.com/2021/03/03022021-Ignite-Keynote-Satya-Nadella.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://www.microsoft.com/investor/reports/ar21/index.html"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "def text_of(r):\n    if isinstance(r,str): r=json.loads(r)\n    if isinstance(r,list): return r[0].get('content')\n    c=r.get('content')\n    if isinstance(c,dict):\n        s=c.get('source',{})\n        if s.get('type')=='base64':\n            import base64,io\n            from pypdf import PdfReader\n            b=base64.b64decode(s['data']); rd=PdfReader(io.BytesIO(b))\n            return \"\\n\".join(p.extract_text() or '' for p in rd.pages)\n        return s.get('data')\n    return c\ndef grep(c):\n    for m in re.finditer(r'(?i)(\\b20[2-5]\\d\\b|decade|next year|\\byears\\b|AGI|general intelligence|by the end|ten years|five years)',c):\n        print('  ..',c[max(0,m.start()-250):m.end()+150].replace('\\n',' '))\nc=text_of(r); print(r.get('url') if isinstance(r,dict) else '', len(c)); grep(c)"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for q in ['Satya Nadella Ignite November 2021 keynote transcript news.microsoft.com speeches','Satya Nadella 2021 interview GitHub Copilot AI future transcript']:\n    R[q]=await web_search({\"query\":q}); show(q,R[q])"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella Ignite November 2021 keynote transcript news.microsoft.com speeches"
+      }
+    },
+    {
+      "tool": "web_search",
+      "input": {
+        "query": "Satya Nadella 2021 interview GitHub Copilot AI future transcript"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "T={}\nfor u in ['https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf','https://news.microsoft.com/speeches/satya-nadella-microsoft-ignite-2021/']:\n    rr=await web_fetch({\"url\":u})\n    try:\n        T[u]=text_of(rr); print('==',u,len(T[u] or ''))\n    except Exception as e:\n        print(u,'ERR',e, str(rr)[:300])\nprint(re.findall(r'https?://[^\\s\\)\\]]+\\.pdf',T.get('https://news.microsoft.com/speeches/satya-nadella-microsoft-ignite-2021/','') or ''))"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.microsoft.com/speeches/satya-nadella-microsoft-ignite-2021/"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "b=T['https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf']\nprint(b[:600]); print('...',b[-400:])\ngrep(b)\nfor m in re.finditer(r'(?i)\\bAI\\b|intelligen|model',b):\n    pass\nprint(len(re.findall(r'(?i)\\bAI\\b',b)))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "for m in re.finditer(r'(?i)\\bAI\\b|GPT|natural language',b):\n    print('--',b[max(0,m.start()-300):m.end()+300].replace('\\n',' '))"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "u='https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf'\nrr=await web_fetch({\"url\":u})\ntry:\n    T[u]=text_of(rr); g=T[u]; print(len(g)); print(g[:300]); grep(g)\nexcept Exception as e: print('ERR',e,str(rr)[:300])"
+      }
+    },
+    {
+      "tool": "web_fetch",
+      "input": {
+        "url": "https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf"
+      }
+    },
+    {
+      "tool": "code_execution",
+      "input": {
+        "code": "i=g.find('six-fold'); print(repr(g[i-500:i+150]))\ni=g.find('ambient  intelligence, an era'); print(repr(g[i-200:i+150]))\ni=g.find('Five years ago, here at Ignite'); print(repr(g[i:i+700]))"
+      }
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "date_said": "2021-11-02",
+        "quote": "The percentage of industrial control systems that will include analytics and AI inference capabilities at the edge will increase by six-fold in the next four years.",
+        "what_is_predicted": "The share of industrial control systems with analytics and AI inference at the edge will grow six-fold.",
+        "date_or_span": "the next four years (to about 2025)",
+        "occasion": "Microsoft Ignite 2021 keynote (November)",
+        "source_url": "https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf",
+        "source_kind": "transcript",
+        "already_recorded": ""
+      }
+    ],
+    "undated": [],
+    "other_years": [
+      {
+        "year": "2025",
+        "note": "Fixed searches surfaced the Dwarkesh Patel podcast interviews (AGI and the OpenAI arrangement) and B2G podcast coverage of 'agents will collapse SaaS'; only search results were seen, no pages opened."
+      },
+      {
+        "year": "2026",
+        "note": "Search results pointed to a 2026 Nadella blog post calling 2026 a pivotal year for AI (Cloud Wars, Storyboard18 coverage); not opened."
+      }
+    ],
+    "searches": [
+      {
+        "query_or_url": "\"Satya Nadella\" AI prediction 2021",
+        "what_found": "Only 2024-2026 coverage (SaaS and agents, 2026 essay); nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2021 interview AGI \"years\"",
+        "what_found": "Dwarkesh podcast pages from 2025 and coverage; nothing from 2021."
+      },
+      {
+        "query_or_url": "\"Satya Nadella\" 2021 AI \"by 20\" OR \"next year\" OR \"within\" OR \"end of the decade\"",
+        "what_found": "2025-2026 items (2026 blog post, Morgan Stanley talk, CNBC 30% of code); nothing from 2021."
+      },
+      {
+        "query_or_url": "Satya Nadella Build 2021 keynote transcript",
+        "what_found": "Microsoft speeches pages for Build 2021 (May 25) and Ignite 2021 (March 2)."
+      },
+      {
+        "query_or_url": "Microsoft annual report 2021 shareholder letter Satya Nadella",
+        "what_found": "Microsoft 2021 Annual Report page and LinkedIn copy of the letter."
+      },
+      {
+        "query_or_url": "Satya Nadella Ignite 2021 keynote transcript AI",
+        "what_found": "Official March 2021 Ignite keynote PDF and secondary write-ups."
+      },
+      {
+        "query_or_url": "Satya Nadella 2021 interview artificial intelligence \"next decade\"",
+        "what_found": "Later-year items only (MIT Sloan, NPR, Bloomberg 2024, 2026 CNBC)."
+      },
+      {
+        "query_or_url": "Satya Nadella Ignite November 2021 keynote transcript news.microsoft.com speeches",
+        "what_found": "Microsoft speeches page for Ignite Nov 2, 2021."
+      },
+      {
+        "query_or_url": "Satya Nadella 2021 interview GitHub Copilot AI future transcript",
+        "what_found": "Only later interviews (Dwarkesh, Freakonomics, Stratechery 2026, etc.); no 2021 interview."
+      },
+      {
+        "query_or_url": "https://news.microsoft.com/speeches/satya-nadella-microsoft-build-2021/",
+        "what_found": "Page with only a link to the transcript PDF and no speech text."
+      },
+      {
+        "query_or_url": "https://msftstories.thesourcemediaassets.com/2021/03/03022021-Ignite-Keynote-Satya-Nadella.pdf",
+        "what_found": "Opened, but the PDF came back as raw data my code did not turn into text; not read and not quoted."
+      },
+      {
+        "query_or_url": "https://www.microsoft.com/investor/reports/ar21/index.html",
+        "what_found": "2021 shareholder letter dated Oct 12, 2021; dated forecasts are about tech share of GDP, data volume and spending, none a dated AI prediction."
+      },
+      {
+        "query_or_url": "https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf",
+        "what_found": "Full Build 2021 keynote transcript; AI described in present tense, only dated forecast is tech share of GDP by 2030."
+      },
+      {
+        "query_or_url": "https://news.microsoft.com/speeches/satya-nadella-microsoft-ignite-2021/",
+        "what_found": "Page with a link to the Nov 2021 Ignite transcript PDF."
+      },
+      {
+        "query_or_url": "https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf",
+        "what_found": "Full Nov 2021 Ignite keynote transcript; one borderline dated AI line (edge AI inference six-fold in four years)."
+      }
+    ],
+    "quiet_year": false,
+    "summary": "In 2021 Nadella's public speeches looked ahead to digitization, tech's share of GDP by 2030 and the metaverse, not to dated AI capabilities. The only dated AI line found is from the November 2021 Ignite keynote: AI inference in industrial control systems at the edge will grow six-fold in four years. It reads like a market statistic he repeated rather than his own forecast. The March 2021 Ignite keynote transcript was opened but not read, and no 2021 interviews were checked."
+  },
+  "reply_text": "I found one borderline 2021 candidate and no prediction about AGI or superintelligence.\n\n**The candidate.** In his Microsoft Ignite keynote on 2 November 2021, Nadella said: \"The percentage of industrial control systems that will include analytics and AI inference capabilities at the edge will increase by six-fold in the next four years.\" It has a span and is about AI being deployed, which is why I kept it. There are two reasons to doubt it:\n- **It's an adoption figure, not a claim about what AI can do.** That puts it close to the business forecasts you asked me to leave out.\n- **It's probably someone else's projection that he repeated.** He gives no source for that sentence. A nearby line in the speech starts \"it's projected that\", so the six-fold figure is likely an industry statistic too.\n\n**What I opened and found nothing in:**\n- **Build keynote, 25 May 2021 (official transcript).** It says \"Large AI models are becoming platforms\" and \"The code writes itself\" about GPT-3 in Power Platform. Neither looks ahead to a date. The one dated forecast, tech doubling as a share of GDP by 2030, is about the economy, not AI.\n- **2021 shareholder letter, 12 October 2021.** It repeats the 2030 GDP line. It also says \"In the next three years, we'll create more data than we did in the past 10.\" That is about data, not AI. The $20 billion security pledge is company spending.\n- **Ignite keynote, 2 November 2021, the rest of it.** \"More digitization over the next 10 years than the last 40\" is about digitization in general, not AI.\n\n**Gaps you should know about:**\n- **The March 2021 Ignite keynote wasn't read.** The PDF opened, but my code didn't turn it into text, and I had no page openings left to try again. I quote nothing from it.\n- **2021 interviews and podcasts weren't checked.** My three fixed searches returned only 2024–2026 material, and I had no openings left for interview pages. I stopped with three searches unused, because any results couldn't have been opened.\n\n```json\n{\n  \"candidates\": [\n    {\n      \"date_said\": \"2021-11-02\",\n      \"quote\": \"The percentage of industrial control systems that will include analytics and AI inference capabilities at the edge will increase by six-fold in the next four years.\",\n      \"what_is_predicted\": \"The share of industrial control systems with analytics and AI inference at the edge will grow six-fold.\",\n      \"date_or_span\": \"the next four years (to about 2025)\",\n      \"occasion\": \"Microsoft Ignite 2021 keynote (November)\",\n      \"source_url\": \"https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf\",\n      \"source_kind\": \"transcript\",\n      \"already_recorded\": \"\"\n    }\n  ],\n  \"undated\": [],\n  \"other_years\": [\n    {\"year\": \"2025\", \"note\": \"Fixed searches surfaced the Dwarkesh Patel podcast interviews (AGI and the OpenAI arrangement) and B2G podcast coverage of 'agents will collapse SaaS'; only search results were seen, no pages opened.\"},\n    {\"year\": \"2026\", \"note\": \"Search results pointed to a 2026 Nadella blog post calling 2026 a pivotal year for AI (Cloud Wars, Storyboard18 coverage); not opened.\"}\n  ],\n  \"searches\": [\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" AI prediction 2021\", \"what_found\": \"Only 2024-2026 coverage (SaaS and agents, 2026 essay); nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2021 interview AGI \\\"years\\\"\", \"what_found\": \"Dwarkesh podcast pages from 2025 and coverage; nothing from 2021.\"},\n    {\"query_or_url\": \"\\\"Satya Nadella\\\" 2021 AI \\\"by 20\\\" OR \\\"next year\\\" OR \\\"within\\\" OR \\\"end of the decade\\\"\", \"what_found\": \"2025-2026 items (2026 blog post, Morgan Stanley talk, CNBC 30% of code); nothing from 2021.\"},\n    {\"query_or_url\": \"Satya Nadella Build 2021 keynote transcript\", \"what_found\": \"Microsoft speeches pages for Build 2021 (May 25) and Ignite 2021 (March 2).\"},\n    {\"query_or_url\": \"Microsoft annual report 2021 shareholder letter Satya Nadella\", \"what_found\": \"Microsoft 2021 Annual Report page and LinkedIn copy of the letter.\"},\n    {\"query_or_url\": \"Satya Nadella Ignite 2021 keynote transcript AI\", \"what_found\": \"Official March 2021 Ignite keynote PDF and secondary write-ups.\"},\n    {\"query_or_url\": \"Satya Nadella 2021 interview artificial intelligence \\\"next decade\\\"\", \"what_found\": \"Later-year items only (MIT Sloan, NPR, Bloomberg 2024, 2026 CNBC).\"},\n    {\"query_or_url\": \"Satya Nadella Ignite November 2021 keynote transcript news.microsoft.com speeches\", \"what_found\": \"Microsoft speeches page for Ignite Nov 2, 2021.\"},\n    {\"query_or_url\": \"Satya Nadella 2021 interview GitHub Copilot AI future transcript\", \"what_found\": \"Only later interviews (Dwarkesh, Freakonomics, Stratechery 2026, etc.); no 2021 interview.\"},\n    {\"query_or_url\": \"https://news.microsoft.com/speeches/satya-nadella-microsoft-build-2021/\", \"what_found\": \"Page with only a link to the transcript PDF and no speech text.\"},\n    {\"query_or_url\": \"https://msftstories.thesourcemediaassets.com/2021/03/03022021-Ignite-Keynote-Satya-Nadella.pdf\", \"what_found\": \"Opened, but the PDF came back as raw data my code did not turn into text; not read and not quoted.\"},\n    {\"query_or_url\": \"https://www.microsoft.com/investor/reports/ar21/index.html\", \"what_found\": \"2021 shareholder letter dated Oct 12, 2021; dated forecasts are about tech share of GDP, data volume and spending, none a dated AI prediction.\"},\n    {\"query_or_url\": \"https://news.microsoft.com/wp-content/uploads/prod/2021/05/05252021-Build-KEY01-Satya-Nadella.pdf\", \"what_found\": \"Full Build 2021 keynote transcript; AI described in present tense, only dated forecast is tech share of GDP by 2030.\"},\n    {\"query_or_url\": \"https://news.microsoft.com/speeches/satya-nadella-microsoft-ignite-2021/\", \"what_found\": \"Page with a link to the Nov 2021 Ignite transcript PDF.\"},\n    {\"query_or_url\": \"https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf\", \"what_found\": \"Full Nov 2021 Ignite keynote transcript; one borderline dated AI line (edge AI inference six-fold in four years).\"}\n  ],\n  \"quiet_year\": false,\n  \"summary\": \"In 2021 Nadella's public speeches looked ahead to digitization, tech's share of GDP by 2030 and the metaverse, not to dated AI capabilities. The only dated AI line found is from the November 2021 Ignite keynote: AI inference in industrial control systems at the edge will grow six-fold in four years. It reads like a market statistic he repeated rather than his own forecast. The March 2021 Ignite keynote transcript was opened but not read, and no 2021 interviews were checked.\"\n}\n```"
+}
