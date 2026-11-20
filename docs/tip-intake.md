@@ -77,6 +77,10 @@ tracker", or a link to a panel member speaking about AI's future sent with a req
 
 ### 2. Who is speaking?
 
+A piece written jointly with others speaks only for its lead, first-named author (amendment A37).
+If the panel member is a co-author but not the lead, do not code: archive the source, note it,
+and list the lead author below if they are on no tier.
+
 Check `data/speakers.csv`:
 
 - **Core panel or 2020s cohort:** go on.

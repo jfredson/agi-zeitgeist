@@ -24,9 +24,16 @@ PANEL_TIERS = ("core", "cohort_2020s")
 OVERDUE_DAYS = 8  # a weekly search, with a day's grace
 
 
-def read(name):
+# A piece written jointly with others counts as a panel member's own words only when they are its lead
+# (first-named) author (amendment A37, John 2026-11-20). Rows from a piece they did not lead carry the
+# notes tag not_lead_author, and claims the field not_lead_author = true: they stay in the files and the
+# downloads and are listed on the amendments page, but no figure, count or chart reads them.
+def read(name, all_rows=False):
     with (DATA / name).open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+    if name == "statements.csv" and not all_rows:
+        rows = [r for r in rows if "not_lead_author" not in {p.strip().split(":")[0].strip() for p in (r.get("notes") or "").split(";")}]
+    return rows
 
 
 def tags(notes):

@@ -15,7 +15,7 @@ must never be cited as quotes.
 
 ## 0. One unit, and how to read it
 
-A unit is one statement by one speaker on one occasion; one occasion can give several units, since each distinct passage of an essay, talk or interview is its own row (decided 2026-10-18; amendment A28). Code **only what the quoted
+A unit is one statement by one speaker on one occasion; a piece written jointly with others is a statement only of its lead, first-named author (amendment A37), and rows kept from pieces the person did not lead carry the `not_lead_author` tag; one occasion can give several units, since each distinct passage of an essay, talk or interview is its own row (decided 2026-10-18; amendment A28). Code **only what the quoted
 words and their immediate context say**. Don't use what the speaker is known for,
 what they said elsewhere, or what the article around the quote implies.
 
@@ -334,6 +334,7 @@ Notes start with any of these tags, separated by `; `, then free text:
 | `tip` | entered through tip intake (`docs/tip-intake.md`), not found first by a full pass or the weekly reading (A29); counted in every figure and shown as "added from a tip" (A32) |
 | `tip_missed` | a `tip` row whose source the fixed searches did not find when the tip arrived; counted like any other row, and it starts a better search for everyone (A32, which retired `tip_only` on 2026-10-21). Always with `tip` |
 | `asr_unverified` | the quote comes from machine captions and two automatic transcripts did not both carry it; `coding_confidence` no higher than `medium` (A29) |
+| `not_lead_author` | the row comes from a piece written jointly with others that the speaker did not lead (they are not first in its byline); kept in the file and the downloads, left out of every figure, count and chart, and listed on the amendments page (A37, 2026-11-20) |
 
 ## 10. Mapping to Fast and Horvitz 2017
 
