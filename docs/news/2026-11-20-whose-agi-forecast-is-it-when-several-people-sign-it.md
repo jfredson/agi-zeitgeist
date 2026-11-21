@@ -1,5 +1,5 @@
 ---
-title: A piece written by several people now counts only for the person who led it
+title: "Whose AGI forecast is it when several people sign it? The AGI Zeitgeist now counts it only for the lead author"
 date: 2026-11-20
 kind: method-changed
 summary: "When someone on the expert panel signed a piece written with others, it used to count as their own words, once for every panel member who signed it. Now it counts only for its lead author, the person named first. That leaves 946 expert statements counted instead of 966, and moves the earliest guesses of the people studying AI from 2100 or later to about 2076."
