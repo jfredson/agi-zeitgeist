@@ -104,7 +104,8 @@ PRECISION_PATTERNS = {
     "year": re.compile(r"^\d{4}$"),
 }
 NOTE_TAGS = {"secondhand", "incidental", "sampled", "lower_bound",
-             "tip", "tip_missed", "asr_unverified"}  # tip intake (docs/tip-intake.md); tip_missed replaced tip_only (A32, John 2026-10-21)
+             "tip", "tip_missed", "asr_unverified",
+             "not_lead_author"}  # a co-written piece the person did not lead: kept, not counted (A37, John 2026-11-20)  # tip intake (docs/tip-intake.md); tip_missed replaced tip_only (A32, John 2026-10-21)
 # Books, papers and recorded talks may carry a full citation instead of a link.
 CITATION_TYPES = {"book", "paper", "talk"}
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
@@ -136,6 +137,7 @@ CLAIM_FIELDS = {
     "evidence_by": str, "direction": str, "search_ids": "strings", "notes": str, "verify": str,
     "arrives": str, "arrives_term": str, "form": str, "not_before_year": int, "same_span": bool,
     "from_tip": bool,  # came in by tip intake; shown as "added from a tip" (A32, John 2026-10-21)
+    "not_lead_author": bool,  # from a co-written piece the person did not lead: kept, not counted (A37, John 2026-11-20)
 }
 CLAIM_REQUIRED = ["id", "speaker_id", "when", "occasion", "source_kind", "source_url",
                   "source_locator", "checked_how", "prediction", "kind", "bar", "due",

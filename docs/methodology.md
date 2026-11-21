@@ -91,9 +91,12 @@ points the method said nothing about, and departed from it on one. I ruled on
 - **Date of an interview published later** (decided 2026-10-12). An interview
   recorded well before it was published is dated at publication (for example Cotra's
   80,000 Hours episode, recorded 2025-10-20 and published 2026-02-17).
-- **Co-written documents** (decided 2026-10-12). A document with more than one panel
-  author is recorded once for each panel author (for example the 2023 Superalignment post
-  for both Leike and Sutskever; the 2016 AI100 report for both Brynjolfsson and Brooks).
+- **Co-written documents** (decided 2026-10-12; replaced 2026-11-20 by amendment A37). A
+  piece written jointly with others counts only for its lead author, the first named in its
+  byline. Rows and claims already collected from pieces the person did not lead are kept,
+  tagged `not_lead_author`, and left out of every figure. A written dialogue counts each
+  person's own turns. Until 2026-11-20 such a document was recorded once for each panel author
+  (for example the 2023 Superalignment post for both Leike and Sutskever).
 
 ## Frontier voices: a derived reading (added 2026-10-17)
 

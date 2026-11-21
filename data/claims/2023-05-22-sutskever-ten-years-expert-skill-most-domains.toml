@@ -19,3 +19,5 @@ due_basis = "'within the next ten years' from 2023-05-22 runs to 2033-05-22."
 status = "not_yet_due"
 search_ids = ["sutskever-claims-001", "sutskever-claims-003"]
 notes = "Said as OpenAI's co-founder and chief scientist (December 2015 to May 2024), the company's named chief scientist speaking for it in a company post. Three named authors, so the words are joint; the same words are recorded for Altman as 2023-05-22-altman-ten-years-expert-skill-most-domains, and this file gives Sutskever's record the same bar so the two are judged alike. The rest of the sentence: 'and carry out as much productive activity as one of today's largest corporations'."
+# Kept but not counted from 2026-11-20: Sutskever is not the first-named author of this post (amendment A37).
+not_lead_author = true

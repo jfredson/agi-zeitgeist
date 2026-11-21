@@ -1368,3 +1368,70 @@ Why: the rule already existed, but a reader had to open the working document to 
 point of fixing a rule in advance is lost if it is only visible after it is used. Printing it
 beside the part it governs, before any replacement is proposed, lets a reader check the switch
 against the rule when it comes. Credit for the suggestion goes to the reader on Reddit.
+
+## 2026-11-20: a jointly written piece counts only for its lead author
+
+Decided by: me. Three cases had piled up of a panel member's words in a piece written jointly
+with others: the AI Futures Project's "Q3.5 Timelines Update" of 2026-11-10, with Daniel
+Kokotajlo among six authors; "The missing quadrant in responses to AI" of 2026-11-10, by Sayash
+Kapoor, Rishi Bommasani and Arvind Narayanan; and Google DeepMind's report "From AGI to ASI"
+(arXiv 2606.12683, version 3 of 2026-11-10), with Shane Legg the last of fourteen authors. The
+weekly reading of 2026-11-16 flagged the first two, and my tip of 2026-11-20 brought the third.
+I was given three answers (every named author counts; only the lead author counts; it never
+counts) and chose the lead author only. Told that applying it to the record already collected
+would take out 20 statements and 3 claims and move a sentence on the home page, I chose to apply
+it backward as well.
+
+### A37. Only the lead author of a jointly written piece is recorded
+
+Was: a document with more than one panel author was recorded once for each panel author
+(`docs/methodology.md`, "Co-written documents", decided 2026-10-12), and a panel member who
+co-wrote a piece with people outside the panel was recorded for it.
+
+Now: a piece written jointly with others counts as a panel member's own words only when that
+person is its lead author, the first named in its byline. This covers the opinion record
+(`data/statements.csv`) and the claims ledger (`data/claims/`) alike. A piece signed by one
+person alone counts for that person, as before. A written dialogue, where each turn is marked
+with its speaker, is a conversation rather than a jointly written piece, so each person's own
+turns count for them, as in an interview. A piece the person did not lead is still searched
+for, read and archived, and can be noted in a weekly reading, but it gives no row and no claim.
+
+Applied backward: the statements and claims already collected from pieces the person did not
+lead are kept in the files and the downloadable tables, marked (the notes tag
+`not_lead_author` on a statement, the field `not_lead_author = true` on a claim), and left out
+of every figure, count and chart. They are listed, written from the data at each build, at the
+end of this page under "Kept, not counted". On 2026-11-20 that is:
+
+- Arvind Narayanan, 8 statements, from posts where Sayash Kapoor is named first;
+- Stuart Russell and Max Tegmark, 2 statements each, from the 2014 opinion piece led by Stephen
+  Hawking;
+- Ilya Sutskever, 3 statements and 3 claims, from OpenAI's "Governance of superintelligence"
+  (led by Sam Altman) and "Introducing Superalignment" (led by Jan Leike);
+- Erik Brynjolfsson, 2 statements, from the 2016 One Hundred Year Study report (by its study
+  panel, chaired by Peter Stone) and "A Definition of AGI" (led by Dan Hendrycks);
+- Rodney Brooks, 1 statement, from the same 2016 report;
+- Gary Marcus, 1 statement, from the 2026 essay led by Walter Quattrociocchi;
+- Daniel Kokotajlo, 1 statement, from the 2025 essay led by Sayash Kapoor.
+
+The rows of the lead authors on the panel stay counted (Altman's, Leike's), so no piece drops
+out of the record entirely when a panel member led it.
+
+Not changed: the frozen panel (A18). Its members were chosen partly on co-written statements
+(A14, ruling 3), and that choice stands, because changing who is on the panel needs its own
+amendment.
+
+What it moves: 946 statements are counted instead of 966, and 361 claims instead of 364. The
+home page's sentence on the people studying these systems now reads that their earliest guesses
+came down from about 2076, where it read 2100 or later; the far-off guesses in the 2014
+opinion piece and the 2016 report were among those earliest guesses. The frontier-voices chart
+and the chart of claims whose dates moved change with them.
+
+Why: a forecast in a group piece is the group's wording, and the people named after the first
+may not have chosen it. Counting it for every panel author also counts one piece several
+times, so the group's view weighs more than any one person's. The lead author is the one person
+a reader can most fairly hold to the words.
+
+The three cases: none counts. Kokotajlo is third in his post's byline (Eli Lifland is first),
+Narayanan is third in his (Kapoor is first), and Legg is last in his (Tim Genewein is first).
+Lifland, Kapoor and Genewein are not on the panel, so they are listed in
+`docs/panel-candidates.md` for the next panel review.

@@ -67,9 +67,16 @@ plt.rcParams.update({
 })
 
 
-def read(name):
+# A piece written jointly with others counts as a panel member's own words only when they are its lead
+# (first-named) author (amendment A37, John 2026-11-20). Rows from a piece they did not lead carry the
+# notes tag not_lead_author, and claims the field not_lead_author = true: they stay in the files and the
+# downloads and are listed on the amendments page, but no figure, count or chart reads them.
+def read(name, all_rows=False):
     with (DATA / name).open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+    if name == "statements.csv" and not all_rows:
+        rows = [r for r in rows if "not_lead_author" not in {p.strip().split(":")[0].strip() for p in (r.get("notes") or "").split(";")}]
+    return rows
 
 
 def parse_date(s):
@@ -945,6 +952,27 @@ DOC_PURPOSE = {
 }
 
 
+def not_lead_author_list():
+    """The amendments page's list of statements and claims kept out of every figure because they come from a piece
+    written jointly with others that the person did not lead (amendment A37, John 2026-11-20). Written from the data."""
+    rows = [r for r in read("statements.csv", all_rows=True) if "not_lead_author" in cs.note_tags(r)]
+    claims = [c for c in load_claims(all_claims=True) if c.get("not_lead_author")]
+    names = {r["speaker_id"]: r["name"] for r in read("speakers.csv")}
+    head = ('<h2 id="not-the-lead-author">Kept, not counted: pieces the person did not lead</h2>'
+            '<p>A piece written jointly with others counts as one person\'s own words only when that person is its lead, '
+            'first-named author (amendment A37). These come from pieces where the person on the panel was a co-author but not the lead. '
+            'They stay in the downloadable tables and are listed here, but no figure, count or chart uses them.</p>')
+    if not rows and not claims:
+        return head + "<p>None at present.</p>"
+    items = "".join(f'<li><code>{esc(r["statement_id"])}</code>, {esc(names.get(r["speaker_id"], r["speaker_id"]))}, '
+                    f'{esc(r["date"])}: {esc(r["claim_summary"])} <a href="{esc(r["source_url"])}">Source</a>.</li>'
+                    for r in sorted(rows, key=lambda r: (r["date"], r["statement_id"])))
+    items += "".join(f'<li>Prediction <code>{esc(c["id"])}</code>, {esc(names.get(c["speaker_id"], c["speaker_id"]))}, '
+                     f'{esc(str(c["when"]))}: {esc(c["prediction"])} <a href="{esc(c["source_url"])}">Source</a>.</li>'
+                     for c in sorted(claims, key=lambda c: str(c["when"])))
+    return head + f"<ul>{items}</ul>"
+
+
 def added_from_tips():
     """The changelog's list of statements and claims that came in by tip (docs/tip-intake.md). Since amendment
     A32 (John, 2026-10-21) they count in every figure like any other row; this list is where a reader sees
@@ -1019,7 +1047,7 @@ def render_docs(built, commit):
                   "panel-evidence-2026-10": "Panel evidence", "feasibility": "Feasibility check"}.get(rel.parts[0] if depth else "", "Document")
         note = f'<p class="cite">Rendered from <code>{esc(str(src.relative_to(ROOT)))}</code> at version {esc(commit)}.</p>'
         if rel.as_posix() == "amendments.md":
-            body += added_from_tips()
+            body += added_from_tips() + not_lead_author_list()
         what = DOC_PURPOSE.get(rel.with_suffix("").as_posix(), "")
         preface = ('<div class="status"><strong>A working document.</strong> ' + (what + ' ' if what else '') +
                    'It is one of the documents the site is built from, published as it is written for anyone checking the work, '
@@ -1117,7 +1145,8 @@ def copy_data():
 CLAIM_FIELDS = ["id", "speaker_id", "when", "when_note", "occasion", "source_kind", "source_url", "source_locator",
                 "checked_how", "quote", "reported_as", "statement_id", "prediction", "kind", "bar", "due", "due_early",
                 "due_date", "due_basis", "is_goal", "has_probability", "restates", "repeated_on", "status", "verdict_on",
-                "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify", "arrives", "arrives_term", "form"]
+                "verdict_why", "verdict_source", "evidence_by", "direction", "search_ids", "notes", "verify", "arrives", "arrives_term", "form",
+                "not_lead_author"]
 # The order John ruled: Altman and Musk (2026-10-17), then the thirteen he added on 2026-10-19 (A30),
 # Kai-Fu Lee last.
 LEDGER_ORDER = ["altman", "musk", "amodei", "huang", "hassabis", "suleyman", "sutskever", "legg", "lecun",
@@ -1156,13 +1185,16 @@ THINKER_LINK = {sp: f"https://en.wikipedia.org/wiki/{slug}" for sp, slug in {
     "hinton": "Geoffrey_Hinton"}.items()} | {"cotra": "https://metr.org/team/ajeya-cotra/"}
 
 
-def load_claims():
+def load_claims(all_claims=False):
+    """Every claim file, oldest first; without all_claims, not the ones from a piece the person did not lead (A37)."""
     folder = DATA / "claims"
     if not folder.exists():
         return []
     out = []
     for path in sorted(folder.glob("*.toml")):
-        out.append(tomllib.loads(path.read_text(encoding="utf-8"))["claim"])
+        c = tomllib.loads(path.read_text(encoding="utf-8"))["claim"]
+        if all_claims or not c.get("not_lead_author"):
+            out.append(c)
     out.sort(key=lambda c: (str(c["when"]), c["id"]))
     return out
 
@@ -1312,7 +1344,7 @@ def claims_page(sc, claims, built, commit):
                                           body, built, commit, canonical_path="/claims/", eyebrow="Claims", active="/claims/",
                                           h1="What the industry's leaders predict",
                                           lede="When the people building AI expect it to match or pass us, in their own words and dated, beside the academics who have watched the question for decades."), encoding="utf-8")
-    claims_csv(claims)
+    claims_csv(load_claims(all_claims=True))
     named = [sp for sp in cs.LEADERS if now[sp]["nearest"] is not None]
     drawn_people = [sp for sp in cs.LEADERS if now[sp]["latest"]]
     return dict(claims=len(claims), people=len(people), page=f"{SITE_URL}/claims/", table=f"{SITE_URL}/data/claims.csv",
@@ -1802,7 +1834,7 @@ def main():
     n_docs = render_docs(built, git_commit())
     n_news = render_news(built, git_commit())
     n_data = copy_data()
-    claims_csv(claims)
+    claims_csv(load_claims(all_claims=True))
     (SITE / "data" / "headline.json").write_text(json.dumps(headline, indent=2), encoding="utf-8")
     disagree_page(built, git_commit())
     about_page(sc, built, git_commit())

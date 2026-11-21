@@ -83,6 +83,7 @@ Every file holds one `[claim]` table with these fields.
 | `direction` | on `missed`; optional on `hit` | Which way it went: `later` (the thing came, after the due date), `not_come` (it has not come as of the verdict), `sooner` (a hit that came well before the date), `on_time`. |
 | `search_ids` | yes | The ids in `data/search_log.csv` of the searches and fetches that found the words and settled the verdict. Every one must exist. |
 | `from_tip` | no | `true` when the claim came in through tip intake (`docs/tip-intake.md`): something I sent in rather than something the searches found. It counts like any other claim, and the claims page marks it "added from a tip" (amendment A32, 2026-10-21). |
+| `not_lead_author` | no | `true` when the claim comes from a piece written jointly with others that the person did not lead (they are not first in its byline). The claim stays in its file and in the downloadable table, but the claims page, the counts and the charts leave it out, and the amendments page lists it (amendment A37, 2026-11-20). From that date such a claim is not entered at all. |
 | `notes` | no | Anything else a reader needs: the judgement calls, the words left out, the flags. |
 | `verify` | no | Plain claims in the entry made from memory or a search excerpt and not yet checked at the source. A later session clears each. |
 
