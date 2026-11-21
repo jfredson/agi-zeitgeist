@@ -1435,3 +1435,46 @@ The three cases: none counts. Kokotajlo is third in his post's byline (Eli Lifla
 Narayanan is third in his (Kapoor is first), and Legg is last in his (Tim Genewein is first).
 Lifland, Kapoor and Genewein are not on the panel, so they are listed in
 `docs/panel-candidates.md` for the next panel review.
+
+## 2026-11-21: a weekly review joins the kinds of news post
+
+Decided by: me. In the week of 2026-11-16 several stories about AI spread widely with captions that
+went further than their sources: a proof of the Riemann Hypothesis checked by computer, Anthropic's
+listing on the stock market, a statement signed against Anthropic, a break-in described on CNN, and
+the President's remark about "joint guardrails" with China. A post that sorts them, and says what
+they change here, fitted none of the seven kinds of news post, because each of those kinds explains
+one change to the record. I was given two answers (recast the post as one of the seven, or add a
+kind) and chose to add a kind.
+
+### A38. A weekly review joins the kinds of news post
+
+Was: a news post was one of seven kinds (start here, a line crossed, a measure revised, a flagged
+item ruled, a claim added or settled, the headline moved, the method changed), and each explains
+one change to the record or one ruling on it.
+
+Now: an eighth kind, `weekly-review`, shown as "the week in review". It takes the AI news of one
+week that readers are most likely to have seen, sorts what is established from what is only
+claimed, and says what, if anything, it changes on the test of whether we are entering the
+singularity. It is held to every rule the other kinds are held to by `scripts/check_news.py`: it
+names at least one part of the test (A, B, C or D) that it discusses, cites sources a reader can
+open, links a source in every paragraph that gives a figure, has its card drawn, and does not go
+out while any claim on the site carries an open check.
+
+Three limits keep it from becoming a second record:
+
+- It changes nothing by itself. A statement, event or measure it mentions enters the record only
+  through the weekly reading (`docs/weekly-reading.md`) or tip intake (A29, A32), under their own
+  rules, and a post that reports a row or a ruling names it as the other kinds do.
+- It is written only when a week has news that readers are likely to ask about, so a quiet week
+  gets none and there is at most one a week. It is not on a schedule.
+- It does not report a change to how something is counted while the site's first version settles;
+  such a change goes here, in an amendment, and not in a news post.
+
+Why: a question readers bring to this site is what the news they have just seen
+means for it. The seven kinds answer that only when the news changes the record, and most weeks it
+does not. A review that says plainly "this does not move the test, and here is why" is part of
+what the test is for, and keeping it apart from the record means a loud week cannot move a score
+without going through the rules that fix how scores move.
+
+Not changed: the seven kinds and their rules, the frozen values in
+`docs/singularity-entry-thresholds.json`, and everything scored.
