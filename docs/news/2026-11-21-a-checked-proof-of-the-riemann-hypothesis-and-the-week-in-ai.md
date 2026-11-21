@@ -1,6 +1,6 @@
 ---
 title: A checked proof of the Riemann Hypothesis, Anthropic on the stock market, and what the week in AI changes on the AGI Zeitgeist
-date: 2026-11-22
+date: 2026-11-21
 status: published
 kind: weekly-review
 summary: A mathematician working with an AI produced a proof of the Riemann Hypothesis that several independent programs have checked line by line, although no person has yet explained it. In the same week Anthropic sold shares on the stock market, a broad group of scientists and lawyers signed a statement calling it unsafe, and METR reported that the best AI can now finish jobs that take a skilled person about forty hours. My test of whether we are entering the singularity does not move, and this post says why.
