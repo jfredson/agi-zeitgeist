@@ -14,6 +14,12 @@ const MOVED = {
   "/news/2026-11-20-a-jointly-written-piece-now-counts-only-for-its-lead-author-card.png": RULE,
   "/news/2026-11-20-whose-agi-forecast-is-it-when-several-people-sign-it/": RULE,
   "/news/2026-11-20-whose-agi-forecast-is-it-when-several-people-sign-it-card.png": RULE,
+  // The first weekly review (amendment A38) went up on 2026-11-21 dated 2026-11-22, the weekend day
+  // it was written for, and was redated the same day to 2026-11-21 on John's request.
+  "/news/2026-11-22-a-checked-proof-of-the-riemann-hypothesis-and-the-week-in-ai/":
+    "/news/2026-11-21-a-checked-proof-of-the-riemann-hypothesis-and-the-week-in-ai/",
+  "/news/2026-11-22-a-checked-proof-of-the-riemann-hypothesis-and-the-week-in-ai-card.png":
+    "/news/2026-11-21-a-checked-proof-of-the-riemann-hypothesis-and-the-week-in-ai-card.png",
 };
 
 export default {
