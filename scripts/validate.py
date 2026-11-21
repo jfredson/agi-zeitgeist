@@ -53,6 +53,11 @@ HEADERS = {
                    "description", "source_url", "notes"],
     "search_log.csv": ["search_id", "speaker_id", "year", "query",
                        "where_searched", "what_found", "date_searched"],
+    # Results made mainly by AI, listed beside the claims and never scored (amendment A37, 2026-11-20).
+    "ai_results.csv": ["result_id", "announced", "field", "problem", "problem_url", "open_since",
+                       "open_since_source", "claim", "scope", "announced_by", "ai_system", "maker",
+                       "people_part", "check_route", "check", "check_date", "check_note",
+                       "check_source", "source_url", "notes"],
 }
 
 SPEAKER_TYPES = {"individual", "survey", "prediction_market", "institution", "poll"}
@@ -97,6 +102,10 @@ UNITS = {"year", "probability", "percent_of_respondents", "index",
          "minutes", "days", "percent", "percent_growth",
          # leg D context rows, shown beside the score and never scored (amendment A33, 2026-10-21)
          "robots"}
+# Amendment A37 (2026-11-20): the five checks, what a result covers, and how it can be checked.
+AI_RESULT_CHECKS = {"maker", "outside_partial", "outside_confirmed", "disputed", "withdrawn"}
+AI_RESULT_SCOPES = {"whole", "version", "bound", "disproof"}
+AI_RESULT_ROUTES = {"lean", "paper", "code", "data"}
 EVENT_TYPES = {"open_letter", "public_statement", "government_action", "report", "ai_release"}  # ai_release: amendment A21
 PRECISION_PATTERNS = {
     "day": re.compile(r"^\d{4}-\d{2}-\d{2}$"),
@@ -449,6 +458,41 @@ def check_events(rows):
             err(f, i, "title is blank")
         if not valid_source(r["source_url"]):
             err(f, i, "missing or malformed source_url")
+
+
+def check_ai_results(rows):
+    """Amendment A37: each result names its problem, what was claimed, who made it, how it can be
+    checked, and how far people outside the maker have checked it, with a dated source for that."""
+    f = "ai_results.csv"
+    unique(f, rows, "result_id")
+    for i, r in enumerate(rows, start=2):
+        if not SLUG.match(r["result_id"]):
+            err(f, i, f"result_id {r['result_id']!r} is not a slug")
+        for col in ("field", "problem", "claim", "announced_by", "ai_system", "maker", "check_note"):
+            if not r[col].strip():
+                err(f, i, f"{col} is blank")
+        for col in ("announced", "check_date"):
+            if not valid_date(r[col], "day"):
+                err(f, i, f"{col} {r[col]!r} is not a full date")
+        if valid_date(r["announced"], "day") and valid_date(r["check_date"], "day") and r["check_date"] < r["announced"]:
+            err(f, i, "check_date is before the result was announced")
+        if r["scope"] not in AI_RESULT_SCOPES:
+            err(f, i, f"invalid scope {r['scope']!r}")
+        if r["check"] not in AI_RESULT_CHECKS:
+            err(f, i, f"invalid check {r['check']!r}")
+        routes = [x for x in r["check_route"].split(";") if x]
+        if not routes or any(x not in AI_RESULT_ROUTES for x in routes):
+            err(f, i, f"check_route {r['check_route']!r} must be one or more of {sorted(AI_RESULT_ROUTES)}, joined by ';' (A37: nothing a reader can check, no row)")
+        for col in ("problem_url", "check_source", "source_url"):
+            if not valid_source(r[col]):
+                err(f, i, f"missing or malformed {col}")
+        if r["open_since"]:
+            if not re.match(r"^\d{4}$", r["open_since"]):
+                err(f, i, f"open_since {r['open_since']!r} must be a year")
+            if not valid_source(r["open_since_source"]):
+                err(f, i, "open_since needs open_since_source, a source for how long the problem stood open")
+        elif r["scope"] in ("whole", "disproof"):
+            err(f, i, "a whole problem or a disproof needs open_since, from a source (A37 item 2)")
 
 
 def check_search_log(rows, speakers):
@@ -907,6 +951,7 @@ def main():
     check_aggregates(tables["aggregates.csv"], speakers)
     check_aggregates(tables["world_measures.csv"], speakers, "world_measures.csv")
     check_events(tables["events.csv"])
+    check_ai_results(tables["ai_results.csv"])
     check_search_log(tables["search_log.csv"], speakers)
     check_readings(tables, speakers)
     n_claims = check_claims(tables, speakers)

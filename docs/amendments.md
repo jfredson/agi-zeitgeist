@@ -1368,3 +1368,98 @@ Why: the rule already existed, but a reader had to open the working document to 
 point of fixing a rule in advance is lost if it is only visible after it is used. Printing it
 beside the part it governs, before any replacement is proposed, lets a reader check the switch
 against the rule when it comes. Credit for the suggestion goes to the reader on Reddit.
+
+## 2026-11-20: results made mainly by AI, listed beside the claims
+
+Decided by: me, on the model's recommendation. On 2026-11-20 Levent Alpöge, a mathematician at
+Anthropic, posted a note saying he had proved the Riemann Hypothesis working with Claude, and
+released the proof as Lean code. I asked whether it belonged on this site and said yes to a news
+post once the outside check of the proof's statement is reported. The news-post rule needs a change
+to the record, and the result changed none, so the model put three options to me (this table, a
+note on one claim only, or a looser news-post rule) and I chose its recommendation, a new method
+change. It drafted the amendment below the same day (`docs/amendments/proposed-2026-11-20-a37-ai-made-results-beside-the-claims.md`,
+which keeps its source notes for the first rows) and I approved it the same evening: "Approve as
+written". The details (the five checks, what is not a row, the first four rows) are the model's
+proposals inside my approval. The three open questions at the end were not ruled.
+
+---
+
+### A37. Results in mathematics and science made mainly by AI are listed beside the claims, not scored
+
+Applies to: a new table, `data/ai_results.csv`; the claims page (`/claims/`), which gains a
+section that draws it; `scripts/validate.py`, which gains a check on it. The singularity test,
+its frozen values (`docs/singularity-entry-thresholds.json`) and the claims ledger's rules are
+untouched.
+
+Was: a result made by an AI system appeared on the site only indirectly. It showed up inside the
+note on a claim it bears on (OpenAI's disproof of an Erdős conjecture, in the note on Sam Altman's
+prediction that 2026 would bring "systems that can figure out novel insights"), or in a statement
+row when someone on the panel mentioned it (Altman, Kokotajlo and Floridi on OpenAI's
+Navier–Stokes claim). There was no list of the results themselves, and no place to say whether
+each one had been checked.
+
+Now:
+
+1. **The score does not change.** No row in the new table enters a gauge, the progress number or
+   the headline. The table is context, on the same footing as the robots table beside part D (A33)
+   and the company code figures beside part C.
+2. **A table of results.** Each row is one result that its makers say was produced mainly by an
+   AI system, on a problem that was named and open before the work began. It holds:
+   - the date the result was announced, and where;
+   - the problem, with a link, and how long it had stood open, from a source;
+   - what was claimed, in one plain sentence, including whether it is the whole problem, a
+     version of it, or a better bound on it;
+   - who announced it, the AI system and its maker, and the people's part as they describe it;
+   - how it can be checked: a proof a computer checks (such as Lean), a paper, code, or data;
+   - **the check**, one of: `maker` (only the makers' word so far); `outside_partial` (people
+     outside the maker have checked part of it, named in the row); `outside_confirmed` (people
+     outside the maker, or a computer check of both the statement and the proof run by someone
+     outside the maker, say it holds); `disputed`; `withdrawn`. The date of the check is given
+     beside it, with its source.
+3. **What is not a row:** benchmark and test scores; competition results on problems whose
+   answers were already known; a result announced with nothing a reader can check (no paper,
+   proof, code or data). When a figurehead on the ledger's list announces such a thing, it goes to
+   the claims ledger under its own rules. Otherwise it is left out.
+4. **Rows are kept.** A result found wrong stays in the table, marked `disputed` or `withdrawn`,
+   with the date and the source. The check is updated as outside checks come in; each change is
+   dated, and the weekly reading looks for them.
+5. **All makers alike.** The table starts with every qualifying result the record already knows
+   of from 2026, whoever made it. The first rows are, in date order:
+   - OpenAI, 2026-05-20: a model disproved the planar unit distance conjecture (Erdős, 1946).
+   - Alpöge and Furman, 2026-08: more than two thirds of the zeros of the Riemann zeta function
+     are simple and on the critical line, checked in Lean (to be confirmed against the paper,
+     including whether it is the result Anthropic described in August, before entry).
+   - OpenAI, 2026-09: a claimed solution of a version of the Navier–Stokes problem.
+   - Alpöge, Anthropic, 2026-11-20: a claimed proof of the Riemann Hypothesis and the Generalized
+     Riemann Hypothesis, released as Lean code.
+   Each row's facts are set down from sources opened when it is entered (see the source notes
+   below), never from memory.
+6. **Claims may point to rows.** A claim in the ledger whose test a result bears on may name the
+   row in its note. The claim's verdict is still reached under the ledger's own rules, at its own
+   date.
+
+Why shown and not scored. Discovery is close to the heart of what the singularity idea is about:
+Good's intelligence explosion and Vinge's event horizon are both about minds that outthink ours,
+and the plainest sign of that from outside is a machine finding what the best people could not.
+Open problems also carry a measure of difficulty nobody designed for the purpose (how long the
+best people tried), which a lab cannot train for in advance. But each part of the test was chosen
+because, used alone, it misleads, and a breakthrough used alone misleads too: a narrow system can
+make a great discovery (computers helped prove the four-colour theorem in 1976), results come in
+lumps rather than a series, makers choose what to try and announce only what works, and the
+people's share is hard to separate from the machine's. Most of all, adding a scored measure on
+the day a large result lands, when it would push the score up, is changing the rules after seeing
+the outcome, which is what the frozen test exists to prevent. So the results are shown, dated and
+checked, and the score is left alone.
+
+What it costs: one small table, a section on the claims page, one validator check, and a look for
+new rows and changed checks in the weekly reading. Most weeks will add nothing.
+
+Not decided here, and left for me:
+- whether the table should also be shown beside part A, which measures capability, as well as on
+  the claims page;
+- whether results in the natural sciences, which take years to confirm, follow the same rule as
+  results in mathematics, which a computer can sometimes check in hours;
+- whether a measure built on open problems, weighted by how long each stood open, should one day
+  be studied as a candidate replacement for METR's series in part A (the open question A24). That
+  would be an amendment of its own, defined in advance and run alongside the old measure before it
+  counts, as the successor rule requires.

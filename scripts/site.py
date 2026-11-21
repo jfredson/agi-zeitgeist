@@ -1092,6 +1092,7 @@ def copy_data():
             "events.csv": "dated events such as open letters and government actions",
             "search_log.csv": "every search that was run to find a statement, so that someone else can run it again",
             "claims.csv": "the claims ledger as one table: each dated prediction by a person on the list, in their words, with its test and its verdict",
+            "ai_results.csv": "results in mathematics and science made mainly by AI, each with how far people outside its maker have checked it; shown on the claims page and never scored",
             "wide_list_candidates.csv": "the wider list of well-known people the experts were chosen from, and where each name came from"}
     size = lambda f: f"{f.stat().st_size // 1024 + 1} KB"  # noqa: E731
     li = lambda f, what="": (f'<li><a href="{esc(f.relative_to(DATA).as_posix())}">{esc(f.relative_to(DATA).as_posix())}</a> ({size(f)})'  # noqa: E731
@@ -1203,6 +1204,46 @@ def verdict_note(c):
     return f"{when}."
 
 
+# Amendment A37 (2026-11-20): results made mainly by AI, listed on the claims page and never scored.
+AI_RESULT_CHECK_WORDS = {
+    "maker": "only the maker's word so far",
+    "outside_partial": "partly checked by people outside the maker",
+    "outside_confirmed": "confirmed by people outside the maker",
+    "disputed": "disputed",
+    "withdrawn": "withdrawn",
+}
+AI_RESULT_SCOPE_WORDS = {"whole": "the whole problem", "version": "one version of the problem",
+                         "bound": "a better bound, not the whole problem", "disproof": "a disproof"}
+
+
+def ai_results_section():
+    """The table of results made mainly by AI (data/ai_results.csv). Read here only: no gauge,
+    progress number or headline reads it (A37 item 1)."""
+    rows = sorted(read("ai_results.csv"), key=lambda r: r["announced"], reverse=True)
+    items = []
+    for r in rows:
+        since = f' It had stood open since {esc(r["open_since"])} (<a href="{esc(r["open_since_source"])}">source</a>).' if r["open_since"] else ""
+        routes = ", ".join({"lean": "a proof a computer checks (Lean)", "paper": "a paper", "code": "code", "data": "data"}[x]
+                           for x in r["check_route"].split(";") if x)
+        items.append(f'<li id="{esc(r["result_id"])}"><span class="mono">{esc(r["announced"])}</span> '
+                     f'<span class="chip">{esc(AI_RESULT_CHECK_WORDS[r["check"]])}</span><br>'
+                     f'<b><a href="{esc(r["problem_url"])}">{esc(r["problem"][:1].upper() + r["problem"][1:])}</a></b>: {esc(r["claim"])} '
+                     f'(<a href="{esc(r["source_url"])}">the announcement</a>; {esc(r["announced_by"])})<br>'
+                     f'<span class="dim"><b>What it covers:</b> {esc(AI_RESULT_SCOPE_WORDS[r["scope"]])}.{since} '
+                     f'<b>Made with:</b> {esc(r["ai_system"])}, from {esc(r["maker"])}. {esc(r["people_part"])} '
+                     f'<b>How it can be checked:</b> {esc(routes)}.</span><br>'
+                     f'<small class="dim"><b>The check, as of {esc(r["check_date"])}:</b> {esc(r["check_note"])} '
+                     f'(<a href="{esc(r["check_source"])}">source</a>)</small></li>')
+    return (f'<h2 id="results">Results made mainly by AI</h2>\n'
+            f'<p>Some of the predictions on this page are about AI finding things people had not, such as new results in mathematics. '
+            f'This list records results that their makers say were produced mainly by an AI system, on a problem that was named and open before the work began. '
+            f'Each says how far people outside the company that made it have checked it, and a result found wrong stays here with that mark. '
+            f'None of them is scored: they do not move any part of the singularity test, and a prediction is still judged at its own date, under its own rules. '
+            f'Why, and what counts, is in <a href="/docs/amendments">the record of method changes</a>, under results made mainly by AI. '
+            f'The list is also <a href="/data/ai_results.csv">a table</a>.</p>\n'
+            f'<ul>{"".join(items)}</ul>\n')
+
+
 def claims_page(sc, claims, built, commit):
     speakers = {r["speaker_id"]: r for r in read("speakers.csv")}
     words = cs.load_words()
@@ -1303,6 +1344,7 @@ def claims_page(sc, claims, built, commit):
 <h2 id="all">Everything they have predicted with a date</h2>
 {"".join(sections)}
 
+{ai_results_section()}
 <h2 id="notes">About the notes</h2>
 <p>Each prediction carries the test that would show it, written when it was entered and never changed afterwards, and a small note once its date has passed: whether it came true, shown by a dated public record, or did not, and which way. A prediction whose words name nothing anyone outside could check says so. To argue with a note, use <a href="/disagree/">the disagree page</a>.</p>
 </section>"""
@@ -1331,7 +1373,8 @@ def claims_page(sc, claims, built, commit):
 RECORD_NAMES = {"A24": "what replaces METR's measure", "A25": "how the headline is worked out",
                 "A26": "why statements about today's systems are always kept",
                 "A27": "how the ledger works", "A28": "how the panel's statements are sorted",
-                "A29": "how tips are taken in", "A30": "who the ledger covers", "A31": "what the ledger is for"}
+                "A29": "how tips are taken in", "A30": "who the ledger covers", "A31": "what the ledger is for",
+                "A37": "how results made mainly by AI are listed"}
 
 
 def esc(s):
