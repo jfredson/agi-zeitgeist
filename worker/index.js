@@ -3,14 +3,17 @@
 // one address to cite.
 const MAIN = "agizeitgeist.com";
 
-// Pages whose address changed after they were published. The old address forwards to the new
-// one for good (301), so no link breaks. The news post on the lead-author rule was retitled
-// under the title rules on 2026-11-20, the day it went up, on John's instruction.
+// Pages taken down or moved after they were published. Each old address forwards for good (301),
+// so no link breaks. The news post on the lead-author rule (amendment A37) went up on 2026-11-20,
+// was retitled the same evening, and was then taken off the site on John's ruling that the rule is
+// part of settling the first version of the method, not news. Its addresses, and its cards, now
+// forward to the rule itself on the amendments page.
+const RULE = "/docs/amendments#a37-only-the-lead-author-of-a-jointly-written-piece-is-recorded";
 const MOVED = {
-  "/news/2026-11-20-a-jointly-written-piece-now-counts-only-for-its-lead-author/":
-    "/news/2026-11-20-whose-agi-forecast-is-it-when-several-people-sign-it/",
-  "/news/2026-11-20-a-jointly-written-piece-now-counts-only-for-its-lead-author-card.png":
-    "/news/2026-11-20-whose-agi-forecast-is-it-when-several-people-sign-it-card.png",
+  "/news/2026-11-20-a-jointly-written-piece-now-counts-only-for-its-lead-author/": RULE,
+  "/news/2026-11-20-a-jointly-written-piece-now-counts-only-for-its-lead-author-card.png": RULE,
+  "/news/2026-11-20-whose-agi-forecast-is-it-when-several-people-sign-it/": RULE,
+  "/news/2026-11-20-whose-agi-forecast-is-it-when-several-people-sign-it-card.png": RULE,
 };
 
 export default {
@@ -22,8 +25,7 @@ export default {
     }
     const path = url.pathname.endsWith(".png") || url.pathname.endsWith("/") ? url.pathname : url.pathname + "/";
     if (MOVED[path]) {
-      url.pathname = MOVED[path];
-      return Response.redirect(url.toString(), 301);
+      return Response.redirect(new URL(MOVED[path], url.origin).toString(), 301);
     }
     return env.ASSETS.fetch(request);
   },
