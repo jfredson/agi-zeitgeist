@@ -1,0 +1,60 @@
+{
+  "speaker_id": "sutskever",
+  "row": 13,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0965,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['5 to 20','5 to 20 years','01:22','Mhm','superhuman']:\\n        for m in re.finditer(re.escape(k),c): print(k,'::',c[max(0,m.start()-600):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:600])\\nimport re\\nfor k in ['5 to 20','01:22','Mhm','superhuman','learn as well']:\\n    for m in re.finditer(re.escape(k),c): print(k,'::',c[max(0,m.start()-700):m.start()+300]); print('---')\"}",
+    "{\"code\": \"for k in ['2025','November','published','Nov']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-150):m.start()+150].replace('\\\\n',' ')); print('--')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 7957,
+      "cache_read_input_tokens": 62350,
+      "inference_geo": "global",
+      "input_tokens": 674,
+      "output_tokens": 2075,
+      "output_tokens_details": {
+        "thinking_tokens": 328
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-11-25",
+    "quote": "I think like 5 to 20.",
+    "what_is_predicted": "A system that can learn as well as a human, and as a result become superhuman, will arrive in 5 to 20 years (he answered 'Mhm' when Dwarkesh asked '5 to 20 years?').",
+    "date_or_span": "5 to 20 years",
+    "occasion": "Dwarkesh Podcast, 'Ilya Sutskever — We're moving from the age of scaling to the age of research', timestamp 01:22:26. The official dwarkesh.com transcript page opened but was cut off before this point, so the words were read in a timestamped transcript excerpt reproduced in a third-party Substack essay.",
+    "source_url": "https://narrascaping.substack.com/p/the-counter-reformation-of-the-agi",
+    "source_kind": "transcript",
+    "already_recorded": "2025-11-25-sutskever-human-like-learner-5-to-20-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A third-party Substack commentary essay (narrascaping, Brian Allewelt, 7 Dec 2025) reproducing a timestamped excerpt of the Dwarkesh Podcast transcript in which Sutskever says 'I think like 5 to 20.' at 01:22:26 and answers 'Mhm.' to '5 to 20 years?'; it is not the official transcript page.",
+    "date_on_page": "2025-11-25",
+    "role_at_the_time": "chief executive and co-founder of Safe Superintelligence",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "The claim meets all four parts: said as SSI's chief executive, a forecast of a human-level learner that becomes superhuman, a 5-to-20-year span and a transcript. It is the same claim as 2025-11-25-sutskever-human-like-learner-5-to-20-years.toml, and the source should be the official Dwarkesh transcript rather than this third-party essay."
+  },
+  "reply_text": "I read this as **recorded**. The quoted words are on the page, but the claim is already in the ledger as `2025-11-25-sutskever-human-like-learner-5-to-20-years.toml`.\n\n**1. Are the words on the page?** Yes, exactly. The page opened. It's an essay by Brian Allewelt on the narrascaping Substack, dated 7 December 2025. It quotes a timestamped excerpt of the Dwarkesh Podcast transcript, and the essay itself says the interview came out on 25 November 2025. The excerpt reads:\n\n> **Dwarkesh Patel 01:22:14** Speaking of forecasts, what are your forecasts to this system you're describing, which can learn as well as a human and subsequently, as a result, become superhuman?\n> **Ilya Sutskever 01:22:26** I think like 5 to 20.\n> **Dwarkesh Patel 01:22:28** 5 to 20 years?\n> **Ilya Sutskever 01:22:29** Mhm.\n\nThis page is not Sutskever's own post and not the podcast's official transcript. It's a commentary essay that reproduces part of the transcript. If this source were used alone, I'd mark it borderline between \"pass\" and \"pass, coverage only\". The person checking should cite the dwarkesh.com transcript or the recording at 01:22:26. The earlier run said that page cut off before this point, and I did not try to open it.\n\n**2. The four parts of the admission rule:**\n- **Part 1 (role): met.** On 25 November 2025 he was chief executive of Safe Superintelligence, a frontier-model company he co-founded.\n- **Part 2 (forward-looking and about AI): met.** It forecasts when an AI system will arrive. The stage comes with a comparison in the question itself, \"learn as well as a human\", so it isn't a bare \"human level\". He accepts that framing with \"Mhm\".\n- **Part 3 (a date or span): met.** \"5 to 20 years\" is a range of spans. Under the due-year rule, `due` is the later end, about 2045, and `due_early` is about 2030.\n- **Part 4 (primary source): met through the transcript**, with the caveat above about which page to cite.\n\n**Already recorded:** the date, the 5-to-20-year span and the \"human-like learner\" gist all match the recorded file. So this is the same claim, not a new one or a changed repeat.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A third-party Substack commentary essay (narrascaping, Brian Allewelt, 7 Dec 2025) reproducing a timestamped excerpt of the Dwarkesh Podcast transcript in which Sutskever says 'I think like 5 to 20.' at 01:22:26 and answers 'Mhm.' to '5 to 20 years?'; it is not the official transcript page.\",\n  \"date_on_page\": \"2025-11-25\",\n  \"role_at_the_time\": \"chief executive and co-founder of Safe Superintelligence\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"The claim meets all four parts: said as SSI's chief executive, a forecast of a human-level learner that becomes superhuman, a 5-to-20-year span and a transcript. It is the same claim as 2025-11-25-sutskever-human-like-learner-5-to-20-years.toml, and the source should be the official Dwarkesh transcript rather than this third-party essay.\"\n}\n```"
+}

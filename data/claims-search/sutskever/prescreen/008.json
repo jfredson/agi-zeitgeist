@@ -1,0 +1,59 @@
+{
+  "speaker_id": "sutskever",
+  "row": 8,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0575,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('dull'); print(c[max(0,i-1500):i+400])\\n    import re\\n    for k in ['2020','2021','Dec']:\\n        print(k, [m.start() for m in re.finditer(k,c)][:10])\"}",
+    "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\ni=c.find('dull'); print(c[:600]); print('----'); print(c[max(0,i-1500):i+600])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2809,
+      "cache_read_input_tokens": 45461,
+      "inference_geo": "global",
+      "input_tokens": 574,
+      "output_tokens": 1602,
+      "output_tokens_details": {
+        "thinking_tokens": 317
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2020",
+    "date_said": "2020-12-30",
+    "quote": "I expect our models to continue to become more competent, so much so that the best models of 2021 will make the best models of 2020 look dull and simple-minded by comparison.",
+    "what_is_predicted": "The best AI models of 2021 will be far more capable than the best models of 2020.",
+    "date_or_span": "2021",
+    "occasion": "Essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue",
+    "source_url": "https://www.deeplearning.ai/the-batch/ilya-sutskever-fusion-of-language-and-vision",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Sutskever's own first-person essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue; the quoted sentence appears verbatim.",
+    "date_on_page": "2020-12-30",
+    "role_at_the_time": "co-founder and chief scientist of OpenAI",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Written as OpenAI's chief scientist about 'our models'. It is a forward-looking claim about AI capability dated to 2021, in his own printed words; the vague bar ('look dull') points to unfalsifiable at entry but does not block admission."
+  },
+  "reply_text": "I checked the page and the quote is there word for word. The candidate **passes** all four parts of the rule.\n\n**1. The quote is on the page.** The page opened. It is the essay \"Fusion of Language and Vision\", published in The Batch, DeepLearning.AI's newsletter. The page is dated Dec 30, 2020, and its metadata gives 2020-12-30. It is Sutskever's own essay, written in the first person. It is not a news report about him. The quoted sentence is the third sentence of the essay and matches exactly: \"I expect our models to continue to become more competent, so much so that the best models of 2021 will make the best models of 2020 look dull and simple-minded by comparison.\"\n\n**2. The four parts of the rule.**\n- **Part 1, role:** Met. In December 2020 he was co-founder and chief scientist of OpenAI, a company that builds frontier models. He writes \"our models\", so he is speaking for the company.\n- **Part 2, looks forward and is about AI:** Met. It says AI models will become more capable. It is not a business forecast, and it is not framed as a hypothetical.\n- **Part 3, a date:** Met. The words name 2021.\n- **Part 4, primary source:** Met. These are his own printed words.\n- **Same as a recorded claim?** No. All five of his recorded claims date from 2023 or 2025, and none is about 2021 models.\n\n**Things for the person checking:**\n- \"Look dull and simple-minded by comparison\" is a judgement, not something an outsider can measure. When the test is written, the claim will probably have to be marked `unfalsifiable`. That decision belongs to that step, not to admission.\n- The very next paragraph has a second candidate the search run did not report. It says that in 2021 language models will start to become aware of the visual world, and that \"the next generation of models will be capable of editing and generating images in response to text input.\" It also names 2021 and is more testable. It may be worth logging as its own candidate.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Sutskever's own first-person essay 'Fusion of Language and Vision' in The Batch (DeepLearning.AI) New Year issue; the quoted sentence appears verbatim.\",\n  \"date_on_page\": \"2020-12-30\",\n  \"role_at_the_time\": \"co-founder and chief scientist of OpenAI\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Written as OpenAI's chief scientist about 'our models'. It is a forward-looking claim about AI capability dated to 2021, in his own printed words; the vague bar ('look dull') points to unfalsifiable at entry but does not block admission.\"\n}\n```"
+}

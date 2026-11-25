@@ -1,0 +1,59 @@
+{
+  "speaker_id": "huang",
+  "row": 17,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0599,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('five years'); print(c[:200]); \\n    for k in ['five years','five to ten','GTC','March','2024']:\\n        j=c.find(k); print(k, j, c[max(0,j-600):j+500] if k=='five years' else c[max(0,j-150):j+150])\"}",
+    "https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:4000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2726,
+      "cache_read_input_tokens": 46751,
+      "inference_geo": "global",
+      "input_tokens": 1203,
+      "output_tokens": 1606,
+      "output_tokens_details": {
+        "thinking_tokens": 244
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-03",
+    "quote": "In five years from now, you're probably right in the middle where everything is changing in real-time, and everybody's going, 'Oh, look at that, this is happening.' And so I would say that within the next five to ten years, somewhere in between, it's largely the case.",
+    "what_is_predicted": "Fully AI-generated video games will largely be a reality within five to ten years.",
+    "date_or_span": "next five to ten years (c. 2029-2034)",
+    "occasion": "Panel at Nvidia GPU Technology Conference (GTC) 2024, answering how long until an AI-generated game is released",
+    "source_url": "https://hothardware.com/news/nvidia-ceo-predicts-ai-will-fully-develop-games-within-the-next-decade",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A HotHardware news article by Alan Velasco quoting Huang word for word from a panel at Nvidia's GPU Technology Conference, where he was asked how long until an AI-generated game is released.",
+    "date_on_page": "",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Nvidia's chief executive. It is a forward-looking claim about AI (fully AI-generated games) with a span of five to ten years (due at the later end, 2034), but the only source found is a news report, not a transcript or his own words. \"Largely the case\" is a vague test and may make it unfalsifiable at entry. The fetched page has no date; the 2024-03 date comes from the search run (GTC 2024 is recalled as 18–21 March 2024, not seen on the page)."
+  },
+  "reply_text": "I'd admit it as **pass, coverage only**: the quote is on the page word for word, but the page is a news report, not Huang's own words or a transcript.\n\n**1. Page check.** The HotHardware page opened. The quote is on it exactly as the search run reported it, inside quotation marks, credited to Huang. The article says he said it at a panel during Nvidia's GPU Technology Conference, after being asked how long it would take for an AI-generated game to be released. It is a news article by Alan Velasco, so it is coverage only. The text I fetched has no date on it. The March 2024 date comes from the search run, not the page. GTC 2024 was held 18–21 March 2024, but that is from memory and the checker should confirm the date against a recording or transcript of the panel.\n\n**2. The four parts of the rule.**\n- **Part 1 (role):** He was chief executive of Nvidia, which he has led since 1993. Nvidia makes the chips frontier models are trained on, so this passes.\n- **Part 2 (looks forward, about AI):** It says AI-generated games will \"largely\" be the case. That is about what AI will do, and it is not framed as a hypothetical. It passes, though \"largely the case\" is vague. That vagueness matters when the test (`bar`) is written: the claim may end up `unfalsifiable`. It does not decide admission.\n- **Part 3 (a date or length of time):** \"Within the next five to ten years\" is a span counted from the day it was said. Under the rule for a range of spans, the due date takes the later end, so 2034. It passes.\n- **Part 4 (source):** Only coverage was found, so it can be entered as `coverage_only`, marked, with no quote.\n\n**Not already recorded.** None of Huang's recorded files is about AI-generated games. The two nearest by date are a different claim (2024-03-01, AI doing well on every human test) and the Mercedes self-driving claim (2024-03-18).\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A HotHardware news article by Alan Velasco quoting Huang word for word from a panel at Nvidia's GPU Technology Conference, where he was asked how long until an AI-generated game is released.\",\n  \"date_on_page\": \"\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Nvidia's chief executive. It is a forward-looking claim about AI (fully AI-generated games) with a span of five to ten years (due at the later end, 2034), but the only source found is a news report, not a transcript or his own words. \\\"Largely the case\\\" is a vague test and may make it unfalsifiable at entry. The fetched page has no date; the 2024-03 date comes from the search run (GTC 2024 is recalled as 18–21 March 2024, not seen on the page).\"\n}\n```"
+}

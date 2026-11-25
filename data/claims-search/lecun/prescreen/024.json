@@ -1,0 +1,61 @@
+{
+  "speaker_id": "lecun",
+  "row": 24,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0918,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['decade or more','two to three years','useful applications','2026','July','Published']:\\n        for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-500):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['decade or more','two to three years','useful applications']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-1500):m.start()+400]); print('---')\"}",
+    "{\"code\": \"print(c[:2500])\"}",
+    "{\"code\": \"i=c.find('Yann LeCun is a French'); print(c[i:i+1500])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5131,
+      "cache_read_input_tokens": 75816,
+      "inference_geo": "global",
+      "input_tokens": 1298,
+      "output_tokens": 2287,
+      "output_tokens_details": {
+        "thinking_tokens": 510
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-07",
+    "quote": "And it may take a decade or more. But there are going to be useful applications of this concept within two to three years.",
+    "what_is_predicted": "World-model AI will have useful applications within two to three years, though human-level abstraction may take a decade or more.",
+    "date_or_span": "within two to three years; a decade or more",
+    "occasion": "Nebius Science interview, published 2026-07-13",
+    "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Nebius Science printed Q&A interview with LeCun by Stepan Kravchenko, dated 2026-07-13; the quote appears verbatim in LeCun's answer about world models, where 'this concept' refers to world models.",
+    "date_on_page": "2026-07-13",
+    "role_at_the_time": "founder-leader of AMI (Advanced Machine Intelligence) Labs, after leaving Meta in 2025",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as AMI's founder in a printed Q&A, with a dated forecast that world models will have useful applications within two to three years (due end of 2029, taking the later end); the 'may take a decade or more' clause is a hedged possibility and stays out. It re-dates the recorded 2025-06-11 'world-model applications within five years' claim, so it is a new record with restates, not a duplicate."
+  },
+  "reply_text": "I found the quoted words on the page exactly as given. My reading is **pass**. One part of the quote is dated and goes in. The \"decade or more\" part is a hedged possibility and stays out.\n\n**The page.** The page opened. It is a Nebius Science interview by Stepan Kravchenko, dated 2026-07-13. It is set out as printed questions and answers, so it counts as a primary source. LeCun's answer to the question \"Cat level in 2030, that's still a bit far from the human level, no?\" contains the quote word for word: \"Or it could be a lot more difficult than we thought. And it may take a decade or more. But there are going to be useful applications of this concept within two to three years.\" \"This concept\" means world models, which come up earlier in the same answer. The page gives only the publication date, not the date of the interview itself.\n\n**The four parts of the rule:**\n1. **Role: passes.** The page says that since leaving Meta last year he founded AMI Labs in Paris and is building AI there. So he spoke as AMI's founder-leader. That fits his role history (2026 to now), and his recorded 2026 AMI claims already treat this role as qualifying.\n2. **Looks forward and is about AI: passes for the second sentence only.** \"There are going to be useful applications of this concept within two to three years\" is a firm statement about AI being put to use. The \"decade or more\" sentence is framed as one possibility (\"it could be… it may take\") about something he says \"we don't know\" the timing of. It is not a forecast, so I would not enter it as a claim.\n3. **Date or span: passes.** \"Within two to three years\" is a range of spans, so the later end applies: about July 2029, judged at the end of 2029. `due_basis` should say this.\n4. **Primary source: passes.** It is a printed Q&A.\n\n**Already recorded? No, but it is a restatement of an existing claim.** The closest recorded file is `2025-06-11-lecun-world-model-applications-within-five-years`. That claim was due around 2030, and this one is due 2029, so the date has changed. That makes it a changed repeat: a new record with `restates` naming the 2025-06-11 file, not the same claim. `2026-05-15-lecun-ami-use-case-demonstrations-within-18-months` is a different claim, with a different thing predicted and a different span.\n\n**For the person checking:**\n- \"Useful applications\" has no bar an outsider can easily test. It may need to be entered as `unfalsifiable` unless a plain reading of the page gives one. That affects the claim's status, not whether it gets in.\n- The search run's `what_is_predicted` field mixes in the \"decade or more\" part. The record should drop it.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Nebius Science printed Q&A interview with LeCun by Stepan Kravchenko, dated 2026-07-13; the quote appears verbatim in LeCun's answer about world models, where 'this concept' refers to world models.\",\n  \"date_on_page\": \"2026-07-13\",\n  \"role_at_the_time\": \"founder-leader of AMI (Advanced Machine Intelligence) Labs, after leaving Meta in 2025\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as AMI's founder in a printed Q&A, with a dated forecast that world models will have useful applications within two to three years (due end of 2029, taking the later end); the 'may take a decade or more' clause is a hedged possibility and stays out. It re-dates the recorded 2025-06-11 'world-model applications within five years' claim, so it is a new record with restates, not a duplicate.\"\n}\n```"
+}

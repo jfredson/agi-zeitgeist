@@ -1,0 +1,59 @@
+{
+  "speaker_id": "sutskever",
+  "row": 14,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0597,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    i=c.find('three years'); print(c[max(0,i-1500):i+800])\"}",
+    "https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['three years','less imaginary','intuition']:\\n    i=c.find(k); print(k,i)\\ni=c.find('less imaginary'); print(c[max(0,i-1500):i+600])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2331,
+      "cache_read_input_tokens": 45648,
+      "inference_geo": "global",
+      "input_tokens": 681,
+      "output_tokens": 1810,
+      "output_tokens_details": {
+        "thinking_tokens": 433
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-06-06",
+    "quote": "as AI continues to improve in one year in two years in three years the intuition will become stronger and a lot of the things that we are talking about now they will become much more real they’ll become less imaginary",
+    "what_is_predicted": "Over the next one to three years AI will keep improving, so that today's talk of an extreme AI future will come to seem much more real.",
+    "date_or_span": "in one year, two years, three years",
+    "occasion": "Convocation speech on receiving an honorary Doctor of Science, University of Toronto (official video youtu.be/zuZ2zaotrJs); word-for-word transcript posted by blog.biocomm.ai. Borderline: the forecast is about perception and intuition rather than a specific capability.",
+    "source_url": "https://blog.biocomm.ai/2025/06/09/ilya-sutskever-u-of-t-honorary-degree-recipient-june-6-2025-university-of-toronto/",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A blog.biocomm.ai post (dated 2025-06-09) giving a word-for-word transcript of Sutskever's University of Toronto honorary-degree convocation speech; the quoted words appear exactly.",
+    "date_on_page": "2025-06-06",
+    "role_at_the_time": "co-founder and leading figure (founder-leader) of Safe Superintelligence; not yet its chief executive",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "The forecast is about people's intuition becoming stronger and today's talk seeming less imaginary, with only a vague 'AI continues to improve' and nothing AI will do, reach or ship; the one-two-three-years wording is also more a progression than a deadline, so it stays out as borderline."
+  },
+  "reply_text": "I found the quoted words on the page. I read this candidate as **borderline**, which under part 2 means it stays out and is logged as borderline.\n\n**The page.** It opened. It's a word-for-word transcript, posted on blog.biocomm.ai, of Sutskever's University of Toronto honorary-degree convocation speech. The post is dated 2025-06-09 and gives the speech date as June 6, 2025. The quote matches the transcript exactly: \"…as AI continues to improve in one year in two years in three years the intuition will become stronger and a lot of the things that we are talking about now they will become much more real they'll become less imaginary…\". The post is a transcript, not a news report, so part 4 is met and \"coverage only\" doesn't apply. The blog is a third party, though. A person may want to check it against the official video (youtu.be/zuZ2zaotrJs).\n\n**Part 1 (role).** On 2025-06-06 Sutskever was co-founder of Safe Superintelligence and its leading figure. He was not yet its chief executive; the role history says that came in 2025, and I believe from memory it was July 2025, after the speech. I take co-founder and leading figure as \"founder-leader\", so part 1 passes. A person should confirm that reading, since he wasn't yet chief executive.\n\n**Part 2 (looks forward, about AI).** This is where it turns borderline. The forecast is mostly about how people will see things: their \"intuition will become stronger\" and today's talk will seem \"less imaginary\". The only claim about AI itself is a vague \"as AI continues to improve\". It names nothing AI will do, reach or ship, so an outsider has nothing to test. The rule says a truly borderline case stays out and is logged as borderline. The search run flagged the same problem.\n\n**Part 3 (a date or span).** This is weak too. \"In one year in two years in three years\" reads as a progression of time, not a deadline the forecast must meet. If someone read it as a span, the generous end would be three years, so June 2028.\n\n**Recorded files.** It doesn't match any of his five recorded claim files.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A blog.biocomm.ai post (dated 2025-06-09) giving a word-for-word transcript of Sutskever's University of Toronto honorary-degree convocation speech; the quoted words appear exactly.\",\n  \"date_on_page\": \"2025-06-06\",\n  \"role_at_the_time\": \"co-founder and leading figure (founder-leader) of Safe Superintelligence; not yet its chief executive\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The forecast is about people's intuition becoming stronger and today's talk seeming less imaginary, with only a vague 'AI continues to improve' and nothing AI will do, reach or ship; the one-two-three-years wording is also more a progression than a deadline, so it stays out as borderline.\"\n}\n```"
+}

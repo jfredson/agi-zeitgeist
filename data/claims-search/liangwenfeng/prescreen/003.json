@@ -1,0 +1,61 @@
+{
+  "speaker_id": "liangwenfeng",
+  "row": 3,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0941,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['high-quality','within a year','rapid-expansion','rapid expansion','A10','May','2026']:\\n        for m in re.finditer(re.escape(k),c):\\n            print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '));print('---')\\n            break\"}",
+    "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:1500])\\nfor k in ['high-quality','within a year','rapid-expansion','rapid expansion','A10','20 May','May 20']:\\n    for m in re.finditer(re.escape(k),c):\\n        print(k,'::',c[max(0,m.start()-700):m.start()+400]);print('---')\\n        break\"}",
+    "{\"code\": \"import re\\nfor k in ['high-quality','within a year','expansion','Q10','A10','domestic']:\\n    for m in re.finditer(re.escape(k),c):\\n        print(k,'::',c[max(0,m.start()-1200):m.start()+400]);print('---')\\n        break\"}",
+    "{\"code\": \"for k in ['20','May','leak','verif','translat']:\\n    print(k,[c[max(0,m.start()-100):m.start()+100].replace('\\\\n',' ') for m in re.finditer(k,c)][:4])\\nprint(c[-800:])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6607,
+      "cache_read_input_tokens": 74586,
+      "inference_geo": "global",
+      "input_tokens": 517,
+      "output_tokens": 2206,
+      "output_tokens_details": {
+        "thinking_tokens": 433
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-05-20",
+    "quote": "It’s a rapid-expansion process, and I think within a year the high-quality-data problem will be handled fairly well domestically.",
+    "what_is_predicted": "Within a year, Chinese AI developers (DeepSeek included) will largely solve the problem of getting high-quality annotated data for post-training.",
+    "date_or_span": "within a year (from May 2026)",
+    "occasion": "Closed-door DeepSeek investor meeting during the first external fundraising round, 20 May 2026 (answer A10). The transcript leaked in July 2026 and has not been verified by Liang or DeepSeek; this is Momentum Works' English translation.",
+    "source_url": "https://thelowdown.momentum.asia/full-transcript-of-deepseek-founder-liang-wenfengs-fundraising-meeting/",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Momentum Works' English translation of selected Q&A from a leaked, unofficial Chinese recording of Liang's investor meeting; the page says the speaker has not confirmed it, and the quote appears word for word in answer A10.",
+    "date_on_page": "2026-05",
+    "role_at_the_time": "founder and chief executive of DeepSeek",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "This predicts how quickly Chinese labs will build up high-quality annotated training data, which is a forecast about an input for training, not about what AI will do, reach or ship. The rule keeps such forecasts out, as it does training costs and computing build-out."
+  },
+  "reply_text": "I'm reading this candidate as **out**. The quote is on the page word for word, but it fails part 2 of the rule: it predicts something about data annotation, which goes into AI training, not about what AI will do.\n\n**1. Are the words on the page?** Yes. The page opened, and the sentence appears exactly in Liang's answer A10: \"It's a rapid-expansion process, and I think within a year the high-quality-data problem will be handled fairly well domestically.\" The question it answers is Q10: after the fundraise, will DeepSeek spend more on post-training?\n\nWhat the page is: Momentum Works' English translation of selected questions and answers from a Chinese recording that was circulating online. It is a transcript, not just a news story about the meeting. But the page's own disclaimer says the recording is \"unofficial\" and \"has not been confirmed by the speaker\", and that the translation may contain errors. So if this ever passed, it would rest on an unverified leaked recording, and the person checking may want to mark it that way.\n\nDate: the page only says \"In May 2026\". The 20 May date in the candidate is not on the page I fetched.\n\n**2. Reading against the rule**\n- **Part 1 (role):** passes. In May 2026 Liang was founder and chief executive of DeepSeek, which builds frontier models.\n- **Part 2 (looks forward and is about AI):** fails. In the answer around the quote, Liang is talking about how fast DeepSeek and other Chinese labs can build up high-quality data labelling. He says time, not money or chips, is the limit. That is a forecast about getting an input for training, the same kind of thing as training costs or computing build-out, which the rule lists as business forecasts. It says nothing about what AI will do, reach or ship. Someone could argue it's borderline because it concerns AI development, but I don't think it is: nothing in the words predicts a capability or a deployment.\n- **Part 3 (date or span):** \"within a year\" is a real span, so this would pass.\n- **Part 4 (primary source):** a translated transcript would count, with the caveat above about the unverified recording.\n\n**Already recorded?** No. The only recorded file for Liang, from 2024-07-22, is about when AGI arrives (\"two, five or ten years\"). This is a different claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Momentum Works' English translation of selected Q&A from a leaked, unofficial Chinese recording of Liang's investor meeting; the page says the speaker has not confirmed it, and the quote appears word for word in answer A10.\",\n  \"date_on_page\": \"2026-05\",\n  \"role_at_the_time\": \"founder and chief executive of DeepSeek\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"This predicts how quickly Chinese labs will build up high-quality annotated training data, which is a forecast about an input for training, not about what AI will do, reach or ship. The rule keeps such forecasts out, as it does training costs and computing build-out.\"\n}\n```"
+}

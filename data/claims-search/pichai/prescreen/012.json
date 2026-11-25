@@ -1,0 +1,60 @@
+{
+  "speaker_id": "pichai",
+  "row": 12,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0738,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0]['title'], len(c))\\n    i=c.find('Ukrainian'); print(c[max(0,i-600):i+400])\\n    for k in ['May 11','2022']:\\n        j=c.find(k); print(k, c[max(0,j-100):j+100] if j>=0 else None)\"}",
+    "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+    "{\"code\": \"print(type(r)); print(str(r)[:300])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:500])\\ni=c.find('Ukrainian'); print(c[max(0,i-800):i+400])\"}",
+    "{\"code\": \"import re\\nfor m in re.finditer('Ukrainian|next month|auto-translated',c): print(m.start(), c[max(0,m.start()-500):m.start()+300].replace('\\\\n',' '),'\\\\n---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4546,
+      "cache_read_input_tokens": 60094,
+      "inference_geo": "global",
+      "input_tokens": 1198,
+      "output_tokens": 1715,
+      "output_tokens_details": {
+        "thinking_tokens": 270
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-05-11",
+    "quote": "We'll also be expanding auto-translated captions to Ukrainian YouTube content next month, part of our larger effort to increase access to accurate information about the war.",
+    "what_is_predicted": "YouTube's machine auto-translated captions would expand to Ukrainian content in June 2022.",
+    "date_or_span": "next month (June 2022)",
+    "occasion": "Google I/O 2022 keynote; borderline as an AI prediction because it is a near-term launch of a feature that uses AI",
+    "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Sundar Pichai's own Google blog post of his I/O 2022 keynote (author Sundar Pichai, published 2022-05-11); the sentence appears word for word under 'Auto-translated captions on YouTube'.",
+    "date_on_page": "2022-05-11",
+    "role_at_the_time": "Chief executive of Google and of its parent Alphabet",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as chief executive of Google and Alphabet, in his own published keynote, giving a dated deployment (next month, so June 2022) of an AI feature, machine auto-translated YouTube captions extended to Ukrainian content. That fits the rule's admitted case of an AI product's deployment, so it is not a plain hardware or business forecast, and it is not the same claim as the recorded auto-chapters file from the same keynote."
+  },
+  "reply_text": "I fetched the page. The quoted words are on it exactly, and I read the candidate as a **pass**.\n\n**1. Is the quote on the page?** Yes, word for word. The page is Sundar Pichai's own Google blog post of his I/O 2022 keynote. The page names him as author and gives the date 2022-05-11. The sentence sits under the heading \"Auto-translated captions on YouTube\". It comes right after: \"Next up, we're bringing auto-translated captions on YouTube to mobile… in 16 languages.\" The next section opens: \"Just as we're using AI to improve features in YouTube…\" Because these are his own words, the source counts as primary, not coverage.\n\n**2. The four parts of the rule:**\n- **Part 1, role: met.** On 2022-05-11 he was chief executive of Google (since 2015) and of Alphabet (since 2019).\n- **Part 2, forward-looking and about AI: met, though I considered calling it borderline.** The search run flagged it as borderline because it is a small feature launch. But the rule says a product shipping counts when the product is an AI system and the words say something about its deployment. Auto-translated captions are machine translation, and the page itself presents them as AI (\"we're using AI to improve features in YouTube\"). The ledger already holds similar short-range launch claims from Pichai, such as the 2023 Magic Editor and 2024 AI Overviews files. So I don't think it is a truly borderline case.\n- **Part 3, a date: met.** \"Next month\", said 11 May 2022, means June 2022, so the due date would be 2022-06-30.\n- **Part 4, primary source: met.** It is his own published keynote text.\n\n**Already recorded?** No. The only recorded claim from the same day is the YouTube auto-chapters \"80 million\" goal, which is a different claim from the same keynote.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Sundar Pichai's own Google blog post of his I/O 2022 keynote (author Sundar Pichai, published 2022-05-11); the sentence appears word for word under 'Auto-translated captions on YouTube'.\",\n  \"date_on_page\": \"2022-05-11\",\n  \"role_at_the_time\": \"Chief executive of Google and of its parent Alphabet\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as chief executive of Google and Alphabet, in his own published keynote, giving a dated deployment (next month, so June 2022) of an AI feature, machine auto-translated YouTube captions extended to Ukrainian content. That fits the rule's admitted case of an AI product's deployment, so it is not a plain hardware or business forecast, and it is not the same claim as the recorded auto-chapters file from the same keynote.\"\n}\n```"
+}

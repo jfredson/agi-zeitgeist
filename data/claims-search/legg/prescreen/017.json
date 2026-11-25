@@ -1,0 +1,60 @@
+{
+  "speaker_id": "legg",
+  "row": 17,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0902,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://time.com/collections/time100-ai/6310659/shane-legg/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('70%'); print(c[max(0,i-1500):i+800])\\n    import re\\n    for m in re.finditer(r'20(23|2\\\\d)', c): pass\\n    print([c[m.start()-60:m.start()+20] for m in re.finditer(r'(September|Sept\\\\.|Updated|Published)', c)][:5])\"}",
+    "https://time.com/collections/time100-ai/6310659/shane-legg/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:4000])\"}",
+    "{\"code\": \"i=c.find('70'); print(c[c.find('Legg',4000)-200:])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6766,
+      "cache_read_input_tokens": 59822,
+      "inference_geo": "global",
+      "input_tokens": 685,
+      "output_tokens": 2081,
+      "output_tokens_details": {
+        "thinking_tokens": 559
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2023",
+    "date_said": "2023-09-07",
+    "quote": "Legg estimates that there is a 70% chance that he and others will have solved this problem by 2028.",
+    "what_is_predicted": "The TIME reporter says Legg gives a 70% chance that the AGI technical safety (alignment) problem is solved by 2028.",
+    "date_or_span": "by 2028",
+    "occasion": "TIME100 AI 2023 profile by Will Henshall, based on an interview with Legg",
+    "source_url": "https://time.com/collections/time100-ai/6310659/shane-legg/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "TIME100 AI 2023 profile of Shane Legg by Will Henshall, a news profile; the sentence is the reporter's paraphrase of Legg, word for word as quoted, with only the undated direct quote \"I have a feeling this is doable\" from Legg himself.",
+    "date_on_page": "2023-09-07",
+    "role_at_the_time": "Chief AGI Scientist at Google DeepMind (previously DeepMind's chief scientist since its founding), and co-founder",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "The words forecast that researchers will solve the AGI safety problem by 2028, not that AI will do, reach or ship something, so whether they count as a claim about AI is borderline; if admitted it would be coverage only (a reporter's paraphrase), flagged as a stated chance, and likely unfalsifiable because \"solved\" has no test anyone outside could check."
+  },
+  "reply_text": "I'd call this one **borderline**. The words are on the page, but whether they count as a forecast about AI is open to more than one reading.\n\n**1. The page.** The TIME page opened. It is the TIME100 AI 2023 profile of Shane Legg by Will Henshall, dated 7 September 2023. The quoted sentence is there word for word: \"Legg estimates that there is a 70% chance that he and others will have solved this problem by 2028.\" \"This problem\" means the work of the AGI technical safety team Legg leads: making sure powerful AI systems behave as their makers intend. The sentence is the reporter's summary, not Legg's own words. The direct quote that follows is only \"I have a feeling this is doable\", with no date. So at best this would be a \"coverage only\" entry with no quote. The page also carries a block of sponsored TIME subscription text, which has nothing to do with the claim.\n\n**2. The four parts of the rule.**\n- **Part 1, role: met.** The profile says Legg was DeepMind's chief scientist from its founding and became Chief AGI Scientist when Google DeepMind formed in April 2023. That was his role in September 2023, and he is also a co-founder.\n- **Part 2, about AI and looking forward: borderline.** The forecast does look forward, but its subject is researchers solving the AI safety problem. It doesn't say what AI will do, reach or ship. It isn't a business forecast either, so it falls between the two, and the rule says a truly borderline case stays out.\n- **Part 3, a date: met.** It says \"by 2028\". It is also a stated chance (70%), so if admitted it would carry the `has_probability` flag.\n- **Part 4, source: coverage only.** The only source is the reporter's paraphrase.\n\n**Not recorded.** None of Legg's existing claim files is about solving the safety problem. The nearest one by date, `2023-10-17-legg-agi-not-next-year-or-year-after.toml`, is about when AGI arrives.\n\n**For the person checking.** Even if this is let in, \"solved\" has no test in the source that an outsider could apply. It would almost certainly be marked `unfalsifiable` when entered.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"TIME100 AI 2023 profile of Shane Legg by Will Henshall, a news profile; the sentence is the reporter's paraphrase of Legg, word for word as quoted, with only the undated direct quote \\\"I have a feeling this is doable\\\" from Legg himself.\",\n  \"date_on_page\": \"2023-09-07\",\n  \"role_at_the_time\": \"Chief AGI Scientist at Google DeepMind (previously DeepMind's chief scientist since its founding), and co-founder\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The words forecast that researchers will solve the AGI safety problem by 2028, not that AI will do, reach or ship something, so whether they count as a claim about AI is borderline; if admitted it would be coverage only (a reporter's paraphrase), flagged as a stated chance, and likely unfalsifiable because \\\"solved\\\" has no test anyone outside could check.\"\n}\n```"
+}

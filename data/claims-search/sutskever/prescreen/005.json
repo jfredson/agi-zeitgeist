@@ -1,0 +1,59 @@
+{
+  "speaker_id": "sutskever",
+  "row": 5,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1397,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['overnight','waking up to AGI','2\\u20134 further','business of building','July']:\\n        for m in re.finditer(re.escape(k),c): print(k,'::',c[max(0,m.start()-500):m.start()+400].replace('\\\\n',' ')); print('---')\"}",
+    "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['overnight','waking up','further years','business of building','July 12','2017']:\\n    for m in re.finditer(re.escape(k),c): print(k,'::',c[max(0,m.start()-600):m.start()+400].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 15934,
+      "cache_read_input_tokens": 45623,
+      "inference_geo": "global",
+      "input_tokens": 648,
+      "output_tokens": 2414,
+      "output_tokens_details": {
+        "thinking_tokens": 867
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-07-12",
+    "quote": "In as little as four years, each overnight experiment will feasibly use so much compute capacity that there’s an actual chance of waking up to AGI, given the right algorithm — and figuring out the algorithm will actually happen within 2–4 further years of experimenting with this compute in a competitive multiagent simulation.",
+    "what_is_predicted": "In as little as four years there will be a real chance of AGI from one overnight experiment, and the right algorithm will be found within two to four more years.",
+    "date_or_span": "as little as four years, plus 2–4 further years (about 2021 to 2025-2027)",
+    "occasion": "Email 'The business of building AGI' from Ilya Sutskever, published by OpenAI",
+    "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "OpenAI's own post of 2024-12-13 ('Elon Musk wanted an OpenAI for-profit') reprints Sutskever's full email 'The business of building AGI' dated Wed, Jul 12, 2017, and the quote matches it word for word.",
+    "date_on_page": "2017-07-12",
+    "role_at_the_time": "Co-founder and chief scientist of OpenAI",
+    "admission": "out",
+    "failed_part": "3",
+    "reason": "The AGI timing counts from 'in as little as four years', which names only the earliest point (ruled reading 3), and the firm 'within 2–4 further years' counts from that undated point, so the claim has no due date; the neighbouring 'within the next three years' sentence in the same email is dated and could be a separate candidate."
+  },
+  "reply_text": "I found the quoted words on the page exactly as reported. This candidate should stay out on part 3, because its timing rests on \"as little as four years\". You may want to look again at how I read the second half.\n\n**The page.** It opened. It is OpenAI's post \"Elon Musk wanted an OpenAI for-profit\", dated December 13, 2024. The post prints the full email \"The business of building AGI\", from Ilya Sutskever to Elon Musk and Greg Brockman, dated Wed, Jul 12, 2017, 1:36 PM. The quote matches word for word, including the dash and \"2–4\". This is the speaker's own text, printed whole by his company, not a news summary of it, so it counts as a primary source.\n\n**The four parts:**\n1. **Role: passes.** By the role history you gave, he was OpenAI's co-founder and chief scientist in July 2017. The email is about OpenAI's own plan and was sent to its backers, so he was speaking for the company.\n2. **About AI and forward-looking: mostly passes.** It is a forecast about reaching AGI. The first half only says there will be \"an actual chance\" of AGI, which is a possibility rather than a firm forecast. The second half is firm: \"figuring out the algorithm will actually happen\".\n3. **A date or a length of time: fails.** Ruled reading 3 says \"as little as X\" names only the earliest the thing could come, so it is undated. The firm second half is counted from that undated point (\"2–4 further years\" after it). The search run's \"about 2021 to 2025-2027\" adds the spans as if the four years were fixed, and the rule doesn't allow that. The one other reading would be to treat \"four years\" as a fixed starting point and date the algorithm to 2023–2025. I don't think the wording supports that, but if the reviewer does, the claim would pass.\n4. **Primary source: passes.** The email is printed in full.\n\n**Already recorded?** No. None of the five recorded Sutskever claims is this one.\n\n**Another claim in the same email.** The sentence just before the quote may qualify by itself: \"Within the next three years, robotics should be completely solved, AI should solve a long-standing unproven theorem, programming competitions should be won consistently by AIs, and there should be convincing chatbots (though no one should pass the Turing test).\" It has a real span (three years from 2017-07-12) and a testable bar. It may be worth logging as a separate candidate.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"OpenAI's own post of 2024-12-13 ('Elon Musk wanted an OpenAI for-profit') reprints Sutskever's full email 'The business of building AGI' dated Wed, Jul 12, 2017, and the quote matches it word for word.\",\n  \"date_on_page\": \"2017-07-12\",\n  \"role_at_the_time\": \"Co-founder and chief scientist of OpenAI\",\n  \"admission\": \"out\",\n  \"failed_part\": \"3\",\n  \"reason\": \"The AGI timing counts from 'in as little as four years', which names only the earliest point (ruled reading 3), and the firm 'within 2–4 further years' counts from that undated point, so the claim has no due date; the neighbouring 'within the next three years' sentence in the same email is dated and could be a separate candidate.\"\n}\n```"
+}

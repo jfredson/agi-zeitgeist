@@ -1,0 +1,59 @@
+{
+  "speaker_id": "sutskever",
+  "row": 4,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0688,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['three years','robotics','Turing','theorem','July']:\\n        for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"import re\\nc=json.loads(r)['content']['source']['data']; print(len(c))\\nfor k in ['three years','robotics','Turing','theorem','business of building']:\\n    for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-600):m.start()+300]); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4341,
+      "cache_read_input_tokens": 46095,
+      "inference_geo": "global",
+      "input_tokens": 653,
+      "output_tokens": 1763,
+      "output_tokens_details": {
+        "thinking_tokens": 254
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-07-12",
+    "quote": "Within the next three years, robotics should be completely solved, AI should solve a long-standing unproven theorem, programming competitions should be won consistently by AIs, and there should be convincing chatbots (though no one should pass the Turing test).",
+    "what_is_predicted": "By mid-2020 robotics will be solved, AI will prove a long-standing open theorem, AIs will win programming competitions consistently, and chatbots will be convincing but not pass the Turing test.",
+    "date_or_span": "within the next three years (from July 2017)",
+    "occasion": "Email 'The business of building AGI' from Ilya Sutskever to Elon Musk and Greg Brockman (written in the 'we' voice), published by OpenAI",
+    "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "OpenAI's post 'Elon Musk wanted an OpenAI for-profit' reprints in full Sutskever's email 'The business of building AGI' to Musk and Brockman, and the quoted sentence appears in it word for word.",
+    "date_on_page": "2017-07-12",
+    "role_at_the_time": "co-founder and chief scientist of OpenAI",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Written by Sutskever as OpenAI's chief scientist, in his own email reprinted in full by OpenAI. It says what AI will do within a stated three-year span (due 2020)."
+  },
+  "reply_text": "I'd admit this one. The quote is on the page exactly as reported, Sutskever was OpenAI's chief scientist when he wrote it, and it meets all four parts of the rule. It isn't one of his recorded claims.\n\n**Page check.** The OpenAI page opened. It's OpenAI's post \"Elon Musk wanted an OpenAI for-profit\", which reprints a set of 2017 emails in full. Under the heading \"The business of building AGI\" is an email from Ilya Sutskever to Elon Musk and Greg Brockman, dated Wed, Jul 12, 2017. It contains the quoted sentence word for word: \"Within the next three years, robotics should be completely solved, AI should solve a long-standing unproven theorem, programming competitions should be won consistently by AIs, and there should be convincing chatbots (though no one should pass the Turing test).\" This is the speaker's own written words reprinted in full, not a news report about them, so it's a primary source.\n\n**The four parts:**\n1. **Role:** he was co-founder and chief scientist of OpenAI from 2015 to 2024, so he held a qualifying role in July 2017. The email is written in OpenAI's \"we\" voice to his co-founders, so he was speaking for the company.\n2. **Forward-looking and about AI:** yes. It says what AI \"should\" do: solve robotics, prove a long-standing open theorem, win programming competitions consistently, and produce convincing chatbots that don't pass the Turing test. It isn't hypothetical or a business forecast.\n3. **Dated:** yes. \"Within the next three years\" runs from 2017-07-12 to 2020-07-12, so the due year is 2020.\n4. **Primary source:** yes, the email text itself.\n\n**Not recorded:** none of his five claim files predates 2023.\n\n**Points for the person checking:**\n- The email was private when written and only made public in OpenAI's post. The rule doesn't require words to have been public at the time, but you may want to note it.\n- The very next sentence holds separate candidates the run didn't report. \"In as little as four years… an actual chance of waking up to AGI\" is probably undated under reading 3 (\"as little as X\"). \"Figuring out the algorithm will actually happen within 2–4 further years\" may be worth checking as its own claim.\n- One sentence names four outcomes. When the test is written, \"robotics should be completely solved\" and \"convincing chatbots\" will need a plain-reading test or may end up `unfalsifiable`. That's a question for the verdict, not for admission.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"OpenAI's post 'Elon Musk wanted an OpenAI for-profit' reprints in full Sutskever's email 'The business of building AGI' to Musk and Brockman, and the quoted sentence appears in it word for word.\",\n  \"date_on_page\": \"2017-07-12\",\n  \"role_at_the_time\": \"co-founder and chief scientist of OpenAI\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Written by Sutskever as OpenAI's chief scientist, in his own email reprinted in full by OpenAI. It says what AI will do within a stated three-year span (due 2020).\"\n}\n```"
+}

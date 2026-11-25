@@ -1,0 +1,61 @@
+{
+  "speaker_id": "pichai",
+  "row": 3,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0877,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://singjupost.com/google-pixel-launch-made-by-google-october-4-2016-event-full-transcript/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['literally translate','billions of queries','coming year','Neural Machine','translat']:\\n        for m in re.finditer(k,c): print(k, '::', c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' ')); print('---')\\n    print(c[:600])\"}",
+    "https://singjupost.com/google-pixel-launch-made-by-google-october-4-2016-event-full-transcript/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['literally translate','billions of queries','coming year','Neural Machine']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-700):m.start()+300]); print('---')\"}",
+    "{\"code\": \"import re\\nfor k in ['literally translate','billions of','coming year','Neural Machine','Translate']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-700):m.start()+300]); print('---')\\nprint(c[-400:])\"}",
+    "{\"code\": \"i=c.find('literally translate'); seg=c[:i]\\nfor m in re.finditer(r'Sundar|Pichai|Rick Osterloh|Speaker|\\u2013', seg[-8000:]): pass\\nprint(c[max(0,i-6000):i-700][:2500])\\nprint([ (m.start(), c[m.start():m.start()+60]) for m in re.finditer(r'Sundar Pichai|Rick Osterloh', c)][:10], i)\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4749,
+      "cache_read_input_tokens": 73984,
+      "inference_geo": "global",
+      "input_tokens": 1154,
+      "output_tokens": 2226,
+      "output_tokens_details": {
+        "thinking_tokens": 370
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2016",
+    "date_said": "2016-10-04",
+    "quote": "We’ll literally translate billions of queries over the coming year.",
+    "what_is_predicted": "Google's new machine-learning translation system will translate billions of queries in the coming year.",
+    "date_or_span": "the coming year (to about October 2017)",
+    "occasion": "Made by Google hardware event (Pixel launch), San Francisco",
+    "source_url": "https://singjupost.com/google-pixel-launch-made-by-google-october-4-2016-event-full-transcript/",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Singju Post full transcript of Google's 4 October 2016 'Made by Google' event; the words are word-for-word in Sundar Pichai's opening section, right after he says Chinese-to-English in the Translate app was moved to the new machine-learning system.",
+    "date_on_page": "2016-10-04",
+    "role_at_the_time": "Chief executive of Google (from 2015-10-02)",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said by Google's chief executive as a forecast of how widely an AI system (the machine-learning translation system) would be used, with a one-year span, in a published event transcript. It does not match any recorded claim file. Whether 'billions' means Chinese-to-English only or the whole system is unclear and should be settled when the test is written."
+  },
+  "reply_text": "I fetched the page. The quoted words are on it exactly, and the candidate passes all four parts of the rule.\n\n**The page.** It is a full transcript of Google's \"Made by Google\" event on 4 October 2016, published by The Singju Post, a third-party site that posts transcripts. The page names Sundar Pichai, chief executive of Google, as the speaker of the opening section, which runs until Rick Osterloh is introduced. The quoted line falls inside Pichai's section. It reads: \"...last week we rolled it out in production and so today if you pick the Google translate mobile app and try to translate from Chinese to English, you are using our newer Machine Learning systems and the progress has been amazing. We'll literally translate billions of queries over the coming year.\" Since this is a transcript and not a news story, the result is \"pass\", not \"pass, coverage only\".\n\n**The four parts of the rule:**\n1. **Role:** Pichai had been Google's chief executive since 2015-10-02, so he held a qualifying role on 2016-10-04. Google builds frontier models and its own AI chips.\n2. **Forward-looking and about AI:** The words forecast how widely an AI system will be used: Google's machine-learning translation system will translate billions of queries. That fits the rule's deployment case. It is a forecast about what the AI will do, not a spending or revenue forecast. The recorded YouTube auto-chapters 80-million goal is a similar kind of claim.\n3. **Date or length of time:** \"Over the coming year\" is a span of one year from the day it was said. It differs from \"the coming months\", which the ledger treats as undated because it names no length. The claim would be due 31 December 2017 under the span rule.\n4. **Primary source:** A transcript of the event counts as one.\n\n**Already recorded?** None of the 26 recorded Pichai files is from 2016 or about Translate, so this is not a duplicate.\n\n**Two points for whoever enters it:**\n- **What \"billions of queries\" covers:** The sentence right before it is about Chinese-to-English translations in the Translate app. It is unclear whether \"billions\" means that language pair only or the new machine-learning system as a whole. The test should be written with that choice in mind.\n- **Evidence:** Only Google holds the query count, so any verdict will probably rest on Google's own figures and be marked as such.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Singju Post full transcript of Google's 4 October 2016 'Made by Google' event; the words are word-for-word in Sundar Pichai's opening section, right after he says Chinese-to-English in the Translate app was moved to the new machine-learning system.\",\n  \"date_on_page\": \"2016-10-04\",\n  \"role_at_the_time\": \"Chief executive of Google (from 2015-10-02)\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said by Google's chief executive as a forecast of how widely an AI system (the machine-learning translation system) would be used, with a one-year span, in a published event transcript. It does not match any recorded claim file. Whether 'billions' means Chinese-to-English only or the whole system is unclear and should be settled when the test is written.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "pichai",
+  "row": 1,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0675,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://singjupost.com/google-io-2016-keynote-full-transcript/?singlepage=1\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['poised','next 10 years','evolved significantly','leap']:\\n        for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-500):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://singjupost.com/google-io-2016-keynote-full-transcript/?singlepage=1",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['poised','next 10 years','evolved significantly']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-700):m.start()+400]); print('---')\\nprint(c[:600])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3866,
+      "cache_read_input_tokens": 46699,
+      "inference_geo": "global",
+      "input_tokens": 1193,
+      "output_tokens": 1705,
+      "output_tokens_details": {
+        "thinking_tokens": 345
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2016",
+    "date_said": "2016-05-18",
+    "quote": "We as Google have evolved significantly over the past 10 years and we believe we are poised to take a big leap forward in the next 10 years.",
+    "what_is_predicted": "Google, building on machine learning and AI, will take a big leap forward over the next ten years (borderline: the subject is Google, with AI as the context).",
+    "date_or_span": "the next 10 years (to about 2026)",
+    "occasion": "Google I/O 2016 opening keynote, Shoreline Amphitheatre",
+    "source_url": "https://singjupost.com/google-io-2016-keynote-full-transcript/?singlepage=1",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A third-party full transcript of the Google I/O 2016 keynote on singjupost.com, where the sentence appears word for word in Pichai's opening, just after 'Progress in all of these areas is accelerating, thanks to profound advances in machine learning and AI, and I believe we are at a seminal moment.'",
+    "date_on_page": "2016-05-18",
+    "role_at_the_time": "Chief executive of Google (from 2015-10-02)",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "The words say Google, the company, is poised to take an unnamed 'big leap forward' in ten years, not that AI will do, reach or ship anything; AI is only the surrounding context, so it is not a forward-looking claim about AI."
+  },
+  "reply_text": "I gave this an **out** on part 2. It's not a borderline case: the quote is on the page, but it's about Google rather than about what AI will do.\n\n**1. Page check: the words are on the page, exactly.** The singjupost.com page opened. It is a third-party full transcript of the Google I/O 2016 keynote. The page dates the event to May 18, 2016, at Shoreline Amphitheatre, and lists Pichai as \"CEO, Google\". The sentence appears word for word in Pichai's opening section. It follows \"Progress in all of these areas is accelerating, thanks to profound advances in machine learning and AI, and I believe we are at a seminal moment.\" The next line leads into the announcement of Google Assistant: \"So leveraging our state-of-the-art capabilities in machine learning and AI…\". A transcript counts as a primary source, so this would not be a coverage-only case.\n\n**2. The four parts of the rule:**\n- **Part 1, role: passes.** He had been Google's chief executive since 2015-10-02, about seven months before the talk, and the rule counts Google as a company that builds frontier models.\n- **Part 2, a forward-looking claim about AI: fails.** The sentence is about Google (\"We as Google… are poised to take a big leap forward\"), not about anything AI will do, reach or ship. \"A big leap forward\" names nothing a reader could check. AI and machine learning appear only in the sentences around it. The search run flagged this as borderline, but I don't think it's a close call. The words make no claim about AI itself, and calling a company \"poised\" is close to the undated, coded statements the rule leaves out.\n- **Part 3, a date or span: passes.** \"In the next 10 years\" counts from the day it was said, so it runs to 2026.\n- **Part 4, primary source: passes.** It's a transcript.\n\n**Already recorded?** No. None of his recorded claim files is from 2016, and none matches this claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A third-party full transcript of the Google I/O 2016 keynote on singjupost.com, where the sentence appears word for word in Pichai's opening, just after 'Progress in all of these areas is accelerating, thanks to profound advances in machine learning and AI, and I believe we are at a seminal moment.'\",\n  \"date_on_page\": \"2016-05-18\",\n  \"role_at_the_time\": \"Chief executive of Google (from 2015-10-02)\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The words say Google, the company, is poised to take an unnamed 'big leap forward' in ten years, not that AI will do, reach or ship anything; AI is only the surrounding context, so it is not a forward-looking claim about AI.\"\n}\n```"
+}

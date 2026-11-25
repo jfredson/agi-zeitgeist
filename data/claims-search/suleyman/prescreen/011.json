@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 11,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0863,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0]['title'], len(c))\\n    for k in [\\\"tens of trillions\\\",\\\"Brain scale\\\",\\\"100 trillion\\\",\\\"five years\\\"]:\\n        i=c.find(k); print(k, i, c[max(0,i-300):i+300] if i>=0 else \\\"\\\")\"}",
+    "https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:800])\\nfor k in [\\\"tens of trillions\\\",\\\"Brain scale\\\",\\\"100 trillion\\\",\\\"Inflection\\\",\\\"August 16\\\"]:\\n    i=c.find(k); print('---',k, i, c[max(0,i-300):i+400] if i>=0 else \\\"\\\")\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5261,
+      "cache_read_input_tokens": 49787,
+      "inference_geo": "global",
+      "input_tokens": 2675,
+      "output_tokens": 1966,
+      "output_tokens_details": {
+        "thinking_tokens": 422
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2023",
+    "date_said": "2023-08-16",
+    "quote": "Models that can handle tens of trillions of parameters are coming in the next couple of years. “Brain scale” models with more than 100 trillion parameters—roughly the number of synapses in the human brain—will be viable within five years.",
+    "what_is_predicted": "AI models with tens of trillions of parameters will arrive within about two years, and models with more than 100 trillion parameters will be workable within five years.",
+    "date_or_span": "next couple of years; within five years (by c. 2028)",
+    "occasion": "Foreign Affairs essay 'The AI Power Paradox', co-written with Ian Bremmer (Sept/Oct 2023 issue, published Aug 16, 2023)",
+    "source_url": "https://blog.biocomm.ai/2023/08/16/foreign-affairs-the-ai-power-paradox-can-states-learn-to-govern-artificial-intelligence-before-its-too-late-by-ian-bremmer-and-mustafa-suleyman-august-16-2023/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A full repost on blog.biocomm.ai of the Foreign Affairs essay 'The AI Power Paradox' by Ian Bremmer and Mustafa Suleyman, dated August 16, 2023; the quoted sentences appear word for word.",
+    "date_on_page": "2023-08-16",
+    "role_at_the_time": "co-founder and chief executive of Inflection AI (founder-leader of a frontier-model company)",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "The words predict model size (parameter counts being 'viable'), not what AI will do, which is close to the excluded computing and build-out forecasts, so it is logged as borderline instead of admitted. Separately, 'the next couple of years' is not covered by the ruled readings, though 'within five years' is a clear span."
+  },
+  "reply_text": "I'd call this one **borderline**. The quote is on the page word for word, but it's unclear whether a forecast about model size counts as a claim about AI.\n\n**1. The page.** The page opened. It's a blog.biocomm.ai repost of the Foreign Affairs essay \"The AI Power Paradox\" by Ian Bremmer and Mustafa Suleyman, dated August 16, 2023. The quoted words are on it exactly as given, curly quotes and dashes included. The sentence just before them is \"Processing that once took weeks now happens in seconds\", and the next paragraph begins \"With each new order of magnitude, unexpected capabilities emerge.\" This is a full repost of a signed essay, not a news report about it, so it counts as his own words. Two things to note: the essay has two authors, and the page is a third-party copy, not foreignaffairs.com.\n\n**2. The admission rule.**\n- **Part 1 (role):** passes. In August 2023 Suleyman was co-founder and chief executive of Inflection AI, which built its own frontier models (Inflection-1 and 2), so he was a founder-leader. That role is my reading; the role history you gave doesn't say \"chief executive\". The essay page doesn't name Inflection at all.\n- **Part 2 (forward-looking and about AI):** this is the uncertain part. The words look forward, but what they predict is a parameter count, a model's size, not something AI will do or reach. That is close to the \"computing build-out, training costs\" forecasts the rule keeps out. \"Viable\" also has no clear test. The rule says a truly borderline case stays out and is logged as borderline. A reviewer could reasonably decide instead that \"models with more than 100 trillion parameters will be viable\" is about AI shipping something.\n- **Part 3 (date):** \"within five years\" is a span, which passes. \"The next couple of years\" isn't covered by the ruled readings. \"Couple\" arguably means two, unlike \"a few\", but that is unruled, so I'd flag it.\n- **Part 4 (primary source):** passes, since it's a signed essay.\n\n**Already recorded?** No. None of his recorded claim files is about parameter counts. The nearest dated one, 2023-08-18 on websites and apps becoming conversational, is a different claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A full repost on blog.biocomm.ai of the Foreign Affairs essay 'The AI Power Paradox' by Ian Bremmer and Mustafa Suleyman, dated August 16, 2023; the quoted sentences appear word for word.\",\n  \"date_on_page\": \"2023-08-16\",\n  \"role_at_the_time\": \"co-founder and chief executive of Inflection AI (founder-leader of a frontier-model company)\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The words predict model size (parameter counts being 'viable'), not what AI will do, which is close to the excluded computing and build-out forecasts, so it is logged as borderline instead of admitted. Separately, 'the next couple of years' is not covered by the ruled readings, though 'within five years' is a clear span.\"\n}\n```"
+}

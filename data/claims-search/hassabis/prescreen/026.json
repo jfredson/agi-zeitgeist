@@ -1,0 +1,60 @@
+{
+  "speaker_id": "hassabis",
+  "row": 26,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.107,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['few years away','20, 30','2030','plus or minus','astounding','May','June','2026']:\\n        for m in re.finditer(re.escape(k), c):\\n            print(k, '::', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['few years away','20, 30','2030','plus or minus','astounding','I/O','Published','June','May ','transcript','Transcript']:\\n    ms=list(re.finditer(re.escape(k), c))\\n    print(k, len(ms))\\n    for m in ms[:2]:\\n        print('   ', c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' '))\"}",
+    "{\"code\": \"for k in ['Levin','week','recorded','2026','this year','Gemini']:\\n    ms=list(re.finditer(re.escape(k), c)); print(k,len(ms))\\n    for m in ms[:3]: print('   ', c[max(0,m.start()-200):m.start()+200].replace('\\\\n',' '))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 7319,
+      "cache_read_input_tokens": 64260,
+      "inference_geo": "global",
+      "input_tokens": 1677,
+      "output_tokens": 2541,
+      "output_tokens_details": {
+        "thinking_tokens": 670
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-05",
+    "quote": "I believe that we’re only a few years away from that, maybe like 20, 30 plus or minus a year, which is astounding to think really.",
+    "what_is_predicted": "AGI will arrive around 2030, give or take a year ('20, 30' is how the automated transcript prints 2030).",
+    "date_or_span": "2030 plus or minus a year",
+    "occasion": "Conversation with Stanford President Jonathan Levin at Stanford GSB (View From the Top), held the week of Google I/O; transcript published 18 June 2026",
+    "source_url": "https://www.gsb.stanford.edu/insights/demis-hassabis-thinks-were-foothills-singularity",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Stanford GSB 'Insights' page carrying the automated, lightly edited full transcript of the View From the Top conversation with Jonathan Levin, where Hassabis says the quoted words verbatim about AGI ('20, 30' is printed, never '2030').",
+    "date_on_page": "2026-06-18",
+    "role_at_the_time": "Chief executive and co-founder of Google DeepMind",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Said as Google DeepMind's chief executive, it forecasts AGI by 2030 give or take a year and comes from a transcript, so it meets all four parts. It is the same forecast as the recorded file 2026-06-02-hassabis-agi-2030-plus-or-minus-a-year.toml. The checker should look at that file's date and source, since this talk took place in the same week as a Google event, probably I/O in May, and was published 18 June."
+  },
+  "reply_text": "The quoted words are on the page. This is a candidate the ledger already holds: there is a recorded file for exactly this forecast, though its date may need checking.\n\n**1. Page check.** The Stanford GSB page opened. It is a short write-up, dated June 18, 2026, by Michael McDowell. Under it is a \"Full Transcript\" of the View From the Top episode, with a note that an automated system produced it and it was lightly edited. In that transcript Hassabis says, word for word: \"I believe that we're only a few years away from that, maybe like 20, 30 plus or minus a year, which is astounding to think really.\" \"That\" is AGI, which he calls \"this next version of really general artificial intelligence\" in the sentence before. The page never says \"2030\"; reading \"20, 30\" as 2030 is an interpretation of the automated transcript. Because this is a transcript and not just a news report, it counts as a primary source.\n\n**The date the words were said.** The page gives no date for the conversation itself; June 18 is when it was published. Levin asks about something Hassabis said \"earlier this week… at a big Google event,\" the \"foothills of the singularity\" line. So the talk happened in the same week as that Google event, which fits the search run's claim that it was the week of Google I/O in May 2026. The page doesn't name I/O and I didn't confirm its dates.\n\n**2. The admission rule.**\n- **Part 1 (role):** passes. The page names him as CEO and co-founder of Google DeepMind.\n- **Part 2 (forward-looking and about AI):** passes. He says AGI will arrive, and it isn't framed as a hypothetical.\n- **Part 3 (a date):** passes. \"A few years\" alone would count as undated under reading 3, but \"20, 30 plus or minus a year\" gives a dated range of 2029 to 2031. Whether \"AGI\" has a testable bar is a question for the `unfalsifiable` status, not for admission.\n- **Part 4 (primary source):** passes, because this is a transcript.\n\n**Already recorded.** The file `2026-06-02-hassabis-agi-2030-plus-or-minus-a-year.toml` matches this forecast and its due range. I couldn't open the file to see which source it cites. Two things need checking:\n- If it cites a different occasion, then under the restatement rule an unchanged repeat should be keyed to its first date. If this Stanford talk was in May, it is earlier than June 2, so the record's key date may need to change.\n- If it cites this same Stanford page, the file's date of 2026-06-02 doesn't match a conversation held the week of a May Google event.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Stanford GSB 'Insights' page carrying the automated, lightly edited full transcript of the View From the Top conversation with Jonathan Levin, where Hassabis says the quoted words verbatim about AGI ('20, 30' is printed, never '2030').\",\n  \"date_on_page\": \"2026-06-18\",\n  \"role_at_the_time\": \"Chief executive and co-founder of Google DeepMind\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Google DeepMind's chief executive, it forecasts AGI by 2030 give or take a year and comes from a transcript, so it meets all four parts. It is the same forecast as the recorded file 2026-06-02-hassabis-agi-2030-plus-or-minus-a-year.toml. The checker should look at that file's date and source, since this talk took place in the same week as a Google event, probably I/O in May, and was published 18 June.\"\n}\n```"
+}

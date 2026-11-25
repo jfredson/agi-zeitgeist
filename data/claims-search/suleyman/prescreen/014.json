@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 14,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0843,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['30 years','humanoid','2050','definitely have robots','Published','2024','2023']:\\n        for m in re.finditer(re.escape(k), c):\\n            print(k, '::', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['30 years','humanoid','2050','definitely have robots','published','Mar ','2023']:\\n    for m in list(re.finditer(re.escape(k), c, re.I))[:2]:\\n        print(k, '::', c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5877,
+      "cache_read_input_tokens": 49557,
+      "inference_geo": "global",
+      "input_tokens": 2589,
+      "output_tokens": 1734,
+      "output_tokens_details": {
+        "thinking_tokens": 213
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2023",
+    "date_said": "2023-09",
+    "quote": "And I think that over the next 30 years, we are going to have humanoid robotics, we're going to have physical tools within our everyday system that we can rely on.",
+    "what_is_predicted": "Humanoid robots that can do many physical tasks will exist within 30 years.",
+    "date_or_span": "next 30 years (also '2050, we will definitely have robots')",
+    "occasion": "The Diary of a CEO podcast with Steven Bartlett (2023 episode; transcript page dated Mar 2024; exact air date not shown on the page)",
+    "source_url": "https://fireflies.ai/blog/diary-of-a-ceo-mustafa-suleyman",
+    "source_kind": "transcript",
+    "already_recorded": "2023-09-04-suleyman-humanoid-robotics-next-30-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Fireflies.ai summary-and-transcript of Mustafa Suleyman's Diary of a CEO episode with Steven Bartlett; at 24:15 the quoted sentence appears word for word, and the '2050, we will definitely have robots' line is earlier at 20:36, answering a question that assumed no containment.",
+    "date_on_page": "2024-03-23",
+    "role_at_the_time": "co-founder and chief executive of Inflection AI (assuming the episode aired in September 2023 as stated; the page shows only its own posting date)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Said while he ran Inflection AI, a frontier model company. It is a forward-looking AI claim with a span, in a transcript. It is the same claim as 2023-09-04-suleyman-humanoid-robotics-next-30-years.toml, so it is already recorded."
+  },
+  "reply_text": "I found the quoted words exactly as given on the fireflies.ai page, and this candidate is the same claim as one already on file, so the admission is **recorded**.\n\n**The page.** It opened. It is a summary and transcript of the Diary of a CEO episode with Steven Bartlett, posted by Fireflies under its \"Podcast transcripts\" tag, so it counts as a transcript and not a news report. At timestamp 24:15 Suleyman says, word for word: \"And I think that over the next 30 years, we are going to have humanoid robotics, we're going to have physical tools within our everyday system that we can rely on.\" He goes on: \"That will be pretty good to do many of the physical tasks. That's a little bit further out because I think there's a lot of tough problems there…\" The \"2050, we will definitely have robots\" line is earlier, at 20:36. It answers Bartlett's question about what the world looks like in 30 years \"if there's no containment.\" That conditional applies to the 2050 line, not to the 24:15 quote.\n\n**The date.** The only date on the page is when it was posted, 23 March 2024. It does not give the date the episode aired. The September 2023 date (and the 2023-09-04 in the recorded file name) comes from elsewhere, so the person checking should confirm the air date independently.\n\n**The rule, part by part:**\n1. **Role:** in September 2023 he was co-founder and chief executive of Inflection AI, which built its own frontier models. He held a qualifying role. If the air date were later than it appears, he would still be at Inflection or, from March 2024, chief executive of Microsoft AI.\n2. **About AI and forward-looking:** it says AI-driven humanoid robots will be able to do many physical tasks. It is not framed as a hypothetical.\n3. **Dated:** \"over the next 30 years\" is a span counted from the day it was said.\n4. **Primary source:** it is a transcript.\n\nIt passes all four parts. However, it matches the existing file `2023-09-04-suleyman-humanoid-robotics-next-30-years.toml` (same prediction, same span), so it is already in the ledger.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Fireflies.ai summary-and-transcript of Mustafa Suleyman's Diary of a CEO episode with Steven Bartlett; at 24:15 the quoted sentence appears word for word, and the '2050, we will definitely have robots' line is earlier at 20:36, answering a question that assumed no containment.\",\n  \"date_on_page\": \"2024-03-23\",\n  \"role_at_the_time\": \"co-founder and chief executive of Inflection AI (assuming the episode aired in September 2023 as stated; the page shows only its own posting date)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said while he ran Inflection AI, a frontier model company. It is a forward-looking AI claim with a span, in a transcript. It is the same claim as 2023-09-04-suleyman-humanoid-robotics-next-30-years.toml, so it is already recorded.\"\n}\n```"
+}

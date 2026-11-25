@@ -1,0 +1,59 @@
+{
+  "speaker_id": "huang",
+  "row": 15,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0574,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.cnbc.com/2023/11/29/nvidia-ceo-ai-will-be-fairly-competitive-with-humans-in-5-years.html\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'))\\n    i=c.find('five years'); print(c[max(0,i-1500):i+800])\"}",
+    "https://www.cnbc.com/2023/11/29/nvidia-ceo-ai-will-be-fairly-competitive-with-humans-in-5-years.html",
+    "{\"code\": \"print(type(r)); print(str(r)[:300])\\nx = r if isinstance(r,dict) else json.loads(r) if isinstance(r,str) else r\\n\"}",
+    "{\"code\": \"c=x['content']['source']['data']; print(len(c)); print(c[:3500])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3306,
+      "cache_read_input_tokens": 46611,
+      "inference_geo": "global",
+      "input_tokens": 1216,
+      "output_tokens": 1333,
+      "output_tokens_details": {
+        "thinking_tokens": 33
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2023",
+    "date_said": "2023-11-29",
+    "quote": "within the next five years, you're going to see, obviously, AIs that can achieve those tests.",
+    "what_is_predicted": "If AGI is defined as a computer that can complete tests in a way fairly competitive with human intelligence, AIs will pass those tests within five years.",
+    "date_or_span": "within the next five years (from November 2023, i.e. by about 2028)",
+    "occasion": "Interview with Andrew Ross Sorkin at The New York Times DealBook Summit 2023",
+    "source_url": "https://www.cnbc.com/2023/11/29/nvidia-ceo-ai-will-be-fairly-competitive-with-humans-in-5-years.html",
+    "source_kind": "coverage_only",
+    "already_recorded": "2023-11-29-huang-ai-passes-basic-intelligence-tests-five-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "CNBC news report of Huang's interview at the NYT DealBook Summit; it quotes the words exactly, as the second half of a conditional: if AGI is defined as a computer that can complete tests in a 'fairly competitive' way to human intelligence, then 'within the next five years, you're going to see, obviously, AIs that can achieve those tests.'",
+    "date_on_page": "2023-11-29",
+    "role_at_the_time": "co-founder and chief executive of Nvidia",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Said as Nvidia's chief executive, looks forward about AI, and has a five-year span, but it is the same claim as the recorded file 2023-11-29-huang-ai-passes-basic-intelligence-tests-five-years.toml. This page is coverage only."
+  },
+  "reply_text": "I read this candidate as **recorded**. It is the same claim as Huang's file `2023-11-29-huang-ai-passes-basic-intelligence-tests-five-years.toml`.\n\n**The page.** The CNBC article opened. The quoted words are on it exactly: \"within the next five years, you're going to see, obviously, AIs that can achieve those tests.\" CNBC frames them as conditional: Huang said that *if* AGI is defined as a computer that can complete tests in a way \"fairly competitive\" with human intelligence, *then* AIs will achieve those tests within five years. The occasion was the New York Times DealBook Summit, Wednesday 29 November 2023. This is a news report, not a transcript or Huang's own post, so the source is coverage only, as the search run marked it.\n\n**The admission rule:**\n1. **Role:** passes. Huang was co-founder and chief executive of Nvidia, a company that makes the chips frontier models are trained on.\n2. **About AI and looking forward:** passes. It says AIs will pass tests that are fairly competitive with human intelligence. The \"if AGI is defined as…\" clause sets out what is being measured; it is not a hypothetical framing.\n3. **A date or length of time:** passes. \"Within the next five years\" counts from 2023-11-29, so the due year is 2028.\n4. **Primary source:** this page doesn't give one, so the most this page supports is \"pass, coverage only\". The recorded file may already cite the DealBook recording or a transcript.\n\n**Duplicate:** the recorded file has the same date and the same gist (AI passing basic intelligence tests in five years), so this is an unchanged repeat of a claim already on file. Someone checking may want to see whether that file holds a primary source and the quote. The separate file `2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml` is a later statement on a different date. It is not the same claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"CNBC news report of Huang's interview at the NYT DealBook Summit; it quotes the words exactly, as the second half of a conditional: if AGI is defined as a computer that can complete tests in a 'fairly competitive' way to human intelligence, then 'within the next five years, you're going to see, obviously, AIs that can achieve those tests.'\",\n  \"date_on_page\": \"2023-11-29\",\n  \"role_at_the_time\": \"co-founder and chief executive of Nvidia\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Nvidia's chief executive, looks forward about AI, and has a five-year span, but it is the same claim as the recorded file 2023-11-29-huang-ai-passes-basic-intelligence-tests-five-years.toml. This page is coverage only.\"\n}\n```"
+}

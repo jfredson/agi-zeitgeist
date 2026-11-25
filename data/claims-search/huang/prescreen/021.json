@@ -1,0 +1,59 @@
+{
+  "speaker_id": "huang",
+  "row": 21,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0662,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.techspot.com/news/110852-jensen-huang-calling-human-like-robots-arrive-2026.html\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title')); \\n    i=c.find('This year'); print(len(c)); print(c[:4000])\"}",
+    "https://www.techspot.com/news/110852-jensen-huang-calling-human-like-robots-arrive-2026.html",
+    "{\"code\": \"print(type(r)); print(str(r)[:300])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:5000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3329,
+      "cache_read_input_tokens": 46364,
+      "inference_geo": "global",
+      "input_tokens": 1133,
+      "output_tokens": 1786,
+      "output_tokens_details": {
+        "thinking_tokens": 388
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-01-06",
+    "quote": "This year,",
+    "what_is_predicted": "Humanoid robots will match human-level ability in 2026 (his reply when asked how long that would take).",
+    "date_or_span": "2026 (this year)",
+    "occasion": "Q&A session at CES 2026, Las Vegas (TechSpot says 'on Tuesday'; Tuesday of CES week was January 6)",
+    "source_url": "https://www.techspot.com/news/110852-jensen-huang-calling-human-like-robots-arrive-2026.html",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "TechSpot news report by Skye Jacobs on CES 2026, reading 'During a Q&A session on Tuesday, Huang didn't hesitate when asked how long it would take for humanoid robots to match human-level ability. \"This year,\" he said.' The question is the reporter's paraphrase, not a quote.",
+    "date_on_page": "2026-01",
+    "role_at_the_time": "co-founder and chief executive of Nvidia",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Nvidia's chief executive: a forecast that humanoid robots will match human-level ability, dated 'this year' (2026). The only source is a news report of a CES Q&A whose question is paraphrased, so coverage only; the page says only 'Tuesday' of CES week, which works out to 2026-01-06, and the test will probably be unfalsifiable under reading 4."
+  },
+  "reply_text": "I opened the TechSpot page, and the quoted words are on it. The candidate passes as coverage only. The quote is just a two-word reply, so check it carefully.\n\n**What the page shows.** This is a news report by Skye Jacobs, not Huang's own words, a transcript or a printed Q&A. The passage reads: *\"During a Q&A session on Tuesday, Huang didn't hesitate when asked how long it would take for humanoid robots to match human-level ability. 'This year,' he said.\"* So \"This year,\" is word for word. The question itself is the reporter's paraphrase, not a quote.\n\n**The date.** The page text I fetched shows no publication date. It gives only \"on Tuesday\" during \"CES 2026 in Las Vegas this week\". 2026-01-06 is the Tuesday of CES week, so that date is worked out, not printed. It's worth checking against the page header.\n\n**The four parts of the rule:**\n1. **Pass.** Huang has been Nvidia's co-founder and chief executive since 1993, and Nvidia makes the chips frontier models are trained on.\n2. **Pass.** It is a forecast about AI: humanoid robots, which are AI systems, matching human ability. It isn't a business forecast and isn't framed as a hypothetical.\n3. **Pass.** \"This year\", said in January 2026, means 2026.\n4. **Coverage only.** I found no primary source in this check.\n\n**Already recorded?** No. None of his recorded files is about humanoid robots. The four from 2026-01-05 are about self-driving cars.\n\n**Points for the checker:**\n- **Thin wording.** The whole forecast depends on a two-word answer to a question we only have in the reporter's paraphrase. With no primary source, we can't confirm what exactly he was asked. This doesn't fail the rule, but it is the weak spot.\n- **Likely unfalsifiable when the test is written.** \"Match human-level ability\" names no comparison. Under reading 4 (\"bare 'human level' is a named stage\"), it would probably be recorded as `unfalsifiable`. That decision belongs to entry, not admission.\n- **Primary source worth looking for.** A recording or transcript of the CES 2026 Q&A would let this become a full pass with the quote.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"TechSpot news report by Skye Jacobs on CES 2026, reading 'During a Q&A session on Tuesday, Huang didn't hesitate when asked how long it would take for humanoid robots to match human-level ability. \\\"This year,\\\" he said.' The question is the reporter's paraphrase, not a quote.\",\n  \"date_on_page\": \"2026-01\",\n  \"role_at_the_time\": \"co-founder and chief executive of Nvidia\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Nvidia's chief executive: a forecast that humanoid robots will match human-level ability, dated 'this year' (2026). The only source is a news report of a CES Q&A whose question is paraphrased, so coverage only; the page says only 'Tuesday' of CES week, which works out to 2026-01-06, and the test will probably be unfalsifiable under reading 4.\"\n}\n```"
+}

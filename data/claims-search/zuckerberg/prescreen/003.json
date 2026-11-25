@@ -1,0 +1,60 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 3,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.085,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('blind'); print(c[max(0,i-2500):i+1500])\"}",
+    "https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('blind'); print(c[:800]); print('----'); print(c[max(0,i-2500):i+1200])\"}",
+    "{\"code\": \"print(c[i+1200:])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4763,
+      "cache_read_input_tokens": 61219,
+      "inference_geo": "global",
+      "input_tokens": 1171,
+      "output_tokens": 2213,
+      "output_tokens_details": {
+        "thinking_tokens": 681
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2015",
+    "date_said": "2015-06-30",
+    "quote": "If we could build computers that could understand what's in an image and could tell a blind person who otherwise couldn't see that image, that would be pretty amazing as well. This is all within our reach and I hope we can deliver it in the next 10 years",
+    "what_is_predicted": "Zuckerberg hoped Facebook would, within ten years, deliver AI that understands images well enough to describe them to blind people, as part of a goal of AI better than humans at the primary senses.",
+    "date_or_span": "the next 10 years (from mid-2015)",
+    "occasion": "Public Facebook town-hall Q&A that Zuckerberg answered in writing on Facebook",
+    "source_url": "https://www.computing.co.uk/news/2416229/facebook-ceo-zuckerberg-touts-artificial-intelligence-and-virtual-reality-in-the-next-10-years",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Computing (computing.co.uk) news article by Graeme Burton quoting Zuckerberg's written Q&A answer on Facebook word for word; it links to his own post, which I did not open.",
+    "date_on_page": "2015-07-03",
+    "role_at_the_time": "founder and chief executive of Facebook (running Facebook AI Research since 2013-12)",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Facebook's chief executive, it forecasts what AI will do (describe images to blind people) within a stated ten-year span, hedged as a hope; the only source checked is a news report, so it is coverage only unless his linked Facebook post is checked. The checker should confirm it isn't the same claim as the 2016 better-than-people-at-senses file."
+  },
+  "reply_text": "**The page:** It opened. It's a Computing (computing.co.uk) news article by Graeme Burton, published 2015-07-03. The quote appears on it word for word: \"If we could build computers that could understand what's in an image and could tell a blind person who otherwise couldn't see that image, that would be pretty amazing as well. This is all within our reach and I hope we can deliver it in the next 10 years\". The article says Zuckerberg wrote this in a Q&A on Facebook and links to his post (facebook.com/zuck/posts/10102213601037571). I did not open that post. The article doesn't say what day the Q&A took place, so the candidate's 2015-06-30 isn't confirmed by this page. The only date on the page is the publication date, 2015-07-03. Because this is coverage, the result can only be \"pass, coverage only\" unless someone checks the linked post.\n\n**The four parts:**\n1. **Passes.** In mid-2015 Zuckerberg was founder and chief executive of Facebook, which had run Facebook AI Research since 2013-12. In the same answer he talks about Facebook building its own AI systems.\n2. **Passes.** The words look forward and are about what AI will do: systems that understand an image and describe it to a blind person. \"I hope we can deliver it\" is a hedge, so it would be written into `prediction`. It isn't a hypothetical: \"if we could build\" sets up the goal, and \"this is all within our reach and I hope we can deliver it\" gives it a date. That makes it read as a goal (`is_goal`).\n3. **Passes.** \"In the next 10 years\" is a span counted from mid-2015, so it is due at the end of 2025. That date has passed, so this would need a verdict.\n4. **Coverage only.** The only source checked is a news report. It links to his own post, and if someone checks the quote there, this could be upgraded to \"pass\".\n\n**Possible overlap, for the checker:** The recorded file `2016-04-27-zuckerberg-better-than-people-at-senses.toml` covers the wider \"better than humans at our primary senses\" goal, which this article also quotes. The candidate's own claim is narrower: describing images to blind people within 10 years of 2015. It also comes earlier and would probably fall due in a different year. So I read it as a separate claim, not \"recorded\". If the 2016 file turns out to be the same promise, the restatement rule would key it to this 2015 date.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Computing (computing.co.uk) news article by Graeme Burton quoting Zuckerberg's written Q&A answer on Facebook word for word; it links to his own post, which I did not open.\",\n  \"date_on_page\": \"2015-07-03\",\n  \"role_at_the_time\": \"founder and chief executive of Facebook (running Facebook AI Research since 2013-12)\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Facebook's chief executive, it forecasts what AI will do (describe images to blind people) within a stated ten-year span, hedged as a hope; the only source checked is a news report, so it is coverage only unless his linked Facebook post is checked. The checker should confirm it isn't the same claim as the 2016 better-than-people-at-senses file.\"\n}\n```"
+}

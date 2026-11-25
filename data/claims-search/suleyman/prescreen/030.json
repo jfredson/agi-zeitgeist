@@ -1,0 +1,60 @@
+{
+  "speaker_id": "suleyman",
+  "row": 30,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0858,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('1,000x'); print(c[max(0,i-1500):i+800] if i>=0 else c[:2000])\"}",
+    "https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\nfor k in ['1,000x','end of 2028','Put all this together']:\\n    print(k, c.find(k))\\ni=c.find('Put all this together'); print(c[max(0,i-1500):i+1200])\\nimport re; print(re.findall(r'(?:published|date)[^\\\\n]{0,80}',c)[:5])\"}",
+    "{\"code\": \"print(c[:1500])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5465,
+      "cache_read_input_tokens": 64736,
+      "inference_geo": "global",
+      "input_tokens": 2592,
+      "output_tokens": 1758,
+      "output_tokens_details": {
+        "thinking_tokens": 289
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-04-08",
+    "quote": "Put all this together and we’re looking at something like another 1,000x in effective compute by the end of 2028.",
+    "what_is_predicted": "Effective compute for AI will grow by roughly another 1,000 times by the end of 2028; this is an industry-wide compute/scaling forecast, so the checker may class it as an infrastructure forecast and exclude it.",
+    "date_or_span": "by the end of 2028",
+    "occasion": "Opinion essay by Suleyman, 'Mustafa Suleyman: AI development won’t hit a wall anytime soon—here’s why', MIT Technology Review",
+    "source_url": "https://www.technologyreview.com/2026/04/08/1135398/mustafa-suleyman-ai-future/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Suleyman's own signed opinion essay in MIT Technology Review ('Mustafa Suleyman: AI development won't hit a wall anytime soon—here's why'), which contains the quoted sentence word for word.",
+    "date_on_page": "2026-04-08",
+    "role_at_the_time": "chief executive of Microsoft AI",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "A forecast of 1,000x more effective compute by end of 2028 is about compute growth, which the rule lists as a business forecast, not a claim about what AI will do. The nearby line about near-human-level agents carries no date of its own."
+  },
+  "reply_text": "**Verdict: out, part 2.** The quoted words are on the page exactly, but they forecast compute growth, which the rule lists as a business forecast rather than a claim about what AI will do.\n\n**The page.** It opened. It's Suleyman's own signed opinion essay in MIT Technology Review, \"Mustafa Suleyman: AI development won't hit a wall anytime soon—here's why\". The page description calls him \"CEO of Microsoft AI\", and the web address dates it 2026-04-08. The quoted sentence appears word for word, including the curly apostrophe in \"we're\". It comes after figures on lab capacity growth, training compute growing 5x a year and global H100-equivalents. The next sentence says that by 2030 an extra 200 gigawatts of compute may come online each year. Because these are his own words in print, this would be a plain \"pass\" (not \"pass, coverage only\") if the claim were admitted.\n\n**The four parts of the rule:**\n1. **Passes.** In April 2026 he was chief executive of Microsoft AI, the role his history gives from 2024. His other 2026 claims are already recorded under that role.\n2. **Fails.** \"Another 1,000x in effective compute by the end of 2028\" is about how much computing power AI will have, not what AI will do, reach or ship. The rule names \"computing or data-centre build-out\" as a business forecast that stays out. \"Effective\" compute does include software-efficiency gains, but it is still a measure of compute, not of capability. I don't count this as borderline.\n3. **Passes.** \"By the end of 2028\" is a stated date.\n4. **Passes.** It's a primary source in his own words.\n\n**Not recorded.** No recorded claim file is from April 2026, and none is about compute growth to 2028. The closest is the 2024-10 \"no scaling slowdown in two to three years\" file, which is a different claim.\n\n**For the person checking.** The paragraph straight after the quote says this compute \"will drive the transition from chatbots to nearly human-level agents\" capable of \"writing code for days, carrying out weeks- and months-long projects\". That one is about AI, but it carries no date of its own in that sentence. Reading the 2028 date into it would be stretching, so it stays undated and isn't part of this candidate.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Suleyman's own signed opinion essay in MIT Technology Review ('Mustafa Suleyman: AI development won't hit a wall anytime soon—here's why'), which contains the quoted sentence word for word.\",\n  \"date_on_page\": \"2026-04-08\",\n  \"role_at_the_time\": \"chief executive of Microsoft AI\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"A forecast of 1,000x more effective compute by end of 2028 is about compute growth, which the rule lists as a business forecast, not a claim about what AI will do. The nearby line about near-human-level agents carries no date of its own.\"\n}\n```"
+}

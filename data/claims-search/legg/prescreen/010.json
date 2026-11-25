@@ -1,0 +1,59 @@
+{
+  "speaker_id": "legg",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0539,
+  "pages_opened": [
+    "{\"code\": \"r=await web_fetch({\\\"url\\\":\\\"https://www.vetta.org/2011/12/goodbye-2011-hello-2012/\\\"})\\nimport json\\nif isinstance(r,dict):print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    i=c.find('proto-AGI');print(c[max(0,i-2500):i+800])\"}",
+    "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/",
+    "{\"code\": \"print(type(r)); print(str(r)[:300])\\nc=r['content'] if isinstance(r,dict) and 'content' in r else str(r)\\ni=c.find('proto-AGI');print(c[max(0,i-2500):i+800])\"}",
+    "{\"code\": \"import re;d=json.loads(r)['content']['source']['data'];print(re.findall(r'(?:December|January)[^\\\\n]{0,30}20\\\\d\\\\d',d)[:10])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2233,
+      "cache_read_input_tokens": 46141,
+      "inference_geo": "global",
+      "input_tokens": 718,
+      "output_tokens": 1534,
+      "output_tokens_details": {
+        "thinking_tokens": 232
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2011",
+    "date_said": "2011-12-31",
+    "quote": "I’d also like to add to this prediction that I expect to see an impressive proto-AGI within the next 8 years.",
+    "what_is_predicted": "An impressive proto-AGI with learnt basic vision, sound processing, movement control and language will appear within eight years.",
+    "date_or_span": "within the next 8 years (by about end of 2019)",
+    "occasion": "Blog post 'Goodbye 2011, hello 2012' on vetta.org",
+    "source_url": "https://www.vetta.org/2011/12/goodbye-2011-hello-2012/",
+    "source_kind": "own_words",
+    "already_recorded": "2011-12-31-legg-proto-agi-within-eight-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Shane Legg's own blog post 'Goodbye 2011, hello 2012' on vetta.org; the quote matches exactly and the next sentence defines the proto-AGI (basic vision, sound, movement control and language, learnt rather than preprogrammed, solving simple new problems).",
+    "date_on_page": "2011-12",
+    "role_at_the_time": "Co-founder of DeepMind (founded 2010)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Same claim as the recorded file 2011-12-31-legg-proto-agi-within-eight-years.toml: his own words, dated by the eight-year span, written while he was a DeepMind co-founder. Borderline point for the reviewer: it is a personal blog, so it is open whether he was speaking for the company; the page text shows only the month (via the address), not the 31st."
+  },
+  "reply_text": "I opened the page and the quoted words are on it exactly. This is the same claim as a file already in the ledger, `2011-12-31-legg-proto-agi-within-eight-years.toml`, so the admission is **recorded**.\n\n**The page.** It is Shane Legg's own blog post \"Goodbye 2011, hello 2012\" on vetta.org, so these are his own words and not a news report. The text matches the quote word for word: \"I'd also like to add to this prediction that I expect to see an impressive proto-AGI within the next 8 years.\" The next sentence defines what he means: basic vision, sound processing, movement control and language, \"essentially learnt rather than preprogrammed,\" plus the ability to solve simple new problems. That definition matches the candidate's summary and gives a bar an outsider could test.\n\n**The date.** The text I got back from the page has no posting date. Only the address (`/2011/12/`) dates it, to December 2011. The run's exact date of 2011-12-31 comes from the title and the recorded file name, not from anything I saw on the page.\n\n**The four parts:**\n- **Part 1 (role):** Legg co-founded DeepMind in 2010, so he was a founder at DeepMind when he wrote this. One borderline point for the reviewer: this is a personal blog, and the rule says a chief scientist counts when \"speaking for\" the company. The claim is already recorded, so I haven't reopened that question.\n- **Part 2 (forward-looking, about AI):** passes. It says an AI system will appear, and it is not hypothetical.\n- **Part 3 (dated):** passes. \"Within the next 8 years\" counts from late 2011, so it runs to about the end of 2019.\n- **Part 4 (primary source):** passes, since it is his own post.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Shane Legg's own blog post 'Goodbye 2011, hello 2012' on vetta.org; the quote matches exactly and the next sentence defines the proto-AGI (basic vision, sound, movement control and language, learnt rather than preprogrammed, solving simple new problems).\",\n  \"date_on_page\": \"2011-12\",\n  \"role_at_the_time\": \"Co-founder of DeepMind (founded 2010)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Same claim as the recorded file 2011-12-31-legg-proto-agi-within-eight-years.toml: his own words, dated by the eight-year span, written while he was a DeepMind co-founder. Borderline point for the reviewer: it is a personal blog, so it is open whether he was speaking for the company; the page text shows only the month (via the address), not the 31st.\"\n}\n```"
+}

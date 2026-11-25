@@ -1,0 +1,59 @@
+{
+  "speaker_id": "pichai",
+  "row": 13,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0535,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('10X'); print(c[i-800:i+400] if i>=0 else 'no 10X')\\n    import re\\n    for k in ['May 11','2022','auto-generated chapters']:\\n        j=c.find(k); print(k, j, c[max(0,j-150):j+150] if j>=0 else '')\"}",
+    "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\nprint(c[:600])\\ni=c.find('10X'); print(c[i-600:i+300] if i>=0 else 'no 10X')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2780,
+      "cache_read_input_tokens": 46763,
+      "inference_geo": "global",
+      "input_tokens": 1211,
+      "output_tokens": 1272,
+      "output_tokens_details": {
+        "thinking_tokens": 46
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-05-11",
+    "quote": "With this, we now have a goal to 10X the number of videos with auto-generated chapters, from eight million today, to 80 million over the next year.",
+    "what_is_predicted": "Auto-generated YouTube chapters, using DeepMind multimodal technology, would grow from 8 million to 80 million videos within a year.",
+    "date_or_span": "over the next year (to about May 2023)",
+    "occasion": "Google I/O 2022 keynote",
+    "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+    "source_kind": "own_words",
+    "already_recorded": "2022-05-11-pichai-youtube-auto-chapters-80-million-goal.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Google's blog post of Sundar Pichai's own Google I/O 2022 keynote remarks, under his name, dated 2022-05-11; the quote appears word for word.",
+    "date_on_page": "2022-05-11",
+    "role_at_the_time": "Chief executive of Google and of its parent Alphabet",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts: said as Google/Alphabet chief executive, a dated goal for how widely an AI system (DeepMind's model generating YouTube chapters) will be deployed within a year, in his own published keynote. It is the same claim as the recorded file 2022-05-11-pichai-youtube-auto-chapters-80-million-goal.toml."
+  },
+  "reply_text": "I opened the page and the quoted words are on it exactly. The claim is already recorded, so it is not a new entry.\n\n**1. Is the quote on the page?** Yes. The page is Sundar Pichai's own Google I/O 2022 keynote remarks, posted on Google's blog under his name and dated 2022-05-11. It says: \"With this, we now have a goal to 10X the number of videos with auto-generated chapters, from eight million today, to 80 million over the next year.\" The sentence before it says the chapters now use \"multimodal technology from DeepMind\" to generate chapters from text, audio and video. These are his own words, not a news report.\n\n**2. The four parts of the rule:**\n- **Part 1, role:** On 2022-05-11 he was chief executive of Google (since 2015) and of Alphabet (since 2019). Google builds frontier models, so the role qualifies.\n- **Part 2, about AI and forward-looking:** It is a forecast of how widely an AI system will be deployed: DeepMind's model generating chapters for 80 million videos. That is about what the AI will do, not a business figure. He calls it a \"goal\", so it would carry the goal mark.\n- **Part 3, date:** \"Over the next year\" is a span counted from the day it was said, so it ends about May 2023.\n- **Part 4, source:** The source is his own words on Google's own blog.\n\nIt passes all four parts. It is the same claim as the recorded file `2022-05-11-pichai-youtube-auto-chapters-80-million-goal.toml`: same date, same quote and same gist. So the admission is \"recorded\".\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Google's blog post of Sundar Pichai's own Google I/O 2022 keynote remarks, under his name, dated 2022-05-11; the quote appears word for word.\",\n  \"date_on_page\": \"2022-05-11\",\n  \"role_at_the_time\": \"Chief executive of Google and of its parent Alphabet\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts: said as Google/Alphabet chief executive, a dated goal for how widely an AI system (DeepMind's model generating YouTube chapters) will be deployed within a year, in his own published keynote. It is the same claim as the recorded file 2022-05-11-pichai-youtube-auto-chapters-80-million-goal.toml.\"\n}\n```"
+}

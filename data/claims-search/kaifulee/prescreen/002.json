@@ -1,0 +1,60 @@
+{
+  "speaker_id": "kaifulee",
+  "row": 2,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1006,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('uncannily'); print(c[max(0,i-2500):i+1500])\"}",
+    "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+    "{\"code\": \"print(type(r), str(r)[:300])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('uncannily'); print(c[:600]); print('----'); print(c[max(0,i-3000):i+1500])\"}",
+    "{\"code\": \"i=c.find('Kai-Fu Lee', 3000); j=c.find('Tech Forward'); \\nk=c.find('Hong Kong'); print(c[k-2500:k+4000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6740,
+      "cache_read_input_tokens": 62542,
+      "inference_geo": "global",
+      "input_tokens": 1795,
+      "output_tokens": 2362,
+      "output_tokens_details": {
+        "thinking_tokens": 682
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-03",
+    "quote": "It’s actually uncannily accurate. People have criticized me for being too aggressive in 2017, 2018, 2019, and I was a little nervous at the time. But when gen AI came out, I think everybody’s on the bandwagon and believing that is the correct pace.",
+    "what_is_predicted": "Lee reaffirms his 2017 forecast that AI will replace about half of human jobs, a forecast Fortune describes as due by 2027.",
+    "date_or_span": "2027 (the date comes from the interviewer's question and Fortune's framing: 'With the timeline of his prediction just three years away'; Lee's quoted words do not name it)",
+    "occasion": "Fortune Innovation Forum, Hong Kong, March 2024, on stage with Fortune editor-in-chief Alyson Shontell",
+    "source_url": "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Fortune news article by Jason Ma (2024-05-25) about Lee's remarks on stage at the Fortune Innovation Forum in Hong Kong; the quote appears word for word, as his reply to Alyson Shontell asking whether his 2017 jobs forecast still holds.",
+    "date_on_page": "2024-03",
+    "role_at_the_time": "founder-leader of 01.AI (founded 2023), from the role history; the page names him only as chairman and CEO of Sinovation Ventures",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "Lee's words only call his earlier forecast 'uncannily accurate' and 'the correct pace'; both the 50% figure and the 2027 date come from Fortune's paraphrase of the question and its framing, and the source as found is coverage only. The linked YouTube recording might settle it if the interviewer's question names the 50% figure and 2027, so it stays out and is logged as borderline."
+  },
+  "reply_text": "I read this as **borderline**. The quoted words are on the page exactly, but neither the date nor the prediction is in them. Both come from Fortune's description of the question and the article's framing.\n\n**1. The page.** The Fortune article opened. It is \"Top VC Kai-Fu Lee says his prediction that AI will displace 50% of jobs by 2027 is 'uncannily accurate'\", by Jason Ma, dated May 25, 2024. The quote is there word for word. The article says he said it at the Fortune Innovation Forum in Hong Kong \"in March\", on stage with Alyson Shontell. This is a news report, not a transcript, so at best the claim would be coverage only. The article links a YouTube recording of the session (youtube.com/watch?v=zZs447dgMjg). I did not open it.\n\n**2. The four parts of the rule.**\n- **Part 1 (role): passes, with a note.** In March 2024 Lee was founder-leader of 01.AI, a company building frontier models, so he held a qualifying role. Fortune calls him only \"chairman and chief executive of Sinovation Ventures\", so the role comes from his role history, not from the page.\n- **Part 2 (looks forward, about AI): weak.** A forecast that AI will displace jobs counts under the rule. But Lee's own words don't state that forecast. They only say an earlier forecast is \"uncannily accurate\" and \"the correct pace\". The forecast itself is from 2017, when he was at Sinovation and held no qualifying role. Fortune quotes it: AI \"will probably replace 50% of human jobs\", and says he \"later\" put it within 10 years.\n- **Part 3 (a date or length of time): fails as written.** Neither 2027 nor \"three years\" is in his words. It comes from Fortune's paraphrase of the question (\"With the timeline of his prediction just three years away, she asked him if it still holds\"). We don't have the interviewer's actual wording.\n- **Part 4 (primary source): coverage only.** As found, the source is a news report. The linked recording could become a primary source.\n\n**Already recorded?** No. None of his recorded files covers this. The nearest, `2024-03-kaifulee-ai-capabilities-dwarf-humans-two-to-three-years`, is the same month but a different claim.\n\n**For the person checking:** if the recording shows the interviewer saying the 50%-by-2027 timeline and Lee clearly agreeing to it, this could be read as a dated claim from a primary source. Otherwise it stays out and is logged as borderline.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Fortune news article by Jason Ma (2024-05-25) about Lee's remarks on stage at the Fortune Innovation Forum in Hong Kong; the quote appears word for word, as his reply to Alyson Shontell asking whether his 2017 jobs forecast still holds.\",\n  \"date_on_page\": \"2024-03\",\n  \"role_at_the_time\": \"founder-leader of 01.AI (founded 2023), from the role history; the page names him only as chairman and CEO of Sinovation Ventures\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"Lee's words only call his earlier forecast 'uncannily accurate' and 'the correct pace'; both the 50% figure and the 2027 date come from Fortune's paraphrase of the question and its framing, and the source as found is coverage only. The linked YouTube recording might settle it if the interviewer's question names the 50% figure and 2027, so it stays out and is logged as borderline.\"\n}\n```"
+}

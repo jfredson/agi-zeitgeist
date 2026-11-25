@@ -1,0 +1,63 @@
+{
+  "speaker_id": "lecun",
+  "row": 15,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0909,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['three to five','early progress','paradigm','2025','January']:\\n        for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ')); print('---')\"}",
+    "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['three to five','early progress','Published','2025','January','Date']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-400):m.start()+200].replace('\\\\n',' ')); print('---')\"}",
+    "{\"code\": \"print(c[:1500])\"}",
+    "{\"code\": \"import json,re\\nr = await web_fetch({\\\"url\\\":\\\"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\\\"})\\nd=json.loads(r) if isinstance(r,str) else r; c=d['content']['source']['data']\\ni=c.find('The View from Davos'); print(c[i-200:i+1800] if i>0 else c[1500:3500])\\nfor k in ['Davos','Transcript','Disclaimer']:\\n    print(k,[m.start() for m in re.finditer(k,c)])\"}",
+    "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+    "{\"code\": \"print(c[2500:4400])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6365,
+      "cache_read_input_tokens": 78195,
+      "inference_geo": "global",
+      "input_tokens": 1343,
+      "output_tokens": 1905,
+      "output_tokens_details": {
+        "thinking_tokens": 187
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 2,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-01",
+    "quote": "After that, so I expect to see some early progress on this sort of new paradigm within three to five years.",
+    "what_is_predicted": "Early progress on a new AI paradigm beyond LLMs will appear within three to five years.",
+    "date_or_span": "within three to five years",
+    "occasion": "The Six Five 'View from Davos' video interview at WEF 2025",
+    "source_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+    "source_kind": "transcript",
+    "already_recorded": "2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Six Five Media's own page for its 'View from Davos' video interview with LeCun, with a full printed transcript; the quoted sentence appears word for word in his answer.",
+    "date_on_page": "2025-01",
+    "role_at_the_time": "Meta VP & Chief AI Scientist (named chief scientist of a frontier-model company)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Said at Davos in January 2025 while he was Meta's Chief AI Scientist, as a dated forward forecast in a printed transcript, so it would pass all four parts; it is the same claim as the recorded file 2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml."
+  },
+  "reply_text": "The quoted words are on the page as given. The candidate is the same claim as one already in the ledger, so its admission is **recorded**.\n\n**1. Page check.** The page opened. It is Six Five Media's own page for \"The View from Davos with Meta's Yann LeCun\": a video with a full printed transcript under it. It is not a news report. LeCun's answer includes this passage word for word: \"So, we need this new paradigm for the next… After that, so I expect to see some early progress on this sort of new paradigm within three to five years. And perhaps in five years we'll know if we're on the good path towards something like human level intelligence.\"\n\nThe page gives no exact date. It only places the interview at \"WEF25\", meaning Davos in January 2025. The 23 January in the recorded file's name is not on this page, so a person should confirm it from the video or another source.\n\n**2. Admission rule.**\n- **Part 1 (speaker and role):** Met. The page calls him \"VP & Chief AI Scientist at Meta\". Meta builds frontier models, and this is his named chief scientist role, which he held until the end of 2025.\n- **Part 2 (looks forward, about AI):** Met. He forecasts that a new AI paradigm beyond LLMs will show early progress. It is not a hypothetical.\n- **Part 3 (date or span):** Met. \"Within three to five years\" is a span. Under the rule the later end applies, so the claim falls due in 2030. A person may want to note that \"early progress\" will be hard to test when the verdict is entered, but that does not affect admission.\n- **Part 4 (primary source):** Met. It is a printed transcript.\n\nThe candidate would pass all four parts. But it has the same occasion, gist and month as the recorded file `2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml`, so it is recorded, not new.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Six Five Media's own page for its 'View from Davos' video interview with LeCun, with a full printed transcript; the quoted sentence appears word for word in his answer.\",\n  \"date_on_page\": \"2025-01\",\n  \"role_at_the_time\": \"Meta VP & Chief AI Scientist (named chief scientist of a frontier-model company)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said at Davos in January 2025 while he was Meta's Chief AI Scientist, as a dated forward forecast in a printed transcript, so it would pass all four parts; it is the same claim as the recorded file 2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.064,
+  "pages_opened": [
+    "{\"code\": \"r = await web_fetch({\\\"url\\\":\\\"https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf\\\"})\\nimport json\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    i=c.find('15%'); print(c[:300]); print(c[i-600:i+500])\"}",
+    "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"import base64,io\\nd=json.loads(r); b=base64.b64decode(d['content']['source']['data'])\\nopen('/tmp/m.pdf','wb').write(b)\\nimport pypdf\\nt=\\\"\\\\n\\\".join(p.extract_text() for p in pypdf.PdfReader('/tmp/m.pdf').pages)\\nprint(t[:300]); i=t.find('15%'); print(t[i-800:i+500])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2858,
+      "cache_read_input_tokens": 46696,
+      "inference_geo": "global",
+      "input_tokens": 1162,
+      "output_tokens": 1786,
+      "output_tokens_details": {
+        "thinking_tokens": 395
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-07-27",
+    "quote": "Right now, about 15% of content in a person’s Facebook feed and a little more than that of their  Instagram feed is recommended by our AI from people, groups, or accounts that you don’t follow. We  expect these numbers to more than double by the end of next year.",
+    "what_is_predicted": "The share of Facebook and Instagram feed content recommended by Meta's AI from accounts users don't follow will more than double from about 15% by the end of 2023.",
+    "date_or_span": "by the end of next year (end of 2023)",
+    "occasion": "Meta Platforms Q2 2022 earnings conference call, Zuckerberg's prepared remarks",
+    "source_url": "https://s21.q4cdn.com/399680738/files/doc_financials/2022/q2/Meta-Q2-2022-Earnings-Call-Transcript.pdf",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Meta's own transcript of its Q2 2022 earnings call (dated July 27th, 2022); the quoted words are in Zuckerberg's prepared remarks, word for word.",
+    "date_on_page": "2022-07-27",
+    "role_at_the_time": "founder and chief executive of Meta Platforms (Facebook AI Research running)",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as Meta's chief executive in the company's own call transcript. It predicts that the AI-recommended share of Facebook and Instagram feeds will more than double by the end of 2023, which is about how widely the AI is used rather than a business figure, and it carries a date."
+  },
+  "reply_text": "I read this as a **pass**. The quote is word for word in Meta's own call transcript, and all four parts of the rule hold. Part 2 is the closest call, though I don't think it's borderline.\n\n**Does the quote appear on the page?** Yes, exactly. The PDF is Meta's own transcript of its second-quarter 2022 earnings call, dated July 27th, 2022. In Zuckerberg's prepared remarks it reads: \"Right now, about 15% of content in a person's Facebook feed and a little more than that of their Instagram feed is recommended by our AI from people, groups, or accounts that you don't follow. We expect these numbers to more than double by the end of next year.\" The only difference is a doubled space in the candidate's copy. The transcript comes from the company itself, not a news report, so it is not coverage only.\n\n**The four parts:**\n1. **Role: pass.** On 2022-07-27 he was founder and chief executive of Meta Platforms, which had that name from October 2021. Meta was running Facebook AI Research then. The two recorded claims from 2016 and 2018 show the ledger already treats him as qualifying before Llama.\n2. **Looks forward and is about AI: pass.** He predicts that more of each feed will be \"recommended by our AI\", which is about how widely an AI system is used, not about revenue or spending. It sits near the business-forecast line because the next sentences talk about making money from it. But the number being forecast is the AI's share of the feed, not revenue or spending.\n3. **Has a date: pass.** \"By the end of next year\", said in 2022, means 2023-12-31.\n4. **Primary source: pass.** The company's own transcript.\n\n**Already recorded?** No. None of his recorded claim files is from 2022 or about how much of the feed the AI recommends.\n\nFor whoever writes the test: \"more than double\" from about 15% (Facebook) and a bit more (Instagram) means over about 30% on Facebook and over twice the Instagram starting figure. Only Meta holds those numbers, so any evidence would be the maker's own figures and should be marked that way.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Meta's own transcript of its Q2 2022 earnings call (dated July 27th, 2022); the quoted words are in Zuckerberg's prepared remarks, word for word.\",\n  \"date_on_page\": \"2022-07-27\",\n  \"role_at_the_time\": \"founder and chief executive of Meta Platforms (Facebook AI Research running)\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Meta's chief executive in the company's own call transcript. It predicts that the AI-recommended share of Facebook and Instagram feeds will more than double by the end of 2023, which is about how widely the AI is used rather than a business figure, and it carries a date.\"\n}\n```"
+}

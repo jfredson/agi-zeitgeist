@@ -1,0 +1,61 @@
+{
+  "speaker_id": "lecun",
+  "row": 20,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0913,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    for k in ['myopic','ChatGPT moment','3-5','robot','January','2025','CES']:\\n        i=c.find(k); print(k, i, c[max(0,i-300):i+300].replace('\\\\n',' ') if i>=0 else '')\"}",
+    "https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['myopic','ChatGPT moment','3-5','January','CES','Published','2025']:\\n    i=c.find(k); print('##',k, i, c[max(0,i-400):i+300].replace('\\\\n',' ') if i>=0 else '')\"}",
+    "{\"code\": \"i=c.find('By   [Rajeev'); print(c[i:i+300])\"}",
+    "{\"code\": \"i=c.find('rajeev-chand)  '); import re; print(re.findall(r'Jan[a-z]* \\\\d+, 2025',c)); i=c.find('# A conversation'); print(c[i:i+700])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5255,
+      "cache_read_input_tokens": 77411,
+      "inference_geo": "global",
+      "input_tokens": 1372,
+      "output_tokens": 2205,
+      "output_tokens_details": {
+        "thinking_tokens": 522
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-01-07",
+    "quote": "Yann said, “Depends on whether you’re myopic or not.” Joking aside, he was positive on the opportunities in robotics and anticipated a ChatGPT moment within 3-5 years.",
+    "what_is_predicted": "Per the moderator's paraphrase, a 'ChatGPT moment' for general robotics will come within 3-5 years.",
+    "date_or_span": "within 3-5 years",
+    "occasion": "CES 2025 fireside chat moderated by Rajeev Chand (Wing VC); the time span is the moderator's paraphrase, not LeCun's quoted words",
+    "source_url": "https://www.wing.vc/content/rajeev-chand-yann-lecun-ai-research-predictions",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Moderator Rajeev Chand's write-up on Wing VC's site of his CES fireside chat with LeCun; the quote is there exactly, but only the 'myopic' quip is LeCun's own words and the '3-5 years' is Chand's paraphrase.",
+    "date_on_page": "2025-01",
+    "role_at_the_time": "Meta Chief AI Scientist",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said while Meta's Chief AI Scientist, looks forward about AI robotics and gives a 3-5 year span (due 2030), but the span exists only in the moderator's write-up, so it is coverage only. The undefined 'ChatGPT moment' will likely make it unfalsifiable at entry."
+  },
+  "reply_text": "I'd admit this as **pass, coverage only**, but only the moderator's paraphrase supports it. The only words LeCun is quoted saying are a joke.\n\n**1. Page check.** The page opened, and the quoted words are on it exactly. It's a write-up on Wing VC's site by Rajeev Chand, who moderated the CES fireside chat. It is not LeCun's own post, a transcript or a printed Q&A. In a \"true or false\" round, Chand read out Jensen Huang's line, \"The ChatGPT moment for general robotics is around the corner.\" LeCun's only quoted reply is \"Depends on whether you're myopic or not.\" The forecast itself, \"anticipated a ChatGPT moment within 3-5 years,\" is Chand's paraphrase, not LeCun's words. So this is coverage only.\n\n**Date.** The page header says only \"January 2025.\" The text says the chat was \"yesterday\" and that Huang's statement was made at CES \"the day before.\" Huang's CES keynote was 6 January 2025, which puts the chat on 2025-01-07, matching the candidate. That date is worked out from those two lines, not printed on the page.\n\n**2. The four parts of the rule.**\n- **Part 1 (role):** Passes. On that date he was Meta's Chief AI Scientist, and the page calls him that. That's the \"named chief scientist\" role at a frontier-model company.\n- **Part 2 (looks forward, about AI):** Passes. It says AI robotics will reach a ChatGPT moment. One concern: \"ChatGPT moment\" is a named stage that the source never defines. Under the timing rule that would probably make it `unfalsifiable` when the test is written. That affects how it's scored, not whether it's admitted.\n- **Part 3 (date or span):** Passes. \"Within 3-5 years\" is a span counted from the day it was said. Taking the later end, it comes due in 2030.\n- **Part 4 (primary source):** Only coverage. It can go in as `coverage_only`, shown with no quote.\n\n**Already recorded?** No. The nearest file, `2025-01-23-lecun-coming-decade-of-robotics`, is a different date and occasion with a different claim (a decade of robotics, not a 3-5 year ChatGPT moment).\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Moderator Rajeev Chand's write-up on Wing VC's site of his CES fireside chat with LeCun; the quote is there exactly, but only the 'myopic' quip is LeCun's own words and the '3-5 years' is Chand's paraphrase.\",\n  \"date_on_page\": \"2025-01\",\n  \"role_at_the_time\": \"Meta Chief AI Scientist\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said while Meta's Chief AI Scientist, looks forward about AI robotics and gives a 3-5 year span (due 2030), but the span exists only in the moderator's write-up, so it is coverage only. The undefined 'ChatGPT moment' will likely make it unfalsifiable at entry.\"\n}\n```"
+}

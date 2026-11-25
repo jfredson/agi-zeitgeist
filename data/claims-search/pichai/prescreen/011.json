@@ -1,0 +1,60 @@
+{
+  "speaker_id": "pichai",
+  "row": 11,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0738,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    import re\\n    for k in ['rolling out in Google Maps','Immersive view','immersive view','May 11','2022']:\\n        for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' '));print('--')\\n        \"}",
+    "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data'];print(c[:600])\\nfor k in ['rolling out in Google Maps','mmersive view']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-500):m.start()+300]);print('--')\"}",
+    "{\"code\": \"import re\\nfor k in ['rolling out in Google Maps','mmersive view','edited transcript']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-500):m.start()+300]);print('--')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4112,
+      "cache_read_input_tokens": 60082,
+      "inference_geo": "global",
+      "input_tokens": 1194,
+      "output_tokens": 1822,
+      "output_tokens_details": {
+        "thinking_tokens": 306
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-05-11",
+    "quote": "This feature will start rolling out in Google Maps for select cities globally later this year.",
+    "what_is_predicted": "Immersive view in Google Maps, built with machine learning and neural rendering, would start rolling out to select cities in 2022.",
+    "date_or_span": "later in 2022",
+    "occasion": "Google I/O 2022 keynote (edited transcript posted under Pichai's name); borderline as an AI prediction because it is a near-term launch of a feature that uses AI",
+    "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/io-2022-keynote/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Google blog post under Pichai's name dated 2022-05-11, carrying an edited transcript of his Google I/O 2022 keynote; the sentence appears verbatim in the immersive view (Maps) passage.",
+    "date_on_page": "2022-05-11",
+    "role_at_the_time": "chief executive of Google and of Alphabet",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "It's a near-term rollout date for a Maps feature that is built with machine learning and neural rendering, but the feature is arguably not itself an AI system and the words don't say what the AI will do, so whether it is about AI is truly borderline; the person checking may weigh the earlier AI-feature launches the ledger has admitted (Magic Editor, Ask Photos)."
+  },
+  "reply_text": "I'd call this one **borderline**. The quoted words are on the page exactly, and the speaker held a qualifying role, but it's unclear whether the line is a prediction about AI (part 2 of the rule).\n\n**Page check.** The page opened. It's on Google's blog under Pichai's name, published 2022-05-11. It has an editor's note: \"Below is an edited transcript of Sundar Pichai's keynote address during the opening of today's Google I/O Developers Conference.\" So it's his own words in a transcript, not news coverage. The sentence appears word for word in the Maps section: \"This feature will start rolling out in Google Maps for select cities globally later this year.\" The text just before it describes immersive view. It says it uses \"advances in 3D mapping and machine learning,\" and \"we use neural rendering to create the experience from images alone.\"\n\n**The four parts of the rule:**\n1. **Role: met.** On 2022-05-11 Pichai was chief executive of Google (since 2015) and of Alphabet (since 2019). Google builds frontier models and TPUs.\n2. **About AI: borderline.** It's a launch date for a Maps feature. The feature is built with machine learning and neural rendering, but the rule only admits a product shipping \"when the product is an AI system.\" Immersive view is better described as a 3D map experience made by AI than as an AI system itself. The sentence also says nothing about what the AI will do. The rule says a truly borderline case stays out and is logged as borderline. The search run flagged the same doubt. One point against the doubt: the ledger has already admitted similar AI-feature launches (the John Legend voice, Magic Editor, Ask Photos). The person checking may want to rule on that.\n3. **Date: met.** \"Later this year\" means by 31 December 2022.\n4. **Primary source: met.** It's a transcript posted under his name.\n\n**Already recorded?** No. The only recorded 2022-05-11 file is about YouTube auto chapters, which is a different claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Google blog post under Pichai's name dated 2022-05-11, carrying an edited transcript of his Google I/O 2022 keynote; the sentence appears verbatim in the immersive view (Maps) passage.\",\n  \"date_on_page\": \"2022-05-11\",\n  \"role_at_the_time\": \"chief executive of Google and of Alphabet\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"It's a near-term rollout date for a Maps feature that is built with machine learning and neural rendering, but the feature is arguably not itself an AI system and the words don't say what the AI will do, so whether it is about AI is truly borderline; the person checking may weigh the earlier AI-feature launches the ledger has admitted (Magic Editor, Ask Photos).\"\n}\n```"
+}

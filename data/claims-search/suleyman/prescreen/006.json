@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 6,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0775,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('pressing'); print(c[:600]); print('----'); print(c[max(0,i-800):i+900])\"}",
+    "https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\ni=c.find('pressing'); print(len(c)); print(c[max(0,i-2500):i+1000])\\nimport re\\nfor k in ['2018','Wired','January','Jan']:\\n    print(k,[c[m.start()-80:m.start()+80] for m in re.finditer(k,c)][:4])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5176,
+      "cache_read_input_tokens": 49596,
+      "inference_geo": "global",
+      "input_tokens": 2655,
+      "output_tokens": 1556,
+      "output_tokens_details": {
+        "thinking_tokens": 403
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2018",
+    "date_said": "2018-01-05",
+    "quote": "This is why I predict the study of the ethics, safety and societal impact of AI is going to become one of the most pressing areas of inquiry over the coming year. There has already been valuable work done in this area. For example, there is an emerging consensus that it is the responsibility of those developing new technologies to help address the effects of inequality, injustice and bias. In 2018, we're going to see many more groups start to address these issues.",
+    "what_is_predicted": "Research on the ethics, safety and social impact of AI will become one of the most pressing fields during 2018, with many more groups taking it up.",
+    "date_or_span": "over the coming year / 2018",
+    "occasion": "Wired essay 'DeepMind's Mustafa Suleyman - in 2018, AI will gain a moral compass' (Wired World in 2018 series), reposted on his personal site",
+    "source_url": "https://mustafa-suleyman.ai/ai-will-gain-a-moral-compass",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Suleyman's personal site reposting his own Wired 'World in 2018' essay, dated 5 January 2018 with a link to the Wired original; the quoted passage appears word for word.",
+    "date_on_page": "2018-01-05",
+    "role_at_the_time": "co-founder of DeepMind (not its chief executive); whether this counts as founder-leader is borderline",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "The forecast is that AI ethics and safety research will become a pressing field with more groups working on it, a claim about people's research activity rather than about what AI will do, reach or ship, and it has no testable bar. Part 1 is also borderline, as he was a DeepMind co-founder but not its chief executive in January 2018."
+  },
+  "reply_text": "I'd keep this one **out**. It fails part 2, and part 1 is doubtful too.\n\n**Page check.** The page opened, and the quoted words are on it exactly, from \"This is why I predict…\" through \"…start to address these issues.\" It is a repost of the Wired essay on Suleyman's own site. The page dates it 5 January 2018 and links to the Wired original. The essay is his own writing under his name, not a report about him, so it counts as a primary source (part 4 is met). Part 3 is met as well, since the words name \"the coming year\" and \"In 2018\".\n\n**Part 2 fails.** The forecast is about people, not about AI. It says the study of AI ethics and safety will become \"one of the most pressing areas of inquiry\", and that more groups will work on these issues. It doesn't say AI will do, reach or ship anything. It is closer to a forecast about a research field's activity, which the rule keeps out. \"One of the most pressing\" also gives no bar anyone outside could test.\n\n**Part 1 is borderline.** In January 2018 Suleyman was a DeepMind co-founder, but Demis Hassabis was the chief executive. Whether Suleyman's role then counts as \"founder-leader\" under the figurehead definition needs a ruling. The role history doesn't settle it, so I haven't relied on it.\n\nIt doesn't match any recorded claim file. The earliest of those is from 2023.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Suleyman's personal site reposting his own Wired 'World in 2018' essay, dated 5 January 2018 with a link to the Wired original; the quoted passage appears word for word.\",\n  \"date_on_page\": \"2018-01-05\",\n  \"role_at_the_time\": \"co-founder of DeepMind (not its chief executive); whether this counts as founder-leader is borderline\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The forecast is that AI ethics and safety research will become a pressing field with more groups working on it, a claim about people's research activity rather than about what AI will do, reach or ship, and it has no testable bar. Part 1 is also borderline, as he was a DeepMind co-founder but not its chief executive in January 2018.\"\n}\n```"
+}

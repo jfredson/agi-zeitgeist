@@ -1,0 +1,60 @@
+{
+  "speaker_id": "hassabis",
+  "row": 6,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0753,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['next decade','descendants','medical experts','2017','Published','October']:\\n        for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-300):m.end()+200].replace('\\\\n',' ')); break\"}",
+    "https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['next decade','descendants','medical experts','2017','Published']:\\n    for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-300):m.end()+200].replace('\\\\n',' ')); print('--'); break\"}",
+    "{\"code\": \"print(c)\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3971,
+      "cache_read_input_tokens": 61341,
+      "inference_geo": "global",
+      "input_tokens": 1684,
+      "output_tokens": 1822,
+      "output_tokens_details": {
+        "thinking_tokens": 372
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-10",
+    "quote": "In the next decade, Hassabis believes that AlphaGo’s descendants will work alongside humans as scientific and medical experts.",
+    "what_is_predicted": "In the next decade, systems descended from AlphaGo will work alongside humans as scientific and medical experts.",
+    "date_or_span": "the next decade (to about 2027); reporter's paraphrase",
+    "occasion": "AlphaGo Zero announcement; Guardian story reprinted by the South China Morning Post (same occasion as the item above)",
+    "source_url": "https://www.scmp.com/news/world/article/2116062/its-able-create-knowledge-itself-google-unveils-ai-learns-its-own-needs",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Guardian news story reprinted by the South China Morning Post on the AlphaGo Zero announcement; the sentence is there word for word, but it is the reporter's summary of what Hassabis believes, not his quoted words.",
+    "date_on_page": "",
+    "role_at_the_time": "co-founder and chief executive of DeepMind",
+    "admission": "pass, coverage only",
+    "failed_part": "4",
+    "reason": "Said as DeepMind's chief executive, looks forward about AI and carries a span ('in the next decade'), but only a news report gives it, as the reporter's summary with no direct quote, so it can enter only as coverage_only."
+  },
+  "reply_text": "I'd mark this **pass, coverage only**. The words are on the page, but the dated part is the reporter's summary of what Hassabis believes, not his own words.\n\n**Page check.** The SCMP page opened. The sentence is there word for word: \"In the next decade, Hassabis believes that AlphaGo's descendants will work alongside humans as scientific and medical experts.\" It's a news report, a Guardian story reprinted by the SCMP about the AlphaGo Zero announcement. The only words in quotation marks from Hassabis are a different line: \"For us, AlphaGo wasn't just about winning the game of Go… It was also a big step for us towards building these general-purpose algorithms.\" That line isn't a prediction. The page I fetched shows no publication date. The only date on it is a photo caption, 23 May 2017. The October 2017 date comes from the search run (it's when AlphaGo Zero was announced), not from this page.\n\n**Rule, part by part:**\n1. **Role:** passes. The page calls him \"CEO of DeepMind\". He has held that role since 2010, and DeepMind builds frontier models.\n2. **Forward-looking and about AI:** passes. It says AI systems will work alongside people as scientific and medical experts. It isn't hypothetical and isn't a business forecast.\n3. **Date or length of time:** passes. \"In the next decade\" is a span counted from the day it was said (like \"the next ten years\" in the rule). The date comes only from the reporter's summary.\n4. **Primary source:** this is what fails. There's no transcript, recording or quote of Hassabis saying it, so it can only go in as `coverage_only` (shown and marked, with no quote).\n\n**Already recorded?** No. None of his recorded claim files is from 2017, and none is about AlphaGo's descendants working as scientific or medical experts.\n\nOne thing to flag for whoever writes the record: the claim may end up `unfalsifiable`. \"Work alongside humans as scientific and medical experts\" has no clear test an outsider could check. That's decided when the bar is written, not by this admission check.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Guardian news story reprinted by the South China Morning Post on the AlphaGo Zero announcement; the sentence is there word for word, but it is the reporter's summary of what Hassabis believes, not his quoted words.\",\n  \"date_on_page\": \"\",\n  \"role_at_the_time\": \"co-founder and chief executive of DeepMind\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"4\",\n  \"reason\": \"Said as DeepMind's chief executive, looks forward about AI and carries a span ('in the next decade'), but only a news report gives it, as the reporter's summary with no direct quote, so it can enter only as coverage_only.\"\n}\n```"
+}

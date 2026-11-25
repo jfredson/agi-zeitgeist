@@ -1,0 +1,59 @@
+{
+  "speaker_id": "amodei",
+  "row": 2,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1732,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['Medium-term','couple of years','Very bad things','Brainstorm','July']:\\n        for m in re.finditer(k,c): print(k, '::', c[max(0,m.start()-300):m.start()+400].replace('\\\\n',' ')); print('---')\"}",
+    "https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['Medium-term','couple of years','Very bad things','Brainstorm','July','Kahn']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-400):m.start()+500].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 10704
+      },
+      "cache_creation_input_tokens": 22363,
+      "cache_read_input_tokens": 38463,
+      "inference_geo": "global",
+      "input_tokens": 2157,
+      "output_tokens": 2255,
+      "output_tokens_details": {
+        "thinking_tokens": 440
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2023",
+    "date_said": "2023-07",
+    "quote": "Medium-term risks I think in a, you know, couple of years as models get better at things like science, engineering, biology, you can just do bad things. Very bad things with the models that you wouldn’t have been able to do without them.",
+    "what_is_predicted": "In about two years AI models will be good enough at science, engineering and biology to enable seriously harmful misuse that was not possible without them (borderline on dating: 'a couple of years').",
+    "date_or_span": "a couple of years (from mid-2023)",
+    "occasion": "Interview with Jeremy Kahn at Fortune Brainstorm Tech, July 2023; transcript published by Fortune 2023-09-26",
+    "source_url": "https://www.fortune.com/2023/09/26/anthropic-ceo-interview-quit-open-ai-amazon-investment",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Fortune's 2023-09-26 article carrying the full question-and-answer transcript of Jeremy Kahn's July 2023 Brainstorm Tech interview with Amodei; the quote appears word for word in his answer on existential risk.",
+    "date_on_page": "2023-07",
+    "role_at_the_time": "Co-founder and chief executive of Anthropic",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "Said as Anthropic's chief executive, looks forward, is about AI and comes from a printed transcript, but 'a couple of years' may be as vague as 'a few years' (reading 3), so it stays out as borderline unless ruled to mean two years. It is not the recorded Senate 'two to three years' biology claim, which was a different occasion with a different span."
+  },
+  "reply_text": "I fetched the Fortune page and the quoted words are on it exactly. This is a **borderline** case. The words pass parts 1, 2 and 4 of the rule, but I can't tell whether part 3 is met.\n\n**1. Page check.** The page opened. It is Fortune's article of 2023-09-26, \"Anthropic's CEO says why he quit his job at OpenAI…\", followed by a full transcript of Jeremy Kahn's interview with Amodei. The article says the interview took place \"at Fortune's Brainstorm Tech conference in July\", and it gives no day. The quote matches word for word: *\"Medium-term risks I think in a, you know, couple of years as models get better at things like science, engineering, biology, you can just do bad things. Very bad things with the models that you wouldn't have been able to do without them.\"* It is Amodei's answer to Kahn's question about existential risk. Because the page prints the questions and answers in full, it counts as a printed Q&A rather than just a news report.\n\n**2. The rule, part by part**\n- **Part 1, role:** passes. He had been chief executive of Anthropic since 2021, so he held that role in July 2023.\n- **Part 2, looks forward and is about AI:** passes, with one caveat. He says what models will make possible (\"you can just do bad things\") as they improve at science, engineering and biology. That is a claim about what AI will do, not a business forecast, and it isn't hypothetical. The caveat is that he gives it as one step in a list of short-, medium- and long-term risks, after saying the risks are \"not happening today. But they're real.\" That reads as a description of a risk more than a firm forecast, but I don't think that alone keeps it out.\n- **Part 3, a date or length of time:** borderline. \"A couple of years\" might mean exactly two years, which would be a stated span. It might equally be a loose phrase like \"a few years\", which reading 3 rules undated. None of the four readings covers \"a couple\", and the search run flagged the same doubt. The rule says a truly borderline case stays out and is logged as borderline, so this needs your ruling. If you read \"couple\" as two years, the due year would be 2025.\n- **Part 4, primary source:** passes, because the page is a printed transcript.\n\n**Not recorded.** The nearest file is `2023-07-25-amodei-senate-bio-two-to-three-years.toml`, his Senate testimony on misuse in biology. This candidate is a different occasion, gives a different span (\"a couple\" against \"two to three\") and covers more fields (science, engineering, biology). Brainstorm Tech 2023 was, as far as I recall, around 10–12 July, before the Senate hearing. The page itself says only \"July\", so please check that date. If it holds, and \"couple\" is ruled to mean two years, this would be a separate, earlier claim. The Senate file might then count as a changed repeat of it.\n\n**Also on the page, not part of this candidate:** two other lines that whoever checks this may want to look at. One is \"as we go 2 or 3 years into the future… very hard to keep these open source models safe\". The other is \"Maybe 10% or 20% that… this will go wrong\", which has no date.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Fortune's 2023-09-26 article carrying the full question-and-answer transcript of Jeremy Kahn's July 2023 Brainstorm Tech interview with Amodei; the quote appears word for word in his answer on existential risk.\",\n  \"date_on_page\": \"2023-07\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Anthropic\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"Said as Anthropic's chief executive, looks forward, is about AI and comes from a printed transcript, but 'a couple of years' may be as vague as 'a few years' (reading 3), so it stays out as borderline unless ruled to mean two years. It is not the recorded Senate 'two to three years' biology claim, which was a different occasion with a different span.\"\n}\n```"
+}

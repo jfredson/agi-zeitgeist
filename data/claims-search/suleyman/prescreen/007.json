@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 7,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0852,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0]['result_type'], len(c)); \\n    i=c.find('SDGs by 2030'); print(i); print(c[:1500]); print('----'); print(c[max(0,i-800):i+400])\"}",
+    "https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; import re\\nt=re.sub(r'\\\\s+',' ',c); print(len(t)); i=t.find('SDGs by 2030'); print(t[max(0,i-700):i+300]); print('---'); print(t[:600]); print(t[-500:])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4253,
+      "cache_read_input_tokens": 49497,
+      "inference_geo": "global",
+      "input_tokens": 2593,
+      "output_tokens": 2181,
+      "output_tokens_details": {
+        "thinking_tokens": 699
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2018",
+    "date_said": "2018",
+    "quote": "If we can create the right structures, ethics and incentives, then we can look forward to incredible scientific and social progress. And if we do that, we won't meet the SDGs by 2030 - we will far exceed them.",
+    "what_is_predicted": "With the right governance, AI-driven progress will mean the UN Sustainable Development Goals are far exceeded by 2030.",
+    "date_or_span": "by 2030",
+    "occasion": "Speaking text for a talk at the UN General Assembly (office of the President of the 72nd session) on AI and the Sustainable Development Goals; the exact date is not on the document",
+    "source_url": "https://www.un.org/pga/72/wp-content/uploads/sites/51/2018/01/Mustafa-Suleyman.pdf",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "The page is Suleyman's own speaking text for a UN talk to the President of the General Assembly on AI and the Sustainable Development Goals, headed 'MUSTAFA SULEYMAN, DEEPMIND'; the quote closes it word for word, apart from invisible formatting characters and a curly apostrophe.",
+    "date_on_page": "",
+    "role_at_the_time": "co-founder of DeepMind (not its chief executive or chair); whether that counts as founder-leader is unruled",
+    "admission": "borderline",
+    "failed_part": "1",
+    "reason": "Said in about January 2018 (the date comes from the upload folder, not the page) while he was DeepMind's co-founder but not its chief executive or chair, and the rule does not say whether that is a founder-leader role. Part 2 is also shaky: the words predict SDG outcomes on a governance condition rather than something AI itself will do."
+  },
+  "reply_text": "I read the candidate as **borderline**. The words are on the page, but whether Suleyman held a qualifying role at the time (part 1) needs a ruling. Part 2 is also shaky.\n\n**Page check.** The PDF opened. It is Suleyman's own speaking text, headed \"MUSTAFA SULEYMAN, DEEPMIND\" and addressed to \"Mr. President and your excellencies\" on AI and the Sustainable Development Goals. The quoted words close the text, and they match exactly: \"If we can create the right structures, ethics and incentives, then we can look forward to incredible scientific and social progress. And if we do that, we won't meet the SDGs by 2030 - we will far exceed them.\" The only differences are invisible formatting characters and a curly apostrophe. This is the speaker's own words, not coverage. The document gives no date. The address puts it in the 2018/01 upload folder, so January 2018 or a little earlier, but that comes from the URL, not from the page.\n\n**The four parts:**\n1. **Role: borderline.** In 2018 Suleyman was a co-founder of DeepMind, which builds frontier models, and the page names him \"DeepMind\". But he was not its chief executive (Demis Hassabis was) or its chair, and DeepMind was then a part of Alphabet. Whether a co-founder who is still a senior leader, but not the head, counts as a \"founder-leader\" is not ruled in the method. His role history lists the DeepMind co-founding as a role, which suggests the ledger means to count it, but I can't confirm that from the rule's wording.\n2. **About AI and looking forward: shaky.** It is conditional (\"if we create the right structures…\"), which the rule allows, with the condition kept in the claim. But what it predicts is a world outcome (the SDGs far exceeded) credited to AI as one force among others, not something AI itself does. It also reads as a speech's closing flourish. I lean towards admitting it, but not firmly.\n3. **Date: passes.** \"By 2030.\"\n4. **Primary source: passes.** The speaker's own speaking text.\n\n**Recorded?** No. None of his recorded claim files is from before 2023 or about the SDGs.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"The page is Suleyman's own speaking text for a UN talk to the President of the General Assembly on AI and the Sustainable Development Goals, headed 'MUSTAFA SULEYMAN, DEEPMIND'; the quote closes it word for word, apart from invisible formatting characters and a curly apostrophe.\",\n  \"date_on_page\": \"\",\n  \"role_at_the_time\": \"co-founder of DeepMind (not its chief executive or chair); whether that counts as founder-leader is unruled\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"1\",\n  \"reason\": \"Said in about January 2018 (the date comes from the upload folder, not the page) while he was DeepMind's co-founder but not its chief executive or chair, and the rule does not say whether that is a founder-leader role. Part 2 is also shaky: the words predict SDG outcomes on a governance condition rather than something AI itself will do.\"\n}\n```"
+}

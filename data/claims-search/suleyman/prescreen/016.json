@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 16,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0929,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['18 months','memory','retrieve','October','2024']:\\n        for m in re.finditer(k,c):\\n            print(k, '::', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:1500])\\nimport re\\nfor k in ['18 months','memory','retrieve','October 2','Oct']:\\n    for m in re.finditer(k,c):\\n        print(k, '::', c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 7342,
+      "cache_read_input_tokens": 49479,
+      "inference_geo": "global",
+      "input_tokens": 2566,
+      "output_tokens": 1803,
+      "output_tokens_details": {
+        "thinking_tokens": 331
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-10-02",
+    "quote": "I’m pretty sure in the next 18 months we’re going to have AIs with very, very good memory, if not infinite and perfect, but very good ability to retrieve over arbitrary documents.",
+    "what_is_predicted": "Within 18 months AIs will have very good memory and retrieval over arbitrary documents.",
+    "date_or_span": "next 18 months",
+    "occasion": "Madrona IA Summit 2024 fireside chat",
+    "source_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+    "source_kind": "transcript",
+    "already_recorded": "2024-09-18-suleyman-ai-memory-workable-in-18-months.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Madrona's own page with the recording and full transcript of the IA Summit 2024 fireside chat (Suleyman with Soma Somasegar), dated 9 October 2024; the quote matches the transcript word for word.",
+    "date_on_page": "2024-10-02",
+    "role_at_the_time": "chief executive of Microsoft AI",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts, but it is the same 18-month AI-memory forecast already filed as 2024-09-18-suleyman-ai-memory-workable-in-18-months, with the same due year (2026), so 2024-10-02 should be added to that file's repeated_on rather than made a new claim."
+  },
+  "reply_text": "**Reading: the words are on the page, and this is an unchanged repeat of a claim already on file. I'd mark it \"recorded\".**\n\n**Page check.** The page opened. It is Madrona's own page with the recording and full transcript of the IA Summit 2024 fireside chat. Mustafa Suleyman, introduced as Microsoft AI CEO, talks with Soma Somasegar of Madrona. The page is dated 9 October 2024 and says the summit was held in person on 2 October 2024. The quote matches the transcript word for word, under the heading \"The Role of Memory in AI\":\n\n> \"…but I'm pretty sure in the next 18 months we're going to have AIs with very, very good memory, if not infinite and perfect, but very good ability to retrieve over arbitrary documents.\"\n\nThis is a transcript, not a news report, so it counts as a primary source.\n\n**The four parts of the rule:**\n1. **Role:** passes. He had been chief executive of Microsoft AI since 2024 and is introduced that way on the page.\n2. **Looks forward and is about AI:** passes. It says what AI systems will be able to do (memory and retrieval).\n3. **Date or length of time:** passes. \"The next 18 months\" counts from 2 October 2024, so the due date is about April 2026 and the due year is 2026.\n4. **Primary source:** passes. It is the host's own transcript, with the recording embedded.\n\n**Why \"recorded\".** The file `2024-09-18-suleyman-ai-memory-workable-in-18-months.toml` already holds the same forecast: AI memory within 18 months. Counting 18 months from 18 September 2024 also lands in 2026. Same prediction, same due year: under the Restatements rule that makes this an unchanged repeat. It is not a new claim. The 2 October 2024 date should go into that file's `repeated_on`.\n\n**Two things for the person checking:**\n- I did not open the recorded file. I matched it on its file name, the date and the 18-month span. Please confirm its wording is about the same memory forecast.\n- `2024-10-suleyman-permanent-ai-memory-done-in-2025.toml` is a different claim (it names 2025). This candidate should not be merged with that one.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Madrona's own page with the recording and full transcript of the IA Summit 2024 fireside chat (Suleyman with Soma Somasegar), dated 9 October 2024; the quote matches the transcript word for word.\",\n  \"date_on_page\": \"2024-10-02\",\n  \"role_at_the_time\": \"chief executive of Microsoft AI\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts, but it is the same 18-month AI-memory forecast already filed as 2024-09-18-suleyman-ai-memory-workable-in-18-months, with the same due year (2026), so 2024-10-02 should be added to that file's repeated_on rather than made a new claim.\"\n}\n```"
+}

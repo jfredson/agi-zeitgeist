@@ -1,0 +1,60 @@
+{
+  "speaker_id": "huang",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0791,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['million-X','million-x','next decade','Accelerating across']:\\n        for m in re.finditer(re.escape(k), c, re.I):\\n            print('---',k, c[max(0,m.start()-400):m.end()+300])\\n    print(c[:600])\"}",
+    "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['million-X','next decade','Accelerating across','strive']:\\n    for m in re.finditer(re.escape(k), c, re.I):\\n        print('---',k, c[max(0,m.start()-500):m.end()+300])\\nprint(c[:1200])\"}",
+    "{\"code\": \"import re\\nfor k in ['million-X','next decade','Accelerating across','strive']:\\n    for m in re.finditer(re.escape(k), c, re.I):\\n        print('---',k, c[max(0,m.start()-500):m.end()+300])\\nprint(c[:1200])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4906,
+      "cache_read_input_tokens": 59839,
+      "inference_geo": "global",
+      "input_tokens": 1163,
+      "output_tokens": 1896,
+      "output_tokens_details": {
+        "thinking_tokens": 262
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-03-22",
+    "quote": "Accelerating across the full stack and at data center scale, we will strive for yet another million-X in the next decade,",
+    "what_is_predicted": "Nvidia aims to deliver another million-fold speed-up in (AI) computing over the next ten years, following the million-X it claims for the past decade in AI.",
+    "date_or_span": "the next decade (2022-2032)",
+    "occasion": "GTC Spring 2022 keynote, closing remarks",
+    "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Nvidia's own blog wrap-up of the GTC Spring 2022 keynote by Brian Caulfield, quoting Huang word for word as he concluded his talk; it is a written report, not a transcript.",
+    "date_on_page": "2022-03-22",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "A goal of another million-fold computing speed-up across Nvidia's stack is a forecast of computing performance, not of what AI will do, reach or ship, so it falls under the excluded computing forecasts; the page is also only coverage."
+  },
+  "reply_text": "I read this candidate as **out**. The quoted words are on the page exactly, but they forecast computing speed, not anything AI will do, so part 2 of the rule fails.\n\n**Page check.** The page opened. It is Nvidia's own blog, in a wrap-up of the GTC keynote written by Brian Caulfield and published 2022-03-22. It carries the quote word for word: \"Accelerating across the full stack and at data center scale, we will strive for yet another million-X in the next decade,\" followed by \"Huang said, concluding his talk.\" It also adds his next line: \"I can't wait to see what the next million-X brings.\" The page is a report written by Nvidia staff, not a transcript, so even if the claim were admitted it could only be \"pass, coverage only\". That matches the search run's `coverage_only`.\n\n**Admission rule, all four parts:**\n1. **Role: passes.** On 2022-03-22 Huang was co-founder and chief executive of Nvidia, a company that makes the chips frontier models are trained on.\n2. **Forward-looking and about AI: fails.** The page lists \"million-X computing speedups\" as one of five trends in the industry. The aim is to speed up computing across Nvidia's whole range of products and at data-centre scale. That is a forecast about Nvidia's computing performance, which is the kind of computing or build-out forecast the rule keeps out. It does not say what AI will do, reach or ship. The search run's paraphrase, \"(AI) computing\", adds the word AI in brackets, which the quote itself does not contain. \"Strive for\" also makes it a goal. Goals can be admitted, so that alone would not keep it out.\n3. **A stated length of time: passes.** \"The next decade\" counts from 2022-03-22, so the claim would fall due in 2032.\n4. **Primary source: coverage only.** The page is the company's own report of the keynote, not a transcript. The keynote recording itself was not checked.\n\n**Already recorded?** No. Huang has two recorded files from 2022-03-22, about Hyperion 8 in Mercedes and in Jaguar Land Rover (JLR) cars. Neither is this claim.\n\nSomeone could argue it is borderline, since Nvidia talks about these speedups mostly in the context of AI. But the words name computing speed, not an AI capability. Even read as borderline, it would still stay out under the rule's own wording.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Nvidia's own blog wrap-up of the GTC Spring 2022 keynote by Brian Caulfield, quoting Huang word for word as he concluded his talk; it is a written report, not a transcript.\",\n  \"date_on_page\": \"2022-03-22\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"A goal of another million-fold computing speed-up across Nvidia's stack is a forecast of computing performance, not of what AI will do, reach or ship, so it falls under the excluded computing forecasts; the page is also only coverage.\"\n}\n```"
+}

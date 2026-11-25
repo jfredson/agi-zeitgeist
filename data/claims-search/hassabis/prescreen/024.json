@@ -1,0 +1,60 @@
+{
+  "speaker_id": "hassabis",
+  "row": 24,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0901,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]; print(c.get('title'), c.get('retrieved_at'), len(c['content']))\\n    t=c['content']\\n    import re\\n    for k in ['2030','plus or minus','arrive','May 2','2026','McCracken']:\\n        for m in re.finditer(re.escape(k), t):\\n            print(k,'::',t[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); t=d['content']['source']['data']; print(len(t))\\nimport re\\nfor k in ['2030','plus or minus','expect it']:\\n    for m in re.finditer(re.escape(k), t):\\n        print(k,'::',t[max(0,m.start()-500):m.start()+300]); print('---')\"}",
+    "{\"code\": \"i=t.find('When I caught up'); print(t[i:i+1500])\\nprint(t.count('**'), [m.start() for m in re.finditer(r'\\\\n\\\\*\\\\*', t)][:5])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5794,
+      "cache_read_input_tokens": 63399,
+      "inference_geo": "global",
+      "input_tokens": 1639,
+      "output_tokens": 2096,
+      "output_tokens_details": {
+        "thinking_tokens": 527
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-05",
+    "quote": "2030 is when I expect it to arrive, either plus or minus a year",
+    "what_is_predicted": "AGI will arrive around 2030, give or take a year.",
+    "date_or_span": "2030 plus or minus a year",
+    "occasion": "Interview with Harry McCracken during Google I/O week, Fast Company 'Plugged In', published 22 May 2026; same forecast as the 2026-06-02 file but a different occasion",
+    "source_url": "https://www.fastcompany.com/91544235/demis-hassabis-google-io-2026",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Fast Company 'Plugged In' feature by Harry McCracken dated 22 May 2026, based on an interview during Google I/O week; the quote appears word for word, but the page is a reporter's article, not a transcript or printed Q&A.",
+    "date_on_page": "2026-05",
+    "role_at_the_time": "Chief executive of Google DeepMind",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Same prediction and same due year (AGI in 2030, give or take a year) as the recorded file 2026-06-02-hassabis-agi-2030-plus-or-minus-a-year.toml, so it is an unchanged repeat; this May 2026 occasion is only in coverage and is earlier than that file's key date, so whether to re-key the file or add May to repeated_on is for the checker to decide (borderline)."
+  },
+  "reply_text": "I found the quoted words on the page, but this forecast is already recorded. The words appear exactly as quoted: \"2030 is when I expect it to arrive, either plus or minus a year,\" he says.\n\n**About the page:** It's a Fast Company \"Plugged In\" feature by Harry McCracken, published 2026-05-22. It's a written article with quotes, not a transcript or a printed question-and-answer. McCracken says he \"caught up with Hassabis this week\", during Google I/O, so the words were said in May 2026. That makes the source coverage only, which matches what the search run reported.\n\n**The four parts of the rule:**\n1. **Role:** Passes. In May 2026 Hassabis was chief executive of Google DeepMind, which builds frontier AI models.\n2. **Looks forward and about AI:** Passes. He says when AGI will arrive. One thing to note: the definition of AGI on the page (\"at least on par with human thinking across an array of domains\") is the writer's, not Hassabis's. That affects how the claim would be tested, not whether it gets in.\n3. **Date:** Passes. He names 2030, give or take a year, so it's a range from 2029 to 2031.\n4. **Source:** Passes only as coverage only, since no transcript or Q&A is available.\n\n**Why the admission is \"recorded\":** It's the same prediction with the same 2030±1 date as the file `2026-06-02-hassabis-agi-2030-plus-or-minus-a-year.toml`. Under the restatement rule that makes it an unchanged repeat: one claim, not a new record. This occasion (May 2026) is earlier than the date that file is keyed to, so the person checking should decide whether to:\n- re-key the file to the May date, with 2026-06-02 moved to `repeated_on`, or\n- add May 2026 to `repeated_on`.\n\nEither way, May 2026 comes only from coverage. Whether re-keying a primary-source claim to an earlier date found only in coverage is allowed is not ruled, so I'd call that part borderline.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Fast Company 'Plugged In' feature by Harry McCracken dated 22 May 2026, based on an interview during Google I/O week; the quote appears word for word, but the page is a reporter's article, not a transcript or printed Q&A.\",\n  \"date_on_page\": \"2026-05\",\n  \"role_at_the_time\": \"Chief executive of Google DeepMind\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Same prediction and same due year (AGI in 2030, give or take a year) as the recorded file 2026-06-02-hassabis-agi-2030-plus-or-minus-a-year.toml, so it is an unchanged repeat; this May 2026 occasion is only in coverage and is earlier than that file's key date, so whether to re-key the file or add May to repeated_on is for the checker to decide (borderline).\"\n}\n```"
+}

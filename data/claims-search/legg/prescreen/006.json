@@ -1,0 +1,60 @@
+{
+  "speaker_id": "legg",
+  "row": 6,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0856,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'),len(c))\\n    i=c.find('2018'); print(c[max(0,i-1500):i+600])\\n    import re\\n    for m in re.finditer(r'June|2011',c): print(c[max(0,m.start()-80):m.start()+80].replace('\\\\n',' ')); \\n\"}",
+    "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('2018, 2028'); print(i); print(c[max(0,i-1500):i+700])\\nfor m in re.finditer(r'June|2011|published|Published',c): print('>>',c[max(0,m.start()-100):m.start()+100].replace('\\\\n',' '))\"}",
+    "{\"code\": \"import re\\nprint(c[:1200])\\nfor m in re.finditer(r'June|2011|DeepMind',c): print('>>',c[max(0,m.start()-100):m.start()+100].replace('\\\\n',' '))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4191,
+      "cache_read_input_tokens": 59533,
+      "inference_geo": "global",
+      "input_tokens": 730,
+      "output_tokens": 2489,
+      "output_tokens_details": {
+        "thinking_tokens": 726
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2011",
+    "date_said": "2011-06-17",
+    "quote": "2018, 2028, 2050",
+    "what_is_predicted": "A 50% chance that human-level machine intelligence is developed by 2028, assuming no global catastrophe (the middle figure of his answer).",
+    "date_or_span": "2028",
+    "occasion": "Email Q&A 'Q&A with Shane Legg on risks from AI' published by XiXiDu on LessWrong, answering Q1 asking for the years of 10%/50%/90% chance",
+    "source_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "LessWrong post by XiXiDu printing an email Q&A with Shane Legg; to Q1 (years for 10%/50%/90% chance of human-level machine intelligence, assuming no global catastrophe) Legg answers exactly \"2018, 2028, 2050\".",
+    "date_on_page": "2011-06-17",
+    "role_at_the_time": "Co-founder of DeepMind (founded 2010)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts (DeepMind co-founder, dated forecast of human-level machine intelligence, printed Q&A), but the 50% by 2028 answer repeats the already recorded 2010-12-10 'human-level AGI mean 2028' claim with the same due year, so it belongs in that file's repeated_on rather than as a new record. Borderline on whether a mean and a 50% point count as the same prediction, so a person should check that file."
+  },
+  "reply_text": "I read this as **recorded**: Legg's words are on the page, but the claim looks like a repeat of the existing file `2010-12-10-legg-human-level-agi-mean-2028.toml`. A person should check the merge.\n\n**Page check:** The page opened. It is the LessWrong post \"Q&A with Shane Legg on risks from AI\", posted by XiXiDu and dated 17th Jun 2011. It prints the email interview as questions and answers. The question is: *\"Assuming no global catastrophe halts progress, by what year would you assign a 10%/50%/90% chance of the development of human-level machine intelligence?\"* Legg's answer, as printed, is exactly **\"2018, 2028, 2050\"**. Because this is a printed Q&A with his own answer, it counts as a primary source, not just news coverage.\n\n**Admission rule, part by part:**\n1. **Role:** He co-founded DeepMind in 2010 and was still there in June 2011. The ledger already admits his other answers from this same Q&A (the 10% by 2018 and 90% by 2050 files), so it treats that period as a qualifying role.\n2. **Forward-looking and about AI:** Yes. He gives a year for human-level machine intelligence. The \"human level\" wording has no comparison attached, so under reading 4 the claim would probably be `unfalsifiable` when the test is written. That doesn't stop it getting in.\n3. **Dated:** Yes, 2028. It is a stated chance (50%), so it would be flagged `has_probability`.\n4. **Primary source:** Yes, a printed Q&A.\n\n**Why \"recorded\":**\n- **The merge:** The ledger already has a December 2010 claim of \"mean 2028\" for human-level AGI. This is the same prediction with the same year due. Under the Restatements rule, an unchanged repeat stays one claim, kept under the first date, with later dates listed in `repeated_on`.\n- **The missing 50% file:** His other two answers from this Q&A (2018 and 2050) each have their own file, but the 50% answer has none. That suggests it was already merged into the 2010 file.\n- **Borderline:** In 2010 he gave a mean of 2028, and here he gives a 50% chance by 2028. Strictly, those are two different statistics. Whether they count as \"the same prediction\" is a judgement call. Someone should also confirm that the 2010 file actually lists 2011-06-17 in `repeated_on`. I haven't seen it.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"LessWrong post by XiXiDu printing an email Q&A with Shane Legg; to Q1 (years for 10%/50%/90% chance of human-level machine intelligence, assuming no global catastrophe) Legg answers exactly \\\"2018, 2028, 2050\\\".\",\n  \"date_on_page\": \"2011-06-17\",\n  \"role_at_the_time\": \"Co-founder of DeepMind (founded 2010)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts (DeepMind co-founder, dated forecast of human-level machine intelligence, printed Q&A), but the 50% by 2028 answer repeats the already recorded 2010-12-10 'human-level AGI mean 2028' claim with the same due year, so it belongs in that file's repeated_on rather than as a new record. Borderline on whether a mean and a 50% point count as the same prediction, so a person should check that file.\"\n}\n```"
+}

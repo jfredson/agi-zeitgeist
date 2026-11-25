@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 19,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0798,
+  "pages_opened": [
+    "{\"code\": \"import json,re\\nr=await web_fetch({\\\"url\\\":\\\"https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    for k in ['inaccuracies','99.9','three years','Suleyman','January']:\\n        for m in re.finditer(re.escape(k),c):print(k,':',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '));print('--');break\"}",
+    "https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data'];print(len(c))\\nfor k in ['inaccuracies','99.9','three years','Suleyman','2024','Jan']:\\n    ms=list(re.finditer(re.escape(k),c));print(k,len(ms))\\n    for m in ms[:2]:print('   ',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5535,
+      "cache_read_input_tokens": 49525,
+      "inference_geo": "global",
+      "input_tokens": 2584,
+      "output_tokens": 1596,
+      "output_tokens_details": {
+        "thinking_tokens": 152
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-01-17",
+    "quote": "These factual inaccuracies are going to go from today, when they're hovering around sort of 80, 85%, all the way up to 90, 99 to 99.9%, right, in order of magnitude improvement over the next three years.",
+    "what_is_predicted": "Model factual accuracy will rise from about 80-85% to 99-99.9% within three years.",
+    "date_or_span": "next three years",
+    "occasion": "WEF Davos 2024 session 'How to Trust Technology'",
+    "source_url": "https://www.weforum.org/podcasts/agenda-dialogues/episodes/davos-2024-how-to-trust-technology/",
+    "source_kind": "transcript",
+    "already_recorded": "2024-01-17-suleyman-factual-accuracy-99-percent-three-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "The World Economic Forum's own podcast page for the Davos 2024 session 'How to Trust Technology', with a transcript that has the quote word for word, just after 'we're going to largely eliminate hallucinations'.",
+    "date_on_page": "2024-01-17",
+    "role_at_the_time": "co-founder and chief executive of Inflection AI (the page's 'CEO, Microsoft AI' label was added later; he took that role in March 2024)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts: said as Inflection AI's chief executive, a forward claim about AI factual accuracy, dated 'over the next three years', in a transcript. It is the same claim as the recorded file 2024-01-17-suleyman-factual-accuracy-99-percent-three-years.toml."
+  },
+  "reply_text": "I found the quoted words on the page, and the claim is already in the ledger as `2024-01-17-suleyman-factual-accuracy-99-percent-three-years.toml`.\n\n**1. The page.** The WEF page opened. It is the World Economic Forum's own podcast page for the Davos 2024 session \"How to Trust Technology\". It says the episode is the full audio of a session held on January 17, 2024, and it has a transcript of what was said. The quote is in that transcript word for word: \"These factual inaccuracies are going to go from today, when they're hovering around sort of 80, 85%, all the way up to 90, 99 to 99.9%, right, in order of magnitude improvement over the next three years.\" Just before it he says \"One, we're going to largely eliminate hallucinations.\" Because this is a transcript and not a news report, it counts as a primary source.\n\n**2. The admission rule.**\n- **Part 1, role:** this passes, with one thing to note. The page calls him \"Chief Executive Officer, Microsoft AI\", but he did not take that job until March 2024, so the label was added later. On 2024-01-17 he was co-founder and chief executive of Inflection AI, which was building its own frontier models (Inflection-2). That is a qualifying role. The role history you gave says only \"co-founder of Inflection AI (2022)\", so the record's notes should name the Inflection role, not the Microsoft one.\n- **Part 2, about AI and looking forward:** passes. He says AI factual accuracy will rise to 99–99.9%.\n- **Part 3, a date:** passes. \"Over the next three years\" is a span from the day it was said, which makes it due in 2027.\n- **Part 4, primary source:** passes, since it is a transcript.\n\nThe candidate is the same claim as the recorded file of the same date, so the reading is \"recorded\". The person checking may also want to see whether the \"largely eliminate hallucinations\" line said just before it is meant to be part of that same record.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"The World Economic Forum's own podcast page for the Davos 2024 session 'How to Trust Technology', with a transcript that has the quote word for word, just after 'we're going to largely eliminate hallucinations'.\",\n  \"date_on_page\": \"2024-01-17\",\n  \"role_at_the_time\": \"co-founder and chief executive of Inflection AI (the page's 'CEO, Microsoft AI' label was added later; he took that role in March 2024)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts: said as Inflection AI's chief executive, a forward claim about AI factual accuracy, dated 'over the next three years', in a transcript. It is the same claim as the recorded file 2024-01-17-suleyman-factual-accuracy-99-percent-three-years.toml.\"\n}\n```"
+}

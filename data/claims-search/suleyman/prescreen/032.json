@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 32,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0906,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['orders of magnitude','1,000x','next 3 years','three years','Published','ago','2026']:\\n        for m in re.finditer(re.escape(k), c):\\n            print(k, '::', c[max(0,m.start()-400):m.end()+300].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['orders of magnitude','1,000','next 3 years','three years','Published','ago','2026','Suleyman']:\\n    ms=list(re.finditer(re.escape(k), c)); print(k, len(ms))\\n    for m in ms[:2]:\\n        print('   ::', c[max(0,m.start()-500):m.end()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6879,
+      "cache_read_input_tokens": 49612,
+      "inference_geo": "global",
+      "input_tokens": 2612,
+      "output_tokens": 1794,
+      "output_tokens_details": {
+        "thinking_tokens": 291
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-10",
+    "quote": "And we're, in the next 3 years, going to do another 100 to 1,000x, 2 orders of magnitude or 3 orders of magnitude more computation applied to these models.",
+    "what_is_predicted": "Compute applied to frontier AI models will grow another 100 to 1,000 times over the next three years; this is a compute/scaling forecast and may be excluded as infrastructure.",
+    "date_or_span": "the next 3 years",
+    "occasion": "The Builders with Walter Isaacson podcast (taping date 2026-10-12 per an iHeart listing seen only in a search snippet; transcript page said 'Published 18 days ago')",
+    "source_url": "https://podcasts.happyscribe.com/the-builders/mustafa-suleyman-ai-should-serve-humanity-not-replace-it",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A HappyScribe transcript of The Builders with Walter Isaacson episode 'Mustafa Suleyman: AI Should Serve Humanity, Not Replace It'; the quote appears exactly as given, just before the 00:15:00 mark.",
+    "date_on_page": "2026-10",
+    "role_at_the_time": "chief executive of Microsoft AI",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "A forecast of 100 to 1,000 times more computation applied to models over three years is a computing build-out forecast, which the rule keeps out as a business forecast, not a claim about what AI will do. Role, date span and transcript source would otherwise pass."
+  },
+  "reply_text": "I checked this candidate against the page. The quote is there word for word, but the claim fails part 2 of the rule: it is a forecast about computing power, not about what AI will do.\n\n**1. Are the words on the page?** Yes, exactly. The page is a HappyScribe transcript of The Builders podcast, episode \"Mustafa Suleyman: AI Should Serve Humanity, Not Replace It\". It's a transcript, so this would not be \"coverage only\". The line sits just before the 00:15:00 timestamp. Just before it, he says that in the last 3 years they saw \"a 1,000-fold increase in computation that took us from GPT-3... to essentially GPT-6\". Just after, he says \"So that's the exponential intuition that everybody has to start to develop\".\n\n**Date.** The page gives no calendar date. It says \"Published 26 days ago\", and I fetched it on 2026-11-25, which puts publication around 2026-10-30. The search run's note says \"18 days ago\", which just reflects an earlier visit. The 2026-10-12 taping date comes only from a search snippet I did not open, so I can only confirm 2026-10.\n\n**2. The rule's four parts:**\n- **Part 1 (role): passes.** He was chief executive of Microsoft AI in October 2026. The ledger already admits his claims under that role, including his own forecast of Microsoft frontier models in late 2026 and spring 2027.\n- **Part 2 (about AI): fails.** The words predict 100 to 1,000 times more computation applied to models over the next 3 years. The rule says computing build-out and training costs are business forecasts and stay out. He says nothing here about what AI will do, reach or ship; the capability talk (\"human-level performance on software engineering\") is about the past 3 years. I don't think this is borderline.\n- **Part 3 (date): would pass** on \"the next 3 years\".\n- **Part 4 (primary source): would pass**, since it's a transcript.\n\n**Already recorded?** No. The nearest file, 2026-10-12-suleyman-materials-breakthroughs-two-to-four-years.toml, is probably from the same interview, but it is a different claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A HappyScribe transcript of The Builders with Walter Isaacson episode 'Mustafa Suleyman: AI Should Serve Humanity, Not Replace It'; the quote appears exactly as given, just before the 00:15:00 mark.\",\n  \"date_on_page\": \"2026-10\",\n  \"role_at_the_time\": \"chief executive of Microsoft AI\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"A forecast of 100 to 1,000 times more computation applied to models over three years is a computing build-out forecast, which the rule keeps out as a business forecast, not a claim about what AI will do. Role, date span and transcript source would otherwise pass.\"\n}\n```"
+}
