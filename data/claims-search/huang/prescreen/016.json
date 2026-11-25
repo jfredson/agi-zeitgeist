@@ -1,0 +1,59 @@
+{
+  "speaker_id": "huang",
+  "row": 16,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0649,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://techcrunch.com/2024/03/19/agi-and-hallucinations/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    i=c.find('8%'); print(c[max(0,i-1500):i+1200])\\n    for k in ['March 19','2024','Published','GTC']:\\n        j=c.find(k); print(k, c[max(0,j-100):j+150] if j>=0 else None)\"}",
+    "https://techcrunch.com/2024/03/19/agi-and-hallucinations/",
+    "{\"code\": \"print(type(r), str(r)[:300])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('8%'); print(c[max(0,i-1500):i+800])\\nprint(c[:800])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3235,
+      "cache_read_input_tokens": 46638,
+      "inference_geo": "global",
+      "input_tokens": 1196,
+      "output_tokens": 1733,
+      "output_tokens_details": {
+        "thinking_tokens": 359
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-03-19",
+    "quote": "If we specified AGI to be something very specific, a set of tests where a software program can do very well — or maybe 8% better than most people — I believe we will get there within 5 years,",
+    "what_is_predicted": "If AGI is defined as doing very well on a specific set of tests (bar exam, logic, economics, pre-med exams), AI will get there within five years.",
+    "date_or_span": "within 5 years (c. 2029)",
+    "occasion": "Press Q&A at Nvidia GTC 2024, San Jose",
+    "source_url": "https://techcrunch.com/2024/03/19/agi-and-hallucinations/",
+    "source_kind": "coverage_only",
+    "already_recorded": "2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A TechCrunch news report (Haje Jan Kamps, published 2024-03-19) on Huang's press Q&A at GTC 2024, quoting the words exactly and adding that the tests could be a bar exam, logic, economics or pre-med exams.",
+    "date_on_page": "2024-03-19",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Same prediction and same due year (AI doing well on a defined set of human tests within five years, due 2029) as the recorded file 2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml, so 2024-03-19 should go in that file's repeated_on. Borderline point: this wording adds '8% better than most people', which the person should check against that file's bar."
+  },
+  "reply_text": "I fetched the TechCrunch page and the quoted words are on it exactly. The candidate is the same claim as one already on file, so the admission is \"recorded\".\n\n**1. The words on the page.** The quote appears word for word. The page is \"AGI and hallucinations\" by Haje Jan Kamps, published 2024-03-19. Kamps reports on Huang's press question-and-answer session at GTC 2024 in San Jose, so this is a news report, not a transcript or Huang's own words. The page also says what kinds of tests Huang meant: \"a legal bar exam, logic tests, economic tests or perhaps the ability to pass a pre-med exam\". It adds that Huang would not make a prediction unless AGI was defined that specifically.\n\n**2. The four parts of the rule.**\n- **Part 1 (role):** passes. Huang was co-founder and chief executive of Nvidia, a company that makes the chips frontier models are trained on.\n- **Part 2 (forward-looking, about AI):** passes. He says AI will do very well on a set of human tests. The definition is stated in the same source, so it is not a bare named stage.\n- **Part 3 (a date or span):** passes. \"Within 5 years\" from 2024-03-19 runs to 2029.\n- **Part 4 (primary source):** this page alone would only give \"coverage only\".\n\n**Why it is \"recorded\".** The file `2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml` already holds the same prediction: AI doing well on human tests within five years, due in 2029. This candidate repeats it unchanged, so it is not a new claim. Its date belongs in that file's `repeated_on`.\n\n**One borderline point for the person checking.** This version adds \"or maybe 8% better than most people\", which I don't think the 1 March wording had. That makes the bar slightly more specific. I read it as a hedge within an unchanged repeat, not a changed condition, but it is worth confirming against the recorded file's `bar`.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A TechCrunch news report (Haje Jan Kamps, published 2024-03-19) on Huang's press Q&A at GTC 2024, quoting the words exactly and adding that the tests could be a bar exam, logic, economics or pre-med exams.\",\n  \"date_on_page\": \"2024-03-19\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Same prediction and same due year (AI doing well on a defined set of human tests within five years, due 2029) as the recorded file 2024-03-01-huang-ai-does-well-on-every-human-test-five-years.toml, so 2024-03-19 should go in that file's repeated_on. Borderline point: this wording adds '8% better than most people', which the person should check against that file's bar.\"\n}\n```"
+}

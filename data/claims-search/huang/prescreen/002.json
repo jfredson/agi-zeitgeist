@@ -1,0 +1,59 @@
+{
+  "speaker_id": "huang",
+  "row": 2,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0693,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['finally imagine','realize this vision','next year','most personal robot','2020','Audi']:\\n        for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' '),'\\\\n---')\"}",
+    "https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['finally imagine','realize this vision','next year','most personal robot','2020']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-700):m.start()+400].replace('\\\\n',' '),'\\\\n---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4042,
+      "cache_read_input_tokens": 46687,
+      "inference_geo": "global",
+      "input_tokens": 1144,
+      "output_tokens": 1757,
+      "output_tokens_details": {
+        "thinking_tokens": 284
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-01-04",
+    "quote": "GPU deep learning has made it possible for us to finally imagine realizing this vision in the next year. We can realize this vision right now.",
+    "what_is_predicted": "AI-driven self-driving cars, the car as 'your most personal robot', could be realized within the next year.",
+    "date_or_span": "the next year (2018)",
+    "occasion": "CES 2017 opening keynote, Las Vegas",
+    "source_url": "https://singjupost.com/nvidia-ceo-jen-hsun-huang-keynote-at-ces-2017-full-transcript/",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Third-party full transcript (The Singju Post) of Huang's CES 2017 opening keynote; the quoted two sentences appear verbatim, right after he describes the car one day becoming 'your most personal robot'.",
+    "date_on_page": "2017-01-04",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "The words say deep learning lets Nvidia 'finally imagine' realizing a vague vision (the car as 'your most personal robot') in the next year, then that it can be done 'right now'. That reads more as imagined possibility than a dated forecast of what AI will do, so it should stay out and be logged as borderline; the transcript's 'in the next year' is also worth checking against the recording."
+  },
+  "reply_text": "I read this as **borderline** on part 2 of the rule. The quoted words are on the page exactly. The difficulty is whether they are a prediction at all.\n\n**1. Are the words on the page?** Yes, word for word. The page is a third-party full transcript of the CES 2017 keynote on The Singju Post, not news coverage. It dates the keynote Wednesday, 4 January 2017, in Las Vegas. The words in context are:\n\n> \"...for some day for your car to become essentially your most personal robot and it is so intelligent that is able to perform its function, enhance your mobility, keep people safe... The technology necessary to do so is incredibly hard until just very recently. GPU deep learning has made it possible for us to finally imagine realizing this vision in the next year. We can realize this vision right now.\"\n\nThe transcript was made by the site, not by Nvidia. \"In the next year\" could be a mishearing; checking it against the recording would settle that.\n\n**2. The four parts of the rule:**\n- **Part 1, role:** passes. Huang was co-founder and chief executive of Nvidia, which makes the chips frontier models are trained on.\n- **Part 2, looks forward and is about AI:** borderline. The sentence says deep learning makes it possible to \"finally imagine\" realizing the vision. That is close to the \"imagine\" framing the rule treats as hypothetical, rather than a statement that something will ship. The next sentence, \"We can realize this vision right now\", is about what is possible today, not a dated forecast. The \"vision\" is also loose: \"some day\" your car becomes \"your most personal robot\", which gives no clear test. The rule says a truly borderline case stays out and is logged as borderline.\n- **Part 3, a date or span:** would pass if the transcript is right, since \"in the next year\" points to 2018.\n- **Part 4, primary source:** passes, because it is a transcript.\n\n**3. Already recorded?** No. The recorded claim from the same keynote, `2017-01-04-huang-audi-ai-cars-on-road-by-2020.toml`, is a different claim: Audi cars by 2020, not this \"next year\" line.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Third-party full transcript (The Singju Post) of Huang's CES 2017 opening keynote; the quoted two sentences appear verbatim, right after he describes the car one day becoming 'your most personal robot'.\",\n  \"date_on_page\": \"2017-01-04\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The words say deep learning lets Nvidia 'finally imagine' realizing a vague vision (the car as 'your most personal robot') in the next year, then that it can be done 'right now'. That reads more as imagined possibility than a dated forecast of what AI will do, so it should stay out and be logged as borderline; the transcript's 'in the next year' is also worth checking against the recording.\"\n}\n```"
+}

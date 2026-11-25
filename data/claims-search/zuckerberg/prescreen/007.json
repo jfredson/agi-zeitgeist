@@ -1,0 +1,59 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 7,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0595,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('previously predicted'); print(c[max(0,i-300):i+600])\\n    for k in ['December','2016','Dec']:\\n        j=c.find(k); print(k, c[max(0,j-100):j+100] if j>=0 else None)\"}",
+    "https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\nprint(c[:900])\\ni=c.find('previously predicted'); print(c[max(0,i-300):i+600])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2947,
+      "cache_read_input_tokens": 46767,
+      "inference_geo": "global",
+      "input_tokens": 1200,
+      "output_tokens": 1531,
+      "output_tokens_details": {
+        "thinking_tokens": 157
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2016",
+    "date_said": "2016-12",
+    "quote": "I’ve previously predicted that within 5-10 years we’ll have AI systems that are more accurate than ours for each of our human senses – vision, hearing, touch, etc, as well as things like language. It’s impressive how powerful the state of the art for these tools is becoming, and this year makes me more confident in my prediction.",
+    "what_is_predicted": "AI systems will be more accurate than humans at each human sense and at language, restated and reaffirmed.",
+    "date_or_span": "within 5-10 years",
+    "occasion": "\"Building Jarvis\" note on his 2016 personal challenge (published about 2016-12-19), read as reposted by TechTrends Africa on 2016-12-23",
+    "source_url": "https://techtrends.africa/a-note-from-mark-zuckerberg-on-how-he-built-jarvis-his-artificial-intelligence-aiassistant/",
+    "source_kind": "own_words",
+    "already_recorded": "2016-04-27-zuckerberg-better-than-people-at-senses.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "TechTrends Africa's full repost (published 2016-12-23) of Zuckerberg's own 'Building Jarvis' note; the passage appears word for word in its Conclusions section, and the original Facebook note was not fetched.",
+    "date_on_page": "2016-12-23",
+    "role_at_the_time": "founder and chief executive of Facebook (which ran Facebook AI Research)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "All four parts are met, but by his own words ('I've previously predicted') this is an unchanged repeat of the 2016-04-27 senses claim: same prediction, same due year (2026, taking the later end of 5-10 years). It belongs in that file's repeated_on, not in a new record."
+  },
+  "reply_text": "I checked the quote against the page and against the rule. **The reading is \"recorded\".** The quote is genuine, but it repeats a claim the ledger already has.\n\n**1. Page check: the words are on the page.** The TechTrends Africa page opened. It reproduces the whole text of Zuckerberg's \"Building Jarvis\" note. The quoted passage is in the \"Conclusions\" section, word for word: \"I've previously predicted that within 5-10 years we'll have AI systems that are more accurate than ours for each of our human senses – vision, hearing, touch, etc, as well as things like language. It's impressive how powerful the state of the art for these tools is becoming, and this year makes me more confident in my prediction.\"\n\nThe page's metadata says it was published 2016-12-23, and the site files it under \"News/Articles\". But it is a full repost of his own note, not a news story written about it, so \"own words\" holds. Still, it is a third-party copy, and the original Facebook note was not fetched. The checker may want to confirm the original and its date (around 2016-12-19).\n\n**2. The admission rule:**\n- **Part 1 (role):** passes. In December 2016 he was founder and chief executive of Facebook, which had run Facebook AI Research since 2013.\n- **Part 2 (forward-looking, about AI):** passes. He says AI systems will be more accurate than humans at each sense and at language.\n- **Part 3 (date or span):** passes. \"Within 5-10 years\" is a span; under the ledger's rule a range of spans takes the later end, so 10 years.\n- **Part 4 (primary source):** passes. It is his own note, read here through a full repost.\n\n**Why it is \"recorded\":** he says himself that he \"previously predicted\" this. It is the same claim as `2016-04-27-zuckerberg-better-than-people-at-senses.toml`. Counted from either date, 10 years gives the same due year, 2026, and the condition is unchanged. That makes it an unchanged repeat: no new claim, just 2016-12 added to that file's `repeated_on`.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"TechTrends Africa's full repost (published 2016-12-23) of Zuckerberg's own 'Building Jarvis' note; the passage appears word for word in its Conclusions section, and the original Facebook note was not fetched.\",\n  \"date_on_page\": \"2016-12-23\",\n  \"role_at_the_time\": \"founder and chief executive of Facebook (which ran Facebook AI Research)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"All four parts are met, but by his own words ('I've previously predicted') this is an unchanged repeat of the 2016-04-27 senses claim: same prediction, same due year (2026, taking the later end of 5-10 years). It belongs in that file's repeated_on, not in a new record.\"\n}\n```"
+}

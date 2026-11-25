@@ -1,0 +1,60 @@
+{
+  "speaker_id": "hassabis",
+  "row": 20,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0847,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title')); \\n    i=c.find('threshold'); print(c[max(0,i-1500):i+1500] if i>=0 else c[:3000])\"}",
+    "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18",
+    "{\"code\": \"print(type(r)); s=r if isinstance(r,str) else str(r); print(s[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\nfor k in ['threshold','five to eight','Tuesday','2026','horizon']:\\n    i=c.find(k); print(k,i)\\ni=c.find('threshold'); print(c[max(0,i-2500):i+1500])\"}",
+    "{\"code\": \"print(c[16900:18600])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5262,
+      "cache_read_input_tokens": 63116,
+      "inference_geo": "global",
+      "input_tokens": 1728,
+      "output_tokens": 1942,
+      "output_tokens_details": {
+        "thinking_tokens": 385
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-02",
+    "quote": "At this point, I think we're at a threshold moment where AGI, artificial general intelligence, is on the horizon, maybe in the next five to eight years.",
+    "what_is_predicted": "AGI may arrive within five to eight years.",
+    "date_or_span": "next five to eight years (c. 2031-2034)",
+    "occasion": "Keynote at the India AI Impact Summit 2026, Bharat Mandapam, New Delhi (Business Today says Tuesday, i.e. 17 Feb; Outlook Business says 18 Feb)",
+    "source_url": "https://www.businesstoday.in/technology/news/story/india-ai-impact-summit-2026-google-deepmind-ceo-demis-hassabis-predicts-artificial-general-intelligence-within-8-yrs-516653-2026-02-18",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Business Today news report (Aishwarya Panda, updated 18 Feb 2026) on Hassabis's talk at the India AI Impact Summit, quoting the words exactly, so it is coverage rather than a transcript.",
+    "date_on_page": "2026-02-17",
+    "role_at_the_time": "Chief executive of Google DeepMind",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Google DeepMind's chief executive, a dated AGI forecast (five to eight years, due 2034 at the later end), found only in a news report; it changes the January 'five to ten years' date, so it is a new restating claim, not one already recorded."
+  },
+  "reply_text": "I read this as **pass, coverage only**. The quote is on the page word for word, but the page is a news report, not Hassabis's own words.\n\n**1. Are the words on the page?** Yes. The Business Today page opened, and in an article by Aishwarya Panda (updated 18 Feb 2026, 10:55 AM IST) it quotes him exactly: \"At this point, I think we're at a threshold moment where AGI, artificial general intelligence, is on the horizon, maybe in the next five to eight years.\" The quote then goes on: \"So this summer comes at a critical moment…\"\n- **Date:** the article says he spoke \"at the India AI Impact Summit on Tuesday\". The Tuesday before 18 Feb 2026 is 17 Feb, so I've put 2026-02-17. That date is worked out from \"Tuesday\", not printed on the page. I didn't open the Outlook Business report that the search run says gives 18 Feb.\n- **Source:** the article quotes him; it isn't a transcript or his own post.\n\n**2. The four parts of the rule**\n- **Part 1, role:** passes. In February 2026 he was chief executive of Google DeepMind, which builds frontier models.\n- **Part 2, forward-looking and about AI:** passes. He says AGI is \"on the horizon, maybe in the next five to eight years\". \"Maybe\" is a hedge word, not a probability, so the hedge goes into the prediction text. He doesn't define AGI in this report, so when the bar is written the claim will probably be `unfalsifiable`. That affects how it's scored, not whether it gets in.\n- **Part 3, date or span:** passes. \"Five to eight years\" is a range of spans, so it takes the later end: eight years from 2026-02-17, judged at the end of 2034.\n- **Part 4, primary source:** the only source here is the news report, so it can only go in as `coverage_only`. A recording of the summit keynote, if one exists, could make it a full pass. I didn't look for one.\n\n**Is it already recorded?** No. The nearest files are the Davos claim of 2026-01-20 and the January \"five to ten years defined\" claim, both five to ten years (due 2036). Five to eight years moves the due year to 2034, so this is a changed repeat: a new record with `restates` pointing to the January claim(s). It is also not the 2026-04-07 \"within five years\" claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Business Today news report (Aishwarya Panda, updated 18 Feb 2026) on Hassabis's talk at the India AI Impact Summit, quoting the words exactly, so it is coverage rather than a transcript.\",\n  \"date_on_page\": \"2026-02-17\",\n  \"role_at_the_time\": \"Chief executive of Google DeepMind\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Google DeepMind's chief executive, a dated AGI forecast (five to eight years, due 2034 at the later end), found only in a news report; it changes the January 'five to ten years' date, so it is a new restating claim, not one already recorded.\"\n}\n```"
+}

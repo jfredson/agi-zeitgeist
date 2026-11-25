@@ -1,0 +1,61 @@
+{
+  "speaker_id": "legg",
+  "row": 16,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1034,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['50% chance','2028','0:36','0:37','October 26','Dwarkesh']:\\n        for m in re.finditer(re.escape(k),c):\\n            print(k,'::',c[max(0,m.start()-250):m.start()+250].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['50% chance','0:36','0:37','October 26','26 Oct','Dwarkesh','Chief AGI']:\\n    for m in list(re.finditer(re.escape(k),c))[:3]:\\n        print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "{\"code\": \"for u in [\\\"https://www.dwarkesh.com/p/shane-legg\\\",\\\"https://www.dwarkeshpatel.com/p/shane-legg\\\"]:\\n    try:\\n        x=await web_fetch({\\\"url\\\":u}); s=str(x)\\n        i=s.find('50% chance'); print(u, len(s), s[max(0,i-300):i+300] if i>=0 else s[:300])\\n    except Exception as e: print(u,e)\"}",
+    "https://www.dwarkesh.com/p/shane-legg"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6550,
+      "cache_read_input_tokens": 62086,
+      "inference_geo": "global",
+      "input_tokens": 750,
+      "output_tokens": 2763,
+      "output_tokens_details": {
+        "thinking_tokens": 925
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 2,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2023",
+    "date_said": "2023-10-26",
+    "quote": "I think there’s a 50% chance that we have AGI by 2028. Now, it’s just a 50% chance.",
+    "what_is_predicted": "Legg gives a 50% chance that AGI will be reached by 2028.",
+    "date_or_span": "by 2028",
+    "occasion": "Dwarkesh Podcast interview with Dwarkesh Patel, published 26 Oct 2023 (Timelines section, timestamps cited by the blog as 0:36:34 and 0:37:04)",
+    "source_url": "https://e-discoveryteam.com/2023/11/17/shane-leggs-vision-agi-is-likely-by-2028-as-soon-as-we-overcome-ais-senior-moments/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A blog post by Ralph Losey on e-Discovery Team (2023-11-17) quoting Legg's Dwarkesh Patel interview of 2023-10-26 word for word; this is someone else's write-up, not a transcript or Legg's own post.",
+    "date_on_page": "2023-10-26",
+    "role_at_the_time": "Co-founder and Chief AGI Scientist, Google DeepMind",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said while Chief AGI Scientist at Google DeepMind; it says AGI will come by 2028, which is about AI and gives a year, but the only source here is a blog's write-up, so it goes in as coverage only and flagged has_probability. It is probably a new record that restates the 2022 'around 2030' claim, but whether it repeats the 2010 'mean 2028' file is borderline and needs a person to decide."
+  },
+  "reply_text": "**Page check: the words are on it.** The page opened. It is a blog post by Ralph Losey on e-Discovery Team, dated 17 November 2023. It quotes Legg in a block quote word for word: \"I think there's a 50% chance that we have AGI by 2028. Now, it's just a 50% chance. …\" It credits the words to Dwarkesh Patel's interview of 26 October 2023 and links the YouTube video at 0:36:34 and 0:37:04. This is someone else's write-up, not Legg's own words or a transcript, so the source counts as coverage only. I tried to open the Dwarkesh transcript to find a primary source, but I had reached my limit on fetches, so I have not checked it.\n\n**Reading against the rule:**\n1. **Role: passes.** In October 2023 Legg was co-founder and Chief AGI Scientist of Google DeepMind, which builds frontier models. That fits \"named chief scientist speaking for it\", and his 2023 and 2025 claims already in the ledger rest on the same role.\n2. **About AI and looking forward: passes.** It says AGI will arrive.\n3. **Date: passes.** \"By 2028\" is a named year, so it would be judged on 31 December 2028.\n4. **Primary source: passes only as coverage.** As it stands it can go in as `coverage_only`, marked and with no quote. If the Dwarkesh transcript confirms the words, it becomes a full pass.\n\n**Other points:**\n- **It states a chance.** \"50% chance\" is a probability, so the claim should be flagged `has_probability`.\n- **Probably not already recorded.** The 2023-10-17 file says AGI is not coming next year or the year after, which is a different claim. The 2022-02-15 file says fifty-fifty around 2030. Going back to 2028 changes the year, so this would be a new record with `restates` pointing to the 2022 file.\n- **Borderline: it may repeat a 2010 claim.** The blog says he \"affirms his prior prediction\". The 2010 file `2010-12-10-legg-human-level-agi-mean-2028` also names 2028. But that file gives the *average* of his estimate, while \"50% chance by 2028\" gives the *midpoint*, which is a different number. I read this as a separate claim, but the person checking should decide whether it is the same prediction repeated.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A blog post by Ralph Losey on e-Discovery Team (2023-11-17) quoting Legg's Dwarkesh Patel interview of 2023-10-26 word for word; this is someone else's write-up, not a transcript or Legg's own post.\",\n  \"date_on_page\": \"2023-10-26\",\n  \"role_at_the_time\": \"Co-founder and Chief AGI Scientist, Google DeepMind\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said while Chief AGI Scientist at Google DeepMind; it says AGI will come by 2028, which is about AI and gives a year, but the only source here is a blog's write-up, so it goes in as coverage only and flagged has_probability. It is probably a new record that restates the 2022 'around 2030' claim, but whether it repeats the 2010 'mean 2028' file is borderline and needs a person to decide.\"\n}\n```"
+}

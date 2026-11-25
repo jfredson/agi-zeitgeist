@@ -1,0 +1,61 @@
+{
+  "speaker_id": "kaifulee",
+  "row": 4,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1041,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('99%'); print(c[max(0,i-1500):i+600])\\n    for k in ['November','2024','WISE','Written by','Published']:\\n        j=c.find(k); print(k, c[max(0,j-100):j+150] if j>=0 else None)\"}",
+    "https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\ni=c.find('99%'); print(c[max(0,i-1500):i+500])\\nimport re\\nfor k in ['published','date','WISE','Feng Dagang','Written by','edited']:\\n    for m in list(re.finditer(k,c))[:2]: print('>>',k, c[max(0,m.start()-100):m.start()+200].replace('\\\\n',' '))\"}",
+    "{\"code\": \"i=c.find('During the conference'); print(c[i-800:i+100])\"}",
+    "{\"code\": \"for k in ['Nov','summit','2024']:\\n    for m in list(re.finditer(k,c))[:4]: print('>>',k, c[max(0,m.start()-150):m.start()+150].replace('\\\\n',' '))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6271,
+      "cache_read_input_tokens": 79210,
+      "inference_geo": "global",
+      "input_tokens": 1716,
+      "output_tokens": 2500,
+      "output_tokens_details": {
+        "thinking_tokens": 666
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-11",
+    "quote": "If you think it’s expensive now, there’s a 99% chance it won’t be next year—and in another year, not only will it be affordable, but it will support your desired applications.",
+    "what_is_predicted": "AI models will become affordable for app builders in 2025, and by about 2026 they will be capable enough to support the applications those builders want.",
+    "date_or_span": "next year (2025) and the year after",
+    "occasion": "36Kr WISE2024 summit, Beijing, 28–29 November 2024, conversation with 36Kr CEO Feng Dagang (edited, translated Q&A)",
+    "source_url": "https://kr-asia.com/kai-fu-lee-on-ais-next-frontier-from-scaling-law-to-application-first-strategies",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "KrASIA (36Kr English) printed, edited and translated Q&A of Kai-Fu Lee's conversation with 36Kr CEO Feng Dagang at WISE2024 in Beijing, 28–29 Nov 2024, published 5 Dec 2024; the quote appears word for word.",
+    "date_on_page": "2024-11",
+    "role_at_the_time": "founder-leader of 01.AI (builds its own Yi models)",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "Dated, from a printed Q&A, said while he led 01.AI, but the first half forecasts model prices, close to the costs the rule keeps out as business forecasts, and the second half ('support your desired applications') names no capability, only whatever each listener wants. A truly borderline case stays out and is logged as borderline."
+  },
+  "reply_text": "I found the quoted words on the page, but I'm marking this one **borderline** on part 2 of the rule.\n\n**The words on the page.** The page opened. It's a KrASIA article (\"Kai-Fu Lee on AI's next frontier: From scaling law to application-first strategies\", published 5 Dec 2024). It's a printed Q&A between Lee and Feng Dagang, CEO of 36Kr, at the 36Kr WISE2024 summit in Beijing on 28–29 November 2024. The article says the interview was \"edited and consolidated for brevity and clarity\" and was adapted from a 36Kr original. The quote is there word for word: \"If you think it's expensive now, there's a 99% chance it won't be next year—and in another year, not only will it be affordable, but it will support your desired applications.\" It follows his point that \"Within 18 months, costs dropped by 500 times, and model capabilities improved significantly.\" A printed Q&A counts as a primary source, so this would not be \"coverage only\".\n\n**Part 1, role: passes.** In November 2024 Lee was founder-leader of 01.AI, which builds its own models (Yi-Lightning, named in the same answer). The article calls him \"Now at the helm of 01.AI, an AI unicorn he founded\".\n\n**Part 2, forward-looking and about AI: borderline.** The quote has two halves:\n- **\"It won't be expensive next year\"** is a forecast of what models will cost to use. That is close to the costs and spending forecasts the rule keeps out as business forecasts, not a claim about what AI will do.\n- **\"It will support your desired applications\"** is about what AI can do. But the applications are whatever each listener in the room wants, so there's nothing named to test.\n\nThe \"99% chance\" doesn't block admission; it would only set the `has_probability` flag. The question is whether either half counts as a claim about AI at all, and the rule says a truly borderline case stays out and is logged as borderline.\n\n**Part 3, date: passes.** \"Next year\" means 2025, and \"in another year\" means about 2026.\n\n**Part 4, primary source: passes.** It's a printed Q&A.\n\n**Not already recorded, as far as I can tell.** The two nearest recorded files are dated 2024-11-26 (\"AI apps proliferate within two years\", \"flood of AI apps in 2025\"). Those are about apps multiplying and come from an earlier date, while this quote is about model price and fitness for builders. A person should check whether 2024-11-26 is the same WISE talk under another date. I didn't open either file.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"KrASIA (36Kr English) printed, edited and translated Q&A of Kai-Fu Lee's conversation with 36Kr CEO Feng Dagang at WISE2024 in Beijing, 28–29 Nov 2024, published 5 Dec 2024; the quote appears word for word.\",\n  \"date_on_page\": \"2024-11\",\n  \"role_at_the_time\": \"founder-leader of 01.AI (builds its own Yi models)\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"Dated, from a printed Q&A, said while he led 01.AI, but the first half forecasts model prices, close to the costs the rule keeps out as business forecasts, and the second half ('support your desired applications') names no capability, only whatever each listener wants. A truly borderline case stays out and is logged as borderline.\"\n}\n```"
+}

@@ -1,0 +1,62 @@
+{
+  "speaker_id": "lecun",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1058,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://www.deeplearning.ai/the-batch/yann-lecun-learning-from-observation/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('2020'); \\n    import re\\n    for m in re.finditer('expect|2020|Jan',c): print(c[max(0,m.start()-200):m.start()+200].replace('\\\\n',' ')); print('---')\"}",
+    "https://www.deeplearning.ai/the-batch/yann-lecun-learning-from-observation/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor m in re.finditer('expect|In 2020',c): print(c[max(0,m.start()-400):m.start()+400]); print('---')\\nprint(c[:1500])\"}",
+    "{\"code\": \"import re\\nfor m in re.finditer('expect|In 2020',c): print(c[max(0,m.start()-600):m.start()+400]); print('---')\\nprint(c[:1200])\"}",
+    "{\"code\": \"i=c.find('meta-og:title'); j=c.find('\\\\n---',10); print(c[j:j+1500]); print(c[-1500:])\"}",
+    "{\"code\": \"i=c.find('# '); \\nfor m in re.finditer('LeCun|Facebook|Chief',c): print(c[max(0,m.start()-200):m.start()+200].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 7921,
+      "cache_read_input_tokens": 90993,
+      "inference_geo": "global",
+      "input_tokens": 1337,
+      "output_tokens": 2132,
+      "output_tokens_details": {
+        "thinking_tokens": 377
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2020",
+    "date_said": "2020-01-01",
+    "quote": "In 2020, I expect self-supervised methods to learn features of video and images.",
+    "what_is_predicted": "LeCun expected self-supervised learning methods to learn features of video and images during 2020.",
+    "date_or_span": "2020",
+    "occasion": "Signed essay 'Yann LeCun on the Power of Self-Supervised Learning' in DeepLearning.AI's newsletter The Batch (page metadata: published 2020-01-01; tag 'Jan 01, 2020')",
+    "source_url": "https://www.deeplearning.ai/the-batch/yann-lecun-learning-from-observation/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "LeCun's own first-person essay in DeepLearning.AI's The Batch (Interviews & Essays, published Jan 01, 2020), ending with the line that he is vice president and chief AI scientist at Facebook; the quoted sentence appears verbatim.",
+    "date_on_page": "2020-01-01",
+    "role_at_the_time": "Chief AI Scientist, Facebook (Meta)",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Written as Facebook's chief AI scientist in his own signed essay; it forecasts what AI methods will do ('self-supervised methods to learn features of video and images') and names a year (2020). The test is loose and may end up unfalsifiable at entry, but that does not affect admission."
+  },
+  "reply_text": "I'd admit this one: **pass**. The quote is on the page word for word, and it meets all four parts of the rule.\n\n**Page check.** The page opened. It is Yann LeCun's own essay in The Batch, titled \"Yann LeCun — Learning From Observation\" and filed under Interviews & Essays. The page's metadata names \"Analytics DeepLearning.AI\" as author, but the essay is written in the first person and ends with his bio line. The page is dated Jan 01, 2020. The quoted sentence appears exactly: \"In 2020, I expect self-supervised methods to learn features of video and images.\" The next sentence on the page is \"Could there be a similar revolution in high-dimensional continuous data like video?\"\n\n**The four parts:**\n1. **Role: met.** The page itself says \"Yann LeCun is vice president and chief AI scientist at Facebook.\" That matches his role history, which has him as Meta Chief AI Scientist from about 2018 to 2025. Facebook/Meta builds frontier models, so he was the named chief scientist of a qualifying company. He wrote the essay under that title, so I treat it as speaking for the company.\n2. **About AI and looking forward: met.** It says what AI methods will do: self-supervised learning will learn features of video and images. It is not a business forecast and not framed as a hypothetical. \"I expect\" is a hedge word, so it gets written into the prediction rather than ruling the claim out.\n3. **Date: met.** \"In 2020\" is a named year, so it would be due at the end of 2020.\n4. **Primary source: met.** It is his own signed essay.\n\n**Not recorded already.** None of his recorded claim files is from 2020, and none is about self-supervised learning.\n\n**Things for the checker to look at (these don't change admission):**\n- The test is vague. Self-supervised methods were already learning image features before 2020, so \"learn features\" gives a weak test. It may end up marked `unfalsifiable`, or given a narrow plain-reading test, when it is entered.\n- His closing paragraph expects \"really good performance predicting actions in videos with very few training samples\" in \"the coming year.\" That could be read as the more testable version of the same claim.\n- My reading that he was speaking for Facebook is an inference, not something the page states.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"LeCun's own first-person essay in DeepLearning.AI's The Batch (Interviews & Essays, published Jan 01, 2020), ending with the line that he is vice president and chief AI scientist at Facebook; the quoted sentence appears verbatim.\",\n  \"date_on_page\": \"2020-01-01\",\n  \"role_at_the_time\": \"Chief AI Scientist, Facebook (Meta)\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Written as Facebook's chief AI scientist in his own signed essay; it forecasts what AI methods will do ('self-supervised methods to learn features of video and images') and names a year (2020). The test is loose and may end up unfalsifiable at entry, but that does not affect admission.\"\n}\n```"
+}

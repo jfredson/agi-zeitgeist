@@ -1,0 +1,60 @@
+{
+  "speaker_id": "legg",
+  "row": 3,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0638,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.vetta.org/2010/12/goodbye-2010/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c = r[0]['content']; print(r[0].get('title'), len(c))\\n    i = c.find('upper end'); print(c[max(0,i-1500):i+800])\"}",
+    "https://www.vetta.org/2010/12/goodbye-2010/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('upper end'); print(c[max(0,i-1800):i+700])\\nimport re; print(re.findall(r'(?:December|Dec)[^\\\\n]{0,40}2010|2010-12-\\\\d+',c)[:5])\"}",
+    "{\"code\": \"print(re.findall(r'[A-Z][a-z]+ \\\\d{1,2}, 20\\\\d\\\\d',c)[:10]); print(c[-1500:])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3215,
+      "cache_read_input_tokens": 58951,
+      "inference_geo": "global",
+      "input_tokens": 759,
+      "output_tokens": 1643,
+      "output_tokens_details": {
+        "thinking_tokens": 308
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2010",
+    "date_said": "2010-12-10",
+    "quote": "the upper end should be a bit higher at 2045, i.e. at a CDF of 0.95. It seems that I got the lower end right, however, as the CDF is about 0.05 at 2018. With 5% at each end, that gives the 90% interval.",
+    "what_is_predicted": "A 90% credible interval for roughly human-level AGI running from 2018 to 2045 (correcting the 2009 upper bound of 2036).",
+    "date_or_span": "2018 to 2045",
+    "occasion": "Blog post 'Goodbye 2010' on vetta.org.",
+    "source_url": "https://www.vetta.org/2010/12/goodbye-2010/",
+    "source_kind": "own_words",
+    "already_recorded": "2010-12-10-legg-human-level-agi-90-percent-by-2045.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Shane Legg's own blog post 'Goodbye 2010' on vetta.org; the quoted words are in its last paragraph, word for word.",
+    "date_on_page": "2010-12",
+    "role_at_the_time": "Co-founder of DeepMind (founded 2010)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "This is the same 90% interval for roughly human-level AGI (2018 to 2045) from the same post as the recorded file 2010-12-10-legg-human-level-agi-90-percent-by-2045.toml. The page itself shows only December 2010, not the day; the address is the only date source."
+  },
+  "reply_text": "I found the quoted words on the page, word for word. The candidate is the same claim as one already recorded, so the admission is \"recorded\".\n\n**1. The page.** It opened. It is Legg's own blog post \"Goodbye 2010\" on vetta.org, so it is his own words, not a news report. The quote is in its last paragraph, after \"Going by a log-normal CDF for my predicted mean and mode that David McFadzean did (see bottom of this page)\". The page text I fetched shows no posting day; only the address gives December 2010. I could not confirm the reported day, 2010-12-10, on the page.\n\n**2. The four parts of the rule.**\n- **Part 1, role:** Your role history puts DeepMind's co-founding in 2010. In the post he writes that \"significant things are happening but I'm not ready to talk about them yet\", which fits a founder in the company's first year. Whether DeepMind counted in December 2010 as a company that builds frontier AI models is the one point a checker might weigh. I don't need to decide it, because the claim is already on file.\n- **Part 2, forward-looking and about AI:** Yes. It forecasts \"roughly human level AGI\" arriving. The wording is a corrected 90% credible interval, so it is a stated chance and should carry the `has_probability` flag.\n- **Part 3, dated:** Yes, 2018 to 2045. That makes `due` 2045 and `due_early` 2018.\n- **Part 4, primary source:** Yes, it is his own post.\n\n**3. Already recorded.** The quote, date and interval match the recorded file `2010-12-10-legg-human-level-agi-90-percent-by-2045.toml`.\n\nThe same post also contains the mean of 2028 and the mode of 2025. Both are already in his recorded files (`...-mean-2028.toml` and `...-mode-2025.toml`).\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Shane Legg's own blog post 'Goodbye 2010' on vetta.org; the quoted words are in its last paragraph, word for word.\",\n  \"date_on_page\": \"2010-12\",\n  \"role_at_the_time\": \"Co-founder of DeepMind (founded 2010)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"This is the same 90% interval for roughly human-level AGI (2018 to 2045) from the same post as the recorded file 2010-12-10-legg-human-level-agi-90-percent-by-2045.toml. The page itself shows only December 2010, not the day; the address is the only date source.\"\n}\n```"
+}

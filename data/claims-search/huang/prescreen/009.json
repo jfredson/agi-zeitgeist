@@ -1,0 +1,59 @@
+{
+  "speaker_id": "huang",
+  "row": 9,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0596,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blogs.nvidia.com/blog/nvidia-ceo-accelerated-computing-ai-omniverse-avatars-robots-gtc/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['2024','vast majority','EVs','November']:\\n        for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ')); print('---')\"}",
+    "https://blogs.nvidia.com/blog/nvidia-ceo-accelerated-computing-ai-omniverse-avatars-robots-gtc/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(d['content'].get('title'),len(c))\\nimport re\\nfor k in ['2024','vast majority','EV','AV ']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-400):m.start()+250].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3589,
+      "cache_read_input_tokens": 46713,
+      "inference_geo": "global",
+      "input_tokens": 1159,
+      "output_tokens": 1385,
+      "output_tokens_details": {
+        "thinking_tokens": 81
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2021",
+    "date_said": "2021-11-09",
+    "quote": "By 2024, the vast majority of new EVs will have substantial AV capability,",
+    "what_is_predicted": "Most new electric vehicles sold by 2024 will have substantial autonomous-driving capability.",
+    "date_or_span": "2024",
+    "occasion": "Nvidia GTC November 2021 keynote",
+    "source_url": "https://blogs.nvidia.com/blog/nvidia-ceo-accelerated-computing-ai-omniverse-avatars-robots-gtc/",
+    "source_kind": "coverage_only",
+    "already_recorded": "2021-11-09-huang-most-new-evs-substantial-av-capability-2024.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Nvidia's own blog wrap-up of the GTC November 2021 keynote by Brian Caulfield, quoting Huang word for word: \"By 2024, the vast majority of new EVs will have substantial AV capability,\" a written report rather than a transcript.",
+    "date_on_page": "2021-11-09",
+    "role_at_the_time": "co-founder and chief executive of Nvidia",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Said while Huang was Nvidia's chief executive, dated by 2024, about AI driving being deployed, and found in coverage only; it is the same claim as 2021-11-09-huang-most-new-evs-substantial-av-capability-2024.toml, so it is already recorded."
+  },
+  "reply_text": "**The quote is on the page, and this claim is already recorded.**\n\n**Page check.** The page opened. It is Nvidia's own blog post \"GTC Wrap-Up: NVIDIA CEO Outlines Vision for Accelerated Computing…\", by Brian Caulfield, published 2021-11-09. Under the \"Autonomous Vehicles\" heading it says, word for word: \"By 2024, the vast majority of new EVs will have substantial AV capability,\" he added. The sentence just before it is \"Everything that moves will be autonomous—fully or mostly autonomous, Huang said.\"\n\nThe page is a written report of the keynote, not a transcript or recording. It is on Nvidia's own site, though, so it sits between a news report and the company's own words. The search run called it coverage only, and that looks right to me. A keynote recording would make a stronger primary source.\n\n**The four parts of the rule:**\n1. **Role:** passes. Huang was co-founder and chief executive of Nvidia in November 2021, and Nvidia makes the chips frontier models are trained on.\n2. **Forward-looking and about AI:** passes. It says what self-driving AI will be deployed in, not a plain hardware or sales figure.\n3. **Date:** passes. \"By 2024.\"\n4. **Source:** met only as coverage, as described above.\n\n**Duplicate.** The claim matches the recorded file `2021-11-09-huang-most-new-evs-substantial-av-capability-2024.toml`: same date, same words, same gist. So the admission is \"recorded\" and no new record is needed. The person checking may want to confirm that the existing file is marked coverage only and carries the quote from this page.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Nvidia's own blog wrap-up of the GTC November 2021 keynote by Brian Caulfield, quoting Huang word for word: \\\"By 2024, the vast majority of new EVs will have substantial AV capability,\\\" a written report rather than a transcript.\",\n  \"date_on_page\": \"2021-11-09\",\n  \"role_at_the_time\": \"co-founder and chief executive of Nvidia\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said while Huang was Nvidia's chief executive, dated by 2024, about AI driving being deployed, and found in coverage only; it is the same claim as 2021-11-09-huang-most-new-evs-substantial-av-capability-2024.toml, so it is already recorded.\"\n}\n```"
+}

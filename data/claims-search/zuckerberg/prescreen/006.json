@@ -1,0 +1,59 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 6,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0958,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['better than human','10-year roadmap','10 years','better than people','perception','April']:\\n        for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['better than human','roadmap','better than people','perception','2016','Fort Mason']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6807,
+      "cache_read_input_tokens": 46770,
+      "inference_geo": "global",
+      "input_tokens": 1190,
+      "output_tokens": 2383,
+      "output_tokens_details": {
+        "thinking_tokens": 679
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2016",
+    "date_said": "2016-04-12",
+    "quote": "Artificial intelligence will power all kinds of different services with better than human level perception, and we’ll see the emergence of the next major computing platform in virtual and augmented reality. These are all elements of our 10-year roadmap to connect the world.",
+    "what_is_predicted": "Within Facebook's 10-year roadmap, AI will power services with better-than-human perception.",
+    "date_or_span": "the next 10 years (\"our roadmap for the next 10 years\"; \"The next 10-year challenge... our goal with artificial intelligence is to build systems that are better than people at perception\")",
+    "occasion": "F8 2016 Day 1 keynote, Fort Mason, San Francisco",
+    "source_url": "https://singjupost.com/facebook-ceo-mark-zuckerberg-at-f8-2016-day-1-keynote-full-transcript/",
+    "source_kind": "transcript",
+    "already_recorded": "2016-04-27-zuckerberg-better-than-people-at-senses.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Singju Post full transcript of the Facebook F8 2016 Day 1 keynote (Fort Mason, San Francisco); the quote appears verbatim in Zuckerberg's opening, which frames it as 'our roadmap for the next 10 years', and he later says 'our goal with artificial intelligence is to build systems that are better than people at perception'.",
+    "date_on_page": "2016-04-12",
+    "role_at_the_time": "founder and chief executive of Facebook, which ran Facebook AI Research (from 2013-12)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts (CEO of Facebook while it ran FAIR; AI better than human perception within a 10-year roadmap, due 2026; transcript), but it appears to be the claim already recorded as 2016-04-27-zuckerberg-better-than-people-at-senses.toml. Borderline on the match since only the file name was seen; if it is an unchanged repeat, the record should be keyed to this earlier date, 2016-04-12."
+  },
+  "reply_text": "I fetched the page and the quoted words are on it exactly as given. The candidate also passes all four parts of the rule. Its gist looks like the one already recorded in `2016-04-27-zuckerberg-better-than-people-at-senses.toml`, so I've marked it \"recorded\". That match is a little uncertain, and the recorded claim may be filed under the wrong date.\n\n**The page.** It's a full transcript of the F8 2016 Day 1 keynote on The Singju Post (singjupost.com), a transcript site. The page gives the date as April 12, 2016 and the place as Fort Mason in San Francisco. It lists the speaker as \"Mark Zuckerberg – CEO, Facebook\". It was posted 18 April 2016 and updated in 2020. A third-party transcript counts as a primary source, so this is not coverage only. The date span comes from the same keynote: he opens with \"our roadmap for the next 10 years\", and later says \"The next 10-year challenge… our goal with artificial intelligence is to build systems that are better than people at perception. It's of seeing, hearing, language, and so on.\"\n\n**The four parts:**\n1. **Role:** he was CEO and founder of Facebook, which had run Facebook AI Research since December 2013. The existing 2016-04-27 record shows the ledger already treats that role as qualifying in 2016.\n2. **About AI and forward-looking:** it says AI will power services with \"better than human level perception\". That is a stated comparison (seeing, hearing, language), so it isn't a bare \"human level\" and has a testable bar. The second passage frames it as a goal, so it would be marked `is_goal`.\n3. **Date:** the 10-year roadmap is counted from 12 April 2016, so it falls due at the end of 2026.\n4. **Source:** the transcript.\n\n**Why \"recorded\", and what to check:**\n- **Is it the same claim?** I only saw the recorded file's name, not its contents. The name has the same gist, better than people at perception or the senses, and the earlier search run also flagged this as a match. A person should open the file and confirm it has the same prediction and the same due year (2026). If the 27 April source gives a different span, such as \"5 to 10 years\", this is a changed repeat and needs its own record.\n- **The recorded date is probably wrong.** If it is an unchanged repeat, the rule keys the claim to the first date it was said. F8 on 12 April 2016 comes before 27 April 2016, so the record should be dated 2016-04-12, with 2016-04-27 listed in `repeated_on`.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Singju Post full transcript of the Facebook F8 2016 Day 1 keynote (Fort Mason, San Francisco); the quote appears verbatim in Zuckerberg's opening, which frames it as 'our roadmap for the next 10 years', and he later says 'our goal with artificial intelligence is to build systems that are better than people at perception'.\",\n  \"date_on_page\": \"2016-04-12\",\n  \"role_at_the_time\": \"founder and chief executive of Facebook, which ran Facebook AI Research (from 2013-12)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts (CEO of Facebook while it ran FAIR; AI better than human perception within a 10-year roadmap, due 2026; transcript), but it appears to be the claim already recorded as 2016-04-27-zuckerberg-better-than-people-at-senses.toml. Borderline on the match since only the file name was seen; if it is an unchanged repeat, the record should be keyed to this earlier date, 2016-04-12.\"\n}\n```"
+}

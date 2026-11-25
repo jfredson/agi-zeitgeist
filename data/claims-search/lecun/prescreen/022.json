@@ -1,0 +1,59 @@
+{
+  "speaker_id": "lecun",
+  "row": 22,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1219,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['four years','revolution','real-world','2026','July','Kravchenko']:\\n        for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-300):m.end()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['four years','revolution','real-world','2030']:\\n    for m in re.finditer(k,c): print(k,'|',c[max(0,m.start()-600):m.end()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 10358,
+      "cache_read_input_tokens": 47515,
+      "inference_geo": "global",
+      "input_tokens": 1326,
+      "output_tokens": 2764,
+      "output_tokens_details": {
+        "thinking_tokens": 1068
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-07",
+    "quote": "I think, in the next four years or so, we’re going to see another revolution that will open the doors to real-world things, not just language.",
+    "what_is_predicted": "Within about four years a new AI revolution will extend AI beyond language to the real world.",
+    "date_or_span": "the next four years or so",
+    "occasion": "Nebius Science interview 'Meet Yann LeCun's Lab and the AI World of 2030' by Stepan Kravchenko, published 2026-07-13",
+    "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Nebius Science printed question-and-answer interview with LeCun by Stepan Kravchenko, dated 2026-07-13; the quote appears word for word in his answer about 2030 ('AI for the real world'), followed by 'I'm pretty sure it's going to happen.'",
+    "date_on_page": "2026-07-13",
+    "role_at_the_time": "Executive Chairman (founder-chair) of AMI Labs, his world-model company, as he states in the interview",
+    "admission": "borderline",
+    "failed_part": "",
+    "reason": "It meets all four parts: a span of about four years (due 2030), forward-looking about AI, in his own words in a printed Q&A, said as AMI's chair. But it may be an unchanged repeat of the recorded 2025-01-23 claim of a new paradigm in three to five years, also due 2030, so a person should compare that file before admitting it as new."
+  },
+  "reply_text": "I found the quoted words on the page exactly as given. The claim meets all four parts of the rule, but I've marked it **borderline** because it may repeat a claim already on file.\n\n**1. Page check.** The page opened. It is Nebius Science's printed question-and-answer with LeCun, \"Meet Yann LeCun's Lab and the AI World of 2030\", by Stepan Kravchenko, dated 2026-07-13. The quote is in LeCun's answer to \"what would you call 2030?\", which was \"AI for the real world.\" The full passage reads: \"I think, in the next four years or so, we're going to see another revolution that will open the doors to real-world things, not just language. That's much more challenging. And that's a revolution I want to see. I'm pretty sure it's going to happen.\" He also says \"I'm turning 66 this month,\" which fits July 2026. This is his own words in a printed Q&A, not a news report, so it would be a full pass rather than coverage only.\n\n**2. The four parts of the rule:**\n- **Part 1, role:** In the same interview LeCun says he is Executive Chairman of AMI Labs, his world-model company founded in 2026. That makes him chair of a company building AI models. Your file already holds 2026 AMI-era claims (2026-03-10, 2026-05) under this role, so I've treated it as qualifying in line with those.\n- **Part 2, looks forward and is about AI:** Yes. He says AI will go through a revolution that takes it beyond language into the real world. It is not framed as a hypothetical, and \"I'm pretty sure\" is a hedge, not a stated chance.\n- **Part 3, date or length of time:** Yes. \"The next four years or so\" is a span counted from mid-2026, so it falls due at the end of 2030. \"Or so\" is a hedge, not a range.\n- **Part 4, primary source:** Yes, it's a printed Q&A.\n\n**Why borderline: a possible repeat.** The recorded file `2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml` looks like the same forecast: a new AI paradigm or revolution that handles the physical world. Taking the later end of \"three to five years\", it is also due in 2030. If the two match, this is an unchanged repeat and should go into that file's `repeated_on`, not become a new claim. I couldn't open the file, so someone needs to compare its wording.\n\nThe 2026-03-10 \"fairly universal systems three to five years\" file is less close, and the 2026-05-15 \"paradigm change obvious by early 2027\" file has a different date.\n\nIf it is admitted, \"a revolution that opens the doors to real-world things\" probably gives no bar an outsider could test, so it would likely be entered as `unfalsifiable`. That doesn't affect admission.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Nebius Science printed question-and-answer interview with LeCun by Stepan Kravchenko, dated 2026-07-13; the quote appears word for word in his answer about 2030 ('AI for the real world'), followed by 'I'm pretty sure it's going to happen.'\",\n  \"date_on_page\": \"2026-07-13\",\n  \"role_at_the_time\": \"Executive Chairman (founder-chair) of AMI Labs, his world-model company, as he states in the interview\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"\",\n  \"reason\": \"It meets all four parts: a span of about four years (due 2030), forward-looking about AI, in his own words in a printed Q&A, said as AMI's chair. But it may be an unchanged repeat of the recorded 2025-01-23 claim of a new paradigm in three to five years, also due 2030, so a person should compare that file before admitting it as new.\"\n}\n```"
+}

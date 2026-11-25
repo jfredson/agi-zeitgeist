@@ -1,0 +1,60 @@
+{
+  "speaker_id": "amodei",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0834,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(r[0]['title'],len(c))\\n    import re\\n    for k in ['entry-level','one to five','10% to 20%','Yes.','November','2025']:\\n        for m in re.finditer(re.escape(k),c):\\n            print(k,'::',c[max(0,m.start()-300):m.start()+200].replace('\\\\n',' '));print('--');break\"}",
+    "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data'];print(len(c))\\nfor k in ['entry-level','one to five','10% to 20%','published','November 16','2025-11']:\\n    for m in re.finditer(re.escape(k),c):\\n        print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '));print('--');break\"}",
+    "{\"code\": \"import re\\nfor k in ['entry-level','one to five','10% to 20%','published','November 16','2025-11']:\\n    for m in re.finditer(re.escape(k),c):\\n        print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '));print('--');break\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4944,
+      "cache_read_input_tokens": 62850,
+      "inference_geo": "global",
+      "input_tokens": 2166,
+      "output_tokens": 1870,
+      "output_tokens_details": {
+        "thinking_tokens": 200
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-11-16",
+    "quote": "Anderson Cooper: You've said, \"AI could wipe out half of all entry-level white-collar jobs and spike unemployment to 10% to 20% in the next one to five years.\" Dario Amodei: Yes.",
+    "what_is_predicted": "He confirms his earlier warning that AI could eliminate half of entry-level white-collar jobs and push unemployment to 10-20% within one to five years.",
+    "date_or_span": "the next one to five years",
+    "occasion": "CBS 60 Minutes interview with Anderson Cooper",
+    "source_url": "https://www.cbsnews.com/news/anthropic-ceo-dario-amodei-warning-of-ai-potential-dangers-60-minutes-transcript/",
+    "source_kind": "transcript",
+    "already_recorded": "2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "CBS News transcript of the 60 Minutes segment with Anderson Cooper, dated November 16, 2025; Cooper reads the quoted line back and Amodei answers \"Yes,\" then adds \"that is the future we could see, if we don't become aware of this problem now.\"",
+    "date_on_page": "2025-11-16",
+    "role_at_the_time": "Co-founder and chief executive of Anthropic",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts, but it is an unchanged repeat of the May 2025 Axios claim (same prediction, same 2030 due year), already recorded as 2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs.toml; this date belongs in that file's repeated_on."
+  },
+  "reply_text": "I checked the words against the page, and the candidate is the same claim as one already on file, so the admission is \"recorded\".\n\n**The page.** It opened. It is CBS News's transcript of the 60 Minutes segment with Anderson Cooper, dated November 16, 2025. The quoted exchange is there word for word: Cooper reads back Amodei's line that \"AI could wipe out half of all entry-level white-collar jobs and spike unemployment to 10% to 20% in the next one to five years,\" and Amodei answers \"Yes.\" He adds straight after: \"that is the future we could see, if we don't become aware of this problem now.\" It is a broadcast transcript, not a news report, so it counts as a primary source.\n\n**The rule, part by part:**\n1. **Role:** passes. He was co-founder and chief executive of Anthropic on 2025-11-16.\n2. **Looks forward and is about AI:** passes. The rule admits a forecast that AI will displace jobs. \"Could\" is a hedge word, not a stated chance, so the claim is taken at face value with the hedge kept in the wording.\n3. **Date or span:** passes. \"The next one to five years\" is a range of spans, so the later end counts.\n4. **Primary source:** passes. It is a transcript.\n\n**Why it is \"recorded\".** This is a straight reaffirmation of the warning from the Axios interview, filed as `2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs.toml`. It is the same prediction with the same span. Counted five years from either May 2025 or November 2025, it falls due at the end of 2030, so it is an unchanged repeat, not a new claim. The right step is to add 2025-11-16 to that file's `repeated_on`. A person should open that file to confirm that its span and due year really are one-to-five years and 2030. If either differs, this becomes a changed repeat and needs its own record.\n\nOne more thing to check: the file `2026-01-26-amodei-adolescence-half-entry-level-jobs-one-to-five-years.toml` makes the same prediction with a due year of 2031. That one is a separate, re-dated claim, and this 60 Minutes date belongs with the May 2025 file, not with it.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"CBS News transcript of the 60 Minutes segment with Anderson Cooper, dated November 16, 2025; Cooper reads the quoted line back and Amodei answers \\\"Yes,\\\" then adds \\\"that is the future we could see, if we don't become aware of this problem now.\\\"\",\n  \"date_on_page\": \"2025-11-16\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Anthropic\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts, but it is an unchanged repeat of the May 2025 Axios claim (same prediction, same 2030 due year), already recorded as 2025-05-28-amodei-axios-half-of-entry-level-white-collar-jobs.toml; this date belongs in that file's repeated_on.\"\n}\n```"
+}

@@ -1,0 +1,61 @@
+{
+  "speaker_id": "huang",
+  "row": 8,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0834,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('fantasy'); print(c[max(0,i-1500):i+800] if i>=0 else c[:3000])\"}",
+    "https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\ni=c.find('fantasy'); print(c[max(0,i-1500):i+600] if i>=0 else c[:3000])\\nimport re; print(re.findall(r'(?:published|date)[^\\\\n]{0,80}',c)[:6])\"}",
+    "{\"code\": \"print(c[:1500]); i=c.find('dinner'); print(c[i-300:i+300])\"}",
+    "{\"code\": \"for k in ['Monday','Sunday','night','January','CES']:\\n    for m in re.finditer(k,c): print(k, c[max(0,m.start()-150):m.start()+150].replace('\\\\n',' ')); break\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4258,
+      "cache_read_input_tokens": 74793,
+      "inference_geo": "global",
+      "input_tokens": 1184,
+      "output_tokens": 2122,
+      "output_tokens_details": {
+        "thinking_tokens": 474
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2018",
+    "date_said": "2018-01-08",
+    "quote": "the idea of driving a car that’s completely driverless everywhere in all conditions? That fantasy car won’t be here for five to 10 years.",
+    "what_is_predicted": "A car that drives itself everywhere in all conditions will not arrive for five to ten years.",
+    "date_or_span": "five to 10 years (about 2023–2028)",
+    "occasion": "Fortune Brainstorm Tech dinner on the eve of CES, Bellagio, Las Vegas, interviewed by Adam Lashinsky",
+    "source_url": "https://fortune.com/2018/01/09/nvidia-ceo-jensen-huang-brainstorm-tech/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Fortune news article by Andrew Nusca (dated 2018-01-09) reporting Huang's remarks at the Brainstorm Tech dinner on the eve of CES; the quote appears verbatim inside quotation marks in the reporter's text, not in a transcript or Q&A.",
+    "date_on_page": "2018-01-08",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Nvidia's chief executive, it forecasts that a fully driverless AI car will not arrive within a stated span (five to 10 years, so due 2028 at the later end), which reading 2 admits; the only source is Fortune's news report, so it enters as coverage_only."
+  },
+  "reply_text": "The quoted words are on the Fortune page, word for word. The candidate passes as coverage only.\n\n**The page.** It opened. It is a Fortune news article by Andrew Nusca, dated 9 January 2018, 3:38 AM ET. The quote appears in it like this:\n\n> \"There are a lot of different ways to skin this cat,\" said Huang, … But \"the idea of driving a car that's completely driverless everywhere in all conditions? That fantasy car won't be here for five to 10 years.\"\n\nThis is a reporter's write-up of a Brainstorm Tech dinner at the Bellagio's Picasso restaurant \"on the eve of the opening to CES.\" It is not a transcript or a printed question and answer. The page never gives the day he spoke. I took 8 January from two things:\n- the article's own words, \"on the eve of the opening to CES\"\n- the photo's filename, `20180108_…`, whose caption names Adam Lashinsky\n\nThe search run's 2018-01-08 fits both.\n\n**The four parts of the rule:**\n1. **Role:** passes. Huang was Nvidia's co-founder and chief executive in January 2018.\n2. **Looks forward and is about AI:** passes. It says a fully driverless car, an AI system, will not arrive within a stated time. Reading 2 counts a forecast that something will not happen as a claim. It is not hypothetical: he goes on, \"it's not a matter of if, but when.\"\n3. **Date or length of time:** passes. \"Five to 10 years\" is a range of spans, and the rule takes the later end. That makes `due` 2028, and `due_basis` should say so.\n4. **Primary source:** this is the only part that falls short. All I have is this news report, so it enters as `coverage_only`. A recording or transcript of the dinner would make it a full pass.\n\n**Not already recorded.** None of Huang's files is from January 2018. The two from 2018-05-10 are different claims: driverless taxis around 2019, and self-driving cars in 2020 to 2021.\n\n**For the person checking:** the earlier search run's `date_or_span` reads \"about 2023–2028\". Under the due-year rule, 2028 is `due`. I'd leave 2023 out: the claim's early end only applies when it names a range of years, and this one names a range of spans.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Fortune news article by Andrew Nusca (dated 2018-01-09) reporting Huang's remarks at the Brainstorm Tech dinner on the eve of CES; the quote appears verbatim inside quotation marks in the reporter's text, not in a transcript or Q&A.\",\n  \"date_on_page\": \"2018-01-08\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Nvidia's chief executive, it forecasts that a fully driverless AI car will not arrive within a stated span (five to 10 years, so due 2028 at the later end), which reading 2 admits; the only source is Fortune's news report, so it enters as coverage_only.\"\n}\n```"
+}

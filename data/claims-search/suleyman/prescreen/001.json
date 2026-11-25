@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 1,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0824,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('20 years'); print(c[:400]); print(c[max(0,i-1500):i+800] if i>=0 else 'no 20 years')\"}",
+    "https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); import re; print(re.findall(r'.{0,100}(?:20\\\\d\\\\d|December|Dec).{0,60}',c)[:10]); print(d['content'].get('title'))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4013,
+      "cache_read_input_tokens": 49901,
+      "inference_geo": "global",
+      "input_tokens": 2648,
+      "output_tokens": 2089,
+      "output_tokens_details": {
+        "thinking_tokens": 684
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2016",
+    "date_said": "2016-12-05",
+    "quote": "I think when we say that [general artificial intelligence] is 20 years out, or decades away, what we are saying is that it is so far out that we can't really measure it.",
+    "what_is_predicted": "General AI is about 20 years or decades away, too far off to measure. Same remark printed by TechCrunch (5 Dec 2016, techcrunch.com/2016/12/05/deepmind-ceo-mustafa-suleyman-says-general-ai-is-still-a-long-way-off) as: \"when we say it's 20 years out or decades way, we say that it so far out, we can't really measure it.\"",
+    "date_or_span": "20 years / decades",
+    "occasion": "TechCrunch Disrupt London 2016, on-stage conversation with Jordan Crook",
+    "source_url": "https://www.techworld.com/startups/deepmind-co-founder-says-general-ai-remains-long-way-off-3651343/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Techworld news story on Suleyman's remarks at TechCrunch Disrupt London; it has the quote word for word, followed by his line that he can't tell 20 years from 50 and that general AI is 'definitely a long way off'.",
+    "date_on_page": "",
+    "role_at_the_time": "co-founder of DeepMind (then owned by Google, with Demis Hassabis as chief executive); whether this counts as founder-leader is not settled",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "He gives '20 years out, or decades away' only to say it is too far off to measure, and can't tell 20 years from 50, so the words are closer to an undated 'long way off' than a 'not within 20 years' forecast. Part 1 is also open, since he was a co-founder but not DeepMind's chief executive, and the only source is a news report."
+  },
+  "reply_text": "I fetched the Techworld page and the quoted words are on it exactly. Admission is **borderline**: the main problem is part 3 (a date), and part 1 (his role) is also open.\n\n**The page.** It's a Techworld news story about Suleyman speaking at TechCrunch Disrupt London. It's a report, not a transcript or his own post. It has the quote word for word, including the bracketed \"[general artificial intelligence]\". The next line on the page is: \"So anything beyond that sort of time horizon means it is very difficult for me to say the difference between 20 years and 50 years. So I think it is definitely a long way off…\" The text I got back had no date for the article or the talk. The 2016-12-05 date comes from the search run's note on TechCrunch's web address, not from this page. So at best this is \"pass, coverage only\" on part 4.\n\n**Part 1, his role.** Your role history says only \"co-founder of DeepMind (2010)\". In 2016 DeepMind was owned by Google, Demis Hassabis was its chief executive, and I recall Suleyman's title as head of applied AI (from memory, not from the page). Techworld calls him \"DeepMind cofounder\", and TechCrunch's web address calls him \"CEO\". Whether a co-founder who wasn't the chief executive counts as a \"founder-leader\" isn't settled by the role history, so a person needs to decide this.\n\n**Parts 2 and 3, a dated forward claim.** It does look forward and is about general AI. But \"20 years\" isn't a date he gives. He uses it to describe what such estimates mean (\"so far out that we can't really measure it\"), and then says he can't tell 20 years from 50. What he actually says, \"definitely a long way off\", is the \"still many years away\" kind of statement that the rule keeps out. You could read it as \"not within 20 years\" under reading 2, but he refuses to stand by any number. That's a truly borderline case, and the rule says those stay out and are logged as borderline.\n\n**Recorded files.** None of his recorded claim files is from 2016 or makes this claim, so it isn't \"recorded\".\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Techworld news story on Suleyman's remarks at TechCrunch Disrupt London; it has the quote word for word, followed by his line that he can't tell 20 years from 50 and that general AI is 'definitely a long way off'.\",\n  \"date_on_page\": \"\",\n  \"role_at_the_time\": \"co-founder of DeepMind (then owned by Google, with Demis Hassabis as chief executive); whether this counts as founder-leader is not settled\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"He gives '20 years out, or decades away' only to say it is too far off to measure, and can't tell 20 years from 50, so the words are closer to an undated 'long way off' than a 'not within 20 years' forecast. Part 1 is also open, since he was a co-founder but not DeepMind's chief executive, and the only source is a news report.\"\n}\n```"
+}

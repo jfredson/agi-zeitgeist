@@ -1,0 +1,59 @@
+{
+  "speaker_id": "lecun",
+  "row": 11,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.072,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    for k in [\\\"smartphones\\\",\\\"human-level intelligence\\\",\\\"10 or 15\\\",\\\"Heikkil\\\",\\\"June\\\"]:\\n        i=c.find(k);print(k,i,c[max(0,i-400):i+300] if i>=0 else '')\"}",
+    "https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data'];print(len(c))\\nfor k in [\\\"smartphones\\\",\\\"human-level intelligence\\\",\\\"Heikkil\\\",\\\"June 24\\\",\\\"Chief AI\\\"]:\\n    i=c.find(k);print('==',k,i,c[max(0,i-500):i+300] if i>=0 else '')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3767,
+      "cache_read_input_tokens": 47217,
+      "inference_geo": "global",
+      "input_tokens": 1443,
+      "output_tokens": 1895,
+      "output_tokens_details": {
+        "thinking_tokens": 448
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-06",
+    "quote": "He says that in 10 or 15 years people won’t be carrying smartphones in their pockets, but augmented-reality glasses fitted with virtual assistants that will guide humans through their day. “For those to be most useful to us, they basically have to have more or less human-level intelligence,” he says.",
+    "what_is_predicted": "Within 10 to 15 years, AR glasses with AI virtual assistants that guide people through their day will replace smartphones.",
+    "date_or_span": "10 or 15 years (from mid-2022, so about 2032-2037)",
+    "occasion": "Interview with MIT Technology Review (Melissa Heikkilä and Will Douglas Heaven) for the article 'Yann LeCun has a bold new vision for the future of AI', published 24 June 2022",
+    "source_url": "https://www.technologyreview.com/2022/06/24/1054817/yann-lecun-bold-new-vision-future-ai-deep-learning-meta/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "MIT Technology Review article by Heikkilä and Heaven dated June 24, 2022; the '10 or 15 years' smartphones-to-AR-glasses forecast is the reporters' summary, and only the 'more or less human-level intelligence' sentence is a direct quote from LeCun.",
+    "date_on_page": "2022-06-24",
+    "role_at_the_time": "Meta Chief AI Scientist (about 2018-2025)",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said while he was Meta's Chief AI Scientist. It forecasts AI assistants in AR glasses guiding people through their day within 10 or 15 years, so it is about AI and carries a span. The dated words exist only in the reporters' summary, so it is coverage only."
+  },
+  "reply_text": "**Reading: pass, coverage only**\n\n**Page check.** The page opened. It is MIT Technology Review's article \"Yann LeCun has a bold new vision for the future of AI\" by Melissa Heikkilä and Will Douglas Heaven, dated June 24, 2022. The quoted passage is on it word for word. But only the second sentence, \"For those to be most useful to us, they basically have to have more or less human-level intelligence\", is LeCun's own words in quotation marks. The dated part, \"in 10 or 15 years people won't be carrying smartphones…\", is the reporters' summary of what he said. Because the date sits only in that summary, this is a news report, not his own words.\n\n**The four parts of the rule:**\n1. **Role: met.** In June 2022 LeCun was Meta's Chief AI Scientist, from about 2018 to 2025. That makes him the named chief scientist of a company that builds frontier AI models. One caveat: the article doesn't say he was speaking for Meta. It does say his vision \"is colored by that of his employer, Meta.\"\n2. **Forward-looking and about AI: met, with a caveat.** The forecast is that AR glasses with AI assistants will \"guide humans through their day\" in place of smartphones. That is a claim about what deployed AI will do, not a plain hardware date, and it isn't framed as a hypothetical. The caveat: much of it is about a device, glasses replacing phones. The \"human-level intelligence\" line is a condition he sets for the assistants to be most useful, not a dated prediction in its own right. Overall I read part 2 as met.\n3. **Date or span: met.** \"10 or 15 years\" from June 2022. Under the range rule the later end applies, so it is due by 2037.\n4. **Source: coverage only.** The dated words appear only in the reporters' summary, so it can be entered as coverage_only with no quote.\n\n**Not already recorded.** None of LeCun's recorded claim files is about AR glasses or assistants replacing smartphones.\n\n**For the checker:** look again at part 2 to confirm the glasses forecast is mainly about AI and not about a device.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"MIT Technology Review article by Heikkilä and Heaven dated June 24, 2022; the '10 or 15 years' smartphones-to-AR-glasses forecast is the reporters' summary, and only the 'more or less human-level intelligence' sentence is a direct quote from LeCun.\",\n  \"date_on_page\": \"2022-06-24\",\n  \"role_at_the_time\": \"Meta Chief AI Scientist (about 2018-2025)\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said while he was Meta's Chief AI Scientist. It forecasts AI assistants in AR glasses guiding people through their day within 10 or 15 years, so it is about AI and carries a span. The dated words exist only in the reporters' summary, so it is coverage only.\"\n}\n```"
+}

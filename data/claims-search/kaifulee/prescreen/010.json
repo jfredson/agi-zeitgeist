@@ -1,0 +1,61 @@
+{
+  "speaker_id": "kaifulee",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1053,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['2026','unit of work','TED','Levy','October','2025']:\\n        for m in re.finditer(k,c):\\n            print(k,':',c[max(0,m.start()-250):m.start()+250].replace('\\\\n',' ')); print('--')\\n\"}",
+    "https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['2026','unit of work','Levy','October 2','published']:\\n    for m in re.finditer(k,c):\\n        print(k,':',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('--')\"}",
+    "{\"code\": \"print(c[:5000])\"}",
+    "{\"code\": \"print(c[5000:11000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 7505,
+      "cache_read_input_tokens": 77019,
+      "inference_geo": "global",
+      "input_tokens": 1648,
+      "output_tokens": 2288,
+      "output_tokens_details": {
+        "thinking_tokens": 515
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-10",
+    "quote": "predicted that 2026 will be the year AI agents become the fundamental unit of work",
+    "what_is_predicted": "In 2026 AI agents will become the basic unit of work.",
+    "date_or_span": "2026",
+    "occasion": "TED AI San Francisco 2025, video conversation with Steven Levy. These are blogger Alastair Goldfisher's words; no direct quote from Lee carrying the date was seen.",
+    "source_url": "https://theventurelens.substack.com/p/kai-fu-lee-ai-agents-2026",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Substack post by blogger Alastair Goldfisher (The Venture Lens, dated Oct 22, 2025) reporting Lee's TED AI San Francisco video conversation with Steven Levy; the quoted words are Goldfisher's own paraphrase ('predicted that 2026 will be the year AI agents become the fundamental unit of work'), and no direct quote from Lee carrying the date appears.",
+    "date_on_page": "2025-10-22",
+    "role_at_the_time": "founder-leader of 01.AI (frontier model builder, founded 2023)",
+    "admission": "pass, coverage only",
+    "failed_part": "4",
+    "reason": "Said in October 2025 while Lee led 01.AI. It is a dated (2026) forward-looking claim about AI agents, but the only source is a blogger's paraphrase, so it can only be entered as coverage_only with no quote. The checker should compare it with 2026-02-04-kaifulee-agents-explode-in-2026: if that is the same claim, this earlier date becomes its key date."
+  },
+  "reply_text": "I opened the page. The words are there, but they are the blogger's, not Lee's. The candidate passes as **coverage only**, and it may overlap with a claim already recorded.\n\n**1. Page check:** The page is a Substack post on Alastair Goldfisher's newsletter, The Venture Lens. It is titled \"Kai-Fu Lee Says 2026 Will Be the Year of AI Agents. Haven't We Heard That Before?\" and dated Oct 22, 2025. It reports on Lee's video conversation with Steven Levy at TED AI San Francisco. The quoted words appear exactly, in Goldfisher's own sentence: Lee \"appeared on video screen from China and predicted that 2026 will be the year AI agents become the fundamental unit of work.\"\n\nThe post only quotes Lee directly once: \"CEOs, not CIOs, need to lead the AI transformation\". That line has no date in it. So the dated claim exists only as the blogger's report of what Lee said.\n\n**2. The four parts of the rule:**\n- **Part 1 (role):** He passes. In October 2025 Lee was the founder-leader of 01.AI, which builds frontier models. He founded it in 2023, and it is the basis for his other 2024–2025 claims in the ledger. The page itself calls him \"Sinovation Ventures CEO\", which is not a qualifying role, but it also names 01.AI.\n- **Part 2 (forward-looking and about AI):** It passes. It says what AI agents will be: the basic unit of work. Whether that can be tested is a question for the `bar` field when the claim is entered, not for admission.\n- **Part 3 (a date):** It passes. The date is 2026.\n- **Part 4 (a primary source):** It fails. The only source is the blog post, so the claim can only be entered as `coverage_only`, with no quote.\n\n**For the checker, a possible overlap:** The recorded file `2026-02-04-kaifulee-agents-explode-in-2026.toml` makes a forecast about agents with the same due year. I can only see its file name, not what's inside, so I can't tell whether it is the same claim.\n- If it is, the restatement rule makes this one claim keyed to the first date, so this October 2025 saying would become the key date and February 2026 would go in `repeated_on`.\n- If it isn't (agents \"exploding\" is not the same as becoming \"the fundamental unit of work\"), this is a separate claim.\n\nI haven't marked it \"recorded\" because I couldn't confirm the match.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Substack post by blogger Alastair Goldfisher (The Venture Lens, dated Oct 22, 2025) reporting Lee's TED AI San Francisco video conversation with Steven Levy; the quoted words are Goldfisher's own paraphrase ('predicted that 2026 will be the year AI agents become the fundamental unit of work'), and no direct quote from Lee carrying the date appears.\",\n  \"date_on_page\": \"2025-10-22\",\n  \"role_at_the_time\": \"founder-leader of 01.AI (frontier model builder, founded 2023)\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"4\",\n  \"reason\": \"Said in October 2025 while Lee led 01.AI. It is a dated (2026) forward-looking claim about AI agents, but the only source is a blogger's paraphrase, so it can only be entered as coverage_only with no quote. The checker should compare it with 2026-02-04-kaifulee-agents-explode-in-2026: if that is the same claim, this earlier date becomes its key date.\"\n}\n```"
+}

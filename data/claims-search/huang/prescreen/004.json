@@ -1,0 +1,60 @@
+{
+  "speaker_id": "huang",
+  "row": 4,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0827,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('2021')\\n    while i!=-1:\\n        print('---',c[max(0,i-700):i+300]); i=c.find('2021',i+1)\"}",
+    "https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nfor k in ['2021','hitting','branded']:\\n    i=c.find(k)\\n    while i!=-1:\\n        print('---',k,c[max(0,i-900):i+400]); i=c.find(k,i+1)\\n        break\"}",
+    "{\"code\": \"for k in ['earnings','call','August','Published','date']:\\n    i=c.find(k); print('---',k,c[max(0,i-300):i+300] if i!=-1 else None)\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4479,
+      "cache_read_input_tokens": 60912,
+      "inference_geo": "global",
+      "input_tokens": 1170,
+      "output_tokens": 2174,
+      "output_tokens_details": {
+        "thinking_tokens": 551
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-08",
+    "quote": "And then the fully autonomous ... branded cars will start hitting ... around 2020 and 2021, OK?",
+    "what_is_predicted": "Fully autonomous branded cars will start reaching the road around 2020 and 2021.",
+    "date_or_span": "around 2020 and 2021",
+    "occasion": "Nvidia Q2 FY2018 earnings call (August 2017), as quoted, with the article's ellipses, by The Motley Fool",
+    "source_url": "https://www.fool.com/investing/2017/08/20/nvidia-ceo-heres-our-roadmap-for-growth-from-auton.aspx",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Motley Fool article (Beth McKenna, 2017-08-20) quoting Huang's remarks on the analyst call after Nvidia's fiscal Q2 2018 results of 10 August 2017; the quote matches word for word, including the article's own ellipses.",
+    "date_on_page": "2017-08",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Nvidia's chief executive, a dated forecast (around 2020 and 2021, due 2021) of when fully autonomous cars will be deployed, but known here only from a news article that cuts the quote with ellipses. Check by hand whether the recorded 2018-05-10 self-driving-cars-2020-to-2021 claim repeats it unchanged; if so, this earlier date should become that claim's key."
+  },
+  "reply_text": "I'd admit this as **pass, coverage only**. The quoted words are on the page exactly, but the page is a news report, not a transcript. Before entry, someone should check whether it is the same claim as the recorded 2018-05-10 self-driving-cars-2020-to-2021 file.\n\n**Page check.** The Motley Fool page opened. It is an article by Beth McKenna dated 2017-08-20. It quotes Huang's remarks from the analyst call after Nvidia's second-quarter results for fiscal 2018, which the article says were released on 10 August 2017. The quote is in the article word for word, ellipses included: \"And then the fully autonomous ... branded cars will start hitting ... around 2020 and 2021, OK?\" The ellipses are the article's own cuts, so the missing words (probably what kind of brand, and \"the road\") are not on this page. That makes it coverage, not a transcript. The page doesn't give the call's exact date; 10 August 2017 is only the results date the article names.\n\n**The four parts of the rule:**\n1. **Role:** passes. Huang has been Nvidia's chief executive since 1993, and Nvidia makes the chips frontier AI models are trained on.\n2. **Forward-looking and about AI:** passes. Fully autonomous cars are AI systems, and the words say when they will be deployed. That puts it in the same kind as the self-driving claims already recorded for him.\n3. **Date:** passes. \"Around 2020 and 2021\" is a range, so it is due at the later end, 2021, with 2020 as the early end.\n4. **Primary source:** passes only as coverage. All I fetched is the news article, which cuts the quote with ellipses, so it can be entered as `coverage_only` with no quote. A transcript of the earnings call would probably upgrade it, but I didn't fetch one.\n\n**Possible repeat.** None of the recorded files is dated August 2017, so I haven't marked it \"recorded\". But the 2018-05-10 file appears to make the same prediction with the same due years. If so, this is an unchanged repeat, and the restatement rule keys a repeat to its first date. This 2017 instance would then become the claim's date, and 2018-05-10 would move to `repeated_on`. I haven't opened that file, so someone needs to compare the two by hand.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Motley Fool article (Beth McKenna, 2017-08-20) quoting Huang's remarks on the analyst call after Nvidia's fiscal Q2 2018 results of 10 August 2017; the quote matches word for word, including the article's own ellipses.\",\n  \"date_on_page\": \"2017-08\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Nvidia's chief executive, a dated forecast (around 2020 and 2021, due 2021) of when fully autonomous cars will be deployed, but known here only from a news article that cuts the quote with ellipses. Check by hand whether the recorded 2018-05-10 self-driving-cars-2020-to-2021 claim repeats it unchanged; if so, this earlier date should become that claim's key.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "sutskever",
+  "row": 6,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1064,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://openai.com/index/elon-musk-wanted-an-openai-for-profit/\\\"})\\nif isinstance(r,dict):print(r)\\nelse:\\n    c=r[0]['content'];print(len(c),r[0].get('title'))\\n    import re\\n    for k in ['adversarial','business of building','Progress this week','July']:\\n        for m in re.finditer(k,c):print(k,'::',c[max(0,m.start()-400):m.start()+400].replace('\\\\n',' '));print('---')\"}",
+    "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data'];print(len(c))\\nimport re\\nfor k in ['adversarial','business of building','Progress this week','July 12','2017']:\\n    for m in re.finditer(k,c):print(k,'::',c[max(0,m.start()-300):m.start()+400].replace('\\\\n',' '));print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 12082,
+      "cache_read_input_tokens": 45389,
+      "inference_geo": "global",
+      "input_tokens": 556,
+      "output_tokens": 1736,
+      "output_tokens_details": {
+        "thinking_tokens": 326
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-07-12",
+    "quote": "We will completely solve the problem of adversarial examples by the end of August.",
+    "what_is_predicted": "OpenAI will completely solve the problem of adversarial examples (in image classifiers) by the end of August 2017.",
+    "date_or_span": "by the end of August (2017)",
+    "occasion": "'Progress this week' section of the email 'The business of building AGI' from Ilya Sutskever, published by OpenAI",
+    "source_url": "https://openai.com/index/elon-musk-wanted-an-openai-for-profit/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "OpenAI's own post reprinting Sutskever's internal email 'The business of building AGI' (dated Wed, Jul 12, 2017), where the words appear word for word as a sub-bullet under 'Progress this week'.",
+    "date_on_page": "2017-07-12",
+    "role_at_the_time": "co-founder and chief scientist of OpenAI",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Written as OpenAI's chief scientist in his own email, which OpenAI published in full; it says the lab's AI work will completely solve adversarial examples by a stated date (end of August 2017), so all four parts hold. It matches none of his recorded claims."
+  },
+  "reply_text": "I'd admit this one: **pass.** The words are on the page exactly. Sutskever said them as OpenAI's chief scientist, and the claim has a date and a primary source.\n\n**The page.** The page opened. It is OpenAI's own post, \"Elon Musk wanted an OpenAI for-profit\". It reprints internal emails in full, including Sutskever's email \"The business of building AGI\", which the page dates Wed, Jul 12, 2017 at 1:36 PM. Under \"Progress this week\" there is a bullet: \"Our defense against adversarial examples is starting to work on ImageNet.\" Directly under it is the sub-bullet \"We will completely solve the problem of adversarial examples by the end of August.\" That matches the quote word for word. The email is Sutskever's own writing, reprinted whole by OpenAI, not a news report. So this is a pass, not \"pass, coverage only\".\n\n**The four parts of the rule:**\n1. **Role:** On 2017-07-12 he was co-founder and chief scientist of OpenAI, writing to Musk and Brockman with a progress update on OpenAI's research. That fits \"named chief scientist speaking for it\".\n2. **Looks forward and is about AI:** It says OpenAI's AI work will reach something: image classifiers that can't be fooled by adversarial examples. That is about what AI will do, not about money, staff or hardware, and it isn't framed as a hypothetical. One point for the person checking: it is an internal research-progress note rather than a public forecast. The rule doesn't require a claim to be public, so I don't count that against it.\n3. **Date:** \"By the end of August\", said in July 2017, means August 2017, so `due_date` would be 2017-08-31.\n4. **Primary source:** The email itself, published by OpenAI.\n\n**Not already recorded:** None of his five recorded claim files is from 2017 or about adversarial examples.\n\n**Note for entry, not part of admission:** \"Completely solve the problem\" has no definition in the email. Whoever writes the claim's test should decide whether the plain reading gives one outsiders could check, or whether it gets marked `unfalsifiable`.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"OpenAI's own post reprinting Sutskever's internal email 'The business of building AGI' (dated Wed, Jul 12, 2017), where the words appear word for word as a sub-bullet under 'Progress this week'.\",\n  \"date_on_page\": \"2017-07-12\",\n  \"role_at_the_time\": \"co-founder and chief scientist of OpenAI\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Written as OpenAI's chief scientist in his own email, which OpenAI published in full; it says the lab's AI work will completely solve adversarial examples by a stated date (end of August 2017), so all four parts hold. It matches none of his recorded claims.\"\n}\n```"
+}

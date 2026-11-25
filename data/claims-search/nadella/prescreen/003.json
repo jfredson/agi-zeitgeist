@@ -1,0 +1,60 @@
+{
+  "speaker_id": "nadella",
+  "row": 3,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0772,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0]['result_type'], r[0]['title'], len(c))\\n    import re\\n    for k in ['six-fold','sixfold','six fold','industrial control','four years']:\\n        for m in re.finditer(k,c,re.I): print(k, '::', c[max(0,m.start()-500):m.end()+300].replace('\\\\n',' ')); print('---')\\n    print(c[:600])\"}",
+    "https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"import base64,io,re\\nd=json.loads(r); data=base64.b64decode(d['content']['source']['data'])\\nimport pypdf\\np=pypdf.PdfReader(io.BytesIO(data)); c=\\\"\\\\n\\\".join(pg.extract_text() for pg in p.pages)\\nprint(len(c)); print(c[:500])\\nfor k in ['six-fold','sixfold','six fold','industrial control','four years']:\\n    for m in re.finditer(k,c,re.I): print(k,'::',c[max(0,m.start()-600):m.end()+300].replace('\\\\n',' ')); print('---')\"}",
+    "{\"code\": \"print(re.findall(r'(?:November|2021)[^\\\\n]{0,40}',c)[:10]); print(p.metadata)\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4223,
+      "cache_read_input_tokens": 61503,
+      "inference_geo": "global",
+      "input_tokens": 654,
+      "output_tokens": 2057,
+      "output_tokens_details": {
+        "thinking_tokens": 491
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2021",
+    "date_said": "2021-11-02",
+    "quote": "The percentage of industrial control systems that will include analytics and AI inference capabilities at the edge will increase by six-fold in the next four years.",
+    "what_is_predicted": "The share of industrial control systems with analytics and AI inference at the edge will grow six-fold.",
+    "date_or_span": "the next four years (to about 2025)",
+    "occasion": "Microsoft Ignite 2021 keynote (November)",
+    "source_url": "https://news.microsoft.com/wp-content/uploads/prod/2021/11/Microsoft-Ignite-2021-Satya-Nadella.pdf",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Microsoft-hosted PDF transcript of Satya Nadella's Microsoft Ignite 2021 keynote, with the quoted sentence word for word in his opening remarks on edge computing.",
+    "date_on_page": "2021-11-02",
+    "role_at_the_time": "Chief executive and chair of Microsoft",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "It has a span (four years) and comes from his own keynote transcript, but it reads like an analyst's market-adoption statistic about edge computing (the share of industrial control systems with AI inference) rather than a forecast of what AI will do or how an AI product will ship, so whether it is about AI or a business forecast is borderline."
+  },
+  "reply_text": "I checked the page and the words are there. Whether the claim gets in is **borderline**, on part 2.\n\n**The page.** The link opens a PDF headed \"Microsoft Ignite 2021 – Satya Nadella Keynote Transcript\". It is a full transcript of his own keynote, not a news report. The quote is in the keynote text word for word: \"The percentage of industrial control systems that will include analytics and AI inference capabilities at the edge will increase by six-fold in the next four years.\" The transcript itself prints no date. The file was created on 2021-11-02 (09:16, Pacific time), which matches the reported date.\n\n**The rule, part by part:**\n1. **Role: passes.** On 2021-11-02 Nadella was Microsoft's chief executive (since 2014) and its chair (since June 2021). This assumes Microsoft counts as a frontier-model or chip company in 2021. The role history's examples (Phi, Maia) came later.\n2. **Looks forward and about AI: borderline.** It looks forward, and it is about AI inference being deployed. But it is a forecast of how much of an industry will adopt the technology, said in passing during a part of the speech about edge computing, with no baseline given. It reads like an analyst's market figure he was citing, not his own forecast of what AI will do. That sits close to the \"computing build-out\" business forecasts the rule keeps out. It doesn't fit the deployment wording either: a product that is an AI system, with a claim about what it will do or how widely it ships. The rule says a truly borderline case stays out and is logged as borderline.\n3. **Date or span: passes.** \"In the next four years\" is a span counted from the day it was said, so about November 2025.\n4. **Primary source: passes.** It is a transcript of his own keynote.\n\n**Already recorded? No.** None of his seven recorded claim files is about industrial or edge AI adoption.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Microsoft-hosted PDF transcript of Satya Nadella's Microsoft Ignite 2021 keynote, with the quoted sentence word for word in his opening remarks on edge computing.\",\n  \"date_on_page\": \"2021-11-02\",\n  \"role_at_the_time\": \"Chief executive and chair of Microsoft\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"It has a span (four years) and comes from his own keynote transcript, but it reads like an analyst's market-adoption statistic about edge computing (the share of industrial control systems with AI inference) rather than a forecast of what AI will do or how an AI product will ship, so whether it is about AI or a business forecast is borderline.\"\n}\n```"
+}

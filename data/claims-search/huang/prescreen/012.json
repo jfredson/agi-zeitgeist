@@ -1,0 +1,60 @@
+{
+  "speaker_id": "huang",
+  "row": 12,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0707,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['Hyperion','Jaguar','Mercedes','March 22','2022']:\\n        for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-250):m.start()+250].replace('\\\\n',' ')); print('---')\"}",
+    "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(d['content'].get('title'), len(c))\\nfor k in ['Hyperion','Jaguar']:\\n    for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\\nprint(c[:800])\"}",
+    "{\"code\": \"import re\\nfor k in ['Hyperion','Jaguar']:\\n    for m in re.finditer(k,c): print(k, '|', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\\nprint(c[:600])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4086,
+      "cache_read_input_tokens": 60082,
+      "inference_geo": "global",
+      "input_tokens": 1208,
+      "output_tokens": 1669,
+      "output_tokens_details": {
+        "thinking_tokens": 157
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-03-22",
+    "quote": "Hyperion 8 will ship in Mercedes-Benz cars starting in 2024, followed by Jaguar Land Rover in 2025, Huang said.",
+    "what_is_predicted": "Nvidia's Hyperion 8 self-driving platform will be in Jaguar Land Rover cars from 2025.",
+    "date_or_span": "2025",
+    "occasion": "GTC Spring 2022 keynote (paraphrased in Nvidia blog wrap-up)",
+    "source_url": "https://blogs.nvidia.com/blog/ai-factories-hopper-h100-nvidia-ceo-jensen-huang/",
+    "source_kind": "coverage_only",
+    "already_recorded": "2022-03-22-huang-hyperion-8-in-jlr-cars-2025.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Nvidia's own blog wrap-up of the GTC Spring 2022 keynote by staff writer Brian Caulfield, which paraphrases Huang; the sentence appears exactly as quoted.",
+    "date_on_page": "2022-03-22",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Same claim as the recorded file 2022-03-22-huang-hyperion-8-in-jlr-cars-2025.toml, from a blog paraphrase that is coverage only. Part 2 is borderline, since Hyperion 8 is described as a hardware architecture and the words give only a ship date."
+  },
+  "reply_text": "I found the quoted words on the page exactly as given. This is the same claim as the recorded file `2022-03-22-huang-hyperion-8-in-jlr-cars-2025.toml`, so the admission is **recorded**.\n\n**Page check.** The page opened. It is Nvidia's own blog post \"Keynote Wrap-Up: Turning Data Centers into 'AI Factories'…\", written by Brian Caulfield and published 2022-03-22. The sentence reads, word for word: \"Hyperion 8 will ship in Mercedes-Benz cars starting in 2024, followed by Jaguar Land Rover in 2025, Huang said.\" This is a staff writer retelling the keynote, not a transcript and not Huang's own post. So the search run was right to call the source `coverage_only`: on its own this page would support \"pass, coverage only\" at most.\n\n**The four parts:**\n1. **Role: met.** On 2022-03-22 Huang was co-founder and chief executive of Nvidia, a company that makes the chips frontier models are trained on.\n2. **Forward-looking and about AI: borderline.** The blog itself calls Hyperion 8 \"NVIDIA's hardware architecture for self-driving cars\", and says it \"can achieve full self-driving\". The sentence only says when it will ship in cars, which looks a lot like \"a plain hardware date\", and the rule keeps those out. Against that, Hyperion 8 is the platform under the NVIDIA DRIVE self-driving system, so it could be read as an AI system's deployment. The reviewer may want to look at this again for the recorded file. The related Mercedes 2024 file has the same question.\n3. **Date: met.** It names 2025.\n4. **Source: coverage only.** The words are the blog writer's paraphrase, not Huang's own words. A transcript or recording of the GTC Spring 2022 keynote would be needed to make this a full pass.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Nvidia's own blog wrap-up of the GTC Spring 2022 keynote by staff writer Brian Caulfield, which paraphrases Huang; the sentence appears exactly as quoted.\",\n  \"date_on_page\": \"2022-03-22\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Same claim as the recorded file 2022-03-22-huang-hyperion-8-in-jlr-cars-2025.toml, from a blog paraphrase that is coverage only. Part 2 is borderline, since Hyperion 8 is described as a hardware architecture and the words give only a ship date.\"\n}\n```"
+}

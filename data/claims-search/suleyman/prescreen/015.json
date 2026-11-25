@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 15,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1185,
+  "pages_opened": [
+    "{\"code\": \"import json,re\\nr=await web_fetch({\\\"url\\\":\\\"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\\\"})\\nif isinstance(r,dict):print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    for k in ['2030','2035','yesterday','website']:\\n        for m in re.finditer(k,c):print(k,'|',c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' '));print('---')\\n    print(c[:800])\"}",
+    "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data']\\nfor k in ['2030','yesterday','IA Summit']:\\n    for m in re.finditer(k,c):print(k,'|',c[max(0,m.start()-500):m.start()+400].replace('\\\\n',' '));print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 10937,
+      "cache_read_input_tokens": 49543,
+      "inference_geo": "global",
+      "input_tokens": 2598,
+      "output_tokens": 2174,
+      "output_tokens_details": {
+        "thinking_tokens": 570
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-10-02",
+    "quote": "everyone’s going to build an AI by 2030 just as everyone built a website and everyone built an app.",
+    "what_is_predicted": "By 2030 every organisation (every brand, business and influencer) will have built its own AI, as each once built a website and an app.",
+    "date_or_span": "by 2030 (he added: 'if you disagree with me on 2030, then just roll it out to 2035')",
+    "occasion": "Madrona IA Summit 2024 fireside chat with Soma Somasegar (transcript published 2024-10-10; he refers to the Copilot launch 'yesterday', i.e. 1 October 2024)",
+    "source_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Madrona's own published recording and transcript of the IA Summit 2024 fireside chat (summit held 2 October 2024, transcript posted 9–10 October 2024); the quoted sentence appears verbatim, followed shortly by 'if you disagree with me on 2030, then just roll it out to 2035.'",
+    "date_on_page": "2024-10-02",
+    "role_at_the_time": "chief executive of Microsoft AI",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as Microsoft AI's chief executive, it forecasts that every organisation will build and deploy its own AI by 2030, a deployment claim about AI with a named year, from the event host's transcript. Close calls for the checker: whether 'everyone builds an AI' counts as being about AI rather than the market (part 2), and whether the '2035' aside affects the date (I read it as a fallback, so the due year is 2030)."
+  },
+  "reply_text": "I'd admit this one: **pass**. The quote is on the page, he held a qualifying role, the claim names a year, and the source is a transcript. Two points are close calls and need your judgement (below).\n\n**1. Page check: the words are on the page, word for word.** The page is Madrona's own published recording and transcript of the IA Summit 2024 fireside chat between Mustafa Suleyman and Soma Somasegar. It is not a news report. The transcript reads: \"…in vector space as you wish almost in real time, and everyone's going to build an AI by 2030 just as everyone built a website and everyone built an app.\" A little later he adds: \"if you disagree with me on 2030, then just roll it out to 2035.\"\n\nOn dates, the page says the summit was held in person on October 2, 2024. The visible byline says October 9, 2024, and the metadata says 2024-10-10. Somasegar mentions the announcements Suleyman made \"yesterday in New York\", which matches the Copilot launch on 1 October. So the words were said on 2024-10-02.\n\n**2. Admission rule, part by part**\n- **Part 1 (speaker and role):** He spoke as chief executive of Microsoft AI, which he has been since 2024, and the page introduces him that way. This passes on the same basis as his other recorded claims from 2024 onwards.\n- **Part 2 (forward-looking and about AI):** It says every organisation will build and deploy its own AI system, which is a claim about AI being deployed. It is not a spending or build-out forecast, and it isn't framed as a hypothetical. **Close call:** you could read it as a forecast about the market rather than about what AI will do. I come down on admitting it as a deployment claim.\n- **Part 3 (a date):** \"By 2030\" is a named year. **Close call:** the \"roll it out to 2035\" aside is a fallback he offers to anyone who disagrees, not a second forecast. I'd score it at 2030 and keep the aside in `prediction`. Separately, \"everyone\" is so loose that the claim may end up marked `unfalsifiable` when its test is written. That is decided at entry and doesn't affect admission.\n- **Part 4 (primary source):** It's a printed transcript published by the event host.\n\n**Recorded?** No. His closest recorded claims are different claims made on other dates: the brand copilots on social media (2024-12-09), conversational AI as the main way people use computers by 2030 (2024-12-09), and websites and apps becoming conversational (2023-08-18).\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Madrona's own published recording and transcript of the IA Summit 2024 fireside chat (summit held 2 October 2024, transcript posted 9–10 October 2024); the quoted sentence appears verbatim, followed shortly by 'if you disagree with me on 2030, then just roll it out to 2035.'\",\n  \"date_on_page\": \"2024-10-02\",\n  \"role_at_the_time\": \"chief executive of Microsoft AI\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Microsoft AI's chief executive, it forecasts that every organisation will build and deploy its own AI by 2030, a deployment claim about AI with a named year, from the event host's transcript. Close calls for the checker: whether 'everyone builds an AI' counts as being about AI rather than the market (part 2), and whether the '2035' aside affects the date (I read it as a fallback, so the due year is 2030).\"\n}\n```"
+}

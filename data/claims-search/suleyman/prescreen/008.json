@@ -1,0 +1,59 @@
+{
+  "speaker_id": "suleyman",
+  "row": 8,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0759,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('global arenas'); print(c[max(0,i-1500):i+800] if i>=0 else c[:3000])\"}",
+    "https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('global arenas'); print(c[max(0,i-1500):i+1000] if i>=0 else c[:4000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4181,
+      "cache_read_input_tokens": 49409,
+      "inference_geo": "global",
+      "input_tokens": 2557,
+      "output_tokens": 1744,
+      "output_tokens_details": {
+        "thinking_tokens": 511
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2018",
+    "date_said": "2018-12-19",
+    "quote": "Next year we will build global arenas in which to communicate across borders and between organisations in an attempt to minimise the potentially dangerous effects of artificial intelligence (AI) and maximise the positive impact it can have in the world.",
+    "what_is_predicted": "In 2019, new international forums will be set up to manage the risks and benefits of AI.",
+    "date_or_span": "next year (2019)",
+    "occasion": "Wired essay 'In 2019, we'll come together in the pursuit of ethical tech', reposted on his personal site",
+    "source_url": "https://mustafa-suleyman.ai/the-pursuit-of-ethical-tech",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Suleyman's own site reposting his signed Wired essay 'In 2019, we'll come together in the pursuit of ethical tech', dated 19 December 2018, with the quoted sentence word for word.",
+    "date_on_page": "2018-12-19",
+    "role_at_the_time": "co-founder of DeepMind, still at DeepMind but not its chief executive (whether this counts as founder-leader is borderline and needs checking against speakers.csv)",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "It forecasts that people will set up international forums to govern AI, not that AI will do, reach or ship anything, so it is a forecast about institutions rather than a claim about AI. Whether he held a qualifying role in 2018 is also borderline."
+  },
+  "reply_text": "I read this candidate as **out**, because it fails part 2 of the rule. The quoted words are on the page exactly as given.\n\n**The page.** The fetched page is the essay on Suleyman's own site, a repost of his Wired piece \"In 2019, we'll come together in the pursuit of ethical tech\". It is dated 19 December 2018 and links to the Wired original. The sentence appears word for word as its own paragraph: \"Next year we will build global arenas in which to communicate across borders and between organisations in an attempt to minimise the potentially dangerous effects of artificial intelligence (AI) and maximise the positive impact it can have in the world.\" It is a signed essay in his own name, so it counts as his own words, not news coverage.\n\n**The four parts of the rule:**\n1. **Role: borderline.** In December 2018 he was a DeepMind co-founder still working at DeepMind, which builds frontier models. Whether that counts as \"founder-leader\" depends on how `data/speakers.csv` records that period. Demis Hassabis was chief executive, and Suleyman was not chief executive, chair or named chief scientist. A person should check this, but it doesn't change the result because part 2 fails anyway.\n2. **About what AI will do: fails.** The forecast is that people and organisations will set up international forums to govern AI. It says nothing about what AI will do, reach or ship, or how it will be deployed. It is a forecast about institutions, like the business forecasts the rule keeps out. It is also partly a call to action (\"we will build\") rather than a prediction.\n3. **Date: passes.** \"Next year\" means 2019.\n4. **Source: passes.** It is his own signed essay.\n\n**Not already recorded.** None of his recorded claim files is from 2018 or makes this claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Suleyman's own site reposting his signed Wired essay 'In 2019, we'll come together in the pursuit of ethical tech', dated 19 December 2018, with the quoted sentence word for word.\",\n  \"date_on_page\": \"2018-12-19\",\n  \"role_at_the_time\": \"co-founder of DeepMind, still at DeepMind but not its chief executive (whether this counts as founder-leader is borderline and needs checking against speakers.csv)\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"It forecasts that people will set up international forums to govern AI, not that AI will do, reach or ship anything, so it is a forecast about institutions rather than a claim about AI. Whether he held a qualifying role in 2018 is also borderline.\"\n}\n```"
+}

@@ -1,0 +1,60 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 4,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1037,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['five to 10','human level','primary human senses','2015','Nov']:\\n        for m in re.finditer(re.escape(k),c): print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('\\\\n---',4); print(c[i:i+5000])\"}",
+    "{\"code\": \"print(c[i+5000:i+8000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6593,
+      "cache_read_input_tokens": 63156,
+      "inference_geo": "global",
+      "input_tokens": 1135,
+      "output_tokens": 2676,
+      "output_tokens_details": {
+        "thinking_tokens": 1101
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2015",
+    "date_said": "2015-11",
+    "quote": "One of our goals for the next five to 10 years is to basically get better than human level at all of the primary human senses: vision, hearing, language, general cognition",
+    "what_is_predicted": "Zuckerberg set a goal for Facebook's AI to beat human level at vision, hearing, language and general cognition within five to ten years.",
+    "date_or_span": "the next five to 10 years (from late 2015)",
+    "occasion": "Interview with Harry McCracken for the Fast Company cover story 'Inside Mark Zuckerberg's Bold Plan For The Future Of Facebook', published 2015-11-16",
+    "source_url": "https://sg.finance.yahoo.com/news/mark-zuckerberg-wants-facebook-become-171244510.html",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Business Insider news article by Tess Danielson, republished on Yahoo Finance Singapore and dated 16 November 2015, quoting Zuckerberg's interview with Fast Company; the quoted sentence matches exactly and continues 'Taste and smell, we're not that worried about … For now.'",
+    "date_on_page": "2015-11-16",
+    "role_at_the_time": "Founder and chief executive of Facebook, which had run Facebook AI Research since 2013-12",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Facebook's chief executive while it ran FAIR: a dated goal (five to ten years from late 2015, so due 2025) for AI to beat human level at named senses, found only in a news report. The 2016-04-27 'better than people at senses' file may be a repeat of this claim; because the span gives a different due year (2026 against 2025), please check whether this needs its own record or the 2016 file should be keyed to this earlier date."
+  },
+  "reply_text": "The quote is on the page word for word, and I read the candidate as **pass, coverage only**. The one open question is whether it duplicates the recorded 2016-04-27 claim.\n\n**1. The page.** It opened. It is a Business Insider article by Tess Danielson, dated 16 November 2015 and republished on Yahoo Finance Singapore. It reports Zuckerberg's interview with Fast Company and links to it. The quoted words match exactly. The article then continues the quote: \"Taste and smell, we're not that worried about … For now.\" Because this is a news report, not his own words or a transcript, the source counts as coverage only. I did not open the Fast Company piece itself (fastcompany.com/3052885). That is a magazine feature too, so it may not count as a primary source either.\n\n**2. The four parts of the rule:**\n1. **Passes.** In November 2015 Zuckerberg was founder and chief executive of Facebook, which had run Facebook AI Research since December 2013. The ledger's recorded 2016 claim from the same period suggests it already treats Facebook as a qualifying company then.\n2. **Passes.** The words look forward and are about AI: beating human level at vision, hearing, language and general cognition. \"Better than human level\" names a comparison, so under reading 4 this is not a bare \"human level\" stage. He calls it \"one of our goals\", so it goes in marked as a goal (`is_goal`).\n3. **Passes.** \"The next five to 10 years\" is a span from November 2015. Taking the later end, it is due at the end of 2025, with 2020 as the early end.\n4. **Passes as coverage only.** The only source is a news report.\n\n**Possible duplicate (please check).** The recorded file `2016-04-27-zuckerberg-better-than-people-at-senses.toml` looks like the same forecast said again five months later. I couldn't see that file, so I haven't called this \"recorded\". Counting the span from each date gives different due years: 2025 from November 2015, 2026 from April 2016. Under the restatements rule a new due year makes the later one a changed repeat, so this earlier claim would be its own record. If the ledger instead treats the two as one unchanged repeat, it should be keyed to this earlier date, and the 2016 file would need to change.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Business Insider news article by Tess Danielson, republished on Yahoo Finance Singapore and dated 16 November 2015, quoting Zuckerberg's interview with Fast Company; the quoted sentence matches exactly and continues 'Taste and smell, we're not that worried about … For now.'\",\n  \"date_on_page\": \"2015-11-16\",\n  \"role_at_the_time\": \"Founder and chief executive of Facebook, which had run Facebook AI Research since 2013-12\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Facebook's chief executive while it ran FAIR: a dated goal (five to ten years from late 2015, so due 2025) for AI to beat human level at named senses, found only in a news report. The 2016-04-27 'better than people at senses' file may be a repeat of this claim; because the span gives a different due year (2026 against 2025), please check whether this needs its own record or the 2016 file should be keyed to this earlier date.\"\n}\n```"
+}

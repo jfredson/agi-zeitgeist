@@ -1,0 +1,59 @@
+{
+  "speaker_id": "hassabis",
+  "row": 4,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0729,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.bloomberg.com/features/2016-demis-hassabis-interview-issue/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    for k in ['many decades','100 years','natural lifetimes','August','2016']:\\n        i=c.find(k); print(k,i, c[max(0,i-300):i+300] if i>=0 else '')\"}",
+    "https://www.bloomberg.com/features/2016-demis-hassabis-interview-issue/",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"c=json.loads(r)['content']['source']['data']\\nfor k in ['many decades','100 years']:\\n    i=c.find(k); print(k,i, c[max(0,i-700):i+300] if i>=0 else '')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3772,
+      "cache_read_input_tokens": 48129,
+      "inference_geo": "global",
+      "input_tokens": 1741,
+      "output_tokens": 1874,
+      "output_tokens_details": {
+        "thinking_tokens": 409
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2016",
+    "date_said": "2016-08",
+    "quote": "I think it’s many decades away for full AI. I think it’s feasible. It could be done within our natural lifetimes, but it may be it’s the next generation. It depends. I’d be surprised if it took more than, let’s say, 100 years.",
+    "what_is_predicted": "Full AI (artificial general intelligence) is many decades away and will very likely arrive within 100 years, possibly within the lifetimes of people now alive.",
+    "date_or_span": "many decades; within about 100 years",
+    "occasion": "Bloomberg Businessweek Interview Issue 2016 (issue dated August 8-21, 2016), 'Who Should Control Our Thinking Machines?', condensed and edited Q&A; answering a question that asked about artificial general intelligence",
+    "source_url": "https://www.bloomberg.com/features/2016-demis-hassabis-interview-issue/",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Bloomberg Businessweek Interview Issue page 'Who Should Control Our Thinking Machines?', a condensed and edited printed Q&A with Hassabis as CEO of DeepMind; the quote appears verbatim in his answer to a question about artificial general intelligence within his lifetime.",
+    "date_on_page": "2016-08",
+    "role_at_the_time": "Co-founder and chief executive of DeepMind (a Google company)",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as DeepMind's chief executive in a printed Q&A: a forecast about when full AI arrives, with a stated length ('surprised if it took more than 100 years'), and not one of his recorded claims. The undefined term 'full AI' will likely make its status unfalsifiable, and 'many decades' alone would be undated."
+  },
+  "reply_text": "I found the quoted words on the page, word for word. The candidate passes all four parts of the rule. It is not one of his recorded claims.\n\n**The page.** The Bloomberg page opened. It is the Businessweek Interview Issue piece \"Who Should Control Our Thinking Machines?\", described on the page as \"a condensed and edited interview with Demis Hassabis, CEO, DeepMind Technologies.\" The page says it was \"Featured in Bloomberg Businessweek, August 8-21, 2016.\" The question was: \"You've said it could be decades before you've truly developed artificial general intelligence. Do you think it will happen within your lifetime?\" His answer starts with a remark about sleep deprivation, then gives the quoted words exactly as the candidate has them. Because this is a printed question-and-answer, not a news report about the interview, it counts as a primary source.\n\n**The rule, part by part:**\n1. **Role:** He was chief executive of DeepMind in August 2016. DeepMind builds frontier AI models, so the role qualifies.\n2. **Looks forward and is about AI:** He says when \"full AI\" will arrive, in answer to a question about artificial general intelligence. It is not framed as a hypothetical. \"I'd be surprised if\" is a hedge, not a stated chance, so under the method it is scored at face value with the hedge kept in `prediction`.\n3. **Date or length of time:** \"I'd be surprised if it took more than, let's say, 100 years\" gives a length of time counted from the day he said it, so it would be due around 2116. \"Many decades away\" names no length, so on its own it would be undated. The 100 years is what carries the claim.\n4. **Primary source:** a printed Q&A, so it passes.\n\n**Not recorded:** none of his recorded claim files is from 2016. His 2011 files are different statements: a span of twenty-plus years, and transfer learning in five years.\n\n**Points for the person checking:**\n- **Status:** \"Full AI\" is a named stage and the source never defines it. Under the timing rules, the entry will probably get the status `unfalsifiable`. That affects the status, not whether the claim is admitted.\n- **Due date:** This should be confirmed by hand. \"Within our natural lifetimes\" is a hedged, vaguer limit, so I take 100 years as the stated length.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Bloomberg Businessweek Interview Issue page 'Who Should Control Our Thinking Machines?', a condensed and edited printed Q&A with Hassabis as CEO of DeepMind; the quote appears verbatim in his answer to a question about artificial general intelligence within his lifetime.\",\n  \"date_on_page\": \"2016-08\",\n  \"role_at_the_time\": \"Co-founder and chief executive of DeepMind (a Google company)\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as DeepMind's chief executive in a printed Q&A: a forecast about when full AI arrives, with a stated length ('surprised if it took more than 100 years'), and not one of his recorded claims. The undefined term 'full AI' will likely make its status unfalsifiable, and 'many decades' alone would be undated.\"\n}\n```"
+}

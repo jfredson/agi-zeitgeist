@@ -1,0 +1,60 @@
+{
+  "speaker_id": "legg",
+  "row": 8,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0682,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('2018, 2028'); print(c[max(0,i-1500):i+600])\\n    import re\\n    for m in re.finditer(r'(June|2011)',c[:3000]): print(c[max(0,m.start()-100):m.start()+100].replace('\\\\n',' '));\"}",
+    "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('2018, 2028'); print(i); print(c[max(0,i-1500):i+400])\\nfor m in re.finditer(r'(Jun|2011)',c[:5000]): print('>>',c[max(0,m.start()-80):m.start()+80].replace('\\\\n',' '))\"}",
+    "{\"code\": \"import re\\nfor m in re.finditer(r'(Jun|2011|date|publish)',c[:4000]): print('>>',c[max(0,m.start()-80):m.start()+100].replace('\\\\n',' '))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3148,
+      "cache_read_input_tokens": 59355,
+      "inference_geo": "global",
+      "input_tokens": 688,
+      "output_tokens": 1893,
+      "output_tokens_details": {
+        "thinking_tokens": 209
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2011",
+    "date_said": "2011-06-17",
+    "quote": "2018, 2028, 2050",
+    "what_is_predicted": "A 90% chance that human-level machine intelligence is developed by 2050 (third figure).",
+    "date_or_span": "2050",
+    "occasion": "LessWrong email Q&A, Q1",
+    "source_url": "https://www.lesswrong.com/posts/No5JpRCHzBrWA4jmS/q-and-a-with-shane-legg-on-risks-from-ai",
+    "source_kind": "printed_qa",
+    "already_recorded": "2011-06-17-legg-ninety-percent-by-2050.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "LessWrong post by XiXiDu printing an email question-and-answer with Shane Legg; Q1 asks for 10%/50%/90% years for human-level machine intelligence and Legg answers verbatim \"2018, 2028, 2050\".",
+    "date_on_page": "2011-06-17",
+    "role_at_the_time": "Co-founder of DeepMind (founded 2010)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "The words are on the page as a printed Q&A, dated and about AI, but the 90%-by-2050 figure is already recorded as 2011-06-17-legg-ninety-percent-by-2050.toml. Whether a 2011 DeepMind co-founder counts as a founder-leader under part 1 should be confirmed by the checker."
+  },
+  "reply_text": "I found Legg's words on the page exactly as quoted. The candidate is the same claim as one already on file, so the admission is \"recorded\".\n\n**1. The words on the page.** The page opened. It is the LessWrong post \"Q and A with Shane Legg on risks from AI\", posted by the user XiXiDu and dated 17 June 2011. It is a printed question-and-answer, so it counts as a primary source, not news coverage. Q1 asks: \"Assuming no global catastrophe halts progress, by what year would you assign a 10%/50%/90% chance of the development of human-level machine intelligence?\" The answer reads: \"**Shane Legg:** 2018, 2028, 2050\". That matches the quote exactly. The page gives no separate date for the interview, so the 17 June 2011 posting date is the only date shown.\n\n**2. The four parts of the admission rule.**\n- **Part 1 (role):** The role history says Legg co-founded DeepMind in 2010, so he was in that role when he answered in mid-2011. The checker should confirm that a co-founder of a company that, in 2011, was not yet building frontier models counts as a \"founder-leader\" in the figurehead sense. I'm not treating that as a failure, because the same occasion is already on file as a claim.\n- **Part 2 (looks forward, about AI):** Passes. It forecasts human-level machine intelligence. It is a stated chance (90%), so it should carry the `has_probability` flag. That affects how it is shown, not whether it gets in.\n- **Part 3 (date):** Passes. It names 2050.\n- **Part 4 (primary source):** Passes. It is a printed Q&A.\n\n**Already recorded.** The file `2011-06-17-legg-ninety-percent-by-2050.toml` has the same date, the same source and the same 90%-by-2050 figure, so this is not a new claim. The 10% figure from the same answer (2018) also has its own file, `2011-06-17-legg-ten-percent-by-2018.toml`. The 50% figure (2028) has no 2011 file. There is a `2010-12-10-legg-human-level-agi-mean-2028.toml`, but its file name says \"mean\", not a 50% chance. If it isn't the same forecast, the 2028 figure may be a separate candidate worth a look. I haven't opened that file or checked it.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"LessWrong post by XiXiDu printing an email question-and-answer with Shane Legg; Q1 asks for 10%/50%/90% years for human-level machine intelligence and Legg answers verbatim \\\"2018, 2028, 2050\\\".\",\n  \"date_on_page\": \"2011-06-17\",\n  \"role_at_the_time\": \"Co-founder of DeepMind (founded 2010)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"The words are on the page as a printed Q&A, dated and about AI, but the 90%-by-2050 figure is already recorded as 2011-06-17-legg-ninety-percent-by-2050.toml. Whether a 2011 DeepMind co-founder counts as a founder-leader under part 1 should be confirmed by the checker.\"\n}\n```"
+}

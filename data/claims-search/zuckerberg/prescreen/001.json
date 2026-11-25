@@ -1,0 +1,59 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 1,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0798,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['10 years','ten years','better than humans','reading','Quartz','English']:\\n        for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('# '); print(c[i:i+5000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4227,
+      "cache_read_input_tokens": 46636,
+      "inference_geo": "global",
+      "input_tokens": 1129,
+      "output_tokens": 2242,
+      "output_tokens_details": {
+        "thinking_tokens": 679
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2014",
+    "date_said": "2014-10-22",
+    "quote": "I think 10 years from now computers will be better than humans at reading, listening, talking, and other things.",
+    "what_is_predicted": "Within ten years computers will outperform humans at reading, listening and talking.",
+    "date_or_span": "10 years from 2014 (about 2024)",
+    "occasion": "Q&A at Tsinghua University, Beijing, held mostly in Mandarin; the quote is Quartz's English translation as reprinted by VentureBeat (the page notes the phrase 'artificial intelligence' was said in English)",
+    "source_url": "https://venturebeat.com/2014/10/23/what-zuckerberg-revealed-in-chinese-artificial-intelligence-is-a-key-facebook-mission/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A VentureBeat news article (Gregory Ferenstein, 23 Oct 2014) quoting Quartz's English translation of Zuckerberg's Mandarin Q&A at Tsinghua University; the quoted sentence appears exactly.",
+    "date_on_page": "2014-10",
+    "role_at_the_time": "founder and chief executive of Facebook (running Facebook AI Research since 2013-12)",
+    "admission": "pass, coverage only",
+    "failed_part": "",
+    "reason": "Said as Facebook's chief executive, the words say within ten years computers will beat humans at reading, listening and talking, a dated and testable claim about AI. The only source is a news report quoting a third party's translation, so it enters as coverage only. It is not the recorded 2016 senses claim, which names a different span and so would restate this one."
+  },
+  "reply_text": "I'd admit this as **pass, coverage only**. The words are on the page exactly, but the page is a news report quoting someone else's translation, not a primary source.\n\n**1. The page check.** The VentureBeat page opened. It is an article by Gregory Ferenstein, dated 23 October 2014. It quotes Quartz's English translation of Zuckerberg's question-and-answer session at Tsinghua University, which he gave in Mandarin. The quoted words are there exactly: \"I think 10 years from now computers will be better than humans at reading, listening, talking, and other things.\" They follow \"Second, we want to develop [in English] artificial intelligence.\" The page gives no exact date for the talk. It says it happened \"this week\", and the article it links to about the talk is dated 22 October 2014. So the page only supports October 2014, and the 2014-10-22 date in the candidate comes from that linked address.\n\n**2. The four parts of the rule.**\n- **Part 1, role: passes.** In October 2014 he was founder and chief executive of Facebook, which had been running Facebook AI Research since December 2013. The ledger already treats pre-Llama Facebook as qualifying, since his 2016-04-27 claim is recorded. The person checking may still want to confirm that Facebook in 2014 counts as a frontier-model builder.\n- **Part 2, forward-looking and about AI: passes.** He says computers will be better than humans at reading, listening and talking. That names a comparison with people, so it has a plain-reading test under reading 4 rather than being a bare named stage. \"And other things\" is vague, but it only adds to the testable core. The framing (\"if I ask 10 years from now, what should we develop?\") is a statement of the company's mission, but the sentence itself is a forecast, not a hypothetical.\n- **Part 3, a date or span: passes.** \"10 years from now\", said in October 2014, runs to 2024.\n- **Part 4, a primary source: fails as a primary source, so the claim can only enter as coverage only.** The only source is a news report quoting a third party's translation. No transcript or recording in his own words was checked.\n\n**Not \"recorded\".** The closest recorded file is 2016-04-27-zuckerberg-better-than-people-at-senses. That one, from memory, says five to ten years from 2016; I didn't open the file or the source. That would be a different due year. Under the restatement rule, this 2014 claim is the earlier record, and the 2016 file would be a changed repeat that should name it in `restates`. The person checking should confirm this against the 2016 file.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A VentureBeat news article (Gregory Ferenstein, 23 Oct 2014) quoting Quartz's English translation of Zuckerberg's Mandarin Q&A at Tsinghua University; the quoted sentence appears exactly.\",\n  \"date_on_page\": \"2014-10\",\n  \"role_at_the_time\": \"founder and chief executive of Facebook (running Facebook AI Research since 2013-12)\",\n  \"admission\": \"pass, coverage only\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Facebook's chief executive, the words say within ten years computers will beat humans at reading, listening and talking, a dated and testable claim about AI. The only source is a news report quoting a third party's translation, so it enters as coverage only. It is not the recorded 2016 senses claim, which names a different span and so would restate this one.\"\n}\n```"
+}

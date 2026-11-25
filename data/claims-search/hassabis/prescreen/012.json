@@ -1,0 +1,59 @@
+{
+  "speaker_id": "hassabis",
+  "row": 12,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0982,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['next decade','2030','decade','on track','timeline']:\\n        for m in re.finditer(k,c,flags=re.I):\\n            print('--',k,':',c[max(0,m.start()-400):m.end()+300].replace('\\\\n',' '))\\n\"}",
+    "https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['next decade','2030','decade','on track','timeline']:\\n    for m in re.finditer(k,c,flags=re.I):\\n        print('--',k,':',c[max(0,m.start()-500):m.end()+300].replace('\\\\n',' '))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4906,
+      "cache_read_input_tokens": 48174,
+      "inference_geo": "global",
+      "input_tokens": 1653,
+      "output_tokens": 2873,
+      "output_tokens_details": {
+        "thinking_tokens": 1050
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-02-28",
+    "quote": "in the next decade",
+    "what_is_predicted": "AGI-like systems could arrive within the next decade; the reviewer says Hassabis implied they are on track for 2030.",
+    "date_or_span": "the next decade / 2030",
+    "occasion": "Dwarkesh Patel podcast, timelines segment (~24:00); seen only in Zvi Mowshowitz's write-up because the podcast page cut off before this section",
+    "source_url": "https://thezvi.wordpress.com/2024/03/01/notes-on-dwarkesh-patels-podcast-with-demis-hassabis/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Zvi Mowshowitz's blog notes on the Dwarkesh Patel episode (a write-up, not a transcript), where item 13 (24:00) reports that Demis 'implies AGI-like systems are on track for 2030 and says he wouldn't be surprised to get them \"in the next decade\"'; only 'in the next decade' is given as his words, and the 2030 is Zvi's inference.",
+    "date_on_page": "",
+    "role_at_the_time": "chief executive of Google DeepMind",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "It passes all four parts only as coverage, but it is the same prediction with the same due year (AGI-like systems not surprising within the next decade, so 2034) as 2024-02-23-hassabis-agi-not-surprised-within-decade-or-sooner.toml, so it is an unchanged repeat to add to that file's repeated_on; the 'on track for 2030' part is Zvi's inference and matches the recorded twenty-year-plan file."
+  },
+  "reply_text": "I fetched the page and the words are on it, but only as Zvi Mowshowitz's report, so this is coverage only. The claim looks like one already on file, so I've read it as \"recorded\".\n\n**Page check.** The page is Zvi Mowshowitz's blog post \"Notes on Dwarkesh Patel's Podcast with Demis Hassabis\", published 2024-03-01. It is his notes on the episode, not a transcript and not Hassabis's own post. Item 13, marked (24:00), says: \"Dwarkesh asks timelines, notes Shane said median of 2028. Demis sort of dodges and tries to not get pinned down but implies AGI-like systems are on track for 2030 and says he wouldn't be surprised to get them 'in the next decade.'\"\n- **Quoted:** only \"in the next decade\" is in quotation marks, so those are the only words the post gives as his.\n- **Not quoted:** \"on track for 2030\" is Zvi's own inference (\"implies\"). Nothing on the page has Hassabis saying 2030.\n- **Date:** the page gives no date for the interview, only \"this past week\" in the opening. So I can't confirm 2024-02-28 from this page.\n\n**The four parts:**\n1. **Role: met.** He was chief executive of Google DeepMind (DeepMind before April 2023), a frontier-model company.\n2. **Forward-looking and about AI: met.** \"Wouldn't be surprised\" is a hedge word, not a probability, so it would be scored at face value.\n3. **Date or span: met.** \"The next decade\" is a span, giving 2034.\n4. **Primary source: coverage only.** The page has a quote fragment but no transcript.\n\n**Recorded.** The file `2024-02-23-hassabis-agi-not-surprised-within-decade-or-sooner.toml` makes the same prediction with the same due year, about five days earlier. Under the restatement rule that is an unchanged repeat: 2024-02-28 should be added to that file's `repeated_on`, not entered as a new claim. The \"on track for 2030\" part looks like the content of `2024-02-23-hassabis-agi-on-track-twenty-year-plan.toml` (2010 plus 20 years is 2030), and it is only Zvi's reading anyway.\n\nTwo things for the person checking:\n- **Which interview the recorded files come from.** Their 2024-02-23 date suggests the Hard Fork interview. From memory, I think the \"twenty-year project, on track\" and \"not surprised within the next decade\" lines may actually be from this Dwarkesh episode. I couldn't confirm that, because the Dwarkesh page wasn't opened. Either way the reading stays \"recorded\", but the existing files' date and source may need checking.\n- **\"AGI\" as an undefined stage.** If the file is redone with the full words, a bare \"AGI-like systems\" with no definition in the source would likely be marked unfalsifiable under the timing rule.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Zvi Mowshowitz's blog notes on the Dwarkesh Patel episode (a write-up, not a transcript), where item 13 (24:00) reports that Demis 'implies AGI-like systems are on track for 2030 and says he wouldn't be surprised to get them \\\"in the next decade\\\"'; only 'in the next decade' is given as his words, and the 2030 is Zvi's inference.\",\n  \"date_on_page\": \"\",\n  \"role_at_the_time\": \"chief executive of Google DeepMind\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"It passes all four parts only as coverage, but it is the same prediction with the same due year (AGI-like systems not surprising within the next decade, so 2034) as 2024-02-23-hassabis-agi-not-surprised-within-decade-or-sooner.toml, so it is an unchanged repeat to add to that file's repeated_on; the 'on track for 2030' part is Zvi's inference and matches the recorded twenty-year-plan file.\"\n}\n```"
+}

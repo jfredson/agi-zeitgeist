@@ -1,0 +1,60 @@
+{
+  "speaker_id": "lecun",
+  "row": 7,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1073,
+  "pages_opened": [
+    "{\"code\": \"import json,re\\nr=await web_fetch({\\\"url\\\":\\\"https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(r[0]['result_type'],len(c))\\n    t=re.sub(r'\\\\s+',' ',c)\\n    for k in ['take 10 years','10 years before','way before we reach']:\\n        for m in re.finditer(re.escape(k),t): print(k,'|',t[max(0,m.start()-1200):m.end()+400],'\\\\n---')\"}",
+    "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+    "{\"code\": \"print(type(r)); print(str(r)[:500] if not isinstance(r,dict) else r.keys())\"}",
+    "{\"code\": \"import base64,io\\nd=json.loads(r);b=base64.b64decode(d['content']['source']['data'])\\nopen('/tmp/a.pdf','wb').write(b)\\nimport pypdf\\np=pypdf.PdfReader('/tmp/a.pdf');print(len(p.pages))\\ntxt=[pg.extract_text() or '' for pg in p.pages]\\nt=' '.join(re.sub(r'\\\\s+',' ',x) for x in txt)\\nprint(len(t))\\nfor k in ['10 years before','way before we reach','take 10 years']:\\n    for m in re.finditer(re.escape(k),t): print(k,'|',t[max(0,m.start()-1200):m.end()+400],'\\\\n---')\"}",
+    "{\"code\": \"for k in ['YANN LECUN','Chief AI Scientist','VP & CHIEF','Copyright','Published by']:\\n    for m in list(re.finditer(re.escape(k),t,re.I))[:4]: print(k,'|',t[max(0,m.start()-200):m.end()+300],'\\\\n---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 6324,
+      "cache_read_input_tokens": 62234,
+      "inference_geo": "global",
+      "input_tokens": 1351,
+      "output_tokens": 2893,
+      "output_tokens_details": {
+        "thinking_tokens": 929
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2018",
+    "date_said": "2018",
+    "quote": "It will probably take 10 years before we find this kind of breakthrough and before it has some consequence in the real world, and that has to happen way before we reach human-level artificial general intelligence.",
+    "what_is_predicted": "The self-supervised breakthrough in learning how the world works, and its real-world effect, will probably take about 10 years, well before human-level AGI.",
+    "date_or_span": "10 years",
+    "occasion": "Interview with Martin Ford, chapter 6 of the book Architects of Intelligence (Packt, 2018)",
+    "source_url": "https://web.cs.ucla.edu/~kaoru/FordMR2018Architects-of-Intelligence.pdf",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "The page is the full PDF of Martin Ford's book Architects of Intelligence (Packt, November 2018); the quoted sentence appears word for word in the printed Q&A with Yann LeCun (chapter from p. 119), apart from line-break hyphenation in the PDF.",
+    "date_on_page": "2018-11",
+    "role_at_the_time": "Chief AI Scientist at Facebook (the book titles him 'VP & Chief AI Scientist, Facebook'); the interview date is not printed, only the 2018 copyright and November 2018 publication",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said in a printed Q&A while he was Facebook's Chief AI Scientist; it forecasts an AI breakthrough and its real-world effect within a stated span of about 10 years (due around 2028), and the hedge 'probably' is scored at face value. When the test is written, decide whether 'will probably take 10 years' means within about ten years or not before then, and whether 'this kind of breakthrough' can be tested by an outsider."
+  },
+  "reply_text": "I'd admit this one: it passes all four parts. The quote is in the book word for word, and the earlier run picked the right source.\n\n**1. Is the quote on the page?** Yes. The PDF opened. It is the full book *Architects of Intelligence* by Martin Ford (Packt, \"First published: November 2018\"). The interview with LeCun starts on page 119 and is a printed question and answer, so it is a primary source. The quoted sentence is there exactly as given, apart from line-break hyphenation in the PDF. The book gives no date for the interview itself, only the 2018 copyright and November 2018 publication.\n\n**2. The four parts of the rule:**\n\n- **Part 1 (role): passes.** The book's chapter heading and closing bio call him \"VP & Chief AI Scientist, Facebook\". That matches your role history, which has him as Chief AI Scientist from about 2018. A person checking should know two things:\n  - Because the interview date isn't printed, I am relying on the book's own title for him.\n  - He is giving his research view in this interview, not obviously \"speaking for\" Facebook. This is the same position as his other recorded claims from his Meta years.\n- **Part 2 (forward-looking and about AI): passes.** He says a breakthrough in machines learning how the world works from video (self-supervised learning), and its real-world effect, will \"probably take 10 years\". That is a statement about what AI will reach. \"Probably\" is a hedge word, not a probability, so it is scored at face value.\n  - The sentences just before it are vaguer: \"We could have a breakthrough in two years… or it might take 10 or 20 years. I have no idea when it will happen\". The sentence itself still gives his estimate, so I don't count it as a hypothetical.\n- **Part 3 (a date or span): passes.** \"10 years\" is a span counted from 2018, so the due year is about 2028.\n- **Part 4 (primary source): passes.** It is a printed Q&A.\n\n**For whoever writes the record:**\n- \"It will probably take 10 years\" could mean about ten years, or not before ten years. The test needs to be written carefully.\n- \"This kind of breakthrough\" may turn out to have no bar an outsider could test (`unfalsifiable`). That is decided at entry, not at admission.\n- The \"way before human-level AGI\" part has no date, so it is not a separate claim.\n- It is not a duplicate: none of LeCun's 26 recorded claim files is from 2018 or makes this claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"The page is the full PDF of Martin Ford's book Architects of Intelligence (Packt, November 2018); the quoted sentence appears word for word in the printed Q&A with Yann LeCun (chapter from p. 119), apart from line-break hyphenation in the PDF.\",\n  \"date_on_page\": \"2018-11\",\n  \"role_at_the_time\": \"Chief AI Scientist at Facebook (the book titles him 'VP & Chief AI Scientist, Facebook'); the interview date is not printed, only the 2018 copyright and November 2018 publication\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said in a printed Q&A while he was Facebook's Chief AI Scientist; it forecasts an AI breakthrough and its real-world effect within a stated span of about 10 years (due around 2028), and the hedge 'probably' is scored at face value. When the test is written, decide whether 'will probably take 10 years' means within about ten years or not before then, and whether 'this kind of breakthrough' can be tested by an outsider.\"\n}\n```"
+}

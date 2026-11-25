@@ -1,0 +1,60 @@
+{
+  "speaker_id": "suleyman",
+  "row": 17,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1191,
+  "pages_opened": [
+    "{\"code\": \"import json,re\\nr=await web_fetch({\\\"url\\\":\\\"https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/\\\"})\\nif isinstance(r,dict):print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    for k in ['recursive','five to 10','regulators','October','2024']:\\n        for m in re.finditer(k,c):print(k,'::',c[max(0,m.start()-400):m.start()+300].replace('\\\\n',' '));print('---')\"}",
+    "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data'];print(len(c));print(c[:1500])\\nfor k in ['recursive','five to 10','regulators']:\\n    for m in re.finditer(k,c):print(k,'::',c[max(0,m.start()-1200):m.start()+400]);print('---')\"}",
+    "{\"code\": \"for k in ['October','Oct','IA Summit','2024']:\\n    for m in list(re.finditer(k,c))[:6]:print(k,'::',c[max(0,m.start()-150):m.start()+150].replace('\\\\n',' '));print('--')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 9341,
+      "cache_read_input_tokens": 67090,
+      "inference_geo": "global",
+      "input_tokens": 2569,
+      "output_tokens": 2436,
+      "output_tokens_details": {
+        "thinking_tokens": 698
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-10-02",
+    "quote": "But likewise, recursive self-improvement, that is clearly going to raise the risk level in five to 10 years time and probably needs to be a capability that will be looked at I think by regulators in a sensible way.",
+    "what_is_predicted": "Recursive self-improvement in AI will raise the risk level within five to ten years.",
+    "date_or_span": "five to 10 years",
+    "occasion": "Madrona IA Summit 2024 fireside chat",
+    "source_url": "https://www.madrona.com/ia-summit-2024-mustafa-suleyman-from-saas-to-agents/",
+    "source_kind": "transcript",
+    "already_recorded": "2024-04-suleyman-self-improving-ai-five-to-ten-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Madrona's own page with the recording and full transcript of the IA Summit 2024 fireside chat, where the quote appears word for word in Suleyman's answer on AI and software development.",
+    "date_on_page": "2024-10-02",
+    "role_at_the_time": "chief executive of Microsoft AI",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Said as Microsoft AI chief executive, with a five-to-ten-year span in a primary transcript, so it meets all four parts. It is the same claim as 2024-04-suleyman-self-improving-ai-five-to-ten-years.toml (same span, same due year of 2034), so 2024-10-02 should go in that file's repeated_on; this match is judged from the file name only."
+  },
+  "reply_text": "I'd mark this one \"recorded\": the quote is on the page word for word, and it appears to repeat an April 2024 claim the ledger already has. I could only check that match against the file's name, not its contents, so it needs your check.\n\n**1. Page check.** The page opened. It is Madrona's own post with the recording and full transcript of the fireside chat between Suleyman (\"Microsoft AI CEO\") and Soma Somasegar, so it counts as a transcript, not news coverage. The quoted words appear in Suleyman's answer exactly as given: \"But likewise, recursive self-improvement, that is clearly going to raise the risk level in five to 10 years time and probably needs to be a capability that will be looked at I think by regulators in a sensible way.\" The post is dated October 9, 2024 (published 2024-10-10 in its metadata), and it says the summit was held on October 2, 2024. That supports the date of 2024-10-02.\n\nIn the sentences just before, he says recursive self-improvement is \"premature. I don't see that today,\" and says we'll need care about systems' incentives \"in a few years time\". The \"few years\" phrase is undated under reading 3, so only the \"five to 10 years\" sentence is a candidate.\n\n**2. Admission rule.**\n- **Part 1 (role):** passes. He was chief executive of Microsoft AI from 2024, and the page names him as Microsoft AI CEO.\n- **Part 2 (forward-looking and about AI):** passes, but it's close. It predicts that a capability, recursive self-improvement, will arrive and raise risk within a stated span; it isn't a business forecast or a hypothetical. The wording \"raise the risk level\" gives a weak test. That matters for the bar (it may be `unfalsifiable` when the bar is written) but not for admission.\n- **Part 3 (date or span):** passes. \"In five to 10 years time\" is a span; it takes the later end, so it runs to 2034.\n- **Part 4 (primary source):** passes. It is a transcript on the summit host's own page.\n\n**Already recorded.** The file `2024-04-suleyman-self-improving-ai-five-to-ten-years.toml` has the same gist and the same five-to-ten-year span. A span of up to ten years from either April or October 2024 ends in 2034. That makes this an unchanged repeat: no new claim, and 2024-10-02 should be added to that file's `repeated_on`. If the April file turns out to hold different words, this would be a pass in its own right. Two other files are different claims and don't match: the October 2024 one on teams experimenting with self-improvement in 2025, and the 2025-12-12 one on goal-setting self-improving AI.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Madrona's own page with the recording and full transcript of the IA Summit 2024 fireside chat, where the quote appears word for word in Suleyman's answer on AI and software development.\",\n  \"date_on_page\": \"2024-10-02\",\n  \"role_at_the_time\": \"chief executive of Microsoft AI\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Microsoft AI chief executive, with a five-to-ten-year span in a primary transcript, so it meets all four parts. It is the same claim as 2024-04-suleyman-self-improving-ai-five-to-ten-years.toml (same span, same due year of 2034), so 2024-10-02 should go in that file's repeated_on; this match is judged from the file name only.\"\n}\n```"
+}

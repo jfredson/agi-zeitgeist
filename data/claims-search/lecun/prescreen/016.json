@@ -1,0 +1,60 @@
+{
+  "speaker_id": "lecun",
+  "row": 16,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1017,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0]['title'], len(c))\\n    import re\\n    for k in ['five years','good path','human level','Davos','2025','January']:\\n        for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.end()+200].replace('\\\\n',' ')); print('---')\"}",
+    "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c), d['content'].get('title'))\\nfor k in ['five years','good path','human level','Davos','2025','January','Transcript','Published']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-400):m.end()+200].replace('\\\\n',' ')); print('---')\"}",
+    "{\"code\": \"import re\\nfor k in ['five years','good path','Davos','2025','January','Transcript','Published']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-400):m.end()+200].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 8123,
+      "cache_read_input_tokens": 60242,
+      "inference_geo": "global",
+      "input_tokens": 1310,
+      "output_tokens": 2190,
+      "output_tokens_details": {
+        "thinking_tokens": 514
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-01",
+    "quote": "And perhaps in five years we’ll know if we’re on the good path towards something like human level intelligence.",
+    "what_is_predicted": "Within about five years it will be known whether the new approach is on track to human-level intelligence.",
+    "date_or_span": "in five years",
+    "occasion": "The Six Five 'View from Davos' video interview at WEF 2025",
+    "source_url": "https://www.sixfivemedia.com/content/the-view-from-davos-with-metas-yann-lecun-the-future-of-ai-is-open-and-human-level-intelligent",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Six Five Media's page for its 'View from Davos' (WEF25) video interview with LeCun, with a full printed transcript containing the quote word for word.",
+    "date_on_page": "2025-01",
+    "role_at_the_time": "Meta VP & Chief AI Scientist (named chief scientist of a frontier-model company)",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "The words forecast that 'we'll know' in five years whether research is on the path to 'something like human level intelligence', not that AI will do or reach anything, and they are hedged with 'perhaps' and judged only by the speaker; a truly borderline case stays out and is logged. The preceding sentence ('early progress on this new paradigm within three to five years') appears to be the already recorded 2025-01-23 new-paradigm claim."
+  },
+  "reply_text": "I read this candidate as **borderline**, and if forced to choose I'd keep it out. The quote is on the page word for word, but it's unclear whether it counts as a prediction about AI (part 2).\n\n**1. Are the words on the page?** Yes, exactly. The page opened and is Six Five Media's own write-up of the \"View from Davos\" video interview. It has a full printed transcript, so this is a primary transcript, not a news report. In LeCun's answer: \"So, we need this new paradigm for the next… After that, so I expect to see some early progress on this sort of new paradigm within three to five years. And perhaps in five years we'll know if we're on the good path towards something like human level intelligence.\"\n\nThe page gives no exact date. It only places the interview at \"WEF25\" in Davos, so January 2025 (WEF 2025 ran 20–24 January).\n\n**2. The four parts of the rule:**\n- **Part 1 (speaker and role):** passes. The page introduces him as \"VP & Chief AI Scientist at Meta\". Meta builds frontier models, and that role fits \"named chief scientist speaking for it\".\n- **Part 2 (looks forward and is about AI):** this is the borderline part. The sentence doesn't say AI will do, reach or ship anything. It says that in five years \"we'll know\" whether research is on the right path towards \"something like human level intelligence\". That forecasts what researchers will know, not what AI will do. It is hedged with \"perhaps\", and the only judge is LeCun's own side (\"we\"). Even if it were admitted, it would almost certainly have to be `unfalsifiable`, and \"human level\" with no comparison is a named stage under reading 4. The rule says a truly borderline case stays out and is logged as borderline.\n- **Part 3 (a date or span):** passes. \"In five years\" from January 2025.\n- **Part 4 (primary source):** passes. It's a printed transcript.\n\n**Already recorded?** Not this sentence. But the sentence just before it, \"early progress on this sort of new paradigm within three to five years\", looks like the same claim as the recorded file `2025-01-23-lecun-new-paradigm-in-three-to-five-years.toml`. Whoever checks this should see whether that file's source is this same Davos interview or a different appearance that day.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Six Five Media's page for its 'View from Davos' (WEF25) video interview with LeCun, with a full printed transcript containing the quote word for word.\",\n  \"date_on_page\": \"2025-01\",\n  \"role_at_the_time\": \"Meta VP & Chief AI Scientist (named chief scientist of a frontier-model company)\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The words forecast that 'we'll know' in five years whether research is on the path to 'something like human level intelligence', not that AI will do or reach anything, and they are hedged with 'perhaps' and judged only by the speaker; a truly borderline case stays out and is logged. The preceding sentence ('early progress on this new paradigm within three to five years') appears to be the already recorded 2025-01-23 new-paradigm claim.\"\n}\n```"
+}

@@ -1,0 +1,61 @@
+{
+  "speaker_id": "legg",
+  "row": 19,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0826,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://aibusiness.com/responsible-ai/deepmind-co-founder-practical-agi-is-decades-away-sxsw-2024\\\"})\\nif isinstance(r,dict):print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'));\\n    i=c.find('decades');print(c[max(0,i-1500):i+3500])\"}",
+    "https://aibusiness.com/responsible-ai/deepmind-co-founder-practical-agi-is-decades-away-sxsw-2024",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data']\\ni=c.find('Artificial general intelligence might');print(i)\\nj=c.find('Shane Legg');print(c[j-200:j+5000])\"}",
+    "{\"code\": \"print(c[:800]);print('----');print(c[19000:24500])\"}",
+    "{\"code\": \"import re\\nfor m in re.finditer(r'(March \\\\d+, 2024|2024-03-\\\\d+)',c):print(m.group(0),c[m.start()-100:m.start()+30].replace('\\\\n',' '));\\nprint(c[18000:19000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4851,
+      "cache_read_input_tokens": 71876,
+      "inference_geo": "global",
+      "input_tokens": 708,
+      "output_tokens": 2057,
+      "output_tokens_details": {
+        "thinking_tokens": 558
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-03",
+    "quote": "Artificial general intelligence might be here in a few years, but the full spectrum of practical applications is “decades away,” according to the co-founder of DeepMind.",
+    "what_is_predicted": "Even if AGI comes soon, using it across the full range of practical applications is decades away.",
+    "date_or_span": "decades",
+    "occasion": "SXSW 2024, talking to attendees after his fireside chat with Reed Albergotti",
+    "source_url": "https://aibusiness.com/responsible-ai/deepmind-co-founder-practical-agi-is-decades-away-sxsw-2024",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "AI Business news report by Deborah Yao on Shane Legg at SXSW 2024; the quoted sentence is the article's own lead, and only 'decades away' is quoted from Legg.",
+    "date_on_page": "2024-03-12",
+    "role_at_the_time": "Chief AGI Scientist at Google DeepMind (named chief scientist; co-founder)",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "'Decades away' names no set length of time, like 'a few years' under reading 3, so it is at best a borderline 'not before about 20 years' claim. It would also be coverage only, since the page is a news report quoting just two of his words."
+  },
+  "reply_text": "The quoted words are on the page, but I'd mark this candidate **borderline**. The failing part is part 3, the date.\n\n**Page check.** The page opened, and the quote appears there word for word as the article's opening sentence. The page is a news report, not Legg's own words. It's an AI Business article by Deborah Yao dated March 12, 2024. Only two words in the quote are Legg's own, \"decades away\". The rest is the reporter's summary of what he told a group of attendees after his SXSW fireside chat with Reed Albergotti. There is no transcript on the page. So if this were admitted at all, it could only be as `coverage_only` (part 4).\n\n**Role (part 1).** The article itself calls him \"the chief AGI scientist at Google DeepMind\", which is a named chief scientist role. His recorded files from 2023 and 2025 suggest the ledger already counts that role as qualifying. Part 1 passes.\n\n**About AI and looking forward (part 2).** It's a forecast about how widely AI will be put to use, so it's about AI rather than a business forecast. One weak point: \"the full spectrum of practical applications\" would be hard for an outsider to test.\n\n**Date (part 3), where it fails.** \"Decades away\" names no set length of time. That looks like \"a few years\", which reading 3 rules undated. Someone could read it as \"not within about 20 years\", which would make it a \"will not happen by\" claim under reading 2. But that would mean supplying a number the speaker never gave. I'd call it borderline; the rule says to leave a borderline case out and log it as borderline. The article also says, in its own words, \"AGI might be achieved in foundation models 'soon'\". That part is undated too.\n\n**Not recorded.** This doesn't match any of his recorded files. Separately, the same article reports, in its own words, that he \"stood by his prior prediction that there is a 50-50 probability AGI will come by 2028\". That repeats an earlier forecast, close to his 2010 \"mean 2028\" claim, but it isn't this candidate. A person should check whether it should be added as a repeat date on an existing claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"AI Business news report by Deborah Yao on Shane Legg at SXSW 2024; the quoted sentence is the article's own lead, and only 'decades away' is quoted from Legg.\",\n  \"date_on_page\": \"2024-03-12\",\n  \"role_at_the_time\": \"Chief AGI Scientist at Google DeepMind (named chief scientist; co-founder)\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"'Decades away' names no set length of time, like 'a few years' under reading 3, so it is at best a borderline 'not before about 20 years' claim. It would also be coverage only, since the page is a news report quoting just two of his words.\"\n}\n```"
+}

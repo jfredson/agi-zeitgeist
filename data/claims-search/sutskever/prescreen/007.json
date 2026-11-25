@@ -1,0 +1,60 @@
+{
+  "speaker_id": "sutskever",
+  "row": 7,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.078,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('human-level')\\n    print(c[:600]); print('----'); print(c[max(0,i-1500):i+1000])\"}",
+    "https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['human-level','5 years','almost doesn','59:']:\\n    for m in re.finditer(re.escape(k),c): print(k, '>>', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('==')\"}",
+    "{\"code\": \"print(c[:2500])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4392,
+      "cache_read_input_tokens": 59436,
+      "inference_geo": "global",
+      "input_tokens": 680,
+      "output_tokens": 2070,
+      "output_tokens_details": {
+        "thinking_tokens": 444
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2019",
+    "date_said": "2019",
+    "quote": "We haven’t created the human-level thinking machine yet, but we get closer and closer. Maybe we’ll get to human-level AI in 5 years from now, or maybe it’ll take 50 or 100 years from now—it almost doesn’t matter.",
+    "what_is_predicted": "Human-level AI might arrive anywhere from 5 to 50 or 100 years out; he says the timing almost doesn't matter.",
+    "date_or_span": "5 years, or 50 or 100 years, from the time of the interview",
+    "occasion": "Interview in the documentary iHuman (dir. Tonje Hessen Schei), premiered at IDFA in November 2019 according to Wikipedia; dailydoc timestamp 59:07-59:14. The filming date is unknown and could be before 2019.",
+    "source_url": "https://dailydoc.com/ilya-sutskever-from-ihuman-documentary/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Daily Doc blog post (Rob Kelly, published 2025-05-20, updated 2025-08-18) listing eight quotes from Sutskever in the 2019 documentary iHuman; the quote appears word for word, attributed to 59:07–59:14, so this is coverage of the film rather than a transcript.",
+    "date_on_page": "2019",
+    "role_at_the_time": "Co-founder and chief scientist of OpenAI",
+    "admission": "out",
+    "failed_part": "2",
+    "reason": "He offers 5, 50 or 100 years only as 'maybe's and says the timing 'almost doesn't matter', so he declines to forecast rather than predicting a date. A bare 'human-level AI' with only 'maybe' spans is also undated in effect (readings 3 and 4); the checker may prefer to log it as borderline."
+  },
+  "reply_text": "I ran a first reading on this one. The quote checks out, but I'd keep the candidate out, because the words don't actually make a prediction.\n\n**1. Are the words on the page?** Yes, exactly as quoted, down to the dash before \"it almost doesn't matter\". The page is a Daily Doc blog post, \"8 Quotes from Ilya Sutskever (from iHuman documentary\", by Rob Kelly. It was published 2025-05-20 and updated 2025-08-18. It lists the quote as \"Ilya Sutskever predicting timing of AGI (59:07 – 59:14)\". So this is coverage, a blogger's list of quotes, not Sutskever's own post or a transcript. The post does embed a YouTube video. The documentary itself would be the primary recording, but I didn't check it. The page gives no filming date. It only says \"iHuman (2019)\" and \"a year before GPT-3 was released\".\n\n**2. The four parts of the rule:**\n- **Part 1 (role): passes.** He co-founded OpenAI in 2015 and was its chief scientist until 2024. The page calls him \"then Chief Scientist at OpenAI\". Even if filming happened before the 2019 premiere, it can't be earlier than 2015 in any realistic case. OpenAI's founding is the only date that could break this, so treat that as the one thing to confirm.\n- **Part 2 (looks forward about AI): fails.** He offers 5 years, 50 years or 100 years as possibilities, each with \"maybe\", and then says the timing \"almost doesn't matter\". He is deliberately not predicting a date. The rule says a hypothetical or a truly borderline line stays out, and this reads to me more like declining to forecast than forecasting.\n- **Part 3 (a date or length of time):** Spans are named, so a mechanical reading could treat it as a 5-to-100-year range and take the later end. But reading 3 already rules that a span naming only the earliest the thing could come doesn't count. Also, \"human-level AI\" with no stated comparison is a bare named stage under reading 4. So even if it were admitted, it would be `unfalsifiable`.\n- **Part 4 (primary source):** On this page it is coverage only. It could become primary if someone checks the film at 59:07.\n- **Already recorded?** No. None of his five recorded claim files is from 2019 or covers this.\n\nThe person checking should look at two things. First, whether to log this as \"borderline\" rather than \"out\": the rule says a truly borderline case stays out but is logged as borderline. Second, the filming date, if it matters.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Daily Doc blog post (Rob Kelly, published 2025-05-20, updated 2025-08-18) listing eight quotes from Sutskever in the 2019 documentary iHuman; the quote appears word for word, attributed to 59:07–59:14, so this is coverage of the film rather than a transcript.\",\n  \"date_on_page\": \"2019\",\n  \"role_at_the_time\": \"Co-founder and chief scientist of OpenAI\",\n  \"admission\": \"out\",\n  \"failed_part\": \"2\",\n  \"reason\": \"He offers 5, 50 or 100 years only as 'maybe's and says the timing 'almost doesn't matter', so he declines to forecast rather than predicting a date. A bare 'human-level AI' with only 'maybe' spans is also undated in effect (readings 3 and 4); the checker may prefer to log it as borderline.\"\n}\n```"
+}

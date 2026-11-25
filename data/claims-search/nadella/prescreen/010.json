@@ -1,0 +1,59 @@
+{
+  "speaker_id": "nadella",
+  "row": 10,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0827,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.996.fm/episodes/20vc--ep-55e1f0ea/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['those evals','five years','crazy today','2026']:\\n        for m in re.finditer(re.escape(k), c):\\n            print(k, '>>', c[max(0,m.start()-600):m.end()+400].replace('\\\\n',' ')); print('---')\"}",
+    "https://www.996.fm/episodes/20vc--ep-55e1f0ea/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:800])\\nimport re\\nfor k in ['those evals','five years','crazy today']:\\n    for m in re.finditer(re.escape(k), c, re.I):\\n        print(k, '>>', c[max(0,m.start()-1200):m.end()+800]); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5589,
+      "cache_read_input_tokens": 45682,
+      "inference_geo": "global",
+      "input_tokens": 660,
+      "output_tokens": 2149,
+      "output_tokens_details": {
+        "thinking_tokens": 466
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-10-26",
+    "quote": "You know, it might be that that thing that we just talked about, those evals.",
+    "what_is_predicted": "Each company owning private AI evals or benchmarks will be common and accepted within five years. The five-year span is in the interviewer's question, not in Nadella's answer.",
+    "date_or_span": "five years (span named in Stebbings' question: 'What looks crazy today but will be incredibly common and accepted in five years?')",
+    "occasion": "20VC podcast interview with Harry Stebbings, quick-fire round",
+    "source_url": "https://www.996.fm/episodes/20vc--ep-55e1f0ea/",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A full third-party transcript of the 20VC episode with Satya Nadella on 996.fm; the quoted words appear exactly in his answer to Stebbings' quick-fire question about what will be common in five years, though the transcript appears to give the end of his sentence ('be an an AI benchmark') to Stebbings by mistake.",
+    "date_on_page": "2026-10-26",
+    "role_at_the_time": "Chief executive and chair of Microsoft",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "The five-year span appears only in the interviewer's question; Nadella's own fragmentary answer ('it might be ... those evals') gives no date or span, so whether a span he only accepted by answering counts is not settled by the rule, and it stays out, logged as borderline."
+  },
+  "reply_text": "I read this as **borderline**. The quoted words are on the page exactly. The problem is the date: Nadella never gives one himself, and the claim gets its \"five years\" only from the interviewer's question.\n\n**1. The page.** It opened. It's a full transcript of the 20VC episode on 996.fm, which is a third-party transcript site and not a news report, so it counts as a primary source. The page says it was published 2026-10-26. That is the posting date, and I can't tell from the page when the interview was actually recorded.\n\nThe exchange, as printed:\n\n> **Harry Stebbings:** What looks crazy today but will be incredibly common and accepted in five years?\n> **Satya Nadella:** You know, it might be that that thing that we just talked about, those evals. Right? Which... What is a firm? I think a firm would\n> **Harry Stebbings [23:04]:** be an an AI benchmark. Final one for you. …\n\nThe speaker labels look wrong here. \"be an an AI benchmark\" is almost certainly the end of Nadella's sentence, not Stebbings'. The person checking should listen to the recording before relying on the exact wording.\n\n**2. The four parts of the rule.**\n- **Part 1, role: passes.** Nadella was Microsoft's chief executive (since 2014) and chair (since 2021-06-16) on any date this could have been said.\n- **Part 2, forward-looking and about AI: weak, but probably passes.** His answer only points back to \"those evals\". The earlier passage it refers to is: \"every firm will have a private eval benchmark, which is their core IP, and every model comes in and tries to sort of hill climb on that eval.\" That is a forecast about how AI is deployed. \"It might be\" reads as a hedge, not a hypothetical.\n- **Part 3, a date or span: this is where it's borderline.** \"Five years\" appears only in Stebbings' question, and Nadella's answer is a fragment. The rule asks that \"the words carry a date or a length of time\". Whether a span Nadella only accepted by answering the question counts is not covered by the rule or by any of the four rulings. The rule says a truly borderline case stays out and is logged as borderline, so that's my reading.\n- **Part 4, primary source: passes.** It's a transcript.\n\n**3. Already recorded?** No. None of his seven recorded claim files is about private evals or benchmarks.\n\n**4. A possible separate candidate.** Earlier in the same interview, at about 12:31–13:38, Nadella dates something in his own words: \"This time around, what is considered, Oh, I'm an AI native company and I do this, I think five years from now, it'll be pretty passe, I would imagine.\" That has its own five-year span. It still needs its own reading against part 2 (whether \"AI native\" becoming routine is a claim about AI or about business) and the \"I would imagine\" hedge.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A full third-party transcript of the 20VC episode with Satya Nadella on 996.fm; the quoted words appear exactly in his answer to Stebbings' quick-fire question about what will be common in five years, though the transcript appears to give the end of his sentence ('be an an AI benchmark') to Stebbings by mistake.\",\n  \"date_on_page\": \"2026-10-26\",\n  \"role_at_the_time\": \"Chief executive and chair of Microsoft\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"The five-year span appears only in the interviewer's question; Nadella's own fragmentary answer ('it might be ... those evals') gives no date or span, so whether a span he only accepted by answering counts is not settled by the rule, and it stays out, logged as borderline.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "nadella",
+  "row": 4,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0575,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://msftstories.thesourcemediaassets.com/2022/05/05242022-Build-Satya-Nadella.pdf\\\"})\\nif isinstance(r,dict):print(r)\\nelse:\\n  c=r[0]['content'];print(r[0]['result_type'],len(c),c[:300])\\n  import re\\n  for k in ['generally available','Copilot']:\\n    for m in re.finditer(k,c):print('--',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' '))\"}",
+    "https://msftstories.thesourcemediaassets.com/2022/05/05242022-Build-Satya-Nadella.pdf",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"import base64,io,re\\nd=json.loads(r);b=base64.b64decode(d['content']['source']['data'])\\nopen('/tmp/n.pdf','wb').write(b)\\nimport pypdf\\nt=\\\"\\\\n\\\".join(p.extract_text() for p in pypdf.PdfReader('/tmp/n.pdf').pages)\\nprint(t[:300])\\nfor m in re.finditer('generally available|this summer',t):print('--',t[max(0,m.start()-400):m.start()+300])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2460,
+      "cache_read_input_tokens": 45741,
+      "inference_geo": "global",
+      "input_tokens": 650,
+      "output_tokens": 1674,
+      "output_tokens_details": {
+        "thinking_tokens": 256
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2022",
+    "date_said": "2022-05-24",
+    "quote": "I’m excited to share that we will make Copilot generally available for developers later this summer, and everyone who’s registered for Build today will have free access through GA.",
+    "what_is_predicted": "GitHub Copilot, Microsoft's AI coding assistant, will become generally available to developers by the end of summer 2022.",
+    "date_or_span": "later this summer (summer 2022)",
+    "occasion": "Microsoft Build 2022 keynote",
+    "source_url": "https://msftstories.thesourcemediaassets.com/2022/05/05242022-Build-Satya-Nadella.pdf",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Microsoft's own PDF transcript of Satya Nadella's Build 2022 keynote, headed '05-24-22 Build Keynote Satya Nadella'; the quote appears verbatim.",
+    "date_on_page": "2022-05-24",
+    "role_at_the_time": "chief executive and chair of Microsoft",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as Microsoft's chief executive and chair, in Microsoft's own keynote transcript, that the AI coding assistant GitHub Copilot would be generally available later in summer 2022: a dated claim about rolling out an AI system. A season's end date is not set out in the rules (the checker should set due_date), though 'this fall' has already been admitted for Nadella."
+  },
+  "reply_text": "I found the quoted words, word for word, in Microsoft's own transcript of the keynote. I read this as a pass. A human checker should look at one point: the rules don't say when \"summer\" ends.\n\n**1. Page check.** The source link is a PDF on Microsoft's media site. It opened, and I pulled the text out of it. It is a full transcript of Nadella's keynote, headed \"05-24-22 Build Keynote Satya Nadella / Build 2022\". The quote is there exactly: \"I'm excited to share that we will make Copilot generally available for developers later this summer, and everyone who's registered for Build today will have free access through GA.\" It is Microsoft's own transcript, not a news report, so it counts as a primary source.\n\n**2. Admission rule.**\n- **Part 1, role:** On 2022-05-24 Nadella was Microsoft's chief executive (since 2014) and its chair (since 2021-06-16). Both are qualifying roles. Passes.\n- **Part 2, forward-looking and about AI:** GitHub Copilot is an AI coding assistant, and \"generally available for developers\" is a statement about rolling it out. That is an AI product release, not a plain hardware date. The ledger already admits similar release claims, such as the 2023 M365 Copilot release claim. Passes.\n- **Part 3, date:** \"Later this summer\" is a period with its own end, summer 2022. The rules spell out dates for months and quarters but not seasons, so the exact `due_date` (31 August or about 22 September 2022) is for the human checker to set. The ledger already admitted \"this fall\" in the 2023-07-25 Security Copilot file, which supports treating a season as dated. Passes, with that note.\n- **Part 4, primary source:** Microsoft's own transcript. Passes.\n- **Already recorded?** None of the seven files is about Copilot going on general release in 2022, so this is a new claim, not a repeat.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Microsoft's own PDF transcript of Satya Nadella's Build 2022 keynote, headed '05-24-22 Build Keynote Satya Nadella'; the quote appears verbatim.\",\n  \"date_on_page\": \"2022-05-24\",\n  \"role_at_the_time\": \"chief executive and chair of Microsoft\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as Microsoft's chief executive and chair, in Microsoft's own keynote transcript, that the AI coding assistant GitHub Copilot would be generally available later in summer 2022: a dated claim about rolling out an AI system. A season's end date is not set out in the rules (the checker should set due_date), though 'this fall' has already been admitted for Nadella.\"\n}\n```"
+}

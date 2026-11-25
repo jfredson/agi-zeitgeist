@@ -1,0 +1,60 @@
+{
+  "speaker_id": "legg",
+  "row": 20,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0685,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://podwise.ai/dashboard/episodes/6406921\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['two or so','five years','one year','not there yet','2025','Dec']:\\n        for m in re.finditer(re.escape(k), c):\\n            print(k, '::', c[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://podwise.ai/dashboard/episodes/6406921",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(d['content'].get('title'), len(c))\\nfor k in ['two or so','five years','one year','not there yet','2025','Dec','Chief AGI']:\\n    for m in re.finditer(re.escape(k), c):\\n        print(k, '::', c[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ')); print('---')\\n        break\"}",
+    "{\"code\": \"import re\\nfor k in ['two or so','five years','one year','not there yet','2025','Dec','minimal']:\\n    for m in re.finditer(re.escape(k), c, re.I):\\n        print(k, '::', c[max(0,m.start()-300):m.start()+200].replace('\\\\n',' ')); print('---')\\n        break\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3422,
+      "cache_read_input_tokens": 58364,
+      "inference_geo": "global",
+      "input_tokens": 707,
+      "output_tokens": 1845,
+      "output_tokens_details": {
+        "thinking_tokens": 222
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-12-11",
+    "quote": "We're not there yet, but it could be one year, it could be five years, I'm guessing probably about two or so.",
+    "what_is_predicted": "Minimal AGI, an agent that can do the cognitive things people typically can, will arrive in about two years.",
+    "date_or_span": "about two years (from December 2025)",
+    "occasion": "Google DeepMind: The Podcast, 'The Arrival of AGI' with Hannah Fry",
+    "source_url": "https://podwise.ai/dashboard/episodes/6406921",
+    "source_kind": "transcript",
+    "already_recorded": "2025-12-11-legg-minimal-agi-about-two-years.toml",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Podwise transcript page of Google DeepMind: The Podcast episode 'The arrival of AGI' with Shane Legg and Hannah Fry; the quoted sentence appears verbatim in the transcript.",
+    "date_on_page": "2025-12-11",
+    "role_at_the_time": "Chief AGI Scientist and co-founder of Google DeepMind (named chief scientist speaking for a frontier-model company)",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts (qualifying role, forward-looking AI claim with a stated comparison bar, span of about two years, transcript of his own words), and it is the same claim as 2025-12-11-legg-minimal-agi-about-two-years.toml."
+  },
+  "reply_text": "I checked this against the page, and the claim is already in the ledger as `2025-12-11-legg-minimal-agi-about-two-years.toml`.\n\n**Page check: the words are there exactly.** The Podwise page opened. It is a transcript of Google DeepMind: The Podcast, \"The arrival of AGI | Shane Legg (co-founder of DeepMind)\", dated Dec 11, 2025. Legg says: \"I have what I call minimal AGI, and that's when you have an artificial agent that can at least do all sorts of cognitive things that we would typically expect people to be able to do. We're not there yet, but it could be one year, it could be five years, I'm guessing probably about two or so.\" It is a transcript, not a news report. It is a third-party transcript, apparently machine-made, on a summary site rather than DeepMind's own channel.\n\n**Admission rule:**\n1. **Role:** Legg held a qualifying role. He was Chief AGI Scientist and co-founder of Google DeepMind, which builds frontier models. The page introduces him as \"the chief AGI scientist and co-founder\".\n2. **Looks forward and is about AI:** Yes. He says when minimal AGI will arrive. The test for \"minimal AGI\" is in the same source, so it is not a bare named stage: an agent that can do the cognitive tasks people typically can. That matches the comparison type of reading 4.\n3. **Date or length of time:** \"about two or so\" years counts as a span. \"One year … five years\" is a range, and the ledger already has it as its own file (`…-one-to-five-years.toml`).\n4. **Primary source:** a transcript of the speaker's own words.\n\nIt would pass all four parts. Because it is the same claim as the recorded file, the result is \"recorded\".\n\nThe page's AI summary also says Legg \"maintains his prediction of a 50-50 chance of achieving minimal AGI by 2028\". That is the summary's wording, not a quote. Separately, none of the listed files has a minimal-AGI-by-2028 claim with a 50% chance. If he says that himself elsewhere in the episode, it may be a further claim, and the person checking may want to look.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Podwise transcript page of Google DeepMind: The Podcast episode 'The arrival of AGI' with Shane Legg and Hannah Fry; the quoted sentence appears verbatim in the transcript.\",\n  \"date_on_page\": \"2025-12-11\",\n  \"role_at_the_time\": \"Chief AGI Scientist and co-founder of Google DeepMind (named chief scientist speaking for a frontier-model company)\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts (qualifying role, forward-looking AI claim with a stated comparison bar, span of about two years, transcript of his own words), and it is the same claim as 2025-12-11-legg-minimal-agi-about-two-years.toml.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "hassabis",
+  "row": 5,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0759,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(r[0].get('title'),len(c))\\n    for k in ['10 years','routinely','hopeful','October']:\\n        i=c.find(k);print(k,i,c[max(0,i-400):i+400] if i>=0 else '')\"}",
+    "https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r);c=d['content']['source']['data']\\nfor k in ['10 years','routinely','hopeful','published','Will Knight']:\\n    i=c.find(k);print('##',k,i,c[max(0,i-300):i+300] if i>=0 else '')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3803,
+      "cache_read_input_tokens": 47753,
+      "inference_geo": "global",
+      "input_tokens": 1732,
+      "output_tokens": 2021,
+      "output_tokens_details": {
+        "thinking_tokens": 545
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2017",
+    "date_said": "2017-10-18",
+    "quote": "Hassabis is hopeful that within 10 years AI will play an important role in solving important problems in science, medicine, or other fields. “I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine,” he says.",
+    "what_is_predicted": "Within ten years, AI algorithms like AlphaGo Zero will be routinely working with scientists to advance science and medicine.",
+    "date_or_span": "within 10 years (about 2027); the span is the reporter's paraphrase, and the quoted words have no date",
+    "occasion": "Press interview on the release of the AlphaGo Zero paper in Nature",
+    "source_url": "https://www.technologyreview.com/2017/10/18/148511/alphago-zero-shows-machines-can-become-superhuman-without-any-help/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "An MIT Technology Review news article by Will Knight (October 18, 2017) carries the text exactly: the reporter's paraphrase with 'within 10 years', then Hassabis's undated quote 'I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine.'",
+    "date_on_page": "2017-10-18",
+    "role_at_the_time": "co-founder and chief executive of DeepMind",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "The only date ('within 10 years') is the reporter's paraphrase; Hassabis's own quoted words are an undated hope, so whether this counts as a dated forecast is borderline. If admitted it could only be coverage only, since the source is a news report."
+  },
+  "reply_text": "I'd mark this one **borderline**. The quoted words are on the page, his role counts, and the claim isn't already on file. What makes it borderline is the date: the only date is in the reporter's own sentence, not in anything Hassabis is quoted saying.\n\n**1. The page.** It opened, and it's an MIT Technology Review news article by Will Knight, dated October 18, 2017 (\"AlphaGo Zero Shows Machines Can Become Superhuman Without Any Help\"). The candidate's text matches the page word for word. That text has two parts:\n- the reporter's paraphrase: \"Hassabis is hopeful that within 10 years AI will play an important role in solving important problems in science, medicine, or other fields\"\n- Hassabis's quoted words: \"I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine.\"\n\nThe quote continues on the page: \"Maybe all kinds of things will have been partly designed and discovered by these kinds of algorithms, working in tandem with very smart humans.\" It's a news report, so the most this could get is \"pass, coverage only\".\n\n**2. The four parts of the rule.**\n- **Part 1, role: passes.** In October 2017 Hassabis was chief executive and co-founder of DeepMind, a company that builds frontier models.\n- **Part 2, looks forward and is about AI: passes, but weakly.** The words are about what AI will do. They're framed as a hope (\"hopeful\", \"I hope\") rather than a forecast, which is close to aspiration.\n- **Part 3, date: this is what makes it borderline.** \"Within 10 years\" is only in the reporter's paraphrase; his own quoted words carry no date or span. A coverage-only entry could rest on the reporter's account. But the date is the reporter's wording around an undated hope, and the rule says a truly borderline case stays out and is logged as borderline.\n- **Part 4, source: coverage only.** There's no transcript or recording, only the article.\n\n**Already on file?** No. None of the listed claim files is from 2017; the closest in subject, the drug-design and science claims, are from 2024 to 2026.\n\n**For the person checking:** the question to decide is whether a reporter's dated paraphrase of a hope is enough, on its own, to support a coverage-only claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"An MIT Technology Review news article by Will Knight (October 18, 2017) carries the text exactly: the reporter's paraphrase with 'within 10 years', then Hassabis's undated quote 'I hope that these kinds of algorithms, and future versions, will be routinely working with us advancing the frontiers of science and medicine.'\",\n  \"date_on_page\": \"2017-10-18\",\n  \"role_at_the_time\": \"co-founder and chief executive of DeepMind\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"The only date ('within 10 years') is the reporter's paraphrase; Hassabis's own quoted words are an undated hope, so whether this counts as a dated forecast is borderline. If admitted it could only be coverage only, since the source is a news report.\"\n}\n```"
+}

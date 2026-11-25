@@ -1,0 +1,59 @@
+{
+  "speaker_id": "hassabis",
+  "row": 1,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0697,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('50 years'); print(c[max(0,i-2500):i+800])\"}",
+    "https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\ni=c.find('50 years'); print(i); print(c[max(0,i-3000):i+1000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4143,
+      "cache_read_input_tokens": 47539,
+      "inference_geo": "global",
+      "input_tokens": 1657,
+      "output_tokens": 1641,
+      "output_tokens_details": {
+        "thinking_tokens": 327
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2010",
+    "date_said": "2010-08",
+    "quote": "Not clear how well this will work and looks like it may take as long as 50 years to achieve good results.",
+    "what_is_predicted": "Brain reverse-engineering approaches to AGI such as Blue Brain and SyNAPSE may take up to 50 years to produce good results.",
+    "date_or_span": "as long as 50 years",
+    "occasion": "Singularity Summit 2010, San Francisco, talk 'Combining systems neuroscience and machine learning: a new approach to AGI'",
+    "source_url": "https://www.nextbigfuture.com/2010/08/combining-systems-neuroscience-and.html",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A NextBigFuture blog post by Brian Wang giving his own notes on Hassabis's Singularity Summit 2010 talk; the sentence appears exactly but is the blogger's summary of the talk, not a transcript.",
+    "date_on_page": "2010-08-15",
+    "role_at_the_time": "none",
+    "admission": "out",
+    "failed_part": "1",
+    "reason": "Said at the August 2010 Singularity Summit, apparently before DeepMind was incorporated (from memory, September 2010; check speakers.csv), so no qualifying role. It is also only the blogger's summary of an 'as long as 50 years' outside estimate about other groups' brain-copying projects, so parts 2 and 4 are weak too."
+  },
+  "reply_text": "I read this as **out**. The quote is on the page, but the page is a blogger's notes on the talk. Hassabis does not appear to have held a qualifying role yet, and the words also look weak against part 2.\n\n**The page.** It opened. It is a NextBigFuture post by Brian Wang, dated August 15, 2010, about Hassabis's Singularity Summit talk \"Combining systems neuroscience and machine learning: a new approach to AGI\". The quoted sentence appears word for word, with no differences: \"Not clear how well this will work and looks like it may take as long as 50 years to achieve good results.\" It refers to \"the reverse engineering projects like Blue Brain and Synapse.\"\n\nThe page is not a transcript. It is the blogger's own shortened notes on the talk (\"He compares the biological and non-biological approaches...\"), so this sentence is his summary, not something we can be sure Hassabis said. At best it is coverage, and no quote should be entered from it.\n\n**Part 1 (role): fails.** The talk was given at the Singularity Summit 2010 in mid-August, and the post is dated 15 August 2010. The role history says only that DeepMind was co-founded \"2010\". From memory, which you should check against `data/speakers.csv`, DeepMind was incorporated in September 2010. If that's right, he held no founder or chief executive role at a company building frontier AI models when he gave the talk. If the role start in speakers.csv is earlier than August 2010, this part needs a second look.\n\n**Part 2 (looks forward, about AI): weak, borderline on its own.** The line is an outside estimate of how long other groups' brain-copying projects might take. Put that way (\"as long as 50 years\"), it is the mirror of \"as little as\": it names only the latest point. It is also the blogger's summary rather than Hassabis's own words.\n\n**Part 3 (date or span):** \"50 years\" is a span, so it would pass taken alone.\n\n**Part 4 (primary source):** fails. The only source is this coverage.\n\n**Already recorded?** No. None of his recorded files covers this claim. The earliest are from 2011-01.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A NextBigFuture blog post by Brian Wang giving his own notes on Hassabis's Singularity Summit 2010 talk; the sentence appears exactly but is the blogger's summary of the talk, not a transcript.\",\n  \"date_on_page\": \"2010-08-15\",\n  \"role_at_the_time\": \"none\",\n  \"admission\": \"out\",\n  \"failed_part\": \"1\",\n  \"reason\": \"Said at the August 2010 Singularity Summit, apparently before DeepMind was incorporated (from memory, September 2010; check speakers.csv), so no qualifying role. It is also only the blogger's summary of an 'as long as 50 years' outside estimate about other groups' brain-copying projects, so parts 2 and 4 are weak too.\"\n}\n```"
+}

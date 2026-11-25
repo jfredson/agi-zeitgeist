@@ -1,0 +1,59 @@
+{
+  "speaker_id": "zuckerberg",
+  "row": 15,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0772,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.meta.com/thefutureisforeveryone/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('Priscilla'); print(c[max(0,i-600):i+800] if i>=0 else c[:1500])\"}",
+    "https://www.meta.com/thefutureisforeveryone/",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); print(c[:700])\\nimport re\\nfor k in ['Priscilla','cure','sooner','2026','date']:\\n    for m in re.finditer(k,c): print(k, '::', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5446,
+      "cache_read_input_tokens": 46466,
+      "inference_geo": "global",
+      "input_tokens": 1124,
+      "output_tokens": 1810,
+      "output_tokens_details": {
+        "thinking_tokens": 444
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026",
+    "quote": "When Priscilla and I started this work, our goal was to help scientists cure or prevent all diseases this century, and now with advances in AI we expect this will be possible much sooner.",
+    "what_is_predicted": "Thanks to AI, curing or preventing all diseases will be possible well before the end of this century.",
+    "date_or_span": "this century (sooner than 2100)",
+    "occasion": "Essay 'The Future is for Everyone: The Path to a Positive AI Future' on meta.com. The page carries no date; the Marquette Zuckerberg Files index lists it on 2026-08-10, and a related WSJ op-ed on 2026-07-28.",
+    "source_url": "https://www.meta.com/thefutureisforeveryone/",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Zuckerberg's own essay 'The Future is for Everyone' on meta.com (by-line Founder and CEO, Meta); the quoted sentence appears verbatim in the section on scientific advances.",
+    "date_on_page": "",
+    "role_at_the_time": "founder and chief executive of Meta Platforms (builds the Llama models)",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "The only date in the words, 'this century', is the old deadline of the Chan Zuckerberg goal. The AI prediction itself is 'much sooner', which names no date or length, like 'a few years', so it should stay out unless 'sooner than 2100' is read as a 'by 2100' claim."
+  },
+  "reply_text": "I'd call this one **borderline, leaning out on part 3**. The words are on the page exactly, but the only dated part of the sentence is the old goal, not the prediction about AI.\n\n**The page.** The page opened. It is Zuckerberg's own essay on meta.com, titled \"The Future is for Everyone.\" The page's metadata names the author as \"Mark Zuckerberg, Founder and CEO, Meta.\" The quoted sentence is there word for word, in the section on scientific advances, right after a mention of Biohub's open-source biology models:\n\n> \"When Priscilla and I started this work, our goal was to help scientists cure or prevent all diseases this century, and now with advances in AI we expect this will be possible much sooner.\"\n\nThe page gives no date. The 2026-08-10 date comes from the Marquette Zuckerberg Files index, as the search run reported. I did not check that index. These are his own words, so this is not a coverage-only case.\n\n**The rule, part by part:**\n1. **Role:** passes. In 2026 he was founder and chief executive of Meta, which builds the Llama models.\n2. **Looks forward and is about AI:** passes, roughly. He says advances in AI will make curing or preventing all diseases possible sooner. \"Will be possible\" is a soft claim about what AI enables, but it does look forward.\n3. **Date or length of time:** this is where it fails or nearly fails. \"This century\" (by 2100) is the deadline of the original goal he and Priscilla set. The prediction itself is \"much sooner,\" which names no date or length. That makes it like \"a few years\" or \"as little as X\" under reading 3: undated, so it stays out. The only way to give it a date is to treat \"sooner than 2100\" as \"by 2100.\" That is a stretch, so I'm calling it borderline rather than a clean pass.\n4. **Primary source:** passes, since it is his own essay.\n\n**Already recorded?** No. The closest file is 2026-09-08-zuckerberg-ai-starts-designing-treatments.toml, but its file name suggests a different claim: AI starting to design treatments, not all diseases being curable sooner.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Zuckerberg's own essay 'The Future is for Everyone' on meta.com (by-line Founder and CEO, Meta); the quoted sentence appears verbatim in the section on scientific advances.\",\n  \"date_on_page\": \"\",\n  \"role_at_the_time\": \"founder and chief executive of Meta Platforms (builds the Llama models)\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"The only date in the words, 'this century', is the old deadline of the Chan Zuckerberg goal. The AI prediction itself is 'much sooner', which names no date or length, like 'a few years', so it should stay out unless 'sooner than 2100' is read as a 'by 2100' claim.\"\n}\n```"
+}

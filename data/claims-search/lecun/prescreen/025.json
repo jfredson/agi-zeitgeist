@@ -1,0 +1,60 @@
+{
+  "speaker_id": "lecun",
+  "row": 25,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.1033,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['prototypes','Probably before','within a year','2026','July','Published']:\\n        for m in re.finditer(k,c): print(k, '::', c[max(0,m.start()-700):m.start()+300].replace('\\\\n',' ')); print('----')\"}",
+    "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+    "{\"code\": \"print(type(r)); print(str(r)[:1500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['prototype','Probably before','year or so']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-1500):m.start()+400]); print('-----')\"}",
+    "{\"code\": \"i=c.find('meta-twitter:title'); print(c[i:i+3000])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5878,
+      "cache_read_input_tokens": 62121,
+      "inference_geo": "global",
+      "input_tokens": 1274,
+      "output_tokens": 2817,
+      "output_tokens_details": {
+        "thinking_tokens": 1126
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2026",
+    "date_said": "2026-07",
+    "quote": "Probably before that. We’ll have prototypes within a year or so.",
+    "what_is_predicted": "AMI will have prototype industrial uses of its JEPA world models within about a year.",
+    "date_or_span": "within a year or so",
+    "occasion": "Nebius Science interview, published 2026-07-13",
+    "source_url": "https://nebius.science/stories/meet-yann-lecuns-lab-and-the-ai-world-of-2030",
+    "source_kind": "printed_qa",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Nebius Science interview by Stepan Kravchenko, published 2026-07-13 as a short introduction and printed questions and answers; LeCun's answer to 'These are the practical implementations of JEPA you envision in three years?' matches the quote word for word.",
+    "date_on_page": "2026-07-13",
+    "role_at_the_time": "founder-leader of AMI (Advanced Machine Intelligence) Labs, having left Meta in 2025",
+    "admission": "pass",
+    "failed_part": "",
+    "reason": "Said as AMI's founder in a printed Q&A, and it dates the deployment of AI prototypes in industry to within about a year, so all four parts hold. A person should check whether this is an unchanged repeat of 2026-05-15-lecun-ami-use-case-demonstrations-within-18-months (also due in 2027); if it is, the admission is 'recorded'."
+  },
+  "reply_text": "I fetched the page and the quote is on it exactly. The candidate passes all four parts of the rule. One thing needs checking: it may repeat a claim already recorded from 2026-05-15.\n\n**The page.** It is a Nebius Science interview by Stepan Kravchenko, \"Meet Yann LeCun's Lab and the AI World of 2030\", dated 2026-07-13. It is a short introduction followed by printed questions and answers. The question is: \"These are the practical implementations of JEPA you envision in three years?\" (\"those\" are world models used to control jet engines, chemical plants and manufacturing lines.) LeCun answers: \"Probably before that. We'll have prototypes within a year or so. We'll be working with a few partners to see which industrial areas this can be applied to. Some areas will be easy to deploy in, others will be more difficult…\" The quote matches word for word. Because this is a printed Q&A, the result is a full pass, not coverage only. The page gives no separate interview date, so the only date I can give is the publication date, 2026-07-13.\n\n**The rule, part by part:**\n1. **Role:** The page says that \"since leaving Meta last year\" he founded AMI Labs in Paris. That makes him founder-leader of AMI on this date. The ledger already admits AMI as a qualifying company: there are recorded AMI claims from 2026-03-10 and 2026-05-15.\n2. **About AI, looking forward:** The prototypes are AI systems (JEPA world models) that partners would put to use in industry. That is a claim about AI being deployed, not a business forecast. It is not framed as a hypothetical.\n3. **Date:** \"Within a year or so\" gives a length of time. The \"or so\" is a hedge to write into the prediction, not something that leaves it undated like \"a few years\" would. A year from July 2026 makes it due in 2027.\n4. **Source:** The words are his own, in a printed Q&A.\n\n**The possible repeat.** On 2026-05-15 the ledger recorded \"AMI use-case demonstrations within 18 months\". That claim is also due in 2027. If its file describes the same thing (industrial prototypes or demonstrations with partners), this one is an unchanged repeat. It would then be marked \"recorded\", with 2026-07-13 added to that claim's `repeated_on`. If the file describes something different, this is a new claim. I couldn't open the recorded files, so this needs a look. The other 2026-05-15 claim, about a world-model method within a year, seems to be about the method itself rather than industrial prototypes.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Nebius Science interview by Stepan Kravchenko, published 2026-07-13 as a short introduction and printed questions and answers; LeCun's answer to 'These are the practical implementations of JEPA you envision in three years?' matches the quote word for word.\",\n  \"date_on_page\": \"2026-07-13\",\n  \"role_at_the_time\": \"founder-leader of AMI (Advanced Machine Intelligence) Labs, having left Meta in 2025\",\n  \"admission\": \"pass\",\n  \"failed_part\": \"\",\n  \"reason\": \"Said as AMI's founder in a printed Q&A, and it dates the deployment of AI prototypes in industry to within about a year, so all four parts hold. A person should check whether this is an unchanged repeat of 2026-05-15-lecun-ami-use-case-demonstrations-within-18-months (also due in 2027); if it is, the admission is 'recorded'.\"\n}\n```"
+}

@@ -1,0 +1,60 @@
+{
+  "speaker_id": "huang",
+  "row": 18,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0784,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['five-years','few-years','wandering','March','2025','Reuters']:\\n        for m in re.finditer(k,c): print(k, '::', c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); break\"}",
+    "https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']\\ni=c.find('wandering'); print(i)\\nimport re\\nfor k in ['wandering','five-years','few-years','Reuters','Tuesday']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-500):m.start()+400]); print('----'); break\"}",
+    "{\"code\": \"for k in ['Tuesday','Wednesday','March 1','GTC','San Jose','factor']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-200):m.start()+200].replace('\\\\n',' ')); print('--'); break\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4270,
+      "cache_read_input_tokens": 60642,
+      "inference_geo": "global",
+      "input_tokens": 1173,
+      "output_tokens": 2011,
+      "output_tokens_details": {
+        "thinking_tokens": 419
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-03",
+    "quote": "When, literally, humanoid robots are wandering round, which is not five years away. This is five-years-away problem, this is a few-years-away problem.",
+    "what_is_predicted": "Humanoid robots will be in wide use (Reuters: in manufacturing facilities) in less than five years.",
+    "date_or_span": "less than five years (from March 2025)",
+    "occasion": "Remarks to reporters around the Nvidia GTC 2025 keynote, San Jose (keynote on Tuesday 18 March 2025)",
+    "source_url": "https://tech.co/news/humanoid-workforce-robots-less-five-years-away-nvidia",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A tech.co news report (Gus Mallett, published 2025-03-20) quoting Huang's answer to reporters after his GTC 2025 keynote, word for word as in the candidate; it is coverage, not a transcript or his own post.",
+    "date_on_page": "2025-03",
+    "role_at_the_time": "Co-founder and chief executive of Nvidia",
+    "admission": "borderline",
+    "failed_part": "3",
+    "reason": "His positive estimate is 'a few years', which reading 3 makes undated; the only length of time is the negative 'not five years away', which might be read as 'within five years' but is loose, so this is logged borderline rather than admitted. If it were admitted, it would only be coverage, because the one source found is a news report."
+  },
+  "reply_text": "**Reading: borderline. Part 3 (the date) is what's in doubt.**\n\n**Page check: the words are on the page.** The tech.co page opened. It is a news report by Gus Mallett, published 20 March 2025. It quotes Huang word for word as the candidate has it: \"When, literally, humanoid robots are wandering round, which is not five years away. This is five-years-away problem, this is a few-years-away problem.\" The report says reporters asked him this after his keynote at the GTC developer conference. Their question was what signs would show that AI had become everywhere. The page gives no exact day for the remark, only March 2025 by the publication date. The words are a reporter's quote, not Huang's own post or a transcript, so at best this would be \"pass, coverage only\". I didn't see a Reuters line on the page, so the candidate's \"in manufacturing facilities\" detail isn't checked. The page does say factory work is the likeliest place.\n\n**The four parts of the rule:**\n1. **Role: passes.** He has been chief executive of Nvidia since 1993, and Nvidia makes the chips frontier models are trained on.\n2. **About AI and looking forward: probably passes.** Humanoid robots being in common use is a claim about AI being deployed, and he said it in answer to a question about when AI would be everywhere. It isn't a hardware date or a business forecast.\n3. **Date: borderline.** The positive part of what he said is \"a few-years-away problem\". Reading 3 makes \"a few years\" undated, so that part is not a claim record. The only length of time is the negative \"not five years away\". That could be read as \"within five years of March 2025\", which would be due in 2030. But it rules out five years rather than naming a date for the thing. The thing itself, robots \"wandering round\", is also loose. The rule says a truly borderline case stays out and is logged as borderline.\n4. **Source: coverage only.** As far as I've seen, the only source is this news report. A transcript or recording from GTC 2025 would be needed for a full pass.\n\n**Not already recorded.** None of his claim files is about humanoid robots. The 2025-03-18 file is about Nvidia's software engineers using AI help, which is a different claim.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A tech.co news report (Gus Mallett, published 2025-03-20) quoting Huang's answer to reporters after his GTC 2025 keynote, word for word as in the candidate; it is coverage, not a transcript or his own post.\",\n  \"date_on_page\": \"2025-03\",\n  \"role_at_the_time\": \"Co-founder and chief executive of Nvidia\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"3\",\n  \"reason\": \"His positive estimate is 'a few years', which reading 3 makes undated; the only length of time is the negative 'not five years away', which might be read as 'within five years' but is loose, so this is logged borderline rather than admitted. If it were admitted, it would only be coverage, because the one source found is a news report.\"\n}\n```"
+}

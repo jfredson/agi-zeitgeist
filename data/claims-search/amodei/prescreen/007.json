@@ -1,0 +1,60 @@
+{
+  "speaker_id": "amodei",
+  "row": 7,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0885,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in [\\\"10x the rate\\\",\\\"50-100 years\\\",\\\"Thus, it\\\",\\\"October 2024\\\",\\\"2024\\\"]:\\n        for m in re.finditer(re.escape(k), c):\\n            print(k, '::', c[max(0,m.start()-300):m.end()+300].replace('\\\\n',' ')); print('---')\\n            break\"}",
+    "https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework",
+    "{\"code\": \"print(type(r), str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in [\\\"10x the rate\\\",\\\"50-100 years\\\",\\\"October 2024\\\",\\\"Thus, it\\\"]:\\n    for m in re.finditer(re.escape(k), c):\\n        print(k, '::', c[max(0,m.start()-400):m.end()+300].replace('\\\\n',' ')); print('---')\\nprint(c[:800])\"}",
+    "{\"code\": \"for k in [\\\"2026\\\",\\\"compressed 21st century\\\",\\\"after powerful AI\\\",\\\"5-10 years\\\"]:\\n    for m in re.finditer(re.escape(k), c):\\n        print(k, '::', c[max(0,m.start()-250):m.end()+200].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 5708,
+      "cache_read_input_tokens": 63913,
+      "inference_geo": "global",
+      "input_tokens": 2091,
+      "output_tokens": 1941,
+      "output_tokens_details": {
+        "thinking_tokens": 434
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-10",
+    "quote": "Thus, it’s my guess that powerful AI could at least 10x the rate of these discoveries, giving us the next 50-100 years of biological progress in 5-10 years.",
+    "what_is_predicted": "Once powerful AI exists, it could compress 50-100 years of biological progress into 5-10 years.",
+    "date_or_span": "5-10 years (counted from the arrival of powerful AI)",
+    "occasion": "Essay 'Machines of Loving Grace', biology section",
+    "source_url": "https://darioamodei.com/machines-of-loving-grace#basic-assumptions-and-framework",
+    "source_kind": "own_words",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Dario Amodei's own essay 'Machines of Loving Grace' on darioamodei.com; the quoted sentence appears verbatim in the biology section, followed by footnote 14.",
+    "date_on_page": "2024-10",
+    "role_at_the_time": "co-founder and chief executive of Anthropic",
+    "admission": "out",
+    "failed_part": "3",
+    "reason": "The 5-10 years is counted from the arrival of powerful AI, which the essay deliberately leaves undated ('assume it will come reasonably soon'; 'could come as early as 2026' is only an earliest bound), so the words carry no date or span from the day said; the essay's assume-for-argument framing also makes part 2 doubtful."
+  },
+  "reply_text": "I'd mark this one **out**. The words are on the page, but they carry no date from the day they were said, so part 3 fails.\n\n**The page.** It opened. It is Amodei's own essay \"Machines of Loving Grace\" on darioamodei.com, dated \"October 2024\" under the title. The quote is on the page word for word: \"Thus, it's my guess that powerful AI could at least 10x the rate of these discoveries, giving us the next 50-100 years of biological progress in 5-10 years.\" It is followed by footnote 14.\n\n**The rule, part by part:**\n\n1. **Role: met.** He was co-founder and chief executive of Anthropic in October 2024, and the essay says \"The company I'm the CEO of, Anthropic\".\n2. **Looks forward and about AI: met in subject, with doubts.** It is about what AI will do to biology. But it sits inside an essay that sets the timing question aside on purpose: \"for the purposes of this essay, I'd like to put these issues aside, assume it will come reasonably soon, and focus on what happens in the 5-10 years after that.\" That puts it close to the hypothetical framing the rule keeps out.\n3. **Date or span: fails.** The \"5-10 years\" runs from whenever powerful AI arrives, not from October 2024, and the essay gives that arrival no date. The only date nearby is \"could come as early as 2026, though there are also ways it could take much longer\". That names only the earliest the thing could come, which ruled reading 3 treats as undated. So no due year can be fixed.\n4. **Primary source: met.** These are his own words.\n\n**Not recorded.** The nearest file is `2026-09-12-amodei-pace-cure-most-major-diseases-five-to-ten-years.toml`. That is a different source, almost two years later, with a different claim, so this candidate is not a repeat of it.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Dario Amodei's own essay 'Machines of Loving Grace' on darioamodei.com; the quoted sentence appears verbatim in the biology section, followed by footnote 14.\",\n  \"date_on_page\": \"2024-10\",\n  \"role_at_the_time\": \"co-founder and chief executive of Anthropic\",\n  \"admission\": \"out\",\n  \"failed_part\": \"3\",\n  \"reason\": \"The 5-10 years is counted from the arrival of powerful AI, which the essay deliberately leaves undated ('assume it will come reasonably soon'; 'could come as early as 2026' is only an earliest bound), so the words carry no date or span from the day said; the essay's assume-for-argument framing also makes part 2 doubtful.\"\n}\n```"
+}

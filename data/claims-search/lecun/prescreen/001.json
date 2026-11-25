@@ -1,0 +1,59 @@
+{
+  "speaker_id": "lecun",
+  "row": 1,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0691,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://fastml.com/yann-lecuns-answers-from-the-reddit-ama/\\\"})\\nif isinstance(r, dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('coming decade'); print(c[max(0,i-600):i+900])\\n    for k in ['Natural language understanding','Self-driving','maintenance robots','2014','May']:\\n        print(k, c.find(k))\"}",
+    "https://fastml.com/yann-lecuns-answers-from-the-reddit-ama/",
+    "{\"code\": \"print(type(r)); print(str(r)[:300])\\nx = r[0] if isinstance(r,list) else r\\nif isinstance(x,str):\\n    try: x=json.loads(x)\\n    except: pass\\nprint(type(x))\"}",
+    "{\"code\": \"c=x['content']['source']['data']; print(len(c)); print(c[:600])\\ni=c.find('coming decade'); print(c[max(0,i-400):i+900])\\nfor k in ['Natural language understanding','Self-driving','maintenance robots','2014','May']:\\n    print(k, c.find(k))\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3237,
+      "cache_read_input_tokens": 47120,
+      "inference_geo": "global",
+      "input_tokens": 1415,
+      "output_tokens": 1892,
+      "output_tokens_details": {
+        "thinking_tokens": 427
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2014",
+    "date_said": "2014-05-15",
+    "quote": "Natural language understanding and natural dialog systems. Self-driving cars. Robots (maintenance robots and such).",
+    "what_is_predicted": "Answering a question about the coming decade, LeCun named natural language understanding and dialog systems, self-driving cars and robots as the biggest uses machine learning would see.",
+    "date_or_span": "the coming decade (the span is in the question as printed on FastML: 'What do you think are the biggest applications machine learning will see in the coming decade?')",
+    "occasion": "Reddit AMA on r/MachineLearning, 15 May 2014, as excerpted on the FastML blog post 'Yann LeCun's answers from the Reddit AMA' (2014-05-26); the original Reddit thread could not be opened",
+    "source_url": "https://fastml.com/yann-lecuns-answers-from-the-reddit-ama/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A FastML blog post by Zygmunt Zając, dated 2014-05-26, that reprints selected questions and answers from LeCun's 15 May 2014 Reddit AMA; the quoted answer appears word for word under the question about 'the coming decade'.",
+    "date_on_page": "2014-05-15",
+    "role_at_the_time": "none",
+    "admission": "out",
+    "failed_part": "1",
+    "reason": "Said in May 2014 as founding director of Facebook AI Research, a lab inside Facebook; he was not chief executive, founder-leader, chair or named chief scientist until about 2018, so no qualifying role. Part 2 is also weak (it names application areas with no checkable level), and part 3 is borderline because the decade span is only in the interviewer's question."
+  },
+  "reply_text": "I fetched the page and the words are on it, exactly as quoted. My reading is \"out\", because in May 2014 LeCun didn't hold a qualifying role.\n\n**1. Are the words on the page?** Yes. The FastML post \"Yann LeCun's answers from the Reddit AMA\" has this question in bold: \"What do you think are the biggest applications machine learning will see in the coming decade?\" Directly under it is the answer: \"Natural language understanding and natural dialog systems. Self-driving cars. Robots (maintenance robots and such).\" The post is by Zygmunt Zając, dated 2014-05-26. It says LeCun answered the questions on Reddit on May 15th and that the blog \"hand-picked some of his thoughts and grouped them by topic\". So it is a third-party blog excerpt of a written Q&A, not LeCun's own post or the Reddit thread. It does quote the question and answer word for word, so the source could fairly be called a reprinted question and answer. Since the candidate is out on part 1 anyway, \"coverage only\" against a full pass doesn't matter here.\n\n**2. The admission rule**\n- **Part 1 (role) fails.** On 2014-05-15 LeCun was the founding director of Facebook AI Research, a lab inside Facebook. That isn't the chief executive, founder-leader, chair or named chief scientist of the company. Your role history dates his Chief AI Scientist role to about 2018, so the words came about four years before any qualifying role.\n- **Part 2 (looks forward, about AI) is weak.** The answer looks forward and is about AI, but it only names areas where machine learning will matter most. It sets no level or scale that could be checked, so I'd call it borderline at best.\n- **Part 3 (date or span) is borderline.** \"The coming decade\" is in the interviewer's question, not LeCun's answer, though he answers within that frame.\n- **Part 4 (source)** is met, at least as coverage.\n- **Recorded?** No. The nearest recorded file, 2025-01-23 \"coming decade of robotics\", is a different claim from 2025.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A FastML blog post by Zygmunt Zając, dated 2014-05-26, that reprints selected questions and answers from LeCun's 15 May 2014 Reddit AMA; the quoted answer appears word for word under the question about 'the coming decade'.\",\n  \"date_on_page\": \"2014-05-15\",\n  \"role_at_the_time\": \"none\",\n  \"admission\": \"out\",\n  \"failed_part\": \"1\",\n  \"reason\": \"Said in May 2014 as founding director of Facebook AI Research, a lab inside Facebook; he was not chief executive, founder-leader, chair or named chief scientist until about 2018, so no qualifying role. Part 2 is also weak (it names application areas with no checkable level), and part 3 is borderline because the decade span is only in the interviewer's question.\"\n}\n```"
+}

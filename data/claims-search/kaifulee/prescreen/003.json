@@ -1,0 +1,59 @@
+{
+  "speaker_id": "kaifulee",
+  "row": 3,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.072,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    import re\\n    for k in ['fake','50 years','Hong Kong','March','Innovation Forum','empathy','compassion']:\\n        for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}",
+    "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c))\\nimport re\\nfor k in ['fake','50 years','Hong Kong','March','Forum','empathy','compassion','published']:\\n    for m in re.finditer(k,c): print(k,'::',c[max(0,m.start()-300):m.start()+300].replace('\\\\n',' ')); print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 4087,
+      "cache_read_input_tokens": 47776,
+      "inference_geo": "global",
+      "input_tokens": 1689,
+      "output_tokens": 1763,
+      "output_tokens_details": {
+        "thinking_tokens": 372
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2024",
+    "date_said": "2024-03",
+    "quote": "Do I think AI can fake it? Yes. Do I think people will accept the faking AI, at least for the next 50 years? No.",
+    "what_is_predicted": "Lee says that for at least 50 years people will not accept AI that fakes human compassion, empathy and trust. This is borderline because it is about whether people accept AI, not about what AI can do.",
+    "date_or_span": "at least the next 50 years",
+    "occasion": "Fortune Innovation Forum, Hong Kong, March 2024",
+    "source_url": "https://fortune.com/2024/05/25/ai-job-displacement-forecast-50-percent-2027-kai-fu-lee-chatgpt-openai/",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "A Fortune news article (Jason Ma, 2024-05-25) about Lee's talk with Alyson Shontell at the Fortune Innovation Forum in Hong Kong in March 2024; it quotes the words exactly and links a YouTube recording I did not open.",
+    "date_on_page": "2024-03",
+    "role_at_the_time": "founder-leader of 01.AI (founded 2023), a frontier model builder",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "The forecast is about whether people will accept AI that fakes empathy, not about what AI will do, reach or ship, so it is a truly borderline case and stays out, logged as borderline. If admitted, it would be coverage only unless the linked recording carries the words."
+  },
+  "reply_text": "**Page check: the words are on the page.** The Fortune article, published 2024-05-25 by Jason Ma, quotes Lee exactly: \"Do I think AI can fake it? Yes. Do I think people will accept the faking AI, at least for the next 50 years? No.\" It goes on: \"So that's long enough for your kids to survive and figure out the next step for their kids.\" The article places the remark at the Fortune Innovation Forum in Hong Kong in March 2024, in a talk with editor-in-chief Alyson Shontell. It is a news report, not a transcript. The article links a YouTube recording (youtube.com/watch?v=zZs447dgMjg), which I did not open. If the remark is on that recording, part 4 could be met by a primary source.\n\n**The four parts:**\n1. **Role: passes.** In March 2024 Lee was founder-leader of 01.AI (founded 2023), a company that builds frontier models. He already has recorded claims, so I take him to be on the ledger-only list.\n2. **Forward-looking and about AI: borderline.** The words make a \"will not by a date\" forecast, which reading 2 allows. But what is forecast is people's acceptance of AI that fakes compassion and trust. It is not about what AI will do, reach or ship, and not clearly about deployment. The AI capability in the quote (\"AI can fake it? Yes\") is in the present tense and has no date. The rule says a truly borderline case stays out and is logged as borderline.\n3. **Date or span: passes.** \"At least the next 50 years\" is a span counted from the day it was said.\n4. **Source: coverage only** on what I checked.\n\n**Not recorded.** None of the recorded files match. The nearest are the two from 2026-09-23, \"no AI sentience for a century\" and \"AI fakes sentience in five years\". They have different dates, spans and subjects.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"A Fortune news article (Jason Ma, 2024-05-25) about Lee's talk with Alyson Shontell at the Fortune Innovation Forum in Hong Kong in March 2024; it quotes the words exactly and links a YouTube recording I did not open.\",\n  \"date_on_page\": \"2024-03\",\n  \"role_at_the_time\": \"founder-leader of 01.AI (founded 2023), a frontier model builder\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"The forecast is about whether people will accept AI that fakes empathy, not about what AI will do, reach or ship, so it is a truly borderline case and stays out, logged as borderline. If admitted, it would be coverage only unless the linked recording carries the words.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "sutskever",
+  "row": 11,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0603,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr=await web_fetch({\\\"url\\\":\\\"https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content'];print(len(c),r[0].get('title'))\\n    import re\\n    for k in ['three months','human level','Episode Date','2020']:\\n        for m in re.finditer(k,c):\\n            print(k,'|',c[max(0,m.start()-500):m.start()+300].replace('\\\\n',' '));print('---')\\n            break\"}",
+    "https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning",
+    "{\"code\": \"print(type(r), str(r)[:300])\\nx=r[0] if isinstance(r,list) else r\\nc=x['content'] if isinstance(x,dict) else str(r)\\nprint(len(c))\\nfor k in ['three months','human level','Episode Date','2020']:\\n    m=re.search(k,c)\\n    if m: print(k,'|',c[max(0,m.start()-500):m.start()+300].replace('\\\\n',' '));print('---')\"}",
+    "{\"code\": \"import re\\nd=json.loads(r);c=d['content']['source']['data'];print(len(c),c[:300])\\nfor k in ['three months','human level','Episode Date','2020']:\\n    m=re.search(k,c)\\n    if m: print(k,'|',c[max(0,m.start()-700):m.start()+300].replace('\\\\n',' '));print('---')\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 2847,
+      "cache_read_input_tokens": 45634,
+      "inference_geo": "global",
+      "input_tokens": 572,
+      "output_tokens": 1735,
+      "output_tokens_details": {
+        "thinking_tokens": 238
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2020",
+    "date_said": "2020-05",
+    "quote": "So you know, you say today, true human level, language understanding and visual perception, are hard in the sense that there is no way of solving the problem completely in the next three months. So I agree with that statement.",
+    "what_is_predicted": "True human-level language understanding and visual perception will not be fully solved in the next three months.",
+    "date_or_span": "the next three months",
+    "occasion": "Lex Fridman Podcast #94 (May 2020), around 00:25:56",
+    "source_url": "https://podscripts.co/podcasts/lex-fridman-podcast/94-ilya-sutskever-deep-learning",
+    "source_kind": "transcript",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Podscripts transcript of Lex Fridman Podcast #94 with Ilya Sutskever; the quote appears verbatim at 00:25:56, followed by \"Beyond that, I'm just, my guess would be as good as yours, I don't know.\"",
+    "date_on_page": "2020-05-09",
+    "role_at_the_time": "co-founder and chief scientist of OpenAI",
+    "admission": "borderline",
+    "failed_part": "2",
+    "reason": "He agrees with a made-up example while arguing that 'hard' is the wrong question, and declines to forecast past it, so it reads as an illustration rather than a forecast. Its object, 'true human level' with no stated comparison, is also an untestable named stage, so it stays out and is logged as borderline."
+  },
+  "reply_text": "I'd mark this one **borderline**, on part 2. The words are on the page, but they read more like an example of what \"hard\" means than a forecast.\n\n**The page.** It opened. It's a transcript of Lex Fridman Podcast #94, \"Ilya Sutskever: Deep Learning\", dated May 9, 2020 on the page. At the 00:25:56 timestamp the transcript has the quote word for word: \"So you know, you say today, true human level, language understanding and visual perception, are hard in the sense that there is no way of solving the problem completely in the next three months. So I agree with that statement.\" It's a transcript of his own words, not a news report.\n\n**The four parts:**\n1. **Role: met.** In May 2020 he was co-founder and chief scientist of OpenAI, speaking as that company's named chief scientist.\n2. **Looks forward and is about AI: borderline.** Lex asked whether understanding language is harder than understanding pictures. Sutskever said the question was \"a little bit wrong\": a problem is hard only relative to what tools can do today. He then gave the three-month line as a sample statement and agreed with it. Right after, he declined to forecast anything further: \"Beyond that, I'm just, my guess would be as good as yours, I don't know.\" Read word by word, it is a \"not by a date\" claim, which reading 2 admits. But it's agreement with a made-up example inside an argument about what \"hard\" means, not a forecast he put forward himself. Reading 4 also counts against it, because \"true human level\" with no stated comparison is a named stage that can't be tested. The rule says a truly borderline case stays out and is logged as borderline.\n3. **Date or length of time: met.** \"The next three months\" counts as a span from the day it was said.\n4. **Primary source: met.** It's a transcript of the recording.\n\nIt doesn't match any of his five recorded claim files, which all date from 2023 or 2025.\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Podscripts transcript of Lex Fridman Podcast #94 with Ilya Sutskever; the quote appears verbatim at 00:25:56, followed by \\\"Beyond that, I'm just, my guess would be as good as yours, I don't know.\\\"\",\n  \"date_on_page\": \"2020-05-09\",\n  \"role_at_the_time\": \"co-founder and chief scientist of OpenAI\",\n  \"admission\": \"borderline\",\n  \"failed_part\": \"2\",\n  \"reason\": \"He agrees with a made-up example while arguing that 'hard' is the wrong question, and declines to forecast past it, so it reads as an illustration rather than a forecast. Its object, 'true human level' with no stated comparison, is also an untestable named stage, so it stays out and is logged as borderline.\"\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "speaker_id": "lecun",
+  "row": 21,
+  "model": "claude-opus-5-5",
+  "date_run": "2026-11-25",
+  "stop_reason": "end_turn",
+  "problem": "",
+  "cost_usd": 0.0744,
+  "pages_opened": [
+    "{\"code\": \"import json\\nr = await web_fetch({\\\"url\\\":\\\"https://www.axios.com/2025/11/17/ai-world-models-digital-twins\\\"})\\nif isinstance(r,dict): print(r)\\nelse:\\n    c=r[0]['content']; print(r[0].get('title'), len(c))\\n    i=c.find('friends'); print(c[max(0,i-1500):i+1000] if i>=0 else c[:3000])\"}",
+    "https://www.axios.com/2025/11/17/ai-world-models-digital-twins",
+    "{\"code\": \"print(type(r)); print(str(r)[:500])\"}",
+    "{\"code\": \"d=json.loads(r); c=d['content']['source']['data']; print(len(c)); i=c.find('friends'); print(c[max(0,i-1500):i+800])\"}"
+  ],
+  "usage": [
+    {
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "cache_creation_input_tokens": 3003,
+      "cache_read_input_tokens": 46945,
+      "inference_geo": "global",
+      "input_tokens": 1379,
+      "output_tokens": 2226,
+      "output_tokens_details": {
+        "thinking_tokens": 823
+      },
+      "server_tool_use": {
+        "web_fetch_requests": 1,
+        "web_search_requests": 0
+      },
+      "service_tier": "standard",
+      "speed": "standard"
+    }
+  ],
+  "candidate": {
+    "year_searched": "2025",
+    "date_said": "2025-10",
+    "quote": "I've been not making friends in various corners of Silicon Valley, including at Meta, saying that within three to five years, this [world models, not LLMs] will be the dominant model for AI architectures, and nobody in their right mind would use LLMs of the type that we have today",
+    "what_is_predicted": "Within three to five years world models, not LLMs, will be the dominant AI architecture and today's LLMs will be out of use.",
+    "date_or_span": "within three to five years",
+    "occasion": "Symposium at MIT, October 2025, as quoted by Axios citing a Wall Street Journal profile; close to the January 'LLMs not central within five years' claim but said at a later event",
+    "source_url": "https://www.axios.com/2025/11/17/ai-world-models-digital-twins",
+    "source_kind": "coverage_only",
+    "already_recorded": "",
+    "checked_on_page": ""
+  },
+  "result": {
+    "page_check": "words found on the page",
+    "page_note": "Axios news article (2025-11-17) quoting LeCun verbatim from an MIT symposium 'last month', as noted in a Wall Street Journal profile; second-hand coverage, not his own words or a transcript.",
+    "date_on_page": "2025-10",
+    "role_at_the_time": "Meta Chief AI Scientist",
+    "admission": "recorded",
+    "failed_part": "",
+    "reason": "Passes all four parts, but only as coverage (Axios citing the WSJ). He calls it something he has 'been saying', and it repeats the 2025-01-23 three-to-five-year LLMs-not-central / new-paradigm claim with the same 2030 due year, so it belongs in that claim's repeated_on. Borderline if the recorded wording differs, in which case it is pass, coverage only."
+  },
+  "reply_text": "I recommend **recorded**: this is the same claim as one already on file. It is close to borderline, because I could not open the recorded files to compare wording.\n\n**1. Page check: the words are on the page.** The Axios page opened. The quote is there word for word, including the bracketed \"[world models, not LLMs]\", which is Axios's insertion. This is a news report, not LeCun's own words. Axios says he said it \"last month at a symposium at the Massachusetts Institute of Technology, as noted in a Wall Street Journal profile.\" The article is dated 17 November 2025, so the words date to October 2025. Axios is quoting the Wall Street Journal second-hand, so on its own this source would be \"pass, coverage only.\"\n\n**2. The admission rule:**\n- **Part 1 (role):** In October 2025 LeCun was still Meta's Chief AI Scientist. He left at the end of 2025, and Meta counts as a frontier-model company. Passes.\n- **Part 2 (forward-looking and about AI):** It says world models will become the dominant AI architecture and that nobody sensible will use today's LLMs. That is a forecast about AI. It is not framed as a hypothetical. Passes.\n- **Part 3 (date or span):** \"Within three to five years\" is a span. Taking the later end, it runs to October 2030, so the due year is 2030. Passes.\n- **Part 4 (source):** Only coverage, and second-hand at that (Axios citing the WSJ citing an MIT talk). This gives \"coverage only\" at best, unless someone finds a recording or transcript of the MIT symposium.\n\n**Why \"recorded\":** He frames this as a repeat himself: \"I've been … saying that within three to five years…\". It matches two recorded files from 23 January 2025: `llms-not-central-within-five-years` and `new-paradigm-in-three-to-five-years`. Both also come due in 2030 (January 2025 plus five years). Under the Restatements rule, a repeat with the same prediction and the same due year is not a new claim. It should be added as October 2025 in the `repeated_on` of the January claim. The person checking should confirm the January wording really matches, especially \"nobody in their right mind would use\" LLMs. If it differs in substance, this becomes a new claim, entered as \"pass, coverage only.\"\n\n```json\n{\n  \"page_check\": \"words found on the page\",\n  \"page_note\": \"Axios news article (2025-11-17) quoting LeCun verbatim from an MIT symposium 'last month', as noted in a Wall Street Journal profile; second-hand coverage, not his own words or a transcript.\",\n  \"date_on_page\": \"2025-10\",\n  \"role_at_the_time\": \"Meta Chief AI Scientist\",\n  \"admission\": \"recorded\",\n  \"failed_part\": \"\",\n  \"reason\": \"Passes all four parts, but only as coverage (Axios citing the WSJ). He calls it something he has 'been saying', and it repeats the 2025-01-23 three-to-five-year LLMs-not-central / new-paradigm claim with the same 2030 due year, so it belongs in that claim's repeated_on. Borderline if the recorded wording differs, in which case it is pass, coverage only.\"\n}\n```"
+}
