@@ -1,6 +1,7 @@
 # The site is public and crawling is allowed. The sitemap is written by the build
 # (scripts/site.py, write_sitemap, added 2026-10-31) and lists every page the build made at its
-# stable address. Cloudflare puts its own block of content signals in front of this file when it
+# stable address, except the working documents under /docs/: since 2026-11-27 those stay public
+# but carry a noindex tag and are left out of the sitemap, apart from four method documents. Cloudflare puts its own block of content signals in front of this file when it
 # serves it; the lines below follow it.
 User-agent: *
 Allow: /

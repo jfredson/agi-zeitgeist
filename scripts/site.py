@@ -859,10 +859,59 @@ def provenance(built, commit):
 # from this list, so the sitemap says exactly what the build made and nothing else (2026-10-31).
 PAGES: list[str] = []
 
+# What search engines show for a page: its title (the link in the results) and its description (the
+# line under it). Only these change; the heading and text on the page stay as written. Each title
+# leads with the words a person would type, within the 60 or so characters Google shows, and the
+# site name follows. Agreed by John 2026-11-27, from the drafts in
+# timeassembler/docs/drafts/search-titles-2026-11-27.md. A page not listed keeps the title its
+# builder gives it. A description of None keeps the builder's description.
+SEARCH_TITLES: dict[str, tuple[str, str | None]] = {
+    "/": ("When will AGI arrive? Predictions and a singularity test",
+          "Every dated prediction of when artificial general intelligence (AGI) will arrive, from AI company "
+          "leaders and researchers since 2005, each linked to its source, and a four-part test of whether the "
+          "singularity has begun."),
+    "/claims/": ("AGI predictions from AI company leaders, dated and sourced",
+                 "What the heads of the AI companies say about when AGI will arrive, quote by quote with dates, "
+                 "set beside the forecasts of academic researchers."),
+    "/docs/singularity-entry-definition": ("Are we in the singularity? A measurable definition",
+                                           "The four things that would all have to be true, and stay true for a year, "
+                                           "for the AGI Zeitgeist to say we are entering the singularity, and how each is measured."),
+    "/data/": ("AGI forecasts dataset: download the data (CSV)",
+               "Every table behind the AGI Zeitgeist as CSV files, free to reuse under CC BY 4.0: the dated "
+               "statements about AGI and the measures behind the singularity test."),
+    "/news/": ("AGI news: what moved the singularity test",
+               "What moved the AGI Zeitgeist's test of whether the singularity has begun, and why: one post for "
+               "each change a reader would want explained."),
+    "/about/": ("About the AGI Zeitgeist: how AGI predictions are recorded", None),
+    "/news/2026-10-19-the-claims-ledger-opens/": ("AGI predictions by AI's leaders: how their dates move", None),
+    "/news/2026-10-21-tesla-starts-making-optimus-how-the-tracker-counts-robots/":
+        ("Tesla's Optimus robot in production: how real work is counted", None),
+    "/news/2026-11-13-cotra-ai-nearly-doubling-ai-progress/": ("Ajeya Cotra: AI is nearly doubling the pace of AI progress", None),
+    "/news/2026-11-21-a-checked-proof-of-the-riemann-hypothesis-and-the-week-in-ai/":
+        ("A checked proof of the Riemann Hypothesis, and the week in AI", None),
+}
+
+# The working documents under /docs/ stay public, linked from the About page and readable by anyone
+# checking the work, but are kept out of search results: each carries a "noindex" tag and is left
+# out of the sitemap. Most are internal records (review notes, coding briefs, rule trials) that a
+# searcher would leave at once. These four method documents stay in search, because a stranger
+# could use them. Agreed by John 2026-11-27 ("keep them public but out of search").
+SEARCH_DOCS = {"/docs/methodology-v2", "/docs/singularity-entry-definition",
+               "/docs/claims-ledger-method", "/docs/weekly-reading"}
+
+
+def in_search(path):
+    return not path.startswith("/docs/") or path in SEARCH_DOCS
+
 
 def shell(title, description, body, built, commit, *, canonical_path="/", backdrop=False, eyebrow=None, h1=None, lede=None, active=None, image=None):
     if canonical_path not in PAGES:
         PAGES.append(canonical_path)
+    if canonical_path in SEARCH_TITLES:
+        search_title, search_description = SEARCH_TITLES[canonical_path]
+        title = f"{search_title} | {SITE_TITLE}"
+        description = search_description or description
+    robots = "" if in_search(canonical_path) else '<meta name="robots" content="noindex">\n'
     nav1 = "".join(f'<a href="{esc(h)}" class="nav-primary{" active" if h == active else ""}">{esc(t)}</a>' for h, t in NAV_PRIMARY)
     nav2 = "".join(f'<a href="{esc(h)}" class="nav-secondary{" active" if h == active else ""}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in NAV_SECONDARY)
     links = "".join(f'<a href="{esc(h)}"{" rel=\"noopener\"" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t in FOOTER_LINKS)
@@ -885,7 +934,7 @@ def shell(title, description, body, built, commit, *, canonical_path="/", backdr
 <meta id="theme-color-meta" name="theme-color" content="#f2f1ec">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<meta name="author" content="John Andrew Fredrickson">
+{robots}<meta name="author" content="John Andrew Fredrickson">
 <link rel="author" href="https://johnandrewfredrickson.com/">
 <link rel="canonical" href="{SITE_URL}{esc(canonical_path)}">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
@@ -1788,12 +1837,12 @@ def write_sitemap():
     (upgrade-tree and quiet-galaxy, site/src/pages/sitemap.xml.ts). Added 2026-10-31, when a search
     for the family's sites by name found four of them, this one among them, serving no sitemap;
     site/robots.txt names it."""
-    paths = ["/"] + sorted(p for p in PAGES if p != "/")  # the home page first, then by address, so two builds of the same pages give the same file
+    paths = ["/"] + sorted(p for p in PAGES if p != "/" and in_search(p))  # the home page first, then by address, so two builds of the same pages give the same file
     urls = "\n".join(f"<url><loc>{esc(SITE_URL + path)}</loc></url>" for path in paths)
     (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
                                       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       f"{urls}\n</urlset>\n", encoding="utf-8")
-    return len(PAGES)
+    return len(paths)
 
 
 def main():
